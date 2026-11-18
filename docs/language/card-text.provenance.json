@@ -611,9 +611,9 @@
     },
     "VC-004": {
      "name": {
-      "text": "Conde París",
+      "text": "Conde Paris",
       "source": "wikidata",
-      "detail": "Q3687815 label (es)"
+      "detail": "Q3687815 alias (es) «Conde Paris»; the label's «París» is the city, stressed on its last syllable; the character is stressed on the first, as Menéndez Pelayo's translation prints him («conde Páris», es.wikisource revision 1642362), which today's spelling writes Paris (a word stressed on its next-to-last syllable and ending in -s takes no accent)"
      },
      "quote": {
       "text": "Ni es ésta ocasion de galanterías sino de duelo.",
@@ -1422,9 +1422,9 @@
     },
     "VC-002": {
      "name": {
-      "text": null,
-      "source": "missing",
-      "detail": "Q5503354 has no label in fr and no fr.wikipedia.org article"
+      "text": "Frère Laurence",
+      "source": "published",
+      "detail": "François-Victor Hugo's translation prints «FRÈRE LAURENCE» (1 times; the label in the list of characters, in title case; the text says «frère Laurence»), Roméo et Juliette (trad. Hugo), revision 15966892; Wikidata has no fr label (Q5503354)"
      },
      "quote": {
       "text": "Ces joies violentes ont des fins violentes",
@@ -1441,9 +1441,9 @@
     },
     "VC-003": {
      "name": {
-      "text": "Infirmière",
-      "source": "wikidata",
-      "detail": "Q7070187 label (fr)"
+      "text": "La Nourrice",
+      "source": "published",
+      "detail": "François-Victor Hugo's translation prints «LA NOURRICE» (101 times; the speaker label, which Hugo prints in capitals, in title case), Roméo et Juliette (trad. Hugo), revision 15966892; Wikidata's fr label «Infirmière» is a hospital nurse; the character is Juliet's wet-nurse, «la Nourrice» in Hugo (Q7070187)"
      },
      "quote": {
       "text": "C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir",
@@ -2720,9 +2720,9 @@
     },
     "VC-002": {
      "name": {
-      "text": "Friar Laurence",
-      "source": "wikidata",
-      "detail": "Q5503354 label (de)"
+      "text": "Bruder Lorenzo",
+      "source": "published",
+      "detail": "August Wilhelm Schlegel's translation prints «Bruder Lorenzo» (2 times; as the stage directions name him («Bruder Lorenzo mit einem Körbchen», «Bruder Lorenzos Zelle»); his speeches are headed «Lorenzo.»), Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug, revision 1730815; Wikidata's de label is the English «Friar Laurence» (Q5503354)"
      },
      "quote": {
       "text": "So wilde Freude nimmt ein wildes Ende",
@@ -3634,7 +3634,13 @@
      "name": {
       "text": "Apollon",
       "source": "wikidata",
-      "detail": "Q37340 label (de)"
+      "detail": "Q37340 label (de)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Abadonna",
+        "why": "the fallen angel of Klopstock's Messias (Abaddon), not a name of Apollo"
+       }
+      ]
      },
      "quote": {
       "text": "Ich bin der Gott des Gesangs, der Heilung und der strahlenden Sonne.",
@@ -3699,7 +3705,13 @@
      "name": {
       "text": "Odysseus",
       "source": "wikidata",
-      "detail": "Q47231 label (de)"
+      "detail": "Q47231 label (de)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Uthuce",
+        "why": "the Etruscan name of Odysseus, not a German one"
+       }
+      ]
      },
      "quote": {
       "text": "Sage mir, o Muse, von dem Mann der vielen Wege, der weit umherirrte.",
@@ -4950,7 +4962,13 @@
      "name": {
       "text": "Afrodite",
       "source": "wikidata",
-      "detail": "Q35500 label (it)"
+      "detail": "Q35500 label (it)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Aφροδίτη",
+        "why": "mixes scripts"
+       }
+      ]
      },
      "quote": {
       "text": "Nemmeno gli dèi possono resistere al potere dell’amore.",
@@ -5000,9 +5018,9 @@
     },
     "OL-006": {
      "name": {
-      "text": "Odisseo",
-      "source": "wikidata",
-      "detail": "Q47231 label (it)"
+      "text": "Ulisse",
+      "source": "wikipedia",
+      "detail": "it.wikipedia.org article title «Ulisse» (Q47231); it.wikipedia titles the article «Ulisse», the name Italian has used for him since Dante; the label is «Odisseo»"
      },
      "quote": {
       "text": "Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano.",
@@ -6562,9 +6580,9 @@
     },
     "SC-003": {
      "name": {
-      "text": "Banquo",
-      "source": "wikidata",
-      "detail": "Q806945 label (pl)"
+      "text": "Banko",
+      "source": "wikipedia",
+      "detail": "pl.wikipedia.org article title «Banko» (Q806945); the label is the English spelling; pl.wikipedia titles the article «Banko», which is also the item's pl alias"
      },
      "quote": {
       "text": "Spłodzisz królów, choć sam nim nie będziesz.",
@@ -7904,9 +7922,9 @@
     },
     "DC-004": {
      "name": {
-      "text": "Гораций",
-      "source": "wikidata",
-      "detail": "Q3140503 label (ru)"
+      "text": "Горацио",
+      "source": "wikipedia",
+      "detail": "ru.wikipedia.org article title «Горацио (персонаж)» (Q3140503); the label «Гораций» is the Russian name of the Roman poet Horace; ru.wikipedia titles the character «Горацио (персонаж)», which is also the item's ru alias and the name this game's Russian lines use"
      },
      "quote": {
       "text": "Великое не бьется сердце! Милый / Принц, доброй ночи!",
@@ -8189,16 +8207,15 @@
       "source": "wikidata",
       "detail": "Q82409 label (ru)"
      },
-     "quote": {
-      "text": "Вода, вода, одна вода, / Мы ничего не пьём.",
-      "source": "published",
-      "cite": "Coleridge, The Rime of the Ancient Mariner, Part II",
-      "translator": "Николай Гумилёв (1886–1921)",
-      "edition": "«Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription)",
-      "status": "Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check).",
+     "publishedNotUsed": {
       "url": "https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375",
-      "page": "Поэма о старом моряке (Кольридж; Гумилёв)",
-      "revid": 5058375
+      "work": "mariner",
+      "why": "Gumilyov's translation (1919). He was executed in 1921 and rehabilitated in 1992, and Russian law counts the term of a repressed and rehabilitated author from the year after rehabilitation (Civil Code art. 1281 p. 5), which would run to 2062. Whether that rule reaches a work whose term had run out before 1993 is a question of how art. 6 of the law that put part IV of the Code into force is read, and two readings of it in this project disagreed. Neither is a lawyer's. Until one is, the game's Russian line for this card is its own, marked new."
+     },
+     "quote": {
+      "text": "Вода, вода, везде вода, и ни капли для питья.",
+      "source": "new",
+      "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
      "scene": "translated"
     },
@@ -10694,9 +10711,9 @@
     },
     "VC-003": {
      "name": {
-      "text": "护士",
+      "text": "奶妈",
       "source": "wikidata",
-      "detail": "Q7070187 label (zh); \"護士\" converted to Simplified with OpenCC t2s"
+      "detail": "Q7070187 alias (zh) «奶媽»; converted to Simplified with OpenCC t2s; the zh label 護士 is a hospital nurse; the character is Juliet's wet-nurse (奶媽, 奶妈 in Simplified), as the Chinese scene for this card calls her"
      },
      "quote": {
       "text": "我是个苦工，为了您的快乐而奔忙。",
@@ -10787,10 +10804,16 @@
      "name": {
       "text": "奥伯伦",
       "source": "wikidata",
-      "detail": "Q1139234 label (zh)"
+      "detail": "Q1139234 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Oberon",
+        "why": "Latin letters in a language written in another script"
+       }
+      ]
      },
      "quote": {
-      "text": "月光下相遇真是不巧，骄傲的提泰妮娅。",
+      "text": "月光下相遇真是不巧，骄傲的缇坦妮雅。",
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
@@ -11203,7 +11226,13 @@
      "name": {
       "text": "约翰·济慈",
       "source": "wikidata",
-      "detail": "Q82083 label (zh-hans)"
+      "detail": "Q82083 label (zh-hans)",
+      "aliasesNotTaken": [
+       {
+        "alias": "济慈，J.",
+        "why": "not letters only"
+       }
+      ]
      },
      "quote": {
       "text": "美的事物是永恒的喜悦：它的可爱与日俱增。",
@@ -11216,7 +11245,13 @@
      "name": {
       "text": "拜伦勋爵",
       "source": "wikidata",
-      "detail": "Q5679 label (zh)"
+      "detail": "Q5679 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "拜伦，G.G.",
+        "why": "not letters only"
+       }
+      ]
      },
      "quote": {
       "text": "她走在美的光彩中，像无云的地方繁星满天的夜晚。",
@@ -11229,7 +11264,13 @@
      "name": {
       "text": "玛丽·雪莱",
       "source": "wikidata",
-      "detail": "Q47152 label (zh)"
+      "detail": "Q47152 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "科學怪人之母：瑪麗雪萊",
+        "why": "not letters only"
+       }
+      ]
      },
      "quote": {
       "text": "当心；因为我无所畏惧，所以强大。",
@@ -11242,7 +11283,13 @@
      "name": {
       "text": "爱伦·坡",
       "source": "wikidata",
-      "detail": "Q16867 label (zh)"
+      "detail": "Q16867 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "坡，E.A.",
+        "why": "not letters only"
+       }
+      ]
      },
      "quote": {
       "text": "从前一个阴郁的午夜，我独自沉思，虚弱而疲倦。",
@@ -11281,7 +11328,13 @@
      "name": {
       "text": "伊丽莎白·巴雷特·勃朗宁",
       "source": "wikidata",
-      "detail": "Q228494 label (zh-hans)"
+      "detail": "Q228494 label (zh-hans)",
+      "aliasesNotTaken": [
+       {
+        "alias": "勃朗宁夫人",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "我怎样爱你？让我一一细数。",
@@ -11359,7 +11412,13 @@
      "name": {
       "text": "赫耳墨斯",
       "source": "wikidata",
-      "detail": "Q41484 label (zh)"
+      "detail": "Q41484 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Hermes",
+        "why": "Latin letters in a language written in another script"
+       }
+      ]
      },
      "quote": {
       "text": "快如思想，我把众神的话带到凡人的耳边。",
@@ -11372,7 +11431,13 @@
      "name": {
       "text": "哈得斯",
       "source": "wikidata",
-      "detail": "Q41410 label (zh)"
+      "detail": "Q41410 label (zh)",
+      "aliasesNotTaken": [
+       {
+        "alias": "哈里斯",
+        "why": "\"Harris\"; no Chinese source gives it for Hades"
+       }
+      ]
      },
      "quote": {
       "text": "所有的灵魂最终都来到我这里。我有耐心。",
@@ -11954,7 +12019,13 @@
      "name": {
       "text": "ブルトゥス",
       "source": "derived",
-      "detail": "word 3 of 3 of \"マルクス・ユニウス・ブルトゥス\" (Q172248 label (ja))"
+      "detail": "word 3 of 3 of \"マルクス・ユニウス・ブルトゥス\" (Q172248 label (ja))",
+      "aliasesNotTaken": [
+       {
+        "alias": "ブルトゥス家",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "シーザーを愛さなかったのではない、ローマをより深く愛したのだ。",
@@ -12325,7 +12396,17 @@
      "name": {
       "text": "エドガー・アラン・ポー",
       "source": "wikidata",
-      "detail": "Q16867 label (ja)"
+      "detail": "Q16867 label (ja)",
+      "aliasesNotTaken": [
+       {
+        "alias": "エドガーアランポー",
+        "why": "the name or another alias with more added"
+       },
+       {
+        "alias": "アランポオ",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "あるわびしい真夜中のこと、弱り疲れて思いにふけっていると。",
@@ -12390,7 +12471,17 @@
      "name": {
       "text": "ゼウス",
       "source": "wikidata",
-      "detail": "Q34201 label (ja)"
+      "detail": "Q34201 label (ja)",
+      "aliasesNotTaken": [
+       {
+        "alias": "ゼウス神像",
+        "why": "the name or another alias with more added"
+       },
+       {
+        "alias": "ZEUS",
+        "why": "Latin letters in a language written in another script"
+       }
+      ]
      },
      "quote": {
       "text": "我は雲を集める者、広き天の主である。",
@@ -12403,7 +12494,13 @@
      "name": {
       "text": "アテーナー",
       "source": "wikidata",
-      "detail": "Q37122 label (ja)"
+      "detail": "Q37122 label (ja)",
+      "aliasesNotTaken": [
+       {
+        "alias": "アテナ女神",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "知恵の梟は夕暮れにのみ飛び立つ。",
@@ -12429,7 +12526,13 @@
      "name": {
       "text": "アプロディーテー",
       "source": "wikidata",
-      "detail": "Q35500 label (ja)"
+      "detail": "Q35500 label (ja)",
+      "aliasesNotTaken": [
+       {
+        "alias": "アフロディーテー",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "神々でさえ愛の力には逆らえない。",
@@ -12870,7 +12973,7 @@
       "detail": "Q1139234 label (ko)"
      },
      "quote": {
-      "text": "달빛 아래 잘못 만났군, 오만한 티타니아.",
+      "text": "달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아.",
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
@@ -14291,9 +14394,9 @@
     },
     "GC-001": {
      "name": {
-      "text": "George Gordon Byron, Nam tước Byron thứ 6",
-      "source": "wikidata",
-      "detail": "Q5679 label (vi)"
+      "text": "George Gordon Byron",
+      "source": "derived",
+      "detail": "the label's personal name, before the comma; the rest («Nam tước Byron thứ 6») is the peerage, \"6th Baron Byron\" (Q5679 label (vi): \"George Gordon Byron, Nam tước Byron thứ 6\")"
      },
      "quote": {
       "text": "Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao.",
@@ -15288,9 +15391,9 @@
     },
     "GC-001": {
      "name": {
-      "text": "จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6",
-      "source": "wikidata",
-      "detail": "Q5679 label (th)"
+      "text": "จอร์จ กอร์ดอน ไบรอน",
+      "source": "derived",
+      "detail": "the label's personal name, its first three words; the rest («บารอนไบรอนที่ 6») is the peerage, \"6th Baron Byron\" (Q5679 label (th): \"จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6\")"
      },
      "quote": {
       "text": "เธอเดินอยู่ในความงาม ดั่งราตรีแห่งแดนไร้เมฆและฟ้าพร่างดาว",
@@ -15381,7 +15484,13 @@
      "name": {
       "text": "ซูส",
       "source": "wikidata",
-      "detail": "Q34201 label (th)"
+      "detail": "Q34201 label (th)",
+      "aliasesNotTaken": [
+       {
+        "alias": "เทพซูส",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "ข้าคือผู้รวบรวมเมฆ เจ้าแห่งฟ้ากว้าง",
@@ -15433,7 +15542,17 @@
      "name": {
       "text": "เฮอร์มีส",
       "source": "wikidata",
-      "detail": "Q41484 label (th)"
+      "detail": "Q41484 label (th)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Hermes",
+        "why": "Latin letters in a language written in another script"
+       },
+       {
+        "alias": "เทพเฮอร์มีส",
+        "why": "the name or another alias with more added"
+       }
+      ]
      },
      "quote": {
       "text": "รวดเร็วดั่งความคิด ข้านำถ้อยคำของเหล่าเทพไปสู่หูมนุษย์",
@@ -15446,7 +15565,13 @@
      "name": {
       "text": "เฮดีส",
       "source": "wikidata",
-      "detail": "Q41410 label (th)"
+      "detail": "Q41410 label (th)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Hades",
+        "why": "Latin letters in a language written in another script"
+       }
+      ]
      },
      "quote": {
       "text": "วิญญาณทั้งปวงมาหาข้าในที่สุด ข้าอดทนรอได้",
@@ -15459,7 +15584,13 @@
      "name": {
       "text": "เพอร์เซฟะนี",
       "source": "wikidata",
-      "detail": "Q45967 label (th)"
+      "detail": "Q45967 label (th)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Persephone",
+        "why": "Latin letters in a language written in another script"
+       }
+      ]
      },
      "quote": {
       "text": "ข้ากินเมล็ดหกเมล็ด และผูกตัวเองไว้ระหว่างสองโลกตลอดกาล",

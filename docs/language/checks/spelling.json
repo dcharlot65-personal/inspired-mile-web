@@ -3,8 +3,8 @@
  "languages": {
   "es": {
    "items": 205,
-   "words checked": 1048,
-   "unknown words": 23,
+   "words checked": 1047,
+   "unknown words": 22,
    "flagged": [
     {
      "id": "SM-001",
@@ -68,10 +68,9 @@
      "id": "CA-002",
      "field": "scene",
      "unknown": [
-      "Tebaldo",
       "Verona"
      ],
-     "text": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
+     "text": "Un callejón de Verona incendiado por las antorchas. Teobaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
     },
     {
      "id": "DC-003",
@@ -231,7 +230,7 @@
     "TP-003|scene": "e864b0a0f694a9a9",
     "TP-003|quote": "b86961d20ea907e8",
     "MO-003|scene": "0310ecc7c1ae40d4",
-    "CA-002|scene": "1a2491a581e70884",
+    "CA-002|scene": "38ca031272298764",
     "DC-003|scene": "014951771965f0fc",
     "FA-003|scene": "93d801d873544aac",
     "FA-003|quote": "539620939a3dbe9a",
@@ -408,7 +407,7 @@
   },
   "fr": {
    "items": 183,
-   "words checked": 1000,
+   "words checked": 998,
    "unknown words": 8,
    "flagged": [
     {
@@ -673,7 +672,7 @@
   },
   "de": {
    "items": 184,
-   "words checked": 970,
+   "words checked": 968,
    "unknown words": 21,
    "flagged": [
     {
@@ -878,7 +877,7 @@
     "PT-002|name": "1e7e7cb23c475153",
     "VC-001|scene": "a9c100454ded1691",
     "VC-002|scene": "d1aa13aac283746c",
-    "VC-003|scene": "fc22dc85f50ba7ec",
+    "VC-003|scene": "8d7768ce3a246a40",
     "TP-001|scene": "45ddc05fdd4c34bb",
     "TP-002|scene": "4b9daaf8d02ee68e",
     "TP-003|scene": "78c87cf66b770890",
@@ -1215,7 +1214,7 @@
     "PT-003|name": "b5755bbeda7907ff",
     "SC-001|scene": "077fc0c1f6b33008",
     "SC-002|scene": "80b1109040bb4338",
-    "SC-003|scene": "1d73913eabbb1f37",
+    "SC-003|scene": "db33a2605c1ead13",
     "IL-001|scene": "37f5d49c5da539a5",
     "IL-002|scene": "9089ca4478a1957e",
     "IL-003|scene": "c493eb545faeaa01",
@@ -1992,8 +1991,8 @@
    }
   },
   "ru": {
-   "items": 199,
-   "words checked": 1204,
+   "items": 200,
+   "words checked": 1207,
    "unknown words": 16,
    "flagged": [
     {
@@ -2135,13 +2134,13 @@
     "PT-002|scene": "827949659ce5927f",
     "PT-002|quote": "05bf8558d30e79a0",
     "PT-002|name": "f41f24820df4f0f8",
-    "VC-001|scene": "63cc36f7f8793b39",
+    "VC-001|scene": "0a748fc3ac7d0558",
     "VC-002|scene": "99c9cf4a4b79d09f",
     "VC-003|scene": "0f34f45ac93cb960",
     "TP-001|scene": "86635c6bfbad6b00",
     "TP-002|scene": "e4a2dcffad381cf3",
     "TP-003|scene": "702348d91ac2ca81",
-    "MO-003|scene": "f12eab8679174385",
+    "MO-003|scene": "dd10c3c2c0eb8574",
     "CA-002|scene": "db6086a0bf4d54ca",
     "DC-003|scene": "92998e850d39d6d5",
     "FA-003|scene": "ee055840ae24f02b",
@@ -2206,6 +2205,7 @@
     "LD-001|scene": "9ec24f728eac3c28",
     "LD-001|quote": "d1c580d89a7dc67f",
     "LD-002|scene": "4d16e21aaedfeb28",
+    "LD-002|quote": "845ffb55181b751d",
     "LD-003|scene": "db383fc014faa684",
     "LD-003|quote": "15c8b285aa067e1f",
     "GC-001|scene": "5ac85a3a1084b5c9",
@@ -3465,7 +3465,7 @@
   "ko": {
    "items": 234,
    "words checked": 1457,
-   "unknown words": 124,
+   "unknown words": 126,
    "flagged": [
     {
      "id": "SM-001",
@@ -3522,10 +3522,10 @@
      "id": "MO-002",
      "field": "scene",
      "unknown": [
-      "머큐쇼는",
+      "머큐시오는",
       "베로나의"
      ],
-     "text": "베로나의 거리가 혼란에 휩싸인다. 머큐쇼는 칼날 사이에서 춤추며 위험 앞에서 웃는다. 부딪치는 강철에서 불꽃이 튄다."
+     "text": "베로나의 거리가 혼란에 휩싸인다. 머큐시오는 칼날 사이에서 춤추며 위험 앞에서 웃는다. 부딪치는 강철에서 불꽃이 튄다."
     },
     {
      "id": "FA-001",
@@ -3565,9 +3565,10 @@
      "field": "scene",
      "unknown": [
       "베로나",
+      "왕홀이",
       "침묵시킨다"
      ],
-     "text": "영주가 베로나 궁전의 계단에 서 있고, 그의 목소리가 싸우는 군중을 침묵시킨다. 황금 홀이 권위로 타오른다."
+     "text": "영주가 베로나 궁전의 계단에 서 있고, 그의 목소리가 싸우는 군중을 침묵시킨다. 황금 왕홀이 권위로 타오른다."
     },
     {
      "id": "VC-003",
@@ -3589,10 +3590,10 @@
      "id": "TP-002",
      "field": "scene",
      "unknown": [
-      "에어리얼은",
+      "아리엘은",
       "정령이"
      ],
-     "text": "반짝이는 정령이 바람과 빛으로 흩어졌다가 음악으로 다시 모인다. 에어리얼은 보이는 것과 보이지 않는 것 사이에서 춤춘다."
+     "text": "반짝이는 정령이 바람과 빛으로 흩어졌다가 음악으로 다시 모인다. 아리엘은 보이는 것과 보이지 않는 것 사이에서 춤춘다."
     },
     {
      "id": "TP-003",
@@ -3642,9 +3643,9 @@
      "unknown": [
       "알현실",
       "엘시노어의",
-      "클로디어스는"
+      "클라우디우스는"
      ],
-     "text": "거짓 화려함으로 뒤덮인 엘시노어의 알현실. 클로디어스는 왕관을 움켜쥐고, 옷 속에 독약 병을 숨기고 있다."
+     "text": "거짓 화려함으로 뒤덮인 엘시노어의 알현실. 클라우디우스는 왕관을 움켜쥐고, 옷 속에 독약 병을 숨기고 있다."
     },
     {
      "id": "FA-003",
@@ -3654,6 +3655,14 @@
       "오베론이"
      ],
      "text": "마법의 숲 깊은 곳, 달빛 어린 빈터. 오베론이 그림자 속에서 모습을 드러내고, 사슴뿔 왕관이 은빛을 받는다."
+    },
+    {
+     "id": "FA-003",
+     "field": "quote",
+     "unknown": [
+      "만남이로군"
+     ],
+     "text": "달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아."
     },
     {
      "id": "SC-001",
@@ -3694,10 +3703,10 @@
      "id": "SC-003",
      "field": "scene",
      "unknown": [
-      "뱅코는",
+      "뱅쿠오는",
       "자들을"
      ],
-     "text": "해 질 녘 안개 낀 스코틀랜드 황야. 뱅코는 굳게 서 있고, 유령 같은 세 형체가 운명을 바람 속에 속삭인다. 그의 유령은 산 자들을 따라다닐 것이다."
+     "text": "해 질 녘 안개 낀 스코틀랜드 황야. 뱅쿠오는 굳게 서 있고, 유령 같은 세 형체가 운명을 바람 속에 속삭인다. 그의 유령은 산 자들을 따라다닐 것이다."
     },
     {
      "id": "IL-001",
@@ -4137,7 +4146,7 @@
     "DC-001|quote": "8e1edaa90e73260d",
     "DC-002|scene": "186252818da87c06",
     "DC-002|quote": "2f82ea1daa7d2ec6",
-    "MO-002|scene": "4837ecdde7e50e68",
+    "MO-002|scene": "d9d4d48dc3cd03a1",
     "MO-002|quote": "3bfe1ce44cc5068c",
     "FA-001|scene": "93cbb67f01085cf7",
     "FA-001|quote": "c5b5680c4277f895",
@@ -4155,7 +4164,7 @@
     "PT-002|scene": "e045f576b98c8bc3",
     "PT-002|quote": "e62bb45f47fbaa46",
     "PT-002|name": "821b28d751c573ab",
-    "VC-001|scene": "320d21a73b52f523",
+    "VC-001|scene": "2f94c5c119d2f579",
     "VC-001|quote": "71783b8d30fa52d3",
     "VC-002|scene": "96b1bfdc6bf8478b",
     "VC-002|quote": "16a66803dc59b577",
@@ -4163,7 +4172,7 @@
     "VC-003|quote": "fe5506a6218803a5",
     "TP-001|scene": "2bab098edb134d02",
     "TP-001|quote": "1af7ab7683da07db",
-    "TP-002|scene": "8f69a29df621543a",
+    "TP-002|scene": "1b456189bceb80ed",
     "TP-002|quote": "aba94173aa3e3eaf",
     "TP-003|scene": "d58bd6179f624dbc",
     "TP-003|quote": "c0d154cf9726dcea",
@@ -4171,10 +4180,10 @@
     "MO-003|quote": "460f12a0e12fba72",
     "CA-002|scene": "0d66b951b19a3acf",
     "CA-002|quote": "90efa9dea4a1d54e",
-    "DC-003|scene": "ec7b6e88a88a4427",
+    "DC-003|scene": "3906049132ccd6b0",
     "DC-003|quote": "9b76c51021aa1756",
     "FA-003|scene": "bd6787e0f726c8f8",
-    "FA-003|quote": "0a02774d0fa7bb4f",
+    "FA-003|quote": "18fd363af26ca354",
     "RL-003|scene": "6925e90794c327bd",
     "RL-003|quote": "16f1160284666ed7",
     "RL-003|name": "694546855ba591c5",
@@ -4185,7 +4194,7 @@
     "SC-001|quote": "faf62bf8e67a0fce",
     "SC-002|scene": "bfcc6fe014043893",
     "SC-002|quote": "b7c6c48ae00c28c3",
-    "SC-003|scene": "cb316d535879652d",
+    "SC-003|scene": "2f00477b29689ecb",
     "SC-003|quote": "79446e8e7aaa9659",
     "IL-001|scene": "3d7c6867f61699bf",
     "IL-001|quote": "328a6c67676304a2",
@@ -4365,7 +4374,7 @@
   },
   "vi": {
    "items": 234,
-   "words checked": 1171,
+   "words checked": 1174,
    "unknown words": 50,
    "flagged": [
     {
@@ -5076,7 +5085,7 @@
   },
   "th": {
    "items": 234,
-   "words checked": 1083,
+   "words checked": 1085,
    "unknown words": 29,
    "flagged": [
     {

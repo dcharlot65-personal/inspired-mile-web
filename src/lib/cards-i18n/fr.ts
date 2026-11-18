@@ -106,14 +106,15 @@ const pack: CardTextPack = {
    "scene": "Le Prince se tient sur les marches du palais de Vérone ; sa voix impose le silence à la foule ennemie. Un sceptre d’or brûle d’autorité."
   },
   "VC-002": {
-   "nameSource": "missing",
+   "nameSource": "published",
+   "name": "Frère Laurence",
    "quote": "Ces joies violentes ont des fins violentes",
    "quoteSource": "published",
    "scene": "Une cellule de monastère éclairée à la bougie. Le frère soigne son jardin d’herbes et de poisons, la sagesse gravée sur son visage buriné."
   },
   "VC-003": {
-   "nameSource": "wikidata",
-   "name": "Infirmière",
+   "nameSource": "published",
+   "name": "La Nourrice",
    "quote": "C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir",
    "quoteSource": "published",
    "scene": "Une cuisine chaleureuse dans la maison des Capulet. La nourrice s’affaire avec un dévouement farouche, une lettre secrète glissée dans son tablier."
@@ -1437,7 +1438,10 @@ const pack: CardTextPack = {
  "common": [
   "Comte",
   "Dame",
+  "Frère",
+  "La",
   "Marc",
+  "Nourrice",
   "Seigneur"
  ]
 };

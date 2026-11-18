@@ -193,7 +193,7 @@ const pack: CardTextPack = {
    "name": "Banco",
    "quote": "Creerai i re senza esserlo.",
    "quoteSource": "published",
-   "scene": "Una brughiera scozzese nebbiosa al crepuscolo. Banquo sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi."
+   "scene": "Una brughiera scozzese nebbiosa al crepuscolo. Banco sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi."
   },
   "IL-001": {
    "nameSource": "missing",
@@ -466,8 +466,7 @@ const pack: CardTextPack = {
    "aliases": [
     "Citerea",
     "Cipride",
-    "Citerèa",
-    "Aφροδίτη"
+    "Citerèa"
    ],
    "quote": "Nemmeno gli dèi possono resistere al potere dell’amore.",
    "quoteSource": "new",
@@ -507,11 +506,8 @@ const pack: CardTextPack = {
    "scene": "Un trono diviso tra primavera e ombra. Persefone tiene una melagrana in una mano e una corona di fiori nell’altra, regina di due regni."
   },
   "OL-006": {
-   "nameSource": "wikidata",
-   "name": "Odisseo",
-   "aliases": [
-    "Ulisse"
-   ],
+   "nameSource": "wikipedia",
+   "name": "Ulisse",
    "quote": "Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano.",
    "quoteSource": "new",
    "scene": "Una nave sferzata dalla tempesta doppia un promontorio roccioso. Ulisse si lega all’albero mentre le Sirene cantano dalle scogliere. Nei suoi occhi brucia il ricordo di Itaca."

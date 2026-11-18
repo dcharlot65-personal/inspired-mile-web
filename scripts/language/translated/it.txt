@@ -125,7 +125,7 @@ RL-003	Un pugnale spettrale fluttua nel buio, con la lama che gocciola sangue fa
 PT-003	Un fiore purpureo schiacciato stilla nettare iridescente in un palmo in attesa. Ovunque cada, gli occhi cambiano, e i cuori li seguono.
 SC-001	Una sala del trono macchiata di sangue a Dunsinane. Macbeth stringe la spada con mani tremanti, la corona pesante sulla fronte. Il bosco di Birnam si muove sul colle lontano.
 SC-002	Una stanza del castello scozzese a lume di candela. Lady Macbeth percorre le fredde pietre, strofinandosi dalle mani macchie di sangue immaginarie. Le ombre le si attaccano come una seconda pelle.
-SC-003	Una brughiera scozzese nebbiosa al crepuscolo. Banquo sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi.
+SC-003	Una brughiera scozzese nebbiosa al crepuscolo. Banco sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi.
 IL-001	Una costa dell’Illiria battuta dal vento. Viola si calca un berretto da marinaio sui capelli tagliati corti; due identità le brillano negli occhi. Il mare sussurra segreti del fratello perduto.
 IL-002	Un giardino assolato nella tenuta di Olivia. Malvolio si pavoneggia in sgargianti calze gialle con le giarrettiere incrociate, sorridente, stringendo al petto una falsa lettera d’amore.
 IL-003	Una contessa in lutto solleva il velo e rivela una bellezza che toglie il fiato. Il giardino di Olivia fiorisce di gelsomino e lavanda mentre il messaggero travestito le ruba il cuore.

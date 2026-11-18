@@ -113,7 +113,7 @@ PT-001	Ein leuchtendes Fläschchen pulsiert in rosenfarbenem Licht. Herzen steig
 PT-002	Ein brodelnder Kessel stößt grünen Rauch aus. Drei schattenhafte Gestalten umkreisen ihn mit Sprechgesang. Aus dem dunklen Wald dahinter glühen Augen.
 VC-001	Der Prinz steht auf den Stufen des Palastes von Verona; seine Stimme gebietet der verfeindeten Menge Schweigen. Ein goldenes Zepter glüht vor Autorität.
 VC-002	Eine Klosterzelle im Kerzenschein. Der Bruder pflegt seinen Garten aus Kräutern und Giften, die Weisheit ins wettergegerbte Gesicht geschrieben.
-VC-003	Eine warme Küche im Hause Capulet. Die Amme eilt mit grimmiger Hingabe umher, einen geheimen Brief in der Schürze verborgen.
+VC-003	Eine warme Küche im Hause Capulet. Die Wärterin eilt mit grimmiger Hingabe umher, einen geheimen Brief in der Schürze verborgen.
 TP-001	Eine Insel, vom Sturm umhüllt. Prospero hebt die Hände, während der Blitz seinem Willen gehorcht und das Meer auf seinen Befehl aufwallt.
 TP-002	Ein schimmernder Geist löst sich in Wind und Licht auf und formt sich als Musik neu. Ariel tanzt zwischen dem Sichtbaren und dem Unsichtbaren.
 TP-003	Ein Höhleneingang an einer wilden Küste. Caliban kauert zwischen den Felsen, die Augen brennend vor Groll und ursprünglicher Klugheit.

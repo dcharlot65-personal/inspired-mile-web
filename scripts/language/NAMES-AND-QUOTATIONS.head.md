@@ -26,12 +26,28 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   "Próspero" (TP-001), because Wikidata's `pt` and `pt-br` label "Prospero" is the verb *prospero*, "I
   prosper" (LanguageTool's LP_PARONYMS rule flagged it), and pt.wikipedia.org's article on the play, "A
   Tempestade" (revision 72539005, `docs/language/sources/ptwiki-a-tempestade.json`), writes Próspero 17 times
-  and Prospero once. The relic name and the scenes follow the card.
+  and Prospero once. The relic name and the scenes follow the card. Three more take the Wikipedia title
+  where the label is not the character's usual name in that language: Russian «Горацио» (the label
+  «Гораций» is the Roman poet Horace; ru.wikipedia titles the character «Горацио (персонаж)»), Polish
+  «Banko» (the label is the English spelling) and Italian «Ulisse» (it.wikipedia's title; the label is
+  «Odisseo»). Each reason is in `TITLE_FIRST` in the build script.
+- `published`: Wikidata's label is wrong or is the English one, and the published translation this record
+  quotes for the play prints the character's name: French «La Nourrice» (Hugo's speaker label; Wikidata's
+  «Infirmière» is a hospital nurse, and she is Juliet's wet-nurse) and «Frère Laurence» (Hugo; no French
+  label), German «Bruder Lorenzo» (Schlegel's stage directions; Wikidata's German label was the English
+  «Friar Laurence»). The page, its revision and the count of the printed form are in
+  `docs/language/sources/published-names.json`, and a test holds each name to that record.
+- Two labels are replaced by one of the item's own aliases, with the reason recorded: Chinese «奶妈» for the
+  Nurse (the label 護士 is a hospital nurse; the alias is 奶媽), and Spanish «Conde Paris» (the label's
+  «París» is the city, stressed on its last syllable; Menéndez y Pelayo prints the character «Páris», stressed
+  on the first, which today's spelling writes Paris).
 - `derived`: cut by a fixed rule from a sourced label. Two rules exist. (1) The card shows one word of a
   longer name ("Brutus" from "Marcus Junius Brutus", "Cassius", "Bottom"): the word in the same position is
   taken when the label in that language has the same number of words, otherwise the whole label is used.
   (2) A title character whose own item has no label in the language takes the name from the title of the
   play in that language ("Hamlet", "Macbeth"; "Romeo" and "Juliet" from the two halves of the title).
+  (3) Byron's Vietnamese and Thai labels add his peerage ("Nam tước Byron thứ 6", "บารอนไบรอนที่ 6", "6th
+  Baron Byron"); the card takes the personal name before it, as the other languages' labels give it.
 - `translated`: the game's own invention (relics, potions, "Lord Montague", "Lady Capulet", houses,
   elements). Written for the game by the language model that did this work. **Not reviewed by a native
   speaker.** Checked by tools that did not write it (see "Checks by tools that did not write the text");
@@ -39,6 +55,15 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
 - `kept`: SM-001, "The Sonnet Man", the product name, the same in every language: neither sourced nor translated.
 - `missing`: no source has the name in that language. Nothing was invented: the card shows the English
   name there, and the invocation accepts the English name.
+
+**Aliases** (other names a character is called by, for the invocation) are Wikidata's aliases in the
+language, except those the build leaves out by rule (`alias_rejected`): one with anything but letters in it
+(a description: 科學怪人之母：瑪麗雪萊, "mother of Frankenstein: Mary Shelley"; 济慈，J.), one in two scripts (Italian
+«Aφροδίτη», a Latin A and Greek letters) or in Latin letters in a language written otherwise (the English name
+counts anyway), and, in Chinese, Japanese and Thai, the name or another alias with more added (ゼウス神像, "statue
+of Zeus"; ブルトゥス家, "the Brutus family"). Three were left out by hand, each with its reason in `NOT_ALIAS`:
+German «Abadonna» and «Uthuce», Chinese «哈里斯». Every alias left out is listed under "Wikidata aliases not taken
+as names".
 
 **Quotations**
 
@@ -124,6 +149,14 @@ have died within the last seventy years.
   the verse (`Intl.Segmenter`) that spell it in a row (Japanese: whose letters begin with it, since a verb's
   ending is often cut off as a word of its own). Thai SARA AM is compared in one piece (stopwords-iso writes
   ทํา and สําหรับ in two). A verse word that is itself a stop word never echoes.
+- How many: as the engine asks of the English line (`signatureNeeded`), a line with three or more telling words
+  needs two of them, a line with one or two needs one. They are counted in the spelling players type (歓楽 and
+  the printed 歡樂 are one word), and one verse word counts once even when it says a word of the line and the
+  same English word (German «Rose» and "rose"). The hint lists the words with the language's comma (、 in
+  Chinese and Japanese, the Arabic comma in Arabic).
+- In Japanese a run of katakana is one word: ICU cuts a name or loanword it does not know into pieces
+  (ヨリック into ヨ and リック, ホレイショー into ホレイ and ショー), and MeCab, the analyser the IPA dictionary was made
+  for, groups such a run into one word (its `char.def` gives KATAKANA the GROUP flag), as this does.
 - Reciting the line is refused: four of its words running, as in English, or the whole of a line of two or
   three words. In Chinese, Japanese and Thai the segmenter's words are often single particles, so a recital
   there is a run of the line's letters as long as four English words of the game's lines are in that
@@ -131,20 +164,37 @@ have died within the last seventy years.
   letters per English word over the 71 lines, and measured again by a test. The English line's words still
   count (except a word of the duel's language spelled like one: Italian "dove" is a stop word there), and
   reciting the English line is still refused.
-- Invocation: every character's full name in the duel's language counts, and so does each word of a longer
-  name and each one-word alias, unless it is a stop word or an ordinary word of the language by Hunspell
+- Invocation: every character's full name in the duel's language counts, and each one-word alias. Of a longer
+  name, where the English card has one name (Romeo, Hamlet) each word of the local label counts alone (Roméo
+  Montaigu: Roméo, Montaigu); where the English card has a longer one (Mary Shelley, Mark Antony, Lady Macbeth),
+  only its last word, as the engine counts English names ("mary" and "mark" name no one), and in Korean, which
+  puts a title after the name, the last word that is not a title (맥베스 부인: 맥베스). A single word does not
+  count when it is a stop word or an ordinary word of the language by Hunspell
   (`run.sh names`; the rule is `common_name_words` in the build script): a title such as Russian «граф»,
   Vietnamese «Phu nhân» or «Lãnh chúa», or Russian «Кора» (bark), an alias of Persephone. Where the script has
   letter case Hunspell is asked in lower case, so a name the dictionary holds is not taken for a word; in
   German (whose nouns are capitalised) and in Arabic, Hindi and Thai (which have no case) a word Hunspell knows
   is taken for a title only before the last word of the name, where those languages put titles; Korean puts
   the title after the name (맥베스 부인), so there any word Hunspell knows is. A word that is also a word of an
-  English character name (Romeo, Lady, William) counts, as it does in English. Names match by stem in Polish,
-  Russian, German and Arabic, where names decline («Персефону» says «Персефона»), with particles in Korean, as
-  whole words in Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is
-  not «Marc»). "The Sonnet Man" counts only whole. The English names count in every language, compared as
-  the duel's language compares words (Vietnamese «màn» is not "Man").
-- The rule judge's allusion count takes the same telling words, and the one-word names.
+  English character name (Romeo, Lady, William) counts, as it does in English. Where names decline, a declined
+  form must keep the name: in Russian and Polish the name less its last vowel followed by a noun case ending,
+  written with a capital («Персефону», «Марка Антония», «Julię», «Antoniusza»; not «медузу», a jellyfish, nor
+  «марку», a stamp); in German the name with its genitive -s or by Snowball's stem with the name at its start
+  («Romeos», «Hamlets»; not «wartest» for «Wärterin», though both stem to "wart"); in Arabic by the stem with the
+  whole name inside the word («وروميو»; not «روما», Rome). Names match with particles in Korean, as whole words in
+  Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is not «Marc»),
+  where a verse word with an accent the name does not have is another word (typed without accents, a name
+  still counts). "The Sonnet Man" counts only whole. The English names count in every language, said as English
+  writes them: Portuguese «põe», "puts", is not Poe, and Vietnamese «màn» is not "Man".
+- On the battle page a card's name stands as a title with a capital (Russian «граф Парис» from Wikidata is
+  shown «Граф Парис»). Inside a sentence ("{card} takes the round"), in Spanish, French, Italian, Portuguese and
+  German, which put an article before a title, a role or a thing, the name of a relic or a potion, a role ("The
+  Nurse") and, outside German, a name that begins with a title is set in the language's quotation marks as the
+  card's title: «Príncipe Hamlet» se lleva la ronda; a plain name stays bare (Romeo se lleva la ronda). This is a
+  choice of presentation, made by rule, not a sourced form: a native reader may prefer the article and the title
+  in lower case (el príncipe Hamlet), which the interface's sentences, written for a bare name, cannot give.
+- The rule judge's allusion count takes the same telling words, and the one-word names, keyed as echo.ts keys a
+  word (a Vietnamese word keeps its tone).
 - An English duel does not go through any of this.
 
 ## What was not done, and what has not been checked

@@ -26,12 +26,28 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   "Próspero" (TP-001), because Wikidata's `pt` and `pt-br` label "Prospero" is the verb *prospero*, "I
   prosper" (LanguageTool's LP_PARONYMS rule flagged it), and pt.wikipedia.org's article on the play, "A
   Tempestade" (revision 72539005, `docs/language/sources/ptwiki-a-tempestade.json`), writes Próspero 17 times
-  and Prospero once. The relic name and the scenes follow the card.
+  and Prospero once. The relic name and the scenes follow the card. Three more take the Wikipedia title
+  where the label is not the character's usual name in that language: Russian «Горацио» (the label
+  «Гораций» is the Roman poet Horace; ru.wikipedia titles the character «Горацио (персонаж)»), Polish
+  «Banko» (the label is the English spelling) and Italian «Ulisse» (it.wikipedia's title; the label is
+  «Odisseo»). Each reason is in `TITLE_FIRST` in the build script.
+- `published`: Wikidata's label is wrong or is the English one, and the published translation this record
+  quotes for the play prints the character's name: French «La Nourrice» (Hugo's speaker label; Wikidata's
+  «Infirmière» is a hospital nurse, and she is Juliet's wet-nurse) and «Frère Laurence» (Hugo; no French
+  label), German «Bruder Lorenzo» (Schlegel's stage directions; Wikidata's German label was the English
+  «Friar Laurence»). The page, its revision and the count of the printed form are in
+  `docs/language/sources/published-names.json`, and a test holds each name to that record.
+- Two labels are replaced by one of the item's own aliases, with the reason recorded: Chinese «奶妈» for the
+  Nurse (the label 護士 is a hospital nurse; the alias is 奶媽), and Spanish «Conde Paris» (the label's
+  «París» is the city, stressed on its last syllable; Menéndez y Pelayo prints the character «Páris», stressed
+  on the first, which today's spelling writes Paris).
 - `derived`: cut by a fixed rule from a sourced label. Two rules exist. (1) The card shows one word of a
   longer name ("Brutus" from "Marcus Junius Brutus", "Cassius", "Bottom"): the word in the same position is
   taken when the label in that language has the same number of words, otherwise the whole label is used.
   (2) A title character whose own item has no label in the language takes the name from the title of the
   play in that language ("Hamlet", "Macbeth"; "Romeo" and "Juliet" from the two halves of the title).
+  (3) Byron's Vietnamese and Thai labels add his peerage ("Nam tước Byron thứ 6", "บารอนไบรอนที่ 6", "6th
+  Baron Byron"); the card takes the personal name before it, as the other languages' labels give it.
 - `translated`: the game's own invention (relics, potions, "Lord Montague", "Lady Capulet", houses,
   elements). Written for the game by the language model that did this work. **Not reviewed by a native
   speaker.** Checked by tools that did not write it (see "Checks by tools that did not write the text");
@@ -39,6 +55,15 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
 - `kept`: SM-001, "The Sonnet Man", the product name, the same in every language: neither sourced nor translated.
 - `missing`: no source has the name in that language. Nothing was invented: the card shows the English
   name there, and the invocation accepts the English name.
+
+**Aliases** (other names a character is called by, for the invocation) are Wikidata's aliases in the
+language, except those the build leaves out by rule (`alias_rejected`): one with anything but letters in it
+(a description: 科學怪人之母：瑪麗雪萊, "mother of Frankenstein: Mary Shelley"; 济慈，J.), one in two scripts (Italian
+«Aφροδίτη», a Latin A and Greek letters) or in Latin letters in a language written otherwise (the English name
+counts anyway), and, in Chinese, Japanese and Thai, the name or another alias with more added (ゼウス神像, "statue
+of Zeus"; ブルトゥス家, "the Brutus family"). Three were left out by hand, each with its reason in `NOT_ALIAS`:
+German «Abadonna» and «Uthuce», Chinese «哈里斯». Every alias left out is listed under "Wikidata aliases not taken
+as names".
 
 **Quotations**
 
@@ -124,6 +149,14 @@ have died within the last seventy years.
   the verse (`Intl.Segmenter`) that spell it in a row (Japanese: whose letters begin with it, since a verb's
   ending is often cut off as a word of its own). Thai SARA AM is compared in one piece (stopwords-iso writes
   ทํา and สําหรับ in two). A verse word that is itself a stop word never echoes.
+- How many: as the engine asks of the English line (`signatureNeeded`), a line with three or more telling words
+  needs two of them, a line with one or two needs one. They are counted in the spelling players type (歓楽 and
+  the printed 歡樂 are one word), and one verse word counts once even when it says a word of the line and the
+  same English word (German «Rose» and "rose"). The hint lists the words with the language's comma (、 in
+  Chinese and Japanese, the Arabic comma in Arabic).
+- In Japanese a run of katakana is one word: ICU cuts a name or loanword it does not know into pieces
+  (ヨリック into ヨ and リック, ホレイショー into ホレイ and ショー), and MeCab, the analyser the IPA dictionary was made
+  for, groups such a run into one word (its `char.def` gives KATAKANA the GROUP flag), as this does.
 - Reciting the line is refused: four of its words running, as in English, or the whole of a line of two or
   three words. In Chinese, Japanese and Thai the segmenter's words are often single particles, so a recital
   there is a run of the line's letters as long as four English words of the game's lines are in that
@@ -131,20 +164,37 @@ have died within the last seventy years.
   letters per English word over the 71 lines, and measured again by a test. The English line's words still
   count (except a word of the duel's language spelled like one: Italian "dove" is a stop word there), and
   reciting the English line is still refused.
-- Invocation: every character's full name in the duel's language counts, and so does each word of a longer
-  name and each one-word alias, unless it is a stop word or an ordinary word of the language by Hunspell
+- Invocation: every character's full name in the duel's language counts, and each one-word alias. Of a longer
+  name, where the English card has one name (Romeo, Hamlet) each word of the local label counts alone (Roméo
+  Montaigu: Roméo, Montaigu); where the English card has a longer one (Mary Shelley, Mark Antony, Lady Macbeth),
+  only its last word, as the engine counts English names ("mary" and "mark" name no one), and in Korean, which
+  puts a title after the name, the last word that is not a title (맥베스 부인: 맥베스). A single word does not
+  count when it is a stop word or an ordinary word of the language by Hunspell
   (`run.sh names`; the rule is `common_name_words` in the build script): a title such as Russian «граф»,
   Vietnamese «Phu nhân» or «Lãnh chúa», or Russian «Кора» (bark), an alias of Persephone. Where the script has
   letter case Hunspell is asked in lower case, so a name the dictionary holds is not taken for a word; in
   German (whose nouns are capitalised) and in Arabic, Hindi and Thai (which have no case) a word Hunspell knows
   is taken for a title only before the last word of the name, where those languages put titles; Korean puts
   the title after the name (맥베스 부인), so there any word Hunspell knows is. A word that is also a word of an
-  English character name (Romeo, Lady, William) counts, as it does in English. Names match by stem in Polish,
-  Russian, German and Arabic, where names decline («Персефону» says «Персефона»), with particles in Korean, as
-  whole words in Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is
-  not «Marc»). "The Sonnet Man" counts only whole. The English names count in every language, compared as
-  the duel's language compares words (Vietnamese «màn» is not "Man").
-- The rule judge's allusion count takes the same telling words, and the one-word names.
+  English character name (Romeo, Lady, William) counts, as it does in English. Where names decline, a declined
+  form must keep the name: in Russian and Polish the name less its last vowel followed by a noun case ending,
+  written with a capital («Персефону», «Марка Антония», «Julię», «Antoniusza»; not «медузу», a jellyfish, nor
+  «марку», a stamp); in German the name with its genitive -s or by Snowball's stem with the name at its start
+  («Romeos», «Hamlets»; not «wartest» for «Wärterin», though both stem to "wart"); in Arabic by the stem with the
+  whole name inside the word («وروميو»; not «روما», Rome). Names match with particles in Korean, as whole words in
+  Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is not «Marc»),
+  where a verse word with an accent the name does not have is another word (typed without accents, a name
+  still counts). "The Sonnet Man" counts only whole. The English names count in every language, said as English
+  writes them: Portuguese «põe», "puts", is not Poe, and Vietnamese «màn» is not "Man".
+- On the battle page a card's name stands as a title with a capital (Russian «граф Парис» from Wikidata is
+  shown «Граф Парис»). Inside a sentence ("{card} takes the round"), in Spanish, French, Italian, Portuguese and
+  German, which put an article before a title, a role or a thing, the name of a relic or a potion, a role ("The
+  Nurse") and, outside German, a name that begins with a title is set in the language's quotation marks as the
+  card's title: «Príncipe Hamlet» se lleva la ronda; a plain name stays bare (Romeo se lleva la ronda). This is a
+  choice of presentation, made by rule, not a sourced form: a native reader may prefer the article and the title
+  in lower case (el príncipe Hamlet), which the interface's sentences, written for a bare name, cannot give.
+- The rule judge's allusion count takes the same telling words, and the one-word names, keyed as echo.ts keys a
+  word (a Vietnamese word keeps its tone).
 - An English duel does not go through any of this.
 
 ## What was not done, and what has not been checked
@@ -298,23 +348,23 @@ the lines used, each with the permanent link of the revision it was read from.
 
 ## Summary by language
 
-| Language | Names from Wikidata | from a Wikipedia title | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |
-|---|---|---|---|---|---|---|---|---|
-| es | 43 | 0 | 3 | 20 | 4 | 29 | 42 | 71 |
-| fr | 45 | 0 | 3 | 20 | 2 | 51 | 20 | 71 |
-| de | 43 | 0 | 2 | 20 | 5 | 50 | 21 | 71 |
-| it | 42 | 0 | 3 | 20 | 5 | 51 | 20 | 71 |
-| pt | 34 | 1 | 2 | 20 | 13 | 6 | 65 | 71 |
-| pl | 36 | 0 | 2 | 20 | 12 | 28 | 43 | 71 |
-| ru | 46 | 0 | 2 | 20 | 2 | 35 | 36 | 71 |
-| ar | 36 | 0 | 1 | 20 | 13 | 0 | 71 | 71 |
-| hi | 36 | 0 | 2 | 20 | 12 | 0 | 71 | 71 |
-| zh | 43 | 1 | 3 | 20 | 3 | 0 | 71 | 71 |
-| ja | 40 | 0 | 3 | 20 | 7 | 13 | 58 | 71 |
-| ko | 39 | 0 | 2 | 20 | 9 | 0 | 71 | 71 |
-| vi | 28 | 0 | 3 | 20 | 19 | 0 | 71 | 71 |
-| th | 18 | 0 | 6 | 20 | 26 | 0 | 71 | 71 |
-| id | 32 | 0 | 4 | 20 | 14 | 0 | 71 | 71 |
+| Language | Names from Wikidata | from a Wikipedia title | from a published translation | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 43 | 0 | 0 | 3 | 20 | 4 | 29 | 42 | 71 |
+| fr | 44 | 0 | 2 | 3 | 20 | 1 | 51 | 20 | 71 |
+| de | 42 | 0 | 1 | 2 | 20 | 5 | 50 | 21 | 71 |
+| it | 41 | 1 | 0 | 3 | 20 | 5 | 51 | 20 | 71 |
+| pt | 34 | 1 | 0 | 2 | 20 | 13 | 6 | 65 | 71 |
+| pl | 35 | 1 | 0 | 2 | 20 | 12 | 28 | 43 | 71 |
+| ru | 45 | 1 | 0 | 2 | 20 | 2 | 34 | 37 | 71 |
+| ar | 36 | 0 | 0 | 1 | 20 | 13 | 0 | 71 | 71 |
+| hi | 36 | 0 | 0 | 2 | 20 | 12 | 0 | 71 | 71 |
+| zh | 43 | 1 | 0 | 3 | 20 | 3 | 0 | 71 | 71 |
+| ja | 40 | 0 | 0 | 3 | 20 | 7 | 13 | 58 | 71 |
+| ko | 39 | 0 | 0 | 2 | 20 | 9 | 0 | 71 | 71 |
+| vi | 27 | 0 | 0 | 4 | 20 | 19 | 0 | 71 | 71 |
+| th | 17 | 0 | 0 | 7 | 20 | 26 | 0 | 71 | 71 |
+| id | 32 | 0 | 0 | 4 | 20 | 14 | 0 | 71 | 71 |
 
 ## Published translations used
 
@@ -384,7 +434,6 @@ the lines used, each with the permanent link of the revision it was read from.
 | ru | tempest | Николай Сатин (1814–1873) | «Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them) | Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931) |
 | ru | sonnet18 | Николай Гербель (1827–1883) | «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931) |
 | ru | raven | Валерий Брюсов (1873–1924) | «Ворон», в книге «Эдгар По. Полное собрание поэм и стихотворений», 1924 (ru.wikisource.org transcription) | Public domain: Russia (life + 70 years; translator died 1924) and United States (published before 1931) |
-| ru | mariner | Николай Гумилёв (1886–1921) | «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription) | Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check). |
 | ru | tn | Андрей Кронеберг (1814–1855) | «Двенадцатая ночь, или Что угодно», 1841 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1855) and United States (published before 1931) |
 | ru | mov | Пётр Вейнберг (1830–1908) | «Венецианский купец», 1866 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931) |
 | ja | rj | 坪内逍遙 Tsubouchi Shōyō (1859–1935) | 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed) | Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored) |
@@ -392,7 +441,7 @@ the lines used, each with the permanent link of the revision it was read from.
 ## Missing names (the English name is shown and accepted)
 
 - **es** (4): VC-001 Prince Escalus; IL-001 Viola; IL-002 Malvolio; IL-003 Olivia
-- **fr** (2): VC-001 Prince Escalus; VC-002 Friar Lawrence
+- **fr** (1): VC-001 Prince Escalus
 - **de** (5): FA-002 Titania; VC-001 Prince Escalus; IL-001 Viola; IL-003 Olivia; VC-004 Paris
 - **it** (5): VC-001 Prince Escalus; VC-003 The Nurse; IL-001 Viola; IL-003 Olivia; DC-004 Horatio
 - **pt** (13): MO-002 Mercutio; FA-001 Puck; VC-001 Prince Escalus; VC-002 Friar Lawrence; VC-003 The Nurse; MO-003 Benvolio; DC-003 King Claudius; IL-001 Viola; IL-002 Malvolio; IL-003 Olivia; DC-004 Horatio; FA-004 Bottom; VC-004 Paris
@@ -407,6 +456,20 @@ the lines used, each with the permanent link of the revision it was read from.
 - **th** (26): DC-002 Ophelia; MO-002 Mercutio; FA-001 Puck; FA-002 Titania; VC-001 Prince Escalus; VC-002 Friar Lawrence; VC-003 The Nurse; TP-001 Prospero; TP-002 Ariel; TP-003 Caliban; MO-003 Benvolio; CA-002 Tybalt; DC-003 King Claudius; FA-003 Oberon; SC-002 Lady Macbeth; SC-003 Banquo; IL-001 Viola; IL-002 Malvolio; IL-003 Olivia; DC-004 Horatio; FA-004 Bottom; VC-004 Paris; TP-004 Miranda; GC-005 Percy Bysshe Shelley; LD-004 Elizabeth Barrett Browning; LD-005 Christina Rossetti
 - **id** (14): MO-002 Mercutio; VC-001 Prince Escalus; VC-002 Friar Lawrence; VC-003 The Nurse; TP-003 Caliban; MO-003 Benvolio; DC-003 King Claudius; SC-002 Lady Macbeth; SC-003 Banquo; IL-001 Viola; IL-002 Malvolio; IL-003 Olivia; DC-004 Horatio; VC-004 Paris
 
+## Published lines found and not used
+
+- **ru** LD-002: [https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375](https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375). Gumilyov's translation (1919). He was executed in 1921 and rehabilitated in 1992, and Russian law counts the term of a repressed and rehabilitated author from the year after rehabilitation (Civil Code art. 1281 p. 5), which would run to 2062. Whether that rule reaches a work whose term had run out before 1993 is a question of how art. 6 of the law that put part IV of the Code into force is read, and two readings of it in this project disagreed. Neither is a lawyer's. Until one is, the game's Russian line for this card is its own, marked new.
+
+## Wikidata aliases not taken as names
+
+An alias counts for the invocation (src/lib/verse/echo.ts). These were left out, by the rules of `alias_rejected` in `scripts/language/build_card_text.py` or, where named, by hand:
+
+- **de**: OL-003 «Abadonna» (the fallen angel of Klopstock's Messias (Abaddon), not a name of Apollo); OL-006 «Uthuce» (the Etruscan name of Odysseus, not a German one)
+- **it**: OL-004 «Aφροδίτη» (mixes scripts)
+- **zh**: FA-003 «Oberon» (Latin letters in a language written in another script); LD-003 «济慈，J.» (not letters only); GC-001 «拜伦，G.G.» (not letters only); GC-002 «科學怪人之母：瑪麗雪萊» (not letters only); GC-003 «坡，E.A.» (not letters only); LD-004 «勃朗宁夫人» (the name or another alias with more added); OL-005 «Hermes» (Latin letters in a language written in another script); UW-001 «哈里斯» ("Harris"; no Chinese source gives it for Hades)
+- **ja**: RM-001 «ブルトゥス家» (the name or another alias with more added); GC-003 «エドガーアランポー» (the name or another alias with more added); GC-003 «アランポオ» (the name or another alias with more added); OL-001 «ゼウス神像» (the name or another alias with more added); OL-001 «ZEUS» (Latin letters in a language written in another script); OL-002 «アテナ女神» (the name or another alias with more added); OL-004 «アフロディーテー» (the name or another alias with more added)
+- **th**: OL-001 «เทพซูส» (the name or another alias with more added); OL-005 «Hermes» (Latin letters in a language written in another script); OL-005 «เทพเฮอร์มีส» (the name or another alias with more added); UW-001 «Hades» (Latin letters in a language written in another script); UW-002 «Persephone» (Latin letters in a language written in another script)
+
 ## Lines translated for the game, not sourced
 
 - **es** new (42): SM-001, FA-001, FA-002, RL-002, PT-001, VC-003, TP-001, TP-002, TP-003, FA-003, PT-003, IL-001, IL-002, IL-003, CA-003, FA-004, TP-004, RL-006, RL-007, RL-008, RL-009, PT-005, PT-008, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
@@ -415,7 +478,7 @@ the lines used, each with the permanent link of the revision it was read from.
 - **it** new (20): SM-001, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **pt** new (65): SM-001, MO-001, CA-001, MO-002, FA-001, FA-002, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **pl** new (43): SM-001, FA-001, FA-002, PT-001, PT-002, TP-001, TP-002, TP-003, DC-003, FA-003, RL-003, SC-001, SC-002, SC-003, IL-003, RM-001, RM-002, TP-004, RL-006, RL-009, PT-004, PT-006, PT-007, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
-- **ru** new (36): FA-001, FA-002, RL-002, PT-001, PT-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-003, FA-004, RL-006, RL-008, RL-009, PT-005, PT-007, LD-001, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
+- **ru** new (37): FA-001, FA-002, RL-002, PT-001, PT-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-003, FA-004, RL-006, RL-008, RL-009, PT-005, PT-007, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **ar** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **hi** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **zh** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
@@ -439,18 +502,18 @@ Meaning is judged by the rule of the language QA pipeline: an item is flagged wh
 
 | Language | Items | Hunspell: unknown words (accepted / open) | LanguageTool: findings (accepted / open) | Back-translation: scored, median cosine | flagged by both signals (accepted / open) | control caught | not re-checked since the text changed |
 |---|---|---|---|---|---|---|---|
-| es | 205 | 23 (23 / 0) | 32 (32 / 0) | 205, 0.93 | 5 (5 / 0) | 203 of 205 | 0 |
+| es | 205 | 22 (22 / 0) | 31 (31 / 0) | 205, 0.93 | 5 (5 / 0) | 203 of 205 | 0 |
 | fr | 183 | 8 (8 / 0) | 30 (30 / 0) | 183, 0.93 | 8 (8 / 0) | 180 of 183 | 0 |
 | de | 184 | 21 (21 / 0) | 34 (34 / 0) | 184, 0.93 | 15 (15 / 0) | 181 of 184 | 0 |
-| it | 183 | 13 (13 / 0) | 44 (44 / 0) | 183, 0.91 | 15 (15 / 0) | 180 of 183 | 0 |
+| it | 183 | 13 (13 / 0) | 43 (43 / 0) | 183, 0.91 | 15 (15 / 0) | 180 of 183 | 0 |
 | pt | 228 | 12 (12 / 0) | 38 (38 / 0) | 228, 0.90 | 10 (10 / 0) | 226 of 228 | 0 |
 | pl | 206 | 8 (8 / 0) | 23 (23 / 0) | 206, 0.84 | 12 (12 / 0) | 202 of 206 | 0 |
-| ru | 199 | 16 (16 / 0) | 36 (36 / 0) | 199, 0.88 | 15 (15 / 0) | 197 of 199 | 0 |
+| ru | 200 | 16 (16 / 0) | 36 (36 / 0) | 200, 0.88 | 15 (15 / 0) | 198 of 200 | 0 |
 | ar | 234 | 36 (36 / 0) | 169 (169 / 0) | 234, 0.82 | 16 (16 / 0) | 232 of 234 | 0 |
 | hi | 234 | 49 (49 / 0) | language not supported | 234, 0.84 | 16 (16 / 0) | 232 of 234 | 0 |
-| zh | 234 | no dictionary | 11 (11 / 0) | 234, 0.82 | 9 (9 / 0) | 232 of 234 | 0 |
+| zh | 234 | no dictionary | 10 (10 / 0) | 234, 0.82 | 9 (9 / 0) | 232 of 234 | 0 |
 | ja | 221 | no dictionary | language not supported | 221, 0.82 | 12 (12 / 0) | 217 of 221 | 0 |
-| ko | 234 | 124 (124 / 0) | language not supported | 234, 0.80 | 16 (16 / 0) | 232 of 234 | 0 |
+| ko | 234 | 126 (126 / 0) | language not supported | 234, 0.80 | 16 (16 / 0) | 232 of 234 | 0 |
 | vi | 234 | 50 (50 / 0) | language not supported | 234, 0.83 | 21 (21 / 0) | 231 of 234 | 0 |
 | th | 234 | 29 (29 / 0) | language not supported | 234, 0.79 | 21 (21 / 0) | 232 of 234 | 0 |
 | id | 234 | 85 (85 / 0) | language not supported | 234, 0.81 | 17 (17 / 0) | 231 of 234 | 0 |
@@ -473,6 +536,7 @@ No tool certifies tone or verse, and every reading above is one language model's
 - ko element:Rebellion element: 반역 (반역 (rebellion, also treason): harsher than the English, for review)
 - de word: Arkan (element label for "Arcane": coined after the game term (Arkanmagie); a reviewer may prefer another)
 - de word: Schauerkreis (house label for "Gothic Circle", after Schauerroman (the German term for the Gothic novel); a coinage, for review)
+- ko word: 만남이로군 (a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct: 만남 ("a meeting") with the copula and its exclamatory ending -로군; for review: whether it gives "ill met" well)
 - id word: pelelap ("sirop pelelap" (drowsy syrups): a pe- noun from "lelap"; doubtful, for a reviewer)
 
 ### Changes made because of a finding
@@ -507,10 +571,33 @@ No tool certifies tone or verse, and every reading above is one language model's
 | pt | TP-001 scene | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | … Prospero ergue as mãos … | … Próspero ergue as mãos … |
 | pt | TP-004 scene | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | … na ilha de Prospero … | … na ilha de Próspero … |
 | ar | RL-006 quote | an independent check (2026-11-16): to render "Uneasy lies the head" the word must be the circumstantial accusative (ḥāl) قلقًا; as written, قلق is the noun "anxiety", and MADLAD read the line as "Anxiety lies on the head…" (cos 0.78), which no tool flagged | قلق يرقد الرأس الذي يلبس التاج. | قلقًا يرقد الرأس الذي يلبس التاج. |
+| ru | VC-001 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata, is «герцог Эскал», a duke) | Князь стоит на ступенях | Герцог стоит на ступенях |
+| ru | MO-003 scene | the second check (2026-11-17): a dash, not a comma, between a subject and a predicate noun (ладони — единственное оружие) | его раскрытые ладони, единственное оружие | его раскрытые ладони — единственное оружие |
+| de | VC-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Schlegel: «Wärterin») | Die Amme eilt | Die Wärterin eilt |
+| es | CA-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Menéndez y Pelayo: «Teobaldo») | Tebaldo desenvaina | Teobaldo desenvaina |
+| it | SC-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and it.wikipedia: «Banco») | Banquo sta saldo | Banco sta saldo |
+| ko | SC-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «뱅쿠오») | 뱅코는 | 뱅쿠오는 |
+| ko | MO-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «머큐시오») | 머큐쇼 | 머큐시오 |
+| ko | TP-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «아리엘») | 에어리얼 | 아리엘 |
+| ko | DC-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «클라우디우스») | 클로디어스 | 클라우디우스 |
+| ko | VC-001 scene | the second check (2026-11-17): 홀 reads as "hall"; the sceptre is 왕홀 (Wikidata Q152065's Korean label and ko.wikipedia title) | 황금 홀이 | 황금 왕홀이 |
+| ko | FA-003 quote | the second check (2026-11-17): "ill met" is an unwelcome meeting; 잘못 만났군 says "met the wrong one" (back-translation: "You've met the wrong man") | 달빛 아래 잘못 만났군, 오만한 티타니아. | 달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아. |
+| zh | DC-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥菲利娅») | 奥菲莉娅 | 奥菲利娅 |
+| zh | MO-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «莫枯修») | 茂丘西奥 | 莫枯修 |
+| zh | FA-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅») | 提泰妮娅 | 缇坦妮雅 |
+| zh | FA-004 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅») | 提泰妮娅 | 缇坦妮雅 |
+| zh | MO-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «班福留») | 班伏里奥 | 班福留 |
+| zh | DC-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «克劳迪国王») | 克劳狄斯 | 克劳迪国王 |
+| zh | SC-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «麦克白夫人») | 马克白夫人 | 麦克白夫人 |
+| zh | IL-002 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚») | 奥丽维娅 | 奥利维亚 |
+| zh | IL-003 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚») | 奥丽维娅 | 奥利维亚 |
+| zh | OL-004 scene | the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «阿佛罗狄忒») | 阿佛洛狄忒 | 阿佛罗狄忒 |
+| zh | FA-003 quote | the second check (2026-11-17): the line names Titania otherwise than her card does (the card, from Wikidata: «缇坦妮雅») | 提泰妮娅 | 缇坦妮雅 |
+| ru | LD-002 quote | not a finding of a tool: Gumilyov's published line is no longer used while its Russian copyright is in doubt (see "Published lines found and not used"); the game's own line, written in an earlier round, takes its place | Вода, вода, одна вода, / Мы ничего не пьём. (Gumilyov, published) | Вода, вода, везде вода, и ни капли для питья. (new) |
 
 ### Accepted: words Hunspell does not know
 
-- **es**: Arno, Birnam, Cumberland, Dunsinane, Elsinor, Florencia, Hampstead, Mantua, Partenón, Robert, Shakespeare, Sycorax, Tebaldo, Verona, Ítaca (a proper name (place, person or work); the dictionary does not hold it); hip, hop (part of "hip-hop"); Petrificación (Spanish "petrificación", capitalised as an element label); Recuérdame (imperative "recuerda" with the enclitic "me": correct); burbujeante (Spanish adjective (bubbling); read as correct); prerrafaelita (Spanish for Pre-Raphaelite; read as correct); rarísima (superlative of "rara": correct); spaniel (a loanword used as such in this language (a breed, a plant, a music genre))
+- **es**: Arno, Birnam, Cumberland, Dunsinane, Elsinor, Florencia, Hampstead, Mantua, Partenón, Robert, Shakespeare, Sycorax, Verona, Ítaca (a proper name (place, person or work); the dictionary does not hold it); hip, hop (part of "hip-hop"); Petrificación (Spanish "petrificación", capitalised as an element label); Recuérdame (imperative "recuerda" with the enclitic "me": correct); burbujeante (Spanish adjective (bubbling); read as correct); prerrafaelita (Spanish for Pre-Raphaelite; read as correct); rarísima (superlative of "rara": correct); spaniel (a loanword used as such in this language (a breed, a plant, a music genre))
 - **fr**: Birnam, Cumberland, Dunsinane, Hampstead (a proper name (place, person or work); the dictionary does not hold it); d’Elseneur (elided "de" + Elseneur (Elsinore), a name); d’Ithaque (elided "de" + Ithaque, a name); hip (part of "hip-hop"); l’Arno (elided article + Arno, a river)
 - **de**: Feenhof, Feenköniginnen, Feenlicht, Feenstaub, Feenwald, Phantomblut, meergegerbtes, sturmgepeitschtes, windgepeitschte (a German compound, read as correct); Birnam, Dunsinane, Hampstead, Helsingör (a proper name (place, person or work); the dictionary does not hold it); Arkan (element label for "Arcane": coined after the game term (Arkanmagie); a reviewer may prefer another); Capulets (the family name with the plural -s (die Capulets)); Hop (part of "hip-hop"); Olivias (genitive of a name (Olivias Garten): correct); Schauerkreis (house label for "Gothic Circle", after Schauerroman (the German term for the Gothic novel); a coinage, for review); arkaner (adjective after the game term "arkan" (arkaner Energie); see Arkan); behängt (participle of "behängen": correct); dunkelnden (participle of "dunkeln" (darkening): correct)
 - **it**: Arden, Birnam, Cumberland, Dunsinane, Elsinore, Hampstead, Partenone, Robert (a proper name (place, person or work); the dictionary does not hold it); hip, hop (part of "hip-hop"); dèi (plural of "dio" written with the accent that tells it from the preposition "dei"; an accepted spelling); l’adunatore (elided article + "adunatore" (the cloud-gatherer, Zeus): read as correct); siede (present of "sedere" (siede): correct)
@@ -519,7 +606,7 @@ No tool certifies tone or verse, and every reading above is one language model's
 - **ru**: Арденский, Бирнамский, Гамлетом, Иллирии, Мальволио, Мантуи, Оливии, Хэмпстеде, Шекспира, Эльсинора (a proper name with an inflection or particle of this language; the dictionary does not hold the name); Арно, Дунсинане, Парфенон, Эльсинор (a proper name (place, person or work); the dictionary does not hold it); прерафаэлитов (genitive plural of "прерафаэлит" (Pre-Raphaelite): correct); хип (part of "hip-hop")
 - **ar**: آردن, إلسينور, إيثاكا, إيلورية, الأوليمب, البارثينون, بيرنام, دنسينان, سيكوراكس, كمبرلاند, مانتوفا, هامبستيد, هوراشيو (a proper name (place, person or work); the dictionary does not hold it); العشبة, تضيئه, تضيئها, والبتلات, واللامرئي, يضيئها (a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)); اسكتلندي, اسكتلندية, الاسكتلندي, الاسكتلندية (Scottish (nisba adjective of اسكتلندا): correct); أعيروني ("lend me" (imperative plural + me), as in "lend me your ears": correct); الخيمياء (alchemy: correct); الرفائيلية (part of "ما قبل الرفائيلية" (Pre-Raphaelite)); السبانيل (the spaniel; a loanword); القطرس (the albatross: correct); الهيبونا (hebona, the poison named in Hamlet); سمندل (salamander (newt): correct); كهرمانيًا (amber-coloured, adverbial accusative: correct); كونتيسة (countess, a loanword in use); متقزّح (iridescent: read as correct); هوب (part of "hip-hop"); وسيربيروس (conjunction و + Cerberus, a name); يليق ("befits": correct)
 - **hi**: करूँ, काटती, गुज़रते, घुलती, चिंगारियाँ, जलती, जाऊँ, जाओ, टपकता, डालो, दरबार, दरबारी, धब्बे, पट्टियाँ, परी, पहचानें, बग़ीचों, बेचारा, भला, भले, भूली, भूले, मलती, मानती, युक्तियों, शौकत (a common Hindi word or inflection the dictionary lacks; read as correct); आर्डन, इथाका, इल्लुरिया, एल्सिनोर, कम्बरलैंड, डनसिनेन, पार्थेनन, बर्नम, मैंटुआ, सर्बेरस, सिकोरैक्स, हेबोना, हैम्पस्टेड (a proper name (place, person or work); the dictionary does not hold it); आत्माओ, देशवासियो, मित्रो, रोमवासियो (vocative plural (no nasal), as in a speech to a crowd: correct); अल्बाट्रॉस (albatross, a loanword); काउंटेस (countess, a loanword); ब्रूटस (Brutus in a translated line; Wikidata has no Hindi label, so the card shows the English name); रैफ़ेलाइट (part of "प्री-रैफ़ेलाइट" (Pre-Raphaelite)); साइरनें (plural of साइरन (siren), a loanword); सीसर (Caesar as Wikidata's Hindi label writes it (जुलियस सीसर))
-- **ko**: 던시네인의, 라파엘, 로마인들이여, 로미오가, 로버트가, 만토바의, 말볼리오는, 맥베스는, 머큐쇼는, 메두사가, 미란다는, 바이런은, 바이올라는, 뱅코는, 버남, 베네치아, 베로나, 베로나의, 벤볼리오는, 보텀, 보텀은, 브루투스는, 블레이크가, 세이렌들이, 셰익스피어의, 셸리는, 시코락스가, 아르노강이, 아킬레우스가, 아테나는, 아폴론이, 아프로디테가, 안토니우스는, 에어리얼은, 엘리자베스는, 엘시노어, 엘시노어의, 오디세우스는, 오베론이, 오필리아는, 올리비아, 올리비아의, 올림포스, 올림포스산이, 요릭, 워즈워스는, 이타카의, 일리리아의, 줄리엣은, 줄리엣의, 줄리엣이, 카시우스는, 카이사르의, 캘리번은, 컴벌랜드의, 케르베로스를, 크리스티나는, 클로디어스는, 키츠는, 티볼트는, 티타니아가, 티타니아는, 팔라스의, 패리스는, 페르세포네는, 프로스페로가, 피렌체의, 하데스는, 햄릿은, 햄스테드, 호레이쇼는 (a name (person, place) with a Korean particle; the dictionary does not hold the name); 가을빛, 것뿐이네, 내게로, 대연회장, 돌난간, 돌바닥을, 동판에, 동포들이여, 들려주소서, 리라를, 맨드레이크도, 문제로다, 바위투성이, 반씩, 배들이, 빈터, 사내다운, 사랑해서가, 상록, 숲속, 숲속에서, 쉿쉿거린다, 스패니얼이, 신세계여, 알현실, 앨버트로스를, 약제사는, 여신이여, 영애가, 영약이, 왔단다, 왕자님, 원로원, 인간들이란, 일꾼이랍니다, 있으랴, 자들을, 자들이, 잠드소서, 장정한, 저주받은, 전파풍, 정령들아, 정령이, 진홍빛으로, 추출액은, 친구들이여, 침묵시킨다, 타닥거린다, 토가에서, 팅크는, 하나뿐인, 호박빛으로 (a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct)
+- **ko**: 던시네인의, 라파엘, 로마인들이여, 로미오가, 로버트가, 만토바의, 말볼리오는, 맥베스는, 머큐시오는, 메두사가, 미란다는, 바이런은, 바이올라는, 뱅쿠오는, 버남, 베네치아, 베로나, 베로나의, 벤볼리오는, 보텀, 보텀은, 브루투스는, 블레이크가, 세이렌들이, 셰익스피어의, 셸리는, 시코락스가, 아르노강이, 아리엘은, 아킬레우스가, 아테나는, 아폴론이, 아프로디테가, 안토니우스는, 엘리자베스는, 엘시노어, 엘시노어의, 오디세우스는, 오베론이, 오필리아는, 올리비아, 올리비아의, 올림포스, 올림포스산이, 요릭, 워즈워스는, 이타카의, 일리리아의, 줄리엣은, 줄리엣의, 줄리엣이, 카시우스는, 카이사르의, 캘리번은, 컴벌랜드의, 케르베로스를, 크리스티나는, 클라우디우스는, 키츠는, 티볼트는, 티타니아가, 티타니아는, 팔라스의, 패리스는, 페르세포네는, 프로스페로가, 피렌체의, 하데스는, 햄릿은, 햄스테드, 호레이쇼는 (a name (person, place) with a Korean particle; the dictionary does not hold the name); 가을빛, 것뿐이네, 내게로, 대연회장, 돌난간, 돌바닥을, 동판에, 동포들이여, 들려주소서, 리라를, 맨드레이크도, 문제로다, 바위투성이, 반씩, 배들이, 빈터, 사내다운, 사랑해서가, 상록, 숲속, 숲속에서, 쉿쉿거린다, 스패니얼이, 신세계여, 알현실, 앨버트로스를, 약제사는, 여신이여, 영애가, 영약이, 왔단다, 왕자님, 원로원, 인간들이란, 일꾼이랍니다, 있으랴, 자들을, 자들이, 잠드소서, 장정한, 저주받은, 전파풍, 정령들아, 정령이, 진홍빛으로, 추출액은, 친구들이여, 침묵시킨다, 타닥거린다, 토가에서, 팅크는, 하나뿐인, 호박빛으로 (a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct); 만남이로군 (a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct: 만남 ("a meeting") with the copula and its exclamatory ending -로군; for review: whether it gives "ill met" well); 왕홀이 (왕홀 ("sceptre") with the subject particle 이: Wikidata's Korean label for the sceptre (Q152065, revision 2544789402) and the title of its ko.wikipedia article are 왕홀 (docs/language/sources/wikidata-Q152065-sceptre.json); the dictionary does not hold it)
 - **vi**: Arden, Arno, Birnam, Caesar, Cerberus, Cumberland, Dunsinane, Elsinore, Firenze, Genève, Hampstead, Illyria, Ithaca, London, Mantua, Olympus, Pallas, Parthenon, Raphael, Robert, Scotland, Shakespeare, Sycorax, Troia, Venezia, Verona (a proper name (place, person or work); the dictionary does not hold it); Hòa, Hóa, hòa, hóa, họa, lòe, lóe, lũy, tòa, tóe, tỏa, tụy, đóa (the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)); hip, hop (part of "hip-hop"); Gothic (house label "Hội Gothic": the art term kept as Vietnamese writes it); Nevermore (the raven's word, quoted in English as the poem has it); Roma (a proper name (place, person or work); the dictionary does not hold it (Wikidata's Vietnamese label for the city)); Siren (the Sirens of the Odyssey, a name); Síp (Síp, the Vietnamese name of Cyprus); hebona (hebona, the poison named in Hamlet); micro (Vietnamese "micro" (microphone): correct); spaniel (a loanword used as such in this language (a breed, a plant, a music genre)); toga (the Roman garment)
 - **th**: ทร, หาส (a piece of "บนมหาสมุทร" (on the ocean)); นอร์, เอล (a piece of เอลซินอร์ (Elsinore)); น์, เตส (a piece of เคาน์เตส (countess)); พรี, เอลไลต์ (a piece of พรีราฟาเอลไลต์ (Pre-Raphaelite)); อรัส, อร์เบ (a piece of เซอร์เบอรัส (Cerberus)); ซ์ (a piece of ซิโคแรกซ์ (Sycorax)); บนม (a piece of "บนมหาสมุทร" (on the ocean) as ICU cut it); ป์ (a piece of แฮมป์สตีด (Hampstead)); พลัม (plum, a loanword); ยี่สิบ (twenty: a common word the dictionary lacks); รพาร์เธ (a piece of วิหารพาร์เธนอน (the Parthenon)); ราชิ (a piece of โฮราชิโอ (Horatio)); สมัด (a piece of "โอดิสเซียสมัด" (Odysseus binds)); ห่าลง ("โรคห่าลง" (may the plague fall): correct; ICU joined two words); อัล (a piece of อัลบาทรอส (albatross)); อิ (a piece of a transliterated name (อิลิเรีย Illyria; อิทากา Ithaca)); เชกส (a piece of เชกสเปียร์ (Shakespeare) as ICU cut it); เนน (a piece of ดันซิเนน (Dunsinane)); เนีย (a piece of a transliterated name (ไททาเนีย Titania; สแปเนียล spaniel)); เบอร์นั (a piece of เบอร์นัม (Birnam)); เรีย (a piece of อิลิเรีย (Illyria)); แดฟโฟดิล (daffodil, a loanword); โลดี (a piece of "อะพอลโลดีดพิณ" (Apollo plucks the lyre)); ไลร์ (lyre, a loanword (พิณไลร์))
 - **id**: Arwahnya, Belatikah, Kisahkan, Sarinya, Sarungkan, Sebentuk, Sekuntum, Sesosok, Tuangkan, baliknya, bebatuan, berbonggol, berpengikat, bersumbat, bilahnya, celemeknya, diterpa, halamannya, hantunya, hasutan, kelabunya, keputusasaan, kerudungnya, kubandingkan, kuhitung, kuikat, kulilitkan, kutenggelamkan, kutunjukkan, liranya, marmernya, menggenggamnya, meraihnya, mungkinkah, pecahlah, perinya, rampingnya, rusanya, sekuntum, spanielnya, terlelap, terlupakan, terpilin, tertahankan, toganya, ularnya, urusanmulah (an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct); Arden, Arno, Birnam, Caesar, Cumberland, Dunsinane, Elsinore, Firenze, Hampstead, Illyria, Ithaka, Jenewa, Kerberos, London, Mantua, Olimpus, Pallas, Parthenon, Raphael, Robert, Shakespeare, Siren, Skotlandia, Sycorax, Troya, Venesia, Verona (a proper name (place, person or work); the dictionary does not hold it); berpayah, kunang, masing, mondar (the first half of a reduplicated word cut at the hyphen (masing-masing, mondar-mandir, kunang-kunang, berpayah-payah)); Pra (part of "Pra-Raphael" (Pre-Raphaelite)); ek (oak (pohon ek): correct); hebona (hebona, the poison named in Hamlet); hip (part of "hip-hop"); mandragora (mandrake, the plant named in Othello); pelelap ("sirop pelelap" (drowsy syrups): a pe- noun from "lelap"; doubtful, for a reviewer); rosemari (rosemary, the herb)
@@ -539,7 +626,6 @@ No tool certifies tone or verse, and every reading above is one language model's
 | TP-003 scene | Calibán | MORFOLOGIK_RULE_ES | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | TP-003 quote | Sycorax | MORFOLOGIK_RULE_ES | a proper name (place, person or work); the dictionary does not hold it |
 | MO-003 scene | Benvolio | MORFOLOGIK_RULE_ES | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
-| CA-002 scene | Tebaldo | MORFOLOGIK_RULE_ES | a proper name (place, person or work); the dictionary does not hold it |
 | DC-003 scene | Elsinor | MORFOLOGIK_RULE_ES | a proper name (place, person or work); the dictionary does not hold it |
 | FA-003 scene | Oberón | MORFOLOGIK_RULE_ES | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | RL-003 scene | Macbeth | MORFOLOGIK_RULE_ES | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
@@ -659,7 +745,6 @@ No tool certifies tone or verse, and every reading above is one language model's
 | PT-003 name | Puck | MORFOLOGIK_RULE_IT_IT | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | SC-001 scene | Dunsinane | MORFOLOGIK_RULE_IT_IT | a proper name (place, person or work); the dictionary does not hold it |
 | SC-001 scene | Birnam | MORFOLOGIK_RULE_IT_IT | a proper name (place, person or work); the dictionary does not hold it |
-| SC-003 scene | Banquo | MORFOLOGIK_RULE_IT_IT | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | IL-002 scene | Malvolio | MORFOLOGIK_RULE_IT_IT | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | CA-003 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | the Italian plural of the family name (i Capuleti) |
 | CA-003 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | the Italian plural of the family name (i Capuleti) |
@@ -979,7 +1064,6 @@ No tool certifies tone or verse, and every reading above is one language model's
 | VC-002 scene | 间 | wa5 | 间 measures 小室 (a room), not 烛光 |
 | MO-003 scene | 在出 | wa2 | the locative is there: 之间 closes the phrase |
 | DC-003 scene | 的 | wb4 | 华丽 is a noun here (falsely splendid finery), so 的 is right |
-| FA-003 quote | 的 | wb4 | 骄傲的 modifies a name (proud Titania), so 的 is right |
 | SC-001 scene | 间 | wa5 | 间 measures 王座厅 (a hall), not 血迹 |
 | SC-002 scene | 间 | wa5 | 间 measures 房间 (a room), not 烛光 |
 | FA-004 scene | 林间 | wa5 | 林间 means "among the trees", not a measure word |
@@ -1272,6 +1356,17 @@ No tool certifies tone or verse, and every reading above is one language model's
 | element:Cunning element | Kecerdikan | Intelligent | Cunning | 0.42 / 0.50 | Kecerdikan is cleverness, cunning |
 | element:Petrification element | Pembatuan | Merge | Petrification | 0.19 / 0.49 | Pembatuan is petrification (turning to stone); MADLAD misread it |
 | type:Potion type | Ramuan | Ramuan | Potion | 0.17 / 0.30 | MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English |
+
+### Acceptances that no longer match a finding (remove them)
+
+- es spell: Tebaldo
+- es grammar: {'lang': 'es', 'id': 'CA-002', 'field': 'scene', 'rule': 'MORFOLOGIK_RULE_ES', 'found': 'Tebaldo', 'reason': 'a proper name (place, person or work); the dictionary does not hold it'}
+- it grammar: {'lang': 'it', 'id': 'SC-003', 'field': 'scene', 'rule': 'MORFOLOGIK_RULE_IT_IT', 'found': 'Banquo', 'reason': "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"}
+- zh grammar: {'lang': 'zh', 'id': 'FA-003', 'field': 'quote', 'rule': 'wb4', 'found': '的', 'reason': '骄傲的 modifies a name (proud Titania), so 的 is right'}
+- ko spell: 머큐쇼는
+- ko spell: 뱅코는
+- ko spell: 에어리얼은
+- ko spell: 클로디어스는
 
 ## Wikidata items
 
@@ -1661,8 +1756,8 @@ English line: "These violent delights have violent ends." (Romeo and Juliet 2.6)
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
 | es | Fray Lorenzo | wikidata: Q5503354 label (es) | Nada violento es duradero: ni el placer ni la pena | published: Marcelino Menéndez y Pelayo (1856–1912), Dramas de Guillermo Shakespeare, Biblioteca Clásica, Madrid, 1881 (es.wikisource.org transcription); Public domain: Spain (life + 80 years for authors who died before 1987; translator died 1912), which also meets life + 70, and United States (published before 1931); [source](https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1642361) |
-| fr | (none) | missing: Q5503354 has no label in fr and no fr.wikipedia.org article | Ces joies violentes ont des fins violentes | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Friar Laurence | wikidata: Q5503354 label (de) | So wilde Freude nimmt ein wildes Ende | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
+| fr | Frère Laurence | published: François-Victor Hugo's translation prints «FRÈRE LAURENCE» (1 times; the label in the list of characters, in title case; the text says «frère Laurence»), Roméo et Juliette (trad. Hugo), revision 15966892; Wikidata has no fr label (Q5503354) | Ces joies violentes ont des fins violentes | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
+| de | Bruder Lorenzo | published: August Wilhelm Schlegel's translation prints «Bruder Lorenzo» (2 times; as the stage directions name him («Bruder Lorenzo mit einem Körbchen», «Bruder Lorenzos Zelle»); his speeches are headed «Lorenzo.»), Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug, revision 1730815; Wikidata's de label is the English «Friar Laurence» (Q5503354) | So wilde Freude nimmt ein wildes Ende | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
 | it | Frate Lorenzo | wikidata: Q5503354 label (it) | Questi violenti trasporti terminano fra violenti dolori | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530) |
 | pt | (none) | missing: Q5503354 has no label in pt and no pt.wikipedia.org article | Estes prazeres violentos têm fins violentos. | NEW, unsourced: translated for the game, not reviewed |
 | pl | (none) | missing: Q5503354 has no label in pl and no pl.wikipedia.org article | Gwałtowna rozkosz gwałtownie się kończy | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360) |
@@ -1683,7 +1778,7 @@ English line: "I am the drudge and toil in your delight." (Romeo and Juliet 2.5)
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
 | es | Nodriza de Julieta | wikidata: Q7070187 label (es) | Yo soy la esclava que se afana por tu deleite. | NEW, unsourced: translated for the game, not reviewed |
-| fr | Infirmière | wikidata: Q7070187 label (fr) | C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
+| fr | La Nourrice | published: François-Victor Hugo's translation prints «LA NOURRICE» (101 times; the speaker label, which Hugo prints in capitals, in title case), Roméo et Juliette (trad. Hugo), revision 15966892; Wikidata's fr label «Infirmière» is a hospital nurse; the character is Juliet's wet-nurse, «la Nourrice» in Hugo (Q7070187) | C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
 | de | Wärterin | wikidata: Q7070187 label (de) | Ich bin das Lasttier, muß für euch mich plagen | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
 | it | (none) | missing: Q7070187 has no label in it and no it.wikipedia.org article | Per ora in me sola gravita tutta la fatica dei vostri piaceri | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530) |
 | pt | (none) | missing: Q7070187 has no label in pt and no pt.wikipedia.org article | Sou eu a escrava que se cansa por vosso deleite. | NEW, unsourced: translated for the game, not reviewed |
@@ -1691,7 +1786,7 @@ English line: "I am the drudge and toil in your delight." (Romeo and Juliet 2.5)
 | ru | Кормилица | wikidata: Q7070187 label (ru) | Работница я вашему веселью | published: Дмитрий Михаловский (1828–1905), «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496) |
 | ar | (none) | missing: Q7070187 has no label in ar and no ar.wikipedia.org article | أنا الخادمة الكادحة التي تتعب من أجل سروركِ. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q7070187 has no label in hi and no hi.wikipedia.org article | मैं तो दासी हूँ, तुम्हारी खुशी के लिए खटती हूँ। | NEW, unsourced: translated for the game, not reviewed |
-| zh | 护士 | wikidata: Q7070187 label (zh); "護士" converted to Simplified with OpenCC t2s | 我是个苦工，为了您的快乐而奔忙。 | NEW, unsourced: translated for the game, not reviewed |
+| zh | 奶妈 | wikidata: Q7070187 alias (zh) «奶媽»; converted to Simplified with OpenCC t2s; the zh label 護士 is a hospital nurse; the character is Juliet's wet-nurse (奶媽, 奶妈 in Simplified), as the Chinese scene for this card calls her | 我是个苦工，为了您的快乐而奔忙。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | (none) | missing: Q7070187 has no label in ja and no ja.wikipedia.org article | 予は只もう齷齬とお前を喜ばさうと念うて。したが、やがて夜になると、お前も骨が折れうぞや。 | published: 坪内逍遙 Tsubouchi Shōyō (1859–1935), 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed); Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored); [source](https://ja.wikisource.org/wiki/%E3%83%AD%E3%83%9F%E3%82%AA%E3%81%A8%E3%83%82%E3%83%A5%E3%83%AA%E3%82%A8%E3%83%83%E3%83%88?oldid=212568) |
 | ko | (none) | missing: Q7070187 has no label in ko and no ko.wikipedia.org article | 저는 아가씨의 기쁨을 위해 고생하는 일꾼이랍니다. | NEW, unsourced: translated for the game, not reviewed |
 | vi | (none) | missing: Q7070187 has no label in vi and no vi.wikipedia.org article | Tôi là kẻ tôi đòi nhọc nhằn vì niềm vui của cô. | NEW, unsourced: translated for the game, not reviewed |
@@ -1845,9 +1940,9 @@ English line: "Ill met by moonlight, proud Titania." (A Midsummer Night's Dream 
 | ru | Оберон | wikidata: Q1139234 label (ru) | Недобрая встреча при лунном свете, гордая Титания. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q1139234 has no label in ar and no ar.wikipedia.org article | لقاء مشؤوم في ضوء القمر، يا تيتانيا المتكبرة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q1139234 has no label in hi and no hi.wikipedia.org article | चाँदनी में यह भेंट अशुभ है, घमंडी टाइटेनिया। | NEW, unsourced: translated for the game, not reviewed |
-| zh | 奥伯伦 | wikidata: Q1139234 label (zh) | 月光下相遇真是不巧，骄傲的提泰妮娅。 | NEW, unsourced: translated for the game, not reviewed |
+| zh | 奥伯伦 | wikidata: Q1139234 label (zh) | 月光下相遇真是不巧，骄傲的缇坦妮雅。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | オーベロン | wikidata: Q1139234 label (ja) | 月夜に悪い出会いだな、高慢なタイターニア。 | NEW, unsourced: translated for the game, not reviewed |
-| ko | 오베론 | wikidata: Q1139234 label (ko) | 달빛 아래 잘못 만났군, 오만한 티타니아. | NEW, unsourced: translated for the game, not reviewed |
+| ko | 오베론 | wikidata: Q1139234 label (ko) | 달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아. | NEW, unsourced: translated for the game, not reviewed |
 | vi | (none) | missing: Q1139234 has no label in vi and no vi.wikipedia.org article | Gặp nhau dưới ánh trăng thật chẳng lành, Titania kiêu hãnh. | NEW, unsourced: translated for the game, not reviewed |
 | th | (none) | missing: Q1139234 has no label in th and no th.wikipedia.org article | พบกันใต้แสงจันทร์ช่างไม่เป็นมงคล ไททาเนียผู้เย่อหยิ่ง | NEW, unsourced: translated for the game, not reviewed |
 | id | Oberon | wikidata: Q1139234 label (id) | Pertemuan sial di bawah cahaya bulan, Titania yang angkuh. | NEW, unsourced: translated for the game, not reviewed |
@@ -1951,7 +2046,7 @@ English line: "Thou shalt get kings, though thou be none." (Macbeth 1.3)
 | de | Banquo | wikidata: Q806945 label (de) | Könge erzeugst du, bist du selbst auch keiner. | published: Dorothea Tieck (1799–1841), „Macbeth“, in Shakspeare’s dramatische Werke, übersetzt von A. W. von Schlegel, ergänzt und erläutert von L. Tieck (1833); Project Gutenberg EBook #6975 (plain text, ISO-8859-1). The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.; Public domain: Germany (life + 70 years; translator died 1841) and United States (published before 1931); [source](https://www.gutenberg.org/ebooks/6975) |
 | it | Banco | wikidata: Q806945 label (it) | Creerai i re senza esserlo. | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3817368) |
 | pt | Banquo | wikidata: Q806945 label (pt) | Gerarás reis, embora não sejas rei. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Banquo | wikidata: Q806945 label (pl) | Spłodzisz królów, choć sam nim nie będziesz. | NEW, unsourced: translated for the game, not reviewed |
+| pl | Banko | wikipedia: pl.wikipedia.org article title «Banko» (Q806945); the label is the English spelling; pl.wikipedia titles the article «Banko», which is also the item's pl alias | Spłodzisz królów, choć sam nim nie będziesz. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Банко | wikidata: Q806945 label (ru) | Ты породишь королей, хотя сам не будешь королём. | NEW, unsourced: translated for the game, not reviewed |
 | ar | بانكو | wikidata: Q806945 label (ar) | ستنجب ملوكًا وإن لم تكن أنت ملكًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बैंको | wikidata: Q806945 label (hi) | तू राजाओं को जन्म देगा, भले ही तू स्वयं राजा न हो। | NEW, unsourced: translated for the game, not reviewed |
@@ -2150,7 +2245,7 @@ English line: "Now cracks a noble heart. Good night, sweet prince." (Hamlet 5.2)
 | it | (none) | missing: Q3140503 has no label in it and no it.wikipedia.org article | Ora scoppia il più nobile cuore! Amabile principe, addio | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Amleto/Atto_quinto?oldid=3794675) |
 | pt | (none) | missing: Q3140503 has no label in pt and no pt.wikipedia.org article | Agora se parte um nobre coração. Boa noite, doce príncipe. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Horacy | wikidata: Q3140503 label (pl) | Wielkie pękło serce. / Dobra noc, książę! | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296) |
-| ru | Гораций | wikidata: Q3140503 label (ru) | Великое не бьется сердце! Милый / Принц, доброй ночи! | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
+| ru | Горацио | wikipedia: ru.wikipedia.org article title «Горацио (персонаж)» (Q3140503); the label «Гораций» is the Russian name of the Roman poet Horace; ru.wikipedia titles the character «Горацио (персонаж)», which is also the item's ru alias and the name this game's Russian lines use | Великое не бьется сердце! Милый / Принц, доброй ночи! | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
 | ar | (none) | missing: Q3140503 has no label in ar and no ar.wikipedia.org article | الآن ينكسر قلب نبيل. طابت ليلتك أيها الأمير العذب. | NEW, unsourced: translated for the game, not reviewed |
 | hi | होरेशियो | wikidata: Q3140503 label (hi) | अब एक महान हृदय टूटता है। शुभ रात्रि, प्यारे राजकुमार। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 赫瑞修 | wikidata: Q3140503 label (zh) | 一颗高贵的心现在碎裂了。晚安，亲爱的王子。 | NEW, unsourced: translated for the game, not reviewed |
@@ -2188,7 +2283,7 @@ English line: "These times of woe afford no time to woo." (Romeo and Juliet 3.4)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Conde París | wikidata: Q3687815 label (es) | Ni es ésta ocasion de galanterías sino de duelo. | published: Marcelino Menéndez y Pelayo (1856–1912), Dramas de Guillermo Shakespeare, Biblioteca Clásica, Madrid, 1881 (es.wikisource.org transcription); Public domain: Spain (life + 80 years for authors who died before 1987; translator died 1912), which also meets life + 70, and United States (published before 1931); [source](https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III?oldid=1642362) |
+| es | Conde Paris | wikidata: Q3687815 alias (es) «Conde Paris»; the label's «París» is the city, stressed on its last syllable; the character is stressed on the first, as Menéndez Pelayo's translation prints him («conde Páris», es.wikisource revision 1642362), which today's spelling writes Paris (a word stressed on its next-to-last syllable and ending in -s takes no accent) | Ni es ésta ocasion de galanterías sino de duelo. | published: Marcelino Menéndez y Pelayo (1856–1912), Dramas de Guillermo Shakespeare, Biblioteca Clásica, Madrid, 1881 (es.wikisource.org transcription); Public domain: Spain (life + 80 years for authors who died before 1987; translator died 1912), which also meets life + 70, and United States (published before 1931); [source](https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III?oldid=1642362) |
 | fr | Comte Pâris | wikidata: Q3687815 label (fr) | Quand la mort parle, ce n’est pas pour l’amour le moment de parler. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
 | de | (none) | missing: Q3687815 has no label in de and no de.wikipedia.org article | So trübe Zeit gewährt nicht Zeit zum Frein | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Dritter_Aufzug?oldid=4062134) |
 | it | Conte Paride | wikidata: Q3687815 label (it) | Questi giorni di sventura non dànno agio alle cure d’amore. | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_terzo?oldid=3803531) |
@@ -2524,7 +2619,7 @@ English line: "Water, water, every where, nor any drop to drink." (Coleridge, Th
 | it | Samuel Taylor Coleridge | wikidata: Q82409 label (it) | Acqua, acqua dappertutto, e nemmeno una goccia da bere. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Samuel Taylor Coleridge | wikidata: Q82409 label (pt-br) | Água, água por toda parte, e nem uma gota para beber. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Samuel Taylor Coleridge | wikidata: Q82409 label (pl) | Woda, woda, wszędzie woda, a ani kropli do picia. | NEW, unsourced: translated for the game, not reviewed |
-| ru | Сэмюэл Тейлор Кольридж | wikidata: Q82409 label (ru) | Вода, вода, одна вода, / Мы ничего не пьём. | published: Николай Гумилёв (1886–1921), «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription); Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check).; [source](https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375) |
+| ru | Сэмюэл Тейлор Кольридж | wikidata: Q82409 label (ru) | Вода, вода, везде вода, и ни капли для питья. | NEW, unsourced: translated for the game, not reviewed |
 | ar | صامويل تايلر كولريدج | wikidata: Q82409 label (ar) | ماء، ماء في كل مكان، ولا قطرة للشرب. | NEW, unsourced: translated for the game, not reviewed |
 | hi | सैम्युअल टेलर कॉलरिज | wikidata: Q82409 label (hi) | पानी, पानी, हर तरफ़ समुद्र का पानी, पर पीने को एक बूँद नहीं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 塞缪尔·泰勒·柯勒律治 | wikidata: Q82409 label (zh) | 水，水，到处是水，却没有一滴可以喝。 | NEW, unsourced: translated for the game, not reviewed |
@@ -2574,8 +2669,8 @@ English line: "She walks in beauty, like the night of cloudless climes and starr
 | zh | 拜伦勋爵 | wikidata: Q5679 label (zh) | 她走在美的光彩中，像无云的地方繁星满天的夜晚。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ジョージ・ゴードン・バイロン | wikidata: Q5679 label (ja) | 彼女は美しさの中を歩む、雲ひとつない国の星空の夜のように。 | NEW, unsourced: translated for the game, not reviewed |
 | ko | 바이런 경 | wikidata: Q5679 label (ko) | 그녀는 아름다움 속을 걷는다, 구름 없는 땅과 별이 빛나는 하늘의 밤처럼. | NEW, unsourced: translated for the game, not reviewed |
-| vi | George Gordon Byron, Nam tước Byron thứ 6 | wikidata: Q5679 label (vi) | Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao. | NEW, unsourced: translated for the game, not reviewed |
-| th | จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6 | wikidata: Q5679 label (th) | เธอเดินอยู่ในความงาม ดั่งราตรีแห่งแดนไร้เมฆและฟ้าพร่างดาว | NEW, unsourced: translated for the game, not reviewed |
+| vi | George Gordon Byron | derived: the label's personal name, before the comma; the rest («Nam tước Byron thứ 6») is the peerage, "6th Baron Byron" (Q5679 label (vi): "George Gordon Byron, Nam tước Byron thứ 6") | Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao. | NEW, unsourced: translated for the game, not reviewed |
+| th | จอร์จ กอร์ดอน ไบรอน | derived: the label's personal name, its first three words; the rest («บารอนไบรอนที่ 6») is the peerage, "6th Baron Byron" (Q5679 label (th): "จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6") | เธอเดินอยู่ในความงาม ดั่งราตรีแห่งแดนไร้เมฆและฟ้าพร่างดาว | NEW, unsourced: translated for the game, not reviewed |
 | id | George Gordon Byron | wikidata: Q5679 label (id) | Ia berjalan dalam keindahan, laksana malam di negeri tak berawan dan langit berbintang. | NEW, unsourced: translated for the game, not reviewed |
 
 ### GC-002 Mary Shelley
@@ -2873,7 +2968,7 @@ English line: "Tell me, O Muse, of the man of many ways, who wandered far." (the
 | es | Odiseo | wikidata: Q47231 label (es) | Háblame, oh Musa, del hombre de muchos caminos, que anduvo errante muy lejos. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Ulysse | wikidata: Q47231 label (fr) | Dis-moi, ô Muse, l’homme aux mille détours, qui erra si longtemps. | NEW, unsourced: translated for the game, not reviewed |
 | de | Odysseus | wikidata: Q47231 label (de) | Sage mir, o Muse, von dem Mann der vielen Wege, der weit umherirrte. | NEW, unsourced: translated for the game, not reviewed |
-| it | Odisseo | wikidata: Q47231 label (it) | Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano. | NEW, unsourced: translated for the game, not reviewed |
+| it | Ulisse | wikipedia: it.wikipedia.org article title «Ulisse» (Q47231); it.wikipedia titles the article «Ulisse», the name Italian has used for him since Dante; the label is «Odisseo» | Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Odisseu | wikidata: Q47231 label (pt) | Fala-me, ó Musa, do homem de muitos caminhos, que vagou para longe. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Odyseusz | wikidata: Q47231 label (pl) | Opowiedz mi, Muzo, o mężu wielu dróg, który błąkał się daleko. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Одиссей | wikidata: Q47231 label (ru) | Расскажи мне, о Муза, о муже многих путей, что странствовал далеко. | NEW, unsourced: translated for the game, not reviewed |

@@ -181,11 +181,8 @@ const pack: CardTextPack = {
    "scene": "Komnata szkockiego zamku w blasku świec. Lady Makbet przemierza zimne kamienie, ścierając z rąk urojone plamy krwi. Cienie lgną do niej jak druga skóra."
   },
   "SC-003": {
-   "nameSource": "wikidata",
-   "name": "Banquo",
-   "aliases": [
-    "Banko"
-   ],
+   "nameSource": "wikipedia",
+   "name": "Banko",
    "quote": "Spłodzisz królów, choć sam nim nie będziesz.",
    "quoteSource": "new",
    "scene": "Mgliste szkockie wrzosowisko o zmierzchu. Banko stoi niewzruszony, gdy trzy widmowe postacie szepczą przeznaczenia na wiatr. Jego duch będzie nawiedzał żywych."
@@ -1768,7 +1765,6 @@ const pack: CardTextPack = {
   "żeż"
  ],
  "common": [
-  "Banko",
   "Gordon",
   "Król",
   "Marek",

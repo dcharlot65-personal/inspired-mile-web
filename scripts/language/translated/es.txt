@@ -118,7 +118,7 @@ TP-001	Una isla envuelta en la tempestad. Próspero alza las manos mientras el r
 TP-002	Un espíritu tornasolado se disuelve en viento y luz, y vuelve a formarse como música. Ariel danza entre lo visible y lo invisible.
 TP-003	La boca de una cueva en una costa salvaje. Calibán se agazapa entre las rocas, con los ojos ardiendo de rencor y de una inteligencia primitiva.
 MO-003	Una plaza de Verona al amanecer. Benvolio se interpone entre espadas desnudas; sus manos abiertas son la única arma contra la tormenta que se avecina.
-CA-002	Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo.
+CA-002	Un callejón de Verona incendiado por las antorchas. Teobaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo.
 DC-003	El salón del trono de Elsinor, revestido de falso esplendor. Claudio aferra la corona, con un frasco de veneno oculto en sus ropas.
 FA-003	Un claro iluminado por la luna en lo hondo del bosque encantado. Oberón surge de la sombra; su corona de astas recoge la luz de plata.
 RL-003	Una daga espectral flota en la oscuridad, con la hoja goteando sangre fantasma. La mano de Macbeth se alarga, pero nunca logra asirla.

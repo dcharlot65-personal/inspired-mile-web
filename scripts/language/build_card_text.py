@@ -9,6 +9,8 @@ Inputs, all in the repository:
   docs/language/sources/stopwords-iso.json     stop words (stopwords-iso, MIT)
   docs/language/sources/wiktionary-closed-class.json   function words by part of speech (Wiktionary via kaikki.org;
                                                scripts/language/fetch/closed_class.py), added to the stop words
+  docs/language/sources/published-names.json   a character's name as a published translation this branch quotes prints it,
+                                               where Wikidata's label is wrong or English (Hugo's «La Nourrice»)
   docs/language/checks/name-words.json         which words of a longer character name are ordinary words (Hunspell;
                                                run.sh names), so they do not count as a name by themselves
   scripts/language/published.json              who translated each published text, and its copyright status
@@ -204,12 +206,79 @@ SPELLING = {
 }
 
 
+# Where Wikidata's label in a language is wrong or is the English one, and a published translation this branch quotes
+# prints the character's name: (entity key, language) -> (card id in docs/language/sources/published-names.json, why).
+FROM_TRANSLATION = {
+    ('nurse', 'fr'): ('VC-003', 'Wikidata\'s fr label «Infirmière» is a hospital nurse; the character is Juliet\'s wet-nurse, «la Nourrice» in Hugo'),
+    ('friar', 'fr'): ('VC-002', 'Wikidata has no fr label'),
+    ('friar', 'de'): ('VC-002', 'Wikidata\'s de label is the English «Friar Laurence»'),
+}
+# Where a language's label is wrong and one of the item's aliases in that language is the character's name:
+# (entity key, language) -> (the alias as Wikidata writes it, why).
+FROM_ALIAS = {
+    ('nurse', 'zh'): ('奶媽', 'the zh label 護士 is a hospital nurse; the character is Juliet\'s wet-nurse (奶媽, 奶妈 in Simplified), '
+                              'as the Chinese scene for this card calls her'),
+    ('paris', 'es'): ('Conde Paris', 'the label\'s «París» is the city, stressed on its last syllable; the character is stressed on the '
+                                    'first, as Menéndez Pelayo\'s translation prints him («conde Páris», es.wikisource revision 1642362), '
+                                    'which today\'s spelling writes Paris (a word stressed on its next-to-last syllable and ending in -s takes no accent)'),
+}
+# Where a language's label is not the character's usual name there and that language's Wikipedia titles the character's
+# article otherwise: (entity key, language) -> why. The title is taken without its parenthesis.
+TITLE_FIRST = {
+    ('horatio', 'ru'): 'the label «Гораций» is the Russian name of the Roman poet Horace; ru.wikipedia titles the character «Горацио (персонаж)», '
+                       'which is also the item\'s ru alias and the name this game\'s Russian lines use',
+    ('banquo', 'pl'): 'the label is the English spelling; pl.wikipedia titles the article «Banko», which is also the item\'s pl alias',
+    ('odysseus', 'it'): 'it.wikipedia titles the article «Ulisse», the name Italian has used for him since Dante; the label is «Odisseo»',
+}
+# Published lines found and not used, with why: (language, card id) -> why.
+NOT_PUBLISHED = {
+    ('ru', 'LD-002'): ('Gumilyov\'s translation (1919). He was executed in 1921 and rehabilitated in 1992, and Russian law counts the term of a '
+                       'repressed and rehabilitated author from the year after rehabilitation (Civil Code art. 1281 p. 5), which would run to '
+                       '2062. Whether that rule reaches a work whose term had run out before 1993 is a question of how art. 6 of the law that '
+                       'put part IV of the Code into force is read, and two readings of it in this project disagreed. Neither is a lawyer\'s. '
+                       'Until one is, the game\'s Russian line for this card is its own, marked new.'),
+}
+# A label that adds to the name what no other language's label does, cut by rule: (entity key, language) -> (words kept, why).
+CUT = {
+    ('byron', 'vi'): (3, 'the label\'s personal name, before the comma; the rest («Nam tước Byron thứ 6») is the peerage, "6th Baron Byron"'),
+    ('byron', 'th'): (3, 'the label\'s personal name, its first three words; the rest («บารอนไบรอนที่ 6») is the peerage, "6th Baron Byron"'),
+}
+_pub_names = None
+
+
+def published_name(cid, lang):
+    global _pub_names
+    if _pub_names is None:
+        _pub_names = json.loads(read('docs/language/sources/published-names.json'))['names']
+    return _pub_names[lang][cid]
+
+
 def name_for(key, lang, ents):
     if (key, lang) in SPELLING:
         text, src_file, why = SPELLING[(key, lang)]
         assert os.path.exists(os.path.join(SRC, src_file)), src_file
         return text, 'wikipedia', f'{why} ({ents[key]["id"]})'
+    if (key, lang) in FROM_TRANSLATION:
+        cid, why = FROM_TRANSLATION[(key, lang)]
+        r = published_name(cid, lang)
+        return r['name'], 'published', (f'{r["translator"]}\'s translation prints «{r["printed"]}» ({r["count"]} times; {r["rule"]}), '
+                                         f'{r["page"]}, revision {r["revid"]}; {why} ({ents[key]["id"]})')
+    if (key, lang) in FROM_ALIAS:
+        alias, why = FROM_ALIAS[(key, lang)]
+        ent = ents[key]
+        assert alias in ent.get('aliases', {}).get(lang, []), (key, lang, alias)
+        text = simplified(alias) if lang == 'zh' else alias
+        conv = f'; converted to Simplified with OpenCC t2s' if text != alias else ''
+        return text, 'wikidata', f'{ent["id"]} alias ({lang}) «{alias}»{conv}; {why}'
+    if (key, lang) in TITLE_FIRST:
+        ent = ents[key]
+        title = strip_paren(ent['sitelinks'][lang])
+        return title, 'wikipedia', f'{lang}.wikipedia.org article title «{ent["sitelinks"][lang]}» ({ent["id"]}); {TITLE_FIRST[(key, lang)]}'
     text, src, detail = label(ents.get(key), lang)
+    if text and (key, lang) in CUT:
+        n, why = CUT[(key, lang)]
+        kept = ' '.join([p for p in SPLIT.split(re.sub(r',.*$', '', text)) if p][:n])
+        return kept, 'derived', f'{why} ({detail}: "{text}")'
     if text and key in TOKEN:
         idx, n = TOKEN[key]
         parts = [p for p in SPLIT.split(text) if p]
@@ -227,13 +296,55 @@ def name_for(key, lang, ents):
     return text, src, detail
 
 
-def aliases(key, lang, ents, name):
+# Aliases Wikidata gives that are not names of the character, which no rule below catches: (language, alias) -> why.
+NOT_ALIAS = {
+    ('de', 'Abadonna'): 'the fallen angel of Klopstock\'s Messias (Abaddon), not a name of Apollo',
+    ('de', 'Uthuce'): 'the Etruscan name of Odysseus, not a German one',
+    ('zh', '哈里斯'): '"Harris"; no Chinese source gives it for Hades',
+}
+LETTERS_ONLY = r'[\p{L}\p{M}]+(?:[\-‐][\p{L}\p{M}]+)*'
+
+
+def alias_rejected(a, lang, name, kept):
+    """Why an alias is not taken, or None. The rules: an alias is letters only (no '：', '，' or '.', which mark a
+    description: 科學怪人之母：瑪麗雪萊, 济慈，J.); it is written in one script, the language's own (not Latin mixed with
+    Greek, as it Aφροδίτη; not Latin in a language with another script, where the English name counts anyway); and it is
+    not, in a script written without spaces, the name or another alias with more added (ゼウス神像, "statue of Zeus";
+    ブルトゥス家, "the Brutus family"; アテナ女神, "the goddess Athena"), which names something else or adds a title. In a
+    spaced script a title or another word comes with a space, and such an alias is not taken anyway; a longer spelling
+    there is a variant of the name (German Apoll, Apollo; Russian Ахилл, Ахиллес)."""
+    import regex
+    if (lang, a) in NOT_ALIAS:
+        return NOT_ALIAS[(lang, a)]
+    if not regex.fullmatch(LETTERS_ONLY, a):
+        return 'not letters only'
+    scripts = {sc for sc in ('Latin', 'Greek', 'Cyrillic', 'Arabic', 'Devanagari', 'Han', 'Hiragana', 'Katakana', 'Hangul', 'Thai')
+               if regex.search(r'\p{Script=%s}' % sc, a)}
+    if lang == 'ja':
+        scripts -= {'Han', 'Hiragana'} if 'Katakana' in scripts else set()
+    if len(scripts) > 1:
+        return 'mixes scripts'
+    if lang in SCRIPT and 'Latin' in scripts:
+        return 'Latin letters in a language written in another script'
+    base = [n for n in SPLIT.split(name) if n] + [name] + kept
+    if lang in ('zh', 'ja', 'th') and any(b != a and len(b) >= 2 and b in a for b in base):
+        return 'the name or another alias with more added'
+    return None
+
+
+def aliases(key, lang, ents, name, rejected=None):
     ent = ents.get(key) or {}
     out = []
     for a in ent.get('aliases', {}).get('pt-br', []) * (lang == 'pt') + ent.get('aliases', {}).get(lang, []):
         a = strip_paren(a)
-        if a and a != name and not SPLIT.search(a) and a not in out:
-            out.append(a)
+        if not a or a == name or SPLIT.search(a) or a in out:
+            continue
+        why = alias_rejected(a, lang, name, out)
+        if why:
+            if rejected is not None:
+                rejected.append({'alias': a, 'why': why})
+            continue
+        out.append(a)
     return out[:4]
 
 
@@ -381,12 +492,17 @@ def main():
                 entry['nameSource'] = src
                 if text:
                     entry['name'] = text
-                    al = aliases(key, lang, ents, text)
+                    rejected = []
+                    al = aliases(key, lang, ents, text, rejected)
                     if al and c['type'] == 'Character':
                         entry['aliases'] = al
                 rec['name'] = {'text': text, 'source': src, 'detail': detail}
+                if text and rejected and c['type'] == 'Character':
+                    rec['name']['aliasesNotTaken'] = rejected
             work, cite = CITE[cid]
-            if cid in pub:
+            if cid in pub and (lang, cid) in NOT_PUBLISHED:
+                rec['publishedNotUsed'] = {'url': pub[cid]['url'], 'work': pub[cid]['work'], 'why': NOT_PUBLISHED[(lang, cid)]}
+            if cid in pub and (lang, cid) not in NOT_PUBLISHED:
                 q = pub[cid]
                 meta = published[lang][q['work']]
                 entry['quote'], entry['quoteSource'] = clean_quote(q['text']), 'published'
@@ -425,7 +541,7 @@ def main():
     for lang in LANGS:
         cs = prov['langs'][lang]['cards'].values()
         n = lambda k, v: sum(1 for c in cs if c[k]['source'] == v)
-        print(lang, 'names: wikidata', n('name', 'wikidata'), 'wikipedia', n('name', 'wikipedia'), 'derived', n('name', 'derived'), 'translated',
+        print(lang, 'names: wikidata', n('name', 'wikidata'), 'wikipedia', n('name', 'wikipedia'), 'published', n('name', 'published'), 'derived', n('name', 'derived'), 'translated',
               n('name', 'translated'), 'missing', n('name', 'missing'), '| quotes: published', n('quote', 'published'), 'new', n('quote', 'new'),
               'missing', n('quote', 'missing'), '| scenes', sum(1 for c in cs if c['scene'] == 'translated'))
 
@@ -652,12 +768,12 @@ def write_doc(CARDS, ents, prov, published):
     head = read('scripts/language/NAMES-AND-QUOTATIONS.head.md')
     L.append(head.rstrip() + '\n')
     L.append('## Summary by language\n')
-    L.append('| Language | Names from Wikidata | from a Wikipedia title | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |')
-    L.append('|---|---|---|---|---|---|---|---|---|')
+    L.append('| Language | Names from Wikidata | from a Wikipedia title | from a published translation | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |')
+    L.append('|---|---|---|---|---|---|---|---|---|---|')
     for lang in LANGS:
         cs = list(prov['langs'][lang]['cards'].values())
         n = lambda k, v: sum(1 for c in cs if c[k]['source'] == v)
-        L.append(f"| {lang} | {n('name','wikidata')} | {n('name','wikipedia')} | {n('name','derived')} | {n('name','translated')} | {n('name','missing')} | {n('quote','published')} | {n('quote','new')} | {sum(1 for c in cs if c['scene']=='translated')} |")
+        L.append(f"| {lang} | {n('name','wikidata')} | {n('name','wikipedia')} | {n('name','published')} | {n('name','derived')} | {n('name','translated')} | {n('name','missing')} | {n('quote','published')} | {n('quote','new')} | {sum(1 for c in cs if c['scene']=='translated')} |")
     L.append('\n## Published translations used\n')
     L.append('| Language | Work | Translator | Edition | Copyright status |')
     L.append('|---|---|---|---|---|')
@@ -670,6 +786,19 @@ def write_doc(CARDS, ents, prov, published):
     for lang in LANGS:
         miss = [f"{c['id']} {c['name']}" for c in CARDS if prov['langs'][lang]['cards'][c['id']]['name']['source'] == 'missing']
         L.append(f"- **{lang}** ({len(miss)}): " + ('; '.join(miss) if miss else 'none'))
+    L.append('\n## Published lines found and not used\n')
+    for lang in LANGS:
+        for c in CARDS:
+            nu = prov['langs'][lang]['cards'][c['id']].get('publishedNotUsed')
+            if nu:
+                L.append(f"- **{lang}** {c['id']}: [{nu['url']}]({nu['url']}). {nu['why']}")
+    L.append('\n## Wikidata aliases not taken as names\n')
+    L.append('An alias counts for the invocation (src/lib/verse/echo.ts). These were left out, by the rules of `alias_rejected` in '
+             '`scripts/language/build_card_text.py` or, where named, by hand:\n')
+    for lang in LANGS:
+        rows = [f"{c['id']} «{a['alias']}» ({a['why']})" for c in CARDS for a in prov['langs'][lang]['cards'][c['id']]['name'].get('aliasesNotTaken', [])]
+        if rows:
+            L.append(f"- **{lang}**: " + '; '.join(rows))
     L.append('\n## Lines translated for the game, not sourced\n')
     for lang in LANGS:
         new = [c['id'] for c in CARDS if prov['langs'][lang]['cards'][c['id']]['quote']['source'] == 'new']

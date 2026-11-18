@@ -52,7 +52,7 @@ const pack: CardTextPack = {
    ],
    "quote": "这是迷迭香，是表示记忆的。",
    "quoteSource": "new",
-   "scene": "一条平缓的小溪蜿蜒穿过柳林。奥菲莉娅漂浮在野花之间，低声念着被遗忘的诗句。花瓣在水流中打转。"
+   "scene": "一条平缓的小溪蜿蜒穿过柳林。奥菲利娅漂浮在野花之间，低声念着被遗忘的诗句。花瓣在水流中打转。"
   },
   "MO-002": {
    "nameSource": "wikidata",
@@ -63,7 +63,7 @@ const pack: CardTextPack = {
    ],
    "quote": "你们两家都遭瘟疫去吧！",
    "quoteSource": "new",
-   "scene": "维罗纳的一条街道陷入混乱。茂丘西奥在刀剑之间起舞，当着危险的面大笑。相击的钢刃迸出火花。"
+   "scene": "维罗纳的一条街道陷入混乱。莫枯修在刀剑之间起舞，当着危险的面大笑。相击的钢刃迸出火花。"
   },
   "FA-001": {
    "nameSource": "wikidata",
@@ -81,7 +81,7 @@ const pack: CardTextPack = {
    ],
    "quote": "来，在这铺满鲜花的床上坐下。",
    "quoteSource": "new",
-   "scene": "一座由活藤蔓编成的王座从林地升起。提泰妮娅统率着她的仙子宫廷，萤火虫照亮了树冠。大自然也向她的意志低头。"
+   "scene": "一座由活藤蔓编成的王座从林地升起。缇坦妮雅统率着她的仙子宫廷，萤火虫照亮了树冠。大自然也向她的意志低头。"
   },
   "RL-001": {
    "name": "约里克的骷髅",
@@ -126,7 +126,7 @@ const pack: CardTextPack = {
   },
   "VC-003": {
    "nameSource": "wikidata",
-   "name": "护士",
+   "name": "奶妈",
    "aliases": [
     "奶媽"
    ],
@@ -169,7 +169,7 @@ const pack: CardTextPack = {
    ],
    "quote": "我只是在维持和平。收起你的剑。",
    "quoteSource": "new",
-   "scene": "黎明时分维罗纳的一座广场。班伏里奥站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。"
+   "scene": "黎明时分维罗纳的一座广场。班福留站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。"
   },
   "CA-002": {
    "nameSource": "wikidata",
@@ -191,16 +191,15 @@ const pack: CardTextPack = {
    ],
    "quote": "我的言语飞上天去，我的思想却留在地下。",
    "quoteSource": "new",
-   "scene": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳狄斯紧握王冠，袍子里藏着一小瓶毒药。"
+   "scene": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳迪国王紧握王冠，袍子里藏着一小瓶毒药。"
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "奥伯伦",
    "aliases": [
-    "Oberon",
     "奧布朗"
    ],
-   "quote": "月光下相遇真是不巧，骄傲的提泰妮娅。",
+   "quote": "月光下相遇真是不巧，骄傲的缇坦妮雅。",
    "quoteSource": "new",
    "scene": "魔法森林深处一片月光下的空地。奥伯伦从阴影中显形，他的鹿角王冠映着银光。"
   },
@@ -233,7 +232,7 @@ const pack: CardTextPack = {
    "name": "麦克白夫人",
    "quote": "来吧，侍奉杀人念头的精灵们，在这里除去我的女性。",
    "quoteSource": "new",
-   "scene": "苏格兰城堡里一间烛光摇曳的房间。马克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。"
+   "scene": "苏格兰城堡里一间烛光摇曳的房间。麦克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。"
   },
   "SC-003": {
    "nameSource": "wikidata",
@@ -253,7 +252,7 @@ const pack: CardTextPack = {
    "name": "马伏里奥",
    "quote": "有的人生来伟大，有的人挣得伟大，有的人是伟大硬加在他们身上的。",
    "quoteSource": "new",
-   "scene": "奥丽维娅庄园里一座阳光明媚的花园。马伏里奥穿着刺眼的黄袜子、扎着十字交叉的袜带，得意洋洋地踱步，把一封伪造的情书紧紧按在胸前。"
+   "scene": "奥利维亚庄园里一座阳光明媚的花园。马伏里奥穿着刺眼的黄袜子、扎着十字交叉的袜带，得意洋洋地踱步，把一封伪造的情书紧紧按在胸前。"
   },
   "IL-003": {
    "nameSource": "wikidata",
@@ -263,7 +262,7 @@ const pack: CardTextPack = {
    ],
    "quote": "求来的爱是好的，不求而得的爱更好。",
    "quoteSource": "new",
-   "scene": "一位服丧的伯爵小姐掀起面纱，露出令人屏息的美貌。奥丽维娅的花园里茉莉与薰衣草盛开，乔装的信使偷走了她的心。"
+   "scene": "一位服丧的伯爵小姐掀起面纱，露出令人屏息的美貌。奥利维亚的花园里茉莉与薰衣草盛开，乔装的信使偷走了她的心。"
   },
   "RM-001": {
    "nameSource": "derived",
@@ -312,7 +311,7 @@ const pack: CardTextPack = {
    "name": "波顿",
    "quote": "我看见了一个极其稀奇的幻象。我做了一个梦，超出人的智慧所能说明。",
    "quoteSource": "new",
-   "scene": "一片被仙子之光照亮的林间空地。波顿顶着一个驴头，神情茫然却不失庄重，提泰妮娅给他披上花环。仙子们忍着笑。"
+   "scene": "一片被仙子之光照亮的林间空地。波顿顶着一个驴头，神情茫然却不失庄重，缇坦妮雅给他披上花环。仙子们忍着笑。"
   },
   "VC-004": {
    "nameSource": "wikidata",
@@ -439,7 +438,6 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "约翰·济慈",
    "aliases": [
-    "济慈，J.",
     "济慈",
     "濟慈"
    ],
@@ -452,8 +450,7 @@ const pack: CardTextPack = {
    "name": "拜伦勋爵",
    "aliases": [
     "拜伦",
-    "拜倫",
-    "拜伦，G.G."
+    "拜倫"
    ],
    "quote": "她走在美的光彩中，像无云的地方繁星满天的夜晚。",
    "quoteSource": "new",
@@ -462,9 +459,6 @@ const pack: CardTextPack = {
   "GC-002": {
    "nameSource": "wikidata",
    "name": "玛丽·雪莱",
-   "aliases": [
-    "科學怪人之母：瑪麗雪萊"
-   ],
    "quote": "当心；因为我无所畏惧，所以强大。",
    "quoteSource": "new",
    "scene": "暴风雨中，日内瓦一间点着蜡烛的书房。玛丽借着闪电的光写作，那个造物在她身后的阴影里蠢动。科学与恐怖合而为一。"
@@ -473,8 +467,7 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "爱伦·坡",
    "aliases": [
-    "愛倫坡",
-    "坡，E.A."
+    "愛倫坡"
    ],
    "quote": "从前一个阴郁的午夜，我独自沉思，虚弱而疲倦。",
    "quoteSource": "new",
@@ -501,9 +494,6 @@ const pack: CardTextPack = {
   "LD-004": {
    "nameSource": "wikidata",
    "name": "伊丽莎白·巴雷特·勃朗宁",
-   "aliases": [
-    "勃朗宁夫人"
-   ],
    "quote": "我怎样爱你？让我一一细数。",
    "quoteSource": "new",
    "scene": "佛罗伦萨一间洒满阳光的房间。伊丽莎白在俯瞰阿诺河的窗前写作，她的西班牙猎犬卧在脚边。罗伯特的情书摊开在书桌上。"
@@ -555,7 +545,7 @@ const pack: CardTextPack = {
    ],
    "quote": "连众神也无法抗拒爱的力量。",
    "quoteSource": "new",
-   "scene": "黎明时分的塞浦路斯海岸。阿佛洛狄忒从海的泡沫中升起，鸽子在上空盘旋，海浪把珍珠送到她脚边。世界屏住了呼吸。"
+   "scene": "黎明时分的塞浦路斯海岸。阿佛罗狄忒从海的泡沫中升起，鸽子在上空盘旋，海浪把珍珠送到她脚边。世界屏住了呼吸。"
   },
   "OL-005": {
    "nameSource": "wikidata",
@@ -577,7 +567,7 @@ const pack: CardTextPack = {
     "哈帝斯",
     "哈德斯",
     "黑帝斯",
-    "哈里斯"
+    "哈底斯"
    ],
    "quote": "所有的灵魂最终都来到我这里。我有耐心。",
    "quoteSource": "new",

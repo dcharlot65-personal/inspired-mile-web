@@ -11,6 +11,8 @@
  * Every entry says where it came from:
  *   name   'wikidata'    the item's label in this language
  *          'wikipedia'   the title of this language's Wikipedia article
+ *          'published'   as a published translation quoted here prints it (Hugo's «La Nourrice»), where the
+ *                        Wikidata label is wrong or English (docs/language/sources/published-names.json)
  *          'derived'     cut by rule from a sourced label (the title of the play, a longer name)
  *          'translated'  the game's own invention, translated for the game; no published source
  *          'kept'        the product name (SM-001, "The Sonnet Man"), the same in every language
@@ -23,7 +25,7 @@
 import type { Card } from '../cards';
 import { loadStemmer } from '../verse/stem';
 
-export type NameSource = 'wikidata' | 'wikipedia' | 'derived' | 'translated' | 'kept' | 'missing';
+export type NameSource = 'wikidata' | 'wikipedia' | 'published' | 'derived' | 'translated' | 'kept' | 'missing';
 export type QuoteSource = 'published' | 'new' | 'missing';
 
 export interface CardText {
@@ -139,7 +141,7 @@ export function capitalised(text: string, lang: string): string {
  */
 const TITLE_QUOTES: Record<string, [string, string]> = {
   es: ['«', '»'],
-  fr: ['« ', ' »'],
+  fr: ['«\u00a0', '\u00a0»'],
   it: ['«', '»'],
   pt: ['“', '”'],
   de: ['„', '“'],
@@ -154,7 +156,9 @@ const TITLE_QUOTES: Record<string, [string, string]> = {
  *   - a relic's or a potion's name (es «Lágrimas de sirena» maldice…);
  *   - a role: the English card has an article ("The Nurse");
  *   - outside German, a name whose first word is an ordinary word of the language, as Hunspell tells (pack.common:
- *     Príncipe, Conde, Señora, Comte, Re), which is how a title is written there.
+ *     Príncipe, Conde, Señora, Comte, Re), which is how a title is written there, unless that word is the English
+ *     name's own first word in this language's spelling (it begins with the same three letters: Marco Antonio for
+ *     Mark Antony, Julieta Capuleto for Juliet).
  * A plain name is left bare (Romeo se lleva la ronda), and so is a name shown in English because the language has
  * none. Every other language takes the name as it is.
  */
@@ -166,7 +170,8 @@ export function cardNameInText(card: Card, lang: string): string {
   const text = pack?.cards[card.id];
   if (!quotes || !pack || !text?.name || text.nameSource === 'missing') return /^The\s/.test(name) && quotes ? quotes[0] + name + quotes[1] : name;
   const words = name.split(/\s+/);
-  const titled = b !== 'de' && words.length > 1 && (pack.common ?? []).includes(words[0]);
+  const head = (w: string) => w.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().slice(0, 3);
+  const titled = b !== 'de' && words.length > 1 && (pack.common ?? []).includes(words[0]) && head(words[0]) !== head(card.name.split(/\s+/)[0]);
   return card.type !== 'Character' || /^The\s/.test(card.name) || titled ? quotes[0] + name + quotes[1] : name;
 }
 

@@ -156,24 +156,6 @@
      ]
     },
     {
-     "id": "CA-002",
-     "field": "scene",
-     "text": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo.",
-     "matches": [
-      {
-       "rule": "MORFOLOGIK_RULE_ES",
-       "category": "TYPOS",
-       "message": "Se ha encontrado un posible error ortográfico.",
-       "found": "Tebaldo",
-       "suggestions": [
-        "Te baldo",
-        "Evaldo",
-        "Nevaldo"
-       ]
-      }
-     ]
-    },
-    {
      "id": "DC-003",
      "field": "scene",
      "text": "El salón del trono de Elsinor, revestido de falso esplendor. Claudio aferra la corona, con un frasco de veneno oculto en sus ropas.",
@@ -581,7 +563,7 @@
     "TP-003|scene": "e864b0a0f694a9a9",
     "TP-003|quote": "b86961d20ea907e8",
     "MO-003|scene": "0310ecc7c1ae40d4",
-    "CA-002|scene": "1a2491a581e70884",
+    "CA-002|scene": "38ca031272298764",
     "DC-003|scene": "014951771965f0fc",
     "FA-003|scene": "93d801d873544aac",
     "FA-003|quote": "539620939a3dbe9a",
@@ -2017,7 +1999,7 @@
     "PT-002|name": "1e7e7cb23c475153",
     "VC-001|scene": "a9c100454ded1691",
     "VC-002|scene": "d1aa13aac283746c",
-    "VC-003|scene": "fc22dc85f50ba7ec",
+    "VC-003|scene": "8d7768ce3a246a40",
     "TP-001|scene": "45ddc05fdd4c34bb",
     "TP-002|scene": "4b9daaf8d02ee68e",
     "TP-003|scene": "78c87cf66b770890",
@@ -2476,24 +2458,6 @@
      ]
     },
     {
-     "id": "SC-003",
-     "field": "scene",
-     "text": "Una brughiera scozzese nebbiosa al crepuscolo. Banquo sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi.",
-     "matches": [
-      {
-       "rule": "MORFOLOGIK_RULE_IT_IT",
-       "category": "TYPOS",
-       "message": "Trovato un probabile errore di battitura.",
-       "found": "Banquo",
-       "suggestions": [
-        "Annuo",
-        "Banjul",
-        "Banano"
-       ]
-      }
-     ]
-    },
-    {
      "id": "IL-002",
      "field": "scene",
      "text": "Un giardino assolato nella tenuta di Olivia. Malvolio si pavoneggia in sgargianti calze gialle con le giarrettiere incrociate, sorridente, stringendo al petto una falsa lettera d’amore.",
@@ -2939,7 +2903,7 @@
     "PT-003|name": "b5755bbeda7907ff",
     "SC-001|scene": "077fc0c1f6b33008",
     "SC-002|scene": "80b1109040bb4338",
-    "SC-003|scene": "1d73913eabbb1f37",
+    "SC-003|scene": "db33a2605c1ead13",
     "IL-001|scene": "37f5d49c5da539a5",
     "IL-002|scene": "9089ca4478a1957e",
     "IL-003|scene": "c493eb545faeaa01",
@@ -4509,7 +4473,7 @@
    }
   },
   "ru": {
-   "items": 199,
+   "items": 200,
    "flagged": [
     {
      "id": "CA-001",
@@ -4695,7 +4659,7 @@
     {
      "id": "MO-003",
      "field": "scene",
-     "text": "Площадь Вероны на рассвете. Бенволио стоит между обнажёнными мечами; его раскрытые ладони, единственное оружие против надвигающейся грозы.",
+     "text": "Площадь Вероны на рассвете. Бенволио стоит между обнажёнными мечами; его раскрытые ладони — единственное оружие против надвигающейся грозы.",
      "matches": [
       {
        "rule": "MORFOLOGIK_RULE_RU_RU",
@@ -5126,13 +5090,13 @@
     "PT-002|scene": "827949659ce5927f",
     "PT-002|quote": "05bf8558d30e79a0",
     "PT-002|name": "f41f24820df4f0f8",
-    "VC-001|scene": "63cc36f7f8793b39",
+    "VC-001|scene": "0a748fc3ac7d0558",
     "VC-002|scene": "99c9cf4a4b79d09f",
     "VC-003|scene": "0f34f45ac93cb960",
     "TP-001|scene": "86635c6bfbad6b00",
     "TP-002|scene": "e4a2dcffad381cf3",
     "TP-003|scene": "702348d91ac2ca81",
-    "MO-003|scene": "f12eab8679174385",
+    "MO-003|scene": "dd10c3c2c0eb8574",
     "CA-002|scene": "db6086a0bf4d54ca",
     "DC-003|scene": "92998e850d39d6d5",
     "FA-003|scene": "ee055840ae24f02b",
@@ -5197,6 +5161,7 @@
     "LD-001|scene": "9ec24f728eac3c28",
     "LD-001|quote": "d1c580d89a7dc67f",
     "LD-002|scene": "4d16e21aaedfeb28",
+    "LD-002|quote": "845ffb55181b751d",
     "LD-003|scene": "db383fc014faa684",
     "LD-003|quote": "15c8b285aa067e1f",
     "GC-001|scene": "5ac85a3a1084b5c9",
@@ -6636,8 +6601,7 @@
        "message": "وُجد خطأ إملائي محتمل",
        "found": "اسكتلندي",
        "suggestions": [
-        "إسكتلندي",
-        "اسكت لندي"
+        "إسكتلندي"
        ]
       }
      ]
@@ -7927,7 +7891,7 @@
     {
      "id": "MO-003",
      "field": "scene",
-     "text": "黎明时分维罗纳的一座广场。班伏里奥站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。",
+     "text": "黎明时分维罗纳的一座广场。班福留站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。",
      "matches": [
       {
        "rule": "wa2",
@@ -7943,28 +7907,12 @@
     {
      "id": "DC-003",
      "field": "scene",
-     "text": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳狄斯紧握王冠，袍子里藏着一小瓶毒药。",
+     "text": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳迪国王紧握王冠，袍子里藏着一小瓶毒药。",
      "matches": [
       {
        "rule": "wb4",
        "category": "CAT4",
        "message": "形容词的修饰一般为‘形容词（副词）+地+形容词’。您的意思是否是：虚假\"地\"华丽",
-       "found": "的",
-       "suggestions": [
-        "地"
-       ]
-      }
-     ]
-    },
-    {
-     "id": "FA-003",
-     "field": "quote",
-     "text": "月光下相遇真是不巧，骄傲的提泰妮娅。",
-     "matches": [
-      {
-       "rule": "wb4",
-       "category": "CAT4",
-       "message": "动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：骄傲\"地\"提",
        "found": "的",
        "suggestions": [
         "地"
@@ -7989,7 +7937,7 @@
     {
      "id": "SC-002",
      "field": "scene",
-     "text": "苏格兰城堡里一间烛光摇曳的房间。马克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。",
+     "text": "苏格兰城堡里一间烛光摇曳的房间。麦克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。",
      "matches": [
       {
        "rule": "wa5",
@@ -8003,7 +7951,7 @@
     {
      "id": "FA-004",
      "field": "scene",
-     "text": "一片被仙子之光照亮的林间空地。波顿顶着一个驴头，神情茫然却不失庄重，提泰妮娅给他披上花环。仙子们忍着笑。",
+     "text": "一片被仙子之光照亮的林间空地。波顿顶着一个驴头，神情茫然却不失庄重，缇坦妮雅给他披上花环。仙子们忍着笑。",
      "matches": [
       {
        "rule": "wa5",
@@ -8079,13 +8027,13 @@
     "CA-001|quote": "593d7102f0b0531a",
     "DC-001|scene": "5eb8fde20a099d9d",
     "DC-001|quote": "1a4f89b46c8ceb79",
-    "DC-002|scene": "d035f20a96bed1f8",
+    "DC-002|scene": "f5f3663776411e51",
     "DC-002|quote": "7b9a1ecce31d0b97",
-    "MO-002|scene": "67791df31d964721",
+    "MO-002|scene": "85bda2997ce729e4",
     "MO-002|quote": "648a3b2b071f6a97",
     "FA-001|scene": "4d62bf35d57d10f6",
     "FA-001|quote": "8464de7acbefe4ac",
-    "FA-002|scene": "3abb7b7d6be0f03c",
+    "FA-002|scene": "8557d3960081b6f3",
     "FA-002|quote": "8e8d810ad9ff85ff",
     "RL-001|scene": "3efb59e362076de0",
     "RL-001|quote": "fcc574392ee7beea",
@@ -8111,14 +8059,14 @@
     "TP-002|quote": "e2fb8f729c71bd16",
     "TP-003|scene": "00783977703a379c",
     "TP-003|quote": "29e5c7ce6460abcd",
-    "MO-003|scene": "078eea767ee1c47b",
+    "MO-003|scene": "0db16383b35683b4",
     "MO-003|quote": "7c8513c26fe9e8c3",
     "CA-002|scene": "7cb76fef35b041fc",
     "CA-002|quote": "c917a46b969f4226",
-    "DC-003|scene": "a76860405ed6587d",
+    "DC-003|scene": "2724e2f9d6044361",
     "DC-003|quote": "355fecf116589ed8",
     "FA-003|scene": "0aab398019c55695",
-    "FA-003|quote": "340da86115040076",
+    "FA-003|quote": "a0a88d78473ebd0b",
     "RL-003|scene": "ebc99a91bd218840",
     "RL-003|quote": "051d4ad07b6dadcf",
     "RL-003|name": "c90084e1199d5f7a",
@@ -8127,15 +8075,15 @@
     "PT-003|name": "2aa9a5acffc61573",
     "SC-001|scene": "af57e8040dd685f9",
     "SC-001|quote": "95304b92d8b3c258",
-    "SC-002|scene": "1f67bc69f301b054",
+    "SC-002|scene": "cfb42f3ef0fb6b4e",
     "SC-002|quote": "ad5a53aaf153f3c9",
     "SC-003|scene": "f1af850a1259bc36",
     "SC-003|quote": "9feb8401c5f1bdfa",
     "IL-001|scene": "6107990233459960",
     "IL-001|quote": "6710f6c5906cff5c",
-    "IL-002|scene": "abe87a1664a02d59",
+    "IL-002|scene": "d55398efedf14725",
     "IL-002|quote": "d6a9afe857569a63",
-    "IL-003|scene": "50d29a2054407e2e",
+    "IL-003|scene": "3f81f5dba944330d",
     "IL-003|quote": "1bb8b997da653222",
     "RM-001|scene": "7d05d37701914962",
     "RM-001|quote": "4d78422f701df7fe",
@@ -8151,7 +8099,7 @@
     "CA-003|name": "26ad2b464a86e67e",
     "DC-004|scene": "51ca40ac7e636ea5",
     "DC-004|quote": "217e5dd039d2bf76",
-    "FA-004|scene": "0c1dd4bca15a51aa",
+    "FA-004|scene": "43a496a26f34b78f",
     "FA-004|quote": "35e09637a89f7269",
     "VC-004|scene": "d35b7f691630d635",
     "VC-004|quote": "bbc8f8a6b963b1da",
@@ -8219,7 +8167,7 @@
     "OL-002|quote": "daeddd4c7852deb1",
     "OL-003|scene": "a740fdf5e1ac30b3",
     "OL-003|quote": "f6b7231ec47576c1",
-    "OL-004|scene": "74dcd0403feefdc5",
+    "OL-004|scene": "36eedf06957735f8",
     "OL-004|quote": "4e644d0b702bef86",
     "OL-005|scene": "9fe1ae0b7651346f",
     "OL-005|quote": "c201977710f47624",

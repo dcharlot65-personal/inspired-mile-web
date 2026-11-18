@@ -252,6 +252,213 @@
    "old": "قلق يرقد الرأس الذي يلبس التاج.",
    "new": "قلقًا يرقد الرأس الذي يلبس التاج.",
    "round": "second pass"
+  },
+  {
+   "lang": "ru",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata, is «герцог Эскал», a duke)",
+   "old": "Князь стоит на ступенях",
+   "new": "Герцог стоит на ступенях",
+   "round": "third pass"
+  },
+  {
+   "lang": "ru",
+   "id": "MO-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): a dash, not a comma, between a subject and a predicate noun (ладони — единственное оружие)",
+   "old": "его раскрытые ладони, единственное оружие",
+   "new": "его раскрытые ладони — единственное оружие",
+   "round": "third pass"
+  },
+  {
+   "lang": "de",
+   "id": "VC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Schlegel: «Wärterin»)",
+   "old": "Die Amme eilt",
+   "new": "Die Wärterin eilt",
+   "round": "third pass"
+  },
+  {
+   "lang": "es",
+   "id": "CA-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Menéndez y Pelayo: «Teobaldo»)",
+   "old": "Tebaldo desenvaina",
+   "new": "Teobaldo desenvaina",
+   "round": "third pass"
+  },
+  {
+   "lang": "it",
+   "id": "SC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and it.wikipedia: «Banco»)",
+   "old": "Banquo sta saldo",
+   "new": "Banco sta saldo",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "SC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «뱅쿠오»)",
+   "old": "뱅코는",
+   "new": "뱅쿠오는",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "MO-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «머큐시오»)",
+   "old": "머큐쇼",
+   "new": "머큐시오",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "TP-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «아리엘»)",
+   "old": "에어리얼",
+   "new": "아리엘",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "DC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «클라우디우스»)",
+   "old": "클로디어스",
+   "new": "클라우디우스",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): 홀 reads as \"hall\"; the sceptre is 왕홀 (Wikidata Q152065's Korean label and ko.wikipedia title)",
+   "old": "황금 홀이",
+   "new": "황금 왕홀이",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "FA-003",
+   "field": "quote",
+   "finding": "the second check (2026-11-17): \"ill met\" is an unwelcome meeting; 잘못 만났군 says \"met the wrong one\" (back-translation: \"You've met the wrong man\")",
+   "old": "달빛 아래 잘못 만났군, 오만한 티타니아.",
+   "new": "달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아.",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "DC-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥菲利娅»)",
+   "old": "奥菲莉娅",
+   "new": "奥菲利娅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "MO-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «莫枯修»)",
+   "old": "茂丘西奥",
+   "new": "莫枯修",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-004",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "MO-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «班福留»)",
+   "old": "班伏里奥",
+   "new": "班福留",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "DC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «克劳迪国王»)",
+   "old": "克劳狄斯",
+   "new": "克劳迪国王",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "SC-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «麦克白夫人»)",
+   "old": "马克白夫人",
+   "new": "麦克白夫人",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "IL-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚»)",
+   "old": "奥丽维娅",
+   "new": "奥利维亚",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "IL-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚»)",
+   "old": "奥丽维娅",
+   "new": "奥利维亚",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "OL-004",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «阿佛罗狄忒»)",
+   "old": "阿佛洛狄忒",
+   "new": "阿佛罗狄忒",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-003",
+   "field": "quote",
+   "finding": "the second check (2026-11-17): the line names Titania otherwise than her card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "ru",
+   "id": "LD-002",
+   "field": "quote",
+   "finding": "not a finding of a tool: Gumilyov's published line is no longer used while its Russian copyright is in doubt (see \"Published lines found and not used\"); the game's own line, written in an earlier round, takes its place",
+   "old": "Вода, вода, одна вода, / Мы ничего не пьём. (Gumilyov, published)",
+   "new": "Вода, вода, везде вода, и ни капли для питья. (new)",
+   "round": "third pass"
   }
  ]
 }

@@ -1,0 +1,45 @@
+{
+ "what": "Names of characters as the published translations this branch quotes print them, for cards whose Wikidata label is wrong, English, or absent in that language.",
+ "fetched": "2026-11-17",
+ "licence": "Texts in the public domain (the translators died in 1845 and 1873); Wikisource transcriptions CC BY-SA 4.0. Only the excerpts below are kept.",
+ "names": {
+  "fr": {
+   "VC-003": {
+    "name": "La Nourrice",
+    "translator": "François-Victor Hugo",
+    "page": "Roméo et Juliette (trad. Hugo)",
+    "revid": 15966892,
+    "url": "https://fr.wikisource.org/w/index.php?oldid=15966892",
+    "printed": "LA NOURRICE",
+    "count": 101,
+    "excerpt": "ue. LADY CAPULET , femme de Capulet. JULIETTE , fille de Capulet. LA NOURRICE. citoyens de vérone ; seigneurs et dames, parents des deux familles ;",
+    "rule": "the speaker label, which Hugo prints in capitals, in title case"
+   },
+   "VC-002": {
+    "name": "Frère Laurence",
+    "translator": "François-Victor Hugo",
+    "page": "Roméo et Juliette (trad. Hugo)",
+    "revid": 15966892,
+    "url": "https://fr.wikisource.org/w/index.php?oldid=15966892",
+    "printed": "FRÈRE LAURENCE",
+    "count": 1,
+    "alsoInText": 10,
+    "excerpt": "RCUTIO , parent du prince et ami de Roméo. TYBALT , neveu de Capulet. FRÈRE LAURENCE , moine franciscain. FRÈRE JEAN , religieux du même ordre. BALTHAZAR",
+    "rule": "the label in the list of characters, in title case; the text says «frère Laurence»"
+   }
+  },
+  "de": {
+   "VC-002": {
+    "name": "Bruder Lorenzo",
+    "translator": "August Wilhelm Schlegel",
+    "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+    "revid": 1730815,
+    "url": "https://de.wikisource.org/w/index.php?oldid=1730815",
+    "printed": "Bruder Lorenzo",
+    "count": 2,
+    "excerpt": "ilf’ ihn flehen. ''(Ab.)'' </poem> ==Dritte Scene. == ''Ein Klostergarten. (Bruder Lorenzo mit einem Körbchen.)'' <poem> '''Lorenzo.''' Der Morgen lächelt froh der Nacht ins",
+    "rule": "as the stage directions name him («Bruder Lorenzo mit einem Körbchen», «Bruder Lorenzos Zelle»); his speeches are headed «Lorenzo.»"
+   }
+  }
+ }
+}

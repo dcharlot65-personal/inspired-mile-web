@@ -102,8 +102,8 @@ const pack: CardTextPack = {
    "scene": "Der Prinz steht auf den Stufen des Palastes von Verona; seine Stimme gebietet der verfeindeten Menge Schweigen. Ein goldenes Zepter glüht vor Autorität."
   },
   "VC-002": {
-   "nameSource": "wikidata",
-   "name": "Friar Laurence",
+   "nameSource": "published",
+   "name": "Bruder Lorenzo",
    "quote": "So wilde Freude nimmt ein wildes Ende",
    "quoteSource": "published",
    "scene": "Eine Klosterzelle im Kerzenschein. Der Bruder pflegt seinen Garten aus Kräutern und Giften, die Weisheit ins wettergegerbte Gesicht geschrieben."
@@ -113,7 +113,7 @@ const pack: CardTextPack = {
    "name": "Wärterin",
    "quote": "Ich bin das Lasttier, muß für euch mich plagen",
    "quoteSource": "published",
-   "scene": "Eine warme Küche im Hause Capulet. Die Amme eilt mit grimmiger Hingabe umher, einen geheimen Brief in der Schürze verborgen."
+   "scene": "Eine warme Küche im Hause Capulet. Die Wärterin eilt mit grimmiger Hingabe umher, einen geheimen Brief in der Schürze verborgen."
   },
   "TP-001": {
    "nameSource": "wikidata",
@@ -458,8 +458,8 @@ const pack: CardTextPack = {
    "aliases": [
     "Apoll",
     "Phöbos",
-    "Abadonna",
-    "Loxias"
+    "Loxias",
+    "Phoibos"
    ],
    "quote": "Ich bin der Gott des Gesangs, der Heilung und der strahlenden Sonne.",
    "quoteSource": "new",
@@ -513,8 +513,7 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "Odysseus",
    "aliases": [
-    "Ulixes",
-    "Uthuce"
+    "Ulixes"
    ],
    "quote": "Sage mir, o Muse, von dem Mann der vielen Wege, der weit umherirrte.",
    "quoteSource": "new",
@@ -1540,6 +1539,7 @@ const pack: CardTextPack = {
  "common": [
   "Achill",
   "Apoll",
+  "Bruder",
   "George",
   "Graf",
   "Gräfin",

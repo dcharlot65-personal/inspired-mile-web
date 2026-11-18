@@ -148,7 +148,7 @@ const pack: CardTextPack = {
    "name": "Teobaldo",
    "quote": "¡Hablarme de paz, cuando tengo el acero en la mano! Más odiosa me es tal palabra que el infierno mismo",
    "quoteSource": "published",
-   "scene": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
+   "scene": "Un callejón de Verona incendiado por las antorchas. Teobaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
   },
   "DC-003": {
    "nameSource": "wikidata",
@@ -274,7 +274,7 @@ const pack: CardTextPack = {
   },
   "VC-004": {
    "nameSource": "wikidata",
-   "name": "Conde París",
+   "name": "Conde Paris",
    "quote": "Ni es ésta ocasion de galanterías sino de duelo.",
    "quoteSource": "published",
    "scene": "El cementerio de Verona al anochecer. Paris deja flores en la tumba de Julieta, sin saber del amante desesperado que se acerca desde las sombras."

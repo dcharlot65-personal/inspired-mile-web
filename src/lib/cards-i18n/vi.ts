@@ -368,8 +368,8 @@ const pack: CardTextPack = {
    "scene": "Một khu vườn ở Hampstead mùa thu. Keats ngồi dưới gốc cây mận, viết như lên cơn sốt trong khi một con chim họa mi hót trên những cành cây đang sẫm tối."
   },
   "GC-001": {
-   "nameSource": "wikidata",
-   "name": "George Gordon Byron, Nam tước Byron thứ 6",
+   "nameSource": "derived",
+   "name": "George Gordon Byron",
    "quote": "Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao.",
    "quoteSource": "new",
    "scene": "Một tòa lâu đài ở Venezia lúc nửa đêm. Byron đứng trên ban công, áo choàng tung bay, đăm đăm nhìn qua con kênh tối. Sau lưng ông, một bản thảo dang dở cháy trong lò sưởi."

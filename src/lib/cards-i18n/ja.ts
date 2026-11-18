@@ -232,9 +232,6 @@ const pack: CardTextPack = {
   "RM-001": {
    "nameSource": "derived",
    "name": "ブルトゥス",
-   "aliases": [
-    "ブルトゥス家"
-   ],
    "quote": "シーザーを愛さなかったのではない、ローマをより深く愛したのだ。",
    "quoteSource": "new",
    "scene": "ローマの元老院、大理石の柱は深紅に染まっている。ブルトゥスは陰謀者たちの中に立ち、その刃はまだ震えている。共和国の重みが血に濡れた彼の手にかかっている。"
@@ -430,8 +427,6 @@ const pack: CardTextPack = {
    "name": "エドガー・アラン・ポー",
    "aliases": [
     "ポオ",
-    "エドガーアランポー",
-    "アランポオ",
     "ポー"
    ],
    "quote": "あるわびしい真夜中のこと、弱り疲れて思いにふけっていると。",
@@ -469,10 +464,6 @@ const pack: CardTextPack = {
   "OL-001": {
    "nameSource": "wikidata",
    "name": "ゼウス",
-   "aliases": [
-    "ゼウス神像",
-    "ZEUS"
-   ],
    "quote": "我は雲を集める者、広き天の主である。",
    "quoteSource": "new",
    "scene": "オリュンポス山が空を裂く。ゼウスは雲の玉座に座り、その指の間に稲妻が走る。下では人間の世界が彼のまなざしに震える。"
@@ -481,8 +472,7 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "アテーナー",
    "aliases": [
-    "アテナ",
-    "アテナ女神"
+    "アテナ"
    ],
    "quote": "知恵の梟は夕暮れにのみ飛び立つ。",
    "quoteSource": "new",
