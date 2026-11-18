@@ -30,9 +30,15 @@ test('a page load fetches no sound data, and a duel fetches only its own languag
     localStorage.setItem('inspired-mile-active-deck', deck.name);
   }, DECK);
   await page.goto('/');
+  // A visitor who names no duel language: nothing, even once the page is idle. (A link that names
+  // one, ?lang=fr below, warms that language's data when the page is idle, by design since 942519e;
+  // tests/battle-bytes.spec.ts holds that. This test asked for none there, and failed every run.)
+  await page.goto('/battle?seed=11&brain=rules', { waitUntil: 'networkidle' });
+  await expect(page.locator('#start-duel')).toBeEnabled();
+  await page.waitForTimeout(1500);
+  expect(requests.filter((u) => SOUND.test(u))).toEqual([]);
   await page.goto('/battle?seed=11&brain=rules&lang=fr');
   await expect(page.locator('#start-duel')).toBeEnabled();
-  expect(requests.filter((u) => SOUND.test(u))).toEqual([]);
   await page.click('#start-duel');
   await expect(page.locator('#battle-arena')).toBeVisible();
   const sound = requests.filter((u) => SOUND.test(u));
