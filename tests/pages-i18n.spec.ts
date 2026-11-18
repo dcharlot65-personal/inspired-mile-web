@@ -301,7 +301,10 @@ test.describe('Translated pages: what a script draws', () => {
     await expect(page.locator('[data-when-month="2025-3"]')).toHaveText('2025年3月');
     await expect(page.locator('[data-when-key="about.journey.quarter1"]')).toHaveText('2026年第1四半期');
     await show(page, '/about', 'pl');
-    await expect(page.locator('[data-when-month="2025-3"]')).toHaveText('mar 2025');
+    // A month standing alone as a label: CLDR capitalises it in Polish and Spanish (contextTransforms).
+    await expect(page.locator('[data-when-month="2025-3"]')).toHaveText('Mar 2025');
+    await show(page, '/about', 'es');
+    await expect(page.locator('[data-when-month="2025-4"]')).toHaveText('Abr 2025');
 
     await show(page, '/profile', 'fr');
     await expect(page.locator('#stat-winrate')).toHaveText(/^43\s%$/);

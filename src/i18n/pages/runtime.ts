@@ -45,9 +45,19 @@ export function day(ts: number | Date): string {
   return new Intl.DateTimeFormat(locale(), { dateStyle: 'medium' }).format(ts);
 }
 
-/** A month of a year ("Mar 2025"). `month` counts from 1. */
+/**
+ * The languages whose month names CLDR capitalises when the name stands on its own, as a label
+ * (contextTransforms: month-format-except-narrow and month-standalone-except-narrow, "stand-alone":
+ * "titlecase-firstword"; CLDR 46.0.0, docs/language/pages-core/cldr-context-transforms.json).
+ * Intl applies no capitalisation context, so Spanish showed "abr 2025" beside "Verano de 2025".
+ */
+export const MONTH_LABEL_TITLECASE = ['es', 'fr', 'it', 'pl', 'ru'];
+
+/** A month of a year standing alone as a label ("Mar 2025"). `month` counts from 1. */
 export function monthOfYear(year: number, month: number): string {
-  return new Intl.DateTimeFormat(locale(), { year: 'numeric', month: 'short' }).format(new Date(year, month - 1, 15));
+  const l = locale();
+  const s = new Intl.DateTimeFormat(l, { year: 'numeric', month: 'short' }).format(new Date(year, month - 1, 15));
+  return MONTH_LABEL_TITLECASE.includes(l) ? s.charAt(0).toLocaleUpperCase(l) + s.slice(1) : s;
 }
 
 /** A year on its own, in the language's digits and without a grouping mark. */

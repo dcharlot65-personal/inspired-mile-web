@@ -1,0 +1,66 @@
+{
+ "source": "https://cdn.jsdelivr.net/npm/cldr-misc-full@46.0.0/main/<locale>/contextTransforms.json",
+ "version": "46.0.0",
+ "licence": "Unicode License v3",
+ "fetched": "2026-11-18T00:24:08Z",
+ "note": "Month entries only. A locale with no file (HTTP 404 for ar, hi, zh, ja, ko, th) has no context transforms in CLDR 46. 'stand-alone' is a name used on its own, as a label (the about page's timeline); 'titlecase-firstword' capitalises its first word.",
+ "languages": {
+  "en": {},
+  "es": {
+   "month-format-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   },
+   "month-standalone-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   }
+  },
+  "fr": {
+   "month-format-except-narrow": {
+    "stand-alone": "titlecase-firstword"
+   },
+   "month-standalone-except-narrow": {
+    "stand-alone": "titlecase-firstword"
+   }
+  },
+  "de": {},
+  "it": {
+   "month-format-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   },
+   "month-standalone-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   }
+  },
+  "pt": {},
+  "pl": {
+   "month-format-except-narrow": {
+    "stand-alone": "titlecase-firstword"
+   },
+   "month-standalone-except-narrow": {
+    "stand-alone": "titlecase-firstword"
+   }
+  },
+  "ru": {
+   "month-format-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   },
+   "month-standalone-except-narrow": {
+    "stand-alone": "titlecase-firstword",
+    "uiListOrMenu": "titlecase-firstword"
+   }
+  },
+  "ar": null,
+  "hi": null,
+  "zh": null,
+  "ja": null,
+  "ko": null,
+  "vi": {},
+  "th": null,
+  "id": {}
+ }
+}

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { LOCALES, loadArea, loadMessages, setLocale, t, type Locale, type Messages } from './index';
 import { compareMessages } from './pages/check';
-import { isolated, list, quoted, quoteMarks, rich, signedLtr, tn } from './pages/runtime';
+import { MONTH_LABEL_TITLECASE, isolated, list, monthOfYear, quoted, quoteMarks, rich, signedLtr, tn } from './pages/runtime';
 import { cardRule, deckProblems, synergyLine } from './pages/rules-text';
 import { abilityBonus, achievementDescription, achievementName, cityName, cityRegion, elementName, houseName, initialOf, typeName } from './pages/terms';
 import { ACHIEVEMENTS, type PlayerStats } from '../lib/achievements';
@@ -11,6 +11,7 @@ import { getPack, loadPack } from '../lib/verse/packs';
 import sourced from '../../docs/language/pages-core/sourced-names.json';
 import cldrQuotes from '../../docs/language/pages-core/cldr-quotes.json';
 import cldrCities from '../../docs/language/pages-core/cldr-exemplar-cities.json';
+import cldrContext from '../../docs/language/pages-core/cldr-context-transforms.json';
 import wikidataLabels from '../../docs/language/pages-core/wikidata-labels.json';
 
 const MODULES = import.meta.glob<{ default: Messages }>('./pages/*/*.ts', { eager: true });
@@ -204,6 +205,20 @@ describe('a count', () => {
     // It bites: the Spanish and German descriptions as they were.
     expect(countThenNoun('es', { 'achievements.wordsmith.description': 'Consigue {n} puntos o más en una sola ronda' })).toEqual(['es achievements.wordsmith.description: {n} puntos']);
     expect(countThenNoun('de', { 'x.y': 'Erreiche <b>{n}</b> Punkte', 'x.z': '+{bonus} Handwerk', 'x.w': '+{n} Handwerk' })).toEqual(['de x.y: {n} Punkte', 'de x.w: {n} Handwerk']);
+  });
+});
+
+describe('a month on its own', () => {
+  it('is capitalised where CLDR capitalises a month name standing alone, and nowhere else', async () => {
+    const langs = cldrContext.languages as Record<string, Record<string, Record<string, string>> | null>;
+    const want = Object.keys(langs).filter((l) => Object.entries(langs[l] ?? {}).some(([k, v]) => k.startsWith('month') && v['stand-alone'] === 'titlecase-firstword'));
+    expect([...MONTH_LABEL_TITLECASE].sort()).toEqual(want.sort());
+    expect(want.length).toBeGreaterThan(2);
+    for (const [l, label] of [['es', 'Abr 2025'], ['fr', 'Avr. 2025'], ['de', 'Apr. 2025'], ['en', 'Apr 2025'], ['pt', 'abr. de 2025']] as const) {
+      await setLocale(l, { persist: false });
+      expect([l, monthOfYear(2025, 4)]).toEqual([l, label]);
+    }
+    await setLocale('en', { persist: false });
   });
 });
 

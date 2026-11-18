@@ -40,6 +40,8 @@ const MUTATIONS = [
   ['docs/language/pages-core/cldr-exemplar-cities.json', '"name": "Tokio"', '"name": "Tokyo"', 'variants.city.TKY es'],
   // A number put before a noun that agrees with it.
   ['src/i18n/pages/achievements/es.ts', "'achievements.wordsmith.description': 'Puntuación en una sola ronda: {n} o más'", "'achievements.wordsmith.description': 'Consigue {n} puntos o más en una sola ronda'", '{n} puntos'],
+  // A language CLDR capitalises a lone month in, left out.
+  ['src/i18n/pages/runtime.ts', "['es', 'fr', 'it', 'pl', 'ru']", "['fr', 'it', 'pl', 'ru']", 'capitalised where CLDR'],
 ];
 
 let unnoticed = 0;
