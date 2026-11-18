@@ -23,6 +23,10 @@ Inputs, all in the repository:
                                                Wiktionary's parts of speech (fetch/name_pos.py)
   docs/language/sources/name-containing-words.json  Chinese and Thai dictionary words that hold a name with more around it
                                                (CC-CEDICT, jieba, PyThaiNLP; fetch/containing_words.py)
+  docs/language/sources/wikidata-roman-counterparts.json  the Roman gods Wikidata says are the same as the Greek ones
+                                               (P460), whose names are not taken as the Greek god's aliases (fetch/counterparts.py)
+  docs/language/sources/wiktionary-definite-articles.json  German's definite articles (fetch/definite_articles.py), after
+                                               one of which the Nurse's one-word German name counts, as "the nurse" does
   docs/language/sources/zh-transliteration.json  the characters Chinese spells foreign names with (Xinhua's tables via
                                                Chinese Wikipedia), which of them are not words by themselves (jieba), and
                                                the common words written only in them (wordfreq; fetch/transliteration.py)
@@ -318,18 +322,46 @@ NOT_ALIAS = {
     # spelling in, quoted ("…"), on 2026-11-17.
     ('ru', 'Афродиты'): 'the genitive of «Афродита», not another name of her',
     ('ru', 'Ахилесс'): 'a misspelling: 2 ru.wikipedia articles, against 572 for «Ахиллес» and 19 for «Ахилес»',
-    ('ru', 'Дит'): 'Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself '
-                   '(Плутон, from the Greek Πλούτων, is one); three letters, and Russian «Дитя» ("child") begins with it',
+    ('ru', 'Дит'): 'Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself; '
+                   'three letters, and Russian «Дитя» ("child") begins with it',
     ('de', 'Archill'): 'a misspelling: 3 de.wikipedia articles, against 416 for «Achill»',
     ('de', 'Archilles'): 'a misspelling: 17 de.wikipedia articles, against 416 for «Achill»; German writes Achilleus or Achilles',
+    # Found by the third check (2026-11-18): «Злой орк вышел из леса» ("an orc") and «Орка плывёт…» ("an orca") named Hades.
+    ('ru', 'Орк'): 'Orcus, a Roman god of the dead whom Rome identified with Hades, as with Dis Pater («Дит», above), not a name '
+                   'of Hades himself; Wikidata does not link him to Hades, so the counterpart rule cannot see him. Russian «орк» is '
+                   'also "orc" (Wiktionary, oldid 92286031) and «Орка» an orca',
 }
+
+
+_COUNTERPARTS = None
+
+
+def roman_counterpart(key, lang, a):
+    """The Roman god whose name the alias is, when Wikidata says that god is the same as this character (P460) and
+    English names the two differently (Jupiter for Zeus; not Apollo): his label in this language or in English. Or None."""
+    global _COUNTERPARTS
+    if _COUNTERPARTS is None:
+        _COUNTERPARTS = (json.loads(read('docs/language/sources/wikidata-roman-counterparts.json'))['characters'],
+                         json.loads(read('docs/language/sources/wikidata-card-names.json'))['entities'])
+    c = _COUNTERPARTS[0].get(key)
+    if not c:
+        return None
+    english = _COUNTERPARTS[1].get(key, {}).get('labels', {}).get('en')
+    for r in c['roman']:
+        labels = r['labels']
+        if labels.get('en') in (None, english):
+            continue
+        if a in {labels.get(l) for l in (lang, 'en', 'pt-br' if lang == 'pt' else None, 'zh-hans' if lang == 'zh' else None) if l}:
+            return f'the name of {labels["en"]} ({r["id"]}), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise'
+    return None
 LETTERS_ONLY = r'[\p{L}\p{M}]+(?:[\-‐][\p{L}\p{M}]+)*'
 
 
-def alias_rejected(a, lang, name, kept):
+def alias_rejected(a, lang, name, kept, key=None):
     """Why an alias is not taken, or None. The rules: an alias is letters only (no '：', '，' or '.', which mark a
     description: 科學怪人之母：瑪麗雪萊, 济慈，J.); it is written in one script, the language's own (not Latin mixed with
-    Greek, as it Aφροδίτη; not Latin in a language with another script, where the English name counts anyway); and it is
+    Greek, as it Aφροδίτη; not Latin in a language with another script, where the English name counts anyway; not Greek
+    in Russian, Ἀΐδης); it is not the name of the Roman god Wikidata says is this Greek one (roman_counterpart); and it is
     not, in a script written without spaces, the name or another alias with more added (ゼウス神像, "statue of Zeus";
     ブルトゥス家, "the Brutus family"; アテナ女神, "the goddess Athena"), which names something else or adds a title. In a
     spaced script a title or another word comes with a space, and such an alias is not taken anyway; a longer spelling
@@ -337,6 +369,9 @@ def alias_rejected(a, lang, name, kept):
     import regex
     if (lang, a) in NOT_ALIAS:
         return NOT_ALIAS[(lang, a)]
+    roman = key and roman_counterpart(key, lang, a)
+    if roman:
+        return roman
     if not regex.fullmatch(LETTERS_ONLY, a):
         return 'not letters only'
     scripts = {sc for sc in ('Latin', 'Greek', 'Cyrillic', 'Arabic', 'Devanagari', 'Han', 'Hiragana', 'Katakana', 'Hangul', 'Thai')
@@ -347,6 +382,8 @@ def alias_rejected(a, lang, name, kept):
         return 'mixes scripts'
     if lang in SCRIPT and 'Latin' in scripts:
         return 'Latin letters in a language written in another script'
+    if lang in SCRIPT and not regex.search(SCRIPT[lang], a):
+        return "written in another script than the language's own"  # Greek «Ἀΐδης» in Russian
     base = [n for n in SPLIT.split(name) if n] + [name] + kept
     if lang in ('zh', 'ja', 'th') and any(b != a and len(b) >= 2 and b in a for b in base):
         return 'the name or another alias with more added'
@@ -360,7 +397,7 @@ def aliases(key, lang, ents, name, rejected=None):
         a = strip_paren(a)
         if not a or a == name or SPLIT.search(a) or a in out:
             continue
-        why = alias_rejected(a, lang, name, out)
+        why = alias_rejected(a, lang, name, out, key)
         if why:
             if rejected is not None:
                 rejected.append({'alias': a, 'why': why})
@@ -536,6 +573,7 @@ def main():
     name_pos = json.loads(read('docs/language/sources/wiktionary-name-pos.json'))['languages']
     containing = json.loads(read('docs/language/sources/name-containing-words.json'))
     translit = json.loads(read('docs/language/sources/zh-transliteration.json'))
+    definite = json.loads(read('docs/language/sources/wiktionary-definite-articles.json'))['languages']
     sg_path = os.path.join(ROOT, 'docs/language/checks/line-segments.json')
     segments = json.load(open(sg_path, encoding='utf8')) if os.path.exists(sg_path) else None
     published = json.loads(read('scripts/language/published.json'))
@@ -634,6 +672,9 @@ def main():
         held = containing_words(lang, containing)
         if held:
             pack['containing'] = held
+        if lang in definite:
+            # A role with its article in English ("The Nurse") counts after a definite article (echo.ts localNames).
+            pack['definite'] = definite[lang]['definite']
         if lang == 'zh':
             # Where a foreign name goes on around a name of the game (echo.ts carriesOn): the characters foreign names are
             # spelled with, those that are no word by themselves, and the common words written only in them.

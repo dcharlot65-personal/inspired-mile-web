@@ -421,7 +421,6 @@ const pack: CardTextPack = {
    "name": "Zeus",
    "aliases": [
     "Dias",
-    "Jupiter",
     "Dớt"
    ],
    "quote": "Ta là kẻ gom mây, chúa tể của bầu trời rộng lớn.",
@@ -450,9 +449,6 @@ const pack: CardTextPack = {
   "OL-004": {
    "nameSource": "wikidata",
    "name": "Aphrodite",
-   "aliases": [
-    "Venus"
-   ],
    "quote": "Ngay cả các vị thần cũng không cưỡng nổi sức mạnh của tình yêu.",
    "quoteSource": "new",
    "scene": "Bờ biển đảo Síp lúc rạng đông. Aphrodite trồi lên từ bọt biển, đàn bồ câu lượn trên cao khi sóng đặt những viên ngọc trai dưới chân nàng. Cả thế gian nín thở."

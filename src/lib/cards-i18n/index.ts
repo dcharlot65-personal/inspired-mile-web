@@ -87,6 +87,11 @@ export interface CardTextPack {
    */
   transliteration?: { chars: string; bound: string; native: string[] };
   /**
+   * German only: the definite articles (Wiktionary: der, die, das, den, dem, des), after one of which a role's one-word
+   * name counts, as English counts "the nurse" and not "a nurse" («die Wärterin»; scripts/language/fetch/definite_articles.py).
+   */
+  definite?: string[];
+  /**
    * Vietnamese: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
    * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»). Thai: the lines' words as
    * PyThaiNLP's newmm reads them (scripts/language/check/segment.py), read as one word where ICU cuts them in pieces

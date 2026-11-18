@@ -1562,6 +1562,14 @@ const pack: CardTextPack = {
   "Zettel",
   "blake"
  ],
+ "definite": [
+  "das",
+  "dem",
+  "den",
+  "der",
+  "des",
+  "die"
+ ],
  "forms": {
   "Achill": [
    "Achills"

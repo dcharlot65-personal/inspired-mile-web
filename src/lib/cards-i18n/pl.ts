@@ -477,7 +477,6 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "Hades",
    "aliases": [
-    "Pluton",
     "Agesandros"
    ],
    "quote": "Wszystkie dusze przychodzą w końcu do mnie. Jestem cierpliwy.",
@@ -1770,7 +1769,6 @@ const pack: CardTextPack = {
   "Marek",
   "Pan",
   "Pani",
-  "Pluton",
   "Ulisses"
  ],
  "ordinary": [
@@ -1781,7 +1779,6 @@ const pack: CardTextPack = {
   "meduza",
   "pan",
   "pani",
-  "pluton",
   "romeo"
  ],
  "forms": {
@@ -2069,12 +2066,6 @@ const pack: CardTextPack = {
    "Persefony",
    "Persefoną",
    "Persefonę"
-  ],
-  "Pluton": [
-   "Plutona",
-   "Plutonem",
-   "Plutonie",
-   "Plutonowi"
   ],
   "Prospero": [
    "Prospera",

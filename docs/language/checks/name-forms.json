@@ -32,6 +32,17 @@
     "homographs": [],
     "dropped": []
    },
+   "Айдоней": {
+    "forms": [
+     "Айдонея",
+     "Айдонею",
+     "Айдонеем",
+     "Айдонее"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
    "Акесий": {
     "forms": [
      "Акесия",
@@ -336,6 +347,17 @@
      "Вордсворту",
      "Вордсворте",
      "Вордсвортом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Гадес": {
+    "forms": [
+     "Гадеса",
+     "Гадесу",
+     "Гадесе",
+     "Гадесом"
     ],
     "dictionaryConfirms": [],
     "homographs": [],
@@ -780,22 +802,6 @@
     "homographs": [],
     "dropped": []
    },
-   "Меркурий": {
-    "forms": [
-     "Меркурия",
-     "Меркурию",
-     "Меркурием",
-     "Меркурии"
-    ],
-    "dictionaryConfirms": [
-     "Меркурия",
-     "Меркурию",
-     "Меркурием",
-     "Меркурии"
-    ],
-    "homographs": [],
-    "dropped": []
-   },
    "Меркуцио": {
     "forms": [],
     "dictionaryConfirms": [],
@@ -883,17 +889,6 @@
     "homographs": [],
     "dropped": []
    },
-   "Орк": {
-    "forms": [
-     "Орка",
-     "Орку",
-     "Орке",
-     "Орком"
-    ],
-    "dictionaryConfirms": [],
-    "homographs": [],
-    "dropped": []
-   },
    "Офелия": {
     "forms": [
      "Офелии",
@@ -976,22 +971,6 @@
    "Перси": {
     "forms": [],
     "dictionaryConfirms": [],
-    "homographs": [],
-    "dropped": []
-   },
-   "Плутон": {
-    "forms": [
-     "Плутона",
-     "Плутону",
-     "Плутоне",
-     "Плутоном"
-    ],
-    "dictionaryConfirms": [
-     "Плутона",
-     "Плутону",
-     "Плутоне",
-     "Плутоном"
-    ],
     "homographs": [],
     "dropped": []
    },
@@ -2255,22 +2234,6 @@
      "Persefony",
      "Persefoną",
      "Persefonę"
-    ],
-    "homographs": [],
-    "dropped": []
-   },
-   "Pluton": {
-    "forms": [
-     "Plutona",
-     "Plutonem",
-     "Plutonie",
-     "Plutonowi"
-    ],
-    "dictionaryConfirms": [
-     "Plutona",
-     "Plutonem",
-     "Plutonie",
-     "Plutonowi"
     ],
     "homographs": [],
     "dropped": []

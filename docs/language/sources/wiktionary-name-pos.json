@@ -966,18 +966,6 @@
     ],
     "ordinary": null
    },
-   "Pluto": {
-    "pages": [
-     {
-      "asked": "pluto",
-      "title": "pluto",
-      "revid": 95361117,
-      "pos": null,
-      "senses": []
-     }
-    ],
-    "ordinary": null
-   },
    "Poe": {
     "pages": [
      {
@@ -8197,33 +8185,6 @@
     ],
     "ordinary": null
    },
-   "Pluton": {
-    "pages": [
-     {
-      "asked": "pluton",
-      "title": "pluton",
-      "revid": 95556865,
-      "pos": [
-       "Etymology 1",
-       "Etymology 2",
-       "Further reading",
-       "Noun",
-       "Pronunciation"
-      ],
-      "senses": [
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ]
-      ]
-     }
-    ],
-    "ordinary": "pluton"
-   },
    "Poe": {
     "pages": [
      {
@@ -8427,6 +8388,15 @@
     "pages": [
      {
       "asked": "айдес",
+      "page": null
+     }
+    ],
+    "ordinary": null
+   },
+   "Айдоней": {
+    "pages": [
+     {
+      "asked": "айдоней",
       "page": null
      }
     ],
@@ -8690,6 +8660,15 @@
     "pages": [
      {
       "asked": "вордсворт",
+      "page": null
+     }
+    ],
+    "ordinary": null
+   },
+   "Гадес": {
+    "pages": [
+     {
+      "asked": "гадес",
       "page": null
      }
     ],
@@ -9131,31 +9110,6 @@
     ],
     "ordinary": null
    },
-   "Меркурий": {
-    "pages": [
-     {
-      "asked": "меркурий",
-      "title": "меркурий",
-      "revid": 92725471,
-      "pos": [
-       "Declension",
-       "Noun",
-       "Pronunciation"
-      ],
-      "senses": [
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ]
-      ]
-     }
-    ],
-    "ordinary": "меркурий"
-   },
    "Меркуцио": {
     "pages": [
      {
@@ -9238,50 +9192,6 @@
      }
     ],
     "ordinary": null
-   },
-   "Орк": {
-    "pages": [
-     {
-      "asked": "орк",
-      "title": "орк",
-      "revid": 92286031,
-      "pos": [
-       "Antonyms",
-       "Coordinate terms",
-       "Declension",
-       "Derived terms",
-       "Etymology",
-       "Noun",
-       "Pronunciation",
-       "References",
-       "See also",
-       "Usage notes"
-      ],
-      "senses": [
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ],
-       [
-        "Noun",
-        "word"
-       ]
-      ]
-     }
-    ],
-    "ordinary": "орк"
    },
    "Офелия": {
     "pages": [
@@ -9371,27 +9281,6 @@
      }
     ],
     "ordinary": null
-   },
-   "Плутон": {
-    "pages": [
-     {
-      "asked": "плутон",
-      "title": "плутон",
-      "revid": 44364794,
-      "pos": [
-       "Declension",
-       "Noun",
-       "Pronunciation"
-      ],
-      "senses": [
-       [
-        "Noun",
-        "word"
-       ]
-      ]
-     }
-    ],
-    "ordinary": "плутон"
    },
    "По": {
     "pages": [
@@ -16086,15 +15975,6 @@
     ],
     "ordinary": null
    },
-   "플루톤": {
-    "pages": [
-     {
-      "asked": "플루톤",
-      "page": null
-     }
-    ],
-    "ordinary": null
-   },
    "하데스": {
     "pages": [
      {
@@ -16533,18 +16413,6 @@
     ],
     "ordinary": null
    },
-   "Jupiter": {
-    "pages": [
-     {
-      "asked": "jupiter",
-      "title": "jupiter",
-      "revid": 95541256,
-      "pos": null,
-      "senses": []
-     }
-    ],
-    "ordinary": null
-   },
    "Keats": {
     "pages": [
      {
@@ -16875,18 +16743,6 @@
      {
       "asked": "uylixơ",
       "page": null
-     }
-    ],
-    "ordinary": null
-   },
-   "Venus": {
-    "pages": [
-     {
-      "asked": "venus",
-      "title": "venus",
-      "revid": 95633758,
-      "pos": null,
-      "senses": []
      }
     ],
     "ordinary": null

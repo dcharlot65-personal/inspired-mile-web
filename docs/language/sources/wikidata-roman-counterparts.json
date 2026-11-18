@@ -1,0 +1,280 @@
+{
+ "source": "Wikidata (wbgetentities): P460 \"said to be the same as\", P31 \"instance of\" Q11688446 \"Roman deity\"",
+ "fetched": "2026-11-18",
+ "licence": "CC0 1.0",
+ "characters": {
+  "aphrodite": {
+   "id": "Q35500",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q47652",
+     "lastrevid": null,
+     "labels": {
+      "ar": "فينوس",
+      "de": "Venus",
+      "en": "Venus",
+      "es": "Venus",
+      "fr": "Vénus",
+      "hi": "वीनस (पुराण)",
+      "id": "Venus",
+      "it": "Venere",
+      "ja": "ウェヌス",
+      "ko": "베누스",
+      "pl": "Wenus",
+      "pt": "Vénus",
+      "pt-br": "Vênus",
+      "ru": "Венера",
+      "th": "วีนัส",
+      "vi": "Venus",
+      "zh": "维纳斯"
+     }
+    }
+   ]
+  },
+  "apollo": {
+   "id": "Q37340",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q900649",
+     "lastrevid": null,
+     "labels": {
+      "de": "Apollo",
+      "en": "Apollo",
+      "fr": "Apollon",
+      "ja": "アポロ",
+      "pl": "Apollo",
+      "ru": "Аполлон"
+     }
+    },
+    {
+     "id": "Q1199937",
+     "lastrevid": null,
+     "labels": {
+      "en": "Sol",
+      "es": "Sol",
+      "fr": "Sol",
+      "id": "Sol (mitologi Romawi)",
+      "it": "Sol",
+      "ja": "ソール",
+      "ko": "솔",
+      "pl": "Sol",
+      "ru": "Сол",
+      "vi": "Sol (thần thoại)",
+      "zh": "索尔"
+     }
+    },
+    {
+     "id": "Q126667656",
+     "lastrevid": null,
+     "labels": {
+      "en": "Bassoledulitanus",
+      "fr": "Bassoledulitanus"
+     }
+    },
+    {
+     "id": "Q126668139",
+     "lastrevid": null,
+     "labels": {
+      "en": "Kendrisos",
+      "fr": "Kendrisos"
+     }
+    },
+    {
+     "id": "Q126668730",
+     "lastrevid": null,
+     "labels": {
+      "en": "Pirunenus",
+      "fr": "Pirunenus"
+     }
+    },
+    {
+     "id": "Q126668982",
+     "lastrevid": null,
+     "labels": {
+      "en": "Dysprus",
+      "fr": "Dysprus"
+     }
+    }
+   ]
+  },
+  "athena": {
+   "id": "Q37122",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q126916",
+     "lastrevid": null,
+     "labels": {
+      "ar": "مينيرفا",
+      "de": "Minerva",
+      "en": "Minerva",
+      "es": "Minerva",
+      "fr": "Minerve",
+      "hi": "मिनर्वा",
+      "id": "Minerva",
+      "it": "Minerva",
+      "ja": "ミネルウァ",
+      "ko": "미네르바",
+      "pl": "Minerwa",
+      "pt": "Minerva",
+      "ru": "Минерва",
+      "th": "มิเนอร์วา",
+      "vi": "Minerva",
+      "zh": "弥涅耳瓦",
+      "zh-hans": "弥涅耳瓦"
+     }
+    }
+   ]
+  },
+  "hades": {
+   "id": "Q41410",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q152262",
+     "lastrevid": null,
+     "labels": {
+      "ar": "بلوتو",
+      "de": "Pluton",
+      "en": "Pluto",
+      "es": "Plutón",
+      "fr": "Pluton",
+      "id": "Pluto",
+      "it": "Plutone",
+      "ja": "プルートー",
+      "ko": "플루톤",
+      "pl": "Pluton",
+      "pt": "Plutão",
+      "pt-br": "Plutão",
+      "ru": "Плутон",
+      "th": "พลูโต",
+      "vi": "Pluto",
+      "zh": "普路托",
+      "zh-hans": "普路托"
+     }
+    },
+    {
+     "id": "Q1228338",
+     "lastrevid": null,
+     "labels": {
+      "ar": "ديس باتر",
+      "de": "Dis Pater",
+      "en": "Dis Pater",
+      "es": "Dis Pater",
+      "fr": "Dis Pater",
+      "id": "Dis Pater",
+      "it": "Dis Pater",
+      "ja": "ディス・パテル",
+      "ko": "디스 파테르",
+      "pl": "Dis Pater",
+      "pt": "Dīs Pater",
+      "ru": "Диспатер",
+      "zh": "迪佩特"
+     }
+    }
+   ]
+  },
+  "hermes": {
+   "id": "Q41484",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q1150",
+     "lastrevid": null,
+     "labels": {
+      "ar": "ميركوري",
+      "de": "Mercurius",
+      "en": "Mercury",
+      "es": "Mercurio",
+      "fr": "Mercure",
+      "hi": "मरक्युरी",
+      "id": "Merkurius",
+      "it": "Mercurio",
+      "ja": "メルクリウス",
+      "ko": "메르쿠리우스",
+      "pl": "Merkury",
+      "pt": "Mercúrio",
+      "pt-br": "Mercúrio",
+      "ru": "Меркурий",
+      "th": "เมอร์คิวรี",
+      "vi": "Mercury",
+      "zh": "墨丘利",
+      "zh-hans": "墨丘利"
+     }
+    }
+   ]
+  },
+  "persephone": {
+   "id": "Q45967",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q14515330",
+     "lastrevid": null,
+     "labels": {
+      "ar": "بروسربينا",
+      "de": "Proserpina",
+      "en": "Proserpina",
+      "es": "Proserpina",
+      "fr": "Proserpine",
+      "id": "Proserpine",
+      "it": "Proserpina",
+      "ja": "プロセルピナ",
+      "ko": "프로세르피나",
+      "pl": "Prozerpina",
+      "pt": "Proserpina",
+      "ru": "Прозерпина",
+      "zh": "普洛塞庇娜",
+      "zh-hans": "普洛塞庇娜"
+     }
+    },
+    {
+     "id": "Q2633166",
+     "lastrevid": null,
+     "labels": {
+      "de": "Libera",
+      "en": "Libera",
+      "es": "Libera",
+      "fr": "Libera",
+      "it": "Libera",
+      "ja": "リーベラ",
+      "pt": "Libera",
+      "ru": "Либера"
+     }
+    }
+   ]
+  },
+  "zeus": {
+   "id": "Q34201",
+   "lastrevid": null,
+   "roman": [
+    {
+     "id": "Q4649",
+     "lastrevid": null,
+     "labels": {
+      "ar": "يوبيتر",
+      "de": "Jupiter",
+      "en": "Jupiter",
+      "es": "Júpiter",
+      "fr": "Jupiter",
+      "hi": "जुपिटर",
+      "id": "Yupiter",
+      "it": "Giove",
+      "ja": "ユーピテル",
+      "ko": "유피테르",
+      "pl": "Jowisz",
+      "pt": "Júpiter",
+      "pt-br": "Júpiter",
+      "ru": "Юпитер",
+      "th": "จูปิเตอร์",
+      "vi": "Jupiter",
+      "zh": "朱庇特",
+      "zh-hans": "朱比特"
+     }
+    }
+   ]
+  }
+ }
+}

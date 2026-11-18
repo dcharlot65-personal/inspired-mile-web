@@ -502,8 +502,7 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "Hades",
    "aliases": [
-    "Aidoneo",
-    "Pluto"
+    "Aidoneo"
    ],
    "quote": "Todas las almas vienen a mí al final. Soy paciente.",
    "quoteSource": "new",

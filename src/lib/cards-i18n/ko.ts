@@ -499,7 +499,6 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "하데스",
    "aliases": [
-    "플루톤",
     "하이데스"
    ],
    "quote": "모든 영혼은 끝내 내게로 온다. 나는 참을성이 있다.",

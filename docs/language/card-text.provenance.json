@@ -1038,7 +1038,13 @@
      "name": {
       "text": "Hades",
       "source": "wikidata",
-      "detail": "Q41410 label (es)"
+      "detail": "Q41410 label (es)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Pluto",
+        "why": "the name of Pluto (Q152262), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "Todas las almas vienen a mí al final. Soy paciente.",
@@ -7202,7 +7208,13 @@
      "name": {
       "text": "Hades",
       "source": "wikidata",
-      "detail": "Q41410 label (pl)"
+      "detail": "Q41410 label (pl)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Pluton",
+        "why": "the name of Pluto (Q152262), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "Wszystkie dusze przychodzą w końcu do mnie. Jestem cierpliwy.",
@@ -8369,7 +8381,17 @@
      "name": {
       "text": "Аполлон",
       "source": "wikidata",
-      "detail": "Q37340 label (ru)"
+      "detail": "Q37340 label (ru)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Ἀπόλλων",
+        "why": "written in another script than the language's own"
+       },
+       {
+        "alias": "Μουσηγέτης",
+        "why": "written in another script than the language's own"
+       }
+      ]
      },
      "quote": {
       "text": "Я бог песни, исцеления и лучезарного солнца.",
@@ -8401,7 +8423,13 @@
      "name": {
       "text": "Гермес",
       "source": "wikidata",
-      "detail": "Q41484 label (ru)"
+      "detail": "Q41484 label (ru)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Меркурий",
+        "why": "the name of Mercury (Q1150), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "Быстрый, как мысль, я несу слова богов к ушам смертных.",
@@ -8418,7 +8446,27 @@
       "aliasesNotTaken": [
        {
         "alias": "Дит",
-        "why": "Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself (Плутон, from the Greek Πλούτων, is one); three letters, and Russian «Дитя» (\"child\") begins with it"
+        "why": "Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself; three letters, and Russian «Дитя» (\"child\") begins with it"
+       },
+       {
+        "alias": "Плутон",
+        "why": "the name of Pluto (Q152262), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       },
+       {
+        "alias": "Орк",
+        "why": "Orcus, a Roman god of the dead whom Rome identified with Hades, as with Dis Pater («Дит», above), not a name of Hades himself; Wikidata does not link him to Hades, so the counterpart rule cannot see him. Russian «орк» is also \"orc\" (Wiktionary, oldid 92286031) and «Орка» an orca"
+       },
+       {
+        "alias": "Ἀΐδης",
+        "why": "written in another script than the language's own"
+       },
+       {
+        "alias": "ᾍδης",
+        "why": "written in another script than the language's own"
+       },
+       {
+        "alias": "Ἀϊδωνεύς",
+        "why": "written in another script than the language's own"
        }
       ]
      },
@@ -13583,7 +13631,13 @@
      "name": {
       "text": "하데스",
       "source": "wikidata",
-      "detail": "Q41410 label (ko)"
+      "detail": "Q41410 label (ko)",
+      "aliasesNotTaken": [
+       {
+        "alias": "플루톤",
+        "why": "the name of Pluto (Q152262), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "모든 영혼은 끝내 내게로 온다. 나는 참을성이 있다.",
@@ -14515,7 +14569,13 @@
      "name": {
       "text": "Zeus",
       "source": "wikidata",
-      "detail": "Q34201 label (vi)"
+      "detail": "Q34201 label (vi)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Jupiter",
+        "why": "the name of Jupiter (Q4649), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "Ta là kẻ gom mây, chúa tể của bầu trời rộng lớn.",
@@ -14554,7 +14614,13 @@
      "name": {
       "text": "Aphrodite",
       "source": "wikidata",
-      "detail": "Q35500 label (vi)"
+      "detail": "Q35500 label (vi)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Venus",
+        "why": "the name of Venus (Q47652), the Roman god Wikidata says is the same as this one (P460), whom English names otherwise"
+       }
+      ]
      },
      "quote": {
       "text": "Ngay cả các vị thần cũng không cưỡng nổi sức mạnh của tình yêu.",
