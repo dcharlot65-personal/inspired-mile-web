@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { MODELS, usedAnywhere } from '../src/lib/brain';
+import { setLists, standInModel, stubCount } from './stand-in-model';
 
 /**
  * The verse duel, played end to end against the written opponent.
@@ -272,11 +273,66 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
 });
 
 /**
+ * Who writes and who judges, as the page shows it and plays it, in the duel's language. The model
+ * is a stand-in that answers the judge's next-token reading (so the page's own referee runs and a
+ * round is judged "by the model") and counts every verse it is asked to write. The lists are set
+ * here, in the page's own brain module, so the page's gates are tested whatever the measured lists
+ * hold: the badge, the note under the picker, whether the model is asked to write, and the line
+ * under the verdict.
+ */
+test.describe('Who writes and who judges, in the duel\'s language', () => {
+  test.use({ serviceWorkers: 'block' });
+  const VERSE: Record<string, string> = {
+    en: 'The night is cold and clear\nI sing of what was here',
+    de: 'Die Nacht ist kalt und klar\nich singe, was einst war',
+    fr: 'La nuit descend sur la mer\net je chante dans les airs',
+  };
+  // Gemma writes English only and judges German only, here.
+  const CASES = [
+    { lang: 'en', writes: true, judges: false, badge: 'Gemma 4 E2B · on this device', verdict: 'English: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.' },
+    { lang: 'de', writes: false, judges: true, badge: 'Written opponent · judged by Gemma 4 E2B', verdict: 'Judged by Gemma 4 E2B on this device, reading the verses in both orders.' },
+    { lang: 'fr', writes: false, judges: false, badge: 'Written opponent', verdict: 'French: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.' },
+  ];
+  for (const c of CASES) {
+    test(`${c.lang}: the model ${c.writes ? 'writes' : 'does not write'} and ${c.judges ? 'judges' : 'does not judge'}, and the page says so`, async ({ page }) => {
+      await standInModel(page);
+      await page.goto('/battle?brain=grand&seed=11');
+      await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B is loaded');
+      await setLists(page, 'grand', ['en'], ['de']);
+      await page.selectOption('#language', c.lang);
+      await expect(page.locator('#ai-model-badge')).toHaveText(c.badge);
+      await expect(page.locator('#language-note')).toHaveAttribute('data-writer', c.writes ? 'model' : 'written');
+      await expect(page.locator('#language-note')).toHaveAttribute('data-judge', c.judges ? 'model' : 'rules');
+
+      await page.click('#start-duel');
+      await expect(page.locator('#battle-arena')).toBeVisible();
+      await expect(page.locator('#opponent-verse')).toHaveAttribute('data-source', /written|model/, { timeout: 60_000 });
+      const wrote = (await stubCount(page)).generations;
+      if (c.writes) expect(wrote, 'drafts the model was asked to write').toBeGreaterThan(0);
+      else expect(wrote, 'drafts the model was asked to write').toBe(0);
+      await expect(page.locator('#ai-model-badge')).toHaveText(c.badge);
+
+      await page.click('[data-char-id]:not(.pointer-events-none)');
+      await page.fill('#verse-input', VERSE[c.lang]);
+      await page.click('#submit-verse');
+      const verdict = page.locator('#verdict');
+      await expect(verdict).toBeVisible({ timeout: 60_000 });
+      await expect(verdict).toContainText(c.verdict);
+      const read = (await stubCount(page)).readings;
+      if (c.judges) expect(read, 'readings asked of the model').toBe(8);
+      else expect(read, 'readings asked of the model').toBe(0);
+    });
+  }
+});
+
+/**
  * The model panel offers only models measured to write or judge in some language
  * (docs/language/MODEL-EVAL.md). The browser is made to report a GPU; no model is
  * downloaded, because nothing is clicked and no earlier choice is stored.
  */
 test.describe('Model panel', () => {
+  // The stand-in model library is served by page.route, which a service worker would go round.
+  test.use({ serviceWorkers: 'block' });
   const fakeDevice = (page: Page, handheld: boolean) =>
     page.addInitScript((h) => {
       Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
@@ -303,6 +359,32 @@ test.describe('Model panel', () => {
       for (const t of runnable) if (!usedAnywhere(MODELS[t])) await expect(page.locator('#brain-choices')).not.toContainText(MODELS[t].label);
     });
   }
+
+  // brain.ts rememberedModel: a page loads on its own only the model the visitor chose before, and
+  // only while this device is offered it; never another download in its place.
+  test('a stored choice reloads that same model, and a choice this device is not offered loads nothing', async ({ page, context }) => {
+    const desktop = async (p: Page, stored: string) => {
+      await standInModel(p);
+      await p.addInitScript((c) => {
+        Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => 16 });
+        localStorage.setItem('inspired-mile-brain', c);
+      }, stored);
+      await p.goto('/battle?seed=11');
+    };
+    // LFM2.5 is never offered to a desktop with memory to spare: nothing loads, the visitor is asked.
+    await desktop(page, 'lite');
+    await expect(page.locator('#brain-status')).not.toHaveText(/Checking/);
+    await page.waitForTimeout(1500);
+    expect((await stubCount(page)).loads).toEqual([]);
+    await expect(page.locator('#brain-status')).not.toContainText('is loaded');
+    for (const m of [MODELS.grand, MODELS.standard].filter(usedAnywhere)) {
+      const p = await context.newPage();
+      await desktop(p, m.tier);
+      await expect(p.locator('#brain-status')).toContainText(`${m.label} is loaded`);
+      expect((await stubCount(p)).loads, `stored ${m.tier}`).toEqual([m.id]);
+      await p.close();
+    }
+  });
 });
 
 /**

@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 import { lineBreakFault } from '../src/lib/xr/line-break';
+import { MODELS, usedAnywhere } from '../src/lib/brain';
+import { setLists, standInModel, stubCount } from './stand-in-model';
 
 /**
  * The 3D theatre. The scene is a canvas, so these tests drive it the way a
@@ -205,4 +207,60 @@ test.describe('Theatre', () => {
       expect(sweptFaults.slice(0, 5)).toEqual([]);
     });
   }
+});
+
+/**
+ * The theatre's judging line, which the verdict panel shows, follows the loaded model's lists for
+ * the duel's language: "judged by" the model only where it judges, and where it does not, the
+ * rules, with the reason. The model is the stand-in of stand-in-model.ts (it answers the judge's
+ * reading and counts each one); the lists are set here, in the page's own brain module. The
+ * theatre loads only a model the player already chose (brain.ts rememberedModel), and a choice of
+ * a model it is not offered loads nothing.
+ */
+test.describe('Theatre: who judges', () => {
+  test.use({ serviceWorkers: 'block' });
+
+  test("the verdict panel's judging line follows the lists for the duel's language", async ({ page }) => {
+    test.skip(!usedAnywhere(MODELS.grand), 'Gemma 4 E2B is used in no language (the measured lists), so the theatre loads no model at all');
+    await standInModel(page);
+    await page.addInitScript(() => {
+      localStorage.setItem('inspired-mile-brain', 'grand');
+      localStorage.setItem('inspired-mile-duel-lang', 'en');
+    });
+    await page.goto('/theatre?seed=11');
+    await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn', undefined, { timeout: 60_000 });
+    await expect(page.locator('#theatre-status')).toContainText('Gemma 4 E2B');
+    const verses = ['Who dares to stand upon my stage?\nI put the question to thy rage', 'The night is cold and clear\nI sing of what was here'];
+    const cases = [
+      { judges: true, line: 'Judged by Gemma 4 E2B on this device.' },
+      { judges: false, line: 'English: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.' },
+    ];
+    for (const [i, c] of cases.entries()) {
+      await setLists(page, 'grand', [], c.judges ? ['en'] : []);
+      const before = (await stubCount(page)).readings;
+      const id = await page.evaluate((k) => (window as any).__theatre.session.duel.player.characters[k], i);
+      await page.evaluate((x) => (window as any).__theatre.act({ type: 'character', id: x }), id);
+      await page.fill('#typed-verse', verses[i]);
+      await page.evaluate(() => (window as any).__theatre.act({ type: 'submit' }));
+      await page.waitForFunction(() => (window as any).__theatre.session.phase === 'verdict', undefined, { timeout: 60_000 });
+      const panel = await page.evaluate(() => (window as any).__theatre.theatre.panels.verdict.text.text as string);
+      expect(panel, `round ${i + 1}`).toContain(c.line);
+      expect((await stubCount(page)).readings - before, `round ${i + 1}: readings asked of the model`).toBe(c.judges ? 8 : 0);
+      await page.evaluate(() => (window as any).__theatre.act({ type: 'next' }));
+      await page.waitForFunction(() => (window as any).__theatre.session.phase === 'player-turn', undefined, { timeout: 60_000 });
+    }
+  });
+
+  test('a stored choice of a model this device is not offered loads nothing', async ({ page }) => {
+    await standInModel(page);
+    // A desktop with memory to spare is offered Gemma and LFM3, never LFM2.5.
+    await page.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => 16 });
+      localStorage.setItem('inspired-mile-brain', 'lite');
+    });
+    await page.goto('/theatre?seed=11');
+    await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn', undefined, { timeout: 60_000 });
+    expect((await stubCount(page)).loads).toEqual([]);
+    await expect(page.locator('#theatre-status')).not.toContainText('LFM');
+  });
 });
