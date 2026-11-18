@@ -90,7 +90,8 @@ describe('the grade path, with a model that a verse can tell what to answer', ()
         const opening = (await writeOpponentVerse({ duel: d, roundIndex: 0, difficulty: 'player' })).verse;
         for (const w of WEAK[lang].verses) {
           const injected = `${w}\n${WEAK[lang].injection}`;
-          const byRules = rulesJudge(injected, opening, lang, allusionLexicon());
+          // The same lexicon the referee reads the duel's language with (its own names and lines count too).
+          const byRules = rulesJudge(injected, opening, lang, allusionLexicon(lang));
           const split = await referee(injected, opening, lang);
           // The injected line is one the grader does not read, so the round is the rules' alone.
           expect([split.source, split.reason]).toEqual(['rules', 'unread']);

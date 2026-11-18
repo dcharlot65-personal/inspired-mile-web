@@ -10,7 +10,7 @@ import type { JudgeSplit } from './duel';
 import {
   CRITERIA, GRADE_ANSWERS, boundedByRules, combineMargins, compareMessages, expectedGrade, gradeMessages, judgeLines, rulesJudge, type Margins,
 } from './judge';
-import { localCharacterNames, localSignatureWords } from './echo';
+import { localCharacterNames, localSignatureWords, wordKey } from './echo';
 import { baseLang } from './lang';
 import { languageName } from './opponent';
 import { STOP_WORDS, fold, letterCount, wordsOf } from './text';
@@ -20,7 +20,8 @@ import { STOP_WORDS, fold, letterCount, wordsOf } from './text';
  * character is called by, and the telling words of every card's line. Everyday
  * words in those lines ("that", "this", "with", "have") are not allusions.
  * In a language that has its own names and lines for the cards (src/lib/cards-i18n, loaded with
- * the language pack) those count as well as the English ones.
+ * the language pack) those count as well as the English ones, keyed as the judge reads the verse
+ * (echo.ts wordKey: a Vietnamese word keeps its tone, so "đêm" is not every toneless "dem").
  */
 const lexicons = new Map<string, Set<string>>();
 export function allusionLexicon(lang = 'en'): Set<string> {
@@ -37,9 +38,9 @@ export function allusionLexicon(lang = 'en'): Set<string> {
     for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
   }
   if (b !== 'en') {
-    for (const c of CARD_CATALOG) for (const w of localSignatureWords(c, b)) lexicon.add(fold(w));
+    for (const c of CARD_CATALOG) for (const w of localSignatureWords(c, b)) lexicon.add(wordKey(w, b));
     // One-word names only: a longer name's titles (Russian «граф») are not allusions by themselves.
-    for (const n of localCharacterNames(b)) if (wordsOf(n, b).length === 1) lexicon.add(fold(n));
+    for (const n of localCharacterNames(b)) if (wordsOf(n, b).length === 1) lexicon.add(wordKey(n, b));
   }
   if (ready) lexicons.set(b, lexicon);
   return lexicon;
