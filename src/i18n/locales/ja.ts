@@ -360,7 +360,7 @@ const ja: Record<string, string> = {
   'void.label': '得点なし',
   'void.thin': '詩と呼ぶには少なすぎます。もっと多くの異なる語が必要です',
   'void.copied': '相手の詩から取ったものです。返しは自分の言葉で書いてください',
-  'live.judgeUnread': '採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、このラウンドはルールだけで判定されます。',
+  'live.judgeUnread': '採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、この回はルールだけで判定されます',
   'signature.none': 'このカードにはシグネチャーの台詞がありません',
   'signature.hint': '次のどれかを響かせてください：{words}',
   'signature.hintTwo': '次のうち二つを響かせてください：{words}',

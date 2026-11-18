@@ -360,7 +360,7 @@ const pt: Record<string, string> = {
   'void.label': 'Não pontua',
   'void.thin': 'pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes',
   'void.copied': 'tirada da outra estrofe: uma resposta precisa ser sua',
-  'live.judgeUnread': 'Versos que o modelo avaliador não vai ler: {lines}. Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras.',
+  'live.judgeUnread': 'Linhas que o modelo avaliador não vai ler: {lines}. Toda linha com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras',
   'signature.none': 'esta carta não tem fala de assinatura',
   'signature.hint': 'ecoe uma destas: {words}',
   'signature.hintTwo': 'ecoe duas destas: {words}',

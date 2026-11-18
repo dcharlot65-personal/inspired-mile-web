@@ -360,7 +360,7 @@ const vi: Record<string, string> = {
   'void.label': 'Không được điểm',
   'void.thin': 'quá ít để thành một bài thơ: cần thêm những từ khác nhau',
   'void.copied': 'lấy từ bài thơ của đối thủ: câu đáp phải là của chính bạn',
-  'live.judgeUnread': 'Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và hiệp này khi đó chỉ do luật phân định.',
+  'live.judgeUnread': 'Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và vòng này khi đó chỉ do luật phân định',
   'signature.none': 'lá bài này không có câu thoại dấu ấn',
   'signature.hint': 'gợi lại một trong các từ: {words}',
   'signature.hintTwo': 'gợi lại hai trong các từ: {words}',
