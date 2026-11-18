@@ -281,7 +281,16 @@ written as soon as it finished.
   (a stand-in model library that fails the models it names) was green where it had been red: LFM3
   chosen and failing, nothing else is loaded and `loadBrain` reports the failure; Gemma chosen and
   failing, LFM3 (used in Vietnamese) is loaded; with `loadOrder` put back as it was, the probe went
-  red again, LFM2.5 350M loaded. (The checker's fourth,
+  red again, LFM2.5 350M loaded. Since then the rules that bound the grade path are derived with
+  the referee's own function (`rulesSplit`), not a copy of its call: a scratch merge with
+  lang/names-quotes, whose allusion lexicon follows the duel's language, showed the copy would have
+  stayed green while 96 stored grade-path pairs no longer followed from their readings.
+  `mutate-gates.mjs` breaks `rulesSplit` two ways (the rules read the other way round, no lexicon)
+  and both turn the derivation red. Because such a change alters nothing the model answered,
+  `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.judge.test.ts` derives every stored verdict
+  again from its reading and writes it back; with `GRADE_MARGIN` moved it rewrote one LFM2.5
+  verdict and the derivation went green, and a pair with no reading failed it, or with
+  `MEVAL_SET_ASIDE=1` set its cell aside. (The checker's fourth,
   `GRADE_SPLIT_BELOW`, no longer reaches any verdict: `combineGrades` is used only by tests since
   the integration's grade path.)
 - **The repeat control below was run on the cells before the integration.** It was not repeated on
@@ -1032,12 +1041,17 @@ which is stated per tool; no tool certifies tone.
   language without a cell is unsupported for that model, not assumed to work.
   `scripts/model-eval/run.mjs` skips finished cells and measures set-aside ones; after it,
   `judge-code.mjs` and the fingerprint (CLAUDE.md), `analyze.mjs`, `copy-lists.mjs`, then the tests.
-- **The real models in the browser after the integration: one spec only.** On 2026-11-18 only
+- **The real models in the browser after the integration: four specs.** On 2026-11-18,
   `tests/model/duel-model.spec.ts` ran with the real models (above: 6 of 6, after a fix to the
-  test). The other real-model specs (`judge-compare`, `grade-injection`, `judge-hide`,
-  `judge-unread`, `opponent-prompt`, `ear`) belong to the rules and phonetics work and were not run
-  from this branch. What the pages do with a loaded model is tested with a stand-in model library
-  (above), and what the models do is these cells.
+  test), and again at `6b952ee8` (Studio, `GRADE_EVAL_PROFILE` the evaluation's own browser profile)
+  with the three this branch changes, which now call `modelJudge` so that they still test the model
+  path in a language the model is not listed for: `duel-model` 6 of 6; `judge-hide` 3 of 3 (every
+  round model-judged for Gemma and LFM3, and for LFM2.5 the 20 rounds with a digit in every line all
+  the rules'); `grade-injection` 1 of 1; `judge-unread` skipped as it now should be, since LFM2.5
+  350M judges no language, so the game shows that row in none. The other real-model specs
+  (`judge-compare`, `opponent-prompt`, `ear`) belong to the rules and phonetics work and were not
+  run from this branch. What the pages do with a loaded model is tested with a stand-in model
+  library (above), and what the models do is these cells.
 - **The repeat control covers two languages, and only the old cells** (above).
 - **How well a model ranks two decent verses.** The worse verse of each pair is plainly worse:
   prose, an interface string, shuffled letters or an injection. Passing shows a judge can tell
