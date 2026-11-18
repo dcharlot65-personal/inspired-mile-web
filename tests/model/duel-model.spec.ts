@@ -42,15 +42,30 @@ for (const tier of TIERS) {
     await expect(page.locator('#brain-status')).toContainText(LABEL[tier]);
     const loadSeconds = Math.round((Date.now() - t0) / 1000);
 
+    // Every text the opponent's box shows before the verse. "… is composing" is shown only while the
+    // model is asked for drafts (session.ts `drafting`); without a model the box shows "…" and then
+    // the written verse.
+    await page.evaluate(() => {
+      const el = document.getElementById('opponent-verse')!;
+      const seen: string[] = ((window as any).__opponentTexts = [el.textContent ?? '']);
+      new MutationObserver(() => seen.push(el.textContent ?? '')).observe(el, { childList: true, characterData: true, subtree: true });
+    });
     const t1 = Date.now();
     await page.click('#start-duel');
     const verse = page.locator('#opponent-verse');
     await expect(verse).toHaveAttribute('data-source', /model|written/, { timeout: 3 * 60 * 1000 });
     const opening = await verse.innerText();
     const writeSeconds = Math.round((Date.now() - t1) / 1000);
-    // The model writes the verse itself only in a language it has been shown to write in.
+    // The model is asked to write only in a language it has been shown to write in. Where it is asked,
+    // the game still plays the written verse when the model's best draft is void or worth under half
+    // of it (opponent.ts, since the integration), so either source is right there; elsewhere the
+    // verse must be the written one.
     const spec = MODELS[tier as keyof typeof MODELS];
-    expect(await verse.getAttribute('data-source')).toBe(spec.writesIn.includes('en') ? 'model' : 'written');
+    const shown: string[] = await page.evaluate(() => (window as any).__opponentTexts);
+    const composing = shown.filter((text) => / is composing…/.test(text));
+    expect(composing.length > 0, `the model was asked for drafts (the box showed: ${JSON.stringify([...new Set(shown)].slice(0, 6))})`).toBe(spec.writesIn.includes('en'));
+    const source = await verse.getAttribute('data-source');
+    if (!spec.writesIn.includes('en')) expect(source).toBe('written');
     expect(opening.trim().length).toBeGreaterThan(10);
 
     await page.click('[data-char-id]:not(.pointer-events-none)');
@@ -65,6 +80,7 @@ for (const tier of TIERS) {
 
     console.log(`\n[${tier}] load ${loadSeconds}s | opening verse ${writeSeconds}s | judging ${judgeSeconds}s`);
     console.log(`[${tier}] form: ${await page.locator('#form-name').innerText()} | opponent: ${await page.locator('#opponent-name').innerText()}`);
+    console.log(`[${tier}] drafts asked: ${[...new Set(composing)].join(' / ') || 'none'} | verse played: ${source}`);
     console.log(`[${tier}] opening verse:\n${opening}`);
     console.log(`[${tier}] verdict: ${(await page.locator('#verdict').innerText()).replace(/\n+/g, ' | ').slice(0, 700)}`);
     expect(errors, errors.join('\n')).toEqual([]);
