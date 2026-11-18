@@ -772,11 +772,14 @@ against the checks.
   second pass): **65 of 65 caught**, 54 against the unit tests (the three files green before any
   mutation) and 11 against the browser tests.
 - **Third pass** (Studio, 2026-11-17): twelve mutations added for the second checker's findings
-  and the merge (French and Portuguese "many" copied from "other", a saved CLDR pair that stops
-  joining with *de*, the Korean particle hedge and the wrong particle after the link, Spanish RV
-  and French RA beside the core's VR, bare งาน in the Thai error, a merged sign-in code without its
-  Japanese sentence, the "DB error" text back in the table, Japanese lines breaking anywhere).
-  **77 of 77 caught**: 65 unit, 12 browser. The API error test, run on the bare merge commit,
+  and the merge, ten against the unit tests (French and Portuguese "many" copied from "other", a
+  saved CLDR pair that stops joining with *de*, the Korean particle hedge and the wrong particle
+  after the link, Spanish RV and French RA beside the core's VR, bare งาน in the Thai error, a
+  merged sign-in code without its Japanese sentence, the "DB error" text back in the table) and two
+  against the browser tests (Japanese lines breaking anywhere, Korean lines breaking between
+  syllables). First run, before the Korean one existed: 76 of 76 caught (64 unit, 12 browser).
+  Last run, after every change: **77 of 77 caught** (64 unit with the date mutation, 13 browser;
+  the three unit files green before any mutation). The API error test, run on the bare merge commit,
   was red and named all 64 missing sentences and the stale "DB error" entry. The Japanese line
   test, run with the stylesheet rule taken out, named six breaks at 390 px (among them チャ|レンジ
   in the classroom intro) and three at 1280 px (カ|ード in the marketplace intro, the checker's
