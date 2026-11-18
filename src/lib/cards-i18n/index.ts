@@ -189,8 +189,38 @@ export function cardNameInText(card: Card, lang: string): string {
   if (!quotes || !pack || !text?.name || text.nameSource === 'missing') return /^The\s/.test(name) && quotes ? quotes[0] + name + quotes[1] : name;
   const words = name.split(/\s+/);
   const head = (w: string) => w.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().slice(0, 3);
-  const titled = b !== 'de' && words.length > 1 && (pack.common ?? []).includes(words[0]) && head(words[0]) !== head(card.name.split(/\s+/)[0]);
+  const titled = b !== 'de' && words.length > 1 && (pack.common ?? []).includes(words[0]) && head(words[0]) !== head(card.name.split(/\s+/)[0])
+    && !NO_ARTICLE[b]?.includes(words[0]);
   return card.type !== 'Character' || /^The\s/.test(card.name) || titled ? quotes[0] + name + quotes[1] : name;
+}
+
+/**
+ * Forms of address these languages put before a name with no article, so a name that begins with one needs no
+ * quotation marks: a religious's (Spanish fray, Italian frate and fra, French frère, Portuguese frei) and the old
+ * courtly ones (Italian messer, madonna; don and doña, dom and dona). Written out here by hand from the languages'
+ * usage, not fetched (es «la frase de Fray Lorenzo», it «la battuta di Messer Montecchi», fr «la réplique de Frère
+ * Laurence»); a title that takes the article (príncipe, conde, re, conte, comte, senhor) keeps its marks.
+ */
+const NO_ARTICLE: Record<string, string[]> = {
+  es: ['Fray', 'Sor', 'Don', 'Doña'],
+  it: ['Frate', 'Fra', 'Messer', 'Madonna', 'Don', 'Donna'],
+  fr: ['Frère', 'Sœur', 'Dom'],
+  pt: ['Frei', 'Dom', 'Dona'],
+};
+
+const CARD_MARK = String.fromCharCode(0xfffc);
+
+/**
+ * A sentence of the interface with a card's name in it (`sentence` puts its argument where {card} goes). The name is
+ * cardNameInText's; and French elides de and que before a name that begins with a vowel or a mute h (la réplique
+ * d’Ophélie, d’Horatio; not de Ophélie), which the sentences, written for any name, cannot do themselves. A name set
+ * in quotation marks, or one that begins with a consonant (Yorick's Y is one), is left after de.
+ */
+export function withCardName(sentence: (card: string) => string, card: Card, lang: string): string {
+  const name = cardNameInText(card, lang);
+  let text = sentence(CARD_MARK);
+  if (base(lang) === 'fr' && /^[aeiouàâäéèêëîïôöùûüœæh]/iu.test(name)) text = text.replace(new RegExp(`\\b(d|qu)e ${CARD_MARK}`, 'giu'), `$1’${CARD_MARK}`);
+  return text.split(CARD_MARK).join(name);
 }
 
 /**

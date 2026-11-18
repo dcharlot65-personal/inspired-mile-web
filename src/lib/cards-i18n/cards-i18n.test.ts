@@ -9,6 +9,7 @@ import { loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
 import {
   CARD_TEXT_LANGS, capitalised, cardName, cardNameInText, cardQuote, cardScene, cardTitle, elementName, getCardText, houseName, loadAllCardText, rarityName, typeName,
+  withCardName,
   type CardTextPack,
 } from './index';
 
@@ -446,6 +447,37 @@ describe('card names as the interface shows them', () => {
     expect(cardTitle(card('VC-004'), 'ru')).toBe('Граф Парис');
     expect(capitalised(ru['round.composing'].replace('{card}', cardNameInText(card('VC-004'), 'ru')), 'ru')).toBe('Граф Парис сочиняет…');
     expect(ru['verdict.roundTheirs'].replace('{card}', cardNameInText(card('VC-004'), 'ru'))).toBe('Раунд забирает граф Парис.');
+  });
+  // The third check (2026-11-17): a title these languages write with no article needs no quotation marks, and French
+  // put «de» before a vowel («la réplique de Ophélie»).
+  it('a religious’s or a courtly title takes no article, so no marks: Fray, Frate, Messer, Madonna, Frère', async () => {
+    expect(cardNameInText(card('VC-002'), 'es')).toBe(cardName(card('VC-002'), 'es'));
+    expect(cardName(card('VC-002'), 'es')).toMatch(/^Fray /u);
+    expect(cardNameInText(card('VC-002'), 'it')).toMatch(/^Frate /u);
+    expect(cardNameInText(card('MO-004'), 'it')).toMatch(/^Messer /u);
+    expect(cardNameInText(card('CA-003'), 'it')).toMatch(/^Madonna /u);
+    expect(cardNameInText(card('VC-002'), 'fr')).toBe('Frère Laurence');
+    // A title that takes the article keeps its marks.
+    expect(cardNameInText(card('VC-004'), 'it')).toMatch(/^«/u);
+    expect(cardNameInText(card('MO-004'), 'es')).toMatch(/^«/u);
+  });
+  it('French elides de before a name that begins with a vowel or a mute h, and only there', async () => {
+    const fr = (await import('../../i18n/locales/fr')).default;
+    const sig = (id: string) => withCardName((n) => fr['live.signature'].replace('{card}', n), card(id), 'fr');
+    const expected = (before: string) => fr['live.signature'].replace('de {card}', before);
+    expect(fr['live.signature']).toContain('la réplique de {card} sans');
+    expect(sig('DC-002')).toBe(expected('d’Ophélie'));
+    expect(sig('DC-004')).toBe(expected('d’Horatio'));
+    expect(sig('OL-007')).toBe(expected('d’Achille'));
+    expect(sig('MO-002')).toBe(expected('de Mercutio'));
+    expect(sig('RL-001')).toMatch(/réplique de «\u00a0/u); // a relic, in quotation marks
+    // Spanish has no elision: «de Ofelia».
+    const es = (await import('../../i18n/locales/es')).default;
+    expect(withCardName((n) => es['live.signature'].replace('{card}', n), card('DC-002'), 'es')).toContain('de Ofelia');
+    for (const c of CARD_CATALOG) {
+      const text = withCardName((n) => fr['live.signature'].replace('{card}', n), c, 'fr');
+      expect([c.id, /\bde [AEIOUÉÈÊÂÎÔŒH]/u.test(text)]).toEqual([c.id, false]);
+    }
   });
   it('a published line its edition begins mid-sentence is shown after an ellipsis', () => {
     expect(cardQuote(card('RL-007'), 'fr')).toBe('… je noierai mon livre');

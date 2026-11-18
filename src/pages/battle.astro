@@ -205,13 +205,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
-    import { capitalised, cardNameInText, cardTitle, loadCardText } from '../lib/cards-i18n';
+    import { capitalised, cardTitle, loadCardText, withCardName } from '../lib/cards-i18n';
+    import { listSeparator } from '../lib/verse/echo';
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
     /** A card's name in the interface language, standing alone (the English name where that language has none). */
     const titleOf = (card: Card) => cardTitle(card, locale());
-    /** A card's name inside a sentence: set off as a title where the language would need an article (cards-i18n cardNameInText). */
-    const nameIn = (card: Card) => cardNameInText(card, locale());
+    /**
+     * A sentence of the interface about a card: its name set off as a title where the language would need an article
+     * (cards-i18n cardNameInText), French de elided before it (d’Ophélie), and a capital first.
+     */
+    const aboutCard = (key: string, card: Card, params: Record<string, string | number> = {}) =>
+      said(withCardName((name) => t(key, { ...params, card: name }), card, locale()));
+    /** Words listed in a sentence, with the interface language's comma (Arabic ،, Chinese and Japanese 、). */
+    const listed = (words: string[]) => words.join(listSeparator(locale()));
     /** A sentence of the interface, which begins with a capital even when a name it starts with is written small (Russian «граф Парис»). */
     const said = (text: string) => capitalised(text, locale());
     const el = (tag: string, cls = '', text = '') => {
@@ -599,10 +606,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const card = getCardById(session.move.charId)!;
       list.appendChild(checkRow(s.device.met, t('live.device', { name: deviceName(s.device.id), brief: deviceBrief(s.device.id, lang) }), written ? s.device.detail : ''));
       // A void verse lands no signature; show what would echo the line all the same.
-      list.appendChild(checkRow(s.signature.met, said(t('live.signature', { card: nameIn(card) })), signatureText(s.signature)));
+      list.appendChild(checkRow(s.signature.met, aboutCard('live.signature', card), signatureText(s.signature)));
       if (s.powerWords) {
         const lent = session.duel.playerRelics[session.move.relicId!];
-        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words.join(', ') }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used.join(', ') }) : ''));
+        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: listed(lent.words) }), s.powerWords.used.length ? t('live.powerUsed', { words: listed(s.powerWords.used) }) : ''));
       }
       if (s.curse) {
         list.appendChild(checkRow(
@@ -617,7 +624,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // A model grades verses one at a time: the lines it will not read, and the word that leaves each out.
       const unread = session.judgeUnread();
       if (written && unread.length) {
-        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') }), '', 'crimson');
+        const row = checkRow(true, t('live.judgeUnread', { lines: listed(unread.map((u) => `${u.line} (${u.word})`)) }), '', 'crimson');
         row.id = 'live-judge-unread';
         list.appendChild(row);
       }
@@ -678,13 +685,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
         }
         if (!used && !cantPlay) b.addEventListener('click', () => { if (s.toggleItem(id)) playSfx('ui-click'); });
-        if (refused === 'potion-last-round' && !used) notes.push(said(t('hand.potionLastRound', { card: nameIn(card) })));
+        if (refused === 'potion-last-round' && !used) notes.push(aboutCard('hand.potionLastRound', card));
         items.appendChild(b);
       }
-      if (s.move.relicId) notes.push(said(t('hand.relicNote', { card: nameIn(getCardById(s.move.relicId)!), words: d.playerRelics[s.move.relicId].words.join(', ') })));
+      if (s.move.relicId) notes.push(aboutCard('hand.relicNote', getCardById(s.move.relicId)!, { words: listed(d.playerRelics[s.move.relicId].words) }));
       if (s.move.potionId) {
         const cast = d.playerCurses[s.move.potionId];
-        notes.push(said(t('hand.potionNote', { card: nameIn(getCardById(s.move.potionId)!), rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) })));
+        notes.push(aboutCard('hand.potionNote', getCardById(s.move.potionId)!, { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) }));
         // From the round that can decide the match, a potion may never get its verse to curse.
         if (s.potionAtRisk()) notes.push(t('hand.potionGamble'));
       }
@@ -714,7 +721,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const curse = $('opponent-curse');
       if (plan.opponent.curse) {
         const c = plan.opponent.curse;
-        curse.textContent = said(t('round.cursesYou', { card: nameIn(card), name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, s.duel.lang) }));
+        curse.textContent = aboutCard('round.cursesYou', card, { name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, s.duel.lang) });
         curse.classList.remove('hidden');
       } else curse.classList.add('hidden');
 
@@ -737,8 +744,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         verseEl.textContent = !s.drafting
           ? '…'
           : s.drafting.of > 1
-            ? said(t('round.composingDraft', { card: nameIn(card), n: s.drafting.draft, total: s.drafting.of }))
-            : said(t('round.composing', { card: nameIn(card) }));
+            ? aboutCard('round.composingDraft', card, { n: s.drafting.draft, total: s.drafting.of })
+            : aboutCard('round.composing', card);
       } else {
         verseEl.textContent = s.opponentVerse;
         verseEl.lang = s.duel.lang;
@@ -852,8 +859,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       v.appendChild(el('p', 'text-xs uppercase tracking-wider text-obsidian-500 mb-1', t('verdict.yourAnswer')));
       v.appendChild(mine);
 
-      const theirCard = nameIn(getCardById(s.duel.rounds[r.index].opponent.charId)!);
-      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : said(t('verdict.roundTheirs', { card: theirCard }))));
+      const theirCard = getCardById(s.duel.rounds[r.index].opponent.charId)!;
+      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : aboutCard('verdict.roundTheirs', theirCard)));
 
       const grid = el('div', 'grid sm:grid-cols-2 gap-3');
       grid.appendChild(side(t('battle.you'), r.player, r.judge.player, r.playerTotal, 'text-crimson-300', r.bonus));

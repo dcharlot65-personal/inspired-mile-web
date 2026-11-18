@@ -127,6 +127,25 @@ test.describe('Card names and lines per language', () => {
     await expect(row).not.toContainText('de Príncipe Hamlet');
   });
 
+  test('French: de is elided before a name that begins with a vowel or a mute h (2026-11-17 check: «de Ophélie»)', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'fr');
+    await begin(page);
+    const row = page.locator('#live-checks li', { hasText: 'Signature' });
+    await expect(row).toContainText('la réplique d’Hamlet sans la citer');
+    await expect(row).not.toContainText('de Hamlet');
+  });
+
+  test('Arabic: a relic’s words are listed with the Arabic comma (2026-11-17 check: «جمجمة, مزحة»)', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'ar');
+    await begin(page);
+    await page.click('[data-item-id="RL-001"]');
+    const note = page.locator('#item-note');
+    await expect(note).toContainText('، ');
+    await expect(note).not.toContainText(', ');
+  });
+
   test('Russian: a name Wikidata writes small stands with a capital on the card', async ({ page }) => {
     await page.addInitScript(() => {
       const deck = { name: 'Paris deck', characters: ['VC-004', 'MO-001', 'CA-001'], relics: [], potions: [] };
