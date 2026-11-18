@@ -67,6 +67,8 @@ if [ -z "$BIN" ] || [ ! -x "$BIN" ]; then
   die "the API did not build (see $WORK/cargo-build.log)"
 fi
 say "API binary: $BIN"
+# For the tests that start the binary themselves (start-up refusals).
+echo "$BIN" >"$WORK/api-bin"
 
 say "starting Postgres on 127.0.0.1:$PG_PORT"
 initdb -D "$PGDATA" -U "$DB_USER" --auth=trust -E UTF8 --no-sync >"$WORK/initdb.log" 2>&1 \
@@ -96,7 +98,8 @@ start_api() {
     cd "$ROOT/backend"
     exec env -u RESEND_API_KEY \
       DATABASE_URL="postgres://$DB_USER@127.0.0.1:$PG_PORT/$DB_NAME" \
-      JWT_SECRET="e2e-secret-not-for-production" \
+      JWT_SECRET="e2e-secret-not-for-production-0123456789abcdef" \
+      MAINTENANCE_INTERVAL_SECONDS="${E2E_MAINTENANCE_SECONDS:-3}" \
       PORT="$1" \
       CORS_ORIGIN="$WEB_ORIGIN" \
       WEBAUTHN_RP_ID="localhost" \

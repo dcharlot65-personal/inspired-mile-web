@@ -2,10 +2,10 @@ use std::sync::Arc;
 
 use axum::{
     extract::State,
+    http::HeaderMap,
     routing::{delete, get, post},
     Extension, Json, Router,
 };
-use axum_extra::extract::cookie::{Cookie, SameSite};
 use axum_extra::extract::CookieJar;
 use serde::Serialize;
 use sqlx::{PgPool, Row};
@@ -13,11 +13,9 @@ use uuid::Uuid;
 use webauthn_rs::prelude::{Webauthn, WebauthnBuilder};
 
 use super::error::ApiError;
-use super::jwt::{create_token, verify_token, Claims};
-use super::{email, passkeys};
+use super::sessions::{self, Session};
+use super::{age, email, passkeys};
 use crate::config::Config;
-
-pub const COOKIE_NAME: &str = "im_token";
 
 /// What the auth handlers share besides the database: the WebAuthn relying party and an
 /// HTTP client for the mail API.
@@ -96,6 +94,8 @@ pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
         .route("/passkey/register/finish", post(passkeys::register_finish))
         .route("/passkey/login/begin", post(passkeys::login_begin))
         .route("/passkey/login/finish", post(passkeys::login_finish))
+        .route("/passkey/verify/begin", post(passkeys::verify_begin))
+        .route("/passkey/verify/finish", post(passkeys::verify_finish))
         .route("/passkeys", get(passkeys::list))
         .route("/passkeys/{id}", delete(passkeys::remove))
         .route("/email/request", post(email::request_code))
@@ -103,7 +103,9 @@ pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
         .route("/email/add/request", post(email::add_request))
         .route("/email/add/verify", post(email::add_verify))
         .route("/logout", post(logout))
+        .route("/logout/all", post(logout_everywhere))
         .route("/me", get(me))
+        .route("/age-tier", post(age::set_age_tier))
         .layer(Extension(ctx))
 }
 
@@ -119,22 +121,47 @@ async fn methods(State((_, config)): State<(PgPool, Config)>) -> Json<MethodsRes
     })
 }
 
-async fn logout() -> CookieJar {
-    let cookie = Cookie::build((COOKIE_NAME, ""))
-        .path("/")
-        .http_only(true)
-        .secure(true)
-        .same_site(SameSite::Lax)
-        .max_age(time::Duration::ZERO)
-        .build();
-    CookieJar::new().add(cookie)
+/// Sign out of this browser: the session is revoked on the server, so a copy of its cookie
+/// stops working too, and the cookie is removed.
+///
+/// Another site must not be able to trigger this (a form that auto-submits here would
+/// otherwise sign the visitor out): the request has to look like the page's own fetch, and
+/// nothing, not even a clearing cookie, is sent back when it does not.
+async fn logout(
+    jar: CookieJar,
+    headers: HeaderMap,
+    State((pool, config)): State<(PgPool, Config)>,
+) -> Result<CookieJar, ApiError> {
+    if !sessions::is_same_site_json(&headers) {
+        return Err(sessions::cross_site_refused());
+    }
+    // A signed token is enough to name the session to end, live or not.
+    if let Some(claims) = sessions::claims_from(&jar, &config) {
+        sessions::revoke(&pool, claims.sid).await?;
+    }
+    Ok(sessions::clearing_cookies(&config))
+}
+
+/// Sign out everywhere: every session of the account ends, this one included.
+async fn logout_everywhere(
+    jar: CookieJar,
+    headers: HeaderMap,
+    State((pool, config)): State<(PgPool, Config)>,
+) -> Result<CookieJar, ApiError> {
+    if !sessions::is_same_site_json(&headers) {
+        return Err(sessions::cross_site_refused());
+    }
+    let session = session(&jar, &pool, &config).await?;
+    let ended = sessions::revoke_all(&pool, session.claims.sub, None).await?;
+    tracing::info!(user_id = %session.claims.sub, ended, "signed out everywhere");
+    Ok(sessions::clearing_cookies(&config))
 }
 
 async fn me(
     jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
 ) -> Result<Json<AuthResponse>, ApiError> {
-    let claims = session(&jar, &config)?;
+    let claims = session(&jar, &pool, &config).await?.claims;
     let row = sqlx::query(
         "SELECT id, username, email, display_name, auth_provider, avatar_url, created_at
          FROM users WHERE id = $1",
@@ -176,25 +203,11 @@ async fn me(
 // Shared helpers
 // ---------------------------------------------------------------------------
 
-/// The signed-in user, from the `im_token` cookie. The auth routes sit outside the
-/// middleware that guards the rest of the API, so they check the session themselves.
-pub fn session(jar: &CookieJar, config: &Config) -> Result<Claims, ApiError> {
-    let token = jar.get(COOKIE_NAME).ok_or_else(ApiError::unauthorized)?;
-    verify_token(token.value(), &config.jwt_secret).map_err(|_| ApiError::unauthorized())
-}
-
-/// Start a session: the same JWT-in-cookie every other route already reads.
-pub fn session_cookie(user_id: Uuid, username: &str, config: &Config) -> Result<CookieJar, ApiError> {
-    let token = create_token(user_id, username, &config.jwt_secret)
-        .map_err(|e| ApiError::internal("could not create session token", e))?;
-    let cookie = Cookie::build((COOKIE_NAME, token))
-        .path("/")
-        .http_only(true)
-        .secure(true)
-        .same_site(SameSite::Lax)
-        .max_age(time::Duration::days(7))
-        .build();
-    Ok(CookieJar::new().add(cookie))
+/// The signed-in user, from the session cookie and its server-side row. The auth routes
+/// sit outside the middleware that guards the rest of the API, so they check the session
+/// themselves.
+pub async fn session(jar: &CookieJar, pool: &PgPool, config: &Config) -> Result<Session, ApiError> {
+    sessions::authenticate(pool, config, jar).await
 }
 
 /// Reads the columns every user query in this module selects:
@@ -220,6 +233,14 @@ pub async fn passkey_count(pool: &PgPool, user_id: Uuid) -> Result<i64, ApiError
 /// The age gate's answer, as sent by the page: only "adult" and "teen" (a teen with
 /// consent) may create an account or give an email address. Unknown age and under 13 are
 /// refused here whatever the page did.
+///
+/// This is a check of what the visitor says, nothing more. The date of birth is typed by
+/// the visitor and the "my parent agrees" box is ticked by the visitor; no parent is asked
+/// and no age is verified. A child who sends "adult" gets an adult account, and no code
+/// here can stop that. What the server does guarantee is narrower: an account is given a
+/// tier when it is created, and afterwards only its signed-in owner's explicit answer
+/// changes it, by the rules in `auth/age.rs`; an account declared teen cannot lift its own
+/// limits.
 pub fn age_tier_from(stated: Option<&str>) -> Result<&'static str, ApiError> {
     match stated {
         Some("adult") => Ok("adult"),
@@ -232,11 +253,18 @@ pub fn age_tier_from(stated: Option<&str>) -> Result<&'static str, ApiError> {
     }
 }
 
-/// A neutral public name such as `bard-4f2a9c`. Usernames show on the public leaderboard,
+/// A random public name such as `bard-4f2a9c01d3e7`: 48 random bits, so the space
+/// (2.8 x 10^14 names) cannot be used up by sign-ups and a clash is a freak event rather
+/// than a certainty after a few thousand accounts. It used to be 24 bits.
+pub fn random_username() -> String {
+    format!("bard-{:012x}", rand::random::<u64>() & 0x0000_ffff_ffff_ffff)
+}
+
+/// A neutral public name that is free right now. Usernames show on the public leaderboard,
 /// so they are never derived from an email address.
 pub async fn unused_username(conn: &mut sqlx::PgConnection) -> Result<String, ApiError> {
     for _ in 0..10 {
-        let candidate = format!("bard-{:06x}", rand::random::<u32>() & 0x00ff_ffff);
+        let candidate = random_username();
         let taken: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
             .bind(&candidate)
             .fetch_one(&mut *conn)
@@ -251,6 +279,27 @@ pub async fn unused_username(conn: &mut sqlx::PgConnection) -> Result<String, Ap
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn usernames_carry_48_random_bits_and_fit_the_column() {
+        let names: std::collections::HashSet<String> = (0..5000).map(|_| random_username()).collect();
+        assert_eq!(names.len(), 5000);
+        // The upper 24 of the 48 bits are in use: among 5000 names, some value is above
+        // anything the old 24-bit names could hold. (Chance of a false alarm: 2^-120000.)
+        let widest = names
+            .iter()
+            .map(|n| u64::from_str_radix(n.strip_prefix("bard-").expect("prefix"), 16).expect("hex"))
+            .max()
+            .unwrap();
+        assert!(widest > 0x00ff_ffff, "names carry only 24 bits: {widest:#x}");
+        assert!(widest <= 0xffff_ffff_ffff);
+        for name in names.iter().take(50) {
+            let hex = name.strip_prefix("bard-").expect("prefix");
+            assert_eq!(hex.len(), 12, "{name}");
+            assert!(hex.bytes().all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase()), "{name}");
+            assert!(name.len() <= 32, "users.username is VARCHAR(32)");
+        }
+    }
 
     #[test]
     fn only_adult_and_consenting_teen_pass_the_age_check() {

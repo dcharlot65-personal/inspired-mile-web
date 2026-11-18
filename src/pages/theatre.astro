@@ -59,8 +59,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getOwnedCardIds } from '../lib/inventory';
     import { holdWakeLock, releaseWakeLock } from '../lib/pwa';
     import { incrementStat } from '../lib/achievements';
-    import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
+    import { ROUNDS, normalizeSeed, starterDeck, type DuelDeck } from '../lib/verse/duel';
     import { hasPack, loadPack } from '../lib/verse/packs';
+    import { loadSound } from '../lib/verse/sound';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
     import { initI18n, onLocaleChange, t } from '../i18n';
@@ -166,7 +167,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // The duel is fought in the language chosen on the battle page; its verse data loads first.
       const stored = localStorage.getItem('inspired-mile-duel-lang');
       const lang = stored && hasPack(stored) ? stored : 'en';
-      await loadPack(lang);
+      await Promise.all([loadPack(lang), loadSound(lang)]);
       session = new DuelSession({
         seed,
         lang,
@@ -225,8 +226,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           redraw();
         });
       }
-      const s = Number(params.get('seed'));
-      start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
+      // The seed as the rules use it: a whole number; anything else typed is brought to one.
+      const s = normalizeSeed(Number(params.get('seed')));
+      start(s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
     }
     initI18n().then(() => {
       status('theatre.raising');

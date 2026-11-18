@@ -16,7 +16,8 @@ const MUTATIONS = [
   ['src/lib/verse/packs/ko.ts', '바람에 진다', '바람에 떨어진다', 'ko haiku'],
   ['src/lib/verse/packs/th.ts', 'แล้วก็เสีย เวที', 'แล้วก็เสีย เวลา', 'th epistrophe'],
   ['src/lib/verse/packs/hi.ts', 'कब से खड़ा है तू', 'अब से खड़ा है तू', 'hi acrostic'],
-  ['src/lib/verse/packs/ja.ts', 'かぜにちる', '風にちる', 'ja haiku'],
+  // A kanji no longer breaks a haiku (the analyser reads 風 as かぜ); two more sounds do.
+  ['src/lib/verse/packs/ja.ts', 'かぜにちる', 'かぜにちりゆく', 'ja haiku'],
   ['src/lib/verse/packs/zh.ts', '照尔无处躲', '照尔无处可躲', 'zh jueju'],
   ['src/lib/verse/packs/vi.ts', 'muôn vàn khói bay', 'muôn nơi khói bay', 'vi luc-bat'],
   ['src/lib/verse/packs/ar.ts', 'وأنت بلا مقام', 'وأنت بلا مكان', 'ar couplet'],

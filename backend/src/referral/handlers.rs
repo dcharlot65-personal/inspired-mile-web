@@ -50,7 +50,7 @@ async fn get_referral_code(
         .bind(claims.sub)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     let (code_id, code) = if let Some(row) = existing {
         (row.get::<i32, _>("id"), row.get::<String, _>("code"))
@@ -63,7 +63,7 @@ async fn get_referral_code(
         .bind(&code)
         .fetch_one(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
         (row.get::<i32, _>("id"), row.get::<String, _>("code"))
     };
 
@@ -71,7 +71,7 @@ async fn get_referral_code(
         .bind(code_id)
         .fetch_one(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     Ok(Json(ReferralInfo {
         code,
@@ -94,7 +94,7 @@ async fn redeem_code(
         .bind(&code)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "Referral code not found".into()))?;
 
     let code_id: i32 = code_row.get("id");
@@ -115,7 +115,7 @@ async fn redeem_code(
     .bind(claims.sub)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     if result.is_none() {
         return Ok(Json(RedeemResponse {

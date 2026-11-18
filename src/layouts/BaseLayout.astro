@@ -155,6 +155,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none" data-i18n="age.teenContinue">Continue with Consent</button>
         </div>
 
+        <!-- Only when the question was opened from the account menu: leave without answering,
+             or, on the under-13 screen right after that answer, go back to the question -->
+        <button id="age-gate-cancel" type="button" class="hidden w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-3 transition-colors" data-i18n="auth.back">Back</button>
+
         <p class="text-[10px] text-obsidian-600 mt-6" data-i18n-slots="age.agree">By continuing, you agree to our <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms" data-i18n-slot="terms">Terms of Service</a> and <a href="/privacy" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.privacy" data-i18n-slot="privacy">Privacy Policy</a>.</p>
       </div>
     </div>
@@ -252,6 +256,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                       <span data-auth-text="emailButton"></span>
                     </button>
                     <p id="auth-email-hint" class="hidden text-[11px] text-obsidian-500 mt-2 text-center leading-relaxed" data-auth-text="emailHint"></p>
+                    <p id="auth-legacy-note" class="hidden text-[11px] text-obsidian-500 mt-3 leading-relaxed" data-auth-text="legacyAccountNote"></p>
                   </div>
 
                   <!-- Create an account with a passkey: what it is, and the one catch -->
@@ -359,8 +364,11 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                     <p id="auth-email-message" role="status" class="hidden text-xs mt-2 text-center leading-relaxed"></p>
                   </div>
 
+                  <!-- The account's age: the only way it changes after the account is made (backend src/auth/age.rs) -->
+                  <button id="auth-age-btn" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors" data-i18n="age.dob">Date of Birth</button>
                   <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors" data-auth-text="viewProfile"></a>
                   <button id="auth-logout-btn" type="button" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors" data-auth-text="signOut"></button>
+                  <button id="auth-logout-all-btn" type="button" class="w-full text-[11px] text-obsidian-500 hover:text-crimson-400 py-1 text-center transition-colors" data-auth-text="signOutEverywhere"></button>
                 </div>
               </div>
             </div>
@@ -664,8 +672,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         removePasskey,
         requestRecoveryEmail,
         sendEmailCode,
+        setAccountAgeTier,
         signInWithEmailCode,
         signInWithPasskey,
+        signOutEverywhere,
         signUpWithPasskey,
       } from '../lib/passwordless';
 
@@ -680,7 +690,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       function errorText(e: unknown): string {
-        const code = e instanceof AuthFlowError ? e.code : 'generic';
+        let code = e instanceof AuthFlowError ? e.code : 'generic';
+        // With email off there is no emailed code to point to.
+        if (code === 'passkey_not_accepted' && !emailAvailable) code = 'passkey_not_accepted_no_email';
         return has(`auth.error.${code}`) ? t(`auth.error.${code}`) : t('auth.error.generic');
       }
 
@@ -881,6 +893,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         // With no mail key the server cannot send anything: email is shown nowhere.
         show($('auth-email-btn'), emailAvailable);
         show($('auth-email-hint'), emailAvailable && canPasskey);
+        // With email off, an account that was only ever reached by Google or email cannot
+        // be opened at all. Say so, rather than let "create an account" look like the way in.
+        show($('auth-legacy-note'), !emailAvailable);
       }
 
       authBtn.addEventListener('click', toggleDropdown);
@@ -915,7 +930,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         passkeyTotal = auth.passkey_count;
         updateAuthUI();
         if (!offeringPasskey && !nudgingRecovery) closeDropdown();
-        syncAgeTier();
         offerMigrationIfNeeded();
       }
 
@@ -1281,6 +1295,19 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       // --- Logout ---
+      $('auth-logout-all-btn').addEventListener('click', async () => {
+        try {
+          await signOutEverywhere();
+        } catch {
+          // Local state is cleared either way; a session that outlived this fails its next request.
+        }
+        $('auth-passkey-list').replaceChildren();
+        passkeyTotal = 0;
+        resetAddEmail();
+        closeDropdown();
+        updateAuthUI();
+      });
+
       $('auth-logout-btn').addEventListener('click', async () => {
         await logoutUser();
         $('auth-passkey-list').replaceChildren();
@@ -1370,20 +1397,28 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         document.getElementById('migration-banner')?.classList.add('hidden');
       });
 
-      // --- Sync age tier to server ---
-      function syncAgeTier() {
-        const ageState = localStorage.getItem('inspired-mile-age-verified');
-        if (!ageState || !isLoggedIn()) return;
-        const tier = ageState === 'adult' ? 'adult' : ageState === 'teen-consented' ? 'teen' : null;
-        if (!tier) return;
-        // Fire-and-forget
-        fetch('/api/v1/credits/age-verify', {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ age_tier: tier }),
-        }).catch(() => {});
-      }
+      // --- The account's age ---
+      // The page used to post the browser's stored age-gate answer to the account on every
+      // load and sign-in. On a shared browser that answer may be someone else's (a teen's,
+      // on a family computer), and it made the adult's account a teen one for good. Now only
+      // the signed-in user's own answer is sent: the age question opened from this menu.
+      $('auth-age-btn').addEventListener('click', () => {
+        closeDropdown();
+        (window as unknown as { __openAgeGate?: () => void }).__openAgeGate?.();
+      });
+      window.addEventListener('im-age-answered', async (event) => {
+        const tier = (event as CustomEvent<{ tier?: string }>).detail?.tier;
+        if (!isLoggedIn() || (tier !== 'adult' && tier !== 'teen')) return;
+        try {
+          await setAccountAgeTier(tier);
+        } catch (e) {
+          // An account made for someone under 18 stays that way (backend src/auth/age.rs);
+          // there is nothing to say that would help.
+          if (e instanceof AuthFlowError && e.code === 'age_tier_locked') return;
+          openDropdown();
+          showMenuMessage(errorText(e), 'error');
+        }
+      });
 
       // --- Init ---
       // Said once now, and again whenever the interface language is known or changes.
@@ -1402,7 +1437,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       authBtn.setAttribute('aria-expanded', 'false');
       initStorageBackend().then(() => {
         updateAuthUI();
-        syncAgeTier();
       });
     </script>
     <!-- Service Worker Registration -->
@@ -1427,41 +1461,85 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <script is:inline>
       (function() {
         var AGE_KEY = 'inspired-mile-age-verified';
-        var stored = localStorage.getItem(AGE_KEY);
-
-        // Skip age gate on legal pages so users can read them
-        var legalPages = ['/privacy', '/terms', '/about'];
-        if (legalPages.indexOf(window.location.pathname) >= 0) return;
-
-        if (stored === 'adult' || stored === 'teen-consented') return;
-        if (stored === 'blocked') {
-          // User was under 13 — keep blocking
-          document.getElementById('age-gate').classList.remove('hidden');
-          document.getElementById('age-gate-form').classList.add('hidden');
-          document.getElementById('age-gate-minor').classList.remove('hidden');
-          return;
-        }
-
-        // Show the age gate
         var gate = document.getElementById('age-gate');
-        gate.classList.remove('hidden');
+        var form = document.getElementById('age-gate-form');
+        var minor = document.getElementById('age-gate-minor');
+        var teenStep = document.getElementById('age-gate-teen');
+        var cancel = document.getElementById('age-gate-cancel');
+        var errorEl = document.getElementById('age-gate-error');
+        // True while the question was opened from the account menu. Only then is the answer
+        // also the signed-in user's answer for the account: the auth script hears it through
+        // the 'im-age-answered' event and sends it (backend src/auth/age.rs). The answer the
+        // browser stored earlier is never sent on its own: on a shared browser it may be
+        // someone else's.
+        var forAccount = false;
+        // True while the under-13 screen shows an answer just given from the account menu.
+        // Its "Back" then returns to the question, so a wrong year can be put right at once
+        // (answering again replaces this browser's stored answer; making the account adult
+        // again asks for a passkey, backend src/auth/age.rs). Reached any other way (the
+        // first visit, or a later page load), the screen keeps no way back, as before.
+        var minorBack = false;
+        var filled = false;
 
-        // Populate day/year dropdowns
-        var daySelect = document.getElementById('age-day');
-        for (var d = 1; d <= 31; d++) {
-          var opt = document.createElement('option');
-          opt.value = d;
-          opt.textContent = d;
-          daySelect.appendChild(opt);
+        // Populate day/year dropdowns (once)
+        function fillSelects() {
+          if (filled) return;
+          filled = true;
+          var daySelect = document.getElementById('age-day');
+          for (var d = 1; d <= 31; d++) {
+            var opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = d;
+            daySelect.appendChild(opt);
+          }
+          var yearSelect = document.getElementById('age-year');
+          var currentYear = new Date().getFullYear();
+          for (var y = currentYear; y >= currentYear - 100; y--) {
+            var opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+          }
         }
 
-        var yearSelect = document.getElementById('age-year');
-        var currentYear = new Date().getFullYear();
-        for (var y = currentYear; y >= currentYear - 100; y--) {
-          var opt = document.createElement('option');
-          opt.value = y;
-          opt.textContent = y;
-          yearSelect.appendChild(opt);
+        // `mustAnswer`: no "Back" on the question itself (it was reached from the under-13
+        // screen, and leaving now would leave that answer standing without a second look).
+        function openGate(account, mustAnswer) {
+          forAccount = !!account;
+          minorBack = false;
+          fillSelects();
+          form.classList.remove('hidden');
+          minor.classList.add('hidden');
+          teenStep.classList.add('hidden');
+          errorEl.classList.add('hidden');
+          cancel.classList.toggle('hidden', !forAccount || !!mustAnswer);
+          gate.classList.remove('hidden');
+        }
+
+        // The menu's "Date of Birth": ask again, for the signed-in account.
+        window.__openAgeGate = function() { openGate(true); };
+
+        cancel.addEventListener('click', function() {
+          if (minorBack) {
+            openGate(true, true);
+            return;
+          }
+          forAccount = false;
+          cancel.classList.add('hidden');
+          gate.classList.add('hidden');
+        });
+
+        function answered(stored) {
+          if (!forAccount) return;
+          forAccount = false;
+          cancel.classList.add('hidden');
+          if (stored === 'blocked') {
+            minorBack = true;
+            cancel.classList.remove('hidden');
+          }
+          // Under 13 has no tier of its own: the account gets the strictest one there is.
+          var tier = stored === 'adult' ? 'adult' : 'teen';
+          window.dispatchEvent(new CustomEvent('im-age-answered', { detail: { tier: tier } }));
         }
 
         // Submit handler
@@ -1469,7 +1547,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           var month = parseInt(document.getElementById('age-month').value);
           var day = parseInt(document.getElementById('age-day').value);
           var year = parseInt(document.getElementById('age-year').value);
-          var errorEl = document.getElementById('age-gate-error');
 
           if (!month || !day || !year) {
             errorEl.classList.remove('hidden');
@@ -1487,17 +1564,19 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           if (age < 13) {
             // Block access
             localStorage.setItem(AGE_KEY, 'blocked');
-            document.getElementById('age-gate-form').classList.add('hidden');
-            document.getElementById('age-gate-minor').classList.remove('hidden');
+            form.classList.add('hidden');
+            minor.classList.remove('hidden');
+            answered('blocked');
           } else if (age < 18) {
             // Show parental consent
-            document.getElementById('age-gate-form').classList.add('hidden');
-            document.getElementById('age-gate-teen').classList.remove('hidden');
+            form.classList.add('hidden');
+            teenStep.classList.remove('hidden');
           } else {
             // Adult — proceed
             localStorage.setItem(AGE_KEY, 'adult');
             gate.classList.add('hidden');
             window.__loadAnalytics();
+            answered('adult');
           }
         });
 
@@ -1518,9 +1597,29 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               localStorage.setItem(AGE_KEY, 'teen-consented');
               gate.classList.add('hidden');
               window.__loadAnalytics();
+              answered('teen-consented');
             }
           });
         }
+
+        // On load: the gate covers the page until this browser has an answer.
+        var stored = localStorage.getItem(AGE_KEY);
+
+        // Skip age gate on legal pages so users can read them
+        var legalPages = ['/privacy', '/terms', '/about'];
+        if (legalPages.indexOf(window.location.pathname) >= 0) return;
+
+        if (stored === 'adult' || stored === 'teen-consented') return;
+        if (stored === 'blocked') {
+          // User was under 13 — keep blocking
+          gate.classList.remove('hidden');
+          form.classList.add('hidden');
+          minor.classList.remove('hidden');
+          return;
+        }
+
+        // Show the age gate
+        openGate(false);
       })();
     </script>
 

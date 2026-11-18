@@ -2,11 +2,55 @@
 //!
 //! Sign-up needs nothing but a passkey: no email, no personal data. The account-to-be
 //! waits in the challenge and reaches `users` only when the passkey verifies.
-//! Registration needs a session (you add a passkey to an account you are already in).
+//! Registration needs a session (you add a passkey to an account you are already in) AND
+//! a fresh proof that the person at the browser is the account's owner (`verify`, below,
+//! or a sign-in in the last few minutes); so does removing a passkey.
 //! Sign-in needs nothing: the authenticator names the account through the user handle.
 //! Ceremony state lives in `auth_challenges`, is taken out on first use and expires fast.
+//!
+//! THE RULE FOR EVERY SITE-WIDE CEILING HERE: reaching it never refuses everyone. At a
+//! ceiling only the networks that already hold more than a small share are refused; a
+//! network under its share is served as before. So whoever fills a table refuses only
+//! themselves, and the ceiling bounds the table at "ceiling + share x networks", which an
+//! attacker can raise only by bringing more networks (IPv4 /24s or IPv6 /48s for sign-ups,
+//! IPv4 addresses or IPv6 /48s for ceremonies), not by sending more requests.
+//!
+//! Sign-up is the one unauthenticated request that writes rows for good, so it is the one
+//! that could fill the database. Five things bound it ("network" is the sign-up key: an
+//! IPv4 /24 or an IPv6 /48):
+//!   1. per network, `MAX_SIGNUPS_PER_NETWORK` accounts an hour;
+//!   2. per network, `MAX_SIGNUP_BEGINS_PER_NETWORK` begun ceremonies an hour (a looser
+//!      cap: a class that cancels and retries the prompt must not lock its school out);
+//!   3. site-wide, `SIGNUP_GLOBAL_PER_HOUR` accounts an hour. At it, a network that has
+//!      created `SIGNUP_SHARE_AT_CEILING` (2) accounts in the hour is refused; one that has
+//!      created fewer is not. Loud in the log when it refuses;
+//!   4. site-wide, `SIGNUP_BEGINS_GLOBAL_PER_HOUR` begun ceremonies an hour, with a share
+//!      of `SIGNUP_BEGIN_SHARE_AT_CEILING` (10) begins per network at it; also loud;
+//!   5. accounts that never played are deleted after `UNUSED_ACCOUNT_PURGE_DAYS`
+//!      (`purge_unused_accounts`).
+//! 1 and 3 count accounts actually created and are checked under one lock for all sign-ups
+//! in the same transaction that creates the account, so a burst of parallel requests
+//! cannot pass them. 2 and the share of 4 are checked under the network's lock with the
+//! insert they allow. The site-wide count of 4 is taken without a global lock, so parallel
+//! begins can pass it by at most the number of database connections; it bounds storage,
+//! and the share that decides who is refused is exact.
+//!
+//! Every ceremony (sign-up, sign-in, adding a passkey, a fresh verification) also writes a
+//! row to `auth_challenges`, which lives five minutes. `store_challenge` bounds that table
+//! ("network" here is the API's `network_key`: an IPv4 address or an IPv6 /48):
+//!   - one network may have `MAX_LIVE_CHALLENGES_PER_NETWORK` (300) live at once, checked
+//!     under the network's lock;
+//!   - the table may hold `AUTH_CHALLENGES_MAX` rows (default 50,000). At that ceiling the
+//!     expired rows are deleted on the spot; if it is still full, a network that holds
+//!     `CHALLENGE_SHARE_AT_CEILING` (10) live ceremonies or more is refused (503 "busy"),
+//!     and one that holds fewer is served. Before 2026-11-16 (second review) everyone was
+//!     refused at the ceiling, so one IPv6 /48 split into 200 /64s could stop every passkey
+//!     sign-in on the site.
+//! So the table holds at most AUTH_CHALLENGES_MAX + 10 rows per network that has any, and
+//! filling it to the ceiling at all takes AUTH_CHALLENGES_MAX / 300 (167) networks at once.
 
 use std::net::SocketAddr;
+use std::sync::atomic::{AtomicI64, Ordering};
 
 use axum::{
     extract::{ConnectInfo, Path, State},
@@ -21,16 +65,16 @@ use sqlx::types::Json as Db;
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 use webauthn_rs::prelude::{
-    DiscoverableAuthentication, Passkey, PasskeyRegistration, PublicKeyCredential,
-    RegisterPublicKeyCredential,
+    AuthenticationResult, DiscoverableAuthentication, Passkey, PasskeyAuthentication,
+    PasskeyRegistration, PublicKeyCredential, RegisterPublicKeyCredential,
 };
 
-use super::client_ip::client_ip;
+use super::client_ip::client_addr;
 use super::error::ApiError;
 use super::handlers::{
-    age_tier_from, passkey_count, row_to_user, session, session_cookie, unused_username,
-    AuthResponse, Ctx,
+    age_tier_from, passkey_count, row_to_user, session, unused_username, AuthResponse, Ctx,
 };
+use super::sessions::{self, Proof, FRESH_AUTH_MINUTES};
 use crate::config::Config;
 
 /// How long a begun ceremony may take to finish. Matches the WebAuthn timeout webauthn-rs
@@ -38,14 +82,198 @@ use crate::config::Config;
 const CHALLENGE_TTL_MINUTES: i64 = 5;
 /// A sane ceiling on passkeys per account.
 const MAX_PASSKEYS_PER_USER: i64 = 20;
-/// Passkey sign-ups one client address may begin inside `SIGNUP_WINDOW_MINUTES`. Roomy
-/// enough for a class signing up from one school address, small enough to blunt a script.
-pub const MAX_SIGNUPS_PER_IP: i64 = 40;
+/// Accounts one network (IPv4 /24, IPv6 /64) may create inside `SIGNUP_WINDOW_MINUTES`.
+/// Roomy enough for a class signing up from one school address, small enough to blunt a
+/// script. Counts finished sign-ups, not begun ones.
+pub const MAX_SIGNUPS_PER_NETWORK: i64 = 40;
+/// Sign-up ceremonies one network may begin in the window. Each costs a challenge row that
+/// lives five minutes; the cap is five tries per allowed account.
+pub const MAX_SIGNUP_BEGINS_PER_NETWORK: i64 = 200;
 pub const SIGNUP_WINDOW_MINUTES: i64 = 60;
+/// Begun sign-ups are only counted inside the window; the sweep removes them after this.
+/// (Finished ones are kept a day.)
+pub const BEGUN_SIGNUP_KEEP_MINUTES: i64 = 2 * SIGNUP_WINDOW_MINUTES;
+/// Advisory-lock key that serialises the "count, then create" step of every sign-up.
+const SIGNUP_LOCK: i64 = 0x494d_5349_474e_5550; // "IMSIGNUP"
+/// Ceremonies one network (IPv4 address, IPv6 /48) may have live at once. A ceremony lives
+/// `CHALLENGE_TTL_MINUTES`; a page asks for one each time the sign-in panel offers a
+/// passkey (and the email step's autofill does too), so this leaves a class of thirty
+/// behind one school address room for ten each.
+pub const MAX_LIVE_CHALLENGES_PER_NETWORK: i64 = 300;
+/// Once the table holds `AUTH_CHALLENGES_MAX` rows, a network is still served while it holds
+/// fewer than this many live ceremonies.
+pub const CHALLENGE_SHARE_AT_CEILING: i64 = 10;
+/// Once `SIGNUP_GLOBAL_PER_HOUR` accounts were created in the hour, a network may still
+/// create this many in the hour.
+pub const SIGNUP_SHARE_AT_CEILING: i64 = 2;
+/// Once `SIGNUP_BEGINS_GLOBAL_PER_HOUR` sign-ups were begun in the hour, a network may still
+/// begin this many in the hour.
+pub const SIGNUP_BEGIN_SHARE_AT_CEILING: i64 = 10;
+const _: () = assert!(CHALLENGE_SHARE_AT_CEILING < MAX_LIVE_CHALLENGES_PER_NETWORK);
+const _: () = assert!(SIGNUP_SHARE_AT_CEILING < MAX_SIGNUPS_PER_NETWORK);
+const _: () = assert!(SIGNUP_BEGIN_SHARE_AT_CEILING < MAX_SIGNUP_BEGINS_PER_NETWORK);
 
-/// Whether an address that has begun `recent` sign-ups in the window may begin another.
-pub fn signup_allowed(recent: i64) -> bool {
-    recent < MAX_SIGNUPS_PER_IP
+/// Sign-ups in the window, as the limits see them.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct SignupCounts {
+    /// Ceremonies this network has begun.
+    pub begun_by_network: i64,
+    /// Accounts this network has created.
+    pub created_by_network: i64,
+    /// Accounts created by everyone.
+    pub created_by_everyone: i64,
+    /// Ceremonies begun by everyone.
+    pub begun_by_everyone: i64,
+}
+
+/// The site-wide ceilings (`SIGNUP_GLOBAL_PER_HOUR`, `SIGNUP_BEGINS_GLOBAL_PER_HOUR`).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct SignupCeilings {
+    pub created: i64,
+    pub begun: i64,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SignupVerdict {
+    Allowed,
+    /// This network has created its share of accounts.
+    NetworkLimited,
+    /// This network keeps starting sign-ups without finishing them.
+    BeginsLimited,
+    /// The site-wide ceiling is reached and this network has had its share at it.
+    GlobalLimited,
+    /// The site-wide ceiling on begun sign-ups is reached and this network has had its
+    /// share of begins at it.
+    GlobalBeginsLimited,
+}
+
+/// Whether one more sign-up may go ahead. When the account is created (`signup_finish`)
+/// the begin counts are zeroed by the caller: only accounts count there.
+///
+/// A site-wide ceiling refuses only a network over its share (see the top of this file):
+/// a network that has done little this hour signs up even while the site is at a ceiling.
+pub fn signup_verdict(counts: SignupCounts, ceilings: SignupCeilings) -> SignupVerdict {
+    if counts.created_by_everyone >= ceilings.created && counts.created_by_network >= SIGNUP_SHARE_AT_CEILING {
+        SignupVerdict::GlobalLimited
+    } else if counts.created_by_network >= MAX_SIGNUPS_PER_NETWORK {
+        SignupVerdict::NetworkLimited
+    } else if counts.begun_by_network >= MAX_SIGNUP_BEGINS_PER_NETWORK {
+        SignupVerdict::BeginsLimited
+    } else if counts.begun_by_everyone >= ceilings.begun
+        && counts.begun_by_network >= SIGNUP_BEGIN_SHARE_AT_CEILING
+    {
+        SignupVerdict::GlobalBeginsLimited
+    } else {
+        SignupVerdict::Allowed
+    }
+}
+
+fn ceilings(config: &Config) -> SignupCeilings {
+    SignupCeilings { created: config.signup_global_per_hour, begun: config.signup_begins_global_per_hour }
+}
+
+async fn signup_counts(conn: &mut sqlx::PgConnection, network: &str) -> Result<SignupCounts, ApiError> {
+    let row = sqlx::query(
+        "SELECT COUNT(*) FILTER (WHERE ip = $1 AND NOT completed) AS begun,
+                COUNT(*) FILTER (WHERE ip = $1 AND completed) AS created,
+                COUNT(*) FILTER (WHERE completed) AS everyone,
+                COUNT(*) FILTER (WHERE NOT completed) AS begun_everyone
+         FROM signup_attempts
+         WHERE created_at > NOW() - make_interval(mins => $2)",
+    )
+    .bind(network)
+    .bind(SIGNUP_WINDOW_MINUTES as i32)
+    .fetch_one(conn)
+    .await?;
+    Ok(SignupCounts {
+        begun_by_network: row.get("begun"),
+        created_by_network: row.get("created"),
+        created_by_everyone: row.get("everyone"),
+        begun_by_everyone: row.get("begun_everyone"),
+    })
+}
+
+/// Say loudly, at most once a minute per banner, that a site-wide ceiling was hit: on
+/// stderr in a banner, and as an operator notice (written whatever `RUST_LOG` says).
+fn ceiling_banner(last: &AtomicI64, text: String) {
+    let now = Utc::now().timestamp();
+    let before = last.load(Ordering::Relaxed);
+    if now - before >= 60 && last.compare_exchange(before, now, Ordering::Relaxed, Ordering::Relaxed).is_ok() {
+        let bar = "!".repeat(72);
+        eprintln!("\n{bar}\n{text}\n{bar}\n");
+        tracing::error!(target: crate::notice::TARGET, "{text}");
+    }
+}
+
+/// The refusal for a verdict, or `Ok` when the sign-up may go ahead. Hitting a global
+/// ceiling is logged loudly (at most once a minute): it should never happen in normal use.
+fn signup_refusal(verdict: SignupVerdict, counts: SignupCounts, ceilings: SignupCeilings) -> Result<(), ApiError> {
+    static LAST_CREATED: AtomicI64 = AtomicI64::new(0);
+    static LAST_BEGUN: AtomicI64 = AtomicI64::new(0);
+    let right_now = "Too many accounts are being created right now. Please try again in a little while.";
+    let message = match verdict {
+        SignupVerdict::Allowed => return Ok(()),
+        SignupVerdict::GlobalLimited => {
+            ceiling_banner(
+                &LAST_CREATED,
+                format!(
+                    "SIGN-UP CEILING HIT: {} accounts were created in the last {SIGNUP_WINDOW_MINUTES} \
+                     minutes (SIGNUP_GLOBAL_PER_HOUR = {}). Until the count falls, a network (IPv4 /24, \
+                     IPv6 /48) that has created {SIGNUP_SHARE_AT_CEILING} accounts in the hour is REFUSED; \
+                     others still sign up. Either the site is under a sign-up flood or it is unusually \
+                     busy: look at signup_attempts by ip before raising the ceiling.",
+                    counts.created_by_everyone, ceilings.created
+                ),
+            );
+            right_now
+        }
+        SignupVerdict::GlobalBeginsLimited => {
+            ceiling_banner(
+                &LAST_BEGUN,
+                format!(
+                    "SIGN-UP BEGIN CEILING HIT: {} passkey sign-ups were begun and not finished in the \
+                     last {SIGNUP_WINDOW_MINUTES} minutes (SIGNUP_BEGINS_GLOBAL_PER_HOUR = {}). Until \
+                     the count falls, a network that has begun {SIGNUP_BEGIN_SHARE_AT_CEILING} in the \
+                     hour is REFUSED; others still sign up. Look at signup_attempts (completed = false) \
+                     by ip before raising it.",
+                    counts.begun_by_everyone, ceilings.begun
+                ),
+            );
+            right_now
+        }
+        SignupVerdict::NetworkLimited | SignupVerdict::BeginsLimited => {
+            "Too many accounts started from this network. Wait a while and try again."
+        }
+    };
+    Err(ApiError::new(StatusCode::TOO_MANY_REQUESTS, "too_many_requests", message))
+}
+
+/// What `store_challenge` sees before it writes.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ChallengeVerdict {
+    Allowed,
+    /// This network has `MAX_LIVE_CHALLENGES_PER_NETWORK` ceremonies live already.
+    NetworkLimited,
+    /// The table holds `AUTH_CHALLENGES_MAX` rows and this network holds its share of
+    /// `CHALLENGE_SHARE_AT_CEILING` or more.
+    OverShareAtCeiling,
+}
+
+/// `live_by_network`: unexpired challenges begun by this network; `rows`: every row in the
+/// table, expired or not (the caller has deleted the expired ones first when `rows` was at
+/// the ceiling); `max`: `AUTH_CHALLENGES_MAX`.
+pub fn challenge_verdict(live_by_network: i64, rows: i64, max: i64) -> ChallengeVerdict {
+    if live_by_network >= MAX_LIVE_CHALLENGES_PER_NETWORK {
+        ChallengeVerdict::NetworkLimited
+    } else if rows >= max && live_by_network >= CHALLENGE_SHARE_AT_CEILING {
+        ChallengeVerdict::OverShareAtCeiling
+    } else {
+        ChallengeVerdict::Allowed
+    }
+}
+
+fn challenges_busy(status: StatusCode) -> ApiError {
+    ApiError::new(status, "busy", "Too many sign-ins are being started right now. Please try again in a minute.")
 }
 
 #[derive(Deserialize)]
@@ -84,6 +312,13 @@ pub struct RegisterFinishBody {
 pub struct LoginFinishBody {
     challenge_id: Uuid,
     credential: PublicKeyCredential,
+}
+
+#[derive(Serialize)]
+pub struct VerifiedResponse {
+    ok: bool,
+    /// How long the proof counts for the steps that need it.
+    fresh_for_seconds: i64,
 }
 
 #[derive(Serialize)]
@@ -145,22 +380,80 @@ pub fn require_discoverable(options: &mut Value) {
     }
 }
 
+/// Unexpired challenges begun by this network, and rows in the table.
+async fn challenge_counts(conn: &mut sqlx::PgConnection, network: &str) -> Result<(i64, i64), ApiError> {
+    let row = sqlx::query(
+        "SELECT COUNT(*) FILTER (WHERE net_key = $1 AND expires_at > NOW()) AS live_by_network,
+                COUNT(*) AS all_rows
+         FROM auth_challenges",
+    )
+    .bind(network)
+    .fetch_one(conn)
+    .await?;
+    Ok((row.get("live_by_network"), row.get("all_rows")))
+}
+
+/// Write a ceremony's state, within the bounds described at the top of this file.
+/// `network` is the client's `network_key`.
 async fn store_challenge(
     pool: &PgPool,
+    config: &Config,
     kind: &str,
     user_id: Option<Uuid>,
+    network: &str,
     state: Value,
 ) -> Result<Uuid, ApiError> {
-    Ok(sqlx::query_scalar(
-        "INSERT INTO auth_challenges (kind, user_id, state, expires_at)
-         VALUES ($1, $2, $3, $4) RETURNING id",
+    static LAST_FULL: AtomicI64 = AtomicI64::new(0);
+    let mut tx = pool.begin().await?;
+    sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended('challenge-net:' || $1, 0))")
+        .bind(network)
+        .execute(&mut *tx)
+        .await?;
+    let max = config.auth_challenges_max;
+    let (mut live_by_network, mut rows) = challenge_counts(&mut tx, network).await?;
+    let mut cleaned = 0;
+    if rows >= max {
+        // Clean up first: expired ceremonies can never be finished.
+        cleaned = sqlx::query("DELETE FROM auth_challenges WHERE expires_at < NOW()")
+            .execute(&mut *tx)
+            .await?
+            .rows_affected();
+        (live_by_network, rows) = challenge_counts(&mut tx, network).await?;
+    }
+    let verdict = challenge_verdict(live_by_network, rows, max);
+    if verdict == ChallengeVerdict::OverShareAtCeiling {
+        ceiling_banner(
+            &LAST_FULL,
+            format!(
+                "SIGN-IN CHALLENGE CEILING HIT: auth_challenges holds {rows} live ceremonies \
+                 (AUTH_CHALLENGES_MAX = {max}; {cleaned} expired ones were just deleted). Until some \
+                 expire (five minutes), a network (IPv4 address, IPv6 /48) holding \
+                 {CHALLENGE_SHARE_AT_CEILING} or more is REFUSED new passkey sign-ins, sign-ups and \
+                 verifications; others are still served. Look at auth_challenges by net_key before \
+                 raising it."
+            ),
+        );
+    }
+    match verdict {
+        ChallengeVerdict::Allowed => {}
+        ChallengeVerdict::NetworkLimited => return Err(challenges_busy(StatusCode::TOO_MANY_REQUESTS)),
+        ChallengeVerdict::OverShareAtCeiling => return Err(challenges_busy(StatusCode::SERVICE_UNAVAILABLE)),
+    }
+    // Test-only pause (TEST_ONLY_LIMIT_RACE_DELAY_MS), between the check and the write.
+    config.test_race_window().await;
+    let id = sqlx::query_scalar(
+        "INSERT INTO auth_challenges (kind, user_id, state, expires_at, net_key)
+         VALUES ($1, $2, $3, $4, $5) RETURNING id",
     )
     .bind(kind)
     .bind(user_id)
     .bind(Db(state))
     .bind(Utc::now() + Duration::minutes(CHALLENGE_TTL_MINUTES))
-    .fetch_one(pool)
-    .await?)
+    .bind(network)
+    .fetch_one(&mut *tx)
+    .await?;
+    tx.commit().await?;
+    Ok(id)
 }
 
 /// Take a challenge out of the table. Deleting it as it is read is what makes it single
@@ -192,7 +485,7 @@ async fn take_challenge(
 // ---------------------------------------------------------------------------
 
 pub async fn signup_begin(
-    State((pool, _)): State<(PgPool, Config)>,
+    State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
@@ -200,26 +493,27 @@ pub async fn signup_begin(
 ) -> Result<Json<BeginResponse>, ApiError> {
     let age_tier = age_tier_from(body.age_tier.as_deref())?;
 
-    let ip = client_ip(&headers, Some(peer));
-    let recent: i64 = sqlx::query_scalar(
-        "SELECT COUNT(*) FROM signup_attempts
-         WHERE ip = $1 AND created_at > NOW() - make_interval(mins => $2)",
-    )
-    .bind(&ip)
-    .bind(SIGNUP_WINDOW_MINUTES as i32)
-    .fetch_one(&pool)
-    .await?;
-    if !signup_allowed(recent) {
-        return Err(ApiError::new(
-            StatusCode::TOO_MANY_REQUESTS,
-            "too_many_requests",
-            "Too many accounts started from this network. Wait a while and try again.",
-        ));
+    // All three limits are looked at here, so a visitor is refused before the passkey
+    // prompt rather than after it. The two that count accounts are checked again, for
+    // real, when the account is created. Count and insert happen under one lock, so
+    // parallel begins cannot all read "one below the cap".
+    let client = client_addr(&headers, Some(peer), &config.trusted_proxies);
+    let network = client.signup_key();
+    {
+        let mut tx = pool.begin().await?;
+        sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))")
+            .bind(&network)
+            .execute(&mut *tx)
+            .await?;
+        let counts = signup_counts(&mut tx, &network).await?;
+        signup_refusal(signup_verdict(counts, ceilings(&config)), counts, ceilings(&config))?;
+        config.test_race_window().await;
+        sqlx::query("INSERT INTO signup_attempts (ip, completed) VALUES ($1, FALSE)")
+            .bind(&network)
+            .execute(&mut *tx)
+            .await?;
+        tx.commit().await?;
     }
-    sqlx::query("INSERT INTO signup_attempts (ip) VALUES ($1)")
-        .bind(&ip)
-        .execute(&pool)
-        .await?;
 
     // A fresh random user handle and a generated name. Neither says anything about the
     // person, and nothing is written to `users` here.
@@ -240,13 +534,15 @@ pub async fn signup_begin(
     let pending = PendingSignup { user_id, username, age_tier: age_tier.to_string(), registration };
     let state = serde_json::to_value(&pending)
         .map_err(|e| ApiError::internal("serialise sign-up state", e))?;
-    let challenge_id = store_challenge(&pool, "signup", None, state).await?;
+    let challenge_id = store_challenge(&pool, &config, "signup", None, &client.network_key(), state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
 pub async fn signup_finish(
     State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
     Json(body): Json<RegisterFinishBody>,
 ) -> Result<(CookieJar, Json<AuthResponse>), ApiError> {
     let (_, state) = take_challenge(&pool, body.challenge_id, "signup").await?;
@@ -262,11 +558,32 @@ pub async fn signup_finish(
             ApiError::bad_request("passkey_not_registered", "That passkey could not be registered.")
         })?;
 
-    // The account and its passkey are made together or not at all.
+    // The account and its passkey are made together or not at all, and only if the limits
+    // on created accounts still hold. One lock for every sign-up: the count and the insert
+    // that it permits cannot interleave with another sign-up's.
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).signup_key();
     let mut tx = pool.begin().await?;
+    sqlx::query("SELECT pg_advisory_xact_lock($1)")
+        .bind(SIGNUP_LOCK)
+        .execute(&mut *tx)
+        .await?;
+    // Only created accounts count here; the begin limits were applied at begin.
+    let counts = SignupCounts {
+        begun_by_network: 0,
+        begun_by_everyone: 0,
+        ..signup_counts(&mut tx, &network).await?
+    };
+    signup_refusal(signup_verdict(counts, ceilings(&config)), counts, ceilings(&config))?;
+    // Test-only pause (TEST_ONLY_LIMIT_RACE_DELAY_MS): the end-to-end race test relies on
+    // it to show that, without SIGNUP_LOCK, parallel finishes all pass the count above.
+    config.test_race_window().await;
+    sqlx::query("INSERT INTO signup_attempts (ip, completed) VALUES ($1, TRUE)")
+        .bind(&network)
+        .execute(&mut *tx)
+        .await?;
     let user_row = sqlx::query(
-        "INSERT INTO users (id, username, auth_provider, age_tier)
-         VALUES ($1, $2, 'passkey', $3)
+        "INSERT INTO users (id, username, auth_provider, age_tier, age_tier_declared)
+         VALUES ($1, $2, 'passkey', $3, $3)
          ON CONFLICT DO NOTHING
          RETURNING id, username, email, display_name, auth_provider, avatar_url",
     )
@@ -310,7 +627,8 @@ pub async fn signup_finish(
     tx.commit().await?;
 
     let user = row_to_user(&user_row);
-    let jar = session_cookie(user.id, &user.username, &config)?;
+    // Creating a passkey is itself a user-verified ceremony: the new session starts fresh.
+    let jar = sessions::start(&pool, &config, user.id, &user.username, Proof::Passkey).await?;
     Ok((
         jar,
         Json(AuthResponse { user, founding_player: None, passkey_count: 1, is_new_user: Some(true) }),
@@ -325,8 +643,14 @@ pub async fn register_begin(
     jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<BeginResponse>, ApiError> {
-    let claims = session(&jar, &config)?;
+    let session = session(&jar, &pool, &config).await?;
+    // A session cookie alone must not be enough to attach a new passkey: whoever sits down
+    // at a browser left signed in could then take the account over for good.
+    session.require_fresh()?;
+    let claims = session.claims;
     let user = sqlx::query("SELECT username, email, display_name FROM users WHERE id = $1")
         .bind(claims.sub)
         .fetch_optional(&pool)
@@ -365,7 +689,8 @@ pub async fn register_begin(
 
     let state = serde_json::to_value(&state)
         .map_err(|e| ApiError::internal("serialise registration state", e))?;
-    let challenge_id = store_challenge(&pool, "register", Some(claims.sub), state).await?;
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
+    let challenge_id = store_challenge(&pool, &config, "register", Some(claims.sub), &network, state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -375,7 +700,9 @@ pub async fn register_finish(
     ctx: Ctx,
     Json(body): Json<RegisterFinishBody>,
 ) -> Result<Json<PasskeyInfo>, ApiError> {
-    let claims = session(&jar, &config)?;
+    // Freshness was required to begin; the challenge is single use, bound to the account
+    // and gone in five minutes, so finishing needs only the live session.
+    let claims = session(&jar, &pool, &config).await?.claims;
     let (owner, state) = take_challenge(&pool, body.challenge_id, "register").await?;
     // A challenge begun by one account cannot be finished by another.
     if owner != Some(claims.sub) {
@@ -423,8 +750,10 @@ pub async fn register_finish(
 // ---------------------------------------------------------------------------
 
 pub async fn login_begin(
-    State((pool, _)): State<(PgPool, Config)>,
+    State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<BeginResponse>, ApiError> {
     let (challenge, state) = ctx
         .webauthn
@@ -436,7 +765,9 @@ pub async fn login_begin(
         .map_err(|e| ApiError::internal("serialise authentication options", e))?;
     let state = serde_json::to_value(&state)
         .map_err(|e| ApiError::internal("serialise authentication state", e))?;
-    let challenge_id = store_challenge(&pool, "login", None, state).await?;
+    // Anyone may begin a sign-in, so this is where the challenge table's bounds matter most.
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
+    let challenge_id = store_challenge(&pool, &config, "login", None, &network, state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -473,20 +804,8 @@ pub async fn login_finish(
             tracing::warn!(%user_id, "passkey sign-in refused: {e}");
             passkey_failed()
         })?;
-
-    // Keep the signature counter and backup flags current (clone detection relies on it).
-    if passkey.update_credential(&result) == Some(true) {
-        sqlx::query("UPDATE webauthn_credentials SET passkey = $2, last_used_at = NOW() WHERE id = $1")
-            .bind(row_id)
-            .bind(Db(&passkey))
-            .execute(&pool)
-            .await?;
-    } else {
-        sqlx::query("UPDATE webauthn_credentials SET last_used_at = NOW() WHERE id = $1")
-            .bind(row_id)
-            .execute(&pool)
-            .await?;
-    }
+    require_user_verified(&result)?;
+    record_use(&pool, row_id, &mut passkey, &result).await?;
 
     let user_row = sqlx::query(
         "SELECT id, username, email, display_name, auth_provider, avatar_url
@@ -497,9 +816,126 @@ pub async fn login_finish(
         .await?
         .ok_or_else(passkey_failed)?;
     let user = row_to_user(&user_row);
-    let jar = session_cookie(user.id, &user.username, &config)?;
+    let jar = sessions::start(&pool, &config, user.id, &user.username, Proof::Passkey).await?;
     let passkey_count = passkey_count(&pool, user.id).await?;
     Ok((jar, Json(AuthResponse { user, founding_player: None, passkey_count, is_new_user: None })))
+}
+
+/// The library asks for user verification and refuses an assertion without it; this is the
+/// same rule stated where it matters, so it cannot be lost to a change of policy upstream.
+fn require_user_verified(result: &AuthenticationResult) -> Result<(), ApiError> {
+    if result.user_verified() {
+        Ok(())
+    } else {
+        tracing::warn!("passkey assertion without user verification refused");
+        Err(passkey_failed())
+    }
+}
+
+/// Keep the signature counter and backup flags current (clone detection relies on it).
+async fn record_use(
+    pool: &PgPool,
+    row_id: Uuid,
+    passkey: &mut Passkey,
+    result: &AuthenticationResult,
+) -> Result<(), ApiError> {
+    if passkey.update_credential(result) == Some(true) {
+        sqlx::query("UPDATE webauthn_credentials SET passkey = $2, last_used_at = NOW() WHERE id = $1")
+            .bind(row_id)
+            .bind(Db(&*passkey))
+            .execute(pool)
+            .await?;
+    } else {
+        sqlx::query("UPDATE webauthn_credentials SET last_used_at = NOW() WHERE id = $1")
+            .bind(row_id)
+            .execute(pool)
+            .await?;
+    }
+    Ok(())
+}
+
+// ---------------------------------------------------------------------------
+// Fresh verification (a signed-in user proves again that it is them)
+// ---------------------------------------------------------------------------
+
+/// Begin proving, with a passkey of the signed-in account, that the account's owner is at
+/// the browser now. Needed before adding or removing a passkey or adding an email when the
+/// last proof (the sign-in, usually) is more than `FRESH_AUTH_MINUTES` old.
+pub async fn verify_begin(
+    jar: CookieJar,
+    State((pool, config)): State<(PgPool, Config)>,
+    ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+) -> Result<Json<BeginResponse>, ApiError> {
+    let claims = session(&jar, &pool, &config).await?.claims;
+    let passkeys: Vec<Passkey> =
+        sqlx::query_scalar::<_, Db<Passkey>>("SELECT passkey FROM webauthn_credentials WHERE user_id = $1")
+            .bind(claims.sub)
+            .fetch_all(&pool)
+            .await?
+            .into_iter()
+            .map(|Db(passkey)| passkey)
+            .collect();
+    if passkeys.is_empty() {
+        // An account that signs in by emailed code only: its proof is a new code.
+        return Err(ApiError::new(
+            StatusCode::CONFLICT,
+            "reauth_unavailable",
+            "This account has no passkey to confirm with. Sign out and sign in again with an emailed code.",
+        ));
+    }
+    // Only this account's passkeys are offered, and user verification is required.
+    let (challenge, state) = ctx
+        .webauthn
+        .start_passkey_authentication(&passkeys)
+        .map_err(|e| ApiError::internal("start_passkey_authentication", e))?;
+    let options = serde_json::to_value(&challenge.public_key)
+        .map_err(|e| ApiError::internal("serialise verification options", e))?;
+    let state = serde_json::to_value(&state)
+        .map_err(|e| ApiError::internal("serialise verification state", e))?;
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
+    let challenge_id = store_challenge(&pool, &config, "verify", Some(claims.sub), &network, state).await?;
+    Ok(Json(BeginResponse { challenge_id, options }))
+}
+
+pub async fn verify_finish(
+    jar: CookieJar,
+    State((pool, config)): State<(PgPool, Config)>,
+    ctx: Ctx,
+    Json(body): Json<LoginFinishBody>,
+) -> Result<Json<VerifiedResponse>, ApiError> {
+    let claims = session(&jar, &pool, &config).await?.claims;
+    let (owner, state) = take_challenge(&pool, body.challenge_id, "verify").await?;
+    if owner != Some(claims.sub) {
+        return Err(challenge_gone());
+    }
+    let state: PasskeyAuthentication = serde_json::from_value(state)
+        .map_err(|e| ApiError::internal("stored verification state", e))?;
+    let result = ctx
+        .webauthn
+        .finish_passkey_authentication(&body.credential, &state)
+        .map_err(|e| {
+            tracing::warn!(user_id = %claims.sub, "passkey verification refused: {e}");
+            passkey_failed()
+        })?;
+    require_user_verified(&result)?;
+
+    let credential_id: &[u8] = result.cred_id().as_ref();
+    let row = sqlx::query(
+        "SELECT id, passkey FROM webauthn_credentials WHERE credential_id = $1 AND user_id = $2",
+    )
+    .bind(credential_id)
+    .bind(claims.sub)
+    .fetch_optional(&pool)
+    .await?
+    .ok_or_else(passkey_failed)?;
+    let row_id: Uuid = row.get("id");
+    let Db(mut passkey): Db<Passkey> = row.get("passkey");
+    record_use(&pool, row_id, &mut passkey, &result).await?;
+
+    sessions::mark_verified(&pool, claims.sid, Proof::Passkey).await?;
+    Ok(Json(VerifiedResponse { ok: true, fresh_for_seconds: FRESH_AUTH_MINUTES * 60 }))
 }
 
 // ---------------------------------------------------------------------------
@@ -519,7 +955,7 @@ pub async fn list(
     jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
 ) -> Result<Json<Vec<PasskeyInfo>>, ApiError> {
-    let claims = session(&jar, &config)?;
+    let claims = session(&jar, &pool, &config).await?.claims;
     let rows = sqlx::query(
         "SELECT id, name, created_at, last_used_at FROM webauthn_credentials
          WHERE user_id = $1 ORDER BY created_at ASC",
@@ -535,7 +971,10 @@ pub async fn remove(
     State((pool, config)): State<(PgPool, Config)>,
     Path(id): Path<Uuid>,
 ) -> Result<StatusCode, ApiError> {
-    let claims = session(&jar, &config)?;
+    let session = session(&jar, &pool, &config).await?;
+    // As for adding one: a cookie alone must not be able to take a way in away.
+    session.require_fresh()?;
+    let claims = session.claims;
 
     // Removing the last passkey is fine while email can still get the user back in.
     // Without that way back it would lock the account for good.
@@ -569,6 +1008,9 @@ pub async fn remove(
         .bind(claims.sub)
         .execute(&mut *tx)
         .await?;
+    // A passkey is removed because its device is lost, sold or no longer trusted: whatever
+    // that device (or anyone else) is still signed in with ends now. This browser stays.
+    sessions::revoke_all(&mut *tx, claims.sub, Some(claims.sid)).await?;
     tx.commit().await?;
     Ok(StatusCode::NO_CONTENT)
 }
@@ -581,10 +1023,15 @@ pub async fn purge_expired(pool: &PgPool) {
     {
         tracing::warn!("could not purge expired auth challenges: {e}");
     }
-    if let Err(e) =
-        sqlx::query("DELETE FROM signup_attempts WHERE created_at < NOW() - INTERVAL '1 day'")
-            .execute(pool)
-            .await
+    // Begun sign-ups count only inside the hour's window; finished ones are kept a day.
+    if let Err(e) = sqlx::query(
+        "DELETE FROM signup_attempts
+         WHERE (NOT completed AND created_at < NOW() - make_interval(mins => $1))
+            OR created_at < NOW() - INTERVAL '1 day'",
+    )
+    .bind(BEGUN_SIGNUP_KEEP_MINUTES as i32)
+    .execute(pool)
+    .await
     {
         tracing::warn!("could not purge old sign-up attempts: {e}");
     }
@@ -594,6 +1041,102 @@ pub async fn purge_expired(pool: &PgPool) {
             .await
     {
         tracing::warn!("could not purge old email codes: {e}");
+    }
+    // Kept two days: the daily caps look back one.
+    if let Err(e) =
+        sqlx::query("DELETE FROM email_code_failures WHERE created_at < NOW() - INTERVAL '2 days'")
+            .execute(pool)
+            .await
+    {
+        tracing::warn!("could not purge old email-code failures: {e}");
+    }
+    sessions::purge(pool).await;
+}
+
+// Which accounts `purge_unused_accounts` removes. `$1` is the age in days. (A macro, not a
+// constant, so the two statements that use it are still string literals.)
+//
+// All of these must hold:
+//   - made by passkey sign-up and never given an email (the only kind a script can mass
+//     produce: an email account costs a working mailbox each);
+//   - created more than `$1` days ago, and no passkey of it used in the last `$1` days
+//     (a sign-in or a fresh verification stamps `last_used_at`);
+//   - never played and never did anything that leaves a trace: every counter in
+//     `player_stats` is still zero, no credits, no cards, variants or achievements, no
+//     credit transaction, no classroom, season, referral, tournament or migration row, no
+//     house, no wallet.
+// Tables that reference `users` without `ON DELETE CASCADE` (battles, trades, reports and
+// whatever is added later) are a second guard: the delete of an account they mention
+// fails, and the account stays.
+macro_rules! unused_account {
+    () => {
+        "
+    u.auth_provider = 'passkey' AND u.email IS NULL
+    AND u.house_allegiance IS NULL AND u.wallet_address IS NULL
+    AND u.created_at < NOW() - make_interval(days => $1)
+    AND NOT EXISTS (SELECT 1 FROM webauthn_credentials c WHERE c.user_id = u.id
+        AND COALESCE(c.last_used_at, c.created_at) > NOW() - make_interval(days => $1))
+    AND NOT EXISTS (SELECT 1 FROM player_stats p WHERE p.user_id = u.id AND (
+        p.battle_wins <> 0 OR p.total_battles <> 0 OR p.total_rounds <> 0 OR p.highest_score <> 0
+        OR p.trivia_correct <> 0 OR p.trivia_perfect <> 0 OR p.challenges_completed <> 0
+        OR p.unique_cards <> 0 OR p.total_cards <> 0 OR p.packs_opened <> 0
+        OR p.variants_unlocked <> 0 OR p.unique_cities <> 0
+        OR p.mp_wins <> 0 OR p.mp_losses <> 0 OR p.credits <> 0))
+    AND NOT EXISTS (SELECT 1 FROM owned_cards x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM owned_variants x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM unlocked_achievements x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM credit_transactions x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM classroom_members x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM classrooms x WHERE x.teacher_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM migration_log x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM season_progress x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM referral_codes x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM referral_redemptions x WHERE x.redeemed_by = u.id)
+    AND NOT EXISTS (SELECT 1 FROM tournament_entries x WHERE x.user_id = u.id)"
+    };
+}
+
+/// Delete passkey-only accounts that were created, never used and left alone for `days`
+/// days (`UNUSED_ACCOUNT_PURGE_DAYS`, default 30; 0 turns this off). See `unused_account!`
+/// for exactly which. The owner of such an account loses a generated name and nothing
+/// else; their passkey then answers "not accepted" and they can sign up again.
+pub async fn purge_unused_accounts(pool: &PgPool, days: i64) {
+    if days <= 0 {
+        return;
+    }
+    let days = days.min(i64::from(i32::MAX)) as i32;
+    let candidates: Vec<Uuid> = match sqlx::query_scalar(concat!(
+        "SELECT u.id FROM users u WHERE ",
+        unused_account!(),
+        " ORDER BY u.created_at LIMIT 1000"
+    ))
+    .bind(days)
+    .fetch_all(pool)
+    .await
+    {
+        Ok(ids) => ids,
+        Err(e) => {
+            tracing::warn!("could not look for unused accounts: {e}");
+            return;
+        }
+    };
+    let mut removed = 0u64;
+    for id in candidates {
+        // The conditions are checked again by the statement that deletes, so an account
+        // that came alive since the list was made is left alone.
+        match sqlx::query(concat!("DELETE FROM users u WHERE u.id = $2 AND ", unused_account!()))
+            .bind(days)
+            .bind(id)
+            .execute(pool)
+            .await
+        {
+            Ok(done) => removed += done.rows_affected(),
+            // Some table without a cascade still mentions the account: it did something.
+            Err(e) => tracing::debug!(user_id = %id, "unused-account purge skipped an account: {e}"),
+        }
+    }
+    if removed > 0 {
+        tracing::info!(removed, days, "purged passkey-only accounts that never played");
     }
 }
 
@@ -622,13 +1165,129 @@ mod tests {
         assert_eq!(options["authenticatorSelection"]["userVerification"], "required");
     }
 
+    fn counts(begun: i64, created: i64, everyone: i64) -> SignupCounts {
+        SignupCounts {
+            begun_by_network: begun,
+            created_by_network: created,
+            created_by_everyone: everyone,
+            begun_by_everyone: begun,
+        }
+    }
+
+    fn at(created: i64) -> SignupCeilings {
+        SignupCeilings { created, begun: 1500 }
+    }
+
     #[test]
-    fn sign_ups_per_address_stop_at_the_limit() {
-        assert!(signup_allowed(0));
-        assert!(signup_allowed(MAX_SIGNUPS_PER_IP - 1));
-        assert!(!signup_allowed(MAX_SIGNUPS_PER_IP));
-        assert!(!signup_allowed(MAX_SIGNUPS_PER_IP + 100));
-        assert_eq!(MAX_SIGNUPS_PER_IP, 40);
+    fn a_network_may_create_forty_accounts_an_hour() {
+        assert_eq!(signup_verdict(counts(0, 0, 0), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK - 1, 39), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK, 40), at(300)), SignupVerdict::NetworkLimited);
+        assert_eq!(
+            signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK + 100, 140), at(300)),
+            SignupVerdict::NetworkLimited
+        );
+        assert_eq!(MAX_SIGNUPS_PER_NETWORK, 40);
+    }
+
+    #[test]
+    fn begun_sign_ups_do_not_use_up_the_account_budget() {
+        // A class of 30 where everyone cancels the prompt once and tries again: 60 begins,
+        // and before that the 41st begin locked the whole school out for an hour.
+        assert_eq!(signup_verdict(counts(60, 0, 0), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(60, 30, 30), at(300)), SignupVerdict::Allowed);
+        assert_eq!(
+            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK - 1, 0, 0), at(300)),
+            SignupVerdict::Allowed
+        );
+        // Begins are still bounded, more loosely.
+        assert_eq!(
+            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK, 0, 0), at(300)),
+            SignupVerdict::BeginsLimited
+        );
+        assert!(MAX_SIGNUP_BEGINS_PER_NETWORK > MAX_SIGNUPS_PER_NETWORK);
+    }
+
+    #[test]
+    fn at_the_global_ceiling_only_networks_over_their_share_are_refused() {
+        let share = SIGNUP_SHARE_AT_CEILING;
+        // Under the ceiling, a network's own limit is the only one.
+        assert_eq!(signup_verdict(counts(0, share + 5, 299), at(300)), SignupVerdict::Allowed);
+        // At it, a network that has created its share this hour is refused...
+        assert_eq!(signup_verdict(counts(0, share, 300), at(300)), SignupVerdict::GlobalLimited);
+        assert_eq!(signup_verdict(counts(0, share, 5000), at(300)), SignupVerdict::GlobalLimited);
+        // ...and one that has created fewer is not: a flood refuses the flooders.
+        assert_eq!(signup_verdict(counts(0, 0, 300), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, share - 1, 5000), at(300)), SignupVerdict::Allowed);
+        // The ceiling is the configured one.
+        assert_eq!(signup_verdict(counts(0, share, 50), at(50)), SignupVerdict::GlobalLimited);
+        // And it is reported in preference to the network's own limit.
+        assert_eq!(signup_verdict(counts(500, 500, 300), at(300)), SignupVerdict::GlobalLimited);
+        assert_eq!(SIGNUP_SHARE_AT_CEILING, 2);
+    }
+
+    #[test]
+    fn begun_sign_ups_have_a_site_wide_ceiling_too() {
+        let ceilings = SignupCeilings { created: 300, begun: 1500 };
+        let site = |begun_by_network, begun_by_everyone| SignupCounts {
+            begun_by_network,
+            begun_by_everyone,
+            ..SignupCounts::default()
+        };
+        let share = SIGNUP_BEGIN_SHARE_AT_CEILING;
+        assert_eq!(signup_verdict(site(share + 50, 1499), ceilings), SignupVerdict::Allowed);
+        // Once everyone has begun 1500, a network that has begun its share is refused...
+        assert_eq!(signup_verdict(site(share, 1500), ceilings), SignupVerdict::GlobalBeginsLimited);
+        assert_eq!(
+            signup_verdict(site(share, 20), SignupCeilings { created: 300, begun: 20 }),
+            SignupVerdict::GlobalBeginsLimited
+        );
+        // ...and a network that has begun fewer still begins.
+        assert_eq!(signup_verdict(site(0, 1500), ceilings), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(site(share - 1, 90_000), ceilings), SignupVerdict::Allowed);
+        assert_eq!(SIGNUP_BEGIN_SHARE_AT_CEILING, 10);
+        // When the account is created the begin counts are zeroed: only accounts count.
+        let finish = SignupCounts { begun_by_network: 0, begun_by_everyone: 0, ..counts(5000, 3, 3) };
+        assert_eq!(signup_verdict(finish, ceilings), SignupVerdict::Allowed);
+        // One network alone cannot reach it: it is refused at its own 200 first.
+        assert!(MAX_SIGNUP_BEGINS_PER_NETWORK < crate::config::DEFAULT_SIGNUP_BEGINS_GLOBAL_PER_HOUR);
+    }
+
+    #[test]
+    fn the_refusal_is_a_429_and_allowed_is_not_a_refusal() {
+        assert!(signup_refusal(SignupVerdict::Allowed, counts(0, 0, 0), at(300)).is_ok());
+        for verdict in [
+            SignupVerdict::NetworkLimited,
+            SignupVerdict::BeginsLimited,
+            SignupVerdict::GlobalLimited,
+            SignupVerdict::GlobalBeginsLimited,
+        ] {
+            let err = signup_refusal(verdict, counts(0, 0, 300), at(300)).expect_err("refused");
+            assert_eq!(err.status, StatusCode::TOO_MANY_REQUESTS);
+            assert_eq!(err.code, "too_many_requests");
+        }
+    }
+
+    #[test]
+    fn live_challenges_are_capped_per_network_and_a_full_table_refuses_only_networks_over_their_share() {
+        let max = crate::config::DEFAULT_AUTH_CHALLENGES_MAX;
+        let share = CHALLENGE_SHARE_AT_CEILING;
+        assert_eq!(challenge_verdict(0, 0, max), ChallengeVerdict::Allowed);
+        assert_eq!(challenge_verdict(MAX_LIVE_CHALLENGES_PER_NETWORK - 1, max - 1, max), ChallengeVerdict::Allowed);
+        // One network: three hundred live ceremonies.
+        assert_eq!(challenge_verdict(MAX_LIVE_CHALLENGES_PER_NETWORK, 0, max), ChallengeVerdict::NetworkLimited);
+        // The table full: a network holding its share is refused...
+        assert_eq!(challenge_verdict(share, max, max), ChallengeVerdict::OverShareAtCeiling);
+        assert_eq!(challenge_verdict(share, 30, 30), ChallengeVerdict::OverShareAtCeiling);
+        assert_eq!(challenge_verdict(MAX_LIVE_CHALLENGES_PER_NETWORK - 1, max * 3, max), ChallengeVerdict::OverShareAtCeiling);
+        // ...and one holding fewer is served, however full the table is: whoever filled it
+        // cannot stop anyone else's sign-in.
+        assert_eq!(challenge_verdict(0, max, max), ChallengeVerdict::Allowed);
+        assert_eq!(challenge_verdict(share - 1, max * 10, max), ChallengeVerdict::Allowed);
+        // Filling the table at all takes this many networks at their own limit.
+        assert_eq!((max + MAX_LIVE_CHALLENGES_PER_NETWORK - 1) / MAX_LIVE_CHALLENGES_PER_NETWORK, 167);
+        assert_eq!(MAX_LIVE_CHALLENGES_PER_NETWORK, 300);
+        assert_eq!(CHALLENGE_SHARE_AT_CEILING, 10);
     }
 
     #[test]

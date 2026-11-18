@@ -8,12 +8,11 @@
  * (its wordSplittingFunction, with wordDivider ''), and a right-to-left line its direction marks.
  */
 
-const segmenter = typeof Intl !== 'undefined' && 'Segmenter' in Intl ? new Intl.Segmenter(undefined, { granularity: 'word' }) : null;
+import { breakPoints } from './line-break';
 
 /** RIGHT-TO-LEFT MARK, written by code so that no file tool turns it into an invisible character. */
 const RLM = String.fromCharCode(0x200f);
 const RTL_LETTER = /[\p{Script=Arabic}\p{Script=Hebrew}\p{Script=Syriac}\p{Script=Thaana}]/u;
-const OPENING = /^[\p{Ps}\p{Pi}]+$/u;
 
 /** Does the text read right to left (its first letter is Arabic, Hebrew, …)? */
 export function startsRtl(text: string): boolean {
@@ -37,27 +36,11 @@ export function readsRtl(text: string): boolean {
 }
 
 /**
- * A line cut where it may wrap, so that joining the pieces gives the line back: at the word boundaries
- * Intl.Segmenter finds (which are the words of Japanese, Chinese and Thai too), with spaces and
- * punctuation kept with the word before them (a line never begins with 、 or a comma) and opening
- * brackets and quotation marks with the word after. In a right-to-left line every piece is bracketed
- * with RLM, zero-width: the punctuation at either end of a drawn line then takes the line's direction.
+ * A line cut where it may wrap (./line-break: words as Intl.Segmenter finds them, with the line-break
+ * rules of Japanese, Chinese and Thai). In a right-to-left line every piece is bracketed with RLM,
+ * zero-width: the punctuation at either end of a drawn line then takes the line's direction.
  */
 export function wrapUnits(line: string): string[] {
-  let units: string[];
-  if (!segmenter) units = line.split(/(?<= )/);
-  else {
-    units = [];
-    let open = '';
-    for (const { segment, isWordLike } of segmenter.segment(line)) {
-      if (OPENING.test(segment)) open += segment;
-      else if (!isWordLike && units.length && !open) units[units.length - 1] += segment;
-      else {
-        units.push(open + segment);
-        open = '';
-      }
-    }
-    if (open) units.push(open);
-  }
+  const units = breakPoints(line);
   return startsRtl(line) ? units.map((u) => RLM + u + RLM) : units;
 }

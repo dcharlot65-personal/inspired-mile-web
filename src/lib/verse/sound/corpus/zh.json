@@ -1,0 +1,656 @@
+{
+ "lang": "zh",
+ "poem": {
+  "title": "唐詩三百首：五言絕句、七言絕句（49 首）",
+  "author": "孫洙 編；唐代諸家",
+  "year": 1763,
+  "form": "jueju: the second and fourth lines rhyme; the third never does",
+  "source": "https://zh.wikisource.org/wiki/%E5%94%90%E8%A9%A9%E4%B8%89%E7%99%BE%E9%A6%96",
+  "fetched": "2026-11-16",
+  "licence": "public domain (author died more than 100 years ago); text from Wikisource, CC BY-SA 4.0 for the transcription",
+  "note": "The rhymes are those of Tang Chinese. The engine reads modern Mandarin, so a rhyme that sound change has undone is counted here as missed, not excused.",
+  "poems": [
+   {
+    "title": "行宮",
+    "author": "元稹",
+    "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E5%AE%AE"
+   },
+   {
+    "title": "登鸛雀樓",
+    "author": "王之渙",
+    "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93_%28%E7%8E%8B%E4%B9%8B%E6%B8%99%29"
+   },
+   {
+    "title": "新嫁娘",
+    "author": "王建",
+    "source": "https://zh.wikisource.org/wiki/%E6%96%B0%E5%AB%81%E5%A8%98"
+   },
+   {
+    "title": "相思",
+    "author": "王維",
+    "source": "https://zh.wikisource.org/wiki/%E7%9B%B8%E6%80%9D"
+   },
+   {
+    "title": "雜詩三首",
+    "author": "王維",
+    "source": "https://zh.wikisource.org/wiki/%E9%9B%9C%E8%A9%A9_%28%E5%90%9B%E8%87%AA%E6%95%85%E9%84%89%E4%BE%86%29"
+   },
+   {
+    "title": "輞川集",
+    "author": "王維",
+    "source": "https://zh.wikisource.org/wiki/%E9%B9%BF%E6%9F%B4_%28%E7%8E%8B%E7%B6%AD%29"
+   },
+   {
+    "title": "送別",
+    "author": "王維",
+    "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%88%A5_%28%E5%B1%B1%E4%B8%AD%E7%9B%B8%E9%80%81%E7%BD%B7%29"
+   },
+   {
+    "title": "問劉十九",
+    "author": "白居易",
+    "source": "https://zh.wikisource.org/wiki/%E5%95%8F%E5%8A%89%E5%8D%81%E4%B9%9D"
+   },
+   {
+    "title": "哥舒歌",
+    "author": "西鄙人",
+    "source": "https://zh.wikisource.org/wiki/%E5%93%A5%E8%88%92%E6%AD%8C"
+   },
+   {
+    "title": "靜夜思",
+    "author": "李白",
+    "source": "https://zh.wikisource.org/wiki/%E9%9D%9C%E5%A4%9C%E6%80%9D"
+   },
+   {
+    "title": "[[怨情]]",
+    "author": "李白",
+    "source": "https://zh.wikisource.org/wiki/%E6%80%A8%E6%83%85_%28%E7%BE%8E%E4%BA%BA%E6%8D%B2%E7%8F%A0%E7%B0%BE%29"
+   },
+   {
+    "title": "聽箏",
+    "author": "李端",
+    "source": "https://zh.wikisource.org/wiki/%E8%81%BD%E7%AE%8F_%28%E6%9D%8E%E7%AB%AF%29"
+   },
+   {
+    "title": "渡漢江",
+    "author": "李頻",
+    "source": "https://zh.wikisource.org/wiki/%E6%B8%A1%E6%BC%A2%E6%B1%9F_%28%E6%9D%8E%E9%A0%BB%29"
+   },
+   {
+    "title": "八陣圖",
+    "author": "杜甫",
+    "source": "https://zh.wikisource.org/wiki/%E5%85%AB%E9%99%A3%E5%9C%96"
+   },
+   {
+    "title": "宿建德江",
+    "author": "孟浩然",
+    "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E5%BB%BA%E5%BE%B7%E6%B1%9F"
+   },
+   {
+    "title": "[[春曉]]",
+    "author": "孟浩然",
+    "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%9B%89_%28%E5%AD%9F%E6%B5%A9%E7%84%B6%29"
+   },
+   {
+    "title": "春怨",
+    "author": "金昌緒",
+    "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%A8_%28%E9%87%91%E6%98%8C%E7%B7%92%29"
+   },
+   {
+    "title": "江雪",
+    "author": "柳宗元",
+    "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E9%9B%AA"
+   },
+   {
+    "title": "秋夜寄丘員外",
+    "author": "韋應物",
+    "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E5%A4%9C%E5%AF%84%E4%B8%98%E5%93%A1%E5%A4%96"
+   },
+   {
+    "title": "終南望餘雪",
+    "author": "祖詠",
+    "source": "https://zh.wikisource.org/wiki/%E7%B5%82%E5%8D%97%E6%9C%9B%E9%A4%98%E9%9B%AA"
+   },
+   {
+    "title": "[[何滿子]]",
+    "author": "張祜",
+    "source": "https://zh.wikisource.org/wiki/%E4%BD%95%E6%BB%BF%E5%AD%90_%28%E5%BC%B5%E7%A5%9C%29"
+   },
+   {
+    "title": "尋隱者不遇",
+    "author": "賈島",
+    "source": "https://zh.wikisource.org/wiki/%E5%B0%8B%E9%9A%B1%E8%80%85%E4%B8%8D%E9%81%87"
+   },
+   {
+    "title": "送崔九",
+    "author": "裴迪",
+    "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%B4%94%E4%B9%9D"
+   },
+   {
+    "title": "送上人",
+    "author": "劉長卿",
+    "source": "https://zh.wikisource.org/wiki/%E9%80%81%E4%B8%8A%E4%BA%BA"
+   },
+   {
+    "title": "玉臺體",
+    "author": "權德輿",
+    "source": "https://zh.wikisource.org/wiki/%E7%8E%89%E8%87%BA%E9%AB%94"
+   },
+   {
+    "title": "閨怨",
+    "author": "王昌齡",
+    "source": "https://zh.wikisource.org/wiki/%E9%96%A8%E6%80%A8_%28%E7%8E%8B%E6%98%8C%E9%BD%A1%29"
+   },
+   {
+    "title": "春宮曲",
+    "author": "王昌齡",
+    "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E5%AE%AE%E6%9B%B2"
+   },
+   {
+    "title": "涼州詞二首",
+    "author": "王翰",
+    "source": "https://zh.wikisource.org/wiki/%E6%B6%BC%E5%B7%9E%E8%A9%9E_%28%E8%91%A1%E8%90%84%E7%BE%8E%E9%85%92%E5%A4%9C%E5%85%89%E6%9D%AF%29"
+   },
+   {
+    "title": "宮詞",
+    "author": "白居易",
+    "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E8%A9%9E_%28%E7%99%BD%E5%B1%85%E6%98%93%29"
+   },
+   {
+    "title": "宮中詞",
+    "author": "朱慶餘",
+    "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E4%B8%AD%E8%A9%9E"
+   },
+   {
+    "title": "近試上張水部",
+    "author": "朱慶餘",
+    "source": "https://zh.wikisource.org/wiki/%E8%BF%91%E8%A9%A6%E4%B8%8A%E5%BC%B5%E6%B0%B4%E9%83%A8"
+   },
+   {
+    "title": "逢入京使",
+    "author": "岑參",
+    "source": "https://zh.wikisource.org/wiki/%E9%80%A2%E5%85%A5%E4%BA%AC%E4%BD%BF"
+   },
+   {
+    "title": "賈生",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E8%B3%88%E7%94%9F"
+   },
+   {
+    "title": "隋宮",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E9%9A%8B%E5%AE%AE_%28%E4%B9%98%E8%88%88%E5%8D%97%E9%81%8A%E4%B8%8D%E6%88%92%E5%9A%B4%29"
+   },
+   {
+    "title": "瑤池",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E7%91%A4%E6%B1%A0"
+   },
+   {
+    "title": "夜雨寄北",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E5%A4%9C%E9%9B%A8%E5%AF%84%E5%8C%97"
+   },
+   {
+    "title": "寄令狐郎中",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E4%BB%A4%E7%8B%90%E9%83%8E%E4%B8%AD"
+   },
+   {
+    "title": "為有",
+    "author": "李商隱",
+    "source": "https://zh.wikisource.org/wiki/%E7%82%BA%E6%9C%89"
+   },
+   {
+    "title": "江南逢李龜年",
+    "author": "杜甫",
+    "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E5%8D%97%E9%80%A2%E6%9D%8E%E9%BE%9C%E5%B9%B4"
+   },
+   {
+    "title": "贈別二首",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%88%A5_%28%E5%A8%89%E5%A8%89%E8%A4%AD%E8%A4%AD%E5%8D%81%E4%B8%89%E9%A4%98%29"
+   },
+   {
+    "title": "贈別二首",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%88%A5_%28%E5%A4%9A%E6%83%85%E5%8D%BB%E4%BC%BC%E7%B8%BD%E7%84%A1%E6%83%85%29"
+   },
+   {
+    "title": "金谷園",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E9%87%91%E8%B0%B7%E5%9C%92_%28%E6%9D%9C%E7%89%A7%29"
+   },
+   {
+    "title": "寄揚州韓綽判官",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E6%8F%9A%E5%B7%9E%E9%9F%93%E7%B6%BD%E5%88%A4%E5%AE%98"
+   },
+   {
+    "title": "秋夕",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E5%A4%95_%28%E6%9D%9C%E7%89%A7%29"
+   },
+   {
+    "title": "將赴吳興登樂游原",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E5%B0%87%E8%B5%B4%E5%90%B3%E8%88%88%E7%99%BB%E6%A8%82%E6%B8%B8%E5%8E%9F"
+   },
+   {
+    "title": "赤壁",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E8%B5%A4%E5%A3%81"
+   },
+   {
+    "title": "泊秦淮",
+    "author": "杜牧",
+    "source": "https://zh.wikisource.org/wiki/%E6%B3%8A%E7%A7%A6%E6%B7%AE"
+   },
+   {
+    "title": "征人怨",
+    "author": "柳中庸",
+    "source": "https://zh.wikisource.org/wiki/%E5%BE%81%E4%BA%BA%E6%80%A8"
+   },
+   {
+    "title": "金陵圖",
+    "author": "韋莊",
+    "source": "https://zh.wikisource.org/wiki/%E9%87%91%E9%99%B5%E5%9C%96"
+   }
+  ]
+ },
+ "yes": [
+  [
+   "宮花寂寞紅",
+   "閑坐說玄宗"
+  ],
+  [
+   "黃河入海流",
+   "更上一層樓"
+  ],
+  [
+   "洗手作羹湯",
+   "先遣小姑嘗"
+  ],
+  [
+   "春來發幾枝",
+   "此物最相思"
+  ],
+  [
+   "應知故鄉事",
+   "寒梅着花未"
+  ],
+  [
+   "但聞人語響",
+   "復照青苔上"
+  ],
+  [
+   "日暮掩柴扉",
+   "王孫歸不歸"
+  ],
+  [
+   "紅泥小火爐",
+   "能飲一杯無"
+  ],
+  [
+   "哥舒夜帶刀",
+   "不敢過臨洮"
+  ],
+  [
+   "疑是地上霜",
+   "低頭思故鄉"
+  ],
+  [
+   "深坐顰蛾眉",
+   "不知心恨誰"
+  ],
+  [
+   "素手玉房前",
+   "時時誤拂弦"
+  ],
+  [
+   "經冬復歷春",
+   "不敢問來人"
+  ],
+  [
+   "名成八陣圖",
+   "遺恨失吞吳"
+  ],
+  [
+   "日暮客愁新",
+   "江清月近人"
+  ],
+  [
+   "處處聞啼鳥",
+   "花落知多少"
+  ],
+  [
+   "莫教枝上啼",
+   "不得到遼西"
+  ],
+  [
+   "萬徑人蹤滅",
+   "獨釣寒江雪"
+  ],
+  [
+   "散步詠涼天",
+   "幽人應未眠"
+  ],
+  [
+   "積雪浮雲端",
+   "城中增暮寒"
+  ],
+  [
+   "深宮二十年",
+   "雙淚落君前"
+  ],
+  [
+   "言師採藥去",
+   "雲深不知處"
+  ],
+  [
+   "須盡丘壑美",
+   "暫遊桃源裡"
+  ],
+  [
+   "豈向人間住",
+   "時人已知處"
+  ],
+  [
+   "今朝蟢子飛",
+   "莫是藁砧歸"
+  ],
+  [
+   "春日凝妝上翠樓",
+   "悔教夫婿覓封侯"
+  ],
+  [
+   "未央前殿月輪高",
+   "簾外春寒賜錦袍"
+  ],
+  [
+   "欲飲琵琶馬上催",
+   "古來征戰幾人回"
+  ],
+  [
+   "夜深前殿按歌聲",
+   "斜倚薰籠坐到明"
+  ],
+  [
+   "美人相並立瓊軒",
+   "鸚鵡前頭不敢言"
+  ],
+  [
+   "待曉堂前拜舅姑",
+   "畫眉深淺入時無"
+  ],
+  [
+   "雙袖龍鍾淚不乾",
+   "憑君傳語報平安"
+  ],
+  [
+   "賈生才調更無倫",
+   "不問蒼生問鬼神"
+  ],
+  [
+   "九重誰省諫書函",
+   "半作障泥半作帆"
+  ],
+  [
+   "黃竹歌聲動地哀",
+   "穆王何事不重來"
+  ],
+  [
+   "巴山夜雨漲秋池",
+   "卻話巴山夜雨時"
+  ],
+  [
+   "雙鯉迢迢一紙書",
+   "茂陵秋雨病相如"
+  ],
+  [
+   "鳳城寒盡怕春宵",
+   "辜負香衾事早朝"
+  ],
+  [
+   "崔九堂前㡬度聞",
+   "落花時節又逢君"
+  ],
+  [
+   "荳蔻梢頭二月初",
+   "卷上珠簾總不如"
+  ],
+  [
+   "唯覺尊前笑不成",
+   "替人垂淚到天明"
+  ],
+  [
+   "流水無情草自春",
+   "落花猶似墜樓人"
+  ],
+  [
+   "秋盡江南草未凋",
+   "玉人何處教吹簫"
+  ],
+  [
+   "輕羅小扇撲流螢",
+   "臥看牽牛織女星"
+  ],
+  [
+   "閑愛孤云靜愛僧",
+   "樂游原上望昭陵"
+  ],
+  [
+   "自將磨洗認前朝",
+   "銅雀春深鎖二喬"
+  ],
+  [
+   "夜泊秦淮近酒家",
+   "隔江猶唱後庭花"
+  ],
+  [
+   "朝朝馬策與刀環",
+   "萬里黃河繞黑山"
+  ],
+  [
+   "畫人心逐世人情",
+   "老木寒雲滿故城"
+  ]
+ ],
+ "no": [
+  [
+   "白頭宮女在",
+   "閑坐說玄宗"
+  ],
+  [
+   "欲窮千里目",
+   "更上一層樓"
+  ],
+  [
+   "未諳姑食性",
+   "先遣小姑嘗"
+  ],
+  [
+   "願君多采擷",
+   "此物最相思"
+  ],
+  [
+   "來日綺窗前",
+   "寒梅着花未"
+  ],
+  [
+   "返景入深林",
+   "復照青苔上"
+  ],
+  [
+   "春草明年綠",
+   "王孫歸不歸"
+  ],
+  [
+   "晚來天欲雪",
+   "能飲一杯無"
+  ],
+  [
+   "至今窺牧馬",
+   "不敢過臨洮"
+  ],
+  [
+   "舉頭望山月",
+   "低頭思故鄉"
+  ],
+  [
+   "但見淚痕濕",
+   "不知心恨誰"
+  ],
+  [
+   "欲得周郎顧",
+   "時時誤拂弦"
+  ],
+  [
+   "近鄉情更怯",
+   "不敢問來人"
+  ],
+  [
+   "江流石不轉",
+   "遺恨失吞吳"
+  ],
+  [
+   "野曠天低樹",
+   "江清月近人"
+  ],
+  [
+   "夜來風雨聲",
+   "花落知多少"
+  ],
+  [
+   "啼時驚妾夢",
+   "不得到遼西"
+  ],
+  [
+   "孤舟簑笠翁",
+   "獨釣寒江雪"
+  ],
+  [
+   "空山松子落",
+   "幽人應未眠"
+  ],
+  [
+   "林表明霽色",
+   "城中增暮寒"
+  ],
+  [
+   "一聲何滿子",
+   "雙淚落君前"
+  ],
+  [
+   "只在此山中",
+   "雲深不知處"
+  ],
+  [
+   "莫學武陵人",
+   "暫遊桃源裡"
+  ],
+  [
+   "莫買沃洲山",
+   "時人已知處"
+  ],
+  [
+   "鉛華不可棄",
+   "莫是藁砧歸"
+  ],
+  [
+   "忽見陌頭楊柳色",
+   "悔教夫婿覓封侯"
+  ],
+  [
+   "平陽歌舞新承寵",
+   "簾外春寒賜錦袍"
+  ],
+  [
+   "醉臥沙場君莫笑",
+   "古來征戰幾人回"
+  ],
+  [
+   "紅顏未老恩先斷",
+   "斜倚薰籠坐到明"
+  ],
+  [
+   "含情欲說宮中事",
+   "鸚鵡前頭不敢言"
+  ],
+  [
+   "妝罷低聲問夫婿",
+   "畫眉深淺入時無"
+  ],
+  [
+   "馬上相逢無紙筆",
+   "憑君傳語報平安"
+  ],
+  [
+   "可憐夜半虛前席",
+   "不問蒼生問鬼神"
+  ],
+  [
+   "春風舉國裁宮錦",
+   "半作障泥半作帆"
+  ],
+  [
+   "八駿日行三萬里",
+   "穆王何事不重來"
+  ],
+  [
+   "何當共剪西窗燭",
+   "卻話巴山夜雨時"
+  ],
+  [
+   "休問梁園舊賓客",
+   "茂陵秋雨病相如"
+  ],
+  [
+   "無端嫁得金龜婿",
+   "辜負香衾事早朝"
+  ],
+  [
+   "正是江南好風景",
+   "落花時節又逢君"
+  ],
+  [
+   "春風十里揚州路",
+   "卷上珠簾總不如"
+  ],
+  [
+   "蠟燭有心還惜別",
+   "替人垂淚到天明"
+  ],
+  [
+   "日暮東風怨啼鳥",
+   "落花猶似墜樓人"
+  ],
+  [
+   "二十四橋明月夜",
+   "玉人何處教吹簫"
+  ],
+  [
+   "天階夜色涼如水",
+   "臥看牽牛織女星"
+  ],
+  [
+   "欲把一麾江海去",
+   "樂游原上望昭陵"
+  ],
+  [
+   "東風不與周郎便",
+   "銅雀春深鎖二喬"
+  ],
+  [
+   "商女不知亡國恨",
+   "隔江猶唱後庭花"
+  ],
+  [
+   "三春白雪歸青塚",
+   "萬里黃河繞黑山"
+  ],
+  [
+   "君看六幅南朝事",
+   "老木寒雲滿故城"
+  ]
+ ]
+}
