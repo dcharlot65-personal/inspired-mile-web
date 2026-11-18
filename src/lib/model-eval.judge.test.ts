@@ -176,7 +176,11 @@ describe('the judging cells', () => {
     const b = await fingerprint({ ...cell, pairs: [...cell.pairs].reverse() });
     const c = await fingerprint({ ...cell, judgeMethod: 'grade' });
     expect(a.requests).toBe(cell.pairs.length * 8);
-    expect(c.requests).toBe(cell.pairs.length * 8);
+    // The grade path asks nothing for a pair with a line the grader would not read (the rules decide it).
+    const texts = new Map((read('pairs', `${cell.lang}.json`).pairs as { id: string; better: { text: string }; worse: { text: string } }[]).map((p) => [p.id, p]));
+    const graded = cell.pairs.filter((p) => { const t = texts.get(p.id)!; return !judgeLines(t.better.text, cell.lang).left.length && !judgeLines(t.worse.text, cell.lang).left.length; }).length;
+    expect(graded, 'pairs the grader reads whole').toBeGreaterThan(0);
+    expect(c.requests).toBe(graded * 8);
     expect(new Set([a.sha256, b.sha256, c.sha256]).size).toBe(3);
   });
 });

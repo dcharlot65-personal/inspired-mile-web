@@ -246,6 +246,8 @@ test.describe('Theatre: who judges', () => {
       const panel = await page.evaluate(() => (window as any).__theatre.theatre.panels.verdict.text.text as string);
       expect(panel, `round ${i + 1}`).toContain(c.line);
       expect((await stubCount(page)).readings - before, `round ${i + 1}: readings asked of the model`).toBe(c.judges ? 8 : 0);
+      // After one round the match cannot be over; after the last case it may be, and nothing follows.
+      if (i === cases.length - 1) break;
       await page.evaluate(() => (window as any).__theatre.act({ type: 'next' }));
       await page.waitForFunction(() => (window as any).__theatre.session.phase === 'player-turn', undefined, { timeout: 60_000 });
     }
