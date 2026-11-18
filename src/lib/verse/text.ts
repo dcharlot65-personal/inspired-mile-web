@@ -25,7 +25,7 @@ import { functionKey, functionWords } from './function-words';
 import { getPack } from './packs';
 import { pronounce, pronunciationLoaded, spellingTrigrams } from './pronounce';
 import { soundOf, soundReady } from './sound';
-import { japaneseMorae, japaneseWords } from './sound/kana';
+import { japaneseListed, japaneseMorae, japaneseWords } from './sound/kana';
 import { countOverride, frenchSound, germanSound, hindiSyllablesByRule, thaiSyllables } from './sound/lookup';
 import CONFUSABLE_PAIRS from './confusables';
 
@@ -836,16 +836,31 @@ function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[
     const flags: boolean[] = [];
     // A word in katakana is a loanword or a name when the sentence uses it as one: a word of the
     // dictionary's written otherwise (a particle, an auxiliary, a verb, a noun in kanji) stands beside
-    // it (スマホの, インフルエンサーは, ガチで, …のフロー), whether the dictionary has the katakana word
-    // or not; or the dictionary has it and it is the whole line (サクラ). In a verse read as Japanese
-    // (japaneseVerse), the dictionary's words of two characters or more in a run of katakana are
-    // loanwords when the run holds two of them or more, or is one of them: a line of them alone
-    // (サッカーボール, ジェットコースター, ヒップホップ ドリーム) or a compound inside a sentence
-    // (コーヒーカップに); the rest of such a run counts only as the other rules let it (in
-    // マイクチェック ワンツー, ワンツー, which the dictionary lacks). Elsewhere a run of katakana among
-    // other katakana is letters, not words, even where the dictionary finds one of its nouns inside
-    // (ココア, テツ): a verse of katakana alone is not read as Japanese, and one noun found by chance
-    // in random katakana is not a run of loanwords.
+    // it (スマホの, インフルエンサーは, ガチで, …のフロー), whether a dictionary has the katakana word
+    // or not; or the analyser has it and it is the whole line (サクラ). In a verse read as Japanese
+    // (japaneseVerse), loanwords a dictionary has, of two characters or more, in a run of katakana
+    // count when the run holds two of them or more, or is one of them: a line of them alone
+    // (サッカーボール, ジェットコースター, ヒップホップ ドリーム, ユーチューブ) or a compound inside a
+    // sentence (コーヒーカップに); the rest of such a run counts only as the other rules let it.
+    // Elsewhere a run of katakana among other katakana is letters, not words, even where the
+    // dictionary finds one of its nouns inside (ココア, テツ): a verse of katakana alone is not read
+    // as Japanese, and one noun found by chance in random katakana is not a run of loanwords.
+    //
+    // "A dictionary has it": the analyser's own (IPADIC) has the word it read, or one of the three
+    // has the katakana as written between other characters, whole (IPADIC; JMdict's words: スマホ,
+    // ワンツー; JMdict's names: レノン, ビヨンセ), or as two words of IPADIC's or JMdict's of
+    // LOANWORD_PART characters or more written together (スイートドリーム, ビートメイカー). The
+    // analyser (2007) lacks a quarter of today's common loanwords (the engine's second check: 31 of
+    // 135) and reads them as letters it guessed at; spelling them from its own katakana does not tell
+    // them from random katakana (review5.test.ts), a list does.
+    const text = line.normalize('NFKC');
+    const written = [...text.matchAll(/[ァ-ヺー]+/gu)].map((m) => ({ from: m.index ?? 0, to: (m.index ?? 0) + m[0].length, listed: katakanaListed(m[0]) }));
+    // The run as written that a word lies in, when a dictionary has that run (its index among `written`), else -1.
+    const listedRun = words.map((w) => {
+      if (!KATAKANA_ONLY.test(w.surface)) return -1;
+      const r = written.findIndex((x) => w.at >= x.from && w.at + w.surface.length <= x.to);
+      return r >= 0 && written[r].listed ? r : -1;
+    });
     const anchor = (w: (typeof words)[number] | undefined) => !!w && w.known && !KATAKANA_ONLY.test(w.surface);
     const loanword = (w: (typeof words)[number]) => w.known && [...w.surface].length >= 2;
     const inLoanRun = new Array<boolean>(words.length).fill(false);
@@ -857,8 +872,15 @@ function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[
         }
         let j = i;
         while (j < words.length && KATAKANA_ONLY.test(words[j].surface)) j++;
-        const found = words.slice(i, j).filter(loanword).length;
-        if (found >= 2 || (found === 1 && j - i === 1)) for (let k = i; k < j; k++) inLoanRun[k] = loanword(words[k]);
+        const at = Array.from({ length: j - i }, (_, k) => i + k);
+        // Loanwords in the run: the analyser's, and each run as written that a dictionary has and
+        // in which the analyser found none of its own (it read ユーチューブ as letters).
+        const runs = new Set(at.map((k) => listedRun[k]).filter((r) => r >= 0));
+        let found = at.filter((k) => loanword(words[k])).length;
+        for (const r of runs) if (!at.some((k) => listedRun[k] === r && loanword(words[k]))) found++;
+        // The run is one loanword: one word of the analyser's, or one run as written that a dictionary has.
+        const one = (j - i === 1 && found === 1) || (runs.size === 1 && at.every((k) => listedRun[k] >= 0));
+        if (found >= 2 || (found >= 1 && one)) for (const k of at) inLoanRun[k] = loanword(words[k]) || listedRun[k] >= 0;
         i = j;
       }
     }
@@ -890,6 +912,27 @@ function writtenAsName(word: string): boolean {
 
 /** A word written in katakana alone (long-vowel marks included): the script of loanwords and names. */
 const KATAKANA_ONLY = /^[ァ-ヺー]+$/u;
+/**
+ * Characters each of two loanwords written together needs before the pair counts as one
+ * (katakanaListed). Measured in review5.test.ts: with parts of two characters, 3% of random
+ * katakana strings were spelled by the dictionaries' words; with three, 0.02 to 0.07%.
+ */
+export const LOANWORD_PART = 3;
+
+/**
+ * Does a dictionary have this katakana, as written: whole (IPADIC, JMdict's words, JMdict's
+ * names), or as two words of IPADIC's or JMdict's (not names) of LOANWORD_PART characters or more?
+ */
+function katakanaListed(run: string): boolean {
+  if (run.length < 2) return false;
+  if (japaneseListed(run)) return true;
+  const word = (w: string) => {
+    const l = japaneseListed(w);
+    return l === 'ipadic' || l === 'word';
+  };
+  for (let k = LOANWORD_PART; k + LOANWORD_PART <= run.length; k++) if (word(run.slice(0, k)) && word(run.slice(k))) return true;
+  return false;
+}
 /** Is this line read as Japanese: does the dictionary find a word in it not written in katakana? */
 function japaneseLine(line: string): boolean {
   return !!japaneseWords(line)?.some((w) => w.known && !KATAKANA_ONLY.test(w.surface));
