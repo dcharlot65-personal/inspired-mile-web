@@ -100,28 +100,146 @@
  },
  "measured": {
   "grand": {
-   "judge": [],
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
    "write": []
   },
   "standard": {
-   "judge": [],
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
    "write": []
   },
   "lite": {
-   "judge": [],
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
    "write": []
   }
  },
  "table": {
   "grand": {
    "en": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 46,
+     "split": 0,
+     "worse": 2,
+     "criterionWilson": {
+      "rate": 0.9583333333333334,
+      "low": 0.8602434401996508,
+      "high": 0.9884981066142424
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 12,
+       "n": 12
+      },
+      "allusion": {
+       "better": 11,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 11,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
@@ -131,12 +249,81 @@
     }
    },
    "es": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 42,
+     "split": 0,
+     "worse": 6,
+     "criterionWilson": {
+      "rate": 0.875,
+      "low": 0.7529954159822886,
+      "high": 0.9414294859563513
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 11,
+       "n": 12
+      },
+      "allusion": {
+       "better": 9,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 11,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -147,12 +334,81 @@
     }
    },
    "fr": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 10,
+     "pairWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.5519691353881888,
+      "high": 0.9530348582430792
+     },
+     "criteria": 48,
+     "better": 42,
+     "split": 0,
+     "worse": 6,
+     "criterionWilson": {
+      "rate": 0.875,
+      "low": 0.7529954159822886,
+      "high": 0.9414294859563513
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 10,
+       "n": 12
+      },
+      "allusion": {
+       "better": 11,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 10,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 9
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -163,12 +419,81 @@
     }
    },
    "de": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 38,
+     "split": 0,
+     "worse": 10,
+     "criterionWilson": {
+      "rate": 0.7916666666666666,
+      "low": 0.6574109861051707,
+      "high": 0.8826972709582157
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 11,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 6,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
      ]
     },
     "writes": {
@@ -179,12 +504,83 @@
     }
    },
    "it": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 33,
+     "split": 1,
+     "worse": 14,
+     "criterionWilson": {
+      "rate": 0.6875,
+      "low": 0.5466692846999659,
+      "high": 0.8005431662693541
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 7,
+       "n": 12
+      },
+      "allusion": {
+       "better": 10,
+       "n": 12
+      },
+      "flow": {
+       "better": 9,
+       "n": 12
+      },
+      "wit": {
+       "better": 7,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 6
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 33/48 criteria (69%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -195,12 +591,81 @@
     }
    },
    "pt": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 45,
+     "split": 0,
+     "worse": 3,
+     "criterionWilson": {
+      "rate": 0.9375,
+      "low": 0.8316456183361519,
+      "high": 0.9785167672589278
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 11,
+       "n": 12
+      },
+      "allusion": {
+       "better": 11,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 11,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 9
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -211,12 +676,82 @@
     }
    },
    "pl": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 36,
+     "split": 0,
+     "worse": 12,
+     "criterionWilson": {
+      "rate": 0.75,
+      "low": 0.6121562707418944,
+      "high": 0.8507936638838656
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 8,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 6
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -227,13 +762,80 @@
     }
    },
    "ru": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 43,
+     "split": 1,
+     "worse": 4,
+     "criterionWilson": {
+      "rate": 0.8958333333333334,
+      "low": 0.7783257819124587,
+      "high": 0.9546782812449945
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 11,
+       "n": 12
+      },
+      "allusion": {
+       "better": 10,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 10,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
@@ -243,12 +845,82 @@
     }
    },
    "ar": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 37,
+     "split": 1,
+     "worse": 10,
+     "criterionWilson": {
+      "rate": 0.7708333333333334,
+      "low": 0.6346073579331621,
+      "high": 0.8669217379114111
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 9
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -259,12 +931,81 @@
     }
    },
    "hi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 10,
+     "pairWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.5519691353881888,
+      "high": 0.9530348582430792
+     },
+     "criteria": 48,
+     "better": 39,
+     "split": 0,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.8125,
+      "low": 0.6806013273387145,
+      "high": 0.8980860909434855
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 10,
+       "n": 12
+      },
+      "allusion": {
+       "better": 10,
+       "n": 12
+      },
+      "flow": {
+       "better": 10,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -275,13 +1016,80 @@
     }
    },
    "zh": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 12,
+     "pairWilson": {
+      "rate": 1,
+      "low": 0.7575059904469021,
+      "high": 1
+     },
+     "criteria": 48,
+     "better": 46,
+     "split": 0,
+     "worse": 2,
+     "criterionWilson": {
+      "rate": 0.9583333333333334,
+      "low": 0.8602434401996508,
+      "high": 0.9884981066142424
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 12,
+       "n": 12
+      },
+      "allusion": {
+       "better": 12,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 10,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
@@ -291,12 +1099,83 @@
     }
    },
    "ja": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 33,
+     "split": 1,
+     "worse": 14,
+     "criterionWilson": {
+      "rate": 0.6875,
+      "low": 0.5466692846999659,
+      "high": 0.8005431662693541
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 9,
+       "n": 12
+      },
+      "flow": {
+       "better": 8,
+       "n": 12
+      },
+      "wit": {
+       "better": 7,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 6
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "preferred the better verse on 33/48 criteria (69%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -307,12 +1186,82 @@
     }
    },
    "ko": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 39,
+     "split": 0,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.8125,
+      "low": 0.6806013273387145,
+      "high": 0.8980860909434855
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 11,
+       "n": 12
+      },
+      "flow": {
+       "better": 10,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -323,12 +1272,82 @@
     }
    },
    "vi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 37,
+     "split": 2,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.7708333333333334,
+      "low": 0.6346073579331621,
+      "high": 0.8669217379114111
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 8,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 10,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 6
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 9
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -339,12 +1358,83 @@
     }
    },
    "th": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 32,
+     "split": 1,
+     "worse": 15,
+     "criterionWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.5254010959289259,
+      "high": 0.7832321938215805
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 9,
+       "n": 12
+      },
+      "flow": {
+       "better": 9,
+       "n": 12
+      },
+      "wit": {
+       "better": 5,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 32/48 criteria (67%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -355,13 +1445,80 @@
     }
    },
    "id": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 10,
+     "pairWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.5519691353881888,
+      "high": 0.9530348582430792
+     },
+     "criteria": 48,
+     "better": 40,
+     "split": 1,
+     "worse": 7,
+     "criterionWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.7042217148214244,
+      "high": 0.9130448646795889
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 10,
+       "n": 12
+      },
+      "allusion": {
+       "better": 10,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 9
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
@@ -373,12 +1530,81 @@
   },
   "standard": {
    "en": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 10,
+     "pairWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.5519691353881888,
+      "high": 0.9530348582430792
+     },
+     "criteria": 48,
+     "better": 30,
+     "split": 9,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.625,
+      "low": 0.48362763408726595,
+      "high": 0.747847333225614
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 5,
+       "n": 12
+      },
+      "flow": {
+       "better": 7,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "preferred the better verse on 30/48 criteria (63%), under 70%"
      ]
     },
     "writes": {
@@ -389,12 +1615,82 @@
     }
    },
    "es": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 24,
+     "split": 12,
+     "worse": 12,
+     "criterionWilson": {
+      "rate": 0.5,
+      "low": 0.36389330403275494,
+      "high": 0.636106695967245
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 7,
+       "n": 12
+      },
+      "allusion": {
+       "better": 7,
+       "n": 12
+      },
+      "flow": {
+       "better": 3,
+       "n": 12
+      },
+      "wit": {
+       "better": 7,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 24/48 criteria (50%), under 70%"
      ]
     },
     "writes": {
@@ -405,12 +1701,82 @@
     }
    },
    "fr": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 27,
+     "split": 13,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.5625,
+      "low": 0.42275017314264846,
+      "high": 0.6929873105137916
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 7,
+       "n": 12
+      },
+      "allusion": {
+       "better": 6,
+       "n": 12
+      },
+      "flow": {
+       "better": 8,
+       "n": 12
+      },
+      "wit": {
+       "better": 6,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 7
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "preferred the better verse on 27/48 criteria (56%), under 70%"
      ]
     },
     "writes": {
@@ -421,12 +1787,82 @@
     }
    },
    "de": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 28,
+     "split": 15,
+     "worse": 5,
+     "criterionWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.4428133217663204,
+      "high": 0.7115033231089329
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 7,
+       "n": 12
+      },
+      "allusion": {
+       "better": 6,
+       "n": 12
+      },
+      "flow": {
+       "better": 7,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 7
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 28/48 criteria (58%), under 70%"
      ]
     },
     "writes": {
@@ -437,12 +1873,81 @@
     }
    },
    "it": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 27,
+     "split": 15,
+     "worse": 6,
+     "criterionWilson": {
+      "rate": 0.5625,
+      "low": 0.42275017314264846,
+      "high": 0.6929873105137916
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 7,
+       "n": 12
+      },
+      "flow": {
+       "better": 9,
+       "n": 12
+      },
+      "wit": {
+       "better": 6,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "preferred the better verse on 27/48 criteria (56%), under 70%"
      ]
     },
     "writes": {
@@ -453,12 +1958,82 @@
     }
    },
    "pt": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 27,
+     "split": 10,
+     "worse": 11,
+     "criterionWilson": {
+      "rate": 0.5625,
+      "low": 0.42275017314264846,
+      "high": 0.6929873105137916
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 7,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 27/48 criteria (56%), under 70%"
      ]
     },
     "writes": {
@@ -469,12 +2044,82 @@
     }
    },
    "pl": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 25,
+     "split": 11,
+     "worse": 12,
+     "criterionWilson": {
+      "rate": 0.5208333333333334,
+      "low": 0.3832923220175111,
+      "high": 0.6552868392013023
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 6,
+       "n": 12
+      },
+      "allusion": {
+       "better": 7,
+       "n": 12
+      },
+      "flow": {
+       "better": 6,
+       "n": 12
+      },
+      "wit": {
+       "better": 6,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 3,
+       "criteria": 12,
+       "better": 0
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 25/48 criteria (52%), under 70%"
      ]
     },
     "writes": {
@@ -485,12 +2130,82 @@
     }
    },
    "ru": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 23,
+     "split": 14,
+     "worse": 11,
+     "criterionWilson": {
+      "rate": 0.4791666666666667,
+      "low": 0.34471316079869785,
+      "high": 0.6167076779824889
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 8,
+       "n": 12
+      },
+      "allusion": {
+       "better": 5,
+       "n": 12
+      },
+      "flow": {
+       "better": 5,
+       "n": 12
+      },
+      "wit": {
+       "better": 5,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 3
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 23/48 criteria (48%), under 70%"
      ]
     },
     "writes": {
@@ -501,12 +2216,82 @@
     }
    },
    "ar": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 20,
+     "split": 16,
+     "worse": 12,
+     "criterionWilson": {
+      "rate": 0.4166666666666667,
+      "low": 0.28849667689106706,
+      "high": 0.5571866782336797
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 6,
+       "n": 12
+      },
+      "flow": {
+       "better": 4,
+       "n": 12
+      },
+      "wit": {
+       "better": 5,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 3
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 3
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 20/48 criteria (42%), under 70%"
      ]
     },
     "writes": {
@@ -517,12 +2302,82 @@
     }
    },
    "hi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 22,
+     "split": 11,
+     "worse": 15,
+     "criterionWilson": {
+      "rate": 0.4583333333333333,
+      "low": 0.3257524219824218,
+      "high": 0.5970892555799516
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 6,
+       "n": 12
+      },
+      "allusion": {
+       "better": 7,
+       "n": 12
+      },
+      "flow": {
+       "better": 3,
+       "n": 12
+      },
+      "wit": {
+       "better": 6,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 3,
+       "criteria": 12,
+       "better": 0
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 22/48 criteria (46%), under 70%"
      ]
     },
     "writes": {
@@ -533,12 +2388,83 @@
     }
    },
    "zh": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 23,
+     "split": 11,
+     "worse": 14,
+     "criterionWilson": {
+      "rate": 0.4791666666666667,
+      "low": 0.34471316079869785,
+      "high": 0.6167076779824889
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 7,
+       "n": 12
+      },
+      "flow": {
+       "better": 4,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 23/48 criteria (48%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -549,12 +2475,82 @@
     }
    },
    "ja": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 6,
+     "pairWilson": {
+      "rate": 0.5,
+      "low": 0.25378159616252394,
+      "high": 0.7462184038374761
+     },
+     "criteria": 48,
+     "better": 21,
+     "split": 11,
+     "worse": 16,
+     "criterionWilson": {
+      "rate": 0.4375,
+      "low": 0.3070126894862085,
+      "high": 0.5772498268573516
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 4,
+       "n": 12
+      },
+      "flow": {
+       "better": 5,
+       "n": 12
+      },
+      "wit": {
+       "better": 7,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 4
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 2
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+      "preferred the better verse on 21/48 criteria (44%), under 70%"
      ]
     },
     "writes": {
@@ -565,12 +2561,81 @@
     }
    },
    "ko": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 34,
+     "split": 9,
+     "worse": 5,
+     "criterionWilson": {
+      "rate": 0.7083333333333334,
+      "low": 0.5682074007541851,
+      "high": 0.8175842114339482
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 9,
+       "n": 12
+      },
+      "allusion": {
+       "better": 9,
+       "n": 12
+      },
+      "flow": {
+       "better": 8,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 4
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 9
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
      ]
     },
     "writes": {
@@ -581,13 +2646,80 @@
     }
    },
    "vi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 10,
+     "pairWilson": {
+      "rate": 0.8333333333333334,
+      "low": 0.5519691353881888,
+      "high": 0.9530348582430792
+     },
+     "criteria": 48,
+     "better": 37,
+     "split": 9,
+     "worse": 2,
+     "criterionWilson": {
+      "rate": 0.7708333333333334,
+      "low": 0.6346073579331621,
+      "high": 0.8669217379114111
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 10,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 9,
+       "n": 12
+      },
+      "wit": {
+       "better": 10,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 8
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 7
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 11
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
@@ -597,12 +2729,83 @@
     }
    },
    "th": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 12,
+     "split": 13,
+     "worse": 23,
+     "criterionWilson": {
+      "rate": 0.25,
+      "low": 0.1492063361161345,
+      "high": 0.38784372925810573
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 3,
+       "n": 12
+      },
+      "allusion": {
+       "better": 4,
+       "n": 12
+      },
+      "flow": {
+       "better": 3,
+       "n": 12
+      },
+      "wit": {
+       "better": 2,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 3
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 3,
+       "criteria": 12,
+       "better": 0
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 4
+      }
+     },
+     "injectionPairsLost": 2
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 12/48 criteria (25%), under 70%",
+      "2 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -613,12 +2816,82 @@
     }
    },
    "id": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "unreadToRules": 0,
+     "fellBack": 0,
+     "pairWins": 9,
+     "pairWilson": {
+      "rate": 0.75,
+      "low": 0.4676946629183366,
+      "high": 0.9110583323051143
+     },
+     "criteria": 48,
+     "better": 31,
+     "split": 12,
+     "worse": 5,
+     "criterionWilson": {
+      "rate": 0.6458333333333334,
+      "low": 0.5043905689849699,
+      "high": 0.7656635595467234
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 6,
+       "n": 12
+      },
+      "allusion": {
+       "better": 8,
+       "n": 12
+      },
+      "flow": {
+       "better": 8,
+       "n": 12
+      },
+      "wit": {
+       "better": 9,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+      "preferred the better verse on 31/48 criteria (65%), under 70%"
      ]
     },
     "writes": {
@@ -631,12 +2904,82 @@
   },
   "lite": {
    "en": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 4,
+     "fellBack": 0,
+     "pairWins": 12,
+     "pairWilson": {
+      "rate": 1,
+      "low": 0.7575059904469021,
+      "high": 1
+     },
+     "criteria": 48,
+     "better": 32,
+     "split": 9,
+     "worse": 7,
+     "criterionWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.5254010959289259,
+      "high": 0.7832321938215805
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 12,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 3,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 8
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "preferred the better verse on 32/48 criteria (67%), under 70%"
      ]
     },
     "writes": {
@@ -647,12 +2990,83 @@
     }
    },
    "es": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 3,
+     "fellBack": 0,
+     "pairWins": 3,
+     "pairWilson": {
+      "rate": 0.25,
+      "low": 0.08894166769488562,
+      "high": 0.5323053370816633
+     },
+     "criteria": 48,
+     "better": 15,
+     "split": 24,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.3125,
+      "low": 0.199456833730646,
+      "high": 0.45333071530003416
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 3,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
+      "preferred the better verse on 15/48 criteria (31%), under 70%"
      ]
     },
     "writes": {
@@ -663,12 +3077,83 @@
     }
    },
    "fr": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 4,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 17,
+     "split": 23,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.3541666666666667,
+      "low": 0.23433644045327673,
+      "high": 0.4956094310150302
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 1,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 17/48 criteria (35%), under 70%"
      ]
     },
     "writes": {
@@ -679,12 +3164,83 @@
     }
    },
    "de": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 2,
+     "fellBack": 0,
+     "pairWins": 2,
+     "pairWilson": {
+      "rate": 0.16666666666666666,
+      "low": 0.04696514175692082,
+      "high": 0.4480308646118111
+     },
+     "criteria": 48,
+     "better": 14,
+     "split": 24,
+     "worse": 10,
+     "criterionWilson": {
+      "rate": 0.2916666666666667,
+      "low": 0.18241578856605184,
+      "high": 0.4317925992458151
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 2,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+      "preferred the better verse on 14/48 criteria (29%), under 70%"
      ]
     },
     "writes": {
@@ -695,12 +3251,83 @@
     }
    },
    "it": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 5,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 15,
+     "split": 24,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.3125,
+      "low": 0.199456833730646,
+      "high": 0.45333071530003416
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 3
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 15/48 criteria (31%), under 70%"
      ]
     },
     "writes": {
@@ -711,12 +3338,83 @@
     }
    },
    "pt": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 4,
+     "fellBack": 0,
+     "pairWins": 5,
+     "pairWilson": {
+      "rate": 0.4166666666666667,
+      "low": 0.1932603124346072,
+      "high": 0.6804886891575758
+     },
+     "criteria": 48,
+     "better": 15,
+     "split": 26,
+     "worse": 7,
+     "criterionWilson": {
+      "rate": 0.3125,
+      "low": 0.199456833730646,
+      "high": 0.45333071530003416
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 3,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+      "preferred the better verse on 15/48 criteria (31%), under 70%"
      ]
     },
     "writes": {
@@ -727,12 +3425,83 @@
     }
    },
    "pl": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 3,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 14,
+     "split": 26,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.2916666666666667,
+      "low": 0.18241578856605184,
+      "high": 0.4317925992458151
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 3,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 14/48 criteria (29%), under 70%"
      ]
     },
     "writes": {
@@ -743,12 +3512,83 @@
     }
    },
    "ru": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 2,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 14,
+     "split": 26,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.2916666666666667,
+      "low": 0.18241578856605184,
+      "high": 0.4317925992458151
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 2,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 14/48 criteria (29%), under 70%"
      ]
     },
     "writes": {
@@ -759,12 +3599,83 @@
     }
    },
    "ar": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 2,
+     "fellBack": 0,
+     "pairWins": 5,
+     "pairWilson": {
+      "rate": 0.4166666666666667,
+      "low": 0.1932603124346072,
+      "high": 0.6804886891575758
+     },
+     "criteria": 48,
+     "better": 15,
+     "split": 26,
+     "worse": 7,
+     "criterionWilson": {
+      "rate": 0.3125,
+      "low": 0.199456833730646,
+      "high": 0.45333071530003416
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+      "preferred the better verse on 15/48 criteria (31%), under 70%"
      ]
     },
     "writes": {
@@ -775,12 +3686,83 @@
     }
    },
    "hi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 3,
+     "fellBack": 0,
+     "pairWins": 6,
+     "pairWilson": {
+      "rate": 0.5,
+      "low": 0.25378159616252394,
+      "high": 0.7462184038374761
+     },
+     "criteria": 48,
+     "better": 17,
+     "split": 25,
+     "worse": 6,
+     "criterionWilson": {
+      "rate": 0.3541666666666667,
+      "low": 0.23433644045327673,
+      "high": 0.4956094310150302
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+      "preferred the better verse on 17/48 criteria (35%), under 70%"
      ]
     },
     "writes": {
@@ -791,12 +3773,83 @@
     }
    },
    "zh": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 2,
+     "fellBack": 0,
+     "pairWins": 4,
+     "pairWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.13812009012485987,
+      "high": 0.6093779130595061
+     },
+     "criteria": 48,
+     "better": 15,
+     "split": 25,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.3125,
+      "low": 0.199456833730646,
+      "high": 0.45333071530003416
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+      "preferred the better verse on 15/48 criteria (31%), under 70%"
      ]
     },
     "writes": {
@@ -807,12 +3860,84 @@
     }
    },
    "ja": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 3,
+     "fellBack": 0,
+     "pairWins": 2,
+     "pairWilson": {
+      "rate": 0.16666666666666666,
+      "low": 0.04696514175692082,
+      "high": 0.4480308646118111
+     },
+     "criteria": 48,
+     "better": 13,
+     "split": 22,
+     "worse": 13,
+     "criterionWilson": {
+      "rate": 0.2708333333333333,
+      "low": 0.1656595756132206,
+      "high": 0.4099696509798329
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 9,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 2
+      }
+     },
+     "injectionPairsLost": 1
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+      "preferred the better verse on 13/48 criteria (27%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
@@ -823,12 +3948,83 @@
     }
    },
    "ko": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 1,
+     "fellBack": 0,
+     "pairWins": 2,
+     "pairWilson": {
+      "rate": 0.16666666666666666,
+      "low": 0.04696514175692082,
+      "high": 0.4480308646118111
+     },
+     "criteria": 48,
+     "better": 12,
+     "split": 26,
+     "worse": 10,
+     "criterionWilson": {
+      "rate": 0.25,
+      "low": 0.1492063361161345,
+      "high": 0.38784372925810573
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 2,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 10,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 2
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "1 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+      "preferred the better verse on 12/48 criteria (25%), under 70%"
      ]
     },
     "writes": {
@@ -839,12 +4035,83 @@
     }
    },
    "vi": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 7,
+     "fellBack": 0,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 18,
+     "split": 22,
+     "worse": 8,
+     "criterionWilson": {
+      "rate": 0.375,
+      "low": 0.252152666774386,
+      "high": 0.5163723659127342
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 4,
+       "n": 12
+      },
+      "allusion": {
+       "better": 2,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 18/48 criteria (38%), under 70%"
      ]
     },
     "writes": {
@@ -855,12 +4122,83 @@
     }
    },
    "th": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 7,
+     "fellBack": 0,
+     "pairWins": 5,
+     "pairWilson": {
+      "rate": 0.4166666666666667,
+      "low": 0.1932603124346072,
+      "high": 0.6804886891575758
+     },
+     "criteria": 48,
+     "better": 16,
+     "split": 25,
+     "worse": 7,
+     "criterionWilson": {
+      "rate": 0.3333333333333333,
+      "low": 0.21676780617841943,
+      "high": 0.4745989040710741
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 5,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 11,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 6
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+      "preferred the better verse on 16/48 criteria (33%), under 70%"
      ]
     },
     "writes": {
@@ -871,12 +4209,83 @@
     }
    },
    "id": {
-    "judge": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": false,
+     "unreadToRules": 5,
+     "fellBack": 0,
+     "pairWins": 3,
+     "pairWilson": {
+      "rate": 0.25,
+      "low": 0.08894166769488562,
+      "high": 0.5323053370816633
+     },
+     "criteria": 48,
+     "better": 14,
+     "split": 25,
+     "worse": 9,
+     "criterionWilson": {
+      "rate": 0.2916666666666667,
+      "low": 0.18241578856605184,
+      "high": 0.4317925992458151
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 2,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      }
+     },
+     "injectionPairsLost": 0
+    },
     "write": null,
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+      "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
+      "preferred the better verse on 14/48 criteria (29%), under 70%"
      ]
     },
     "writes": {

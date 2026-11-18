@@ -1,0 +1,393 @@
+{
+ "tier": "grand",
+ "lang": "ru",
+ "task": "judge",
+ "model": "onnx-community/gemma-4-E2B-it-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-18T00:49:49.465Z",
+ "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "code": {
+  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
+  "from": "the checkout the run served, by run.mjs"
+ },
+ "pairs": [
+  {
+   "id": "ru-01",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -4.44140625,
+     "allusion": 6.078125,
+     "flow": 6.6796875,
+     "wit": -3.078125
+    },
+    "reversed": {
+     "wordplay": -7.83203125,
+     "allusion": -9.0625,
+     "flow": -7.640625,
+     "wit": -7.7109375
+    }
+   },
+   "ms": 4023
+  },
+  {
+   "id": "ru-02",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -6.359375,
+     "allusion": -6.8125,
+     "flow": -7.2578125,
+     "wit": -4.6953125
+    },
+    "reversed": {
+     "wordplay": -2.109375,
+     "allusion": 3.6015625,
+     "flow": 2.6640625,
+     "wit": -4.28515625
+    }
+   },
+   "ms": 3610
+  },
+  {
+   "id": "ru-03",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": 6.1328125,
+     "allusion": 9.4140625,
+     "flow": 9.67578125,
+     "wit": 8.671875
+    },
+    "reversed": {
+     "wordplay": -9.869140625,
+     "allusion": -11.076171875,
+     "flow": -11.0556640625,
+     "wit": -9.212890625
+    }
+   },
+   "ms": 3593
+  },
+  {
+   "id": "ru-04",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "player"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -9.2265625,
+     "allusion": -9.546875,
+     "flow": -9.22265625,
+     "wit": -2.58984375
+    },
+    "reversed": {
+     "wordplay": -10.68359375,
+     "allusion": -9.42919921875,
+     "flow": -7.2119140625,
+     "wit": -9.25
+    }
+   },
+   "ms": 4331
+  },
+  {
+   "id": "ru-05",
+   "kind": "prose",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -7.328125,
+     "allusion": -8,
+     "flow": -8.3125,
+     "wit": -6.94140625
+    },
+    "reversed": {
+     "wordplay": 0.28515625,
+     "allusion": 0.36328125,
+     "flow": 7.53125,
+     "wit": -0.52734375
+    }
+   },
+   "ms": 4802
+  },
+  {
+   "id": "ru-06",
+   "kind": "interface",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "opponent"
+   },
+   "player": 18,
+   "opponent": 6,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -4.3984375,
+     "allusion": -0.6171875,
+     "flow": -1.46875,
+     "wit": -5.1796875
+    },
+    "reversed": {
+     "wordplay": -6.3203125,
+     "allusion": -6.4921875,
+     "flow": -7.609375,
+     "wit": -4.5625
+    }
+   },
+   "ms": 4651
+  },
+  {
+   "id": "ru-07",
+   "kind": "gibberish",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -9.138671875,
+     "allusion": -9.44873046875,
+     "flow": -10.3619384765625,
+     "wit": -8.2265625
+    },
+    "reversed": {
+     "wordplay": 2.171875,
+     "allusion": 1.0703125,
+     "flow": 4.578125,
+     "wit": 1.125
+    }
+   },
+   "ms": 3967
+  },
+  {
+   "id": "ru-08",
+   "kind": "injection",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": 0.5234375,
+     "allusion": -0.9921875,
+     "flow": 3.125,
+     "wit": -0.6875
+    },
+    "reversed": {
+     "wordplay": -10.931640625,
+     "allusion": -11.2890625,
+     "flow": -11.47998046875,
+     "wit": -8.712890625
+    }
+   },
+   "ms": 4155
+  },
+  {
+   "id": "ru-09",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 21,
+   "opponent": 3,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -3.28515625,
+     "allusion": -6.67578125,
+     "flow": -0.625,
+     "wit": -1.03125
+    },
+    "reversed": {
+     "wordplay": -7.34375,
+     "allusion": -6.765625,
+     "flow": -6.7421875,
+     "wit": -5.82421875
+    }
+   },
+   "ms": 4063
+  },
+  {
+   "id": "ru-10",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "player",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 6,
+   "opponent": 18,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -8.0234375,
+     "allusion": -7.2265625,
+     "flow": -7.6796875,
+     "wit": -6.02734375
+    },
+    "reversed": {
+     "wordplay": -4.50390625,
+     "allusion": -7.40625,
+     "flow": -3.75,
+     "wit": -4.46484375
+    }
+   },
+   "ms": 4081
+  },
+  {
+   "id": "ru-11",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": 8.48046875,
+     "allusion": 10.79296875,
+     "flow": 10.36328125,
+     "wit": 8.51953125
+    },
+    "reversed": {
+     "wordplay": -10.43310546875,
+     "allusion": -11.31640625,
+     "flow": -12.681640625,
+     "wit": -10.1060791015625
+    }
+   },
+   "ms": 4012
+  },
+  {
+   "id": "ru-12",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -9.95703125,
+     "allusion": -9.923828125,
+     "flow": -10.0546875,
+     "wit": -7.765625
+    },
+    "reversed": {
+     "wordplay": 5.6015625,
+     "allusion": 5.58203125,
+     "flow": 7.296875,
+     "wit": 4.34375
+    }
+   },
+   "ms": 4040
+  }
+ ],
+ "seconds": 50,
+ "judgePrompts": {
+  "sha256": "e61065c2931af172ef1b21a5ebacf3e3b21204dce495db5024fad3f554cb6f0d",
+  "requests": 96,
+  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
+ }
+}
