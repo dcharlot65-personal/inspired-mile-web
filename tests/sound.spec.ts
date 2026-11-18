@@ -28,20 +28,17 @@ test('a page load fetches no sound data, and a duel fetches only its own languag
   await page.addInitScript((deck) => {
     localStorage.setItem('inspired-mile-decks', JSON.stringify([deck]));
     localStorage.setItem('inspired-mile-active-deck', deck.name);
-    // A French page: the duel's language defaults to French (English's table is not sound data here).
-    localStorage.setItem('inspired-mile-locale', 'fr');
   }, DECK);
   await page.goto('/');
-  // No ?lang= and no duel language chosen before. With either, the page fetches that language's data
-  // once it is idle, by design (warmWhenIdle in battle.astro), and checking for no fetch then only
-  // raced the idle callback: with ?lang=fr it failed 1 run in 5 on integrate/wave3 itself (iMac Pro,
-  // 2026-11-17).
-  await page.goto('/battle?seed=11&brain=rules');
+  // A visitor who names no duel language: nothing, even once the page is idle. (A link that names
+  // one, ?lang=fr below, warms that language's data when the page is idle, by design since 942519e;
+  // tests/battle-bytes.spec.ts holds that. This test asked for none there, and failed every run.)
+  await page.goto('/battle?seed=11&brain=rules', { waitUntil: 'networkidle' });
   await expect(page.locator('#start-duel')).toBeEnabled();
-  await expect(page.locator('#language')).toHaveValue('fr');
-  // Past the idle prefetch's own 2 s limit, so a fetch made "once idle" would have been made by now.
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(1500);
   expect(requests.filter((u) => SOUND.test(u))).toEqual([]);
+  await page.goto('/battle?seed=11&brain=rules&lang=fr');
+  await expect(page.locator('#start-duel')).toBeEnabled();
   await page.click('#start-duel');
   await expect(page.locator('#battle-arena')).toBeVisible();
   const sound = requests.filter((u) => SOUND.test(u));
@@ -80,3 +77,29 @@ for (const lang of LANGS) {
     expect(out.first).toEqual(expected[lang]);
   });
 }
+
+test('a page whose duel language defaults to French fetches no sound data until the duel starts', async ({ page }) => {
+  // The test above names no duel language, so the duel defaults to English, whose table this check
+  // does not count as sound data: a page that fetched its default language's data on every visit
+  // would pass it. Here the page is French, so French is the default and must still not be fetched
+  // ahead (no ?lang= and no earlier choice: battle.astro warmWhenIdle). A planted fault that prefetched
+  // on every visit turned this red (iMac Pro, 2026-11-17).
+  const requests: string[] = [];
+  page.on('request', (r) => requests.push(r.url()));
+  await page.addInitScript((deck) => {
+    localStorage.setItem('inspired-mile-decks', JSON.stringify([deck]));
+    localStorage.setItem('inspired-mile-active-deck', deck.name);
+    localStorage.setItem('inspired-mile-locale', 'fr');
+  }, DECK);
+  await page.goto('/battle?seed=11&brain=rules');
+  await expect(page.locator('#start-duel')).toBeEnabled();
+  await expect(page.locator('#language')).toHaveValue('fr');
+  // Past the idle prefetch's own 2 s limit, so a fetch made "once idle" would have been made by now.
+  await page.waitForTimeout(3000);
+  expect(requests.filter((u) => SOUND.test(u))).toEqual([]);
+  await page.click('#start-duel');
+  await expect(page.locator('#battle-arena')).toBeVisible();
+  const sound = requests.filter((u) => SOUND.test(u));
+  expect(sound.length).toBeGreaterThan(0);
+  expect(sound.filter((u) => !/\/sound\/data\/fr/.test(u))).toEqual([]);
+});
