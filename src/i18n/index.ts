@@ -167,19 +167,22 @@ export function loadArea(name: string, l: Locale = current): Promise<void> {
   return pending;
 }
 
-/** Fill every element under `root` that carries a data-i18n key. */
+/**
+ * Fill every element under `root` that carries a data-i18n key. A key nobody has yet (a page
+ * area still on its way) is left alone: the markup keeps its own text rather than show the key.
+ */
 export function applyTranslations(root: ParentNode = document): void {
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-    el.textContent = t(el.dataset.i18n!);
+    if (has(el.dataset.i18n!)) el.textContent = t(el.dataset.i18n!);
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-placeholder]').forEach((el) => {
-    el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
+    if (has(el.dataset.i18nPlaceholder!)) el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-title]').forEach((el) => {
-    el.setAttribute('title', t(el.dataset.i18nTitle!));
+    if (has(el.dataset.i18nTitle!)) el.setAttribute('title', t(el.dataset.i18nTitle!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-aria-label]').forEach((el) => {
-    el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
+    if (has(el.dataset.i18nAriaLabel!)) el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
   });
 }
 
