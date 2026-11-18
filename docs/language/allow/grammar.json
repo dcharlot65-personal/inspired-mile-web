@@ -32,7 +32,8 @@
     "قفل",
     "مسمار",
     "معرض",
-    "من الآن"
+    "من الآن",
+    "نقاط"
    ]
   },
   {
@@ -201,6 +202,7 @@
     "لا يدعم",
     "لا يذكر",
     "لا يشرح",
+    "لا يمكن",
     "لا يُرسَل"
    ]
   },
@@ -237,6 +239,7 @@
     "خصمك كلمة",
     "سطر أكثر من كلمة",
     "سطر لكل كلمة",
+    "فيه رقم أو كلمة",
     "كرّر كلمة",
     "من أسطرك على كلمة",
     "وأنا كريم",
@@ -260,6 +263,7 @@
     "اجعل كلمتين",
     "استعمل كلمتين",
     "خصمك على 3 كلمات",
+    "ردّد صدى كلمتين",
     "سطر أكثر من كلمتين",
     "في كل سطر كلمات",
     "من أسطرك على كلمتين",
@@ -447,6 +451,12 @@
   {
    "lang": "de",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -472,6 +482,18 @@
    "lang": "de",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -568,6 +590,12 @@
   {
    "lang": "en",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -593,6 +621,18 @@
    "lang": "en",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -702,6 +742,12 @@
   {
    "lang": "es",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -727,6 +773,18 @@
    "lang": "es",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -799,6 +857,13 @@
   },
   {
    "lang": "fr",
+   "rule": "OU",
+   "id": "ui:auth.error.too_many_attempts",
+   "at": "ou",
+   "reason": "« ou » here is 'or' (try again tomorrow, or sign in with a passkey); the rule takes it for « où »."
+  },
+  {
+   "lang": "fr",
    "rule": "PAS_DE_VIRGULE",
    "id": "pack:written.quatrain-abab.0.2",
    "reason": "The comma sets 'et le silence' apart on purpose (the afterthought above); a verse line's pause."
@@ -808,6 +873,13 @@
    "rule": "PAS_DE_VIRGULE_STYLE",
    "id": "pack:written.*",
    "reason": "A style suggestion: the comma marks a pause in the verse line."
+  },
+  {
+   "lang": "fr",
+   "rule": "PLACE_ADJ",
+   "id": "ui:void.thin",
+   "at": "de mots différents",
+   "reason": "« mots différents » (distinct words) is what is meant: the verse needs more distinct words; « différents mots » before the noun would mean 'various words'."
   },
   {
    "lang": "fr",
@@ -872,6 +944,12 @@
   {
    "lang": "fr",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -897,6 +975,18 @@
    "lang": "fr",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -1070,6 +1160,13 @@
   {
    "lang": "it",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.judgeUnread",
+   "at": "viene",
+   "reason": "The ellipsis inside the brackets closes a list of examples, not a sentence; « viene » goes on with the same sentence."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:live.powerUsed",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1100,6 +1197,12 @@
   {
    "lang": "it",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1125,6 +1228,18 @@
    "lang": "it",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -1231,6 +1346,12 @@
   {
    "lang": "pl",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1251,6 +1372,18 @@
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:theatre.composingDraft",
    "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
    "lang": "pl",
@@ -1447,6 +1580,12 @@
   {
    "lang": "pt",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1472,6 +1611,18 @@
    "lang": "pt",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {
@@ -1588,6 +1739,12 @@
   {
    "lang": "ru",
    "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:signature.none",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1613,6 +1770,18 @@
    "lang": "ru",
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
   {

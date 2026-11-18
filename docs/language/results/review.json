@@ -2933,6 +2933,264 @@
      "corrected": "",
      "reason": "",
      "translation": "บัดนี้เจ้าเหลือให้เสียเพียง เวลา"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ออกจากระบบในทุกอุปกรณ์"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เคยลงชื่อเข้าใช้ที่นี่ด้วย Google หรือที่อยู่อีเมลมาก่อนใช่ไหม ตอนนี้ช่องทางนั้นปิดอยู่ บัญชีเก่าจึงยังเปิดไม่ได้ การสร้างบัญชีที่นี่จะได้บัญชีใหม่ที่ว่างเปล่า"
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "พาสคีย์นั้นไม่ได้รับการยอมรับ อาจถูกลบออกจากบัญชีแล้ว หรือบัญชีอาจไม่มีอยู่แล้ว"
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "โปรดยืนยันก่อนว่าเป็นคุณ: ออกจากระบบ ลงชื่อเข้าใช้อีกครั้ง แล้วลองใหม่"
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "หากต้องการทำสิ่งนี้ โปรดออกจากระบบก่อน แล้วลงชื่อเข้าใช้อีกครั้งด้วยรหัสทางอีเมล"
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ใส่รหัสผิดสำหรับที่อยู่นี้มากเกินไป โปรดลองใหม่พรุ่งนี้ หรือลงชื่อเข้าใช้ด้วยพาสคีย์"
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ถ้ายกนี้ตัดสินผลการประชัน ยาวิเศษจะเสียเปล่า"
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ไม่เหลือบทกลอนให้สาปแล้ว นี่คือยกสุดท้าย"
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ไม่ได้คะแนน"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "น้อยเกินกว่าจะเป็นบทกลอน ต้องมีคำที่ต่างกันมากกว่านี้"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "นำมาจากบทกลอนของอีกฝ่าย คำตอบต้องเป็นของคุณเอง"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "บรรทัดที่โมเดลให้คะแนนจะไม่นำมาพิจารณา: {lines} บรรทัดที่มีตัวเลขหรือคำที่ใช้ในการตัดสิน (เกรด, คะแนน, ชนะ…) จะถูกข้ามไป และยกนี้จะตัดสินด้วยกติกาเท่านั้น",
+     "reason": "The original translation 'ไม่อ่าน' (won't read) sounds like a machine reading aloud; 'ไม่นำมาพิจารณา' (won't be considered) is more natural for a grading process. Also, 'grade' was translated as 'คะแนน' (score), which is redundant; 'เกรด' or 'ระดับคะแนน' is better to distinguish from 'score'.",
+     "translation": "บรรทัดที่โมเดลให้คะแนนจะไม่อ่าน: {lines} บรรทัดที่มีตัวเลขหรือคำเกี่ยวกับการให้คะแนน (คะแนน, ชนะ…) จะถูกตัดออก และยกนี้จะตัดสินด้วยกติกาเท่านั้น"
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "สะท้อนสองคำจากต่อไปนี้: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "การ์ดโลก: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: ชิงไม่ได้"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ"
+    },
+    "pack:written.couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "กลอนของเจ้าเบาเหมือนควันไฟ"
+    },
+    "pack:written.couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ข้าเอ่ยคำเดียวมันก็ลอยไป"
+    },
+    "pack:written.couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ผู้ชมหลับไปตั้งนานแล้ว"
+    },
+    "pack:written.couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เหลือแต่คำข้าที่ยังใสดั่งแก้ว"
+    },
+    "pack:written.quatrain-aabb.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เจ้ายืมปัญญาเขามาทั้งนั้น"
+    },
+    "pack:written.quatrain-aabb.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "แล้วยังสงสัยว่าทำไมไม่มีใครหวั่น"
+    },
+    "pack:written.quatrain-aabb.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ข้าเห็นทั้งราชาและตัวตลกมาแล้ว"
+    },
+    "pack:written.quatrain-aabb.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "คำของเจ้าเป็นได้แค่เศษแก้ว"
+    },
+    "pack:written.quatrain-aabb.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ผู้ชมมาเพื่อดูศึกใหญ่"
+    },
+    "pack:written.quatrain-aabb.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "แต่กลอนของเจ้าไม่มีอะไร"
+    },
+    "pack:written.quatrain-aabb.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "พูดอีกทีสิ ให้ดังกว่าเดิม"
+    },
+    "pack:written.quatrain-aabb.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ข้าตอบได้แม้พายุที่โหมเสริม"
+    },
+    "pack:written.quatrain-abab.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เวทีนี้ข้ารู้จักมานาน"
+    },
+    "pack:written.quatrain-abab.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เสียงของเจ้าเป็นเพียงสายลม"
+    },
+    "pack:written.quatrain-abab.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ม่านกำลังลง เจ้าหมดงาน"
+    },
+    "pack:written.quatrain-abab.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เวทีต้องการคำที่คม"
+    },
+    "pack:written.quatrain-abab.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "กลอนของเจ้าเดินกะเผลกมา"
+    },
+    "pack:written.quatrain-abab.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ขอความสงสารจากผู้คน"
+    },
+    "pack:written.quatrain-abab.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ข้าไม่อยากเตะซ้ำให้เสียเวลา"
+    },
+    "pack:written.quatrain-abab.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ปล่อยให้มันนั่งอยู่กลางสายฝน"
+    },
+    "pack:written.tercet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เจ้ามีลิ้น แต่ไม่มีฝีมือ"
+    },
+    "pack:written.tercet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "มันเดินโซเซเหมือนคนเมาในความมืด"
+    },
+    "pack:written.tercet.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "และไม่เคยไปถึงใจใครเลยหรือ"
+    },
+    "pack:written.tercet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "นี่หรือกลอน ข้าขอเรียกว่าความผิดพลาด"
+    },
+    "pack:written.tercet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "บรรทัดขาเป๋ที่ร้องขอที่พัก"
+    },
+    "pack:written.tercet.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ข้าใจดี จึงส่งมันไปเสียให้ขาด"
     }
    },
    "failedBatches": 0
@@ -6024,6 +6282,168 @@
      "corrected": "",
      "reason": "",
      "translation": "अब तेरे पास खोने को बचा है बस वक़्त"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "हर डिवाइस से साइन आउट करें"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "क्या आपने यहाँ पहले Google या ईमेल पते से साइन इन किया था? वह रास्ता अभी बंद है, इसलिए पुराना खाता अभी नहीं खोला जा सकता। यहाँ खाता बनाने पर एक नया, खाली खाता बनेगा।"
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "वह पासकी स्वीकार नहीं हुई। हो सकता है उसे खाते से हटा दिया गया हो, या खाता अब मौजूद न हो।"
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "पहले पुष्टि करें कि यह आप ही हैं: साइन आउट करें, फिर साइन इन करें, और दोबारा कोशिश करें।"
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "इसके लिए पहले साइन आउट करें और ईमेल कोड से फिर साइन इन करें।"
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "इस पते के लिए बहुत ज़्यादा ग़लत कोड डाले गए। कल फिर कोशिश करें, या पासकी से साइन इन करें।"
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "अगर इसी दौर में द्वंद्व का फ़ैसला हो गया, तो काढ़ा बेकार जाएगा।"
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "शाप देने को कोई कविता नहीं बची: यह आख़िरी दौर है।"
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "कोई अंक नहीं"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "कविता कहलाने के लिए बहुत कम: और अलग-अलग शब्द चाहिए"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "दूसरी कविता से ली गई: जवाब आपका अपना होना चाहिए"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "वे पंक्तियाँ जिन्हें ग्रेडिंग मॉडल नहीं पढ़ेगा: {lines}। जिस पंक्ति में कोई संख्या या निर्णय का शब्द (ग्रेड, स्कोर, जीत...) हो, उसे छोड़ दिया जाता है, और फिर इस दौर का निर्णय केवल नियमों के आधार पर किया जाता है।",
+     "reason": "The original translation used 'अंकन का शब्द' which is slightly awkward for 'judging word' in this context, and 'विजेता' (winner) was used instead of 'win' (जीत). I also adjusted the phrasing to sound more natural for a game instruction.",
+     "translation": "वे पंक्तियाँ जिन्हें अंक देने वाला मॉडल नहीं पढ़ेगा: {lines}। जिस पंक्ति में कोई संख्या या अंकन का शब्द (अंक, ग्रेड, विजेता…) हो, वह छोड़ दी जाती है, और तब यह दौर केवल नियमों से तय होता है।"
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "इनमें से दो की गूँज लाएँ: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "विश्व कार्ड: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: नहीं जीता"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "नक़ल की गई कविता निर्णायक के अंक खो देती है।"
+    },
+    "pack:written.haiku.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "तेरी कविता"
+    },
+    "pack:written.haiku.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "सूखे पत्ते की तरह"
+    },
+    "pack:written.haiku.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "हवा में उड़ी"
+    },
+    "pack:written.haiku.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "दूर कहीं आवाज़"
+    },
+    "pack:written.haiku.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "मैंने कान लगाया तो"
+    },
+    "pack:written.haiku.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "बस हवा ही थी"
+    },
+    "pack:written.heroic-couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "यह मंच सदा से मेरा ही घर है"
+    },
+    "pack:written.heroic-couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "बोल ज़रा, तुझको किसका डर है"
+    },
+    "pack:written.heroic-couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "मेरी हर पंक्ति जलता हुआ दीपक"
+    },
+    "pack:written.heroic-couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "तेरी हर पंक्ति अधूरा नाटक"
     }
    },
    "failedBatches": 0
@@ -6130,9 +6550,9 @@
     },
     "form.acrostic.name": {
      "verdict": "fix",
-     "corrected": "الأسطر المقطعة",
-     "reason": "'التطريز' means embroidery; while it can be used metaphorically, 'Acrostic' in a literary context refers to a poem where letters form a word, and 'الأسطر المقطعة' or simply 'الأسطر المبدئية' is more accurate for a game interface. However, since 'Acrostic' is a specific poetic device, 'الأسطر المقطعة' is a clearer functional translation.",
-     "translation": "التطريز"
+     "corrected": "أكروسيتيك",
+     "reason": "The translation 'تتويج' (coronation) is incorrect for 'Acrostic'. An acrostic is a poetic form where certain letters form a word; in Arabic literary context, it is referred to as 'أكروسيتيك' or 'القصيدة الأكروسيتيكية'.",
+     "translation": "تتويج"
     },
     "form.acrostic.brief": {
      "verdict": "ok",
@@ -6357,10 +6777,10 @@
      "translation": "اهتف: اختم سطرًا بعلامة تعجب."
     },
     "device.alliteration.name": {
-     "verdict": "ok",
-     "corrected": "",
-     "reason": "",
-     "translation": "الجناس الاستهلالي"
+     "verdict": "fix",
+     "corrected": "الجناس الاستهلالي",
+     "reason": "'سجع ابتدائي' is not the standard term for Alliteration. 'الجناس الاستهلالي' is the correct rhetorical term for the repetition of initial sounds.",
+     "translation": "سجع ابتدائي"
     },
     "device.alliteration.brief": {
      "verdict": "ok",
@@ -9115,6 +9535,108 @@
      "corrected": "",
      "reason": "",
      "translation": "ولم يبق لك ما تخسره إلا الوقت"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "تسجيل الخروج من كل الأجهزة"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لم يُقبل مفتاح المرور هذا. ربما أُزيل من الحساب، أو لم يعد الحساب موجودًا."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "أكِّد أولًا أنه أنت: سجّل الخروج، ثم سجّل الدخول من جديد، ثم حاول مرة أخرى."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لفعل ذلك، سجّل الخروج أولًا ثم سجّل الدخول من جديد باستخدام رمز مرسل عبر البريد الإلكتروني."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "أُدخلت رموز خاطئة كثيرة لهذا العنوان. حاول مرة أخرى غدًا، أو سجّل الدخول بمفتاح مرور."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "إذا حسمت هذه الجولة المبارزة ذهبت الجرعة سدى."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لم تبقَ أبيات تُلعن: هذه هي الجولة الأخيرة."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لا نقاط"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "أقل من أن تكون أبياتًا: يلزم مزيد من الكلمات المختلفة"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "مأخوذة من أبيات الخصم: الرد يجب أن يكون من عندك"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "أسطر لن يقرأها نموذج التقييم: {lines}. يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ردّد صدى كلمتين من هذه: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "بطاقة العالم: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: لم يُكسَب"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "الأبيات المنسوخة تخسر نقاط الحَكَم."
     }
    },
    "failedBatches": 0
@@ -12290,6 +12812,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Rồi nghe sân khấu hững hờ gọi ta"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Đăng xuất trên mọi thiết bị"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Trước đây bạn đã đăng nhập ở đây bằng Google hoặc địa chỉ email? Cách đăng nhập đó hiện đang tắt, nên tài khoản cũ chưa thể mở được. Tạo tài khoản ở đây sẽ ra một tài khoản mới, trống."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Khoá truy cập đó không được chấp nhận. Có thể nó đã bị gỡ khỏi tài khoản, hoặc tài khoản không còn nữa."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Trước hết hãy xác nhận đó là bạn: đăng xuất, đăng nhập lại, rồi thử lần nữa."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Để làm việc này, trước hết hãy đăng xuất rồi đăng nhập lại bằng mã email."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Quá nhiều mã sai cho địa chỉ này. Hãy thử lại vào ngày mai, hoặc đăng nhập bằng khoá truy cập."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Nếu hiệp này định đoạt trận đấu, thuốc phép sẽ bị dùng phí."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Không còn bài thơ nào để nguyền: đây là hiệp cuối."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Không được điểm"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "quá ít để thành một bài thơ: cần thêm những từ khác nhau"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "lấy từ bài thơ của đối thủ: câu đáp phải là của chính bạn"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Những dòng mà mô hình chấm điểm sẽ không đọc: {lines}. Một dòng chứa con số hoặc từ ngữ chấm điểm (điểm, số điểm, thắng…) sẽ bị bỏ qua, và hiệp này khi đó sẽ được phân định chỉ bằng luật chơi.",
+     "reason": "The original translation was slightly clunky ('Dòng nào có...' is a bit informal for a UI instruction) and 'do luật phân định' sounds a bit unnatural; 'được phân định chỉ bằng luật chơi' is more polished and clear.",
+     "translation": "Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và hiệp này khi đó chỉ do luật phân định."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "gợi lại hai trong các từ: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Lá bài thế giới: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: chưa giành được"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Bài thơ chép lại sẽ mất điểm của giám khảo."
     }
    },
    "failedBatches": 0
@@ -15309,6 +15933,288 @@
      "corrected": "",
      "reason": "",
      "translation": "君如萤火照空墟"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "在所有设备上退出登录"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "以前在这里用 Google 或邮箱地址登录过？这种登录方式目前已关闭，所以旧账户暂时无法打开。在这里创建的账户是一个全新的空账户。"
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这个通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。"
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "请先确认是你本人：退出登录，重新登录，然后再试一次。"
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "要进行此操作，请先退出登录，再用邮件验证码重新登录。"
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这个地址的错误验证码太多了。请明天再试，或用通行密钥登录。"
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "如果这一回合就决出胜负，药水就白用了。"
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "已没有可诅咒的诗：这是最后一回合。"
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "不得分"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "内容太少，算不上一首诗：需要更多不同的字词"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "取自对方的诗：回应必须是你自己写的"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "评分模型不会读的诗行：{lines}。含有数字或评分用语（得分、评价、赢家……）的诗行会被略去，这一回合便只按规则判定。"
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line}（{word}）"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "呼应其中两个：{words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "世界卡：{city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}：未拿下"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "照抄的诗得不到裁判的分数。"
+    },
+    "pack:written.couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的诗句轻如一缕烟"
+    },
+    "pack:written.couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我一开口它就散在天边"
+    },
+    "pack:written.couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "台下的看客早已睡着"
+    },
+    "pack:written.couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "只有我的句子还在燃烧"
+    },
+    "pack:written.quatrain-aabb.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你借来的词句没有分量"
+    },
+    "pack:written.quatrain-aabb.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "像纸糊的刀剑不堪一挡"
+    },
+    "pack:written.quatrain-aabb.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我见过君王也见过小丑"
+    },
+    "pack:written.quatrain-aabb.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你连做配角都还不够"
+    },
+    "pack:written.quatrain-aabb.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "观众来这里想看一场好戏"
+    },
+    "pack:written.quatrain-aabb.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你却只带来一口残羹冷气"
+    },
+    "pack:written.quatrain-aabb.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "再说一遍吧，大声一点"
+    },
+    "pack:written.quatrain-aabb.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我连风暴都敢当面翻脸"
+    },
+    "pack:written.quatrain-abab.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这座舞台我早已熟悉"
+    },
+    "pack:written.quatrain-abab.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的声音只像蚊子哼吟"
+    },
+    "pack:written.quatrain-abab.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "幕布落下，你该休息"
+    },
+    "pack:written.quatrain-abab.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "留下的只有我的回音"
+    },
+    "pack:written.quatrain-abab.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的诗瘸着一条腿走来"
+    },
+    "pack:written.quatrain-abab.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "向观众讨一点可怜"
+    },
+    "pack:written.quatrain-abab.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我不忍心把它踢开"
+    },
+    "pack:written.quatrain-abab.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "就让它坐到天黑以前"
+    },
+    "pack:written.tercet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你有舌头，却没有本领"
+    },
+    "pack:written.tercet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "它像醉汉在黑夜里乱撞"
+    },
+    "pack:written.tercet.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "敲不开任何人的心灵"
+    },
+    "pack:written.tercet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这也叫诗？我说是失误"
+    },
+    "pack:written.tercet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "一句跛脚的话想找地方歇"
+    },
+    "pack:written.tercet.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我心肠好，送它一条归路"
+    },
+    "pack:written.heroic-couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "舞台从来只认我的声音"
+    },
+    "pack:written.heroic-couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的词句不过一阵烟尘"
+    },
+    "pack:written.heroic-couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "我的诗是照亮长夜的灯"
+    },
+    "pack:written.heroic-couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的诗是没人理会的风"
     }
    },
    "failedBatches": 0
@@ -18280,6 +19186,288 @@
      "corrected": "",
      "reason": "",
      "translation": "ただのかぜ"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "すべてのデバイスでサインアウト"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "以前、Google またはメールアドレスでここにサインインしましたか？その方法は現在停止中のため、以前のアカウントはまだ開けません。ここでアカウントを作成すると、新しい空のアカウントになります。"
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "そのパスキーは受け付けられませんでした。アカウントから削除されたか、アカウントがもう存在しない可能性があります。"
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "まずご本人であることを確認してください。サインアウトしてもう一度サインインし、やり直してください。"
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "これを行うには、いったんサインアウトして、メールのコードでサインインし直してください。"
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "このアドレスへの誤ったコードが多すぎます。明日もう一度試すか、パスキーでサインインしてください。"
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "このラウンドで勝負が決まると、薬は無駄になります。"
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "呪いをかける詩がもうありません。これが最後のラウンドです。"
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "得点なし"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "詩と呼ぶには少なすぎます。もっと多くの異なる語が必要です"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "相手の詩から取ったものです。返しは自分の言葉で書いてください"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、このラウンドはルールだけで判定されます。"
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line}（{word}）"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "次のうち二つを響かせてください：{words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ワールドカード：{city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}：取れませんでした"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "写した詩は審判の得点を失います。"
+    },
+    "pack:written.couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前の言葉は風に散る花"
+    },
+    "pack:written.couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "わたしの詩こそ闇を裂く刀"
+    },
+    "pack:written.couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "客はもう出口を数える"
+    },
+    "pack:written.couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "残るのはわたしの声だけ、それが冴える"
+    },
+    "pack:written.quatrain-aabb.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "借りものの知恵で舞台に立ち"
+    },
+    "pack:written.quatrain-aabb.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "それで勝てると思った過ち"
+    },
+    "pack:written.quatrain-aabb.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "王も道化も見てきたところ"
+    },
+    "pack:written.quatrain-aabb.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前には動かせぬ客のこころ"
+    },
+    "pack:written.quatrain-aabb.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "客が見に来たのは真剣勝負"
+    },
+    "pack:written.quatrain-aabb.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前の詩は崩れかけの豆腐"
+    },
+    "pack:written.quatrain-aabb.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "もう一度言え、ここは満員の客"
+    },
+    "pack:written.quatrain-aabb.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前にはまだ早いこの役"
+    },
+    "pack:written.quatrain-abab.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "この舞台はわたしの古い庭"
+    },
+    "pack:written.quatrain-abab.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前の声はただの雑音"
+    },
+    "pack:written.quatrain-abab.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "幕が下りるのは、まさに今"
+    },
+    "pack:written.quatrain-abab.0.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "舞台に響くのはわたしの轟音"
+    },
+    "pack:written.quatrain-abab.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "片足で歩くお前の詩"
+    },
+    "pack:written.quatrain-abab.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "客に情けを乞うその声"
+    },
+    "pack:written.quatrain-abab.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "蹴るのも哀れ、もう抜けた腰"
+    },
+    "pack:written.quatrain-abab.1.3": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "そこで見ていろ、勝つのは俺"
+    },
+    "pack:written.tercet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "舌はあっても技のない口"
+    },
+    "pack:written.tercet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "酔いどれのように闇をさまよい"
+    },
+    "pack:written.tercet.0.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "どの胸にも届かず沈む月"
+    },
+    "pack:written.tercet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "これが詩だと？ わたしは呼ぶ、過ち"
+    },
+    "pack:written.tercet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "足を引きずる一行が休みを乞う"
+    },
+    "pack:written.tercet.1.2": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "情けだ、手向けてやろう、ひとすじの光"
+    },
+    "pack:written.heroic-couplet.0.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "闇を裂くわたしの声"
+    },
+    "pack:written.heroic-couplet.0.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "塵となるお前の骨"
+    },
+    "pack:written.heroic-couplet.1.0": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "舞台はわたしの城"
+    },
+    "pack:written.heroic-couplet.1.1": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "お前はただの人"
     }
    },
    "failedBatches": 0
@@ -21431,6 +22619,108 @@
      "corrected": "",
      "reason": "",
      "translation": "너는 촛불 하나 들고 서 있다"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "모든 기기에서 로그아웃"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "예전에 Google이나 이메일 주소로 여기에 로그인한 적이 있나요? 그 방법은 지금 꺼져 있어서 예전 계정은 아직 열 수 없어요. 여기서 계정을 만들면 새 빈 계정이 생겨요."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "그 패스키는 받아들여지지 않았어요. 계정에서 삭제됐거나 계정이 더는 없을 수 있어요."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "먼저 본인인지 확인해 주세요. 로그아웃하고 다시 로그인한 뒤 한 번 더 시도하세요."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "이 작업을 하려면 먼저 로그아웃한 뒤 이메일 코드로 다시 로그인하세요."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "이 주소에 틀린 코드가 너무 많이 입력됐어요. 내일 다시 시도하거나 패스키로 로그인하세요."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "이번 라운드에서 승부가 나면 물약은 헛되이 쓰게 돼요."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "저주를 걸 시가 남아 있지 않아요. 지금이 마지막 라운드예요."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "점수 없음"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "시라고 하기엔 너무 적어요. 서로 다른 낱말이 더 있어야 해요"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "상대의 시에서 가져왔어요. 답은 내가 지은 것이어야 해요"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "채점 모델이 읽지 않는 행: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "fix",
+     "corrected": "{words} 중 두 단어를 반영하세요",
+     "reason": "The original translation '다음 중 둘을 떠올리게 하세요' (Make them think of two of the following) is a bit too literal and sounds like a command to the reader rather than a game instruction about echoing words. '반영하세요' (reflect/incorporate) or '사용하세요' (use) is more natural for a game mechanic.",
+     "translation": "다음 중 둘을 떠올리게 하세요: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "월드 카드: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: 얻지 못함"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "베낀 시는 심판 점수를 잃어요."
     }
    },
    "failedBatches": 0
@@ -23423,7 +24713,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "Zapisuję…"
+     "translation": "Rozpoznaję mowę…"
     },
     "mic.heardNothing": {
      "verdict": "ok",
@@ -23435,7 +24725,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "Nie udało się zapisać"
+     "translation": "Nie udało się rozpoznać mowy"
     },
     "mic.none": {
      "verdict": "ok",
@@ -24582,6 +25872,108 @@
      "corrected": "",
      "reason": "",
      "translation": "A ty stoisz ze świeczką i z drżeniem"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Wyloguj się na wszystkich urządzeniach"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Masz tu starsze konto, do którego logowanie odbywało się przez Google albo adres e-mail? Ten sposób logowania jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Ten klucz dostępu nie został przyjęty. Mógł zostać usunięty z konta albo konto już nie istnieje."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Najpierw potwierdź, że to ty: wyloguj się, zaloguj ponownie i spróbuj jeszcze raz."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Aby to zrobić, najpierw wyloguj się i zaloguj ponownie kodem z e-maila."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Zbyt wiele błędnych kodów dla tego adresu. Spróbuj jutro albo zaloguj się kluczem dostępu."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Jeśli ta runda rozstrzygnie pojedynek, mikstura pójdzie na marne."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Nie ma już strofy do przeklęcia: to ostatnia runda."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Bez punktów"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "za mało na strofę: potrzeba więcej różnych słów"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "wzięte z drugiej strofy: odpowiedź musi być twoja własna"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Wersy, których model oceniający nie przeczyta: {lines}. Wers zawierający liczbę lub słowo związane z oceną (ocena, punkty, wygrana…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły.",
+     "reason": "The original translation used 'Wers z liczbą' (A line with a number), which is grammatically okay but 'Wers zawierający liczbę' is more natural for a technical description. Also, 'wygrać' (to win - verb) was changed to 'wygrana' (win - noun) to maintain grammatical consistency with 'ocena' and 'punkty'.",
+     "translation": "Wersy, których model oceniający nie przeczyta: {lines}. Wers z liczbą lub słowem oceny (ocena, punkty, wygrać…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "nawiąż do dwóch z tych słów: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Karta świata: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: niezdobyte"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Skopiowana strofa traci punkty sędziego."
     }
    },
    "failedBatches": 0
@@ -27733,6 +29125,108 @@
      "corrected": "",
      "reason": "",
      "translation": "А ты принёс огарок в этот дом"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Выйти на всех устройствах"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Есть старая учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Учётная запись, созданная здесь, будет новой и пустой."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Этот ключ доступа не принят. Возможно, его удалили из учётной записи или учётной записи больше нет."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Сначала подтверди, что это ты: выйди, войди снова и попробуй ещё раз."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Для этого сначала выйди и войди снова по коду из письма."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Слишком много неверных кодов для этого адреса. Попробуй завтра или войди по ключу доступа."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Если этот раунд решит дуэль, зелье пропадёт зря."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Не осталось строфы, которую можно проклясть: это последний раунд."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Очков не приносит"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "слишком мало для строфы: нужно больше разных слов"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "взято из чужой строфы: ответ должен быть твоим"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Строки, которые оценивающая модель не прочтёт: {lines}. Строка, содержащая число или слово, относящееся к оценке (оценка, очки, победа…), не учитывается, и этот раунд тогда определяется только по правилам.",
+     "reason": "The original translation was slightly clunky ('строка с числом', 'решают только правила'). The corrected version uses more natural phrasing for a game interface ('содержащая число', 'определяется по правилам') and improves the flow.",
+     "translation": "Строки, которые оценивающая модель не прочтёт: {lines}. Строка с числом или словом об оценке (оценка, очки, победа…) пропускается, и этот раунд тогда решают только правила."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "fix",
+     "corrected": "отзовись на два из: {words}",
+     "reason": "The translation 'отзовись на два из слов: {words}' is redundant because '{words}' already implies the words themselves. 'отзовись на два из: {words}' is more natural for a game instruction.",
+     "translation": "отзовись на два из слов: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Игральная карта мира: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: не взято"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Скопированная строфа теряет очки судьи."
     }
    },
    "failedBatches": 0
@@ -30884,6 +32378,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Kau bawa lilin kecil, sia-sia"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Keluar di semua perangkat"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dulu pernah masuk di sini dengan Google atau alamat email? Cara masuk itu sedang dimatikan, jadi akun lama belum bisa dibuka. Membuat akun di sini menghasilkan akun baru yang kosong."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Kunci sandi itu tidak diterima. Mungkin sudah dihapus dari akun, atau akunnya sudah tidak ada."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Pastikan dulu bahwa ini kamu: keluar, masuk lagi, lalu coba sekali lagi."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Untuk melakukannya, keluar dulu lalu masuk lagi dengan kode email."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Terlalu banyak kode salah untuk alamat ini. Coba lagi besok, atau masuk dengan kunci sandi."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Jika ronde ini menentukan duel, ramuan terbuang sia-sia."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Tidak ada syair lagi untuk dikutuk: ini ronde terakhir."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Tanpa nilai"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "terlalu sedikit untuk disebut syair: perlu lebih banyak kata yang berbeda"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "diambil dari syair lawan: jawaban harus buatanmu sendiri"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (nilai, skor, menang…) akan diabaikan, dan ronde ini kemudian akan dinilai berdasarkan aturan saja.",
+     "reason": "The translation of 'judge' as 'hakim' is incorrect in this context (it should be 'nilai' or 'skor' to match the examples), and 'dilewati' is less natural than 'diabaikan' for a technical process.",
+     "translation": "Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan ronde ini lalu diputuskan oleh aturan saja."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "gemakan dua dari: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Kartu dunia: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: tidak direbut"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Syair salinan kehilangan nilai dari juri."
     }
    },
    "failedBatches": 0
@@ -34035,6 +35631,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Tú, la vela que el aire reclama"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Cerrar sesión en todos los dispositivos"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "¿Entraste aquí antes con Google o con una dirección de correo? Esa forma de entrar está desactivada por ahora, así que una cuenta antigua todavía no se puede abrir. Si creas una cuenta aquí, será nueva y estará vacía."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Esa llave de acceso no ha sido aceptada. Puede que se haya quitado de la cuenta, o que la cuenta ya no exista."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Primero confirma que eres tú: cierra sesión, vuelve a entrar e inténtalo otra vez."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Para hacer esto, primero cierra sesión y vuelve a entrar con un código por correo."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Demasiados códigos incorrectos para esta dirección. Inténtalo mañana, o entra con una llave de acceso."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Si esta ronda decide el duelo, la poción se gasta en vano."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "No queda estrofa que maldecir: esta es la última ronda."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "No puntúa"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "demasiado poco para ser una estrofa: hacen falta más palabras distintas"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "tomada de la otra estrofa: una respuesta debe ser tuya"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Versos que el modelo evaluador no leerá: {lines}. Se omite todo verso con un número o una palabra de evaluación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "evoca dos de: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Carta del mundo: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: no ganado"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Una estrofa copiada pierde los puntos del juez."
     }
    },
    "failedBatches": 0
@@ -37186,6 +38884,108 @@
      "corrected": "Toi, tu n’as qu’une bougie, pauvre âme.",
      "reason": "Added a period to ensure the line feels like a complete poetic thought/sentence, matching the punctuation style of the previous examples.",
      "translation": "Toi, tu n’as qu’une bougie, pauvre âme"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Se déconnecter sur tous les appareils"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Vous vous connectiez ici avec Google ou une adresse e-mail ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Un compte créé ici sera un nouveau compte, vide."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Cette clé d’accès n’a pas été acceptée. Elle a peut-être été retirée du compte, ou le compte n’existe plus."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Confirmez d’abord que c’est bien vous : déconnectez-vous, reconnectez-vous, puis réessayez."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Pour cela, déconnectez-vous d’abord, puis reconnectez-vous avec un code par e-mail."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Trop de codes erronés pour cette adresse. Réessayez demain, ou connectez-vous avec une clé d’accès."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Si cette manche décide du duel, la potion est dépensée pour rien."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Il ne reste aucune strophe à maudire : c’est la dernière manche."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Ne rapporte rien"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "trop peu pour faire une strophe : il faut davantage de mots différents"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "reprise de l’autre strophe : une réponse doit être la vôtre"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Vers que le modèle de notation ne lira pas : {lines}. Tout vers contenant un nombre ou un mot de notation (note, score, victoire…) est ignoré, et cette manche est alors jugée selon les règles uniquement.",
+     "reason": "The translation was slightly clunky; 'modèle de notation' is more natural than 'modèle notateur', 'victoire' is a better fit for 'win' in this context than 'gagner', and 'selon les règles uniquement' is more idiomatic than 'par les seules règles'.",
+     "translation": "Vers que le modèle notateur ne lira pas : {lines}. Tout vers contenant un nombre ou un mot de notation (note, score, gagner…) est laissé de côté, et cette manche est alors jugée par les seules règles."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "faites écho à deux de ces mots : {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Carte Monde : {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion} : non remporté"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "fix",
+     "corrected": "Une strophe copiée fait forfait au juge.",
+     "reason": "The English 'forfeits the judge' implies the verse loses the judge's points/vote. 'Perd les points du juge' is a bit wordy; 'fait forfait' or simply 'perd le juge' is more idiomatic for a game mechanic.",
+     "translation": "Une strophe copiée perd les points du juge."
     }
    },
    "failedBatches": 0
@@ -40337,6 +42137,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Und du hast nur ein Lichtlein anzubieten"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Auf allen Geräten abmelden"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Hast du dich hier früher mit Google oder einer E-Mail-Adresse angemeldet? Dieser Weg ist vorerst abgeschaltet, ein älteres Konto lässt sich deshalb noch nicht öffnen. Wenn du hier ein Konto erstellst, ist es ein neues, leeres."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dieser Passkey wurde nicht akzeptiert. Vielleicht wurde er aus dem Konto entfernt, oder das Konto gibt es nicht mehr."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Bestätige zuerst, dass du es bist: Melde dich ab, melde dich wieder an und versuch es dann noch einmal."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dafür musst du dich zuerst abmelden und dann mit einem Code per E-Mail wieder anmelden."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Zu viele falsche Codes für diese Adresse. Versuch es morgen noch einmal oder melde dich mit einem Passkey an."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Entscheidet diese Runde das Duell, ist der Trank umsonst verbraucht."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Es bleibt keine Strophe zu verfluchen: Dies ist die letzte Runde."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Bringt keine Punkte"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Zeilen, die das bewertende Modell nicht liest: {lines}. Eine Zeile, die eine Zahl oder ein Bewertungs-Wort (Note, Punkt, Sieg…) enthält, wird ignoriert, und diese Runde wird dann allein nach den Regeln entschieden.",
+     "reason": "The original translation had several issues: 'Punkte' and 'gewinnen' were plural/infinitive while the context required singular/noun forms to match 'Note'; 'ausgelassen' is okay but 'ignoriert' is more natural for a model; 'entscheiden dann allein die Regeln' is slightly clunky compared to the passive 'wird... entschieden'.",
+     "translation": "Zeilen, die das bewertende Modell nicht liest: {lines}. Eine Zeile mit einer Zahl oder einem Wort zur Bewertung (Note, Punkte, gewinnen …) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "lass zwei davon anklingen: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Welt-Spielkarte: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: nicht gewonnen"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Eine kopierte Strophe verliert die Punkte des Richters."
     }
    },
    "failedBatches": 0
@@ -43488,6 +45390,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Tu hai un lume: che misero dramma"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Esci da tutti i dispositivi"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Avevi già fatto l’accesso qui con Google o con un indirizzo email? Quel modo di entrare per ora è disattivato, quindi un account più vecchio non si può ancora aprire. Se crei un account qui, sarà nuovo e vuoto."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Quella passkey non è stata accettata. Forse è stata rimossa dall’account, oppure l’account non esiste più."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Prima conferma che sei tu: esci, accedi di nuovo e riprova."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Per farlo, prima esci e accedi di nuovo con un codice via email."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Troppi codici sbagliati per questo indirizzo. Riprova domani, oppure accedi con una passkey."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Se questo round decide il duello, la pozione è spesa per niente."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Non resta alcuna strofa da maledire: questo è l’ultimo round."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Non dà punti"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "troppo poco per essere una strofa: servono più parole diverse"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "presa dall’altra strofa: una risposta dev’essere tua"
+    },
+    "live.judgeUnread": {
+     "verdict": "fix",
+     "corrected": "Versi che il modello di valutazione non leggerà: {lines}. Un verso che contiene un numero o una parola di giudizio (voto, punteggio, vittoria...) viene escluso, e questo round sarà quindi giudicato solo dalle regole.",
+     "reason": "The original translation had several issues: 'modello valutatore' is unnatural (better 'modello di valutazione'), 'vincere' (verb) was used instead of 'vittoria' (noun) to match the English list, and 'lo decidono allora solo le regole' is a bit clunky/informal for a game interface.",
+     "translation": "Versi che il modello valutatore non leggerà: {lines}. Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "riecheggia due di queste: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Carta del mondo: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: non conquistato"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Una strofa copiata perde i punti del giudice."
     }
    },
    "failedBatches": 0
@@ -46639,6 +48643,108 @@
      "corrected": "",
      "reason": "",
      "translation": "Tu, a vela que o vento reclama"
+    },
+    "auth.signOutEverywhere": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Sair de todos os dispositivos"
+    },
+    "auth.legacyAccountNote": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Você já entrou aqui com o Google ou com um endereço de e-mail? Essa forma de entrar está desativada por enquanto, então uma conta antiga ainda não pode ser aberta. Uma conta criada aqui será nova e vazia."
+    },
+    "auth.error.passkey_not_accepted_no_email": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Essa chave de acesso não foi aceita. Ela pode ter sido removida da conta, ou a conta pode não existir mais."
+    },
+    "auth.error.reauth_required": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Primeiro confirme que é você: saia, entre de novo e tente outra vez."
+    },
+    "auth.error.reauth_unavailable": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Para fazer isso, primeiro saia e entre de novo com um código por e-mail."
+    },
+    "auth.error.too_many_attempts": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Códigos errados demais para este endereço. Tente de novo amanhã, ou entre com uma chave de acesso."
+    },
+    "hand.potionGamble": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Se esta rodada decidir o duelo, a poção terá sido gasta à toa."
+    },
+    "illegal.potion-last-round": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Não resta estrofe para amaldiçoar: esta é a última rodada."
+    },
+    "void.label": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Não pontua"
+    },
+    "void.thin": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes"
+    },
+    "void.copied": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "tirada da outra estrofe: uma resposta precisa ser sua"
+    },
+    "live.judgeUnread": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Versos que o modelo avaliador não vai ler: {lines}. Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras."
+    },
+    "live.judgeUnreadLine": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{line} ({word})"
+    },
+    "signature.hintTwo": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ecoe duas destas: {words}"
+    },
+    "verdict.worldCard": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Carta do mundo: {city}"
+    },
+    "verdict.notTaken": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{criterion}: não conquistado"
+    },
+    "verdict.copyForfeits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Uma estrofe copiada perde os pontos do juiz."
     }
    },
    "failedBatches": 0
@@ -46648,5 +48754,5 @@
   "model": "/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline/models/gemma-4-26B-A4B-it-qat-q4_0-gguf/gemma-4-26B_q4_0-it.gguf",
   "build": "b12359-b1b770d90"
  },
- "finished": "2026-11-17T01:12:44.197Z"
+ "finished": "2026-11-18T01:04:52.320Z"
 }

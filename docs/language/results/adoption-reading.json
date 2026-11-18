@@ -1831,5 +1831,98 @@
     }
    }
   }
+ },
+ "thirdPass": {
+  "about": "The reviewer's proposals from its run of 2026-11-17 (evening) over the strings changed in this pass: the strings integrate/wave3 brought in, the corrections made to them, and the Arabic form names. 354 strings read, 13 proposals; each read against the English and where it appears, by a language model, not a native speaker. A second run over the strings as corrected (the final full stop added to live.judgeUnread, fr void.copied, pl mic.transcribing, th verdict.notTaken) proposed nine more, all on live.judgeUnread, recorded under the same keys; the French void.copied correction it marked ok.",
+  "languages": {
+   "th": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: the words in brackets are examples of what the engine leaves out in this language, and must be words of its list (src/lib/verse/judge-words.ts); เกรด is not in the Thai list, so a line with it is not left out. ไม่อ่าน is what the English says (will not read); the rest is a matter of taste."
+    }
+   },
+   "hi": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: the words in brackets are examples of what the engine leaves out in this language, and must be words of its list (src/lib/verse/judge-words.ts); स्कोर and जीत are not in the Hindi list (अंक, ग्रेड, विजेता are). The rest rewords an equally clear sentence. Second run (the strings as corrected, final punctuation added): the reviewer proposed the same again; same reading."
+    }
+   },
+   "vi": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: the words in brackets are examples of what the engine leaves out in this language, and must be words of its list (src/lib/verse/judge-words.ts); điểm số is not in the Vietnamese list (số điểm is). The other changes reword an equally clear sentence. Second run (the strings as corrected, final punctuation added): the reviewer proposed the same again; same reading."
+    }
+   },
+   "id": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: the words in brackets are examples of what the engine leaves out in this language, and must be words of its list (src/lib/verse/judge-words.ts); nilai and skor are not in the Indonesian list, which has evaluasi, hakim, juri, menang and pemenang: a line with nilai is read by the model, so the proposal would tell the player something false. Second run (the strings as corrected, final punctuation added): the reviewer proposed the same again; same reading."
+    }
+   },
+   "de": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: Punktzahl and Sieg are in the list, but so are the words kept (Note, Punkte through the stem rule, gewinnen); the sentence is grammatical as it is, against the reviewer's claim, and the rewording is no clearer. Second run (the strings as corrected, final punctuation added): the reviewer proposed the same again; same reading."
+    }
+   },
+   "it": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: vittoria is in the list, as is vincere; modello di valutazione for modello valutatore is a matter of taste. Second run (the strings as corrected, final punctuation added): the reviewer proposed the same again; same reading."
+    }
+   },
+   "pt": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: vitória is in the list, as is vencer; lerá for vai ler and ignorado for fica de fora reword an equally clear sentence in the register the Portuguese interface uses."
+    }
+   },
+   "ar": {
+    "form.acrostic.name": {
+     "decision": "not adopted",
+     "note": "Not adopted: تتويج is the Arabic label and article title of Wikidata's acrostic item (Q173287), whose article names the acrostic poem المتوجة or المطرزة; the reviewer reads the word's everyday sense (coronation). Its proposal أكروسيتيك is a transliteration that no source gives (Wikidata's alias is أكرستيك). For a native reader (HUMAN-REVIEW 25)."
+    },
+    "device.alliteration.name": {
+     "decision": "not adopted",
+     "note": "Not adopted: the reviewer asks for الجناس الاستهلالي, the alias this pass removed because the alliteration item's own Arabic article says that name is used for the acrostic; سجع ابتدائي is that article's title and the item's label. For a native reader (HUMAN-REVIEW 25)."
+    }
+   },
+   "ko": {
+    "signature.hintTwo": {
+     "decision": "not adopted",
+     "note": "Not adopted: worded as signature.hint is (다음 중 하나를 떠올리게 하세요); the two hints should read alike, and 반영하세요 loses the echo."
+    }
+   },
+   "ru": {
+    "signature.hintTwo": {
+     "decision": "not adopted",
+     "note": "Not adopted: worded as signature.hint is (отзовись на одно из слов); «два из слов» is grammatical."
+    },
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: «содержащая число … не учитывается … определяется по правилам» rewords an equally clear sentence in a heavier register; «решают только правила» is plain Russian."
+    }
+   },
+   "fr": {
+    "void.copied": {
+     "decision": "adopted in part",
+     "note": "The reviewer is right that « doit être de vous » is not how French says ownership; the string now ends « une réponse doit être la vôtre » (« reprise de » kept; « empruntée à » is no better). It survived the tools: no LanguageTool or Hunspell hit; back-translation cosine 0.6384 -> 0.7249, LaBSE 0.8733 -> 0.8662 (both well above 0.6). The reviewer's second run marks the new text ok."
+    },
+    "verdict.copyForfeits": {
+     "decision": "not adopted",
+     "note": "Not adopted: « faire forfait » means to withdraw from a contest, which is not what happens; « perd les points du juge » says what does."
+    },
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: « modèle de notation », « victoire » and « selon les règles uniquement » are equally good; « gagner » and « victoire » are both in the French list."
+    }
+   },
+   "pl": {
+    "live.judgeUnread": {
+     "decision": "not adopted",
+     "note": "Not adopted: «Wers zawierający liczbę» for «Wers z liczbą» and «wygrana» for «wygrać» reword an equally clear sentence; both words are in the Polish list (judge-words.ts), and the English list mixes nouns and a verb too (grade, score, win)."
+    }
+   }
+  }
  }
 }

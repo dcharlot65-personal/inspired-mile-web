@@ -354,7 +354,7 @@ const ko: Record<string, string> = {
   'void.label': '점수 없음',
   'void.thin': '시라고 하기엔 너무 적어요. 서로 다른 낱말이 더 있어야 해요',
   'void.copied': '상대의 시에서 가져왔어요. 답은 내가 지은 것이어야 해요',
-  'live.judgeUnread': '채점 모델이 읽지 않는 행: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요',
+  'live.judgeUnread': '채점 모델이 읽지 않는 행: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요.',
   'live.judgeUnreadLine': '{line} ({word})',
   'signature.none': '이 카드에는 시그니처 대사가 없어요',
   'signature.hint': '다음 중 하나를 떠올리게 하세요: {words}',

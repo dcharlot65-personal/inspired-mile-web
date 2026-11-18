@@ -354,7 +354,7 @@ const it: Record<string, string> = {
   'void.label': 'Non dà punti',
   'void.thin': 'troppo poco per essere una strofa: servono più parole diverse',
   'void.copied': 'presa dall’altra strofa: una risposta dev’essere tua',
-  'live.judgeUnread': 'Versi che il modello valutatore non leggerà: {lines}. Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole',
+  'live.judgeUnread': 'Versi che il modello valutatore non leggerà: {lines}. Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole.',
   'live.judgeUnreadLine': '{line} ({word})',
   'signature.none': 'questa carta non ha una battuta di firma',
   'signature.hint': 'riecheggia una di queste: {words}',

@@ -57,6 +57,12 @@
   },
   {
    "lang": "ar",
+   "key": "device.alliteration.name",
+   "text": "سجع ابتدائي",
+   "reason": "Sourced name: سجع ابتدائي is Wikidata's ar label of the alliteration item and its article title (Q484495) (glossary.json). Back-translated on its own it reads “Elementary”; a name alone scores low whatever its quality. For a native reader (HUMAN-REVIEW 25)."
+  },
+  {
+   "lang": "ar",
    "key": "device.brevity.name",
    "text": "الإيجاز",
    "reason": "The game's own name for a device or curse, “الإيجاز”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Summary”). Whether it is the best name is for a native reader."
@@ -90,6 +96,12 @@
    "key": "end.victory",
    "text": "نصر",
    "reason": "نصر is Victory; MADLAD read it as the name Nasr."
+  },
+  {
+   "lang": "ar",
+   "key": "form.acrostic.name",
+   "text": "تتويج",
+   "reason": "Sourced name: تتويج is Wikidata's ar label of the acrostic item and its article تتويج (شعر) (Q173287) (glossary.json). Back-translated on its own it reads “Crowning”, the word's everyday sense; a name alone scores low whatever its quality. For a native reader (HUMAN-REVIEW 25)."
   },
   {
    "lang": "ar",
@@ -213,9 +225,21 @@
   },
   {
    "lang": "ar",
+   "key": "verdict.copyForfeits",
+   "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+   "reason": "الأبيات المنسوخة (copied verses) تخسر نقاط الحَكَم (lose the judge's points): the rule as the English states it. The back-translation reads منسوخة as 'scanned'; it means copied."
+  },
+  {
+   "lang": "ar",
    "key": "verdict.held",
    "text": "التُزم بها",
    "reason": "التُزم بها (it was kept to) is what 'held' means for a curse."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.notTaken",
+   "text": "الظُّرف: لم يُكسَب",
+   "reason": "A short score row: the criterion, الظُّرف (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Status: Unearned”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "ar",
@@ -324,6 +348,12 @@
    "key": "round.seedLabel",
    "text": "Startwert der Partie",
    "reason": "Startwert der Partie: Startwert is the standard German for a random seed."
+  },
+  {
+   "lang": "de",
+   "key": "verdict.notTaken",
+   "text": "Witz: nicht gewonnen",
+   "reason": "A short score row: the criterion, Witz (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Joke: not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "es",
@@ -804,6 +834,12 @@
    "key": "verdict.judge",
    "text": "निर्णायक",
    "reason": "निर्णायक (the judge, the one who decides) is Judge."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.notTaken",
+   "text": "हाज़िरजवाबी: नहीं जीता",
+   "reason": "A short score row: the criterion, हाज़िरजवाबी (wit, ready repartee), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Attendance: Not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "hi",
@@ -1382,6 +1418,12 @@
    "reason": "不成立 (did not come off) is a correct label for a missed bonus."
   },
   {
+   "lang": "ja",
+   "key": "verdict.notTaken",
+   "text": "機知：取れませんでした",
+   "reason": "A short score row: the criterion, 機知 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Notification: Failed.”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
    "lang": "ko",
    "key": "auth.offerSkip",
    "text": "나중에 할게요",
@@ -1629,6 +1671,12 @@
   },
   {
    "lang": "ko",
+   "key": "verdict.notTaken",
+   "text": "재치: 얻지 못함",
+   "reason": "A short score row: the criterion, 재치 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Witchcraft: Not obtained”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "ko",
    "key": "verdict.who.split",
    "text": "반반",
    "reason": "반반 (half and half) for a criterion split between the two. The second model proposed 무승부 (a draw), which the meaning check refused; listed for a native reader."
@@ -1731,6 +1779,12 @@
   },
   {
    "lang": "pl",
+   "key": "mic.transcribing",
+   "text": "Rozpoznaję mowę…",
+   "reason": "Rozpoznaję mowę… (recognising speech) says what this step does, as mic.failed now does (Nie udało się rozpoznać mowy) and as Russian says it (распознать речь); the earlier Zapisuję… also reads as 'saving', the drift the checker found in mic.failed. Read by a language model, not a native speaker."
+  },
+  {
+   "lang": "pl",
    "key": "nav.toggleMenu",
    "text": "Otwórz lub zamknij menu",
    "reason": "'Otwórz lub zamknij menu' (open or close the menu) is what the toggle does; the back-translation says the same."
@@ -1818,6 +1872,12 @@
    "key": "verdict.missed",
    "text": "pudło",
    "reason": "pudło (a miss, as a shot misses) is a correct terse label."
+  },
+  {
+   "lang": "pl",
+   "key": "verdict.notTaken",
+   "text": "dowcip: niezdobyte",
+   "reason": "A short score row: the criterion, dowcip (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“joke: unearned”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "pl",
@@ -2439,6 +2499,12 @@
   },
   {
    "lang": "th",
+   "key": "verdict.copyForfeits",
+   "text": "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ",
+   "reason": "บทกลอนที่ลอกมา (a copied verse) จะเสียคะแนนจากกรรมการ (loses the judge's points): the rule the English states; the back-translation says the same ('Copy poems will lose points from the jury'), only LaBSE and the cosine score it under 0.6."
+  },
+  {
+   "lang": "th",
    "key": "verdict.form",
    "text": "ฉันทลักษณ์",
    "reason": "ฉันทลักษณ์ (prosodic form) is the criterion Form."
@@ -2448,6 +2514,12 @@
    "key": "verdict.held",
    "text": "ไม่ผิดคำสาป",
    "reason": "ไม่ผิดคำสาป (did not break the curse) is what 'held' means."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.notTaken",
+   "text": "ไหวพริบ: ชิงไม่ได้",
+   "reason": "A short score row: the criterion, ไหวพริบ (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Can't win.”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "th",
@@ -2697,6 +2769,12 @@
   },
   {
    "lang": "vi",
+   "key": "verdict.notTaken",
+   "text": "sắc sảo: chưa giành được",
+   "reason": "A short score row: the criterion, sắc sảo (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Dexterity: not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "vi",
    "key": "verdict.synergy",
    "text": "Cộng hưởng gia tộc",
    "reason": "Cộng hưởng gia tộc (resonance of the house) is House synergy."
@@ -2823,6 +2901,12 @@
   },
   {
    "lang": "zh",
+   "key": "form.tercet.name",
+   "text": "三行体",
+   "reason": "Sourced name: 三行体 is Wikidata’s zh label “三行体” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triad”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
    "key": "house.montague.why",
    "text": "茂丘西奥口齿伶俐，一行之内就能押韵。",
    "reason": "'茂丘西奥口齿伶俐，一行之内就能押韵' (Mercutio is quick of tongue and rhymes within a line); the name is the glossary's."
@@ -2889,15 +2973,15 @@
   },
   {
    "lang": "zh",
-   "key": "verdict.who.split",
-   "text": "平分",
-   "reason": "平分 (shared equally) is what a split criterion is."
+   "key": "verdict.notTaken",
+   "text": "机锋：未拿下",
+   "reason": "A short score row: the criterion, 机锋 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Airfield: not taken”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
   },
   {
    "lang": "zh",
-   "key": "form.tercet.name",
-   "text": "三行体",
-   "reason": "Sourced name: 三行体 is Wikidata’s zh label “三行体” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triad”; a name alone scores low whatever its quality."
+   "key": "verdict.who.split",
+   "text": "平分",
+   "reason": "平分 (shared equally) is what a split criterion is."
   }
  ]
 }

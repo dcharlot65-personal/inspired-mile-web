@@ -354,7 +354,7 @@ const de: Record<string, string> = {
   'void.label': 'Bringt keine Punkte',
   'void.thin': 'zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter',
   'void.copied': 'aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein',
-  'live.judgeUnread': 'Zeilen, die das bewertende Modell nicht liest: {lines}. Eine Zeile mit einer Zahl oder einem Wertungswort (Note, Punkte, gewinnen\u00a0…) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln',
+  'live.judgeUnread': 'Zeilen, die das bewertende Modell nicht liest: {lines}. Eine Zeile mit einer Zahl oder einem Wort zur Bewertung (Note, Punkte, gewinnen\u00a0…) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln.',
   'live.judgeUnreadLine': '{line} ({word})',
   'signature.none': 'diese Karte hat keine Signaturzeile',
   'signature.hint': 'lass eines davon anklingen: {words}',

@@ -95,9 +95,10 @@ async function fillers(lang) {
     who: ui['verdict.who.player'],
     you: ui['battle.you'],
     them: ui['battle.opponent'],
-    // The lines the grading model will not read, as battle.astro and theatre.ts list them: "2 (word)",
-    // the word being one of the language's judge words (src/lib/verse/judge-words.ts).
-    lines: formatList([2, 4].map((n, i) => `${formatNumber(n, lang)} (${JUDGE_WORDS[lang].judge[i]})`), lang),
+    // The lines the grading model will not read, as battle.astro and theatre.ts list them: each line's
+    // number and the word that leaves it out (live.judgeUnreadLine, one of the language's judge words in
+    // src/lib/verse/judge-words.ts), joined as the language joins a list.
+    lines: formatList([2, 4].map((n, i) => plain(ui['live.judgeUnreadLine'] ?? '{line} ({word})', { line: n, word: JUDGE_WORDS[lang].judge[i] }, lang)), lang),
   };
 }
 

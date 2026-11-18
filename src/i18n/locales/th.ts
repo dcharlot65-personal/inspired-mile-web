@@ -393,7 +393,7 @@ const th: Record<string, string> = {
   'verdict.craft': 'ฝีมือ',
   'verdict.judge': 'กรรมการ',
   'verdict.worldCard': 'การ์ดโลก: {city}',
-  'verdict.notTaken': '{criterion}: ไม่ได้มา',
+  'verdict.notTaken': '{criterion}: ชิงไม่ได้',
   'verdict.roundScore': 'คะแนนของยก',
   'verdict.criterion': '{criterion}: {who}',
   'verdict.who.player': 'คุณ',
