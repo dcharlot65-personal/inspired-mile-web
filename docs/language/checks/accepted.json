@@ -10,7 +10,6 @@
    "Verona": "a proper name (place, person or work); the dictionary does not hold it",
    "burbujeante": "Spanish adjective (bubbling); read as correct",
    "Sycorax": "a proper name (place, person or work); the dictionary does not hold it",
-   "Tebaldo": "a proper name (place, person or work); the dictionary does not hold it",
    "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
    "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
    "rarísima": "superlative of \"rara\": correct",
@@ -216,7 +215,6 @@
    "햄릿은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "문제로다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "오필리아는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
-   "머큐쇼는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "베로나의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "인간들이란": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "티타니아가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
@@ -226,7 +224,6 @@
    "베로나": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "침묵시킨다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "일꾼이랍니다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
-   "에어리얼은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "정령이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "캘리번은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "시코락스가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
@@ -235,7 +232,6 @@
    "티볼트는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "알현실": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "엘시노어의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
-   "클로디어스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "빈터": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "오베론이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "던시네인의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
@@ -244,7 +240,6 @@
    "사내다운": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "돌바닥을": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "정령들아": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
-   "뱅코는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "자들을": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
    "바이올라는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
    "일리리아의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
@@ -581,14 +576,6 @@
    "rule": "MORFOLOGIK_RULE_ES",
    "found": "Benvolio",
    "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
-  },
-  {
-   "lang": "es",
-   "id": "CA-002",
-   "field": "scene",
-   "rule": "MORFOLOGIK_RULE_ES",
-   "found": "Tebaldo",
-   "reason": "a proper name (place, person or work); the dictionary does not hold it"
   },
   {
    "lang": "es",
@@ -1421,14 +1408,6 @@
    "rule": "MORFOLOGIK_RULE_IT_IT",
    "found": "Birnam",
    "reason": "a proper name (place, person or work); the dictionary does not hold it"
-  },
-  {
-   "lang": "it",
-   "id": "SC-003",
-   "field": "scene",
-   "rule": "MORFOLOGIK_RULE_IT_IT",
-   "found": "Banquo",
-   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
   },
   {
    "lang": "it",
@@ -3741,14 +3720,6 @@
    "rule": "wb4",
    "found": "的",
    "reason": "华丽 is a noun here (falsely splendid finery), so 的 is right"
-  },
-  {
-   "lang": "zh",
-   "id": "FA-003",
-   "field": "quote",
-   "rule": "wb4",
-   "found": "的",
-   "reason": "骄傲的 modifies a name (proud Titania), so 的 is right"
   },
   {
    "lang": "zh",

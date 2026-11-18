@@ -358,9 +358,20 @@ export function saysWord(word: string, verse: string, lang: string): boolean {
 }
 
 /**
+ * Are two words of a line one word in two forms, as a verse word is matched to them? French «matinées» and
+ * «matin», Portuguese «manhãs» and «manhã» share Snowball's stem; Korean 햄릿이 and 햄릿 differ by a particle.
+ */
+function sameWord(a: string, b: string, lang: string): boolean {
+  const l = baseLang(lang);
+  if (l === 'ko') return koStem(a, listsFor(l)) === koStem(b, listsFor(l));
+  return stemmerFor(l) ? sameStem(a, b, l) : wordKey(a, l) === wordKey(b, l);
+}
+
+/**
  * The telling words of the card's quotation in this language, as the line writes them; empty when the language
  * has no line of its own. Where the line has a modern spelling (a Japanese line printed in old character forms)
  * its words come first, since that is what a player types, and the printed words follow, so either counts.
+ * A word in two forms is listed once, in the form the line has first.
  */
 export function localSignatureWords(card: Card, lang: string, modernOnly = false): string[] {
   const printed = localQuote(card, lang);
@@ -375,6 +386,9 @@ export function localSignatureWords(card: Card, lang: string, modernOnly = false
       const k = wordKey(shown, lang);
       if (keys.has(k) || !telling(shown, lang)) continue;
       keys.add(k);
+      // The printed spelling of a word already listed is kept (it is what the printed line says); a second form of
+      // a word in one spelling is not.
+      if (text === modern && out.some((o) => sameWord(o, shown, lang))) continue;
       out.push(shown);
     }
   }
