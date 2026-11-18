@@ -52,7 +52,7 @@ async fn list_cards(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let cards: Vec<OwnedCard> = rows
         .iter()
@@ -86,7 +86,7 @@ async fn add_card(
     .bind(&body.source)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     update_card_counts(&pool, claims.sub).await;
 
@@ -110,7 +110,7 @@ async fn inventory_stats(
     .bind(claims.sub)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(InventoryStats {
         unique_cards: row.get::<i64, _>("unique_cards"),

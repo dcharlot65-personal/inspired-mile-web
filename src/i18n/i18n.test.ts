@@ -1,10 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { LOCALES, LOCALE_NAMES, has, isRtl, loadMessages, locale, pickLocale, setLocale, t, tm, type Locale } from './index';
 import en from './locales/en';
 import { ENGINE_EN, HOUSE_QUOTES } from '../lib/verse/english';
 import { PACK_LANGS } from '../lib/verse/packs';
 
 const placeholders = (s: string) => [...s.matchAll(/\{([a-zA-Z_]+)\}/g)].map((m) => m[1]).sort();
+
+// Every locale module is loaded once, before the tests that read them: on a loaded build host the
+// first import of fifteen modules took over vitest's 5 s default inside one test (seen at 5,006 and
+// 5,066 ms). Loading is not what these tests measure; a minute is room for any host rb accepts.
+const LOAD_ALL_MS = 60_000;
+beforeAll(async () => {
+  await Promise.all(LOCALES.map((l) => loadMessages(l)));
+}, LOAD_ALL_MS);
 
 describe('locales', () => {
   it('covers the sixteen languages the duel can be fought in', () => {

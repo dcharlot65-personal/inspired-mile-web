@@ -1,93 +1,235 @@
 /**
- * Multiplayer Client — WebSocket connection to the multiplayer battle server.
- * Typed event emitter for client ↔ server communication.
+ * Multiplayer client: the WebSocket protocol of an online duel, and the check a page runs
+ * on every round the server sends.
+ *
+ * The server decides every score (backend/src/multiplayer/game_room.rs, with the rules in
+ * backend/src/verse/). This client sends three things only: which room to join and with
+ * which deck, a verse for the round being played, and a forfeit. It never sends a score,
+ * and the server has no field to receive one.
+ *
+ * What the browser can do is check the server: auditRound() recomputes a round from the
+ * two verses with the TypeScript rules and lists every number that differs. The page must
+ * have the pronunciation table loaded first (loadPronunciation in verse/pronounce.ts):
+ * the server scores English by sound, and without the table the browser falls back to
+ * spelling rules that can answer differently.
  */
+import { ONLINE_LANG, onlinePlan, resolveOnlineRound, type OnlineRound, type OnlineRoundPlan } from './multiplayer-rules';
+import type { VerseScore } from './verse/duel';
+import { CRITERIA } from './verse/judge';
 
-import type { BattleAxis } from './battle-rules';
+// --- What the server sends ---
 
-export interface AxisScores {
-  wordplay: number;
-  shakespeare: number;
-  flow: number;
-  wit: number;
-  authenticity: number;
+export type Side = 'you' | 'opponent';
+export type RoomState = 'waiting' | 'in_progress' | 'completed';
+export type EndReason = 'rounds' | 'points' | 'forfeit' | 'disconnect';
+
+/** A verse's craft as the server worked it out. Labels and details are the page's to write. */
+export interface WireScore {
+  form: {
+    form_id: string;
+    checks: Array<{ id: string; points: number; earned: number; met: boolean }>;
+    earned: number;
+    kept: boolean;
+    /** Too little to be a verse: nothing is earned. */
+    thin: boolean;
+    /** The share of the form's points kept (words of the language, and lines that say something). */
+    scale: number;
+  };
+  device: { id: string; met: boolean };
+  signature: boolean;
+  synergy: boolean;
+  multiplier: number;
+  power_words: { used: string[]; met: boolean; bonus: number } | null;
+  curse: { id: string; violations: number; penalty: number } | null;
+  /** How far the multiplier's bonuses apply: what the verse says beyond its device and signature. */
+  substance: number;
+  craft: number;
+  /** Why the verse earns nothing, when it does: empty, too thin to be a verse, or copied. */
+  voided: 'empty' | 'thin' | 'copied' | null;
+}
+
+export interface WireSide {
+  char_id: string;
+  /** The verse as scored: cleaned and capped. */
+  verse: string;
+  /** No verse arrived in time; the round was scored without one. */
+  timed_out: boolean;
+  score: WireScore;
+  /** This side's share of the judge's pool. */
+  judge: number;
   total: number;
 }
 
-// Server → Client events
-export type ServerEvent =
-  | { type: 'room_joined'; room_id: string; opponent: string; round: number; total_rounds: number; difficulty: string }
-  | { type: 'round_start'; round: number; total_rounds: number; theme: string | null }
-  | { type: 'opponent_submitted' }
-  | { type: 'round_result'; round: number; player_score: AxisScores; opponent_score: AxisScores; player_wins: boolean; reason: string }
-  | { type: 'authenticity_warning'; message: string }
-  | { type: 'match_complete'; winner: string; player_total: number; opponent_total: number }
-  | { type: 'opponent_disconnected' }
-  | { type: 'error'; message: string };
+export interface Pair {
+  you: number;
+  opponent: number;
+}
 
-// Client → Server events
+export interface WirePlan {
+  index: number;
+  form_id: string;
+  acrostic: string | null;
+}
+
+export interface WirePlayer {
+  username: string;
+  deck: string[];
+  used: string[];
+}
+
+export interface RoundView {
+  round: number;
+  form_id: string;
+  acrostic: string | null;
+  you: WireSide;
+  opponent: WireSide;
+  criteria: Record<(typeof CRITERIA)[number], Side | 'split'>;
+  winner: Side | 'draw';
+  rounds_won: Pair;
+  totals: Pair;
+}
+
+export interface MatchStart {
+  room_id: string;
+  /** 0 or 1. Seat 0 is side "a" of the rules. */
+  seat: 0 | 1;
+  seed: number;
+  lang: string;
+  rounds: WirePlan[];
+  you: WirePlayer;
+  opponent: WirePlayer;
+  limits: { max_verse_chars: number; max_verse_lines: number; deck_min: number; deck_max: number; round_seconds: number };
+  /** Rounds already decided, oldest first. */
+  results: RoundView[];
+}
+
+export type ServerEvent =
+  | { type: 'room_joined'; room_id: string; state: RoomState; opponent: string | null }
+  | ({ type: 'match_start' } & MatchStart)
+  | { type: 'round_start'; round: number; form_id: string; acrostic: string | null; seconds_left: number; submitted: boolean; opponent_submitted: boolean }
+  | { type: 'verse_accepted'; round: number }
+  | { type: 'opponent_submitted'; round: number }
+  | ({ type: 'round_result' } & RoundView)
+  | { type: 'match_complete'; winner: Side | 'draw'; reason: EndReason; rounds_won: Pair; totals: Pair }
+  | { type: 'opponent_disconnected'; grace_seconds: number }
+  | { type: 'opponent_reconnected' }
+  | { type: 'error'; code: string; message: string };
+
+// --- What the client sends. There is no score here. ---
+
 export type ClientEvent =
-  | { type: 'join_room'; room_id: string }
-  | { type: 'submit_verse'; text: string }
-  | { type: 'use_item'; item_id: string }
+  /** `lang` is the duel's language: the server scores English only and refuses any other. */
+  | { type: 'join_room'; room_id: string; deck: string[]; lang: string }
+  | { type: 'submit_verse'; round: number; char_id: string; text: string }
   | { type: 'forfeit' };
 
+/** Connection changes a page may want to show. */
+export type ConnectionState = 'open' | 'reconnecting' | 'closed';
+
 type EventHandler = (event: ServerEvent) => void;
+type StateHandler = (state: ConnectionState) => void;
+
+/**
+ * Error codes after which the server has closed the connection for good, the room is gone
+ * (the opponent never came, the duel closed, or it ended longer ago than the server keeps it),
+ * or the session has ended (`signed_out`: signed out here or on every device): there is
+ * nothing to reconnect to.
+ */
+const FINAL_ERRORS = new Set(['connection_replaced', 'too_many_messages', 'join_timeout', 'opponent_absent', 'room_closed', 'room_not_found', 'signed_out']);
+
+/**
+ * How long the client keeps trying to reconnect after a connection drops. The server holds a
+ * dropped player's seat for 45 seconds (Timing::reconnect in backend/src/multiplayer/game_room.rs);
+ * this outlasts it, so a player whose network comes back in time is never left out by the page.
+ */
+export const RECONNECT_WINDOW_MS = 60_000;
+/** The longest pause between two attempts. */
+const RECONNECT_MAX_PAUSE_MS = 5_000;
 
 export class MultiplayerClient {
   private ws: WebSocket | null = null;
   private handlers: EventHandler[] = [];
-  private reconnectAttempts = 0;
-  private maxReconnectAttempts = 3;
+  private stateHandlers: StateHandler[] = [];
+  private attempts = 0;
+  /** When the connection last dropped, while the client is trying to get it back. */
+  private droppedAt: number | null = null;
+  /** Set once nothing more should be sent or retried: the match is over, or we left. */
+  private finished = false;
+  private room: { id: string; deck: string[] } | null = null;
+  private timer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(private baseUrl: string) {}
 
+  /** Open the connection. Resolves when it is open; rejects if the first attempt fails. */
   connect(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const wsUrl = this.baseUrl.replace(/^http/, 'ws') + '/api/v1/multiplayer/ws';
-      this.ws = new WebSocket(wsUrl);
+      let settled = false;
+      const ws = new WebSocket(this.baseUrl.replace(/^http/, 'ws') + '/api/v1/multiplayer/ws');
+      this.ws = ws;
 
-      this.ws.onopen = () => {
-        this.reconnectAttempts = 0;
+      ws.onopen = () => {
+        settled = true;
+        this.attempts = 0;
+        this.droppedAt = null;
+        // After a dropped connection the server still holds our seat: ask for it back.
+        // It answers with the whole match as it stands.
+        if (this.room) this.send({ type: 'join_room', room_id: this.room.id, deck: this.room.deck, lang: ONLINE_LANG });
+        this.stateHandlers.forEach((h) => h('open'));
         resolve();
       };
 
-      this.ws.onmessage = (event) => {
+      ws.onmessage = (message) => {
+        let event: ServerEvent;
         try {
-          const data: ServerEvent = JSON.parse(event.data);
-          this.handlers.forEach(h => h(data));
+          event = JSON.parse(message.data);
         } catch {
-          // Ignore malformed messages
+          return; // not ours
+        }
+        if (event.type === 'match_complete' || (event.type === 'error' && FINAL_ERRORS.has(event.code))) this.finished = true;
+        this.handlers.forEach((h) => h(event));
+      };
+
+      ws.onerror = () => {
+        if (!settled) {
+          settled = true;
+          reject(new Error('WebSocket connection failed'));
         }
       };
 
-      this.ws.onerror = () => reject(new Error('WebSocket connection failed'));
-
-      this.ws.onclose = () => {
-        if (this.reconnectAttempts < this.maxReconnectAttempts) {
-          this.reconnectAttempts++;
-          setTimeout(() => this.connect(), 2000 * this.reconnectAttempts);
+      ws.onclose = () => {
+        if (this.ws !== ws) return;
+        this.ws = null;
+        this.droppedAt ??= Date.now();
+        if (this.finished || !this.room || Date.now() - this.droppedAt >= RECONNECT_WINDOW_MS) {
+          this.stateHandlers.forEach((h) => h('closed'));
+          return;
         }
+        this.attempts += 1;
+        this.stateHandlers.forEach((h) => h('reconnecting'));
+        this.timer = setTimeout(() => {
+          this.connect().catch(() => {
+            /* onclose of that attempt schedules the next */
+          });
+        }, Math.min(1000 * this.attempts, RECONNECT_MAX_PAUSE_MS));
       };
     });
   }
 
-  send(event: ClientEvent): void {
-    if (this.ws?.readyState === WebSocket.OPEN) {
-      this.ws.send(JSON.stringify(event));
-    }
+  private send(event: ClientEvent): boolean {
+    if (this.ws?.readyState !== WebSocket.OPEN) return false;
+    this.ws.send(JSON.stringify(event));
+    return true;
   }
 
-  joinRoom(roomId: string): void {
-    this.send({ type: 'join_room', room_id: roomId });
+  /** Take a seat in a room with a deck of three to five character ids. */
+  joinRoom(roomId: string, deck: string[]): void {
+    this.room = { id: roomId, deck };
+    this.send({ type: 'join_room', room_id: roomId, deck, lang: ONLINE_LANG });
   }
 
-  submitVerse(text: string): void {
-    this.send({ type: 'submit_verse', text });
-  }
-
-  useItem(itemId: string): void {
-    this.send({ type: 'use_item', item_id: itemId });
+  /** Submit the verse for a round. False if the connection is not open. */
+  submitVerse(round: number, charId: string, text: string): boolean {
+    return this.send({ type: 'submit_verse', round, char_id: charId, text });
   }
 
   forfeit(): void {
@@ -97,12 +239,17 @@ export class MultiplayerClient {
   onEvent(handler: EventHandler): () => void {
     this.handlers.push(handler);
     return () => {
-      this.handlers = this.handlers.filter(h => h !== handler);
+      this.handlers = this.handlers.filter((h) => h !== handler);
     };
   }
 
+  onState(handler: StateHandler): void {
+    this.stateHandlers.push(handler);
+  }
+
   disconnect(): void {
-    this.maxReconnectAttempts = 0; // Prevent reconnection
+    this.finished = true;
+    if (this.timer) clearTimeout(this.timer);
     this.ws?.close();
     this.ws = null;
   }
@@ -112,24 +259,147 @@ export class MultiplayerClient {
   }
 }
 
-/** Join the matchmaking queue via REST API */
-export async function joinQueue(difficulty: 'beginner' | 'intermediate' | 'advanced' = 'advanced'): Promise<{ room_id: string | null; status: string }> {
-  const response = await fetch('/api/v1/multiplayer/queue', {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ difficulty }),
+// --- Checking the server ---
+
+function sideProblems(who: string, wire: WireSide, local: { verse: string; score: VerseScore; judge: number; total: number }): string[] {
+  const out: string[] = [];
+  const differ = (what: string, server: unknown, here: unknown) => {
+    if (server !== here) out.push(`${who} ${what}: server ${String(server)}, rules ${String(here)}`);
+  };
+  differ('verse', wire.verse, local.verse);
+  differ('craft', wire.score.craft, local.score.craft);
+  differ('form points', wire.score.form.earned, local.score.form.earned);
+  differ('form kept', wire.score.form.kept, local.score.form.kept);
+  differ('thin', wire.score.form.thin, !!local.score.form.thin);
+  differ('void', wire.score.voided, local.score.voided ?? null);
+  differ('number of form checks', wire.score.form.checks.length, local.score.form.checks.length);
+  wire.score.form.checks.forEach((c, i) => {
+    const mine = local.score.form.checks[i];
+    if (!mine) return;
+    differ(`check ${c.id}`, `${c.id}:${c.met}:${c.earned}/${c.points}`, `${mine.id}:${mine.met}:${mine.earned}/${mine.points}`);
   });
-  if (!response.ok) throw new Error('Failed to join queue');
+  differ('device', `${wire.score.device.id}:${wire.score.device.met}`, `${local.score.device.id}:${local.score.device.met}`);
+  differ('signature', wire.score.signature, local.score.signature.met);
+  differ('synergy', wire.score.synergy, local.score.synergy);
+  differ('multiplier', wire.score.multiplier, local.score.multiplier);
+  differ('substance', wire.score.substance, local.score.substance);
+  differ('form scale', wire.score.form.scale, local.score.form.scale);
+  differ('judge share', wire.judge, local.judge);
+  differ('total', wire.total, local.total);
+  return out;
+}
+
+/** The round as the TypeScript rules score it, from what the server said was played. */
+export function recomputeRound(start: MatchStart, earlier: RoundView[], result: RoundView): OnlineRound {
+  const plan: OnlineRoundPlan = { index: result.round, formId: result.form_id, acrostic: result.acrostic };
+  // A riposte answers the other side's verse from the round before.
+  const before = earlier.find((r) => r.round === result.round - 1);
+  const mine = { charId: result.you.char_id, deck: start.you.deck, verse: result.you.verse, previousOpponentVerse: before?.opponent.verse };
+  const theirs = { charId: result.opponent.char_id, deck: start.opponent.deck, verse: result.opponent.verse, previousOpponentVerse: before?.you.verse };
+  return start.seat === 0 ? resolveOnlineRound(plan, mine, theirs) : resolveOnlineRound(plan, theirs, mine);
+}
+
+/**
+ * Recompute a round with the TypeScript rules and list everything that differs from what
+ * the server sent. An empty list means the server's numbers are exactly the rules'.
+ */
+export function auditRound(start: MatchStart, earlier: RoundView[], result: RoundView): string[] {
+  const out: string[] = [];
+  const planned = start.rounds[result.round];
+  if (!planned || planned.form_id !== result.form_id || planned.acrostic !== result.acrostic) {
+    out.push(`round ${result.round + 1} was not scored under the form the match announced`);
+  }
+  let local: OnlineRound;
+  try {
+    local = recomputeRound(start, earlier, result);
+  } catch (err) {
+    return [...out, `the round could not be recomputed: ${err instanceof Error ? err.message : String(err)}`];
+  }
+  const [mine, theirs] = start.seat === 0 ? [local.a, local.b] : [local.b, local.a];
+  out.push(...sideProblems('your', result.you, mine), ...sideProblems("opponent's", result.opponent, theirs));
+
+  const me = start.seat === 0 ? 'a' : 'b';
+  const seen = (v: 'a' | 'b' | 'split' | 'draw') => (v === 'split' || v === 'draw' ? v : v === me ? 'you' : 'opponent');
+  for (const c of CRITERIA) {
+    if (result.criteria[c] !== seen(local.criteria[c])) out.push(`${c}: server ${result.criteria[c]}, rules ${seen(local.criteria[c])}`);
+  }
+  if (result.winner !== seen(local.winner)) out.push(`winner: server ${result.winner}, rules ${seen(local.winner)}`);
+  return out;
+}
+
+/** Whether the three forms the server announced are the ones its seed draws. */
+export function planMatchesSeed(start: MatchStart): boolean {
+  const drawn = onlinePlan(start.seed);
+  return (
+    drawn.length === start.rounds.length &&
+    drawn.every((p, i) => p.index === start.rounds[i].index && p.formId === start.rounds[i].form_id && p.acrostic === start.rounds[i].acrostic)
+  );
+}
+
+// --- REST: the queue, private rooms, reports ---
+
+async function refusal(response: Response, fallback: string): Promise<Error> {
+  if (response.status === 401) return new Error('Sign in to play online.');
+  const text = await response.text().catch(() => '');
+  // The API answers refusals in a short plain sentence; anything else is not for the player.
+  return new Error(text && text.length < 200 && !text.trimStart().startsWith('<') ? text : fallback);
+}
+
+/**
+ * How long a page keeps asking for a quick match before it gives up and says so. The server
+ * answers each request within about half a minute; the page asks again until this is over.
+ */
+export const QUICK_MATCH_LIMIT_MS = 3 * 60 * 1000;
+
+/** Ask for a quick match. Waits up to about half a minute for another player. */
+export async function joinQueue(signal?: AbortSignal): Promise<{ room_id: string | null; status: 'matched' | 'timeout' | 'cancelled' }> {
+  const response = await fetch('/api/v1/multiplayer/queue', { method: 'POST', credentials: 'include', signal });
+  if (!response.ok) throw await refusal(response, 'Could not join the queue.');
   return response.json();
 }
 
-/** Get list of active rooms */
-export async function listRooms(): Promise<{ id: string; state: string; player_count: number }[]> {
-  const response = await fetch('/api/v1/multiplayer/rooms', {
-    credentials: 'include',
-  });
-  if (!response.ok) throw new Error('Failed to list rooms');
+/**
+ * Leave the quick-match queue. `keepalive` lets the request outlive the page: for a page that
+ * is being left (pagehide), so a closed tab does not stay matchable while the server waits.
+ */
+export async function leaveQueue(opts: { keepalive?: boolean } = {}): Promise<void> {
+  await fetch('/api/v1/multiplayer/queue', { method: 'DELETE', credentials: 'include', keepalive: opts.keepalive === true }).catch(() => undefined);
+}
+
+/** Open a private room. The token is what a friend joins with. */
+export async function createPrivateRoom(): Promise<{ room_id: string; token: string }> {
+  const response = await fetch('/api/v1/multiplayer/create-private', { method: 'POST', credentials: 'include' });
+  if (!response.ok) throw await refusal(response, 'Could not open a room.');
+  return response.json();
+}
+
+/** Check an invitation: the room exists and has a seat for this player. */
+export async function checkInvitation(token: string): Promise<{ room_id: string }> {
+  const response = await fetch(`/api/v1/multiplayer/join/${encodeURIComponent(token)}`, { credentials: 'include' });
+  if (!response.ok) throw await refusal(response, 'That invitation is no longer open.');
+  return response.json();
+}
+
+/**
+ * The cards the server records for this account (bought in the market, or moved from a browser's
+ * collection): with the starter characters, what the account may field online. Empty if they
+ * cannot be read; the server checks a deck itself either way.
+ */
+export async function accountCards(): Promise<Set<string>> {
+  try {
+    const response = await fetch('/api/v1/inventory', { credentials: 'include' });
+    if (!response.ok) return new Set();
+    const rows = (await response.json()) as Array<{ card_id: string }>;
+    return new Set(rows.map((r) => r.card_id));
+  } catch {
+    return new Set();
+  }
+}
+
+/** The rooms this player has a seat in. */
+export async function listRooms(): Promise<{ id: string; state: RoomState; player_count: number }[]> {
+  const response = await fetch('/api/v1/multiplayer/rooms', { credentials: 'include' });
+  if (!response.ok) throw await refusal(response, 'Could not list rooms.');
   return response.json();
 }
 
@@ -141,6 +411,6 @@ export async function reportContent(roomId: string, reason: string): Promise<{ s
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ room_id: roomId, reason }),
   });
-  if (!response.ok) throw new Error('Failed to submit report');
+  if (!response.ok) throw await refusal(response, 'Could not send the report.');
   return response.json();
 }

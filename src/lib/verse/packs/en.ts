@@ -50,6 +50,41 @@ const pack: LanguagePack = {
       'I came to trade in thunder and in flame\nAnd thou hast brought a candle to the game',
     ],
   },
+  spare: {
+    couplet: [
+      'Thy verse is dull\nAn empty, hollow skull',
+      'Hear me, fool, and weep\nMy lyric cuts deep',
+      'Be gone, thou clumsy mime\nI waste no more time',
+    ],
+    'quatrain-aabb': [
+      'Thy verse is dull\nAn empty, hollow skull\nHear me, fool, and weep\nMy lyric cuts deep',
+      'Be gone, thou clumsy mime\nI waste no more time\nThy muse fled the hall\nLeft thee here to fall',
+    ],
+    'quatrain-abab': [
+      'Thy verse is dull\nHear me, fool, and weep\nAn empty, hollow skull\nMy lyric cuts deep',
+      'Be gone, thou clumsy mime\nThy muse fled the hall\nI waste no more time\nLeft thee here to fall',
+    ],
+    tercet: [
+      'Thy verse is dull\nA candle in the rain\nAn empty, hollow skull',
+      'Be gone, thou clumsy mime\nThy muse fled the hall\nI waste no more time',
+    ],
+    anaphora: [
+      'Lo, my verse cuts deep\nLo, thy muse has fled\nLo, the hall is mine',
+      'Now hear my blade sing\nNow feel thy muse flee\nNow kneel, and be gone',
+    ],
+    crescendo: [
+      'Kneel\nWeep, fool\nThy doom has come',
+      'Bah\nFeeble cub\nFlee my keen blade',
+    ],
+    haiku: [
+      'Thy verse is a moth\nBitter candle, hungry flame\nAsh upon the wind',
+      'Listen, little fool\nSilver arrows, silent hall\nNo one claps for thee',
+    ],
+    'heroic-couplet': [
+      'Bitter candle, feeble little flame\nHollow echo, sorry empty name',
+      'Silver arrows, silent, deadly, bright\nSorrow, hunger, exile, bitter night',
+    ],
+  },
   acrosticLines: {
     a: ['And still thou standest, waiting to be beaten', 'All thy lines are borrowed and returned unread'],
     b: ['Bold words, for one so easily undone', 'Bring thy best; I have not started yet'],
