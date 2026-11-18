@@ -230,6 +230,20 @@
     scroll-behavior: smooth;
   }
 
+  /* Japanese is written without spaces, and the browser broke its lines inside words (決闘を始め/る,
+     プレイしたラ/ウンド, seen at 390 px on 2026-11-16). auto-phrase breaks between phrases (Chrome 119+;
+     elsewhere it is ignored and lines break as before). Korean keeps its words whole and breaks at
+     the spaces between them, as Korean is set. A phrase or word too long for its box still breaks
+     (overflow-wrap), so nothing runs out of a narrow button. */
+  :lang(ja) {
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+  }
+  :lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
   body {
     @apply bg-obsidian-950 text-obsidian-100 font-body;
   }
