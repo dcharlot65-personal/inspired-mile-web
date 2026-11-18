@@ -1,0 +1,340 @@
+{
+ "note": "The interface strings the integration (integrate/wave3, 3015db5..eed3380) brought into this branch and the strings this branch changed after it, checked with lang/qa-pipeline as that branch is at 7c8e747 (its tools, allowlists and glossary, unchanged), on a scratch merge of this branch (f1a5917) and lang/qa-pipeline that was never committed. Conflicts in that merge were resolved key by key: lang/qa-pipeline's line wherever it holds the key, this branch's line for the keys only this branch has. One fixture was added on the scratch copy: a sample value for {language} in scripts/lang/lib/strings.mjs (CLDR's name for Thai, for Japanese in Thai). Run on the Mac Studio build host on 2026-11-18 from a LANGQA_HOME of this branch's own that links lang/qa-pipeline's installed tools read-only; results in that home's out3c/. The second model's opinion and every reading recorded here are a language model's, not a native speaker's.",
+ "strings": {
+  "checked": 319,
+  "fromIntegration": 256,
+  "changedByThisBranch": 105,
+  "languages": 16,
+  "inTheMerge": {
+   "as this branch has it": 302,
+   "as lang/qa-pipeline changed it since": 17
+  },
+  "perLanguage": {
+   "en": 19,
+   "es": 19,
+   "fr": 19,
+   "de": 19,
+   "it": 19,
+   "pt": 19,
+   "pl": 19,
+   "ru": 19,
+   "ar": 19,
+   "hi": 21,
+   "zh": 21,
+   "ja": 19,
+   "ko": 19,
+   "vi": 19,
+   "th": 25,
+   "id": 24
+  }
+ },
+ "unitTests": "src/i18n (i18n.test.ts, quality.test.ts): 33 passed. check.mjs: 71 findings, 39 allowlisted, 0 open, 0 stale. glossary.mjs: 0 problems.",
+ "selftest": [
+  "en\tLanguageTool: flags 4 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "es\tLanguageTool: flags 4 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "fr\tLanguageTool: flags 4 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "de\tLanguageTool: flags 4 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "it\tLanguageTool: flags 0 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "pt\tLanguageTool: flags 3 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "pl\tLanguageTool: flags 0 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "ru\tLanguageTool: flags 3 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "ar\tLanguageTool: flags 2 of 4 known-bad sentences\tHunspell: rejects the misspelling, accepts the word",
+  "hi\tLanguageTool: no module\tHunspell: rejects the misspelling, accepts the word",
+  "zh\tLanguageTool: flags 1 of 4 known-bad sentences\tHunspell: no dictionary",
+  "ja\tLanguageTool: flags 1 of 4 known-bad sentences\tHunspell: no dictionary",
+  "ko\tLanguageTool: no module\tHunspell: rejects the misspelling, accepts the word",
+  "vi\tLanguageTool: no module\tHunspell: rejects the misspelling, accepts the word",
+  "th\tLanguageTool: no module\tHunspell: rejects the misspelling, accepts the word",
+  "id\tLanguageTool: no module\tHunspell: rejects the misspelling, accepts the word"
+ ],
+ "grammar": {
+  "scope": "every string of the scratch merge (run.sh grammar), then fresh.mjs: 0 strings whose result is not about their current text",
+  "onTheseStrings": 63,
+  "allowlistedByQaPipeline": 62,
+  "open": [
+   {
+    "lang": "hi",
+    "key": "brain.noneShown",
+    "tool": "hunspell",
+    "word": "सकने",
+    "reading": "A correct form: the oblique infinitive of सकना, listed so in its conjugation table on English Wiktionary (page सकना, revision 87169258, fetched 2026-11-18). The hi dictionary lacks it. It needs an entry in lang/qa-pipeline's docs/language/allow/spelling.json; that file is not on this branch."
+   }
+  ],
+  "byRule": [
+   {
+    "tool": "languagetool",
+    "rule": "UPPERCASE_SENTENCE_START",
+    "allowlisted": true,
+    "count": 25
+   },
+   {
+    "tool": "hunspell",
+    "rule": "SPELLING",
+    "allowlisted": true,
+    "count": 21
+   },
+   {
+    "tool": "languagetool",
+    "rule": "AR_DIACRITICS_REPLACE",
+    "allowlisted": true,
+    "count": 5
+   },
+   {
+    "tool": "languagetool",
+    "rule": "BRAK_KROPKI",
+    "allowlisted": true,
+    "count": 3
+   },
+   {
+    "tool": "languagetool",
+    "rule": "MORFOLOGIK_RULE_IT_IT",
+    "allowlisted": true,
+    "count": 2
+   },
+   {
+    "tool": "languagetool",
+    "rule": "OU",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "languagetool",
+    "rule": "PLACE_ADJ",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "languagetool",
+    "rule": "FINAL_STOPS",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "languagetool",
+    "rule": "grammar_0011_notjazem_lam_nafia",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "languagetool",
+    "rule": "syntax_0002_as_ka_1",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "languagetool",
+    "rule": "syntax_0002_as_ka_2",
+    "allowlisted": true,
+    "count": 1
+   },
+   {
+    "tool": "hunspell",
+    "rule": "SPELLING",
+    "allowlisted": false,
+    "count": 1
+   }
+  ]
+ },
+ "meaning": {
+  "scored": 300,
+  "flagged": 12,
+  "allowlistedByQaPipeline": 11,
+  "controlNotBelowRight": 4,
+  "open": [
+   {
+    "lang": "th",
+    "key": "badge.written",
+    "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
+    "cos": 0.5234,
+    "labse": 0.5339,
+    "back": "A contestant who uses a pre-written poem.",
+    "reading": "Right in meaning. lang/qa-pipeline's allow/meaning.json accepts the earlier text (without the relative marker ที่), so meaning.mjs now reports that entry stale and this text open: the entry must move to the new text when the branches merge."
+   }
+  ],
+  "flaggedAndAllowlisted": [
+   {
+    "lang": "de",
+    "key": "verdict.notTaken",
+    "back": "Joke: not won"
+   },
+   {
+    "lang": "pl",
+    "key": "verdict.notTaken",
+    "back": "joke: unearned"
+   },
+   {
+    "lang": "ar",
+    "key": "verdict.copyForfeits",
+    "back": "Scanned verses lose referee points."
+   },
+   {
+    "lang": "ar",
+    "key": "verdict.notTaken",
+    "back": "Status: Unearned"
+   },
+   {
+    "lang": "hi",
+    "key": "verdict.notTaken",
+    "back": "Attendance: Not won"
+   },
+   {
+    "lang": "zh",
+    "key": "verdict.notTaken",
+    "back": "Airfield: not taken"
+   },
+   {
+    "lang": "ja",
+    "key": "verdict.notTaken",
+    "back": "Notification: Failed."
+   },
+   {
+    "lang": "ko",
+    "key": "verdict.notTaken",
+    "back": "Witchcraft: Not obtained"
+   },
+   {
+    "lang": "vi",
+    "key": "verdict.notTaken",
+    "back": "Dexterity: not won"
+   },
+   {
+    "lang": "th",
+    "key": "verdict.copyForfeits",
+    "back": "Copy poems will lose points from the jury."
+   },
+   {
+    "lang": "th",
+    "key": "verdict.notTaken",
+    "back": "Can't win."
+   }
+  ]
+ },
+ "mutations": {
+  "mechanical": "fr battle.lang.written with the no-break space before the colon dropped: check.mjs exit 1, 1 open (fr-nbsp).",
+  "glossary": "de battle.lang.written with \"Versen\"/\"Verse\" for \"Strophen\": glossary.mjs exit 1 (\"verse\" should be Strophe).",
+  "placeholders": "ja battle.lang.rules without {model}: i18n.test.ts and quality.test.ts red.",
+  "notCaught": "ar brain.noneShown with \"No model\" put in front: check.mjs stayed at 0 open; the mechanical check does not look for an English phrase inside an Arabic sentence.",
+  "grammar": "Known-bad versions of this branch's strings (a doubled word, a wrong case, a missing elision, \"a el\", a wrong verb form; a misspelled word in hi, ko, vi and id): run.sh grammar --keys with LANGQA_OVERLAY flagged 10 of 10 (LanguageTool in en, es, fr, de, pt, ru; Hunspell in hi, ko, vi, id); the strings as they are: 0 of 10."
+ },
+ "secondOpinion": {
+  "model": "Gemma 4 26B A4B (qat q4_0 GGUF, llama.cpp 1.0.0), lang/qa-pipeline's review step, resumed from that branch's committed review.json, so it read only the strings it had not read as they are now",
+  "read": 56,
+  "verdicts": {
+   "ok": 49,
+   "fix": 7
+  },
+  "controls": {
+   "th": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "hi": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "ar": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "vi": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "zh": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "ja": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "ko": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "pl": {
+    "passedGood": true,
+    "caughtWrongWord": false,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "ru": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "id": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "es": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "fr": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "de": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "it": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   },
+   "pt": {
+    "passedGood": true,
+    "caughtWrongWord": true,
+    "caughtEnglish": true,
+    "caughtGrammar": true
+   }
+  },
+  "fixesWithNoChange": [
+   "vi battle.lang.written",
+   "ru battle.lang.written"
+  ],
+  "adoptionStep": "adopt.mjs propose/decide: 5 corrections survived the tools (hi, pl, fr, de, it brain.noneShown or battle.lang.written); each was then read",
+  "reading": {
+   "hi brain.noneShown": "adopt: says \"is a good judge of verse\" (निर्णायक, the term the Hindi locale fixes in its header and the one battle.lang.rules uses beside it) where it said \"judges verse correctly\"; the back-translation keeps the meaning.",
+   "pl battle.lang.written": "reject: it drops \"model\" before {model}, so the masculine wykazał would agree with the name Gemma alone; and its \"ponieważ\" would part it from battle.lang.rules, which keeps \"bo model {model}\".",
+   "fr brain.noneShown": "reject: \"être bon juge\" without the article is the established idiom, and battle.lang.rules beside it says \"bon juge des strophes\"; the proposal is equally correct, not a correction.",
+   "de brain.noneShown": "reject: the current sentence is correct and repeats battle.lang.written's \"gute Strophen schreibt\"; the proposal is a restyling (Nominalstil), not a correction.",
+   "it brain.noneShown": "reject: it moves the sentence to the future (affronterai) while battle.lang.written beside it says \"affronti\", and its back-translation moves further from the English (0.89 to 0.78)."
+  },
+  "applied": [
+   {
+    "lang": "hi",
+    "key": "brain.noneShown",
+    "new": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+    "checked": "In its new form by the adoption step: the same single Hunspell hit (सकने) and no other; back-translation \"No model that can run on this device has shown to write good poetry or be a good judge of poetry, so you will face an opponent with written poems and the decision will be made by rules.\" (MiniLM 0.70, LaBSE 0.76; the old text 0.74, 0.75)."
+   }
+  ]
+ },
+ "afterMergingQaPipeline": "On the same scratch merge, npx vitest run: 401 passed, 1 failed (the writing-cell replay test), 3 skipped. MEVAL_RESCORE=1 MEVAL_SET_ASIDE=1 re-scored grand.fr.write and set aside grand.hi.write, grand.id.write, grand.ru.write and grand.vi.write (some of their plays' prompts name a relic word that lang/qa-pipeline changed: hi छाया and लालसा, ru гордыня, id timah, vi phù thủy; the fr cell was re-scored because that branch also edits French written verses); the judging cells all still match. Gemma 4 E2B then stops writing hi, id, ru and vi until those four cells are run again."
+}

@@ -180,6 +180,17 @@ id. Before the integration it wrote the same less Hindi and Chinese. What the pl
   "English: judged by rule, because LFM3 1.7B (LFM2.5 350M) has not shown it is a good judge of
   verse in this language", and Gemma's "Judged by Gemma 4 E2B on this device, reading the verses
   in both orders". Not run again after the integration (see "What is not established").
+  **Again on 2026-11-18, after the integration** (`tests/model/duel-model.spec.ts`, Studio, real
+  models, the lists above): the first run failed for Gemma, because the test required the opening
+  verse to be the model's wherever the model writes English. Since the integration the game plays
+  the written verse when the model's best draft is void or worth under half of it (`opponent.ts`);
+  with seed 11 (an acrostic) Gemma wrote two drafts and the written verse was played. The test now
+  requires that the model is asked for drafts exactly where it writes (the box shows "… is
+  composing" only then) and the written verse wherever it does not; then 6 of 6 passed: LFM2.5 and
+  LFM3 were asked for no draft and their verdicts said "English: judged by rule, because …";
+  Gemma was asked for two drafts and judged the round ("Judged by Gemma 4 E2B on this device,
+  reading the verses in both orders"); the picker tests passed for all three. With the session
+  made to ask the model in every language, the LFM2.5 test went red.
 - `src/lib/model-eval.test.ts` fails when a list in `brain.ts` differs from
   `decisions.json`, when `decisions.json` no longer follows from the result files and the
   thresholds, or when a language without a result file is in a list.
@@ -869,6 +880,50 @@ this branch into that one (record: [`model-eval/strings-wave3.json`](model-eval/
 - On screen (the battle page with a stand-in model, 390 and 1280 px, Thai, Indonesian and Arabic
   interfaces): no sideways overflow, the longer Thai badge fits, Arabic runs right to left.
 
+**Checked again with lang/qa-pipeline as it is at `7c8e747` (2026-11-18).** Record:
+[`model-eval/strings-wave3c.json`](model-eval/strings-wave3c.json). The same strings, 319 now (the
+integration's 16 keys in sixteen languages, and every string this branch changed after it), on a
+new scratch merge of this branch (`f1a5917`) and lang/qa-pipeline, never committed; 302 of them
+read there as this branch has them, 17 as lang/qa-pipeline has changed them since (`live.judgeUnread`
+in fifteen languages, French `void.copied`, Thai `verdict.notTaken`). Every step of that branch's
+pipeline ran on the Studio, with its tools, glossary and allowlists unchanged:
+- Its unit tests (`src/i18n`, 33), `check.mjs` (71 findings, 39 allowlisted, 0 open) and
+  `glossary.mjs` (0 problems) pass. Each was shown to fail on this branch's own strings: a French
+  colon without its no-break space, German "Verse" for "Strophen", and a Japanese line without
+  `{model}` each turned its check red. An English phrase put into an Arabic sentence did not: the
+  mechanical check does not look for one.
+- LanguageTool and Hunspell over every string of the merge (`run.sh grammar`; `fresh.mjs`: every
+  result is about the text as it is): 63 hits on these strings, 62 of a kind that branch's
+  allowlists already accept, 1 open: Hindi सकने in `brain.noneShown`, the oblique infinitive of
+  सकना, which English Wiktionary's conjugation table lists (page सकना, revision 87169258) and the
+  Hindi dictionary lacks; it needs an entry in that branch's `allow/spelling.json`. Known-bad
+  versions of ten of this branch's strings were each flagged (LanguageTool in en, es, fr, de, pt, ru;
+  Hunspell in hi, ko, vi, id), the strings as they are not.
+- MADLAD-400 back-translation, resumed from that branch's committed scores, so only strings whose
+  text changed were translated again: 300 scored, 12 flagged, 11 of them accepted in that branch's
+  `allow/meaning.json` (`verdict.notTaken` in nine languages, `verdict.copyForfeits` in Arabic and
+  Thai), 1 open: Thai `badge.written` with the relative marker this branch added ("A contestant who
+  uses a pre-written poem.", right), whose allowlist entry names the text without it and is now
+  stale. Every back-translation of this branch's own strings was read again; nothing new turned up.
+- The second opinion (Gemma 4 26B A4B, run locally, that branch's review step, its controls passed
+  in every language but one Polish control) read the 56 strings it had not read as they are: 49 ok,
+  7 "fix", of which 2 proposed no change. The 5 others went through that branch's adoption step and
+  survived it, and were then read: one was applied, Hindi `brain.noneShown` now says "is a good
+  judge of verse" (निर्णायक, the term the Hindi locale fixes and the one `battle.lang.rules` beside it
+  uses) where it said "judges verse correctly". Four were not: the Polish one drops "model" before
+  `{model}`, so the masculine verb would agree with the name alone; the French one adds "un" to "bon
+  juge", an idiom without it; the German and Italian ones restyle correct sentences, the Italian
+  into the future tense beside a line in the present. The reasons are in the record. A reading by
+  a language model is not a native speaker's.
+- After that merge, the replay test goes red: lang/qa-pipeline changes relic words that some
+  prompts name (Hindi, Indonesian, Russian, Vietnamese). Set aside, those four Gemma writing cells
+  count as not measured, and Gemma then writes en, es, fr, de, it, pt, pl, zh and th until they are
+  run again (the French cell is re-scored). Setting them aside used to overwrite the cells of the
+  same name already there from before the integration, and the test of the old cells then failed
+  with 3,950 plays where it needs 4,000; a cell set aside again now moves the earlier one to
+  `set-aside/before-<day>/` (`src/lib/model-eval-aside.ts`), and on the same scratch merge the
+  flow was green after `analyze.mjs` and `copy-lists.mjs`.
+
 **Before the integration (2026-11-17):**
 Three interface strings, in all sixteen languages: `battle.lang.written` and `battle.lang.rules`
 (beside the language picker and in the verdict) and `brain.noneShown` (the model panel). They
@@ -954,10 +1009,12 @@ which is stated per tool; no tool certifies tone.
   language without a cell is unsupported for that model, not assumed to work.
   `scripts/model-eval/run.mjs` skips finished cells and measures set-aside ones; after it,
   `judge-code.mjs` and the fingerprint (CLAUDE.md), `analyze.mjs`, `copy-lists.mjs`, then the tests.
-- **The real models in the browser after the integration.** The real-model tests
-  (`playwright.model.config.ts`) were not run after the merge: the Studio's GPU was running this
-  matrix the whole time, and two model runs must not share it. What the pages do with a loaded
-  model is tested with a stand-in model library (above), and what the models do is these cells.
+- **The real models in the browser after the integration: one spec only.** On 2026-11-18 only
+  `tests/model/duel-model.spec.ts` ran with the real models (above: 6 of 6, after a fix to the
+  test). The other real-model specs (`judge-compare`, `grade-injection`, `judge-hide`,
+  `judge-unread`, `opponent-prompt`, `ear`) belong to the rules and phonetics work and were not run
+  from this branch. What the pages do with a loaded model is tested with a stand-in model library
+  (above), and what the models do is these cells.
 - **The repeat control covers two languages, and only the old cells** (above).
 - **How well a model ranks two decent verses.** The worse verse of each pair is plainly worse:
   prose, an interface string, shuffled letters or an injection. Passing shows a judge can tell
