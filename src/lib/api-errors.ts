@@ -43,8 +43,8 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   // Any route
   ['Rate limit exceeded', 'too_many_requests'],
   ['Sign in first.', 'not_signed_in'],
+  // The server no longer writes 'DB error: …' (fix/backend-security): a 500 is server_error by its status.
   ['Something went wrong on our side. Please try again.', 'server_error'],
-  [/^DB error: /, 'server_error'],
   // Classroom
   ['Name must be 1-128 characters', 'classroom_name_invalid'],
   ['Invalid join code', 'join_code_invalid'],

@@ -18,7 +18,10 @@ import { interpolate } from './verse/msg';
 const shared = import.meta.glob<{ default: Messages }>('../i18n/pages/shared/*.ts', { eager: true });
 const sharedFor = (l: string) => shared[`../i18n/pages/shared/${l}.ts`].default;
 
-/** The multiplayer routes speak over a socket to a page that is being rewritten on another branch. */
+/**
+ * The multiplayer routes answer src/pages/multiplayer.astro, which this branch does not localise (its
+ * brief leaves that page to the branch that rewrote it, now merged through integrate/wave3).
+ */
 const SKIP_DIRS = ['multiplayer'];
 
 function rustFiles(dir: string): string[] {
@@ -94,10 +97,7 @@ describe('what the API can answer', () => {
 
   it('the table holds nothing the server no longer says', () => {
     const said = texts.map((t) => (t.formatted ? `${t.text}x` : t.text));
-    const stale = SERVER_TEXT_CODES.filter(([pattern]) => !said.some((s) => (typeof pattern === 'string' ? pattern === s : pattern.test(s))))
-      .map(([pattern]) => String(pattern))
-      // Said by a branch that is not merged yet (fix/backend-security): harmless to know already.
-      .filter((p) => !['Sign in first.', 'Something went wrong on our side. Please try again.'].includes(p));
+    const stale = SERVER_TEXT_CODES.filter(([pattern]) => !said.some((s) => (typeof pattern === 'string' ? pattern === s : pattern.test(s)))).map(([pattern]) => String(pattern));
     expect(stale, stale.join('\n')).toEqual([]);
   });
 
