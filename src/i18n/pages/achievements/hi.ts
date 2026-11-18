@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'achievements.scholar.description': 'प्रश्नोत्तरी में पूरे अंक लाएँ',
   'achievements.pack-rat.name': 'पैक जमाखोर',
   'achievements.pack-rat.description': 'खोले गए कार्ड पैक: {n}',
-  'achievements.verse-veteran.name': 'पद का पुराना खिलाड़ी',
+  'achievements.verse-veteran.name': 'कविता का पुराना खिलाड़ी',
   'achievements.verse-veteran.description': 'पूरे किए गए युद्ध के दौर: {n}',
   'achievements.challenge-master.name': 'चुनौतियों का उस्ताद',
   'achievements.challenge-master.description': 'पूरी की गई उद्धरण चुनौतियाँ: {n}',
