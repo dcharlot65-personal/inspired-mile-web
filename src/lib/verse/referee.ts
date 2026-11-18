@@ -49,25 +49,50 @@ async function grades(verse: string, lang: string): Promise<Margins> {
 }
 
 /**
+ * What the model answered, before any threshold: for the compare path the lean towards A in each
+ * order, for the grade path each verse's expected grade and the rules' split it is bounded by (or
+ * that the round went to the rules because a line was left unread). The evaluation keeps these
+ * (scripts/model-eval), so that a change to how an answer is read, not only to what is asked,
+ * shows against its stored cells (src/lib/model-eval.judge.test.ts).
+ */
+export type JudgeReading =
+  | { method: 'compare'; forward: Margins; reversed: Margins }
+  | { method: 'grade'; unread: true; rules: JudgeSplit }
+  | { method: 'grade'; unread?: false; player: Margins; opponent: Margins; rules: JudgeSplit };
+
+/** The verdict a reading amounts to: the arithmetic modelJudge applies, and the evaluation re-applies. */
+export function verdictOf(reading: JudgeReading): JudgeSplit {
+  if (reading.method === 'compare') return combineMargins(reading.forward, reading.reversed);
+  if (reading.unread) return { ...reading.rules, reason: 'unread' };
+  return boundedByRules(reading.player, reading.opponent, reading.rules);
+}
+
+/**
  * The loaded model's judgement, by the method that model is read with. No check of whether the
  * model should judge this language: `referee` makes that check, and the evaluation that decides
  * it (scripts/model-eval) calls this. `previousPlayerVerse` is what the opponent's verse answers,
  * when it answers one (a model wrote it to); the rule-based judge then compares the comebacks of
- * both (judge.ts rulesJudge).
+ * both (judge.ts rulesJudge). `onReading` receives what the model answered, before any threshold.
  */
-export async function modelJudge(playerVerse: string, opponentVerse: string, lang: string, previousPlayerVerse?: string): Promise<JudgeSplit> {
+export async function modelJudge(
+  playerVerse: string, opponentVerse: string, lang: string, previousPlayerVerse?: string, onReading?: (r: JudgeReading) => void,
+): Promise<JudgeSplit> {
+  let reading: JudgeReading;
   if (brainInfo()?.judge === 'grade') {
     // Graded alone, a verse can tell the grader what to answer: the grader never reads such a
     // line, and decides only what the rules split, by a measured margin (judge.ts gradeMessages).
     const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
     // A line left out must not help its verse (an empty verse is not a better one): a round
     // with a line the grader would not read is decided by the rules alone, for both sides.
-    if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) return { ...rules, reason: 'unread' };
-    return boundedByRules(await grades(playerVerse, lang), await grades(opponentVerse, lang), rules);
+    if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) reading = { method: 'grade', unread: true, rules };
+    else reading = { method: 'grade', player: await grades(playerVerse, lang), opponent: await grades(opponentVerse, lang), rules };
+  } else {
+    const forward = await margins(playerVerse, opponentVerse, lang);
+    const reversed = await margins(opponentVerse, playerVerse, lang);
+    reading = { method: 'compare', forward, reversed };
   }
-  const forward = await margins(playerVerse, opponentVerse, lang);
-  const reversed = await margins(opponentVerse, playerVerse, lang);
-  return combineMargins(forward, reversed);
+  onReading?.(reading);
+  return verdictOf(reading);
 }
 
 /** Will the loaded model judge a duel in this language, or will the rules? */

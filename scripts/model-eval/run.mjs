@@ -9,7 +9,8 @@
 //
 // What it calls is the game's own code, served unbundled by the dev server it starts:
 // loadBrain and generate (src/lib/brain.ts), modelJudge (src/lib/verse/referee.ts, the
-// function referee() itself calls), writeOpponentVerse and scoreVerse (opponent.ts,
+// function referee() itself calls in a language the model judges; each pair keeps the model's
+// raw reading, before any threshold), writeOpponentVerse and scoreVerse (opponent.ts,
 // duel.ts). Nothing about judging or writing is re-implemented here.
 //
 // One cell is one model, one language, one task. Each finished cell is written at once to
@@ -125,6 +126,12 @@ async function pageLoad(tier) {
 
 async function pageJudge({ lang, pairs, same }) {
   const { modelJudge } = await import('/src/lib/verse/referee.ts');
+  const { loadPack } = await import('/src/lib/verse/packs/index.ts');
+  // As the game has by the time a round is judged: the language's pack (with the function words the
+  // grade path's filter reads) and its sound data (which the rule judge's flow reads; see pagePlan).
+  await loadPack(lang);
+  const sound = await import('/src/lib/verse/sound/index.ts').catch(() => null);
+  if (sound && !(await sound.loadSound(lang))) throw new Error(`the sound data for ${lang} did not load`);
   const out = [];
   for (let i = 0; i < pairs.length; i++) {
     const p = pairs[i];
@@ -132,8 +139,11 @@ async function pageJudge({ lang, pairs, same }) {
     const betterIsPlayer = (i + Math.floor(i / 4)) % 2 === 0;
     const worse = same ? p.better.text : p.worse.text;
     const t0 = performance.now();
-    const s = await modelJudge(betterIsPlayer ? p.better.text : worse, betterIsPlayer ? worse : p.better.text, lang);
-    out.push({ id: p.id, kind: p.worse.kind, betterIsPlayer, criteria: s.criteria, player: s.player, opponent: s.opponent, source: s.source, ms: Math.round(performance.now() - t0) });
+    // What the model answered before any threshold, so that a change to how an answer is read shows
+    // against this cell (src/lib/model-eval.judge.test.ts re-derives every verdict from it).
+    let reading = null;
+    const s = await modelJudge(betterIsPlayer ? p.better.text : worse, betterIsPlayer ? worse : p.better.text, lang, undefined, (r) => { reading = r; });
+    out.push({ id: p.id, kind: p.worse.kind, betterIsPlayer, criteria: s.criteria, player: s.player, opponent: s.opponent, source: s.source, ...(s.reason ? { reason: s.reason } : {}), reading, ms: Math.round(performance.now() - t0) });
   }
   return out;
 }
