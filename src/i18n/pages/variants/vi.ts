@@ -73,7 +73,7 @@ const messages: Record<string, string> = {
   'variants.city.SYD': 'Sydney', // Wikidata Q3130 label
   'variants.city.OSA': 'Ōsaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
-  'variants.region.eurasia': 'Lục địa Á-Âu', // Wikidata Q5401 label
+  'variants.region.eurasia': 'Lục địa Á-Âu', // Wikidata Q5401 label (lục địa Á-Âu), first letter capitalised as CLDR's vi region names are
   'variants.region.142': 'Châu Á', // CLDR 46.0.0 territory 142
   'variants.region.150': 'Châu Âu', // CLDR 46.0.0 territory 150
   'variants.region.009': 'Châu Đại Dương', // CLDR 46.0.0 territory 009

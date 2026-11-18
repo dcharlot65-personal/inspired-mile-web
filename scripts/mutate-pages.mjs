@@ -34,6 +34,10 @@ const MUTATIONS = [
   // Signed numbers left to the bidirectional algorithm on a right-to-left page (50+ for +50).
   ['src/i18n/pages/runtime.ts', 'return isRtl(l) ? s.replace(', 'return false ? s.replace(', 'right-to-left page'],
   ['src/i18n/pages/rules-text.ts', 'words: list(words),', "words: new Intl.ListFormat(lang, { style: 'narrow', type: 'unit' }).format(words),", 'zh'],
+  // The record no longer saying what it changed in a sourced label (the vi capital, as it stood).
+  ['docs/language/pages-core/sourced-names.json', 'label \\"lục địa Á-Âu\\", first letter capitalised, as the CLDR 46.0.0 vi region names beside it are (Châu Á, Châu Âu)"', 'label"', 'variants.region.eurasia vi'],
+  // A fetched source that no longer agrees with the record (Spanish Tokio).
+  ['docs/language/pages-core/cldr-exemplar-cities.json', '"name": "Tokio"', '"name": "Tokyo"', 'variants.city.TKY es'],
 ];
 
 let unnoticed = 0;

@@ -10,6 +10,8 @@ import { CITY_CATALOG, type WorldCity } from '../lib/variants';
 import { getPack, loadPack } from '../lib/verse/packs';
 import sourced from '../../docs/language/pages-core/sourced-names.json';
 import cldrQuotes from '../../docs/language/pages-core/cldr-quotes.json';
+import cldrCities from '../../docs/language/pages-core/cldr-exemplar-cities.json';
+import wikidataLabels from '../../docs/language/pages-core/wikidata-labels.json';
 
 const MODULES = import.meta.glob<{ default: Messages }>('./pages/*/*.ts', { eager: true });
 const AREAS = ['about', 'achievements', 'card-terms', 'collection', 'home', 'profile', 'rules', 'variants', 'world-map'];
@@ -17,6 +19,48 @@ const area = (name: string, l: string): Messages => MODULES[`./pages/${name}/${l
 
 /** Names taken from CLDR or Wikidata, and words that are the same in two languages, may equal the English. */
 const SOURCED = /^(variants\.(city|region)\.|card-terms\.(work\.|house\.(rome|illyria|the-tempest|lake-district|olympus)$))/;
+
+type Labels = Record<string, string | null>;
+type WikidataEntity = { qid: string; labels: Labels; ptAll?: Labels; zhAll?: Labels };
+const WIKIDATA = new Map((Object.values(wikidataLabels.entities) as WikidataEntity[]).map((e) => [e.qid, e]));
+/** A Wikidata label as fetched: the language's own, or the variant the record names (pt-br, zh-cn…). */
+function wikidataLabel(qid: string, lang: string, variant?: string): string | null | undefined {
+  const e = WIKIDATA.get(qid);
+  if (!variant) return e?.labels[lang];
+  return (variant.startsWith('pt') ? e?.ptAll : variant.startsWith('zh') ? e?.zhAll : undefined)?.[variant];
+}
+
+/** Each sourced value against the fetched file its record cites (Wikidata labels, CLDR cities and regions). */
+function sourceProblems(entries: Record<string, Record<string, { value: string; source: string }>>): string[] {
+  const out: string[] = [];
+  const cities = cldrCities.cities as Record<string, Record<string, { name: string }>>;
+  const regions = cldrCities.regions as Record<string, Record<string, string>>;
+  for (const [key, byLang] of Object.entries(entries)) {
+    for (const [l, { value, source }] of Object.entries(byLang)) {
+      const said = (got: unknown, from: string) => out.push(`${key} ${l}: "${value}" but ${from} has "${got}"`);
+      let m: RegExpMatchArray | null;
+      if ((m = source.match(/^Wikidata (Q\d+) label(?: \(([a-z]{2}(?:-[a-z]+)?)\))?$/))) {
+        const got = wikidataLabel(m[1], l, m[2]);
+        if (got !== value) said(got, `Wikidata ${m[1]} ${m[2] ?? l}`);
+      } else if ((m = source.match(/^Wikidata (Q\d+) label "([^"]+)", first letter capitalised, /))) {
+        // A label used as a heading where the names beside it start with a capital: the label, and only its first letter changed.
+        const got = wikidataLabel(m[1], l);
+        if (got !== m[2]) said(got, `Wikidata ${m[1]} ${l}`);
+        else if (value !== m[2].charAt(0).toLocaleUpperCase(l) + m[2].slice(1)) out.push(`${key} ${l}: "${value}" is not "${m[2]}" with its first letter capitalised`);
+      } else if ((m = source.match(/^CLDR 46\.0\.0 exemplarCity \(Wikidata (Q\d+) has "([^"]+)"\)$/))) {
+        const got = cities[l]?.[key.split('.').at(-1)!]?.name;
+        if (got !== value) said(got, 'CLDR exemplarCity');
+        const e = WIKIDATA.get(m[1]);
+        const all = [e?.labels[l], ...Object.values(e?.ptAll ?? {}), ...Object.values(e?.zhAll ?? {})];
+        if (!all.includes(m[2])) out.push(`${key} ${l}: Wikidata ${m[1]} has no label "${m[2]}"`);
+      } else if ((m = source.match(/^CLDR 46\.0\.0 territory (\d{3})$/))) {
+        if (regions[l]?.[m[1]] !== value) said(regions[l]?.[m[1]], `CLDR territory ${m[1]}`);
+      } else if (!source.startsWith('NOT FROM A SOURCE: ')) out.push(`${key} ${l}: source not checkable: ${source}`);
+    }
+  }
+  return out;
+}
+
 
 describe('page areas', () => {
   it('has the nine areas in all sixteen languages, and every area (these or another page’s) has exactly the sixteen', () => {
@@ -80,6 +124,23 @@ describe('page areas', () => {
     }
     // Every city of the catalog has a sourced name.
     for (const c of Object.values(CITY_CATALOG)) expect([c.code, `variants.city.${c.code}` in entries]).toEqual([c.code, true]);
+  });
+
+  it('the provenance record says what the fetched sources say', () => {
+    // The test above holds the pages to the record; this one holds the record to the files it cites.
+    // A vi value had been capitalised by hand and was still recorded as "Wikidata Q5401 label".
+    const entries = sourced.entries as Record<string, Record<string, { value: string; source: string }>>;
+    expect(sourceProblems(entries)).toEqual([]);
+    // It bites: the record as it stood, a city CLDR names differently, a source it cannot read.
+    const stale = structuredClone(entries);
+    stale['variants.region.eurasia'].vi.source = 'Wikidata Q5401 label';
+    expect(sourceProblems(stale)).toEqual(['variants.region.eurasia vi: "Lục địa Á-Âu" but Wikidata Q5401 vi has "lục địa Á-Âu"']);
+    const city = structuredClone(entries);
+    city['variants.city.TKY'].es.value = 'Tokyo';
+    expect(sourceProblems(city)).toEqual(['variants.city.TKY es: "Tokyo" but CLDR exemplarCity has "Tokio"']);
+    const odd = structuredClone(entries);
+    odd['variants.region.142'].fr.source = 'a dictionary';
+    expect(sourceProblems(odd)).toEqual(['variants.region.142 fr: source not checkable: a dictionary']);
   });
 
   it('covers the data it names: every house, element, type, city, ability and achievement', () => {
