@@ -35,7 +35,8 @@ test('a page load fetches no sound data, and a duel fetches only its own languag
   await page.goto('/battle?seed=11&brain=rules');
   await expect(page.locator('#start-duel')).toBeEnabled();
   // Past the idle warm-up's own deadline (2 s), so a page that warmed with nothing named or stored
-  // would show it here; the English table counts too.
+  // would show it here; the English table counts too. One that warmed later, on a timer, shows in
+  // tests/battle-bytes.spec.ts, which runs ten minutes of the page's clock.
   await page.waitForTimeout(2500);
   expect(requests.filter((u) => SOUND.test(u) || /pron-en/.test(u))).toEqual([]);
   await page.selectOption('#language', 'fr');

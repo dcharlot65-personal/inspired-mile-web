@@ -56,14 +56,25 @@ async function duel(page: Page, lang: string) {
   await page.waitForTimeout(1000);
 }
 
-test('a visitor who never starts a duel does not fetch the English table', async ({ browser }) => {
+/** A request for a duel language's sound data: a table module, the analyser, or one of its dictionary files (as tests/sound.spec.ts). */
+const SOUND = /\/sound\/data\/|\/sound\/ja|kuromoji|\.dat\.gz/;
+
+test('a visitor who never starts a duel fetches neither the English table nor any sound data, however long the page stays open', async ({ browser }) => {
   const page = await fresh(browser);
   const seen = bytes(page);
+  const asked: string[] = [];
+  page.on('request', (r) => asked.push(r.url()));
+  // The page runs on the test's clock: ten minutes of its timers and idle callbacks are run at once
+  // below, so a fetch put off by a timer (a warm-up for every visitor some seconds in) shows here as
+  // well as one at load. Waiting a few seconds of real time missed one put off by three (the engine's
+  // third check, 2026-11-18).
+  await page.clock.install();
   await page.goto(`${BASE}/battle?brain=rules`, { waitUntil: 'networkidle' });
   await expect(page.locator('#start-duel')).toBeEnabled();
-  await page.waitForTimeout(2000);
+  await page.clock.runFor('10:00');
+  await page.waitForTimeout(1500);
   console.log(`MEASURE battle-bytes no-duel ${JSON.stringify(await seen.measure('no-duel'))}`);
-  expect(seen.urls.filter((u) => /pron-en/.test(u))).toEqual([]);
+  expect(asked.filter((u) => /pron-en/.test(u) || SOUND.test(u))).toEqual([]);
 });
 
 test('a Japanese duel does not fetch the English table', async ({ browser }) => {
