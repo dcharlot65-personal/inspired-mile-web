@@ -9,7 +9,9 @@ axum-extra = { version = "0.12", features = ["cookie"] }
 tokio = { version = "1", features = ["full"] }
 sqlx = { version = "0.9", features = ["runtime-tokio", "postgres", "chrono", "uuid", "json"] }
 serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+# float_roundtrip: a double read from JSON is the double that was written (the golden vectors
+# hold the TypeScript engine's doubles, compared exactly; without it a read can be one ulp off).
+serde_json = { version = "1", features = ["float_roundtrip"] }
 # aws_lc_rs, not rust_crypto: rust_crypto pulls rsa 0.10.0, and webauthn-rs (through
 # crypto-glue 0.2) needs an rsa 0.10 release candidate; cargo cannot hold both. aws-lc-rs
 # is already in the tree as reqwest's TLS provider. Sessions are HS256 either way.
@@ -34,3 +36,10 @@ url = "2"
 hmac = "0.13"
 sha2 = "0.11"
 hex = "0.4"
+# The verse engine (src/verse): Unicode letter and mark classes, and NFD for accent folding.
+regex = "1"
+unicode-normalization = "0.1"
+
+[dev-dependencies]
+# Paused time, so the room's timers are tested without waiting for them.
+tokio = { version = "1", features = ["full", "test-util"] }

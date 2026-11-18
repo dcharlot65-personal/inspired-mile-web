@@ -55,7 +55,7 @@ async fn browse_listings(
     )
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let listings = rows.iter().map(|r| ListingResponse {
         id: r.get("id"),
@@ -93,7 +93,7 @@ async fn create_listing(
         .bind(&body.card_id)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     if owns.is_none() {
         return Err((StatusCode::BAD_REQUEST, "You don't own this card".into()));
@@ -113,7 +113,7 @@ async fn create_listing(
     .bind(&wanted)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(ListingResponse {
         id: row.get("id"),
@@ -141,7 +141,7 @@ async fn get_listing(
     .bind(id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Listing not found".into()))?;
 
     Ok(Json(ListingResponse {
@@ -171,7 +171,7 @@ async fn my_listings(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let listings = rows.iter().map(|r| ListingResponse {
         id: r.get("id"),
@@ -201,7 +201,7 @@ async fn cancel_listing(
     .bind(claims.sub)
     .execute(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     if result.rows_affected() == 0 {
         return Err((StatusCode::NOT_FOUND, "Listing not found or not yours".into()));
@@ -222,7 +222,7 @@ async fn buy_listing(
     .bind(id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Listing not found".into()))?;
 
     let status: String = listing.get("status");
@@ -239,7 +239,7 @@ async fn buy_listing(
 
     // Transfer card atomically: mark listing as sold, add card to buyer, record trade
     let mut tx = pool.begin().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     // Atomically claim the listing (prevents double-buy race condition)
     let updated = sqlx::query(
@@ -249,7 +249,7 @@ async fn buy_listing(
     .bind(id)
     .execute(&mut *tx)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     if updated.rows_affected() == 0 {
         return Err((StatusCode::CONFLICT, "Listing is no longer active".into()));
@@ -263,7 +263,7 @@ async fn buy_listing(
     .bind(&card_id)
     .execute(&mut *tx)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     sqlx::query(
         "INSERT INTO trades (listing_id, buyer_id) VALUES ($1, $2)",
@@ -272,10 +272,10 @@ async fn buy_listing(
     .bind(claims.sub)
     .execute(&mut *tx)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     tx.commit().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     Ok(Json(serde_json::json!({ "status": "purchased", "card_id": card_id })))
 }

@@ -11,9 +11,10 @@ pub type IpLimiter = Arc<RateLimiter<String, DefaultKeyedStateStore<String>, Def
 /// (`RATE_LIMIT_PER_MINUTE`).
 ///
 /// It used to be one bucket of 60 a minute for the whole site, which a handful of players
-/// would exhaust for everyone. The key comes from `auth::client_ip` (Cloudflare's header
-/// first), so one visitor can only use up their own allowance. A classroom behind one
-/// address shares one bucket, which is why the default is generous.
+/// would exhaust for everyone. The key comes from `auth::client_addr`: one IPv4 address, or
+/// one IPv6 /64 (a single connection owns a whole /64, so a bucket per address would be no
+/// limit). One visitor can only use up their own allowance. A classroom behind one address
+/// shares one bucket, which is why the default is generous.
 pub fn create_rate_limiter(per_minute: u32) -> IpLimiter {
     let per_minute =
         NonZeroU32::new(per_minute).unwrap_or(NonZeroU32::new(DEFAULT_PER_MINUTE).unwrap());

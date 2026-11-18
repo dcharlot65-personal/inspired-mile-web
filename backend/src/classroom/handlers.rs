@@ -88,7 +88,7 @@ async fn create_classroom(
     .bind(&code)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     // Add teacher as a member
     let classroom_id: i32 = row.get("id");
@@ -127,7 +127,7 @@ async fn list_classrooms(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let classrooms: Vec<Classroom> = rows
         .iter()
@@ -157,7 +157,7 @@ async fn join_classroom(
         .bind(&code)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "Classroom not found".into()))?;
 
     let classroom_id: i32 = classroom.get("id");
@@ -172,16 +172,44 @@ async fn join_classroom(
     .bind(claims.sub)
     .execute(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(serde_json::json!({ "joined": true, "classroom": name })))
 }
 
+/// A classroom's roster and assignments are for the people in it: its teacher and its
+/// members. Classroom ids are small sequential numbers, so without this check any signed-in
+/// account could read every class's roster by counting up.
+///
+/// The same answer is given for a classroom that does not exist and for one the caller is
+/// not in, so the ids that are in use cannot be told apart either.
+async fn require_membership(
+    pool: &PgPool,
+    classroom_id: i32,
+    user_id: uuid::Uuid,
+) -> Result<(), (StatusCode, String)> {
+    let allowed: bool = sqlx::query_scalar(
+        "SELECT EXISTS(SELECT 1 FROM classroom_members WHERE classroom_id = $1 AND user_id = $2)
+             OR EXISTS(SELECT 1 FROM classrooms WHERE id = $1 AND teacher_id = $2)",
+    )
+    .bind(classroom_id)
+    .bind(user_id)
+    .fetch_one(pool)
+    .await
+    .map_err(crate::error::internal)?;
+    if allowed {
+        Ok(())
+    } else {
+        Err((StatusCode::FORBIDDEN, "Not a member of this classroom".into()))
+    }
+}
+
 async fn list_members(
-    Extension(_claims): Extension<Claims>,
+    Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
     Path(classroom_id): Path<i32>,
 ) -> Result<Json<Vec<ClassroomMember>>, (StatusCode, String)> {
+    require_membership(&pool, classroom_id, claims.sub).await?;
     let rows = sqlx::query(
         "SELECT u.id, u.username, cm.role, cm.joined_at
          FROM classroom_members cm
@@ -192,7 +220,7 @@ async fn list_members(
     .bind(classroom_id)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let members: Vec<ClassroomMember> = rows
         .iter()
@@ -211,10 +239,11 @@ async fn list_members(
 }
 
 async fn list_assignments(
-    Extension(_claims): Extension<Claims>,
+    Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
     Path(classroom_id): Path<i32>,
 ) -> Result<Json<Vec<Assignment>>, (StatusCode, String)> {
+    require_membership(&pool, classroom_id, claims.sub).await?;
     let rows = sqlx::query(
         "SELECT id, title, assignment_type, created_at
          FROM classroom_assignments WHERE classroom_id = $1
@@ -223,7 +252,7 @@ async fn list_assignments(
     .bind(classroom_id)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let assignments: Vec<Assignment> = rows
         .iter()
@@ -256,7 +285,7 @@ async fn create_assignment(
     .bind(claims.sub)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::FORBIDDEN, "Not a member of this classroom".into()))?;
 
     let role: String = member.get("role");
@@ -274,7 +303,7 @@ async fn create_assignment(
     .bind(&body.assignment_type)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(Assignment {
         id: row.get("id"),
