@@ -40,7 +40,7 @@ const messages: Record<string, string> = {
   'classroom.create.done': 'สร้างชั้นเรียนแล้ว',
   'classroom.mine.title': 'ชั้นเรียนของฉัน',
   'classroom.mine.empty': 'คุณยังไม่ได้เข้าร่วมชั้นเรียนใด',
-  'classroom.mine.signIn': 'เข้าสู่ระบบเพื่อดูชั้นเรียนของคุณ',
+  'classroom.mine.signIn': 'ลงชื่อเข้าใช้เพื่อดูชั้นเรียนของคุณ',
   'classroom.members.other': 'สมาชิก {n} คน',
   'classroom.list.code': 'รหัส:',
   'classroom.detail.back': 'กลับไปที่ชั้นเรียนของฉัน',

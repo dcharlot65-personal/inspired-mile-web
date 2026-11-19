@@ -625,6 +625,14 @@ area strings that must then follow (hi 8, th 8, ko 4, vi 11). When that branch l
 those 31 strings; the test says which. Hunspell's Vietnamese dictionary rejects *khóa*, *xóa*
 and *hủy* for the same reason (it has the new placement).
 
+**Done at the integration (integrate/wave3, 2026-11-18).** With lang/qa-pipeline merged, the test
+named exactly those 31 strings, and they now follow the core: शेक्सपीयर (hi 8), ลงชื่อเข้าใช้ (th 8),
+다운로드한 / 다운로드하기 for 내려받은 / 내려받기 (ko 4), the new tone placement (vi 11). The
+Korean Theatre shortcut and the VR gallery's link to it follow the core heading 입체 극장 (was 더
+극장), and `build-static.mjs` rewrote the manifest. These are substitutions of one spelling for
+another; the strings were not back-translated, spelt or parsed again on the build host
+(`lang-host.sh bt-pairs`, `rank`, `spell`, `grammar`, `summarise --strict`): that is still to do.
+
 ### Layout: screenshots
 
 `scripts/pages-rest/shots.mjs` against a dev server on the build host, in Arabic, German,

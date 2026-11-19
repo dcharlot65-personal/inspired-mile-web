@@ -3,7 +3,7 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'error.network': 'เราติดต่อเซิร์ฟเวอร์ไม่ได้ โปรดตรวจการเชื่อมต่อแล้วลองอีกครั้ง',
-  'error.not_signed_in': 'โปรดเข้าสู่ระบบก่อน',
+  'error.not_signed_in': 'โปรดลงชื่อเข้าใช้ก่อน',
   'error.forbidden': 'คุณไม่ได้รับอนุญาตให้ทำสิ่งนี้',
   'error.not_found': 'เราหาสิ่งนั้นไม่พบ',
   'error.conflict': 'ข้อมูลเพิ่งเปลี่ยนไป โปรดรีเฟรชหน้าแล้วลองอีกครั้ง',

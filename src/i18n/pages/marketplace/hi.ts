@@ -2,7 +2,7 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'दूसरे खिलाड़ियों के साथ शेक्सपियर के संग्रहणीय कार्ड ख़रीदें और अदला-बदली करें।',
+  'market.meta.description': 'दूसरे खिलाड़ियों के साथ शेक्सपीयर के संग्रहणीय कार्ड ख़रीदें और अदला-बदली करें।',
   'market.titleA': 'कार्ड ',
   'market.titleB': 'बाज़ार',
   'market.intro': 'दूसरे खिलाड़ियों के साथ कार्ड ख़रीदें और अदला-बदली करें। अपने दोहरे कार्ड बिक्री के लिए रखें या वे कार्ड खोजें जो आपके पास नहीं हैं।',

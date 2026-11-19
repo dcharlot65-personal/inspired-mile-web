@@ -19,9 +19,9 @@ const messages: Record<string, string> = {
   'market.wants': 'ต้องการ: {cards}',
   'market.buy': 'ซื้อ',
   'market.offer': 'เสนอแลกเปลี่ยน',
-  'market.toast.signInBuy': 'เข้าสู่ระบบเพื่อซื้อการ์ด',
+  'market.toast.signInBuy': 'ลงชื่อเข้าใช้เพื่อซื้อการ์ด',
   'market.toast.bought': 'ซื้อแล้ว การ์ดเป็นของคุณแล้ว',
-  'market.mine.signIn': 'เข้าสู่ระบบเพื่อดูประกาศของคุณ',
+  'market.mine.signIn': 'ลงชื่อเข้าใช้เพื่อดูประกาศของคุณ',
   'market.mine.empty': 'คุณไม่มีประกาศ',
   'market.status.active': 'เปิดอยู่',
   'market.status.sold': 'ขายแล้ว',
@@ -39,7 +39,7 @@ const messages: Record<string, string> = {
   'market.sell.needCard': 'เลือกการ์ด',
   'market.sell.needPrice': 'กรอกราคาอย่างน้อย 1 เครดิต',
   'market.sell.done': 'สร้างประกาศแล้ว',
-  'market.toast.signInSell': 'เข้าสู่ระบบเพื่อสร้างประกาศ',
+  'market.toast.signInSell': 'ลงชื่อเข้าใช้เพื่อสร้างประกาศ',
 };
 
 export default messages;

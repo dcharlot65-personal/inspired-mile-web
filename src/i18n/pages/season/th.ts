@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'season.claim': 'รับรางวัล',
   'season.claimed': 'รับแล้ว',
   'season.locked': 'ไปให้ถึงระดับ {n}',
-  'season.signIn': 'เข้าสู่ระบบเพื่อเก็บความคืบหน้าซีซันพาสของคุณไว้ในทุกอุปกรณ์',
+  'season.signIn': 'ลงชื่อเข้าใช้เพื่อเก็บความคืบหน้าซีซันพาสของคุณไว้ในทุกอุปกรณ์',
 };
 
 export default messages;

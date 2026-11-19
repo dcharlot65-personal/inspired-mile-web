@@ -36,7 +36,7 @@ const messages: Record<string, string> = {
   'vr.titleB': '갤러리',
   'vr.intro': '컬렉션 사이를 3D로 걸어 보세요. WebXR로 Quest 3와 Vision Pro에서 작동하고, 컴퓨터에서는 마우스로 둘러볼 수 있어요.',
   'vr.play.before': '플레이하고 싶나요? ',
-  'vr.play.link': '더 극장',
+  'vr.play.link': '입체 극장',
   'vr.play.after': '에서는 결투 전체가 헤드셋 안에서 펼쳐져요.',
   'vr.enter': 'VR 들어가기',
   'vr.status.loading': '3D 엔진을 불러오는 중…',

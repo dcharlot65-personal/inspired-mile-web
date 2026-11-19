@@ -22,7 +22,7 @@ const messages: Record<string, string> = {
   'tour.playersOf': '{n} จาก {max}',
   'tour.register': 'สมัคร',
   'tour.viewBracket': 'ดูสายการแข่งขัน',
-  'tour.toast.signIn': 'เข้าสู่ระบบเพื่อสมัคร',
+  'tour.toast.signIn': 'ลงชื่อเข้าใช้เพื่อสมัคร',
   'tour.toast.registered': 'คุณสมัครเรียบร้อยแล้ว',
   'tour.bracket.loading': 'กำลังโหลดสายการแข่งขัน…',
   'tour.bracket.none': 'ยังไม่ได้จับสลากสายการแข่งขัน',
