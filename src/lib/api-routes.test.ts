@@ -66,9 +66,10 @@ function argumentsAt(source: string, open: number): string {
   return source.slice(open + 1);
 }
 
-/** A path as written in a call: `${...}` is a parameter, a query string is dropped. */
+/** A path as written in a call: an origin in front (`${API_BASE}/api/v1/…`) is dropped, `${...}` is a
+ *  parameter, a query string is dropped. */
 function normalise(written: string): string | null {
-  const p = written.replace(/\$\{[^}]*\}/g, '{p}').split('?')[0];
+  const p = written.replace(/^\$\{[^}]*\}(?=\/api\/v1\/)/, '').replace(/\$\{[^}]*\}/g, '{p}').split('?')[0];
   return /[`'"+]/.test(p) ? null : p;
 }
 
@@ -97,9 +98,13 @@ export function callsIn(files: Record<string, string>): { calls: Call[]; unreada
         calls.push({ file, line: lineOf(m.index!), raw: args.slice(0, 80), method: methodOf(args), path: `${base}${written}` });
       }
     }
-    // Any path written out whole: fetch('/api/v1/...'), new WebSocket(... + '/api/v1/multiplayer/ws').
-    for (const m of source.matchAll(/(['"`])(\/api\/v1\/(?:(?!\1)[^\\])*)\1/g)) {
+    // Any path written out whole: fetch('/api/v1/...'), fetch(`${API_BASE}/api/v1/...`),
+    // new WebSocket(... + '/api/v1/multiplayer/ws'). (At 3fa2c384 credits.ts spent credits with
+    // fetch(`${API_BASE}/api/v1/credits/spend`).)
+    for (const m of source.matchAll(/(['"`])((?:\$\{[^}]*\})?\/api\/v1\/(?:(?!\1)[^\\])*)\1/g)) {
       if (inComment(m.index!)) continue;
+      // A helper's own base (`${API_BASE}/api/v1/seasons${path}`): its calls are read above.
+      if (m[2].includes('${path}')) continue;
       const written = normalise(m[2]);
       if (written === null) {
         unreadable.push(`${file}:${lineOf(m.index!)}: ${m[0]}`);
@@ -179,6 +184,7 @@ describe('the requests the pages make', () => {
       ].join('\n'),
       'src/lib/tournament-client.ts': "request(`/${t}/matches/${m}/complete`, { method: 'POST' });",
       'src/pages/somewhere.astro': "fetch('/api/v1/migrate/sync', { method: 'POST' }); fetch(`/api/v1/variants/unlock`, { credentials: 'include', method: 'POST' });",
+      'src/lib/credits.ts': "const res = await fetch(`${API_BASE}/api/v1/credits/spend`, {\n  method: 'POST',\n  credentials: 'include',\n});",
     });
     expect(unanswered(planted.calls, ROUTES).map((c) => `${c.method} ${c.path}`)).toEqual([
       'POST /api/v1/credits/spend',
@@ -187,6 +193,7 @@ describe('the requests the pages make', () => {
       'POST /api/v1/tournaments/{p}/matches/{p}/complete',
       'POST /api/v1/migrate/sync',
       'POST /api/v1/variants/unlock',
+      'POST /api/v1/credits/spend',
     ]);
     // A path put together at run time is reported, not passed over.
     expect(callsIn({ 'src/lib/api-client.ts': "request(base + '/x');" }).unreadable).toHaveLength(1);
