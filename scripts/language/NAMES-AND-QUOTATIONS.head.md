@@ -262,11 +262,23 @@ have died within the last seventy years.
   character that is no word by itself (菲, 迪, 娅), a longer word of them that is not a common word (海德, 罗斯), or a
   character that is a word (多, 特) with more pieces beyond it (塔克西多帕克, Tuxedo Park); a common word (当然, 东西),
   a function word or any other character ends the foreign name. A function character the segmenter joined to the name
-  (修了 in 赫瑞修了) is not part of it. A Thai name counts only where the letters beside it are words the invocation
+  (修了 in 赫瑞修了) is not part of it. Where the piece beside the name is one such character that is also a word by itself
+  (雷, 森, 格, 托, 特, 松, 登, 希, 庫), the name is a piece when a middle dot meets the far edge of the pieces or the name's
+  other edge (保罗·格罗塞蒂, 托罗密欧·司卡皮, 朱麗葉特·劉易斯), when pieces stand on both sides (里奧布朗庫子爵), when one such
+  character after the name ends the clause or comes before 是 (布莱克雷, 王子班柯希, 布莱克森是演员), or when one opens the
+  clause before the name and 是 follows it (梯丟斯是英雄): the engine's fourth check (2026-11-18) found these on
+  zh.wikipedia, and `echo.ts foreignAround` refuses 14 of the 19 it listed; the same Tatoeba recall run below refused
+  the same 38 sentences with and without it. Still read as a name: one such character before a name with nothing to
+  mark it (拉帕里斯伯爵, 托帕克大桥, 阿不都拉哈德斯), and a common word of those characters beside it (哈德斯克拉布尔: 克拉,
+  "carat"; 普羅丟斯: 普罗); 拉 in 拉朱丽叶的手 ("pulls Juliet's hand") is that word. A Thai name counts only where the letters beside it are words the invocation
   knows, two in a row where there are that many (the pronunciation table's 17,219 Wiktionary words, loaded with the
   duel's sound data, and the card text's own; one letter is never a word, though the table lists the letters), and a
   two-letter word before it only after another word: เพอร์ in เพอร์เซอุส (Perseus) and ซาน in ซานแอนโทนีโอ (San Antonio)
-  are not words, and ที opens ทีซีอุส (Theseus), so the name there is a piece; ผมพบซุส ("I met Zeus") is the name. Without the pronunciation table only the card text's words are known, and fewer Thai names count. A Chinese
+  are not words, and ที opens ทีซีอุส (Theseus), so the name there is a piece; ผมพบซุส ("I met Zeus") is the name.
+  The engine's fourth check (2026-11-18) found the limit of this rule, still open: a foreign name whose syllables beside
+  the name happen to be Thai words still invokes Zeus (แม่น้ำออกซุส, the Oxus: ออก, "out"; ยูโดซุส, Eudoxus; ฟรีซุส,
+  Phrixus; ซุสรูตา, Sushruta; ราดาไกซุส, Radagaisus; ช่องเขาซุสเทิน, the Susten Pass; อาลอยซีอุส, Aloysius; ดร.ซูส,
+  Dr. Seuss). Nothing in the letters tells ออกซุส from ผมพบซุส; only a list of such names would. Without the pronunciation table only the card text's words are known, and fewer Thai names count. A Chinese
   or Thai name is also refused where the verse writes around it a dictionary word that holds it (`containing`, from
   CC-CEDICT, jieba, PyThaiNLP and the two Wikipedias' titles: 圣安东尼奥, 宙斯盾, 严济慈, 帕克城, อัสซุส), for the
   words no rule can tell (宙斯盾 is 宙斯 and 盾, "shield"). The rules' cost, measured with the engine itself on the

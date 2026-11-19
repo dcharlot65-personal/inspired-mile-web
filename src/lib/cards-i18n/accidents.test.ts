@@ -711,6 +711,27 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
     for (const [l, n, w] of [['zh', '宙斯', '宙斯神像'], ['zh', '宙斯', '宙斯之子']] as const) expect([l, n, w, held(l, n).includes(w)]).toEqual([l, n, w, false]);
     expect(localName('宙斯神像很高', 'zh')).toBe('宙斯');
   });
+  // The fourth check (2026-11-18, at 9ca806d1) read zh.wikipedia around every local name and found foreign names whose
+  // piece beside the name is one transliteration character that is also a word by itself (雷, 森, 格, 托, 特, 松, 登, 希,
+  // 庫): carriesOn took such a character for a continuation only with another piece beyond it. What tells them apart
+  // without a list (echo.ts zhNameAt): the middle dot that joins the parts of a foreign name; a clause that ends right
+  // after that one character; such a character on both sides; and 是 right after it (a verb does not stand between a
+  // name and 是).
+  it('the fourth check’s Chinese pieces: Brackley, Blakeson, Grosseti, Bartolomeo, Hardisty, Thompsons, Antonisson, Juliette Lewis, Sheridan, Banquo’s son, Rio Branco, Tydeus', () => {
+    for (const [l, v] of [
+      ['zh', '本田车队的总部在布莱克雷'], ['zh', '迈克尔·布莱克森是演员'], ['zh', '保罗·格罗塞蒂是学者'], ['zh', '托罗密欧·司卡皮是厨师'],
+      ['zh', '布蘭登·哈德斯提是演員'], ['zh', '记者里哈德斯·汤姆森斯'], ['zh', '彼得·安东尼松是画家'], ['zh', '漢斯·丟斯特'],
+      ['zh', '朱麗葉特·劉易斯主演'], ['zh', '蘇珊·雪萊登配音'], ['zh', '王子班柯希'], ['zh', '里奧布朗庫子爵'], ['zh', '他去了里奧布朗庫'],
+      ['zh', '梯丟斯是英雄'],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+  });
+  it('a name with a word of one character beside it, where nothing marks a foreign name, still lands', () => {
+    for (const [l, v, n] of [
+      ['zh', '拉朱丽叶的手', '朱丽叶'], ['zh', '比宙斯更强', '宙斯'], ['zh', '马克·安东尼说话', '马克·安东尼'], ['zh', '罗密欧·蒙太古来了', '罗密欧'],
+      ['zh', '宙斯是天神', '宙斯'], ['zh', '朱丽叶。', '朱丽叶'], ['zh', '罗密欧来了。', '罗密欧'], ['zh', '我爱罗密欧·蒙太古', '罗密欧'],
+      ['zh', '天神宙斯是王', '宙斯'], ['zh', '你比宙斯更强', '宙斯'],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+  });
   it('the Chinese lists are what their sources say (fetch/transliteration.py)', () => {
     const t = getCardText('zh')!.transliteration!;
     for (const c of '迪娅菲斯尔帕尼浦') expect([c, t.chars.includes(c), t.bound.includes(c)]).toEqual([c, true, true]);

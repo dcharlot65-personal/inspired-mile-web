@@ -844,7 +844,53 @@ function zhNameAt(text: string, spans: Span[], s: number, e: number, l: Lists): 
       at = dir < 0 ? n.start : n.end;
     }
   };
-  return !carriesOn(first.start === s ? outward(s, -1) : [], l) && !carriesOn(last.end === e ? outward(e, 1) : [], l);
+  const before = first.start === s ? outward(s, -1) : [];
+  const after = last.end === e ? outward(e, 1) : [];
+  return !carriesOn(before, l) && !carriesOn(after, l) && !foreignAround(text, before, after, s, e, l);
+}
+
+/** Marks that join the parts of a foreign name in Chinese: the middle dot as it is typed (·, ・, ‧, •, ･) and a hyphen. */
+const ZH_NAME_JOIN = /[·・‧•･‐‑-]/u;
+
+/**
+ * Chinese: is the name at [s, e) a piece of a foreign name although carriesOn found no piece beyond the one beside it?
+ * carriesOn takes one transliteration character that is also a word by itself (雷, 森, 格, 托, 特, 松, 登, 希, 庫) for a
+ * continuation only with another piece beyond it, since alone it is that word (拉 in 拉朱丽叶的手, "pulls Juliet's hand").
+ * The engine's fourth check (2026-11-18) found foreign names that end or begin with one: 布莱克雷 (Brackley), 保罗·格罗塞蒂
+ * (Paul Grosseti), 王子班柯希. What marks them without a list of names: such pieces (a transliteration character that is no
+ * function word, or a longer word written only in them that is no common word) beside the name, and
+ * - a middle dot at the far edge of those pieces, or at the name's other edge (保罗·格罗塞蒂, 托罗密欧·司卡皮, 朱麗葉特·劉易斯):
+ *   the dot joins the parts of one foreign name;
+ * - pieces on both sides of the name (里奧布朗庫子爵);
+ * - one character after the name, then the clause's end (布莱克雷。, 他去了里奧布朗庫) or 是 (布莱克森是演员): a verb or
+ *   an adverb of one character does not stand between a name and the end of its clause, nor between it and 是;
+ * - one character opening the clause before the name, and 是 right after the name (梯丟斯是英雄).
+ * What stays: one such character before a name with nothing to mark it (拉帕里斯伯爵, 托帕克大桥), and a common word written
+ * in them beside it (哈德斯克拉布尔: 克拉, "carat"; 普羅丟斯: 普罗, as in 普罗大众). Those read as the words they are.
+ */
+function foreignAround(text: string, before: Span[], after: Span[], s: number, e: number, l: Lists): boolean {
+  const single = (x: Span) => [...x.word].length === 1;
+  const piece = (x: Span) => spelledLikeAName(x.word, l) && !l.stop.has(x.word) && (single(x) || !l.native.has(x.word));
+  const run = (side: Span[]) => {
+    let n = 0;
+    while (n < side.length && piece(side[n])) n++;
+    return n;
+  };
+  const nb = run(before);
+  const na = run(after);
+  if (!nb && !na) return false;
+  const from = nb ? before[nb - 1].start : s;
+  const to = na ? after[na - 1].end : e;
+  if (ZH_NAME_JOIN.test(text[from - 1] ?? '') || ZH_NAME_JOIN.test(text[to] ?? '')) return true;
+  if (nb && na) return true;
+  const clauseEdge = (c: string | undefined) => c === undefined || (/[\s\p{P}\p{S}]/u.test(c) && !ZH_NAME_JOIN.test(c));
+  if (na === 1 && single(after[0])) {
+    const next = text[after[0].end];
+    return next === '是' || clauseEdge(next);
+  }
+  // One character opening the clause before the name, and 是 right after it (梯丟斯是英雄, Tydeus).
+  if (nb === 1 && single(before[0]) && text[e] === '是') return clauseEdge(text[before[0].start - 1]);
+  return false;
 }
 
 /**
