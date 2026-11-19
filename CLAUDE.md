@@ -202,18 +202,24 @@ The server is the authority (owner, 2026-11-19). Every amount, rate and cap is i
 400. Solo sources (`solo_win`, `trivia`, `challenge`, `daily`) pay fixed amounts with daily caps
 (UTC days). Cards come only from the server: starter characters (no row, never sold), free and
 bought packs drawn with the server's randomness (`POST /inventory/claim`, `/inventory/packs`),
-season rewards, the market, and a one-time capped import of a device's collection
-(`POST /migrate/import`). Signed in, every page's collection is the account's
+season rewards, the market, and a one-time capped import of a device's collection on an account's
+first sign-in (`POST /migrate/import`: one of each different card, in the account's first 24 hours,
+`import.window_hours`). Signed in, every page's collection is the account's
 (`src/lib/account-cards.ts`, a copy in localStorage removed at sign-out; `inventory.ts getOwnedCards`
 reads it); signed out it is the device's own, for solo play. A finished online match is handed to
 the recorder (`multiplayer/results.rs`) and stored in `battle_rooms` (never the verses): the
 leaderboard, `GET /stats`, account achievements and tournament results read only those rows, and a
 win is a match. The leaderboard and the win achievements count ranked wins: at most three a UTC
-day over one opponent (`stats/handlers.rs ranked_wins!`). A tournament match is decided by its room
+day over one opponent (`stats/handlers.rs ranked_wins!`); online XP pays three matches a day between
+the same two accounts. A tournament match is decided by its room
 (`POST .../room`; `tournaments/progress.rs`), or past its deadline (`play_by`, 48 h) by the
-scheduler: a player who waited out the room's time to arrive goes through, else the lot (round
-robin: unplayed). The final of a single-elimination bracket is round log2(first-round matches) + 1
-(`final_round`), never "a round with one match so far". Device achievements stay on the device.
+scheduler: a player who waited out the room's time to arrive goes through, else nobody wins it
+(single elimination: both out; the next round's opponent goes through as a bye). There is no lot,
+no new room past the deadline, and a room's result still being written holds the deadline off
+(`game_room.rs Unstored`). A tournament's standings count only matches a room decided. The final of
+a single-elimination bracket is round log2(first-round matches) + 1
+(`final_round`), never "a round with one match so far". The founding-credits date is
+`founding.created_before` in the file; the API does not read `LAUNCH_DATE`. Device achievements stay on the device.
 **The market and referrals are for adult accounts only** (owner, 2026-11-19): the server refuses the
 others (`auth/age.rs is_adult`, 403 "For adult accounts only") and the pages hide them
 (`src/lib/adults-only.ts`, `data-adults-only`; `/auth/me` sends `user.age_tier`). **Credits are never
@@ -261,7 +267,8 @@ The harness starts the API with `TOURNAMENT_CHECK_SECONDS=1` (the scheduler's lo
 to start and for matches past their deadline; `E2E_TOURNAMENT_SECONDS` moves it), and its email-off
 copy with `TOURNAMENT_ARRIVAL_SECONDS=5` (a tournament room waits 5 s, not 240, for its second
 player; `E2E_TOURNAMENT_ARRIVAL_SECONDS` moves it), so a test can open a room there and see a no-show
-recorded. `tests/noemail-proxy.mjs` passes that origin's game socket to the email-off API. Tests count
+recorded. The email-off copy also runs with `LAUNCH_DATE=2099-01-01`, which the API must ignore (the
+founding date is economy.json's). `tests/noemail-proxy.mjs` passes that origin's game socket to the email-off API. Tests count
 only the accounts they made (by id or name), never the whole `users` table: other workers create
 accounts at the same time.
 
