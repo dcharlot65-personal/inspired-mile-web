@@ -94,7 +94,7 @@ wait_healthy() {
 
 start_api() {
   # $1 port, $2 log name, $3 DEV_EMAIL_LOG value, $4 TOURNAMENT_ARRIVAL_SECONDS (empty: the
-  # 240 s of service). Migrations are read from ./migrations.
+  # 240 s of service), $5 LAUNCH_DATE (empty: not set). Migrations are read from ./migrations.
   (
     cd "$ROOT/backend"
     exec env -u RESEND_API_KEY \
@@ -108,6 +108,7 @@ start_api() {
       WEBAUTHN_RP_ID="localhost" \
       WEBAUTHN_ORIGIN="$WEB_ORIGIN,$WEB_NOEMAIL_ORIGIN" \
       DEV_EMAIL_LOG="$3" \
+      ${5:+LAUNCH_DATE=$5} \
       RATE_LIMIT_PER_MINUTE="100000" \
       DB_MAX_CONNECTIONS="10" \
       RUST_LOG="${E2E_RUST_LOG:-warn}" \
@@ -124,7 +125,9 @@ say "API with DEV_EMAIL_LOG on :$API_PORT (codes in $WORK/api.log)"
 
 # The email-off API also waits only a few seconds for a tournament match's second player, so a
 # test can see a no-show recorded (tests/economy.spec.ts); the first keeps the 240 s of service.
-start_api "$API_NOEMAIL_PORT" api-noemail 0 "${E2E_TOURNAMENT_ARRIVAL_SECONDS:-5}"
+# It is also given a LAUNCH_DATE far ahead, as a server's environment might be: the API no longer
+# reads one (the founding date is economy.json's), and a test holds it to that.
+start_api "$API_NOEMAIL_PORT" api-noemail 0 "${E2E_TOURNAMENT_ARRIVAL_SECONDS:-5}" 2099-01-01
 API_NOEMAIL_PID=$!
 wait_healthy "$API_NOEMAIL_PORT" "$API_NOEMAIL_PID" api-noemail
 say "API with email off on :$API_NOEMAIL_PORT"

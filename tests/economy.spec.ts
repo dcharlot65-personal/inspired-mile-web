@@ -104,6 +104,12 @@ const held = async (who: Account): Promise<string[]> => ((await who.call('GET', 
 /** Put a card in an account's server collection, as if the server had given it. */
 const giveCard = (who: Account, cardId: string) => sql(`INSERT INTO owned_cards (user_id, card_id, source) VALUES ('${who.id}', '${cardId}', 'e2e')`);
 const giveCredits = (who: Account, n: number) => sql(`UPDATE player_stats SET credits = ${n} WHERE user_id = '${who.id}'`);
+/** An active season, so that matches pay XP. */
+const ensureSeason = () => sql(`INSERT INTO seasons (name, start_date, end_date, max_level, active)
+     SELECT 'E2E season', NOW() - INTERVAL '1 day', NOW() + INTERVAL '30 days', 30, TRUE
+     WHERE NOT EXISTS (SELECT 1 FROM seasons WHERE active)`);
+/** The season XP an account's online matches have paid it. */
+const onlineXp = (who: Account): number => Number(sql(`SELECT COALESCE(SUM(amount), 0) FROM xp_transactions WHERE user_id = '${who.id}' AND source = 'online_match'`));
 
 /** A seat at the table: a browser page on the site's origin with this account's cookie, and its game socket. */
 interface Seat { page: Page; close(): Promise<void>; send(m: unknown): Promise<void>; next(type: string, count?: number): Promise<any> }
@@ -466,6 +472,7 @@ test.describe('the server is the authority over the economy and the rankings', (
   });
 
   test('rankings: a match the server judged is stored; a win is a match; it is the leaderboard and pays within caps', async ({ browser }) => {
+    ensureSeason();
     const [ann, bob] = [await account(), await account()];
     const room = (await ann.call('POST', '/multiplayer/create-private')).body;
     await playToForfeit(browser, room.room_id, ann, bob);
@@ -495,6 +502,9 @@ test.describe('the server is the authority over the economy and the rankings', (
     // Nor does it climb the leaderboard: it counts three wins a day over one opponent.
     const later = (await (await fetch(`${API}/stats/leaderboard`)).json()) as any[];
     expect(later.find((e) => e.user_id === ann.id)).toMatchObject({ battle_wins: 3, total_battles: 4 });
+    // Nor does it pay XP: three matches a day between the same two (third check of 2026-11-19:
+    // an account forfeiting to its own second account paid it 100 XP a match, twenty a day).
+    expect([onlineXp(ann), onlineXp(bob)], 'XP for three of the four matches').toEqual([300, 75]);
   });
 
   test('season rewards: each player claims each level once, and the reward is granted', async () => {
@@ -530,7 +540,7 @@ test.describe('the server is the authority over the economy and the rankings', (
 
   test('founding credits: granted once and logged, not refilled on every visit', async () => {
     const ann = await account();
-    // An account from before LAUNCH_DATE (2026-04-01 in the harness).
+    // An account made before economy.json's founding.created_before (2026-04-01).
     sql(`UPDATE users SET created_at = '2026-01-01' WHERE id = '${ann.id}'`);
     expect((await ann.call('GET', '/auth/me')).body.founding_player).toBe(true);
     expect(await credits(ann)).toBe(500);
@@ -634,7 +644,8 @@ test.describe('the second check of 2026-11-19', () => {
 
   test('tournaments: a match nobody plays is decided at its deadline, so the tournament does not stall', async () => {
     test.setTimeout(Math.max(test.info().timeout, 120000));
-    // Single elimination: somebody has to go through; with nobody having come, the server draws lots.
+    // Single elimination: nobody came, so nobody wins it and both are out. (Until the third check
+    // of 2026-11-19 the server drew lots, and the standings counted the lot as a win.)
     const [ann, bob] = [await account(), await account()];
     const t = await tournament([ann, bob]);
     const match = (await bracketOf(ann, t))[0];
@@ -642,9 +653,10 @@ test.describe('the second check of 2026-11-19', () => {
     overdue(t);
     await expect.poll(async () => (await bracketOf(ann, t))[0].status, { message: 'the scheduler decides the match', timeout: 20000 }).toBe('completed');
     const decided = (await bracketOf(ann, t))[0];
-    expect(decided.decided_by).toBe('lot');
-    expect([ann.id, bob.id]).toContain(decided.winner_id);
+    expect([decided.decided_by, decided.winner_id], 'no lot: nobody wins a match nobody played').toEqual(['unplayed', null]);
     expect((await ann.call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
+    const standings = (await ann.call('GET', `/tournaments/${t}/leaderboard`)).body as any[];
+    for (const who of [ann, bob]) expect(standings.find((e) => e.user_id === who.id)).toMatchObject({ wins: 0, losses: 0, eliminated: true });
     // The time it had: two days from the draw (economy.json tournaments.match_hours).
     expect(Date.parse(match.play_by) - Date.now(), 'two days to play it').toBeGreaterThan(47 * 3600 * 1000);
 
@@ -682,6 +694,10 @@ test.describe('the second check of 2026-11-19', () => {
     await expect.poll(async () => (await bracketOf(ann, t))[0].status, { timeout: 20000 }).toBe('completed');
     expect((await bracketOf(ann, t))[0]).toMatchObject({ winner_id: ann.id, decided_by: 'no_show' });
     expect((await ann.call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
+    // She goes through, and it is no win: only a match a room decided counts in the standings.
+    const standings = (await ann.call('GET', `/tournaments/${t}/leaderboard`)).body as any[];
+    expect(standings.find((e) => e.user_id === ann.id)).toMatchObject({ wins: 0, losses: 0, eliminated: false });
+    expect(standings.find((e) => e.user_id === bob.id)).toMatchObject({ wins: 0, losses: 0, eliminated: true });
   });
 
   test("cards: a device's cards brought into a free account cannot be sold, so they cannot be gathered into another", async ({ browser }) => {
@@ -737,6 +753,147 @@ test.describe('the second check of 2026-11-19', () => {
     }
     const after = await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 });
     expect(after.status, `the match is over: ${after.text}`).toBe(200);
+  });
+});
+
+/** Put one match past its time to be played. */
+const overdueMatch = (matchId: string) => sql(`UPDATE tournament_matches SET play_by = NOW() - INTERVAL '1 second' WHERE id = '${matchId}'`);
+const SIX = ['DC-001', 'DC-002', 'MO-002', 'MO-003', 'CA-002', 'CA-003'];
+/** A device's stored collection: `rows` rows, cycling through these cards (as src/lib/inventory.ts keeps it). */
+const deviceInventory = (rows: number, cards: string[] = SIX) => JSON.stringify({
+  cards: Array.from({ length: rows }, (_, i) => ({ cardId: cards[i % cards.length], acquiredAt: 1700000000000 + i, source: 'battle' })),
+  starterClaimed: true, lastDailyPack: 0, battleWins: rows, triviaCorrect: 0, challengesCompleted: 0,
+});
+
+test.describe('the third check of 2026-11-19', () => {
+  test("cards: a device holding more than 500 rows of its cards still brings them over, one of each", async () => {
+    // The checker's R12: 520 rows of six cards were refused whole ("Too many cards", 400).
+    const ann = await account();
+    const rows = JSON.parse(deviceInventory(520)).cards.map((c: { cardId: string }) => c.cardId);
+    const imported = await ann.call('POST', '/migrate/import', { cards: rows });
+    expect(imported.status, imported.text).toBe(200);
+    expect(imported.body.imported.sort()).toEqual([...SIX].sort());
+    expect((await held(ann)).sort()).toEqual([...SIX].sort());
+    // More than 500 DIFFERENT ids is still refused (the catalogue has 71).
+    const bob = await account();
+    const many = Array.from({ length: 501 }, (_, i) => `XX-${i}`);
+    expect((await bob.call('POST', '/migrate/import', { cards: many })).status).toBe(400);
+    expect(await held(bob)).toEqual([]);
+  });
+
+  test("the sign-in banner brings a device's cards over when the device holds more than 500 rows", async ({ page }) => {
+    // The page fixture starts past the age gate (playwright.config.ts); the device's collection is
+    // put in its storage before the first page loads.
+    test.setTimeout(Math.max(test.info().timeout, 90000));
+    await page.addInitScript((inventory) => {
+      try {
+        if (!localStorage.getItem('inspired-mile-inventory')) localStorage.setItem('inspired-mile-inventory', inventory);
+      } catch { /* storage refused */ }
+    }, deviceInventory(520));
+    await page.goto('/');
+    const email = `econ-banner-${unique()}@example.test`;
+    await page.locator('#auth-btn').click();
+    await page.locator('#auth-email-btn').click();
+    await page.locator('#auth-email-input').fill(email);
+    await page.locator('#auth-email-send').click();
+    await expect(page.locator('#auth-step-code')).toBeVisible();
+    let codes: string[] = [];
+    await expect.poll(() => (codes = loggedCodes(email)).length, { timeout: 10000 }).toBeGreaterThan(0);
+    await page.locator('#auth-code-input').fill(codes[codes.length - 1]);
+    await page.locator('#auth-code-verify').click();
+    await expect(page.locator('#migration-banner'), 'a new account is offered the device cards').toBeVisible({ timeout: 15000 });
+    await page.locator('#migrate-yes').click();
+    await expect(page.locator('#migration-result')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#migration-result'), 'brought over, not "failed"').toHaveClass(/text-emerald-400/);
+    const cards = await page.evaluate(async () => {
+      const res = await fetch('/api/v1/inventory', { credentials: 'include' });
+      return ((await res.json()) as Array<{ card_id: string }>).map((c) => c.card_id);
+    });
+    expect(cards.sort(), 'the six different cards came over').toEqual([...SIX].sort());
+  });
+
+  test("cards: a device's cards come over only on an account's first day, not when a long-standing account likes", async () => {
+    const fresh = await account();
+    const status = (await fresh.call('GET', '/migrate/status')).body;
+    expect(status).toMatchObject({ migrated: false, open: true });
+    const hours = (Date.parse(status.open_until) - Date.now()) / 3600000;
+    expect(hours, 'about a day from sign-up').toBeGreaterThan(23);
+    expect(hours).toBeLessThanOrEqual(24);
+
+    // An account made two days ago, that has never imported: the checker's R5 brought a Legendary
+    // in to an account that had played already.
+    const old = await account();
+    sql(`UPDATE users SET created_at = NOW() - INTERVAL '2 days' WHERE id = '${old.id}'`);
+    expect((await old.call('GET', '/migrate/status')).body).toMatchObject({ migrated: false, open: false });
+    const late = await old.call('POST', '/migrate/import', { cards: ['OL-001', 'DC-001'] });
+    expect(late.status, late.text).toBe(403);
+    expect(await held(old)).toEqual([]);
+    expect(sql(`SELECT COUNT(*) FROM migration_log WHERE user_id = '${old.id}'`)).toBe('0');
+  });
+
+  test('tournaments: past its deadline no new room is opened for a match, so reopening rooms cannot hold the deadline off', async () => {
+    test.setTimeout(Math.max(test.info().timeout, 120000));
+    const [ann, bob] = [await account(), await account()];
+    const t = await tournament([ann, bob]);
+    const match = (await bracketOf(ann, t))[0];
+    // The room the match is played in, opened in time (on the API whose rooms wait a few seconds).
+    const first = await ann.callNoEmail('POST', `/tournaments/${t}/matches/${match.id}/room`);
+    expect(first.status, first.text).toBe(200);
+    // Both schedulers are kept off the tournament while the deadline passes, so the API's answer
+    // is the only thing that can keep the match open (the status is restored below).
+    sql(`UPDATE tournaments SET status = 'e2e_hold' WHERE id = '${t}'`);
+    overdueMatch(match.id);
+    // The room still going is given again: a player who lost the page can come back to it.
+    const again = await ann.callNoEmail('POST', `/tournaments/${t}/matches/${match.id}/room`);
+    expect([again.status, again.body?.room_id], 'the same room').toEqual([200, first.body.room_id]);
+    // Its time to arrive runs out (nobody joined); a new room is refused on either API.
+    await expect.poll(async () => {
+      const r = await ann.callNoEmail('POST', `/tournaments/${t}/matches/${match.id}/room`);
+      return r.body?.room_id === first.body.room_id ? 'the first room' : `${r.status} ${r.text}`;
+    }, { timeout: 20000 }).not.toBe('the first room');
+    for (const call of [ann.callNoEmail, ann.call, bob.call]) {
+      const opened = await call('POST', `/tournaments/${t}/matches/${match.id}/room`);
+      expect([opened.status, opened.text]).toEqual([400, 'This match is past its deadline']);
+    }
+    // Let the scheduler at it: nobody waited, so nobody wins.
+    sql(`UPDATE tournaments SET status = 'in_progress' WHERE id = '${t}'`);
+    await expect.poll(async () => (await bracketOf(ann, t))[0].status, { timeout: 20000 }).toBe('completed');
+    expect((await bracketOf(ann, t))[0]).toMatchObject({ winner_id: null, decided_by: 'unplayed' });
+  });
+
+  test('tournaments: when nobody wins a match, the player the next round would have met goes through, and only played matches are wins', async ({ browser }) => {
+    test.setTimeout(Math.max(test.info().timeout, 180000));
+    const p = [await account(), await account(), await account(), await account()];
+    const t = await tournament(p);
+    let matches = await bracketOf(p[0], t);
+    expect(matches.map((m) => `${m.round}.${m.match_order}`).sort()).toEqual(['1.1', '1.2']);
+    // Nobody comes to the first semi-final by its deadline: both its players are out.
+    overdueMatch(matchAt(matches, 1, 1).id);
+    await expect.poll(async () => matchAt(await bracketOf(p[0], t), 1, 1).status, { timeout: 20000 }).toBe('completed');
+    matches = await bracketOf(p[0], t);
+    expect(matchAt(matches, 1, 1)).toMatchObject({ winner_id: null, decided_by: 'unplayed' });
+    expect(matchAt(matches, 2, 1), 'the final waits for the other semi-final').toMatchObject({ player1_id: null, player2_id: null, status: 'pending' });
+    // The other semi-final is played; its winner goes through the final without playing it.
+    await playMatch(browser, t, matchAt(matches, 1, 2).id, p[2], p[3]);
+    await expect.poll(async () => (await p[0].call('GET', `/tournaments/${t}`)).body.status, { timeout: 15000 }).toBe('completed');
+    const final = matchAt(await bracketOf(p[0], t), 2, 1);
+    expect([final.player1_id, final.player2_id, final.winner_id, final.status, final.decided_by]).toEqual([null, p[2].id, p[2].id, 'bye', 'bye']);
+    const standings = (await p[0].call('GET', `/tournaments/${t}/leaderboard`)).body as any[];
+    const of = (who: Account) => standings.find((e) => e.user_id === who.id);
+    expect(of(p[2]), 'one match played and won; the bye is no win').toMatchObject({ wins: 1, losses: 0, eliminated: false });
+    expect(of(p[3])).toMatchObject({ wins: 0, losses: 1, eliminated: true });
+    for (const who of [p[0], p[1]]) expect(of(who)).toMatchObject({ wins: 0, losses: 0, eliminated: true });
+  });
+
+  test('founding credits: the date is the rule file\'s; a server set to a later LAUNCH_DATE gives a new account nothing', async () => {
+    // The email-off API runs with LAUNCH_DATE=2099-01-01 (tests/start-backend.sh). Until the third
+    // check of 2026-11-19 that made every account made before 2099 a founding player: 500 credits.
+    const ann = await account();
+    const me = await ann.callNoEmail('GET', '/auth/me');
+    expect(me.status, me.text).toBe(200);
+    expect(me.body.founding_player).toBe(false);
+    expect(await credits(ann)).toBe(0);
+    expect(sql(`SELECT COUNT(*) FROM credit_transactions WHERE user_id = '${ann.id}' AND source = 'founding'`)).toBe('0');
   });
 });
 
