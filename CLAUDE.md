@@ -623,14 +623,20 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `notice.aiJudges`, `notice.none` from the model in use and the duel's language, by the same
   `modelWrites`/`modelJudges` the session is gated on; the battle page (`#ai-notice` in the set-up) and the theatre
   show it, and multiplayer shows `notice.online` in the player's language inside its English page (`#mp-ai-notice`,
-  its `lang`/`dir` set by script). The theatre's notice stays invisible until the page knows whether a model will
-  play, and names a remembered model while it loads (it never says "no model" and then changes its mind).
+  its `lang`/`dir` set by script). On both pages the notice stays hidden until the page knows who will play, and
+  names the model being loaded while it loads (`loadingModel`): it never says "no model" and then changes its mind.
+  On the battle page, while a player is offered a model and has not chosen, nothing is said; no duel can start then,
+  and the notice appears the moment they choose.
   "Artificial intelligence" is each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`).
-  `src/lib/ai-notice.test.ts` and `tests/ai-notice.spec.ts` (all sixteen languages) hold it. A change to who plays or
-  judges changes the notice too.
+  `src/lib/ai-notice.test.ts` and `tests/ai-notice.spec.ts` (all sixteen languages) hold it, including the notice read
+  while a model's library is held back mid-load. A change to who plays or judges changes the notice too. A new page
+  or module that calls `loadBrain` fails `ai-notice.test.ts` until it shows `#ai-notice` (content-gen.ts uses a model
+  only where one is loaded already; /playground loads none).
 - **`/credits` names everything the game ships or downloads**, with its licence and duties (CC BY-SA share-alike
   for the sound tables, the NAIST notice, CMU and SCOWL notices read from `pron-en.ts` itself, the LFM US$10M and
-  FLUX US$5M thresholds, eSpeak NG's GPL inside kokoro-js's phonemizer). `docs/ASSETS.md` is the record of where each
+  FLUX US$5M thresholds, eSpeak NG's GPL inside kokoro-js's phonemizer). SCOWL's notice is its release's whole
+  `Copyright` file (VarCon, Ispell, WordNet, UKACD inside it), which `scripts/build-pronunciation.mjs` copies into
+  the table and into `public/licenses/SCOWL-Copyright.txt`; never shorten it. `docs/ASSETS.md` is the record of where each
   shipped file came from and what is still not traced. `src/lib/credits.test.ts` fails when a font, model, browser
   library, data source, or a music, sound or 3D file is added without its credit or its line in ASSETS.md.
   `public/fonts/OFL.txt` and `public/licenses/mecab-ipadic-NOTICE.txt` must stay beside what they license.
@@ -639,12 +645,16 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   a file's header never reaches the visitor; this file holds them all, from the bundle itself: every npm package in
   the client chunks or copied by `self-hosted-runtime.mjs` with its own licence files, packages built into another
   package's file (found from its bundler's comments and source map), files under another licence (`FILE_LICENSES`:
-  Draco, Basis Universal, eSpeak NG), and this repository's data made from others' works (`DATA`). `npm run build`
+  Draco, Basis Universal, fflate, ktx-parse, zstddec with Zstandard and the meshoptimizer decoder from three.js's
+  `examples/jsm/libs`, eSpeak NG), and this repository's data made from others' works (`DATA`). `npm run build`
   FAILS when: the committed file is not what this build would write; a shipped package is not on `/credits` at its
   exact version (each library entry's `packages`, rendered as its "Packages" line and `data-packages`), or `/credits`
   names one that does not ship; a shipped package has no licence file and no `PACKAGE_LICENSES` text; a
   `FILE_LICENSES`/`PACKAGE_LICENSES`/`DATA` entry covers nothing that ships; a shipped `src/` module says GENERATED
-  and no `DATA` entry covers it. After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
+  and no `DATA` entry covers it; a package ships a file from a `libs/`, `vendor/` or `third_party/` folder that no
+  `FILE_LICENSES` entry covers (a package's licence file speaks only for its own code); a `FILE_LICENSES` entry that
+  ships is not named on `/credits` by its id (an entry's `files`, `data-files`), or one named there does not ship;
+  a `DATA` entry's text does not hold a file it must carry whole (`holds`: SCOWL's Copyright file). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
   on the build host with `rb --pull`, read the diff of the notices file, and commit it. Texts no package carries are in
   `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`); ONNX Runtime's are from its PyPI wheels,
   because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
@@ -672,6 +682,10 @@ list. Add a third-party request only by adding it to that file **and** to the po
     `loadModelViewer()` (`src/lib/ar-viewer.ts`), never with a script tag.
   - Babylon WebXR: both `theatre.ts` and `vr-engine.ts` turn off hand tracking, near
     interaction and online controller models (they come from Babylon's servers).
+  - Babylon also fetches from unpkg.com for files no page loads today: fflate for a ZIP-compressed EXR texture
+    (`ExrLoaderGlobalConfiguration.FFLATEUrl`) or a `.sog` splat (`deflateURL`), and Adobe's SPZ library for a
+    `.spz` splat (`spzLibraryUrl`). The viewer only loads `/models/splats/<card>.ply`. Before adding any such
+    file, override those (pass `fflate`, a local `deflateURL`, `spzLibraryUrl: undefined`).
 - An upgrade of any of these libraries can move the files: the integration then stops the
   build, and the tests show what the browser asks for.
 - `tests/warm-up.ts` (Playwright `globalSetup`) opens every page once before the tests

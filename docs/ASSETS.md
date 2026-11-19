@@ -129,9 +129,10 @@ its own folder, unchanged; a package another package's file carries inside it is
 comments and source map (Transformers.js 4.3.2 carries `@huggingface/jinja` 0.5.10 and `@huggingface/tokenizers`
 0.2.0; Transformers.js 3.8.1 carries a Jinja whose version it does not record). Part 2 is the files that carry
 another license than their package's: the Draco decoder and the Basis Universal transcoder inside three.js
-(Apache 2.0), and eSpeak NG inside phonemizer (GPL-3.0-or-later). Part 3 is the data and code of this
-repository made from others' works (CMU and SCOWL, Snowball, Unicode, stopwords-iso, NAIST, the CC BY-SA
-statement with its disclaimer reference, OpenCC, jieba, Lucene). The texts it copies that no package carries are
+(Apache 2.0); fflate 0.8.2, ktx-parse, zstddec 0.1.0 (with the Zstandard decoder, BSD) and the meshoptimizer 1.0
+decoder, also inside three.js (MIT; second fix pass, below); and eSpeak NG inside phonemizer (GPL-3.0-or-later).
+Part 3 is the data and code of this repository made from others' works (CMU and SCOWL, Snowball, Unicode,
+stopwords-iso, NAIST, the CC BY-SA statement with its disclaimer reference, OpenCC, jieba, Lucene). The texts it copies that no package carries are
 in `scripts/third-party/texts/` with their sources and sha256 in that folder's `SOURCES.md`. ONNX Runtime's npm
 packages carry no license file and its repository did not answer on 2026-11-19 (github.com/microsoft/onnxruntime
 gave 404), so its LICENSE and ThirdPartyNotices.txt are taken from its own Python wheels on PyPI, 1.22.0
@@ -142,8 +143,11 @@ beside the main one.
 The build stops when the committed file differs from what it would write (`NOTICES_WRITE=1 npm run build`
 rewrites it), when a package ships uncredited or `/credits` names one that does not ship (each library entry's
 "Packages" line, `data-packages`), when a shipped package has no license text, when a stated file license or
-data source covers nothing that ships, and when a shipped module of `src/` says GENERATED and no data source
-covers it. The React integration is gone from `astro.config.mjs`: no page renders a React component, and it only
+data source covers nothing that ships, when a shipped module of `src/` says GENERATED and no data source
+covers it, when a package ships a file from a folder of others' code inside it (`libs/`, `vendor/`,
+`third_party/`) with no file license of its own, when a file license that ships is not named on `/credits`
+(`data-files`) or one named there does not ship, and when the pronunciation table's notice does not hold
+SCOWL's Copyright file whole. The React integration is gone from `astro.config.mjs`: no page renders a React component, and it only
 put React's client renderer (220,723 bytes, which no page loaded) into the build.
 
 What this check found before that file existed:
@@ -173,3 +177,37 @@ What this check found before that file existed:
   removes phonemizer from the build (the voice reads English with its own G2P); once it is merged the build's
   checks require the phonemizer entry, its file license and its tests to go (`CLAUDE.md`, "The AI notice and
   the credits").
+
+**Second fix pass (2026-11-19).** Two gaps the checker found:
+
+- **Files three.js carries from others shipped with no notice.** `@google/model-viewer` 4.4.0 brings three.js
+  0.183.2's `examples/jsm/libs/fflate.module.js` (USDZ export, for "View in AR" on an iPhone),
+  `ktx-parse.module.js` and `zstddec.module.js` (the KTX2 texture loader) and `meshopt_decoder.module.js` into
+  its chunk. They are other people's code under their own MIT licenses, and three.js's license file speaks only
+  for three.js. What each is, checked against the npm releases on 2026-11-19: fflate's header names 0.8.2; the
+  meshoptimizer decoder is byte for byte `meshopt_decoder.mjs` of meshoptimizer 1.0.0 and 1.0.1; zstddec's
+  WebAssembly is the same string as zstddec 0.1.0's (0.2.0's differs), and that package's license file holds
+  Zstandard's BSD License beside zstddec's MIT; ktx-parse's file is a minified build matching no release byte for
+  byte, and three.js does not record which, so the license is the one every release from 1.0.0 to 1.1.0
+  carries. The texts, with each tarball's sha256, are in `scripts/third-party/texts/` (`SOURCES.md`); `/credits`
+  has an entry for the four. The build's check of package boundaries could not see them, because they are files
+  inside the `three` package: it now also fails on any shipped file under a package's `libs/`, `vendor/` or
+  `third_party/` folder that no file license covers.
+- **SCOWL's notice was cut short.** SCOWL 2020.12.07's `Copyright` file says the collective work is under
+  Kevin Atkinson's copyright "as well as any of the copyrights mentioned below": VarCon's (Kevin Atkinson;
+  Benjamin Titze), Ispell's (Geoff Kuenning, BSD-style, whose clause 3 asks that modified versions be marked),
+  WordNet 1.6's (Princeton University) and UKACD's (J Ross Beresford), with the public-domain lists it draws on.
+  The table shipped only the first paragraph, rewording "mentioned below" as "mentioned in its Copyright file",
+  a file the site did not serve. `scripts/build-pronunciation.mjs` now reads that file from the pinned tarball
+  and puts it, whole, into the table's notice lines and, byte for byte, into `public/licenses/SCOWL-Copyright.txt`
+  (sha256 `283326a4…a055`); the table's data lines did not change. The words the game reads are SCOWL's lists up
+  to size 60 (capitalised words up to 35), made with VarCon from Ispell's lists and with WordNet's inflections;
+  UKACD and ENABLE are in sizes 80 and up, which the game does not read, but the notice is SCOWL's whole file
+  all the same. The notices file had also printed the CMU disclaimer's back-ticks as the table's source escapes
+  them (`\`\`AS IS''`); it now prints them as the table's string reads.
+
+Not changed, and why: Babylon.js would fetch fflate from unpkg.com (`ExrLoaderGlobalConfiguration.FFLATEUrl`;
+the splat loaders' `deflateURL`) for a ZIP-compressed EXR texture or a `.sog` splat, and the SPZ splat library
+(`spzLibraryUrl`) for a `.spz` one. No page loads any of them: the viewer only ever asks for
+`/models/splats/<card>.ply` from this site, and no code loads an EXR texture. Adding such a file means
+overriding those defaults first, as for the other libraries; `CLAUDE.md` ("Requests to other origins") lists them.
