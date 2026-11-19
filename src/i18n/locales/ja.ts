@@ -373,9 +373,10 @@ const ja: Record<string, string> = {
   'mic.earFailed': '耳を読み込めませんでした',
   'mic.listening': '聞いています… タップで停止',
   'mic.denied': 'マイクが許可されていません',
-  'voice.off': '音声：オフ',
-  'voice.on': '音声：オン',
-  'voice.loading': '音声：読み込み中…',
+  'voice.off': 'AI音声：オフ',
+  'voice.on': 'AI音声：オン',
+  'voice.loading': 'AI音声：読み込み中…',
+  'ai.label': 'AI',
 
   // --- 決闘：判定と結果 ---
   'verdict.yourAnswer': 'あなたの返し',

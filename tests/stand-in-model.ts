@@ -5,14 +5,14 @@ import type { Page } from '@playwright/test';
  * made to report an adapter: loadBrain's own success path runs and brainInfo() is the real MODELS
  * entry. It answers the judge's next-token reading (the same lean to "A" in both orders, so every
  * criterion is a split, decided by the model) and counts each load, each verse it is asked to
- * write and each reading.
+ * write and each reading. Asked to write, it answers `verse` (one line, unless a test gives another).
  */
-const JUDGING_STUB = `
+const JUDGING_STUB = (verse: string) => `
 const V = 256;
 const stub = (globalThis.__stub ??= { loads: [], generations: 0, readings: 0 });
 export async function pipeline(task, id) {
   stub.loads.push(id);
-  const g = async () => { stub.generations++; return [{ generated_text: [{ role: 'assistant', content: 'The moon is up and I am here' }] }]; };
+  const g = async () => { stub.generations++; return [{ generated_text: [{ role: 'assistant', content: ${JSON.stringify(verse)} }] }]; };
   g.tokenizer = { apply_chat_template: () => ({}), encode: (a) => [a.charCodeAt(0) % V] };
   // The same lean to "A" in both orders: no preference, so every criterion is a split, by the model.
   g.model = async () => { stub.readings++; const data = new Float32Array(V); data[65] = 2; return { logits: { dims: [1, 1, V], data } }; };
@@ -25,11 +25,11 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
   wasm: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm',
 } } } } };`;
 
-export async function standInModel(page: Page) {
+export async function standInModel(page: Page, verse = 'The moon is up and I am here') {
   await page.addInitScript(() => {
     Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
   });
-  await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: JUDGING_STUB }));
+  await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: JUDGING_STUB(verse) }));
 }
 
 /** Set a model's lists in the page's own brain module (the one its scripts imported). */

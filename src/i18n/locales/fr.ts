@@ -373,9 +373,10 @@ const fr: Record<string, string> = {
   'mic.earFailed': 'L’oreille n’a pas pu se charger',
   'mic.listening': 'Écoute… touchez pour arrêter',
   'mic.denied': 'Micro non autorisé',
-  'voice.off': 'Voix\u00a0: désactivée',
-  'voice.on': 'Voix\u00a0: activée',
-  'voice.loading': 'Voix\u00a0: chargement…',
+  'voice.off': 'Voix d’IA\u00a0: désactivée',
+  'voice.on': 'Voix d’IA\u00a0: activée',
+  'voice.loading': 'Voix d’IA\u00a0: chargement…',
+  'ai.label': 'IA',
 
   // --- Le duel : verdict et résultat ---
   'verdict.yourAnswer': 'Votre réponse',

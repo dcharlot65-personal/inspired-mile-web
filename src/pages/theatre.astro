@@ -31,6 +31,14 @@ await loadArea('about');
       <div class="card-glass overflow-hidden rounded-xl">
         <canvas id="theatre-canvas" class="w-full block touch-none" style="height: min(70vh, 640px);"></canvas>
       </div>
+      <!--
+        The opponent's verse as text beside the stage, which draws it on the canvas: what a screen reader reads, and
+        where a verse a model wrote carries its machine-readable mark (src/lib/ai-marking.ts, docs/AI-MARKING.md).
+      -->
+      <div id="theatre-opponent" class="sr-only" aria-live="polite">
+        <p id="theatre-opponent-label" hidden data-i18n="ai.label">AI</p>
+        <blockquote id="theatre-opponent-verse" dir="auto"></blockquote>
+      </div>
 
       <!-- On a flat screen a keyboard is to hand, so typing is offered as well as speaking. -->
       <div id="typed" class="mt-4 card-glass p-4">
@@ -69,6 +77,7 @@ await loadArea('about');
     import { loadSound } from '../lib/verse/sound';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
+    import { markAiText } from '../lib/ai-marking';
     import { initI18n, languageName, onLocaleChange, t } from '../i18n';
     import type { Msg } from '../lib/verse/msg';
 
@@ -112,6 +121,16 @@ await loadArea('about');
       });
       if (document.activeElement !== typed) typed.value = session.verse;
       (document.getElementById('typed') as HTMLElement).classList.toggle('hidden', theatre.mode !== 'flat');
+      // The verse on stage, as text: set only when it changes, so the live region speaks it once.
+      const verse = session.phase === 'opponent-writing' ? '' : session.opponentVerse;
+      const verseEl = document.getElementById('theatre-opponent-verse')!;
+      if (verseEl.textContent !== verse || verseEl.dataset.source !== session.opponentSource) {
+        verseEl.textContent = verse;
+        verseEl.lang = session.duel.lang;
+        verseEl.dataset.source = session.opponentSource;
+        markAiText(verseEl, verse ? session.opponentModel : null);
+        (document.getElementById('theatre-opponent-label') as HTMLElement).hidden = !(verse && session.opponentModel);
+      }
     }
 
     async function finishTake() {

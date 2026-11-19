@@ -7,7 +7,7 @@
  * the score, so every front end plays by exactly the same rules.
  */
 import { getCardById } from '../cards';
-import { brainInfo, generate, isBrainLoaded, modelWrites } from '../brain';
+import { brainInfo, generate, isBrainLoaded, modelWrites, type ModelSpec } from '../brain';
 import {
   ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse,
   type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore, type WorldCard,
@@ -45,6 +45,11 @@ export class DuelSession {
   verse = '';
   opponentVerse = '';
   opponentSource: 'model' | 'written' = 'written';
+  /**
+   * The model that wrote this round's opposing verse; null when the written opponent played it.
+   * A screen marks the verse with it, visibly and in a machine-readable way (src/lib/ai-marking.ts).
+   */
+  opponentModel: ModelSpec | null = null;
   /** "Draft 1 of 2" while the opponent composes. */
   drafting: { draft: number; of: number } | null = null;
   readonly moves: PlayerMove[] = [];
@@ -96,6 +101,7 @@ export class DuelSession {
     this.move = { charId: '' };
     this.verse = '';
     this.opponentVerse = '';
+    this.opponentModel = null;
     this.drafting = null;
     this.changed();
     // Rhyme and syllables are measured by sound: the language's data (the CMU table for English,
@@ -118,6 +124,7 @@ export class DuelSession {
     });
     this.opponentVerse = written.verse;
     this.opponentSource = written.source;
+    this.opponentModel = written.source === 'model' ? brainInfo() : null;
     this.drafting = null;
     this.phase = 'player-turn';
     this.changed();

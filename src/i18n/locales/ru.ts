@@ -373,9 +373,10 @@ const ru: Record<string, string> = {
   'mic.earFailed': 'Слух не удалось загрузить',
   'mic.listening': 'Слушаю… нажми, чтобы остановить',
   'mic.denied': 'Нет доступа к микрофону',
-  'voice.off': 'Голос: выключен',
-  'voice.on': 'Голос: включён',
-  'voice.loading': 'Голос: загрузка…',
+  'voice.off': 'Голос ИИ: выключен',
+  'voice.on': 'Голос ИИ: включён',
+  'voice.loading': 'Голос ИИ: загрузка…',
+  'ai.label': 'ИИ',
 
   // --- Дуэль: вердикт и итог ---
   'verdict.yourAnswer': 'Твой ответ',

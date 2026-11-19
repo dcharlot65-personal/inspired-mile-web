@@ -281,6 +281,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     import { has, initI18n, isRtl, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
     import { initAudio, isInitialized, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
+    import { brainInfo } from '../lib/brain';
+    import { aiAttributes, type MarkedModel } from '../lib/ai-marking';
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
     import { getUniqueOwnedCount, getOwnedCards, getOwnedCardIds } from '../lib/inventory';
     import { awardRandomVariant, CITY_CATALOG } from '../lib/variants';
@@ -453,6 +455,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     let triviaScore = 0;
     /** Questions the model wrote for this round (English only; see content-gen.ts). */
     let triviaFromModel = new Set<TriviaQuestion>();
+    /** The model that wrote them: each is marked with it (src/lib/ai-marking.ts). */
+    let triviaModel: MarkedModel | null = null;
     /** The language this round's questions are in; a round is finished in the language it began in. */
     let triviaLocale = locale();
 
@@ -494,6 +498,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         if (aiQuestions.length >= 3) {
           triviaQuestions = aiQuestions;
           triviaFromModel = new Set(aiQuestions);
+          triviaModel = brainInfo();
           // Pad with the bank if the model wrote fewer than 5
           if (triviaQuestions.length < 5) {
             triviaQuestions.push(...(await localRandomQuestions(5 - triviaQuestions.length, triviaLocale)));
@@ -531,9 +536,11 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       // ("Portia في تاجر البندقية") is still right to left (dir="auto" took the first letter's: left to right).
       const qLang = triviaFromModel.has(q) ? 'en' : triviaLocale;
       const qDir = isRtl(qLang) ? 'rtl' : 'ltr';
+      // A question the model wrote, and its answers, carry the machine-readable mark as well as the badge.
+      const mark = aiAttributes(triviaFromModel.has(q) ? triviaModel : null, esc);
       triviaContent.innerHTML = `
-        <p id="trivia-question" lang="${qLang}" dir="${qDir}" class="text-sm text-obsidian-200 mb-4 leading-relaxed">${esc(q.question)}${aiBadge}</p>
-        <div class="space-y-2" lang="${qLang}" dir="${qDir}">
+        <p id="trivia-question" lang="${qLang}" dir="${qDir}" class="text-sm text-obsidian-200 mb-4 leading-relaxed"${mark}>${esc(q.question)}${aiBadge}</p>
+        <div class="space-y-2" lang="${qLang}" dir="${qDir}"${mark}>
           ${q.options.map((opt, i) => `
             <button dir="${qDir}" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">${esc(opt)}</button>
           `).join('')}
@@ -631,6 +638,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     const challengeContent = document.getElementById('challenge-content')!;
     const challengeStartBtn = document.getElementById('challenge-start-btn')!;
 
+    /** The model that wrote the challenge on screen, or null for one from the bank. */
+    let challengeModel: MarkedModel | null = null;
+
     challengeStartBtn.addEventListener('click', async () => {
       await ready;
       playSfx('ui-click');
@@ -649,8 +659,10 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         `;
         const aiChallenge = await generateChallenge();
         challenge = aiChallenge ? { ...aiChallenge, id: -1, lang: 'en' } : await localRandomChallenge(l);
+        challengeModel = aiChallenge ? brainInfo() : null;
       } else {
         challenge = await localRandomChallenge(l);
+        challengeModel = null;
       }
 
       showChallenge(challenge);
@@ -682,8 +694,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
             'bg-crimson-500/20 text-crimson-400'
           }" data-i18n="pg.difficulty.${challenge.difficulty}">${esc(t(`pg.difficulty.${challenge.difficulty}`))}</span>
           ${original ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-obsidian-700/50 text-obsidian-300 ms-1" data-i18n="pg.challenge.original">${esc(t('pg.challenge.original'))}</span>` : ''}
+          ${challengeModel ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ms-1" data-i18n="pg.trivia.aiBadge">${esc(t('pg.trivia.aiBadge'))}</span>` : ''}
         </div>
-        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic">
+        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic"${aiAttributes(challengeModel, esc)}>
           "${esc(challenge.displayQuote)}"
         </p>
         ${credit}

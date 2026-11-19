@@ -373,9 +373,10 @@ const vi: Record<string, string> = {
   'mic.earFailed': 'Không tải được đôi tai',
   'mic.listening': 'Đang nghe… chạm để dừng',
   'mic.denied': 'Micrô chưa được cho phép',
-  'voice.off': 'Giọng đọc: tắt',
-  'voice.on': 'Giọng đọc: bật',
-  'voice.loading': 'Giọng đọc: đang tải…',
+  'voice.off': 'Giọng đọc AI: tắt',
+  'voice.on': 'Giọng đọc AI: bật',
+  'voice.loading': 'Giọng đọc AI: đang tải…',
+  'ai.label': 'AI',
 
   // --- Trận đấu thơ: phán quyết và kết quả ---
   'verdict.yourAnswer': 'Lời đáp của bạn',

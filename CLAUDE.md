@@ -110,6 +110,14 @@ visit or named by `?lang=` once the page is idle; `tests/battle-bytes.spec.ts`);
 `await loadPronunciation()` first. Both duel
 screens draw a `DuelSession`; do not score a round anywhere else.
 
+Text a model wrote is marked where it appears (EU AI Act Art. 50(2), D-01; D-12): its element
+carries `data-ai-generated` (model, repository, revision, dtype) and `data-ai-source`
+(`src/lib/ai-marking.ts`), set from `DuelSession.opponentModel`, never guessed from the text, with
+a visible `ai.label` beside the verse (battle page, Theatre stage and its text copy
+`#theatre-opponent-verse`) and on the playground's model-written trivia; the voice setting reads
+"AI voice". A new place that shows, shares or exports a model's text must carry the same mark
+(`docs/AI-MARKING.md`; `tests/ai-marking.spec.ts`).
+
 ## Online play (multiplayer)
 
 The SERVER decides every online score, with no model and no randomness: `backend/src/verse/`

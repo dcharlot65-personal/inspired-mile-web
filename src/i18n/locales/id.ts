@@ -373,9 +373,10 @@ const id: Record<string, string> = {
   'mic.earFailed': 'Telinga tidak bisa dimuat',
   'mic.listening': 'Mendengarkan… ketuk untuk berhenti',
   'mic.denied': 'Mikrofon tidak diizinkan',
-  'voice.off': 'Suara: mati',
-  'voice.on': 'Suara: nyala',
-  'voice.loading': 'Suara: memuat…',
+  'voice.off': 'Suara AI: mati',
+  'voice.on': 'Suara AI: nyala',
+  'voice.loading': 'Suara AI: memuat…',
+  'ai.label': 'AI',
 
   // --- Duel: putusan dan hasil ---
   'verdict.yourAnswer': 'Jawabanmu',

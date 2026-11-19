@@ -361,7 +361,11 @@ export class Theatre {
         ? s.drafting && s.drafting.of > 1
           ? t('theatre.composingDraft', { n: s.drafting.draft, total: s.drafting.of })
           : t('theatre.composing')
-        : s.opponentVerse,
+        // A verse a model wrote is labelled on the stage too (owner decision D-12): the label in the
+        // interface's language, then the model's name.
+        : s.opponentModel
+          ? `${t('ai.label')} · ${s.opponentModel.label}\n${s.opponentVerse}`
+          : s.opponentVerse,
     ].join('\n');
 
     const preview = s.preview();
