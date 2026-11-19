@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'यह टूर्नामेंट भर चुका है।',
   'error.match_not_found': 'वह मुक़ाबला अब मौजूद नहीं है।',
   'error.match_finished': 'उस मुक़ाबले का फ़ैसला हो चुका है।',
+  'error.match_overdue': 'उस मुक़ाबले का अंतिम समय निकल चुका है, इसलिए अब उसे खेला नहीं जा सकता।',
+  'error.import_closed': 'किसी डिवाइस के कार्ड केवल तभी लाए जा सकते हैं जब खाता नया हो।',
   'error.no_active_season': 'अभी कोई सीज़न नहीं चल रहा है।',
   'error.level_not_reached': 'आप अभी उस स्तर तक नहीं पहुँचे हैं।',
   'error.reward_unavailable': 'वह इनाम पहले ही लिया जा चुका है।',

@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'Turnamen ini sudah penuh.',
   'error.match_not_found': 'Pertandingan itu sudah tidak ada.',
   'error.match_finished': 'Pertandingan itu sudah ada pemenangnya.',
+  'error.match_overdue': 'Batas waktu pertandingan itu sudah lewat, jadi tidak bisa dimainkan lagi.',
+  'error.import_closed': 'Kartu dari perangkat hanya bisa dibawa selama akun masih baru.',
   'error.no_active_season': 'Saat ini tidak ada musim yang berlangsung.',
   'error.level_not_reached': 'Kamu belum mencapai level itu.',
   'error.reward_unavailable': 'Hadiah itu sudah diklaim.',

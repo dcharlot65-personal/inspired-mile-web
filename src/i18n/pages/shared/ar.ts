@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'هذه البطولة مكتملة العدد.',
   'error.match_not_found': 'هذه المباراة لم تعد موجودة.',
   'error.match_finished': 'سبق أن حُسمت هذه المباراة.',
+  'error.match_overdue': 'انتهى موعد هذه المباراة، فلم يعد بالإمكان لعبها.',
+  'error.import_closed': 'لا يمكن نقل البطاقات من جهاز إلا ما دام الحساب جديدًا.',
   'error.no_active_season': 'لا يوجد موسم جارٍ الآن.',
   'error.level_not_reached': 'لم تبلغ هذا المستوى بعد.',
   'error.reward_unavailable': 'هذه المكافأة استُلمت من قبل.',

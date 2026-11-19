@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': '이 토너먼트는 정원이 찼어요.',
   'error.match_not_found': '그 경기는 이제 없어요.',
   'error.match_finished': '그 경기는 이미 승부가 났어요.',
+  'error.match_overdue': '그 경기는 기한이 지나서 더 이상 치를 수 없어요.',
+  'error.import_closed': '기기의 카드는 계정을 만든 직후에만 가져올 수 있어요.',
   'error.no_active_season': '지금 진행 중인 시즌이 없어요.',
   'error.level_not_reached': '아직 그 레벨에 도달하지 못했어요.',
   'error.reward_unavailable': '그 보상은 이미 받았어요.',

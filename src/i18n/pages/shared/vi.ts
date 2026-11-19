@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'Giải đấu này đã đủ người.',
   'error.match_not_found': 'Trận đấu đó không còn nữa.',
   'error.match_finished': 'Trận đấu đó đã có kết quả.',
+  'error.match_overdue': 'Trận đấu đó đã quá hạn chót nên không thể đấu nữa.',
+  'error.import_closed': 'Chỉ có thể chuyển bài từ thiết bị sang khi tài khoản còn mới.',
   'error.no_active_season': 'Hiện không có mùa giải nào đang diễn ra.',
   'error.level_not_reached': 'Bạn chưa đạt cấp độ đó.',
   'error.reward_unavailable': 'Phần thưởng đó đã được nhận rồi.',

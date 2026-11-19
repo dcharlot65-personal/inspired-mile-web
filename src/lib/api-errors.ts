@@ -79,6 +79,7 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   [/^Match is already /, 'match_finished'],
   ['The opponent is not known yet', 'bad_request'],
   ['Only match participants can play a match', 'forbidden'],
+  ['This match is past its deadline', 'match_overdue'],
   // Seasons
   ['No active season', 'no_active_season'],
   ['No season progress found', 'level_not_reached'],
@@ -94,6 +95,7 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   [/^Daily spending limit reached /, 'daily_limit_reached'],
   ['Too many cards', 'bad_request'],
   ['Already imported', 'conflict'],
+  [/^A device's cards come over only in an account's first /, 'import_closed'],
   // Referrals
   ['Invalid referral code', 'referral_invalid'],
   ['Referral code not found', 'referral_not_found'],

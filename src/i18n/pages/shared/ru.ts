@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'В этом турнире больше нет мест.',
   'error.match_not_found': 'Этого матча больше нет.',
   'error.match_finished': 'Исход этого матча уже решён.',
+  'error.match_overdue': 'Срок этого матча истёк, сыграть его уже нельзя.',
+  'error.import_closed': 'Карты с устройства можно перенести, только пока учётная запись новая.',
   'error.no_active_season': 'Сейчас нет действующего сезона.',
   'error.level_not_reached': 'Этот уровень ещё не достигнут.',
   'error.reward_unavailable': 'Эта награда уже получена.',

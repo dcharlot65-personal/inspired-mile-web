@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Tableau',
   'tour.select': 'Choisissez un tournoi…',
   'tour.selectHint': 'Choisissez un tournoi pour voir son tableau.',
-  'tour.deadlineRule': 'Un match qui n’est pas joué avant sa date limite revient au joueur qui est venu le jouer et a attendu l’autre. Si les deux l’ont fait, ou aucun, personne ne le gagne : en élimination directe, les deux joueurs sont éliminés, et dans un tournoi toutes rondes, le match reste non joué. Seul un match joué compte comme une victoire.',
+  'tour.deadlineRule': 'Un match qui n’est pas joué avant sa date limite revient au joueur qui est venu le jouer et a attendu l’autre. Si les deux l’ont fait, ou aucun, personne ne le gagne\u00a0: en élimination directe, les deux joueurs sont éliminés, et dans un tournoi toutes rondes, le match reste non joué. Seul un match joué compte comme une victoire.',
   'tour.leaderboard': 'Classement',
   'tour.empty': 'Il n’y a pas encore de tournoi. Revenez bientôt.',
   'tour.status.registration': 'Inscriptions ouvertes',

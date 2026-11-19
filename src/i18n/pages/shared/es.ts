@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': 'Este torneo está completo.',
   'error.match_not_found': 'Ese enfrentamiento ya no existe.',
   'error.match_finished': 'Ese enfrentamiento ya está decidido.',
+  'error.match_overdue': 'Ese enfrentamiento ya pasó su fecha límite y no se puede jugar.',
+  'error.import_closed': 'Las cartas de un dispositivo solo se pueden traer mientras la cuenta es nueva.',
   'error.no_active_season': 'Ahora mismo no hay ninguna temporada en curso.',
   'error.level_not_reached': 'Todavía no has alcanzado ese nivel.',
   'error.reward_unavailable': 'Esa recompensa ya se ha reclamado.',

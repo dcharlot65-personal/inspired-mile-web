@@ -37,6 +37,8 @@ const messages: Record<string, string> = {
   'error.tournament_full': '这项锦标赛的名额已满。',
   'error.match_not_found': '这场比赛已不存在。',
   'error.match_finished': '这场比赛已经分出胜负。',
+  'error.match_overdue': '这场比赛已过截止时间，不能再进行了。',
+  'error.import_closed': '只有在账户刚创建时，才能转入设备上的卡牌。',
   'error.no_active_season': '目前没有正在进行的赛季。',
   'error.level_not_reached': '你还没有达到这个等级。',
   'error.reward_unavailable': '这份奖励已经领取过了。',
