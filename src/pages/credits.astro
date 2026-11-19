@@ -1,0 +1,432 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import EntryBlock from '../components/CreditEntry.astro';
+import type { CreditEntry as Entry } from '../components/CreditEntry.astro';
+import pronEn from '../lib/verse/pron-en';
+
+// Every entry here was checked against the repository on 2026-11-19; docs/ASSETS.md is the record behind
+// it (where each file came from, how that was found, and what is still unknown). Add an entry only with
+// its source; never a guess.
+
+const MODELS: Entry[] = [
+  {
+    name: 'Gemma 4 E2B',
+    by: 'Google',
+    use: 'Writes the opponent\'s verses and judges, in the languages it was measured to do well, on devices that can run it.',
+    source: [{ text: 'onnx-community/gemma-4-E2B-it-ONNX', href: 'https://huggingface.co/onnx-community/gemma-4-E2B-it-ONNX' }, { text: 'google/gemma-4-E2B-it', href: 'https://huggingface.co/google/gemma-4-E2B-it' }],
+    license: [{ text: 'Apache License 2.0 (Google\'s Gemma 4 license)', href: 'https://ai.google.dev/gemma/docs/gemma_4_license' }],
+    changed: 'Nothing. Your browser downloads the ONNX conversion (4-bit, q4f16) from Hugging Face as that repository publishes it; the game only gives the model its instructions. Google\'s Gemma Terms of Use say that they do not cover Gemma 4.',
+    duties: 'Apache 2.0: its license and notices go with the files. We do not copy or host the files; Hugging Face serves them to your browser.',
+  },
+  {
+    name: 'LFM3 1.7B and LFM2.5 350M',
+    by: 'Liquid AI',
+    use: 'LFM3 1.7B judges in the languages it was measured to do well. LFM2.5 350M is in the game\'s list of models but is offered to no one at present, because it was not measured to do well in any language.',
+    source: [{ text: 'onnx-community/LFM3-1.7B-ONNX', href: 'https://huggingface.co/onnx-community/LFM3-1.7B-ONNX' }, { text: 'LiquidAI/LFM2.5-350M-ONNX', href: 'https://huggingface.co/LiquidAI/LFM2.5-350M-ONNX' }],
+    license: [{ text: 'LFM Open License v1.0', href: 'https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/LICENSE' }],
+    changed: 'Nothing. Your browser downloads the published ONNX files from Hugging Face.',
+    duties: 'Commercial use is licensed only while the licensee, together with every entity it controls, is controlled by or is under common control with, has annual revenue below US$10,000,000 (the license\'s "Threshold", sections 1 and 5). Voyage Tracable, LLC confirmed on November 17, 2026 that it is below it. Past it, commercial use needs a license from Liquid AI, or these models leave the game.',
+  },
+  {
+    name: 'Whisper base',
+    by: 'OpenAI',
+    use: 'Turns what you say into the text of your verse when you use the microphone, on your device.',
+    source: [{ text: 'onnx-community/whisper-base', href: 'https://huggingface.co/onnx-community/whisper-base' }, { text: 'openai/whisper-base', href: 'https://huggingface.co/openai/whisper-base' }],
+    license: [{ text: 'Apache License 2.0, as both model cards declare', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Nothing. Downloaded from Hugging Face by your browser.',
+    duties: 'Apache 2.0: its license and notices go with the files, which we do not host.',
+  },
+  {
+    name: 'Kokoro-82M v1.0',
+    by: 'hexgrad',
+    use: 'Reads the opponent\'s English verse aloud when you turn the voice on (the voice "bm_george"). In other languages the device\'s own voices are used.',
+    source: [{ text: 'onnx-community/Kokoro-82M-v1.0-ONNX', href: 'https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX' }, { text: 'hexgrad/Kokoro-82M', href: 'https://huggingface.co/hexgrad/Kokoro-82M' }],
+    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Nothing. Downloaded from Hugging Face by your browser (8-bit, q8).',
+    duties: 'Apache 2.0: its license and notices go with the files, which we do not host.',
+  },
+];
+
+const SHARE_ALIKE = 'Attribution (this page), and share-alike: the tables we made from it are themselves licensed under CC BY-SA 4.0, and so is any table made from them.';
+
+const DATA: Entry[] = [
+  {
+    name: 'The CMU Pronouncing Dictionary',
+    by: 'Carnegie Mellon University',
+    use: 'English rhyme and syllables, in your browser and on the server that scores online duels.',
+    source: [{ text: 'github.com/cmusphinx/cmudict (commit 7479086)', href: 'https://github.com/cmusphinx/cmudict' }],
+    license: [{ text: 'BSD-style license of Carnegie Mellon University (in full below)', href: '#notice-cmu' }],
+    changed: 'Reduced to each word\'s syllable count and rhyme; 63 words of the game\'s own added; words it only spells letter by letter, and words SCOWL does not list, marked.',
+    duties: 'Its copyright notice, conditions and disclaimer go with the data: they are the first lines of the table the game loads, and they are below.',
+  },
+  {
+    name: 'SCOWL (Spell Checker Oriented Word Lists), release 2020.12.07',
+    by: 'Kevin Atkinson',
+    use: 'Marks which entries of the English table are words, so a name or a fragment does not count as one.',
+    source: [{ text: 'wordlist.aspell.net', href: 'http://wordlist.aspell.net/' }],
+    license: [{ text: 'SCOWL\'s permission notice (in full below)', href: '#notice-cmu' }],
+    changed: 'Only used to mark words in the English table; no list of it is shipped.',
+    duties: 'Its copyright and permission notice go with the data: in the table\'s first lines and below.',
+  },
+  {
+    name: 'Wiktionary pronunciations',
+    by: 'Wiktionary\'s contributors, through kaikki.org (Wiktextract) and WikiPron (CUNY Computational Linguistics)',
+    use: 'Rhyme, stress and syllables in German, Spanish, French, Hindi, Indonesian, Italian, Portuguese, Russian and Thai.',
+    source: [{ text: 'kaikki.org', href: 'https://kaikki.org/' }, { text: 'github.com/CUNY-CL/wikipron', href: 'https://github.com/CUNY-CL/wikipron' }, { text: 'wiktionary.org', href: 'https://www.wiktionary.org/' }],
+    license: [{ text: 'Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0); Wiktionary\'s text is also under the GFDL', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }],
+    changed: 'Reduced to what a word\'s rhyme and syllables need, one table per language (scripts/sound/build.mjs).',
+    duties: SHARE_ALIKE,
+  },
+  {
+    name: 'English Wiktionary: translations, parts of speech and function words',
+    by: 'Wiktionary\'s contributors (through kaikki.org and the MediaWiki API)',
+    use: 'The words in each language with which a verse could address its judge, the little words that never count as an echo of a card\'s line, and which names are also ordinary words.',
+    source: [{ text: 'en.wiktionary.org', href: 'https://en.wiktionary.org/' }],
+    license: [{ text: 'CC BY-SA 4.0 and GFDL', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }],
+    changed: 'Single words and verdicts taken from entries; no text of an entry is shipped.',
+    duties: SHARE_ALIKE,
+  },
+  {
+    name: 'CC-CEDICT',
+    by: 'MDBG and CC-CEDICT\'s contributors',
+    use: 'The reading a Chinese word gives its characters, for rhyme; and Chinese words that hold a character\'s name with more around it.',
+    source: [{ text: 'mdbg.net/chinese/export/cedict', href: 'https://www.mdbg.net/chinese/dictionary?page=cc-cedict' }],
+    license: [{ text: 'CC BY-SA 4.0', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }],
+    changed: 'Reduced to readings and words the game needs.',
+    duties: SHARE_ALIKE,
+  },
+  {
+    name: 'Unihan database (Unicode 18.0.0) and Unicode CLDR 49',
+    by: 'Unicode, Inc.',
+    use: 'Chinese characters\' readings; plural rules, quotation marks and numbers spelled out in sixteen languages.',
+    source: [{ text: 'unicode.org/charts/unihan.html', href: 'https://www.unicode.org/charts/unihan.html' }, { text: 'cldr.unicode.org', href: 'https://cldr.unicode.org/' }],
+    license: [{ text: 'Unicode License v3', href: 'https://www.unicode.org/license.txt' }],
+    changed: 'Reduced to the readings and words the game needs.',
+    duties: 'The copyright notice and license go with the data (in each generated file\'s header, and here).',
+  },
+  {
+    name: 'Unicode confusables (UTS #39), version 18.0.0',
+    by: 'Unicode, Inc.',
+    use: 'Letters drawn like a Latin letter, so a verse cannot pass a copied word off as its own.',
+    source: [{ text: 'unicode.org/reports/tr39', href: 'https://www.unicode.org/reports/tr39/' }],
+    license: [{ text: 'Unicode License v3', href: 'https://www.unicode.org/license.txt' }],
+    changed: '586 entries kept: single letters whose prototype is one Latin letter.',
+    duties: 'The copyright notice and license go with the data.',
+  },
+  {
+    name: 'mecab-ipadic 2.7.0-20070801',
+    by: 'Nara Institute of Science and Technology (NAIST), with entries from ICOT Free Software',
+    use: 'The dictionary of the Japanese analyser, which reads Japanese verse for rhyme and syllables.',
+    source: [{ text: 'kuromoji 0.1.2 (npm), which carries it', href: 'https://www.npmjs.com/package/kuromoji/v/0.1.2' }],
+    license: [{ text: 'NAIST license and ICOT conditions (in full at /licenses/mecab-ipadic-NOTICE.txt)', href: '/licenses/mecab-ipadic-NOTICE.txt' }],
+    changed: 'Cut to the parts the game reads (16 MB unpacked, where kuromoji\'s own is 100 MB), with the same readings.',
+    duties: 'Every copy, original or modified, must carry the copyright notice and the paragraphs of the license, including the no-warranty section: they are in that file, which this site serves beside the game.',
+  },
+  {
+    name: 'JMdict and JMnedict',
+    by: 'The Electronic Dictionary Research and Development Group (EDRDG), through jmdict-simplified 3.6.2',
+    use: 'Japanese words and names written in katakana that the analyser\'s dictionary lacks, so that a loanword counts as a word.',
+    source: [{ text: 'edrdg.org', href: 'https://www.edrdg.org/' }, { text: 'github.com/scriptin/jmdict-simplified', href: 'https://github.com/scriptin/jmdict-simplified' }],
+    license: [{ text: 'CC BY-SA 4.0 (EDRDG\'s license statement)', href: 'https://www.edrdg.org/edrdg/licence.html' }],
+    changed: 'Reduced to katakana spellings the analyser\'s dictionary lacks (two lists, each naming its source and license in its first lines).',
+    duties: SHARE_ALIKE,
+  },
+  {
+    name: 'stopwords-iso 1.1.0',
+    by: 'Gene Diaz and contributors',
+    use: 'The little words of each language, which never count as words that tell.',
+    source: [{ text: 'github.com/stopwords-iso/stopwords-iso', href: 'https://github.com/stopwords-iso/stopwords-iso' }],
+    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    changed: 'One list per language, kept as published.',
+    duties: 'The copyright and permission notice go with copies.',
+  },
+  {
+    name: 'Snowball stemmers 3.2.0',
+    by: 'The Snowball project',
+    use: 'Which words are forms of one word, in ten languages.',
+    source: [{ text: 'snowballstem.org', href: 'https://snowballstem.org/' }],
+    license: [{ text: 'BSD 3-Clause License', href: 'https://opensource.org/license/bsd-3-clause' }],
+    changed: 'Nothing: the project\'s generated JavaScript, copied unchanged.',
+    duties: 'The copyright notice, conditions and disclaimer go with copies.',
+  },
+  {
+    name: 'Wikidata and Wikipedia',
+    by: 'Wikidata\'s and Wikipedia\'s contributors',
+    use: 'How each language names Shakespeare\'s characters, works and places, the verse forms and artificial intelligence; Wikipedia\'s titles where Wikidata has no name.',
+    source: [{ text: 'wikidata.org', href: 'https://www.wikidata.org/' }, { text: 'wikipedia.org', href: 'https://www.wikipedia.org/' }],
+    license: [{ text: 'Wikidata: CC0 1.0', href: 'https://creativecommons.org/publicdomain/zero/1.0/' }, { text: 'Wikipedia: CC BY-SA 4.0 (only names and titles are taken)', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }],
+    changed: 'Names taken as given; where one was not used, the record says why.',
+    duties: 'None for Wikidata. Credit to Wikipedia for its titles.',
+  },
+  {
+    name: 'Published translations of Shakespeare',
+    by: 'Translators who died long enough ago that their work is in the public domain, as transcribed by Wikisource, Project Gutenberg and Aozora Bunko',
+    use: 'The lines quoted on the cards and in the quote challenges, in each language that has a published translation.',
+    source: [{ text: 'wikisource.org', href: 'https://wikisource.org/' }, { text: 'gutenberg.org', href: 'https://www.gutenberg.org/' }, { text: 'aozora.gr.jp', href: 'https://www.aozora.gr.jp/' }],
+    license: [{ text: 'The texts are in the public domain; Wikisource\'s own additions to a transcription are CC BY-SA 4.0', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }],
+    changed: 'Single lines quoted, in the edition\'s spelling; a Japanese line in old characters also carries its modern reading.',
+    duties: 'Credit to the transcribing projects; share-alike for any Wikisource addition.',
+  },
+  {
+    name: 'Other word lists used to tell names from words',
+    by: 'OpenCC (BYVoid), Apache Lucene, jieba, Chinese Wikipedia\'s transliteration tables, PyThaiNLP',
+    use: 'Modern readings of old Japanese characters (OpenCC JPVariants); French and Italian elided articles (Lucene); which Chinese characters spell foreign names and which words hold a name (jieba, Wikipedia); Thai dictionary words (PyThaiNLP).',
+    source: [{ text: 'github.com/BYVoid/OpenCC', href: 'https://github.com/BYVoid/OpenCC' }, { text: 'lucene.apache.org', href: 'https://lucene.apache.org/' }, { text: 'github.com/fxsjy/jieba', href: 'https://github.com/fxsjy/jieba' }, { text: 'github.com/PyThaiNLP/pythainlp', href: 'https://github.com/PyThaiNLP/pythainlp' }],
+    license: [{ text: 'OpenCC and Lucene: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'jieba: MIT', href: 'https://opensource.org/license/mit' }, { text: 'Wikipedia: CC BY-SA 4.0', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }, { text: 'PyThaiNLP\'s word list: CC0 1.0', href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
+    changed: 'Only the characters and words the game\'s card text needs.',
+    duties: 'Notices and credit as each license asks; share-alike for what comes from Wikipedia.',
+  },
+];
+
+const LIBRARIES: Entry[] = [
+  {
+    name: 'Babylon.js 9.36 (core, GUI, loaders)',
+    by: 'The Babylon.js team',
+    use: 'The Theatre, the VR gallery and the 3D viewer\'s splats.',
+    source: [{ text: 'github.com/BabylonJS/Babylon.js', href: 'https://github.com/BabylonJS/Babylon.js' }],
+    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Nothing; bundled, with its online hand and controller models turned off.',
+    duties: 'Its license and notices go with the code.',
+  },
+  {
+    name: '<model-viewer> 4.4, with three.js 0.183',
+    by: 'Google; the three.js authors',
+    use: 'The 3D model and "View in AR" on the collection and the viewer.',
+    source: [{ text: 'github.com/google/model-viewer', href: 'https://github.com/google/model-viewer' }, { text: 'github.com/mrdoob/three.js', href: 'https://github.com/mrdoob/three.js' }],
+    license: [{ text: 'model-viewer: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'three.js: MIT', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing; served from this site instead of a public CDN.',
+    duties: 'Their licenses and notices go with the code.',
+  },
+  {
+    name: 'Transformers.js 4.3 and ONNX Runtime Web 1.31 (a development build)',
+    by: 'Hugging Face; Microsoft',
+    use: 'Runs the language models and Whisper in your browser.',
+    source: [{ text: 'github.com/huggingface/transformers.js', href: 'https://github.com/huggingface/transformers.js' }, { text: 'github.com/microsoft/onnxruntime', href: 'https://github.com/microsoft/onnxruntime' }],
+    license: [{ text: 'Transformers.js: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'ONNX Runtime: MIT', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing; ONNX Runtime\'s WebAssembly files are served from this site instead of a public CDN.',
+    duties: 'Their licenses and notices go with the code.',
+  },
+  {
+    name: 'kokoro-js 1.2.1, with phonemizer 1.2.1 and eSpeak NG',
+    by: 'hexgrad (kokoro-js); Xenova (phonemizer); the eSpeak NG contributors',
+    use: 'Reads English verse aloud with Kokoro. phonemizer, which kokoro-js uses to turn text into sounds, contains eSpeak NG compiled to WebAssembly.',
+    source: [{ text: 'github.com/hexgrad/kokoro', href: 'https://github.com/hexgrad/kokoro' }, { text: 'github.com/xenova/phonemizer.js', href: 'https://github.com/xenova/phonemizer.js' }, { text: 'github.com/espeak-ng/espeak-ng', href: 'https://github.com/espeak-ng/espeak-ng' }],
+    license: [{ text: 'kokoro-js and phonemizer: Apache 2.0, as their packages declare', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'eSpeak NG: GNU General Public License, version 3 or later', href: 'https://www.gnu.org/licenses/gpl-3.0.html' }],
+    changed: 'Nothing; bundled as published, and loaded only when you turn the voice on.',
+    duties: 'Apache 2.0 for kokoro-js and phonemizer. eSpeak NG\'s GPL asks that whoever passes on its compiled form also gives its license and offers its corresponding source; both are at the eSpeak NG and phonemizer links here.',
+  },
+  {
+    name: 'kuromoji 0.1.2',
+    by: 'Takuya Asano and contributors',
+    use: 'The Japanese analyser.',
+    source: [{ text: 'github.com/takuyaa/kuromoji.js', href: 'https://github.com/takuyaa/kuromoji.js' }],
+    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Nothing in the code; its dictionary is cut down (above).',
+    duties: 'Its license and notices go with the code.',
+  },
+  {
+    name: 'SimpleWebAuthn (browser) 14',
+    by: 'Matthew Miller and contributors',
+    use: 'Passkey sign-in.',
+    source: [{ text: 'github.com/MasterKale/SimpleWebAuthn', href: 'https://github.com/MasterKale/SimpleWebAuthn' }],
+    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing.',
+    duties: 'Its copyright and permission notice go with the code.',
+  },
+  {
+    name: 'Astro 7 and Tailwind CSS 4',
+    by: 'The Astro project; Tailwind Labs',
+    use: 'The site is built with them: Astro makes the pages, Tailwind CSS the stylesheet.',
+    source: [{ text: 'astro.build', href: 'https://astro.build/' }, { text: 'tailwindcss.com', href: 'https://tailwindcss.com/' }],
+    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing.',
+    duties: 'Their copyright and permission notices go with the code they put in the site.',
+  },
+];
+
+const FONTS = [
+  { name: 'Inter', by: 'Rasmus Andersson (The Inter Project Authors)', href: 'https://github.com/rsms/inter' },
+  { name: 'Playfair Display', by: 'Claus Eggers Sørensen (The Playfair Display Project Authors; Reserved Font Name "Playfair Display")', href: 'https://github.com/clauseggers/Playfair-Display' },
+  { name: 'JetBrains Mono', by: 'JetBrains, Philipp Nurullin, Konstantin Bulenkov (The JetBrains Mono Project Authors)', href: 'https://github.com/JetBrains/JetBrainsMono' },
+  { name: 'Outfit', by: 'Smartsheet Inc, Rodrigo Fuenzalida (The Outfit Project Authors)', href: 'https://github.com/Outfitio/Outfit-Fonts' },
+  { name: 'Space Grotesk', by: 'Florian Karsten (The Space Grotesk Project Authors)', href: 'https://github.com/floriankarsten/space-grotesk' },
+];
+
+const ART: Entry[] = [
+  {
+    name: 'The card paintings (71)',
+    by: 'Made for Inspired Mile on November 16, 2026 with FLUX 3 Image Klein, an image model by Black Forest Labs, from prompts written for the game',
+    use: 'Every card\'s picture, and the picture shared with links to the site.',
+    source: [{ text: 'black-forest-labs/flux-3-image-klein', href: 'https://huggingface.co/black-forest-labs/flux-3-image-klein' }],
+    license: [{ text: 'FLUX Kommunity License v1.0 (for the model; Black Forest Labs claims no ownership of what it makes)', href: 'https://huggingface.co/black-forest-labs/flux-3-image-klein' }],
+    changed: 'Generated on the company\'s own machines and saved as WebP. Each was looked at by a person before it was used.',
+    duties: 'These pictures were generated with artificial intelligence. Commercial use of what the model makes is licensed to a "Qualifying User": one whose revenue, with its affiliates\', is below US$5,000,000 a year. What it makes must be reviewed before it is published.',
+  },
+  {
+    name: 'City portraits for world cards (198 files)',
+    by: 'Made for Inspired Mile on February 14, 2026 with Z-Image Turbo, an image model by Tongyi-MAI (Alibaba), through a public Hugging Face Space',
+    use: 'Kept on the site for the world cards; no page shows them at present.',
+    source: [{ text: 'Tongyi-MAI/Z-Image-Turbo', href: 'https://huggingface.co/Tongyi-MAI/Z-Image-Turbo' }, { text: 'Space mcp-tools/Z-Image-Turbo', href: 'https://huggingface.co/spaces/mcp-tools/Z-Image-Turbo' }],
+    license: [{ text: 'Apache License 2.0 (the model)', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Generated from text prompts and saved as WebP.',
+    duties: 'These pictures were generated with artificial intelligence.',
+  },
+];
+
+const AUDIO: Entry[] = [
+  {
+    name: '"Battle Theme A"',
+    by: 'cynicmusic (The Cynic Project)',
+    use: 'The music of a solo duel.',
+    source: [{ text: 'opengameart.org/content/battle-theme-a', href: 'https://opengameart.org/content/battle-theme-a' }, { text: 'cynicmusic.com', href: 'https://cynicmusic.com/' }, { text: 'pixelsphere.org', href: 'https://pixelsphere.org/' }],
+    license: [{ text: 'CC0 1.0 (public domain dedication)', href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
+    changed: 'Nothing: the file is the one OpenGameArt.org serves, byte for byte.',
+    duties: 'None under CC0. The author asks for credit to cynicmusic.com and pixelsphere.org, which this entry gives.',
+  },
+  {
+    name: '"Oldschool Horror Theme"',
+    by: 'EmoPreben (the file\'s tags name Lasse Bührmann)',
+    use: 'The music of the home page.',
+    source: [{ text: 'opengameart.org/content/oldschool-horror-theme', href: 'https://opengameart.org/content/oldschool-horror-theme' }],
+    license: [{ text: 'CC0 1.0 (public domain dedication)', href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
+    changed: 'Nothing: the file is the one OpenGameArt.org serves, byte for byte.',
+    duties: 'None under CC0.',
+  },
+];
+
+// The CMU and SCOWL notices exactly as the shipped table carries them (its first lines, each with "# ").
+const cmuNotice = pronEn.split('\n').filter((l) => l.startsWith('#')).map((l) => l.replace(/^# ?/, '')).join('\n');
+
+const linkCls = 'text-accent hover:text-accent-light transition-colors underline';
+---
+
+<Layout title="Credits and Licenses" description="The models, data, fonts, libraries, art and music in Sonnet Man, where each comes from, and its license.">
+  <!-- English in every interface language, like the privacy policy and the terms: laid out left to right on
+       an Arabic page too (tests/english-pages-rtl.spec.ts). -->
+  <section class="pt-32 pb-20 px-6" lang="en" dir="ltr">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-display font-bold text-white mb-4">Credits and Licenses</h1>
+      <p class="text-brand-gray text-sm mb-12">Last updated: November 19, 2026</p>
+
+      <div class="space-y-10 text-brand-slate text-[15px] leading-relaxed">
+        <div>
+          <p>
+            Sonnet Man is made by Voyage Tracable, LLC (DBA Inspired Mile). It is built on the work of many people and
+            projects. This page names each one the game ships or downloads, with where it comes from, its license, what we
+            changed, and what its license asks of us. What could not be traced is said plainly at the end of the page.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Artificial intelligence in the game</h2>
+          <p>
+            A solo duel's opponent and judge can be a language model running in your browser. Before every first duel the
+            battle page says which applies: artificial intelligence on your device, or a program that plays verses prepared
+            in advance with the judging done by fixed rules. Online duels use no model: the server scores both verses by
+            fixed rules. The models below are downloaded by your browser from Hugging Face when you ask for them; nothing you
+            write or say is sent to them anywhere else.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Models</h2>
+          <div class="space-y-6">
+            {MODELS.map((e) => <EntryBlock e={e} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Language data</h2>
+          <p class="mb-4">
+            How a verse is read, in sixteen languages, comes from these sources. Several are under CC BY-SA 4.0: the tables the
+            game made from Wiktionary, CC-CEDICT, JMdict and JMnedict are adaptations of them and are licensed under
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" class={linkCls}>CC BY-SA 4.0</a> too.
+          </p>
+          <div class="space-y-6">
+            {DATA.map((e) => <EntryBlock e={e} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Fonts</h2>
+          <p class="mb-3">
+            Five families, as Google Fonts serves them (their Latin and Latin Extended parts, unchanged), under the
+            <a href="https://openfontlicense.org/" target="_blank" rel="noopener noreferrer" class={linkCls}>SIL Open Font License 1.1</a>.
+            The license, with each family's copyright line, is served beside the fonts:
+            <a href="/fonts/OFL.txt" class={linkCls}>/fonts/OFL.txt</a>. The fonts may not be sold by themselves, and a changed
+            version may not use a Reserved Font Name.
+          </p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            {FONTS.map((f) => <li><strong class="text-white">{f.name}</strong>, by {f.by}: <a href={f.href} target="_blank" rel="noopener noreferrer" class={linkCls}>{f.href.replace('https://', '')}</a></li>)}
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Software in your browser</h2>
+          <div class="space-y-6">
+            {LIBRARIES.map((e) => <EntryBlock e={e} />)}
+          </div>
+          <p class="mt-4">
+            The game's server is not distributed, so the libraries it is built from are not listed here.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Art</h2>
+          <div class="space-y-6">
+            {ART.map((e) => <EntryBlock e={e} />)}
+          </div>
+          <p class="mt-4">The site's icons (the "IM" monogram) were made for Inspired Mile.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Music and sound</h2>
+          <div class="space-y-6">
+            {AUDIO.map((e) => <EntryBlock e={e} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">3D and film</h2>
+          <p>
+            The Sonnet Man's 3D figure in the viewer (a Gaussian splat and a point cloud of 16,384 points) was made by
+            Inspired Mile on February 15, 2026 with its own generative tools, and reduced for the web by them. The game ships no
+            film or video.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Not yet traced</h2>
+          <p>
+            Two of the background tracks (on the playground and in the collection), the game's fourteen sound effects, and
+            the model that made the 3D figure are not yet traced to their source. Each will be credited here, or replaced,
+            once its source is confirmed.
+          </p>
+        </div>
+
+        <div>
+          <h2 id="notice-cmu" class="text-xl font-display font-semibold text-white mb-3">Notices: the CMU Pronouncing Dictionary and SCOWL</h2>
+          <p class="mb-3">As the English pronunciation table carries them:</p>
+          <pre class="whitespace-pre-wrap text-xs bg-obsidian-900/60 border border-obsidian-800 rounded-sm p-4 text-obsidian-300">{cmuNotice}</pre>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Notice: mecab-ipadic</h2>
+          <p>
+            The full notice of the Nara Institute of Science and Technology, with the conditions of ICOT Free Software that
+            apply to the dictionary, is served beside the game at
+            <a href="/licenses/mecab-ipadic-NOTICE.txt" class={linkCls}>/licenses/mecab-ipadic-NOTICE.txt</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Contact</h2>
+          <p>
+            If your work is in the game and is not credited as you wish, write to
+            <a href="mailto:david@davidjcharlot.com" class={linkCls}>david@davidjcharlot.com</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

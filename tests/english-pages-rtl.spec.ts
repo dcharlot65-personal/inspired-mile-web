@@ -5,9 +5,9 @@ import { test, expect } from '@playwright/test';
  * language branch translates its page), the privacy policy and the terms. In a right-to-left interface their
  * English was laid out right to left, so a sentence's full stop or colon stood at its start (".that data",
  * ":The short version": the 2026-11-18 screenshots in Arabic). The page body is marked as English, left to
- * right; the header and footer stay in the interface language.
+ * right; the header and footer stay in the interface language. The credits page (2026-11-19) is English too.
  */
-const PAGES: Array<[string, string]> = [['/multiplayer', '#mp-english-only'], ['/privacy', 'h1'], ['/terms', 'h1']];
+const PAGES: Array<[string, string]> = [['/multiplayer', '#mp-english-only'], ['/privacy', 'h1'], ['/terms', 'h1'], ['/credits', 'h1']];
 
 for (const [path, probe] of PAGES) {
   test(`in Arabic, ${path} reads its English left to right inside the right-to-left layout`, async ({ page }) => {
