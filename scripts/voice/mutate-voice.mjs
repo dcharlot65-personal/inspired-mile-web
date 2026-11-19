@@ -2,7 +2,7 @@
 /**
  * Proves the voice's unit tests can fail: plants one fault at a time in the G2P, the letter
  * rules, the voice and the build check, runs the voice tests, and expects each run to fail.
- * Every file is put back after each fault. Run on the build host (it runs vitest 25 times):
+ * Every file is put back after each fault. Run on the build host (it runs vitest once per fault):
  *
  *   node scripts/voice/mutate-voice.mjs
  *
@@ -17,6 +17,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const G2P = 'src/lib/voice/g2p-en.ts';
 const LTS = 'src/lib/voice/lts-en.ts';
 const CHECK = 'scripts/check-no-espeak.mjs';
+/**
+ * The unit tests each fault must turn red. Not measurement.test.ts: it fails on almost any change
+ * to the G2P (the measurement is then of other code) and would hide a fault the unit tests miss.
+ */
+const UNIT_TESTS = ['src/lib/voice/g2p-en.test.ts', 'src/lib/voice/no-espeak.test.ts'];
 
 /** [what the fault is, file, text to find, what it becomes] */
 const FAULTS = [
@@ -66,7 +71,7 @@ for (const [what, file, find, replace] of FAULTS) {
   writeFileSync(path, original.replace(find, replace));
   let failed = false;
   try {
-    execFileSync('npx', ['vitest', 'run', 'src/lib/voice'], { cwd: ROOT, stdio: 'pipe' });
+    execFileSync('npx', ['vitest', 'run', ...UNIT_TESTS], { cwd: ROOT, stdio: 'pipe' });
   } catch {
     failed = true;
   } finally {

@@ -9,6 +9,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { align, scoreWords } from './score.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const DOC = join(ROOT, 'docs/voice/G2P-MEASUREMENT.md');
@@ -41,6 +42,28 @@ if (rt) verdict.push(`running text ${pp(rt.difference)} points against a margin 
 if (w) verdict.push(`words heard ${w.new - w.old >= 0 ? '+' : ''}${w.new - w.old} against a margin of −${MARGIN.wordsLost}: ${w.old - w.new <= MARGIN.wordsLost ? 'within' : '**outside**'}`);
 out.push('');
 out.push(`**Against the margins:** ${verdict.join('; ')}.`);
+
+out.push('');
+out.push('### The new reading heard against the old');
+out.push('');
+out.push('The new transcript scored against the old one instead of the text: how often the two readings are heard differently at all, whichever is right.');
+out.push('');
+out.push('| Texts | Words heard in the old reading | New transcript against the old (word error rate) | Texts heard word for word alike |');
+out.push('|---|---:|---:|---:|');
+const groups = [...new Set(m.results.map((r) => r.category))].map((c) => [c, m.results.filter((r) => r.category === c)]);
+groups.push(['running text', m.results.filter((r) => r.category !== 'word')]);
+for (const [k, rows] of groups) {
+  let edits = 0;
+  let words = 0;
+  let alike = 0;
+  for (const r of rows) {
+    const a = align(scoreWords(r.old.heard), scoreWords(r.new.heard));
+    edits += a.edits;
+    words += scoreWords(r.old.heard).length;
+    alike += a.edits === 0 ? 1 : 0;
+  }
+  out.push(`| ${NAMES[k] ?? k} | ${words} | ${pct(words ? edits / words : 0)} | ${alike} of ${rows.length} |`);
+}
 
 out.push('');
 out.push('### Phonemes against eSpeak NG, word by word');
