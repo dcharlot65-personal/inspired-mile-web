@@ -123,10 +123,14 @@ export async function stopListening(lang: string): Promise<string> {
   const blob = new Blob(chunks, { type: rec.mimeType });
   release();
   if (!blob.size) return '';
+  return transcriptToVerse(await transcribe(await toWhisperAudio(blob), lang));
+}
+
+/** What Whisper hears in 16 kHz mono audio, as running text. Loads the ear if needed. */
+export async function transcribe(audio: Float32Array, lang: string): Promise<string> {
   if (!(await loadEar())) throw new Error('The speech model could not be loaded on this device.');
-  const audio = await toWhisperAudio(blob);
   const out = await transcriber(audio, { language: lang.split('-')[0], task: 'transcribe', chunk_length_s: 30 });
-  return transcriptToVerse(String(out?.text ?? ''));
+  return String(out?.text ?? '');
 }
 
 export function cancelListening(): void {

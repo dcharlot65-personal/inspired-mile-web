@@ -1,0 +1,79 @@
+import { test, expect } from '@playwright/test';
+
+/**
+ * The voice in the browser, with the real Kokoro model: it reads English with the game's own
+ * pronunciation (src/lib/voice/g2p-en.ts), and no code of eSpeak NG reaches the page.
+ *
+ * kokoro-js imports the npm package "phonemizer" (eSpeak NG, GPL-3.0-or-later); astro.config.mjs
+ * swaps it for src/lib/voice/no-espeak.ts in the dev server as in the build. This test reads every
+ * script the page is served and fails on phonemizer's glue. Then Kokoro speaks a line and Whisper
+ * (the ear, src/lib/ear.ts) must hear its words: the phonemes the page gives Kokoro are speech.
+ *
+ * Downloads Kokoro and Whisper (about 80 MB each) from the Hugging Face hub; E2E_NO_DOWNLOADS=1
+ * skips it.
+ */
+
+test.use({ serviceWorkers: 'block' });
+
+/** phonemizer's Emscripten glue (scripts/check-no-espeak.mjs MARKERS). Not the bare name: dev sources keep their comments. */
+const GLUE = ['eSpeakNGWorker', 'espeak-ng-data', 'espeakEVENT_', 'synthesize_ipa', 'espeak-ng-ipa-tmp-'];
+
+test('the voice speaks without eSpeak NG, and the ear hears what it said', async ({ page }) => {
+  test.skip(!!process.env.E2E_NO_DOWNLOADS, 'E2E_NO_DOWNLOADS is set: this downloads real models');
+  test.setTimeout(10 * 60 * 1000);
+
+  const scripts: Array<Promise<{ url: string; found: string[] }>> = [];
+  const urls: string[] = [];
+  page.on('response', (r) => {
+    const url = r.url();
+    urls.push(url);
+    const type = r.headers()['content-type'] ?? '';
+    if (!/javascript|ecmascript|typescript/.test(type) && !/\.(m?js|ts)(\?|$)/.test(url)) return;
+    scripts.push(r.text().then((body) => ({ url, found: GLUE.filter((m) => body.includes(m)) }), () => ({ url, found: [] })));
+  });
+
+  await page.goto('/about');
+  const said = await (async () => {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        return await page.evaluate(async () => {
+          const voice = await import(/* @vite-ignore */ '/src/lib/thespian-voice.ts');
+          if (!(await voice.loadVoice())) return { error: 'loadVoice failed' };
+          const line = 'To be, or not to be, that is the question.';
+          const speech = await voice.synthesise(line);
+          // To 16 kHz mono, as the ear takes it.
+          const frames = Math.ceil((speech.samples.length / speech.sampleRate) * 16000);
+          const ctx = new OfflineAudioContext(1, frames, 16000);
+          const buffer = ctx.createBuffer(1, speech.samples.length, speech.sampleRate);
+          buffer.copyToChannel(speech.samples, 0);
+          const src = ctx.createBufferSource();
+          src.buffer = buffer;
+          src.connect(ctx.destination);
+          src.start();
+          const audio = (await ctx.startRendering()).getChannelData(0);
+          const ear = await import(/* @vite-ignore */ '/src/lib/ear.ts');
+          const heard = await ear.transcribe(audio, 'en');
+          let sum = 0;
+          for (const s of speech.samples) sum += s * s;
+          return { phonemes: speech.phonemes, seconds: speech.samples.length / speech.sampleRate, rms: Math.sqrt(sum / speech.samples.length), heard };
+        });
+      } catch (err) {
+        if (attempt >= 2 || !/context was destroyed|navigation|Failed to fetch dynamically imported module/i.test(String(err))) throw err;
+        await page.waitForLoadState('load');
+        await page.waitForTimeout(1000);
+      }
+    }
+  })();
+  console.log(`[voice] ${JSON.stringify(said)}`);
+  expect(said).not.toHaveProperty('error');
+  expect(said.phonemes.join(' ')).toBe('tə bˈiː, ɔː nˈɒt tə bˈiː, ðat ɪz ðə kwˈɛsʧən.');
+  expect(said.seconds).toBeGreaterThan(1.5);
+  expect(said.rms).toBeGreaterThan(0.01);
+  const heard = String(said.heard).toLowerCase();
+  for (const w of ['be', 'not', 'question']) expect(heard, `Whisper heard "${heard}"`).toContain(w);
+
+  const served = await Promise.all(scripts);
+  expect(served.length, 'scripts were read').toBeGreaterThan(10);
+  expect(served.filter((s) => s.found.length), 'scripts holding eSpeak NG').toEqual([]);
+  expect(urls.filter((u) => /phonemizer|espeak/i.test(u)), 'requests for phonemizer or eSpeak NG').toEqual([]);
+});
