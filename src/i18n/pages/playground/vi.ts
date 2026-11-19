@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Gói sử thi",
   'pg.odds.epicLine': "5 lá bài · 400 điểm thưởng",
   'pg.odds.epicNote': "Chắc chắn có 1 lá sử thi",
-  'pg.odds.note': "Mọi gói bài đều mua bằng điểm thưởng kiếm được khi chơi. Không mua bằng tiền thật. Mỗi lá bài được rút độc lập.",
+  'pg.odds.note': 'Không mua bằng tiền thật. Mỗi lá bài được rút độc lập.',
   'pg.odds.moreBefore': "Để biết thêm chi tiết, hãy xem",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Thắng các trận đấu thơ để nhận lá bài',

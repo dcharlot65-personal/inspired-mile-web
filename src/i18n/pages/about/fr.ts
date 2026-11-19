@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': 'La voix sur l’appareil',
   'about.tech.speech.body': 'Dites votre strophe\u00a0: Whisper la transcrit dans votre navigateur. L’enregistrement ne quitte jamais votre appareil. Le modèle Whisper lui-même est téléchargé depuis Hugging Face la première fois que vous l’utilisez.',
   'about.free.title': 'Toujours <b>gratuit</b>',
-  'about.free.body': 'Toutes les fonctionnalités sont accessibles sans dépenser un centime. Les crédits se gagnent en jouant et ne s’achètent jamais avec de l’argent réel.',
+  'about.free.body': 'Toutes les fonctionnalités sont accessibles sans dépenser un centime. Les crédits ne s’achètent jamais avec de l’argent réel.',
   'about.free.forever.title': 'Gratuit pour toujours',
   'about.free.forever.l1': 'Des cartes à collectionner à gagner en jouant',
   'about.free.forever.l2': 'Des paquets de cartes gratuits chaque jour',

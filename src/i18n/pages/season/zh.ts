@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': '第 {n} 赛季',
   'season.title': '赛季通行证',
   'season.intro': '参加对战、问答和挑战来获得 XP。每升一级都会解锁卡牌、点数和称号。',
+  'season.introNow': '赛季通行证的每一级都会解锁卡牌、点数或称号。在本版本的游戏中，游玩不会获得 XP。',
   'season.loading': '加载中…',
   'season.level': '等级',
   'season.xp': '{n} XP',

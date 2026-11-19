@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': '设备端语音',
   'about.tech.speech.body': '念出你的诗，Whisper 会在你的浏览器里把它转成文字。录音绝不会离开你的设备。首次使用时，Whisper 模型本身会从 Hugging Face 下载。',
   'about.free.title': '永远<b>免费游玩</b>',
-  'about.free.body': '所有功能都不用花一分钱。点数靠玩游戏赢得，绝不用真钱购买。',
+  'about.free.body': '所有功能都不用花一分钱。点数绝不用真钱购买。',
   'about.free.forever.title': '永久免费',
   'about.free.forever.l1': '靠玩游戏赢得的收藏卡牌',
   'about.free.forever.l2': '每日免费卡包',

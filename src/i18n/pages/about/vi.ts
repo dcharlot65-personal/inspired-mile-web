@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': 'Giọng nói ngay trên thiết bị',
   'about.tech.speech.body': 'Đọc bài thơ của bạn và Whisper sẽ chép lại ngay trong trình duyệt. Bản ghi âm không bao giờ rời khỏi thiết bị của bạn. Bản thân mô hình Whisper được tải từ Hugging Face trong lần đầu bạn dùng.',
   'about.free.title': 'Luôn <b>miễn phí</b>',
-  'about.free.body': 'Mọi tính năng đều dùng được mà không tốn một xu. Điểm thưởng kiếm được nhờ chơi, không bao giờ mua bằng tiền thật.',
+  'about.free.body': 'Mọi tính năng đều dùng được mà không tốn một xu. Điểm thưởng không bao giờ được mua bằng tiền thật.',
   'about.free.forever.title': 'Miễn phí mãi mãi',
   'about.free.forever.l1': 'Thẻ bài sưu tầm kiếm được nhờ chơi',
   'about.free.forever.l2': 'Gói lá bài miễn phí mỗi ngày',

@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Episches Pack",
   'pg.odds.epicLine': "5 Karten · 400 Credits",
   'pg.odds.epicNote': "1 epische Karte garantiert",
-  'pg.odds.note': "Alle Packs werden mit Credits bezahlt, die du im Spiel verdienst. Keine Käufe mit echtem Geld. Jede Karte wird unabhängig gezogen.",
+  'pg.odds.note': 'Keine Käufe mit echtem Geld. Jede Karte wird unabhängig gezogen.',
   'pg.odds.moreBefore': "Mehr dazu steht in unseren",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Gewinne Duelle der Strophen und verdiene Karten',

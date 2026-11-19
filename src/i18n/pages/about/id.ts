@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': 'Suara di perangkat',
   'about.tech.speech.body': 'Ucapkan syairmu dan Whisper menyalinnya menjadi teks di perambanmu. Rekamannya tidak pernah meninggalkan perangkatmu. Model Whisper itu sendiri diunduh dari Hugging Face saat pertama kali kamu memakainya.',
   'about.free.title': 'Selalu <b>gratis dimainkan</b>',
-  'about.free.body': 'Setiap fitur tersedia tanpa mengeluarkan uang sepeser pun. Kredit diraih dengan bermain, tidak pernah dibeli dengan uang sungguhan.',
+  'about.free.body': 'Setiap fitur tersedia tanpa mengeluarkan uang sepeser pun. Kredit tidak pernah dibeli dengan uang sungguhan.',
   'about.free.forever.title': 'Gratis selamanya',
   'about.free.forever.l1': 'Kartu koleksi yang diraih dengan bermain',
   'about.free.forever.l2': 'Paket kartu gratis setiap hari',

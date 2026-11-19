@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Paczka epicka",
   'pg.odds.epicLine': "5 kart · 400 kredytów",
   'pg.odds.epicNote': "1 epicka karta gwarantowana",
-  'pg.odds.note': "Wszystkie paczki kupuje się za kredyty zdobyte w grze. Żadnych zakupów za prawdziwe pieniądze. Każda karta jest losowana niezależnie.",
+  'pg.odds.note': 'Żadnych zakupów za prawdziwe pieniądze. Każda karta jest losowana niezależnie.',
   'pg.odds.moreBefore': "Więcej szczegółów znajdziesz w dokumencie",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Wygrywaj pojedynki na strofy i zdobywaj karty',

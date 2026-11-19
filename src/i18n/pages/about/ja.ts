@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': '端末の中での音声認識',
   'about.tech.speech.body': '詩を声に出すと、Whisperがあなたのブラウザの中で文字に起こします。録音が端末の外に出ることはありません。Whisperのモデル自体は、初めて使うときに Hugging Face からダウンロードされます。',
   'about.free.title': 'ずっと<b>無料で遊べます</b>',
-  'about.free.body': 'すべての機能を、お金を一切使わずに利用できます。クレジットは遊んで手に入れるもので、現実のお金で買うことはありません。',
+  'about.free.body': 'すべての機能を、お金を一切使わずに利用できます。クレジットを現実のお金で買うことはありません。',
   'about.free.forever.title': 'ずっと無料',
   'about.free.forever.l1': '遊んで手に入れるコレクションカード',
   'about.free.forever.l2': '毎日もらえる無料のカードパック',

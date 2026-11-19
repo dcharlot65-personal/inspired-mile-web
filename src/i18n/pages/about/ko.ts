@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': '기기 안의 음성 인식',
   'about.tech.speech.body': '시를 말하면 Whisper가 내 브라우저 안에서 글로 옮겨요. 녹음은 내 기기 밖으로 나가지 않아요. Whisper 모델 자체는 처음 쓸 때 Hugging Face에서 다운로드돼요.',
   'about.free.title': '언제나 <b>무료</b>',
-  'about.free.body': '모든 기능을 돈 한 푼 들이지 않고 쓸 수 있어요. 크레딧은 플레이로 얻으며, 실제 돈으로 사지 않아요.',
+  'about.free.body': '모든 기능을 돈 한 푼 들이지 않고 쓸 수 있어요. 크레딧은 실제 돈으로 사지 않아요.',
   'about.free.forever.title': '영원히 무료',
   'about.free.forever.l1': '플레이로 얻는 수집 카드',
   'about.free.forever.l2': '매일 받는 무료 카드 팩',

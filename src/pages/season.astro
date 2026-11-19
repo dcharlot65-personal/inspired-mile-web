@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { XP_RATES } from '../lib/seasons';
+import { ECONOMY_LIVE } from '../lib/economy-live';
 // Every sentence on this page is a key in src/i18n/pages/season (and "shared"); the
 // English written in the markup is what a reader sees before the script has run.
 // Icons as character references, as this page has always written them: one of them carries an invisible variation selector.
@@ -25,9 +26,16 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
           <span class="text-gradient" data-i18n="season.title">Season Pass</span>
         </h1>
-        <p class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="season.intro">
-          Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.
-        </p>
+        <!-- Play earns XP only once something pays it (src/lib/economy-live.ts); until then the page says so and lists no rates. -->
+        {ECONOMY_LIVE ? (
+          <p class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="season.intro">
+            Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.
+          </p>
+        ) : (
+          <p id="season-no-xp" class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="season.introNow">
+            Each level of the Season Pass unlocks cards, credits or titles. In this version of the game, play earns no XP.
+          </p>
+        )}
       </div>
 
       <!-- Season Progress Bar -->
@@ -53,6 +61,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
       </div>
 
       <!-- XP Rates -->
+      {ECONOMY_LIVE && (
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
         {rates.map((r) => (
           <div class="card-glass p-4 rounded-xl text-center">
@@ -62,6 +71,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
           </div>
         ))}
       </div>
+      )}
 
       <!-- Reward Track -->
       <h2 class="text-xl font-display font-bold text-obsidian-200 mb-4" data-i18n="season.track">Reward track</h2>

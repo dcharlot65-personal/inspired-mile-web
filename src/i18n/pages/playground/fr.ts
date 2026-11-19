@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Paquet épique",
   'pg.odds.epicLine': "5 cartes · 400 crédits",
   'pg.odds.epicNote': "1 carte épique garantie",
-  'pg.odds.note': "Tous les paquets s'achètent avec des crédits gagnés en jouant. Aucun achat en argent réel. Chaque carte est tirée indépendamment.",
+  'pg.odds.note': 'Aucun achat en argent réel. Chaque carte est tirée indépendamment.',
   'pg.odds.moreBefore': "Pour en savoir plus, consultez nos",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Remportez des duels de strophes pour gagner des cartes',

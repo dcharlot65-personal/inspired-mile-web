@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'ซีซัน {n}',
   'season.title': 'ซีซันพาส',
   'season.intro': 'เล่นการประชัน ควิซ และภารกิจท้าทายเพื่อรับ XP ทุกระดับใหม่จะปลดล็อกการ์ด เครดิต และฉายา',
+  'season.introNow': 'ทุกระดับของซีซันพาสจะปลดล็อกการ์ด เครดิต หรือฉายา ในเกมเวอร์ชันนี้ เล่นแล้วจะไม่ได้รับ XP',
   'season.loading': 'กำลังโหลด…',
   'season.level': 'ระดับ',
   'season.xp': '{n} XP',

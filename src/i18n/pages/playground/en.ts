@@ -40,7 +40,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': 'Epic Pack',
   'pg.odds.epicLine': '5 cards · 400 Credits',
   'pg.odds.epicNote': '1 Epic guaranteed',
-  'pg.odds.note': 'All packs use Credits earned through gameplay. No real money purchases. Each card draw is independent.',
+  'pg.odds.note': 'No real money purchases. Each card draw is independent.',
   'pg.odds.moreBefore': 'For more details, see our',
   'pg.odds.moreAfter': '.',
 

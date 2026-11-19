@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Paket epik",
   'pg.odds.epicLine': "5 kartu · 400 kredit",
   'pg.odds.epicNote': "1 kartu epik dijamin",
-  'pg.odds.note': "Semua paket dibeli dengan kredit yang diperoleh dari bermain. Tidak ada pembelian dengan uang sungguhan. Setiap kartu diundi secara terpisah.",
+  'pg.odds.note': 'Tidak ada pembelian dengan uang sungguhan. Setiap kartu diundi secara terpisah.',
   'pg.odds.moreBefore': "Untuk keterangan lebih lanjut, lihat",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Menangkan duel syair untuk mendapatkan kartu',

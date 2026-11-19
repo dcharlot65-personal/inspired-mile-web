@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'सीज़न {n}',
   'season.title': 'सीज़न पास',
   'season.intro': 'XP कमाने के लिए युद्ध, प्रश्नोत्तरी और चुनौतियाँ खेलें। हर नया स्तर कार्ड, क्रेडिट और उपाधियाँ खोलता है।',
+  'season.introNow': 'सीज़न पास का हर स्तर कार्ड, क्रेडिट या उपाधियाँ खोलता है। खेल के इस संस्करण में खेलने से XP नहीं मिलता।',
   'season.loading': 'लोड हो रहा है…',
   'season.level': 'स्तर',
   'season.xp': '{n} XP',

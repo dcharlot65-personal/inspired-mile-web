@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'about.tech.speech.title': 'الكلام على الجهاز',
   'about.tech.speech.body': 'ألقِ أبياتك فيحوّلها Whisper إلى نص داخل متصفحك. التسجيل لا يغادر جهازك أبدًا. أما نموذج Whisper نفسه فيُنزَّل من Hugging Face في أول مرة تستخدمه فيها.',
   'about.free.title': 'اللعب <b>مجاني دائمًا</b>',
-  'about.free.body': 'كل الميزات متاحة دون أن تنفق قرشًا واحدًا. الأرصدة تُكسَب باللعب ولا تُشترى بمال حقيقي أبدًا.',
+  'about.free.body': 'كل الميزات متاحة دون أن تنفق قرشًا واحدًا. الأرصدة لا تُشترى بمال حقيقي أبدًا.',
   'about.free.forever.title': 'مجاني إلى الأبد',
   'about.free.forever.l1': 'بطاقات قابلة للجمع تكسبها باللعب',
   'about.free.forever.l2': 'حزم بطاقات مجانية كل يوم',

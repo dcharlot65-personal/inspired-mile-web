@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
+import { ECONOMY_LIVE } from '../lib/economy-live';
 ---
 
 <BaseLayout title="Playground" description="Earn digital cards through mini-games, trivia, challenges, and more. Build your Shakespeare collection.">
@@ -120,6 +121,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
                 </div>
               </div>
             </div>
+            {/* The packs sold for credits, listed only while something sells them: in this build nothing does
+                 (src/lib/economy-live.ts). The starter and daily packs above are free and draw at the rates above. */}
+            {ECONOMY_LIVE && (
             <div>
               <h4 class="text-xs font-semibold text-obsidian-300 mb-2" data-i18n="pg.odds.tiers">Pack Tiers (purchased with Credits)</h4>
               <div class="grid sm:grid-cols-3 gap-2">
@@ -141,7 +145,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               </div>
             </div>
             <p class="text-[10px] text-obsidian-600">
-              <span data-i18n="pg.odds.note">All packs use Credits earned through gameplay. No real money purchases. Each card draw is independent.</span>
+              <span data-i18n="pg.odds.note">No real money purchases. Each card draw is independent.</span>
               <span data-i18n="pg.odds.moreBefore">For more details, see our</span> <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms">Terms of Service</a><span data-i18n="pg.odds.moreAfter">.</span>
             </p>
           </div>

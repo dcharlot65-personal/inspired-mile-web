@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "エピックパック",
   'pg.odds.epicLine': "カード5枚 · 400クレジット",
   'pg.odds.epicNote': "エピック1枚確定",
-  'pg.odds.note': "パックはすべて、ゲームで獲得したクレジットで購入します。現金での購入はありません。カードは1枚ずつ独立して抽選されます。",
+  'pg.odds.note': '現金での購入はありません。カードは1枚ずつ独立して抽選されます。',
   'pg.odds.moreBefore': "詳しくは",
   'pg.odds.moreAfter': "をご覧ください。",
   'pg.battle.sub': '詩の決闘に勝ってカードを獲得',

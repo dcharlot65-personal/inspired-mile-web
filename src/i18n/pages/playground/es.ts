@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "Sobre épico",
   'pg.odds.epicLine': "5 cartas · 400 créditos",
   'pg.odds.epicNote': "1 carta épica garantizada",
-  'pg.odds.note': "Todos los sobres se compran con créditos ganados jugando. No hay compras con dinero real. Cada carta se sortea de forma independiente.",
+  'pg.odds.note': 'No hay compras con dinero real. Cada carta se sortea de forma independiente.',
   'pg.odds.moreBefore': "Para más detalles, consulta nuestros",
   'pg.odds.moreAfter': ".",
   'pg.battle.sub': 'Gana duelos de estrofas para conseguir cartas',

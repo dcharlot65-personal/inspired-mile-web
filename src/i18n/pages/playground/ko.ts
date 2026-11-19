@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "영웅 팩",
   'pg.odds.epicLine': "카드 5장 · 400 크레딧",
   'pg.odds.epicNote': "영웅 카드 1장 확정",
-  'pg.odds.note': "모든 팩은 게임에서 얻은 크레딧으로 구매해요. 실제 돈으로는 구매할 수 없어요. 카드는 한 장씩 독립적으로 뽑혀요.",
+  'pg.odds.note': '실제 돈으로는 구매할 수 없어요. 카드는 한 장씩 독립적으로 뽑혀요.',
   'pg.odds.moreBefore': "자세한 내용은",
   'pg.odds.moreAfter': "을 확인하세요.",
   'pg.battle.sub': '시 결투에서 이겨 카드를 얻으세요',

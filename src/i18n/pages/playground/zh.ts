@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'pg.odds.epic': "史诗卡包",
   'pg.odds.epicLine': "5 张卡牌 · 400 点数",
   'pg.odds.epicNote': "必得 1 张史诗卡牌",
-  'pg.odds.note': "所有卡包均使用游戏中获得的点数购买，不涉及真实货币。每张卡牌的抽取相互独立。",
+  'pg.odds.note': '不涉及真实货币购买。每张卡牌的抽取相互独立。',
   'pg.odds.moreBefore': "详情请参阅我们的",
   'pg.odds.moreAfter': "。",
   'pg.battle.sub': '赢得诗歌对决，获取卡牌',

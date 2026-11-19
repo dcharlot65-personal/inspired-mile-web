@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'シーズン{n}',
   'season.title': 'シーズンパス',
   'season.intro': 'バトル、クイズ、チャレンジをプレイしてXPを獲得しましょう。レベルが上がるたびに、カード、クレジット、称号が解除されます。',
+  'season.introNow': 'シーズンパスの各レベルで、カード、クレジット、称号のいずれかが解除されます。このバージョンのゲームでは、プレイしてもXPは獲得できません。',
   'season.loading': '読み込み中…',
   'season.level': 'レベル',
   'season.xp': '{n} XP',
