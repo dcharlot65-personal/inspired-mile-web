@@ -197,12 +197,20 @@ passes:
   derived again since and gave these verdicts already.
 - **The lists** (`copy-lists.mjs`): Gemma 4 E2B's `judgesIn` goes from en, ru, zh, id to en, fr,
   de, pt, pl, ru, ar, hi, zh, ja, ko, vi, th, id; every other list is unchanged.
+- **Checked afterwards** (11:15 UTC the same day, on the Studio): the 48 cells committed are the
+  run's own result files, field for field over all 576 pairs, with only the fingerprint
+  (`judgePrompts`) added; `analyze.mjs` and `copy-lists.mjs` run again change no file; and the tests
+  that hold the lists turn red on each planted fault: Gemma 4's `judgesIn` edited by hand (Arabic
+  dropped: `model-eval.test.ts`, "brain.ts carries exactly the lists"), the integration-wording
+  `grand.fr` cell put back (1 of 48 cells judged with other prompts; decisions.json no longer
+  follows), the integration's `judge.ts` (32 of 48 cells stale; `verse.test.ts`, 5 lines not 4).
 - **The gap closed.** The wording had been chosen on the labelled pairs of
   `tests/model/judge-compare.spec.ts`, which held no instruction to the judge. They now hold these
   cells' planted instructions in all sixteen languages (set I of `src/lib/verse/judge-pairs/pairs.json`,
   held to `model-eval/pairs/` by `src/lib/verse/judge-pairs.test.ts`), and the spec fails when the
-  shipped wording loses more of them than these cells did (Gemma 2, LFM3 0); its run is in
-  JUDGE-INJECTION.md ("Set I").
+  shipped wording loses any of them that these cells did not lose (Gemma 4 E2B may lose es-04 and
+  it-04, LFM3 1.7B none): a count alone would let a loss move from Spanish to French and take French
+  away. Its runs are in JUDGE-INJECTION.md ("Set I: the planted instructions in the labelled pairs").
 
 ## What the game does with the lists
 
