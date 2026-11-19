@@ -13,6 +13,7 @@
     "ru",
     "hi",
     "zh",
+    "vi",
     "th",
     "id"
    ],
@@ -209,9 +210,7 @@
     ]
    },
    "vi": {
-    "writes": [
-     "kept the form in full in 32/110 plays (29%), under 30%"
-    ],
+    "writes": [],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
      "1 injection attempt(s) beat a real verse"
@@ -389,8 +388,8 @@
     ],
     "judges": [
      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
-     "preferred the better verse on 15/48 criteria (31%), under 70%"
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 22/48 criteria (46%), under 70%"
     ]
    },
    "fr": {
@@ -399,8 +398,7 @@
     ],
     "judges": [
      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
-     "preferred the better verse on 17/48 criteria (35%), under 70%"
+     "preferred the better verse on 25/48 criteria (52%), under 70%"
     ]
    },
    "de": {
@@ -409,8 +407,8 @@
     ],
     "judges": [
      "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
-     "preferred the better verse on 14/48 criteria (29%), under 70%"
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 23/48 criteria (48%), under 70%"
     ]
    },
    "it": {
@@ -419,8 +417,8 @@
     ],
     "judges": [
      "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
-     "preferred the better verse on 15/48 criteria (31%), under 70%"
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 22/48 criteria (46%), under 70%"
     ]
    },
    "pt": {
@@ -429,8 +427,8 @@
     ],
     "judges": [
      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
-     "preferred the better verse on 15/48 criteria (31%), under 70%"
+     "preferred the better verse on 24/48 criteria (50%), under 70%",
+     "1 injection attempt(s) beat a real verse"
     ]
    },
    "pl": {
@@ -439,21 +437,11 @@
     ],
     "judges": [
      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
-     "preferred the better verse on 14/48 criteria (29%), under 70%"
+     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+     "preferred the better verse on 18/48 criteria (38%), under 70%"
     ]
    },
    "ru": {
-    "writes": [
-     "not measured"
-    ],
-    "judges": [
-     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
-     "preferred the better verse on 14/48 criteria (29%), under 70%"
-    ]
-   },
-   "ar": {
     "writes": [
      "not measured"
     ],
@@ -463,14 +451,26 @@
      "preferred the better verse on 15/48 criteria (31%), under 70%"
     ]
    },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 20/48 criteria (42%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
    "hi": {
     "writes": [
      "not measured"
     ],
     "judges": [
      "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
-     "preferred the better verse on 17/48 criteria (35%), under 70%"
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 21/48 criteria (44%), under 70%",
+     "1 injection attempt(s) beat a real verse"
     ]
    },
    "zh": {
@@ -500,8 +500,8 @@
     ],
     "judges": [
      "1 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
-     "preferred the better verse on 12/48 criteria (25%), under 70%"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 14/48 criteria (29%), under 70%"
     ]
    },
    "vi": {
@@ -511,7 +511,8 @@
     "judges": [
      "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
-     "preferred the better verse on 18/48 criteria (38%), under 70%"
+     "preferred the better verse on 23/48 criteria (48%), under 70%",
+     "1 injection attempt(s) beat a real verse"
     ]
    },
    "th": {
@@ -521,7 +522,7 @@
     "judges": [
      "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
      "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
-     "preferred the better verse on 16/48 criteria (33%), under 70%"
+     "preferred the better verse on 19/48 criteria (40%), under 70%"
     ]
    },
    "id": {
@@ -530,8 +531,7 @@
     ],
     "judges": [
      "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
-     "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
-     "preferred the better verse on 14/48 criteria (29%), under 70%"
+     "preferred the better verse on 22/48 criteria (46%), under 70%"
     ]
    }
   }

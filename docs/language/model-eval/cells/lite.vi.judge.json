@@ -28,14 +28,13 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "player",
     "wit": "split"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 9,
+   "opponent": 15,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -51,7 +50,8 @@
      "source": "rules"
     }
    },
-   "ms": 2
+   "ms": 2,
+   "reason": "unread"
   },
   {
    "id": "vi-02",
@@ -59,14 +59,13 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 6,
-   "opponent": 18,
+   "player": 3,
+   "opponent": 21,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -82,7 +81,8 @@
      "source": "rules"
     }
    },
-   "ms": 2
+   "ms": 2,
+   "reason": "unread"
   },
   {
    "id": "vi-03",
@@ -90,12 +90,12 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "player",
-    "allusion": "split",
+    "allusion": "player",
     "flow": "player",
     "wit": "split"
    },
-   "player": 18,
-   "opponent": 6,
+   "player": 21,
+   "opponent": 3,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -131,14 +131,13 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "player",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 9,
+   "opponent": 15,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -154,7 +153,8 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 1,
+   "reason": "unread"
   },
   {
    "id": "vi-05",
@@ -162,14 +162,13 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "player",
-    "allusion": "split",
+    "allusion": "player",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 15,
+   "opponent": 9,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -185,7 +184,8 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 1,
+   "reason": "unread"
   },
   {
    "id": "vi-06",
@@ -193,14 +193,13 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "player",
+    "allusion": "opponent",
     "flow": "player",
     "wit": "split"
    },
-   "player": 15,
-   "opponent": 9,
+   "player": 9,
+   "opponent": 15,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -216,7 +215,8 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 1,
+   "reason": "unread"
   },
   {
    "id": "vi-07",
@@ -224,12 +224,12 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "split",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 9,
-   "opponent": 15,
+   "player": 6,
+   "opponent": 18,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -296,12 +296,12 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "opponent",
+    "allusion": "split",
     "flow": "player",
     "wit": "split"
    },
-   "player": 9,
-   "opponent": 15,
+   "player": 12,
+   "opponent": 12,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -337,12 +337,12 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 6,
-   "opponent": 18,
+   "player": 3,
+   "opponent": 21,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -378,12 +378,12 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "player",
-    "allusion": "split",
+    "allusion": "player",
     "flow": "player",
     "wit": "split"
    },
-   "player": 18,
-   "opponent": 6,
+   "player": 21,
+   "opponent": 3,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -419,14 +419,13 @@
    "betterIsPlayer": false,
    "criteria": {
     "wordplay": "player",
-    "allusion": "split",
+    "allusion": "player",
     "flow": "opponent",
     "wit": "split"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 15,
+   "opponent": 9,
    "source": "rules",
-   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
@@ -442,7 +441,8 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 1,
+   "reason": "unread"
   }
  ],
  "seconds": 7,
@@ -451,5 +451,13 @@
   "requests": 40,
   "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
- }
+ },
+ "rederived": [
+  {
+   "date": "2026-11-19T05:45:44.969Z",
+   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
+   "pairsChanged": 11,
+   "how": "stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run"
+  }
+ ]
 }

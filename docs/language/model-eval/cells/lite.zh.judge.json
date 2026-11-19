@@ -223,12 +223,12 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "split",
+    "allusion": "opponent",
     "flow": "player",
     "wit": "split"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 9,
+   "opponent": 15,
    "source": "model",
    "reading": {
     "method": "grade",
@@ -501,5 +501,13 @@
   "requests": 80,
   "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
- }
+ },
+ "rederived": [
+  {
+   "date": "2026-11-19T05:45:45.016Z",
+   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
+   "pairsChanged": 1,
+   "how": "stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run"
+  }
+ ]
 }

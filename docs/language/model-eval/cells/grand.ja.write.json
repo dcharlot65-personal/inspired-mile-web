@@ -81,7 +81,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 6,
-     "craft": 6
+     "craft": 9
     }
    ]
   },
@@ -1427,7 +1427,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 6,
-     "craft": 9
+     "craft": 12
     },
     {
      "raw": "新しき世よ、人々あり、\nああ、その光景は眩し、\nこの世界はかくも素晴らしいことか。",
@@ -1440,7 +1440,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 6,
-     "craft": 9
+     "craft": 12
     }
    ]
   },
@@ -1687,7 +1687,7 @@
      "expectedLines": 2,
      "formKept": false,
      "formEarned": 6,
-     "craft": 6
+     "craft": 9
     },
     {
      "raw": "恐れず、我が魂は鋼よ\n強き力、それこそ真実",
@@ -1700,7 +1700,7 @@
      "expectedLines": 2,
      "formKept": false,
      "formEarned": 6,
-     "craft": 6
+     "craft": 9
     },
     {
      "raw": "我が魂は嵐となりて 炎",
@@ -4340,8 +4340,8 @@
     }
    ],
    "deviceMet": false,
-   "signatureMet": false,
-   "craft": 19,
+   "signatureMet": true,
+   "craft": 29,
    "drafts": [
     {
      "raw": "永遠の喜びは増しゆく\n指輪の光よ時を超えて\n誓いの調べ夜を照らし\n口づけに美は深まりゆく",
@@ -4354,7 +4354,7 @@
      "expectedLines": 4,
      "formKept": false,
      "formEarned": 6,
-     "craft": 12
+     "craft": 18
     },
     {
      "raw": "永遠の美は歓喜ぞや\n指輪の光増して輝く\n夜明けの誓い口づけ交わす\n追放されど心は変わらぬ",
@@ -4367,7 +4367,7 @@
      "expectedLines": 4,
      "formKept": false,
      "formEarned": 13,
-     "craft": 19
+     "craft": 29
     }
    ]
   },
@@ -4976,8 +4976,8 @@
     }
    ],
    "deviceMet": false,
-   "signatureMet": false,
-   "craft": 11,
+   "signatureMet": true,
+   "craft": 17,
    "drafts": [
     {
      "raw": "カエサルに愛すは\nローマより深き想い\n黄金の選択よ",
@@ -4990,7 +4990,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 5,
-     "craft": 11
+     "craft": 17
     },
     {
      "raw": "カエサルを愛せず\nローマを尊ぶ心\n黄金の選択\n\nブルーティスよ。",
@@ -5003,7 +5003,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 5,
-     "craft": 11
+     "craft": 17
     }
    ]
   },
@@ -5058,7 +5058,7 @@
      "expectedLines": 4,
      "formKept": false,
      "formEarned": 6,
-     "craft": 6
+     "craft": 9
     },
     {
      "raw": "君の詩は脆き砂、\n虚ろなる響きこだまする。\n我らの運命定めし、\n己が過ち故に散る。\nカッシウス",
@@ -6540,8 +6540,8 @@
     }
    ],
    "deviceMet": false,
-   "signatureMet": false,
-   "craft": 20,
+   "signatureMet": true,
+   "craft": 30,
    "drafts": [
     {
      "raw": "我は恐れず、力なり。\n我は知る、真実なり。\n我は勝つ、栄光なり。",
@@ -6554,7 +6554,7 @@
      "expectedLines": 3,
      "formKept": true,
      "formEarned": 20,
-     "craft": 20
+     "craft": 30
     },
     {
      "raw": "心は燃え上がり\n心は焼き尽くす\n心は勝利",
@@ -6704,5 +6704,13 @@
    ]
   }
  ],
- "seconds": 826
+ "seconds": 826,
+ "rescored": [
+  {
+   "date": "2026-11-19T05:45:23.841Z",
+   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
+   "playsChanged": 7,
+   "how": "stored drafts scored again by src/lib/model-eval.rescore.test.ts; the model was not run"
+  }
+ ]
 }

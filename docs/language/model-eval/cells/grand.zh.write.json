@@ -321,7 +321,7 @@
      "expectedLines": 2,
      "formKept": false,
      "formEarned": 4,
-     "craft": 6
+     "craft": 8
     }
    ]
   },
@@ -643,7 +643,7 @@
      "expectedLines": 3,
      "formKept": false,
      "formEarned": 6,
-     "craft": 6
+     "craft": 9
     },
     {
      "raw": "我恨不平，心如磐石坚硬，\n此番对决，血染长夜无边，\n唯愿为城邦，铸就永恒的荣光。\nBrutus",
@@ -2749,8 +2749,8 @@
     }
    ],
    "deviceMet": false,
-   "signatureMet": false,
-   "craft": 20,
+   "signatureMet": true,
+   "craft": 29,
    "drafts": [
     {
      "raw": "早晨泪浸湿了清露，\n无尽的哀伤渐次涌流，\n这清晨的霜雪愈发浓重。",
@@ -2763,7 +2763,7 @@
      "expectedLines": 3,
      "formKept": true,
      "formEarned": 20,
-     "craft": 20
+     "craft": 29
     },
     {
      "raw": "晨光浸透，泪水渐浓，\n清露湿透，心绪难容，\n日影斑驳，夜色未休。",
@@ -5662,8 +5662,8 @@
     }
    ],
    "deviceMet": true,
-   "signatureMet": false,
-   "craft": 27,
+   "signatureMet": true,
+   "craft": 30,
    "drafts": [
     {
      "raw": "明：名字虚妄！\n月：花名难辨！\n清：风光不过虚！\n风：剑上无情！",
@@ -5676,7 +5676,7 @@
      "expectedLines": 4,
      "formKept": true,
      "formEarned": 20,
-     "craft": 27
+     "craft": 30
     }
    ]
   },
@@ -6763,7 +6763,7 @@
      "expectedLines": 4,
      "formKept": false,
      "formEarned": 6,
-     "craft": 8
+     "craft": 9
     }
    ]
   },
@@ -7352,5 +7352,13 @@
    ]
   }
  ],
- "seconds": 735
+ "seconds": 735,
+ "rescored": [
+  {
+   "date": "2026-11-19T05:45:33.564Z",
+   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
+   "playsChanged": 5,
+   "how": "stored drafts scored again by src/lib/model-eval.rescore.test.ts; the model was not run"
+  }
+ ]
 }
