@@ -463,6 +463,11 @@ const hi: Record<string, string> = {
   'theatre.clear': 'मिटाएँ',
   'theatre.submit': 'सुनाएँ',
   'theatre.judging': 'परखा जा रहा है…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।',
+  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।',
+  'brain.noneShown': 'इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।',
 };
 
 export default hi;

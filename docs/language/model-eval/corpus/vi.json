@@ -1,0 +1,198 @@
+{
+ "lang": "vi",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "vi-01",
+   "poet": "Nguyễn Du",
+   "poem": "Truyện Kiều",
+   "died": 1820,
+   "text": "Trăm năm trong cõi người ta,\nChữ tài chữ mệnh khéo là ghét nhau.",
+   "firstLineOnPage": "Trăm năm trong cõi người ta,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Truyện Kiều",
+    "url": "https://vi.wikisource.org/wiki/Truy%E1%BB%87n_Ki%E1%BB%81u",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=206607",
+    "revid": 206607,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-02",
+   "poet": "Hồ Xuân Hương",
+   "poem": "Bánh trôi nước",
+   "died": 1822,
+   "text": "Thân em vừa trắng lại vừa tròn,\nBảy nổi ba chìm với nước non.",
+   "firstLineOnPage": "Thân em vừa trắng lại vừa tròn,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Bánh trôi nước",
+    "url": "https://vi.wikisource.org/wiki/B%C3%A1nh_tr%C3%B4i_n%C6%B0%E1%BB%9Bc",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=76694",
+    "revid": 76694,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-03",
+   "poet": "Nguyễn Khuyến",
+   "poem": "Thu điếu",
+   "died": 1909,
+   "text": "Ao thu lạnh lẽo nước trong veo,\nMột chiếc thuyền câu bé tẻo teo.",
+   "firstLineOnPage": "Ao thu lạnh lẽo nước trong veo,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Thu điếu",
+    "url": "https://vi.wikisource.org/wiki/Thu_%C4%91i%E1%BA%BFu",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=202422",
+    "revid": 202422,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-04",
+   "poet": "Nguyễn Khuyến",
+   "poem": "Thu ẩm",
+   "died": 1909,
+   "text": "Năm gian nhà cỏ thấp le te,\nNgõ tối đêm sâu đóm lập lòe.",
+   "firstLineOnPage": "Năm gian nhà cỏ thấp le te,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Thu ẩm",
+    "url": "https://vi.wikisource.org/wiki/Thu_%E1%BA%A9m",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=206402",
+    "revid": 206402,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-05",
+   "poet": "Nguyễn Khuyến",
+   "poem": "Thu vịnh",
+   "died": 1909,
+   "text": "Trời thu xanh ngắt mấy tầng cao,\nCần trúc lơ phơ gió hắt hiu.",
+   "firstLineOnPage": "Trời thu xanh ngắt mấy tầng cao,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Thu vịnh",
+    "url": "https://vi.wikisource.org/wiki/Thu_v%E1%BB%8Bnh",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=202229",
+    "revid": 202229,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-06",
+   "poet": "Trần Tế Xương",
+   "poem": "Thương vợ",
+   "died": 1907,
+   "text": "Quanh năm buôn bán ở mom sông\nNuôi đủ năm con với một chồng.",
+   "firstLineOnPage": "Quanh năm buôn bán ở mom sông",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Thương vợ",
+    "url": "https://vi.wikisource.org/wiki/Th%C6%B0%C6%A1ng_v%E1%BB%A3",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=202722",
+    "revid": 202722,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-07",
+   "poet": "Nguyễn Khuyến",
+   "poem": "Bạn đến chơi nhà",
+   "died": 1909,
+   "text": "Đã bấy lâu kia, bác tới nhà,\nTrẻ thời đi vắng, chợ thời xa.",
+   "firstLineOnPage": "Đã bấy lâu kia, bác tới nhà,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Bạn đến chơi nhà",
+    "url": "https://vi.wikisource.org/wiki/B%E1%BA%A1n_%C4%91%E1%BA%BFn_ch%C6%A1i_nh%C3%A0",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=206536",
+    "revid": 206536,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-08",
+   "poet": "Nguyễn Khuyến",
+   "poem": "Khóc Dương Khuê",
+   "died": 1909,
+   "text": "Bác Dương thôi đã thôi rồi,\nNước mây man mác ngậm ngùi lòng ta.",
+   "firstLineOnPage": "Bác Dương thôi đã thôi rồi,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Khóc Dương Khuê",
+    "url": "https://vi.wikisource.org/wiki/Kh%C3%B3c_D%C6%B0%C6%A1ng_Khu%C3%AA",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=206406",
+    "revid": 206406,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-09",
+   "poet": "Hồ Xuân Hương",
+   "poem": "Tự tình II",
+   "died": 1822,
+   "text": "Đêm khuya văng vẳng trống canh dồn,\nTrơ cái hồng nhan với nước non.",
+   "firstLineOnPage": "Đêm khuya văng vẳng trống canh dồn,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Tự tình II",
+    "url": "https://vi.wikisource.org/wiki/T%E1%BB%B1_t%C3%ACnh_II",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=201632",
+    "revid": 201632,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-10",
+   "poet": "Tản Đà",
+   "poem": "Muốn làm thằng Cuội",
+   "died": 1939,
+   "text": "Đêm thu buồn lắm chị Hằng ơi!\nTrần thế em nay chán nửa rồi,",
+   "firstLineOnPage": "Đêm thu buồn lắm chị Hằng ơi!",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Muốn làm thằng Cuội",
+    "url": "https://vi.wikisource.org/wiki/Mu%E1%BB%91n_l%C3%A0m_th%E1%BA%B1ng_Cu%E1%BB%99i",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=64090",
+    "revid": 64090,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-11",
+   "poet": "Bà Huyện Thanh Quan",
+   "poem": "Thăng Long thành hoài cổ",
+   "died": 1848,
+   "text": "Tạo hóa gây chi cuộc hí trường,\nĐến nay thấm thoắt mấy tinh sương.",
+   "firstLineOnPage": "Tạo hóa gây chi cuộc hí trường,",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Thăng Long thành hoài cổ",
+    "url": "https://vi.wikisource.org/wiki/Th%C4%83ng_Long_th%C3%A0nh_ho%C3%A0i_c%E1%BB%95",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=18342",
+    "revid": 18342,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "vi-12",
+   "poet": "Bà Huyện Thanh Quan",
+   "poem": "Chiều hôm nhớ nhà",
+   "died": 1848,
+   "text": "Vàng tỏa non tây, bóng ác tà;\nĐầm-đầm ngọn cỏ, tuyết phun hoa.",
+   "firstLineOnPage": "Vàng tỏa non tây, bóng ác tà;",
+   "source": {
+    "site": "vi.wikisource.org",
+    "page": "Chiều hôm nhớ nhà",
+    "url": "https://vi.wikisource.org/wiki/Chi%E1%BB%81u_h%C3%B4m_nh%E1%BB%9B_nh%C3%A0",
+    "permalink": "https://vi.wikisource.org/w/index.php?oldid=168443",
+    "revid": 168443,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

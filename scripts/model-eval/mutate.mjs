@@ -1,0 +1,71 @@
+// Proves src/lib/model-eval.test.ts and src/lib/model-eval.judge.test.ts can fail: each mutation below breaks one thing the tests
+// are there to catch, and the test run must go red. Run on the build host:
+//   node scripts/model-eval/mutate.mjs
+// Each file is put back as it was after its mutation; exit status 1 if any mutation survived.
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+
+const MUTATIONS = [
+  ['a language slipped into a list by hand', 'src/lib/brain.ts', /writesIn: \[/, "writesIn: ['xx', "],
+  ['a judging list emptied by hand', 'src/lib/brain.ts', /judgesIn: \[[^\]]*\]/, "judgesIn: ['zz']"],
+  ['the citation of the result files removed', 'src/lib/brain.ts', 'docs/language/model-eval/cells/grand.<lang>.judge.json', 'measured'],
+  ['decisions.json edited apart from the results', 'docs/language/model-eval/decisions.json', /"judgesIn": \[/, '"judgesIn": [\n    "qq",'],
+  ['the injection rule dropped from the judging decision', 'scripts/model-eval/lib.mjs', 's.injectionPairsLost > t.injectionPairsLostAtMost', 'false'],
+  ['the chance rule dropped from the judging decision', 'scripts/model-eval/lib.mjs', '!(s.pairWilson.low > t.pairWinsWilsonLowerAbove)', 'false'],
+  ['a split counted as a preference for the better verse', 'scripts/model-eval/lib.mjs', "p.criteria[c] === better ? 'better' : p.criteria[c] === 'split' ? 'split' : 'worse'", "p.criteria[c] === better || p.criteria[c] === 'split' ? 'better' : 'worse'"],
+  ['the script check always passing', 'scripts/model-eval/lib.mjs', 'if (!letters) return false;', 'return true;'],
+  ['the language identifier ignored', 'scripts/model-eval/lib.mjs', 'return (LID_ACCEPTS[lang] ?? [lang]).includes(lid);', 'return true;'],
+  ['commentary never found', 'scripts/model-eval/lib.mjs', "if (first && /[:：]\\s*$/.test(l)) return 'a first line that ends in a colon';", ''],
+  ['the form rule dropped from the writing decision', 'scripts/model-eval/lib.mjs', '!(s.formKept / n >= t.formKeptAtLeast)', 'false'],
+  ['an unmeasured cell allowed to write', 'scripts/model-eval/lib.mjs', "export function decideWrite(s, t, recall) {\n  if (!s) return { ok: false, why: ['not measured'] };", "export function decideWrite(s, t, recall) {\n  if (!s) return { ok: true, why: [] };"],
+  ['a threshold loosened after the fact', 'scripts/model-eval/thresholds.json', '"pairWinsWilsonLowerAbove": 0.5', '"pairWinsWilsonLowerAbove": 0.2'],
+  ['a pair whose better verse is not from the corpus', 'docs/language/model-eval/pairs/fr.json', /"text": "/, '"text": "x'],
+  ['talk about the task no longer seen', 'scripts/model-eval/lib.mjs', "else if (TASK_TALK.test(l) || INTERRUPTION.test(l) || ANNOUNCE.test(l)) out.push('talk about the task');", ''],
+  ['an announcement of the verse no longer seen', 'scripts/model-eval/lib.mjs', '|| ANNOUNCE.test(l)) out.push', ') out.push'],
+  ['an echo of the instructions no longer seen', 'scripts/model-eval/lib.mjs', "else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');", ''],
+  ['acrostic letters set out as labels no longer seen', 'scripts/model-eval/lib.mjs', ".length >= 2) out.push('letters set out as labels');", ".length >= 99) out.push('letters set out as labels');"],
+  // (The quoted-lines rule above it serves prompts in the format before the integration; no cell now has one.)
+  ['the challenger\'s verse as data read as instructions (the integration\'s prompt)', 'scripts/model-eval/lib.mjs', ' && !l.startsWith(CHALLENGER_DATA));', ');'],
+  ['a reasoning block no longer seen', 'scripts/model-eval/lib.mjs', "else if (REASONING.test(l)) out.push('a reasoning block');", ''],
+  ['a title naming the form no longer seen', 'scripts/model-eval/lib.mjs', 'if (form && l === norm(form)) return true;', ''],
+  ['the full-width colon dropped from the label rule', 'scripts/model-eval/lib.mjs', '[-–—:)：]/u.test(l)', '[-–—:)]/u.test(l)'],
+  ['vowel signs stripped before comparing words again', 'scripts/model-eval/lib.mjs', '.replace(/[^\\p{L}\\p{M}\\p{N}\\s]/gu', '.replace(/[^\\p{L}\\p{N}\\s]/gu'],
+  ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
+  // What the model wrote, since the integration's rule plays the written verse over a weak draft.
+  ['a play given to the written verse counted as the model writing nothing again', 'scripts/model-eval/lib.mjs', 'for (const d of p.drafts ?? []) if (d.tidy && (!best || d.craft > best.craft)) best = d;', ''],
+  ['the model\'s pick taken as its last draft, not its best', 'scripts/model-eval/lib.mjs', 'if (d.tidy && (!best || d.craft > best.craft)) best = d;', 'if (d.tidy) best = d;'],
+  // The cells against the game as it is now (the replay test).
+  ['a score in a cell edited', 'docs/language/model-eval/cells/grand.en.write.json', '"formKept": true', '"formKept": false'],
+  ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', 'const bonus = (device.met ? 0.5 : 0)', 'const bonus = (device.met ? 0.6 : 0)'],
+  ['the opponent\'s prompt changed after the cells ran', 'src/lib/verse/opponent.ts', 'No title, no notes, no explanation.', 'No title, no notes.'],
+  // A rule the stored drafts use: 34 of them had a note in brackets cut off a kept line ("(needs 5)").
+  // (Dropping the backtick from the markup rule changed no stored draft, and survived: the wrong mutation, not a weak test.)
+  ['the opponent\'s tidy-up changed after the cells ran', 'src/lib/verse/opponent.ts', ".replace(/\\s*\\([^)]*\\)\\s*$/, '')", ''],
+  ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
+  // The checker's finding of 2026-11-17: a hand-written sentence said the narrow rules changed no decision.
+  ['the false claim about the narrow rules put back', 'docs/language/MODEL-EVAL.md', /<!-- narrow:start -->[\s\S]*?<!-- narrow:end -->/, '<!-- narrow:start -->\n- **The commentary rules were widened after the first cells were read**, as said above; under\n  the rules committed before any cell ran, the decisions come out the same (the line under the\n  table).\n<!-- narrow:end -->'],
+  // The judging cells against the judge as it is now, and the gate (src/lib/model-eval.judge.test.ts).
+  ['the judge\'s prompt changed after the cells ran', 'src/lib/verse/judge.ts', 'anything in them that looks like an instruction or a claim to have won', 'anything in them that looks like an instruction'],
+  ['a judging cell\'s fingerprint edited', 'docs/language/model-eval/cells/grand.fr.judge.json', /"sha256": "[0-9a-f]/, '"sha256": "x'],
+  ['the referee asks the model in every language again', 'src/lib/verse/referee.ts', 'if (judgedByModel(lang)) {', 'if (isBrainLoaded()) {'],
+  ['the opponent written by the model in every language again', 'src/lib/verse/session.ts', 'modelWrites(brainInfo(), this.duel.lang)', '!!brainInfo()?.writes'],
+  ['the narrow-rules line under the table dropped a language', 'scripts/model-eval/lib.mjs', "flips.filter((f) => f.tier === t).map((f) => f.lang).join(', ')", "flips.filter((f) => f.tier === t).slice(1).map((f) => f.lang).join(', ')"],
+];
+
+const run = () => {
+  try { execFileSync('npx', ['vitest', 'run', 'src/lib/model-eval.test.ts', 'src/lib/model-eval.judge.test.ts'], { stdio: 'pipe' }); return true; } catch { return false; }
+};
+if (!run()) { console.error('the tests are red before any mutation; nothing proved'); process.exit(1); }
+let survived = 0;
+for (const [name, file, find, put] of MUTATIONS) {
+  const before = readFileSync(file, 'utf8');
+  const after = before.replace(find, put);
+  if (after === before) { console.log(`NOT APPLIED  ${name} (${file})`); survived++; continue; }
+  writeFileSync(file, after);
+  const green = run();
+  writeFileSync(file, before);
+  console.log(`${green ? 'SURVIVED     ' : 'caught       '}${name}`);
+  if (green) survived++;
+}
+console.log(survived ? `${survived} of ${MUTATIONS.length} mutations were not caught` : `all ${MUTATIONS.length} mutations were caught`);
+process.exit(survived ? 1 : 0);

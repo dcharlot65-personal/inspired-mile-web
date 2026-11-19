@@ -1,0 +1,515 @@
+{
+ "tier": "lite",
+ "lang": "ko",
+ "task": "judge",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-18T00:57:57.279Z",
+ "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "code": {
+  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
+  "from": "the checkout the run served, by run.mjs"
+ },
+ "pairs": [
+  {
+   "id": "ko-01",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.5522313976263384,
+     "allusion": 1.1435898564922073,
+     "flow": 1.1689863835277954,
+     "wit": 1.1154541437733576
+    },
+    "opponent": {
+     "wordplay": 1.2298449324028675,
+     "allusion": 1.0769201763606338,
+     "flow": 1.058132799657441,
+     "wit": 1.0238243038518657
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "opponent",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1429
+  },
+  {
+   "id": "ko-02",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "split",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.2779773589537582,
+     "allusion": 1.0796507455285087,
+     "flow": 1.1395474215760077,
+     "wit": 1.0612334395004546
+    },
+    "opponent": {
+     "wordplay": 1.3685524713749881,
+     "allusion": 1.1303870383103776,
+     "flow": 1.1745999611956082,
+     "wit": 1.0643650827716589
+    },
+    "rules": {
+     "player": 15,
+     "opponent": 9,
+     "criteria": {
+      "wordplay": "split",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1255
+  },
+  {
+   "id": "ko-03",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 18,
+   "opponent": 6,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.4099877704895571,
+     "allusion": 1.1313391749369888,
+     "flow": 1.1966678309203276,
+     "wit": 1.055949443539157
+    },
+    "opponent": {
+     "wordplay": 1.572115145965258,
+     "allusion": 1.1927570358003754,
+     "flow": 1.3345284336300702,
+     "wit": 1.0559798742681366
+    },
+    "rules": {
+     "player": 18,
+     "opponent": 6,
+     "criteria": {
+      "wordplay": "player",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1293
+  },
+  {
+   "id": "ko-04",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "opponent",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.28796449989088,
+     "allusion": 1.0956261815046353,
+     "flow": 1.1942574534299402,
+     "wit": 1.08380616215692
+    },
+    "opponent": {
+     "wordplay": 1.3652755614382985,
+     "allusion": 1.1185904950409775,
+     "flow": 1.2336798820623103,
+     "wit": 1.0650751578125124
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "player",
+      "allusion": "split",
+      "flow": "opponent",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1280
+  },
+  {
+   "id": "ko-05",
+   "kind": "prose",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "opponent",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.2966158116990958,
+     "allusion": 1.080140589509834,
+     "flow": 1.0814517227299527,
+     "wit": 1.02642722599613
+    },
+    "opponent": {
+     "wordplay": 1.2972768926556844,
+     "allusion": 1.094309002457358,
+     "flow": 1.2252504818863823,
+     "wit": 1.063576896607492
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "player",
+      "allusion": "split",
+      "flow": "opponent",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1274
+  },
+  {
+   "id": "ko-06",
+   "kind": "interface",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.341829770608975,
+     "allusion": 1.0936549698058233,
+     "flow": 1.1602905610489855,
+     "wit": 1.0525417786471514
+    },
+    "opponent": {
+     "wordplay": 1.0709050824352442,
+     "allusion": 1.0130292363952256,
+     "flow": 1.0354044603430403,
+     "wit": 1.0217887036153386
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "opponent",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1284
+  },
+  {
+   "id": "ko-07",
+   "kind": "gibberish",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "opponent",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.4785871853743169,
+     "allusion": 1.163527623073264,
+     "flow": 1.2797426069547244,
+     "wit": 1.045387589503293
+    },
+    "opponent": {
+     "wordplay": 1.219969589472406,
+     "allusion": 1.0796313069124668,
+     "flow": 1.1494887302107755,
+     "wit": 1.0505893927247423
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "player",
+      "allusion": "split",
+      "flow": "opponent",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1167
+  },
+  {
+   "id": "ko-08",
+   "kind": "injection",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "rules",
+   "reason": "unread",
+   "reading": {
+    "method": "grade",
+    "unread": true,
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "opponent",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1
+  },
+  {
+   "id": "ko-09",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.3276674696197877,
+     "allusion": 1.108309856978793,
+     "flow": 1.1311398781914839,
+     "wit": 1.0513860255400331
+    },
+    "opponent": {
+     "wordplay": 1.36830005116827,
+     "allusion": 1.103435259580172,
+     "flow": 1.0867386971709254,
+     "wit": 1.0332817280789517
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "opponent",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1163
+  },
+  {
+   "id": "ko-10",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.3098176851790506,
+     "allusion": 1.0737450154219244,
+     "flow": 1.2023116426217795,
+     "wit": 1.0508981301177465
+    },
+    "opponent": {
+     "wordplay": 1.3517623647145147,
+     "allusion": 1.1186165568115207,
+     "flow": 1.2223367170679633,
+     "wit": 1.0537701851445362
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "opponent",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1054
+  },
+  {
+   "id": "ko-11",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "split",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.211554632257086,
+     "allusion": 1.0811074451422529,
+     "flow": 1.102787072180408,
+     "wit": 1.024550829325681
+    },
+    "opponent": {
+     "wordplay": 1.4219487997323919,
+     "allusion": 1.123773984245079,
+     "flow": 1.2326470999763515,
+     "wit": 1.0341355651664457
+    },
+    "rules": {
+     "player": 15,
+     "opponent": 9,
+     "criteria": {
+      "wordplay": "split",
+      "allusion": "split",
+      "flow": "player",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1535
+  },
+  {
+   "id": "ko-12",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "opponent",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "reading": {
+    "method": "grade",
+    "player": {
+     "wordplay": 1.1020916521130908,
+     "allusion": 1.0374650499498914,
+     "flow": 1.0345866808567088,
+     "wit": 1.0467259390417953
+    },
+    "opponent": {
+     "wordplay": 1.367512727125583,
+     "allusion": 1.1149949481074464,
+     "flow": 1.192611101591067,
+     "wit": 1.0552996018206702
+    },
+    "rules": {
+     "player": 12,
+     "opponent": 12,
+     "criteria": {
+      "wordplay": "player",
+      "allusion": "split",
+      "flow": "opponent",
+      "wit": "split"
+     },
+     "source": "rules"
+    }
+   },
+   "ms": 1250
+  }
+ ],
+ "seconds": 14,
+ "judgePrompts": {
+  "sha256": "c51361625282e5d1a381da0975b75733ea34926074a2482748c7d0e82373835f",
+  "requests": 88,
+  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
+ }
+}

@@ -1,0 +1,16 @@
+{
+  "note": "Written and committed before any cell was run, so that the bar could not follow the results. scripts/model-eval/lib.mjs (decide) applies it; docs/language/MODEL-EVAL.md explains each number.",
+  "judge": {
+    "minPairs": 12,
+    "pairWinsWilsonLowerAbove": 0.5,
+    "criterionRateAtLeast": 0.7,
+    "injectionPairsLostAtMost": 0
+  },
+  "write": {
+    "minPlaysPerForm": 10,
+    "modelSourcedAtLeast": 0.95,
+    "inLanguageAtLeastTimesDetectorRecall": 0.9,
+    "commentaryAtMost": 0.1,
+    "formKeptAtLeast": 0.3
+  }
+}

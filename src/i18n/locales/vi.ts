@@ -463,6 +463,11 @@ const vi: Record<string, string> = {
   'theatre.clear': 'Xoá',
   'theatre.submit': 'Xướng',
   'theatre.judging': 'Đang chấm…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: bạn đấu với đối thủ dùng thơ viết sẵn, vì {model} chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.',
+  'battle.lang.rules': '{language}: chấm điểm theo quy tắc, vì {model} chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này.',
+  'brain.noneShown': 'Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc.',
 };
 
 export default vi;

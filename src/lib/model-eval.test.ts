@@ -1,0 +1,494 @@
+/**
+ * The measured language lists cannot drift.
+ *
+ * src/lib/brain.ts says in which languages each model writes and judges. Those lists
+ * are not opinions: they follow, by the thresholds in scripts/model-eval/thresholds.json,
+ * from the result files in docs/language/model-eval/cells. These tests fail when
+ * brain.ts stops matching decisions.json, and when decisions.json stops following
+ * from the result files.
+ *
+ * The second half feeds the checkers known-bad input: a checker that cannot fail
+ * proves nothing.
+ */
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { describe, expect, it } from 'vitest';
+import { MODELS, modelJudges, modelsToOffer, modelWrites, usedAnywhere, type Capability } from './brain';
+import { replayPlay, scoredFields, type StoredPlay } from './model-eval-replay';
+import { PACK_LANGS, loadAllPacks } from './verse/packs';
+// @ts-expect-error a plain module, shared with the scripts that run the evaluation
+import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, modelChoice, narrowFlips, narrowLine, narrowNote, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
+
+const DIR = join(process.cwd(), 'docs', 'language', 'model-eval');
+const read = (...p: string[]) => JSON.parse(readFileSync(join(DIR, ...p), 'utf8'));
+const thresholds = JSON.parse(readFileSync(join(process.cwd(), 'scripts', 'model-eval', 'thresholds.json'), 'utf8'));
+const cellFiles = existsSync(join(DIR, 'cells')) ? readdirSync(join(DIR, 'cells')).filter((f) => f.endsWith('.json')) : [];
+const cells = cellFiles.map((f) => read('cells', f));
+const decisions = read('decisions.json');
+const lid = read('lid.json').answers as Record<string, string | null>;
+
+describe('the measured language lists', () => {
+  it('cover the same languages and models as the game', () => {
+    expect([...LANGS]).toEqual([...PACK_LANGS]);
+    expect([...TIERS].sort()).toEqual(Object.keys(MODELS).sort());
+  });
+
+  it('brain.ts carries exactly the lists in decisions.json', () => {
+    for (const tier of TIERS as (keyof typeof MODELS)[]) {
+      expect([...MODELS[tier].writesIn], `${tier} writesIn`).toEqual(decisions.models[tier].writesIn);
+      expect([...MODELS[tier].judgesIn], `${tier} judgesIn`).toEqual(decisions.models[tier].judgesIn);
+    }
+  });
+
+  it('decisions.json follows from the result files and the thresholds', async () => {
+    const packs = await loadAllPacks();
+    const reference: Record<string, string[]> = {};
+    for (const pack of packs) reference[pack.lang] = [...read('corpus', `${pack.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()];
+    const derived = derive(cells, lid, thresholds, reference);
+    expect(derived.models).toEqual(decisions.models);
+  });
+
+  it('a language with no result file is in no list, and a cell file names its own cell', () => {
+    for (const tier of TIERS as (keyof typeof MODELS)[]) {
+      for (const lang of LANGS as string[]) {
+        const has = (task: string) => cellFiles.includes(`${tier}.${lang}.${task}.json`);
+        if (!has('write')) expect(modelWrites(MODELS[tier], lang), `${tier} writes ${lang} unmeasured`).toBe(false);
+        if (!has('judge')) expect(modelJudges(MODELS[tier], lang), `${tier} judges ${lang} unmeasured`).toBe(false);
+      }
+    }
+    for (const f of cellFiles) {
+      const c = read('cells', f);
+      expect(`${c.tier}.${c.lang}.${c.task}.json`).toBe(f);
+      expect(c.model, f).toBe(MODELS[c.tier as keyof typeof MODELS].id);
+      // The judging in a cell is the method the game uses for that model.
+      if (c.task === 'judge') expect(c.judgeMethod, f).toBe(MODELS[c.tier as keyof typeof MODELS].judge);
+    }
+  });
+
+  it('brain.ts cites the result files beside each list', () => {
+    const src = readFileSync(join(process.cwd(), 'src', 'lib', 'brain.ts'), 'utf8');
+    for (const tier of TIERS as string[]) {
+      expect(src).toContain(`docs/language/model-eval/cells/${tier}.<lang>.write.json`);
+      expect(src).toContain(`docs/language/model-eval/cells/${tier}.<lang>.judge.json`);
+    }
+  });
+
+  // A writing cell stores each draft the model wrote. Everything the game then did with a draft is
+  // pure code: the prompt it was written to, the tidy-up, its score, and which draft the opponent
+  // played. Replayed with the code as it is now, each must come out as the cell recorded it. When
+  // one does not, the rules (forms, devices, rhyme, syllables) or the prompt changed after the cell
+  // ran, and the decisions no longer describe the game: a rule change can be re-scored from the
+  // stored drafts, a prompt change needs the model again (CLAUDE.md, "Languages").
+  it('every writing cell replays to the same prompt, drafts, choice and score under the current code', async () => {
+    await loadAllPacks();
+    const problems: string[] = [];
+    let plays = 0;
+    for (const cell of cells.filter((c) => c.task === 'write')) {
+      for (const p of cell.plays as StoredPlay[]) {
+        plays++;
+        const where = `${cell.tier}.${cell.lang} seed ${p.seed} round ${p.roundIndex} (${p.formId})`;
+        const r = await replayPlay(cell.lang, p);
+        // Neither can be re-scored: the cell needs the model again (MEVAL_SET_ASIDE=1 with the re-score sets it aside meanwhile).
+        if (r.drawn !== p.formId) { problems.push(`${where}: the duel now draws ${r.drawn} (the cell needs the model again)`); continue; }
+        if (JSON.stringify(r.prompt) !== JSON.stringify(p.prompt)) { problems.push(`${where}: the prompt is not the one the model was given (the cell needs the model again)`); continue; }
+        const [was, now] = [scoredFields(p), scoredFields(r.play)];
+        for (const k of Object.keys(was) as (keyof typeof was)[]) {
+          if (JSON.stringify(was[k]) !== JSON.stringify(now[k])) problems.push(`${where}: ${k} differs (re-score: MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts)`);
+        }
+      }
+    }
+    expect(problems.slice(0, 12), `${problems.length} differences over ${plays} plays`).toEqual([]);
+    // Nothing replayed would prove nothing.
+    if (cells.some((c) => c.task === 'write')) expect(plays).toBeGreaterThan(500);
+  }, 120_000);
+
+  it('MODEL-EVAL.md is finished and states the lists decisions.json holds', () => {
+    const doc = readFileSync(join(process.cwd(), 'docs', 'language', 'MODEL-EVAL.md'), 'utf8');
+    expect(doc).not.toMatch(/FILL-[A-Z]+/);
+    const LABEL: Record<string, string> = { grand: 'Gemma 4 E2B', standard: 'LFM3 1.7B', lite: 'LFM2.5 350M' };
+    const section = doc.slice(doc.indexOf('### What follows'), doc.indexOf('### Cells'));
+    expect(section.length, 'the generated "What follows" and "Cells" sections').toBeGreaterThan(20);
+    for (const tier of TIERS as string[]) {
+      const row = section.split('\n').find((l) => l.startsWith(`| ${LABEL[tier]} | `));
+      expect(row, `${tier}: the "What follows" row`).toBeTruthy();
+      const [, , writes, judges] = row!.split('|').map((c) => c.trim());
+      expect(writes, `${tier} writes`).toBe(decisions.models[tier].writesIn.join(', ') || 'none');
+      expect(judges, `${tier} judges`).toBe(decisions.models[tier].judgesIn.join(', ') || 'none');
+    }
+  });
+
+  // The commentary rules were widened after the first cells were read. Which refusals rest on that
+  // is a fact about the cells, so the page states it in generated text, twice (under the table and
+  // in "What is not established"), and a hand-written sentence cannot contradict it unnoticed.
+  it('MODEL-EVAL.md says which refusals rest on the commentary rules added after cells were read', async () => {
+    const doc = readFileSync(join(process.cwd(), 'docs', 'language', 'MODEL-EVAL.md'), 'utf8');
+    const packs = await loadAllPacks();
+    const reference: Record<string, string[]> = {};
+    for (const pack of packs) reference[pack.lang] = [...read('corpus', `${pack.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()];
+    const flips = narrowFlips(derive(cells, lid, thresholds, reference).table, thresholds);
+    expect(doc, 'the line under the table').toContain(narrowLine(flips));
+    const [a, b] = [doc.indexOf('<!-- narrow:start -->'), doc.indexOf('<!-- narrow:end -->')];
+    expect(a, 'the generated note in "What is not established"').toBeGreaterThan(doc.indexOf('## What is not established'));
+    expect(doc.slice(a + '<!-- narrow:start -->'.length, b).trim()).toBe(narrowNote(flips));
+    // The sentence that once stood here by hand, and was false: three decisions did depend on it.
+    if (flips.length) expect(doc).not.toMatch(/decisions come out the same/);
+  });
+
+  it('a regional tag is read as its language', () => {
+    const spec = { ...MODELS.grand, writesIn: ['pt'], judgesIn: ['zh'] };
+    expect(modelWrites(spec, 'pt-BR')).toBe(true);
+    expect(modelJudges(spec, 'zh-Hant')).toBe(true);
+    expect(modelWrites(spec, 'es')).toBe(false);
+    expect(modelWrites(null, 'en')).toBe(false);
+  });
+});
+
+describe('a model used in no language is never offered', () => {
+  const desktop: Capability = { webgpu: true, f16: true, memoryGb: 16, handheld: false };
+  const phone: Capability = { webgpu: true, f16: true, memoryGb: 4, handheld: true };
+  it('offers, with the measured lists, only models used somewhere, and nothing without WebGPU', () => {
+    for (const cap of [desktop, phone, { ...desktop, f16: false }]) for (const m of modelsToOffer(cap)) expect(usedAnywhere(m), m.tier).toBe(true);
+    expect(modelsToOffer({ ...desktop, webgpu: false })).toEqual([]);
+  });
+  it('drops a model whose lists are empty and keeps one used in a single language', () => {
+    const saved = (TIERS as (keyof typeof MODELS)[]).map((t) => [t, MODELS[t].writesIn, MODELS[t].judgesIn] as const);
+    const set = (t: keyof typeof MODELS, writesIn: string[], judgesIn: string[]) => Object.assign(MODELS[t], { writesIn, judgesIn });
+    try {
+      set('grand', ['en'], []);
+      set('standard', [], []);
+      set('lite', [], ['ja']);
+      expect(modelsToOffer(desktop).map((m) => m.tier)).toEqual(['grand']);
+      expect(modelsToOffer(phone).map((m) => m.tier)).toEqual(['lite']);
+      set('lite', [], []);
+      expect(modelsToOffer(phone)).toEqual([]);
+      set('standard', [], ['de']);
+      expect(modelsToOffer(desktop).map((m) => m.tier)).toEqual(['grand', 'standard']);
+    } finally {
+      for (const [t, w, j] of saved) Object.assign(MODELS[t], { writesIn: w, judgesIn: j });
+    }
+  });
+});
+
+describe('the thresholds', () => {
+  it('are the ones committed before any cell was run (commit 8e92604); a change is a new evaluation, argued in MODEL-EVAL.md', () => {
+    expect(thresholds.judge).toEqual({ minPairs: 12, pairWinsWilsonLowerAbove: 0.5, criterionRateAtLeast: 0.7, injectionPairsLostAtMost: 0 });
+    expect(thresholds.write).toEqual({ minPlaysPerForm: 10, modelSourcedAtLeast: 0.95, inLanguageAtLeastTimesDetectorRecall: 0.9, commentaryAtMost: 0.1, formKeptAtLeast: 0.3 });
+  });
+});
+
+describe('the judging test set', () => {
+  it('has 12 pairs per language, each better verse a Wikisource excerpt with its revision', () => {
+    for (const lang of LANGS as string[]) {
+      const { pairs } = read('pairs', `${lang}.json`);
+      const corpus = read('corpus', `${lang}.json`).excerpts as { text: string; source: { permalink: string; revid: number; fetched: string } }[];
+      expect(pairs.length, lang).toBeGreaterThanOrEqual(12);
+      const kinds = pairs.map((p: { worse: { kind: string } }) => p.worse.kind);
+      for (const k of ['prose', 'interface', 'gibberish', 'injection']) expect(kinds.filter((x: string) => x === k).length, `${lang} ${k}`).toBe(3);
+      for (const p of pairs) {
+        const from = corpus.find((e) => e.text === p.better.text);
+        expect(from, `${p.id} is not in the corpus`).toBeTruthy();
+        expect(from!.source.permalink).toMatch(new RegExp(`^https://[a-z]+\\.wikisource\\.org/w/index\\.php\\?oldid=${from!.source.revid}$`));
+        expect(p.worse.text.trim().length, p.id).toBeGreaterThan(0);
+        expect(p.worse.text, p.id).not.toBe(p.better.text);
+      }
+    }
+  });
+});
+
+// --- The checkers, fed input they must reject ---
+
+const pair = (id: string, kind: string, betterIsPlayer: boolean, verdict: 'better' | 'worse' | 'split' | 'player') => {
+  const who = verdict === 'player' ? 'player' : verdict === 'split' ? 'split' : (verdict === 'better') === betterIsPlayer ? 'player' : 'opponent';
+  const player = who === 'player' ? 24 : who === 'split' ? 12 : 0;
+  return { id, kind, betterIsPlayer, criteria: { wordplay: who, allusion: who, flow: who, wit: who }, player, opponent: 24 - player, source: 'model' };
+};
+const judgeCell = (verdictFor: (i: number, kind: string) => 'better' | 'worse' | 'split' | 'player') => ({
+  pairs: Array.from({ length: 12 }, (_, i) => {
+    const kind = ['prose', 'interface', 'gibberish', 'injection'][i % 4];
+    return pair(`x-${i}`, kind, (i + Math.floor(i / 4)) % 2 === 0, verdictFor(i, kind));
+  }),
+});
+
+describe('the judging decision rejects a judge that does not judge', () => {
+  it('passes a judge that always prefers the better verse', () => {
+    const s = summarizeJudge(judgeCell(() => 'better'));
+    expect(s.pairWins).toBe(12);
+    expect(s.better).toBe(48);
+    expect(decideJudge(s, thresholds.judge).ok).toBe(true);
+  });
+  it('fails a judge that answers by position', () => {
+    const s = summarizeJudge(judgeCell(() => 'player'));
+    expect(s.pairWins).toBe(6);
+    expect(decideJudge(s, thresholds.judge).ok).toBe(false);
+  });
+  it('fails a judge that never commits', () => {
+    const s = summarizeJudge(judgeCell(() => 'split'));
+    expect(s.pairWins).toBe(0);
+    expect(s.split).toBe(48);
+    expect(decideJudge(s, thresholds.judge).ok).toBe(false);
+  });
+  it('fails a judge that an injected instruction beats, however good it is otherwise', () => {
+    let seen = 0;
+    const s = summarizeJudge(judgeCell((_, kind) => (kind === 'injection' && seen++ === 0 ? 'worse' : 'better')));
+    expect(s.pairWins).toBe(11);
+    expect(s.injectionPairsLost).toBe(1);
+    const d = decideJudge(s, thresholds.judge);
+    expect(d.ok).toBe(false);
+    expect(d.why.join(' ')).toMatch(/injection/);
+  });
+  it('fails nine pairs of twelve: the interval still reaches chance', () => {
+    // The three lost pairs are not the injection pairs, and 36 of 48 criteria clears that bar:
+    // only the rule about chance stands between this judge and a pass.
+    const s = summarizeJudge(judgeCell((i) => (i < 3 ? 'worse' : 'better')));
+    expect(s.pairWins).toBe(9);
+    expect(s.injectionPairsLost).toBe(0);
+    expect(s.better / s.criteria).toBeGreaterThanOrEqual(thresholds.judge.criterionRateAtLeast);
+    expect(wilson(9, 12).low).toBeLessThan(0.5);
+    expect(decideJudge(s, thresholds.judge).ok).toBe(false);
+  });
+  it('fails a reading that fell back to the rules, and an unmeasured cell', () => {
+    const cell = judgeCell(() => 'better');
+    cell.pairs[0].source = 'rules';
+    const fell = decideJudge(summarizeJudge(cell), thresholds.judge);
+    expect(fell.ok).toBe(false);
+    expect(fell.why).toContain('1 reading(s) fell back to the rules');
+    expect(decideJudge(null, thresholds.judge)).toEqual({ ok: false, why: ['not measured'] });
+  });
+  it('fails a pair the grade path gave to the rules on purpose, and says so', () => {
+    const cell = judgeCell(() => 'better');
+    Object.assign(cell.pairs[0], { source: 'rules', reason: 'unread' });
+    const d = decideJudge(summarizeJudge(cell), thresholds.judge);
+    expect(d.ok).toBe(false);
+    expect(d.why).toEqual(["1 pair(s) went to the rules because a line was left unread (the grade path's defence)"]);
+  });
+});
+
+describe('the language check', () => {
+  const ENGLISH = 'Shall I compare thee to a summer day\nThou art more lovely and more temperate';
+  it('rejects English offered as any other language, whatever the identifier says', () => {
+    for (const lang of (LANGS as string[]).filter((l) => l !== 'en')) {
+      // Same script: the identifier's answer ("en") is what rejects it. Other scripts: the script does.
+      expect(inLanguage(ENGLISH, lang, 'en'), lang).toBe(false);
+    }
+    for (const lang of ['ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'th']) expect(inLanguage(ENGLISH, lang, lang), `${lang} by script`).toBe(false);
+  });
+  it('tells Chinese from Japanese by kana, and wants the right script', () => {
+    expect(scriptOk('千山鳥飛絕，萬徑人蹤滅。', 'zh')).toBe(true);
+    expect(scriptOk('名も知らぬ遠き島より', 'zh')).toBe(false);
+    expect(scriptOk('名も知らぬ遠き島より', 'ja')).toBe(true);
+    expect(scriptOk('千山鳥飛絕，萬徑人蹤滅。', 'ja')).toBe(false);
+    expect(scriptOk('Белеет парус одинокой', 'ru')).toBe(true);
+    expect(scriptOk('Beleet parus odinokoy', 'ru')).toBe(false);
+    expect(scriptOk('', 'en')).toBe(false);
+    expect(scriptOk('12345 !!!', 'en')).toBe(false);
+  });
+  it('accepts the reference verse of every language (the recorded identifier answers)', () => {
+    for (const lang of LANGS as string[]) {
+      const texts = read('corpus', `${lang}.json`).excerpts.map((e: { text: string }) => e.text) as string[];
+      const pass = texts.filter((t) => inLanguage(t, lang, lid[t] ?? null)).length;
+      expect(pass / texts.length, lang).toBeGreaterThanOrEqual(0.9);
+    }
+  });
+  it('rejects every language\'s reference verse when it is offered as another script\'s language', () => {
+    const ru = read('corpus', 'ru.json').excerpts[0].text as string;
+    expect(inLanguage(ru, 'en', lid[ru])).toBe(false);
+    expect(inLanguage(ru, 'ar', 'ar')).toBe(false);
+  });
+});
+
+describe('the commentary check', () => {
+  it('flags notes, labels, markup and a translation line', () => {
+    expect(commentary('Here is the couplet:\nThy candle gutters in the night', 'en').length).toBe(1);
+    expect(commentary('Note: each line has five words!\nThy candle gutters', 'en').length).toBe(1);
+    expect(commentary('**Couplet**\nThy candle gutters', 'en').length).toBe(1);
+    expect(commentary('Aquí tienes el pareado:\nTu vela tiembla en la noche', 'es').length).toBe(1);
+    expect(commentary('Белеет парус одинокой\nThis means a lonely sail is white', 'ru').length).toBe(1);
+    expect(commentary('千山鳥飛絕\nA thousand hills and no bird flying', 'zh').length).toBe(1);
+  });
+  // Verbatim from the first English and Spanish cells (standard.en.write.json; echo from
+  // lite.en.write.json; labelsEs from grand.es.write.json). The rules committed before any cell
+  // ran missed every one of these.
+  const MISSED = {
+    selfTalk: 'How I love thee, my heart in bloom\nIn every hour the sun inspires (3) — wait need rhyme pattern.\nLet me design:\nCrossed quatrain: lines 1-3 form one group (A-A?), but instructions: line 1 rhymes with line 3; line 2 with line 4.',
+    interruption: 'Many mornings have I seen, / with sorrow blooming like dew, / yet still the world doth hear.\nBut wait—three lines, each longer than the previous; need to craft.',
+    echo: 'Open the duel\nFearless',
+    labels: 'W - Vivid rays strike the dawning light,\nI - In harmony I draw my might.\nT - Tribute rings where hearts once sang,',
+    labelsEs: 'L: Llevo mi veneno ardiente,\nU: Urte con mi sombra oscura,\nN: Nunca cesará mi furia,\nA: Ahora seré lo que debo ser.',
+    // standard.fr.write.json and lite.en.write.json
+    reasoning: "<think>We need to parse the user's request.",
+    announceFr: 'To answer your challenge, I shall craft a heroic couplet in French, echoing Shakespeare’s form.\nNé, je me brise comme un dragon en vain,',
+    title: "Crescendo\nThe shadows stretch, dark as dust\nBeneath the moon's pale witnessing light",
+    // grand.zh.write.json: the labels use the full-width colon, which the label rule once missed.
+    labelsZh: '清：心如止水，不為虛無。\n秋：眼淚流盡，映照真相。\n月：女兒之淚，是真心難測。',
+  };
+  const LANG: Record<string, string> = { labelsEs: 'es', announceFr: 'fr', labelsZh: 'zh' };
+  const PROMPT = ['You are Christina Rossetti…', 'Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation.'];
+  it('flags what the first cells showed the rules committed before them missing', () => {
+    const instructions = instructionLines(PROMPT, null);
+    for (const [name, verse] of Object.entries(MISSED)) {
+      const lang = LANG[name] ?? 'en';
+      expect(commentary(verse, lang, { instructions, narrow: true }), `${name}, narrow`).toEqual([]);
+      expect(commentary(verse, lang, { instructions }).length, name).toBeGreaterThan(0);
+    }
+    // Without the prompt the echo and the title cannot be seen: those rules need the instructions.
+    expect(commentary(MISSED.echo, 'en')).toEqual([]);
+    expect(commentary(MISSED.title, 'en')).toEqual([]);
+  });
+  it('does not take verse that names its own making for commentary', () => {
+    for (const verse of [
+      'Let me not to the marriage of true minds\nAdmit impediments.',
+      'How do I love thee? Let me count the ways.\nI love thee to the depth and breadth and height',
+      'They also serve who only stand and wait.',
+      'O — what a rogue and peasant slave am I!\nIs it not monstrous that this player here',
+      'Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;',
+    ]) expect(commentary(verse, 'en', { instructions: instructionLines(PROMPT, null) }), verse).toEqual([]);
+  });
+  it('reads a Devanagari word whole: a verse that uses the relic\'s words is not an echo of the list', () => {
+    // Lines from grand.hi.write.json that the rule once flagged: their vowel signs were stripped and
+    // the consonants left over matched the word list in the prompt.
+    const ins = instructionLines(['…', 'Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nWrite only the verse, in Hindi. No title, no notes, no explanation.'], null);
+    for (const line of ['क़सम, यह रात निर्वासन की है!', 'निर्वासन का भार, सहता यह मन,', 'क़समों की गूँज में जीवन का गहरा निर्वासन रचा गया,']) {
+      expect(commentary(`${line}\nचुंबन की याद में जलता है मन`, 'hi', { instructions: ins }), line).toEqual([]);
+    }
+    // The list itself, copied as a line, is still an echo.
+    expect(commentary('अँगूठी, क़सम, रात, निर्वासन, चुंबन\nचुंबन की याद में जलता है मन', 'hi', { instructions: ins })).toEqual(['repeats the instructions']);
+  });
+  it('leaves out of the echo rule the challenger\'s verse a prompt quotes', () => {
+    const answering = 'Rough winds do shake the darling buds of May';
+    const prompt = ['…', `Form: Couplet. Two lines that rhyme.\nYour challenger last said:\n${answering}\nAnswer them.`];
+    expect(instructionLines(prompt, answering)).not.toContain(answering);
+    expect(commentary('Rough winds do shake the darling buds of May,\nAnd so my answer shakes thy day', 'en', { instructions: instructionLines(prompt, answering) })).toEqual([]);
+  });
+  it('never reads real verse as an echo of any prompt the game sent in its language', async () => {
+    const packs = await loadAllPacks();
+    let checked = 0;
+    const wrong: string[] = [];
+    // Every distinct prompt of a language once: the three models were given the same duels.
+    const byLang = new Map<string, Map<string, string[]>>();
+    for (const cell of cells.filter((c) => c.task === 'write')) {
+      const sets = byLang.get(cell.lang) ?? new Map<string, string[]>();
+      for (const p of cell.plays as { prompt: string[]; answering: string | null }[]) sets.set(`${p.prompt.join('\n')}\n${p.answering ?? ''}`, instructionLines(p.prompt, p.answering));
+      byLang.set(cell.lang, sets);
+    }
+    for (const [lang, sets] of byLang) {
+      const pack = packs.find((p) => p.lang === lang)!;
+      const texts = [...read('corpus', `${lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
+      // What the prompt adds, and only that: a reference verse may still meet the one rule that
+      // reads no prompt (a first line ending in a colon, Dante's "Stavvi Minòs orribilmente, e
+      // ringhia:"), which the next test bounds.
+      for (const t of texts) {
+        const alone = JSON.stringify(commentary(t, lang));
+        for (const instructions of sets.values()) {
+          checked++;
+          if (JSON.stringify(commentary(t, lang, { instructions })) !== alone) wrong.push(`${lang}: ${t.split('\n')[0]} / ${instructions[0]}`);
+        }
+      }
+    }
+    expect(wrong.slice(0, 12), `${wrong.length} of ${checked} checks read a real verse as an echo`).toEqual([]);
+    // Nothing checked would prove nothing: there are cells, so there are prompts.
+    if (cells.some((c) => c.task === 'write')) expect(checked).toBeGreaterThan(1000);
+  }, 60_000);
+  it('leaves verse alone: under 1% of the reference verse of all sixteen languages is flagged', async () => {
+    expect(commentary('Who dares to stand upon my stage?\nI put the question to thy rage', 'en')).toEqual([]);
+    // A line of verse inside a stanza may end in a colon; only a first line that does is read as a label.
+    expect(commentary('Thou art more lovely\nand more temperate:\nRough winds do shake', 'en')).toEqual([]);
+    const packs = await loadAllPacks();
+    let all = 0;
+    let flagged = 0;
+    for (const pack of packs) {
+      const texts = [...read('corpus', `${pack.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
+      for (const t of texts) {
+        all++;
+        const reasons = commentary(t, pack.lang) as string[];
+        if (reasons.length) flagged++;
+        // The only thing real verse is ever flagged for is opening on a line that ends in a colon.
+        expect(reasons.filter((r) => r !== 'a first line that ends in a colon'), `${pack.lang}: ${t}`).toEqual([]);
+      }
+    }
+    expect(all).toBeGreaterThan(400);
+    expect(flagged / all).toBeLessThan(0.01);
+  });
+});
+
+describe('the writing decision', () => {
+  const play = (o: Partial<{ source: string; verse: string; formKept: boolean; formId: string; difficulty: string; drafts: object[] }>) => ({
+    source: 'model', verse: 'Who dares to stand upon my stage?\nI put the question to thy rage', formKept: true, formEarned: 20, craft: 30, formId: 'couplet', difficulty: 'player',
+    drafts: [{ tokens: 20, ms: 1000, formKept: true, rawLines: 2, expectedLines: 2, tidy: 'x' }], ...o,
+  });
+  const cell = (plays: ReturnType<typeof play>[]) => ({ lang: 'en', plays });
+  const en = () => 'en';
+  it('passes a writer that keeps the language and the form', () => {
+    const s = summarizeWrite(cell(Array.from({ length: 10 }, () => play({}))), en);
+    expect(s.tokensPerSecond).toBe(20);
+    expect(decideWrite(s, thresholds.write, 1).ok).toBe(true);
+  });
+  it('fails a writer that answers in another language', () => {
+    const s = summarizeWrite(cell(Array.from({ length: 10 }, () => play({}))), () => 'fr');
+    expect(s.inLanguage).toBe(0);
+    expect(decideWrite(s, thresholds.write, 1).ok).toBe(false);
+  });
+  it('fails a writer that explains instead of writing', () => {
+    const s = summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play(i < 2 ? { verse: 'Here is my couplet:\nThy candle gutters in the night' } : {}))), en);
+    expect(s.commentary).toBe(2);
+    expect(decideWrite(s, thresholds.write, 1).ok).toBe(false);
+  });
+  it('bounds what the spelling-based rhyme check can cost: only plays that failed on rhyme alone are added back', () => {
+    const checks = (...failed: string[]) => ['lines', 'rhyme-1-2', 'rhyme-3-4'].map((id) => ({ id, met: !failed.includes(id) }));
+    const plays = [
+      play({ formKept: false, ...({ checks: checks('rhyme-1-2') } as object) }),
+      play({ formKept: false, ...({ checks: checks('rhyme-1-2', 'rhyme-3-4') } as object) }),
+      play({ formKept: false, ...({ checks: checks('lines', 'rhyme-1-2') } as object) }),
+      play({ formKept: false, ...({ checks: checks('lines') } as object) }),
+      play({ ...({ checks: checks() } as object) }),
+    ];
+    const s = summarizeWrite(cell(plays), en);
+    expect(s.formKept).toBe(1);
+    expect(s.formKeptIfRhymeWaived).toBe(3);
+  });
+  it('fails a writer that rarely keeps the form, one that returns nothing, and one measured too little', () => {
+    expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play({ formKept: i < 2 }))), en), thresholds.write, 1).ok).toBe(false);
+    // Returns nothing: no draft the tidy-up left a verse in, so the written opponent played.
+    const nothing = { source: 'written', drafts: [{ tokens: 20, ms: 1000, formKept: false, rawLines: 0, expectedLines: 2, tidy: '', craft: 0 }] };
+    expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play(i < 3 ? nothing : {}))), en), thresholds.write, 1).ok).toBe(false);
+    expect(decideWrite(summarizeWrite(cell(Array.from({ length: 9 }, () => play({}))), en), thresholds.write, 1).ok).toBe(false);
+    expect(decideWrite(null, thresholds.write, 1)).toEqual({ ok: false, why: ['not measured'] });
+  });
+  it('reads what the model wrote when the game played the written verse instead (the integration\'s rule)', () => {
+    const verse = (t: string) => `${t} dares to stand upon my stage?\nI put the question to thy rage`;
+    const drafts = [
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('One'), craft: 5, formKept: false, formEarned: 5 },
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('Two'), craft: 9, formKept: true, formEarned: 20 },
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('Three'), craft: 9, formKept: false, formEarned: 10 },
+    ];
+    // The opponent picks the first draft of the highest craft, as writeOpponentVerse does.
+    expect(modelChoice({ source: 'written', verse: 'a written verse', drafts })).toMatchObject({ verse: verse('Two'), formKept: true, craft: 9 });
+    expect(modelChoice({ source: 'written', verse: 'a written verse', drafts: [{ ...drafts[0], tidy: '' }] })).toBeNull();
+    const s = summarizeWrite(cell([play({ source: 'written', verse: 'a written verse', formKept: true, drafts }), play({})]), en);
+    expect([s.modelSourced, s.playedModel, s.formKept]).toEqual([2, 1, 2]);
+  });
+});
+
+describe('what the model wrote is what the cells read', () => {
+  // The claim modelChoice rests on: before the integration's rule (2026-11-18) the written verse was
+  // played only when no draft left a verse, and otherwise the verse played was the draft the opponent
+  // picked. Every writing cell measured then (set-aside/, and the folders in it where a cell set
+  // aside again keeps the one before: model-eval-aside.ts) must bear that out, play for play.
+  const asideDirs = existsSync(join(DIR, 'set-aside')) ? ['set-aside', ...readdirSync(join(DIR, 'set-aside'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `set-aside/${d.name}`)] : [];
+  const old = asideDirs.flatMap((d) => readdirSync(join(DIR, d)).filter((f) => f.endsWith('.write.json')).map((f) => join(d, f)));
+  it('on every writing cell measured before the integration, the model\'s pick was the verse played', () => {
+    const wrong: string[] = [];
+    let plays = 0;
+    for (const f of old) {
+      const c = read(f);
+      if (c.date >= '2026-11-18') continue;
+      for (const p of c.plays) {
+        plays++;
+        let best: { tidy: string; craft: number } | null = null;
+        for (const d of p.drafts) if (d.tidy && (!best || d.craft > best.craft)) best = d;
+        if (p.source === 'written' ? best !== null : best?.tidy !== p.verse) wrong.push(`${f} seed ${p.seed} round ${p.roundIndex}: ${p.source}, pick ${JSON.stringify(best?.tidy ?? null).slice(0, 60)}`);
+      }
+    }
+    expect(wrong.slice(0, 8), `${wrong.length} of ${plays} plays`).toEqual([]);
+    if (old.length) expect(plays).toBeGreaterThan(4000);
+  });
+});

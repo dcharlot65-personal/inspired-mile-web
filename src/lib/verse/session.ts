@@ -7,7 +7,7 @@
  * the score, so every front end plays by exactly the same rules.
  */
 import { getCardById } from '../cards';
-import { brainInfo, generate, isBrainLoaded } from '../brain';
+import { brainInfo, generate, isBrainLoaded, modelWrites } from '../brain';
 import {
   ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse,
   type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore, type WorldCard,
@@ -15,7 +15,7 @@ import {
 import { getForm } from './forms';
 import { writeOpponentVerse, type Difficulty } from './opponent';
 import { judgeLines } from './judge';
-import { referee } from './referee';
+import { judgedByModel, referee } from './referee';
 import { loadSound } from './sound';
 import { cleanVerse } from './text';
 
@@ -102,7 +102,8 @@ export class DuelSession {
     // a sound table, the Japanese analyser) is fetched once, here, before anything is scored. If it
     // cannot be fetched the duel goes on by spelling (sound/index.ts, pronounce.ts).
     await loadSound(this.duel.lang);
-    const canWrite = this.opts.useModel && isBrainLoaded() && !!brainInfo()?.writes;
+    // Only in a language the loaded model has been shown to write verse in; elsewhere the written opponent plays.
+    const canWrite = this.opts.useModel && isBrainLoaded() && modelWrites(brainInfo(), this.duel.lang);
     const written = await writeOpponentVerse({
       duel: this.duel,
       roundIndex: this.roundIndex,
@@ -185,9 +186,13 @@ export class DuelSession {
     });
   }
 
-  /** Is a model judging this duel's rounds (and so reading the verse without the lines that address it)? */
+  /**
+   * Is a model judging this duel's rounds (and so reading the verse without the lines that address
+   * it)? Only in a language the loaded model has been shown to judge (referee.ts judgedByModel);
+   * elsewhere the rules judge, and they read every line.
+   */
   get modelJudges(): boolean {
-    return this.opts.useModel && isBrainLoaded();
+    return this.opts.useModel && judgedByModel(this.duel.lang);
   }
 
   /**

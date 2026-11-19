@@ -1,0 +1,6170 @@
+{
+ "tier": "lite",
+ "lang": "en",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-16T18:16:42.032Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "haiku",
+  "heroic-couplet"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nThe shadows stretch, dark as dust\nBeneath the moon's pale witnessing light",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 6 < 6"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Crescendo\n\nThe shadows stretch, dark as dust  \nBeneath the moon's pale witnessing light  \n\nSilence hums louder, endless night",
+     "tidy": "Crescendo\nThe shadows stretch, dark as dust\nBeneath the moon's pale witnessing light",
+     "ms": 1749,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Grave\nShine",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "1/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "1/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Grave\n\nShine",
+     "tidy": "Grave\nShine",
+     "ms": 700,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": "wit",
+   "relicWords": [
+    "ring",
+    "vow",
+    "night",
+    "banished",
+    "kiss"
+   ],
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell WIT.\nWrite exactly 3 lines.\nYour flourish: Use two words of 9 letters or more.\nWork in at least two of these words: ring, vow, night, banished, kiss.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "WITRK\nWorkthebanews",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "WW"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "WITRK\n\nWorkthebanews",
+     "tidy": "WITRK\nWorkthebanews",
+     "ms": 1024,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Start three words with H",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "5/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start three words with H",
+     "tidy": "Start three words with H",
+     "ms": 665,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out: end a line with an exclamation mark",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Cry out: end a line with an exclamation mark",
+     "tidy": "Cry out: end a line with an exclamation mark",
+     "ms": 428,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Repeat one word three times\nThe moon whispers secrets\nThrough shadows' darkened halls\nStories fade like morning dew",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "times / secrets"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "halls / dew"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Repeat one word three times\n\nThe moon whispers secrets  \nThrough shadows' darkened halls  \n\nStories fade like morning dew  \nIn silence carried by trees  \n\nWoos keep dreams from falling",
+     "tidy": "Repeat one word three times\nThe moon whispers secrets\nThrough shadows' darkened halls\nStories fade like morning dew",
+     "ms": 3406,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 9 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Fair, thy name is swift in speech.\nSharps, my counterattack arrives.",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "speech / arrives"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Shapely word\n\nTaunt",
+     "tidy": "Shapely word\nTaunt",
+     "ms": 356,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Fair, thy name is swift in speech.  \nSharps, my counterattack arrives.",
+     "tidy": "Fair, thy name is swift in speech.\nSharps, my counterattack arrives.",
+     "ms": 767,
+     "tokens": 21,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Like as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nLike as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Sequent",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "sequent"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Sequent",
+     "tidy": "Sequent",
+     "ms": 219,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "skull",
+    "jest",
+    "grave",
+    "laugh",
+    "dust"
+   ],
+   "answering": "Like as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: skull, jest, grave, laugh, dust.\nYour challenger last said:\nLike as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Laugh\ndust\nGrave",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "1/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "1/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "1/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "Laugh  \ndust  \n\nGrave",
+     "tidy": "Laugh\ndust\nGrave",
+     "ms": 377,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "Captain Laughs\n\nLaugh the grave  \nLaughter dust",
+     "tidy": "Captain Laughs\nLaugh the grave\nLaughter dust",
+     "ms": 443,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": "star",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell STAR.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Across the stage one challenge emerges\nSTA R\nMake your last line—longest",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ASM"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Across the stage one challenge emerges  \nSTA R  \n\nMake your last line—longest",
+     "tidy": "Across the stage one challenge emerges\nSTA R\nMake your last line—longest",
+     "ms": 670,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Acrostic Verse:\nSTA rE\n\nMake yourL",
+     "tidy": "Acrostic Verse:\nSTA rE\nMake yourL",
+     "ms": 551,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Repeat one strong word three times.\nThe answer is: sable",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "repeat · the"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Repeat one strong word three times.\n\nThe answer is: sable",
+     "tidy": "Repeat one strong word three times.\nThe answer is: sable",
+     "ms": 606,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Verse: The moon is patient, the hour is fleeting, and tomorrow's dawn may shine",
+     "tidy": "",
+     "ms": 802,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "dagger",
+    "blood",
+    "sleep",
+    "vision",
+    "hand"
+   ],
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: dagger, blood, sleep, vision, hand.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on a blade that cuts through deception\nBlood stains where courage lies hidden",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "deception / hidden"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "10/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "8/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Call on a blade that cuts through deception  \nBlood stains where courage lies hidden",
+     "tidy": "Call on a blade that cuts through deception\nBlood stains where courage lies hidden",
+     "ms": 734,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    },
+    {
+     "raw": "Call on a blade to strike  \nBlood bleeds where steel touches",
+     "tidy": "Call on a blade to strike\nBlood bleeds where steel touches",
+     "ms": 537,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "A\ntaunt\nyour",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "a · taunt · your"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Anaphora\n\nTaunt your challenger",
+     "tidy": "Anaphora\nTaunt your challenger",
+     "ms": 316,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Give every line\n\nTaunt",
+     "tidy": "Give every line\nTaunt",
+     "ms": 128,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "A\n\ntaunt\n\nyour\n\nchallenger",
+     "tidy": "A\ntaunt\nyour",
+     "ms": 344,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "tears",
+    "truth",
+    "daughter",
+    "nothing",
+    "heart"
+   ],
+   "answering": "Since brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: tears, truth, daughter, nothing, heart.\nYour challenger last said:\nSince brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on a face she carries\nTruth through shared skin\nHeart against nothing’s restraint",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "carries / restraint"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Call on a face she carries  \nTruth through shared skin  \n\nHeart against nothing’s restraint",
+     "tidy": "Call on a face she carries\nTruth through shared skin\nHeart against nothing’s restraint",
+     "ms": 665,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Since brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nSince brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Three Words Rhyme\nAnswer: Rattle",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "rhyme / rattle"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Flourish: Three Words Rhyme\n\nAnswer: Rattle",
+     "tidy": "Flourish: Three Words Rhyme\nAnswer: Rattle",
+     "ms": 569,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Flourish: The dawn breaks  \n\nAnswer: Beauty's gentle grace",
+     "tidy": "Flourish: The dawn breaks\nAnswer: Beauty's gentle grace",
+     "ms": 638,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Verse: The rose does not grow far\n\nFlourish: Nurtured by silence",
+     "tidy": "Flourish: Nurtured by silence",
+     "ms": 729,
+     "tokens": 19,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "If winter whispers where spring can still grow\nFlourish: The frost will bite before dawn's light\nEnd",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "10/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "10/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "1/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Open the mirror to see beyond the veil  \nThe storm weeping secrets unknown",
+     "tidy": "Open the mirror to see beyond the veil\nThe storm weeping secrets unknown",
+     "ms": 548,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Verse:\nIf winter whispers where spring can still grow\n\nFlourish: The frost will bite before dawn's light\n\nEnd",
+     "tidy": "If winter whispers where spring can still grow\nFlourish: The frost will bite before dawn's light\nEnd",
+     "ms": 1038,
+     "tokens": 28,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    },
+    {
+     "raw": "The question begins with *if*\n\nAnd the answer is *can*.",
+     "tidy": "The question begins with if\nAnd the answer is can.",
+     "ms": 511,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nWhen forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "How do I love thee?\nLet me count the ways.",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "How do I love thee?  \nLet me count the ways.",
+     "tidy": "How do I love thee?\nLet me count the ways.",
+     "ms": 437,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "How do I love thee? Let me count the ways",
+     "tidy": "How do I love thee? Let me count the ways",
+     "ms": 290,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "storm",
+    "spell",
+    "staff",
+    "island",
+    "drown"
+   ],
+   "answering": "When forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: storm, spell, staff, island, drown.\nYour challenger last said:\nWhen forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Storm whispers through cracks\nSpell binds their dreams to ash",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "cracks / ash"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 24,
+   "drafts": [
+    {
+     "raw": "Storm whispers through cracks  \nSpell binds their dreams to ash",
+     "tidy": "Storm whispers through cracks\nSpell binds their dreams to ash",
+     "ms": 456,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 24
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": "moon",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell MOON.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Rhymes two words into one\nTaunt\nOh\nAnd",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "RTOA"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Rhymes two words into one\n\nTaunt thy shadow",
+     "tidy": "Rhymes two words into one\nTaunt thy shadow",
+     "ms": 414,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rhymes two words inside a single line\n\nOpen the duel",
+     "tidy": "Rhymes two words inside a single line\nOpen the duel",
+     "ms": 340,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rhymes two words into one\n\nTaunt\n\nOh\n\nAnd",
+     "tidy": "Rhymes two words into one\nTaunt\nOh\nAnd",
+     "ms": 475,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Death be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nDeath be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Fear not, thy strength is but dust\nThou hast power not granted unto thy name",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "dust / name"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": true,
+     "detail": "11/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Repeat word: M\n\nDeath be not proud",
+     "tidy": "Repeat word: M\nDeath be not proud",
+     "ms": 380,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "Fear not, thy strength is but dust  \nThou hast power not granted unto thy name",
+     "tidy": "Fear not, thy strength is but dust\nThou hast power not granted unto thy name",
+     "ms": 635,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    },
+    {
+     "raw": "Repeat one strong word three times.",
+     "tidy": "Repeat one strong word three times.",
+     "ms": 360,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "Death be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nDeath be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Dream whispers fears through moonlight’s dim glow,\nFool plays tricks the night tests.",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Verse: The mask hides dreams beneath shadows,  \nDream whispers fears through moonlight’s dim glow,  \nFool plays tricks the night tests.",
+     "tidy": "Dream whispers fears through moonlight’s dim glow,\nFool plays tricks the night tests.",
+     "ms": 1168,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Start three-word-finish\nO challengeers rise",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "three-word-finish / rise"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start three-word-finish\n\nO challengeers rise",
+     "tidy": "Start three-word-finish\nO challengeers rise",
+     "ms": 292,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Claire's shadow stretched long as silence  \nHaunting her silence echoed the words",
+     "tidy": "Claire's shadow stretched long as silence\nHaunting her silence echoed the words",
+     "ms": 667,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": [
+    "dagger",
+    "blood",
+    "sleep",
+    "vision",
+    "hand"
+   ],
+   "answering": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: dagger, blood, sleep, vision, hand.\nYour challenger last said:\nShall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Their days become silver",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "8/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: The gears of steel turn slow  \nFlourish: Their days become silver",
+     "tidy": "Flourish: Their days become silver",
+     "ms": 715,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nShall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Couplet\nTurn a word of five into thy beauty",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "couplet / beauty"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Couplet\n\nTurn a word of five into thy beauty",
+     "tidy": "Couplet\nTurn a word of five into thy beauty",
+     "ms": 219,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Couplet  \nTwo",
+     "tidy": "Couplet\nTwo",
+     "ms": 259,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Open the duel\nFearless",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Open the duel\n\nFearless",
+     "tidy": "Open the duel\nFearless",
+     "ms": 357,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "My mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nMy mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Moon whispers their secrets through silver\nFool's trick—dreams hold truths beyond disguise",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "silver / disguise"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Moon's dark veil obscures the truth  \nFool's reflection mirrors the stormy sea",
+     "tidy": "Moon's dark veil obscures the truth\nFool's reflection mirrors the stormy sea",
+     "ms": 770,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Moon whispers their secrets through silver\n\nFool's trick—dreams hold truths beyond disguise",
+     "tidy": "Moon whispers their secrets through silver\nFool's trick—dreams hold truths beyond disguise",
+     "ms": 744,
+     "tokens": 22,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Mask my soul's secrets; dream fools dare not.",
+     "tidy": "Mask my soul's secrets; dream fools dare not.",
+     "ms": 527,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "My mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nMy mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Repeat one strong word three times.\nAnswer: Snow",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "flourish · answer"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Snow does not deny light  \nFlourish: Repeat one strong word three times.\n\nAnswer: Snow",
+     "tidy": "Flourish: Repeat one strong word three times.\nAnswer: Snow",
+     "ms": 937,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": "rose",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ROSE.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Rose\nRepeat R\nO",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "RRO"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Rose\n\nRepeat R\n\nO",
+     "tidy": "Rose\nRepeat R\nO",
+     "ms": 341,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,",
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End every line on the same rhyme.\nYour challenger last said:\nWhen, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "End\ntrouble",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "end / trouble"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "1/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "End\n\ntrouble",
+     "tidy": "End\ntrouble",
+     "ms": 276,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "End every line",
+     "tidy": "End every line",
+     "ms": 208,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "dagger",
+    "blood",
+    "sleep",
+    "vision",
+    "hand"
+   ],
+   "answering": "When, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: dagger, blood, sleep, vision, hand.\nYour challenger last said:\nWhen, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Finale: Outcast",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Dagger, blood, sleep, vision, hand\n\nFinale: Outcast",
+     "tidy": "Finale: Outcast",
+     "ms": 668,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Start with t",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start with **t**",
+     "tidy": "Start with t",
+     "ms": 297,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Start with a word\n\nOpen the dusk",
+     "tidy": "Start with a word\nOpen the dusk",
+     "ms": 375,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Let me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nLet me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on Brute",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Call on Brute",
+     "tidy": "Call on Brute",
+     "ms": 156,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Bruteus",
+     "tidy": "Call on Bruteus",
+     "ms": 264,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on a name",
+     "tidy": "Call on a name",
+     "ms": 167,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": [
+    "book",
+    "tempest",
+    "magic",
+    "page",
+    "drown"
+   ],
+   "answering": "Let me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Keep every line to 6 words or fewer.\nWork in at least two of these words: book, tempest, magic, page, drown.\nYour challenger last said:\nLet me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Book drowns shadows yet\nMagic alters pages",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "yet / pages"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Book drowns shadows yet\n\nMagic alters pages",
+     "tidy": "Book drowns shadows yet\nMagic alters pages",
+     "ms": 454,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "Book drowning",
+     "tidy": "Book drowning",
+     "ms": 226,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nTaunt your challenger\nHow do I love thee?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "1 < 3 < 5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "Crescendo\n\ntaunt\n\nhowever",
+     "tidy": "Crescendo\ntaunt\nhowever",
+     "ms": 480,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Crescendo\n\nTaunt your challenger\n\nHow do I love thee?",
+     "tidy": "Crescendo\nTaunt your challenger\nHow do I love thee?",
+     "ms": 569,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "That time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nThat time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out: end a line with exclamation mark",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "11/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Cry out: end a line",
+     "tidy": "Cry out: end a line",
+     "ms": 327,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cry out: end a line with exclamation mark",
+     "tidy": "Cry out: end a line with exclamation mark",
+     "ms": 503,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "Cry out: end",
+     "tidy": "Cry out: end",
+     "ms": 208,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "That time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 9 letters or more.\nYour challenger last said:\nThat time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Fair winds how they sweep through\nBare ruins whisper",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "through / whisper"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Fairly bright, they bid best",
+     "tidy": "Fairly bright, they bid best",
+     "ms": 386,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Fair winds how they sweep through\n\nBare ruins whisper",
+     "tidy": "Fair winds how they sweep through\nBare ruins whisper",
+     "ms": 515,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Rhyme: BF\n\nChallenger's answer: CRO-WH",
+     "tidy": "Rhyme: BF\nChallenger's answer: CRO-WH",
+     "ms": 434,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": "wit",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell WIT.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "WITaunt\nTaunt",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "WT"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "WITaunt\n\nTaunt",
+     "tidy": "WITaunt\nTaunt",
+     "ms": 282,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rhymes with \"tap\" twice, open the box.",
+     "tidy": "Rhymes with \"tap\" twice, open the box.",
+     "ms": 464,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": [
+    "storm",
+    "spell",
+    "staff",
+    "island",
+    "drown"
+   ],
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: storm, spell, staff, island, drown.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Storm\nspell\nstaff\nisland",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "storm / staff"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "spell / island"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Storm\n\nspell\n\nstaff\n\nisland",
+     "tidy": "Storm\nspell\nstaff\nisland",
+     "ms": 210,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Turn up a word\nExploit its edge",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Turn up a word\n\nExploit its edge",
+     "tidy": "Turn up a word\nExploit its edge",
+     "ms": 349,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Shine brighter than smothered",
+     "tidy": "Shine brighter than smothered",
+     "ms": 301,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Rhyme two words\nTaunt",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "words / taunt"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Rhyme two words\n\nTaunt",
+     "tidy": "Rhyme two words\nTaunt",
+     "ms": 366,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Start three-word-flourish\nmoonlitthoughtwax\nsilentwoew",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "three-word-flourish / silentwoew"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start three-word-flourish\n\nmoonlitthoughtwax\n\nsilentwoew",
+     "tidy": "Start three-word-flourish\nmoonlitthoughtwax\nsilentwoew",
+     "ms": 650,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Start three words with L",
+     "tidy": "Start three words with L",
+     "ms": 270,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": [
+    "crown",
+    "throne",
+    "ambition",
+    "witch",
+    "king"
+   ],
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: crown, throne, ambition, witch, king.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crown, throne, ambition\nwitch, king",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ambition / king"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "5/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "Crown, throne, ambition  \nwitch, king",
+     "tidy": "Crown, throne, ambition\nwitch, king",
+     "ms": 438,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 10
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": "bard",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell BARD.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Beware\nopen\ntaunt\nprobe",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "BOTP"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Beware\n\nOpen\n\nTaunt",
+     "tidy": "Beware\nOpen\nTaunt",
+     "ms": 294,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Beware, fearless, power\n\nOpen the challenge.",
+     "tidy": "Beware, fearless, power\nOpen the challenge.",
+     "ms": 400,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Beware  \nopen  \n\ntaunt  \nprobe",
+     "tidy": "Beware\nopen\ntaunt\nprobe",
+     "ms": 431,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Like as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nLike as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Until dawn breaks, their light is brief",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: The shadows stretch long as the tide retreats  \nFlourish: Until dawn breaks, their light is brief",
+     "tidy": "Flourish: Until dawn breaks, their light is brief",
+     "ms": 705,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Waves turn smooth",
+     "tidy": "Waves turn smooth",
+     "ms": 105,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Sequinto",
+     "tidy": "Sequinto",
+     "ms": 145,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "End your verse on \"moon\"",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "end"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "End your verse on \"moon\"",
+     "tidy": "End your verse on \"moon\"",
+     "ms": 335,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "End\n\nmask",
+     "tidy": "End\nmask",
+     "ms": 129,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "End a line\nQuestion: What shapes tell stories behind the shadows?",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "End a line\n\nQuestion: What shapes tell stories behind the shadows?",
+     "tidy": "End a line\nQuestion: What shapes tell stories behind the shadows?",
+     "ms": 425,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Ask a question: end a line with a question mark",
+     "tidy": "Ask a question: end a line with a question mark",
+     "ms": 307,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Ask me how the shadows play behind the trees",
+     "tidy": "Ask me how the shadows play behind the trees",
+     "ms": 335,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Edgar Allan Poe",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nTaunt your challenge",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "1 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "Crescendo rises above the shadows as darkness descends.",
+     "tidy": "Crescendo rises above the shadows as darkness descends.",
+     "ms": 383,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Crescendo\n\nTaunt your challenge",
+     "tidy": "Crescendo\nTaunt your challenge",
+     "ms": 315,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "Open the darkness\n\nTaunt your adversary’s idle tasks",
+     "tidy": "Open the darkness\nTaunt your adversary’s idle tasks",
+     "ms": 357,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Since brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nSince brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "End a line with a question mark\nBrash you know the cycle repeats again\nSweeney, why does it matter?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "end · brash · sweeney"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "End a line with a question mark\n\nWho holds the power of sadness against the fleeting nature of life?",
+     "tidy": "End a line with a question mark\nWho holds the power of sadness against the fleeting nature of life?",
+     "ms": 776,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "End a line with a question mark\n\nBrash you know the cycle repeats again\n\nSweeney, why does it matter?",
+     "tidy": "End a line with a question mark\nBrash you know the cycle repeats again\nSweeney, why does it matter?",
+     "ms": 959,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "End it\n\nshadows",
+     "tidy": "End it\nshadows",
+     "ms": 328,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "gold",
+    "choice",
+    "mercy",
+    "lead",
+    "casket"
+   ],
+   "answering": "Since brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: gold, choice, mercy, lead, casket.\nYour challenger last said:\nSince brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out: end a line\ngold, choice, mercy\nlead,casket",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "3/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 16,
+   "drafts": [
+    {
+     "raw": "Cry out: end a line  \n\ngold, choice, mercy  \nlead,casket",
+     "tidy": "Cry out: end a line\ngold, choice, mercy\nlead,casket",
+     "ms": 589,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 16
+    },
+    {
+     "raw": "Cry out: end a line\n\nGold work casket",
+     "tidy": "Cry out: end a line\nGold work casket",
+     "ms": 428,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "Gold light reveals  \nchoice mercy golden  \nlead flowers sway",
+     "tidy": "Gold light reveals\nchoice mercy golden\nlead flowers sway",
+     "ms": 407,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": "fate",
+   "relicWords": null,
+   "answering": "When forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell FATE.\nWrite exactly 4 lines.\nYour flourish: Use two words of 9 letters or more.\nYour challenger last said:\nWhen forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "FWO",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "F"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "FWO",
+     "tidy": "FWO",
+     "ms": 155,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "tears",
+    "truth",
+    "daughter",
+    "nothing",
+    "heart"
+   ],
+   "answering": "When forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: tears, truth, daughter, nothing, heart.\nYour challenger last said:\nWhen forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Tears\ntruth",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "tears / truth"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Tears\n\ntruth",
+     "tidy": "Tears\ntruth",
+     "ms": 221,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tears of honesty\n\nheart’s gentle light",
+     "tidy": "Tears of honesty\nheart’s gentle light",
+     "ms": 390,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "These violent delights have violent ends.  \nTears, truth, daughter, nothing, heart",
+     "tidy": "These violent delights have violent ends.\nTears, truth, daughter, nothing, heart",
+     "ms": 447,
+     "tokens": 19,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Keep the dusk in shadow",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Keep the dusk in shadow",
+     "tidy": "Keep the dusk in shadow",
+     "ms": 194,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "book",
+    "tempest",
+    "magic",
+    "page",
+    "drown"
+   ],
+   "answering": "Death be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: book, tempest, magic, page, drown.\nYour challenger last said:\nDeath be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nMagic\nPage",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 1 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Crescendo  \nMagic  \nPage",
+     "tidy": "Crescendo\nMagic\nPage",
+     "ms": 388,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Death be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nDeath be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "cry"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Cry out",
+     "tidy": "Cry out",
+     "ms": 140,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Start with wind\nOpen the silence",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start with wind\n\nOpen the silence",
+     "tidy": "Start with wind\nOpen the silence",
+     "ms": 265,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Start three-words-yellow",
+     "tidy": "Start three-words-yellow",
+     "ms": 255,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nShall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Dreammask\nPlaytower",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "dreammask / playtower"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "2/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "3/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Verse: Moonplay\n\nFoolplay",
+     "tidy": "Foolplay",
+     "ms": 349,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Dreammask  \nPlaytower",
+     "tidy": "Dreammask\nPlaytower",
+     "ms": 311,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 9 letters or more.\nYour challenger last said:\nShall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: wind\nAnswer",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "flourish · answer"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Rough winds do shake the darling buds\n\nFlourish: wind  \n\nAnswer",
+     "tidy": "Flourish: wind\nAnswer",
+     "ms": 597,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Verse: Rough winds\n\nAnswer: The gentle light\n\nFlourish: Dawn",
+     "tidy": "Answer: The gentle light\nFlourish: Dawn",
+     "ms": 546,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nTaunt your challenger",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "1 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "Crescendo\n\nTaunt your challenger",
+     "tidy": "Crescendo\nTaunt your challenger",
+     "ms": 355,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "Crescendo\n\ntaunt\n\neverywhere",
+     "tidy": "Crescendo\ntaunt\neverywhere",
+     "ms": 320,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": [
+    "crown",
+    "throne",
+    "ambition",
+    "witch",
+    "king"
+   ],
+   "answering": "My mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 9 letters or more.\nWork in at least two of these words: crown, throne, ambition, witch, king.\nYour challenger last said:\nMy mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crown, throne, ambition",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Crown, throne, ambition",
+     "tidy": "Crown, throne, ambition",
+     "ms": 287,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Hades",
+   "acrostic": null,
+   "relicWords": [
+    "ring",
+    "vow",
+    "night",
+    "banished",
+    "kiss"
+   ],
+   "answering": "When, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,",
+   "prompt": [
+    "You are Hades in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All souls come to me in the end. I am patient.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: ring, vow, night, banished, kiss.\nYour challenger last said:\nWhen, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Ring\nvow\nnight\nbanished",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ring / vow"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "night / banished"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Ring\n\nvow\n\nnight\n\nbanished",
+     "tidy": "Ring\nvow\nnight\nbanished",
+     "ms": 357,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nWhen, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Rhyme two words\nIn twilight's hush I saw\nThe light bend beneath my foot",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "3 < 5 < 6"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "Rhyme two words\n\nIn twilight's hush I saw\n\nThe light bend beneath my foot",
+     "tidy": "Rhyme two words\nIn twilight's hush I saw\nThe light bend beneath my foot",
+     "ms": 652,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "Rhyme: two\n\nVerse: When fortune doth fall and disgrace reign,  \nAll alone become outcasts in shadows’ embrace",
+     "tidy": "Rhyme: two\nAll alone become outcasts in shadows’ embrace",
+     "ms": 928,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "Rhyme: two-words\n\nVerse: When shadows fall into dust,",
+     "tidy": "Rhyme: two-words",
+     "ms": 439,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nTaunting my challenger's wit with a clever twist",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "1 < 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "Crescendo\n\nTaunting my challenger's wit with a clever twist",
+     "tidy": "Crescendo\nTaunting my challenger's wit with a clever twist",
+     "ms": 521,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Let me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nLet me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on Alexander\nLove is not love",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "alexander / love"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Call on a character by name",
+     "tidy": "Call on a character by name",
+     "ms": 218,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Cassius by name",
+     "tidy": "Call on Cassius by name",
+     "ms": 198,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Alexander\n\nLove is not love",
+     "tidy": "Call on Alexander\nLove is not love",
+     "ms": 331,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "gold",
+    "choice",
+    "mercy",
+    "lead",
+    "casket"
+   ],
+   "answering": "That time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Use two words of 9 letters or more.\nWork in at least two of these words: gold, choice, mercy, lead, casket.\nYour challenger last said:\nThat time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cascading gold through caskets\nMercy led the storm\nLead hung like rusted chains",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4 < 4 < 5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Cascading gold through caskets  \nMercy led the storm  \n\nLead hung like rusted chains",
+     "tidy": "Cascading gold through caskets\nMercy led the storm\nLead hung like rusted chains",
+     "ms": 598,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Cascade",
+     "tidy": "Cascade",
+     "ms": 216,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Caliban",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "That time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.",
+   "prompt": [
+    "You are Caliban in a duel of verses: theatrical, sharp, in character. Your line in the play: \"This island's mine, by Sycorax my mother.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nThat time of year thou mayst in me behold\nWhen yellow leaves, or none, or few, do hang\nUpon those boughs which shake against the cold,\nBare ruin'd choirs, where late the sweet birds sang.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "This island's mine, by Sycorax my mother.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "this"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "This island's mine, by Sycorax my mother.",
+     "tidy": "This island's mine, by Sycorax my mother.",
+     "ms": 356,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "This year's silence echoes\n\nBare ruins bloom on winter walls",
+     "tidy": "This year's silence echoes\nBare ruins bloom on winter walls",
+     "ms": 499,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "This island's mine, by Sycorax my mother",
+     "tidy": "This island's mine, by Sycorax my mother",
+     "ms": 396,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crescendo\nTaunt\nKeep going",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 1 < 2"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Crescendo\n\nTaunt\n\nKeep going",
+     "tidy": "Crescendo\nTaunt\nKeep going",
+     "ms": 408,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Crescendo",
+     "tidy": "Crescendo",
+     "ms": 223,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Crescendo rising",
+     "tidy": "Crescendo rising",
+     "ms": 280,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "gold",
+    "choice",
+    "mercy",
+    "lead",
+    "casket"
+   ],
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: gold, choice, mercy, lead, casket.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Casket",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "2/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Casket",
+     "tidy": "Casket",
+     "ms": 100,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": "moon",
+   "relicWords": null,
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell MOON.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on a character by name",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "C"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Call on a character by name",
+     "tidy": "Call on a character by name",
+     "ms": 308,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on a character by name",
+     "tidy": "Call on a character by name",
+     "ms": 340,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Call on Arthur\nTaunt your brawler",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "arthur / brawler"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Call on Arthur\n\nTaunt your brawler",
+     "tidy": "Call on Arthur\nTaunt your brawler",
+     "ms": 354,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Ref: Repeat old words",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Old words fade\n\nRef: Repeat old words",
+     "tidy": "Ref: Repeat old words",
+     "ms": 425,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Repeat one strong word three times  \nBanquo declared",
+     "tidy": "Repeat one strong word three times\nBanquo declared",
+     "ms": 272,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Repeat one strong word three times  \nSharpen the gavel  \nEyes the echoing room",
+     "tidy": "Repeat one strong word three times\nSharpen the gavel\nEyes the echoing room",
+     "ms": 771,
+     "tokens": 21,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "ring",
+    "vow",
+    "night",
+    "banished",
+    "kiss"
+   ],
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 9 letters or more.\nWork in at least two of these words: ring, vow, night, banished, kiss.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Ring\nvow\nnight",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "ring / night"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Ring  \nvow  \nnight",
+     "tidy": "Ring\nvow\nnight",
+     "ms": 235,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Ring, night, kiss",
+     "tidy": "Ring, night, kiss",
+     "ms": 293,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Opening: Taunt your challenger's shadow\nClosing: His silence mirrors mine",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: The battle cry echoes in shadows\n\nOpening: Taunt your challenger's shadow\n\nClosing: His silence mirrors mine",
+     "tidy": "Opening: Taunt your challenger's shadow\nClosing: His silence mirrors mine",
+     "ms": 766,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Like as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nLike as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Waves whisper slow\nminutes twist like leaves\nSequent toil stretches",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "Sequent",
+     "tidy": "Sequent",
+     "ms": 151,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Waves whisper slow  \nminutes twist like leaves  \n\nSequent toil stretches",
+     "tidy": "Waves whisper slow\nminutes twist like leaves\nSequent toil stretches",
+     "ms": 511,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 10
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": [
+    "tears",
+    "truth",
+    "daughter",
+    "nothing",
+    "heart"
+   ],
+   "answering": "Like as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nWork in at least two of these words: tears, truth, daughter, nothing, heart.\nYour challenger last said:\nLike as the waves make towards the pebbled shore,\nSo do our minutes hasten to their end;\nEach changing place with that which goes before,\nIn sequent toil all forwards do contend.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Tears whisper, truth holds,\nheart turns quiet",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "holds / quiet"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Tears whisper, truth holds,\n\nheart turns quiet",
+     "tidy": "Tears whisper, truth holds,\nheart turns quiet",
+     "ms": 424,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    },
+    {
+     "raw": "Tears, truth, daughter, nothing",
+     "tidy": "Tears, truth, daughter, nothing",
+     "ms": 306,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Anaphora\nRhyme two words\nTaunt",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "anaphora · rhyme · taunt"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Anaphora  \nRhyme two words  \n\nTaunt",
+     "tidy": "Anaphora\nRhyme two words\nTaunt",
+     "ms": 326,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "ring",
+    "vow",
+    "night",
+    "banished",
+    "kiss"
+   ],
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: ring, vow, night, banished, kiss.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Ring\nvow\nnight",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "ring / night"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Ring\n\nvow\n\nnight",
+     "tidy": "Ring\nvow\nnight",
+     "ms": 144,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "Ring\n\nvowel\n\nnight",
+     "tidy": "Ring\nvowel\nnight",
+     "ms": 257,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "Ring\n\nvow\n\nbanished",
+     "tidy": "Ring\nvow\nbanished",
+     "ms": 336,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Since brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nSince brass, nor stone, nor earth, nor boundless sea,\nBut sad mortality o'er-sways their power,\nHow with this rage shall beauty hold a plea,\nWhose action is no stronger than a flower?\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Repeat one strong word three times",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "9/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Rage\n\nFlourish: Repeat one strong word three times",
+     "tidy": "Flourish: Repeat one strong word three times",
+     "ms": 565,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "The answer is\n\nRape",
+     "tidy": "The answer is\nRape",
+     "ms": 206,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Shadows whisper, silt swirls, flame bleeds",
+     "tidy": "Shadows whisper, silt swirls, flame bleeds",
+     "ms": 355,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Repeat Word: shy\nShoddy",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 7,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "shy / shoddy"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 7,
+   "drafts": [
+    {
+     "raw": "Repeat one strong word three times\n\nTaunt your challenger",
+     "tidy": "Repeat one strong word three times\nTaunt your challenger",
+     "ms": 317,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Repeat one strong word three times\n\nOpening the choice\n\nRemember when choices were free",
+     "tidy": "Repeat one strong word three times\nOpening the choice\nRemember when choices were free",
+     "ms": 377,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "**Verse:** Unsex me here, but shoddy\n\n**Repeat Word:** shy\n\n**Shoddy**",
+     "tidy": "Repeat Word: shy\nShoddy",
+     "ms": 603,
+     "tokens": 26,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 7,
+     "craft": 7
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nWhen forty winters shall besiege thy brow,\nAnd dig deep trenches in thy beauty's field,\nThy youth's proud livery, so gaz'd on now,\nWill be a tatter'd weed, of small worth held;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out\nForty winters will cast their shadow\ndeep trenches where beauty lies hidden",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "2/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "9/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "9/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "Cry out\n\nForty winters will cast their shadow  \ndeep trenches where beauty lies hidden",
+     "tidy": "Cry out\nForty winters will cast their shadow\ndeep trenches where beauty lies hidden",
+     "ms": 408,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Death be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 9 letters or more.\nYour challenger last said:\nDeath be not proud, though some have callèd thee\nMighty and dreadfull, for, thou art not so,\nFor, those, whom thou think'st, thou dost overthrow,\nDie not, poore death, nor yet canst thou kill me.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flowerbed",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Flowerbed",
+     "tidy": "Flowerbed",
+     "ms": 89,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": "bard",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell BARD.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Bard\nTaunt\nFind\nEx",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "BTFE"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Verse: A dark mirror shows my bards\n\nOpening twist: The words dance like shadows",
+     "tidy": "Opening twist: The words dance like shadows",
+     "ms": 219,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "BARD",
+     "tidy": "BARD",
+     "ms": 78,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Bard  \nTaunt  \nFind  \nEx",
+     "tidy": "Bard\nTaunt\nFind\nEx",
+     "ms": 195,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": [
+    "mask",
+    "dream",
+    "fool",
+    "play",
+    "moon"
+   ],
+   "answering": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: mask, dream, fool, play, moon.\nYour challenger last said:\nShall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Moonlight softest, dreamiest bloom\nFool's jest most absurd\nPlay shadows play",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "bloom / play"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Moonlight softest, dreamiest bloom  \nFool's jest most absurd  \n\nPlay shadows play",
+     "tidy": "Moonlight softest, dreamiest bloom\nFool's jest most absurd\nPlay shadows play",
+     "ms": 1798,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": "rose",
+   "relicWords": [
+    "skull",
+    "jest",
+    "grave",
+    "laugh",
+    "dust"
+   ],
+   "answering": "My mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ROSE.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: skull, jest, grave, laugh, dust.\nYour challenger last said:\nMy mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red;\nIf snow be white, why then her breasts are dun;\nIf hairs be wires, black wires grow on her head.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Rose\nSkull\nJest\ngrave",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "RSJG"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Rose\n\nSkull\n\nJest\n\ngrave",
+     "tidy": "Rose\nSkull\nJest\ngrave",
+     "ms": 395,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1034,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "skull",
+    "jest",
+    "grave",
+    "laugh",
+    "dust"
+   ],
+   "answering": "When, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: skull, jest, grave, laugh, dust.\nYour challenger last said:\nWhen, in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state,\nAnd trouble deaf heaven with my bootless cries,\nAnd look upon myself and curse my fate,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Skull\nJest\nGrave\nLaugh",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "skull / jest"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "grave / laugh"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Skull\n\nJest\n\nGrave\n\nLaugh",
+     "tidy": "Skull\nJest\nGrave\nLaugh",
+     "ms": 385,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Skull jest grave laugh dust",
+     "tidy": "Skull jest grave laugh dust",
+     "ms": 231,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Its long shadow stretches across night",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: The dawn breaks with golden light  \nFlourish: Its long shadow stretches across night",
+     "tidy": "Flourish: Its long shadow stretches across night",
+     "ms": 580,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Verse: Longest\n\nTaunt: You’re not ready for me to speak this way.",
+     "tidy": "Taunt: You’re not ready for me to speak this way.",
+     "ms": 904,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "**Verse:** The echoes weave through midnight skies  \n**Rhyme:** tr_evl  \n\n**Flourish:** Longest",
+     "tidy": "Rhyme: trevl\nFlourish: Longest",
+     "ms": 1194,
+     "tokens": 30,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Let me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nLet me not to the marriage of true minds\nAdmit impediments. Love is not love\nWhich alters when it alteration finds,\nOr bends with the remover to remove:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "These violent delights have violent ends.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "These violent delights have violent ends.",
+     "tidy": "These violent delights have violent ends.",
+     "ms": 390,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Turn a word of five\n\nLove is not love",
+     "tidy": "Turn a word of five\nLove is not love",
+     "ms": 444,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Turn red\nTaunt",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "red / taunt"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Turn red\n\nTaunt",
+     "tidy": "Turn red\nTaunt",
+     "ms": 295,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1037,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "The Nurse",
+   "acrostic": null,
+   "relicWords": [
+    "ring",
+    "vow",
+    "night",
+    "banished",
+    "kiss"
+   ],
+   "answering": "Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.",
+   "prompt": [
+    "You are The Nurse in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the drudge and toil in your delight.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: ring, vow, night, banished, kiss.\nYour challenger last said:\nNot marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;\nBut you shall shine more bright in these contents\nThan unswept stone besmear'd with sluttish time.\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Flourish: Through shadows lost within\nWork: Dawn reborn dawn",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Verse: Not marble, not gilded\n\nFlourish: Through shadows lost within\n\nWork: Dawn reborn dawn",
+     "tidy": "Flourish: Through shadows lost within\nWork: Dawn reborn dawn",
+     "ms": 642,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "When to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nWhen to the sessions of sweet silent thought\nI summon up remembrance of things past,\nI sigh the lack of many a thing I sought,\nAnd with old woes new wail my dear time's waste:\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "The silliness of silence lingers\nA whisper of forgotten moments\nThe echoes of their laughter fade",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "lingers / fade"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "The silliness of silence lingers  \nA whisper of forgotten moments  \n\nThe echoes of their laughter fade  \nA song silenced by days unheard",
+     "tidy": "The silliness of silence lingers\nA whisper of forgotten moments\nThe echoes of their laughter fade",
+     "ms": 662,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Sweet silence whispers through the halls  \nRemembrance blooming like ghosts in shadows  \n\nThe sigh mingles lost nights into fresh air",
+     "tidy": "Sweet silence whispers through the halls\nRemembrance blooming like ghosts in shadows\nThe sigh mingles lost nights into fresh air",
+     "ms": 775,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "The seasons turn quiet",
+     "tidy": "The seasons turn quiet",
+     "ms": 151,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1040,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "crown",
+    "throne",
+    "ambition",
+    "witch",
+    "king"
+   ],
+   "answering": "When I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: crown, throne, ambition, witch, king.\nYour challenger last said:\nWhen I do count the clock that tells the time,\nAnd see the brave day sunk in hideous night,\nWhen I behold the violet past prime,\nAnd sable curls all silver'd o'er with white,\nAnswer them.\nWrite only the verse, in English. No title, no notes, no explanation."
+   ],
+   "verse": "Crown\nthrone\nambition",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "crown / ambition"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Crown  \nthrone  \nambition",
+     "tidy": "Crown\nthrone\nambition",
+     "ms": 307,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  }
+ ],
+ "seconds": 79,
+ "setAside": {
+  "date": "2026-11-18T00:36:06.661Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "90 of 90 plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)",
+  "plays": [
+   "seed 1001 round 0: the prompt changed",
+   "seed 1001 round 1: the prompt changed",
+   "seed 1001 round 2: the prompt changed",
+   "seed 1002 round 0: the prompt changed",
+   "seed 1002 round 1: the prompt changed",
+   "seed 1002 round 2: the prompt changed",
+   "seed 1003 round 0: the prompt changed",
+   "seed 1003 round 1: the prompt changed",
+   "seed 1003 round 2: the prompt changed",
+   "seed 1004 round 0: the prompt changed",
+   "seed 1004 round 1: the prompt changed",
+   "seed 1004 round 2: the prompt changed",
+   "seed 1005 round 0: the prompt changed",
+   "seed 1005 round 1: the prompt changed",
+   "seed 1005 round 2: the prompt changed",
+   "seed 1006 round 0: the prompt changed",
+   "seed 1006 round 1: the prompt changed",
+   "seed 1006 round 2: the prompt changed",
+   "seed 1007 round 0: the prompt changed",
+   "seed 1007 round 1: the prompt changed",
+   "seed 1007 round 2: the prompt changed",
+   "seed 1008 round 0: the prompt changed",
+   "seed 1008 round 1: the prompt changed",
+   "seed 1008 round 2: the prompt changed",
+   "seed 1009 round 0: the prompt changed",
+   "seed 1009 round 1: the prompt changed",
+   "seed 1009 round 2: the prompt changed",
+   "seed 1010 round 0: the prompt changed",
+   "seed 1010 round 1: the prompt changed",
+   "seed 1010 round 2: the prompt changed",
+   "seed 1011 round 0: the prompt changed",
+   "seed 1011 round 1: the prompt changed",
+   "seed 1011 round 2: the prompt changed",
+   "seed 1012 round 0: the prompt changed",
+   "seed 1012 round 1: the prompt changed",
+   "seed 1012 round 2: the prompt changed",
+   "seed 1013 round 0: the prompt changed",
+   "seed 1013 round 1: the prompt changed",
+   "seed 1013 round 2: the prompt changed",
+   "seed 1014 round 0: the prompt changed",
+   "seed 1014 round 1: the prompt changed",
+   "seed 1014 round 2: the prompt changed",
+   "seed 1015 round 0: the prompt changed",
+   "seed 1015 round 1: the prompt changed",
+   "seed 1016 round 1: the prompt changed",
+   "seed 1016 round 2: the prompt changed",
+   "seed 1017 round 0: the prompt changed",
+   "seed 1017 round 1: the prompt changed",
+   "seed 1017 round 2: the prompt changed",
+   "seed 1018 round 1: the prompt changed",
+   "seed 1018 round 2: the prompt changed",
+   "seed 1019 round 0: the prompt changed",
+   "seed 1019 round 1: the prompt changed",
+   "seed 1019 round 2: the prompt changed",
+   "seed 1020 round 0: the prompt changed",
+   "seed 1020 round 1: the prompt changed",
+   "seed 1020 round 2: the prompt changed",
+   "seed 1021 round 0: the prompt changed",
+   "seed 1021 round 2: the prompt changed",
+   "seed 1022 round 1: the prompt changed",
+   "seed 1022 round 2: the prompt changed",
+   "seed 1023 round 0: the prompt changed",
+   "seed 1023 round 1: the prompt changed",
+   "seed 1024 round 1: the prompt changed",
+   "seed 1024 round 2: the prompt changed",
+   "seed 1025 round 0: the prompt changed",
+   "seed 1025 round 1: the prompt changed",
+   "seed 1025 round 2: the prompt changed",
+   "seed 1026 round 0: the prompt changed",
+   "seed 1026 round 1: the prompt changed",
+   "seed 1026 round 2: the prompt changed",
+   "seed 1027 round 0: the prompt changed",
+   "seed 1027 round 1: the prompt changed",
+   "seed 1027 round 2: the prompt changed",
+   "seed 1028 round 0: the prompt changed",
+   "seed 1028 round 2: the prompt changed",
+   "seed 1029 round 2: the prompt changed",
+   "seed 1030 round 0: the prompt changed",
+   "seed 1030 round 1: the prompt changed",
+   "seed 1031 round 1: the prompt changed",
+   "seed 1032 round 0: the prompt changed",
+   "seed 1032 round 2: the prompt changed",
+   "seed 1033 round 1: the prompt changed",
+   "seed 1034 round 1: the prompt changed",
+   "seed 1035 round 0: the prompt changed",
+   "seed 1035 round 1: the prompt changed",
+   "seed 1036 round 0: the prompt changed",
+   "seed 1037 round 1: the prompt changed",
+   "seed 1038 round 1: the prompt changed",
+   "seed 1040 round 1: the prompt changed"
+  ]
+ }
+}

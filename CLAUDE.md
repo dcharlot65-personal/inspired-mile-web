@@ -7,8 +7,13 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 
 - Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
 - In-browser AI through `@huggingface/transformers` on WebGPU; no server does inference.
-  `src/lib/brain.ts` picks a tier by device capability: Gemma 4 E2B (3.1 GB), LFM3 1.7B
-  (1.1 GB), LFM2.5 350M (judge only), or none (written opponent, rule judging).
+  `src/lib/brain.ts` knows three models: Gemma 4 E2B (3.1 GB), LFM3 1.7B (1.1 GB) and
+  LFM2.5 350M (295 MB). Which the device can run decides what is offered, and each model
+  writes and judges only in the languages it was measured to handle (`writesIn`, `judgesIn`);
+  one used in no language is never offered (`modelsToOffer`) and never a fallback when the one
+  asked for fails to load (`loadOrder`); a page loads a model on its own only when it is the one
+  the visitor chose before and is still offered (`rememberedModel`). Otherwise: the written
+  opponent and rule judging.
 - Speech: Whisper base on WebAssembly (`src/lib/ear.ts`); Kokoro for English voice.
   The browser's Web Speech recognition is NOT used: it sends audio to a server.
 - Babylon.js 9 for the Theatre (`src/lib/xr/theatre.ts`, `/theatre`) and the VR gallery
@@ -22,7 +27,8 @@ A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and se
 `duel.ts` (scoring: craft + judge), `judge.ts` (how a model's preference is read),
 `opponent.ts`, `session.ts` (order of play, shared by every front end).
 Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
-small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
+small models answer by position. `scripts/judge-eval.mjs` was the first, English-only measurement;
+`scripts/model-eval/` measures every model in every language through the game's own functions.
 Graded one verse at a time (the lite tier) a model obeys a line such as "Grade: 5" or "Grade:
 five" in the verse (measured with `scripts/grade-injection-eval.mjs`). Three defences on the grade
 path, all by structure: the grader never reads a line holding a number, a number word or a judge
@@ -35,7 +41,7 @@ a verse, which LFM3 then preferred. Its wording names the duel's language beside
 from seven measured with the real models on labelled pairs in sixteen languages
 (`tests/model/judge-compare.spec.ts`): the best mean for both models, but against main's wording a
 trade inside the noise, better in some languages and worse in others; LFM3 stays near or below
-chance in Spanish, Arabic and Hindi under every wording (docs/language/JUDGE-INJECTION.md). The live checklist tells a lite-tier player which lines the
+chance in Spanish, Arabic and Hindi under every wording (docs/language/JUDGE-INJECTION.md). The live checklist tells a lite-tier player (in a language that model judges) which lines the
 grader will not read and the word that left each out (`DuelSession.judgeUnread`). Keep all three
 if the grade path changes, and measure with `tests/model/grade-injection.spec.ts` and
 `tests/model/judge-hide.spec.ts` (real models; results in `docs/language/JUDGE-INJECTION.md`) and
@@ -413,6 +419,44 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   run `scripts/sound/crosscheck.mjs --show 40` and read the disagreements. It found, on
   2026-11-16, that the build had let one transcription stand for a word: Wiktionary lists
   several per word (careful, casual, regional) in no useful order, so never take the first.
+- **Where a model is used is measured, not assumed** (`docs/language/MODEL-EVAL.md`).
+  `MODELS[tier].writesIn` / `.judgesIn` in `src/lib/brain.ts` list the languages in which each
+  model writes the opponent's verse and judges; anywhere else the written opponent plays and the
+  rules judge, and the language picker on the battle page says so (with a model loaded it lists
+  the languages under two headings, who writes there, and a note under it says why). The lists are copied from
+  `docs/language/model-eval/decisions.json`, which `scripts/model-eval/analyze.mjs` derives from
+  the result files in `docs/language/model-eval/cells/` by the thresholds in
+  `scripts/model-eval/thresholds.json`; `src/lib/model-eval.test.ts` fails when either drifts.
+  Never edit a list by hand: run the cell again (`scripts/model-eval/run.mjs`, on the build host,
+  one run at a time, under memguard; it resumes), then `analyze.mjs`, then `copy-lists.mjs`.
+  A language with no result file is unsupported for that model. The test "every writing cell
+  replays…" re-runs the game's code over each stored draft and fails when the rules or the
+  opponent's prompt changed after the cells ran; `src/lib/model-eval.judge.test.ts` fails when
+  the judge's prompts differ from the fingerprint each judging cell carries, and when the gate in
+  `referee.ts`/`session.ts` (model only in its listed languages) is lost in a merge. After a
+  rule change (forms, devices, rhyme, syllables, the tidy-up):
+  `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts` scores the stored drafts
+  again (no model), cell by cell, then `analyze.mjs` and `copy-lists.mjs`. A cell it cannot
+  re-score (its prompt changed, or the duel now draws other forms) needs the model: run it again,
+  or meanwhile add `MEVAL_SET_ASIDE=1` to move it to `docs/language/model-eval/set-aside/`, where
+  it counts as not measured (a cell of that name set aside before is kept, moved to
+  `set-aside/before-<day>/`: `src/lib/model-eval-aside.ts`). The same variable with `model-eval.judge.test.ts` sets aside judging
+  cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
+  `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
+  `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.
+  Each judged pair also keeps the model's raw reading (`referee.ts JudgeReading`), and
+  "every verdict follows from the reading…" derives each stored verdict again with the code now,
+  so a change to how an answer is read (`SPLIT_BELOW`, `GRADE_MARGIN`, `combineMargins`,
+  `boundedByRules`, and the rules' split that bounds the grade path, `referee.ts rulesSplit`, which the
+  test calls itself) turns it red as a prompt change turns the fingerprint red. Such a change
+  alters nothing the model answered, so `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.judge.test.ts`
+  derives every stored verdict again from its reading and writes it back (a cell it cannot derive
+  fails the run, or with `MEVAL_SET_ASIDE=1` is set aside); then `analyze.mjs` and `copy-lists.mjs`.
+  `node scripts/model-eval/mutate-gates.mjs` (build host) proves the gates, the pages' lines
+  (badge, note, verdict, theatre), the loading rules and the reading are all held by a test;
+  the page tests use a stand-in model library (`tests/stand-in-model.ts`).
+  The replay, the re-score and `run.mjs` load a language's sound data (`src/lib/verse/sound`,
+  from the phonetics work) wherever the game does.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character

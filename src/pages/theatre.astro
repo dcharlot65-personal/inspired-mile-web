@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, chooseTier, detectCapability, loadBrain } from '../lib/brain';
+    import { brainInfo, detectCapability, loadBrain, modelJudges, rememberedModel } from '../lib/brain';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
@@ -64,7 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { loadSound } from '../lib/verse/sound';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
-    import { initI18n, onLocaleChange, t } from '../i18n';
+    import { initI18n, languageName, onLocaleChange, t } from '../i18n';
     import type { Msg } from '../lib/verse/msg';
 
     const statusEl = document.getElementById('theatre-status')!;
@@ -97,7 +97,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       theatre.render(session, {
         mic: micText(),
         listening: isListening(),
-        judge: info ? t('theatre.judgedModel', { model: info.label }) : t('theatre.judgedRules'),
+        // The model judges only a language it has been shown to judge (docs/language/MODEL-EVAL.md);
+        // elsewhere the judging is by rule even with a model loaded, and the line says which.
+        judge: !info
+          ? t('theatre.judgedRules')
+          : modelJudges(info, session.duel.lang)
+            ? t('theatre.judgedModel', { model: info.label })
+            : t('battle.lang.rules', { language: languageName(session.duel.lang), model: info.label }),
       });
       if (document.activeElement !== typed) typed.value = session.verse;
       (document.getElementById('typed') as HTMLElement).classList.toggle('hidden', theatre.mode !== 'flat');
@@ -193,12 +199,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     async function init() {
       // A model is used only if the player has already chosen one on the battle page; the
       // theatre never starts a large download on its own, least of all inside a headset.
+      // Only the model they chose, while this device is still offered it (brain.ts rememberedModel):
+      // never a bigger download than theirs, nor a model used in no language (docs/language/MODEL-EVAL.md).
       const cap = await detectCapability();
-      const chosen = localStorage.getItem('inspired-mile-brain');
-      const tier = chooseTier(cap);
-      if (params.get('brain') !== 'rules' && tier !== 'none' && chosen && chosen !== 'rules') {
+      const want = rememberedModel(cap, localStorage.getItem('inspired-mile-brain'));
+      if (params.get('brain') !== 'rules' && want) {
         status('brain.summoning');
-        useModel = await loadBrain(chosen === 'grand' && !cap.handheld ? 'grand' : tier, (p) => {
+        useModel = await loadBrain(want, (p) => {
           // The loader reports its progress in English.
           const down = p.text.match(/^Downloading (.+): (\d+) of (\d+) MB$/);
           statusMsg = null;

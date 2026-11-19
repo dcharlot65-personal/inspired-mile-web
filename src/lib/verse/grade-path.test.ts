@@ -25,6 +25,10 @@ let judgeKind: 'grade' | 'compare' = 'grade';
 
 vi.mock('../brain', () => ({
   isBrainLoaded: () => true,
+  // The stand-in judges every language it is asked in: this file tests the grade path itself. Where
+  // the real models judge is measured (docs/language/MODEL-EVAL.md) and gated in referee.ts.
+  modelJudges: () => true,
+  modelWrites: () => false,
   brainInfo: () => ({ tier: judgeKind === 'grade' ? 'lite' : 'standard', judge: judgeKind, writes: false, label: 'stub', languages: ['en'] }),
   answerScores: async (messages: Array<{ content: string }>, answers: string[]) => {
     if (judgeKind === 'compare') {

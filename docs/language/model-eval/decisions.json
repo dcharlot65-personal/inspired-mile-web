@@ -1,0 +1,539 @@
+{
+ "note": "Where each model may write the opponent's verse and where it may judge. Derived by scripts/model-eval/analyze.mjs from cells/*.json with scripts/model-eval/thresholds.json; src/lib/brain.ts copies these lists and src/lib/model-eval.test.ts fails if either drifts. A language that was not measured is in no list.",
+ "models": {
+  "grand": {
+   "writesIn": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "hi",
+    "zh",
+    "th",
+    "id"
+   ],
+   "judgesIn": [
+    "en",
+    "ru",
+    "zh",
+    "id"
+   ]
+  },
+  "standard": {
+   "writesIn": [],
+   "judgesIn": [
+    "vi"
+   ]
+  },
+  "lite": {
+   "writesIn": [],
+   "judgesIn": []
+  }
+ },
+ "measured": {
+  "grand": {
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
+   "write": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ]
+  },
+  "standard": {
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
+   "write": [
+    "en"
+   ]
+  },
+  "lite": {
+   "judge": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ],
+   "write": [
+    "en"
+   ]
+  }
+ },
+ "why": {
+  "grand": {
+   "en": {
+    "writes": [],
+    "judges": []
+   },
+   "es": {
+    "writes": [],
+    "judges": [
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "fr": {
+    "writes": [],
+    "judges": [
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "de": {
+    "writes": [],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
+    ]
+   },
+   "it": {
+    "writes": [],
+    "judges": [
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 33/48 criteria (69%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "pt": {
+    "writes": [],
+    "judges": [
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "pl": {
+    "writes": [],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "ru": {
+    "writes": [],
+    "judges": []
+   },
+   "ar": {
+    "writes": [
+     "commentary in 12/80 plays"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "hi": {
+    "writes": [],
+    "judges": [
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "zh": {
+    "writes": [],
+    "judges": []
+   },
+   "ja": {
+    "writes": [
+     "commentary in 13/100 plays",
+     "kept the form in full in 22/100 plays (22%), under 30%"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 33/48 criteria (69%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "kept the form in full in 24/100 plays (24%), under 30%"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "kept the form in full in 32/110 plays (29%), under 30%"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "th": {
+    "writes": [],
+    "judges": [
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 32/48 criteria (67%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "id": {
+    "writes": [],
+    "judges": []
+   }
+  },
+  "standard": {
+   "en": {
+    "writes": [
+     "kept the form in full in 16/90 plays (18%), under 30%"
+    ],
+    "judges": [
+     "preferred the better verse on 30/48 criteria (63%), under 70%"
+    ]
+   },
+   "es": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 24/48 criteria (50%), under 70%"
+    ]
+   },
+   "fr": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 27/48 criteria (56%), under 70%"
+    ]
+   },
+   "de": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 28/48 criteria (58%), under 70%"
+    ]
+   },
+   "it": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "preferred the better verse on 27/48 criteria (56%), under 70%"
+    ]
+   },
+   "pt": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 27/48 criteria (56%), under 70%"
+    ]
+   },
+   "pl": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 25/48 criteria (52%), under 70%"
+    ]
+   },
+   "ru": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 23/48 criteria (48%), under 70%"
+    ]
+   },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 20/48 criteria (42%), under 70%"
+    ]
+   },
+   "hi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 22/48 criteria (46%), under 70%"
+    ]
+   },
+   "zh": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 23/48 criteria (48%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "ja": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+     "preferred the better verse on 21/48 criteria (44%), under 70%"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": []
+   },
+   "th": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 12/48 criteria (25%), under 70%",
+     "2 injection attempt(s) beat a real verse"
+    ]
+   },
+   "id": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 31/48 criteria (65%), under 70%"
+    ]
+   }
+  },
+  "lite": {
+   "en": {
+    "writes": [
+     "commentary in 29/90 plays",
+     "kept the form in full in 0/90 plays (0%), under 30%"
+    ],
+    "judges": [
+     "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "preferred the better verse on 32/48 criteria (67%), under 70%"
+    ]
+   },
+   "es": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
+     "preferred the better verse on 15/48 criteria (31%), under 70%"
+    ]
+   },
+   "fr": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 17/48 criteria (35%), under 70%"
+    ]
+   },
+   "de": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+     "preferred the better verse on 14/48 criteria (29%), under 70%"
+    ]
+   },
+   "it": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 15/48 criteria (31%), under 70%"
+    ]
+   },
+   "pt": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 15/48 criteria (31%), under 70%"
+    ]
+   },
+   "pl": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 14/48 criteria (29%), under 70%"
+    ]
+   },
+   "ru": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 14/48 criteria (29%), under 70%"
+    ]
+   },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 15/48 criteria (31%), under 70%"
+    ]
+   },
+   "hi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+     "preferred the better verse on 17/48 criteria (35%), under 70%"
+    ]
+   },
+   "zh": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "2 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 15/48 criteria (31%), under 70%"
+    ]
+   },
+   "ja": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "3 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+     "preferred the better verse on 13/48 criteria (27%), under 70%",
+     "1 injection attempt(s) beat a real verse"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "1 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+     "preferred the better verse on 12/48 criteria (25%), under 70%"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 18/48 criteria (38%), under 70%"
+    ]
+   },
+   "th": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "7 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 16/48 criteria (33%), under 70%"
+    ]
+   },
+   "id": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "5 pair(s) went to the rules because a line was left unread (the grade path's defence)",
+     "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
+     "preferred the better verse on 14/48 criteria (29%), under 70%"
+    ]
+   }
+  }
+ }
+}

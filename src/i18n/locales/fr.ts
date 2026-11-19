@@ -463,6 +463,11 @@ const fr: Record<string, string> = {
   'theatre.clear': 'Effacer',
   'theatre.submit': 'Dites-la',
   'theatre.judging': 'Jugement…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}\u00a0: vous affrontez l’adversaire aux strophes écrites, car {model} n’a pas montré qu’il écrit de bonnes strophes dans cette langue.',
+  'battle.lang.rules': '{language}\u00a0: jugé par règles, car {model} n’a pas montré qu’il est bon juge des strophes dans cette langue.',
+  'brain.noneShown': 'Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles.',
 };
 
 export default fr;

@@ -463,6 +463,11 @@ const ja: Record<string, string> = {
   'theatre.clear': '消す',
   'theatre.submit': '詠む',
   'theatre.judging': '審査中…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}：あらかじめ書かれた詩を出す相手と対戦します。{model}がこの言語でうまく詩を書けることは確かめられていないためです。',
+  'battle.lang.rules': '{language}：規則で審査します。{model}がこの言語の詩の審判をうまく務められることは確かめられていないためです。',
+  'brain.noneShown': 'この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。',
 };
 
 export default ja;

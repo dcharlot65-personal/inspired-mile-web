@@ -1,4 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
+import { MODELS, usedAnywhere } from '../src/lib/brain';
+import { setLists, standInModel, stubCount } from './stand-in-model';
 
 /**
  * The verse duel, played end to end against the written opponent.
@@ -55,6 +57,20 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#deck-name')).toHaveText('Test deck');
     await expect(page.locator('#deck-cards > div')).toHaveCount(5);
     await expect(page.locator('#brain-status')).toContainText(/written/i);
+  });
+
+  test('without a model every language is offered, each against the written opponent, with nothing to explain', async ({ page }) => {
+    await open(page);
+    const options = page.locator('#language option');
+    await expect(options).toHaveCount(16);
+    // No model is loaded, so no language is marked: the status line already says the opponent is written.
+    expect(await options.evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).dataset.opponent))).toEqual(Array(16).fill('written'));
+    expect(await options.evaluateAll((os) => os.filter((o) => o.textContent!.includes('·')).length)).toBe(0);
+    await expect(page.locator('#language-note')).toBeHidden();
+    await page.selectOption('#language', 'th');
+    await expect(page.locator('#language-note')).toBeHidden();
+    await expect(page.locator('#language-note')).toHaveAttribute('data-writer', 'written');
+    await expect(page.locator('#language-note')).toHaveAttribute('data-judge', 'rules');
   });
 
   test('a round shows the form, the opponent, its verse and a live checklist', async ({ page }) => {
@@ -151,6 +167,223 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#deck-name')).toHaveText('Starter deck');
     await expect(page.locator('#deck-cards > div')).toHaveCount(5);
     await expect(page.locator('#start-duel')).toBeEnabled();
+  });
+});
+
+/**
+ * With a model loaded, the language picker says where it is not used: beside a language the
+ * model does not write in, "Written opponent"; under the picker, why, for writing and for
+ * judging. The model is a stand-in (this browser has no WebGPU): navigator.gpu and the
+ * Transformers.js module are stubbed as in pwa.spec.ts, so loadBrain's own success path runs
+ * and brainInfo() is the real MODELS entry with its measured lists.
+ */
+test.describe('Language picker with a model loaded', () => {
+  test.use({ serviceWorkers: 'block' });
+  const STUB = `
+export async function pipeline() { const g = async () => [{ generated_text: [{ role: 'assistant', content: 'stub verse' }] }]; g.tokenizer = {}; g.dispose = async () => {}; return g; }
+export class TextStreamer {}
+export const env = { backends: { onnx: { wasm: { wasmPaths: {
+  mjs: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs',
+  wasm: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm',
+} } } } };`;
+
+  test('marks each language the loaded model does not write in, and says why under the picker', async ({ page }) => {
+    const m = MODELS.grand;
+    const all = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+    const both = all.find((l) => m.writesIn.includes(l) && m.judgesIn.includes(l));
+    const writesOnly = all.find((l) => m.writesIn.includes(l) && !m.judgesIn.includes(l));
+    const neither = all.find((l) => !m.writesIn.includes(l) && !m.judgesIn.includes(l));
+    // With the measured lists each kind exists; a test that met none of them would prove nothing.
+    expect([both, writesOnly, neither].filter(Boolean).length, 'languages of each kind in the measured lists').toBeGreaterThanOrEqual(2);
+
+    await page.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+    });
+    await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: STUB }));
+    await page.goto('/battle?brain=grand&seed=11');
+    await expect(page.locator('#brain-status')).toContainText(`${m.label} is loaded`);
+
+    const options = page.locator('#language option');
+    await expect(options).toHaveCount(16);
+    // Each language sits under the heading of who writes there; the option itself is the language's
+    // name alone, so the chosen one is never cut short on a phone ("Thailändisch · Gegner mit…").
+    const marks = await options.evaluateAll((os) => os.map((o) => [(o as HTMLOptionElement).value, (o as HTMLOptionElement).dataset.opponent, (o.parentElement as HTMLOptGroupElement).label ?? null, o.textContent]));
+    for (const [code, opponent, heading, text] of marks) {
+      const writes = m.writesIn.includes(code as string);
+      expect(opponent, `${code}: who writes`).toBe(writes ? 'model' : 'written');
+      expect(heading, `${code}: the group it is listed under`).toBe(writes ? `${m.label} · on this device` : 'Written opponent');
+      expect(text, `${code}: the option is the language's name alone`).not.toContain('·');
+    }
+    // The note describes the picker; inside its label it would become part of the picker's name.
+    await expect(page.locator('label #language-note')).toHaveCount(0);
+    await expect(page.locator('#language')).toHaveAttribute('aria-describedby', 'language-note');
+
+    const note = page.locator('#language-note');
+    if (both) {
+      await page.selectOption('#language', both);
+      await expect(note).toBeHidden();
+      await expect(note).toHaveAttribute('data-writer', 'model');
+      await expect(note).toHaveAttribute('data-judge', 'model');
+    }
+    if (writesOnly) {
+      await page.selectOption('#language', writesOnly);
+      await expect(note).toBeVisible();
+      await expect(note).toHaveAttribute('data-writer', 'model');
+      await expect(note).toHaveAttribute('data-judge', 'rules');
+      await expect(note).toContainText(`judged by rule, because ${m.label} has not shown it is a good judge of verse`);
+      await expect(note).not.toContainText('written opponent');
+    }
+    if (neither) {
+      await page.selectOption('#language', neither);
+      await expect(note).toBeVisible();
+      await expect(note).toHaveAttribute('data-writer', 'written');
+      await expect(note).toHaveAttribute('data-judge', 'rules');
+      await expect(note).toContainText(`you face the written opponent, because ${m.label} has not shown it can write verse well`);
+      await expect(note).toContainText('judged by rule');
+      // Two facts, two lines: nothing joins them, so Chinese and Japanese get no space after 。
+      await expect(note.locator(':scope > span')).toHaveCount(2);
+    }
+  });
+
+  test('in a Chinese or Japanese interface the two lines of the note carry no space after the full stop', async ({ page }) => {
+    // A model and a language it neither writes nor judges in, so the note has both lines. ?brain= loads
+    // any model, used anywhere or not; the lists decide which pair there is.
+    const all = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+    const pick = (['grand', 'standard', 'lite'] as const).flatMap((tier) => all.filter((l) => !MODELS[tier].writesIn.includes(l) && !MODELS[tier].judgesIn.includes(l)).map((l) => ({ tier, l })))[0];
+    expect(pick, 'a model and a language with a two-line note').toBeTruthy();
+    const { tier, l: neither } = pick!;
+    const m = MODELS[tier];
+    await page.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+    });
+    await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: STUB }));
+    for (const ui of ['ja', 'zh']) {
+      await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
+      await page.goto(`/battle?brain=${tier}&seed=11`);
+      await expect(page.locator('html')).toHaveAttribute('lang', ui);
+      await expect(page.locator('#brain-status')).toContainText(m.label);
+      await page.selectOption('#language', neither!);
+      const note = page.locator('#language-note');
+      await expect(note.locator(':scope > span')).toHaveCount(2);
+      const text = await note.evaluate((n) => n.textContent ?? '');
+      expect(text, `${ui}: the note as read`).toContain('。');
+      expect(text, `${ui}: no space after a full stop`).not.toMatch(/。\s/);
+    }
+  });
+});
+
+/**
+ * Who writes and who judges, as the page shows it and plays it, in the duel's language. The model
+ * is a stand-in that answers the judge's next-token reading (so the page's own referee runs and a
+ * round is judged "by the model") and counts every verse it is asked to write. The lists are set
+ * here, in the page's own brain module, so the page's gates are tested whatever the measured lists
+ * hold: the badge, the note under the picker, whether the model is asked to write, and the line
+ * under the verdict.
+ */
+test.describe('Who writes and who judges, in the duel\'s language', () => {
+  test.use({ serviceWorkers: 'block' });
+  const VERSE: Record<string, string> = {
+    en: 'The night is cold and clear\nI sing of what was here',
+    de: 'Die Nacht ist kalt und klar\nich singe, was einst war',
+    fr: 'La nuit descend sur la mer\net je chante dans les airs',
+  };
+  // Gemma writes English only and judges German only, here.
+  const CASES = [
+    { lang: 'en', writes: true, judges: false, badge: 'Gemma 4 E2B · on this device', verdict: 'English: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.' },
+    { lang: 'de', writes: false, judges: true, badge: 'Written opponent · judged by Gemma 4 E2B', verdict: 'Judged by Gemma 4 E2B on this device, reading the verses in both orders.' },
+    { lang: 'fr', writes: false, judges: false, badge: 'Written opponent', verdict: 'French: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.' },
+  ];
+  for (const c of CASES) {
+    test(`${c.lang}: the model ${c.writes ? 'writes' : 'does not write'} and ${c.judges ? 'judges' : 'does not judge'}, and the page says so`, async ({ page }) => {
+      await standInModel(page);
+      await page.goto('/battle?brain=grand&seed=11');
+      await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B is loaded');
+      await setLists(page, 'grand', ['en'], ['de']);
+      await page.selectOption('#language', c.lang);
+      await expect(page.locator('#ai-model-badge')).toHaveText(c.badge);
+      await expect(page.locator('#language-note')).toHaveAttribute('data-writer', c.writes ? 'model' : 'written');
+      await expect(page.locator('#language-note')).toHaveAttribute('data-judge', c.judges ? 'model' : 'rules');
+
+      await page.click('#start-duel');
+      await expect(page.locator('#battle-arena')).toBeVisible();
+      await expect(page.locator('#opponent-verse')).toHaveAttribute('data-source', /written|model/, { timeout: 60_000 });
+      const wrote = (await stubCount(page)).generations;
+      if (c.writes) expect(wrote, 'drafts the model was asked to write').toBeGreaterThan(0);
+      else expect(wrote, 'drafts the model was asked to write').toBe(0);
+      await expect(page.locator('#ai-model-badge')).toHaveText(c.badge);
+
+      await page.click('[data-char-id]:not(.pointer-events-none)');
+      await page.fill('#verse-input', VERSE[c.lang]);
+      await page.click('#submit-verse');
+      const verdict = page.locator('#verdict');
+      await expect(verdict).toBeVisible({ timeout: 60_000 });
+      await expect(verdict).toContainText(c.verdict);
+      const read = (await stubCount(page)).readings;
+      if (c.judges) expect(read, 'readings asked of the model').toBe(8);
+      else expect(read, 'readings asked of the model').toBe(0);
+    });
+  }
+});
+
+/**
+ * The model panel offers only models measured to write or judge in some language
+ * (docs/language/MODEL-EVAL.md). The browser is made to report a GPU; no model is
+ * downloaded, because nothing is clicked and no earlier choice is stored.
+ */
+test.describe('Model panel', () => {
+  // The stand-in model library is served by page.route, which a service worker would go round.
+  test.use({ serviceWorkers: 'block' });
+  const fakeDevice = (page: Page, handheld: boolean) =>
+    page.addInitScript((h) => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+      Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => (h ? 4 : 16) });
+      if (h) Object.defineProperty(Navigator.prototype, 'userAgent', { configurable: true, get: () => 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148' });
+    }, handheld);
+
+  for (const [name, handheld, runnable] of [['a desktop', false, ['grand', 'standard']], ['a phone', true, ['lite']]] as const) {
+    test(`${name} is offered the models it can run that are used in some language, and no others`, async ({ page }) => {
+      await fakeDevice(page, handheld);
+      const offers = runnable.map((t) => MODELS[t]).filter(usedAnywhere);
+      await page.goto('/battle?seed=11');
+      if (!offers.length) {
+        await expect(page.locator('#brain-status')).toContainText('No model this device can run has shown');
+        await expect(page.locator('#brain-choices')).toBeHidden();
+        await expect(page.locator('#start-duel')).toBeEnabled();
+      } else {
+        await expect(page.locator('#brain-choices')).toBeVisible();
+        await expect(page.locator('#brain-model-btn')).toContainText(offers[0].label);
+        if (offers[1]) await expect(page.locator('#brain-other-btn')).toContainText(offers[1].label);
+        else await expect(page.locator('#brain-other-btn')).toBeHidden();
+      }
+      // A model used in no language is named nowhere in the panel.
+      for (const t of runnable) if (!usedAnywhere(MODELS[t])) await expect(page.locator('#brain-choices')).not.toContainText(MODELS[t].label);
+    });
+  }
+
+  // brain.ts rememberedModel: a page loads on its own only the model the visitor chose before, and
+  // only while this device is offered it; never another download in its place.
+  test('a stored choice reloads that same model, and a choice this device is not offered loads nothing', async ({ page, context }) => {
+    const desktop = async (p: Page, stored: string) => {
+      await standInModel(p);
+      await p.addInitScript((c) => {
+        Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => 16 });
+        localStorage.setItem('inspired-mile-brain', c);
+      }, stored);
+      await p.goto('/battle?seed=11');
+    };
+    // LFM2.5 is never offered to a desktop with memory to spare: nothing loads, the visitor is asked.
+    await desktop(page, 'lite');
+    await expect(page.locator('#brain-status')).not.toHaveText(/Checking/);
+    await page.waitForTimeout(1500);
+    expect((await stubCount(page)).loads).toEqual([]);
+    await expect(page.locator('#brain-status')).not.toContainText('is loaded');
+    for (const m of [MODELS.grand, MODELS.standard].filter(usedAnywhere)) {
+      const p = await context.newPage();
+      await desktop(p, m.tier);
+      await expect(p.locator('#brain-status')).toContainText(`${m.label} is loaded`);
+      expect((await stubCount(p)).loads, `stored ${m.tier}`).toEqual([m.id]);
+      await p.close();
+    }
   });
 });
 

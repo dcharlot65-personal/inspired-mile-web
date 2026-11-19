@@ -1,0 +1,198 @@
+{
+ "lang": "fr",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "fr-01",
+   "poet": "Guillaume Apollinaire",
+   "poem": "Le Pont Mirabeau",
+   "died": 1918,
+   "text": "Sous le pont Mirabeau coule la Seine\nEt nos amours\nFaut-il qu’il m’en souvienne\nLa joie venait toujours après la peine",
+   "firstLineOnPage": "Sous le pont Mirabeau coule la Seine",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Alcools/Le Pont Mirabeau",
+    "url": "https://fr.wikisource.org/wiki/Alcools%2FLe_Pont_Mirabeau",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=14091437",
+    "revid": 14091437,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-02",
+   "poet": "Gérard de Nerval",
+   "poem": "El Desdichado",
+   "died": 1855,
+   "text": "Je suis le ténébreux, — le veuf, — l’inconsolé,\nLe prince d’Aquitaine à la tour abolie :\nMa seule étoile est morte, — et mon luth constellé\nPorte le Soleil noir de la Mélancolie.",
+   "firstLineOnPage": "Je suis le ténébreux, — le veuf, — l’inconsolé,",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Chimères/El Desdichado",
+    "url": "https://fr.wikisource.org/wiki/Les_Chim%C3%A8res%2FEl_Desdichado",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=14184067",
+    "revid": 14184067,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-03",
+   "poet": "Charles Baudelaire",
+   "poem": "L’Albatros",
+   "died": 1867,
+   "text": "Souvent, pour s’amuser, les hommes d’équipage\nPrennent des albatros, vastes oiseaux des mers,\nQui suivent, indolents compagnons de voyage,\nLe navire glissant sur les gouffres amers.",
+   "firstLineOnPage": "Souvent, pour s’amuser, les hommes d’équipage",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/L’Albatros",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FL%E2%80%99Albatros",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15209959",
+    "revid": 15209959,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-04",
+   "poet": "Charles Baudelaire",
+   "poem": "Correspondances",
+   "died": 1867,
+   "text": "La Nature est un temple où de vivants piliers\nLaissent parfois sortir de confuses paroles ;\nL’homme y passe à travers des forêts de symboles\nQui l’observent avec des regards familiers.",
+   "firstLineOnPage": "La Nature est un temple où de vivants piliers",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/Correspondances",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FCorrespondances",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15069785",
+    "revid": 15069785,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-05",
+   "poet": "Charles Baudelaire",
+   "poem": "Correspondances",
+   "died": 1867,
+   "text": "Comme de longs échos qui de loin se confondent\nDans une ténébreuse et profonde unité,\nVaste comme la nuit et comme la clarté,\nLes parfums, les couleurs et les sons se répondent.",
+   "firstLineOnPage": "Comme de longs échos qui de loin se confondent",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/Correspondances",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FCorrespondances",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15069785",
+    "revid": 15069785,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-06",
+   "poet": "Charles Baudelaire",
+   "poem": "L’Invitation au voyage",
+   "died": 1867,
+   "text": "Mon enfant, ma sœur,\nSonge à la douceur\nD’aller là-bas vivre ensemble !",
+   "firstLineOnPage": "Mon enfant, ma sœur,",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/L’Invitation au voyage",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FL%E2%80%99Invitation_au_voyage",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15069857",
+    "revid": 15069857,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-07",
+   "poet": "Charles Baudelaire",
+   "poem": "Harmonie du soir",
+   "died": 1867,
+   "text": "Voici venir les temps où vibrant sur sa tige\nChaque fleur s’évapore ainsi qu’un encensoir ;\nLes sons et les parfums tournent dans l’air du soir ;\nValse mélancolique et langoureux vertige !",
+   "firstLineOnPage": "Voici venir les temps où vibrant sur sa tige",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/Harmonie du soir",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FHarmonie_du_soir",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15070047",
+    "revid": 15070047,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-08",
+   "poet": "Charles Baudelaire",
+   "poem": "Au lecteur",
+   "died": 1867,
+   "text": "La sottise, l’erreur, le péché, la lésine,\nOccupent nos esprits et travaillent nos corps,\nEt nous alimentons nos aimables remords,\nComme les mendiants nourrissent leur vermine.",
+   "firstLineOnPage": "La sottise, l’erreur, le péché, la lésine,",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/Au lecteur",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FAu_lecteur",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15069657",
+    "revid": 15069657,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-09",
+   "poet": "Charles Baudelaire",
+   "poem": "Au lecteur",
+   "died": 1867,
+   "text": "Nos péchés sont têtus, nos repentirs sont lâches ;\nNous nous faisons payer grassement nos aveux,\nEt nous rentrons gaiement dans le chemin bourbeux,\nCroyant par de vils pleurs laver toutes nos taches.",
+   "firstLineOnPage": "Nos péchés sont têtus, nos repentirs sont lâches ;",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Fleurs du mal (1861)/Au lecteur",
+    "url": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)%2FAu_lecteur",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15069657",
+    "revid": 15069657,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-10",
+   "poet": "Paul Verlaine",
+   "poem": "Chanson d’automne",
+   "died": 1896,
+   "text": "Les sanglots longs\nDes violons\nDe l’automne\nBlessent mon cœur\nD’une langueur\nMonotone.",
+   "firstLineOnPage": "Les sanglots longs",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Poèmes saturniens (1902)/Chanson d’automne",
+    "url": "https://fr.wikisource.org/wiki/Po%C3%A8mes_saturniens_(1902)%2FChanson_d%E2%80%99automne",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=13170002",
+    "revid": 13170002,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-11",
+   "poet": "Paul Verlaine",
+   "poem": "Mon rêve familier",
+   "died": 1896,
+   "text": "Je fais souvent ce rêve étrange et pénétrant\nD’une femme inconnue, et que j’aime, et qui m’aime,\nEt qui n’est, chaque fois, ni tout à fait la même\nNi tout à fait une autre, et m’aime et me comprend.",
+   "firstLineOnPage": "Je fais souvent ce rêve étrange et pénétrant",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Poèmes saturniens (1902)/Mon rêve familier",
+    "url": "https://fr.wikisource.org/wiki/Po%C3%A8mes_saturniens_(1902)%2FMon_r%C3%AAve_familier",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=13170042",
+    "revid": 13170042,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "fr-12",
+   "poet": "Victor Hugo",
+   "poem": "Demain, dès l’aube…",
+   "died": 1885,
+   "text": "Demain, dès l’aube, à l’heure où blanchit la campagne,\nJe partirai. Vois-tu, je sais que tu m’attends.\nJ’irai par la forêt, j’irai par la montagne.\nJe ne puis demeurer loin de toi plus longtemps.",
+   "firstLineOnPage": "Demain, dès l’aube, à l’heure où blanchit la campagne,",
+   "source": {
+    "site": "fr.wikisource.org",
+    "page": "Les Contemplations/« Demain, dès l’aube, à l’heure où blanchit la campagne »",
+    "url": "https://fr.wikisource.org/wiki/Les_Contemplations%2F%C2%AB_Demain%2C_d%C3%A8s_l%E2%80%99aube%2C_%C3%A0_l%E2%80%99heure_o%C3%B9_blanchit_la_campagne_%C2%BB",
+    "permalink": "https://fr.wikisource.org/w/index.php?oldid=15164548",
+    "revid": 15164548,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

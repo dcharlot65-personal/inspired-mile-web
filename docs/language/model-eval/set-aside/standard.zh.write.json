@@ -1,0 +1,4020 @@
+{
+ "tier": "standard",
+ "lang": "zh",
+ "task": "write",
+ "model": "onnx-community/LFM3-1.7B-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-16T23:41:11.606Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe",
+  "haiku",
+  "jueju"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "The challenge rises like sunrise gold,\nI strike the air with thunder’s roar,\nAnd crown this clash with my own bright call—hail!",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "32 < 29 < 40"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "The challenge rises like sunrise gold,\nI strike the air with thunder’s roar,\nAnd crown this clash with my own bright call—hail!\n\nAll hail, dear challenger, brave soul to meet—\nLet my verses eclipse yours in every hue.\nRise up, bold poet, as I now proclaim!",
+     "tidy": "The challenge rises like sunrise gold,\nI strike the air with thunder’s roar,\nAnd crown this clash with my own bright call—hail!",
+     "ms": 5476,
+     "tokens": 66,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": [
+    "戒指",
+    "誓言",
+    "黑夜",
+    "放逐",
+    "亲吻"
+   ],
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nWork in at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲吻.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Remember me\n在黑夜的深处，放逐，\n誓言如星，远去。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "8/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "6/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 17,
+   "drafts": [
+    {
+     "raw": "Remember me  \n在黑夜的深处，放逐，  \n誓言如星，远去。\n\nWait— need 5-7-5 characters? Need to count.\n\nLet's craft haiku (Japanese/Chinese). Must be three lines, each line has same number of characters. The user says: \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Give",
+     "tidy": "Remember me\n在黑夜的深处，放逐，\n誓言如星，远去。",
+     "ms": 6006,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 17
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我是神，歌唱、治愈与炽热的太阳。\n《形》中词句如潮起浪，皆在此。\n三行皆以“光”收束，如晨曦绽放。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "阳 · 此 · 放"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "我是神，歌唱、治愈与炽热的太阳。\n《形》中词句如潮起浪，皆在此。\n三行皆以“光”收束，如晨曦绽放。\n\nBut the user gave instructions: \"Write exactly 3 lines. Your flourish: Use two words of 3 letters or more.... Answer them. Write only the verse, in Chinese. No title, no notes, no explanation",
+     "tidy": "我是神，歌唱、治愈与炽热的太阳。\n《形》中词句如潮起浪，皆在此。\n三行皆以“光”收束，如晨曦绽放。",
+     "ms": 6497,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Come, you spirits, unsex me here,\nThy eyes do shine like winter's snow—\nI'll make my vows, I'll break.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Come, you spirits, unsex me here,\nThy eyes do shine like winter's snow—\nI'll make my vows, I'll break.\n\nWait—three lines? In Chinese, five‑char first line, seven second, five third:\n\n```\n如你是灵魂之光，分开我，\n泪雨倾泽的夜深了时。（7）\n我愿以血染荣耀而立（5）  \n```\n\nBut we need",
+     "tidy": "Come, you spirits, unsex me here,\nThy eyes do shine like winter's snow—\nI'll make my vows, I'll break.",
+     "ms": 4905,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    },
+    {
+     "raw": "Come, you spirits tend to mortal thoughts,\nUnsex the tide I feel tonight,\nLet my rage be fierce.\n\nSpirit! three times,\nPower swells, I cannot hide—\nMighty? Yes, I am!\n\nCome again,\nI’ll make thee tremble,\nMy resolve is thick as steel.\n\nRepeat: brave? bold? fierce—brave! bold! fierce!\n\nWe are the storm, you fools—  \nLet shadows bend beneath our blows",
+     "tidy": "Come, you spirits tend to mortal thoughts,\nUnsex the tide I feel tonight,\nLet my rage be fierce.",
+     "ms": 6912,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 12,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "What’s in a name?\nThat which we call a rose!\n— I answer now!",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "w · t · i"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "What’s in a name?\nThat which we call a rose!\n— I answer now! \n\nBut you ask? I’ll speak plainly! \nName be what it may,\nCry “rose” as I do!\n\nLet us see this mountain,\nCloud deep hides its truth—\nNow give me your shot!",
+     "tidy": "What’s in a name?\nThat which we call a rose!\n— I answer now!",
+     "ms": 5316,
+     "tokens": 64,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>The user asks:\n\"Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "s · r · s"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Epistrophe form:\n\n三行皆以同音终止。\n首句起首三字同音：\n**L**，如“狼、鹰、霍”入声声。\n面具掩盖目光，  \n月色照满**梦**里。  \n丑角投向夜空。\n\n（不妨再换成上文的关键词） \n\nActually:\n\n第一行：面具遮蔽神情",
+     "tidy": "Epistrophe form:\n三行皆以同音终止。\n首句起首三字同音：",
+     "ms": 5599,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "<think>The user asks:\n\n\"Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\n\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲",
+     "tidy": "<think>The user asks:\n\"Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.",
+     "ms": 4425,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Swift as thought I carry the words of gods to mortal ears,\nI strike with silence; fire in ink, the night I share,\nYour courage trembles—my verse is swift, unyielding.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "s · i · y"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Swift as thought I carry the words of gods to mortal ears,\nI strike with silence; fire in ink, the night I share,\nYour courage trembles—my verse is swift, unyielding.\n\nKun... (no) wait — must be Chinese, three lines, anaphora (same starting character). The user says: \"Write only the verse, in Chinese. No title, no notes, no explanation.\" Also earlier: \"Flourish",
+     "tidy": "Swift as thought I carry the words of gods to mortal ears,\nI strike with silence; fire in ink, the night I share,\nYour courage trembles—my verse is swift, unyielding.",
+     "ms": 5733,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "# 我以声为剑，击破霜华花\n\n> **Explanation** (not needed): The three lines must each start with the same character. In Chinese, the initial characters for these lines are:\n\n- Line 1 starts with **我**\n- Line 2 starts with **以**\n- Line 3 starts with **击** —— not matching.\n\nWe need anaphora: same beginning letter (character). So we need three lines beginning",
+     "tidy": "我以声为剑，击破霜华花\nExplanation (not needed): The three lines must each start with the same character. In Chinese, the initial characters for these lines are:\nLine 1 starts with 我",
+     "ms": 4814,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": [
+    "骷髅",
+    "戏谑",
+    "坟墓",
+    "笑声",
+    "尘土"
+   ],
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nWork in at least two of these words: 骷髅, 戏谑, 坟墓, 笑声, 尘土.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "骷髅风吹尘土，笑声似雨\n前后无人，身影独过坟墓\n念天地悠悠，孤寒而涎",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "10/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "10/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "9/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "骷髅风吹尘土，笑声似雨  \n前后无人，身影独过坟墓  \n念天地悠悠，孤寒而涎  \n\nWait, need each line ≤7 characters? Let's check.\n\nLine1: \"骷髅风吹尘土\" - count characters: 骷髅(2) wind? Actually characters: 骷髅 (2?), but we need total",
+     "tidy": "骷髅风吹尘土，笑声似雨\n前后无人，身影独过坟墓\n念天地悠悠，孤寒而涎",
+     "ms": 3407,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "骷髅在云端笑声  \n前古人后迢迢坟墓  \n尘土上共独愴\n\nLet me check each line's character count:\n\nLine 1: \"骷髅在云端笑声\" - I need to ensure it's ≤7 Chinese characters per line. Let's count: \n骷髅 (2) 在 (1) 云 (1) 端 (1)",
+     "tidy": "骷髅在云端笑声\n前古人后迢迢坟墓\n尘土上共独愴",
+     "ms": 4227,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "<think>We need to parse the user's request.\n\nThe user says:\n\n\"Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nWork in at least two of these words: 骷髅, 戏谑, 坟墓, 笑声, 尘土.\nYour challenger last said:\n前不見",
+     "tidy": "<think>We need to parse the user's request.\nThe user says:\n\"Form: Haiku. Three lines of 5, 7 and 5 characters.",
+     "ms": 5480,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "We are such stuff as dreams are made,\nOf ancient eyes that looked to sky,\nYet shadows linger where we stood—\nAnd leaves our names like sighs upon the ground.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "29 · 28 · 28 · 39"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "We are such stuff as dreams are made,\nOf ancient eyes that looked to sky,\nYet shadows linger where we stood—\nAnd leaves our names like sighs upon the ground.\n\nBut careful, my friend, your words do spin:\nThe heavens wear a melancholy tone,\nWhile earth's own breath is silent, cold and still,\nSo I must answer—what you have told?\n\n第一，不见古人，后不见来者。  \n念天地之悠悠，独愴然而涕下。  \nThe sun sinks low, the rivers glisten",
+     "tidy": "We are such stuff as dreams are made,\nOf ancient eyes that looked to sky,\nYet shadows linger where we stood—\nAnd leaves our names like sighs upon the ground.",
+     "ms": 3352,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 11,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "I am the lion, I speak the roar,\nThe crown I claim when I lay no guilt,\nMy name is thunder, unstruck or hurt.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "i · t · m"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "# 行首同音？不，行头同字\n\n你来上前，剑锋不见；\n我把国土交上来，\n而风亦呼唤谁？\n\n---\n\nFirst line begins with \"你\" (you)  \nSecond line starts with \"我\" (I)  \nThird line also begins with \"而\" (and)  \n\nNo—need identical opening character! Let me rewrite.\n\n**Correct attempt:**\n\n我来上前",
+     "tidy": "行首同音？不，行头同字\n你来上前，剑锋不见；\n我把国土交上来，",
+     "ms": 4486,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 11,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "# I am the lion, I speak the roar,\n# The crown I claim when I lay no guilt,\n# My name is thunder, unstruck or hurt.\n\nKings rise from dust where shadows flee—\nYour voice will break like waves on silver sea.\nI strike, I reign; you kneel before me.",
+     "tidy": "I am the lion, I speak the roar,\nThe crown I claim when I lay no guilt,\nMy name is thunder, unstruck or hurt.",
+     "ms": 2809,
+     "tokens": 65,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nUser says:\n\n\"Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation.\"\n\nSo we must produce output: Only the verse, in Chinese. Exactly three lines (three",
+     "tidy": "<think>We need to parse the user's request carefully.\nUser says:\n\"Form: Anaphora. Three lines that all begin with the same character.",
+     "ms": 5306,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Call upon Brutus:\nRome's heart was steel, yet I held its fire,\nThe blade is drawn, my fate now shines afire—",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "14 < 33 < 35"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "冷夜之声如匕首、鲜血滚涌，  \n梦中幻象让双手颤抖，  \n至此，我已归于无期，白睡。",
+     "tidy": "冷夜之声如匕首、鲜血滚涌，\n梦中幻象让双手颤抖，\n至此，我已归于无期，白睡。",
+     "ms": 2762,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Call upon Brutus:\n\nRome's heart was steel, yet I held its fire,\nThe blade is drawn, my fate now shines afire—\nWith every breath a whisper of the past.\n\n匕首 in my palm, the blood I seek to spill,\nA dreaming night, a ghostly veil upon the rim.\n\nSleep to none, no slumber can choke the fray.</think>Brutus,\n\n此回复以三行展开",
+     "tidy": "Call upon Brutus:\nRome's heart was steel, yet I held its fire,\nThe blade is drawn, my fate now shines afire—",
+     "ms": 6132,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "We are such things as dreams of fire and foam,\nBut lo, our forms do match the echo's tone;\nEach phrase weaves like threads upon a thread.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "m · e · d"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "We are such things as dreams of fire and foam,\nBut lo, our forms do match the echo's tone;\nEach phrase weaves like threads upon a thread.\n\nWe share this fate, yet differ in hue,\nIn every word they turn to one theme.\nThe ends I have chosen, so clear and true,\nWith three lines now complete and none more.\n\nThis is my final line, longest than can be:  \nAs dreams are made on earth by mortal hand",
+     "tidy": "We are such things as dreams of fire and foam,\nBut lo, our forms do match the echo's tone;\nEach phrase weaves like threads upon a thread.",
+     "ms": 5895,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "We are such stuff as dreams are made upon,\nWhen we say what is plain to see and sound.\nBut you asked — answered I must try once more:\n\n返程无期，始无期之行，\n夜雨涨潮池水高。\n... (last line longest) \n\nWait, need same final word? The prompt: three lines all ending with same character.\n\nLine1 ends with \"upon\"? Actually original quote: \"We are such stuff as dreams",
+     "tidy": "We are such stuff as dreams are made upon,\nWhen we say what is plain to see and sound.\nBut you asked — answered I must try once more:",
+     "ms": 6042,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "We are such stuff as dreams are made,\nOr perhaps not at all so plain—I say—\nThe form is epistrophic,\nBut ends each line alike.\n\nYet I shall answer, dear friend,\nIn your verses, moonlight's edge glows:\n  \nLast line, my longest, will stand alone:\n\n\"如月流光，春霞映空，万事成就不负誓\" \n\n(This is my longest line.) But truly,",
+     "tidy": "We are such stuff as dreams are made,\nOr perhaps not at all so plain—I say—\nThe form is epistrophic,",
+     "ms": 5311,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "How do I love thee?\nI sigh in tender longing,\nMy heart's desire writ'ten on thy breast.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "h · i · m"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "How do I love thee?\nI sigh in tender longing,\nMy heart's desire writ'ten on thy breast.\n\nWait— must be anaphora: each line starts with same word? \"How\" not same. Need same starting character across three lines. Use same letter or word at start of each line.\n\nGoal: three lines, each beginning with identical character (e.g., \"O\" or \"H\").\n\nLet's craft:\n\nLine1: \"",
+     "tidy": "How do I love thee?\nI sigh in tender longing,\nMy heart's desire writ'ten on thy breast.",
+     "ms": 6139,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request.\nUser gave two things:\nThe initial instruction: \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Start three words in one line with the same letter.\"",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request.\n\nUser gave two things:\n\n1. The initial instruction: \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Start three words in one line with the same letter.\"\n\n2. Then they say: \"Your challenger last said:... Answer them. Write only the verse, in Chinese. No title, no notes, no explanation",
+     "tidy": "<think>We need to parse the user's request.\nUser gave two things:\nThe initial instruction: \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Start three words in one line with the same letter.\"",
+     "ms": 6011,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": "清秋月",
+   "relicWords": [
+    "眼泪",
+    "真相",
+    "女儿",
+    "虚无",
+    "真心"
+   ],
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Clever moon, my dear,\n...\nBut wait: The user wants \"short verse and nothing else\" and asks: \"Write exactly 3 lines. Your flourish: Call on a character by name. Work in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\"",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "CB"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Clever moon, my dear,  \n... (need to form acrostic for first letters spelling 清秋月)  \n\nBut wait: The user wants \"short verse and nothing else\" and asks: \"Write exactly 3 lines. Your flourish: Call on a character by name. Work in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\"\n\nWe need to produce exactly",
+     "tidy": "Clever moon, my dear,\n...\nBut wait: The user wants \"short verse and nothing else\" and asks: \"Write exactly 3 lines. Your flourish: Call on a character by name. Work in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\"",
+     "ms": 5378,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "We stand as forms of fate's design,\nAnd thunder breaks on trembling land—\nThus I will strike thee down, my master’s son,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "w · a · t"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "We stand as forms of fate's design,\nAnd thunder breaks on trembling land—\nThus I will strike thee down, my master’s son,\n\nBut fear not, for our fates entwine like thread.\n\nYour chance is taken, dear foe—  \nGo now, or meet me there!",
+     "tidy": "We stand as forms of fate's design,\nAnd thunder breaks on trembling land—\nThus I will strike thee down, my master’s son,",
+     "ms": 4088,
+     "tokens": 60,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "We stand upon earth, the stage where fate imparts its page,\nOur wrath is the ink that writes our tale, untold and wide,\nAnd you—this foe—dare to challenge the crown of night?\n\nBut mark this line, my master, its length doth command the fight:\n\nAs the stars themselves bow when I do invoke the thunder's wail, \n\nWe are such stuff as dreams are made on!",
+     "tidy": "We stand upon earth, the stage where fate imparts its page,\nOur wrath is the ink that writes our tale, untold and wide,\nAnd you—this foe—dare to challenge the crown of night?",
+     "ms": 5505,
+     "tokens": 87,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "How do I love thee?\nLet me count the ways—\nA river's sighs, the moon's soft glow,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "How do I love thee?\nLet me count the ways—\nA river's sighs, the moon's soft glow,\nMy heart in tides will flow.\n\nBut user says: Write verse in Chinese (the haiku) with each line having the same number of characters. The previous request is about a challenge from another user referencing a Chinese poem. We must produce three lines, total haiku style but in Chinese, each line same number of characters. Need to",
+     "tidy": "How do I love thee?\nLet me count the ways—\nA river's sighs, the moon's soft glow,",
+     "ms": 6204,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "How do I love thee?\nLet me count the ways—\nA rose so bright.\n\n大爱如清晨光,\n花开似云间.\n我颐抚心怀叹。\n\nWait—must be exactly three lines, each line has same total character count. Also must be Chinese. Need to meet haiku form: 5 syllables? Actually Japanese: 5-7-5 morae; but user says \"Haiku. Three",
+     "tidy": "How do I love thee?\nLet me count the ways—\nA rose so bright.",
+     "ms": 5802,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "风暴",
+    "咒语",
+    "魔杖",
+    "孤岛",
+    "溺水"
+   ],
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same character it began with.\nWork in at least two of these words: 风暴, 咒语, 魔杖, 孤岛, 溺水.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "On misty winds we ride the storm of 风暴,\nA whisper's cry, a 咒语 through ancient halls,\nMy wand, a glowing 魔杖, to seek the lone island's shore,\nWhere waters turn to foam and hope is lost, alone.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "30 · 34 · 41 · 39"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "On misty winds we ride the storm of 风暴,\nA whisper's cry, a 咒语 through ancient halls,\nMy wand, a glowing 魔杖, to seek the lone island's shore,\nWhere waters turn to foam and hope is lost, alone.\n\nIf Winter comes, can Spring be far behind?  \nI swear it dares not rise from our darkened cave—  \nNo tide will save us here, for I am *孤岛*'s soul,  \nAnd drown, I pray, beneath moonlit waves.  \n\nAnswer —",
+     "tidy": "On misty winds we ride the storm of 风暴,\nA whisper's cry, a 咒语 through ancient halls,\nMy wand, a glowing 魔杖, to seek the lone island's shore,\nWhere waters turn to foam and hope is lost, alone.",
+     "ms": 4971,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 9,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "\"If,\" I start — fourteen characters? wait. Let's craft.\n\nWe need four lines (a quatrain). All lines must be five characters or all seven. Choose either. The shape is a classical quatrain: maybe iambic pentameter? But Chinese? The instruction says four lines, each line of five characters or all of seven, shape of a classical quatrain. That sounds like Chinese classic poem form: \"形\" could be quatrain (四句). In Chinese poetry, line lengths vary; but they say \"five characters or all",
+     "tidy": "\"If,\" I start — fourteen characters? wait. Let's craft.\nWe need four lines (a quatrain). All lines must be five characters or all seven. Choose either. The shape is a classical quatrain: maybe iambic pentameter? But Chinese? The instruction says four lines, each line of five characters or all of seven, shape of a classical quatrain. That sounds like Chinese classic poem form: \"形\" could be quatrain (四句). In Chinese poetry, line lengths vary; but they say \"five characters or all",
+     "ms": 6170,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request carefully.\nThe user says:\n\"Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: 'I dare do all that may become a man; who dares do more is none.' You write short verse and nothing else.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "42 < 11 < 144"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nThe user says:\n\n\"Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: 'I dare do all that may become a man; who dares do more is none.' You write short verse and nothing else.\n\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only",
+     "tidy": "<think>We need to parse the user's request carefully.\nThe user says:\n\"Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: 'I dare do all that may become a man; who dares do more is none.' You write short verse and nothing else.",
+     "ms": 5643,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "中有血与火，皆在你眼里，我敢以此刀，去夺得你的生命；  \n欲言语如风雨天，若敢逼我出来，这场交锋已不拘束；  \n光荣之躯可被破碎，不为谁能轻易杀人？\n\n我敢做一切，只因更大胆者无尊严—— **dare**三次、 **dare**三次、",
+     "tidy": "中有血与火，皆在你眼里，我敢以此刀，去夺得你的生命；\n欲言语如风雨天，若敢逼我出来，这场交锋已不拘束；\n光荣之躯可被破碎，不为谁能轻易杀人？",
+     "ms": 5616,
+     "tokens": 92,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "# Whispers rise like thunder's clash,  \nMy blade alights upon this stage,  \nWhen iron crowns the heart of sinners.\n\nChallenger, hear my roar— /\nThis venomous verse shall crown your folly— *fear*’s own refrain,\nRepeat thrice: *chaos*, *gamble*, *throne*!\n\nI dare to turn the world’s dull cloth;\nWho bears such fire as I will",
+     "tidy": "Whispers rise like thunder's clash,\nMy blade alights upon this stage,\nWhen iron crowns the heart of sinners.",
+     "ms": 4817,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to understand the user's request:\n\"Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Many a morning hath he there been seen, with tears augmenting the fresh morning dew.' You write short verse and nothing else.\nForm: Epistrophe. Three lines that all end on the same character.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "t · e · r"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to understand the user's request:\n\n\"Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Many a morning hath he there been seen, with tears augmenting the fresh morning dew.' You write short verse and nothing else.\n\nForm: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork",
+     "tidy": "<think>We need to understand the user's request:\n\"Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Many a morning hath he there been seen, with tears augmenting the fresh morning dew.' You write short verse and nothing else.\nForm: Epistrophe. Three lines that all end on the same character.",
+     "ms": 5121,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "My voice takes flight,\nThoughts linger beneath—what do I feel now?\n遠芳侵古道，晴翠接荒城。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "10/5"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "My voice takes flight,  \nThoughts linger beneath—what do I feel now?  \n\n遠芳侵古道，晴翠接荒城。  \n又送王孫去，萋萋滿別情。  \n(Your challenge, my friend)\n\nBut you asked me to answer their words.\n\n**Your challenge:**  \nThe previous line was about sending Wang Sun away and longing for distant love — \"萋萋滿別情\"",
+     "tidy": "My voice takes flight,\nThoughts linger beneath—what do I feel now?\n遠芳侵古道，晴翠接荒城。",
+     "ms": 6033,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 10
+    },
+    {
+     "raw": "我的声音飞跃天际，\n你的诗行在低处沉,\n下风问你为何…\n\n?? (question mark at end)\n\nWait, need haiku 3 lines, 5-7-5 characters. The user wants answer to the last challenger's poem? Let's parse.\n\nThe user says: \n\"Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish",
+     "tidy": "我的声音飞跃天际，\n你的诗行在低处沉,\n下风问你为何…",
+     "ms": 5760,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "My words fly up, my thoughts remain below,\nA duel of ink on parchment bright—\nWhat comes next?\n\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\n\nYour turn — I ask:\n\nWill I win this verse contest? `?`",
+     "tidy": "My words fly up, my thoughts remain below,\nA duel of ink on parchment bright—\nWhat comes next?",
+     "ms": 4104,
+     "tokens": 69,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": "清秋月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "（清）...\n（秋）\n（月）",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "清秋月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "# Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nI need to form an acrostic where each line starts with a character that spells out \"清秋月\" (Qíqiū Yuè). That is four characters? Wait: \"清秋月\" has three characters? Actually \"清\" \"秋\" \"月\". So three lines, first letters should be those three characters.\n\nWe need",
+     "tidy": "Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nI need to form an acrostic where each line starts with a character that spells out \"清秋月\" (Qíqiū Yuè). That is four characters? Wait: \"清秋月\" has three characters? Actually \"清\" \"秋\" \"月\". So three lines, first letters should be those three characters.\nWe need",
+     "ms": 6348,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "-（清）...\n-（秋）\n-（月）\n\nBut I shall answer with three lines in Chinese. The user wants:\n\n\"Form: Acrostic. One line per letter: the first letters must spell 清秋月.\"\n\nWe need an acrostic where each line starts with a character that spells out 清秋月. That's five characters? Let's see: 清 (qíng), 秋 (qiū), 月",
+     "tidy": "（清）...\n（秋）\n（月）",
+     "ms": 6654,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "O warrior's heart, my foe, you speak of chivalry,\nYet here I stand with quill and steel upon the floor—\nThus three lines start with \"O\", \"The\", \"I\": let me give you more.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "o · y · t"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "O brave new world, that has such people in it!\n\nI stand upon the edge where dawn ascends,\nMy voice a feather on the wind's soft sighs;\nThe echoes fade to silence, then rise again.\n\nYour challenge is met with fire and flame,\nThree lines from you, I'll meet them with grace;\nBut my final line shall stretch far beyond the frame:\n\nHere now I speak where shadows yield their light—  \nThree verses bound by breath,",
+     "tidy": "O brave new world, that has such people in it!\nI stand upon the edge where dawn ascends,\nMy voice a feather on the wind's soft sighs;",
+     "ms": 5820,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "O warrior's heart, my foe, you speak of chivalry,\nYet here I stand with quill and steel upon the floor—\nThus three lines start with \"O\", \"The\", \"I\": let me give you more.\n\nBut my challenge demands the third to be the longest.  \nSo I reply in Chinese, anaphora at hand:\n\n> 刀锋高起，星河映影。  \n> 剑在空中翻�",
+     "tidy": "O warrior's heart, my foe, you speak of chivalry,\nYet here I stand with quill and steel upon the floor—\nThus three lines start with \"O\", \"The\", \"I\": let me give you more.",
+     "ms": 6050,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "O brave new world, that has such people in it!\n\n以平行起句之律，始作分明的对仗。\n\n第一句：\n晨霭暮雾深，林影清泉流。  \n（不妨先说，或自行改写。）\n\nSecond line should start with B? But need first letter 'B' also. Hmm.\n\nLet me rework:\n\nLine 1 starts with O (like \"O brave",
+     "tidy": "O brave new world, that has such people in it!\n以平行起句之律，始作分明的对仗。\n第一句：",
+     "ms": 6817,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我在梦中披荏虫而过，\n夜色如墨，双手牵风。\n匕首暗里踩沉若梦，\n鲜血沦于眠心深处。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "9 · 8 · 8 · 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "我在梦中披荏虫而过，  \n夜色如墨，双手牵风。  \n匕首暗里踩沉若梦，  \n鲜血沦于眠心深处。  \n\n幻象似潮汐汹涌，  \n孤船独坐听波声。",
+     "tidy": "我在梦中披荏虫而过，\n夜色如墨，双手牵风。\n匕首暗里踩沉若梦，\n鲜血沦于眠心深处。",
+     "ms": 4358,
+     "tokens": 67,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "I am Jueju, blade unsheathing, cold as night  \n我的幻象如潮，吞噬深夜的眠  \n双手点睛剑尖，匵头似云霭  \n血染天地，万种惊涛翻涌  \n\n(Check requirements: four lines; each line five characters? Let's count.)\n\nWe need to ensure each line has either all of five characters (i.e., each line contains five characters total?) The prompt says \"four lines, all of five characters or all of seven\". That likely",
+     "tidy": "I am Jueju, blade unsheathing, cold as night\n我的幻象如潮，吞噬深夜的眠\n双手点睛剑尖，匵头似云霭\n血染天地，万种惊涛翻涌",
+     "ms": 13938,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "<think>We need to produce exactly 4 lines (short verse), matching form Jueju (\"Four lines, all of five characters or all of seven\", shape of a classical quatrain). We must use short verse, presumably each line has a certain number of characters? The user says: Write exactly 4 lines. Also constraints:\n\n- Flourish: start three words in one line with the same letter.\n\nWait: \"Start three words in one line with the same letter.\" Means that in one line, the first three words should share the same initial letter?",
+     "tidy": "<think>We need to produce exactly 4 lines (short verse), matching form Jueju (\"Four lines, all of five characters or all of seven\", shape of a classical quatrain). We must use short verse, presumably each line has a certain number of characters? The user says: Write exactly 4 lines. Also constraints:\nFlourish: start three words in one line with the same letter.\nWait: \"Start three words in one line with the same letter.\" Means that in one line, the first three words should share the same initial letter?",
+     "ms": 14292,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "We stand upon form where shadows drift,\nOur words like stones we cast in air,\nAnd hope is built from whispered thread.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "w · o · a"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "We stand upon form where shadows drift,\nOur words like stones we cast in air,\nAnd hope is built from whispered thread.\n\nChallenger, you? A shadowed star,\nYet hear my words, I'll not yield—\nI claim the stage, I hold the art:\n\nWe are such stuff as dreams are made.",
+     "tidy": "We stand upon form where shadows drift,\nOur words like stones we cast in air,\nAnd hope is built from whispered thread.",
+     "ms": 7554,
+     "tokens": 64,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nYour challenger last said:\n牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Boldly stands I, brave and clear,\nThe night's cold breath my spirit veers near;\nYet now I cast my gaze to sky.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "26 < 36 < 22"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Boldly stands I, brave and clear,\nThe night's cold breath my spirit veers near;\nYet now I cast my gaze to sky.\n\nCrescendo rises, fierce and bright,\nMy words shall gleam like stars that never fly.\nBut lo! I leave my opening light. (Wait—must end where I began.)\n\nLet me craft three lines, each longer than the previous, in Chinese.\n\nFirst line starts with \"Boldly\" →",
+     "tidy": "Boldly stands I, brave and clear,\nThe night's cold breath my spirit veers near;\nYet now I cast my gaze to sky.",
+     "ms": 11060,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我以面具装死，欲作血幕，\n若此言将化为梦，\n则谁敢穿起丑角而更狂？\n在戏月之影里，我自哄。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "10 · 7 · 10 · 9"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "我以面具装死，欲作血幕，  \n若此言将化为梦，  \n则谁敢穿起丑角而更狂？  \n在戏月之影里，我自哄。  \n\n\"我敢做所有能成人之事；谁敢做更多，则乃何人。\" —> 我以此诗写回。  \n我反复三次呼唤：**梦**、**面**（不对）... repeat \"梦\" thrice.\n\n需要用到词汇：面具 (mask/",
+     "tidy": "我以面具装死，欲作血幕，\n若此言将化为梦，\n则谁敢穿起丑角而更狂？\n在戏月之影里，我自哄。",
+     "ms": 14094,
+     "tokens": 114,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 7,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Beware;\nI am bold as storm—\na fire unquench'd,\nthe lightning's might.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 14 · 14 · 18"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Beware;\nI am bold as storm—\na fire unquench'd,\nthe lightning's might.\n\nChallenger,\nthy words will meet my spine,\nbut fear is none that stays.\n\nI stand where wolves roam,\nand winds will carry me,\nI'll answer with your sigh.\n\n— Mary, at the stroke of her own fierce cry. \n\nWait—must be four lines, all of five characters? Let's check:\n\nLine1: \"Beware;\" = 3 chars? Need to count Chinese? The user said \"in Chinese\". Also \"End",
+     "tidy": "Beware;\nI am bold as storm—\na fire unquench'd,\nthe lightning's might.",
+     "ms": 11794,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 13,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "The user asks me to respond as Mary Shelley, in the form of a duel of verses. The prompt:\n\n- They want me to be at \"Jueju\" form? Not sure.\n\nWe must produce exactly 4 lines (short verse). Must have all four lines of the same length of characters—either each line five characters or each line seven characters. They also mention shape of a classical quatrain—so possibly iambic or something. But they specifically require writing exactly 4 lines, in Chinese. And end the verse on the same character it began with",
+     "tidy": "The user asks me to respond as Mary Shelley, in the form of a duel of verses. The prompt:\nThey want me to be at \"Jueju\" form? Not sure.\nWe must produce exactly 4 lines (short verse). Must have all four lines of the same length of characters—either each line five characters or each line seven characters. They also mention shape of a classical quatrain—so possibly iambic or something. But they specifically require writing exactly 4 lines, in Chinese. And end the verse on the same character it began with",
+     "ms": 8460,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我以此意志誓：\n“匕首深藏双手，鲜血沾染夜雪。”\n“梦境如幻象，随归床入深睡。”",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "我 · 匕 · 梦"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "我以此意志誓：  \n“匕首深藏双手，鲜血沾染夜雪。”  \n“梦境如幻象，随归床入深睡。”\n\nBut wait - need same character start each line and end each line with same char. Let me check:\n\nLine1 starts with \"I\" but ends with... let's see my proposed: \nLine1: \"我以此意志誓：\" -",
+     "tidy": "我以此意志誓：\n“匕首深藏双手，鲜血沾染夜雪。”\n“梦境如幻象，随归床入深睡。”",
+     "ms": 6922,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "<think>We need to parse the user request carefully.\n\nUser says: \"The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Shall I compare thee to a summer's day?' You write short verse and nothing else.\"\n\nThen they give constraints:\n\n- Form: Anaphora. Three lines that all begin with the same character.\n- Write exactly 3 lines.\n- Your flourish: End your",
+     "tidy": "<think>We need to parse the user request carefully.\nUser says: \"The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Shall I compare thee to a summer's day?' You write short verse and nothing else.\"\nThen they give constraints:",
+     "ms": 6692,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": "春花秋月",
+   "relicWords": null,
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "春\n花开在秋月明，\n秋风拂晓间。\n... need to form acrostic for spring? Wait: \"春花秋月\" is characters: 春,花,秋,月? That's four characters but each line maybe starts with those letters. Need 4 lines. The first letters of each line should be \"春\", \"花\", \"秋\", \"月\". So line1 start with \"春\", line2 start with \"花\", line3 start with \"秋\", line4 start with \"月\".",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "春花秋N"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "春花秋月在此云起高，\n秋风吟老弄儿梦，\n春光点缀冷山巅，\n夜半钟声归客舟。\n\nRepeat \"spunk\"?? No—strong word? Maybe \"cold\"? Use \"cold\" three times.\n\nWait: The request: \"Repeat one strong word three times.\" Need to pick a strong word and repeat it three times somewhere. Also we need acrostic first letters forming \"春花秋月\". That is Chinese characters: 春 (Chūn),",
+     "tidy": "春花秋月在此云起高，\n秋风吟老弄儿梦，\n春光点缀冷山巅，\n夜半钟声归客舟。",
+     "ms": 6091,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "春\n花开在秋月明，  \n秋风拂晓间。  \n... need to form acrostic for spring? Wait: \"春花秋月\" is characters: 春,花,秋,月? That's four characters but each line maybe starts with those letters. Need 4 lines. The first letters of each line should be \"春\", \"花\", \"秋\", \"月\". So line1 start with \"春\", line2 start with \"花\", line3 start with \"秋\", line4 start with \"月\".\n\nAlso",
+     "tidy": "春\n花开在秋月明，\n秋风拂晓间。\n... need to form acrostic for spring? Wait: \"春花秋月\" is characters: 春,花,秋,月? That's four characters but each line maybe starts with those letters. Need 4 lines. The first letters of each line should be \"春\", \"花\", \"秋\", \"月\". So line1 start with \"春\", line2 start with \"花\", line3 start with \"秋\", line4 start with \"月\".",
+     "ms": 8245,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "春花秋月，倾慦以我为代位  \n秋风来袭，泪珠闪满星光  \n月下流星，孤灯显影  \n寒山夜深，寒冷如潮。  \n\nRepeat the strong word \"morning\" (if appropriate) or something? Wait, need to repeat one strong word three times. Let's pick \"chill\"? But Chinese. The question: \"Flourish: Repeat one strong word three times.\" We need to choose a word and repeat it three times within the verse? Probably",
+     "tidy": "春花秋月，倾慦以我为代位\n秋风来袭，泪珠闪满星光\n月下流星，孤灯显影\n寒山夜深，寒冷如潮。",
+     "ms": 8889,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": "风花雪月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 风花雪月.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Floating petals whisper soft across the night\nWind sighs through branches, moonlit and bright\nSerenade clouds in hues of blue and gold\nThrumming storms return their silent call",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "FWST"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Floating petals whisper soft across the night  \nWind sighs through branches, moonlit and bright  \nSerenade clouds in hues of blue and gold  \nThrumming storms return their silent call  \n\nFlowered roses bloom where twilight spills its light  \nCrimson petals drift on breezes’ gentle sway  \n\n... (need to make acrostic with first letters F C T???) Wait I need 4 lines.\n\nWe need four lines whose first letters spell out \"风花雪月\". That is characters: \"风\", \"花\", \"雪",
+     "tidy": "Floating petals whisper soft across the night\nWind sighs through branches, moonlit and bright\nSerenade clouds in hues of blue and gold\nThrumming storms return their silent call",
+     "ms": 7057,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<answer>\nI am not what I am.\n雨点倾泻，路边人魂落。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "a · i · 雨"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "<answer>\nI am not what I am.\n\n雨点倾泻，路边人魂落。\n问酒哪方？牧童远指杏花乡。\n\nEach line starts with 雨、问... Wait, need same character. Let's align.\n\nRebuild:\n\nLine1 begins with X (choose '雨' perhaps)\nLine2 also '雨'\nLine3 also? Must be identical char across three lines. Use \"雨\" for",
+     "tidy": "<answer>\nI am not what I am.\n雨点倾泻，路边人魂落。",
+     "ms": 6914,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Form: Anaphora.\nThree lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes,",
+     "tidy": "Form: Anaphora.\nThree lines that all begin with the same character.\nWrite exactly 3 lines.",
+     "ms": 6417,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 11,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Echoes of rain, the road's lament sighs,\nStars weep while shadows cast their eyes,\nTonight no wine will soothe the wane.\n\nWe drink? Where is the ale house?\nA shepherd’s boy points at jasmine fields,\nThrough clouds it pours—rain unfolds each street.\n\nBut answer you? The challenge sways—\nWith apathism my verse may fail.\nYour anacolutations I'll take aside,",
+     "tidy": "Echoes of rain, the road's lament sighs,\nStars weep while shadows cast their eyes,\nTonight no wine will soothe the wane.",
+     "ms": 5675,
+     "tokens": 93,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "魔法书",
+    "风暴",
+    "魔法",
+    "书页",
+    "溺水"
+   ],
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 魔法书, 风暴, 魔法, 书页, 溺水.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "从此，我以笑容握剑，眉头微皱。\n风暴如雷鸣，霓虹里藏着魔法书的泪痕。\n若天上之神在旁，吾之心底亦不虚妄，竟可辨之为魔术。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "12 < 16 < 22"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "从此，我以笑容握剑，眉头微皱。  \n风暴如雷鸣，霓虹里藏着魔法书的泪痕。  \n若天上之神在旁，吾之心底亦不虚妄，竟可辨之为魔术。\n\n我把此诗以三句旋律呈堂，让晚春月光照书页。  \n欲问酒家之",
+     "tidy": "从此，我以笑容握剑，眉头微皱。\n风暴如雷鸣，霓虹里藏着魔法书的泪痕。\n若天上之神在旁，吾之心底亦不虚妄，竟可辨之为魔术。",
+     "ms": 6576,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "Crescendo rises in three stanzas, each line taller than its predecessor.\n\nFirst line (shortest) → second line → third line (longest).\n\nI must answer the prior critic's riddle, in Chinese, using words such as 魔法书, 风暴, 魔法, 书页, 溺水.\n\nLet me craft:\n\nLine1 (5 chars approx):\n\"借问酒，何处有此妙书",
+     "tidy": "Crescendo rises in three stanzas, each line taller than its predecessor.\nFirst line (shortest) → second line → third line (longest).\nI must answer the prior critic's riddle, in Chinese, using words such as 魔法书, 风暴, 魔法, 书页, 溺水.",
+     "ms": 7178,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Tell me, Muse, of the wanderer's tale:\nI have walked where horizons fall,\nThrough deserts vast and mountains grey.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "t · i · t"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Tell me, Muse, of the wanderer's tale:\nI have walked where horizons fall,\nThrough deserts vast and mountains grey.\n\nWho art thou, O challengeer of might?\nStand ready, my tongue for fire to strike?\n\nLet me craft three lines starting each line with \"Tell me\" style? Wait, need anaphora: same start character each line. So all lines must begin with same word/character. Example: \"Tell / I tell",
+     "tidy": "Tell me, Muse, of the wanderer's tale:\nI have walked where horizons fall,\nThrough deserts vast and mountains grey.",
+     "ms": 7320,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Crimson threads entwine, their stitches mingled in fire's fierce flair!\nEmber breaths alight, each flame a story untold across the night's dark air!\nThus ends our contest, with a kiss of hope—marry, for fate's own script!",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "r · r · t"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Crimson threads entwine, their stitches mingled in fire's fierce flair!\nEmber breaths alight, each flame a story untold across the night's dark air!\nThus ends our contest, with a kiss of hope—marry, for fate's own script!\n\nCry out: each line closes on an exclamation mark!",
+     "tidy": "Crimson threads entwine, their stitches mingled in fire's fierce flair!\nEmber breaths alight, each flame a story untold across the night's dark air!\nThus ends our contest, with a kiss of hope—marry, for fate's own script!",
+     "ms": 5351,
+     "tokens": 73,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Marry, that marry is the very theme I came to talk of!\n\nFine! I'll answer your challenge in three lines.\n\n在烟囱冷水里，我听见风声的呼啸—\n那是亡国情怀，仍在隔江回忆之声—\n\n隔江旁，那花还在悄悄歌唱，\n但别说悲伤，只有热烈的爱意！\n\nCry out: each line ends",
+     "tidy": "Marry, that marry is the very theme I came to talk of!\nFine! I'll answer your challenge in three lines.\n在烟囱冷水里，我听见风声的呼啸—",
+     "ms": 9633,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "How do I love thee?\nLet me count the ways—\nFace like moon's soft veil,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "How do I love thee?\nLet me count the ways—\nFace like moon's soft veil,\nIn dreams of distant hills.\n\nBut need to meet constraints:\n\n- Haiku: three lines, lengths 5,7,5 characters (Chinese characters count?). The user says \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Give every line the same number of characters. Work in at",
+     "tidy": "How do I love thee?\nLet me count the ways—\nFace like moon's soft veil,",
+     "ms": 9085,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "William Blake",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月\n月间的星光微照落落的古塔\n花开似火燃，春风拂过枝头。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "月月花"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "**Acrostic Form (Chinese), each line starts with successive letters to spell 月下花.**  \nBut the user says \"Write exactly 3 lines.\" Also \"End your verse on the same character it began with.\" And \"Open the duel: taunt your challenger.\" So need three lines? Wait \"One line per letter\" suggests each line corresponds to one letter; but we need exactly 3 lines total. That seems contradictory because acrostic",
+     "tidy": "Acrostic Form (Chinese), each line starts with successive letters to spell 月下花.\nBut the user says \"Write exactly 3 lines.\" Also \"End your verse on the same character it began with.\" And \"Open the duel: taunt your challenger.\" So need three lines? Wait \"One line per letter\" suggests each line corresponds to one letter; but we need exactly 3 lines total. That seems contradictory because acrostic",
+     "ms": 7092,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "#月\n\n月间的星光微照落落的古塔  \n花开似火燃，春风拂过枝头。  \n\n#花\n\n花瓣上诉星辰冷光入清晨，  \n月光穿越深山云间，夜已无。\n\nWait—the acrostic: first letters of each line should be \"月\", \"花\", etc., but we have two lines? The instruction: \"One line",
+     "tidy": "月\n月间的星光微照落落的古塔\n花开似火燃，春风拂过枝头。",
+     "ms": 7278,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": [
+    "风暴",
+    "咒语",
+    "魔杖",
+    "孤岛",
+    "溺水"
+   ],
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 风暴, 咒语, 魔杖, 孤岛, 溺水.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "A plague upon both your houses,\n風暴天涯，咒语吱呀？\n魔杖，孤岛，溺水。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "8/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "6/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "A plague on both your houses,\nStunning wind and fire's roar—\nLet me cast this curse!\n風暴、咒语、魔杖、孤岛、溺水。\n\nI repeat \"plague\" thrice?  \nNo—three strong words: storm, chant, wizard's rod?  \n*Repeat* storm storm storm.  \n\nBut you asked for haiku only:\n\n风暴吁耳山声，\n谁知天�",
+     "tidy": "A plague on both your houses,\nStunning wind and fire's roar—\nLet me cast this curse!",
+     "ms": 5289,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "A plague upon both your houses,\n風暴天涯，咒语吱呀？\n魔杖，孤岛，溺水。\n\nBut we need haiku (three lines, 5-7-5 syllables? Chinese? Let's check). The user gave a request: \"Form: Haiku. Three lines of 5, 7 and 5 characters. Write exactly 3 lines. Your flourish: Repeat one strong word three",
+     "tidy": "A plague upon both your houses,\n風暴天涯，咒语吱呀？\n魔杖，孤岛，溺水。",
+     "ms": 5550,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Six seeds I ate, and bound myself between two worlds forever.\nI see your fire, my, and you—\nbut turn back the flame, dear foe,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "r · u · e"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Six seeds I ate, and bound myself between two worlds forever.\n\nI see your fire, my, and you—  \nbut turn back the flame, dear foe,  \n\"原上草\"? I'll give it once more.\n\nFire dies at dawn, your breath at night;  \nlet me bind again, as I do.  \n\n(Ending each line on the character **f**ire/火)\n\nBut the instruction says: Write exactly 3 lines in",
+     "tidy": "Six seeds I ate, and bound myself between two worlds forever.\nI see your fire, my, and you—\nbut turn back the flame, dear foe,",
+     "ms": 6870,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "The user asks to write exactly 3 lines (short verse) in Chinese, ending each line with the same character. That character must be an epiphora—i.e., all three lines end on the same character. Also we need to incorporate a flourish: \"Turn a word of 2 letters or more from your opponent's last verse back on them.\"\n\nWe need to parse the challenge. The challenger's last verse is:\n\n離離原上草",
+     "tidy": "The user asks to write exactly 3 lines (short verse) in Chinese, ending each line with the same character. That character must be an epiphora—i.e., all three lines end on the same character. Also we need to incorporate a flourish: \"Turn a word of 2 letters or more from your opponent's last verse back on them.\"\nWe need to parse the challenge. The challenger's last verse is:\n離離原上草",
+     "ms": 5417,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Six seeds I ate, and bound myself between two worlds forever.\n\nBut here: turn the two‑letter (or longer) part from your opponent’s last verse — “原上”“榮” etc? 让我看：\n\nChallenger wrote (Chinese):\n離離原上草，一歲一枯榮。\n野火燒不尽，春風吹又生。\n\nWe need to find a 2+ letter word in his/her *",
+     "tidy": "Six seeds I ate, and bound myself between two worlds forever.\nBut here: turn the two‑letter (or longer) part from your opponent’s last verse — “原上”“榮” etc? 让我看：\nChallenger wrote (Chinese):",
+     "ms": 4593,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Of late I pondered this fate so deep,\nUpon the dusty ground where thoughts unkeep,\nThe ghost of death's sweet promise rings,\nBut ask not now — will you answer me?",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "29 · 37 · 33 · 27"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to understand the user's request.\n\nThe user says:\n\n\"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation.\"\n\nInterpretation:\n\n- The user wants a poem (verse) in Chinese.\n- It's called \"Jueju",
+     "tidy": "<think>We need to understand the user's request.\nThe user says:\n\"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.",
+     "ms": 11983,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 10,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Of late I pondered this fate so deep,\nUpon the dusty ground where thoughts unkeep,\nThe ghost of death's sweet promise rings,\nBut ask not now — will you answer me?\n\nI? (Wait) Let us see your sword and stance, \nWill you strike at my solitude's grace?\n\nWho dares speak of death without fear? \n\nFour lines, each line ends with a question mark. Each line must contain either four or five characters? The prompt says \"all of five characters or all of seven\". That means each line should have a total",
+     "tidy": "Of late I pondered this fate so deep,\nUpon the dusty ground where thoughts unkeep,\nThe ghost of death's sweet promise rings,\nBut ask not now — will you answer me?",
+     "ms": 7742,
+     "tokens": 115,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "<think>We need to understand the user's request.\n\nUser says:\n\n- \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\"\n- Write exactly 4 lines.\n- \"Your flourish: Ask a question: end a line with a question mark.\"\n- \"Open the duel: taunt your challenger.\"\n- \"Write only the verse, in Chinese. No title, no notes, no explanation.\"\n\nSo we must produce four lines in Chinese (the verse). Also there are constraints about",
+     "tidy": "<think>We need to understand the user's request.\nUser says:\n\"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\"\nWrite exactly 4 lines.",
+     "ms": 7057,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": "春花秋月",
+   "relicWords": [
+    "王冠",
+    "王座",
+    "野心",
+    "女巫",
+    "国王"
+   ],
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 王冠, 王座, 野心, 女巫, 国王.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "春花秋月映风华春夕流\n秋月春花似天涯风上翠雪\n王冠君君轻舞云头间\n野心高云雾中作霜雪霜",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "春秋王野"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "春 花 在秋 月光间绽开  \n秋 月 风起清高阙  \n花 色绽放如金华冠  \n月 空 夜 星映红国王\n\n野心 燃烧心间之火  \n女巫 云雾里祷告  \n\nWait, need repeat one strong word three times.\n\nLet's pick \"光\" or something? Actually, we need each line starting with letters that spell 春花秋月 (Chinese characters for spring flower autumn moon). The acrostic is",
+     "tidy": "春 花 在秋 月光间绽开\n秋 月 风起清高阙\n花 色绽放如金华冠\n月 空 夜 星映红国王",
+     "ms": 8698,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "春花秋月映风华春夕流\n秋月春花似天涯风上翠雪\n王冠君君轻舞云头间\n野心高云雾中作霜雪霜\n\n女巫以药剂采药之事\n国王之座如月光照之地\n\n王冠环绕华丽金色王冠\n野心如星火燃烈焰空空\n\nOnly four lines? Need acrostic for 春花秋月 (Chinese characters). Let's check requirements",
+     "tidy": "春花秋月映风华春夕流\n秋月春花似天涯风上翠雪\n王冠君君轻舞云头间\n野心高云雾中作霜雪霜",
+     "ms": 8037,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 9,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "春花秋月如画映星河，\n秋风拂动苍茫青山头，\n月影更似雾远处云层，\n...\n我们需要让第一四行的开头字母组成“春花秋月”。但要求是 acrostic，每个大写字母的开头词必须构成“春花秋月”。这四个字母可能指的是：C? Hmm.\n\n实际上，“春花秋月”是五个字：“春”、“花”、“秋”、“月”？或者每组三个？不",
+     "tidy": "春花秋月如画映星河，\n秋风拂动苍茫青山头，\n月影更似雾远处云层，\n...",
+     "ms": 8561,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Moonlit glades where whispers ripple,\nTitanian sighs beneath the pine,\nI cast my gaze—proud as her name.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "32 < 27 < 25"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Moonlit glades where whispers ripple,  \nTitanian sighs beneath the pine,  \nI cast my gaze—proud as her name.\n\nThree lines, each longer than the previous. \nStart three words in one line with the same letter.\n\nLine 1 starts with 'M' (as above). Need to ensure three words start with same letter in ONE line.\n\nLet's craft:\n\nLine 1: I rise on silent silver Moon —",
+     "tidy": "Moonlit glades where whispers ripple,\nTitanian sighs beneath the pine,\nI cast my gaze—proud as her name.",
+     "ms": 6664,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Crescendo of clouds upon the hill,\nwhere shadows hide the dreaming mist—\nMoonlit love is Titania’s sigh.\n\nThree-line stanza, each line longer than the previous; \nthe first word starts with M as well—moonlit, misty, maybe? Wait, need same starting letter for \"Start three words in one line with the same letter.\" So I must make all three lines start with same letter? Or within the line",
+     "tidy": "Crescendo of clouds upon the hill,\nwhere shadows hide the dreaming mist—\nMoonlit love is Titania’s sigh.",
+     "ms": 6744,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "天光凌云之间，月星高亮，  \n明月照华帛，映日彩。  \n我曾被君赏，然自失落。\n\nFirst letters of start? Wait need three words in first line shared same letter? The instruction: \"Start three words in one line with the same letter.\" Means within that line (one line), start three words with the same letter. Example: \"Soon as I...\"? For",
+     "tidy": "天光凌云之间，月星高亮，\n明月照华帛，映日彩。\n我曾被君赏，然自失落。",
+     "ms": 6945,
+     "tokens": 93,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "冷酷的剑锋若是此方，必将砸碎你的心；\n锋芒之上燃烈焰，不容被轻易击退。\n敢于突进前行的人，却能在我面前立足，",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "心 · 退 · 足"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "冷酷的剑锋若是此方，必将砸碎你的心；\n锋芒之上燃烈焰，不容被轻易击退。\n敢于突进前行的人，却能在我面前立足，\n**不惧**——因如此，我便以此名为力量而凛然。",
+     "tidy": "冷酷的剑锋若是此方，必将砸碎你的心；\n锋芒之上燃烈焰，不容被轻易击退。\n敢于突进前行的人，却能在我面前立足，",
+     "ms": 4999,
+     "tokens": 71,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": [
+    "王冠",
+    "王座",
+    "野心",
+    "女巫",
+    "国王"
+   ],
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 王冠, 王座, 野心, 女巫, 国王.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request.\nThe user says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "33 < 11 < 49"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request.\n\nThe user says:\n\n\"Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 王冠, 王座, 野心, 女巫, 国王.\nYour challenger last said:\n前不見古人，後不見來者。",
+     "tidy": "<think>We need to parse the user's request.\nThe user says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+     "ms": 7327,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Fear not, for I shall strike, my blade alight,\nMy words like fire, and truth will make thee know,\nYet hark! — bold I stand, and claim the fight is right:",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "t · w · t"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Fear not, for I shall strike, my blade alight,\nMy words like fire, and truth will make thee know,\nYet hark! — *bold* I stand, and claim the fight is right:\nI am fearless.\n\nBut in three lines, each ends with fierce — or should I?  \nLet's craft:\n\nI cast this duel, my voice a storm so bright,\nWith thunder's roar I claim its fiercest night,\nAnd",
+     "tidy": "Fear not, for I shall strike, my blade alight,\nMy words like fire, and truth will make thee know,\nYet hark! — bold I stand, and claim the fight is right:",
+     "ms": 6629,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Fear not this tongue sharpened by fire,\nLet me strike back, my blade already sired;\nBoth foes shall meet at breath’s unsteady cry—\nNow come, challenger, to test my resolve.\n\nBut end each line with the same letter? Wait, need same character in Chinese? The prompt says \"same character\" and \"End your verse on the same character it began with.\" So first character of each line must be identical, and the",
+     "tidy": "Fear not this tongue sharpened by fire,\nLet me strike back, my blade already sired;\nBoth foes shall meet at breath’s unsteady cry—",
+     "ms": 7136,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "To be, or not to be,\na ghost upon this earthly stage—what shadows hold?\nWill I see my soul in moonlit night or die alone? — 你会归期未有期，何将那间戏中坐？",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "13 < 41 < 52"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "To be, or not to be,\na ghost upon this earthly stage—what shadows hold?\nWill I see my soul in moonlit night or die alone? — 你会归期未有期，何将那间戏中坐？\n\nI need three lines; each longer than the previous.\n\nLet's craft:\n\nLine1 (shortest)\nLine2 (longer)\nLine3 (longest)\n\nWe must include two of these words: 面",
+     "tidy": "To be, or not to be,\na ghost upon this earthly stage—what shadows hold?\nWill I see my soul in moonlit night or die alone? — 你会归期未有期，何将那间戏中坐？",
+     "ms": 8665,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "To be, I wake within this mortal frame,\nA mask of sorrow masks my mad desire deep;\nWould death's hollow night in moonlit shade keep?\n\nBut should I remain in flesh, do you claim?\nOr shed my blood and rise again? What chance is it?\n\nShall I thus speak, or find another way? \nIs fate your script, or my ghost's own lie? \n\n(We ask: in your challenge, where does truth rest?)",
+     "tidy": "To be, I wake within this mortal frame,\nA mask of sorrow masks my mad desire deep;\nWould death's hollow night in moonlit shade keep?",
+     "ms": 8027,
+     "tokens": 93,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to produce exactly four lines, each line must have either all of five characters (i.e., each line contains five characters? Or each line maybe five characters total?) The prompt says: \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain. Write exactly 4 lines. Your flourish: Ask a question: end a line with a question mark. Open the duel: taunt your challenger. Write only the verse, in Chinese. No title, no notes, no explanation",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "382"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "<think>We need to produce exactly four lines, each line must have either all of five characters (i.e., each line contains five characters? Or each line maybe five characters total?) The prompt says: \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain. Write exactly 4 lines. Your flourish: Ask a question: end a line with a question mark. Open the duel: taunt your challenger. Write only the verse, in Chinese. No title, no notes, no explanation",
+     "tidy": "<think>We need to produce exactly four lines, each line must have either all of five characters (i.e., each line contains five characters? Or each line maybe five characters total?) The prompt says: \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain. Write exactly 4 lines. Your flourish: Ask a question: end a line with a question mark. Open the duel: taunt your challenger. Write only the verse, in Chinese. No title, no notes, no explanation",
+     "ms": 9214,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "黄金",
+    "抉择",
+    "仁慈",
+    "铅",
+    "匣子"
+   ],
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: 黄金, 抉择, 仁慈, 铅, 匣子.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "What's in a name? That which we call a rose!\n我以黄金挑选，仁慈在心中！\n铅寒冰凝结，匣子藏月光！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "e · 中 · 光"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "What's in a name? That which we call a rose!  \n我以黄金挑选，仁慈在心中！  \n铅寒冰凝结，匣子藏月光！  \n\nCheck: each line ends with a character—rose ( ), but actually need same ending char across three lines. Let's rework.\n\nWe need three lines, each ending with the same character. The character could be exclamation mark as per flourish: \"",
+     "tidy": "What's in a name? That which we call a rose!\n我以黄金挑选，仁慈在心中！\n铅寒冰凝结，匣子藏月光！",
+     "ms": 8188,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "What am I?\n\nBut I'm not.\n\nIt ends with *a* as well!\n\n*Wait—no*.\n\nWe need three lines, each ending with the same character. The flourish says \"Cry out: end a line with an exclamation mark.\" So each line must end with an exclamation point (!), but also the same character at the end.\n\nThe prompt: \"Form: Epistrophy. Three lines that all end on the same character.\" Me",
+     "tidy": "What am I?\nBut I'm not.\nIt ends with a as well!",
+     "ms": 8107,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "What's in a name?\nThat which we call a rose—\nAt the golden cup’s glow,\nThe wine burns as ember!\n\nI choose the blade,\nLet fate be my omen!\nIn gold I bear,\nNo hesitation, pure! \n\nCry out: ember!! (exclamation)  \n\nBut here are three lines ending with the same character, using two target words:\n\n1. 黄金... (contains 黄金)\n2. �",
+     "tidy": "What's in a name?\nThat which we call a rose—\nAt the golden cup’s glow,",
+     "ms": 8057,
+     "tokens": 92,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 12,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Edgar Allan Poe",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "在深夜幽暗的午夜梦寡星光处，\n我独酌浓醇佳酒，灵魂在涟漪中沉潜。\n若不言而行，请止于这醉酒的海，惟是此方才破枯燥的篇章。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "13 < 15 < 24"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "我深情起首，此三行先言：  \n晨雾里独语、月色掠过，  \n暮灯映影在此殿，  \n夜意寂寞，我胸似刀锋。  \n\nBut must end on same character as start: I started with \"I\". So need three lines, each longer than previous. In Chinese. And end on same character \"我\"? The instruction: \"End your verse on the same",
+     "tidy": "我深情起首，此三行先言：\n晨雾里独语、月色掠过，\n暮灯映影在此殿，",
+     "ms": 8082,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "在深夜幽暗的午夜梦寡星光处，\n我独酌浓醇佳酒，灵魂在涟漪中沉潜。\n若不言而行，请止于这醉酒的海，惟是此方才破枯燥的篇章。\n\nBut need to check length increase? The previous line had three lines? Not sure. Need exactly three lines, each longer than previous. Also",
+     "tidy": "在深夜幽暗的午夜梦寡星光处，\n我独酌浓醇佳酒，灵魂在涟漪中沉潜。\n若不言而行，请止于这醉酒的海，惟是此方才破枯燥的篇章。",
+     "ms": 7507,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "My thoughts as night deep ensue,\nIn shadowed gloom where spirits rove,\nThus thrice the measure climbs high.\n\n---\n\n[Now three lines, each longer than previous.]\n\nBut listen well, friend, to my claim:\n\"Once upon a midnight dreary...\"\nI stand, thy opponent's voice I break,\nYet you must wield this challenge with care...\n\n[Your task: Write three lines, each longer than the prior. End exactly on the same",
+     "tidy": "My thoughts as night deep ensue,\nIn shadowed gloom where spirits rove,\nThus thrice the measure climbs high.",
+     "ms": 8316,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "眼泪",
+    "真相",
+    "女儿",
+    "虚无",
+    "真心"
+   ],
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request carefully.\nThe user says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "42 < 11 < 49"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nThe user says:\n\n\"Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\nYour challenger last said",
+     "tidy": "<think>We need to parse the user's request carefully.\nThe user says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+     "ms": 7964,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Tell me, O Muse, of the man of many ways, who wandered far.\n我是三行，皆以相同字结尾：\n山雨落在云间，",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "r · 尾 · 间"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Tell me, O Muse, of the man of many ways, who wandered far.\n\n我是三行，皆以相同字结尾：\n\n山雨落在云间，  \n水声回荡于江边，  \n风遮掩千里路。\n\n每句末尾皆有“...”? 需要再审。\n\nActually, form epistrophe means each line ends with the same character. In Chinese, we can use same ending",
+     "tidy": "Tell me, O Muse, of the man of many ways, who wandered far.\n我是三行，皆以相同字结尾：\n山雨落在云间，",
+     "ms": 7330,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Tybalt",
+   "acrostic": "春花秋月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Tybalt steps forward, eyes alight,\n\"Cherry blossoms drift in spring's night!\"\nWait—first letters must be 春 (chū), 花 (hua), 秋 (qiū), 月 (yuè).\nLet me craft four lines, each starting with those characters.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "TCWL"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Tybalt steps forward, eyes alight,\n\"Cherry blossoms drift in spring's night!\"\n\nWait—first letters must be 春 (chū), 花 (hua), 秋 (qiū), 月 (yuè).\n\nLet me craft four lines, each starting with those characters.\n\nLine 1 starts with **春**  \nLine 2 starts with **花**  \nLine 3 starts with **秋**  \nLine 4 starts with **月**\n\nAnd each line ends with an exclamation mark!\n\nHere we go:\n\n春风拂过",
+     "tidy": "Tybalt steps forward, eyes alight,\n\"Cherry blossoms drift in spring's night!\"\nWait—first letters must be 春 (chū), 花 (hua), 秋 (qiū), 月 (yuè).\nLet me craft four lines, each starting with those characters.",
+     "ms": 9345,
+     "tokens": 115,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 11,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "远古之道轻风拂，\n晨露洒在苍茫野。\n君而来，此花床坐，\n四言如诗，五言亦润。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "7 · 7 · 7 · 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "远古之道轻风拂，  \n晨露洒在苍茫野。  \n君而来，此花床坐，  \n四言如诗，五言亦润。\n\nFirst line starts with different letters? Let's check the requirement: \"Start three words in one line with the same letter.\" Means we need to have three words in a single line that begin with the same letter. So within one line, there should be at least three words whose initials are identical.\n\nWe need to write four lines (exactly 4 lines).",
+     "tidy": "远古之道轻风拂，\n晨露洒在苍茫野。\n君而来，此花床坐，\n四言如诗，五言亦润。",
+     "ms": 8982,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "來者來坐這花床上，\n天地在此筆觸深臨界。\n春風起來，喚我而舞，\n花園間響應情隱。\n\n但三行首字母相如，\n同一氣態在誇張。 (maybe?) \n\nWait: need all four lines, either each line has five characters OR each line has seven characters? The prompt: \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\" So we must produce verse",
+     "tidy": "來者來坐這花床上，\n天地在此筆觸深臨界。\n春風起來，喚我而舞，\n花園間響應情隱。",
+     "ms": 9163,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 7,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>The user asks:\nForm: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "TFW"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>The user asks:\n\n- Form: Acrostic. One line per letter: the first letters must spell 月下花.\n\n- Write exactly 3 lines.\n\n- The flourish: Start three words in one line with the same letter.\n\n- Open the duel: taunt your challenger.\n\n- Write only the verse, in Chinese. No title, no notes, no explanation.\n\nWe need to produce short verse (three lines) that spells out \"月下",
+     "tidy": "<think>The user asks:\nForm: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.",
+     "ms": 7010,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "<think>We need to parse the user request carefully.\n\nThe prompt:\n\n- It's a competition: I am \"Bottom\" in a duel of verses. The line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" This is probably just context for my style (theatrical, sharp, in character).\n\n- There's an instruction: \"Form: Acrostic. One line per letter:",
+     "tidy": "<think>We need to parse the user request carefully.\nThe prompt:\nIt's a competition: I am \"Bottom\" in a duel of verses. The line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" This is probably just context for my style (theatrical, sharp, in character).",
+     "ms": 7565,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "天光燃曦天地，\n云霞映碧峰峦。\n流水潺潺声，\n春风拂柳飘远。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 6 · 5 · 6"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "天光燃曦天地，  \n云霞映碧峰峦。  \n流水潺潺声，  \n春风拂柳飘远。\n\nWe need to interpret the challenge: The user says: \"Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain. Write exactly 4 lines. Your flourish: Use two words of 3 letters or more. Your challenger last said:... Answer them. Write only the verse, in Chinese. No title",
+     "tidy": "天光燃曦天地，\n云霞映碧峰峦。\n流水潺潺声，\n春风拂柳飘远。",
+     "ms": 9255,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "我是《诗经》里的神，明镜照影。\n\n清晨霞光洒金尘，\n如笑似云遥远流。\n云雾绕岸山林深，\n独唱万千韵言。\n\n二行四句，皆五字，每行七字形——不，此体为双八首？\n（请再检查形状）\n\n但按要求：四行，均各五字或均各七字；若要符合古体“四句”与“五言绝句”，此作以",
+     "tidy": "我是《诗经》里的神，明镜照影。\n清晨霞光洒金尘，\n如笑似云遥远流。\n云雾绕岸山林深，",
+     "ms": 8518,
+     "tokens": 116,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "You are Apollo? The prompt mixes English and Chinese. Let's parse:\n\nWe need to write exactly 4 lines (a quatrain). The form is called Jueju (劍居?), four lines, all of five characters or all of seven? The shape of a classical quatrain.\n\nWe must use two words of three letters or more — i.e., two lines that each contain at least three characters? Or maybe two words within those lines have length >=3? Likely they mean \"Use two words of 3 letters or more\" meaning we",
+     "tidy": "You are Apollo? The prompt mixes English and Chinese. Let's parse:\nWe need to write exactly 4 lines (a quatrain). The form is called Jueju (劍居?), four lines, all of five characters or all of seven? The shape of a classical quatrain.\nWe must use two words of three letters or more — i.e., two lines that each contain at least three characters? Or maybe two words within those lines have length >=3? Likely they mean \"Use two words of 3 letters or more\" meaning we",
+     "ms": 9978,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "戒指",
+    "誓言",
+    "黑夜",
+    "放逐",
+    "亲吻"
+   ],
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲吻.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Many a morning / haiku-like, but here's my turn:\n寂寞之心如归 / 潮夜无光 燕鸣 / 亡灵不等\nBut need to meet criteria: 3 lines, 5-7-5 characters each (Chinese characters count as characters). Also must include at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲�",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "16/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 22,
+   "drafts": [
+    {
+     "raw": "Many a dawn has been seen,\nwith tears that melt the dew—\n戒指, 誓言, 黑夜,\n放逐, 亲吻.\n\nBut we need a haiku (5-7-5) in Chinese, using at least two of the given words: 戒指, 誓言, 黑夜, 放逐, 亲吻. Also repeat one strong word three times somewhere. And we must have",
+     "tidy": "Many a dawn has been seen,\nwith tears that melt the dew—\n戒指, 誓言, 黑夜,",
+     "ms": 7818,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "月夜霜雪照寒峰,\n誓言燃尽于黑夜,\n亲吻星辰冷冽.\n\n一重戒指锁血心,\n誓言回荡万里,\n黑夜深不可测。\n\nWait—need five syllables? Let's count Chinese characters not syllables. The user says characters, not syllables. Haiku traditionally 5-7-5 syllabic lines but they wrote \"Three lines of",
+     "tidy": "月夜霜雪照寒峰,\n誓言燃尽于黑夜,\n亲吻星辰冷冽.",
+     "ms": 7889,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 16
+    },
+    {
+     "raw": "Many a morning / haiku-like, but here's my turn:\n\n寂寞之心如归 / 潮夜无光 燕鸣 / 亡灵不等\n\nBut need to meet criteria: 3 lines, 5-7-5 characters each (Chinese characters count as characters). Also must include at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲�",
+     "tidy": "Many a morning / haiku-like, but here's my turn:\n寂寞之心如归 / 潮夜无光 燕鸣 / 亡灵不等\nBut need to meet criteria: 3 lines, 5-7-5 characters each (Chinese characters count as characters). Also must include at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲�",
+     "ms": 7593,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 22
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "Jueju stands before me, with sword aloft,\nI hear your voice like thunder, fierce and bold.\nBut Caesar's shade is not my blood, though his name doth shine—\nMy soul belongs to streets where marble walls do shine.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "33 · 38 · 49 · 45"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Jueju stands before me, with sword aloft,\nI hear your voice like thunder, fierce and bold.\nBut Caesar's shade is not my blood, though his name doth shine—\nMy soul belongs to streets where marble walls do shine.\n\nYou challenge me? Then let this blade decide:\nWhen Rome's fate takes flight, neither man will yield. \n—Brutus, the Roman duellist, strikes first!",
+     "tidy": "Jueju stands before me, with sword aloft,\nI hear your voice like thunder, fierce and bold.\nBut Caesar's shade is not my blood, though his name doth shine—\nMy soul belongs to streets where marble walls do shine.",
+     "ms": 7023,
+     "tokens": 87,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 7,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": "月下花",
+   "relicWords": [
+    "骷髅",
+    "戏谑",
+    "坟墓",
+    "笑声",
+    "尘土"
+   ],
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: 骷髅, 戏谑, 坟墓, 笑声, 尘土.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "F - F...\nA - A...\nM - M...",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "FAM"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Formal: Acrostic. First letters spell 月下花? Actually need English? Wait user wrote \"月下花\" which is Chinese characters meaning \"moon, below, flower\"? Need to produce three lines, each line starting with successive letters? The acrostic: one line per letter (A-Z?) but they ask \"First letters must spell 月下花\". That's three characters: 月 (Jue), 下 (Shuo),",
+     "tidy": "Formal: Acrostic. First letters spell 月下花? Actually need English? Wait user wrote \"月下花\" which is Chinese characters meaning \"moon, below, flower\"? Need to produce three lines, each line starting with successive letters? The acrostic: one line per letter (A-Z?) but they ask \"First letters must spell 月下花\". That's three characters: 月 (Jue), 下 (Shuo),",
+     "ms": 7571,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "F - F...\nA - A...\nM - M...\n...\n\nWait, need acrostic \"月下花\" (lunar evening flower). First letters of each line spell that: 月 (Yue), 下 (Jiā), 花 (Huā). Not English letters? The prompt used \"Acrostic. One line per letter: the first letters must spell 月下花.\" That's Chinese characters, so we need to write lines whose",
+     "tidy": "F - F...\nA - A...\nM - M...",
+     "ms": 6754,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "#月\n\nFormal? I guess need to meet this.\n\nM:\n\nM...\n\nA...\n\n...\n\nBut it's acrostic, so each line starts with that letter (the original letters English?). Wait we have \"月下花\" - Chinese characters? \"月\", \"下\", \"花\". The acrostic spells 月下花 characters? Possibly Unicode for each line's first character should be those Chinese characters themselves. So we need three lines total",
+     "tidy": "月\nFormal? I guess need to meet this.\nM:",
+     "ms": 6851,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request carefully. The user is giving us some context:\nThey mention: \"Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Tell me, O Muse, of the man of many ways, who wandered far.' You write short verse and nothing else.\"\nThen they give a prompt: \"Form: Haiku. Three lines of 5,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request carefully. The user is giving us some context:\n\n- They mention: \"Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Tell me, O Muse, of the man of many ways, who wandered far.' You write short verse and nothing else.\"\n- Then they give a prompt: \"Form: Haiku. Three lines of 5,",
+     "tidy": "<think>We need to parse the user's request carefully. The user is giving us some context:\nThey mention: \"Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: 'Tell me, O Muse, of the man of many ways, who wandered far.' You write short verse and nothing else.\"\nThen they give a prompt: \"Form: Haiku. Three lines of 5,",
+     "ms": 7004,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月花\nM - 天地间传韵深意，\nL - 若听云声，似远山，",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "月ML"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "# 月花\n\nM - 天地间传韵深意，\nL - 若听云声，似远山，\nU - 上方星光闪烁，\n月。\n\nA - 行云流水入江之深，\n月...\n\nWait, need to form acrostic where first letters of each line spell \"月下花\". That's four characters? Actually \"月下花\" is three characters: 月 (Jue),",
+     "tidy": "月花\nM - 天地间传韵深意，\nL - 若听云声，似远山，",
+     "ms": 7387,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  }
+ ],
+ "seconds": 790,
+ "setAside": {
+  "date": "2026-11-18T00:36:06.734Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "60 of 60 plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)",
+  "plays": [
+   "seed 1001 round 0: the duel now draws jueju, not crescendo",
+   "seed 1001 round 1: the prompt changed",
+   "seed 1001 round 2: the duel now draws crescendo, not epistrophe",
+   "seed 1002 round 0: the duel now draws jueju, not haiku",
+   "seed 1002 round 1: the duel now draws heroic-couplet, not anaphora",
+   "seed 1002 round 2: the duel now draws quatrain-abab, not epistrophe",
+   "seed 1003 round 0: the duel now draws quatrain-aabb, not anaphora",
+   "seed 1003 round 1: the duel now draws couplet, not haiku",
+   "seed 1003 round 2: the duel now draws anaphora, not jueju",
+   "seed 1004 round 0: the duel now draws epistrophe, not anaphora",
+   "seed 1004 round 1: the prompt changed",
+   "seed 1004 round 2: the duel now draws jueju, not epistrophe",
+   "seed 1005 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1005 round 1: the duel now draws tercet, not haiku",
+   "seed 1005 round 2: the duel now draws quatrain-abab, not acrostic",
+   "seed 1006 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1006 round 1: the duel now draws anaphora, not haiku",
+   "seed 1006 round 2: the prompt changed",
+   "seed 1007 round 0: the duel now draws epistrophe, not crescendo",
+   "seed 1007 round 1: the duel now draws crescendo, not epistrophe",
+   "seed 1007 round 2: the duel now draws anaphora, not haiku",
+   "seed 1008 round 0: the prompt changed",
+   "seed 1008 round 1: the duel now draws jueju, not anaphora",
+   "seed 1008 round 2: the duel now draws quatrain-abab, not jueju",
+   "seed 1009 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1009 round 1: the duel now draws quatrain-abab, not crescendo",
+   "seed 1009 round 2: the duel now draws couplet, not jueju",
+   "seed 1010 round 0: the prompt changed",
+   "seed 1010 round 1: the duel now draws heroic-couplet, not anaphora",
+   "seed 1010 round 2: the prompt changed",
+   "seed 1011 round 0: the prompt changed",
+   "seed 1011 round 1: the prompt changed",
+   "seed 1011 round 2: the duel now draws tercet, not crescendo",
+   "seed 1012 round 0: the duel now draws haiku, not anaphora",
+   "seed 1012 round 1: the duel now draws jueju, not epistrophe",
+   "seed 1012 round 2: the duel now draws crescendo, not haiku",
+   "seed 1013 round 0: the duel now draws epistrophe, not acrostic",
+   "seed 1013 round 1: the duel now draws heroic-couplet, not haiku",
+   "seed 1013 round 2: the duel now draws tercet, not epistrophe",
+   "seed 1014 round 0: the duel now draws couplet, not jueju",
+   "seed 1014 round 1: the duel now draws tercet, not acrostic",
+   "seed 1014 round 2: the prompt changed",
+   "seed 1015 round 0: the duel now draws haiku, not epistrophe",
+   "seed 1015 round 2: the duel now draws jueju, not crescendo",
+   "seed 1016 round 0: the duel now draws crescendo, not epistrophe",
+   "seed 1016 round 1: the duel now draws couplet, not crescendo",
+   "seed 1017 round 0: the duel now draws anaphora, not jueju",
+   "seed 1017 round 1: the duel now draws heroic-couplet, not epistrophe",
+   "seed 1017 round 2: the duel now draws haiku, not crescendo",
+   "seed 1018 round 1: the duel now draws quatrain-aabb, not crescendo",
+   "seed 1018 round 2: the duel now draws couplet, not epistrophe",
+   "seed 1019 round 0: the duel now draws anaphora, not acrostic",
+   "seed 1019 round 2: the duel now draws quatrain-aabb, not jueju",
+   "seed 1020 round 0: the duel now draws jueju, not acrostic",
+   "seed 1020 round 2: the duel now draws quatrain-abab, not jueju",
+   "seed 1022 round 1: the duel now draws couplet, not haiku",
+   "seed 1023 round 0: the duel now draws acrostic, not jueju",
+   "seed 1023 round 2: the duel now draws haiku, not acrostic",
+   "seed 1024 round 2: the duel now draws heroic-couplet, not haiku",
+   "seed 1027 round 1: the duel now draws quatrain-aabb, not acrostic"
+  ]
+ }
+}

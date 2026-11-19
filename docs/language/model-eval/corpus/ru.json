@@ -1,0 +1,198 @@
+{
+ "lang": "ru",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "ru-01",
+   "poet": "Михаил Лермонтов",
+   "poem": "Парус",
+   "died": 1841,
+   "text": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "firstLineOnPage": "Белеет парус одинокой",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Парус (Лермонтов)",
+    "url": "https://ru.wikisource.org/wiki/%D0%9F%D0%B0%D1%80%D1%83%D1%81_(%D0%9B%D0%B5%D1%80%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%B2)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5148434",
+    "revid": 5148434,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-02",
+   "poet": "Михаил Лермонтов",
+   "poem": "Парус",
+   "died": 1841,
+   "text": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "firstLineOnPage": "Играют волны — ветер свищет,",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Парус (Лермонтов)",
+    "url": "https://ru.wikisource.org/wiki/%D0%9F%D0%B0%D1%80%D1%83%D1%81_(%D0%9B%D0%B5%D1%80%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%B2)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5148434",
+    "revid": 5148434,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-03",
+   "poet": "Александр Пушкин",
+   "poem": "Зимнее утро",
+   "died": 1837,
+   "text": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "firstLineOnPage": "Мороз и солнце; день чудесный!",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Зимнее утро (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%97%D0%B8%D0%BC%D0%BD%D0%B5%D0%B5_%D1%83%D1%82%D1%80%D0%BE_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5378863",
+    "revid": 5378863,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-04",
+   "poet": "Александр Пушкин",
+   "poem": "Пророк",
+   "died": 1837,
+   "text": "Духовной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.",
+   "firstLineOnPage": "Духовной жаждою томим,",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Пророк (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%9F%D1%80%D0%BE%D1%80%D0%BE%D0%BA_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=4123807",
+    "revid": 4123807,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-05",
+   "poet": "Александр Пушкин",
+   "poem": "К Чаадаеву",
+   "died": 1837,
+   "text": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "firstLineOnPage": "Любви, надежды, тихой славы",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "К Чедаеву (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%9A_%D0%A7%D0%B5%D0%B4%D0%B0%D0%B5%D0%B2%D1%83_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5725970",
+    "revid": 5725970,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-06",
+   "poet": "Михаил Лермонтов",
+   "poem": "Смерть поэта",
+   "died": 1841,
+   "text": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "firstLineOnPage": "Погиб поэт! — невольник чести, —",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Смерть поэта (Лермонтов)",
+    "url": "https://ru.wikisource.org/wiki/%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D1%8C_%D0%BF%D0%BE%D1%8D%D1%82%D0%B0_(%D0%9B%D0%B5%D1%80%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%B2)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5634824",
+    "revid": 5634824,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-07",
+   "poet": "Михаил Лермонтов",
+   "poem": "Утёс",
+   "died": 1841,
+   "text": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "firstLineOnPage": "Ночевала тучка золотая",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Утес (Лермонтов)",
+    "url": "https://ru.wikisource.org/wiki/%D0%A3%D1%82%D0%B5%D1%81_(%D0%9B%D0%B5%D1%80%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%B2)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=1877073",
+    "revid": 1877073,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-08",
+   "poet": "Михаил Лермонтов",
+   "poem": "Тучи",
+   "died": 1841,
+   "text": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "firstLineOnPage": "Тучки небесные, вечные странники!",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Тучи (Лермонтов)",
+    "url": "https://ru.wikisource.org/wiki/%D0%A2%D1%83%D1%87%D0%B8_(%D0%9B%D0%B5%D1%80%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%B2)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=4806058",
+    "revid": 4806058,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-09",
+   "poet": "Александр Пушкин",
+   "poem": "Узник",
+   "died": 1837,
+   "text": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "firstLineOnPage": "Сижу за решёткой в темнице сырой.",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Узник (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%A3%D0%B7%D0%BD%D0%B8%D0%BA_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=4806444",
+    "revid": 4806444,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-10",
+   "poet": "Александр Пушкин",
+   "poem": "Анчар",
+   "died": 1837,
+   "text": "Природа жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.",
+   "firstLineOnPage": "Природа жаждущих степей",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Анчар (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%90%D0%BD%D1%87%D0%B0%D1%80_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5320884",
+    "revid": 5320884,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-11",
+   "poet": "Александр Пушкин",
+   "poem": "Я вас любил",
+   "died": 1837,
+   "text": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "firstLineOnPage": "Я вас любил: любовь ещё, быть может,",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "Я вас любил: любовь ещё, быть может (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%AF_%D0%B2%D0%B0%D1%81_%D0%BB%D1%8E%D0%B1%D0%B8%D0%BB%3A_%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C_%D0%B5%D1%89%D1%91%2C_%D0%B1%D1%8B%D1%82%D1%8C_%D0%BC%D0%BE%D0%B6%D0%B5%D1%82_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=4958966",
+    "revid": 4958966,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ru-12",
+   "poet": "Александр Пушкин",
+   "poem": "К*** (Я помню чудное мгновенье)",
+   "died": 1837,
+   "text": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "firstLineOnPage": "Я помню чудное мгновенье:",
+   "source": {
+    "site": "ru.wikisource.org",
+    "page": "К *** Керн (Пушкин)",
+    "url": "https://ru.wikisource.org/wiki/%D0%9A_***_%D0%9A%D0%B5%D1%80%D0%BD_(%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD)",
+    "permalink": "https://ru.wikisource.org/w/index.php?oldid=5356337",
+    "revid": 5356337,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

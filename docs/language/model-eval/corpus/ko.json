@@ -1,0 +1,198 @@
+{
+ "lang": "ko",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "ko-01",
+   "poet": "김소월",
+   "poem": "엄마야 누나야",
+   "died": 1934,
+   "text": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "firstLineOnPage": "엄마야 누나야 강변 살자,",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/엄마야 누나야",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EC%97%84%EB%A7%88%EC%95%BC_%EB%88%84%EB%82%98%EC%95%BC",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=203761",
+    "revid": 203761,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-02",
+   "poet": "이육사",
+   "poem": "청포도",
+   "died": 1944,
+   "text": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "firstLineOnPage": "내 고장 칠월은",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "청포도",
+    "url": "https://ko.wikisource.org/wiki/%EC%B2%AD%ED%8F%AC%EB%8F%84",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=202488",
+    "revid": 202488,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-03",
+   "poet": "이육사",
+   "poem": "청포도",
+   "died": 1944,
+   "text": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "firstLineOnPage": "이 마을 전설이 주절이주절이 열리고",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "청포도",
+    "url": "https://ko.wikisource.org/wiki/%EC%B2%AD%ED%8F%AC%EB%8F%84",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=202488",
+    "revid": 202488,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-04",
+   "poet": "이육사",
+   "poem": "절정",
+   "died": 1944,
+   "text": "매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다",
+   "firstLineOnPage": "매운 계절(季節)의 채찍에 갈겨",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "절정",
+    "url": "https://ko.wikisource.org/wiki/%EC%A0%88%EC%A0%95",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=248562",
+    "revid": 248562,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-05",
+   "poet": "김소월",
+   "poem": "가는 길",
+   "died": 1934,
+   "text": "말을 할까\n하니 그리워",
+   "firstLineOnPage": "말을 할까",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/가는 길",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EA%B0%80%EB%8A%94_%EA%B8%B8",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=203684",
+    "revid": 203684,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-06",
+   "poet": "김소월",
+   "poem": "접동새",
+   "died": 1934,
+   "text": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "firstLineOnPage": "진두강 가람가에 살던 누나는",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/접동새",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EC%A0%91%EB%8F%99%EC%83%88",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=430975",
+    "revid": 430975,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-07",
+   "poet": "김소월",
+   "poem": "먼 후일",
+   "died": 1934,
+   "text": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "firstLineOnPage": "먼 훗날 당신이 찾으시면",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/먼 후일",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EB%A8%BC_%ED%9B%84%EC%9D%BC",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=430584",
+    "revid": 430584,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-08",
+   "poet": "김소월",
+   "poem": "진달래꽃",
+   "died": 1934,
+   "text": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "firstLineOnPage": "나 보기가 역겨워",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/진달래꽃",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=430575",
+    "revid": 430575,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-09",
+   "poet": "김소월",
+   "poem": "진달래꽃",
+   "died": 1934,
+   "text": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "firstLineOnPage": "가시는 걸음 걸음",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/진달래꽃",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=430575",
+    "revid": 430575,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-10",
+   "poet": "윤동주",
+   "poem": "쉽게 씌어진 시",
+   "died": 1945,
+   "text": "창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라",
+   "firstLineOnPage": "창밖에 밤비가 속살거려",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "쉽게 씌어진 시",
+    "url": "https://ko.wikisource.org/wiki/%EC%89%BD%EA%B2%8C_%EC%94%8C%EC%96%B4%EC%A7%84_%EC%8B%9C",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=203001",
+    "revid": 203001,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-11",
+   "poet": "윤동주",
+   "poem": "참회록",
+   "died": 1945,
+   "text": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "firstLineOnPage": "파란 녹이 낀 구리거울 속에",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "하늘과 바람과 별과 시 (1948년)/참회록",
+    "url": "https://ko.wikisource.org/wiki/%ED%95%98%EB%8A%98%EA%B3%BC_%EB%B0%94%EB%9E%8C%EA%B3%BC_%EB%B3%84%EA%B3%BC_%EC%8B%9C_(1948%EB%85%84)%2F%EC%B0%B8%ED%9A%8C%EB%A1%9D",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=387804",
+    "revid": 387804,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ko-12",
+   "poet": "김소월",
+   "poem": "금잔디",
+   "died": 1934,
+   "text": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "firstLineOnPage": "심심산천에 붙는 불은",
+   "source": {
+    "site": "ko.wikisource.org",
+    "page": "진달래꽃 (시집)/금잔디",
+    "url": "https://ko.wikisource.org/wiki/%EC%A7%84%EB%8B%AC%EB%9E%98%EA%BD%83_(%EC%8B%9C%EC%A7%91)%2F%EA%B8%88%EC%9E%94%EB%94%94",
+    "permalink": "https://ko.wikisource.org/w/index.php?oldid=204518",
+    "revid": 204518,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

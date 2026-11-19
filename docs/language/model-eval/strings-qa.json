@@ -1,0 +1,1286 @@
+{
+ "note": "The three interface strings the model evaluation added, checked by tools that did not write them. Written by scripts/model-eval/strings-qa.mjs. A flag is a question for a reader of the language, not a verdict.",
+ "tools": {
+  "languagetool": "LanguageTool 6.6 (LGPL-2.1), HTTP server on the build host, level picky",
+  "hunspell": "Hunspell 1.7 library through scripts/lang/hspell.cpp, dictionaries in the lang/qa-pipeline installation (see docs/language there for each dictionary's source and licence)",
+  "backTranslation": "google/madlad400-3b-mt (Apache-2.0) as CTranslate2 int8 (Nextcloud-AI/madlad400-3b-mt-ct2-int8), beam 4; cosine of sentence-transformers/all-MiniLM-L6-v2 (Apache-2.0) embeddings; threshold 0.6"
+ },
+ "date": "2026-11-17",
+ "model": "Gemma 4 E2B",
+ "sentences": {
+  "en": {
+   "battle.lang.written": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+   "battle.lang.rules": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+   "brain.noneShown": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule."
+  },
+  "es": {
+   "battle.lang.written": "Tailandés: te enfrentas al rival de versos escritos, porque Gemma 4 E2B no ha demostrado que escriba buenas estrofas en este idioma.",
+   "battle.lang.rules": "Tailandés: se juzga por reglas, porque Gemma 4 E2B no ha demostrado ser buen juez de estrofas en este idioma.",
+   "brain.noneShown": "Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas."
+  },
+  "fr": {
+   "battle.lang.written": "Thaï : vous affrontez l’adversaire aux strophes écrites, car Gemma 4 E2B n’a pas montré qu’il écrit de bonnes strophes dans cette langue.",
+   "battle.lang.rules": "Thaï : jugé par règles, car Gemma 4 E2B n’a pas montré qu’il est bon juge des strophes dans cette langue.",
+   "brain.noneShown": "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles."
+  },
+  "de": {
+   "battle.lang.written": "Thailändisch: Du spielst gegen den Gegner mit geschriebenen Strophen, weil Gemma 4 E2B nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt.",
+   "battle.lang.rules": "Thailändisch: Nach Regeln bewertet, weil Gemma 4 E2B nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist.",
+   "brain.noneShown": "Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln."
+  },
+  "it": {
+   "battle.lang.written": "Thailandese: affronti l’avversario dalle strofe scritte, perché Gemma 4 E2B non ha dimostrato di scrivere buone strofe in questa lingua.",
+   "battle.lang.rules": "Thailandese: giudicato secondo regole, perché Gemma 4 E2B non ha dimostrato di essere un buon giudice di strofe in questa lingua.",
+   "brain.noneShown": "Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole."
+  },
+  "pt": {
+   "battle.lang.written": "Tailandês: você enfrenta o adversário de estrofes escritas, porque Gemma 4 E2B não mostrou que escreve boas estrofes neste idioma.",
+   "battle.lang.rules": "Tailandês: julgado por regras, porque Gemma 4 E2B não mostrou ser um bom juiz de estrofes neste idioma.",
+   "brain.noneShown": "Nenhum modelo que este dispositivo consiga executar mostrou que escreve ou julga bem as estrofes, por isso você enfrenta o adversário de estrofes escritas e o julgamento é feito por regras."
+  },
+  "pl": {
+   "battle.lang.written": "Tajski: grasz z rywalem z gotowymi strofami, bo model Gemma 4 E2B nie wykazał, że dobrze pisze strofy w tym języku.",
+   "battle.lang.rules": "Tajski: ocena według reguł, bo model Gemma 4 E2B nie wykazał, że jest dobrym sędzią strof w tym języku.",
+   "brain.noneShown": "Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł."
+  },
+  "ru": {
+   "battle.lang.written": "Тайский: играет соперник с готовыми строфами, потому что модель Gemma 4 E2B не показала, что хорошо пишет строфы на этом языке.",
+   "battle.lang.rules": "Тайский: судят по правилам, потому что модель Gemma 4 E2B не показала, что может быть хорошим судьёй строф на этом языке.",
+   "brain.noneShown": "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам."
+  },
+  "ar": {
+   "battle.lang.written": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الشعر بهذه اللغة.",
+   "battle.lang.rules": "التايلاندية: الحكم بالقواعد، لأن Gemma 4 E2B لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة.",
+   "brain.noneShown": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الشعر أو الحكم عليه، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد."
+  },
+  "hi": {
+   "battle.lang.written": "थाई: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।",
+   "battle.lang.rules": "थाई: निर्णय नियमों से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।",
+   "brain.noneShown": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का ठीक निर्णय करता है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।"
+  },
+  "zh": {
+   "battle.lang.written": "泰语：你将面对预先写好诗句的对手，因为 Gemma 4 E2B 尚未证明它能用这种语言写好诗。",
+   "battle.lang.rules": "泰语：按规则评判，因为 Gemma 4 E2B 尚未证明它能胜任这种语言的诗歌裁判。",
+   "brain.noneShown": "这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。"
+  },
+  "ja": {
+   "battle.lang.written": "タイ語：あらかじめ書かれた詩を出す相手と対戦します。Gemma 4 E2Bがこの言語でうまく詩を書けることは確かめられていないためです。",
+   "battle.lang.rules": "タイ語：規則で審査します。Gemma 4 E2Bがこの言語の詩の審判をうまく務められることは確かめられていないためです。",
+   "brain.noneShown": "この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。"
+  },
+  "ko": {
+   "battle.lang.written": "태국어: 미리 쓰인 시를 내는 상대와 겨뤄요. Gemma 4 E2B이(가) 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요.",
+   "battle.lang.rules": "태국어: 규칙으로 심사해요. Gemma 4 E2B이(가) 이 언어로 쓴 시의 심판을 잘 맡는다는 것이 확인되지 않았기 때문이에요.",
+   "brain.noneShown": "이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요."
+  },
+  "vi": {
+   "battle.lang.written": "Tiếng Thái: bạn đấu với đối thủ dùng thơ viết sẵn, vì Gemma 4 E2B chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.",
+   "battle.lang.rules": "Tiếng Thái: chấm điểm theo quy tắc, vì Gemma 4 E2B chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này.",
+   "brain.noneShown": "Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc."
+  },
+  "th": {
+   "battle.lang.written": "ญี่ปุ่น: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
+   "battle.lang.rules": "ญี่ปุ่น: ตัดสินด้วยกฎ เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี",
+   "brain.noneShown": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว และตัดสินด้วยกฎ"
+  },
+  "id": {
+   "battle.lang.written": "Thai: kamu berhadapan dengan lawan bersyair tertulis, karena Gemma 4 E2B belum terbukti mampu menulis syair dengan baik dalam bahasa ini.",
+   "battle.lang.rules": "Thai: dinilai dengan aturan, karena Gemma 4 E2B belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini.",
+   "brain.noneShown": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi kamu berhadapan dengan lawan bersyair tertulis dan penilaian dilakukan dengan aturan."
+  }
+ },
+ "grammar": {
+  "en": {
+   "languagetool": {
+    "code": "en-US",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "She go to school every day.",
+      "flagged": true
+     },
+     {
+      "text": "They was at home.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 2
+   },
+   "hunspell": {
+    "dictionary": "en",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma"
+     ],
+     "battle.lang.rules": [
+      "Gemma"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "opponent",
+      "misspelled": "oppnoent",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "language",
+      "misspelled": "lanugage",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "opponent",
+      "misspelled": "oppnoent",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "es": {
+   "languagetool": {
+    "code": "es",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "at": "E2B",
+       "replacements": [
+        "B2B"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "at": "E2B",
+       "replacements": [
+        "B2B"
+       ]
+      }
+     ],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Los casa es muy grandes.",
+      "flagged": true
+     },
+     {
+      "text": "Yo tiene dos gatos.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 2
+   },
+   "hunspell": {
+    "dictionary": "es",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma",
+      "B"
+     ],
+     "battle.lang.rules": [
+      "Gemma",
+      "B"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "demostrado",
+      "misspelled": "demotsrado",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "demostrado",
+      "misspelled": "demotsrado",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "dispositivo",
+      "misspelled": "dispsoitivo",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "fr": {
+   "languagetool": {
+    "code": "fr",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "message": "Faute de frappe possible trouvée.",
+       "at": "E2B",
+       "replacements": [
+        "EIB",
+        "EWb"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "message": "Faute de frappe possible trouvée.",
+       "at": "E2B",
+       "replacements": [
+        "EIB",
+        "EWb"
+       ]
+      }
+     ],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Les maison est très grands.",
+      "flagged": true
+     },
+     {
+      "text": "Nous allez au cinéma.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 2
+   },
+   "hunspell": {
+    "dictionary": "fr",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "l'adversaire",
+      "misspelled": "l'advresaire",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "strophes",
+      "misspelled": "strpohes",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "l'adversaire",
+      "misspelled": "l'advresaire",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "de": {
+   "languagetool": {
+    "code": "de-DE",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "message": "Möglicher Tippfehler gefunden.",
+       "at": "Gemma",
+       "replacements": [
+        "Lemma",
+        "Gemme",
+        "Gamma"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "message": "Möglicher Tippfehler gefunden.",
+       "at": "Gemma",
+       "replacements": [
+        "Lemma",
+        "Gemme",
+        "Gamma"
+       ]
+      }
+     ],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Das Häuser ist sehr großen.",
+      "flagged": true
+     },
+     {
+      "text": "Wir geht ins Kino.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 2
+   },
+   "hunspell": {
+    "dictionary": "de",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma"
+     ],
+     "battle.lang.rules": [
+      "Gemma"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "geschriebenen",
+      "misspelled": "geschirebenen",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "Thailändisch",
+      "misspelled": "Thailnädisch",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "geschriebenen",
+      "misspelled": "geschirebenen",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "it": {
+   "languagetool": {
+    "code": "it",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Le casa è molto grandi.",
+      "flagged": false
+     },
+     {
+      "text": "Loro è andati a casa.",
+      "flagged": false
+     }
+    ],
+    "controlFlagged": 0
+   },
+   "hunspell": {
+    "dictionary": "it",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "l'avversario",
+      "misspelled": "l'avvresario",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "Thailandese",
+      "misspelled": "Thaialndese",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "l'avversario",
+      "misspelled": "l'avvresario",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "pt": {
+   "languagetool": {
+    "code": "pt-BR",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "message": "Encontrado possível erro de ortografia.",
+       "at": "E2B",
+       "replacements": [
+        "EB",
+        "B2B"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "message": "Encontrado possível erro de ortografia.",
+       "at": "E2B",
+       "replacements": [
+        "EB",
+        "B2B"
+       ]
+      }
+     ],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "As casa é muito grandes.",
+      "flagged": false
+     },
+     {
+      "text": "Nós vai embora.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 1
+   },
+   "hunspell": {
+    "dictionary": "pt-BR",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma"
+     ],
+     "battle.lang.rules": [
+      "Gemma"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "adversário",
+      "misspelled": "advesrário",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "Tailandês",
+      "misspelled": "Taialndês",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "dispositivo",
+      "misspelled": "dispsoitivo",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "pl": {
+   "languagetool": {
+    "code": "pl-PL",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "at": "E2B",
+       "replacements": [
+        "EB",
+        "ERB",
+        "B2B"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "at": "E2B",
+       "replacements": [
+        "EB",
+        "ERB",
+        "B2B"
+       ]
+      }
+     ],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Ten kobieta jest bardzo wysoki.",
+      "flagged": false
+     },
+     {
+      "text": "Oni jest w domu.",
+      "flagged": false
+     }
+    ],
+    "controlFlagged": 0
+   },
+   "hunspell": {
+    "dictionary": "pl",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "gotowymi",
+      "misspelled": "gotwoymi",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "wykazał",
+      "misspelled": "wyakzał",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "urządzenie",
+      "misspelled": "urzązdenie",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "ru": {
+   "languagetool": {
+    "code": "ru-RU",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "Он пошла домой.",
+      "flagged": false
+     },
+     {
+      "text": "Они был дома.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 1
+   },
+   "hunspell": {
+    "dictionary": "ru",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "battle.lang.rules": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "соперник",
+      "misspelled": "сопреник",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "правилам",
+      "misspelled": "праивлам",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "устройство",
+      "misspelled": "устрйоство",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "ar": {
+   "languagetool": {
+    "code": "ar",
+    "hits": {
+     "battle.lang.written": [
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+       "at": "خصم",
+       "replacements": [
+        "خَصْم"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "Gemma",
+       "replacements": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "E",
+       "replacements": [
+        "ذ",
+        "ض",
+        "ص"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "B",
+       "replacements": [
+        "ذ",
+        "ض",
+        "ص"
+       ]
+      }
+     ],
+     "battle.lang.rules": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "Gemma",
+       "replacements": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "E",
+       "replacements": [
+        "ذ",
+        "ض",
+        "ص"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "message": "وُجد خطأ إملائي محتمل",
+       "at": "B",
+       "replacements": [
+        "ذ",
+        "ض",
+        "ص"
+       ]
+      }
+     ],
+     "brain.noneShown": [
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+       "at": "خصم",
+       "replacements": [
+        "خَصْم"
+       ]
+      }
+     ]
+    },
+    "control": [
+     {
+      "text": "ذهبت الولد إلى المدرسة أمس.",
+      "flagged": true
+     },
+     {
+      "text": "هذا السيارة جميلة.",
+      "flagged": true
+     }
+    ],
+    "controlFlagged": 2
+   },
+   "hunspell": {
+    "dictionary": "ar",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "battle.lang.rules": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "التايلاندية",
+      "misspelled": "التالياندية",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "التايلاندية",
+      "misspelled": "التالياندية",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "المكتوبة",
+      "misspelled": "المتكوبة",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "hi": {
+   "languagetool": null,
+   "hunspell": {
+    "dictionary": "hi",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "battle.lang.rules": [
+      "Gemma",
+      "E",
+      "B"
+     ],
+     "brain.noneShown": [
+      "सकने"
+     ]
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "प्रतिद्वंद्वी",
+      "misspelled": "प्रति्दवंद्वी",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "निर्णायक",
+      "misspelled": "निरण्ायक",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "प्रतिद्वंद्वी",
+      "misspelled": "प्रति्दवंद्वी",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "zh": {
+   "languagetool": {
+    "code": "zh-CN",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "我有三个书。",
+      "flagged": true
+     },
+     {
+      "text": "我昨天去学校了了。",
+      "flagged": false
+     }
+    ],
+    "controlFlagged": 1
+   },
+   "hunspell": null
+  },
+  "ja": {
+   "languagetool": {
+    "code": "ja-JP",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": [
+     {
+      "text": "私は学校に行くました。",
+      "flagged": false
+     },
+     {
+      "text": "これはペンをです。",
+      "flagged": false
+     }
+    ],
+    "controlFlagged": 0
+   },
+   "hunspell": null
+  },
+  "ko": {
+   "languagetool": null,
+   "hunspell": {
+    "dictionary": "ko",
+    "hits": {
+     "battle.lang.written": [
+      "태국어"
+     ],
+     "battle.lang.rules": [
+      "태국어"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "때문이에요",
+      "misspelled": "때이문에요",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "때문이에요",
+      "misspelled": "때이문에요",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "심사한다는",
+      "misspelled": "심한사다는",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "vi": {
+   "languagetool": null,
+   "hunspell": {
+    "dictionary": "vi",
+    "hits": {
+     "battle.lang.written": [
+      "Gemma",
+      "B"
+     ],
+     "battle.lang.rules": [
+      "Gemma",
+      "B"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "Tiếng",
+      "misspelled": "Tếing",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "Tiếng",
+      "misspelled": "Tếing",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "thiết",
+      "misspelled": "tihết",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "th": {
+   "languagetool": null,
+   "hunspell": {
+    "dictionary": "th",
+    "hits": {
+     "battle.lang.written": [],
+     "battle.lang.rules": [],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "ญี่ปุ่น",
+      "misspelled": "ญีปุ่่น",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "ญี่ปุ่น",
+      "misspelled": "ญีปุ่่น",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "อุปกรณ์",
+      "misspelled": "อุกปรณ์",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  },
+  "id": {
+   "languagetool": null,
+   "hunspell": {
+    "dictionary": "id",
+    "hits": {
+     "battle.lang.written": [
+      "Thai",
+      "Gemma"
+     ],
+     "battle.lang.rules": [
+      "Thai",
+      "Gemma"
+     ],
+     "brain.noneShown": []
+    },
+    "control": {
+     "battle.lang.written": {
+      "word": "berhadapan",
+      "misspelled": "berhdaapan",
+      "rejected": true
+     },
+     "battle.lang.rules": {
+      "word": "terbukti",
+      "misspelled": "terubkti",
+      "rejected": true
+     },
+     "brain.noneShown": {
+      "word": "dijalankan",
+      "misspelled": "dijaalnkan",
+      "rejected": true
+     }
+    },
+    "controlRejected": 3
+   }
+  }
+ },
+ "meaning": {
+  "es": {
+   "battle.lang.written": {
+    "back": "Thai: you face the rival of written verses, because Gemma 4 E2B has not proven that she writes good stanzas in this language.",
+    "cos": 0.9018,
+    "chrf": 65.2,
+    "controlCos": 0.7825,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: it is judged by rules, because Gemma 4 E2B has not proven to be a good judge of verses in this language.",
+    "cos": 0.9599,
+    "chrf": 76.9,
+    "controlCos": 0.3778,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can run has been shown to write or judge stanzas well, so you face the written verse rival and are judged by rules.",
+    "cos": 0.7234,
+    "chrf": 63.4,
+    "controlCos": 0.4298,
+    "flagged": false
+   }
+  },
+  "fr": {
+   "battle.lang.written": {
+    "back": "Thai: you face the opponent with written verses, because Gemma 4 E2B has not shown that he writes good verses in this language.",
+    "cos": 0.9516,
+    "chrf": 74,
+    "controlCos": 0.7803,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: judged by rules, because Gemma 4 E2B has not shown that it is a good judge of verses in this language.",
+    "cos": 0.9829,
+    "chrf": 88.9,
+    "controlCos": 0.4111,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can run has shown that it writes good stanzas or that it is a good judge of them, so you face the opponent with written stanzas, and judgment is made by rules.",
+    "cos": 0.8422,
+    "chrf": 63.1,
+    "controlCos": 0.4184,
+    "flagged": false
+   }
+  },
+  "de": {
+   "battle.lang.written": {
+    "back": "Thai: You play against the opponent with written verses because Gemma 4 E2B has not shown that it writes good verses in this language.",
+    "cos": 0.93,
+    "chrf": 61.7,
+    "controlCos": 0.7789,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: Rated according to rules because Gemma 4 E2B has not shown that it is a good judge for verses in this language.",
+    "cos": 0.9275,
+    "chrf": 69,
+    "controlCos": 0.3616,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "None of the models that can run on this device have shown to write good stanzas or score stanzas well, so you play against your opponent with written stanzas and score according to rules.",
+    "cos": 0.6079,
+    "chrf": 43.9,
+    "controlCos": 0.4359,
+    "flagged": false
+   }
+  },
+  "it": {
+   "battle.lang.written": {
+    "back": "Thai: face the opponent from written verses, because Gemma 4 E2B has not proven to write good verses in this language.",
+    "cos": 0.9568,
+    "chrf": 61.6,
+    "controlCos": 0.7821,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: judged according to rules, because Gemma 4 E2B has not proven to be a good judge of verses in this language.",
+    "cos": 0.9718,
+    "chrf": 72.5,
+    "controlCos": 0.4062,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can perform has been shown to write or judge stanzas well, so face the opponent from the written stanzas and judge according to rules.",
+    "cos": 0.86,
+    "chrf": 53.9,
+    "controlCos": 0.4774,
+    "flagged": false
+   }
+  },
+  "pt": {
+   "battle.lang.written": {
+    "back": "Thai: you face the opponent of written stanzas, because Gemma 4 E2B has not shown that she writes good stanzas in this language.",
+    "cos": 0.9292,
+    "chrf": 70.6,
+    "controlCos": 0.7622,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: judged by rules, because Gemma 4 E2B has not shown to be a good stanza judge in this language.",
+    "cos": 0.954,
+    "chrf": 75.1,
+    "controlCos": 0.4168,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can perform has shown to write or judge stanzas well, so you face the opponent of written stanzas and judgment is done by rules.",
+    "cos": 0.8204,
+    "chrf": 59.8,
+    "controlCos": 0.444,
+    "flagged": false
+   }
+  },
+  "pl": {
+   "battle.lang.written": {
+    "back": "Thai: you play against a rival with ready-made verses, because the Gemma 4 E2B model has not shown that it writes verses well in this language.",
+    "cos": 0.8885,
+    "chrf": 56.7,
+    "controlCos": 0.7436,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: assessment according to the rules, because Gemma 4 E2B did not show that it is a good judge of verses in this language.",
+    "cos": 0.9216,
+    "chrf": 67.2,
+    "controlCos": 0.3455,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can run has shown to write or evaluate stanzas well, so you play with a rival with ready-made stanzas and the evaluation takes place according to the rules.",
+    "cos": 0.5739,
+    "chrf": 48.9,
+    "controlCos": 0.3312,
+    "flagged": true
+   }
+  },
+  "ru": {
+   "battle.lang.written": {
+    "back": "Thai: Plays a rival with ready stanzas, because the Gemma 4 E2B model has not shown that it writes stanzas well in this language.",
+    "cos": 0.8027,
+    "chrf": 52.1,
+    "controlCos": 0.6926,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: judged by the rules, because the Gemma 4 E2B model has not shown that it can be a good judge of verses in this language.",
+    "cos": 0.9452,
+    "chrf": 74.1,
+    "controlCos": 0.4189,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that can run this device, has not shown that well writes or judges stanzas, so plays rival with ready stanzas, and judged by the rules.",
+    "cos": 0.7084,
+    "chrf": 45.8,
+    "controlCos": 0.3498,
+    "flagged": false
+   }
+  },
+  "ar": {
+   "battle.lang.written": {
+    "back": "Thai: faces the challenge of written poetry, as Gemma 4 E2B has not proven to be good at writing poetry in this language.",
+    "cos": 0.801,
+    "chrf": 46.9,
+    "controlCos": 0.6905,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: Rule judgment, as Gemma 4 E2B has not proven to judge verses in this language.",
+    "cos": 0.9196,
+    "chrf": 48.2,
+    "controlCos": 0.4022,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that this device can operate has proved to be good at writing or judging poetry, so it faces the challenge of written verses and is judged by rules.",
+    "cos": 0.6483,
+    "chrf": 46.7,
+    "controlCos": 0.3939,
+    "flagged": false
+   }
+  },
+  "hi": {
+   "battle.lang.written": {
+    "back": "Thai: You will face an opponent with written poems, because Gemma 4 E2B has not shown that she can write good poetry in this language.",
+    "cos": 0.8928,
+    "chrf": 66.3,
+    "controlCos": 0.7026,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: The decision will be by rules, because Gemma 4 E2B has not shown that she is a good judge of the poetry of this language.",
+    "cos": 0.896,
+    "chrf": 67.3,
+    "controlCos": 0.373,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model that can run on this device has shown it writes a good poem or judges the poem correctly, so you will face an opponent with written poems and judged by rules.",
+    "cos": 0.7596,
+    "chrf": 54.8,
+    "controlCos": 0.3856,
+    "flagged": false
+   }
+  },
+  "zh": {
+   "battle.lang.written": {
+    "back": "Thai: You will face opponents who have pre-written poems, because Gemma 4 E2B has not yet proven that it can write poetry in this language.",
+    "cos": 0.8776,
+    "chrf": 62.6,
+    "controlCos": 0.7009,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: Judged according to the rules, as Gemma 4 E2B has not yet proven its competence in the poetry judgement of this language.",
+    "cos": 0.8979,
+    "chrf": 47,
+    "controlCos": 0.3839,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No working model of the machine has yet proven itself to be able to write or judge poetry, so you will face an opponent with a pre-written poem and judge according to the rules.",
+    "cos": 0.6841,
+    "chrf": 37.1,
+    "controlCos": 0.4261,
+    "flagged": false
+   }
+  },
+  "ja": {
+   "battle.lang.written": {
+    "back": "Thai: Play against a pre-written poem. Gemma 4 E2B has not been proven to write poetry well in this language.",
+    "cos": 0.84,
+    "chrf": 49.4,
+    "controlCos": 0.7191,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: Rules will be applied. Gemma 4 E2B has not been proven to judge poetry in this language properly.",
+    "cos": 0.8485,
+    "chrf": 43.3,
+    "controlCos": 0.3144,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "None of the models that run on this terminal have been tested to write or review poems properly. Therefore, they compete against others who submit pre-written poems and are evaluated according to rules.",
+    "cos": 0.4572,
+    "chrf": 29,
+    "controlCos": 0.3892,
+    "flagged": true
+   }
+  },
+  "ko": {
+   "battle.lang.written": {
+    "back": "Thai: Compete against a pre-written poem because Gemma 4 E2B has not been confirmed to be good at writing poetry in this language.",
+    "cos": 0.811,
+    "chrf": 49.5,
+    "controlCos": 0.7049,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: Judge according to the rules. Because Gemma 4 E2B has not been proven to judge poems in this language well.",
+    "cos": 0.9126,
+    "chrf": 51.8,
+    "controlCos": 0.3988,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No one of the models that I can run on this device has proven to be good at writing or reviewing poems, so I compete with an opponent who writes a pre-written poem and reviews it according to rules.",
+    "cos": 0.6134,
+    "chrf": 38.7,
+    "controlCos": 0.3373,
+    "flagged": false
+   }
+  },
+  "vi": {
+   "battle.lang.written": {
+    "back": "Thai: you compete against opponents using pre-written poetry, because Gemma 4 E2B has not proven that it writes well in this language.",
+    "cos": 0.8702,
+    "chrf": 62.5,
+    "controlCos": 0.7347,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: scoring according to the rules, because Gemma 4 E2B has not proven itself as a good judge for poetry in this language.",
+    "cos": 0.8802,
+    "chrf": 59.9,
+    "controlCos": 0.3708,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "No model on which this device runs has proven to be a good poetry writer or a good poetry judge, so you compete with opponents using pre-written poems, and the scoring follows the rules.",
+    "cos": 0.6573,
+    "chrf": 41.3,
+    "controlCos": 0.3607,
+    "flagged": false
+   }
+  },
+  "th": {
+   "battle.lang.written": {
+    "back": "Japan: You're going to encounter an opponent who uses pre-written poetry, because Gemma 4 E2B hasn't yet shown that she is good at writing poems in this language.",
+    "cos": 0.68,
+    "chrf": 53.4,
+    "controlCos": 0.5312,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Japan: Judging by the rules, because Gemma 4 E2B hasn't shown herself as a good judge of this language poem.",
+    "cos": 0.7742,
+    "chrf": 60.2,
+    "controlCos": 0.353,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "There's no working model of this device that's shown to be good at writing or judging poems, so you're going to meet a competitor who has written the poem and judged it by rules.",
+    "cos": 0.6222,
+    "chrf": 43.4,
+    "controlCos": 0.33,
+    "flagged": false
+   }
+  },
+  "id": {
+   "battle.lang.written": {
+    "back": "Thai: you're facing a written poetry opponent, because Gemma 4 E2B hasn't proven to be able to write poetry well in this language.",
+    "cos": 0.8841,
+    "chrf": 63.9,
+    "controlCos": 0.7231,
+    "flagged": false
+   },
+   "battle.lang.rules": {
+    "back": "Thai: judged by the rules, as Gemma 4 E2B has not proven capable of being a good poetry jury in this language.",
+    "cos": 0.8441,
+    "chrf": 56,
+    "controlCos": 0.3892,
+    "flagged": false
+   },
+   "brain.noneShown": {
+    "back": "There is no running model of this device that has been proven to write or evaluate poetry well, so you're faced with a written poetry opponent and the evaluation is done by rules.",
+    "cos": 0.6,
+    "chrf": 46.2,
+    "controlCos": 0.3754,
+    "flagged": false
+   }
+  }
+ }
+}

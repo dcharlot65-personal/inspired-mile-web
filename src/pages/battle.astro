@@ -43,10 +43,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <option value="master" data-i18n="battle.difficulty.master">Master: picks the best of three drafts</option>
               </select>
             </label>
-            <label class="block">
-              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
-              <select id="language" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
-            </label>
+            <div>
+              <label class="block">
+                <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
+                <select id="language" aria-describedby="language-note" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
+              </label>
+              <!-- Outside the label, so it describes the picker instead of becoming part of its name. -->
+              <div id="language-note" class="hidden mt-1 text-xs text-obsidian-400" role="status"></div>
+            </div>
           </div>
         </div>
 
@@ -184,7 +188,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, canOfferGrand, chooseTier, detectCapability, loadBrain, MODELS, type Tier } from '../lib/brain';
+    import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges, modelsToOffer, modelWrites, rememberedModel, type Tier } from '../lib/brain';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
@@ -307,19 +311,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // --- Language of the duel ---
     const langSelect = $<HTMLSelectElement>('language');
-    let offered: string[] = [...PACK_LANGS];
-    function fillLanguages(codes: string[], prefer?: string) {
-      // Only languages the game has verse data for; with a model, only those it names.
-      offered = codes.filter((c) => hasPack(c));
+    const offered: string[] = [...PACK_LANGS];
+    /**
+     * Every language the game has verse data for is offered, with or without a model.
+     * What changes with a model is who the player meets: in a language the loaded model
+     * has not been shown to write verse in (docs/language/MODEL-EVAL.md) the opponent
+     * plays written verse. With a model loaded the picker lists the languages in two groups,
+     * headed by who writes ("Gemma 4 E2B · on this device", "Written opponent"); the chosen
+     * language shows its name alone, so a long group name is never cut short on a phone, and
+     * the note under the picker says why.
+     */
+    function fillLanguages(prefer?: string) {
       const want = prefer ?? params.get('lang') ?? localStorage.getItem('inspired-mile-duel-lang') ?? locale();
+      const info = useModel ? brainInfo() : null;
       langSelect.replaceChildren();
+      const group = (label: string) => { const g = document.createElement('optgroup'); g.label = label; return g; };
+      const groups = info ? { model: group(t('badge.onDevice', { model: info.label })), written: group(t('badge.written')) } : null;
       for (const code of offered) {
         const o = document.createElement('option');
         o.value = code;
         o.textContent = languageName(code);
-        langSelect.appendChild(o);
+        const writer = info && modelWrites(info, code) ? 'model' : 'written';
+        o.dataset.opponent = writer;
+        (groups ? groups[writer] : langSelect).appendChild(o);
       }
-      langSelect.value = offered.includes(want) ? want : offered.includes('en') ? 'en' : offered[0];
+      if (groups) for (const g of [groups.model, groups.written]) if (g.children.length) langSelect.appendChild(g);
+      langSelect.value = offered.includes(want) ? want : 'en';
+      languageNote();
+    }
+    /** Under the picker: who writes and who judges in the chosen language, when it is not the loaded model. */
+    function languageNote() {
+      const note = $('language-note');
+      const info = useModel ? brainInfo() : null;
+      const lang = langSelect.value || 'en';
+      const lines: string[] = [];
+      if (info && !modelWrites(info, lang)) lines.push(t('battle.lang.written', { language: languageName(lang), model: info.label }));
+      if (info && !modelJudges(info, lang)) lines.push(t('battle.lang.rules', { language: languageName(lang), model: info.label }));
+      // One line per fact, each its own block: no joining space, which Chinese and Japanese do not put after 。
+      note.replaceChildren(...lines.map((line) => el('span', 'block', line)));
+      note.dataset.writer = info && modelWrites(info, lang) ? 'model' : 'written';
+      note.dataset.judge = info && modelJudges(info, lang) ? 'model' : 'rules';
+      note.classList.toggle('hidden', lines.length === 0);
     }
     // A duel language's verse data and sound data (the Japanese analyser's dictionary and its
     // loanword lists are 5.1 MB, the English table 0.5 MB) start loading as soon as the visitor shows
@@ -340,6 +372,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
     langSelect.addEventListener('change', () => {
       localStorage.setItem('inspired-mile-duel-lang', langSelect.value);
+      languageNote();
+      renderBadge();
       loadDeck();
       warm(langSelect.value);
     });
@@ -441,12 +475,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const info = brainInfo()!;
         useModel = true;
         localStorage.setItem(BRAIN_KEY, info.tier);
-        say$($('brain-status'), info.writes ? 'brain.loaded' : 'brain.loadedJudgeOnly', { model: info.label });
-        fillLanguages(info.languages, langSelect.value);
+        // What the model does depends on the duel's language; the note under the language picker says it.
+        say$($('brain-status'), 'brain.loaded', { model: info.label });
+        fillLanguages(langSelect.value);
         loadDeck();
         ready(null);
       } else {
         useModel = false;
+        fillLanguages(langSelect.value);
         say$($('brain-status'), 'brain.failed');
         ready('brain.noModel');
       }
@@ -461,10 +497,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ready('brain.noModel');
         return;
       }
-      // Where the device can take it, Gemma is offered first: it writes better verse,
-      // judges more reliably and, measured on Apple Metal, answers faster than LFM3.
-      const first = canOfferGrand(cap) ? MODELS.grand : MODELS[tier];
-      const second = canOfferGrand(cap) ? MODELS.standard : null;
+      // ?brain=grand|standard|lite loads that model whatever it is measured to do (the model tests).
+      if (forced === 'grand' || forced === 'standard' || forced === 'lite') {
+        summon(forced);
+        return;
+      }
+      // Only models used in at least one language are offered (docs/language/MODEL-EVAL.md);
+      // where the device can take it, Gemma comes first: it writes and judges best.
+      const offers = modelsToOffer(cap);
+      if (!offers.length) {
+        say$($('brain-status'), 'brain.noneShown');
+        ready('brain.noModel');
+        return;
+      }
+      const [first, second = null] = offers;
       say$($('brain-status'), 'brain.canRun', { model: first.label, size: size(first.megabytes) });
       say$($('brain-model-btn'), 'brain.summon', { model: first.label, size: size(first.megabytes) });
       $('brain-choices').classList.remove('hidden');
@@ -482,14 +528,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         say$($('brain-status'), 'brain.writtenReload');
         ready('brain.noModel');
       });
-      // Someone who has already downloaded the model does not need asking again.
-      // ?brain=grand|standard|lite picks a model outright (used by the model tests).
-      if (forced === 'grand' || forced === 'standard' || forced === 'lite') summon(forced);
-      else {
-        const before = localStorage.getItem(BRAIN_KEY);
-        if (before === 'grand' && canOfferGrand(cap)) summon('grand');
-        else if (before === 'grand' || before === 'standard' || before === 'lite' || forced === 'model') summon(tier);
-      }
+      // Someone who has already downloaded a model does not need asking again: that same model is
+      // loaded, if this device is still offered it. Never another one on its own (brain.ts
+      // rememberedModel): if theirs is no longer offered, they are asked.
+      const again = rememberedModel(cap, localStorage.getItem(BRAIN_KEY));
+      if (again) summon(again);
+      else if (forced === 'model') summon(first.tier);
     }
 
     // --- Voice ---
@@ -878,7 +922,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const copied = r.player.voided === 'copied';
       v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', (r.judge.source === 'model' && info
         ? t(info.judge === 'grade' ? 'verdict.judgedGrade' : 'verdict.judgedCompare', { model: info.label })
-        : t('verdict.judgedRules')) + (copied ? ` ${t('verdict.copyForfeits')}` : '')));
+        // A model is loaded but does not judge this language: say that, not "no model is running".
+        : useModel && info && !modelJudges(info, s.duel.lang)
+          ? t('battle.lang.rules', { language: languageName(s.duel.lang), model: info.label })
+          : t('verdict.judgedRules')) + (copied ? ` ${t('verdict.copyForfeits')}` : '')));
 
       // The session has already decided whether the match is over.
       const done = s.winner !== null;
@@ -946,7 +993,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     function renderBadge() {
       const info = useModel ? brainInfo() : null;
-      $('ai-model-badge').textContent = info ? t(info.writes ? 'badge.onDevice' : 'badge.writtenJudged', { model: info.label }) : t('badge.written');
+      const lang = duelLang();
+      // Who the player meets in this language: the model, the written opponent judged by the model, or neither.
+      $('ai-model-badge').textContent = !info || (!modelWrites(info, lang) && !modelJudges(info, lang))
+        ? t('badge.written')
+        : t(modelWrites(info, lang) ? 'badge.onDevice' : 'badge.writtenJudged', { model: info.label });
     }
 
     async function start(seed: number) {
@@ -999,7 +1050,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function redraw() {
       resay();
       const chosen = langSelect.value;
-      fillLanguages(offered, chosen);
+      fillLanguages(chosen);
       loadDeck();
       renderVariantPicker();
       updateSubmit();
@@ -1018,7 +1069,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       say$($('brain-status'), 'brain.checking');
       say$(micLabel, 'mic.speak');
       say$(voiceLabel, 'voice.off');
-      fillLanguages([...PACK_LANGS]);
+      fillLanguages();
       loadDeck();
       renderVariantPicker();
       updateSubmit();
