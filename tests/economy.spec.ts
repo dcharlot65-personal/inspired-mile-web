@@ -451,6 +451,63 @@ test.describe('the server is the authority over the economy and the rankings', (
     expect(await credits(ann), 'the fourth win over one opponent in a day pays nothing').toBe(150);
   });
 
+  test('season rewards: each player claims each level once, and the reward is granted', async () => {
+    sql(`INSERT INTO seasons (name, start_date, end_date, max_level, active)
+         SELECT 'E2E season', NOW() - INTERVAL '1 day', NOW() + INTERVAL '30 days', 30, TRUE
+         WHERE NOT EXISTS (SELECT 1 FROM seasons WHERE active)`);
+    const season = sql(`SELECT id FROM seasons WHERE active ORDER BY id LIMIT 1`);
+    sql(`INSERT INTO season_rewards (season_id, level, reward_type, reward_value)
+         SELECT ${season}, 1, 'credits', '100' WHERE NOT EXISTS (SELECT 1 FROM season_rewards WHERE season_id = ${season} AND level = 1)`);
+    sql(`INSERT INTO season_rewards (season_id, level, reward_type, reward_value)
+         SELECT ${season}, 2, 'pack', 'standard' WHERE NOT EXISTS (SELECT 1 FROM season_rewards WHERE season_id = ${season} AND level = 2)`);
+    const [ann, bob] = [await account(), await account()];
+    for (const who of [ann, bob]) expect((await who.call('POST', '/seasons/xp', { source: 'daily' })).status).toBe(200);
+    // Until 2026-11-19 the first player to claim a level claimed it for everyone.
+    const first = await ann.call('POST', '/seasons/claim/1');
+    expect(first.status, first.text).toBe(200);
+    const second = await bob.call('POST', '/seasons/claim/1');
+    expect(second.status, `another player's claim: ${second.text}`).toBe(200);
+    expect([await credits(ann), await credits(bob)]).toEqual([100, 100]);
+    expect((await ann.call('POST', '/seasons/claim/1')).status, 'once per player').toBe(400);
+    expect(await credits(ann)).toBe(100);
+    expect(sql(`SELECT amount || ':' || source FROM credit_transactions WHERE user_id = '${ann.id}'`)).toBe('100:season_reward');
+    expect(((await bob.call('GET', '/seasons/rewards')).body as any[]).find((r) => r.level === 1).claimed).toBe(true);
+
+    // Level 2 (400 XP) is reached with capped solo XP, and its pack is opened by the server.
+    expect((await ann.call('POST', '/seasons/claim/2')).status, 'not reached yet').toBe(400);
+    for (let i = 0; i < 3; i++) for (const source of ['trivia', 'solo_win']) await ann.call('POST', '/seasons/xp', { source });
+    const pack = await ann.call('POST', '/seasons/claim/2');
+    expect(pack.status, pack.text).toBe(200);
+    expect(pack.body.cards).toHaveLength(3);
+    expect((await held(ann)).length).toBe(3);
+  });
+
+  test('founding credits: granted once and logged, not refilled on every visit', async () => {
+    const ann = await account();
+    // An account from before LAUNCH_DATE (2026-04-01 in the harness).
+    sql(`UPDATE users SET created_at = '2026-01-01' WHERE id = '${ann.id}'`);
+    expect((await ann.call('GET', '/auth/me')).body.founding_player).toBe(true);
+    expect(await credits(ann)).toBe(500);
+    // Spent since (as a purchase would): the next visit does not fill it up again.
+    sql(`UPDATE player_stats SET credits = 0 WHERE user_id = '${ann.id}'`);
+    await ann.call('GET', '/auth/me');
+    expect(await credits(ann)).toBe(0);
+    expect(sql(`SELECT string_agg(amount || ':' || source, ',') FROM credit_transactions WHERE user_id = '${ann.id}'`)).toBe('500:founding');
+  });
+
+  test('tournaments: a size or a description out of bounds is a 400', async () => {
+    const ann = await account();
+    const at = new Date(Date.now() + 3600000).toISOString();
+    for (const body of [
+      { name: 'Too small', starts_at: at, max_players: 1 },
+      { name: 'Too big', starts_at: at, max_players: 100000 },
+      { name: 'Long', starts_at: at, description: 'x'.repeat(1001) },
+    ]) {
+      const r = await ann.call('POST', '/tournaments/create', body);
+      expect(r.status, `${JSON.stringify(body).slice(0, 50)}: ${r.text}`).toBe(400);
+    }
+  });
+
   test('referral: the answer promises nothing the server does not give, and the reward is logged', async () => {
     const [ref, friend] = [await account(), await account()];
     const code = (await ref.call('GET', '/referral')).body.code;
