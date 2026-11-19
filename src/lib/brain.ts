@@ -18,7 +18,6 @@
  */
 
 import { loadTransformers } from './model-runtime';
-import { protectStorage } from './pwa';
 
 export type Tier = 'grand' | 'standard' | 'lite' | 'none';
 
@@ -251,8 +250,10 @@ export function loadBrain(tier: Exclude<Tier, 'none'>, onProgress?: (p: LoadProg
         await loadSpec(spec, onProgress);
         onProgress?.({ percent: 100, text: `${spec.label} ready` });
         // The weights are in browser storage now: ask the browser not to evict them.
-        // Not awaited, so play never waits on the answer.
-        void protectStorage('model');
+        // Not awaited, so play never waits on the answer. Imported here, not at the top: pwa.ts
+        // reads the interface's page areas (import.meta.glob, which only Vite provides), and the
+        // Playwright specs import this module's lists in Node.
+        void import('./pwa').then((m) => m.protectStorage('model'));
         return true;
       } catch (err) {
         console.error(`[brain] ${spec.id} failed to load`, err);
