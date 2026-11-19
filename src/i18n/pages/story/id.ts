@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Jelajahi dunia-dunia Shakespeare dalam kampanye pemain tunggal ini.",
   'story.badge': "Kampanye",
   'story.title': "Mode Cerita",
-  'story.intro': 'Tempuh 5 babak melintasi karya-karya terbesar Shakespeare dan singkap rahasia Globe Theatre. Di versi game ini, setiap perjumpaan membuka adegannya, tetapi tidak memulai duel.',
+  'story.intro': 'Tempuh 5 babak melintasi karya-karya terbesar Shakespeare dan singkap rahasia Globe Theatre. Di versi permainan ini, setiap perjumpaan membuka adegannya, tetapi tidak memulai duel.',
   'story.journey': "Perjalananmu",
   'story.progress': "{done} / {total} perjumpaan selesai",
   'story.stars': "Bintang",

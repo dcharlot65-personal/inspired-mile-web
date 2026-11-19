@@ -7,7 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'Musim {n}',
   'season.title': 'Tiket Musim',
   'season.intro': 'Mainkan pertarungan, kuis, dan tantangan untuk mendapat XP. Setiap level baru membuka kartu, kredit, dan gelar.',
-  'season.introNow': 'Setiap level Tiket Musim membuka kartu, kredit, atau gelar. Di versi game ini, bermain tidak memberikan XP.',
+  'season.introNow': 'Setiap level Tiket Musim membuka kartu, kredit, atau gelar. Di versi permainan ini, bermain tidak memberikan XP.',
   'season.loading': 'Memuat…',
   'season.level': 'Level',
   'season.xp': '{n} XP',
