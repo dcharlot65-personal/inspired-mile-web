@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error: a plain JavaScript module of the build, with no type declarations
-import { DATA, FILE_LICENSES, NOTICES, VENDORED, cmuNotice, creditProblems, creditedFiles, creditedPackages, embeddedIn, heldProblems, inventory, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
+import { DATA, FILE_LICENSES, NOTICES, VENDORED, cmuNotice, creditProblems, creditedFiles, creditedPackages, embeddedIn, heldProblems, inventory, licenseFiles, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const read = (p: string) => readFileSync(join(root, p), 'utf8');
@@ -155,6 +155,12 @@ describe('the notices themselves', () => {
     for (const f of FILE_LICENSES) expect(problems.join('\n')).toContain(`FILE_LICENSES "${f.title}" matches no file that ships`);
   });
 
+  it('reads every license file a package keeps, THIRD-PARTY-LICENSE included (Rolldown\'s: Rollup\'s and esbuild\'s)', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'notices-files-'));
+    for (const f of ['LICENSE', 'LICENSE.md', 'LICENCE.txt', 'LICENSES.txt', 'COPYING', 'NOTICE', 'THIRD-PARTY-LICENSE', 'third_party_licenses.txt', 'ThirdPartyNotices.txt', 'README.md', 'package.json', 'index.js']) writeFileSync(join(dir, f), 'x');
+    expect(licenseFiles(dir)).toEqual(['COPYING', 'LICENCE.txt', 'LICENSE', 'LICENSE.md', 'LICENSES.txt', 'NOTICE', 'THIRD-PARTY-LICENSE', 'ThirdPartyNotices.txt', 'third_party_licenses.txt']);
+  });
+
   it('fails a shipped package that has no license file and no stated text', () => {
     const dir = realpathSync(mkdtempSync(join(tmpdir(), 'notices-pkg-')));
     const pkg = join(dir, 'node_modules', 'no-license');
@@ -206,14 +212,22 @@ describe('the notices themselves', () => {
       // Files under another license: Draco, Basis Universal.
       'Draco 3D data compression',
       'Binomial LLC',
-      // CC BY-SA: attribution, the license, and its disclaimer.
-      'licensed under\nCC BY-SA 4.0 by Voyage Tracable, LLC',
+      // Rolldown's THIRD-PARTY-LICENSE: Rollup's MIT, and esbuild's, whose runtime helpers are in the bundle.
+      '[THIRD-PARTY-LICENSE]',
+      'Copyright (c) 2017 [these people](https://github.com/rollup/rollup/graphs/contributors)',
+      'Copyright (c) 2020 Evan Wallace',
+      // CC BY-SA: attribution, the license, and its disclaimer; and no claim of copyright over what was taken
+      // (EDRDG's licence statement: "Users of material from the files must NOT claim copyright over that material").
+      'Voyage Tracable, LLC (DBA Inspired\nMile) licenses its adaptations under CC BY-SA 4.0',
+      'Tracable, LLC claims no copyright over it',
+      'stays the copyright\nof James William Breen and the Electronic Dictionary Research and Development Group',
       'https://creativecommons.org/licenses/by-sa/4.0/',
       'no representations or warranties',
     ]) expect([w, notices.includes(w)]).toEqual([w, true]);
     // SCOWL's file whole, as served alone; and no escape of the table's source left in the text.
     expect(notices).toContain(read('public/licenses/SCOWL-Copyright.txt').replace(/\s+$/, ''));
     expect(notices).not.toMatch(/\\`/);
+    expect(notices).not.toContain('themselves licensed under');
     // ONNX Runtime's notices of what is compiled into it are served beside the file.
     for (const v of ['1.22', '1.31']) expect(read(`public/licenses/onnxruntime-${v}-ThirdPartyNotices.txt`)).toMatch(/THIRD PARTY SOFTWARE NOTICES AND INFORMATION/i);
   });

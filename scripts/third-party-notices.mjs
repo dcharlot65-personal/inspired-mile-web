@@ -136,8 +136,8 @@ export const VENDORED = /(^|\/)(libs|vendor|vendored|third[-_]?party)\//i;
 
 /** The CC BY-SA 4.0 statement for the tables made from CC BY-SA sources (section 3(a)(1) and 3(b)). */
 const CC_BY_SA = `These parts of the game are adaptations of works licensed under the Creative Commons
-Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0), and are themselves licensed under
-CC BY-SA 4.0 by Voyage Tracable, LLC (DBA Inspired Mile):
+Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0), and Voyage Tracable, LLC (DBA Inspired
+Mile) licenses its adaptations under CC BY-SA 4.0 as well:
 
   - the pronunciation, stress and syllable tables of German, Spanish, French, Hindi, Indonesian, Italian,
     Portuguese, Russian and Thai, made from Wiktionary (by Wiktionary's contributors, through kaikki.org's
@@ -152,6 +152,11 @@ CC BY-SA 4.0 by Voyage Tracable, LLC (DBA Inspired Mile):
 
 What was changed: each is reduced to what the game's rules read (single words, readings, syllable counts
 and rhymes), and rearranged into the game's own tables.
+
+Copyright: the material taken from each work stays the copyright of that work's authors, and Voyage
+Tracable, LLC claims no copyright over it. The material taken from JMdict and JMnedict stays the copyright
+of James William Breen and the Electronic Dictionary Research and Development Group, as the Group's licence
+statement asks (https://www.edrdg.org/edrdg/licence.html).
 
 License: https://creativecommons.org/licenses/by-sa/4.0/ (legal code:
 https://creativecommons.org/licenses/by-sa/4.0/legalcode). As section 5 of that license says, the licensed
@@ -244,7 +249,12 @@ export function packageOf(id) {
   return { name, dir, file: clean.slice(dir.length + 1) };
 }
 
-const LICENSE_FILE = /^(licen[cs]e|copying|notice|third[-_ ]?party[-_ ]?notices?)([.\-_].*)?$/i;
+/**
+ * A package's license files by name: LICENSE, LICENCE, COPYING, NOTICE, THIRD-PARTY-NOTICES, and THIRD-PARTY-LICENSE
+ * (Rolldown's, which holds the licenses of Rollup, which it is ported from, and of esbuild, whose runtime its module
+ * helpers in the bundle are derived from).
+ */
+const LICENSE_FILE = /^(licen[cs]es?|copying|notice|third[-_ ]?party[-_ ]?(notices?|licen[cs]es?))([.\-_].*)?$/i;
 
 /** The license files in a package's own folder, sorted. */
 export function licenseFiles(dir) {

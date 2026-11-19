@@ -2179,6 +2179,41 @@ end of terms and conditions
 
 The licenses of externally maintained libraries from which parts of the Software is derived are listed [here](https://github.com/rolldown/rolldown/blob/main/THIRD-PARTY-LICENSE).
 
+[THIRD-PARTY-LICENSE]
+The MIT License (MIT)
+
+Copyright (c) 2017 [these people](https://github.com/rollup/rollup/graphs/contributors)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+MIT License
+
+Copyright (c) 2020 Evan Wallace
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ----- tailwindcss 4.3.5 (license declared by the package: MIT) -----
 From node_modules/tailwindcss.
 
@@ -4047,8 +4082,8 @@ above as far as the program is concerned.
 In the build: src/lib/verse/sound/data/, src/lib/verse/sound/jmdict/, src/lib/verse/judge-words.ts, src/lib/cards-i18n/.
 
 These parts of the game are adaptations of works licensed under the Creative Commons
-Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0), and are themselves licensed under
-CC BY-SA 4.0 by Voyage Tracable, LLC (DBA Inspired Mile):
+Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0), and Voyage Tracable, LLC (DBA Inspired
+Mile) licenses its adaptations under CC BY-SA 4.0 as well:
 
   - the pronunciation, stress and syllable tables of German, Spanish, French, Hindi, Indonesian, Italian,
     Portuguese, Russian and Thai, made from Wiktionary (by Wiktionary's contributors, through kaikki.org's
@@ -4063,6 +4098,11 @@ CC BY-SA 4.0 by Voyage Tracable, LLC (DBA Inspired Mile):
 
 What was changed: each is reduced to what the game's rules read (single words, readings, syllable counts
 and rhymes), and rearranged into the game's own tables.
+
+Copyright: the material taken from each work stays the copyright of that work's authors, and Voyage
+Tracable, LLC claims no copyright over it. The material taken from JMdict and JMnedict stays the copyright
+of James William Breen and the Electronic Dictionary Research and Development Group, as the Group's licence
+statement asks (https://www.edrdg.org/edrdg/licence.html).
 
 License: https://creativecommons.org/licenses/by-sa/4.0/ (legal code:
 https://creativecommons.org/licenses/by-sa/4.0/legalcode). As section 5 of that license says, the licensed
