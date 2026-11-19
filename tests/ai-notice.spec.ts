@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { MODELS } from '../src/lib/brain';
-import { setLists, standInModel, stubCount } from './stand-in-model';
+import { aiNotice } from '../src/lib/ai-notice';
+import { releaseHeld, setLists, standInModel, stubCount } from './stand-in-model';
 
 /**
  * Before a first duel the player is told, in their language, who plays and who judges: artificial
@@ -45,9 +46,21 @@ async function holdModelAndWatch(page: Page) {
 }
 
 /** A device that is offered both Gemma and LFM3 (brain.ts canOfferGrand): WebGPU with 16-bit floats, 16 GB. */
-async function bigDevice(page: Page) {
+async function bigDevice(page: Page, opts: Parameters<typeof standInModel>[1] = {}) {
   await page.addInitScript(() => Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => 16 }));
-  await standInModel(page);
+  await standInModel(page, opts);
+}
+
+/**
+ * Gemma fails to load and LFM3, tried next (brain.ts loadOrder), is held mid-load. A Vietnamese duel, where the two
+ * notices differ by the measured lists (Gemma writes Vietnamese verse; LFM3 judges it): the notice that names the
+ * model being loaded must be LFM3's. Returns the strings expected for each.
+ */
+const FALLBACK_LANG = 'vi';
+function fallbackNotices(s: Record<string, string>) {
+  const [failed, next] = [aiNotice(MODELS.grand, FALLBACK_LANG), aiNotice(MODELS.standard, FALLBACK_LANG)];
+  const text = (n: typeof failed) => say(s[n.key], n.vars.model);
+  return { failed: text(failed), next: text(next), nextNotice: next };
 }
 
 for (const l of LOCALES) {
@@ -153,6 +166,54 @@ for (const l of LOCALES) {
       await expect(notice).toHaveText(say(s['notice.aiBoth'], m.label));
       expect(seen.filter((t) => t === s['notice.none']), 'the notice never said no model plays').toEqual([]);
       expect(seen.length, 'the notice was seen').toBeGreaterThan(0);
+    });
+
+    test('battle, a remembered model that fails to load: while the smaller one loads, the notice names that one, not the one that failed', async ({ page }) => {
+      const s = await strings(l);
+      const want = fallbackNotices(s);
+      // The two must differ, or this test could not tell them apart.
+      expect(want.next).not.toBe(want.failed);
+      await inLocale(page, l);
+      await page.addInitScript(() => localStorage.setItem('inspired-mile-brain', 'grand'));
+      await bigDevice(page, { failing: [MODELS.grand.id], holding: [MODELS.standard.id] });
+      await page.goto(`/battle?seed=11&lang=${FALLBACK_LANG}`);
+      await expect(page.locator('html')).toHaveAttribute('lang', l);
+      const notice = page.locator('#duel-setup #ai-notice');
+      // Gemma was asked for and failed; LFM3 is loading now.
+      await expect.poll(async () => (await stubCount(page)).loads, { timeout: 30_000 }).toEqual([MODELS.grand.id, MODELS.standard.id]);
+      await expect(page.locator('#loading-screen')).toBeVisible();
+      await expect(page.locator('#start-duel')).toBeDisabled();
+      await expect(notice).toBeVisible();
+      await expect(notice).toHaveText(want.next);
+      await expect(notice).toHaveAttribute('data-opponent', want.nextNotice.opponent);
+      await expect(notice).toHaveAttribute('data-judge', want.nextNotice.judge);
+      await releaseHeld(page);
+      await expect(page.locator('#start-duel')).toBeEnabled({ timeout: 30_000 });
+      // Loaded, it says the same: it named the model that is now running.
+      await expect(notice).toHaveText(want.next);
+      await expect(page.locator('#brain-status')).toContainText(MODELS.standard.label);
+      await expect(page.locator('#battle-arena')).toBeHidden();
+    });
+
+    test('theatre, a remembered model that fails to load: while the smaller one loads, the notice names that one, not the one that failed', async ({ page }) => {
+      const s = await strings(l);
+      const want = fallbackNotices(s);
+      expect(want.next).not.toBe(want.failed);
+      await inLocale(page, l);
+      await page.addInitScript((lang) => {
+        localStorage.setItem('inspired-mile-brain', 'grand');
+        localStorage.setItem('inspired-mile-duel-lang', lang);
+      }, FALLBACK_LANG);
+      await bigDevice(page, { failing: [MODELS.grand.id], holding: [MODELS.standard.id] });
+      await page.goto('/theatre?seed=11');
+      const notice = page.locator('#ai-notice');
+      await expect.poll(async () => (await stubCount(page)).loads, { timeout: 30_000 }).toEqual([MODELS.grand.id, MODELS.standard.id]);
+      await expect(notice).toBeVisible();
+      await expect(notice).toHaveText(want.next);
+      await expect(notice).toHaveAttribute('data-judge', want.nextNotice.judge);
+      await releaseHeld(page);
+      await expect(page.locator('#theatre-status')).toContainText(MODELS.standard.label, { timeout: 30_000 });
+      await expect(notice).toHaveText(want.next);
     });
 
     test('battle, a model offered and declined: the notice says no artificial intelligence plays or judges', async ({ page }) => {

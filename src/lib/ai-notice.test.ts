@@ -56,6 +56,42 @@ describe('where a model can be loaded', () => {
       expect([f, /\baiNotice\(/.test(text(f))], `${f} picks it with aiNotice()`).toEqual([f, true]);
     }
   });
+
+  /** The arguments of each loadBrain(...) call in a source, split at their top-level commas. */
+  function loadBrainCalls(src: string): string[][] {
+    const calls: string[][] = [];
+    for (const m of src.matchAll(/\bloadBrain\s*\(/g)) {
+      const args: string[] = [];
+      let depth = 0;
+      let arg = '';
+      for (let i = m.index! + m[0].length; i < src.length; i++) {
+        const c = src[i];
+        if (depth === 0 && (c === ',' || c === ')')) {
+          if (arg.trim()) args.push(arg.trim());
+          arg = '';
+          if (c === ')') break;
+          continue;
+        }
+        if ('([{'.includes(c)) depth++;
+        if (')]}'.includes(c)) depth--;
+        arg += c;
+      }
+      calls.push(args);
+    }
+    return calls;
+  }
+
+  it('names the model now loading when the one asked for fails and a smaller one is tried (loadBrain\'s onTry)', () => {
+    const loaders = files.filter((f) => f !== 'src/lib/brain.ts' && /\bloadBrain\s*\(/.test(text(f)));
+    for (const f of loaders) {
+      const calls = loadBrainCalls(text(f).replace(/^\s*import .*$/gm, ''));
+      expect(calls.length, `${f} calls loadBrain`).toBeGreaterThan(0);
+      for (const args of calls) {
+        expect([f, args.length], `${f}: loadBrain(tier, onProgress, onTry)`).toEqual([f, 3]);
+        expect([f, /loadingModel\s*=\s*\w+/.test(args[2]) && /renderNotice\(\)/.test(args[2])], `${f}: onTry sets loadingModel and redraws the notice`).toEqual([f, true]);
+      }
+    }
+  });
 });
 
 describe('the notice in sixteen languages', () => {

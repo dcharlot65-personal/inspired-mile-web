@@ -248,6 +248,10 @@ await loadArea('about');
           const down = p.text.match(/^Downloading (.+): (\d+) of (\d+) MB$/);
           statusMsg = null;
           statusEl.textContent = down ? t('brain.downloading', { model: down[1], done: down[2], total: down[3] }) : p.text;
+        }, (spec) => {
+          // When the remembered model fails, a smaller one is tried: the notice names the one now loading.
+          loadingModel = spec;
+          renderNotice();
         });
       }
       loadingModel = null;

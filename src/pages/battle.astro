@@ -512,6 +512,10 @@ import { t } from '../i18n';
         shown.delete($('loading-status'));
         $('loading-status').textContent = progressText(p.text);
         $('loading-bar').style.width = `${p.percent}%`;
+      }, (spec) => {
+        // When the model asked for fails, a smaller one is tried: the notice names the one now loading.
+        loadingModel = spec;
+        renderNotice();
       });
       loadingModel = null;
       $('loading-screen').classList.add('hidden');
