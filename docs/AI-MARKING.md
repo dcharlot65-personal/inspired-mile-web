@@ -28,7 +28,7 @@ techniques". Read on 2026-11-19 from the Publications Office's copy of the act
 `dc8116a1-3fe6-11ef-865a-01aa75ed71a1.0006.03`, sha256 of the XHTML
 `8f0b656302f9864cc87e040c371f209a9d65ae1a6cecc25ca5eb737e872d721a`); EUR-Lex's own page answered a
 script check that a command-line client cannot pass. Not checked here: whether a later amendment changed
-paragraph 2's words, and the Commission's code of practice on marking AI-generated content.
+paragraph 2's words. The Commission's code of practice is compared below.
 
 ## The method: a metadata identification on the element
 
@@ -54,17 +54,32 @@ Any page's AI text is found with `document.querySelectorAll('[data-ai-generated]
 from the session's record of which model wrote the verse (`DuelSession.opponentModel`), not guessed
 from the text.
 
-**The version is not pinned.** `src/lib/brain.ts` names no revision, so Transformers.js downloads each
-repository's `main`, and the mark says `revision=main`: it names the version as asked for, not the
-exact commit. Pinning a commit in `brain.ts` (and the mark with it) would make it exact.
+**The version is the repository's `main`, not a pinned commit.** `src/lib/brain.ts` names no revision,
+so Transformers.js downloads each repository's `main`, and the mark says `revision=main`: the version
+as asked for. On 2026-11-19 (Hugging Face API, `/api/models/<repo>/revision/main`) `main` was:
+
+| Model | Commit on `main` | Committed |
+|---|---|---|
+| Gemma 4 E2B | `6f21c99d7e18237f8d2ce92aadfdbfeba877f63a` | 2026-10-13 |
+| LFM3 1.7B | `ab9fec4c681a25bec3b48b0b97a62fc2660a2985` | 2026-10-27 |
+| LFM2.5 350M | `d11593fd9eb408e322667926656598896c2d5ff9` | 2026-03-31 |
+
+All three are older than the measurements that decide where each model writes (the cells in
+`docs/language/model-eval/cells/` are dated 2026-11-18), so `main` is the weights that were measured.
+Pinning these commits in `brain.ts` would make the mark exact, but it changes every download address,
+and a browser keeps a model under its address: every returning visitor would download the model again
+(up to 3.1 GB), and the battle page loads a remembered model by itself. The Code of Practice makes the
+version optional (Measure 1.3, "may also include the underlying AI model identifier and version
+number"). Pin them the next time a model changes, when every visitor downloads it anyway, and check
+`main` against this table before each deploy until then.
 
 ## Where
 
 | AI output | Where it appears | Machine-readable | For the player |
 |---|---|---|---|
-| The opponent's verse, written by a model | battle page (`#opponent-verse`) | the mark on the verse | the label "AI" beside it, in the interface's language (`ai.label`) |
+| The opponent's verse, written by a model | battle page (`#opponent-verse`) | the mark on the verse | the label "AI" at the start of the verse, in the interface's language (`ai.label`), laid out in the duel language's direction so it stays beside the verse when the interface reads the other way; the label and the verse are one polite live region (`#opponent-said`), so a screen reader reads both when the verse arrives, and only then |
 | The same, in the Theatre | a 3D stage drawn on a canvas, which holds no text a machine can read | the mark on a text copy of the verse beside the stage (`#theatre-opponent-verse`, which screen readers also read) | "AI · {model}" above the verse on the stage |
-| Trivia questions and quote challenges a model wrote | the playground | the mark on the question, its answers and the quotation | the "AI Generated" badge (`pg.trivia.aiBadge`) |
+| Trivia questions and quote challenges a model wrote | the playground | the mark on the question and on each answer; on a challenge's quotation and on the play and speaker it names, on every screen that shows them (the challenge, the right answer, the wrong one) | the "AI Generated" badge (`pg.trivia.aiBadge`) on each of those screens |
 | English speech (Kokoro-82M) | played in the page, never saved or offered as a file | none possible: no file leaves the page | the setting reads "AI voice" (`voice.*`) |
 
 The label's word is Wikidata's for artificial intelligence (Q11660) in each language, its label or an
@@ -72,6 +87,33 @@ alias (`docs/language/sources/wikidata-Q11660.json`; `src/i18n/ai-label.test.ts`
 
 As built, no page that offers trivia loads a model (only the battle page and the Theatre do), so the
 playground's model-written questions cannot appear today; they are marked for when they can.
+
+## Against the Commission's Code of Practice
+
+The Commission published the final *Code of Practice on Transparency of AI-Generated Content* on
+2026-06-10 (`digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content`; the PDF,
+38 pages, read on 2026-11-19, sha256 `7bd22c5a3c56eaefda27a5bf7a6118198ef2a9c9255241bd97abf7cdedf9bc28`).
+It is voluntary: a way to show that Article 50(2) is met, not the law itself, and the studio has not
+signed it. Its Section 1 (providers), measure by measure, for what this game makes:
+
+| The Code | What it asks | Here |
+|---|---|---|
+| Measure 1.1 | at least one machine-readable marking technique; two layers (signed metadata and a watermark) for "audio, images, video, and containerised text" | The text is shown in an HTML page, which the Code's glossary counts as containerised text ("text inside PDFs, Word documents, or HTML files"), so metadata is the layer it has: the mark on the element |
+| Sub-measure 1.1.1 | metadata saying the content is AI-generated, "digitally signed and time-stamped", "except in circumstances where the deployment context does not permit the secure handling or provisioning of the key, for example in a local deployment scenario" | Recorded, not signed: the model runs in the visitor's browser, and a signing key sent there could not be kept secret, which is the local deployment the exception names |
+| Sub-measure 1.1.2 | an imperceptible watermark, "with the exception of very short text", defined as "text shorter than 200 tokens" | None, and none is due: every output is very short text by construction. A verse is asked for at most `28 + 22 × lines` new tokens (`opponent.ts`; five lines at most, an Indonesian acrostic, so 138), and a trivia question or challenge at most 200 (`content-gen.ts`), of which the page shows a part |
+| Sub-measure 1.1.3 | fingerprinting or logging (optional) | Not done: solo duels never leave the device (the privacy policy), and logging them would break that promise |
+| Measure 1.2 | keep existing marks; forbid removing them in the system's documentation | This document is that documentation: whoever embeds, copies or redistributes the game's AI text keeps its mark, and must not remove or alter it. The game never reads AI input it would have to keep a mark on |
+| Measure 1.3 | richer provenance (optional): system name, provider's name, a timestamp; "may also include the underlying AI model identifier and version number" | The model's name, repository, version and precision; not the provider's name or a timestamp. The page that shows the text names the game and its maker |
+| Measure 1.4 | an option to add a perceptible label (optional) | Always on: the "AI" label (D-12) |
+| Commitment 2 | a detection solution, free of charge: for example "a public, ideally standardised, specification allowing any third party to implement a detection mechanism" | The mark's format above is that specification, and `readAiGenerated()` reads it; `document.querySelectorAll('[data-ai-generated]')` finds every mark on a page. It is public only once this document (or its substance) is published: see below |
+
+Section 2 of the Code (deployers, Article 50(4)) labels deep fakes and AI text "published with the
+purpose of informing the public on matters of public interest". A game's verses and trivia are not
+that, so it is not followed here beyond the label the owner chose anyway.
+
+**Open:** the specification is in this repository, which is private. Commitment 2 asks for it to be
+available to anyone who meets the content. Publishing it (for instance on `/credits`, which
+`fix/compliance` owns) is left to that page's owner.
 
 ## What is not marked, and why
 
@@ -96,10 +138,15 @@ revision main, q4f16"), and in a file's metadata where the format has a place fo
 An attribute is metadata of the page: text copied out of it leaves the mark behind. No watermark is
 put into the words themselves; for verses of two to four lines from small models running in a browser,
 no text watermark of known reliability was found, which is what "as far as technically feasible"
-leaves open. Review this when the code of practice or a standard names a method for short text.
+leaves open, and the Code of Practice asks none below 200 tokens (above). Review this when its threshold
+falls below the length of a verse (it expects it to), or a standard names a method for short text.
 
 ## Tests
 
-`src/lib/ai-marking.test.ts` (the mark, and the session's record of the model), `tests/ai-marking.spec.ts`
-(the battle page and the Theatre, with a stand-in model: the label in five interface languages, the mark,
-and neither on the written opponent's verse), `src/i18n/ai-label.test.ts` (the word in sixteen languages).
+`src/lib/ai-marking.test.ts` (the mark, the session's record of the model, and the playground's markup:
+every element that shows what a model may have written carries the mark, since no browser can reach those
+screens while the playground loads no model), `tests/ai-marking.spec.ts` (the battle page and the Theatre,
+with a stand-in model: the label in five interface languages, the mark, neither on the written opponent's
+verse, the live region and that typing does not touch it, the label at the start of an English verse under an
+Arabic or Japanese interface, and the voice setting on one line at phone width), `src/i18n/ai-label.test.ts`
+(the word in sixteen languages).
