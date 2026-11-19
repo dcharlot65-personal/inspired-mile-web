@@ -1,4 +1,6 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
+import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import http from 'node:http';
 import { E2E } from './e2e-env';
 import { auditRound, type MatchStart, type RoundView, type ServerEvent } from '../src/lib/multiplayer-client';
@@ -28,6 +30,12 @@ installPronunciation(PRON);
  */
 
 const AGE_KEY = 'inspired-mile-age-verified';
+
+/** SQL on the test database (tests/start-backend.sh's Postgres), to set a scene. */
+function sql(statement: string): string {
+  const psql = ['/opt/homebrew/opt/postgresql@18/bin/psql', '/opt/homebrew/bin/psql', '/usr/local/bin/psql', '/usr/bin/psql'].find((p) => existsSync(p)) ?? 'psql';
+  return execFileSync(psql, ['-h', '127.0.0.1', '-p', String(E2E.pgPort), '-U', E2E.dbUser, '-d', E2E.dbName, '-At', '-v', 'ON_ERROR_STOP=1', '-c', statement], { encoding: 'utf8' }).trim();
+}
 
 function uniqueIp(): string {
   const n = () => 1 + Math.floor(Math.random() * 253);
@@ -108,11 +116,15 @@ async function newPlayer(browser: Browser, storage: Array<{ name: string; value:
   await page.locator('#auth-create-confirm').click();
   // A loaded build host's Postgres can take several seconds over a sign-up.
   await expect(page.locator('#auth-recovery-nudge')).toBeVisible({ timeout: 20000 });
-  const me = await page.evaluate(async () => (await fetch('/api/v1/auth/me', { credentials: 'include' })).status);
-  expect(me, 'the new account is signed in').toBe(200);
+  const me = await page.evaluate(async () => {
+    const res = await fetch('/api/v1/auth/me', { credentials: 'include' });
+    return { status: res.status, id: res.ok ? ((await res.json()).user.id as string) : '' };
+  });
+  expect(me.status, 'the new account is signed in').toBe(200);
+  // Cards come only from the server (docs/ECONOMY.md): no route lets a client add one, so the
+  // test puts them in the account's record itself, as a pack the server opened would.
   for (const card_id of cards) {
-    const added = await context.request.post('/api/v1/inventory/add', { data: { card_id, source: 'e2e' } });
-    expect(added.status(), `the account is given ${card_id}`).toBe(200);
+    sql(`INSERT INTO owned_cards (user_id, card_id, source) VALUES ('${me.id}', '${card_id}', 'e2e')`);
   }
   // A fresh page: the sign-in panel is closed and the lobby knows who we are.
   await page.goto('/multiplayer');

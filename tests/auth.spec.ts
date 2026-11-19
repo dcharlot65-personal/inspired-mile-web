@@ -2574,8 +2574,10 @@ test.describe('Hardening: age tier', () => {
 test.describe('Hardening: error text and classroom lists', () => {
   test('a database failure is answered without the database\'s own words', async () => {
     const { user, cookie } = await emailAccount();
-    // Take away the row the credits routes update: the statement then fails in the database.
-    sql(`DELETE FROM player_stats WHERE user_id = '${user.id}'`);
+    // A balance at the top of the column's range: adding the daily bonus to it then fails in the
+    // database ("integer out of range"). (Until 2026-11-19 this test deleted the account's
+    // player_stats row; the credit routes now lock that row and create it when it is missing.)
+    sql(`UPDATE player_stats SET credits = 2147483647 WHERE user_id = '${user.id}'`);
     const res = await call('POST', `${API}/credits/earn`, { cookie, body: { source: 'daily' } });
     expect(res.status()).toBe(500);
     const text = await res.text();
