@@ -274,10 +274,28 @@ function wordsFor(relicId: string, lang: string): LentWords {
   return { relicId, words: getPack(lang).relics[relicId] ?? [] };
 }
 
-/** A deck for the house: three characters, one relic, one potion, drawn by seed. */
+/**
+ * Characters the opponent is never dealt. SM-001 is The Sonnet Man, the stage name of a real
+ * person, Devon Glover: with a model loaded, the opponent's prompt would read "You are The Sonnet
+ * Man…" and a model would write as him. Until he agrees, the opponent does not play his card at all,
+ * with or without a model (owner decision D-04, 2026-11-19, docs/dossier/28-owner-decisions.md on
+ * docs/dossier). A player may still hold and play it: only the house's draw leaves it out.
+ */
+export const NEVER_THE_OPPONENT: readonly string[] = ['SM-001'];
+
+/**
+ * A deck for the house: three characters, one relic, one potion, drawn by seed.
+ *
+ * The whole catalogue is still shuffled and the first three characters the opponent may play are
+ * taken, so the draw uses the seed exactly as it did before NEVER_THE_OPPONENT: a seed that never
+ * dealt SM-001 deals the same deck as before (and the same relic and potion), and one that did deals
+ * the next character of its shuffle in its place.
+ */
 export function opponentDeck(seed: number): DuelDeck {
   const r = rng(seed ^ 0x9e3779b9);
-  const chars = shuffled(r, CARD_CATALOG.filter((c) => c.type === 'Character')).slice(0, ROUNDS);
+  const chars = shuffled(r, CARD_CATALOG.filter((c) => c.type === 'Character'))
+    .filter((c) => !NEVER_THE_OPPONENT.includes(c.id))
+    .slice(0, ROUNDS);
   const relics = CARD_CATALOG.filter((c) => c.type === 'Relic');
   const potions = CARD_CATALOG.filter((c) => c.type === 'Potion');
   return { characters: chars.map((c) => c.id), relics: [pick(r, relics).id], potions: [pick(r, potions).id] };
