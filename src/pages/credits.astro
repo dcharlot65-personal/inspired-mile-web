@@ -98,7 +98,7 @@ const DATA: Entry[] = [
   {
     name: 'Unihan database (Unicode 18.0.0) and Unicode CLDR 49',
     by: 'Unicode, Inc.',
-    use: 'Chinese characters\' readings; plural rules, quotation marks and numbers spelled out in sixteen languages.',
+    use: 'Chinese characters\' readings; quotation marks and numbers spelled out, in sixteen languages. (Plural rules come from your browser\'s own copy of CLDR.)',
     source: [{ text: 'unicode.org/charts/unihan.html', href: 'https://www.unicode.org/charts/unihan.html' }, { text: 'cldr.unicode.org', href: 'https://cldr.unicode.org/' }],
     license: [{ text: 'Unicode License v3', href: 'https://www.unicode.org/license.txt' }],
     changed: 'Reduced to the readings and words the game needs.',
@@ -323,8 +323,8 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
             A solo duel's opponent and judge can be a language model running in your browser. Before every first duel the
             battle page says which applies: artificial intelligence on your device, or a program that plays verses prepared
             in advance with the judging done by fixed rules. Online duels use no model: the server scores both verses by
-            fixed rules. The models below are downloaded by your browser from Hugging Face when you ask for them; nothing you
-            write or say is sent to them anywhere else.
+            fixed rules. The models below are downloaded by your browser from Hugging Face when you ask for them, and run there:
+            nothing you write or say in a solo duel leaves your device.
           </p>
         </div>
 
@@ -389,9 +389,9 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">3D and film</h2>
           <p>
-            The Sonnet Man's 3D figure in the viewer (a Gaussian splat and a point cloud of 16,384 points) was made by
-            Inspired Mile on February 15, 2026 with its own generative tools, and reduced for the web by them. The game ships no
-            film or video.
+            The Sonnet Man's 3D figure in the viewer (a Gaussian splat and a point cloud of 16,384 points) was made on
+            February 15, 2026 with Inspired Mile's own tools, which also reduced it for the web; which model made it is not yet
+            recorded. The game ships no film or video.
           </p>
         </div>
 
