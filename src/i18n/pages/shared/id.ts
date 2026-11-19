@@ -59,7 +59,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Beranda',
   'offline.link.collection': 'Koleksi',
   'offline.link.battle': 'Arena pertarungan',
-  'app.description': 'Permainan kartu adu rap ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.',
+  'app.description': 'Permainan kartu duel syair ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.',
   'app.shortcut.battle': 'Arena pertarungan',
   'app.shortcut.theatre': 'Sang Teater',
 };

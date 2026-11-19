@@ -60,7 +60,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Home',
   'offline.link.collection': 'Collection',
   'offline.link.battle': 'Battle Arena',
-  'app.description': 'A Shakespeare rap-battle card game from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.',
+  'app.description': 'A Shakespeare card game of verse duels, from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.',
   'app.shortcut.battle': 'Battle Arena',
   'app.shortcut.theatre': 'The Theatre',
 };

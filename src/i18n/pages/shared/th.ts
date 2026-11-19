@@ -59,7 +59,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'หน้าแรก',
   'offline.link.collection': 'คอลเลกชัน',
   'offline.link.battle': 'สังเวียนประชัน',
-  'app.description': 'เกมการ์ดแร็ปแบตเทิลแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด',
+  'app.description': 'เกมการ์ดการประชันบทกลอนแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด',
   'app.shortcut.battle': 'สังเวียนประชัน',
   'app.shortcut.theatre': 'เวทีโรงละคร',
 };

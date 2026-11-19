@@ -59,7 +59,7 @@ const messages: Record<string, string> = {
   'offline.link.home': '홈',
   'offline.link.collection': '컬렉션',
   'offline.link.battle': '배틀 아레나',
-  'app.description': 'Inspired Mile의 셰익스피어 배틀 랩 카드 게임. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.',
+  'app.description': 'Inspired Mile의 셰익스피어 카드 게임, 시의 결투. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.',
   'app.shortcut.battle': '배틀 아레나',
   'app.shortcut.theatre': '입체 극장',
 };

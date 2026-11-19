@@ -64,7 +64,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'الرئيسية',
   'offline.link.collection': 'المجموعة',
   'offline.link.battle': 'حلبة النزال',
-  'app.description': 'لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.',
+  'app.description': 'لعبة بطاقات شكسبيرية تقوم على مبارزة الأبيات، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.',
   'app.shortcut.battle': 'حلبة النزال',
   'app.shortcut.theatre': 'قاعة المسرح',
 };

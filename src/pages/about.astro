@@ -178,7 +178,8 @@ const TONE: Record<string, { card: string; chip: string; title: string }> = {
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
       <T k="about.tech.title" as="h2" class="text-3xl font-display font-bold text-center mb-12" />
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Four tiles, two by two: three columns left the fourth alone on a row. -->
+      <div id="about-tech" class="grid sm:grid-cols-2 gap-6">
         {tech.map((id) => (
           <div class="card-glass p-6">
             <T k={`about.tech.${id}.title`} as="h4" class="font-display font-semibold text-obsidian-200 mb-2" />
