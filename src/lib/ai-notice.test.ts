@@ -3,7 +3,7 @@
  * The page tests (tests/ai-notice.spec.ts) show it on screen in every language; these hold the choice
  * of sentence to the model's measured lists, and each language's sentences to their source.
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { MODELS, modelJudges, modelWrites, type ModelSpec } from './brain';
 import { aiNotice } from './ai-notice';
@@ -36,6 +36,24 @@ describe('which notice a duel gets', () => {
         expect([model.tier, lang, n.opponent], 'who writes').toEqual([model.tier, lang, modelWrites(model, lang) ? 'model' : 'written']);
         expect([model.tier, lang, n.judge], 'who judges').toEqual([model.tier, lang, modelJudges(model, lang) ? 'model' : 'rules']);
       }
+    }
+  });
+});
+
+describe('where a model can be loaded', () => {
+  // A model runs on a page only after that page loads it (brain.ts keeps it per page load): content-gen.ts, for one,
+  // writes trivia with a model only where one is loaded already, and /playground loads none. Any page or module
+  // that starts loading a model must tell the player first, as the battle page and the theatre do.
+  const dir = (p: string) => (readdirSync(new URL(`../${p}`, import.meta.url), { recursive: true }) as string[]).map((f) => `src/${p}/${f}`);
+  const files = [...dir('pages'), ...dir('lib'), ...dir('components')].filter((f) => /\.(astro|ts)$/.test(f) && !/\.test\.ts$/.test(f));
+  const text = (f: string) => readFileSync(new URL(`../../${f}`, import.meta.url), 'utf8');
+
+  it('is only a page that shows the notice first', () => {
+    const loaders = files.filter((f) => f !== 'src/lib/brain.ts' && /\bloadBrain\s*\(/.test(text(f)));
+    expect(loaders.sort()).toEqual(['src/pages/battle.astro', 'src/pages/theatre.astro']);
+    for (const f of loaders) {
+      expect([f, text(f).includes('id="ai-notice"')], `${f} shows #ai-notice`).toEqual([f, true]);
+      expect([f, /\baiNotice\(/.test(text(f))], `${f} picks it with aiNotice()`).toEqual([f, true]);
     }
   });
 });
