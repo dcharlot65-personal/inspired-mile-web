@@ -95,14 +95,16 @@ async fn start(pool: &PgPool, tournament_id: Uuid) -> Result<(), sqlx::Error> {
         .await?;
     let mut byes = Vec::new();
     for (round, order, p1, p2) in &matches {
-        let status = if p1.is_none() || p2.is_none() { "bye" } else { "pending" };
         // A match with both players known is to be played within the hours of the file: a round
         // robin's round r within r times them, so its rounds come one after another; a later
         // single-elimination match gets its time when its second player is known (progress.rs).
+        // A bye goes in as pending with no time, and `complete_bye` decides it below: a match is
+        // taken for decided only once its player has gone on (`progress::advance` settles the next
+        // round's match when both its feeders are decided).
         let hours = RULES.tournaments.match_hours * if round_robin { *round } else { 1 };
         let id: Uuid = sqlx::query_scalar(
             "INSERT INTO tournament_matches (tournament_id, round, match_order, player1_id, player2_id, status, play_by)
-             VALUES ($1, $2, $3, $4, $5, $6, CASE WHEN $6 = 'pending' THEN NOW() + make_interval(hours => $7) END)
+             VALUES ($1, $2, $3, $4, $5, 'pending', CASE WHEN $4::uuid IS NOT NULL AND $5::uuid IS NOT NULL THEN NOW() + make_interval(hours => $6) END)
              RETURNING id",
         )
         .bind(tournament_id)
@@ -110,7 +112,6 @@ async fn start(pool: &PgPool, tournament_id: Uuid) -> Result<(), sqlx::Error> {
         .bind(order)
         .bind(p1)
         .bind(p2)
-        .bind(status)
         .bind(hours)
         .fetch_one(&mut *tx)
         .await?;

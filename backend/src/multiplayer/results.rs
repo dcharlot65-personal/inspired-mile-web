@@ -18,12 +18,14 @@ use sqlx::{PgPool, Postgres, Transaction};
 use tokio::sync::mpsc;
 use uuid::Uuid;
 
-use super::game_room::{MatchRecord, RoomReport};
+use super::game_room::{MatchRecord, RoomReport, Unstored};
 use crate::ledger;
 
 /// Write each report as it comes. A write that fails is tried again a few times; one that
-/// still fails is logged in full, so an operator can enter it by hand.
-pub async fn run_recorder(pool: PgPool, mut rx: mpsc::UnboundedReceiver<RoomReport>) {
+/// still fails is logged in full, so an operator can enter it by hand. Once a report about a
+/// tournament match is written (or given up), `unstored` is told: until then the match's deadline
+/// waits for it (`RoomManager::tournament_room_live`).
+pub async fn run_recorder(pool: PgPool, mut rx: mpsc::UnboundedReceiver<RoomReport>, unstored: Unstored) {
     while let Some(report) = rx.recv().await {
         let mut attempt = 0;
         loop {
@@ -47,6 +49,9 @@ pub async fn run_recorder(pool: PgPool, mut rx: mpsc::UnboundedReceiver<RoomRepo
                     break;
                 }
             }
+        }
+        if let Some(m) = report.tournament_match() {
+            unstored.end(m);
         }
     }
 }

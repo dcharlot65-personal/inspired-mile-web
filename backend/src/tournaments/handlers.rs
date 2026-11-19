@@ -53,11 +53,13 @@ pub struct BracketMatch {
     /// When the match is to have been played (both players known); then the server decides it
     /// (`progress::decide_overdue`).
     play_by: Option<String>,
-    /// How it was decided: room, bye, no_show, lot or unplayed (None while undecided, and for a
-    /// match decided before this was kept).
+    /// How it was decided: room, bye, no_show or unplayed (None while undecided, and for a match
+    /// decided before this was kept). Only `room` is a win in the standings.
     decided_by: Option<String>,
 }
 
+/// A player's standing: wins and losses are matches a room decided (the server judged them); a
+/// bye or an opponent's no-show takes a player on and is neither.
 #[derive(Serialize)]
 pub struct LeaderboardEntry {
     user_id: Uuid,
@@ -297,7 +299,7 @@ async fn get_leaderboard(
          JOIN users u ON u.id = e.user_id
          LEFT JOIN tournament_matches m ON m.tournament_id = e.tournament_id
            AND (m.player1_id = u.id OR m.player2_id = u.id)
-           AND m.status = 'completed'
+           AND m.status = 'completed' AND m.decided_by = 'room'
          WHERE e.tournament_id = $1
          GROUP BY u.id, u.username, e.eliminated
          ORDER BY wins DESC, losses ASC",
@@ -325,6 +327,10 @@ async fn get_leaderboard(
 /// The room is opened while the tournament and the match are locked, in the order every result
 /// and the scheduler lock them: a match past its time that the scheduler is deciding at that
 /// moment is either decided first (and no room is opened) or sees this room and waits for it.
+///
+/// Past the match's deadline no new room is opened (400), only the one still going is given
+/// again: until the third check of 2026-11-19 a player could open a room every four minutes and
+/// keep the deadline from ever deciding the match.
 async fn open_match_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
@@ -341,7 +347,8 @@ async fn open_match_room(
         .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
     let m = sqlx::query(
-        "SELECT m.player1_id, m.player2_id, m.status, u1.username AS p1_name, u2.username AS p2_name
+        "SELECT m.player1_id, m.player2_id, m.status, u1.username AS p1_name, u2.username AS p2_name,
+                COALESCE(m.play_by <= NOW(), FALSE) AS overdue
          FROM tournament_matches m
          LEFT JOIN users u1 ON u1.id = m.player1_id
          LEFT JOIN users u2 ON u2.id = m.player2_id
@@ -365,6 +372,13 @@ async fn open_match_room(
     };
     if claims.sub != p1 && claims.sub != p2 {
         return Err((StatusCode::FORBIDDEN, "Only match participants can play a match".into()));
+    }
+    if m.get::<bool, _>("overdue") {
+        // Past its time: the room still going may be joined again, and nothing else.
+        return match rooms.open_tournament_room_for(match_id).await {
+            Some(room_id) => Ok(Json(MatchRoomResponse { room_id })),
+            None => Err((StatusCode::BAD_REQUEST, "This match is past its deadline".into())),
+        };
     }
     let seats = [(p1, m.get::<String, _>("p1_name")), (p2, m.get::<String, _>("p2_name"))];
     let origin = crate::multiplayer::handlers::origin_of(&headers, peer, &config);

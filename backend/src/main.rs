@@ -90,7 +90,7 @@ async fn main() {
     }
     let rooms = Arc::new(RoomManager::with_timing(timing).with_recorder(record_tx));
     let queue = Arc::new(MatchmakingQueue::new());
-    tokio::spawn(multiplayer::results::run_recorder(pool.clone(), record_rx));
+    tokio::spawn(multiplayer::results::run_recorder(pool.clone(), record_rx, rooms.unstored()));
 
     // The tournament scheduler: it draws brackets when registration closes, and decides a match
     // whose time to be played has passed (tournaments/scheduler.rs). It asks the rooms whether a
