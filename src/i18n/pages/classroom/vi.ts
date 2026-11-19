@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Chế độ Lớp học',
-  'classroom.meta.description': 'Giáo viên tạo lớp học, giao đố vui và thử thách về Shakespeare, rồi theo dõi tiến độ của học sinh.',
+  'classroom.meta.description': 'Giáo viên tạo lớp học và giao đố vui, thử thách về Shakespeare cho học sinh.',
   'classroom.badge': 'Giáo dục',
   'classroom.title': 'Chế độ Lớp học',
-  'classroom.intro': 'Tạo một lớp học hoặc tham gia một lớp. Giáo viên giao đố vui và thử thách về Shakespeare, rồi theo dõi tiến độ của học sinh.',
+  'classroom.intro': 'Tạo một lớp học hoặc tham gia một lớp. Giáo viên giao đố vui và thử thách về Shakespeare cho học sinh.',
   'classroom.gate.title': 'Trước khi bắt đầu',
   'classroom.gate.body': 'Chế độ Lớp học được làm cho nhà trường. Hãy chọn vai trò của bạn để tiếp tục.',
   'classroom.role.teacher': 'Tôi là giáo viên',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Trước khi tham gia một lớp học, hãy xác nhận những điều sau:',
   'classroom.student.check1': 'Cha mẹ hoặc người giám hộ hợp pháp của tôi biết tôi dùng Inspired Mile cho việc học ở trường và đã cho phép.',
   'classroom.student.check2': 'Giáo viên đã cho tôi mã tham gia lớp học.',
-  'classroom.student.check3': 'Tôi hiểu rằng giáo viên có thể xem tiến độ và hoạt động của tôi trong lớp học.',
+  'classroom.student.check3': 'Tôi hiểu rằng giáo viên có thể thấy tôi đã tham gia lớp học và tham gia khi nào.',
   'classroom.student.continue': 'Tiếp tục với vai trò học sinh',
   'classroom.join.tab': 'Tham gia lớp học',
   'classroom.create.tab': 'Tạo lớp học',
@@ -74,10 +74,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 câu hỏi trắc nghiệm về Shakespeare',
   'classroom.wizard.s3.challenge': 'Điền từ còn thiếu vào những câu trích dẫn nổi tiếng',
   'classroom.wizard.s3.battle': 'Một trận đấu thơ ba hiệp, được chấm ngay trên thiết bị',
-  'classroom.wizard.s4.title': 'Theo dõi tiến độ',
-  'classroom.wizard.s4.body': 'Xem mỗi học sinh đã hoàn thành những gì, điểm số và các lá bài các em giành được. Dữ liệu chỉ nằm trong lớp học: học sinh thấy tiến độ của riêng mình, còn bạn thấy tiến độ của cả lớp.',
-  'classroom.wizard.s4.visibility': 'Ai xem được tiến độ của học sinh',
-  'classroom.wizard.s4.ferpa': 'Tuân thủ đạo luật FERPA',
 };
 
 export default messages;

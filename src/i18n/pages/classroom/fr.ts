@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Mode Classe',
-  'classroom.meta.description': 'Les enseignants créent des classes, donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.',
+  'classroom.meta.description': 'Les enseignants créent des classes et donnent des quiz et des défis sur Shakespeare à leurs élèves.',
   'classroom.badge': 'Éducation',
   'classroom.title': 'Mode Classe',
-  'classroom.intro': 'Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.',
+  'classroom.intro': 'Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare à leurs élèves.',
   'classroom.gate.title': 'Avant de commencer',
   'classroom.gate.body': 'Le Mode Classe est conçu pour les établissements scolaires. Choisissez votre rôle pour continuer.',
   'classroom.role.teacher': 'Je suis enseignant ou enseignante',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Avant de rejoindre une classe, veuillez confirmer ce qui suit\u00a0:',
   'classroom.student.check1': 'Mon parent ou mon tuteur légal sait que j’utilise Inspired Mile pour mon travail scolaire et m’en a donné la permission.',
   'classroom.student.check2': 'Mon enseignant m’a donné un code d’accès à une classe.',
-  'classroom.student.check3': 'Je comprends que mon enseignant peut voir mes progrès et ce que je fais dans la classe.',
+  'classroom.student.check3': 'Je comprends que mon enseignant peut voir que j’ai rejoint la classe, et quand.',
   'classroom.student.continue': 'Continuer en tant qu’élève',
   'classroom.join.tab': 'Rejoindre une classe',
   'classroom.create.tab': 'Créer une classe',
@@ -75,10 +75,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 questions à choix multiples sur Shakespeare',
   'classroom.wizard.s3.challenge': 'Retrouver les mots manquants de citations célèbres',
   'classroom.wizard.s3.battle': 'Un duel de strophes en trois manches, jugé sur l’appareil',
-  'classroom.wizard.s4.title': 'Suivez les progrès',
-  'classroom.wizard.s4.body': 'Consultez ce que chaque élève a terminé, ses scores et les cartes qu’il a gagnées. Les données restent dans la classe\u00a0: chaque élève voit ses propres progrès, et vous voyez ceux de tous.',
-  'classroom.wizard.s4.visibility': 'Qui peut voir les progrès d’un élève',
-  'classroom.wizard.s4.ferpa': 'Conforme à la loi FERPA',
 };
 
 export default messages;

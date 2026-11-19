@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'โหมดชั้นเรียน',
-  'classroom.meta.description': 'ครูสร้างชั้นเรียน มอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ และติดตามความก้าวหน้าของนักเรียน',
+  'classroom.meta.description': 'ครูสร้างชั้นเรียน และมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ให้นักเรียน',
   'classroom.badge': 'การศึกษา',
   'classroom.title': 'โหมดชั้นเรียน',
-  'classroom.intro': 'สร้างชั้นเรียนหรือเข้าร่วมชั้นเรียน ครูมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ และติดตามความก้าวหน้าของนักเรียน',
+  'classroom.intro': 'สร้างชั้นเรียนหรือเข้าร่วมชั้นเรียน ครูมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ให้นักเรียน',
   'classroom.gate.title': 'ก่อนเริ่มต้น',
   'classroom.gate.body': 'โหมดชั้นเรียนออกแบบมาสำหรับโรงเรียน เลือกบทบาทของคุณเพื่อไปต่อ',
   'classroom.role.teacher': 'ฉันเป็นครู',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'ก่อนเข้าร่วมชั้นเรียน โปรดยืนยันข้อต่อไปนี้',
   'classroom.student.check1': 'พ่อแม่หรือผู้ปกครองตามกฎหมายของข้าพเจ้าทราบว่าข้าพเจ้าใช้ Inspired Mile เพื่อการเรียน และอนุญาตแล้ว',
   'classroom.student.check2': 'ครูให้รหัสเข้าร่วมชั้นเรียนแก่ข้าพเจ้าแล้ว',
-  'classroom.student.check3': 'ข้าพเจ้าเข้าใจว่าครูมองเห็นความก้าวหน้าและกิจกรรมของข้าพเจ้าในชั้นเรียนได้',
+  'classroom.student.check3': 'ข้าพเจ้าเข้าใจว่าครูมองเห็นได้ว่าข้าพเจ้าเข้าร่วมชั้นเรียนแล้วและเข้าร่วมเมื่อใด',
   'classroom.student.continue': 'ไปต่อในฐานะนักเรียน',
   'classroom.join.tab': 'เข้าร่วมชั้นเรียน',
   'classroom.create.tab': 'สร้างชั้นเรียน',
@@ -73,10 +73,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': 'คำถามปรนัยเกี่ยวกับเชกสเปียร์ 5 ข้อ',
   'classroom.wizard.s3.challenge': 'เติมคำที่หายไปในวาทะที่มีชื่อเสียง',
   'classroom.wizard.s3.battle': 'การประชันบทกลอนสามยก ตัดสินบนอุปกรณ์',
-  'classroom.wizard.s4.title': 'ติดตามความก้าวหน้า',
-  'classroom.wizard.s4.body': 'ดูว่านักเรียนแต่ละคนทำอะไรเสร็จแล้ว ได้คะแนนเท่าไร และได้การ์ดใดบ้าง ข้อมูลอยู่ภายในชั้นเรียนเท่านั้น: นักเรียนเห็นความก้าวหน้าของตัวเอง ส่วนคุณเห็นของทุกคน',
-  'classroom.wizard.s4.visibility': 'ใครเห็นความก้าวหน้าของนักเรียนได้บ้าง',
-  'classroom.wizard.s4.ferpa': 'เป็นไปตามกฎหมาย FERPA',
 };
 
 export default messages;

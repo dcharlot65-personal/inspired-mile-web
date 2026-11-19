@@ -288,17 +288,17 @@ test.describe('What the pages build in script', () => {
     for (const box of await page.locator('.teacher-check').all()) await box.check();
     await page.click('#teacher-continue');
     await expect(page.locator('#teacher-wizard')).toBeVisible();
-    await expect(page.locator('#wizard-step')).toHaveText('Schritt 1 von 4');
+    // Three steps: the tour no longer promises to follow each student's progress (Classroom Mode records none; D-03).
+    await expect(page.locator('#wizard-step')).toHaveText('Schritt 1 von 3');
     await expect(page.locator('#wizard-next')).toHaveText(de['classroom.wizard.next']);
     await page.click('#wizard-next');
     await page.click('#wizard-next');
-    await page.click('#wizard-next');
-    await expect(page.locator('#wizard-step')).toHaveText('Schritt 4 von 4');
+    await expect(page.locator('#wizard-step')).toHaveText('Schritt 3 von 3');
     await expect(page.locator('#wizard-next')).toHaveText(de['classroom.wizard.start']);
     await expect(page.locator('#wizard-prev')).toHaveText(de['auth.back']);
     expect(await stickingOut(page)).toEqual([]);
     await page.selectOption('#locale-switch', 'ar');
-    await expect(page.locator('#wizard-step')).toHaveText('الخطوة 4 من 4');
+    await expect(page.locator('#wizard-step')).toHaveText('الخطوة 3 من 3');
     await page.click('#wizard-next');
     await expect(page.locator('#teacher-wizard')).toBeHidden();
   });

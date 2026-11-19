@@ -372,15 +372,14 @@ test.describe('Translated pages: what a script draws', () => {
       }, [selector, strip] as const);
     await seed(page);
     await page.goto('/about');
+    // The about page listed credits earned (+50 a battle won); it no longer does, since nothing paid them (D-03).
     for (const l of ['ar', 'en'] as const) {
-      await show(page, '/about', l);
-      expect([l, await plusLeftOfDigits('[data-i18n-html="about.free.earn.l1"]')]).toEqual([l, true]);
       await show(page, '/world-map', l);
       expect([l, await plusLeftOfDigits('#world-grid [data-city="Tokyo"]')]).toEqual([l, true]);
     }
     // The check can fail: without the isolate the Arabic page puts the sign after the number.
-    await show(page, '/about', 'ar');
-    expect(await plusLeftOfDigits('[data-i18n-html="about.free.earn.l2"]', true)).toBe(false);
+    await show(page, '/world-map', 'ar');
+    expect(await plusLeftOfDigits('#world-grid [data-city="Tokyo"]', true)).toBe(false);
   });
 
   test('an unlocked achievement is announced in the language', async ({ page }) => {

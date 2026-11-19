@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Modo Clase',
-  'classroom.meta.description': 'Los docentes crean clases, ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.',
+  'classroom.meta.description': 'Los docentes crean clases y ponen trivial y desafíos sobre Shakespeare a sus estudiantes.',
   'classroom.badge': 'Educación',
   'classroom.title': 'Modo Clase',
-  'classroom.intro': 'Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.',
+  'classroom.intro': 'Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare a sus estudiantes.',
   'classroom.gate.title': 'Antes de empezar',
   'classroom.gate.body': 'El Modo Clase está pensado para centros educativos. Elige tu papel para continuar.',
   'classroom.role.teacher': 'Soy docente',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Antes de unirte a una clase, confirma lo siguiente:',
   'classroom.student.check1': 'Mi padre, mi madre o mi tutor legal sabe que uso Inspired Mile para las tareas de clase y me ha dado permiso.',
   'classroom.student.check2': 'Mi docente me ha dado un código de acceso a una clase.',
-  'classroom.student.check3': 'Entiendo que mi docente puede ver mi progreso y lo que hago en la clase.',
+  'classroom.student.check3': 'Entiendo que mi docente puede ver que me uní a la clase, y cuándo.',
   'classroom.student.continue': 'Continuar como estudiante',
   'classroom.join.tab': 'Unirse a una clase',
   'classroom.create.tab': 'Crear una clase',
@@ -75,10 +75,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 preguntas de opción múltiple sobre Shakespeare',
   'classroom.wizard.s3.challenge': 'Completar las palabras que faltan en citas famosas',
   'classroom.wizard.s3.battle': 'Un duelo de estrofas a tres rondas, juzgado en el dispositivo',
-  'classroom.wizard.s4.title': 'Sigue el progreso',
-  'classroom.wizard.s4.body': 'Consulta lo que ha completado cada estudiante, sus puntuaciones y las cartas que ha ganado. Los datos no salen de la clase: cada estudiante ve su propio progreso y tú ves el de todos.',
-  'classroom.wizard.s4.visibility': 'Quién puede ver el progreso de un estudiante',
-  'classroom.wizard.s4.ferpa': 'Conforme con la FERPA',
 };
 
 export default messages;

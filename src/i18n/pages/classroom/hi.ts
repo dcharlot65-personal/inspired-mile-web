@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'कक्षा मोड',
-  'classroom.meta.description': 'शिक्षक कक्षाएँ बनाते हैं, शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं और अपने विद्यार्थियों की प्रगति देखते हैं।',
+  'classroom.meta.description': 'शिक्षक कक्षाएँ बनाते हैं और अपने विद्यार्थियों को शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं।',
   'classroom.badge': 'शिक्षा',
   'classroom.title': 'कक्षा मोड',
-  'classroom.intro': 'कोई कक्षा बनाएँ या किसी कक्षा में शामिल हों। शिक्षक शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं और अपने विद्यार्थियों की प्रगति देखते हैं।',
+  'classroom.intro': 'कोई कक्षा बनाएँ या किसी कक्षा में शामिल हों। शिक्षक अपने विद्यार्थियों को शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं।',
   'classroom.gate.title': 'शुरू करने से पहले',
   'classroom.gate.body': 'कक्षा मोड विद्यालयों के लिए बना है। आगे बढ़ने के लिए अपनी भूमिका चुनें।',
   'classroom.role.teacher': 'मैं शिक्षक हूँ',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'किसी कक्षा में शामिल होने से पहले कृपया इन बातों की पुष्टि करें:',
   'classroom.student.check1': 'मेरे माता-पिता या क़ानूनी अभिभावक को इसकी जानकारी है, और उन्होंने मुझे पढ़ाई के काम के लिए Inspired Mile इस्तेमाल करने की अनुमति दी है।',
   'classroom.student.check2': 'मेरे शिक्षक ने मुझे कक्षा में शामिल होने का कोड दिया है।',
-  'classroom.student.check3': 'मुझे पता है कि मेरे शिक्षक कक्षा में मेरी प्रगति और गतिविधि देख सकते हैं।',
+  'classroom.student.check3': 'मुझे पता है कि मेरे शिक्षक कक्षा में मेरे जुड़ने की तारीख़ देख सकते हैं।',
   'classroom.student.continue': 'विद्यार्थी के रूप में आगे बढ़ें',
   'classroom.join.tab': 'कक्षा में शामिल हों',
   'classroom.create.tab': 'कक्षा बनाएँ',
@@ -74,10 +74,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': 'शेक्सपीयर पर 5 बहुविकल्पीय प्रश्न',
   'classroom.wizard.s3.challenge': 'प्रसिद्ध उद्धरणों में छूटे हुए शब्द भरना',
   'classroom.wizard.s3.battle': 'तीन दौर का पदों का द्वंद्व, जिसका निर्णय डिवाइस पर ही होता है',
-  'classroom.wizard.s4.title': 'प्रगति देखें',
-  'classroom.wizard.s4.body': 'देखें कि हर विद्यार्थी ने क्या पूरा किया है, उसके अंक कितने हैं और उसने कौन-से कार्ड जीते हैं। डेटा कक्षा के भीतर ही रहता है: विद्यार्थी केवल अपनी प्रगति देखते हैं, और आप सबकी।',
-  'classroom.wizard.s4.visibility': 'विद्यार्थी की प्रगति कौन देख सकता है',
-  'classroom.wizard.s4.ferpa': 'FERPA के अनुरूप',
 };
 
 export default messages;

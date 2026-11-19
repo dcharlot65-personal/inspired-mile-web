@@ -74,7 +74,7 @@ const SAME_AS_ENGLISH = {
 /** Findings of the glossary checks that were read and are not errors, with the reason. */
 const ALLOW = [
   { lang: '*', key: 'about.tech.ai.body', rule: 'glossary', reason: '"judge" is the verb here (they judge the duel); the glossary term is the noun' },
-  { lang: '*', key: 'about.free.earn.l2', rule: 'glossary', reason: 'a trivia round, not a round of the duel' },
+  { lang: '*', key: 'world-map.intro', rule: 'glossary', reason: 'a trivia round, not a round of the duel' },
   { lang: '*', key: 'variants.ability.MEX.name', rule: 'glossary', reason: '"Corrido Craft" gives +2 Wordplay; "craft" is the ordinary word here, and the score term would say it adds craft' },
   { lang: 'pl', key: 'rules.cost', rule: 'glossary', reason: '"atramencie" is the locative of atrament' },
   { lang: 'pl', key: 'rules.relic', rule: 'glossary', reason: '"słów mocy" is the genitive of słowa mocy' },

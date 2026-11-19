@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Modo Turma',
-  'classroom.meta.description': 'Professores criam turmas, passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.',
+  'classroom.meta.description': 'Professores criam turmas e passam quizzes e desafios sobre Shakespeare para os estudantes.',
   'classroom.badge': 'Educação',
   'classroom.title': 'Modo Turma',
-  'classroom.intro': 'Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.',
+  'classroom.intro': 'Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare para os estudantes.',
   'classroom.gate.title': 'Antes de começar',
   'classroom.gate.body': 'O Modo Turma foi feito para escolas. Escolha o seu papel para continuar.',
   'classroom.role.teacher': 'Sou professor ou professora',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Antes de entrar em uma turma, confirme o seguinte:',
   'classroom.student.check1': 'Um dos meus pais ou meu responsável legal sabe que uso o Inspired Mile para trabalhos da escola e deu permissão.',
   'classroom.student.check2': 'Meu professor me deu um código de acesso a uma turma.',
-  'classroom.student.check3': 'Entendo que meu professor pode ver meu progresso e o que eu faço na turma.',
+  'classroom.student.check3': 'Entendo que meu professor pode ver que entrei na turma e quando.',
   'classroom.student.continue': 'Continuar como estudante',
   'classroom.join.tab': 'Entrar em uma turma',
   'classroom.create.tab': 'Criar uma turma',
@@ -75,10 +75,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 perguntas de múltipla escolha sobre Shakespeare',
   'classroom.wizard.s3.challenge': 'Completar as palavras que faltam em citações famosas',
   'classroom.wizard.s3.battle': 'Um duelo de estrofes em três rodadas, julgado no dispositivo',
-  'classroom.wizard.s4.title': 'Acompanhe o progresso',
-  'classroom.wizard.s4.body': 'Veja o que cada estudante concluiu, suas pontuações e as cartas que ganhou. Os dados ficam dentro da turma: cada estudante vê o próprio progresso, e você vê o de todos.',
-  'classroom.wizard.s4.visibility': 'Quem pode ver o progresso de um estudante',
-  'classroom.wizard.s4.ferpa': 'Em conformidade com a FERPA',
 };
 
 export default messages;

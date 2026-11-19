@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': 'Khám phá các thành phố trên khắp thế giới và tìm những biến thể lá bài thế giới cho các nhân vật Shakespeare của bạn.',
   'world-map.badge': 'Lá bài thế giới',
   'world-map.title': 'Bản đồ <b>thế giới</b>',
-  'world-map.intro': 'Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khoá biến thể qua trận đấu, đố vui và khám phá.',
+  'world-map.intro': 'Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khoá biến thể bằng một lượt đố vui đúng hết mọi câu.',
   'world-map.combinations': 'Số tổ hợp có thể có: {n}',
   'world-map.view': 'Xem',
   'world-map.attire': 'Phong cách trang phục',

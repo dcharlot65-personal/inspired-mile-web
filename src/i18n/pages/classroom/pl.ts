@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Tryb klasowy',
-  'classroom.meta.description': 'Nauczyciele tworzą klasy, zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.',
+  'classroom.meta.description': 'Nauczyciele tworzą klasy i zadają quizy i wyzwania o Szekspirze dla swoich uczniów.',
   'classroom.badge': 'Edukacja',
   'classroom.title': 'Tryb klasowy',
-  'classroom.intro': 'Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.',
+  'classroom.intro': 'Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze dla swoich uczniów.',
   'classroom.gate.title': 'Zanim zaczniesz',
   'classroom.gate.body': 'Tryb klasowy jest przeznaczony dla szkół. Wybierz swoją rolę, aby przejść dalej.',
   'classroom.role.teacher': 'Jestem nauczycielem lub nauczycielką',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Zanim dołączysz do klasy, potwierdź, że:',
   'classroom.student.check1': 'Mój rodzic lub opiekun prawny wie, że korzystam z Inspired Mile do nauki szkolnej, i wyraził na to zgodę.',
   'classroom.student.check2': 'Mam od nauczyciela kod dołączenia do klasy.',
-  'classroom.student.check3': 'Rozumiem, że nauczyciel widzi moje postępy i to, co robię w klasie.',
+  'classroom.student.check3': 'Rozumiem, że nauczyciel widzi, że należę do klasy i od kiedy.',
   'classroom.student.continue': 'Dalej jako uczeń',
   'classroom.join.tab': 'Dołącz do klasy',
   'classroom.create.tab': 'Utwórz klasę',
@@ -76,10 +76,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 pytań wielokrotnego wyboru o Szekspirze',
   'classroom.wizard.s3.challenge': 'Uzupełnianie brakujących słów w słynnych cytatach',
   'classroom.wizard.s3.battle': 'Pojedynek na strofy w trzech rundach, oceniany na urządzeniu',
-  'classroom.wizard.s4.title': 'Śledź postępy',
-  'classroom.wizard.s4.body': 'Sprawdzaj, co ukończył każdy uczeń, jakie ma wyniki i jakie karty zdobył. Dane zostają w klasie: uczeń widzi własne postępy, a ty widzisz postępy wszystkich.',
-  'classroom.wizard.s4.visibility': 'Kto widzi postępy ucznia',
-  'classroom.wizard.s4.ferpa': 'Zgodne z ustawą FERPA',
 };
 
 export default messages;

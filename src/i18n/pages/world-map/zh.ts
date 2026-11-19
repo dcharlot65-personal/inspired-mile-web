@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': '探索世界各地的城市，为你的莎士比亚角色发现世界卡变体。',
   'world-map.badge': '世界卡',
   'world-map.title': '世界<b>地图</b>',
-  'world-map.intro': '莎士比亚的角色周游世界。每座城市都会赋予一种独特的对战能力。通过对战、问答和探索解锁变体。',
+  'world-map.intro': '莎士比亚的角色周游世界。每座城市都会赋予一种独特的对战能力。答对一整轮问答的全部题目，即可解锁变体。',
   'world-map.combinations': '可能的组合：{n}',
   'world-map.view': '查看',
   'world-map.attire': '服装风格',

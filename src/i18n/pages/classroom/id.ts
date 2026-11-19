@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Mode Kelas',
-  'classroom.meta.description': 'Guru membuat kelas, memberikan kuis dan tantangan tentang Shakespeare, serta memantau kemajuan siswa.',
+  'classroom.meta.description': 'Guru membuat kelas serta memberikan kuis dan tantangan tentang Shakespeare kepada siswa.',
   'classroom.badge': 'Pendidikan',
   'classroom.title': 'Mode Kelas',
-  'classroom.intro': 'Buat kelas atau bergabung ke sebuah kelas. Guru memberikan kuis dan tantangan tentang Shakespeare, serta memantau kemajuan siswa.',
+  'classroom.intro': 'Buat kelas atau bergabung ke sebuah kelas. Guru memberikan kuis dan tantangan tentang Shakespeare kepada siswa.',
   'classroom.gate.title': 'Sebelum mulai',
   'classroom.gate.body': 'Mode Kelas dibuat untuk sekolah. Pilih peranmu untuk melanjutkan.',
   'classroom.role.teacher': 'Saya guru',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Sebelum bergabung ke kelas, mohon pastikan hal-hal berikut:',
   'classroom.student.check1': 'Orang tua atau wali sah saya tahu bahwa saya memakai Inspired Mile untuk tugas sekolah dan sudah mengizinkannya.',
   'classroom.student.check2': 'Guru saya sudah memberi saya kode gabung untuk sebuah kelas.',
-  'classroom.student.check3': 'Saya mengerti bahwa guru saya dapat melihat kemajuan dan kegiatan saya di kelas.',
+  'classroom.student.check3': 'Saya mengerti bahwa guru saya dapat melihat bahwa saya bergabung ke kelas, dan kapan.',
   'classroom.student.continue': 'Lanjutkan sebagai siswa',
   'classroom.join.tab': 'Gabung ke kelas',
   'classroom.create.tab': 'Buat kelas',
@@ -73,10 +73,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 soal pilihan ganda tentang Shakespeare',
   'classroom.wizard.s3.challenge': 'Melengkapi kata yang hilang dalam kutipan terkenal',
   'classroom.wizard.s3.battle': 'Duel syair tiga ronde, dinilai di perangkat',
-  'classroom.wizard.s4.title': 'Pantau kemajuan',
-  'classroom.wizard.s4.body': 'Lihat apa yang sudah diselesaikan setiap siswa, nilainya, dan kartu yang diperolehnya. Data tetap berada di dalam kelas: siswa melihat kemajuannya sendiri, dan kamu melihat kemajuan semua siswa.',
-  'classroom.wizard.s4.visibility': 'Siapa yang dapat melihat kemajuan siswa',
-  'classroom.wizard.s4.ferpa': 'Sesuai dengan FERPA',
 };
 
 export default messages;

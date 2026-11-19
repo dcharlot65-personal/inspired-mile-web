@@ -317,12 +317,12 @@ describe('a signed number on a right-to-left page', () => {
     await setLocale('ar', { persist: false });
     await Promise.all(['about', 'rules', 'variants', 'card-terms'].map((a) => loadArea(a)));
     await loadPack('ar');
-    expect(tn('about.free.earn.l1', { n: 50 })).toContain(`${LRI}+50${PDI}`);
-    expect(rich('about.free.earn.l1', { n: 50 })).toContain(`${LRI}+50${PDI}`);
+    expect(tn('rules.relic', { words: 'x', n: 2, bonus: 6 })).toContain(`${LRI}+6${PDI}`);
+    expect(rich('rules.relic', { words: 'x', n: 2, bonus: 6 })).toContain(`${LRI}+6${PDI}`);
     expect(abilityBonus('Tokyo')).toContain(`${LRI}+2${PDI}`);
     expect(cardRule(CARD_CATALOG.find((c) => c.type === 'Relic')!, 'ar').lines[0]).toContain(`${LRI}+6${PDI}`);
     await setLocale('en', { persist: false });
-    expect(tn('about.free.earn.l1', { n: 50 })).not.toContain(LRI);
+    expect(tn('rules.relic', { words: 'x', n: 2, bonus: 6 })).not.toContain(LRI);
   });
 });
 

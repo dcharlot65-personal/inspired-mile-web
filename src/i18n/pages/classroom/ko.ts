@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': '학급 모드',
-  'classroom.meta.description': '교사가 학급을 만들고, 셰익스피어 퀴즈와 도전 과제를 내고, 학생들의 진행 상황을 확인해요.',
+  'classroom.meta.description': '교사가 학급을 만들고, 학생들에게 셰익스피어 퀴즈와 도전 과제를 내요.',
   'classroom.badge': '교육',
   'classroom.title': '학급 모드',
-  'classroom.intro': '학급을 만들거나 학급에 참여하세요. 교사는 셰익스피어 퀴즈와 도전 과제를 내고 학생들의 진행 상황을 확인할 수 있어요.',
+  'classroom.intro': '학급을 만들거나 학급에 참여하세요. 교사는 학생들에게 셰익스피어 퀴즈와 도전 과제를 낼 수 있어요.',
   'classroom.gate.title': '시작하기 전에',
   'classroom.gate.body': '학급 모드는 학교에서 쓰도록 만들었어요. 계속하려면 역할을 선택하세요.',
   'classroom.role.teacher': '교사예요',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': '학급에 참여하기 전에 다음 내용을 확인해 주세요.',
   'classroom.student.check1': '부모님 또는 법정 보호자가 제가 학교 공부에 Inspired Mile을 사용하는 것을 알고 있으며, 허락했습니다.',
   'classroom.student.check2': '선생님께 학급 참여 코드를 받았습니다.',
-  'classroom.student.check3': '선생님이 학급에서 저의 진행 상황과 활동을 볼 수 있다는 것을 이해합니다.',
+  'classroom.student.check3': '선생님이 제가 학급에 참여했다는 것과 그 시점을 볼 수 있다는 것을 이해합니다.',
   'classroom.student.continue': '학생으로 계속하기',
   'classroom.join.tab': '학급 참여',
   'classroom.create.tab': '학급 만들기',
@@ -73,10 +73,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '셰익스피어에 관한 객관식 문제 5개',
   'classroom.wizard.s3.challenge': '유명한 명언에서 빠진 낱말 채우기',
   'classroom.wizard.s3.battle': '세 라운드의 시 결투, 심판은 기기에서 이루어져요',
-  'classroom.wizard.s4.title': '진행 상황 확인하기',
-  'classroom.wizard.s4.body': '학생마다 무엇을 마쳤는지, 점수는 몇 점인지, 어떤 카드를 얻었는지 확인하세요. 데이터는 학급 안에만 있어요. 학생은 자기 진행 상황을, 선생님은 모두의 진행 상황을 볼 수 있어요.',
-  'classroom.wizard.s4.visibility': '학생의 진행 상황을 볼 수 있는 사람',
-  'classroom.wizard.s4.ferpa': 'FERPA 준수',
 };
 
 export default messages;

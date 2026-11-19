@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Режим класса',
-  'classroom.meta.description': 'Учителя создают классы, дают викторины и испытания по Шекспиру и следят за успехами учеников.',
+  'classroom.meta.description': 'Учителя создают классы и дают ученикам викторины и испытания по Шекспиру.',
   'classroom.badge': 'Образование',
   'classroom.title': 'Режим класса',
-  'classroom.intro': 'Создай класс или присоединись к готовому. Учителя дают викторины и испытания по Шекспиру и следят за успехами учеников.',
+  'classroom.intro': 'Создай класс или присоединись к готовому. Учителя дают ученикам викторины и испытания по Шекспиру.',
   'classroom.gate.title': 'Прежде чем начать',
   'classroom.gate.body': 'Режим класса создан для школ. Выбери свою роль, чтобы продолжить.',
   'classroom.role.teacher': 'Я учитель',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Прежде чем присоединиться к классу, подтверди следующее:',
   'classroom.student.check1': 'Мой родитель или законный опекун знает, что я пользуюсь Inspired Mile для учёбы, и разрешил это.',
   'classroom.student.check2': 'Учитель дал мне код класса.',
-  'classroom.student.check3': 'Я понимаю, что учитель видит мои успехи и то, что я делаю в классе.',
+  'classroom.student.check3': 'Я понимаю, что учитель видит, что я состою в классе и с какого времени.',
   'classroom.student.continue': 'Продолжить как ученик',
   'classroom.join.tab': 'Присоединиться к классу',
   'classroom.create.tab': 'Создать класс',
@@ -76,10 +76,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 вопросов по Шекспиру с выбором ответа',
   'classroom.wizard.s3.challenge': 'Вставить пропущенные слова в знаменитые цитаты',
   'classroom.wizard.s3.battle': 'Дуэль строф из трёх раундов, которую судит само устройство',
-  'classroom.wizard.s4.title': 'Следи за успехами',
-  'classroom.wizard.s4.body': 'Смотри, что выполнил каждый ученик, какой у него счёт и какие карты он заработал. Данные остаются внутри класса: ученик видит свои успехи, а ты видишь успехи всех.',
-  'classroom.wizard.s4.visibility': 'Кто видит успехи ученика',
-  'classroom.wizard.s4.ferpa': 'Соответствует закону FERPA',
 };
 
 export default messages;

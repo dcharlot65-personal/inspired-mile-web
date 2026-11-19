@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Klassenmodus',
-  'classroom.meta.description': 'Lehrkräfte legen Klassen an, stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.',
+  'classroom.meta.description': 'Lehrkräfte legen Klassen an und stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.',
   'classroom.badge': 'Bildung',
   'classroom.title': 'Klassenmodus',
-  'classroom.intro': 'Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.',
+  'classroom.intro': 'Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.',
   'classroom.gate.title': 'Bevor es losgeht',
   'classroom.gate.body': 'Der Klassenmodus ist für Schulen gedacht. Wähle deine Rolle, um fortzufahren.',
   'classroom.role.teacher': 'Ich bin Lehrkraft',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Bevor du einer Klasse beitrittst, bestätige bitte Folgendes:',
   'classroom.student.check1': 'Ein Elternteil oder mein gesetzlicher Vormund weiß, dass ich Inspired Mile für die Schule nutze, und hat es erlaubt.',
   'classroom.student.check2': 'Meine Lehrkraft hat mir einen Beitrittscode für eine Klasse gegeben.',
-  'classroom.student.check3': 'Mir ist klar, dass meine Lehrkraft meinen Lernstand und meine Aktivitäten in der Klasse sehen kann.',
+  'classroom.student.check3': 'Mir ist klar, dass meine Lehrkraft sehen kann, dass und wann ich der Klasse beigetreten bin.',
   'classroom.student.continue': 'Als Schülerin oder Schüler fortfahren',
   'classroom.join.tab': 'Klasse beitreten',
   'classroom.create.tab': 'Klasse anlegen',
@@ -74,10 +74,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 Multiple-Choice-Fragen zu Shakespeare',
   'classroom.wizard.s3.challenge': 'Fehlende Wörter in berühmten Zitaten ergänzen',
   'classroom.wizard.s3.battle': 'Ein Strophenduell über drei Runden, auf dem Gerät bewertet',
-  'classroom.wizard.s4.title': 'Lernstand verfolgen',
-  'classroom.wizard.s4.body': 'Sieh, was jede Schülerin und jeder Schüler erledigt hat, welche Wertungen erreicht und welche Karten verdient wurden. Die Daten bleiben in der Klasse: Schülerinnen und Schüler sehen ihren eigenen Lernstand, du siehst den aller.',
-  'classroom.wizard.s4.visibility': 'Wer den Lernstand einer Schülerin oder eines Schülers sehen kann',
-  'classroom.wizard.s4.ferpa': 'FERPA-konform',
 };
 
 export default messages;
