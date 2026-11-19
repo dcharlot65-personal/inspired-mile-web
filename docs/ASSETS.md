@@ -211,3 +211,23 @@ the splat loaders' `deflateURL`) for a ZIP-compressed EXR texture or a `.sog` sp
 (`spzLibraryUrl`) for a `.spz` one. No page loads any of them: the viewer only ever asks for
 `/models/splats/<card>.ply` from this site, and no code loads an EXR texture. Adding such a file means
 overriding those defaults first, as for the other libraries; `CLAUDE.md` ("Requests to other origins") lists them.
+
+### Third fix pass (2026-11-19)
+
+- **Rolldown's THIRD-PARTY-LICENSE was not in the notices file.** The bundle's `rolldown-runtime` chunk (1,116
+  bytes, read from the build of 2026-11-19) holds the helpers with which Rolldown joins modules, minified: the
+  shapes of `__commonJSMin`, `__export`, `__copyProps`, `__toESM` and the `__require` proxy, as Rolldown's own
+  `dist/experimental-runtime.mjs` names them, which are derived from esbuild's runtime; and Rolldown is a port of
+  Rollup. Rolldown 1.2.19 keeps both licenses in a file named
+  `THIRD-PARTY-LICENSE` beside its own `LICENSE`: Rollup's MIT ("Copyright (c) 2017 [these people]", the Rollup
+  contributors) and esbuild's MIT ("Copyright (c) 2020 Evan Wallace"). The notices script found license files by a
+  name pattern that did not match that name; it now does, and the file is in Part 1 under Rolldown. `/credits`
+  names esbuild and Rollup in the build tools' entry.
+- **No copyright is claimed over what was taken from the CC BY-SA works.** EDRDG's licence statement (read
+  2026-11-19, `https://www.edrdg.org/edrdg/licence.html`) says "Users of material from the files must NOT claim
+  copyright over that material". The notices file had said the derived tables "are themselves licensed under
+  CC BY-SA 4.0 by Voyage Tracable, LLC". It now says the company licenses its adaptations under CC BY-SA 4.0,
+  that the material taken from each work stays its authors' copyright and the company claims none over it, and
+  that the JMdict and JMnedict material stays the copyright of James William Breen and EDRDG. `/credits`
+  (share-alike duty, the JMdict entry, the language-data introduction) and the Terms' `#third-party` paragraph
+  say the same.

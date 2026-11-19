@@ -625,6 +625,9 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   show it, and multiplayer shows `notice.online` in the player's language inside its English page (`#mp-ai-notice`,
   its `lang`/`dir` set by script). On both pages the notice stays hidden until the page knows who will play, and
   names the model being loaded while it loads (`loadingModel`): it never says "no model" and then changes its mind.
+  When that model fails and `loadBrain` falls back to a smaller one (`loadOrder`), its third argument, `onTry`, hears
+  each model before it is tried, and the page names that one: the notice never names a model that already failed
+  (`ai-notice.test.ts` fails a `loadBrain` call without it).
   On the battle page, while a player is offered a model and has not chosen, nothing is said; no duel can start then,
   and the notice appears the moment they choose.
   "Artificial intelligence" is each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`).
@@ -652,7 +655,9 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   names one that does not ship; a shipped package has no licence file and no `PACKAGE_LICENSES` text; a
   `FILE_LICENSES`/`PACKAGE_LICENSES`/`DATA` entry covers nothing that ships; a shipped `src/` module says GENERATED
   and no `DATA` entry covers it; a package ships a file from a `libs/`, `vendor/` or `third_party/` folder that no
-  `FILE_LICENSES` entry covers (a package's licence file speaks only for its own code); a `FILE_LICENSES` entry that
+  `FILE_LICENSES` entry covers (a package's licence file speaks only for its own code; a package's licence files are
+  found by name, `LICENSE_FILE`, which includes THIRD-PARTY-LICENSE: Rolldown's, with Rollup's and esbuild's licenses;
+  Rolldown's module helpers in the bundle are derived from esbuild's runtime); a `FILE_LICENSES` entry that
   ships is not named on `/credits` by its id (an entry's `files`, `data-files`), or one named there does not ship;
   a `DATA` entry's text, or the notice of a file it covers, does not hold a file it must carry whole (`holds`: SCOWL's
   Copyright file, in `pron-en.ts` and in any other table added to that entry's `covers`). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
@@ -661,7 +666,14 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
 - **The Terms leave third-party material to its own licence** (`terms.astro` section 10, `#third-party`, and the
   reverse-engineering line in section 7): CC BY-SA's and the GPL's "no further restrictions". Keep that sentence if
-  the Terms are rewritten. The public contact address on privacy, terms and credits is contact@voyagetracable.com.
+  the Terms are rewritten. No copyright is claimed over what was taken from others' works (EDRDG's licence statement:
+  "Users of material from the files must NOT claim copyright over that material"): the Terms, `/credits` and the
+  notices file's CC BY-SA statement say so, and `terms.test.ts`, `credits.test.ts` and `third-party-notices.test.ts`
+  hold them to it.
+- **The tamper guard audits only links the page did not arrive with** (`src/scripts/tamper-guard.ts`, on every page):
+  a link added after load, or one whose address changed, to a host not in `ALLOWED_DOMAINS`. Links in the served page
+  are the site's own; before 2026-11-19 /credits and /privacy showed its red warning to every visitor three seconds
+  after load, and no test waited that long. `tests/tamper-guard.spec.ts` waits past `GRACE_PERIOD` on every page. The public contact address on privacy, terms and credits is contact@voyagetracable.com.
 
 ## Requests to other origins (the privacy policy depends on this)
 
