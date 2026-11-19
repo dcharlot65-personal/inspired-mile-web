@@ -13,7 +13,9 @@
  */
 
 import { selfHosted } from './self-hosted';
-import { loadVoiceLexicon, phonemizeEnglish, splitForKokoro } from './voice/g2p-en';
+
+/** The pronunciation code and its table load with the voice, never with the page (tests/voice.spec.ts). */
+const g2p = () => import('./voice/g2p-en');
 
 let tts: any = null;
 let loading = false;
@@ -31,7 +33,7 @@ export async function loadVoice(onProgress?: VoiceProgressCallback): Promise<boo
   loading = true;
 
   try {
-    const [{ KokoroTTS, env }, table] = await Promise.all([import('kokoro-js'), loadVoiceLexicon()]);
+    const [{ KokoroTTS, env }, table] = await Promise.all([import('kokoro-js'), g2p().then((m) => m.loadVoiceLexicon())]);
     if (!table) throw new Error('The voice pronunciation table did not load.');
     // kokoro-js carries its own Transformers.js, which would fetch its WebAssembly runtime
     // from cdn.jsdelivr.net. This site ships it (scripts/self-hosted-runtime.mjs).
@@ -88,6 +90,7 @@ export async function synthesise(text: string, voice = THESPIAN_VOICE): Promise<
  */
 export async function readAloud(model: any, text: string, voice = THESPIAN_VOICE, speed = THESPIAN_SPEED): Promise<Speech> {
   if (!Object.hasOwn(model.voices, voice)) throw new Error(`No Kokoro voice "${voice}".`);
+  const { phonemizeEnglish, splitForKokoro } = await g2p();
   const pieces = splitForKokoro(phonemizeEnglish(text, { british: voice.startsWith('b') }).ps);
   const parts: Float32Array[] = [];
   let sampleRate = 24000;

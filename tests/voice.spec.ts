@@ -77,3 +77,15 @@ test('the voice speaks without eSpeak NG, and the ear hears what it said', async
   expect(served.filter((s) => s.found.length), 'scripts holding eSpeak NG').toEqual([]);
   expect(urls.filter((u) => /phonemizer|espeak/i.test(u)), 'requests for phonemizer or eSpeak NG').toEqual([]);
 });
+
+test('a duel with the voice off fetches none of it: no Kokoro, no pronunciation code or table', async ({ page }) => {
+  const urls: string[] = [];
+  page.on('request', (r) => urls.push(r.url()));
+  await page.goto('/battle?seed=7&brain=rules', { waitUntil: 'networkidle' });
+  await expect(page.locator('#start-duel')).toBeEnabled();
+  await page.selectOption('#language', 'en');
+  await page.click('#start-duel');
+  await expect(page.locator('#opponent-verse')).toHaveAttribute('data-source', /written|model/, { timeout: 60_000 });
+  await page.waitForLoadState('networkidle');
+  expect(urls.filter((u) => /kokoro|lexicon-en|g2p-en|nrl-rules|lts-en|huggingface/i.test(u))).toEqual([]);
+});
