@@ -943,7 +943,6 @@ test.describe('Passkey-only accounts, with email off', () => {
     await page.goto(`${NO_EMAIL_WEB}/`);
     const first = await addVirtualAuthenticator(page);
     const { cdp } = first;
-    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
 
     // 1. Create the account. The warning comes before the account does.
     await openSignIn(page);
@@ -970,7 +969,9 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect(created.user.username).toMatch(/^bard-[0-9a-f]{12}$/);
     expect(created.passkey_count).toBe(1);
     const id = created.user.id;
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 1);
+    // This account, and no other for this authenticator (below: it holds one passkey). The whole
+    // table is not counted: tests in other workers create accounts at the same time.
+    expect(sql(`SELECT COUNT(*) FROM users WHERE id = '${id}'`)).toBe('1');
     expect(sql(`SELECT email IS NULL, age_tier, display_name IS NULL, avatar_url IS NULL FROM users WHERE id = '${id}'`)).toBe('t|adult|t|t');
     // The authenticator's user handle is the new account's id.
     const held = await cdp.send('WebAuthn.getCredentials', { authenticatorId: first.authenticatorId });
@@ -1049,14 +1050,16 @@ test.describe('Passkey-only accounts, with email off', () => {
   });
 
   test('nothing is written to users unless the passkey verifies', async ({ request }) => {
-    const usersBefore = sql('SELECT COUNT(*) FROM users');
     const begun = await signupBegin(request, { ageTier: 'teen' });
     expect(begun.status()).toBe(200);
     const { challenge_id, options } = await begun.json();
     // Usernameless and discoverable, with a random handle and a generated name.
     expect(options.authenticatorSelection.residentKey).toBe('required');
     expect(options.user.name).toMatch(/^bard-[0-9a-f]{12}$/);
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    // The account this ceremony would make, by its name (not the whole table: other workers
+    // create accounts at the same time).
+    const made = () => sql(`SELECT COUNT(*) FROM users WHERE username = '${options.user.name}'`);
+    expect(made()).toBe('0');
     expect(sql(`SELECT kind, user_id IS NULL FROM auth_challenges WHERE id = '${challenge_id}'`)).toBe('signup|t');
 
     const bogus = {
@@ -1067,8 +1070,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect(refused.status()).toBe(400);
     expect((await refused.json()).error).toBe('passkey_not_registered');
     expect(refused.headers()['set-cookie']).toBeUndefined();
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
-    expect(sql(`SELECT COUNT(*) FROM users WHERE username = '${options.user.name}'`)).toBe('0');
+    expect(made()).toBe('0');
 
     // The challenge was used up by that attempt.
     const again = await request.post(`${API_NO_EMAIL}/auth/passkey/signup/finish`, { data: bogus });
@@ -1079,11 +1081,12 @@ test.describe('Passkey-only accounts, with email off', () => {
   test('a sign-up challenge that has expired creates nothing', async ({ page }) => {
     await page.goto(`${NO_EMAIL_WEB}/`);
     await addVirtualAuthenticator(page);
-    const usersBefore = sql('SELECT COUNT(*) FROM users');
 
-    // The ceremony by hand, so the challenge can be aged between its two halves.
+    // The ceremony by hand, so the challenge can be aged between its two halves. Accounts are
+    // counted by the name each ceremony would give (other workers create accounts meanwhile).
     const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
     expect(begun.status).toBe(200);
+    const madeAs = (name: string) => sql(`SELECT COUNT(*) FROM users WHERE username = '${name}'`);
     sql(`UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE id = '${begun.body.challenge_id}'`);
     const credential = await page.evaluate(async (options) => {
       const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(options);
@@ -1096,7 +1099,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     });
     expect(finished.status).toBe(400);
     expect(finished.body.error).toBe('challenge_expired');
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    expect(madeAs(begun.body.options.user.name)).toBe('0');
     expect((await me(page)).status()).toBe(401);
 
     // Control: the same steps without the ageing do create the account.
@@ -1110,7 +1113,7 @@ test.describe('Passkey-only accounts, with email off', () => {
       challenge_id: fresh.body.challenge_id, credential: freshCredential, name: 'in time',
     });
     expect(ok.status).toBe(200);
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(Number(usersBefore) + 1);
+    expect(madeAs(fresh.body.options.user.name)).toBe('1');
   });
 
   test('begun sign-ups do not use up the account budget: the forty-first begin is still served', async ({ request }) => {
@@ -2107,9 +2110,13 @@ test.describe('Hardening: sign-up accounting', () => {
     // Four more get as far as a verified passkey, then finish at the same moment. Two
     // places are left; a count-then-insert without a lock would let all four in.
     const pending: { challenge_id: string; credential: unknown; name: string }[] = [];
+    // The accounts these four would make, by name: the whole table is not counted, since tests in
+    // other workers create accounts at the same time.
+    const names: string[] = [];
     for (let i = 39; i <= 42; i++) {
       const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
       expect(begun.status, `begin ${i}`).toBe(200);
+      names.push(begun.body.options.user.name);
       pending.push({
         challenge_id: begun.body.challenge_id,
         credential: await createCredential(page, begun.body.options, authenticator),
@@ -2123,7 +2130,6 @@ test.describe('Hardening: sign-up accounting', () => {
     const racer = await startApi({ TEST_ONLY_LIMIT_RACE_DELAY_MS: '500', RUST_LOG: 'warn' });
     let statuses: number[];
     let elapsed: number;
-    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
     try {
       const started = Date.now();
       statuses = await Promise.all(pending.map((body) =>
@@ -2135,7 +2141,7 @@ test.describe('Hardening: sign-up accounting', () => {
       await racer.stop();
     }
     expect([...statuses].sort()).toEqual([200, 200, 429, 429]);
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 2);
+    expect(sql(`SELECT COUNT(*) FROM users WHERE username IN (${names.map((n) => `'${n}'`).join(', ')})`)).toBe('2');
     expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('40');
     // Harness check: the two that were let in waited for each other, 500 ms each.
     expect(elapsed).toBeGreaterThanOrEqual(1000);

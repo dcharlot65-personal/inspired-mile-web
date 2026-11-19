@@ -38,9 +38,11 @@ const server = http.createServer((req, res) => {
   req.pipe(upstream);
 });
 
-// The dev server's hot-reload socket, passed straight through.
+// The dev server's hot-reload socket, and the API's game socket (/api/v1/multiplayer/ws: the
+// email-off API's rooms), passed straight through.
 server.on('upgrade', (req, socket, head) => {
-  const upstream = net.connect(webPort, 'localhost', () => {
+  const toApi = req.url.startsWith('/api/');
+  const upstream = net.connect(toApi ? apiPort : webPort, toApi ? '127.0.0.1' : 'localhost', () => {
     const lines = [`${req.method} ${req.url} HTTP/${req.httpVersion}`];
     for (let i = 0; i < req.rawHeaders.length; i += 2) {
       lines.push(`${req.rawHeaders[i]}: ${req.rawHeaders[i + 1]}`);

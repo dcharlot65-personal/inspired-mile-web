@@ -47,7 +47,14 @@ function sql(statement: string): string {
 interface Answer { status: number; body: any; text: string }
 
 /** A signed-in account, talking to the API directly (no cookie jar: it sends its own cookie). */
-interface Account { id: string; email: string; token: string; ip: string; call(method: string, route: string, body?: unknown): Promise<Answer> }
+interface Account {
+  id: string; email: string; token: string; ip: string;
+  call(method: string, route: string, body?: unknown): Promise<Answer>;
+  /** The same request to the email-off API (same database), which waits only a few seconds for a
+   *  tournament match's second player (tests/start-backend.sh). */
+  callNoEmail(method: string, route: string, body?: unknown): Promise<Answer>;
+}
+const API_NO_EMAIL = `http://127.0.0.1:${E2E.apiNoEmailPort}/api/v1`;
 
 function loggedCodes(email: string): string[] {
   if (!existsSync(API_LOG)) return [];
@@ -78,14 +85,16 @@ async function account(tier: 'adult' | 'teen' = 'adult'): Promise<Account> {
   const token = verified.res.headers.getSetCookie().map((c) => c.match(/^im_token=([^;]*)/)?.[1]).find(Boolean);
   expect(token, 'the account is signed in').toBeTruthy();
   const id = JSON.parse(verified.text).user.id as string;
+  const send = async (base: string, method: string, route: string, body?: unknown): Promise<Answer> => {
+    const { res, text } = await raw(method, `${base}${route}`, { Cookie: `im_token=${token}`, 'CF-Connecting-IP': ip }, body);
+    let parsed: any = null;
+    try { parsed = JSON.parse(text); } catch { /* plain text */ }
+    return { status: res.status, body: parsed, text };
+  };
   return {
     id, email, token: token!, ip,
-    async call(method, route, body) {
-      const { res, text } = await raw(method, `${API}${route}`, { Cookie: `im_token=${token}`, 'CF-Connecting-IP': ip }, body);
-      let parsed: any = null;
-      try { parsed = JSON.parse(text); } catch { /* plain text */ }
-      return { status: res.status, body: parsed, text };
-    },
+    call: (method, route, body) => send(API, method, route, body),
+    callNoEmail: (method, route, body) => send(API_NO_EMAIL, method, route, body),
   };
 }
 
@@ -99,9 +108,11 @@ const giveCredits = (who: Account, n: number) => sql(`UPDATE player_stats SET cr
 /** A seat at the table: a browser page on the site's origin with this account's cookie, and its game socket. */
 interface Seat { page: Page; close(): Promise<void>; send(m: unknown): Promise<void>; next(type: string, count?: number): Promise<any> }
 
-async function seat(browser: Browser, who: Account): Promise<Seat> {
-  const context = await browser.newContext({ baseURL: E2E.webOrigin });
-  await context.addCookies([{ name: 'im_token', value: who.token, url: E2E.webOrigin }]);
+async function seat(browser: Browser, who: Account, origin: string = E2E.webOrigin): Promise<Seat> {
+  // On E2E.webNoEmailOrigin the game socket reaches the email-off API (its own rooms); the two
+  // APIs share one database, so the account's cookie is good on both.
+  const context = await browser.newContext({ baseURL: origin });
+  await context.addCookies([{ name: 'im_token', value: who.token, url: origin }]);
   const page = await context.newPage();
   await page.goto('/manifest.json');
   const opened = await page.evaluate(() => new Promise<boolean>((resolve) => {
@@ -338,12 +349,18 @@ test.describe('the server is the authority over the economy and the rankings', (
     giveCard(seller, 'DC-002');
     giveCredits(b1, 50);
     giveCredits(b2, 50);
+    // The seller can afford the price, so a refusal can only be the own-listing rule (the first check
+    // of 2026-11-19 removed that rule and this test still passed: the seller had no credits).
+    giveCredits(seller, 500);
     const listing = (await seller.call('POST', '/marketplace/list', { card_id: 'DC-002', listing_type: 'sale', price_credits: 50 })).body;
-    expect((await seller.call('POST', `/marketplace/${listing.id}/buy`)).status, 'not your own').toBe(400);
+    const own = await seller.call('POST', `/marketplace/${listing.id}/buy`);
+    expect(own.status, 'not your own').toBe(400);
+    expect(own.text).toBe('Cannot buy your own listing');
+    expect(await credits(seller)).toBe(500);
     const answers = await Promise.all([b1, b2].map((b) => b.call('POST', `/marketplace/${listing.id}/buy`)));
     expect(answers.map((a) => a.status).sort()).toEqual([200, 400]);
     expect([await credits(b1), await credits(b2)].sort()).toEqual([0, 50]);
-    expect(await credits(seller)).toBe(50);
+    expect(await credits(seller)).toBe(550);
     expect([...(await held(b1)), ...(await held(b2))]).toEqual(['DC-002']);
   });
 
@@ -358,26 +375,51 @@ test.describe('the server is the authority over the economy and the rankings', (
       await s.send({ type: 'join_room', room_id: room.room_id, deck, lang: 'en' });
       expect((await s.next('error')).code, 'a card on sale cannot be fielded').toBe('card_not_held');
       expect((await ann.call('POST', `/marketplace/${listing.id}/cancel`)).status).toBe(200);
+      // Unlocked: it can be listed again, and once that is cancelled too, fielded.
+      const again = await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 });
+      expect(again.status, again.text).toBe(200);
+      expect((await ann.call('POST', `/marketplace/${again.body.id}/cancel`)).status).toBe(200);
       await s.send({ type: 'join_room', room_id: room.room_id, deck, lang: 'en' });
       expect((await s.next('room_joined')).room_id).toBe(room.room_id);
     } finally {
       await s.close();
     }
-    // And it can be listed again.
-    expect((await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 })).status).toBe(200);
   });
 
-  test("market: a teen's purchases stay within the daily limit", async () => {
+  test('market and referrals: adult accounts only (owner, 2026-11-19); a teen spends within its daily limit', async () => {
     const [seller, teen] = [await account(), await account('teen')];
     giveCard(seller, 'DC-003');
+    giveCard(teen, 'DC-004');
     giveCredits(teen, 1000);
-    const listing = (await seller.call('POST', '/marketplace/list', { card_id: 'DC-003', listing_type: 'sale', price_credits: 250 })).body;
-    const refused = await teen.call('POST', `/marketplace/${listing.id}/buy`);
-    expect(refused.status, refused.text).toBe(403);
-    expect(refused.text).toMatch(/^Daily spending limit reached /);
+    const listing = (await seller.call('POST', '/marketplace/list', { card_id: 'DC-003', listing_type: 'sale', price_credits: 25 })).body;
+    const code = (await seller.call('GET', '/referral')).body.code;
+    expect(code).toMatch(/^[A-Z0-9]{8}$/);
+    // A teen account can neither browse, buy, list nor take part in referrals.
+    for (const [method, route, body] of [
+      ['GET', '/marketplace', undefined],
+      ['GET', `/marketplace/${listing.id}`, undefined],
+      ['POST', `/marketplace/${listing.id}/buy`, undefined],
+      ['POST', '/marketplace/list', { card_id: 'DC-004', listing_type: 'sale', price_credits: 10 }],
+      ['GET', '/referral', undefined],
+      ['POST', '/referral/redeem', { code }],
+    ] as const) {
+      const r = await teen.call(method, route, body);
+      expect([r.status, r.text], `${method} ${route}`).toEqual([403, 'For adult accounts only']);
+    }
     expect(await credits(teen)).toBe(1000);
-    expect(await held(teen)).toEqual([]);
+    expect(await held(teen)).toEqual(['DC-004']);
     expect((await seller.call('GET', `/marketplace/${listing.id}`)).body.status).toBe('active');
+    expect(await credits(seller), 'no referral reward came from the teen').toBe(0);
+    // Its own listings it may still see (an adult account later made teen can cancel them).
+    expect((await teen.call('GET', '/marketplace/my')).status).toBe(200);
+
+    // Packs: the teen limit holds every spend to 200 credits a UTC day.
+    const epic = await teen.call('POST', '/inventory/packs', { tier: 'epic' });
+    expect(epic.status, epic.text).toBe(403);
+    expect(epic.text).toMatch(/^Daily spending limit reached /);
+    for (let i = 0; i < 4; i++) expect((await teen.call('POST', '/inventory/packs', { tier: 'standard' })).status, `pack ${i + 1}`).toBe(200);
+    expect((await teen.call('POST', '/inventory/packs', { tier: 'standard' })).status, 'the fifth 50-credit pack in a day').toBe(403);
+    expect(await credits(teen)).toBe(800);
   });
 
   test('tournaments: no participant names the winner; the match is decided by the room the server judged', async ({ browser }) => {
@@ -415,6 +457,7 @@ test.describe('the server is the authority over the economy and the rankings', (
     const decided = ((await ann.call('GET', `/tournaments/${t}/bracket`)).body as any[])[0];
     expect(decided.winner_id).toBe(bob.id);
     expect(decided.room_id, 'the match points at the stored result').toBe(roomA.body.room_id);
+    expect(decided.decided_by).toBe('room');
     expect(sql(`SELECT winner_id || '|' || end_reason FROM battle_rooms WHERE id = '${roomA.body.room_id}'`)).toBe(`${bob.id}|forfeit`);
     expect((await ann.call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
     const standings = (await ann.call('GET', `/tournaments/${t}/leaderboard`)).body as any[];
@@ -449,6 +492,9 @@ test.describe('the server is the authority over the economy and the rankings', (
     }
     await expect.poll(async () => (await ann.call('GET', '/stats')).body.online.wins, { timeout: 15000 }).toBe(4);
     expect(await credits(ann), 'the fourth win over one opponent in a day pays nothing').toBe(150);
+    // Nor does it climb the leaderboard: it counts three wins a day over one opponent.
+    const later = (await (await fetch(`${API}/stats/leaderboard`)).json()) as any[];
+    expect(later.find((e) => e.user_id === ann.id)).toMatchObject({ battle_wins: 3, total_battles: 4 });
   });
 
   test('season rewards: each player claims each level once, and the reward is granted', async () => {
@@ -522,6 +568,178 @@ test.describe('the server is the authority over the economy and the rankings', (
   });
 });
 
+/** A tournament's matches, as the API gives them. */
+async function bracketOf(who: Account, t: string): Promise<any[]> {
+  return (await who.call('GET', `/tournaments/${t}/bracket`)).body as any[];
+}
+const matchAt = (matches: any[], round: number, order: number) => matches.find((m) => m.round === round && m.match_order === order);
+
+/** A tournament of these players, in this order, drawn by the scheduler a few seconds after it is made. */
+async function tournament(players: Account[], format: 'single_elimination' | 'round_robin' = 'single_elimination'): Promise<string> {
+  const made = await players[0].call('POST', '/tournaments/create', {
+    name: `E2E ${unique()}`, format, starts_at: new Date(Date.now() + 4000).toISOString(), max_players: players.length,
+  });
+  expect(made.status, made.text).toBe(200);
+  for (const who of players) expect((await who.call('POST', `/tournaments/${made.body.id}/register`)).status).toBe(200);
+  await expect.poll(async () => (await bracketOf(players[0], made.body.id)).length, { message: 'the scheduler draws the bracket', timeout: 45000 }).toBeGreaterThan(0);
+  return made.body.id;
+}
+
+/** A tournament match played in its room to a forfeit by `loser`. */
+async function playMatch(browser: Browser, t: string, matchId: string, winner: Account, loser: Account) {
+  const room = await winner.call('POST', `/tournaments/${t}/matches/${matchId}/room`);
+  expect(room.status, room.text).toBe(200);
+  await playToForfeit(browser, room.body.room_id, winner, loser);
+  await expect.poll(async () => (await bracketOf(winner, t)).find((m) => m.id === matchId)?.status, { message: 'the result is stored', timeout: 15000 }).toBe('completed');
+}
+
+/** Put a tournament's matches past their time to be played. Written so that it also runs against a
+ *  database without the column (before migration 021): there it changes nothing. */
+function overdue(t: string) {
+  sql(`DO $$ BEGIN
+         IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'tournament_matches' AND column_name = 'play_by') THEN
+           EXECUTE format('UPDATE tournament_matches SET play_by = NOW() - INTERVAL ''1 second'' WHERE tournament_id = %L', '${t}');
+         END IF;
+       END $$`);
+}
+
+test.describe('the second check of 2026-11-19', () => {
+  test('tournaments: a bracket of six where the two byes play first still reaches its final', async ({ browser }) => {
+    test.setTimeout(Math.max(test.info().timeout, 240000));
+    const p = [await account(), await account(), await account(), await account(), await account(), await account()];
+    const t = await tournament(p);
+    let matches = await bracketOf(p[0], t);
+    // Two byes (the first two to register), two first-round matches, and the byes' round-two match at once.
+    expect(matches.map((m) => `${m.round}.${m.match_order}:${m.status}`).sort()).toEqual(['1.1:bye', '1.2:bye', '1.3:pending', '1.4:pending', '2.1:pending']);
+    expect([matchAt(matches, 2, 1).player1_id, matchAt(matches, 2, 1).player2_id]).toEqual([p[0].id, p[1].id]);
+
+    // The bye pair plays before round one is over. Until the second check this was taken for the
+    // final: its winner went nowhere and the real final waited for ever with one player.
+    await playMatch(browser, t, matchAt(matches, 2, 1).id, p[0], p[1]);
+    matches = await bracketOf(p[0], t);
+    expect((await p[0].call('GET', `/tournaments/${t}`)).body.status).toBe('in_progress');
+    await playMatch(browser, t, matchAt(matches, 1, 3).id, p[2], p[3]);
+    await playMatch(browser, t, matchAt(await bracketOf(p[0], t), 1, 4).id, p[4], p[5]);
+    await playMatch(browser, t, matchAt(await bracketOf(p[0], t), 2, 2).id, p[2], p[4]);
+
+    const final = matchAt(await bracketOf(p[0], t), 3, 1);
+    expect(final, 'the final exists').toBeDefined();
+    expect([final.player1_id, final.player2_id, final.status]).toEqual([p[0].id, p[2].id, 'pending']);
+    expect(final.play_by, 'its time to be played starts when both players are known').toBeTruthy();
+    await playMatch(browser, t, final.id, p[2], p[0]);
+    expect((await p[0].call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
+    const standings = (await p[0].call('GET', `/tournaments/${t}/leaderboard`)).body as any[];
+    expect(standings.filter((e) => !e.eliminated).map((e) => e.user_id)).toEqual([p[2].id]);
+  });
+
+  test('tournaments: a match nobody plays is decided at its deadline, so the tournament does not stall', async () => {
+    test.setTimeout(Math.max(test.info().timeout, 120000));
+    // Single elimination: somebody has to go through; with nobody having come, the server draws lots.
+    const [ann, bob] = [await account(), await account()];
+    const t = await tournament([ann, bob]);
+    const match = (await bracketOf(ann, t))[0];
+    expect(match.status).toBe('pending');
+    overdue(t);
+    await expect.poll(async () => (await bracketOf(ann, t))[0].status, { message: 'the scheduler decides the match', timeout: 20000 }).toBe('completed');
+    const decided = (await bracketOf(ann, t))[0];
+    expect(decided.decided_by).toBe('lot');
+    expect([ann.id, bob.id]).toContain(decided.winner_id);
+    expect((await ann.call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
+    // The time it had: two days from the draw (economy.json tournaments.match_hours).
+    expect(Date.parse(match.play_by) - Date.now(), 'two days to play it').toBeGreaterThan(47 * 3600 * 1000);
+
+    // Round robin: a match nobody played stands unplayed, and the tournament ends.
+    const [cat, dan] = [await account(), await account()];
+    const rr = await tournament([cat, dan], 'round_robin');
+    overdue(rr);
+    await expect.poll(async () => (await bracketOf(cat, rr))[0].status, { timeout: 20000 }).toBe('completed');
+    expect((await bracketOf(cat, rr))[0]).toMatchObject({ winner_id: null, decided_by: 'unplayed' });
+    expect((await cat.call('GET', `/tournaments/${rr}`)).body.status).toBe('completed');
+  });
+
+  test('tournaments: a player who waited for an opponent who never came wins the match at its deadline', async ({ browser }) => {
+    test.setTimeout(Math.max(test.info().timeout, 120000));
+    const [ann, bob] = [await account(), await account()];
+    const t = await tournament([ann, bob]);
+    const match = (await bracketOf(ann, t))[0];
+    // Ann opens the match's room (on the API that waits a few seconds, not four minutes) and waits
+    // there. Her seat is ready first: the room's clock starts when it is opened.
+    const s = await seat(browser, ann, E2E.webNoEmailOrigin);
+    const room = await ann.callNoEmail('POST', `/tournaments/${t}/matches/${match.id}/room`);
+    expect(room.status, room.text).toBe(200);
+    try {
+      await s.send({ type: 'join_room', room_id: room.body.room_id, deck: STARTER, lang: 'en' });
+      await s.next('room_joined');
+      expect((await s.next('error')).code, 'bob never came').toBe('opponent_absent');
+    } finally {
+      await s.close();
+    }
+    // Nothing is decided yet: bob has until the deadline.
+    await expect.poll(() => sql(`SELECT (waited_1 IS NOT NULL) || '|' || (waited_2 IS NOT NULL) FROM tournament_matches WHERE id = '${match.id}'`), { timeout: 10000 })
+      .toBe(match.player1_id === ann.id ? 'true|false' : 'false|true');
+    expect((await bracketOf(ann, t))[0].status).toBe('pending');
+    overdue(t);
+    await expect.poll(async () => (await bracketOf(ann, t))[0].status, { timeout: 20000 }).toBe('completed');
+    expect((await bracketOf(ann, t))[0]).toMatchObject({ winner_id: ann.id, decided_by: 'no_show' });
+    expect((await ann.call('GET', `/tournaments/${t}`)).body.status).toBe('completed');
+  });
+
+  test("cards: a device's cards brought into a free account cannot be sold, so they cannot be gathered into another", async ({ browser }) => {
+    const [main, alt] = [await account(), await account()];
+    giveCredits(main, 100);
+    // A forged device collection, taken into a throwaway account: a Legendary and an Epic.
+    const imported = await alt.call('POST', '/migrate/import', { cards: ['OL-001', 'DC-001'] });
+    expect(imported.status, imported.text).toBe(200);
+    expect(imported.body.imported.sort()).toEqual(['DC-001', 'OL-001']);
+    for (const card of ['OL-001', 'DC-001']) {
+      const listed = await alt.call('POST', '/marketplace/list', { card_id: card, listing_type: 'sale', price_credits: 1 });
+      expect([listed.status, listed.text], card).toEqual([400, 'Cards brought over from a device cannot be sold']);
+    }
+    expect(Number(sql(`SELECT COUNT(*) FROM card_listings WHERE seller_id = '${alt.id}'`))).toBe(0);
+    expect(await held(main)).toEqual([]);
+    // The account that brought them still holds them, and may field them itself.
+    expect((await held(alt)).sort()).toEqual(['DC-001', 'OL-001']);
+    const room = (await alt.call('POST', '/multiplayer/create-private')).body;
+    const s = await seat(browser, alt);
+    try {
+      await s.send({ type: 'join_room', room_id: room.room_id, deck: ['OL-001', 'DC-001', 'SM-001'], lang: 'en' });
+      expect((await s.next('room_joined')).room_id).toBe(room.room_id);
+    } finally {
+      await s.close();
+    }
+    // They earn no account achievement: with them the account would hold five different cards.
+    const achieved = ((await alt.call('GET', '/stats/achievements')).body as any[]).map((a) => a.achievement_id);
+    expect(achieved).not.toContain('card-collector');
+    expect((await alt.call('GET', '/stats')).body.unique_cards, 'they are held all the same').toBe(5);
+  });
+
+  test('market: the last copy of a card seated in a room cannot be listed until its match is over', async ({ browser }) => {
+    const [ann, bob] = [await account(), await account()];
+    giveCard(ann, 'DC-001');
+    const deck = ['DC-001', 'MO-001', 'CA-001'];
+    const room = (await ann.call('POST', '/multiplayer/create-private')).body;
+    const a = await seat(browser, ann);
+    const b = await seat(browser, bob);
+    try {
+      await a.send({ type: 'join_room', room_id: room.room_id, deck, lang: 'en' });
+      await a.next('room_joined');
+      // Seated, waiting for a friend: the card may still take the stage.
+      const listed = await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 });
+      expect([listed.status, listed.text]).toEqual([409, 'This card is in a match']);
+      await b.send({ type: 'join_room', room_id: room.room_id, deck: STARTER, lang: 'en' });
+      await a.next('match_start');
+      expect((await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 })).status, 'playing').toBe(409);
+      await a.send({ type: 'forfeit' });
+      await b.next('match_complete');
+    } finally {
+      await a.close();
+      await b.close();
+    }
+    const after = await ann.call('POST', '/marketplace/list', { card_id: 'DC-001', listing_type: 'sale', price_credits: 10 });
+    expect(after.status, `the match is over: ${after.text}`).toBe(200);
+  });
+});
+
 test.describe('the pages keep to the server', () => {
   test('signed in, the playground opens packs on the server and shows the balance; nothing goes into the device', async ({ browser }) => {
     const ann = await account();
@@ -570,6 +788,81 @@ test.describe('the pages keep to the server', () => {
       expect(device).toBe(0);
     } finally {
       await context.close();
+    }
+  });
+});
+
+test.describe('the pages keep to the server (second check)', () => {
+  /** A browser signed in as this account, past the age gate as `gate`. */
+  async function signedIn(browser: Browser, who: Account, gate: string) {
+    const user = (await who.call('GET', '/auth/me')).body.user;
+    const context = await browser.newContext({
+      baseURL: E2E.webOrigin,
+      storageState: { cookies: [], origins: [{ origin: E2E.webOrigin, localStorage: [
+        { name: 'inspired-mile-age-verified', value: gate },
+        { name: 'inspired-mile-onboarding-done', value: '1' },
+        { name: 'inspired-mile-storage-mode', value: 'server' },
+        { name: 'inspired-mile-user', value: JSON.stringify(user) },
+        { name: 'inspired-mile-daily-bonus', value: `${user.id}:${new Date().toISOString().slice(0, 10)}` },
+      ] }] },
+    });
+    await context.addCookies([{ name: 'im_token', value: who.token, url: E2E.webOrigin }]);
+    return { context, user };
+  }
+
+  test('a teen account is shown no market: no link to it, and the page says it is for adults and asks the server nothing', async ({ browser }) => {
+    const [adult, teen] = [await account(), await account('teen')];
+    const asTeen = await signedIn(browser, teen, 'adult');
+    expect(asTeen.user.age_tier, 'the server says what the account is').toBe('teen');
+    try {
+      const page = await asTeen.context.newPage();
+      const marketCalls: string[] = [];
+      page.on('request', (r) => { if (/\/api\/v1\/(marketplace|referral)/.test(r.url())) marketCalls.push(r.url()); });
+      await page.goto('/');
+      await expect(page.locator('#user-badge')).toBeVisible();
+      // Signed in, the account's tier decides, not this browser's gate (which says adult here).
+      await expect(page.locator('[data-adults-only]')).toHaveCount(3);
+      for (const link of await page.locator('[data-adults-only]').all()) await expect(link).toBeHidden();
+      await page.goto('/marketplace');
+      await expect(page.locator('#market-adults-only')).toBeVisible();
+      await expect(page.locator('#market-adults-only')).toHaveText('The market is for adult accounts only.');
+      await expect(page.locator('#market-body')).toBeHidden();
+      await page.waitForTimeout(500);
+      expect(marketCalls).toEqual([]);
+    } finally {
+      await asTeen.context.close();
+    }
+    // The same pages for an adult account.
+    const asAdult = await signedIn(browser, adult, 'adult');
+    try {
+      const page = await asAdult.context.newPage();
+      await page.goto('/marketplace');
+      await expect(page.locator('#market-body')).toBeVisible();
+      await expect(page.locator('#market-adults-only')).toBeHidden();
+      await expect(page.locator('#tab-sell')).toHaveText('Sell');
+      await expect(page.locator('footer [data-adults-only]')).toBeVisible();
+    } finally {
+      await asAdult.context.close();
+    }
+  });
+
+  test('the tournaments page shows how many players have registered', async ({ browser }) => {
+    const ann = await account();
+    const name = `E2E count ${unique()}`;
+    // Far in the future, so it is listed first and nobody's scheduler starts it.
+    const made = await ann.call('POST', '/tournaments/create', { name, starts_at: new Date(Date.now() + 30 * 86400000).toISOString(), max_players: 8 });
+    expect(made.status, made.text).toBe(200);
+    expect((await ann.call('POST', `/tournaments/${made.body.id}/register`)).status).toBe(200);
+    // The list is for signed-in players (the route is a protected one).
+    const asAnn = await signedIn(browser, ann, 'adult');
+    try {
+      const page = await asAnn.context.newPage();
+      await page.goto('/tournaments');
+      const row = page.locator('#tournament-list > div', { hasText: name });
+      // Until 2026-11-19 the page read entry_count, which the API never sent: "Players: 0 of 8".
+      await expect(row).toContainText('Players: 1 of 8');
+    } finally {
+      await asAnn.context.close();
     }
   });
 });

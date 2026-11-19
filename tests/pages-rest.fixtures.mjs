@@ -73,9 +73,9 @@ export const DATA = {
     { id: 'l3', seller_id: 's3', seller_username: 'sebastian', card_id: 'DC-001', listing_type: 'trade', price_credits: null, wanted_card_ids: ['RL-001', 'PT-002', 'MO-002'], status: 'active', created_at: '2026-11-14T10:00:00Z' },
   ],
   tournaments: [
-    { id: 't1', name: 'Verona Open', format: 'single_elimination', max_players: 8, status: 'registration', starts_at: '2026-12-01T18:00:00Z', created_at: '2026-11-01T00:00:00Z', entry_count: 5 },
-    { id: 't2', name: 'كأس إلسينور', format: 'round_robin', max_players: 1000, status: 'in_progress', starts_at: '2026-11-15T18:00:00Z', created_at: '2026-11-01T00:00:00Z', entry_count: 1000 },
-    { id: 't3', name: 'Globe 2026', format: 'single_elimination', max_players: 4, status: 'completed', starts_at: '2026-10-01T18:00:00Z', created_at: '2026-09-01T00:00:00Z', entry_count: 4 },
+    { id: 't1', name: 'Verona Open', format: 'single_elimination', max_players: 8, status: 'registration', starts_at: '2026-12-01T18:00:00Z', created_at: '2026-11-01T00:00:00Z', player_count: 5 },
+    { id: 't2', name: 'كأس إلسينور', format: 'round_robin', max_players: 1000, status: 'in_progress', starts_at: '2026-11-15T18:00:00Z', created_at: '2026-11-01T00:00:00Z', player_count: 1000 },
+    { id: 't3', name: 'Globe 2026', format: 'single_elimination', max_players: 4, status: 'completed', starts_at: '2026-10-01T18:00:00Z', created_at: '2026-09-01T00:00:00Z', player_count: 4 },
   ],
   bracket: [
     { id: 'm1', round: 1, match_order: 1, player1_id: 'p1', player1_name: 'viola', player2_id: 'p2', player2_name: 'sebastian', winner_id: 'p1', status: 'completed', room_id: null },

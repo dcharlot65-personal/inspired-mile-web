@@ -93,7 +93,8 @@ wait_healthy() {
 }
 
 start_api() {
-  # $1 port, $2 log name, $3 DEV_EMAIL_LOG value. Migrations are read from ./migrations.
+  # $1 port, $2 log name, $3 DEV_EMAIL_LOG value, $4 TOURNAMENT_ARRIVAL_SECONDS (empty: the
+  # 240 s of service). Migrations are read from ./migrations.
   (
     cd "$ROOT/backend"
     exec env -u RESEND_API_KEY \
@@ -101,6 +102,7 @@ start_api() {
       JWT_SECRET="e2e-secret-not-for-production-0123456789abcdef" \
       MAINTENANCE_INTERVAL_SECONDS="${E2E_MAINTENANCE_SECONDS:-3}" \
       TOURNAMENT_CHECK_SECONDS="${E2E_TOURNAMENT_SECONDS:-1}" \
+      TOURNAMENT_ARRIVAL_SECONDS="${4:-}" \
       PORT="$1" \
       CORS_ORIGIN="$WEB_ORIGIN" \
       WEBAUTHN_RP_ID="localhost" \
@@ -120,7 +122,9 @@ API_PID=$!
 wait_healthy "$API_PORT" "$API_PID" api
 say "API with DEV_EMAIL_LOG on :$API_PORT (codes in $WORK/api.log)"
 
-start_api "$API_NOEMAIL_PORT" api-noemail 0
+# The email-off API also waits only a few seconds for a tournament match's second player, so a
+# test can see a no-show recorded (tests/economy.spec.ts); the first keeps the 240 s of service.
+start_api "$API_NOEMAIL_PORT" api-noemail 0 "${E2E_TOURNAMENT_ARRIVAL_SECONDS:-5}"
 API_NOEMAIL_PID=$!
 wait_healthy "$API_NOEMAIL_PORT" "$API_NOEMAIL_PID" api-noemail
 say "API with email off on :$API_NOEMAIL_PORT"
