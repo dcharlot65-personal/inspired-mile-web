@@ -37,6 +37,7 @@ Words used below:
 3. **Coverage is deep where the rules, languages, sign-in and privacy promises are,** and absent where the economy is: no test covers inventory, credits, marketplace, tournaments, seasons, classroom, referral, migration, variants or stats handlers (tech §7.1). **In this release** `fix/server-authority` rewrites those handlers and adds 11 Rust unit tests for the pure parts (economy 8, ledger 1, bracket 1, tournament progress 1); no test of the database-backed handlers themselves is on the branch.
 4. **Everything runs in one browser engine on one kind of machine:** headless Chromium on Apple Silicon. Safari, Firefox, every real phone and every headset have never run the suites (section 6).
 5. **The gates are run by hand** and nothing records that they passed before a deploy. **Proposed:** one gate script that writes a dated result file (section 4.3).
+6. **No one outside the team has played the game, human or AI.** Under the owner's rule of 2026-11-19, "AI is the playtester", the playtesters are AI players that see only the page and use only a player's controls, run on the build host. **Proposed:** section 8.
 
 ---
 
@@ -261,6 +262,7 @@ As built there is no automated accessibility test, contrast is unmeasured, the v
 - contrast measured on the palette's small text;
 - a keyboard-only duel;
 - a screen-reader duel (section 6.3);
+- the AI playtests' keyboard and screen-reader-text runs, each release (section 8.1);
 - typed input held equal to speech: a test that a full duel never requires the microphone;
 - target sizes of at least 24×24 px (WCAG 2.5.8).
 
@@ -283,14 +285,77 @@ As built there is no automated accessibility test, contrast is unmeasured, the v
 
 ---
 
-## 8. Playtesting and balance (proposed)
+## 8. Playtesting by AI players, and balance (proposed)
 
-Automated tests show the rules are applied; they cannot show the duel is fair or fun.
+Automated tests show the rules are applied; they cannot show that a newcomer finds a first verse, or that the duel is fair. **The owner's rule (2026-11-19): AI is the playtester** (`28-owner-decisions.md` D-63). There are no human playtests, paid or volunteer, no think-aloud sessions and no human baselines. The playtesters are AI players with no prior training on this game, who perceive and act only as a person at the screen can. Everything in this section is **Proposed**: none of it is built.
 
-- **Think-aloud rounds of five players,** three rounds rather than one of fifteen, plus three or four from each distinct group: teachers, students (with consent), adult wordsmiths, players in a language other than English (prod-research §6.4).
-- **Observe, probe, then survey;** pilot first (prod-research §6.4).
-- **Balance metrics** from the events in `16-analytics-and-tracking-plan.md`: challenger win rate (flag outside 45% to 55%), win rate by card, by form, by language and by judge (prod-research §6.3).
-- **Arrocito del Diablo owns the balance questions** (card devices, curses, power words); findings go to him as design issues, not as bugs.
+The research's practice for small studios is think-aloud rounds of five people (prod-research §6.4). The owner ruled that out for this project; the measures that practice was after (where a newcomer stalls, whether a verdict is understood) are taken from AI players instead, below.
+
+### 8.1 What an AI player gets: the parity interface
+
+An AI player sees what a person sees, in one of two forms, and acts only through a person's controls.
+
+| It sees | It never sees |
+|---|---|
+| **The rendered page as an image**, at the phone width and the desktop size the browser suite already uses (section 6.1) | the scoring code and its constants (`src/lib/verse/*`, `src/lib/cards.ts`, `backend/data/economy.json`) |
+| **Or the page's accessible text**: what a screen reader announces, meaning each control's role, name and state, the text in reading order, and live announcements as they are made (taken from the browser's accessibility tree) | the API's JSON, the page source, hidden attributes (the `data-ai-generated` marking among them) and the console |
+| On the duel page: the round bar and score, the form's brief, the opponent's verse and any curse notice, the hand (characters, relics and potions as their chips show them, and the ink count), the verse box, the checklist "What your verse must do" with its ticks and points as drawn, the AI notice and label, and the judge's verdict as shown (the craft breakdown, who took each criterion, who judged) (doc 10 §6) | what the seed means, this dossier, the repository, and any other run's notes |
+
+**What it may do:** click or tap a visible control (by its accessible name, or a point on the image), type into the verse box, press keys, scroll, choose a language, reload the page. Online rounds keep their 180-second clock; a solo duel has none, so a step budget (for example 200 actions a duel, written down before the first run) ends a run that is stuck.
+
+**What it is told:** that it is playing a web game, and nothing else. No rules, no hints and no worked examples: it learns the game from the page, as a person does.
+
+**First time, every time.** Each run starts with an empty memory, so every run is a first-time player. A second kind of run lets one player keep the notes it wrote itself across five duels, to measure how play changes with experience; it never receives another run's or another model's notes.
+
+**Two views, two kinds of player.** The image view, with a pointer, is how a sighted mouse or touch player meets the game. The accessible-text view with keyboard-only actions (Tab, Shift+Tab, Enter, Space, the arrows and typing) is how a screen-reader user meets it, so it is also the accessibility check of section 7.4 and of `11-accessibility-plan-and-statement.md`. As built it should stop at the hand, because the character chips cannot take focus and submit waits for a character (doc 11 §1). Its result says whether the duel can be finished that way; it is not a claim about how a disabled player experiences the game.
+
+### 8.2 Which AI players play
+
+Self-hosted models only, released after 2026-04-01, each named with its publisher's release (`28-owner-decisions.md` D-30). A model added later meets the same rule.
+
+| Player | Release | Why it plays | Caveat |
+|---|---|---|---|
+| Gemma 4 31B and Gemma 4 26B MoE (Google) | announced 2026-04-02; Apache 2.0; "natively trained on over 140 languages" (prod-research §2.1) | the largest open models with the game's whole language list; they run on the build host, not in a browser | the game's model judge is Gemma 4 E2B, so a Gemma player may share the judge's tastes; every result is reported per model family |
+| LFM3 1.7B (Liquid AI) | 2026-10-27; LFM Open License v1.0, under the US$10M condition the owner confirmed (doc 13 §8.2; doc 20 §4) | a second family, and a small model that shows what a weak newcomer does | text only, so it plays the accessible-text view |
+| Apertus v1.1 Instruct (Swiss AI) | 2026-05-01 to 05-03; Apache 2.0 (prod-research §2.3) | a third family, with the widest language list | weak in many languages (the 1.5B averages 0.382 on the research's multilingual measure): expect a floor |
+
+Whether a model reads images is checked from its own card before it plays the image view; one that cannot plays the accessible-text view only.
+
+**Reference players, which are not playtesters:**
+
+- **A random floor:** types a line of dictionary words of the asked length and picks the first chip. It shows what a verse with no craft scores, and finds any duel a non-player can win.
+- **The written opponent's own verses**, typed in as the player's: a scripted player that shows what the game's bank scores against itself.
+- **A rules-aware solver:** the spike's planner (`spike/duel-planner`), which simulates the exact rules. It may read the code; it finds the ceiling and the holes in the rules, and is never reported as a playtester.
+
+**Claims.** A result says what was measured and which AI player and version produced it. No claim says "human-level", and no AI result is presented as what people would do.
+
+### 8.3 What is measured
+
+| Measure | How | What it informs |
+|---|---|---|
+| Time to a first valid verse | actions, seconds and tokens from page load (after the age gate) to the first verse the game accepts and scores without a void | doc 10 §5's target (a first verse within 60 seconds); doc 16's funnel |
+| Voids | how many verses are voided, and for which reason the verdict shows (a thin verse, the wrong language, a curse breach) | the clearest sign that the brief was not understood |
+| Rounds and duels won against each opponent | against the written opponent, the model opponent where it is offered, and the adaptive opponent once built; by difficulty, language and model family; with a 95% interval | doc 05 §10's 40 to 60% band against the adaptive opponent; doc 25 §10.3's 45 to 55% against the written one; a win with no craft is a hole in the rules |
+| Where players get stuck | the screen and control where a run spends most of its actions, repeats one action, or runs out of its budget, grouped across runs | the design's friction points, in order |
+| Why a round went as it did | after each verdict the player is asked what decided the round; its answer is scored against the verdict's own breakdown, which the evaluator reads from the game's log and the player never sees | whether the verdict explains itself |
+| Match length | actions and seconds per duel | doc 25 §10.3's five-minute target |
+| Keyboard and screen-reader completion | the share of accessible-text runs that finish a duel with keys alone | doc 11's first blocker, before and after the fix |
+| Device landing rates | how often each house device and signature lands, per form and language | doc 05 §5.3 (`28-owner-decisions.md` D-67) |
+
+### 8.4 Where it runs
+
+- **On the build host**, never on the development laptop and never on the production machine (ADR 0019; section "How to read this document"). Each run plays a local build of the release candidate, with its own API and a scratch database on the same host, so no AI session touches production, its database or its analytics.
+- **The models are served on the build host** by an open-source model server, each under the host's memory limit, started for the run and stopped after it. The studio's shared production services are never used for playtests.
+- **The browser** is the one the browser suite already drives (Playwright with Chromium), with the WebKit and Firefox projects once they exist (section 6.3).
+
+### 8.5 How the runs are used
+
+- **A run per release candidate** in English and the launch languages, and a larger run before and after each change to the first-time flow (doc 10 §5; doc 26 ranked items 7 and 9).
+- **Every new rule, form or card set gets a run before it ships** (doc 25 §7; doc 26 §16).
+- **Thresholds are written down before the first run**, as the project already does for its model measurements (`planner/docs/ADAPTIVE-PREREG.md` on `spike/duel-planner`), and are never moved after the results are seen.
+- **Every run is kept:** each observation, action and verdict, replayable, beside the build it played.
+- **Balance after launch** comes from the live events in `16-analytics-and-tracking-plan.md`: challenger win rate (flag outside 45% to 55%), win rate by card, by form, by language and by judge (prod-research §6.3). The AI runs set the first values before any player arrives.
+- **Arrocito del Diablo owns the balance questions** (card devices, curses, power words); findings go to him as design issues, not as bugs, in the weekly review (`28-owner-decisions.md` D-49).
 
 ---
 
@@ -320,9 +385,11 @@ Every S1 and S2 fix lands with a test that was seen to fail first (section 5.1).
 
 ## 11. Owner questions
 
-1. Is a dated gate-result file per deploy acceptable under the "land it, don't gate it" working model?
-2. Which real phones and headsets does the team have for the P0 and P1 rows (section 6.3)?
-3. Should a Playwright WebKit and Firefox project be added now, knowing some tests will fail at first?
-4. Who on the team runs the playtests, and may students take part (with consent) before the classroom terms are reviewed?
-5. `fix/server-authority` adds 11 Rust unit tests and no handler or browser test. Must a two-account purchase test and a capped-earning test pass before deploy, or can they follow within the week?
-6. Is axe-core acceptable as a dependency under the "free and self-hosted" rule (it is open source and runs locally)?
+All six were settled on 2026-11-19 in `28-owner-decisions.md`; none needs the owner's money, identity or signature, so none stays open.
+
+1. A dated gate result for each deploy? **Decided by default:** a one-line gate result per deploy in the deploy log, under "land it, don't gate it" (28 D-61).
+2. Which real phones and headsets for the P0 and P1 rows (section 6.3)? **Decided by default:** the phones the studio already tests its other games on; which headsets exist is still to be found out (28 D-61; Facts to find out, 13).
+3. Add WebKit and Firefox projects now, though some tests will fail at first? **Decided by default:** yes, now (28 D-61).
+4. Who runs the playtests, and may students take part? **Decided by the owner (2026-11-19): AI is the playtester.** No student or other person takes part; whoever changes the duel runs the AI playtests of section 8 on the build host (28 D-62, D-63).
+5. Must the two-account purchase test and the capped-earning test pass before deploy? **Decided by the owner (2026-11-19, R9):** yes, both, before deploy (28 D-05).
+6. Is axe-core acceptable under "free and self-hosted"? **Decided by default:** yes; it is open source and runs locally (28 D-61).

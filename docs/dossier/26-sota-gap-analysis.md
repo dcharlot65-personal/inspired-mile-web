@@ -52,11 +52,11 @@
 2. **Almost everything around the duel is unfinished, and much of it promises what it does not do.** Credits, marketplace, referral, season pass, tournaments, story mode and the 3D viewer are partly built or stubs; house allegiance, streaks, weekly events and draft mode are dead code; the classroom tour promises progress tracking that does not exist and shows "FERPA compliant" (As built: D §3, §4, §10).
 3. **The release in flight fixes the trust layer, not the game.** It makes the economy honest, restores the judge's measured wording, removes a GPL defect, adds credits and an AI notice, and starts backups (In this release). It does not give any of the half-built systems a reason to exist.
 4. **Most players will never meet the AI the game is sold on.** Phones, tablets, headsets and small desktops are offered no model, so they always meet a bank of about 17 verses written in advance (drafted by a language model and checked by tools; who wrote the English bank is Not known) that never answers the player (As built: T §4.1; D §6.7). Web audiences are mostly on phones (SP §1.1).
-5. **Nobody outside the team is recorded playing it.** No playtest, no analytics event and no match length exist on record (As built: T §9; Not known whether any playtest happened). The engineering is tested more thoroughly than most games; the design has not been tested on a player.
+5. **Nobody outside the team is recorded playing it.** No playtest, no analytics event and no match length exist on record (As built: T §9; Not known whether any playtest happened). The engineering is tested more thoroughly than most games; the design has not been tested on a player. Under the owner's rule of 2026-11-19, "AI is the playtester", the next step is AI players that see only the page and use only a player's controls (Proposed: section 16; ranked item 5).
 6. **The brand is missing from the game.** Nothing of Devon Glover's own work is in it: no recording, verse, voice or music. The home page plays a track tagged "Horror Theme 1" by another artist, with no licence on record (As built: D §6.1, §7.3). In this release it is traced byte for byte to a CC0 track on OpenGameArt (`fix/compliance`, `docs/ASSETS.md`); it is still off-theme.
 7. **Two legal items are urgent and outside the release.** Machine-readable marking of AI output under EU AI Act Article 50(2), which should be treated as due at this deploy: the transition to 2026-12-02 covers only systems on the market before 2026-08-02, and the in-browser models reached the public after that (SP §0, §5.4; `13-ai-design-and-system-cards.md` §7.2); and a written licence from Devon Glover for his name and persona, which the product is named after (SP §5.8). Whether a licence exists is Not known.
 8. **The clearest opportunity is a daily, shared, explained duel with the real Sonnet Man in it.** A verse of the day is cheap because the seed already fixes the forms (D §1.2), daily rituals are the most proven retention loop in word games (SD §2, §5), and a real performer is what hip-hop audiences reward (SD §9). Classroom is the second opportunity, and the furthest from ready.
-9. **Stop building systems that have no audience yet.** Hide what does not work, decide what to delete, and put the next month into first-time play, measurement and the performer (Proposed; section "What to stop, cut or hide").
+9. **Stop building systems that have no audience yet.** Hide what does not work until it has a job in the duel (decided by default on 2026-11-19: `28-owner-decisions.md` D-39), and put the next month into first-time play, measurement and the performer (Proposed; section "What to stop, cut or hide").
 
 ---
 
@@ -94,7 +94,7 @@ The production database had 0 accounts on 2026-11-19. Any change to accounts, ca
 | 13 | Trust and safety | Large for online play | Read reports, block and mute, keep teens from adult strangers | High | Medium |
 | 14 | Law | Medium after the release | Article 50(2) marking; Devon Glover licence | High | Medium |
 | 15 | Operations | Medium | Self-hosted analytics and error reporting; uptime alert; pinned weights | High | Low |
-| 16 | Production process | Large on players, small on engineering | Playtest rounds of five; a decision log | High | Low |
+| 16 | Production process | Large on players, small on engineering | AI playtests on the build host; a decision log | High | Low to medium |
 
 ---
 
@@ -219,7 +219,7 @@ Source: T §4.1; D §1.8.
 - CrazyGames allows 20 MB before play to be featured on its mobile homepage (SP §1.1).
 - Teach a writing game by having the player write one line with instant feedback (SD §4, inference).
 - Benchmarks: mobile D1 median about 22%, top quartile above 30%; card games D1 18 to 19%, D7 6.5 to 7%, D28 about 3% (2024 data); for a web game, CrazyGames calls 10 to 15% D1 "strong" (SP §6.3, §1.1).
-- A presented, skippable intro is a common practice and one the owner asks of his other games; it is not a standing rule for this one (SP §7.6, inference). Poki asks for intros to be skippable (SD §4).
+- A presented, skippable intro is a common practice and one the owner asks of his other games (SP §7.6, inference); on 2026-11-19 it was decided by default for this one too (`28-owner-decisions.md` D-40). Poki asks for intros to be skippable (SD §4).
 
 **As built.**
 - An age gate on every page except privacy, terms and about, before anything else (D §8).
@@ -229,7 +229,7 @@ Source: T §4.1; D §1.8.
 - No tutorial on the battle page; the form's brief, the live checklist and the verdict teach in play (D §8). No intro is presented (D §6.1).
 - An English duel against the written opponent fetches 7.79 MB (5.92 MB gzip); a Japanese duel started at once waits 5 to 5.7 s for its dictionary on a throttled phone (T §8).
 - No clock in solo play (D §1.2). Read from the code, not observed: the battle page stores only the duel language and the model choice (`src/pages/battle.astro:336,385,488`) and `session.ts` stores nothing, so a reload loses a duel in progress.
-- Match length, first-session length and retention: Not known. No analytics event is called (T §9), and no playtest is on record.
+- Match length, first-session length and retention: Not known. No analytics event is called (T §9), and no playtest, human or AI, is on record.
 
 ```mermaid
 flowchart LR
@@ -254,15 +254,15 @@ flowchart LR
 **Opportunities (Proposed).**
 1. One tap to a first verse: the home page's first button starts a duel with the starter deck, the interface language and the written opponent; the set-up panel becomes "change" links (SD §4; SP §2.2).
 2. Scaffold the first line: "finish this couplet; it must rhyme with *night*", with the live checklist lighting as the player types (SD §4).
-3. A presented, skippable intro, with Devon Glover's own recorded performance if he agrees (Proposed; SP §7.6; SD §9). Depends on his licence.
+3. A presented, skippable intro, made from the game's own duel, with Devon Glover's own recorded performance added if he agrees (Proposed; SP §7.6; SD §9; `28-owner-decisions.md` D-40). His part depends on his licence.
 4. Ask counsel whether the age gate must come before a solo duel that collects nothing, and gate accounts, online play and analytics instead. The amended COPPA rule wants a neutral age screen before any collection, and page analytics collect an IP address (SP §5.1). Do not change it without that review.
 5. Keep a solo duel across a reload, and let it resume (SD §1, "matches that resume").
-6. Measure the funnel: landing, first verse submitted, first duel completed, model accepted, second session (SP §6.3).
+6. Measure the funnel: landing, first verse submitted, first duel completed, model accepted, second session (SP §6.3). Before launch, the AI playtests give its first values: time to a first valid verse, voids, and where first-time AI players stall (section 16; `15-qa-and-test-plan.md` §8).
 7. Start from web-realistic targets: D1 of 10 to 15%, then the card-genre figures (SP §6.3).
 
 | Impact | Effort | Depends on |
 |---|---|---|
-| High: the first minute decides whether there is a second | Low for items 1, 2, 5 and 6; medium for the intro | Playtests (section 16); measurement (section 15); Devon Glover for the intro; counsel for the gate |
+| High: the first minute decides whether there is a second | Low for items 1, 2, 5 and 6; medium for the intro | AI playtests (section 16); measurement (section 15); Devon Glover for his part of the intro; counsel for the gate |
 
 ### 5. Progression and economy: honest after the release, still without a job
 
@@ -456,7 +456,7 @@ flowchart LR
 
 | Impact | Effort | Depends on |
 |---|---|---|
-| High: required by schools, and a real lead in the genre | Low for item 1; medium for items 2 and 3 | Nothing outside the team for item 1; testers who use screen readers for item 2 |
+| High: required by schools, and a real lead in the genre | Low for item 1; medium for items 2 and 3 | Nothing outside the team for item 1; for item 2, the AI playtests' keyboard and screen-reader-text runs (section 16; `15-qa-and-test-plan.md` §8.1) and the team's own checks with VoiceOver, TalkBack and NVDA |
 
 ### 11. Classroom: a roster with promises it does not keep
 
@@ -629,7 +629,7 @@ This section summarises research, not legal advice. Counsel should review every 
 
 **State of the art.**
 - Short living design documents: a one-page hub linked to one-page sub-designs, numbers in data files, the build as the source of truth; docs-as-code; architecture decision records; an `AGENTS.md` for agents in the repository (SP §7.0, §7.2, §8).
-- Playtests: five users find about 85% of usability problems; run three rounds of five, three or four people per user group, thinking aloud (SP §6.4).
+- Playtests: the research's practice for small studios is think-aloud rounds of five people, three or four per user group (SP §6.4). The owner ruled out human playtests for this project on 2026-11-19 ("AI is the playtester"). Opportunity 1 below replaces them with AI players.
 - Metrics-driven balance, as Mega Crit described it at GDC 2019 (SP §6.4).
 - Small-sample experiments: two arms, a power analysis first, a sequential stopping rule; expect to detect only effects of about 30% at launch traffic (SP §6.3).
 - A risk register, and a postmortem after each milestone (SP §7.14, §7.21).
@@ -643,25 +643,25 @@ This section summarises research, not legal advice. Counsel should review every 
 - `ROADMAP.md` dates from February 2026, with nothing ticked after the company's formation (D §9).
 - No record of anyone outside the team playing the game. The fact bases hold no record that Devon Glover has reviewed or approved any content (D §6.1, "Could not determine"), and none about Arrocito del Diablo's part in the rebuild. Not known.
 
-**The gap.** The code is tested more carefully than most games; the design has never been tested on a player.
+**The gap.** The code is tested more carefully than most games; the design has never been played by anyone outside the team, human or AI.
 
 **Opportunities (Proposed).**
-1. Playtest rounds of five, thinking aloud: newcomers, teachers, students (with consent), poets and rappers, speakers of other languages (SP §6.4).
+1. AI playtests (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63). AI players with no prior training on the game play through a parity interface: the rendered duel page as an image, or its screen-reader text, and only a player's controls (click or tap, type a verse, keys). They see the form's brief, the hand, the checklist as drawn and the judge's verdict as shown, never the scoring code or its constants, and are told nothing about how to win. The players are self-hosted models released after 2026-04-01, named with their release: Gemma 4 31B and 26B MoE (2026-04-02), LFM3 1.7B (2026-10-27) and Apertus v1.1 (2026-05), reported per model family because the game's judge is Gemma 4 E2B; a random floor, the written opponent's own verses and the spike's rules-aware planner serve as reference players, not playtesters. Measured: time to a first valid verse, voids and their reasons, rounds won against each opponent (written, model, adaptive), where runs get stuck, whether a run can say why a round went as it did, match length, and keyboard-only completion. They run on the build host against a local build of each release candidate, in every launch language, never against production. Results name the AI player that produced them; none claims to be what people would do.
 2. A decision log: keep, finish or delete each half-built system (D §11).
 3. Remove dead code and tables from February once those decisions are made (T §12, item 17).
-4. Human gates on agent-made content: a person views every image; every string in a new language gets a native read before it ships; every new rule gets a playtest (D §7.2).
+4. Human gates on agent-made content: a person views every image; every string in a new language gets a native read before it ships; every new rule gets an AI playtest run before it ships (D §7.2; `15-qa-and-test-plan.md` §8.5).
 5. A standing design review with Arrocito del Diablo on cards and balance, and a content review with Devon Glover, if they want them. How they want to work is Not known.
 6. A risk register and a new roadmap drawn from this dossier.
 
 | Impact | Effort | Depends on |
 |---|---|---|
-| High: it is the cheapest way to learn whether the design works | Low | People to play; the team's time |
+| High: it is the cheapest way to learn whether the design works | Low for the decision log; medium for the AI-playtest harness | The build host's time; the team's time |
 
 ---
 
 ## The 15 next things, ranked
 
-All Proposed. Ranked by deadline first, then by risk to players, then by what decides whether people play and return. Effort follows the scale above: anything that needs counsel, recruits or Devon Glover is at least Medium.
+All Proposed. Ranked by deadline first, then by risk to players, then by what decides whether people play and return. Effort follows the scale above: anything that needs counsel or Devon Glover is at least Medium.
 
 | # | What | Why now | Area | Impact | Effort | Depends on |
 |---|---|---|---|---|---|---|
@@ -669,7 +669,7 @@ All Proposed. Ranked by deadline first, then by risk to players, then by what de
 | 2 | The online safety minimum: reports read, block and mute, teens kept from adult strangers, community rules, a risk assessment (drafted in 18 §9), NCMEC registration | This release opens user-to-user verse to the public, and quick match can pair a teen with an adult stranger (17 §8.6); the duties apply at any size (SP §4.3) | 13 | High | Medium | Counsel; a named responsible person; the release |
 | 3 | Agree a written licence with Devon Glover, with his own counsel, and hold a working session with him (questions below) | The product uses his name and persona in trade (SP §5.8); the brand's assets are his (SD §9) | 14, 8 | High | Medium | Counsel; his time |
 | 4 | Hide or remove what the game promises and does not do: "FERPA compliant", classroom progress, About-page credit amounts, the "15-second scene", the VR "your collection", card stats, 3D views without files; switch marketplace and referral off for teens (referral's "5 free packs" is corrected in `fix/compliance`) | Trust, and claims that misstate what the product does (D §10, items 13 to 19) | 5, 8, 11 | High | Low | A decision log (item 2 in section 16) |
-| 5 | Run playtest rounds of five, thinking aloud, with four groups | No player is on record; five users find most problems (SP §6.4) | 16 | High | Medium: outside recruits | Recruits; consent for students |
+| 5 | Run AI playtests: AI players with no prior training on the game play the duel through what a player sees (the rendered page, or its screen-reader text) and a player's controls, never the scoring code, in English and the launch languages, on the build host | No player, human or AI, is on record: time to a first valid verse, voids, rounds won against each opponent and where newcomers get stuck are all unmeasured, and items 7, 9 and 10 need a before and an after (`15-qa-and-test-plan.md` §8) | 16 | High | Medium: a harness and self-hosted model servers on the build host; no outside party | The build host; self-hosted models released after 2026-04-01 (`15-qa-and-test-plan.md` §8.2) |
 | 6 | Self-hosted measurement: Umami funnel events, GlitchTip errors, an uptime alert | Every later decision needs data (SP §6.1, §6.3) | 15 | High | Low | A privacy-policy update; consent design |
 | 7 | One tap from the home page to a scaffolded first verse | Conversion is decided at the first input (SD §4) | 4 | High | Low; Medium if it carries Devon Glover's recorded intro | Items 5 and 6; Devon Glover only for an intro |
 | 8 | Verse of the day from a date seed, with a plain-text share and a forgiving streak | The most proven return loop in word games, cheap here (SD §2, §5; D §1.2) | 7 | High | Low | Item 6; streak rules in section 5 |
@@ -688,7 +688,7 @@ flowchart TD
   N2["2 Online safety minimum"]
   N3["3 Devon Glover licence"]
   N4["4 Hide broken promises"]
-  N5["5 Playtests"]
+  N5["5 AI playtests"]
   N6["6 Measurement"]
   N7["7 One tap to a first verse"]
   N8["8 Verse of the day"]
@@ -707,6 +707,7 @@ flowchart TD
   N3 --> N12
   N5 --> N7
   N5 --> N9
+  N5 --> N10
   N6 --> N7
   N6 --> N8
   N4 --> N15
@@ -726,7 +727,7 @@ Each is low effort and needs no outside party. All Proposed.
 3. Remove the "FERPA compliant" badge and the classroom progress promise (D §4.13).
 4. Correct the copy that promises unbuilt things: About-page credit amounts, the "15-second AI-generated scene", the world map's "battles, trivia, and exploration", the VR gallery's "your collection", the playground's "Win a round and earn a random card" (D §10). Referral's "5 free packs" is corrected in this release (`fix/compliance`).
 5. Fix the achievements: count matches, not rounds; "Completionist" at 71; "Relic Hunter" on relics (D §4.5).
-6. Take ATK, DEF, HP and element off card faces, pending Arrocito del Diablo's view (D §1.3).
+6. Take ATK, DEF, HP and element off card faces (D §1.3); decided by default on 2026-11-19, and Arrocito del Diablo's weekly review may change it (`28-owner-decisions.md` D-42, D-49).
 7. Hide the 3D viewer and the AR buttons for cards without files (D §7.6).
 8. Switch marketplace and referral off for teen accounts (SD §7).
 9. Add the Vietnamese letters to the font subset (D §7.7).
@@ -761,7 +762,7 @@ Candid recommendations. All Proposed.
 
 - **Stop adding systems from the February plan** (credits, marketplace, referral, house allegiance, draft mode, tournaments) until the duel has an audience that returns. Each one adds legal and safety surface (SD §6, §7) and none has a job in the verse duel today (section 5).
 - **Hide what does not work** rather than leave it reachable by URL: story mode (one readable encounter, none playable; D §6.5), the season page, tournaments until a match can be played, the 3D viewer.
-- **Decide, then delete.** Keep, finish or delete each half-built system, and write the decision down (D §11).
+- **Decide, and write it down.** Keep, finish or delete each half-built system, and record the decision (D §11). Decided by default on 2026-11-19 (`28-owner-decisions.md` D-39): story mode is finished first; the other half-built systems are hidden until each has a job in the duel, and none is dropped from the plan; React and the dead NFT and wallet schema are removed.
 - **Stop marketing the AI.** Lead with the player's verse, the fair rules and the real performer (SD §3).
 - **Never put anything of value on a model-only verdict**, and never build ranked play on the browser's judge (SD, finding 6; CGL, "Things I would not do").
 - **Never synthesise Devon Glover's voice or likeness**, and never present AI output as his (SP §5.8; SD §3, §9).
@@ -771,52 +772,52 @@ Candid recommendations. All Proposed.
 
 ## Owner questions
 
-Everything marked Not known above, and the decisions this document cannot make.
+Everything marked Not known above, and the decisions this document could not make. Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
 
 **For the owner.**
-1. Does a written licence with Devon Glover exist for his name, "The Sonnet Man", "Shakespeare on the Go" and any likeness? If not, who drafts it, and will he have his own counsel?
-2. Were the game's AI features on the market before 2026-08-02? This decides whether Article 50(2) marking is due now or by 2026-12-02. Will counsel confirm the studio is a "provider"?
-3. Are the release's economy rates and caps (05 §7.1) the launch values? The branch answers the earlier questions: signed out, the browser keeps its own collection; season rewards are per player; byes go through.
-4. After `fix/judge-wording`, who re-measures the 32 stale judging cells, and when? Which languages make the list is Not known until then.
-5. Are Whisper base, Kokoro-82M and LFM2.5 350M accepted exceptions to the post-2026-04-01 model rule, or should they be replaced or removed?
-6. Are the hosted Plausible script and model downloads from the Hugging Face hub accepted exceptions to "free and self-hosted only"?
-7. Does the thin-verse rule already void every model draft written in the wrong language? Not measured.
-8. Does anything keep the model opponent off self-harm, sexual and mental-health topics (California SB 243)?
-9. Two tracks are traced to CC0 in this release; where do the other two tracks and the 14 effects come from? The FLUX licence allows commercial use of the card art only under US$5M group revenue: accepted?
-10. Is the SM-001 painting meant to depict Devon Glover?
-11. Story mode, house allegiance, streaks, weekly events, draft mode, referral, tournaments, season pass, marketplace: keep, finish or delete each?
-12. Were the 10,000 and 100-card tiers and The Sonnet Man's scarcity dropped by decision?
-13. Will credits ever be sold? What revenue, if any, is expected in 2027: grants, school licences, supporters?
-14. Is there a budget for native-speaker reviewers, human writers of opponent verses and licensed music? Paying people is outside the "no paid APIs" rule, but it is still money.
-15. Which languages matter most at launch?
-16. Is the audience teens and adults, or classrooms including pupils under 13? This sets the COPPA scope.
-17. Has anyone outside the team played the rebuilt game? Are there any figures, even informal ones, for match length or how far first-time players get?
-18. Is the nightly backup copied off the production machine?
-19. Is there an EU and a UK representative, and who will review and sign off the drafted DPIA (19 §4) and Online Safety Act risk assessment (18 §9)?
-20. What is the trademark status of "Sonnet Man" and "Inspired Mile"?
-21. Does any shipped Shakespeare text come from a Folger edition?
+1. Is there a written licence with Devon Glover for his name, "The Sonnet Man", "Shakespeare on the Go" and any likeness, and will he have his own lawyer? **Open (28 O-1):** will you ask him to sign one?
+2. Were the game's AI features public before 2026-08-02, and is the studio a "provider" under the EU AI Act? **Decided by the owner (2026-11-19, R6):** AI output is marked in this release, so the date matters less (28 D-01). The "provider" question goes to a lawyer: **Open (28 O-2).**
+3. Are the release's economy rates and caps the launch values? **Decided by the owner (2026-11-19, R9):** yes, as tunable launch values (28 D-05).
+4. Who measures the 32 set-aside judging cells again, and when? **Decided by the owner (2026-11-19, R11):** the build host, before deploy (28 D-07).
+5. Are Whisper base, Kokoro-82M and LFM2.5 350M accepted exceptions to the model-date rule? **Decided by default:** LFM2.5 is removed now; Whisper base and Kokoro stay only until a newer model is measured to do each job (28 D-28).
+6. Are the hosted analytics script and model downloads from the Hugging Face hub accepted exceptions to "free and self-hosted only"? **Decided by default:** analytics move to self-hosted Umami (28 D-25); model revisions are pinned now and served from the game's own site once traffic is known (28 D-26).
+7. Does the thin-verse rule void every model draft written in the wrong language? **Fact to find out** (28, Facts to find out, 10).
+8. Does anything keep the model opponent off self-harm, sexual and mental-health topics (California SB 243)? **Decided by default:** a classifier checks each model draft and voids a flagged one (28 D-35).
+9. Where do the untraced tracks and the 14 effects come from, and is the card-art licence's US$5M revenue limit accepted? **Decided by the owner (2026-11-19, R12)** for the audio (28 D-08); **decided by default** to record the limit beside the LFM one (28 D-33); whether the company is under it: **Open (28 O-9).**
+10. Is the SM-001 painting meant to depict Devon Glover? A question for him (Part 3 of 28; question 4 below).
+11. Story mode, house allegiance, streaks, weekly events, draft mode, referral, tournaments, season pass, marketplace: keep, finish or delete each? **Decided by default:** story mode first; the others hidden until each has a job, none dropped from the plan; streaks become a forgiving streak; marketplace for adults only (28 D-39).
+12. Were the 10,000 and 100-card tiers and The Sonnet Man's scarcity dropped by decision? **Decided by default:** no; they stay on the list for the card redesign, which decides what rarity means (28 D-39, D-43).
+13. Will credits ever be sold, and what revenue is expected in 2027? **Decided by the owner (2026-11-19, R10):** credits are never sold. **Decided by default:** nor packs, and never ads; grants, then school licences, then supporters (28 D-56).
+14. Is there a budget for native-speaker reviewers, writers of opponent verses and licensed music? **Open (28 O-7).**
+15. Which languages matter most at launch? **Decided by default:** online play stays English only; marketing names only reviewed languages; review starts with the launch market's languages (28 D-48, D-50, D-57).
+16. Is the audience teens and adults, or classrooms including pupils under 13? **Decided by default:** 13 and over (28 D-23).
+17. Has anyone outside the team played the rebuilt game, and are there any figures for match length or first-time progress? **Fact to find out** (28, Facts to find out, 3); the AI playtests will give the first figures (28 D-63).
+18. Is the nightly backup copied off the production machine? **Decided by the owner (2026-11-19, R16):** yes, an encrypted copy, installed that day (28 D-10).
+19. Is there an EU and a UK representative, and who signs off the drafted privacy and online-safety risk assessments? **Open (28 O-5 and O-3).**
+20. What is the trade-mark status of "Sonnet Man" and "Inspired Mile"? **Decided by default:** the free public registers are searched and the result recorded (28 D-15). **Open (28 O-4):** paying for a full search and registration.
+21. Does any shipped Shakespeare text come from a Folger edition? **Decided by default:** confirm none does (28 D-60).
 22. (Answered: `fix/compliance` corrects the cookie name, commit `2df321b1`.)
-23. Should email sign-in be turned on, or is passkey-only the policy despite unrecoverable lost passkeys?
-24. Does the game tell players anywhere, in their language, that its text was machine-translated?
+23. Email sign-in on, or passkey-only? **Decided by default:** emailed codes through Resend, as the owner directed on 2026-11-16, once its account exists (28 D-24; **Open, 28 O-11**); passkey-only until then.
+24. Does the game tell players, in their language, that its text was machine-translated? **Decided by default:** one line per language until a native speaker has read it (28 D-34).
 
-**To ask Devon Glover.** Ask; do not assume any answer.
+**To ask Devon Glover.** Ask; do not assume any answer. Asking is part of 28 O-1.
 1. On what terms may the game use your name, "The Sonnet Man" and "Shakespeare on the Go", in the product and in marketing?
 2. What would you record for the game: an intro, a line per house, remixes after a round, beats? Which of your existing recordings or music may it use?
 3. What is your position on an AI opponent "in the style of" you? On any synthetic voice?
 4. Is the SM-001 card meant to be you? If you want a likeness, which photographs may be used?
 5. "Verse duel" or "rap battle": which name fits your work?
-6. Does a recite-then-remix mode fit your method? Would you write sample remixes for it?
+6. Would a mode where a player recites a Shakespeare passage and then remixes it in their own words fit your method? Would you write sample remixes for it?
 7. Which school, festival and conference dates could carry an in-game challenge?
 8. Which topics, gestures or slang should a game used in classrooms keep out?
 9. Would you write or approve the written opponent's voice?
-10. Could your school network host playtests or a classroom pilot?
+10. Could your school network host a classroom pilot?
 11. How do you want to review content, and how quickly can you turn reviews round?
 
-**To ask Arrocito del Diablo.**
-1. Should ATK, DEF, HP and element be removed, or given a meaning in the verse duel?
-2. Should each character have a condition of its own beyond its signature words?
-3. How should relics and potions trade score against difficulty?
-4. Is a stakes move before round 3 (raise or bow out) worth testing?
-5. What should collecting unlock, and how often should new cards arrive?
-6. Should The Sonnet Man stay in every starter deck?
-7. How do you want to review card and balance changes, and how often?
+**For Arrocito del Diablo.** Each was decided by default on 2026-11-19 so that work can go ahead; his weekly review can change any of them, recorded as a new decision (28 D-49).
+1. Remove ATK, DEF, HP and element, or give them a meaning? **Off the card face until they have a role in writing; kept in the card data** (28 D-42).
+2. A condition of its own for each character, beyond its signature words? **Yes, one each** (28 D-42).
+3. How should relics and potions trade score against difficulty? **Measured in the AI playtests, then set in the weekly review** (28 D-42).
+4. Is a stakes move before round 3 (raise or bow out) worth testing? **Yes: built behind a switch and compared in the AI playtests before it ships** (28 D-44).
+5. What should collecting unlock, and how often should new cards arrive? **A use for duplicates in the card redesign; a small set each quarter after it** (28 D-43).
+6. Should The Sonnet Man stay in every starter deck? **Waits on Devon Glover's answer** (28 D-43, O-1).
+7. How should card and balance changes be reviewed? **A short weekly review** (28 D-49).
