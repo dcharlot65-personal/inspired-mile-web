@@ -171,18 +171,15 @@ async fn me(
     .await?
     .ok_or_else(ApiError::unauthorized)?;
 
-    // Check founding player status
+    // A founding player (an account created before LAUNCH_DATE) is brought up to the founding
+    // balance once, logged as a credit transaction. Until 2026-11-19 every /auth/me refilled it,
+    // unlogged.
     let founding = if let Ok(launch) = chrono::NaiveDate::parse_from_str(&config.launch_date, "%Y-%m-%d") {
         let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
         if created.date_naive() < launch {
-            // Grant founding player rewards (idempotent)
-            sqlx::query(
-                "UPDATE player_stats SET credits = GREATEST(credits, 500) WHERE user_id = $1 AND credits < 500",
-            )
-            .bind(claims.sub)
-            .execute(&pool)
-            .await
-            .ok();
+            if let Err(e) = grant_founding(&pool, claims.sub).await {
+                tracing::warn!(user_id = %claims.sub, "could not grant the founding credits: {e}");
+            }
             Some(true)
         } else {
             Some(false)
@@ -197,6 +194,24 @@ async fn me(
         passkey_count: passkey_count(&pool, claims.sub).await?,
         is_new_user: None,
     }))
+}
+
+/// Raise a founding player's balance to the founding amount, once per account.
+async fn grant_founding(pool: &PgPool, user_id: uuid::Uuid) -> Result<(), sqlx::Error> {
+    let mut tx = pool.begin().await?;
+    let balance = crate::ledger::lock_account(&mut tx, user_id).await?;
+    let granted: bool = sqlx::query_scalar(
+        "SELECT EXISTS (SELECT 1 FROM credit_transactions WHERE user_id = $1 AND source = 'founding')",
+    )
+    .bind(user_id)
+    .fetch_one(&mut *tx)
+    .await?;
+    // Logged even when nothing is due (a balance already over the amount), so it happens once.
+    if !granted {
+        let top_up = (inspired_mile_api::economy::RULES.founding.credits - balance).max(0);
+        crate::ledger::credit(&mut tx, user_id, top_up, "founding").await?;
+    }
+    tx.commit().await
 }
 
 // ---------------------------------------------------------------------------

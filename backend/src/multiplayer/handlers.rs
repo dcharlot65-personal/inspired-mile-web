@@ -76,7 +76,7 @@ pub fn router() -> Router<(PgPool, Config)> {
 }
 
 /// A room's refusal as an answer: its fixed sentence, never anything from the database.
-fn refused(error: RoomError) -> (StatusCode, String) {
+pub(crate) fn refused(error: RoomError) -> (StatusCode, String) {
     let status = match error {
         RoomError::NotFound => StatusCode::NOT_FOUND,
         RoomError::ServerFull => StatusCode::SERVICE_UNAVAILABLE,
@@ -93,7 +93,7 @@ fn refused(error: RoomError) -> (StatusCode, String) {
 /// secret when `PROXY_SECRET` is set; from anyone else the socket peer is the client. It is
 /// keyed by `network_key` (an IPv4 address or an IPv6 /48), the width of every limit one
 /// party could use against another or to fill a table: rooms are a table of `MAX_ROOMS`.
-fn origin_of(headers: &HeaderMap, peer: SocketAddr, config: &Config) -> String {
+pub(crate) fn origin_of(headers: &HeaderMap, peer: SocketAddr, config: &Config) -> String {
     client_addr(headers, Some(peer), &config.trusted_proxies).network_key()
 }
 
@@ -310,15 +310,16 @@ async fn ws_handler(
 }
 
 /// The characters of `deck` this account may not field: those that are not starter
-/// characters and that the server's record of the account's cards (`owned_cards`: the
-/// market, and collections moved to the account) does not hold.
+/// characters and that the account does not hold on the server (`owned_cards`: packs the server
+/// opened, the market, the one-time import of a device's collection). A card on sale in the
+/// market (`state = 'listed'`) is not held for this: it cannot take the stage while listed.
 async fn not_held(pool: &PgPool, user_id: uuid::Uuid, deck: &[String]) -> Result<Vec<String>, sqlx::Error> {
     let starter = starter_characters();
     let asked: Vec<String> = deck.iter().filter(|id| !starter.contains(id)).cloned().collect();
     if asked.is_empty() {
         return Ok(Vec::new());
     }
-    let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1 AND card_id = ANY($2)")
+    let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1 AND card_id = ANY($2) AND state = 'owned'")
         .bind(user_id)
         .bind(&asked)
         .fetch_all(pool)
@@ -559,7 +560,10 @@ async fn handle_event(
                         .collect();
                     return Outcome::Tell(ServerEvent::Error {
                         code: "card_not_held",
-                        message: format!("Your account does not hold {}. Choose characters you hold, or the starter ones.", names.join(", ")),
+                        message: format!(
+                            "Your account does not hold {} (a card on sale in the market cannot take the stage). Choose characters you hold, or the starter ones.",
+                            names.join(", ")
+                        ),
                     });
                 }
                 Err(e) => {

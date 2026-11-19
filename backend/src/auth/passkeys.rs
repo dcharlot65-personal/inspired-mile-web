@@ -1064,7 +1064,7 @@ pub async fn purge_expired(pool: &PgPool) {
 //   - never played and never did anything that leaves a trace: every counter in
 //     `player_stats` is still zero, no credits, no cards, variants or achievements, no
 //     credit transaction, no classroom, season, referral, tournament or migration row, no
-//     house, no wallet.
+//     free pack claimed, no online match stored, no house, no wallet.
 // Tables that reference `users` without `ON DELETE CASCADE` (battles, trades, reports and
 // whatever is added later) are a second guard: the delete of an account they mention
 // fails, and the account stays.
@@ -1092,7 +1092,9 @@ macro_rules! unused_account {
     AND NOT EXISTS (SELECT 1 FROM season_progress x WHERE x.user_id = u.id)
     AND NOT EXISTS (SELECT 1 FROM referral_codes x WHERE x.user_id = u.id)
     AND NOT EXISTS (SELECT 1 FROM referral_redemptions x WHERE x.redeemed_by = u.id)
-    AND NOT EXISTS (SELECT 1 FROM tournament_entries x WHERE x.user_id = u.id)"
+    AND NOT EXISTS (SELECT 1 FROM tournament_entries x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM pack_claims x WHERE x.user_id = u.id)
+    AND NOT EXISTS (SELECT 1 FROM battle_rooms x WHERE x.player1_id = u.id OR x.player2_id = u.id)"
     };
 }
 

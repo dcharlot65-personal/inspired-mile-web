@@ -10,6 +10,8 @@ use sqlx::{PgPool, Row};
 
 use crate::auth::Claims;
 use crate::config::Config;
+use crate::ledger;
+use inspired_mile_api::economy::RULES;
 
 #[derive(Serialize)]
 pub struct ReferralInfo {
@@ -26,7 +28,12 @@ pub struct RedeemRequest {
 pub struct RedeemResponse {
     pub success: bool,
     pub message: String,
+    /// Always 0: redeeming a code gives the redeemer nothing. Until 2026-11-19 the answer said
+    /// "You get 5 free packs!" and granted none.
     pub packs_granted: i32,
+    /// What the player who invited them received for it (0 once that player has had
+    /// `referral.rewards_per_day` today).
+    pub referrer_credits: i32,
 }
 
 fn generate_referral_code() -> String {
@@ -105,7 +112,8 @@ async fn redeem_code(
         return Err((StatusCode::BAD_REQUEST, "Cannot redeem your own referral code".into()));
     }
 
-    // Try to insert redemption (unique constraint prevents double-redeem)
+    // The redemption and the referrer's reward in one transaction: both or neither.
+    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
     let result = sqlx::query(
         "INSERT INTO referral_redemptions (code_id, redeemed_by) VALUES ($1, $2)
          ON CONFLICT (redeemed_by) DO NOTHING
@@ -113,7 +121,7 @@ async fn redeem_code(
     )
     .bind(code_id)
     .bind(claims.sub)
-    .fetch_optional(&pool)
+    .fetch_optional(&mut *tx)
     .await
     .map_err(crate::error::internal)?;
 
@@ -122,21 +130,23 @@ async fn redeem_code(
             success: false,
             message: "You have already redeemed a referral code".into(),
             packs_granted: 0,
+            referrer_credits: 0,
         }));
     }
 
-    // Grant 100 credits to the referrer
-    sqlx::query("UPDATE player_stats SET credits = credits + 100 WHERE user_id = $1")
-        .bind(referrer_id)
-        .execute(&pool)
-        .await
-        .ok();
+    // The referrer is paid a fixed amount, logged, at most `rewards_per_day` times a day: new
+    // accounts redeeming one code are not a source of unlimited credits.
+    ledger::lock_account(&mut tx, referrer_id).await.map_err(crate::error::internal)?;
+    let rate = inspired_mile_api::economy::Rate { amount: RULES.referral.referrer_credits, per_day: RULES.referral.rewards_per_day };
+    let paid = ledger::credit_capped(&mut tx, referrer_id, "referral", rate).await.map_err(crate::error::internal)?;
+    tx.commit().await.map_err(crate::error::internal)?;
 
-    tracing::info!(referrer = %referrer_id, redeemed_by = %claims.sub, "Referral code redeemed");
+    tracing::info!(referrer = %referrer_id, redeemed_by = %claims.sub, paid = paid.granted, "Referral code redeemed");
 
     Ok(Json(RedeemResponse {
         success: true,
-        message: "Referral code redeemed! You get 5 free packs!".into(),
-        packs_granted: 5,
+        message: "Referral code redeemed.".into(),
+        packs_granted: 0,
+        referrer_credits: paid.granted,
     }))
 }

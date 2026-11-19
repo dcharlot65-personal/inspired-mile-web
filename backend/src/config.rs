@@ -234,6 +234,9 @@ pub struct Config {
     /// Seconds between sweeps of expired challenges, old codes, ended sessions and unused
     /// accounts (`MAINTENANCE_INTERVAL_SECONDS`, default 600). The tests shorten it.
     pub maintenance_interval_seconds: u64,
+    /// Seconds between the tournament scheduler's looks for tournaments to start
+    /// (`TOURNAMENT_CHECK_SECONDS`, default 30). The tests shorten it.
+    pub tournament_check_seconds: u64,
 }
 
 impl Config {
@@ -335,6 +338,10 @@ impl Config {
                 .and_then(|v| v.trim().parse().ok())
                 .filter(|n| *n > 0)
                 .unwrap_or(600),
+            tournament_check_seconds: get("TOURNAMENT_CHECK_SECONDS")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0)
+                .unwrap_or(30),
         };
         Ok((config, warnings))
     }

@@ -5,6 +5,7 @@ mod credits;
 mod db;
 mod error;
 mod inventory;
+mod ledger;
 mod marketplace;
 mod migration;
 mod multiplayer;
@@ -78,15 +79,18 @@ async fn main() {
 
     let state = (pool.clone(), config.clone());
 
-    // Multiplayer shared state
-    let rooms = Arc::new(RoomManager::new());
+    // Multiplayer shared state. Every room hands its finished match to the recorder, which
+    // stores it (the leaderboard, rankings and tournament results come from nothing else).
+    let (record_tx, record_rx) = tokio::sync::mpsc::unbounded_channel();
+    let rooms = Arc::new(RoomManager::new().with_recorder(record_tx));
     let queue = Arc::new(MatchmakingQueue::new());
+    tokio::spawn(multiplayer::results::run_recorder(pool.clone(), record_rx));
 
     // Start tournament scheduler background task
     let scheduler_pool = pool.clone();
-    let scheduler_rooms = rooms.clone();
+    let scheduler_every = std::time::Duration::from_secs(config.tournament_check_seconds);
     tokio::spawn(async move {
-        tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_rooms).await;
+        tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_every).await;
     });
 
     // Sweep the rooms: finished ones once their linger is over (the privacy policy's "up to two

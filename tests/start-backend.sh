@@ -100,6 +100,7 @@ start_api() {
       DATABASE_URL="postgres://$DB_USER@127.0.0.1:$PG_PORT/$DB_NAME" \
       JWT_SECRET="e2e-secret-not-for-production-0123456789abcdef" \
       MAINTENANCE_INTERVAL_SECONDS="${E2E_MAINTENANCE_SECONDS:-3}" \
+      TOURNAMENT_CHECK_SECONDS="${E2E_TOURNAMENT_SECONDS:-1}" \
       PORT="$1" \
       CORS_ORIGIN="$WEB_ORIGIN" \
       WEBAUTHN_RP_ID="localhost" \

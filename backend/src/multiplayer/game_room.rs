@@ -18,6 +18,10 @@
 //!
 //! Online duels are English only: the room scores with the server's port of the English
 //! rules, and a client that asks for another language is refused (`handlers.rs`).
+//!
+//! When a match ends, the room hands its result (who played, who won and how, rounds and
+//! points; never the verses) to the recorder once (`MatchRecord`, written by `results.rs`). Those
+//! results are the leaderboard, the rankings and the tournament results: nothing else feeds them.
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -353,6 +357,41 @@ impl RoomError {
     }
 }
 
+/// A finished match, as the server judged it: what `results.rs` stores. No verse is in it.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct MatchRecord {
+    pub room_id: Uuid,
+    /// Seat 0 and seat 1.
+    pub players: [Uuid; 2],
+    /// The seat that won; `None` for a draw.
+    pub winner: Option<usize>,
+    pub reason: EndReason,
+    pub rounds_won: [u32; 2],
+    pub points: [u32; 2],
+    /// The best total of one round, per seat.
+    pub best_round: [u32; 2],
+    pub rounds_played: usize,
+    pub started_at: Option<chrono::DateTime<chrono::Utc>>,
+    pub ended_at: chrono::DateTime<chrono::Utc>,
+    /// The tournament match this room was opened for, if any.
+    pub tournament_match: Option<Uuid>,
+}
+
+impl EndReason {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Rounds => "rounds",
+            Self::Points => "points",
+            Self::Forfeit => "forfeit",
+            Self::Disconnect => "disconnect",
+        }
+    }
+}
+
+/// How long the first player into a tournament room waits for the other (a quick match waits
+/// `Timing::arrival`). Under `UNVISITED_ROOM`, so a room nobody comes to is still swept.
+pub const TOURNAMENT_ARRIVAL: Duration = Duration::from_secs(240);
+
 /// Something the room needs done later. See [`run_effects`].
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Effect {
@@ -433,6 +472,14 @@ pub struct GameRoom {
     arrival_armed: bool,
     /// Closed: the opponent never came, or the room was swept. It takes nobody now.
     closed: bool,
+    /// Where the finished match is sent to be stored (`results.rs`). None in unit tests.
+    recorder: Option<mpsc::UnboundedSender<MatchRecord>>,
+    /// The tournament match this room was opened for.
+    tournament_match: Option<Uuid>,
+    /// Wall-clock time of the first round, for the record.
+    started_wall: Option<chrono::DateTime<chrono::Utc>>,
+    /// The record has been handed over: a match is recorded once.
+    recorded: bool,
 }
 
 impl GameRoom {
@@ -472,7 +519,49 @@ impl GameRoom {
             paired: reserved.len() >= 2,
             arrival_armed: false,
             closed: false,
+            recorder: None,
+            tournament_match: None,
+            started_wall: None,
+            recorded: false,
         }
+    }
+
+    /// Hand finished matches to this recorder (the manager does this for every room it opens).
+    #[cfg(test)]
+    pub fn record_to(&mut self, recorder: mpsc::UnboundedSender<MatchRecord>) {
+        self.recorder = Some(recorder);
+    }
+
+    /// The result, once the match has ended between two seated players.
+    pub fn record(&self) -> Option<MatchRecord> {
+        let (winner, reason) = self.ended?;
+        if self.seats.len() < 2 {
+            return None;
+        }
+        let (won, points) = self.tally(self.results.len());
+        let mut best = [0u32; 2];
+        for r in &self.results {
+            for (seat, side) in r.sides.iter().enumerate() {
+                best[seat] = best[seat].max(side.total);
+            }
+        }
+        Some(MatchRecord {
+            room_id: self.id,
+            players: [self.seats[0].user_id, self.seats[1].user_id],
+            winner: match winner {
+                MatchWinner::A => Some(0),
+                MatchWinner::B => Some(1),
+                MatchWinner::Draw => None,
+            },
+            reason,
+            rounds_won: won,
+            points,
+            best_round: best,
+            rounds_played: self.results.len(),
+            started_at: self.started_wall,
+            ended_at: chrono::Utc::now(),
+            tournament_match: self.tournament_match,
+        })
     }
 
     /// Whether the room still counts against its players' and network's limits.
@@ -715,6 +804,7 @@ impl GameRoom {
                     self.round = 0;
                     self.round_started_at = Instant::now();
                     self.started_at = Some(self.round_started_at);
+                    self.started_wall = Some(chrono::Utc::now());
                     for s in 0..2 {
                         self.send(s, self.match_start_event(s));
                         self.send(s, self.round_start_event(s));
@@ -919,6 +1009,16 @@ impl GameRoom {
                 self.send(seat, done);
             }
         }
+        // The result is stored once. A recorder that has gone (the server is stopping) loses it,
+        // and says so in the log.
+        if !self.recorded {
+            if let (Some(record), Some(recorder)) = (self.record(), &self.recorder) {
+                self.recorded = true;
+                if recorder.send(record).is_err() {
+                    tracing::error!(room_id = %self.id, "a finished match could not be handed to the recorder");
+                }
+            }
+        }
     }
 
     fn other_wins(seat: usize) -> MatchWinner {
@@ -1030,6 +1130,8 @@ pub struct RoomManager {
     /// pass a limit that only one of them fits under.
     opening: Mutex<()>,
     timing: Timing,
+    /// Every room it opens hands its finished match here (`results.rs`).
+    recorder: Option<mpsc::UnboundedSender<MatchRecord>>,
 }
 
 /// Why a room could not be opened.
@@ -1058,7 +1160,13 @@ impl RoomManager {
     }
 
     pub fn with_timing(timing: Timing) -> Self {
-        Self { rooms: Mutex::new(HashMap::new()), opening: Mutex::new(()), timing }
+        Self { rooms: Mutex::new(HashMap::new()), opening: Mutex::new(()), timing, recorder: None }
+    }
+
+    /// Every room opened from now on hands its finished match to `recorder`.
+    pub fn with_recorder(mut self, recorder: mpsc::UnboundedSender<MatchRecord>) -> Self {
+        self.recorder = Some(recorder);
+        self
     }
 
     /// Every room, as it stands. The map's lock is let go before any room is locked: a room is
@@ -1098,6 +1206,29 @@ impl RoomManager {
     /// match's clock to arrive (`Timing::arrival`) starts now.
     pub async fn open_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, Refusal> {
         let _one_at_a_time = self.opening.lock().await;
+        self.open_locked(reserved, origins, None).await
+    }
+
+    /// The room for a tournament match: the live one already open for it, or a new one with both
+    /// seats held. Its result completes the match (`results.rs`); nothing else does.
+    pub async fn open_tournament_room(
+        &self,
+        reserved: &[(Uuid, String); 2],
+        origin: &str,
+        tournament_match: Uuid,
+    ) -> Result<Uuid, RoomError> {
+        let _one_at_a_time = self.opening.lock().await;
+        for (id, room) in self.all().await {
+            let room = room.lock().await;
+            if room.tournament_match == Some(tournament_match) && !room.gone() && room.state() != RoomState::Completed {
+                return Ok(id);
+            }
+        }
+        self.open_locked(reserved, &[origin.to_string()], Some(tournament_match)).await.map_err(|refusal| refusal.error())
+    }
+
+    /// `open_room` under the opening lock.
+    async fn open_locked(&self, reserved: &[(Uuid, String)], origins: &[String], tournament_match: Option<Uuid>) -> Result<Uuid, Refusal> {
         let players: Vec<Uuid> = reserved.iter().map(|(user, _)| *user).collect();
         let (per_user, per_origin) = self.holdings(&players, origins).await.ok_or(Refusal::ServerFull)?;
         let over: Vec<Option<RoomError>> = (0..players.len())
@@ -1118,6 +1249,11 @@ impl RoomManager {
         let mut room = GameRoom::new(id, rand::random::<u32>(), reserved, self.timing);
         room.origins = origins.to_vec();
         room.origins.dedup();
+        room.recorder = self.recorder.clone();
+        if tournament_match.is_some() {
+            room.tournament_match = tournament_match;
+            room.timing.arrival = TOURNAMENT_ARRIVAL;
+        }
         let paired = room.paired;
         room.arrival_armed = paired;
         let room = Arc::new(Mutex::new(room));
@@ -1981,5 +2117,62 @@ mod tests {
         t.room.submit(t.a, 1, "MO-001", PLAIN).unwrap();
         let json = serde_json::to_value(drain(&mut t.rx_a).iter().find(|e| matches!(e, ServerEvent::RoundResult(_))).unwrap()).unwrap();
         assert_eq!(json["opponent"]["score"]["voided"], "copied");
+    }
+
+    #[test]
+    fn a_finished_match_is_recorded_once_with_its_result_and_no_verse() {
+        let mut t = table(9);
+        let (tx, mut rx) = mpsc::unbounded_channel();
+        t.room.record_to(tx);
+        // Round one is played out, then Bob gives up.
+        let plan = t.room.plan[0].clone();
+        let verse = |p: &RoundPlan| if p.form_id == "acrostic" {
+            p.acrostic.clone().unwrap_or_default().chars().map(|c| format!("{}rise again", c.to_uppercase())).collect::<Vec<_>>().join("\n")
+        } else {
+            GOOD.to_string()
+        };
+        t.room.submit(t.a, 0, DECK_A[0], &verse(&plan)).unwrap();
+        t.room.submit(t.b, 0, DECK_B[0], PLAIN).unwrap();
+        assert!(rx.try_recv().is_err(), "nothing is recorded before the match ends");
+        t.room.forfeit(t.b);
+        let record = rx.try_recv().expect("the end of the match is recorded");
+        assert_eq!(record.players, [t.a, t.b]);
+        assert_eq!(record.winner, Some(0));
+        assert_eq!(record.reason, EndReason::Forfeit);
+        assert_eq!(record.rounds_played, 1);
+        let (won, points) = t.room.tally(1);
+        assert_eq!(record.rounds_won, won);
+        assert_eq!(record.points, points);
+        assert_eq!(record.best_round, [t.room.results[0].sides[0].total, t.room.results[0].sides[1].total]);
+        assert!(record.started_at.is_some());
+        assert_eq!(record.tournament_match, None);
+        // A record has no field for a verse; nor does anything more arrive.
+        t.room.forfeit(t.a);
+        t.room.abandon(t.a, t.conn_a);
+        assert!(rx.try_recv().is_err(), "a match is recorded once");
+    }
+
+    #[tokio::test]
+    async fn a_tournament_room_is_one_per_match_and_its_record_names_the_match() {
+        let (tx, mut rx) = mpsc::unbounded_channel();
+        let rooms = RoomManager::new().with_recorder(tx);
+        let (a, b, m) = (Uuid::new_v4(), Uuid::new_v4(), Uuid::new_v4());
+        let seats = [(a, "ann".to_string()), (b, "bob".to_string())];
+        let id = rooms.open_tournament_room(&seats, "203.0.113.1", m).await.unwrap();
+        assert_eq!(rooms.open_tournament_room(&seats, "203.0.113.2", m).await.unwrap(), id, "the open room is given again");
+        let other = rooms.open_tournament_room(&seats, "203.0.113.1", Uuid::new_v4()).await.unwrap();
+        assert_ne!(other, id);
+        let room = rooms.get_room(id).await.unwrap();
+        assert_eq!(room.lock().await.timing.arrival, TOURNAMENT_ARRIVAL);
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        let (tx_b, _rx_b) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        room.lock().await.join(b, "bob", &deck(&DECK_B), tx_b).unwrap();
+        room.lock().await.forfeit(a);
+        let record = rx.try_recv().expect("recorded");
+        assert_eq!(record.tournament_match, Some(m));
+        assert_eq!(record.winner, Some(1));
+        // A finished room is not given out again for the match: a new one is opened.
+        assert_ne!(rooms.open_tournament_room(&seats, "203.0.113.1", m).await.unwrap(), id);
     }
 }

@@ -1,11 +1,16 @@
+//! World-card variants the account holds on the server. Variants are earned and used in solo play
+//! on the device (src/lib/variants.ts); online play has none. Until 2026-11-19
+//! `POST /variants/unlock` gave the account any variant a client named (of a base card it held),
+//! from any source: like every other grant a client could name, it is gone (docs/ECONOMY.md).
+
 use axum::{
     extract::{Extension, State},
     http::StatusCode,
-    routing::{get, post},
+    routing::get,
     Json, Router,
 };
 use chrono::{DateTime, Utc};
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 
@@ -21,13 +26,6 @@ pub struct OwnedVariant {
     pub source: String,
 }
 
-#[derive(Deserialize)]
-pub struct UnlockVariantRequest {
-    pub variant_id: String,
-    pub base_card_id: String,
-    pub source: String,
-}
-
 #[derive(Serialize)]
 pub struct EligibleVariant {
     pub base_card_id: String,
@@ -36,7 +34,6 @@ pub struct EligibleVariant {
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/", get(list_variants))
-        .route("/unlock", post(unlock_variant))
         .route("/eligible", get(eligible_variants))
 }
 
@@ -68,52 +65,6 @@ async fn list_variants(
     Ok(Json(variants))
 }
 
-async fn unlock_variant(
-    Extension(claims): Extension<Claims>,
-    State((pool, _)): State<(PgPool, Config)>,
-    Json(body): Json<UnlockVariantRequest>,
-) -> Result<Json<OwnedVariant>, (StatusCode, String)> {
-    // Verify user owns the base card
-    let owns_row = sqlx::query(
-        "SELECT EXISTS(SELECT 1 FROM owned_cards WHERE user_id = $1 AND card_id = $2) as exists",
-    )
-    .bind(claims.sub)
-    .bind(&body.base_card_id)
-    .fetch_one(&pool)
-    .await
-    .map_err(crate::error::internal)?;
-
-    let owns_base: bool = owns_row.get("exists");
-    if !owns_base {
-        return Err((StatusCode::FORBIDDEN, "You don't own the base card".into()));
-    }
-
-    let row = sqlx::query(
-        "INSERT INTO owned_variants (user_id, variant_id, base_card_id, source)
-         VALUES ($1, $2, $3, $4)
-         ON CONFLICT (user_id, variant_id) DO NOTHING
-         RETURNING id, variant_id, base_card_id, acquired_at, source",
-    )
-    .bind(claims.sub)
-    .bind(&body.variant_id)
-    .bind(&body.base_card_id)
-    .bind(&body.source)
-    .fetch_optional(&pool)
-    .await
-    .map_err(crate::error::internal)?
-    .ok_or((StatusCode::CONFLICT, "Variant already unlocked".into()))?;
-
-    update_variant_counts(&pool, claims.sub).await;
-
-    Ok(Json(OwnedVariant {
-        id: row.get("id"),
-        variant_id: row.get("variant_id"),
-        base_card_id: row.get("base_card_id"),
-        acquired_at: row.get("acquired_at"),
-        source: row.get("source"),
-    }))
-}
-
 async fn eligible_variants(
     Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
@@ -134,16 +85,4 @@ async fn eligible_variants(
         .collect();
 
     Ok(Json(eligible))
-}
-
-async fn update_variant_counts(pool: &PgPool, user_id: Uuid) {
-    let _ = sqlx::query(
-        "UPDATE player_stats SET
-           variants_unlocked = (SELECT COUNT(*)::int FROM owned_variants WHERE user_id = $1),
-           updated_at = NOW()
-         WHERE user_id = $1",
-    )
-    .bind(user_id)
-    .execute(pool)
-    .await;
 }

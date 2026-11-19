@@ -4,30 +4,40 @@ use axum::{
     routing::{get, post},
     Json, Router,
 };
+use inspired_mile_api::economy::{self, RULES};
 use serde::{Deserialize, Serialize};
 use sqlx::{PgPool, Row};
 
 use crate::auth::Claims;
 use crate::config::Config;
-
-/// Daily spending limit for teen accounts (in credits).
-const TEEN_DAILY_SPEND_LIMIT: i32 = 200;
+use crate::ledger;
 
 #[derive(Serialize)]
 pub struct CreditsResponse {
     pub credits: i32,
 }
 
+/// A solo activity the browser says happened. The server cannot see solo play, so it pays a
+/// fixed amount per source, at most `per_day` times a UTC day (backend/data/economy.json). The
+/// client names the source and nothing else: a body that names an amount is refused.
 #[derive(Deserialize)]
 pub struct EarnCreditsRequest {
-    pub source: String, // "battle_win", "trivia", "challenge", "daily"
-    pub amount: Option<i32>,
+    pub source: String,
+    /// Refused when present. Until 2026-11-19 the server added whatever amount (1 to 1,000) a
+    /// client named here.
+    pub amount: Option<serde_json::Value>,
 }
 
-#[derive(Deserialize)]
-pub struct SpendCreditsRequest {
-    pub amount: i32,
-    pub reason: String,
+#[derive(Serialize)]
+pub struct EarnResponse {
+    /// The balance after this.
+    pub credits: i32,
+    /// Credits added now: the source's amount, or 0 once today's cap is reached.
+    pub granted: i32,
+    pub source: String,
+    /// Payments from this source today, this one included.
+    pub earned_today: i64,
+    pub per_day: i64,
 }
 
 #[derive(Deserialize)]
@@ -50,22 +60,12 @@ pub struct LimitsResponse {
     pub spent_today: i32,
 }
 
-/// Credit earning rates by source
-fn earn_amount(source: &str) -> i32 {
-    match source {
-        "battle_win" => 50,
-        "trivia" => 30,
-        "challenge" => 20,
-        "daily" => 10,
-        _ => 0,
-    }
-}
-
+/// Credits are spent only by what the server sells at its own price (packs, the market), so
+/// there is no route that takes credits for a reason the client names.
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/", get(get_credits))
         .route("/earn", post(earn_credits))
-        .route("/spend", post(spend_credits))
         .route("/age-verify", post(age_verify))
         .route("/limits", get(get_limits))
 }
@@ -88,78 +88,23 @@ async fn earn_credits(
     Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<EarnCreditsRequest>,
-) -> Result<Json<CreditsResponse>, (StatusCode, String)> {
-    let amount = body.amount.unwrap_or_else(|| earn_amount(&body.source));
-    if amount <= 0 || amount > 1000 {
-        return Err((StatusCode::BAD_REQUEST, "Invalid credit amount".into()));
+) -> Result<Json<EarnResponse>, (StatusCode, String)> {
+    if body.amount.is_some() {
+        return Err((StatusCode::BAD_REQUEST, "Amounts are set by the server".into()));
     }
-
-    let row = sqlx::query(
-        "UPDATE player_stats SET credits = credits + $2, updated_at = NOW()
-         WHERE user_id = $1
-         RETURNING credits",
-    )
-    .bind(claims.sub)
-    .bind(amount)
-    .fetch_one(&pool)
-    .await
-    .map_err(crate::error::internal)?;
-
-    // Log transaction
-    log_transaction(&pool, claims.sub, amount, "earn", &body.source).await;
-
-    tracing::info!(user_id = %claims.sub, source = %body.source, amount, "Credits earned");
-    Ok(Json(CreditsResponse { credits: row.get("credits") }))
-}
-
-async fn spend_credits(
-    Extension(claims): Extension<Claims>,
-    State((pool, _)): State<(PgPool, Config)>,
-    Json(body): Json<SpendCreditsRequest>,
-) -> Result<Json<CreditsResponse>, (StatusCode, String)> {
-    if body.amount <= 0 || body.amount > 100_000 {
-        return Err((StatusCode::BAD_REQUEST, "Invalid spend amount".into()));
-    }
-
-    // Check teen daily spending limit
-    let age_tier: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
-        .bind(claims.sub)
-        .fetch_optional(&pool)
-        .await
-        .map_err(crate::error::internal)?
-        .unwrap_or_else(|| "unknown".into());
-
-    if age_tier == "teen" {
-        // If today's spending cannot be read, the limit cannot be checked: refuse.
-        let spent_today = get_spent_today(&pool, claims.sub).await.map_err(crate::error::internal)?;
-        if spent_today + body.amount > TEEN_DAILY_SPEND_LIMIT {
-            return Err((
-                StatusCode::FORBIDDEN,
-                format!(
-                    "Daily spending limit reached ({}/{} credits/day for players under 18)",
-                    spent_today, TEEN_DAILY_SPEND_LIMIT
-                ),
-            ));
-        }
-    }
-
-    let row = sqlx::query(
-        "UPDATE player_stats SET credits = credits - $2, updated_at = NOW()
-         WHERE user_id = $1 AND credits >= $2
-         RETURNING credits",
-    )
-    .bind(claims.sub)
-    .bind(body.amount)
-    .fetch_optional(&pool)
-    .await
-    .map_err(crate::error::internal)?
-    .ok_or((StatusCode::BAD_REQUEST, "Insufficient credits".into()))?;
-
-    // Log transaction
-    log_transaction(&pool, claims.sub, body.amount, "spend", &body.reason).await;
-
-    tracing::info!(user_id = %claims.sub, reason = %body.reason, amount = body.amount, "Credits spent");
-    Ok(Json(CreditsResponse { credits: row.get("credits") }))
+    let rate = economy::solo_credits(&body.source).ok_or((StatusCode::BAD_REQUEST, "Unknown source".into()))?;
+    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
+    ledger::lock_account(&mut tx, claims.sub).await.map_err(crate::error::internal)?;
+    let paid = ledger::credit_capped(&mut tx, claims.sub, &body.source, rate).await.map_err(crate::error::internal)?;
+    tx.commit().await.map_err(crate::error::internal)?;
+    tracing::info!(user_id = %claims.sub, source = %body.source, granted = paid.granted, "Credits earned");
+    Ok(Json(EarnResponse {
+        credits: paid.total,
+        granted: paid.granted,
+        source: body.source,
+        earned_today: paid.today,
+        per_day: rate.per_day,
+    }))
 }
 
 // ---------------------------------------------------------------------------
@@ -207,41 +152,10 @@ async fn get_limits(
         .map_err(crate::error::internal)?
         .unwrap_or_else(|| "unknown".into());
 
-    let spent_today = get_spent_today(&pool, claims.sub).await.map_err(crate::error::internal)?;
+    let mut conn = pool.acquire().await.map_err(crate::error::internal)?;
+    let spent_today = ledger::spent_today(&mut conn, claims.sub).await.map_err(crate::error::internal)?;
 
-    let daily_limit = if age_tier == "teen" {
-        Some(TEEN_DAILY_SPEND_LIMIT)
-    } else {
-        None
-    };
+    let daily_limit = if age_tier == "teen" { Some(RULES.teen_daily_spend) } else { None };
 
-    Ok(Json(LimitsResponse { daily_limit, spent_today }))
+    Ok(Json(LimitsResponse { daily_limit, spent_today: spent_today.min(i64::from(i32::MAX)) as i32 }))
 }
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-async fn get_spent_today(pool: &PgPool, user_id: uuid::Uuid) -> Result<i32, sqlx::Error> {
-    let spent: i64 = sqlx::query_scalar(
-        "SELECT COALESCE(SUM(amount), 0) FROM credit_transactions
-         WHERE user_id = $1 AND direction = 'spend' AND created_at >= CURRENT_DATE",
-    )
-    .bind(user_id)
-    .fetch_one(pool)
-    .await?;
-    Ok(spent.min(i64::from(i32::MAX)) as i32)
-}
-
-async fn log_transaction(pool: &PgPool, user_id: uuid::Uuid, amount: i32, direction: &str, source: &str) {
-    let _ = sqlx::query(
-        "INSERT INTO credit_transactions (user_id, amount, direction, source) VALUES ($1, $2, $3, $4)",
-    )
-    .bind(user_id)
-    .bind(amount)
-    .bind(direction)
-    .bind(source)
-    .execute(pool)
-    .await;
-}
-
