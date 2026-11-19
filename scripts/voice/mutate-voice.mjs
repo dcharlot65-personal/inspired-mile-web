@@ -21,7 +21,10 @@ const CHECK = 'scripts/check-no-espeak.mjs';
  * The unit tests each fault must turn red. Not measurement.test.ts: it fails on almost any change
  * to the G2P (the measurement is then of other code) and would hide a fault the unit tests miss.
  */
-const UNIT_TESTS = ['src/lib/voice/g2p-en.test.ts', 'src/lib/voice/no-espeak.test.ts'];
+const UNIT_TESTS = [
+  'src/lib/voice/g2p-en.test.ts', 'src/lib/voice/no-espeak.test.ts', 'src/lib/thespian-voice.test.ts', 'src/lib/voice/held-out.test.ts',
+  'src/lib/voice/measure-host.test.ts',
+];
 
 /** [what the fault is, file, text to find, what it becomes] */
 const FAULTS = [
@@ -52,6 +55,21 @@ const FAULTS = [
   ['the rules\' h unread', LTS, '|NG|CH|WH|[pbtdkgfvszmnlwyrjh]/g;', '|NG|CH|WH|[pbtdkgfvszmnlwyrj]/g;'],
   ['a stem taken apart before one the table has whole', G2P, '  for (const s of candidates) {\n    const whole = known(s);\n    if (whole) return whole;\n  }\n', ''],
   ['"etc" read inside "etch"', G2P, "[/\\betc\\b\\.?/gi, 'et cetera']", "[/\\betc\\.?/gi, 'et cetera']"],
+  ['letters and digits not read together (mp3)', G2P, 't = t.replace(/(?<![\\p{L}\\p{M}\\d])(?=[A-Za-z\\d]*\\d)(?=[A-Za-z\\d]*[A-Za-z])[A-Za-z\\d]+(?![\\p{L}\\p{M}\\d])/gu, gluedWord);', ''],
+  ['digits left beside other marks dropped', G2P, 't = t.replace(/\\d+/g, (m: string) => ` ${numberSaid(m)} `);', ''],
+  ['no decades after an apostrophe', G2P, "t = t.replace(/(?<![\\p{L}\\p{M}\\d])'?(\\d+)s(?![\\p{L}\\p{M}\\d])/gu, (_, n: string) => pluralOf(numberSaid(n)));", ''],
+  ['no am and pm', G2P, '(_, h: string, m: string | undefined, ap: string, dot: string) =>', '(all: string) => all || '],
+  ['the A of a time said as "a"', G2P, "const spelt = t.text === 'A' && capitalLetter(i + 1);", 'const spelt = false;'],
+  ['text-speak in capitals ("G8" as gate)', G2P, '/^[A-Z]?[a-z]+$/.test(letters)', '/^[A-Za-z]+$/.test(letters)'],
+  ['text-speak without the table ("2pac" as topac)', G2P, 'if (lexicon.has(word)) return word;', 'return word;'],
+  ['a minus sign dropped', G2P, "t = t.replace(/(^|[\\s(\\[{\"“'])-(?=\\d)/g, '$1minus ')", 't = t'],
+  ['no Roman numerals', G2P, 't = romanNumerals(t);', ''],
+  ['a lone I after a king\'s name always his number', G2P, '      if (loneI && smallWordNext) return all;\n', ''],
+  ['one letter after any capitalised word a numeral (Malcolm X)', G2P, 'num.length >= 2 && /^[IVX]+$/.test(num)', 'num.length >= 1 && /^[IVX]+$/.test(num)'],
+  ['kisses read as a number', G2P, ' && !/^X+$/.test(num)', ''],
+  ['text with nothing to say played as silence', 'src/lib/thespian-voice.ts', 'if (!phonemes.length) return speakFallback(text, lang);', ''],
+  ['held-out words named in the sources not found', 'scripts/voice/corpus.mjs', 'if (files.length) found.set(w, files);', ''],
+  ['the measurement host check passes any host', 'scripts/voice/host.mjs', 'return readdirSync(bin).some(', 'return true || readdirSync(bin).some('],
   ['check reads no base64', CHECK, 'for (const m of text.matchAll(BASE64_RUN)) {', 'for (const m of []) {'],
   ['check does not gunzip', CHECK, 'if (bytes[0] === 0x1f && bytes[1] === 0x8b) {', 'if (false) {'],
   ['check finds the name inside other words', CHECK, '(?<![A-Za-z])(?:eSpeak|ESPEAK|espeak[-_]ng)', '(?:eSpeak|ESPEAK|espeak[-_]ng|espeak)'],
