@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': 'Chúng tôi đang xây dựng một nền tảng giải trí kỹ thuật số kết hợp thẻ bài sưu tầm với các trải nghiệm AI. Sứ mệnh của chúng tôi là giúp mọi người giao lưu với nhau và vui chơi cùng thứ công nghệ làm sâu sắc thêm sự gắn kết giữa người với người, chứ không thay thế nó.',
   'about.founded': 'Thành lập năm {year}',
   'about.vision.title': 'Tầm nhìn',
-  'about.vision.p1': 'Hãy hình dung bạn chọn một lá bài kỹ thuật số và một nhân vật của Shakespeare thách bạn bằng thơ. Bạn đáp lại theo một thể thơ, từng dòng một: trên màn hình, hoặc trên sân khấu 3D khi đeo kính.',
+  'about.vision.p1': 'Hãy hình dung bạn chọn một lá bài kỹ thuật số và một nhân vật của Shakespeare thách bạn đấu thơ. Bạn đáp lại theo một thể thơ, từng dòng một: trên màn hình, hoặc trên sân khấu 3D khi đeo kính.',
   'about.vision.p2': 'Đó là Inspired Mile: một nền tảng nơi thẻ bài sưu tầm kỹ thuật số kết nối với các trải nghiệm AI và thực tế tăng cường, tạo nên một kiểu giải trí tương tác mới.',
   'about.why.title': 'Vì sao là Shakespeare?',
   'about.why.p1': 'Đối tác sáng tạo của chúng tôi, Devon Glover, tức <a>Sonnet Man</a>, đã dành nhiều năm chứng minh rằng Shakespeare chính là hip hop. Là nghệ sĩ giảng dạy và diễn viên sân khấu, anh hoà trộn thơ ca, chuyển thể và âm nhạc đương đại trong tác phẩm của mình. Anh đã hợp tác với Southern Shakespeare Festival, Shakespeare Behind Bars và các trường học trên khắp nước Mỹ. Chúng tôi đang đưa nguồn năng lượng đó vào thế giới số.',

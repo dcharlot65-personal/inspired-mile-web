@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': 'Nous construisons une plateforme de divertissement numérique qui associe cartes à collectionner et expériences d’IA. Notre mission\u00a0: amener les gens à échanger et à s’amuser avec une technologie qui renforce le lien humain au lieu de le remplacer.',
   'about.founded': 'Fondée en {year}',
   'about.vision.title': 'La vision',
-  'about.vision.p1': 'Imaginez\u00a0: vous choisissez une carte numérique, et un personnage de Shakespeare vous défie en vers. Vous répondez selon une forme poétique, vers après vers, sur un écran ou sur une scène en 3D dans un casque.',
+  'about.vision.p1': 'Imaginez\u00a0: vous choisissez une carte numérique, et un personnage de Shakespeare vous défie dans un duel de strophes. Vous répondez selon une forme poétique, vers après vers, sur un écran ou sur une scène en 3D dans un casque.',
   'about.vision.p2': 'C’est cela, Inspired Mile\u00a0: une plateforme où les cartes à collectionner numériques se relient à des expériences d’IA et de réalité augmentée pour créer une nouvelle forme de divertissement interactif.',
   'about.why.title': 'Pourquoi Shakespeare\u202f?',
   'about.why.p1': 'Notre partenaire créatif Devon Glover, <a>le Sonnet Man</a>, démontre depuis des années que Shakespeare, c’est du hip-hop. Artiste enseignant et comédien, il mêle dans son travail poésie, adaptation et musique contemporaine. Il a collaboré avec le Southern Shakespeare Festival, Shakespeare Behind Bars et des écoles de tous les États-Unis. Nous portons cette énergie vers le numérique.',

@@ -11,7 +11,7 @@ const messages: Record<string, string> = {
   'about.intro': "We're building a digital entertainment platform that combines collectible cards with AI-powered experiences. Our mission is to get people interacting with each other and having fun with technology that enhances rather than replaces human connection.",
   'about.founded': 'Founded {year}',
   'about.vision.title': 'The Vision',
-  'about.vision.p1': 'Imagine choosing a digital card, and a Shakespeare character challenges you in verse. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.',
+  'about.vision.p1': 'Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.',
   'about.vision.p2': "That's Inspired Mile: a platform where digital collectible cards connect to AI and AR experiences, creating a new kind of interactive entertainment.",
   'about.why.title': 'Why Shakespeare?',
   'about.why.p1': "Our creative partner Devon Glover, <a>the Sonnet Man</a>, has spent years proving that Shakespeare is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools nationwide. We're taking that energy digital.",

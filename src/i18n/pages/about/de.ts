@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': 'Wir bauen eine digitale Unterhaltungsplattform, die Sammelkarten mit KI-Erlebnissen verbindet. Unser Ziel: Menschen sollen miteinander spielen und Spaß haben, mit Technik, die menschliche Nähe stärkt, statt sie zu ersetzen.',
   'about.founded': 'Gegründet {year}',
   'about.vision.title': 'Die Vision',
-  'about.vision.p1': 'Stell dir vor, du wählst eine digitale Karte, und eine Figur von Shakespeare fordert dich in Versen heraus. Du antwortest in einer Gedichtform, Vers für Vers: am Bildschirm oder mit einer VR-Brille auf einer 3D-Bühne.',
+  'about.vision.p1': 'Stell dir vor, du wählst eine digitale Karte, und eine Figur von Shakespeare fordert dich zu einem Duell der Strophen heraus. Du antwortest in einer Gedichtform, Zeile für Zeile: am Bildschirm oder mit einer VR-Brille auf einer 3D-Bühne.',
   'about.vision.p2': 'Das ist Inspired Mile: eine Plattform, auf der digitale Sammelkarten mit KI- und AR-Erlebnissen verbunden sind und eine neue Art interaktiver Unterhaltung entsteht.',
   'about.why.title': 'Warum Shakespeare?',
   'about.why.p1': 'Unser kreativer Partner Devon Glover, <a>der Sonnet Man</a>, beweist seit Jahren, dass Shakespeare Hip-Hop ist. Er ist Künstler, Lehrer und Theaterdarsteller, und seine Arbeit verbindet Lyrik, Bearbeitung und zeitgenössische Musik. Er hat mit dem Southern Shakespeare Festival, mit Shakespeare Behind Bars und mit Schulen in den ganzen USA zusammengearbeitet. Wir bringen diese Energie ins Digitale.',

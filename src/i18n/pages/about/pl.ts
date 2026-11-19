@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': 'Budujemy cyfrową platformę rozrywkową, która łączy karty kolekcjonerskie z doświadczeniami opartymi na SI. Chcemy, żeby ludzie spotykali się ze sobą i dobrze się bawili dzięki technologii, która wzmacnia więzi między ludźmi, zamiast je zastępować.',
   'about.founded': 'Rok założenia: {year}',
   'about.vision.title': 'Wizja',
-  'about.vision.p1': 'Wyobraź sobie, że wybierasz cyfrową kartę, a postać z Szekspira wyzywa cię wierszem. Odpowiadasz w formie poetyckiej, wers po wersie: na ekranie albo na scenie 3D w goglach.',
+  'about.vision.p1': 'Wyobraź sobie, że wybierasz cyfrową kartę, a postać z Szekspira wyzywa cię na pojedynek na strofy. Odpowiadasz w formie poetyckiej, wers po wersie: na ekranie albo na scenie 3D w goglach.',
   'about.vision.p2': 'To właśnie Inspired Mile: platforma, na której cyfrowe karty kolekcjonerskie łączą się z doświadczeniami SI i rozszerzonej rzeczywistości, tworząc nowy rodzaj interaktywnej rozrywki.',
   'about.why.title': 'Dlaczego Szekspir?',
   'about.why.p1': 'Nasz partner artystyczny Devon Glover, czyli <a>Sonnet Man</a>, od lat dowodzi, że Szekspir to hip-hop. Jest artystą, edukatorem i aktorem teatralnym, a w swojej pracy łączy poezję, adaptację i muzykę współczesną. Współpracował z festiwalem Southern Shakespeare Festival, z programem Shakespeare Behind Bars i ze szkołami w całych Stanach Zjednoczonych. Przenosimy tę energię do świata cyfrowego.',

@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': '我们正在打造一个数字娱乐平台，把收藏卡牌和人工智能体验结合起来。我们的使命是让人们彼此互动，享受那些增进而不是取代人与人联系的技术。',
   'about.founded': '成立于 {year} 年',
   'about.vision.title': '愿景',
-  'about.vision.p1': '想象一下：你选中一张数字卡牌，莎士比亚笔下的角色便以诗向你发起挑战。你按一种诗体逐行作答：在屏幕上，或戴上头显，在 3D 舞台上。',
+  'about.vision.p1': '想象一下：你选中一张数字卡牌，莎士比亚笔下的角色便向你发起诗的对决。你按一种诗体逐行作答：在屏幕上，或戴上头显，在 3D 舞台上。',
   'about.vision.p2': '这就是 Inspired Mile：一个把数字收藏卡牌与人工智能和增强现实体验连接起来的平台，创造一种新的互动娱乐。',
   'about.why.title': '为什么是莎士比亚？',
   'about.why.p1': '我们的创意伙伴 Devon Glover，人称 <a>Sonnet Man</a>，多年来一直在证明莎士比亚就是嘻哈。他是教学艺术家和戏剧演员，作品融合了诗歌、改编和当代音乐。他曾与 Southern Shakespeare Festival、Shakespeare Behind Bars 以及美国各地的学校合作。我们要把这股能量带进数字世界。',

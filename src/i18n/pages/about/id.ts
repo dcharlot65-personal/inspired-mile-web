@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'about.intro': 'Kami membangun platform hiburan digital yang memadukan kartu koleksi dengan pengalaman bertenaga AI. Misi kami adalah membuat orang saling berinteraksi dan bersenang-senang dengan teknologi yang memperkuat hubungan antarmanusia, bukan menggantikannya.',
   'about.founded': 'Didirikan pada {year}',
   'about.vision.title': 'Visi',
-  'about.vision.p1': 'Bayangkan kamu memilih sebuah kartu digital, lalu seorang tokoh Shakespeare menantangmu dengan syair. Kamu menjawab dalam sebuah bentuk puisi, baris demi baris: di layar, atau di panggung 3D dengan headset.',
+  'about.vision.p1': 'Bayangkan kamu memilih sebuah kartu digital, lalu seorang tokoh Shakespeare menantangmu dalam duel syair. Kamu menjawab dalam sebuah bentuk puisi, baris demi baris: di layar, atau di panggung 3D dengan headset.',
   'about.vision.p2': 'Itulah Inspired Mile: platform tempat kartu koleksi digital terhubung dengan pengalaman AI dan realitas tertambah, dan melahirkan jenis hiburan interaktif yang baru.',
   'about.why.title': 'Mengapa Shakespeare?',
   'about.why.p1': 'Mitra kreatif kami, Devon Glover, yang dikenal sebagai <a>Sonnet Man</a>, telah bertahun-tahun membuktikan bahwa Shakespeare adalah hip hop. Ia seniman pengajar dan pemain teater, dan karyanya memadukan puisi, adaptasi, dan musik masa kini. Ia pernah bekerja sama dengan Southern Shakespeare Festival, Shakespeare Behind Bars, dan sekolah-sekolah di seluruh Amerika Serikat. Kami membawa energi itu ke dunia digital.',
