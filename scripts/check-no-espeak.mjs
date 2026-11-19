@@ -108,6 +108,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     for (const f of findings.slice(0, 40)) console.error(`  ${f.file}: ${f.marker} (${f.where})`);
     if (findings.length > 40) console.error(`  ... and ${findings.length - 40} more`);
     console.error('The voice must read English with src/lib/voice/g2p-en.ts; see astro.config.mjs (the phonemizer alias).');
+    if (findings.some((f) => /\.html?$/i.test(f.file))) {
+      console.error('A page that only names the program fails this too: credit what ships, and keep its history in docs/MODEL-LICENCES.md.');
+    }
     process.exit(1);
   }
   console.log(`check-no-espeak: ${count} files in ${dir}/, no eSpeak NG and no phonemizer.`);
