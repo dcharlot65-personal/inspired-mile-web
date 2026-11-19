@@ -152,9 +152,16 @@ describe('text', () => {
   });
 
   it('leaves no digit unread, whatever is glued to it', () => {
-    // Seeded: words of letters, digits and marks in every order.
-    let seed = 20261119;
-    const rand = (n: number) => ((seed = (seed * 1103515245 + 12345) % 2 ** 31) % n);
+    for (const t of ['x_5_y', '_7', 'mp_3', 'a 5_ b']) expect(normalise(t), t).not.toMatch(/\d/);
+    // Seeded (mulberry32: an LCG's low bits alternate, and once kept "_" from ever meeting a digit):
+    // words of letters, digits and marks in every order.
+    let s = 20261119 >>> 0;
+    const rand = (n: number) => {
+      s = (s + 0x6d2b79f5) >>> 0;
+      let t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return Math.floor((((t ^ (t >>> 14)) >>> 0) / 4294967296) * n);
+    };
     const parts = ['a', 'mp', 'K', 'gr', 'ever', 's', 'th', 'pm', 'am', 'e', '_', "'", '-', '.', ',', ':', '%', '$', '£', '−', '/', 'x', 'ß', 'é', 'п'];
     const failures: string[] = [];
     for (let k = 0; k < 3000; k++) {
