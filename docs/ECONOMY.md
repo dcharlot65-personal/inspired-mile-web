@@ -216,19 +216,21 @@ Database: migration `020_server_authority.sql` (adds only): result columns on `b
 
 ## Evidence (2026-11-19, branch fix/server-authority)
 
-- `tests/economy.spec.ts`: sixteen API-level tests, one per way a client could mint, move or claim
+- `tests/economy.spec.ts`: nineteen API-level tests, one per way a client could mint, move or claim
   what it should not, against the real API and Postgres the e2e harness starts
   (`tests/start-backend.sh`), read back from the API and the database; and one browser test of the
-  signed-in playground (server packs, balance, the device's collection untouched). All pass.
-- **The same sixteen fail on c22b035a.** The file was run against that commit's API in a separate
-  checkout (iMac Pro). Each failed at the exploit: a named amount paid 1,000 credits and 1,000 XP;
-  twelve parallel trivia reports all paid; `POST /stats`, `POST /stats/achievements`,
+  signed-in playground (server packs, balance, the device's collection untouched). All twenty pass.
+- **All twenty fail on c22b035a.** The file was run against that commit's API in a separate
+  checkout (iMac Pro). Each API test failed at the exploit: a named amount paid 1,000 credits and
+  1,000 XP; twelve parallel trivia reports all paid; `POST /stats`, `POST /stats/achievements`,
   `POST /inventory/add` and `POST /migrate/sync` answered 200; a deck with an added Hamlet was
   seated; a card was listed twice and sold free; a teen bought a 250-credit listing; a participant
-  named the tournament winner (200); a finished match left no record; the referral reply promised
-  packs. In the first baseline run two tests failed for another reason (an unknown source name, and
-  a forged room id that the old code answered with a 500), so they were rewritten to play the
-  exploit itself and run again; the counts above are from that second run.
+  named the tournament winner (200); a finished match left no record; a second player's claim of a
+  season level was refused as "already claimed"; the founding balance was refilled to 500 on the
+  next visit; a one-player tournament was accepted; the referral reply promised packs. (The
+  playground test fails there because the page had no balance at all.) In the first baseline run
+  two tests failed for another reason (an unknown source name, and a forged room id that the old
+  code answered with a 500), so they were rewritten to play the exploit itself and run again.
 - `tests/duel.spec.ts` ("a full match") and `tests/theatre.spec.ts` ("a duel counts as a battle when
   it ends") hold a solo win to a match. On c22b035a both fail at "battle wins after a round" (the
   count was 1 after a round won). The theatre test first used a verse that won no round at its
