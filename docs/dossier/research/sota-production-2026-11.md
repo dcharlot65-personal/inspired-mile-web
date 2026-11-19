@@ -487,7 +487,7 @@ Older than the cutoff, for reference only [V dates]:
   - children's risk assessments due by **2025-07-24**;
   - "small services with limited functionality are not required to take the same actions as the largest companies";
   - fines up to £18m or 10% of revenue.
-- Enforcement has reached small services: 4chan was fined £20,000 in August 2025 and £520,000 in March 2026 (Wikipedia, "Online Safety Act 2023", https://en.wikipedia.org/wiki/Online_Safety_Act_2023) [S].
+- Enforcement has reached small services: 4chan was fined £20,000, announced on 2025-10-13 (The Register, https://www.theregister.com/2025/10/13/4chan_ofcom_fine; August 2025 was the provisional notice) [V]. A further £520,000 in March 2026 is reported by Wikipedia ("Online Safety Act 2023", https://en.wikipedia.org/wiki/Online_Safety_Act_2023) and no primary source was found [S, unverified]. (Corrected 2026-11-19 by the dossier's legal checker.)
 - Ofcom's code measures for small, low-risk services could not be opened (403). [U]
 
 **European Union, Digital Services Act**, Regulation (EU) 2022/2065 (EUR-Lex) [V excerpts]:

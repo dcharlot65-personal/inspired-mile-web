@@ -7,7 +7,7 @@ Written 2026-11-19 from the worktree `_wt-dossier/inspired-mile-web-dossier`, br
 **How to read the citations.** `path:line` is a file in this repository at 0d6df6ef. `main:path:line`
 is the same path on branch `main` (what is presumed live, 3015db55). A path beginning with
 `site-ops/` is the separate operations repository at
-`/Users/dcharlot/data-share/vibe-coding/site-ops/` (read-only, as it stood on 2026-11-19).
+the owner's site-ops checkout (read-only, as it stood on 2026-11-19). **Internal details** (addresses, host names, secret names) are kept out of this file and are only in `17-operations-runbook-and-launch-checklist.md`.
 "grep" means the fact was established by searching the tree and finding nothing or exactly what is said.
 
 **Method and limits.** Read-only. Nothing was built, tested or run in a browser, and no host was
@@ -28,9 +28,9 @@ them before anything leaves the company.
 | Commits | 81 (`git log main --oneline \| wc -l`) | 680; 599 past main (`git rev-list --count main..HEAD`) |
 | Age of the code | 21 commits dated 2026-02-13 to 02-17, then 659 dated 2026-11-16 to 11-18 (`git log --format=%ad`) | same history |
 | Migrations | 001 to 017 (`git ls-tree main backend/migrations/`) | 001 to 019 (`backend/migrations/`) |
-| Multiplayer judge | a cloud LLM when `LLM_API_KEY` is set: model `claude-sonnet-4-5-20250929`, default URL `https://api.anthropic.com/v1/messages` (`main:backend/src/multiplayer/judge.rs` ~line 84, `main:backend/src/config.rs:110-112`) | server rules only, no model (`backend/src/multiplayer/mod.rs:1-5`) |
-| `JWT_SECRET` | falls back to the public string `dev-secret-change-in-production` when unset (`main:backend/src/config.rs:106-107`) | mandatory, at least 32 bytes; start-up exits otherwise (`backend/src/config.rs:95-140`) |
-| Client address | `CF-Connecting-IP` believed from any peer (`main:backend/src/auth/client_ip.rs:8,27`) | believed only from `TRUSTED_PROXIES`, optionally with `PROXY_SECRET` (`backend/src/auth/client_ip.rs:1-57`) |
+| Multiplayer judge | a cloud LLM when the cloud-model key is set: model `claude-sonnet-4-5-20250929`, default URL `https://api.anthropic.com/v1/messages` (`main:backend/src/multiplayer/judge.rs` ~line 84, `main:backend/src/config.rs:110-112`) | server rules only, no model (`backend/src/multiplayer/mod.rs:1-5`) |
+| the session-signing secret | falls back to the public string `dev-secret-change-in-production` when unset (`main:backend/src/config.rs:106-107`) | mandatory, at least 32 bytes; start-up exits otherwise (`backend/src/config.rs:95-140`) |
+| Client address | `CF-Connecting-IP` believed from any peer (`main:backend/src/auth/client_ip.rs:8,27`) | believed only from `TRUSTED_PROXIES`, optionally with the proxy secret (`backend/src/auth/client_ip.rs:1-57`) |
 
 Which exact commit is deployed could not be checked (no ssh). `CLAUDE.md:562` says the hosting
 facts were "verified 2026-11-16", the day main's tip was made.
@@ -61,7 +61,7 @@ facts were "verified 2026-11-16", the day main's tip was made.
 - **Storage is local first.** Anonymous play keeps game state in `localStorage`; signing in switches
   to the API (`src/lib/storage-backend.ts:1-8`). All API calls go to `/api/v1` on the page's own
   origin with `credentials: 'include'` (`src/lib/api-client.ts:6-17`). In development Astro proxies
-  `/api` (and its WebSocket) to `127.0.0.1:3849` (`astro.config.mjs:6-10,27-31`).
+  `/api` (and its WebSocket) to the local API port (`astro.config.mjs:6-10,27-31`).
 
 ### 1.2 API
 
@@ -73,7 +73,7 @@ facts were "verified 2026-11-16", the day main's tip was made.
   (exit 2: `backend/src/main.rs:48-53,67-73`), connects a pool (max `DB_MAX_CONNECTIONS`, default 25;
   min 2; idle 300 s; acquire 5 s: `backend/src/db.rs:6-15`, `backend/src/config.rs:303-305`), runs
   migrations from `./migrations` in the working directory (`backend/src/db.rs:17-26`), and binds
-  `0.0.0.0:$PORT`, default 3849 (`backend/src/main.rs:191`, `backend/src/config.rs:301`).
+  `0.0.0.0:$PORT`, default port in 17 §1.2 (`backend/src/main.rs:191`, `backend/src/config.rs:301`).
 - **Background tasks in the same process** (`backend/src/main.rs:85-117`): tournament scheduler
   every 30 s (`backend/src/tournaments/scheduler.rs:8-17`); room sweep every 15 s
   (`backend/src/multiplayer/game_room.rs:64`); auth purge and unused-account purge every
@@ -90,11 +90,11 @@ facts were "verified 2026-11-16", the day main's tip was made.
 
 | Piece | Host | Detail |
 |---|---|---|
-| Edge, TLS | Cloudflare | Tunnel "publishing" terminates on 10.10.10.1 (`CLAUDE.md:564-566`) |
-| Static site (live origin) | 10.10.10.1, the M4 MacBook Pro (also a shared build host: `backend/src/auth/client_ip.rs:11-14`) | Caddy serves `~/sites/inspired-mile-web`, forwards `/api/*` and the WebSocket to prod at `100.64.224.0:3849` over Tailscale (`CLAUDE.md:564-566`) |
-| Static mirror | prod, Mac Studio M4 Max (`100.64.224.0`) | same path; `rsync --delete --exclude=.git/` (`CLAUDE.md:567-568`); prod's own Caddy has a `sonnetman` block proxying `/api/*` to `localhost:3849` (`site-ops/Caddyfile:4005-4022`) |
-| API | prod | `~/sites/inspired-mile-api/` (binary, `migrations/`, `.env`), launchd `com.inspiredmile.api`, logs `~/sites/logs/inspiredmile-api*.log` (`CLAUDE.md:569-573`) |
-| Database | prod | Postgres 18, database `inspired_mile`; `DATABASE_URL` needs an explicit user (`CLAUDE.md:570-572`) |
+| Edge, TLS | Cloudflare | Tunnel "publishing" terminates on the live-origin machine (`CLAUDE.md:564-566`) |
+| Static site (live origin) | the live-origin machine (also a shared build host: `backend/src/auth/client_ip.rs:11-14`) | Caddy serves `~/sites/inspired-mile-web`, forwards `/api/*` and the WebSocket to prod over the private network (`CLAUDE.md:564-566`) |
+| Static mirror | prod, the production server | same path; `rsync --delete --exclude=.git/` (`CLAUDE.md:567-568`); prod's own Caddy has a `sonnetman` block proxying `/api/*` to the local API port (`site-ops/Caddyfile:4005-4022`) |
+| API | prod | `~/sites/inspired-mile-api/` (binary, `migrations/`, `.env`), a launchd service and its log files (names in 17 §1.2) (`CLAUDE.md:569-573`) |
+| Database | prod | Postgres 18, the game's database; the database URL setting needs an explicit user (`CLAUDE.md:570-572`) |
 | Model weights | Hugging Face hub and `*.hf.co` storage | fetched by the browser on use (`tests/third-party-allowlist.ts:26-66`) |
 | Email (off) | Resend | `https://api.resend.com/emails` (`backend/src/auth/mailer.rs:10`); production runs without a key (`backend/src/auth/email.rs:17-19`) |
 
@@ -154,10 +154,10 @@ Boxes, left to right:
    - *Storage*: localStorage (game state, age gate), sessionStorage (multiplayer seat and draft),
      Cache Storage (service worker v3; Transformers.js model caches).
 2. **Cloudflare** (edge, TLS, tunnel "publishing").
-3. **Caddy on 10.10.10.1** (live origin): static files; `/api/*` and WebSocket → arrow over
-   **Tailscale** to box 4.
-4. **Prod (Mac Studio)**: *Rust API* (axum, :3849; auth, inventory, stats, multiplayer rooms in
-   memory, verse engine port) ↔ *Postgres 18* `inspired_mile`. Static mirror beside it (dashed).
+3. **Caddy on the live-origin machine**: static files; `/api/*` and WebSocket → arrow over
+   **the private network** to box 4.
+4. **Prod (the production server)**: *Rust API* (axum; auth, inventory, stats, multiplayer rooms in
+   memory, verse engine port) ↔ *Postgres 18*, the game's database. Static mirror beside it (dashed).
 5. **Hugging Face hub** (dashed arrow from the browser's Brain/Ear/Voice: weights download only).
 6. **Plausible** (dashed arrow from the browser: page views, after the age gate).
 7. **Resend** (dotted arrow from the API: sign-in codes; off in production).
@@ -292,7 +292,7 @@ until deleted. **There is no account-deletion endpoint**; the policy offers dele
   (`CLAUDE.md:242-245`). Relying party name "Sonnet Man" (`backend/src/auth/handlers.rs:33-35`); RP ID
   `inspiredmile.com`, origin `https://sonnetman.inspiredmile.com` by default
   (`backend/src/config.rs:9-10`). **Changing the RP ID orphans every passkey** (`CLAUDE.md:266-267`).
-- **Email is off in production**: no `RESEND_API_KEY`, so the email endpoints answer 503 and the UI
+- **Email is off in production**: no the email-service key, so the email endpoints answer 503 and the UI
   hides email (`backend/src/auth/email.rs:15-26`; `backend/src/main.rs:62-66`). Accounts that exist only
   by email (the old Google sign-in) cannot sign in at all while it is off; production had no users when
   this was accepted on 2026-11-16 (`CLAUDE.md:314-318`). The check query is in `CLAUDE.md:317`.
@@ -311,8 +311,8 @@ until deleted. **There is no account-deletion endpoint**; the policy offers dele
   adding an email; the page retries after 403 `reauth_required` (`backend/src/auth/sessions.rs:26,54-70`;
   `CLAUDE.md:259-262`).
 - Logout refuses a request that is not same-site JSON (`backend/src/auth/sessions.rs:207-218`).
-- `JWT_SECRET` mandatory, ≥32 bytes, not the old constant or the template placeholder; email-code
-  HMAC key derived from it (`backend/src/config.rs:95-140,290`). `DEV_INSECURE_JWT_SECRET=1` only with
+- the session-signing secret mandatory, ≥32 bytes, not the old constant or the template placeholder; email-code
+  HMAC key derived from it (`backend/src/config.rs:95-140,290`). a development-only override only with
   http origins (`backend/src/config.rs:280-286`).
 
 ### 3.3 Limits and abuse controls
@@ -342,9 +342,9 @@ in the inserting transaction (`email_code.rs:36-38`; `passkeys.rs:31-36`).
 ### 3.4 Proxy trust
 
 - Forwarding headers (`CF-Connecting-IP`, `X-Forwarded-For`) are believed only from `TRUSTED_PROXIES`,
-  default `127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113`; the last is the M4's Tailscale address,
+  default: loopback plus three internal addresses (listed in 17 §1.3); the last is the live-origin machine's,
   the peer prod actually sees (checked 2026-11-16) (`backend/src/auth/client_ip.rs:37-50`).
-- `PROXY_SECRET` (optional, ≥32 characters): when set, a trusted peer's headers count only with a
+- the proxy secret (optional, ≥32 characters): when set, a trusted peer's headers count only with a
   matching `X-Proxy-Secret`, which every proxying Caddy must add with `header_up`
   (`client_ip.rs:52-57`; `backend/.env.production.template:27-35`). The prod Caddy block for the site adds
   no such header (`site-ops/Caddyfile:4010-4013`); the live origin's Caddy is not in site-ops (grep).
@@ -356,7 +356,7 @@ in the inserting transaction (`email_code.rs:36-38`; `passkeys.rs:31-36`).
 - No Content-Security-Policy anywhere in this repository (grep) or in prod's Caddyfile. Prod's Caddy adds
   `X-Content-Type-Options nosniff`, `X-Frame-Options DENY`, `Referrer-Policy strict-origin-when-cross-origin`
   and HSTS (1 year, subdomains) on its tunnel port (`site-ops/Caddyfile:57-72`). Whether the live origin
-  (10.10.10.1) sends the same could not be checked.
+  sends the same could not be checked.
 - CORS allows one exact origin with credentials (`backend/src/main.rs:145-161`); the template sets it to
   the site (`backend/.env.production.template:13`).
 - A 500 never carries database text (`backend/src/error.rs:5-13`). Pages never show `e.message`;
@@ -440,7 +440,7 @@ through `loadTransformers()`, which points onnxruntime-web at this site's copy a
   languages, 90 rounds each, 8,528 model calls (`docs/language/JUDGE-INJECTION.md:1-36,77-121`).
 - **Not established** (`MODEL-EVAL.md:1048-1111`): how well a model ranks two decent verses (test pairs are
   verse vs. non-verse); injection beyond three attempts per language; other GPUs, browsers and phones (one
-  machine, an M3 Ultra under headless Chromium); no in-game check of a verse's language (Gemma answers in
+  machine under headless Chromium); no in-game check of a verse's language (Gemma answers in
   English in 9/100 Italian plays). A fastText `lid.176` identifier (~1 MB) could close the last; not shipped.
 
 ### 4.3 Speech in and voice out
@@ -597,7 +597,7 @@ translation used vs. written for the game, of 71).
 ## 7. Quality: test suites, gates, build hosts
 
 **Project rule: builds and tests never run on the dev Mac**; they run on a build host through
-`~/kani-logs/remote/rb` (`CLAUDE.md:205-215`). No GitHub Actions; "CI is the build host" (`CLAUDE.md:600`;
+the build-host runner `rb` (`CLAUDE.md:205-215`). No GitHub Actions; "CI is the build host" (`CLAUDE.md:600`;
 the old `.github/workflows/deploy.yml` was deleted in ddc4e1dd).
 
 ### 7.1 Suites (static counts at 0d6df6ef)
@@ -626,7 +626,7 @@ whether any Playwright spec exercises them deeply was not established beyond `v1
 3. Real-model tests when the model path changes (`CLAUDE.md:211-212,500-535`).
 4. Language checks after any string change (`CLAUDE.md:557-560`).
 5. `scripts/check-api-build.sh` (clean-copy build, `--locked`) (`scripts/check-api-build.sh:1-25`).
-6. On prod, `scripts/check-migrations.sh <new migrations> -d inspired_mile` before swapping the binary
+6. On prod, `scripts/check-migrations.sh <new migrations> -d <database>` before swapping the binary
    (`CLAUDE.md:577-581`; `scripts/check-migrations.sh:1-13`).
 7. After deploy: the production smoke suite (`CLAUDE.md:213-214`), the `TRUSTED_PROXIES` log check
    (`CLAUDE.md:274-279`); optional `scripts/prod-passkey-check.mjs` (one real passkey sign-up against the
@@ -638,10 +638,10 @@ whether any Playwright spec exercises them deeply was not established beyond `v1
   `E2E_*` variables (`CLAUDE.md:228-233`). Before 2026-11-16 two concurrent runs could test each other's
   code and pass (`CLAUDE.md:232-233`). Never `pkill -f 'astro dev'` (`CLAUDE.md:235-238`). One `rb` per
   checkout at a time (`CLAUDE.md:219-220`).
-- Hosts named in the docs: the Studio (Apple M3 Ultra, Metal; every model-evaluation cell ran there:
-  `docs/language/MODEL-EVAL.md:211-215`); the M4 (also the site's proxy); an Intel iMac Pro for the card-text
+- Hosts named in the docs (names in 17): a build machine with a Metal GPU (every model-evaluation cell ran there:
+  `docs/language/MODEL-EVAL.md:211-215`); the live-origin machine (also the site's proxy); an Intel machine for the card-text
   checks (`docs/language/NAMES-AND-QUOTATIONS.md:447`). The release binary must be built on Apple Silicon,
-  never the Intel iMac, because prod is arm64 macOS (`CLAUDE.md:575-576`).
+  never the Intel machine, because prod is arm64 macOS (`CLAUDE.md:575-576`).
 
 ---
 
@@ -703,19 +703,19 @@ Not built here (no `dist/`, no `node_modules/`). Recorded measurements and sourc
 
 ### 10.1 Topology
 
-As in §1.3. The domain's tunnel terminates on 10.10.10.1; the API and database are on prod only and are
+As in §1.3. The domain's tunnel terminates on the live-origin machine; the API and database are on prod only and are
 "deployed by hand" (`site-ops/deploy/manifest.toml:1250-1255`). The manifest lists `sonnetman` as a static
-site on 10.10.10.1 with prod as mirror, `npm run build`, `dist` (`site-ops/deploy/manifest.toml:1267-1276`).
+site on the live-origin machine with prod as mirror, `npm run build`, `dist` (`site-ops/deploy/manifest.toml:1267-1276`).
 
 ### 10.2 Deploy steps (`CLAUDE.md:195-203,562-585`)
 
 1. Gates of §7.2 on the build host.
 2. Build the release binary on an Apple Silicon host inside the whole repository.
-3. On prod: `scripts/check-migrations.sh <new migrations> -d inspired_mile`; it exits 1 if the new API would
+3. On prod: `scripts/check-migrations.sh <new migrations> -d <database>`; it exits 1 if the new API would
    refuse to start (changed, missing or dirty migration).
 4. Copy the binary and `migrations/` to `~/sites/inspired-mile-api/`; replace the binary by writing a new
    file and renaming it, then `launchctl bootout` + `bootstrap` (not an in-place copy).
-5. Sync the static build to 10.10.10.1 and prod with `rsync --delete --exclude=.git/`.
+5. Sync the static build to the live origin and prod with `rsync --delete --exclude=.git/`.
 6. Smoke test and proxy-trust check.
 7. Rollback: put the old binary back and **leave `./migrations` as it is**; every migration only adds
    (`CLAUDE.md:582-585`; `backend/migrations/019_limits_and_declared_age.sql:1-5`).
@@ -728,11 +728,11 @@ Deploying restarts the API, which drops every live online match (in-memory rooms
   declared age), additive and re-runnable (`backend/migrations/018_sessions_and_limits.sql:1-3`;
   `019_limits_and_declared_age.sql:1-11`). Existing JWTs without `sid` stop parsing, so every current session
   ends (`backend/src/auth/jwt.rs:13-16`).
-- **Environment** (`backend/.env.production.template`): `JWT_SECRET` now mandatory and ≥32 bytes (the API
-  exits otherwise; main fell back to a public constant: `main:backend/src/config.rs:106-107`); `LLM_API_KEY`
-  and `LLM_API_URL` gone; new optional `TRUSTED_PROXIES`, `PROXY_SECRET`, `SIGNUP_GLOBAL_PER_HOUR`,
+- **Environment** (`backend/.env.production.template`): the session-signing secret now mandatory and ≥32 bytes (the API
+  exits otherwise; main fell back to a public constant: `main:backend/src/config.rs:106-107`); the cloud-model key
+  and its URL setting gone; new optional `TRUSTED_PROXIES`, the proxy secret, `SIGNUP_GLOBAL_PER_HOUR`,
   `SIGNUP_BEGINS_GLOBAL_PER_HOUR`, `AUTH_CHALLENGES_MAX`, `UNUSED_ACCOUNT_PURGE_DAYS`,
-  `MAINTENANCE_INTERVAL_SECONDS`; `DATABASE_URL` needs an explicit user (diff of env names read in
+  `MAINTENANCE_INTERVAL_SECONDS`; the database URL setting needs an explicit user (diff of env names read in
   `main:backend/src/config.rs` and `backend/src/config.rs`).
 - **Static build**: the frontend needs no secrets or `PUBLIC_*` variables (`CLAUDE.md:217`).
 - **Unverified hazard**: the manifest entry has no `no_cache_bust` (`site-ops/deploy/manifest.toml:1267-1276`),
@@ -747,7 +747,7 @@ Deploying restarts the API, which drops every live online match (in-memory rooms
 - **Monitoring**: none found for this site. What exists: operator notices and ceiling banners in the API log
   (`CLAUDE.md:279-291`), `GET /api/v1/health`, and the production smoke suite run by hand. No uptime check or
   alert names the site in site-ops (grep: only `Caddyfile`, `manifest.toml`, `shared/tamper-guard.ts`).
-- **Backups**: none recorded for the `inspired_mile` database in this repository or site-ops (grep for
+- **Backups**: none recorded for the game's database in this repository or site-ops (grep for
   `pg_dump`, `backup`).
 
 ### 10.5 Incident history (as recorded)
@@ -756,7 +756,7 @@ Deploying restarts the API, which drops every live online match (in-memory rooms
 |---|---|---|
 | Before v3 | service worker v2 cached signed-in API answers (incl. `/auth/me`) past sign-out, duplicated model weights, and would have deleted downloaded models on update | `public/sw.js:10-18` |
 | 2026-11-16 | the revival: "fix production API addresses, upgrade all dependencies" | commit ddc4e1dd |
-| 2026-11-16 | without the M4's Tailscale address trusted, the API counted every visitor as one client (found in review, fixed by the default) | `backend/src/auth/client_ip.rs:42-45` |
+| 2026-11-16 | without the live-origin machine's address trusted, the API counted every visitor as one client (found in review, fixed by the default) | `backend/src/auth/client_ip.rs:42-45` |
 | 2026-11-16 | a sign-in whose session row the next request could not see, with Postgres reporting a transaction already in progress, in an end-to-end run; cause read from sqlx code, not reproduced; fixed by run-to-completion | `backend/src/request_task.rs:4-16` |
 | 2026-11-16 | a full challenge table refused every visitor (review finding, not seen in production) | `backend/src/auth/passkeys.rs:46-48` |
 | 2026-11-17 | a quick-match request whose client had gone kept its place and paired the next player with nobody (checker probe) | `backend/src/request_task.rs:18-24` |
@@ -855,10 +855,10 @@ Ordered roughly by risk to players, data or the company.
    tables (`docs/language/PHONETICS.md:536-541`; grep of `src/pages`).
 9. **No native-speaker review in any language** (§6.4); five languages have no grammar checker
    (`docs/language/QA-REPORT.md:9-31`).
-10. **Email is off; legacy email-only accounts are locked out** until `RESEND_API_KEY` is set
+10. **Email is off; legacy email-only accounts are locked out** until the email-service key is set
     (`backend/src/auth/email.rs:15-26`).
 11. **No backups, monitoring or alerting recorded** (§10.4).
-12. **No CSP**; the live origin's headers and Caddy configuration are outside site-ops; `PROXY_SECRET` is not
+12. **No CSP**; the live origin's headers and Caddy configuration are outside site-ops; the proxy secret is not
     configured in any Caddy that can be read (§3.4, §3.5).
 13. **The 30-day log promise is unverified for the API's own logs** (`src/pages/privacy.astro:131,153`).
 14. **Deploy route ambiguity** with a possible asset-hashing breakage (§10.3).
@@ -895,10 +895,10 @@ Ordered roughly by risk to players, data or the company.
 
 ## 13. What could not be determined from here
 
-- Which commit is deployed now, and whether prod's `.env` sets `JWT_SECRET` (main falls back to a public
-  constant without it) or `LLM_API_KEY` (main's multiplayer judge calls the cloud model with it).
+- Which commit is deployed now, and whether prod's `.env` sets the session-signing secret (main falls back to a public
+  constant without it) or the cloud-model key (main's multiplayer judge calls the cloud model with it).
 - Production data: number of accounts, whether any email-only accounts exist, applied migrations.
-- The live origin's (10.10.10.1) Caddy configuration and response headers; Cloudflare settings.
+- The live origin's Caddy configuration and response headers; Cloudflare settings.
 - Bundle and chunk sizes of the current build (not built here); real download times on real networks.
 - Backups, monitoring, uptime, API log rotation: none recorded, so their absence is not proven.
 - Which deploy route (rsync or `deploy.sh`) produced the live static build.

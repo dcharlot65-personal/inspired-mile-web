@@ -6,7 +6,7 @@ This is the fact base for the Sonnet Man design dossier: what the game does toda
 - **How it was read.** By reading the files, with `grep`, and with throwaway Node and Python scripts that import the game's own TypeScript modules: `src/lib/cards.ts`, `src/lib/verse/devices.ts`, `src/lib/verse/forms.ts`, `src/lib/trivia.ts`, `src/lib/challenges.ts` and the English language pack. Nothing was built, tested or run in a browser, and production was not queried. A behaviour described as "read from the code" was not observed running.
 - **History in one line.** The repository has 680 commits. 21 were made from 2026-02-13 to 2026-02-17: the first build, a "Shakespeare rap battle card game" with wallets, NFTs and a cloud AI. The other 659 were made from 2026-11-16 to 2026-11-18: the rebuild as a verse duel on in-browser models (`git log --format=%ad --date=short | sort | uniq -c`). The rebuild's own commit is `ae20b599` (2026-11-16).
 - **Status words.** *Working*: a player can reach it from a page and it does what its screen says. *Partly*: it can be reached, but part of what it promises does nothing. *Stub*: its screen exists but the play behind it does not. *Dead*: code that no page imports or calls. Each claim says how it is known.
-- **The numbers** are quoted from code, or measured from files and named as measured. A number derived by arithmetic is marked "derived".
+- **Internal details.** Addresses, host names and secret names are kept out of this file; they are only in `17-operations-runbook-and-launch-checklist.md`. **The numbers** are quoted from code, or measured from files and named as measured. A number derived by arithmetic is marked "derived".
 
 Contents: 1 What the player does · 2 The card catalogue · 3 Modes and screens · 4 Progression and economy · 5 Multiplayer and social · 6 Narrative, world and tone · 7 Audio and visual · 8 Onboarding, accessibility and languages · 9 Intent against what was built · 10 Known open problems · 11 What could not be determined
 
@@ -1414,7 +1414,7 @@ No licence or credit for any track is recorded anywhere in the repository. A gre
   and "Create an account with a passkey" (`:80-88`). Creating one asks for no name, email or
   password, and warns "If you lose the passkey, we cannot let you back in" (`:85-86`).
 - An emailed 6-digit code signs in, creates an account or recovers one (`:105-111`). It is offered
-  only when the server has `RESEND_API_KEY`; otherwise the UI hides email (CLAUDE.md:269-270). The
+  only when the server has the email-service key; otherwise the UI hides email (CLAUDE.md:269-270). The
   email step needs an `adult` or `teen-consented` age answer, checked in the browser and in the
   API (CLAUDE.md:322-323).
 - Account menu: list, add and remove passkeys (`en.ts:127-134`). Adding or removing one needs a
@@ -1715,7 +1715,7 @@ Notes on the table:
     - There is no rating, no chat, no block or mute.
     - Reports are stored and never read.
     - A teen account can be paired with any adult stranger (5.7).
-32. **Email-only accounts cannot sign in while email is off** (no `RESEND_API_KEY`) (CLAUDE.md:314-318).
+32. **Email-only accounts cannot sign in while email is off** (no the email-service key) (CLAUDE.md:314-318).
 33. **A lost passkey cannot be recovered without email.** The sign-in panel says so: "If you lose the passkey, we cannot let you back in" (`src/i18n/locales/en.ts:86`).
 
 **Engineering items a player could feel**
