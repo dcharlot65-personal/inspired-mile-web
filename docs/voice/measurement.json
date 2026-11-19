@@ -1,5 +1,5 @@
 {
- "date": "2026-11-19T08:59:39.627Z",
+ "date": "2026-11-19T12:46:00.567Z",
  "host": "",
  "node": "v26.13.1",
  "kokoro": {
@@ -19,7 +19,7 @@
    "chunk_length_s": 30
   }
  },
- "seconds": 2333.918,
+ "seconds": 4792.469,
  "summary": {
   "verse": {
    "items": 34,
@@ -47,11 +47,11 @@
    "items": 71,
    "words": 729,
    "old": 0.05898491083676269,
-   "new": 0.06858710562414266,
-   "difference": 0.009602194787379975,
+   "new": 0.06584362139917696,
+   "difference": 0.006858710562414272,
    "interval95": {
-    "low": -0.010796221322537112,
-    "high": 0.030513176144244106
+    "low": -0.012693935119887164,
+    "high": 0.027181688125894134
    }
   },
   "model": {
@@ -85,22 +85,22 @@
    "items": 201,
    "words": 2763,
    "old": 0.05537459283387622,
-   "new": 0.05863192182410423,
-   "difference": 0.0032573289902280145,
+   "new": 0.057908070937386896,
+   "difference": 0.002533478103510678,
    "interval95": {
-    "low": -0.005380200860832138,
-    "high": 0.01198692335633854
+    "low": -0.006002824858757062,
+    "high": 0.011159107271418287
    }
   },
   "all": {
    "items": 401,
    "words": 3565,
    "old": 0.10014025245441795,
-   "new": 0.10434782608695652,
-   "difference": 0.004207573632538569,
+   "new": 0.10378681626928471,
+   "difference": 0.003646563814866763,
    "interval95": {
-    "low": -0.00499265785609398,
-    "high": 0.01349279362158847
+    "low": -0.005545826036193812,
+    "high": 0.012904924940742692
    },
    "targetsHeard": {
     "old": 58,
@@ -132,12 +132,12 @@
   },
   "parts": {
    "words": 35,
-   "same": 25,
-   "distance": 17,
+   "same": 26,
+   "distance": 16,
    "length": 206,
    "stressSame": 34,
-   "phonemeErrorRate": 0.0825242718446602,
-   "identical": 0.7142857142857143,
+   "phonemeErrorRate": 0.07766990291262135,
+   "identical": 0.7428571428571429,
    "stressAgreement": 0.9714285714285714
   },
   "rules": {
@@ -439,18 +439,6 @@
    "text": "Full fathom five thy father lies; of his bones are coral made.",
    "oldHeard": "Full fathom, five thy father lies, of his bones are choral made.",
    "newHeard": "Fathom, five, they far the lies of his bones are choral made."
-  },
-  {
-   "id": "quote-54",
-   "old": 2,
-   "new": 4,
-   "lost": [
-    "its (heard \"love\")",
-    "loveliness (heard \"linus\")"
-   ],
-   "text": "A thing of beauty is a joy for ever: its loveliness increases.",
-   "oldHeard": "A thing of beauty is a joy forever. Its loveliness increases.",
-   "newHeard": "A thing of beauty is a joy forever. Its love-linus increases."
   },
   {
    "id": "quote-60",
@@ -6998,12 +6986,12 @@
   {
    "word": "loveliness",
    "source": "parts",
-   "ours": "lˈʌvlˌInəs",
+   "ours": "lˈʌvlinəs",
    "espeak": "lˈʌvlinəs",
    "espeakMisaki": "lˈʌvlinəs",
-   "distance": 1,
+   "distance": 0,
    "length": 8,
-   "same": false,
+   "same": true,
    "stressSame": true
   },
   {
@@ -16707,30 +16695,19 @@
     ]
    },
    "new": {
-    "phonemes": "ɐ θˈɪŋ əv bjˈuːti ɪz ɐ ʤˈY fɔːɹ ˈɛvə: ɪts lˈʌvlˌInəs ɪnkɹˈiːsɪz.",
-    "heard": "A thing of beauty is a joy forever. Its love-linus increases.",
-    "edits": 4,
-    "seconds": 5.35,
+    "phonemes": "ɐ θˈɪŋ əv bjˈuːti ɪz ɐ ʤˈY fɔːɹ ˈɛvə: ɪts lˈʌvlinəs ɪnkɹˈiːsɪz.",
+    "heard": "A thing of beauty is a joy forever. Its loveliness increases.",
+    "edits": 2,
+    "seconds": 5.3,
     "ops": [
      {
-      "op": "S",
-      "ref": "for",
-      "hyp": "forever"
+      "op": "D",
+      "ref": "for"
      },
      {
       "op": "S",
       "ref": "ever",
-      "hyp": "its"
-     },
-     {
-      "op": "S",
-      "ref": "its",
-      "hyp": "love"
-     },
-     {
-      "op": "S",
-      "ref": "loveliness",
-      "hyp": "linus"
+      "hyp": "forever"
      }
     ]
    }
