@@ -76,3 +76,15 @@ test('the credits page links the notices file, and says which packages each libr
   await expect(lit).toContainText('Lit 3');
   await expect(lit).toContainText('lit-html@3.3.2, lit-element@4.2.2, @lit/reactive-element@2.1.2');
 });
+
+test('at phone width the credits page does not scroll sideways, Packages lines included', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/credits');
+  await expect(page.locator('[data-packages~="onnxruntime-web@1.31.0-dev.20260914-8d85527a0"]')).toBeVisible();
+  const { scroll, client } = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
+  expect(scroll).toBeLessThanOrEqual(client);
+  // The longest package name stays inside its entry.
+  const entry = await page.locator('[data-packages~="onnxruntime-web@1.31.0-dev.20260914-8d85527a0"]').boundingBox();
+  const line = await page.locator('[data-packages~="onnxruntime-web@1.31.0-dev.20260914-8d85527a0"] dd.font-mono').boundingBox();
+  expect(line!.x + line!.width).toBeLessThanOrEqual(entry!.x + entry!.width + 0.5);
+});
