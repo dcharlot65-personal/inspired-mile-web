@@ -148,12 +148,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           </p>
           <label class="flex items-start gap-3 text-start mb-4 cursor-pointer">
             <input type="checkbox" id="parental-consent" class="mt-1 w-4 h-4 rounded-sm border-obsidian-600 bg-obsidian-800 text-gold-500 focus:ring-gold-500/50" />
-            <span class="text-xs text-obsidian-300 leading-relaxed">
-              <span data-i18n="age.consentBefore">I confirm that my parent or legal guardian has reviewed the</span>
-              <a href="/terms" class="text-gold-400 hover:text-gold-300" data-i18n="footer.terms">Terms of Service</a> <span data-i18n="age.consentAnd">and</span>
-              <a href="/privacy" class="text-gold-400 hover:text-gold-300" data-i18n="footer.privacy">Privacy Policy</a>
-              <span data-i18n="age.consentAfter">and consents to my use of Inspired Mile.</span>
-            </span>
+            <!-- One sentence per language, with the links in its slots (fillSlots, src/i18n): no white space
+                 of the markup's own between the pieces. -->
+            <span class="text-xs text-obsidian-300 leading-relaxed" data-i18n-slots="age.consent">I confirm that my parent or legal guardian has reviewed the <a href="/terms" class="text-gold-400 hover:text-gold-300" data-i18n="footer.terms" data-i18n-slot="terms">Terms of Service</a> and <a href="/privacy" class="text-gold-400 hover:text-gold-300" data-i18n="footer.privacy" data-i18n-slot="privacy">Privacy Policy</a> and consents to my use of Inspired Mile.</span>
           </label>
           <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none" data-i18n="age.teenContinue">Continue with Consent</button>
         </div>
@@ -162,9 +159,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
              or, on the under-13 screen right after that answer, go back to the question -->
         <button id="age-gate-cancel" type="button" class="hidden w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-3 transition-colors" data-i18n="auth.back">Back</button>
 
-        <p class="text-[10px] text-obsidian-600 mt-6">
-          <span data-i18n="age.agreeBefore">By continuing, you agree to our</span> <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms">Terms of Service</a> <span data-i18n="age.agreeAnd">and</span> <a href="/privacy" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.privacy">Privacy Policy</a><span data-i18n="age.agreeAfter">.</span>
-        </p>
+        <p class="text-[10px] text-obsidian-600 mt-6" data-i18n-slots="age.agree">By continuing, you agree to our <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms" data-i18n-slot="terms">Terms of Service</a> and <a href="/privacy" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.privacy" data-i18n-slot="privacy">Privacy Policy</a>.</p>
       </div>
     </div>
 
@@ -302,12 +297,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
                   <p id="auth-error" role="alert" class="hidden text-xs text-crimson-400 mt-3 text-center leading-relaxed"></p>
                   <p id="auth-notice" role="status" class="hidden text-xs text-gold-300 mt-3 text-center leading-relaxed"></p>
-                  <p class="text-[10px] text-obsidian-600 mt-3 text-center leading-relaxed">
-                    <span data-auth-text="legalBefore"></span>
-                    <a href="/terms" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalTerms"></a>
-                    <span data-auth-text="legalAnd"></span>
-                    <a href="/privacy" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalPrivacy"></a><span data-auth-text="legalAfter"></span>
-                  </p>
+                  <p class="text-[10px] text-obsidian-600 mt-3 text-center leading-relaxed" data-auth-slots="legal"><a href="/terms" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalTerms" data-i18n-slot="terms"></a><a href="/privacy" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalPrivacy" data-i18n-slot="privacy"></a></p>
                 </div>
 
                 <!-- Right after an email sign-in: offer a passkey for next time -->
@@ -496,7 +486,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           </div>
         </div>
         <div class="mt-8 pt-8 border-t border-obsidian-800/50 text-center text-obsidian-500 text-xs">
-          <p>&copy; {new Date().getFullYear()} Voyage Tracable, LLC (DBA Inspired Mile). <span data-i18n="footer.rights">All rights reserved.</span> Sarasota, FL.</p>
+          <p><bdi>&copy; {new Date().getFullYear()} Voyage Tracable, LLC (DBA Inspired Mile).</bdi> <span data-i18n="footer.rights">All rights reserved.</span> <bdi>Sarasota, FL.</bdi></p>
           <p class="mt-1">
             <a href="/privacy" class="hover:text-gold-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
             <span class="mx-1">&middot;</span>
@@ -668,7 +658,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       import { initStorageBackend, isLoggedIn, getCurrentUser, logoutUser } from '../lib/storage-backend';
       import { getMigrationStatus, syncMigration, type AuthResponse, type MigrationPayload, type PasskeyInfo } from '../lib/api-client';
       import { getPlayerStats } from '../lib/achievements';
-      import { has, initI18n, onLocaleChange, t } from '../i18n';
+      import { fillSlots, has, initI18n, onLocaleChange, t } from '../i18n';
       import {
         AuthFlowError,
         addPasskey,
@@ -709,6 +699,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       function applyStrings() {
         document.querySelectorAll<HTMLElement>('[data-auth-text]').forEach((el) => {
           el.textContent = text(el.dataset.authText as StringKey);
+        });
+        // A sentence with the links in it, one template per language (the legal line).
+        document.querySelectorAll<HTMLElement>('[data-auth-slots]').forEach((el) => {
+          fillSlots(el, text(el.dataset.authSlots as StringKey));
         });
         document.querySelectorAll<HTMLInputElement>('[data-auth-placeholder]').forEach((el) => {
           el.placeholder = text(el.dataset.authPlaceholder as StringKey);

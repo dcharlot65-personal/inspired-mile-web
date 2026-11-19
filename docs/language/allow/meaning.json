@@ -1,0 +1,2987 @@
+{
+ "about": "Strings the meaning check flagged (back-translation by MADLAD-400 and LaBSE both under 0.6) that were read and found right, each with the reason. 'text' is the exact sentence that was read: when the string changes, the entry stops matching and the string is checked again. Read by the engineer doing this work, a language model, not by a native speaker; scripts/lang/meaning.mjs fails on a flag no entry covers and on an entry that covers nothing.",
+ "entries": [
+  {
+   "lang": "ar",
+   "key": "badge.written",
+   "text": "خصم الأبيات المكتوبة",
+   "reason": "خصم الأبيات المكتوبة (the opponent of written verses) is the glossary's written opponent; MADLAD read خصم as 'deduction'."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.badge",
+   "text": "حلبة مباشرة",
+   "reason": "حلبة مباشرة: مباشر is the Arabic for 'live' (as in بث مباشر, a live broadcast)."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.buildDeck",
+   "text": "ابنِ رزمة",
+   "reason": "ابنِ رزمة (build a deck), with the kasra of the imperative; MADLAD read ابن as 'son'."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.deck",
+   "text": "الرزمة",
+   "reason": "الرزمة (the pack of cards) is the glossary term; MADLAD gave 'package'."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.opponent",
+   "text": "الخصم",
+   "reason": "الخصم is the opponent (the glossary term); MADLAD read it as 'discount', its other sense."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.titleA",
+   "text": "حلبة",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “حلبة النزال” for “Battle Arena”."
+  },
+  {
+   "lang": "ar",
+   "key": "battle.titleB",
+   "text": "النزال",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “حلبة النزال” for “Battle Arena”."
+  },
+  {
+   "lang": "ar",
+   "key": "criterion.allusion",
+   "text": "التلميح",
+   "reason": "التلميح is allusion as a figure of rhetoric (also 'hint')."
+  },
+  {
+   "lang": "ar",
+   "key": "criterion.wit",
+   "text": "الظُّرف",
+   "reason": "الظُّرف (wit, with the ḍamma that tells it from ظَرف, circumstance) is the classical word for wit."
+  },
+  {
+   "lang": "ar",
+   "key": "device.alliteration.name",
+   "text": "سجع ابتدائي",
+   "reason": "Sourced name: سجع ابتدائي is Wikidata's ar label of the alliteration item and its article title (Q484495) (glossary.json). Back-translated on its own it reads “Elementary”; a name alone scores low whatever its quality. For a native reader (HUMAN-REVIEW 25)."
+  },
+  {
+   "lang": "ar",
+   "key": "device.brevity.name",
+   "text": "الإيجاز",
+   "reason": "The game's own name for a device or curse, “الإيجاز”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Summary”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ar",
+   "key": "device.invocation.name",
+   "text": "المناداة",
+   "reason": "The game's own name for a device or curse, “المناداة”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Appeal”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ar",
+   "key": "device.monorhyme.name",
+   "text": "القافية الواحدة",
+   "reason": "The game's own name for a device or curse, “القافية الواحدة”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “One verse.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ar",
+   "key": "device.swell.name",
+   "text": "المدّ",
+   "reason": "The game's own name for a device or curse, “المدّ”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Tide”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ar",
+   "key": "end.again",
+   "text": "مبارزة أخرى",
+   "reason": "مبارزة أخرى (another duel) is 'Duel again'."
+  },
+  {
+   "lang": "ar",
+   "key": "end.victory",
+   "text": "نصر",
+   "reason": "نصر is Victory; MADLAD read it as the name Nasr."
+  },
+  {
+   "lang": "ar",
+   "key": "form.acrostic.name",
+   "text": "تتويج",
+   "reason": "Sourced name: تتويج is Wikidata's ar label of the acrostic item and its article تتويج (شعر) (Q173287) (glossary.json). Back-translated on its own it reads “Crowning”, the word's everyday sense; a name alone scores low whatever its quality. For a native reader (HUMAN-REVIEW 25)."
+  },
+  {
+   "lang": "ar",
+   "key": "form.anaphora.name",
+   "text": "تكرار الصدارة",
+   "reason": "Sourced name: تكرار الصدارة is the ar Wikipedia article “تكرار الصدارة” (Q486050) (glossary.json). Back-translated on its own the name reads “Repetition of the forefront”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ar",
+   "key": "form.couplet.name",
+   "text": "بيتان مقفّيان",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “2 standing”; a name alone scores low whatever its quality. Read and kept as a plain description, “two rhymed lines”, which is what the form is. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ar",
+   "key": "form.epistrophe.name",
+   "text": "تكرار النهاية",
+   "reason": "Sourced name: تكرار النهاية is the ar Wikipedia article “تكرار النهاية” (Q963102) (glossary.json). Back-translated on its own the name reads “End repeat”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ar",
+   "key": "form.heroic-couplet.name",
+   "text": "دوبيت ملحمي",
+   "reason": "Sourced name: دوبيت ملحمي is the ar Wikipedia article “دوبيت ملحمي” (Q2714966) (glossary.json). Back-translated on its own the name reads “An epic duet.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ar",
+   "key": "form.luc-bat.name",
+   "text": "ستة-ثمانية",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines, as the English name once said. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ar",
+   "key": "form.quatrain-aabb.name",
+   "text": "رباعية مزدوجة القافية",
+   "reason": "Head word sourced: رباعية is the ar Wikipedia article “رباعية (شعر)” (Q570948); the words for the rhyme pattern (مزدوجة القافية) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Double-stroke quartet”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ar",
+   "key": "illegal.relic-spent",
+   "text": "هذا الأثر استُهلك.",
+   "reason": "'هذا الأثر استُهلك' (this relic has been used up); أثر is the glossary's relic, which MADLAD read as 'track'."
+  },
+  {
+   "lang": "ar",
+   "key": "live.curseHolding",
+   "text": "ملتزَم بها",
+   "reason": "ملتزَم بها (being kept to) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "ar",
+   "key": "mic.failed",
+   "text": "تعذّر تحويل الكلام إلى نص",
+   "reason": "'تعذّر تحويل الكلام إلى نص' (the speech could not be turned into text); MADLAD gave 'Speech-to-text failed', which is what the English means."
+  },
+  {
+   "lang": "ar",
+   "key": "mic.speak",
+   "text": "قلها بصوتك",
+   "reason": "قلها بصوتك (say it in your voice) is 'Speak it'."
+  },
+  {
+   "lang": "ar",
+   "key": "migrate.no",
+   "text": "تخطٍّ",
+   "reason": "تخطٍّ (skip) is the imperative; MADLAD gave 'pass'."
+  },
+  {
+   "lang": "ar",
+   "key": "nav.battle",
+   "text": "حلبة النزال",
+   "reason": "حلبة النزال (the arena of combat) is Battle Arena."
+  },
+  {
+   "lang": "ar",
+   "key": "nav.toggleMenu",
+   "text": "فتح القائمة أو إغلاقها",
+   "reason": "'فتح القائمة أو إغلاقها' (open or close the menu) is what the toggle does; the back-translation says the same."
+  },
+  {
+   "lang": "ar",
+   "key": "pack:relics.RL-001.1",
+   "text": "مزحة",
+   "reason": "A relic power word: مزحة (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “A joke.”)."
+  },
+  {
+   "lang": "ar",
+   "key": "pack:relics.RL-002.2",
+   "text": "عصا",
+   "reason": "A relic power word: عصا (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Stick.”)."
+  },
+  {
+   "lang": "ar",
+   "key": "pack:relics.RL-009.2",
+   "text": "مهرج",
+   "reason": "A relic power word: مهرج (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Marj”)."
+  },
+  {
+   "lang": "ar",
+   "key": "pwa.dismiss",
+   "text": "إغلاق",
+   "reason": "إغلاق (closing) is the usual Arabic button for dismissing a prompt."
+  },
+  {
+   "lang": "ar",
+   "key": "theatre.submit",
+   "text": "ألقِها",
+   "reason": "ألقِها (recite it: ألقى قصيدة, to recite a poem) is 'Speak it' for a verse; MADLAD gave 'throw it'."
+  },
+  {
+   "lang": "ar",
+   "key": "theatre.titleA",
+   "text": "قاعة",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “قاعة المسرح” for “The Theatre”."
+  },
+  {
+   "lang": "ar",
+   "key": "theatre.xrFailed",
+   "text": "تعذّر بدء الجلسة داخل النظارة.",
+   "reason": "'تعذّر بدء الجلسة داخل النظارة' (the session inside the headset could not start); نظارة is the usual word for a headset."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.copyForfeits",
+   "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+   "reason": "الأبيات المنسوخة (copied verses) تخسر نقاط الحَكَم (lose the judge's points): the rule as the English states it. The back-translation reads منسوخة as 'scanned'; it means copied."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.held",
+   "text": "التُزم بها",
+   "reason": "التُزم بها (it was kept to) is what 'held' means for a curse."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.notTaken",
+   "text": "الظُّرف: لم يُكسَب",
+   "reason": "A short score row: the criterion, الظُّرف (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Status: Unearned”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.who.opponent",
+   "text": "الخصم",
+   "reason": "الخصم is the opponent (the glossary term); MADLAD read it as 'discount', its other sense."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.who.split",
+   "text": "مناصفة",
+   "reason": "مناصفة (shared half and half) is what a split criterion is."
+  },
+  {
+   "lang": "de",
+   "key": "age.day",
+   "text": "Tag",
+   "reason": "Tag is Day; MADLAD copied it through."
+  },
+  {
+   "lang": "de",
+   "key": "battle.equip",
+   "text": "Ausrüsten",
+   "reason": "Ausrüsten (equip) is the word; MADLAD copied it through."
+  },
+  {
+   "lang": "de",
+   "key": "battle.titleA",
+   "text": "Die",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Die Kampfarena” for “Battle Arena”."
+  },
+  {
+   "lang": "de",
+   "key": "device.balance.name",
+   "text": "Gleichmaß",
+   "reason": "The game's own name for a device or curse, “Gleichmaß”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Equal measure”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "de",
+   "key": "device.brevity.name",
+   "text": "Kürze",
+   "reason": "The game's own name for a device or curse, “Kürze”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Short”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "de",
+   "key": "form.couplet.name",
+   "text": "Zweizeiler",
+   "reason": "Sourced name: Zweizeiler is the de Wikipedia article “Zweizeiler (Verslehre)” (Q4779829) (glossary.json). Back-translated on its own the name reads “Two-line”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "de",
+   "key": "form.quatrain-aabb.name",
+   "text": "Vierzeiler im Paarreim",
+   "reason": "Head word sourced: Vierzeiler is the de Wikipedia article “Vierzeiler” (Q570948); the words for the rhyme pattern (im Paarreim) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four lines in a pair rhyme”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "de",
+   "key": "form.quatrain-abab.name",
+   "text": "Vierzeiler im Kreuzreim",
+   "reason": "Head word sourced: Vierzeiler is the de Wikipedia article “Vierzeiler” (Q570948); the words for the rhyme pattern (im Kreuzreim) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four lines in a crossword”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-001.1",
+   "text": "Scherz",
+   "reason": "A relic power word: Scherz (a jest), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “Scherz”)."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-001.2",
+   "text": "Grab",
+   "reason": "A relic power word: Grab (a grave), for the English “grave”. A single word back-translated alone scores low (MADLAD gave “Grab”)."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-003.3",
+   "text": "Trugbild",
+   "reason": "A relic power word: Trugbild (a false vision, Macbeth's 'false creation'), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “Trugbild”)."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-004.4",
+   "text": "Kuss",
+   "reason": "A relic power word: Kuss (a kiss), for the English “kiss”. A single word back-translated alone scores low (MADLAD gave “Kus”)."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-005.4",
+   "text": "Kästchen",
+   "reason": "A relic power word: Kästchen (a small casket, as in The Merchant of Venice), for the English “casket”. A single word back-translated alone scores low (MADLAD gave “Kästchen”)."
+  },
+  {
+   "lang": "de",
+   "key": "pack:relics.RL-009.2",
+   "text": "Narr",
+   "reason": "A relic power word: Narr (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Narr”)."
+  },
+  {
+   "lang": "de",
+   "key": "pwa.dismiss",
+   "text": "Schließen",
+   "reason": "Schließen (close) is the usual German button for dismissing a prompt."
+  },
+  {
+   "lang": "de",
+   "key": "round.seedLabel",
+   "text": "Startwert der Partie",
+   "reason": "Startwert der Partie: Startwert is the standard German for a random seed."
+  },
+  {
+   "lang": "de",
+   "key": "verdict.notTaken",
+   "text": "Witz: nicht gewonnen",
+   "reason": "A short score row: the criterion, Witz (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Joke: not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "es",
+   "key": "auth.signedIn",
+   "text": "Sesión iniciada",
+   "reason": "Sesión iniciada (session started) is the usual Spanish status for 'signed in'."
+  },
+  {
+   "lang": "es",
+   "key": "battle.deck",
+   "text": "Mazo",
+   "reason": "Mazo is the Spanish word for a deck of cards (the glossary term); MADLAD copied it through."
+  },
+  {
+   "lang": "es",
+   "key": "battle.titleA",
+   "text": "Arena de",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena de batalla” for “Battle Arena”."
+  },
+  {
+   "lang": "es",
+   "key": "battle.titleB",
+   "text": "batalla",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena de batalla” for “Battle Arena”."
+  },
+  {
+   "lang": "es",
+   "key": "check.spells.words",
+   "text": "Los versos empiezan, en orden, con calavera",
+   "reason": "'Los versos empiezan, en orden, con calavera': the verses begin, in order, with skull; the back-translation says the same."
+  },
+  {
+   "lang": "es",
+   "key": "device.brevity.name",
+   "text": "Brevedad",
+   "reason": "The game's own name for a device or curse, “Brevedad”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Brevedad”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "es",
+   "key": "device.exclaim.name",
+   "text": "El Clamor",
+   "reason": "The game's own name for a device or curse, “El Clamor”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “El Clamor”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "es",
+   "key": "device.repetition.name",
+   "text": "El Redoble",
+   "reason": "The game's own name for a device or curse, “El Redoble”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “El Redoble”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "es",
+   "key": "device.swell.name",
+   "text": "La Crecida",
+   "reason": "The game's own name for a device or curse, “La Crecida”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “La Crecida”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "es",
+   "key": "end.victory",
+   "text": "Victoria",
+   "reason": "Victoria is Victory; MADLAD kept the Spanish word."
+  },
+  {
+   "lang": "es",
+   "key": "form.couplet.name",
+   "text": "Pareado",
+   "reason": "Sourced name: Pareado is the es Wikipedia article “Pareado” (Q4779829) (glossary.json). Back-translated on its own the name reads “Pareado”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "es",
+   "key": "form.quatrain-aabb.name",
+   "text": "Cuarteta de pareados",
+   "reason": "Head word sourced: Cuarteta is the es Wikipedia article “Cuarteta” (Q8352204); the words for the rhyme pattern (de pareados) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartet of pairs”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "es",
+   "key": "live.curseHolding",
+   "text": "se cumple",
+   "reason": "se cumple (is being obeyed) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "es",
+   "key": "mic.speak",
+   "text": "Dila en voz alta",
+   "reason": "'Dila en voz alta' (say it aloud) is 'Speak it'."
+  },
+  {
+   "lang": "es",
+   "key": "migrate.no",
+   "text": "Omitir",
+   "reason": "Omitir (skip, omit) is the usual button for Skip."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-001.1",
+   "text": "burla",
+   "reason": "A relic power word: burla (a jest, a mockery), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “burla”)."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-002.2",
+   "text": "báculo",
+   "reason": "A relic power word: báculo (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “stick”)."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-003.0",
+   "text": "daga",
+   "reason": "A relic power word: daga (a dagger), for the English “dagger”. A single word back-translated alone scores low (MADLAD gave “day”)."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-005.2",
+   "text": "clemencia",
+   "reason": "A relic power word: clemencia (mercy), for the English “mercy”. A single word back-translated alone scores low (MADLAD gave “clemencia”)."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-008.2",
+   "text": "hija",
+   "reason": "A relic power word: hija (daughter), for the English “daughter”. A single word back-translated alone scores low (MADLAD gave “is”)."
+  },
+  {
+   "lang": "es",
+   "key": "pack:relics.RL-009.3",
+   "text": "comedia",
+   "reason": "A relic power word: comedia (a play, in the Spanish Golden Age sense; also comedy), for the English “play”. A single word back-translated alone scores low (MADLAD gave “comedy”)."
+  },
+  {
+   "lang": "es",
+   "key": "pwa.dismiss",
+   "text": "Cerrar",
+   "reason": "Cerrar (close) is the usual Spanish button for dismissing a prompt."
+  },
+  {
+   "lang": "es",
+   "key": "theatre.clear",
+   "text": "Borrar",
+   "reason": "Borrar (clear, erase) is the usual button label."
+  },
+  {
+   "lang": "es",
+   "key": "theatre.inPassthrough",
+   "text": "En el visor (visión del entorno).",
+   "reason": "'En el visor (visión del entorno)': in the headset (view of the surroundings), which is what passthrough is."
+  },
+  {
+   "lang": "es",
+   "key": "theatre.submit",
+   "text": "Dila",
+   "reason": "Dila (say it; la is the verse, una estrofa) is 'Speak it'; MADLAD copied it through."
+  },
+  {
+   "lang": "es",
+   "key": "verdict.craft",
+   "text": "Oficio",
+   "reason": "Oficio (craft, as a writer's skill) is the glossary term; MADLAD copied it through."
+  },
+  {
+   "lang": "es",
+   "key": "verdict.signature",
+   "text": "Firma",
+   "reason": "Firma is the glossary's word for the signature bonus; MADLAD read it as 'firm'."
+  },
+  {
+   "lang": "es",
+   "key": "verdict.who.split",
+   "text": "empate",
+   "reason": "empate (a tie) is what a split criterion is."
+  },
+  {
+   "lang": "fr",
+   "key": "battle.buildDeck",
+   "text": "Composer un jeu",
+   "reason": "'Composer un jeu' is to put a deck together (un jeu de cartes, the glossary term)."
+  },
+  {
+   "lang": "fr",
+   "key": "battle.deck",
+   "text": "Jeu",
+   "reason": "Jeu (a deck: un jeu de cartes) is the glossary term; alone it back-translates as 'game'."
+  },
+  {
+   "lang": "fr",
+   "key": "battle.titleA",
+   "text": "Arène de",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arène de combat” for “Battle Arena”."
+  },
+  {
+   "lang": "fr",
+   "key": "battle.titleB",
+   "text": "combat",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arène de combat” for “Battle Arena”."
+  },
+  {
+   "lang": "fr",
+   "key": "device.exclaim.name",
+   "text": "Le Cri",
+   "reason": "The game's own name for a device or curse, “Le Cri”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Le Cri”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "fr",
+   "key": "device.monorhyme.name",
+   "text": "Rime unique",
+   "reason": "The game's own name for a device or curse, “Rime unique”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Rime unique”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "fr",
+   "key": "device.swell.name",
+   "text": "La Houle",
+   "reason": "The game's own name for a device or curse, “La Houle”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “La Houle”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "fr",
+   "key": "form.couplet.name",
+   "text": "Distique",
+   "reason": "Sourced name: Distique is the fr Wikipedia article “Distique (littérature)” (Q4779829) (glossary.json). Back-translated on its own the name reads “Distique”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "fr",
+   "key": "form.quatrain-aabb.name",
+   "text": "Quatrain à rimes plates",
+   "reason": "Head word sourced: Quatrain is the fr Wikipedia article “Quatrain” (Q570948); the words for the rhyme pattern (à rimes plates) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quatrain à rimes plates”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "fr",
+   "key": "live.curseHolding",
+   "text": "respectée",
+   "reason": "respectée (obeyed) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-001.1",
+   "text": "farce",
+   "reason": "A relic power word: farce (a jest, a practical joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “stuffing”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-002.2",
+   "text": "bâton",
+   "reason": "A relic power word: bâton (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “stick”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-002.4",
+   "text": "naufrage",
+   "reason": "A relic power word: naufrage (shipwreck: the drowning in The Tempest, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “naufrage”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-003.4",
+   "text": "main",
+   "reason": "A relic power word: main (hand), for the English “hand”. A single word back-translated alone scores low (MADLAD gave “main”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-005.0",
+   "text": "or",
+   "reason": "A relic power word: or (gold), for the English “gold”. A single word back-translated alone scores low (MADLAD gave “or”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-007.4",
+   "text": "naufrage",
+   "reason": "A relic power word: naufrage (shipwreck: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “naufrage”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pack:relics.RL-009.2",
+   "text": "bouffon",
+   "reason": "A relic power word: bouffon (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “bouffon”)."
+  },
+  {
+   "lang": "fr",
+   "key": "pwa.dismiss",
+   "text": "Fermer",
+   "reason": "Fermer (close) is the usual French button for dismissing a prompt."
+  },
+  {
+   "lang": "fr",
+   "key": "verdict.craft",
+   "text": "Métier",
+   "reason": "Métier (a writer's craft) is the glossary term."
+  },
+  {
+   "lang": "hi",
+   "key": "auth.passkeysHeading",
+   "text": "पासकी",
+   "reason": "पासकी is Android's Hindi for passkey, singular and plural alike (glossary)."
+  },
+  {
+   "lang": "hi",
+   "key": "battle.equip",
+   "text": "लगाएँ",
+   "reason": "लगाएँ (put on, attach) is 'Equip'."
+  },
+  {
+   "lang": "hi",
+   "key": "battle.titleB",
+   "text": "अखाड़ा",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “युद्ध अखाड़ा” for “Battle Arena”."
+  },
+  {
+   "lang": "hi",
+   "key": "criterion.wit",
+   "text": "हाज़िरजवाबी",
+   "reason": "हाज़िरजवाबी (ready wit, quick repartee) is wit."
+  },
+  {
+   "lang": "hi",
+   "key": "curse.forbidden-letter.theirs",
+   "text": "प्रतिद्वंद्वी की कविता में म अक्षर नहीं आ सकता।",
+   "reason": "प्रतिद्वंद्वी की कविता में म अक्षर नहीं आ सकता (the letter म may not appear in the opponent’s poem): MADLAD read it so. The sample letter is the Hindi pack’s, the English one the English pack’s. कविता is the glossary’s word for a verse since 2026-11-16."
+  },
+  {
+   "lang": "hi",
+   "key": "curse.no-repeats.name",
+   "text": "गूँज वर्जित",
+   "reason": "The game's own name for a device or curse, “गूँज वर्जित”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Echo denied”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "device.alliteration.name",
+   "text": "अनुप्रास",
+   "reason": "Sourced name: अनुप्रास is the hi Wikipedia article “अनुप्रास” (Q484495) (glossary.json). Back-translated on its own the name reads “Phrase”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "hi",
+   "key": "device.brevity.name",
+   "text": "संक्षेप",
+   "reason": "The game's own name for a device or curse, “संक्षेप”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Abstract”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "device.exclaim.name",
+   "text": "पुकार",
+   "reason": "The game's own name for a device or curse, “पुकार”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Call”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "device.monorhyme.name",
+   "text": "एक ही तुक",
+   "reason": "The game's own name for a device or curse, “एक ही तुक”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Same line”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "device.repetition.name",
+   "text": "नगाड़ा",
+   "reason": "The game's own name for a device or curse, “नगाड़ा”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Nagada”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "device.swell.name",
+   "text": "उफान",
+   "reason": "The game's own name for a device or curse, “उफान”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Ufan”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "form.anaphora.name",
+   "text": "आदि-आवृत्ति",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Pre-recurrence”; a name alone scores low whatever its quality. Read and kept as आदि (beginning) + आवृत्ति (repetition): repetition at the start, as the device asks. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "form.couplet.name",
+   "text": "दोहा",
+   "reason": "Not sourced: no Hindi source names the couplet; दोहा is the name of the doha (Q5288532), a rhymed couplet with a fixed metre (glossary.json). Back-translated on its own it reads “Doha”, that form's name, as expected of a name alone. Kept on the translator's reading, a language model's, for a native reader (HUMAN-REVIEW.md)."
+  },
+  {
+   "lang": "hi",
+   "key": "form.crescendo.name",
+   "text": "आरोह",
+   "reason": "The game's own name for a device or curse, “आरोह”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Ascension”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "hi",
+   "key": "form.epistrophe.name",
+   "text": "अंत-आवृत्ति",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “End-frequency”; a name alone scores low whatever its quality. Read and kept as अंत (end) + आवृत्ति (repetition), the pair of आदि-आवृत्ति. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "form.luc-bat.name",
+   "text": "छह-आठ",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "form.quatrain-aabb.name",
+   "text": "जोड़ीदार चौपदी",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Matching Squares”; a name alone scores low whatever its quality. Read and kept as चौपदी (four-line stanza) with जोड़ीदार (paired); MADLAD read चौपदी as “square”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "form.quatrain-abab.name",
+   "text": "एकांतर चौपदी",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Parallel Square”; a name alone scores low whatever its quality. Read and kept as चौपदी (four-line stanza) with एकांतर (alternating); MADLAD read चौपदी as “square”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "form.tercet.name",
+   "text": "त्रिपदी",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Triptych”; a name alone scores low whatever its quality. Read and kept as त्रि (three) + पदी (lines); the hi Wikipedia article of that title is the algebraic trinomial, so the name is not sourced. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "hi",
+   "key": "live.curseHolding",
+   "text": "निभ रहा है",
+   "reason": "निभ रहा है (is being kept to) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "hi",
+   "key": "nav.about",
+   "text": "परिचय",
+   "reason": "परिचय (introduction, about) is the usual Hindi label for an About page."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-001.1",
+   "text": "मज़ाक",
+   "reason": "A relic power word: मज़ाक (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “Funny”)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-002.2",
+   "text": "छड़ी",
+   "reason": "A relic power word: छड़ी (a staff, a rod), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Rod”)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-003.3",
+   "text": "भ्रम",
+   "reason": "A relic power word: भ्रम (an illusion), for Macbeth’s “vision”, the dagger that is not there. English Wiktionary’s “vision” table lists भ्रम for the sense “something imaginary one thinks one sees” (sources/wiktionary-words.json)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-004.1",
+   "text": "क़सम",
+   "reason": "A relic power word: क़सम (a vow, an oath), for the English “vow”. A single word back-translated alone scores low (MADLAD gave “I swear.”)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-005.4",
+   "text": "संदूक",
+   "reason": "A relic power word: संदूक (a casket, a chest), for the English “casket”. A single word back-translated alone scores low (MADLAD gave “Box”)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-006.3",
+   "text": "डायन",
+   "reason": "A relic power word: डायन (a witch), for the English “witch”. A single word back-translated alone scores low (MADLAD gave “Dian”)."
+  },
+  {
+   "lang": "hi",
+   "key": "pack:relics.RL-009.2",
+   "text": "मसखरा",
+   "reason": "A relic power word: मसखरा (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Smiley”)."
+  },
+  {
+   "lang": "hi",
+   "key": "theatre.composing",
+   "text": "कविता रची जा रही है…",
+   "reason": "कविता रची जा रही है… (a poem is being composed): what the English label says, as a sentence."
+  },
+  {
+   "lang": "hi",
+   "key": "theatre.titleA",
+   "text": "हमारी",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “हमारी रंगशाला” for “The Theatre”."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.form",
+   "text": "छंद-रूप",
+   "reason": "छंद-रूप (verse form) is the criterion Form."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.judge",
+   "text": "निर्णायक",
+   "reason": "निर्णायक (the judge, the one who decides) is Judge."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.notTaken",
+   "text": "हाज़िरजवाबी: नहीं जीता",
+   "reason": "A short score row: the criterion, हाज़िरजवाबी (wit, ready repartee), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Attendance: Not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.synergy",
+   "text": "घराने का मेल",
+   "reason": "घराने का मेल (the harmony of the house; घराना is the house, as a school of art) is House synergy."
+  },
+  {
+   "lang": "hi",
+   "key": "verdict.who.split",
+   "text": "बराबर",
+   "reason": "बराबर (equal, a tie) is what a split criterion is."
+  },
+  {
+   "lang": "id",
+   "key": "battle.equip",
+   "text": "Pasang",
+   "reason": "Pasang (fit, put on) for equipping relics and potions."
+  },
+  {
+   "lang": "id",
+   "key": "battle.titleA",
+   "text": "Arena",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena Pertarungan” for “Battle Arena”."
+  },
+  {
+   "lang": "id",
+   "key": "battle.titleB",
+   "text": "Pertarungan",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena Pertarungan” for “Battle Arena”."
+  },
+  {
+   "lang": "id",
+   "key": "chip.powerWords",
+   "text": "Kata sakti",
+   "reason": "Kata sakti (words of power) is the glossary's power words; MADLAD copied it through."
+  },
+  {
+   "lang": "id",
+   "key": "criterion.allusion",
+   "text": "alusi",
+   "reason": "alusi is allusion (KBBI); MADLAD copied it through."
+  },
+  {
+   "lang": "id",
+   "key": "device.alliteration.name",
+   "text": "Aliterasi",
+   "reason": "Sourced name: Aliterasi is the id Wikipedia article “Aliterasi” (Q484495) (glossary.json). Back-translated on its own the name reads “Aliterasi”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "id",
+   "key": "device.brevity.name",
+   "text": "Keringkasan",
+   "reason": "The game's own name for a device or curse, “Keringkasan”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Abbreviation”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.exclaim.name",
+   "text": "Seruan",
+   "reason": "The game's own name for a device or curse, “Seruan”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Call”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.grandeur.name",
+   "text": "Kemegahan",
+   "reason": "The game's own name for a device or curse, “Kemegahan”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Majesty”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.invocation.name",
+   "text": "Seruan nama",
+   "reason": "The game's own name for a device or curse, “Seruan nama”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Calling name”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.repetition.name",
+   "text": "Tabuhan",
+   "reason": "The game's own name for a device or curse, “Tabuhan”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Tabuhan”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.riposte.name",
+   "text": "Tangkisan",
+   "reason": "The game's own name for a device or curse, “Tangkisan”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Tangkisan”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "device.swell.name",
+   "text": "Gelombang",
+   "reason": "The game's own name for a device or curse, “Gelombang”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Waves”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "id",
+   "key": "footer.rights",
+   "text": "Hak cipta dilindungi undang-undang.",
+   "reason": "'Hak cipta dilindungi undang-undang' (copyright protected by law) is the usual Indonesian for 'All rights reserved'."
+  },
+  {
+   "lang": "id",
+   "key": "form.quatrain-aabb.name",
+   "text": "Sajak empat baris berpasangan",
+   "reason": "Head word sourced: Sajak empat baris is the id Wikipedia article “Sajak empat baris” (Q570948); the words for the rhyme pattern (berpasangan) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line pairs”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "id",
+   "key": "form.quatrain-abab.name",
+   "text": "Sajak empat baris bersilang",
+   "reason": "Head word sourced: Sajak empat baris is the id Wikipedia article “Sajak empat baris” (Q570948); the words for the rhyme pattern (bersilang) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-row crossover”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "id",
+   "key": "form.tercet.name",
+   "text": "Terzina",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Terzina”; a name alone scores low whatever its quality. Read and kept as the Italian name Terzina, used for three-line stanzas; the id Wikipedia has no article. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "id",
+   "key": "live.curseHolding",
+   "text": "terjaga",
+   "reason": "terjaga (kept) is what 'holding' means for a curse; MADLAD took its other sense, 'awake'."
+  },
+  {
+   "lang": "id",
+   "key": "migrate.no",
+   "text": "Lewati",
+   "reason": "Lewati (skip) is the usual Indonesian button."
+  },
+  {
+   "lang": "id",
+   "key": "nav.play",
+   "text": "Main",
+   "reason": "Main (play) is the Indonesian; MADLAD copied it through."
+  },
+  {
+   "lang": "id",
+   "key": "nav.toggleMenu",
+   "text": "Buka atau tutup menu",
+   "reason": "'Buka atau tutup menu' (open or close the menu) is what the toggle does; the back-translation says the same."
+  },
+  {
+   "lang": "id",
+   "key": "pack:relics.RL-001.1",
+   "text": "lelucon",
+   "reason": "A relic power word: lelucon (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “joke”)."
+  },
+  {
+   "lang": "id",
+   "key": "pack:relics.RL-002.2",
+   "text": "tongkat",
+   "reason": "A relic power word: tongkat (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “stick”)."
+  },
+  {
+   "lang": "id",
+   "key": "pack:relics.RL-003.0",
+   "text": "belati",
+   "reason": "A relic power word: belati (a dagger), for the English “dagger”. A single word back-translated alone scores low (MADLAD gave “belati”)."
+  },
+  {
+   "lang": "id",
+   "key": "pack:relics.RL-009.2",
+   "text": "badut",
+   "reason": "A relic power word: badut (a fool, a clown), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “I have”)."
+  },
+  {
+   "lang": "id",
+   "key": "pwa.dismiss",
+   "text": "Tutup",
+   "reason": "Tutup (close) is the usual Indonesian button for dismissing a prompt."
+  },
+  {
+   "lang": "id",
+   "key": "round.yourVerse",
+   "text": "Syairmu",
+   "reason": "Syairmu (your verse) with the glossary's syair; MADLAD copied it through."
+  },
+  {
+   "lang": "id",
+   "key": "theatre.titleA",
+   "text": "Sang",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Sang Teater” for “The Theatre”."
+  },
+  {
+   "lang": "id",
+   "key": "verdict.held",
+   "text": "terjaga",
+   "reason": "terjaga (kept) is what 'held' means for a curse; MADLAD took its other sense, 'awake'."
+  },
+  {
+   "lang": "id",
+   "key": "verdict.powerWords",
+   "text": "Kata sakti",
+   "reason": "As chip.powerWords."
+  },
+  {
+   "lang": "id",
+   "key": "verdict.who.split",
+   "text": "imbang",
+   "reason": "imbang (even, a draw) is what a split criterion is."
+  },
+  {
+   "lang": "it",
+   "key": "auth.signOut",
+   "text": "Esci",
+   "reason": "Esci is Google's Italian for sign out (glossary, sources/google-help.json)."
+  },
+  {
+   "lang": "it",
+   "key": "battle.deck",
+   "text": "Mazzo",
+   "reason": "Mazzo is the Italian word for a deck of cards (the glossary term); MADLAD copied it through."
+  },
+  {
+   "lang": "it",
+   "key": "battle.titleA",
+   "text": "Arena di",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena di battaglia” for “Battle Arena”."
+  },
+  {
+   "lang": "it",
+   "key": "battle.titleB",
+   "text": "battaglia",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena di battaglia” for “Battle Arena”."
+  },
+  {
+   "lang": "it",
+   "key": "check.spells.words",
+   "text": "I versi cominciano, nell’ordine, con teschio",
+   "reason": "'I versi cominciano, nell’ordine, con teschio': the verses begin, in order, with skull."
+  },
+  {
+   "lang": "it",
+   "key": "criterion.flow",
+   "text": "scorrevolezza",
+   "reason": "scorrevolezza (smoothness, how a line flows) is the criterion."
+  },
+  {
+   "lang": "it",
+   "key": "criterion.wit",
+   "text": "arguzia",
+   "reason": "arguzia is wit; MADLAD read it as 'argument'."
+  },
+  {
+   "lang": "it",
+   "key": "device.swell.name",
+   "text": "L’Onda",
+   "reason": "The game's own name for a device or curse, “L’Onda”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “L'Onda”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "it",
+   "key": "end.defeat",
+   "text": "Sconfitta",
+   "reason": "Sconfitta is Defeat; MADLAD copied it through."
+  },
+  {
+   "lang": "it",
+   "key": "form.couplet.name",
+   "text": "Distico",
+   "reason": "Sourced name: Distico is the it Wikipedia article “Distico” (Q4779829) (glossary.json). Back-translated on its own the name reads “Distico”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "it",
+   "key": "form.quatrain-aabb.name",
+   "text": "Quartina a rima baciata",
+   "reason": "Head word sourced: Quartina is the it Wikipedia article “Quartina (metrica)” (Q570948); the words for the rhyme pattern (a rima baciata) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartina a rima baciata”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "it",
+   "key": "form.quatrain-abab.name",
+   "text": "Quartina a rima alternata",
+   "reason": "Head word sourced: Quartina is the it Wikipedia article “Quartina (metrica)” (Q570948); the words for the rhyme pattern (a rima alternata) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartina a rima alternata”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "it",
+   "key": "form.tercet.name",
+   "text": "Terzina",
+   "reason": "Sourced name: Terzina is the it Wikipedia article “Terzina (metrica)” (Q1353779) (glossary.json). Back-translated on its own the name reads “Terzina”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "it",
+   "key": "live.curseHolding",
+   "text": "rispettata",
+   "reason": "rispettata (obeyed) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "it",
+   "key": "migrate.no",
+   "text": "Salta",
+   "reason": "Salta (skip) is the usual Italian button."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-001.1",
+   "text": "burla",
+   "reason": "A relic power word: burla (a jest), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “burla”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-002.1",
+   "text": "incanto",
+   "reason": "A relic power word: incanto (a spell, an enchantment), for the English “spell”. A single word back-translated alone scores low (MADLAD gave “charm”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-002.2",
+   "text": "bastone",
+   "reason": "A relic power word: bastone (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “stick”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-005.4",
+   "text": "scrigno",
+   "reason": "A relic power word: scrigno (a casket, a jewel box), for the English “casket”. A single word back-translated alone scores low (MADLAD gave “chest”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-006.3",
+   "text": "strega",
+   "reason": "A relic power word: strega (a witch), for the English “witch”. A single word back-translated alone scores low (MADLAD gave “strega”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-006.4",
+   "text": "re",
+   "reason": "A relic power word: re (king), for the English “king”. A single word back-translated alone scores low (MADLAD gave “re”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-009.2",
+   "text": "buffone",
+   "reason": "A relic power word: buffone (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “buffone”)."
+  },
+  {
+   "lang": "it",
+   "key": "pack:relics.RL-009.3",
+   "text": "commedia",
+   "reason": "A relic power word: commedia (a play; also comedy), for the English “play”. A single word back-translated alone scores low (MADLAD gave “commedia”)."
+  },
+  {
+   "lang": "it",
+   "key": "pwa.dismiss",
+   "text": "Chiudi",
+   "reason": "Chiudi (close) is the usual Italian button for dismissing a prompt."
+  },
+  {
+   "lang": "it",
+   "key": "theatre.clear",
+   "text": "Cancella",
+   "reason": "Cancella (clear, erase) is the usual button label."
+  },
+  {
+   "lang": "it",
+   "key": "theatre.submit",
+   "text": "Recitala",
+   "reason": "Recitala (recite it) is 'Speak it' for a verse; MADLAD copied it through."
+  },
+  {
+   "lang": "it",
+   "key": "verdict.signature",
+   "text": "Firma",
+   "reason": "Firma is the glossary's word for the signature bonus; MADLAD read it as 'firm'."
+  },
+  {
+   "lang": "it",
+   "key": "verdict.who.split",
+   "text": "pari",
+   "reason": "pari (a draw, even) is what a split criterion is."
+  },
+  {
+   "lang": "ja",
+   "key": "auth.passkeysHeading",
+   "text": "パスキー",
+   "reason": "パスキー is Android's and Apple's Japanese for passkey (glossary)."
+  },
+  {
+   "lang": "ja",
+   "key": "badge.written",
+   "text": "書かれた詩を出す相手",
+   "reason": "'書かれた詩を出す相手' (the opponent who plays written verses) is the glossary's written opponent."
+  },
+  {
+   "lang": "ja",
+   "key": "check.spells.words",
+   "text": "各行が順に「骸骨」で始まる",
+   "reason": "'各行が順に「骸骨」で始まる' (each line begins in turn with 'skull')."
+  },
+  {
+   "lang": "ja",
+   "key": "criterion.wit",
+   "text": "機知",
+   "reason": "機知 is wit."
+  },
+  {
+   "lang": "ja",
+   "key": "curse.no-repeats.name",
+   "text": "こだま封じ",
+   "reason": "The game's own name for a device or curse, “こだま封じ”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Kodama-bonji”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "device.alliteration.name",
+   "text": "頭韻",
+   "reason": "Sourced name: 頭韻 is Wikidata's alias “頭韻” (Q484495) (glossary.json). Back-translated on its own the name reads “Head rhyme”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "device.brevity.name",
+   "text": "簡潔",
+   "reason": "The game's own name for a device or curse, “簡潔”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Conciseness”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "device.grandeur.name",
+   "text": "壮麗",
+   "reason": "The game's own name for a device or curse, “壮麗”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Magnificent”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "device.internal-rhyme.name",
+   "text": "中間韻",
+   "reason": "Sourced name: 中間韻 is the ja Wikipedia article “中間韻” (Q2098331) (glossary.json). Back-translated on its own the name reads “Intervowel”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "device.repetition.name",
+   "text": "太鼓の連打",
+   "reason": "The game's own name for a device or curse, “太鼓の連打”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Taijutsu”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "device.riposte.name",
+   "text": "切り返し",
+   "reason": "The game's own name for a device or curse, “切り返し”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Reverse”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "device.swell.name",
+   "text": "うねり",
+   "reason": "The game's own name for a device or curse, “うねり”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Uneri”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ja",
+   "key": "footer.rights",
+   "text": "無断転載を禁じます。",
+   "reason": "無断転載を禁じます (unauthorised reproduction is prohibited) is the usual Japanese equivalent of 'All rights reserved'."
+  },
+  {
+   "lang": "ja",
+   "key": "form.acrostic.name",
+   "text": "折句",
+   "reason": "Sourced name: 折句 is the ja Wikipedia article “折句” (Q173287) (glossary.json). Back-translated on its own the name reads “Conjugation”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.anaphora.name",
+   "text": "首句反復",
+   "reason": "Sourced name: 首句反復 is the ja Wikipedia article “首句反復” (Q486050) (glossary.json). Back-translated on its own the name reads “First sentence repetition”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.couplet.name",
+   "text": "二行連",
+   "reason": "Sourced name: 二行連 is the ja Wikipedia article “二行連” (Q4779829) (glossary.json). Back-translated on its own the name reads “Bilinear”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.epistrophe.name",
+   "text": "結句反復",
+   "reason": "Sourced name: 結句反復 is the ja Wikipedia article “結句反復” (Q963102) (glossary.json). Back-translated on its own the name reads “Repetition at the end”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.heroic-couplet.name",
+   "text": "ヒロイック・カプレット",
+   "reason": "Sourced name: ヒロイック・カプレット is the ja Wikipedia article “ヒロイック・カプレット” (Q2714966) (glossary.json). Back-translated on its own the name reads “Heroic Caplet”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.jueju.name",
+   "text": "絶句",
+   "reason": "Sourced name: 絶句 is the ja Wikipedia article “絶句” (Q537198) (glossary.json). Back-translated on its own the name reads “Absolutely.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.luc-bat.name",
+   "text": "六八体",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as 六八 (six-eight) + 体 (form), as the zh Wikipedia names it (六八體); no ja article. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ja",
+   "key": "form.quatrain-aabb.name",
+   "text": "対韻の四行連",
+   "reason": "Head word sourced: 四行連 is the ja Wikipedia article “四行連” (Q570948); the words for the rhyme pattern (対韻の) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line contradiction”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.quatrain-abab.name",
+   "text": "交差韻の四行連",
+   "reason": "Head word sourced: 四行連 is the ja Wikipedia article “四行連” (Q570948); the words for the rhyme pattern (交差韻の) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line cross rhyme”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "form.tercet.name",
+   "text": "三行連",
+   "reason": "Sourced name: 三行連 is the ja Wikipedia article “三行連” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triangle”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ja",
+   "key": "illegal.potion-spent",
+   "text": "その薬はもう使いました。",
+   "reason": "'その薬はもう使いました' (that potion has already been used; the subject is left out, as Japanese does)."
+  },
+  {
+   "lang": "ja",
+   "key": "pack:relics.RL-001.1",
+   "text": "冗談",
+   "reason": "A relic power word: 冗談 (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “Joking.”)."
+  },
+  {
+   "lang": "ja",
+   "key": "pack:relics.RL-002.2",
+   "text": "杖",
+   "reason": "A relic power word: 杖 (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Sticks”)."
+  },
+  {
+   "lang": "ja",
+   "key": "pack:relics.RL-003.3",
+   "text": "幻",
+   "reason": "A relic power word: 幻 (a vision, a phantom), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “Fantasia”)."
+  },
+  {
+   "lang": "ja",
+   "key": "pack:relics.RL-004.4",
+   "text": "口づけ",
+   "reason": "A relic power word: 口づけ (a kiss), for the English “kiss”. A single word back-translated alone scores low (MADLAD gave “Mouth.”)."
+  },
+  {
+   "lang": "ja",
+   "key": "pack:relics.RL-009.2",
+   "text": "道化",
+   "reason": "A relic power word: 道化 (a fool, a clown), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Daohua”)."
+  },
+  {
+   "lang": "ja",
+   "key": "pwa.dismiss",
+   "text": "閉じる",
+   "reason": "閉じる (close) is the usual Japanese button for dismissing a prompt."
+  },
+  {
+   "lang": "ja",
+   "key": "rarity.uncommon",
+   "text": "アンコモン",
+   "reason": "アンコモン is the established Japanese rarity name (as Magic: The Gathering's Japanese editions print it)."
+  },
+  {
+   "lang": "ja",
+   "key": "theatre.submit",
+   "text": "詠む",
+   "reason": "詠む (to compose or recite a poem) is 'Speak it' for a verse."
+  },
+  {
+   "lang": "ja",
+   "key": "theatre.titleA",
+   "text": "立体",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “立体 シアター” for “The Theatre”."
+  },
+  {
+   "lang": "ja",
+   "key": "verdict.form",
+   "text": "詩形",
+   "reason": "詩形 (verse form) is the criterion Form."
+  },
+  {
+   "lang": "ja",
+   "key": "verdict.missed",
+   "text": "不成立",
+   "reason": "不成立 (did not come off) is a correct label for a missed bonus."
+  },
+  {
+   "lang": "ja",
+   "key": "verdict.notTaken",
+   "text": "機知：取れませんでした",
+   "reason": "A short score row: the criterion, 機知 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Notification: Failed.”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "ko",
+   "key": "auth.offerSkip",
+   "text": "나중에 할게요",
+   "reason": "나중에 할게요 (I'll do it later) is the usual Korean button for 'Not now'."
+  },
+  {
+   "lang": "ko",
+   "key": "battle.equip",
+   "text": "장착",
+   "reason": "장착 (equip, fit) is the Korean game word."
+  },
+  {
+   "lang": "ko",
+   "key": "criterion.wordplay",
+   "text": "말재간",
+   "reason": "말재간 (a way with words, wordplay) is the criterion; MADLAD copied it through."
+  },
+  {
+   "lang": "ko",
+   "key": "device.alliteration.name",
+   "text": "두운",
+   "reason": "Sourced name: 두운 is the ko Wikipedia article “두운” (Q484495) (glossary.json). Back-translated on its own the name reads “Dark.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ko",
+   "key": "device.brevity.name",
+   "text": "간결",
+   "reason": "The game's own name for a device or curse, “간결”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Concise”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "device.internal-rhyme.name",
+   "text": "행 안의 운",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “The fortune in the row”; a name alone scores low whatever its quality. Read and kept as 행 (line) 안의 (inside) 운 (rhyme), a rhyme inside the line; MADLAD read 운 as “fortune”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "device.monorhyme.name",
+   "text": "한 가지 운",
+   "reason": "The game's own name for a device or curse, “한 가지 운”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “One lucky thing.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "device.repetition.name",
+   "text": "북소리",
+   "reason": "The game's own name for a device or curse, “북소리”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “North.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "device.riposte.name",
+   "text": "되받아치기",
+   "reason": "The game's own name for a device or curse, “되받아치기”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Take back.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "device.swell.name",
+   "text": "밀물",
+   "reason": "The game's own name for a device or curse, “밀물”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Tides.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "form.acrostic.name",
+   "text": "이합체시",
+   "reason": "Sourced name: 이합체시 is the ko Wikipedia article “이합체시” (Q173287) (glossary.json). Back-translated on its own the name reads “Ishikawa Prefecture”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ko",
+   "key": "form.anaphora.name",
+   "text": "첫말 반복",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repeat first word.”; a name alone scores low whatever its quality. Read and kept as 첫말 (first word) 반복 (repetition): what the device asks, said plainly. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.crescendo.name",
+   "text": "크레셴도",
+   "reason": "The game's own name for a device or curse, “크레셴도”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Crecente.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ko",
+   "key": "form.epistrophe.name",
+   "text": "끝말 반복",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “End repeat”; a name alone scores low whatever its quality. Read and kept as 끝말 (last word) 반복 (repetition), the pair of 첫말 반복. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.heroic-couplet.name",
+   "text": "영웅시체 쿠플레",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Couple of Heroes.”; a name alone scores low whatever its quality. Read and kept as 영웅시체 (heroic verse) + 쿠플레, the ko article title for the couplet. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.jueju.name",
+   "text": "절구",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Cut.”; a name alone scores low whatever its quality. Read and kept as 絶句 read in Korean (절구); the ko Wikipedia article 절구 is the mortar, a homograph, so MADLAD read “Cut”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.luc-bat.name",
+   "text": "육팔체",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Hexagon”; a name alone scores low whatever its quality. Read and kept as 육팔 (six-eight) + 체 (form), as Chinese names it (六八體). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.quatrain-aabb.name",
+   "text": "짝운 4행시",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “The Fourth Act.”; a name alone scores low whatever its quality. Read and kept as 짝운 (paired rhyme) + 4행시 (four-line poem). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.quatrain-abab.name",
+   "text": "교차운 4행시",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Crossroads 4”; a name alone scores low whatever its quality. Read and kept as 교차운 (crossed rhyme) + 4행시 (four-line poem). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "form.tercet.name",
+   "text": "3행 연",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “3-line string”; a name alone scores low whatever its quality. Read and kept as 3행 (three lines) + 연 (stanza). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ko",
+   "key": "illegal.potion-spent",
+   "text": "그 물약은 이미 썼어요.",
+   "reason": "'그 물약은 이미 썼어요' (that potion is already used)."
+  },
+  {
+   "lang": "ko",
+   "key": "illegal.relic-spent",
+   "text": "그 유물은 이미 썼어요.",
+   "reason": "'그 유물은 이미 썼어요' (that relic is already used); 썼어요 is 'used', which MADLAD read as 'written'."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-001.1",
+   "text": "농담",
+   "reason": "A relic power word: 농담 (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “I'm kidding.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-002.1",
+   "text": "주문",
+   "reason": "A relic power word: 주문 (a spell, an incantation; also 'an order', a homonym), for the English “spell”. A single word back-translated alone scores low (MADLAD gave “Order”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-002.2",
+   "text": "지팡이",
+   "reason": "A relic power word: 지팡이 (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Cane.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-002.4",
+   "text": "난파",
+   "reason": "A relic power word: 난파 (shipwreck: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “Wreck.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-003.3",
+   "text": "환영",
+   "reason": "A relic power word: 환영 (幻影, a phantom, a vision; also 歡迎, 'welcome', a homonym), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “Welcome.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-004.3",
+   "text": "추방",
+   "reason": "A relic power word: 추방 (banishment), for the English “banished”. A single word back-translated alone scores low (MADLAD gave “Expulsion.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-007.3",
+   "text": "책장",
+   "reason": "A relic power word: 책장 (a page of a book; also 'a bookshelf', a homonym), for the English “page”. A single word back-translated alone scores low (MADLAD gave “Shelves.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-007.4",
+   "text": "난파",
+   "reason": "A relic power word: 난파 (shipwreck: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “Wreck.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pack:relics.RL-009.2",
+   "text": "광대",
+   "reason": "A relic power word: 광대 (a fool, a clown), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Gangster.”)."
+  },
+  {
+   "lang": "ko",
+   "key": "pwa.dismiss",
+   "text": "닫기",
+   "reason": "닫기 (close) is the usual Korean button for dismissing a prompt."
+  },
+  {
+   "lang": "ko",
+   "key": "rarity.epic",
+   "text": "영웅",
+   "reason": "영웅 (hero) is the Korean games' name for the epic tier (일반, 고급, 희귀, 영웅, 전설)."
+  },
+  {
+   "lang": "ko",
+   "key": "rarity.uncommon",
+   "text": "고급",
+   "reason": "고급 is the second rarity tier in Korean games (일반, 고급, 희귀, 영웅, 전설), as the game's own ladder is."
+  },
+  {
+   "lang": "ko",
+   "key": "round.submit",
+   "text": "시 읊기",
+   "reason": "시 읊기 (reciting the verse) is 'Speak your verse' as a button."
+  },
+  {
+   "lang": "ko",
+   "key": "signature.quoted",
+   "text": "그대로 인용했어요. 내가 지은 행으로 떠올리게 해야 해요",
+   "reason": "'그대로 인용했어요. 내가 지은 행으로 떠올리게 해야 해요' (it was quoted as it is; the echo must be in a line of my own), the player's own voice as the Korean interface uses throughout."
+  },
+  {
+   "lang": "ko",
+   "key": "theatre.submit",
+   "text": "읊기",
+   "reason": "읊기 (reciting) is 'Speak it' as a button for a verse."
+  },
+  {
+   "lang": "ko",
+   "key": "theatre.titleA",
+   "text": "입체",
+   "reason": "Half of the heading '입체 극장' (3-D theatre) for 'The Theatre', as the Chinese and Japanese headings have it (立体剧场, 立体シアター); MADLAD gave 'Tridimensional'."
+  },
+  {
+   "lang": "ko",
+   "key": "verdict.craft",
+   "text": "기교",
+   "reason": "기교 (craft, technique) is the glossary term."
+  },
+  {
+   "lang": "ko",
+   "key": "verdict.held",
+   "text": "지킴",
+   "reason": "지킴 (kept) is what 'held' means for a curse."
+  },
+  {
+   "lang": "ko",
+   "key": "verdict.multiplier",
+   "text": "배수",
+   "reason": "배수 (a multiple) for the score multiplier."
+  },
+  {
+   "lang": "ko",
+   "key": "verdict.notTaken",
+   "text": "재치: 얻지 못함",
+   "reason": "A short score row: the criterion, 재치 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Witchcraft: Not obtained”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "ko",
+   "key": "verdict.who.split",
+   "text": "반반",
+   "reason": "반반 (half and half) for a criterion split between the two. The second model proposed 무승부 (a draw), which the meaning check refused; listed for a native reader."
+  },
+  {
+   "lang": "pl",
+   "key": "badge.written",
+   "text": "Rywal z gotowymi strofami",
+   "reason": "'Rywal z gotowymi strofami' (a rival with ready verses) is the glossary's written opponent."
+  },
+  {
+   "lang": "pl",
+   "key": "battle.deck",
+   "text": "Talia",
+   "reason": "Talia is the Polish word for a deck of cards (the glossary term); MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "battle.equip",
+   "text": "Wybierz",
+   "reason": "Wybierz (choose) for choosing the relics and potions to take; equip is that choice."
+  },
+  {
+   "lang": "pl",
+   "key": "battle.opponent",
+   "text": "Rywal",
+   "reason": "Rywal is the glossary's word for the opponent; MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "battle.titleA",
+   "text": "Arena",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena bitwy” for “Battle Arena”."
+  },
+  {
+   "lang": "pl",
+   "key": "battle.titleB",
+   "text": "bitwy",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena bitwy” for “Battle Arena”."
+  },
+  {
+   "lang": "pl",
+   "key": "brain.written",
+   "text": "Grasz z rywalem, który ma gotowe strofy.",
+   "reason": "'Grasz z rywalem, który ma gotowe strofy' (you play a rival who has ready verses) is the written opponent."
+  },
+  {
+   "lang": "pl",
+   "key": "check.spells.words",
+   "text": "Wersy zaczynają się kolejno od słów: czaszka",
+   "reason": "'Wersy zaczynają się kolejno od słów: czaszka' (the lines begin in turn with the words: skull); the back-translation says it. Rephrased on 2026-11-16 so that the inserted word needs no case."
+  },
+  {
+   "lang": "pl",
+   "key": "criterion.wit",
+   "text": "dowcip",
+   "reason": "dowcip means both wit and a joke; as a criterion it is wit."
+  },
+  {
+   "lang": "pl",
+   "key": "curse.no-repeats.name",
+   "text": "Bez ech",
+   "reason": "The game's own name for a device or curse, “Bez ech”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Bez ech”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pl",
+   "key": "device.grandeur.name",
+   "text": "Wzniosłość",
+   "reason": "The game's own name for a device or curse, “Wzniosłość”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Nobleness”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pl",
+   "key": "device.repetition.name",
+   "text": "Werbel",
+   "reason": "The game's own name for a device or curse, “Werbel”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Verbel”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pl",
+   "key": "device.swell.name",
+   "text": "Wzbierająca fala",
+   "reason": "The game's own name for a device or curse, “Wzbierająca fala”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Collecting wave”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pl",
+   "key": "end.defeat",
+   "text": "Porażka",
+   "reason": "Porażka is Defeat; MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "form.couplet.name",
+   "text": "Dystych",
+   "reason": "Sourced name: Dystych is the pl Wikipedia article “Dystych” (Q906442) (glossary.json). Back-translated on its own the name reads “Dystych”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "pl",
+   "key": "form.quatrain-aabb.name",
+   "text": "Czterowiersz parzysty",
+   "reason": "Head word sourced: Czterowiersz is English Wiktionary's translation of “quatrain”, “czterowiersz”; the words for the rhyme pattern (parzysty) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Even quadrivium”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "pl",
+   "key": "mic.transcribing",
+   "text": "Rozpoznaję mowę…",
+   "reason": "Rozpoznaję mowę… (recognising speech) says what this step does, as mic.failed now does (Nie udało się rozpoznać mowy) and as Russian says it (распознать речь); the earlier Zapisuję… also reads as 'saving', the drift the checker found in mic.failed. Read by a language model, not a native speaker."
+  },
+  {
+   "lang": "pl",
+   "key": "nav.toggleMenu",
+   "text": "Otwórz lub zamknij menu",
+   "reason": "'Otwórz lub zamknij menu' (open or close the menu) is what the toggle does; the back-translation says the same."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-001.1",
+   "text": "żart",
+   "reason": "A relic power word: żart (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “joke”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-001.4",
+   "text": "proch",
+   "reason": "A relic power word: proch (dust, as in 'z prochu powstałeś'), for the English “dust”. A single word back-translated alone scores low (MADLAD gave “powder”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-002.2",
+   "text": "laska",
+   "reason": "A relic power word: laska (a staff, a stick), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “laska”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-002.4",
+   "text": "toń",
+   "reason": "A relic power word: toń (the deep water: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “ton”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-003.2",
+   "text": "sen",
+   "reason": "A relic power word: sen (sleep), for the English “sleep”. A single word back-translated alone scores low (MADLAD gave “sen”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-007.1",
+   "text": "burza",
+   "reason": "A relic power word: burza (a storm, a tempest; Burza is the Polish title of The Tempest), for the English “tempest”. A single word back-translated alone scores low (MADLAD gave “storm”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-007.4",
+   "text": "toń",
+   "reason": "A relic power word: toń (the deep water: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “ton”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pack:relics.RL-009.1",
+   "text": "sen",
+   "reason": "A relic power word: sen (a dream; Sen nocy letniej is the Polish title of the Dream), for the English “dream”. A single word back-translated alone scores low (MADLAD gave “sen”)."
+  },
+  {
+   "lang": "pl",
+   "key": "pwa.dismiss",
+   "text": "Zamknij",
+   "reason": "Zamknij (close) is the usual Polish button for dismissing a prompt."
+  },
+  {
+   "lang": "pl",
+   "key": "rarity.common",
+   "text": "Pospolita",
+   "reason": "Pospolita (common) agrees with karta; MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "rarity.uncommon",
+   "text": "Niepospolita",
+   "reason": "Niepospolita (uncommon) agrees with karta; MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "theatre.titleA",
+   "text": "Nasz",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Nasz Teatr” for “The Theatre”."
+  },
+  {
+   "lang": "pl",
+   "key": "verdict.craft",
+   "text": "Kunszt",
+   "reason": "Kunszt (craftsmanship) is the glossary term; MADLAD copied it through."
+  },
+  {
+   "lang": "pl",
+   "key": "verdict.missed",
+   "text": "pudło",
+   "reason": "pudło (a miss, as a shot misses) is a correct terse label."
+  },
+  {
+   "lang": "pl",
+   "key": "verdict.notTaken",
+   "text": "dowcip: niezdobyte",
+   "reason": "A short score row: the criterion, dowcip (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“joke: unearned”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "pl",
+   "key": "verdict.who.split",
+   "text": "remis",
+   "reason": "remis (a draw) is what a split criterion is."
+  },
+  {
+   "lang": "pt",
+   "key": "age.year",
+   "text": "Ano",
+   "reason": "Ano is Year; MADLAD copied it through."
+  },
+  {
+   "lang": "pt",
+   "key": "badge.written",
+   "text": "Adversário de estrofes escritas",
+   "reason": "'Adversário de estrofes escritas' (the opponent of written verses) is the glossary's written opponent."
+  },
+  {
+   "lang": "pt",
+   "key": "battle.opponent",
+   "text": "Adversário",
+   "reason": "Adversário is Opponent (the glossary term); MADLAD copied it through."
+  },
+  {
+   "lang": "pt",
+   "key": "battle.titleA",
+   "text": "Arena de",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena de batalha” for “Battle Arena”."
+  },
+  {
+   "lang": "pt",
+   "key": "battle.titleB",
+   "text": "batalha",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Arena de batalha” for “Battle Arena”."
+  },
+  {
+   "lang": "pt",
+   "key": "device.exclaim.name",
+   "text": "O Brado",
+   "reason": "The game's own name for a device or curse, “O Brado”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “O Brado”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pt",
+   "key": "device.repetition.name",
+   "text": "O Rufar",
+   "reason": "The game's own name for a device or curse, “O Rufar”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “O Rufar”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pt",
+   "key": "device.swell.name",
+   "text": "A Vaga",
+   "reason": "The game's own name for a device or curse, “A Vaga”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “A Vaga”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "pt",
+   "key": "form.couplet.name",
+   "text": "Dístico",
+   "reason": "Sourced name: Dístico is the pt Wikipedia article “Dístico” (Q4779829) (glossary.json). Back-translated on its own the name reads “Dístico”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "pt",
+   "key": "form.quatrain-aabb.name",
+   "text": "Quadra de rimas emparelhadas",
+   "reason": "Head word sourced: Quadra is Wikidata's alias “quadra” (Q570948); the words for the rhyme pattern (de rimas emparelhadas) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Square of Paired Rhymes”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "pt",
+   "key": "form.quatrain-abab.name",
+   "text": "Quadra de rimas cruzadas",
+   "reason": "Head word sourced: Quadra is Wikidata's alias “quadra” (Q570948); the words for the rhyme pattern (de rimas cruzadas) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Square of cross rhymes”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "pt",
+   "key": "live.curseHolding",
+   "text": "cumprida",
+   "reason": "cumprida (obeyed, fulfilled) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "pt",
+   "key": "migrate.no",
+   "text": "Pular",
+   "reason": "Pular (skip) is the usual Brazilian button."
+  },
+  {
+   "lang": "pt",
+   "key": "pack:relics.RL-001.1",
+   "text": "gracejo",
+   "reason": "A relic power word: gracejo (a jest), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “gracejo”)."
+  },
+  {
+   "lang": "pt",
+   "key": "pack:relics.RL-002.2",
+   "text": "cajado",
+   "reason": "A relic power word: cajado (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “cajado”)."
+  },
+  {
+   "lang": "pt",
+   "key": "pack:relics.RL-003.0",
+   "text": "punhal",
+   "reason": "A relic power word: punhal (a dagger), for the English “dagger”. A single word back-translated alone scores low (MADLAD gave “punch”)."
+  },
+  {
+   "lang": "pt",
+   "key": "pack:relics.RL-004.1",
+   "text": "jura",
+   "reason": "A relic power word: jura (an oath, a vow), for the English “vow”. A single word back-translated alone scores low (MADLAD gave “jura”)."
+  },
+  {
+   "lang": "pt",
+   "key": "pack:relics.RL-009.3",
+   "text": "comédia",
+   "reason": "A relic power word: comédia (a play; also comedy), for the English “play”. A single word back-translated alone scores low (MADLAD gave “comedy”)."
+  },
+  {
+   "lang": "pt",
+   "key": "pwa.dismiss",
+   "text": "Fechar",
+   "reason": "Fechar (close) is the usual Portuguese button for dismissing a prompt."
+  },
+  {
+   "lang": "pt",
+   "key": "theatre.raising",
+   "text": "Sobe o pano…",
+   "reason": "'Sobe o pano…' (the curtain rises) is 'Raising the curtain…'; MADLAD gave 'Loading'."
+  },
+  {
+   "lang": "pt",
+   "key": "theatre.screenTitle",
+   "text": "Tela",
+   "reason": "Tela is Screen (Brazilian); MADLAD copied it through."
+  },
+  {
+   "lang": "pt",
+   "key": "theatre.submit",
+   "text": "Dizer",
+   "reason": "Dizer (to say) as a button label is ordinary Brazilian interface style for 'Speak it'."
+  },
+  {
+   "lang": "pt",
+   "key": "verdict.craft",
+   "text": "Ofício",
+   "reason": "Ofício (a writer's craft) is the glossary term."
+  },
+  {
+   "lang": "pt",
+   "key": "verdict.who.split",
+   "text": "empate",
+   "reason": "empate (a tie) is what a split criterion is."
+  },
+  {
+   "lang": "ru",
+   "key": "battle.deck",
+   "text": "Колода",
+   "reason": "Колода is the Russian word for a deck of cards (the glossary term); MADLAD read it as 'Colada'."
+  },
+  {
+   "lang": "ru",
+   "key": "battle.equip",
+   "text": "Выбрать",
+   "reason": "Выбрать (choose) for choosing the relics and potions to take; equip is that choice."
+  },
+  {
+   "lang": "ru",
+   "key": "battle.titleA",
+   "text": "Арена",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Арена битв” for “Battle Arena”."
+  },
+  {
+   "lang": "ru",
+   "key": "battle.titleB",
+   "text": "битв",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Арена битв” for “Battle Arena”."
+  },
+  {
+   "lang": "ru",
+   "key": "brain.written",
+   "text": "Ты играешь с соперником, у которого готовые строфы.",
+   "reason": "'Ты играешь с соперником, у которого готовые строфы' (you play an opponent who has ready verses) is the written opponent."
+  },
+  {
+   "lang": "ru",
+   "key": "criterion.flow",
+   "text": "плавность",
+   "reason": "плавность (smoothness, how a line flows) is the criterion."
+  },
+  {
+   "lang": "ru",
+   "key": "device.brevity.name",
+   "text": "Краткость",
+   "reason": "The game's own name for a device or curse, “Краткость”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Conciseness”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ru",
+   "key": "device.exclaim.name",
+   "text": "Возглас",
+   "reason": "The game's own name for a device or curse, “Возглас”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Proclamation”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ru",
+   "key": "device.repetition.name",
+   "text": "Барабанная дробь",
+   "reason": "The game's own name for a device or curse, “Барабанная дробь”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Drum fraction”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ru",
+   "key": "device.swell.name",
+   "text": "Нарастание",
+   "reason": "The game's own name for a device or curse, “Нарастание”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Accrual”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "ru",
+   "key": "form.couplet.name",
+   "text": "Двустишие",
+   "reason": "Sourced name: Двустишие is the ru Wikipedia article “Двустишие” (Q4779829) (glossary.json). Back-translated on its own the name reads “Double verse”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ru",
+   "key": "form.luc-bat.name",
+   "text": "Шесть-восемь",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six to eight”; a name alone scores low whatever its quality. Read and kept as «шесть-восемь», the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "ru",
+   "key": "form.quatrain-aabb.name",
+   "text": "Катрен с парной рифмой",
+   "reason": "Head word sourced: Катрен is the ru Wikipedia article “Катрен” (Q570948); the words for the rhyme pattern (с парной рифмой) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Catren with pair rhyme”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "ru",
+   "key": "nav.explore",
+   "text": "Обзор",
+   "reason": "Обзор (overview) as the heading of a menu group is a usual Russian rendering of Explore."
+  },
+  {
+   "lang": "ru",
+   "key": "pack:relics.RL-001.1",
+   "text": "шутка",
+   "reason": "A relic power word: шутка (a jest, a joke), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “joke”)."
+  },
+  {
+   "lang": "ru",
+   "key": "pack:relics.RL-002.2",
+   "text": "посох",
+   "reason": "A relic power word: посох (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “pole”)."
+  },
+  {
+   "lang": "ru",
+   "key": "pack:relics.RL-002.4",
+   "text": "пучина",
+   "reason": "A relic power word: пучина (the deep of the sea: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “puddle”)."
+  },
+  {
+   "lang": "ru",
+   "key": "pack:relics.RL-007.4",
+   "text": "пучина",
+   "reason": "A relic power word: пучина (the deep of the sea: the drowning, as a noun), for the English “drown”. A single word back-translated alone scores low (MADLAD gave “puddle”)."
+  },
+  {
+   "lang": "ru",
+   "key": "pack:relics.RL-009.2",
+   "text": "шут",
+   "reason": "A relic power word: шут (a fool, a jester), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “bullshit”)."
+  },
+  {
+   "lang": "ru",
+   "key": "pwa.dismiss",
+   "text": "Закрыть",
+   "reason": "Закрыть (close) is the usual Russian button for dismissing a prompt."
+  },
+  {
+   "lang": "ru",
+   "key": "theatre.clear",
+   "text": "Стереть",
+   "reason": "Стереть (clear, erase) is the usual button label."
+  },
+  {
+   "lang": "ru",
+   "key": "theatre.titleA",
+   "text": "Наш",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Наш Театр” for “The Theatre”."
+  },
+  {
+   "lang": "th",
+   "key": "auth.passkeyRemoved",
+   "text": "นำพาสคีย์ออกแล้ว",
+   "reason": "'นำพาสคีย์ออกแล้ว' (the passkey has been removed); the back-translation says it."
+  },
+  {
+   "lang": "th",
+   "key": "badge.written",
+   "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+   "reason": "'คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว' (the opponent who uses verses already written) is the glossary's written opponent."
+  },
+  {
+   "lang": "th",
+   "key": "battle.buildDeck",
+   "text": "จัดสำรับ",
+   "reason": "จัดสำรับ (arrange a deck) is 'Build a deck'."
+  },
+  {
+   "lang": "th",
+   "key": "battle.deck",
+   "text": "สำรับ",
+   "reason": "สำรับ (a deck of cards) is the glossary term."
+  },
+  {
+   "lang": "th",
+   "key": "battle.duelLanguage",
+   "text": "ภาษาที่ใช้ประชัน",
+   "reason": "ภาษาที่ใช้ประชัน (the language used in the contest) is 'Language of the duel'."
+  },
+  {
+   "lang": "th",
+   "key": "battle.equip",
+   "text": "ติดตั้ง",
+   "reason": "ติดตั้ง (fit, install) for equipping relics and potions."
+  },
+  {
+   "lang": "th",
+   "key": "battle.starterDeck",
+   "text": "สำรับเริ่มต้น",
+   "reason": "สำรับเริ่มต้น (the starting deck) is 'Starter deck'."
+  },
+  {
+   "lang": "th",
+   "key": "battle.titleA",
+   "text": "สังเวียน",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “สังเวียน ประชัน” for “Battle Arena”."
+  },
+  {
+   "lang": "th",
+   "key": "battle.titleB",
+   "text": "ประชัน",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “สังเวียน ประชัน” for “Battle Arena”."
+  },
+  {
+   "lang": "th",
+   "key": "criterion.wit",
+   "text": "ไหวพริบ",
+   "reason": "ไหวพริบ (quick wit) is wit."
+  },
+  {
+   "lang": "th",
+   "key": "curse.forbidden-letter.theirs",
+   "text": "บทกลอนของคู่ต่อสู้ต้องไม่มีตัวอักษร ก",
+   "reason": "'บทกลอนของคู่ต่อสู้ต้องไม่มีตัวอักษร ก' (the opponent's verse must not contain the letter ก); the back-translation says it."
+  },
+  {
+   "lang": "th",
+   "key": "device.alliteration.name",
+   "text": "สัมผัสอักษร",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Touch the letter.”; a name alone scores low whatever its quality. Read and kept as สัมผัสอักษร, the consonant rhyme of Thai prosody (a sound repeated at the start of syllables); MADLAD read สัมผัส as “touch”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "device.brevity.name",
+   "text": "กระชับ",
+   "reason": "The game's own name for a device or curse, “กระชับ”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Tight.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "device.grandeur.name",
+   "text": "โอ่อ่า",
+   "reason": "The game's own name for a device or curse, “โอ่อ่า”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Oh.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "device.internal-rhyme.name",
+   "text": "สัมผัสใน",
+   "reason": "Not sourced: no Thai source names internal rhyme; สัมผัสใน is among Wikidata's aliases of the Thai rhyme item (Q178715) (glossary.json). Back-translated on its own it reads “Touch in.”, the word-for-word sense of สัมผัส ใน ('rhyme within'). Kept on the translator's reading, a language model's, for a native reader (HUMAN-REVIEW.md)."
+  },
+  {
+   "lang": "th",
+   "key": "device.invocation.name",
+   "text": "เอ่ยนาม",
+   "reason": "The game's own name for a device or curse, “เอ่ยนาม”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Name it.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "device.monorhyme.name",
+   "text": "สัมผัสเดียว",
+   "reason": "The game's own name for a device or curse, “สัมผัสเดียว”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “One touch.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "device.riposte.name",
+   "text": "ย้อนศร",
+   "reason": "The game's own name for a device or curse, “ย้อนศร”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Back arrow”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "device.swell.name",
+   "text": "คลื่นโหม",
+   "reason": "The game's own name for a device or curse, “คลื่นโหม”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Shock wave.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "footer.rights",
+   "text": "สงวนลิขสิทธิ์",
+   "reason": "สงวนลิขสิทธิ์ (copyright reserved) is the usual Thai for 'All rights reserved'."
+  },
+  {
+   "lang": "th",
+   "key": "form.acrostic.name",
+   "text": "กลอนกระทู้",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poems.”; a name alone scores low whatever its quality. Read and kept as กลอนกระทู้, the Thai verse form in which each line opens with a given word, which is how the game's Thai acrostic works. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.anaphora.name",
+   "text": "ซ้ำคำขึ้นต้น",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Duplicate Initial”; a name alone scores low whatever its quality. Read and kept as ซ้ำคำ (repeat the word) ขึ้นต้น (at the start). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.couplet.brief",
+   "text": "สองบรรทัดที่สัมผัสกัน",
+   "reason": "'สองบรรทัดที่สัมผัสกัน' (two lines that rhyme); สัมผัส is the Thai word for rhyme, which MADLAD read as 'touch'."
+  },
+  {
+   "lang": "th",
+   "key": "form.couplet.name",
+   "text": "กลอนคู่",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Double poetry.”; a name alone scores low whatever its quality. Read and kept as กลอน (verse) + คู่ (pair). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.crescendo.name",
+   "text": "ไต่ระดับ",
+   "reason": "The game's own name for a device or curse, “ไต่ระดับ”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Level up.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "form.epistrophe.name",
+   "text": "ซ้ำคำลงท้าย",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repeat at the end”; a name alone scores low whatever its quality. Read and kept as ซ้ำคำ (repeat the word) ลงท้าย (at the end), the pair of ซ้ำคำขึ้นต้น. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.heroic-couplet.name",
+   "text": "กลอนคู่วีรกรรม",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Heroic poems.”; a name alone scores low whatever its quality. Read and kept as กลอนคู่ (couplet) + วีรกรรม (heroic deeds). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.luc-bat.name",
+   "text": "หก-แปด",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight.”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.quatrain-aabb.name",
+   "text": "กลอนสี่สัมผัสคู่",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Four poems, two touches.”; a name alone scores low whatever its quality. Read and kept as กลอนสี่ (four-line verse) + สัมผัสคู่ (paired rhyme); MADLAD read สัมผัส as “touch”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.quatrain-abab.name",
+   "text": "กลอนสี่สัมผัสไขว้",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Four poems touch the heart .”; a name alone scores low whatever its quality. Read and kept as กลอนสี่ (four-line verse) + สัมผัสไขว้ (crossed rhyme). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "form.tercet.name",
+   "text": "กลอนสาม",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poem three.”; a name alone scores low whatever its quality. Read and kept as กลอน (verse) + สาม (three). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "th",
+   "key": "illegal.potion-spent",
+   "text": "ยาวิเศษนั้นใช้ไปแล้ว",
+   "reason": "'ยาวิเศษนั้นใช้ไปแล้ว' (that potion has been used); ยาวิเศษ is the glossary's potion."
+  },
+  {
+   "lang": "th",
+   "key": "illegal.relic-spent",
+   "text": "ของวิเศษนั้นใช้ไปแล้ว",
+   "reason": "'ของวิเศษนั้นใช้ไปแล้ว' (that relic has been used); ของวิเศษ is the glossary's relic."
+  },
+  {
+   "lang": "th",
+   "key": "live.curseHolding",
+   "text": "ยังไม่ผิด",
+   "reason": "ยังไม่ผิด (not broken yet) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "th",
+   "key": "nav.battle",
+   "text": "สังเวียนประชัน",
+   "reason": "สังเวียนประชัน (the ring of contest) is Battle Arena; MADLAD's 'circumcision' is a misreading."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-001.1",
+   "text": "ตลก",
+   "reason": "A relic power word: ตลก (a jest, comic), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “Funny.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-001.4",
+   "text": "ธุลี",
+   "reason": "A relic power word: ธุลี (dust, the literary word), for the English “dust”. A single word back-translated alone scores low (MADLAD gave “Thuli.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-002.1",
+   "text": "มนตร์",
+   "reason": "A relic power word: มนตร์ (a spell, a mantra), for the English “spell”. A single word back-translated alone scores low (MADLAD gave “Magic.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-002.2",
+   "text": "ไม้เท้า",
+   "reason": "A relic power word: ไม้เท้า (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Sticks.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-003.0",
+   "text": "กริช",
+   "reason": "A relic power word: กริช (a kris, a dagger), for the English “dagger”. A single word back-translated alone scores low (MADLAD gave “Grish.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-003.2",
+   "text": "นิทรา",
+   "reason": "A relic power word: นิทรา (sleep, the literary word), for the English “sleep”. A single word back-translated alone scores low (MADLAD gave “Nitra.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-003.3",
+   "text": "ภาพลวง",
+   "reason": "A relic power word: ภาพลวง (a vision, an illusion), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “It's an illusion.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-004.4",
+   "text": "จุมพิต",
+   "reason": "A relic power word: จุมพิต (a kiss, the literary word), for the English “kiss”. A single word back-translated alone scores low (MADLAD gave “Kumpit.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-005.3",
+   "text": "ตะกั่ว",
+   "reason": "A relic power word: ตะกั่ว (lead, the metal), for the English “lead”. A single word back-translated alone scores low (MADLAD gave “Ash.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-005.4",
+   "text": "หีบ",
+   "reason": "A relic power word: หีบ (a casket, a chest), for the English “casket”. A single word back-translated alone scores low (MADLAD gave “Box.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-007.1",
+   "text": "พายุ",
+   "reason": "A relic power word: พายุ (a storm, a tempest), for the English “tempest”. A single word back-translated alone scores low (MADLAD gave “Storm.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pack:relics.RL-008.3",
+   "text": "ความว่างเปล่า",
+   "reason": "A relic power word: ความว่างเปล่า (emptiness, nothing), for the English “nothing”. A single word back-translated alone scores low (MADLAD gave “Emptiness.”)."
+  },
+  {
+   "lang": "th",
+   "key": "pwa.dismiss",
+   "text": "ปิด",
+   "reason": "ปิด (close) is the usual Thai button for dismissing a prompt."
+  },
+  {
+   "lang": "th",
+   "key": "rarity.epic",
+   "text": "มหากาพย์",
+   "reason": "มหากาพย์ (an epic) for the epic tier; whether Thai games say it so is listed for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "round.seedLabel",
+   "text": "ซีดของแมตช์",
+   "reason": "ซีด (seed, transliterated) of the match; a reader may find the loanword odd (it is also the Thai for 'pale'). Listed for a native reader."
+  },
+  {
+   "lang": "th",
+   "key": "round.seedNote",
+   "text": "ซีดเดิมกับสำรับเดิมจะจับได้ฉันทลักษณ์เดิม",
+   "reason": "'ซีดเดิมกับสำรับเดิมจะจับได้ฉันทลักษณ์เดิม' (the same seed and deck draw the same forms); as round.seedLabel for the loanword."
+  },
+  {
+   "lang": "th",
+   "key": "stats.duels",
+   "text": "การประชัน",
+   "reason": "การประชัน (contests, duels) is the glossary's duel."
+  },
+  {
+   "lang": "th",
+   "key": "stats.rounds",
+   "text": "ยกที่เล่น",
+   "reason": "ยกที่เล่น (rounds played); ยก is the glossary's round."
+  },
+  {
+   "lang": "th",
+   "key": "theatre.inPassthrough",
+   "text": "อยู่ในแว่น (โหมดมองทะลุ)",
+   "reason": "'อยู่ในแว่น (โหมดมองทะลุ)' (in the headset, see-through mode) is passthrough."
+  },
+  {
+   "lang": "th",
+   "key": "theatre.submit",
+   "text": "ขับกลอน",
+   "reason": "ขับกลอน (to recite a verse aloud) is 'Speak it'."
+  },
+  {
+   "lang": "th",
+   "key": "theatre.titleA",
+   "text": "เวที",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “เวที โรงละคร” for “The Theatre”."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.copyForfeits",
+   "text": "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ",
+   "reason": "บทกลอนที่ลอกมา (a copied verse) จะเสียคะแนนจากกรรมการ (loses the judge's points): the rule the English states; the back-translation says the same ('Copy poems will lose points from the jury'), only LaBSE and the cosine score it under 0.6."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.form",
+   "text": "ฉันทลักษณ์",
+   "reason": "ฉันทลักษณ์ (prosodic form) is the criterion Form."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.held",
+   "text": "ไม่ผิดคำสาป",
+   "reason": "ไม่ผิดคำสาป (did not break the curse) is what 'held' means."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.notTaken",
+   "text": "ไหวพริบ: ชิงไม่ได้",
+   "reason": "A short score row: the criterion, ไหวพริบ (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Can't win.”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "th",
+   "key": "verdict.roundYours",
+   "text": "ยกนี้เป็นของคุณ",
+   "reason": "'ยกนี้เป็นของคุณ' (this round is yours); ยก is the glossary's round."
+  },
+  {
+   "lang": "vi",
+   "key": "auth.offerSkip",
+   "text": "Để lúc khác",
+   "reason": "Để lúc khác (another time) is the usual Vietnamese for 'Not now'."
+  },
+  {
+   "lang": "vi",
+   "key": "auth.passkeysHeading",
+   "text": "Khoá truy cập",
+   "reason": "Khoá truy cập is Android's Vietnamese for passkey (glossary)."
+  },
+  {
+   "lang": "vi",
+   "key": "battle.titleB",
+   "text": "thơ",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Đấu trường thơ” for “Battle Arena”."
+  },
+  {
+   "lang": "vi",
+   "key": "check.spells.words",
+   "text": "Các dòng lần lượt mở đầu bằng đầu lâu",
+   "reason": "'Các dòng lần lượt mở đầu bằng đầu lâu' (the lines in turn begin with skull); MADLAD misread đầu lâu (skull)."
+  },
+  {
+   "lang": "vi",
+   "key": "device.alliteration.name",
+   "text": "Điệp phụ âm",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Consonants”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + phụ âm (consonant): a repeated consonant. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "device.brevity.name",
+   "text": "Ngắn gọn",
+   "reason": "The game's own name for a device or curse, “Ngắn gọn”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Short”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "device.grandeur.name",
+   "text": "Hùng tráng",
+   "reason": "The game's own name for a device or curse, “Hùng tráng”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Great.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "device.internal-rhyme.name",
+   "text": "Vần lưng",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Backspace”; a name alone scores low whatever its quality. Read and kept as vần lưng, Vietnamese prosody's term for a rhyme inside the line (the “waist” rhyme), as against vần chân, the end rhyme; MADLAD gave “Backspace”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "device.monorhyme.name",
+   "text": "Độc vận",
+   "reason": "The game's own name for a device or curse, “Độc vận”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Unlucky.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "device.repetition.name",
+   "text": "Hồi trống",
+   "reason": "The game's own name for a device or curse, “Hồi trống”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Empty”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "device.riposte.name",
+   "text": "Đòn đáp trả",
+   "reason": "The game's own name for a device or curse, “Đòn đáp trả”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Retaliation.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "device.swell.name",
+   "text": "Sóng dâng",
+   "reason": "The game's own name for a device or curse, “Sóng dâng”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Rising waves”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "vi",
+   "key": "form.acrostic.name",
+   "text": "Thơ khoán thủ",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poetry for the poor.”; a name alone scores low whatever its quality. Read and kept as thơ khoán thủ, the Vietnamese name for verse whose lines open with given words or letters; MADLAD gave “Poetry for the poor”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "form.anaphora.name",
+   "text": "Điệp đầu",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “First message”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + đầu (start). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "form.couplet.name",
+   "text": "Câu đối vần",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Grammar”; a name alone scores low whatever its quality. Read and kept as câu đối (couplet, the antithetical one) + vần (rhyme): a rhymed couplet. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "form.epistrophe.name",
+   "text": "Điệp cuối",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Last message.”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + cuối (end), the pair of Điệp đầu. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "form.jueju.name",
+   "text": "Tuyệt cú",
+   "reason": "Sourced name: Tuyệt cú is the vi Wikipedia article “Tuyệt cú” (Q537198) (glossary.json). Back-translated on its own the name reads “Awesome.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "vi",
+   "key": "form.quatrain-aabb.name",
+   "text": "Thơ bốn câu vần liền",
+   "reason": "Head word sourced: Thơ bốn câu is English Wiktionary's translation of “quatrain”, “thơ bốn câu”; the words for the rhyme pattern (vần liền) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poem.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "vi",
+   "key": "form.quatrain-abab.name",
+   "text": "Thơ bốn câu vần chéo",
+   "reason": "Head word sourced: Thơ bốn câu is English Wiktionary's translation of “quatrain”, “thơ bốn câu”; the words for the rhyme pattern (vần chéo) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line crossword”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "vi",
+   "key": "form.tercet.name",
+   "text": "Khổ ba dòng",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Three-line width”; a name alone scores low whatever its quality. Read and kept as khổ (stanza) + ba dòng (three lines). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "vi",
+   "key": "illegal.relic-spent",
+   "text": "Bảo vật đó đã dùng rồi.",
+   "reason": "'Bảo vật đó đã dùng rồi' (that relic has been used already)."
+  },
+  {
+   "lang": "vi",
+   "key": "live.curseHolding",
+   "text": "chưa phạm",
+   "reason": "chưa phạm (not yet broken) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "vi",
+   "key": "mic.speak",
+   "text": "Đọc lên",
+   "reason": "Đọc lên (read it out) is 'Speak it'."
+  },
+  {
+   "lang": "vi",
+   "key": "nav.toggleMenu",
+   "text": "Mở hoặc đóng trình đơn",
+   "reason": "'Mở hoặc đóng trình đơn' (open or close the menu) is what the toggle does; the back-translation says the same."
+  },
+  {
+   "lang": "vi",
+   "key": "pack:relics.RL-001.0",
+   "text": "đầu lâu",
+   "reason": "A relic power word: đầu lâu (a skull), for the English “skull”. A single word back-translated alone scores low (MADLAD gave “long head”)."
+  },
+  {
+   "lang": "vi",
+   "key": "pack:relics.RL-001.1",
+   "text": "trò hề",
+   "reason": "A relic power word: trò hề (a jest, a farce), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “It's a joke.”)."
+  },
+  {
+   "lang": "vi",
+   "key": "pack:relics.RL-002.2",
+   "text": "cây gậy",
+   "reason": "A relic power word: cây gậy (a staff), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Sticks.”)."
+  },
+  {
+   "lang": "vi",
+   "key": "pack:relics.RL-005.3",
+   "text": "chì",
+   "reason": "A relic power word: chì (lead, the metal), for the English “lead”. A single word back-translated alone scores low (MADLAD gave “that”)."
+  },
+  {
+   "lang": "vi",
+   "key": "pack:relics.RL-007.1",
+   "text": "bão tố",
+   "reason": "A relic power word: bão tố (a tempest), for the English “tempest”. A single word back-translated alone scores low (MADLAD gave “Storm.”)."
+  },
+  {
+   "lang": "vi",
+   "key": "pwa.dismiss",
+   "text": "Đóng",
+   "reason": "Đóng (close) is the usual Vietnamese button for dismissing a prompt."
+  },
+  {
+   "lang": "vi",
+   "key": "rarity.epic",
+   "text": "Sử thi",
+   "reason": "Sử thi (epic) is the name Vietnamese games give the epic tier."
+  },
+  {
+   "lang": "vi",
+   "key": "signature.echoed",
+   "text": "gợi lại “đầu lâu”",
+   "reason": "'gợi lại “đầu lâu”' (called back 'skull') is 'echoed'; MADLAD misread đầu lâu."
+  },
+  {
+   "lang": "vi",
+   "key": "stats.duels",
+   "text": "Số trận",
+   "reason": "Số trận (number of matches) is the count of duels."
+  },
+  {
+   "lang": "vi",
+   "key": "theatre.clear",
+   "text": "Xoá",
+   "reason": "Xoá (clear, delete) is the usual button label."
+  },
+  {
+   "lang": "vi",
+   "key": "theatre.submit",
+   "text": "Xướng",
+   "reason": "Xướng (to call out, to chant a verse) is 'Speak it' on the theatre's stage; MADLAD misread it."
+  },
+  {
+   "lang": "vi",
+   "key": "theatre.titleA",
+   "text": "Nhà",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Nhà hát” for “The Theatre”."
+  },
+  {
+   "lang": "vi",
+   "key": "theatre.titleB",
+   "text": "hát",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “Nhà hát” for “The Theatre”."
+  },
+  {
+   "lang": "vi",
+   "key": "verdict.form",
+   "text": "Thể thơ",
+   "reason": "Thể thơ (verse form) is the criterion Form."
+  },
+  {
+   "lang": "vi",
+   "key": "verdict.held",
+   "text": "không phạm",
+   "reason": "không phạm (not broken) is what 'held' means for a curse."
+  },
+  {
+   "lang": "vi",
+   "key": "verdict.missed",
+   "text": "trượt",
+   "reason": "trượt (missed, as a shot misses) is a correct label."
+  },
+  {
+   "lang": "vi",
+   "key": "verdict.notTaken",
+   "text": "sắc sảo: chưa giành được",
+   "reason": "A short score row: the criterion, sắc sảo (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Dexterity: not won”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "vi",
+   "key": "verdict.synergy",
+   "text": "Cộng hưởng gia tộc",
+   "reason": "Cộng hưởng gia tộc (resonance of the house) is House synergy."
+  },
+  {
+   "lang": "zh",
+   "key": "battle.deck",
+   "text": "牌组",
+   "reason": "牌组 (a deck of cards) is the glossary term."
+  },
+  {
+   "lang": "zh",
+   "key": "check.spells.words",
+   "text": "各行依次以“骷髅”开头",
+   "reason": "'各行依次以“骷髅”开头' (each line in turn begins with 'skull')."
+  },
+  {
+   "lang": "zh",
+   "key": "criterion.allusion",
+   "text": "用典",
+   "reason": "用典 (the use of allusions) is the Chinese term for allusion in verse."
+  },
+  {
+   "lang": "zh",
+   "key": "criterion.flow",
+   "text": "韵律",
+   "reason": "韵律 (rhythm, cadence) for how a line flows."
+  },
+  {
+   "lang": "zh",
+   "key": "criterion.wit",
+   "text": "机锋",
+   "reason": "机锋 (sharp, quick wit) is wit."
+  },
+  {
+   "lang": "zh",
+   "key": "device.alliteration.name",
+   "text": "头韵法",
+   "reason": "Sourced name: 头韵法 is the zh Wikipedia article “頭韻法” (Q484495), the same word in simplified characters (OpenCC: 頭→头, 韻→韵) (glossary.json). Back-translated on its own the name reads “Head Rhythm”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "device.brevity.name",
+   "text": "简练",
+   "reason": "The game's own name for a device or curse, “简练”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Brief.”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "device.grandeur.name",
+   "text": "恢宏",
+   "reason": "The game's own name for a device or curse, “恢宏”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Zhang Hong”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "device.monorhyme.name",
+   "text": "一韵到底",
+   "reason": "The game's own name for a device or curse, “一韵到底”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “The End of the World”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "device.repetition.name",
+   "text": "鼓点",
+   "reason": "The game's own name for a device or curse, “鼓点”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Drum point”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "device.swell.name",
+   "text": "浪涌",
+   "reason": "The game's own name for a device or curse, “浪涌”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Wave”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "form.acrostic.name",
+   "text": "藏头诗",
+   "reason": "Sourced name: 藏头诗 is English Wiktionary's translation of “acrostic”, “藏頭詩”, the same word in simplified characters (OpenCC: 頭→头, 詩→诗) (glossary.json). Back-translated on its own the name reads “Hidden head poem”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.anaphora.name",
+   "text": "首语重复",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repetition of introductory words”; a name alone scores low whatever its quality. Read and kept as 首 (head) 语 (word) 重复 (repetition); Wikidata's zh label is the longer 句首照应反复. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "zh",
+   "key": "form.couplet.name",
+   "text": "对句",
+   "reason": "Sourced name: 对句 is the zh Wikipedia article “对句” (Q4779829) (glossary.json). Back-translated on its own the name reads “Conjunctions”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.crescendo.name",
+   "text": "渐强",
+   "reason": "The game's own name for a device or curse, “渐强”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Cixi”). Whether it is the best name is for a native reader."
+  },
+  {
+   "lang": "zh",
+   "key": "form.epistrophe.name",
+   "text": "尾语重复",
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repetition of endings”; a name alone scores low whatever its quality. Read and kept as 尾 (tail) 语 (word) 重复 (repetition), the pair of 首语重复. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
+  },
+  {
+   "lang": "zh",
+   "key": "form.jueju.name",
+   "text": "绝句",
+   "reason": "Sourced name: 绝句 is the zh Wikipedia article “绝句” (Q537198) (glossary.json). Back-translated on its own the name reads “Absolutely.”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.luc-bat.name",
+   "text": "六八体",
+   "reason": "Sourced name: 六八体 is the zh Wikipedia article “六八體” (Q1755587), the same name in simplified characters (OpenCC: 體→体) (glossary.json). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.quatrain-aabb.name",
+   "text": "连韵四行诗",
+   "reason": "Head word sourced: 四行诗 is the zh Wikipedia article “四行诗” (Q570948); the words for the rhyme pattern (连韵) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poems”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.quatrain-abab.name",
+   "text": "交韵四行诗",
+   "reason": "Head word sourced: 四行诗 is the zh Wikipedia article “四行诗” (Q570948); the words for the rhyme pattern (交韵) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poems”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "form.tercet.name",
+   "text": "三行体",
+   "reason": "Sourced name: 三行体 is Wikidata’s zh label “三行体” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triad”; a name alone scores low whatever its quality."
+  },
+  {
+   "lang": "zh",
+   "key": "house.montague.why",
+   "text": "茂丘西奥口齿伶俐，一行之内就能押韵。",
+   "reason": "'茂丘西奥口齿伶俐，一行之内就能押韵' (Mercutio is quick of tongue and rhymes within a line); the name is the glossary's."
+  },
+  {
+   "lang": "zh",
+   "key": "live.curseHolding",
+   "text": "未触犯",
+   "reason": "未触犯 (not violated) is what 'holding' means for a curse."
+  },
+  {
+   "lang": "zh",
+   "key": "pack:relics.RL-001.1",
+   "text": "戏谑",
+   "reason": "A relic power word: 戏谑 (a jest), for the English “jest”. A single word back-translated alone scores low (MADLAD gave “Funny.”)."
+  },
+  {
+   "lang": "zh",
+   "key": "pack:relics.RL-002.2",
+   "text": "魔杖",
+   "reason": "A relic power word: 魔杖 (a magic staff, Prospero's), for the English “staff”. A single word back-translated alone scores low (MADLAD gave “Wand”)."
+  },
+  {
+   "lang": "zh",
+   "key": "pack:relics.RL-003.3",
+   "text": "幻象",
+   "reason": "A relic power word: 幻象 (a vision, an illusion), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “Illusion”)."
+  },
+  {
+   "lang": "zh",
+   "key": "pack:relics.RL-009.2",
+   "text": "丑角",
+   "reason": "A relic power word: 丑角 (a fool, the clown's role), for the English “fool”. A single word back-translated alone scores low (MADLAD gave “Ugly horn”)."
+  },
+  {
+   "lang": "zh",
+   "key": "pwa.dismiss",
+   "text": "关闭",
+   "reason": "关闭 (close) is the usual Chinese button for dismissing a prompt."
+  },
+  {
+   "lang": "zh",
+   "key": "theatre.submit",
+   "text": "吟诵",
+   "reason": "吟诵 (recite, chant) is 'Speak it' for a verse."
+  },
+  {
+   "lang": "zh",
+   "key": "theatre.titleA",
+   "text": "立体",
+   "reason": "Half of a two-part heading, read with its other half in the language's own order: “立体 剧场” for “The Theatre”."
+  },
+  {
+   "lang": "zh",
+   "key": "verdict.form",
+   "text": "诗体",
+   "reason": "诗体 (verse form) is the criterion Form."
+  },
+  {
+   "lang": "zh",
+   "key": "verdict.held",
+   "text": "未触犯",
+   "reason": "未触犯 (not violated) is what 'held' means for a curse."
+  },
+  {
+   "lang": "zh",
+   "key": "verdict.notTaken",
+   "text": "机锋：未拿下",
+   "reason": "A short score row: the criterion, 机锋 (wit), then 'not won'. Back-translated alone the criterion's name comes back as another word (“Airfield: not taken”), as names of criteria do throughout; the row says what the English says: the world card's criterion was not taken."
+  },
+  {
+   "lang": "zh",
+   "key": "verdict.who.split",
+   "text": "平分",
+   "reason": "平分 (shared equally) is what a split criterion is."
+  }
+ ]
+}

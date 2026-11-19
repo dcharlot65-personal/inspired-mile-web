@@ -37,10 +37,10 @@ import { POTION_CURSE, deviceForHouse, deviceInPlay } from '../verse/devices';
 import { JUDGE_POOL, ROUNDS, type RoundResult, type VerseScore } from '../verse/duel';
 import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
-import { t, tm } from '../../i18n';
+import { list, num, t, tm } from '../../i18n';
 import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
+import { readsRtl, wrapUnits } from './text-wrap';
 import type { DuelSession } from '../verse/session';
-import { breakPoints } from './line-break';
 
 export type Action =
   | { type: 'character'; id: string }
@@ -59,6 +59,25 @@ export interface TheatreStatus {
 }
 
 const GOLD = '#e8b420';
+
+/**
+ * Wrap a TextBlock where the script allows (./line-break.ts), and lay a right-to-left text out right to
+ * left and from the right (./text-wrap.ts says how). `align` is the alignment the block has for
+ * left-to-right text.
+ */
+function readable(tb: TextBlock, align = Control.HORIZONTAL_ALIGNMENT_LEFT): void {
+  tb.wordDivider = '';
+  tb.wordSplittingFunction = (line) => wrapUnits(line);
+  const first = !tb.metadata?.readable;
+  tb.metadata = { ...(tb.metadata ?? {}), readable: true, align };
+  if (first) tb.onTextChangedObservable.add(() => direct(tb));
+  direct(tb);
+}
+
+function direct(tb: TextBlock): void {
+  const align = tb.metadata?.align ?? Control.HORIZONTAL_ALIGNMENT_LEFT;
+  tb.textHorizontalAlignment = align === Control.HORIZONTAL_ALIGNMENT_LEFT && readsRtl(tb.text) ? Control.HORIZONTAL_ALIGNMENT_RIGHT : align;
+}
 const INK = '#0d0b09';
 const PAPER = '#f4f3f2';
 const DIM = '#a9a197';
@@ -161,13 +180,9 @@ export class Theatre {
     text.fontSize = fontPx;
     text.fontFamily = 'Georgia, serif';
     text.textWrapping = true;
-    // Break where the browser's segmenter finds a word ends, not only at spaces: Japanese, Chinese and
-    // Thai are written without them, and a long line of theirs ran off the panel. The scripts' own
-    // line-break rules hold too: no closing punctuation opens a line, no opening bracket closes one
-    // (./line-break).
-    text.wordDivider = '';
-    text.wordSplittingFunction = (line) => breakPoints(line);
-    text.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+    // Break where the scripts allow (./line-break: words as Intl.Segmenter finds them, kinsoku), and set
+    // a right-to-left text from the right in its own direction (./text-wrap).
+    readable(text);
     text.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
     text.paddingLeft = text.paddingRight = text.paddingTop = text.paddingBottom = '26px';
     text.lineSpacing = '8px';
@@ -177,7 +192,7 @@ export class Theatre {
 
   private button(name: string, pos: Vector3, action: Action, w = 0.42): Panel {
     const p = this.panel(name, w, 0.13, pos, 0.45, 40);
-    p.text.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+    readable(p.text, Control.HORIZONTAL_ALIGNMENT_CENTER);
     p.text.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
     p.text.paddingTop = p.text.paddingBottom = '0px';
     p.text.fontFamily = 'system-ui, sans-serif';
@@ -247,6 +262,7 @@ export class Theatre {
     label.fontFamily = 'system-ui, sans-serif';
     label.fontStyle = 'normal';
     label.textWrapping = true;
+    readable(label, Control.HORIZONTAL_ALIGNMENT_CENTER);
     label.height = '32%';
     label.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
     frame.addControl(label);
@@ -354,19 +370,19 @@ export class Theatre {
       for (const c of preview.form.checks) checks.push(`${c.met ? '✓' : '○'} ${tm(c.label)}`);
       checks.push(`${preview.device.met ? '✓' : '○'} ${t('round.device', { name: deviceName(preview.device.id), brief: deviceBrief(preview.device.id, s.duel.lang) })}`);
       checks.push(`${preview.signature.met ? '✓' : '○'} ${t('verdict.signature')}: ${signatureText(preview.signature)}`);
-      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
+      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${list(s.duel.playerRelics[s.move.relicId!].words)}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
       if (preview.voided && preview.voided !== 'empty') checks.push(`✗ ${t('void.label')}: ${t(`void.${preview.voided}`)}`);
       const unread = s.judgeUnread();
-      if (unread.length) checks.push(`✗ ${t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') })}`);
+      if (unread.length) checks.push(`✗ ${t('live.judgeUnread', { lines: unread.map((u) => t('live.judgeUnreadLine', { line: u.line, word: u.word })) })}`);
       if (s.potionAtRisk()) checks.push(`! ${t('hand.potionGamble')}`);
-      checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
+      checks.push(`${t('round.craftSoFar')} ${num(preview.craft)}`);
     } else checks.push(t('theatre.pick'));
     this.panels.round.text.text = [
       [
         t('round.label', { n: s.roundIndex + 1, total: ROUNDS }).toLocaleUpperCase(),
         t('theatre.score', { you: t('battle.you'), a: s.playerRounds, b: s.opponentRounds, them: t('battle.opponent') }),
-        `${t('round.ink')} ${s.ink}`,
+        `${t('round.ink')} ${num(s.ink)}`,
       ].join('   ·   '),
       t('round.device', { name: tm(s.form.name), brief: tm(s.form.brief(s.plan.ctx)) }),
       '',

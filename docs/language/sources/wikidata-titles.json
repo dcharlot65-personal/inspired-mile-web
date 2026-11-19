@@ -1,0 +1,1371 @@
+{
+ "fetched": "2026-11-16T17:21:55.160Z",
+ "source": "https://www.wikidata.org/w/api.php (wbgetentities by site and title)",
+ "licence": "CC0 1.0 (Wikidata)",
+ "languages": {
+  "hi": {
+   "दोहा": {
+    "qid": "Q5288532",
+    "en": "Doha",
+    "description": "form of self-contained rhyming couplet in poetry",
+    "enwiki": "Doha (poetry)"
+   },
+   "द्विपदी": "missing",
+   "चौपाई": {
+    "qid": "Q5088346",
+    "en": "Chaupai",
+    "description": "a quatrain verse of Indian poetry, especially medieval Hindi poetry, that uses a metre of four syllables.Famous chaupais include those of poet-saint Tulsidas (Ramcharitamanas and poem Hanuman Chalisa) and the Sikh prayer Chaupai.",
+    "enwiki": "Chaupai (poetry)"
+   },
+   "चतुष्पदी": "missing",
+   "त्रिपदी": {
+    "qid": "Q1670509",
+    "en": "trinomial",
+    "description": "polynomial consisting of three terms or monomials",
+    "enwiki": "Trinomial"
+   },
+   "हाइकु": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "अनुप्रास": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "आद्याक्षरी": "missing",
+   "एक्रोस्टिक कविता": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "तुक": {
+    "qid": "Q65290809",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "तुकबंदी": "missing",
+   "शब्दांश": "missing",
+   "अक्षर": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "छंद": {
+    "qid": "Q192624",
+    "en": "meter",
+    "description": "the number and type of lines and syllables that a verse must have",
+    "enwiki": "Metre (poetry)"
+   },
+   "पंक्ति": "missing",
+   "पद (कविता)": {
+    "qid": "Q1661",
+    "en": "verse",
+    "description": "single metrical line in a poetic composition",
+    "enwiki": "Verse (poetry)"
+   },
+   "मुक्तक": {
+    "qid": "Q12447024",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "रुबाई": {
+    "qid": "Q250090",
+    "en": "ruba'i",
+    "description": "Arabic-Persian poem in fixed form",
+    "enwiki": "Ruba'i"
+   },
+   "क़ाफ़िया": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "अनुप्रास अलंकार": "missing",
+   "यमक": "missing",
+   "पुनरुक्ति": "missing"
+  },
+  "th": {
+   "กลอนคู่": "missing",
+   "กลอน": {
+    "qid": "Q5567326",
+    "en": "Klon",
+    "description": "Thai and Lao verse form",
+    "enwiki": "Klon (poetry)"
+   },
+   "โคลง": {
+    "qid": "Q13026604",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "ไฮกุ": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "กลอนกระทู้": "missing",
+   "โคลงกระทู้": "missing",
+   "อักษรกล": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "สัมผัส": {
+    "qid": "Q877674",
+    "en": "touching",
+    "description": "physical contact involving one or more sentient agents (for contact between non-sentient objects, use Q38183514)",
+    "enwiki": "Touch"
+   },
+   "สัมผัสอักษร": "missing",
+   "สัมผัสใน": "missing",
+   "พยางค์": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "ฉันทลักษณ์": {
+    "qid": "Q192624",
+    "en": "meter",
+    "description": "the number and type of lines and syllables that a verse must have",
+    "enwiki": "Metre (poetry)"
+   },
+   "กลบท": {
+    "qid": "Q13012631",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "บาท (ฉันทลักษณ์)": {
+    "qid": "Q285573",
+    "en": "line",
+    "description": "subdivision of a poem",
+    "enwiki": "Line (poetry)"
+   },
+   "วรรค": {
+    "qid": "Q13020541",
+    "en": null,
+    "description": "Wikimedia disambiguation page",
+    "enwiki": null
+   },
+   "คำคล้องจอง": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "กลอนสี่": "missing",
+   "กลอนสุภาพ": {
+    "qid": "Q13012647",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   }
+  },
+  "vi": {
+   "Câu đối": {
+    "qid": "Q1168671",
+    "en": "antithetical couplet",
+    "description": "a pair of lines adhering to specific rules in Chinese poetry",
+    "enwiki": "Duilian (poetry)"
+   },
+   "Tứ tuyệt": "missing",
+   "Thơ tứ tuyệt": "missing",
+   "Khổ thơ": {
+    "qid": "Q1756348",
+    "en": "stanza",
+    "description": "grouped set of lines within a poem",
+    "enwiki": "Stanza"
+   },
+   "Điệp ngữ": "missing",
+   "Thơ khoán thủ": "missing",
+   "Khoán thủ": "missing",
+   "Lục bát": {
+    "qid": "Q472653",
+    "en": "Annona reticulata",
+    "description": "species of plant",
+    "enwiki": "Annona reticulata"
+   },
+   "Tuyệt cú": {
+    "qid": "Q537198",
+    "en": "jueju",
+    "description": "form of Chinese poetry",
+    "enwiki": "Jueju"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Vần": "missing",
+   "Âm tiết": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Điệp âm": "missing",
+   "Phép điệp": "missing",
+   "Thất ngôn tứ tuyệt": {
+    "qid": "Q86730311",
+    "en": "qijue",
+    "description": "poetry form",
+    "enwiki": "Qijue"
+   },
+   "Song thất lục bát": {
+    "qid": "Q1756336",
+    "en": "Song thất lục bát",
+    "description": "Traditional Vietnamese poetic form",
+    "enwiki": "Song thất lục bát"
+   },
+   "Thơ lục bát": "missing",
+   "Vần lưng": "missing",
+   "Độc vận": "missing"
+  },
+  "ko": {
+   "쿠플레": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "대구법": "missing",
+   "사행시": "missing",
+   "삼행시": {
+    "qid": "Q11256573",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "이합체시": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "하이쿠": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "절구": {
+    "qid": "Q30020756",
+    "en": "jeolgu",
+    "description": "large Korean food grinding vessel, paired with gongi",
+    "enwiki": "Jeolgu"
+   },
+   "절구 (시)": "missing",
+   "두운": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "압운": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "각운": "missing",
+   "음절": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "연 (시)": "missing",
+   "수구반복": "missing",
+   "결구반복": "missing",
+   "영웅시체": "missing",
+   "행 (시)": "missing",
+   "요운": "missing",
+   "점층법": "missing"
+  },
+  "ja": {
+   "二行連": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "二行連句": "missing",
+   "四行連": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "四行詩": "missing",
+   "三行連": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "首句反復": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "結句反復": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "折句": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "俳句": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "絶句": {
+    "qid": "Q537198",
+    "en": "jueju",
+    "description": "form of Chinese poetry",
+    "enwiki": "Jueju"
+   },
+   "頭韻法": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "頭韻": "missing",
+   "中間韻": {
+    "qid": "Q2098331",
+    "en": "internal rhyme",
+    "description": "rhyme that occurs within a single line of verse, or between internal phrases across multiple lines",
+    "enwiki": "Internal rhyme"
+   },
+   "押韻": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "音節": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "英雄詩体": "missing",
+   "ヒロイック・カプレット": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "六八体": "missing",
+   "クレッシェンド": {
+    "qid": "Q438861",
+    "en": "Crescendo",
+    "description": "Wikimedia disambiguation page",
+    "enwiki": "Crescendo (disambiguation)"
+   },
+   "漸層法": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "平坦韻": "missing",
+   "交差韻": "missing"
+  },
+  "zh": {
+   "对句": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "四行诗": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "三行体": "missing",
+   "首语重复": "missing",
+   "尾语重复": "missing",
+   "藏头诗": "missing",
+   "離合詩": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "俳句": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "绝句": {
+    "qid": "Q537198",
+    "en": "jueju",
+    "description": "form of Chinese poetry",
+    "enwiki": "Jueju"
+   },
+   "英雄双行体": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "六八体": "missing",
+   "六八體": {
+    "qid": "Q1755587",
+    "en": "Lục bát",
+    "description": "traditional Vietnamese verse form",
+    "enwiki": "Lục bát"
+   },
+   "头韵": "missing",
+   "頭韻法": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "押韻": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "音节": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "層遞": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "排比": {
+    "qid": "Q1123776",
+    "en": "parallelism",
+    "description": "literary style of forming sentences of the same grammar structure",
+    "enwiki": "Parallelism (rhetoric)"
+   },
+   "反复 (修辞)": "missing",
+   "頂真": "missing",
+   "對偶": "missing"
+  },
+  "ar": {
+   "مربع (شعر)": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "بيت (شعر)": {
+    "qid": "Q1661",
+    "en": "verse",
+    "description": "single metrical line in a poetic composition",
+    "enwiki": "Verse (poetry)"
+   },
+   "مزدوج (شعر)": "missing",
+   "دوبيت": "missing",
+   "رباعية (شعر)": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "رباعيات": "missing",
+   "ثلاثية": "missing",
+   "تكرار الصدارة": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "تكرار النهاية": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "تتويج (شعر)": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "تطريز (شعر)": {
+    "qid": "Q40376349",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "هايكو": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "سجع ابتدائي": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "جناس استهلالي": "missing",
+   "جناس": {
+    "qid": "Q263668",
+    "en": "pun",
+    "description": "form of word play",
+    "enwiki": "Pun"
+   },
+   "قافية": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "مقطع لفظي": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "إيطاء": {
+    "qid": "Q4301857",
+    "en": "monorhyme",
+    "description": "rhyme scheme in which each line has an identical rhyme; use of one (mono) type of repetitious sound (rhyme), usually at the end of each line",
+    "enwiki": "Monorhyme"
+   },
+   "ارتقاء (بلاغة)": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "دوبيت ملحمي": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "مثنوي": "missing",
+   "مخمس": "missing"
+  },
+  "id": {
+   "Kuplet": "missing",
+   "Bait (sastra)": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Distikon": "missing",
+   "Kuatrin": "missing",
+   "Sajak empat baris": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Terzina": "missing",
+   "Anafora": {
+    "qid": "Q262575",
+    "en": "Anaphora",
+    "description": "Wikimedia disambiguation page",
+    "enwiki": "Anaphora"
+   },
+   "Epifora": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Akrostik": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Jueju": {
+    "qid": "Q537198",
+    "en": "jueju",
+    "description": "form of Chinese poetry",
+    "enwiki": "Jueju"
+   },
+   "Aliterasi": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rima": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Suku kata": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Sajak tunggal": {
+    "qid": "Q4301857",
+    "en": "monorhyme",
+    "description": "rhyme scheme in which each line has an identical rhyme; use of one (mono) type of repetitious sound (rhyme), usually at the end of each line",
+    "enwiki": "Monorhyme"
+   },
+   "Gurindam": {
+    "qid": "Q5620090",
+    "en": "Gurindam",
+    "description": "type of irregular verse form of traditional Malay poetry",
+    "enwiki": "Gurindam"
+   },
+   "Pantun": {
+    "qid": "Q960672",
+    "en": "pantun",
+    "description": "Ghazal adaptation in Islamic World of Southeast Asia",
+    "enwiki": "Pantun"
+   },
+   "Syair": {
+    "qid": "Q4919826",
+    "en": "Syair",
+    "description": "Malay genre of story telling",
+    "enwiki": "Syair"
+   },
+   "Klimaks": {
+    "qid": "Q226954",
+    "en": "Klimax",
+    "description": "Wikimedia disambiguation page",
+    "enwiki": null
+   },
+   "Distikon (sastra)": "missing",
+   "Terzina (sastra)": "missing"
+  },
+  "ru": {
+   "Двустишие": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Дистих": {
+    "qid": "Q906442",
+    "en": "distichon",
+    "description": "forme fixe",
+    "enwiki": null
+   },
+   "Катрен": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Четверостишие": "missing",
+   "Терцет": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Анафора": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Эпифора (риторика)": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Акростих": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Хайку": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Цзюэцзюй": "missing",
+   "Героический стих": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "Люк бат": "missing",
+   "Аллитерация": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Внутренняя рифма": "missing",
+   "Монорим": {
+    "qid": "Q4301857",
+    "en": "monorhyme",
+    "description": "rhyme scheme in which each line has an identical rhyme; use of one (mono) type of repetitious sound (rhyme), usually at the end of each line",
+    "enwiki": "Monorhyme"
+   },
+   "Рифма": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Слог": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Строфа": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Градация": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "Парная рифмовка": "missing",
+   "Перекрёстная рифмовка": "missing",
+   "Рифмовка": "missing"
+  },
+  "pl": {
+   "Dystych": {
+    "qid": "Q906442",
+    "en": "distichon",
+    "description": "forme fixe",
+    "enwiki": null
+   },
+   "Tetrastych": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Czterowiersz": "missing",
+   "Tercet (literatura)": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Tercyna": {
+    "qid": "Q968679",
+    "en": "Terza rima",
+    "description": "poetry form",
+    "enwiki": "Terza rima"
+   },
+   "Anafora (środek stylistyczny)": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Epifora": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Akrostych": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Aliteracja": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rym wewnętrzny": {
+    "qid": "Q30912590",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "Monorym": {
+    "qid": "Q4301857",
+    "en": "monorhyme",
+    "description": "rhyme scheme in which each line has an identical rhyme; use of one (mono) type of repetitious sound (rhyme), usually at the end of each line",
+    "enwiki": "Monorhyme"
+   },
+   "Rym": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Sylaba": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Strofa": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Wers": {
+    "qid": "Q285573",
+    "en": "line",
+    "description": "subdivision of a poem",
+    "enwiki": "Line (poetry)"
+   },
+   "Gradacja (środek stylistyczny)": "missing",
+   "Dystych bohaterski": "missing",
+   "Rymy parzyste": "missing",
+   "Rymy krzyżowe": "missing",
+   "Układy rymów": {
+    "qid": "Q3264652",
+    "en": "rhyme scheme",
+    "description": "pattern of rhymes at the end of each line of a poem or song",
+    "enwiki": "Rhyme scheme"
+   },
+   "Dwuwiersz": "missing"
+  },
+  "de": {
+   "Zweizeiler (Verslehre)": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Reimpaar": "missing",
+   "Paarreim": "missing",
+   "Kreuzreim": {
+    "qid": "Q1788418",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "Vierzeiler": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Terzett (Verslehre)": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Anapher": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Epipher": "missing",
+   "Epiphora (Rhetorik)": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Akrostichon": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Jueju": {
+    "qid": "Q537198",
+    "en": "jueju",
+    "description": "form of Chinese poetry",
+    "enwiki": "Jueju"
+   },
+   "Heroic couplet": "missing",
+   "Heroic Couplet": "missing",
+   "Alliteration": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Stabreim": {
+    "qid": "Q19594099",
+    "en": "stave rhyme",
+    "description": null,
+    "enwiki": null
+   },
+   "Binnenreim": {
+    "qid": "Q2098331",
+    "en": "internal rhyme",
+    "description": "rhyme that occurs within a single line of verse, or between internal phrases across multiple lines",
+    "enwiki": "Internal rhyme"
+   },
+   "Haufenreim": "missing",
+   "Reim": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Silbe": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Strophe": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Klimax (Sprache)": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "Lục bát": "missing"
+  },
+  "fr": {
+   "Distique (littérature)": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Quatrain": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Tercet": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Anaphore (rhétorique)": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Épiphore": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Acrostiche": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haïku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Distique héroïque": "missing",
+   "Allitération": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rime interne": "missing",
+   "Rime intérieure": "missing",
+   "Monorime": "missing",
+   "Rime": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Syllabe": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Strophe": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Gradation (rhétorique)": "missing",
+   "Rimes plates": "missing",
+   "Rimes croisées": "missing",
+   "Lục bát": {
+    "qid": "Q1755587",
+    "en": "Lục bát",
+    "description": "traditional Vietnamese verse form",
+    "enwiki": "Lục bát"
+   },
+   "Jueju": "missing",
+   "Rime léonine": "missing"
+  },
+  "es": {
+   "Pareado": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Cuarteto (poesía)": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Cuarteta": {
+    "qid": "Q8352204",
+    "en": "Quatrain",
+    "description": null,
+    "enwiki": null
+   },
+   "Serventesio": {
+    "qid": "Q9076436",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "Terceto": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Anáfora (retórica)": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Epífora (retórica)": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Acróstico": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Dístico heroico": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "Aliteración": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rima interna": {
+    "qid": "Q2098331",
+    "en": "internal rhyme",
+    "description": "rhyme that occurs within a single line of verse, or between internal phrases across multiple lines",
+    "enwiki": "Internal rhyme"
+   },
+   "Monorrimo": {
+    "qid": "Q6022052",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "Rima": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Sílaba": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Estrofa": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Gradación (retórica)": "missing",
+   "Lục bát": {
+    "qid": "Q1755587",
+    "en": "Lục bát",
+    "description": "traditional Vietnamese verse form",
+    "enwiki": "Lục bát"
+   },
+   "Jueju": "missing",
+   "Redondilla": {
+    "qid": "Q1506283",
+    "en": "Redondilla",
+    "description": null,
+    "enwiki": null
+   }
+  },
+  "it": {
+   "Distico": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Quartina (metrica)": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Terzina (metrica)": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Anafora (figura retorica)": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Epifora (figura retorica)": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Acrostico": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Distico eroico": {
+    "qid": "Q2714966",
+    "en": "heroic couplet",
+    "description": "rhyming pair of lines in iambic pentameter",
+    "enwiki": "Heroic couplet"
+   },
+   "Allitterazione": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rima interna": {
+    "qid": "Q2098331",
+    "en": "internal rhyme",
+    "description": "rhyme that occurs within a single line of verse, or between internal phrases across multiple lines",
+    "enwiki": "Internal rhyme"
+   },
+   "Rimalmezzo": "missing",
+   "Monorima": "missing",
+   "Rima": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Sillaba": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Strofa": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Climax (figura retorica)": {
+    "qid": "Q1122956",
+    "en": "climax",
+    "description": "figure of speech",
+    "enwiki": "Climax (rhetoric)"
+   },
+   "Rima baciata": {
+    "qid": "Q138980603",
+    "en": "rhyming couplet",
+    "description": "pair of lines in a poem or song that rhyme with each other but not any other nearby lines",
+    "enwiki": null
+   },
+   "Rima alternata": {
+    "qid": "Q124341893",
+    "en": "cross rhyme",
+    "description": "ABAB rhyme scheme",
+    "enwiki": null
+   }
+  },
+  "pt": {
+   "Dístico": {
+    "qid": "Q4779829",
+    "en": "couplet",
+    "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+    "enwiki": "Couplet"
+   },
+   "Quarteto (poesia)": {
+    "qid": "Q570948",
+    "en": "quatrain",
+    "description": "type of stanza, or a complete poem, consisting of four lines",
+    "enwiki": "Quatrain"
+   },
+   "Quadra (poesia)": "missing",
+   "Terceto": {
+    "qid": "Q1353779",
+    "en": "tercet",
+    "description": "term referring to a poetry which is composed of three lines",
+    "enwiki": "Tercet"
+   },
+   "Anáfora": {
+    "qid": "Q486050",
+    "en": "anaphora",
+    "description": "rhetoric",
+    "enwiki": "Anaphora (rhetoric)"
+   },
+   "Epístrofe": {
+    "qid": "Q963102",
+    "en": "epistrophe",
+    "description": "stylistic device",
+    "enwiki": "Epistrophe"
+   },
+   "Epífora": {
+    "qid": "Q1347256",
+    "en": "excessive tearing",
+    "description": "overflow of tears onto the face",
+    "enwiki": "Epiphora (medicine)"
+   },
+   "Acróstico": {
+    "qid": "Q173287",
+    "en": "acrostic",
+    "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+    "enwiki": "Acrostic"
+   },
+   "Haiku": {
+    "qid": "Q37707",
+    "en": "haiku",
+    "description": "very short form of Japanese poetry",
+    "enwiki": "Haiku"
+   },
+   "Haicai": "missing",
+   "Aliteração": {
+    "qid": "Q484495",
+    "en": "alliteration",
+    "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+    "enwiki": "Alliteration"
+   },
+   "Rima interna": "missing",
+   "Monorrima": "missing",
+   "Rima": {
+    "qid": "Q178715",
+    "en": "rhyme",
+    "description": "repetition of similar sounds in language",
+    "enwiki": "Rhyme"
+   },
+   "Sílaba": {
+    "qid": "Q8188",
+    "en": "syllable",
+    "description": "unit of organization for a sequence of speech sounds",
+    "enwiki": "Syllable"
+   },
+   "Estrofe": {
+    "qid": "Q207804",
+    "en": "strophe",
+    "description": "first part of the ode; structural division of a poem containing stanzas of varying line length",
+    "enwiki": "Strophe"
+   },
+   "Gradação": {
+    "qid": "Q3303353",
+    "en": null,
+    "description": null,
+    "enwiki": null
+   },
+   "Dístico heroico": "missing",
+   "Quadra": {
+    "qid": "Q342930",
+    "en": "Quadra",
+    "description": "Wikimedia disambiguation page",
+    "enwiki": "Quadra"
+   }
+  }
+ }
+}

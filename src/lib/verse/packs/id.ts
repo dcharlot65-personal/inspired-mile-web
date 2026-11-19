@@ -10,7 +10,7 @@ const pack: LanguagePack = {
     'RL-002': ['badai', 'mantra', 'tongkat', 'pulau', 'tenggelam'],
     'RL-003': ['belati', 'darah', 'tidur', 'bayangan', 'tangan'],
     'RL-004': ['cincin', 'sumpah', 'malam', 'terbuang', 'ciuman'],
-    'RL-005': ['emas', 'pilihan', 'ampun', 'timah', 'peti'],
+    'RL-005': ['emas', 'pilihan', 'ampun', 'timbal', 'peti'],
     'RL-006': ['mahkota', 'takhta', 'ambisi', 'penyihir', 'raja'],
     'RL-007': ['kitab', 'badai', 'sihir', 'halaman', 'tenggelam'],
     'RL-008': ['air mata', 'kebenaran', 'putri', 'hampa', 'hati'],

@@ -10,7 +10,8 @@
  * abbreviation marks) are applied by joining pieces, never by moving characters:
  *   - a character that may not open a line (closing brackets and quotes, the comma and full stop,
  *     ！ ？ ： ；, the middle dot, the prolonged-sound mark ー, small kana, iteration marks, %, ℃,
- *     Thai ๆ and ฯ) is joined to the piece before it;
+ *     Thai ๆ and ฯ, the Arabic comma, semicolon, question mark, percent sign and full stop ، ؛ ؟ ٪ ۔,
+ *     the Devanagari danda । and double danda ॥) is joined to the piece before it;
  *   - a character that may not close a line (an opening bracket or quote) is joined to the piece
  *     after it.
  * Joining the pieces back together always gives the line unchanged.
@@ -20,7 +21,7 @@
  */
 
 /** May not open a line. */
-const NO_START = /^[\p{Pe}\p{Pf}、。，．,.・･：；:;！？!?‼⁇⁈⁉%％‰℃°′″ーｰ々〻ゝゞヽヾぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰ-ㇿ゠‐–〜～…‥ๆฯ]/u;
+const NO_START = /^[\p{Pe}\p{Pf}、。，．,.・･：；:;！？!?‼⁇⁈⁉%％‰℃°′″ーｰ々〻ゝゞヽヾぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰ-ㇿ゠‐–〜～…‥ๆฯ،؛؟٪۔।॥]/u;
 /** May not close a line. */
 const NO_END = /[\p{Ps}\p{Pi}]\s*$/u;
 

@@ -1,0 +1,107 @@
+{
+ "source": "https://raw.githubusercontent.com/mozilla-l10n/firefox-l10n/bb61adaeeaefe5db067571d42d0eb7a1c2309b1a/<locale>/browser/browser/sync.ftl",
+ "english": "https://raw.githubusercontent.com/mozilla-firefox/firefox/f612f4a72980aeb8d7a868d53534ad698b2ee602/browser/locales/en-US/browser/sync.ftl",
+ "commit": "bb61adaeeaefe5db067571d42d0eb7a1c2309b1a",
+ "englishCommit": "f612f4a72980aeb8d7a868d53534ad698b2ee602",
+ "licence": "Mozilla Public License 2.0 (Firefox localization)",
+ "fetched": "2026-11-17T00:57:13.095Z",
+ "locales": {
+  "es": "es-ES",
+  "fr": "fr",
+  "de": "de",
+  "it": "it",
+  "pt": "pt-BR",
+  "pl": "pl",
+  "ru": "ru",
+  "ar": "ar",
+  "hi": "hi-IN",
+  "zh": "zh-CN",
+  "ja": "ja",
+  "ko": "ko",
+  "vi": "vi",
+  "th": "th",
+  "id": "id"
+ },
+ "terms": {
+  "fxa-menu-sign-out": {
+   "text": {
+    "en": "Sign Out…",
+    "es": "Cerrar sesión…",
+    "fr": "Se déconnecter…",
+    "de": "Abmelden…",
+    "it": "Disconnetti…",
+    "pt": "Desconectar…",
+    "pl": "Wyloguj się…",
+    "ru": "Выйти…",
+    "ar": "اخرج…",
+    "hi": "साइन आउट…",
+    "zh": "退出登录…",
+    "ja": "ログアウト...",
+    "ko": "로그아웃…",
+    "vi": "Đăng xuất…",
+    "th": "ลงชื่อออก…",
+    "id": "Keluar…"
+   }
+  },
+  "fxa-signout-dialog2-button": {
+   "text": {
+    "en": "Sign out",
+    "es": "Cerrar sesión",
+    "fr": "Déconnexion",
+    "de": "Abmelden",
+    "it": "Disconnetti",
+    "pt": "Desconectar",
+    "pl": "Wyloguj się",
+    "ru": "Выйти",
+    "ar": "اخرج",
+    "hi": "साइन आउट करें",
+    "zh": "退出",
+    "ja": "ログアウト",
+    "ko": "로그아웃",
+    "vi": "Đăng xuất",
+    "th": "ลงชื่อออก",
+    "id": "Keluar"
+   }
+  },
+  "fxa-menu-sign-in-promo-button": {
+   "text": {
+    "en": "Sign in",
+    "es": null,
+    "fr": "Connexion",
+    "de": "Anmelden",
+    "it": "Accedi",
+    "pt": "Entrar",
+    "pl": "Zaloguj się",
+    "ru": "Войти",
+    "ar": "لِج",
+    "hi": null,
+    "zh": "登录",
+    "ja": "ログイン",
+    "ko": "로그인",
+    "vi": "Đăng nhập",
+    "th": null,
+    "id": null
+   }
+  },
+  "fxa-menu-send-to-mobile-sign-in": {
+   "text": {
+    "en": "Sign in to send tabs",
+    "es": "Iniciar sesión para enviar pestañas",
+    "fr": "Connectez-vous pour envoyer des onglets",
+    "de": "Melden Sie sich an, um Tabs zu versenden",
+    "it": "Accedi per inviare schede",
+    "pt": "Entre na conta para enviar abas",
+    "pl": "Zaloguj się, aby wysyłać karty",
+    "ru": "Войдите, чтобы отправлять вкладки",
+    "ar": "لِج لإرسال ألسنة",
+    "hi": null,
+    "zh": "登录以发送标签页",
+    "ja": "ログインしてタブを送信",
+    "ko": "탭을 보내려면 로그인하세요",
+    "vi": "Đăng nhập để gửi thẻ",
+    "th": "ลงชื่อเข้าเพื่อส่งแท็บ",
+    "id": null
+   }
+  }
+ }
+}

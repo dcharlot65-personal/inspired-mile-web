@@ -1,0 +1,1837 @@
+{
+ "about": "LanguageTool hits accepted after reading, each with its reason. id: one string ('ui:key', 'pack:id'), every string ('*') or a group ('ui:*', 'pack:written.*'); at: only that flagged text, or only the flagged texts listed. scripts/lang/grammar.mjs fails on a hit no entry covers and on an entry that covers nothing.",
+ "entries": [
+  {
+   "lang": "ar",
+   "rule": "ARABIC_WORD_REPEAT_RULE",
+   "id": "*",
+   "at": "ضاع ضاع",
+   "reason": "'إن ضاع ضاع الحساب' (if it is lost, the account is lost): the verb is repeated on purpose, once in the condition and once in the answer."
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "id": "*",
+   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides.",
+   "at": [
+    "البذرة",
+    "الجمهور",
+    "الخصم",
+    "العتمة",
+    "المسودة",
+    "الملف",
+    "بدء",
+    "بذرة",
+    "تجارب",
+    "تجربة",
+    "جمهور",
+    "خصم",
+    "دم",
+    "رزمة",
+    "رصاص",
+    "قفل",
+    "مسمار",
+    "معرض",
+    "من الآن",
+    "نقاط"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_HOMOPHONES_REPLACE",
+   "id": "*",
+   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides.",
+   "at": [
+    "الجلسة",
+    "حلبة"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_SIMPLE_REPLACE",
+   "id": "*",
+   "at": "بالفعل",
+   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept."
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_SIMPLE_REPLACE",
+   "id": "*",
+   "at": "جاهز",
+   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept."
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_SIMPLE_REPLACE",
+   "id": "*",
+   "at": "كل ما",
+   "reason": "'كل ما قلته' is كل + ما (everything that you said); the suggested كلّما means 'whenever'."
+  },
+  {
+   "lang": "ar",
+   "rule": "AR_SIMPLE_REPLACE",
+   "id": "*",
+   "at": "مباشرة",
+   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Inspired",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Man",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Mile",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Quest",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Safari",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "The",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "بالكانا",
+   "reason": "بالكانا: بـ + كانا (kana, the Japanese syllabaries), a loanword."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "جويجو",
+   "reason": "A word of a verse form's or device's name that the translator chose: not sourced (docs/language/glossary.json marks the Arabic jueju, جويجو, so). The speller does not know it; it is kept as the name, for a native reader to judge."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "دوبيت",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "سونيتاته",
+   "reason": "سونيتاته: his sonnets (سونيتة, a loanword, with the pronoun)."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "ماركيشيو",
+   "reason": "Mercutio as Wikidata's Arabic label and the Arabic Wikipedia write it (docs/language/sources/wikidata-names.json)."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "مزحة",
+   "reason": "مزحة (a joke): a standard Arabic word, missing from the speller's list."
+  },
+  {
+   "lang": "ar",
+   "rule": "HUNSPELL_RULE_AR",
+   "id": "*",
+   "at": "هايكو",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "ar",
+   "rule": "gender_0001_hadha",
+   "id": "ui:auth.error.last_sign_in_method",
+   "reason": "'مفتاح المرور هذا' (this passkey): هذا follows the masculine noun it points to; the rule paired it with وسيلتك instead."
+  },
+  {
+   "lang": "ar",
+   "rule": "grammar_0000_jar_plural",
+   "id": "*",
+   "reason": "The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals.",
+   "at": [
+    "من ثمانية",
+    "من خمسة",
+    "من سبعة",
+    "من ستة"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "grammar_0011_notjazem_lam_nafia",
+   "id": "*",
+   "reason": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply.",
+   "at": [
+    "لا نطلب",
+    "لا يتوفر",
+    "لا يجوز",
+    "لا يدعم",
+    "لا يذكر",
+    "لا يشرح",
+    "لا يمكن",
+    "لا يُرسَل"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "number_under_10_feminin",
+   "id": "*",
+   "reason": "The counted nouns are masculine (أسطر from سطر, قوالب from قالب), and a number from three to ten takes the opposite gender of the singular: ثلاثة أسطر is right, and the suggested ثلاث would be wrong. All 13 hits read.",
+   "at": [
+    "أربعة",
+    "ثلاثة"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "syntax_0002_as_ka_1",
+   "id": "*",
+   "reason": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words.",
+   "at": [
+    "أسطر خصمك على كلمة",
+    "أسطرك على 0 كلمة",
+    "أسطرك على 100 كلمة",
+    "أسطرك على 11 كلمة",
+    "أكثر من 0 كلمة",
+    "أكثر من 100 كلمة",
+    "أكثر من 11 كلمة",
+    "أن تزيد أي كلمة",
+    "أن تكرّر أي كلمة",
+    "أن يكرّر أي كلمة",
+    "تكوّن كلمة",
+    "خصمك على 0 كلمة",
+    "خصمك على 100 كلمة",
+    "خصمك على 11 كلمة",
+    "خصمك كلمة",
+    "سطر أكثر من كلمة",
+    "سطر لكل كلمة",
+    "فيه رقم أو كلمة",
+    "كرّر كلمة",
+    "من أسطرك على كلمة",
+    "وأنا كريم",
+    "وكل كلمة",
+    "يجب أن تكوّن كلمة",
+    "يزن كل كلمة"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "syntax_0002_as_ka_2",
+   "id": "*",
+   "reason": "The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words.",
+   "at": [
+    "أسطر خصمك على كلمتين",
+    "أسطرك على 3 كلمات",
+    "أكثر من 3 كلمات",
+    "أو في مدير كلمات",
+    "أو مدير كلمات",
+    "ابدأ ثلاث كلمات",
+    "اجعل كلمتين",
+    "استعمل كلمتين",
+    "خصمك على 3 كلمات",
+    "ردّد صدى كلمتين",
+    "سطر أكثر من كلمتين",
+    "في كل سطر كلمات",
+    "من أسطرك على كلمتين",
+    "من كلمات"
+   ]
+  },
+  {
+   "lang": "ar",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "id": "*",
+   "reason": "The rule forbids opening a sentence with an indefinite noun; these are labels and headings (سطران على قافية واحدة، سطران بالضبط، حُكم بالقواعد، ملتزَم بها، لعنة عليك) or begin with an imperative verb (عُد، تحقق) that the rule took for a noun."
+  },
+  {
+   "lang": "ar",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "id": "*",
+   "reason": "The rule forbids opening a sentence with an indefinite noun; these are labels and headings (سطران على قافية واحدة، سطران بالضبط، حُكم بالقواعد، ملتزَم بها، لعنة عليك) or begin with an imperative verb (عُد، تحقق) that the rule took for a noun."
+  },
+  {
+   "lang": "ar",
+   "rule": "syntax_125_mobtadaa_nakira_3",
+   "id": "*",
+   "reason": "The rule forbids opening a sentence with an indefinite noun; these are labels and headings (سطران على قافية واحدة، سطران بالضبط، حُكم بالقواعد، ملتزَم بها، لعنة عليك) or begin with an imperative verb (عُد، تحقق) that the rule took for a noun."
+  },
+  {
+   "lang": "ar",
+   "rule": "trans_429_twsl",
+   "id": "pack:written.tercet.1.1",
+   "reason": "توسّل أن + verb (to beg to) is ordinary modern usage; the rule holds the classical construction with بـ or إلى."
+  },
+  {
+   "lang": "ar",
+   "rule": "typo_000_tanwin_nasb2",
+   "id": "pack:*",
+   "reason": "The rule suggests writing the tanwīn of the accusative (ـًا); the written opponent's verse is unvocalised throughout, so the mark is left out there as every other vowel mark is."
+  },
+  {
+   "lang": "ar",
+   "rule": "typo_000_tanwin_nasb2",
+   "id": "ui:auth.error.age_required",
+   "at": "فما",
+   "reason": "'فما فوق' (and above) is فـ + ما, not a noun to take tanwīn."
+  },
+  {
+   "lang": "ar",
+   "rule": "wrong_adj_use",
+   "id": "*",
+   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept.",
+   "at": [
+    "الرئيسية"
+   ]
+  },
+  {
+   "lang": "de",
+   "rule": "DE_AGREEMENT",
+   "id": "pack:written.quatrain-abab.0.1",
+   "reason": "Verse word order: 'als deiner Lärm nur war' = 'when yours was only noise' (deiner is the pronoun, Lärm the predicate); the rule read 'deiner Lärm' as article and noun."
+  },
+  {
+   "lang": "de",
+   "rule": "DE_VERBAGREEMENT",
+   "id": "pack:written.quatrain-aabb.0.1",
+   "reason": "A verse line read alone: its subject, du, is in the line before ('Du kommst … / Und nennst …')."
+  },
+  {
+   "lang": "de",
+   "rule": "ERSTE_PERSON_SIN_OHNE_E",
+   "id": "pack:*",
+   "reason": "Verse: the first person without its -e (ich lass, ich nenn, ich dreh, ich sag), the ordinary spoken form, which German verse uses for metre."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Epiphora",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Kana",
+   "reason": "Kana, the Japanese syllabaries: a loanword."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Mercutios",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Riposte",
+   "reason": "The fencing term (a counter-thrust), a loanword in German, as the device's name."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "sehn",
+   "reason": "Verse: sehn and stehn for sehen and stehen, the poetic elision that keeps the line's metre and rhyme."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "stehn",
+   "reason": "Verse: sehn and stehn for sehen and stehen, the poetic elision that keeps the line's metre and rhyme."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "tipp",
+   "reason": "An imperative without its -e (tipp, prüf, renn, verbeug dich), standard in du-address."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "*",
+   "at": "verbeug",
+   "reason": "An imperative without its -e (tipp, prüf, renn, verbeug dich), standard in du-address."
+  },
+  {
+   "lang": "de",
+   "rule": "GERMAN_SPELLER_RULE",
+   "id": "pack:acrostic.*",
+   "reason": "A word of the acrostic list, stored in lower case for matching and shown in capitals (acrosticDisplay in src/lib/verse/forms.ts, so the player reads MOND)."
+  },
+  {
+   "lang": "de",
+   "rule": "NACH_HAUS",
+   "id": "pack:acrosticLines.s.0",
+   "reason": "Verse: 'nach Haus' for 'nach Hause', the old short dative, for the line's metre."
+  },
+  {
+   "lang": "de",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "de",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "ALL_MOST_SOME_OF_NOUN",
+   "id": "ui:form.jueju.brief",
+   "reason": "'All of five characters' means 'each made of five characters' (of = consisting of); the suggested 'all seven' would change the meaning."
+  },
+  {
+   "lang": "en",
+   "rule": "COMMA_COMPOUND_SENTENCE_2",
+   "id": "ui:form.haiku.brief.kana",
+   "reason": "Here 'so' means 'so that' (purpose), which takes no comma; the rule reads it as joining two independent clauses."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "Bát",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "comest",
+   "reason": "An archaic second-person verb form (thou comest, thou standest): the written opponent speaks in Shakespeare's register."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "passthrough",
+   "reason": "Passthrough: the headset's camera view of the room, as Meta names it on Quest, written as one word."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "standest",
+   "reason": "An archaic second-person verb form (thou comest, thou standest): the written opponent speaks in Shakespeare's register."
+  },
+  {
+   "lang": "en",
+   "rule": "MORFOLOGIK_RULE_EN_US",
+   "id": "*",
+   "at": "theatre",
+   "reason": "British spelling, used throughout the game (its 3D stage is the Theatre)."
+  },
+  {
+   "lang": "en",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "en",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "AGREEMENT_DET_ADJ",
+   "id": "ui:auth.error.too_many_passkeys",
+   "reason": "'Primero' is an adverb here ('remove one first'), not an adjective agreeing with 'una'."
+  },
+  {
+   "lang": "es",
+   "rule": "EL_TILDE",
+   "id": "ui:theatre.titleA",
+   "reason": "The article of the two-part heading 'El' + 'Teatro' (theatre.titleA, theatre.titleB), not the pronoun él."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "Mercucio",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "Quest",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "*",
+   "at": "kana",
+   "reason": "Kana, the Japanese syllabaries the haiku is counted in: a loanword."
+  },
+  {
+   "lang": "es",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "id": "ui:nav.vr",
+   "at": "VR",
+   "reason": "The acronym VR as headset makers brand it, kept as in the English menu (the Spanish acronym would be RV): a product label, not prose."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseHolding",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "es",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "ACCORD_SUJET_VERBE",
+   "id": "pack:written.quatrain-abab.0.2",
+   "reason": "Verse: 'Voici que tombe le rideau, et le silence' agrees with the nearest subject, the second one set off by a comma as an afterthought, which French allows."
+  },
+  {
+   "lang": "fr",
+   "rule": "ETRE_VPPA_OU_ADJ",
+   "id": "ui:brain.kept",
+   "at": "envoyé",
+   "reason": "'Rien … n'est envoyé': rien is masculine, so envoyé agrees with it; the rule took a feminine noun earlier in the sentence for the subject."
+  },
+  {
+   "lang": "fr",
+   "rule": "FAIRE_VPPA",
+   "id": "pack:written.quatrain-aabb.0.0",
+   "reason": "'Tu viens armé': venir with an attribute ('you come armed'); the rule took viens for a modal before an infinitive."
+  },
+  {
+   "lang": "fr",
+   "rule": "FR_SPELLING_RULE",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "fr",
+   "rule": "FR_SPELLING_RULE",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "fr",
+   "rule": "FR_SPELLING_RULE",
+   "id": "*",
+   "at": "Quest",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "fr",
+   "rule": "FR_SPELLING_RULE",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "fr",
+   "rule": "NOMBRES_EN_LETTRES",
+   "id": "ui:form.quatrain-abab.brief",
+   "reason": "A number on screen next to what it counts (a code of 6 digits, line 1 and line 3), written in figures as its English is; the rule is a style preference for running prose."
+  },
+  {
+   "lang": "fr",
+   "rule": "NOMBRES_EN_LETTRES_2_IMPROVED",
+   "id": "ui:auth.*",
+   "reason": "A number on screen next to what it counts (a code of 6 digits, line 1 and line 3), written in figures as its English is; the rule is a style preference for running prose.",
+   "at": [
+    "6"
+   ]
+  },
+  {
+   "lang": "fr",
+   "rule": "ON_N_A",
+   "id": "pack:written.anaphora.0.0",
+   "reason": "'Jamais on n'a': the ne of the negation with jamais, not a liaison written out."
+  },
+  {
+   "lang": "fr",
+   "rule": "OU",
+   "id": "ui:auth.error.too_many_attempts",
+   "at": "ou",
+   "reason": "« ou » here is 'or' (try again tomorrow, or sign in with a passkey); the rule takes it for « où »."
+  },
+  {
+   "lang": "fr",
+   "rule": "PAS_DE_VIRGULE",
+   "id": "pack:written.quatrain-abab.0.2",
+   "reason": "The comma sets 'et le silence' apart on purpose (the afterthought above); a verse line's pause."
+  },
+  {
+   "lang": "fr",
+   "rule": "PAS_DE_VIRGULE_STYLE",
+   "id": "pack:written.*",
+   "reason": "A style suggestion: the comma marks a pause in the verse line."
+  },
+  {
+   "lang": "fr",
+   "rule": "PLACE_ADJ",
+   "id": "ui:void.thin",
+   "at": "de mots différents",
+   "reason": "« mots différents » (distinct words) is what is meant: the verse needs more distinct words; « différents mots » before the noun would mean 'various words'."
+  },
+  {
+   "lang": "fr",
+   "rule": "POINT",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "fr",
+   "rule": "POINTS_2",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "fr",
+   "rule": "POINTS_2",
+   "id": "ui:*",
+   "reason": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+  },
+  {
+   "lang": "fr",
+   "rule": "PRES_FUTU",
+   "id": "ui:auth.codeIntro",
+   "reason": "A style suggestion (the future for a formal announcement); the present for a scheduled expiry ('expire dans 10 minutes') is standard French."
+  },
+  {
+   "lang": "fr",
+   "rule": "PRONSUJ_NONVERBE",
+   "id": "pack:acrosticLines.n.0",
+   "reason": "'Nul ne s'est jamais tu': tu is the past participle of se taire, not the pronoun."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "fr",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Epifora",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Haiku",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Home",
+   "reason": "A loanword in ordinary Italian use for software and games."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Inspired",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Mercuzio",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Mile",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Multigiocatore",
+   "reason": "The usual Italian word in games for multiplayer."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Passkey",
+   "reason": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "The",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "collezionabili",
+   "reason": "Collezionabile, the ordinary adjective of 'carte collezionabili' (collectible cards)."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "controller",
+   "reason": "A loanword in ordinary Italian use for software and games."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "dèi",
+   "reason": "The plural of dio, written dèi to tell it from the preposition dei."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "immersiva",
+   "reason": "Immersivo, -a, in ordinary use for immersive sessions (WebXR 'immersive-vr')."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "kana",
+   "reason": "Kana, the Japanese syllabaries: a loanword."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "offline",
+   "reason": "A loanword in ordinary Italian use for software and games."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "passkey",
+   "reason": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+  },
+  {
+   "lang": "it",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "id": "*",
+   "at": "passthrough",
+   "reason": "Passthrough: the headset's camera view of the room, as Meta names it on Quest, written as one word."
+  },
+  {
+   "lang": "it",
+   "rule": "ST_03_001",
+   "id": "ui:auth.*",
+   "reason": "Raised by the sample value the check filled in (the address a@example.com, the card name Hamlet), not by the translation. ('ad' before a vowel is optional, and a real address starts with any letter.)",
+   "at": [
+    "a a@example.com"
+   ]
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.judgeUnread",
+   "at": "viene",
+   "reason": "The ellipsis inside the brackets closes a list of examples, not a sentence; « viene » goes on with the same sentence."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:mic.listening",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:round.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "it",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "BRAK_KROPKI",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "pl",
+   "rule": "BRAK_KROPKI",
+   "id": "ui:*",
+   "reason": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "Inspired",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "Jueju",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "Merkucja",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "pl",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "id": "ui:nav.vr",
+   "at": "VR",
+   "reason": "The acronym VR as headset makers brand it, kept as in the English menu: a product label."
+  },
+  {
+   "lang": "pl",
+   "rule": "NIETYPOWA_KOMBINACJA_DUZYCH_I_MALYCH_LITER",
+   "id": "*",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language.",
+   "at": [
+    "WebGPU",
+    "visionOS"
+   ]
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pl",
+   "rule": "ZDANIE_PODRZEDNE_Z_KTORY_LUB_JAKI",
+   "id": "ui:device.grandeur.brief",
+   "reason": "'Dwóch słów, z których każde': których refers to słów (genitive plural), and każde to each of them; the rule found no noun to match."
+  },
+  {
+   "lang": "pt",
+   "rule": "A_WORD",
+   "id": "ui:theatre.visionBody",
+   "reason": "'Oferecer passthrough a páginas da web': the preposition a with no article, for web pages in general."
+  },
+  {
+   "lang": "pt",
+   "rule": "COLOCACAO_PRONOMINAL_COM_ATRATOR_SIMPLES",
+   "id": "ui:live.signature",
+   "reason": "'Sem citá-la': in Brazilian Portuguese an infinitive after a preposition takes the pronoun after it; the rule's 'sem a citar' is the European order."
+  },
+  {
+   "lang": "pt",
+   "rule": "EU_NÓS_REMOVAL",
+   "id": "pack:*",
+   "reason": "Verse: the subject pronoun kept for emphasis (Eu respondo… tu és…), which the style rule would drop.",
+   "at": [
+    "Eu chamo",
+    "Eu respondo",
+    "eu respondo"
+   ]
+  },
+  {
+   "lang": "pt",
+   "rule": "FINAL_STOPS",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "pt",
+   "rule": "FINAL_STOPS",
+   "id": "ui:*",
+   "reason": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+  },
+  {
+   "lang": "pt",
+   "rule": "INIMIGO_ADVERSÁRIO_ALIADO_OPONENTE",
+   "id": "ui:curse.forbidden-letter.theirs",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept. (It proposes a feminine form; the game's word for the opponent is adversário throughout, see the glossary.)"
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "Lục",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "Mercúcio",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "Quest",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "Safari",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "Sonnet",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "bát",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "candeias",
+   "reason": "Candeia (an oil lamp), plural candeias: a dictionary word of literary use, missing from the speller's list."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "headset",
+   "reason": "A loanword in ordinary Brazilian use for headsets and games."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "kana",
+   "reason": "Kana, the Japanese syllabaries: a loanword."
+  },
+  {
+   "lang": "pt",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "id": "*",
+   "at": "passthrough",
+   "reason": "Passthrough: the headset's camera view of the room, as Meta names it on Quest, written as one word."
+  },
+  {
+   "lang": "pt",
+   "rule": "PT_CLICHE_REPLACE_AO_PÉ_DA_LETRA",
+   "id": "ui:signature.quoted",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept."
+  },
+  {
+   "lang": "pt",
+   "rule": "PT_REDUNDANCY_REPLACE_TODO_O_RESTO",
+   "id": "ui:brain.noWebgpu",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept."
+  },
+  {
+   "lang": "pt",
+   "rule": "PT_WORDINESS_REPLACE_AINDA_ESTÃO",
+   "id": "pack:acrosticLines.r.1",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept."
+  },
+  {
+   "lang": "pt",
+   "rule": "PT_WORDINESS_REPLACE_DENTRO_DE_UM",
+   "id": "ui:device.internal-rhyme.brief",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept."
+  },
+  {
+   "lang": "pt",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "id": "pack:*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+  },
+  {
+   "lang": "pt",
+   "rule": "REGARDS_COMMA",
+   "id": "pack:relics.*",
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed).",
+   "at": [
+    "beijo"
+   ]
+  },
+  {
+   "lang": "pt",
+   "rule": "SIMPLIFICAR_CONVERTER_PARA_VERBO_INFINITIVO",
+   "id": "ui:form.haiku.brief.kana",
+   "reason": "A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "pt",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "AllCaps",
+   "id": "ui:end.cardEarned",
+   "reason": "A banner in capitals, as its English is (CARD EARNED)."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "Меркуцио",
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "Рипост",
+   "reason": "Рипост: the fencing term (a counter-thrust), a loanword, as the device's name."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "Цзюэцзюй",
+   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "Шесть-восемь",
+   "reason": "A word of a verse form's or device's name that the translator chose: not sourced (docs/language/glossary.json marks the Russian lục bát, Шесть-восемь, so). The speller does not know it; it is kept as the name, for a native reader to judge."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "веб-страницам",
+   "reason": "Веб-страница: an ordinary word (web page), which the speller's list lacks in this case form."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "каной",
+   "reason": "Каной: the instrumental of кана (the Japanese syllabaries), a loanword."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "один-единственный",
+   "reason": "Один-единственный: a set compound of ordinary Russian ('one and only'), which the speller's list lacks."
+  },
+  {
+   "lang": "ru",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "id": "*",
+   "at": "реплики-подписи",
+   "reason": "Реплика-подпись: the game's compound for the signature line (a line that is a signature), hyphenated as Russian writes such pairs."
+  },
+  {
+   "lang": "ru",
+   "rule": "PARTICLE_JE",
+   "id": "pack:*",
+   "reason": "Verse: the particle же gives the imperative its force ('Так говори же', 'Слушай же'); the rule calls it redundant.",
+   "at": [
+    "Слушай же",
+    "говори же"
+   ]
+  },
+  {
+   "lang": "ru",
+   "rule": "PNN_ON_END",
+   "id": "*",
+   "reason": "A style rule (a pronoun at the end): 'Потеряется он — потеряется и она' is a deliberate parallel, the account (она) lost with the key (он).",
+   "at": [
+    "она."
+   ]
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:criterion.wordplay",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.curseBroken",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:live.powerUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.echoed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hint",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.hintTwo",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.none",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:signature.quoted",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composing",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:theatre.composingDraft",
+   "reason": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:verdict.notUsed",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.copied",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "id": "ui:void.thin",
+   "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+  },
+  {
+   "lang": "ru",
+   "rule": "missing_noun_at_end",
+   "id": "*",
+   "reason": "A style rule (a noun left out at the end); the noun is understood from the same sentence (строку … самой длинной; код … новый), as Russian normally leaves it.",
+   "at": [
+    "длинной.",
+    "новый."
+   ]
+  },
+  {
+   "lang": "zh",
+   "rule": "s5",
+   "id": "ui:auth.nudgePasskeyHint",
+   "reason": "另一台 modifies 设备 only, and the list reads plainly as three alternatives; the rule warns of an ambiguity that is not there."
+  },
+  {
+   "lang": "zh",
+   "rule": "wa2",
+   "id": "*",
+   "reason": "下一首 means 'the next (verse)'; 下 is not the locative word the rule assumes, so 对手的下一首诗 is right.",
+   "at": [
+    "的"
+   ]
+  },
+  {
+   "lang": "zh",
+   "rule": "wa5",
+   "id": "pack:written.crescendo.1.2",
+   "reason": "一颗钉子: 颗 is a measure word in common use for nails; the rule's list lacks it."
+  },
+  {
+   "lang": "zh",
+   "rule": "wa5",
+   "id": "pack:written.haiku.1.0",
+   "reason": "一声响: 声 is the measure word (一声), so none is missing."
+  },
+  {
+   "lang": "zh",
+   "rule": "wa5",
+   "id": "ui:device.monorhyme.name",
+   "reason": "一韵到底 (one rhyme to the end) is the set phrase of Chinese prosody for monorhyme; 韵 needs no measure word in it."
+  },
+  {
+   "lang": "zh",
+   "rule": "wb4",
+   "id": "ui:auth.error.passkey_not_accepted",
+   "reason": "新的通行密钥 (a new passkey): 新的 is an adjective before a noun; the rule took 通行 for a verb and asked for 地."
+  }
+ ]
+}

@@ -202,7 +202,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { loadSound } from '../lib/verse/sound';
-    import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
 
@@ -247,8 +247,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // --- Stats ---
     function showStats() {
       const ps = getPlayerStats();
-      $('rounds-played').textContent = String(ps.totalRounds);
-      $('battles-total').textContent = String(ps.totalBattles);
+      $('rounds-played').textContent = num(ps.totalRounds);
+      $('battles-total').textContent = num(ps.totalBattles);
       $('win-rate').textContent = ps.totalRounds > 0 ? `${Math.round((ps.battleWins / ps.totalRounds) * 100)}%` : '--%';
     }
     showStats();
@@ -398,7 +398,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // --- Brain ---
     const startBtn = $<HTMLButtonElement>('start-duel');
     const BRAIN_KEY = 'inspired-mile-brain';
-    const size = (mb: number) => (mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${mb} MB`);
+    const size = (mb: number) => (mb >= 1000 ? `${num(Math.round(mb / 100) / 10)} GB` : `${num(mb)} MB`);
 
     function ready(noteKey: string | null) {
       say$($('setup-note'), noteKey);
@@ -595,7 +595,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       list.appendChild(checkRow(s.signature.met, t('live.signature', { card: card.name }), signatureText(s.signature)));
       if (s.powerWords) {
         const lent = session.duel.playerRelics[session.move.relicId!];
-        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words.join(', ') }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used.join(', ') }) : ''));
+        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used }) : ''));
       }
       if (s.curse) {
         list.appendChild(checkRow(
@@ -610,11 +610,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // A model grades verses one at a time: the lines it will not read, and the word that leaves each out.
       const unread = session.judgeUnread();
       if (written && unread.length) {
-        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') }), '', 'crimson');
+        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => t('live.judgeUnreadLine', { line: u.line, word: u.word })) }), '', 'crimson');
         row.id = 'live-judge-unread';
         list.appendChild(row);
       }
-      $('live-craft').textContent = String(s.craft);
+      $('live-craft').textContent = num(s.craft);
     }
 
     /** What the hand was last drawn from: it changes with the move, not with every letter typed. */
@@ -627,7 +627,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const key = JSON.stringify([d.seed, s.roundIndex, s.phase, s.move, s.moves.length, ink]);
       if (!force && key === handDrawn) return;
       handDrawn = key;
-      $('ink').textContent = String(ink);
+      $('ink').textContent = num(ink);
 
       const chars = $('hand-characters');
       chars.replaceChildren();
@@ -665,7 +665,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         b.setAttribute('role', 'button');
         b.dataset.itemId = id;
         if (refused) b.title = t(`illegal.${refused}`);
-        else if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words.join(', ') });
+        else if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words });
         else {
           const cast = d.playerCurses[id];
           b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
@@ -674,7 +674,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (refused === 'potion-last-round' && !used) notes.push(t('hand.potionLastRound', { card: card.name }));
         items.appendChild(b);
       }
-      if (s.move.relicId) notes.push(t('hand.relicNote', { card: getCardById(s.move.relicId)!.name, words: d.playerRelics[s.move.relicId].words.join(', ') }));
+      if (s.move.relicId) notes.push(t('hand.relicNote', { card: getCardById(s.move.relicId)!.name, words: d.playerRelics[s.move.relicId].words }));
       if (s.move.potionId) {
         const cast = d.playerCurses[s.move.potionId];
         notes.push(t('hand.potionNote', { card: getCardById(s.move.potionId)!.name, rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) }));
@@ -822,8 +822,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         playSfx('battle-victory');
       } else playSfx('battle-defeat');
       setHighScore(scored.playerTotal);
-      $('player-score').textContent = String(s.playerRounds);
-      $('ai-score').textContent = String(s.opponentRounds);
+      $('player-score').textContent = num(s.playerRounds);
+      $('ai-score').textContent = num(s.opponentRounds);
       showStats();
       view = 'verdict';
       updateSubmit();

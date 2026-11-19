@@ -1,0 +1,3212 @@
+[
+ {
+  "id": "th|check.luc-bat-rhyme",
+  "lang": "th",
+  "text": "พยางค์ที่หกของแต่ละบรรทัดมีสัมผัสกัน",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each line is touching.",
+  "cos": 0.7919,
+  "chrf": 78.0,
+  "xcos": 0.7143
+ },
+ {
+  "id": "th|nav.multiplayer",
+  "lang": "th",
+  "text": "เล่นหลายคน",
+  "english": "Multiplayer",
+  "back": "Multiplayer.",
+  "cos": 0.912,
+  "chrf": 97.6,
+  "xcos": 0.6314
+ },
+ {
+  "id": "th|nav.viewer",
+  "lang": "th",
+  "text": "เครื่องมือดู 3 มิติ",
+  "english": "3D Viewer",
+  "back": "3D viewer.",
+  "cos": 0.9027,
+  "chrf": 44.3,
+  "xcos": 0.8152
+ },
+ {
+  "id": "th|age.errorDob",
+  "lang": "th",
+  "text": "โปรดเลือกวันเดือนปีเกิดให้ครบถ้วน",
+  "english": "Please select your full date of birth.",
+  "back": "Please enter a complete birthday.",
+  "cos": 0.5745,
+  "chrf": 28.7,
+  "xcos": 0.8633
+ },
+ {
+  "id": "th|auth.emailHint",
+  "lang": "th",
+  "text": "ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ? ลงชื่อเข้าใช้ด้วยอีเมล หากบัญชีของคุณมีอีเมลผูกไว้",
+  "english": "On a device without your passkey? Sign in by email, if your account has one.",
+  "back": "Are you using a device that does not have your passkey? Sign in with email if your account has an email associated.",
+  "cos": 0.7284,
+  "chrf": 59.8,
+  "xcos": 0.7767
+ },
+ {
+  "id": "th|auth.legalAfter",
+  "lang": "th",
+  "text": ".",
+  "english": ".",
+  "back": ".",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "th|battle.intro",
+  "lang": "th",
+  "text": "สามยก สามฉันทลักษณ์ การ์ดของคุณกำหนดว่าบทกลอนของคุณต้องทำอะไร คู่ต่อสู้รันอยู่ในเบราว์เซอร์ของคุณ: สิ่งที่คุณเขียนจะไม่ถูกส่งออกจากอุปกรณ์เครื่องนี้",
+  "english": "Three rounds, three forms. Your cards decide what your verse must do. The opponent runs in your browser: nothing you write leaves this device.",
+  "back": "Three turns, three syllables Your card defines what your poem has to do The opponent runs in your browser: What you write will not be exported from this device",
+  "cos": 0.7167,
+  "chrf": 54.8,
+  "xcos": 0.743
+ },
+ {
+  "id": "th|battle.mind",
+  "lang": "th",
+  "text": "จิตใจของคู่ต่อสู้",
+  "english": "Your opponent's mind",
+  "back": "The mind of the opponent.",
+  "cos": 0.8918,
+  "chrf": 43.8,
+  "xcos": 0.7391
+ },
+ {
+  "id": "th|brain.downloading",
+  "lang": "th",
+  "text": "กำลังดาวน์โหลด Gemma: 512/3 MB",
+  "english": "Downloading Gemma: 512 of 3 MB",
+  "back": "Downloading Gemma: 512/3 MB",
+  "cos": 0.9928,
+  "chrf": 82.5,
+  "xcos": 0.864
+ },
+ {
+  "id": "th|round.opponentPlays",
+  "lang": "th",
+  "text": "คู่ต่อสู้ร่ายบทกลอน",
+  "english": "Your opponent plays",
+  "back": "Fighters dance a poem.",
+  "cos": 0.2701,
+  "chrf": 8.7,
+  "xcos": 0.4267
+ },
+ {
+  "id": "th|round.whoAnswers",
+  "lang": "th",
+  "text": "ใครจะตอบโต้?",
+  "english": "Who answers?",
+  "back": "Who's going to fight back?",
+  "cos": 0.2713,
+  "chrf": 13.1,
+  "xcos": 0.8828
+ },
+ {
+  "id": "th|mic.none",
+  "lang": "th",
+  "text": "ไม่พบไมโครโฟน",
+  "english": "No microphone here",
+  "back": "No microphone found.",
+  "cos": 0.8647,
+  "chrf": 67.9,
+  "xcos": 0.7319
+ },
+ {
+  "id": "th|mic.loadingEar",
+  "lang": "th",
+  "text": "กำลังโหลดระบบรับเสียง (75 MB, ครั้งเดียว)…",
+  "english": "Loading the ear (75 MB, once)…",
+  "back": "Loading audio system (75 MB, one-time)...",
+  "cos": 0.6824,
+  "chrf": 44.0,
+  "xcos": 0.9014
+ },
+ {
+  "id": "th|mic.loadingEarProgress",
+  "lang": "th",
+  "text": "กำลังโหลดระบบรับเสียง: 40%",
+  "english": "Loading the ear: 40%",
+  "back": "Loading audio system: 40%",
+  "cos": 0.6155,
+  "chrf": 40.8,
+  "xcos": 0.8194
+ },
+ {
+  "id": "th|mic.earFailed",
+  "lang": "th",
+  "text": "โหลดระบบรับเสียงไม่ได้",
+  "english": "The ear could not load",
+  "back": "Can't load audio system.",
+  "cos": 0.5978,
+  "chrf": 19.9,
+  "xcos": 0.7084
+ },
+ {
+  "id": "th|verdict.yourAnswer",
+  "lang": "th",
+  "text": "คำตอบของคุณ",
+  "english": "Your answer",
+  "back": "Your answer.",
+  "cos": 0.8941,
+  "chrf": 97.3,
+  "xcos": 0.93
+ },
+ {
+  "id": "th|verdict.held",
+  "lang": "th",
+  "text": "ถือครอง",
+  "english": "held",
+  "back": "Hold it.",
+  "cos": 0.5056,
+  "chrf": 17.8,
+  "xcos": 0.6416
+ },
+ {
+  "id": "th|end.lost",
+  "lang": "th",
+  "text": "คืนนี้เวทีเป็นของพวกเขา",
+  "english": "The stage is theirs tonight.",
+  "back": "The stage is theirs tonight.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.7875
+ },
+ {
+  "id": "th|badge.written",
+  "lang": "th",
+  "text": "คู่ต่อสู้แบบเขียนไว้",
+  "english": "Written opponent",
+  "back": "It's a pre-written match.",
+  "cos": 0.5248,
+  "chrf": 27.1,
+  "xcos": 0.8015
+ },
+ {
+  "id": "th|theatre.declined",
+  "lang": "th",
+  "text": "อุปกรณ์นี้ไม่รองรับโหมดดื่มด่ำ",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support drinking mode.",
+  "cos": 0.3827,
+  "chrf": 32.1,
+  "xcos": 0.5838
+ },
+ {
+  "id": "th|theatre.cursesYou",
+  "lang": "th",
+  "text": "คุณถูกสาปด้วย: คำของคุณทุกคำต้องยาวไม่เกิน 5 ตัวอักษร",
+  "english": "Curses you: No word of yours may be longer than 5 letters.",
+  "back": "You're also cursed: your words must be no longer than five characters.",
+  "cos": 0.8147,
+  "chrf": 37.5,
+  "xcos": 0.7782
+ },
+ {
+  "id": "th|theatre.versePrompt",
+  "lang": "th",
+  "text": "บทกลอนของคุณจะปรากฏที่นี่ กดไมโครโฟนแล้วขับกลอนออกมา โดยอ่านหนึ่งบรรทัดต่อหนึ่งลมหายใจ",
+  "english": "Your verse appears here. Press the microphone and speak it, one line at a breath.",
+  "back": "Your poem will appear here. Press the microphone and drive it out, one line at a time.",
+  "cos": 0.6752,
+  "chrf": 61.4,
+  "xcos": 0.7363
+ },
+ {
+  "id": "hi|check.spells.words",
+  "lang": "hi",
+  "text": "पंक्तियाँ खोपड़ी से शुरू होकर क्रम में खुलती हैं",
+  "english": "Lines open, in order, with skull",
+  "back": "Rows open in order starting with the skull",
+  "cos": 0.7405,
+  "chrf": 44.3,
+  "xcos": 0.6535
+ },
+ {
+  "id": "hi|check.growing",
+  "lang": "hi",
+  "text": "हर पंक्ति में पिछली पंक्ति से ज़्यादा शब्द हैं",
+  "english": "Each line has more words than the last",
+  "back": "Each line has more words than the previous one",
+  "cos": 0.9402,
+  "chrf": 82.4,
+  "xcos": 0.9054
+ },
+ {
+  "id": "hi|check.growing.char",
+  "lang": "hi",
+  "text": "हर पंक्ति में पिछली पंक्ति से ज़्यादा अक्षर हैं",
+  "english": "Each line has more characters than the last",
+  "back": "Each line has more characters than the previous one",
+  "cos": 0.9477,
+  "chrf": 84.9,
+  "xcos": 0.8991
+ },
+ {
+  "id": "hi|check.luc-bat-rhyme",
+  "lang": "hi",
+  "text": "प्रत्येक पंक्ति का छठा शब्दांश तुक मिलाता है",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each line matches the hyphen",
+  "cos": 0.7571,
+  "chrf": 78.0,
+  "xcos": 0.8137
+ },
+ {
+  "id": "hi|device.riposte.brief",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी के पिछले पद से 3 अक्षर या उससे अधिक का कोई शब्द लेकर उसी पर लौटा दें।",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them.",
+  "back": "Return a word of 3 or more characters from the opponent's previous position.",
+  "cos": 0.664,
+  "chrf": 44.4,
+  "xcos": 0.891
+ },
+ {
+  "id": "hi|device.brevity.brief",
+  "lang": "hi",
+  "text": "हर पंक्ति में 3 शब्द या उससे कम शब्द रखें।",
+  "english": "Keep every line to 3 words or fewer.",
+  "back": "Have 3 words or less per line.",
+  "cos": 0.86,
+  "chrf": 33.4,
+  "xcos": 0.8767
+ },
+ {
+  "id": "hi|device.brevity.brief.char",
+  "lang": "hi",
+  "text": "हर पंक्ति में 3 अक्षर या उससे कम अक्षर रखें।",
+  "english": "Keep every line to 3 characters or fewer.",
+  "back": "Keep 3 characters or less per line.",
+  "cos": 0.9603,
+  "chrf": 47.7,
+  "xcos": 0.8797
+ },
+ {
+  "id": "hi|device.grandeur.brief",
+  "lang": "hi",
+  "text": "Use two words of 3 अक्षर or more.",
+  "english": "Use two words of 3 letters or more.",
+  "back": "Use two words of 3 characters or more.",
+  "cos": 0.9004,
+  "chrf": 76.1,
+  "xcos": 0.9873
+ },
+ {
+  "id": "hi|curse.no-repeats.brief",
+  "lang": "hi",
+  "text": "आप 3 अक्षर या उससे अधिक लंबाई वाले किसी भी शब्द का दो बार उपयोग नहीं कर सकते।",
+  "english": "You may not use any word of 3 letters or more twice.",
+  "back": "You cannot use any word of 3 characters or longer twice.",
+  "cos": 0.8183,
+  "chrf": 55.8,
+  "xcos": 0.8747
+ },
+ {
+  "id": "hi|curse.no-repeats.theirs",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी 3 अक्षर या उससे अधिक लंबाई वाले किसी भी शब्द का दो बार उपयोग नहीं कर सकता।",
+  "english": "They may not use any word of 3 letters or more twice.",
+  "back": "The opponent cannot use any word of 3 characters or longer twice.",
+  "cos": 0.6649,
+  "chrf": 53.4,
+  "xcos": 0.7851
+ },
+ {
+  "id": "hi|curse.short-lines.brief",
+  "lang": "hi",
+  "text": "आपकी किसी भी पंक्ति में 3 शब्द से अधिक शब्द नहीं हो सकते।",
+  "english": "No line of yours may be longer than 3 words.",
+  "back": "You cannot have more than 3 words in any line.",
+  "cos": 0.8339,
+  "chrf": 33.6,
+  "xcos": 0.8409
+ },
+ {
+  "id": "hi|curse.short-lines.brief.char",
+  "lang": "hi",
+  "text": "आपकी किसी भी पंक्ति में 3 अक्षर से अधिक अक्षर नहीं हो सकते।",
+  "english": "No line of yours may be longer than 3 characters.",
+  "back": "You cannot have more than 3 characters in any line.",
+  "cos": 0.8212,
+  "chrf": 42.5,
+  "xcos": 0.86
+ },
+ {
+  "id": "hi|curse.short-lines.theirs",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी की किसी भी पंक्ति में 3 शब्द से अधिक शब्द नहीं हो सकते।",
+  "english": "No line of theirs may be longer than 3 words.",
+  "back": "There can be no more than 3 words in any line of the opponent.",
+  "cos": 0.67,
+  "chrf": 45.4,
+  "xcos": 0.7704
+ },
+ {
+  "id": "hi|curse.short-lines.theirs.char",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी की किसी भी पंक्ति में 3 अक्षर से अधिक अक्षर नहीं हो सकते।",
+  "english": "No line of theirs may be longer than 3 characters.",
+  "back": "The opponent cannot have more than 3 characters in any row.",
+  "cos": 0.5091,
+  "chrf": 40.5,
+  "xcos": 0.7883
+ },
+ {
+  "id": "hi|footer.sonnetMan",
+  "lang": "hi",
+  "text": "द सोनेट मैन",
+  "english": "The Sonnet Man",
+  "back": "The Sonnet Man",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8027
+ },
+ {
+  "id": "hi|age.consentAfter",
+  "lang": "hi",
+  "text": "और मेरे Inspired Mile के इस्तेमाल के लिए अपनी सहमति देते हैं।",
+  "english": "and consents to my use of Inspired Mile.",
+  "back": "And consent to the use of my Inspired Mile.",
+  "cos": 0.968,
+  "chrf": 65.4,
+  "xcos": 0.8615
+ },
+ {
+  "id": "hi|age.agreeAfter",
+  "lang": "hi",
+  "text": "से सहमत हैं।",
+  "english": ".",
+  "back": "Agree.",
+  "cos": 0.3214,
+  "chrf": 50.0,
+  "xcos": 0.372
+ },
+ {
+  "id": "hi|toast.achievement",
+  "lang": "hi",
+  "text": "उपलब्धि अनलॉक हुई",
+  "english": "Achievement Unlocked",
+  "back": "Achievement Unlocked",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8585
+ },
+ {
+  "id": "hi|auth.legalAfter",
+  "lang": "hi",
+  "text": "से सहमत हैं।",
+  "english": ".",
+  "back": "Agree.",
+  "cos": 0.3214,
+  "chrf": 50.0,
+  "xcos": 0.372
+ },
+ {
+  "id": "hi|battle.difficulty.player",
+  "lang": "hi",
+  "text": "खिलाड़ी: दो मसौदों में से बेहतर चुनता है",
+  "english": "Player: picks the better of two drafts",
+  "back": "Player: Choose the best of two drafts",
+  "cos": 0.9325,
+  "chrf": 54.7,
+  "xcos": 0.915
+ },
+ {
+  "id": "hi|round.cursesYou",
+  "lang": "hi",
+  "text": "Hamlet ने आप पर Ariel का शाप डाला है: आपका कोई भी शब्द 5 अक्षरों से लंबा नहीं हो सकता।",
+  "english": "Hamlet curses you with Ariel: No word of yours may be longer than 5 letters.",
+  "back": "Hamlet has cast Ariel's curse on you: no word can be longer than 5 letters.",
+  "cos": 0.9186,
+  "chrf": 53.2,
+  "xcos": 0.8438
+ },
+ {
+  "id": "hi|round.versePlaceholder",
+  "lang": "hi",
+  "text": "प्रति पंक्ति एक पद की पंक्ति…",
+  "english": "One line of verse per line…",
+  "back": "Line of one item per line…",
+  "cos": 0.6047,
+  "chrf": 43.3,
+  "xcos": 0.8975
+ },
+ {
+  "id": "hi|live.curseHolding",
+  "lang": "hi",
+  "text": "पकड़ में",
+  "english": "holding",
+  "back": "In hold",
+  "cos": 0.7252,
+  "chrf": 32.2,
+  "xcos": 0.7672
+ },
+ {
+  "id": "hi|verdict.form",
+  "lang": "hi",
+  "text": "शिल्प",
+  "english": "Form",
+  "back": "Craft",
+  "cos": 0.4066,
+  "chrf": 6.0,
+  "xcos": 0.4079
+ },
+ {
+  "id": "hi|verdict.missed",
+  "lang": "hi",
+  "text": "छूटा",
+  "english": "missed",
+  "back": "Missed",
+  "cos": 1.0,
+  "chrf": 59.2,
+  "xcos": 0.8447
+ },
+ {
+  "id": "hi|verdict.held",
+  "lang": "hi",
+  "text": "बचाया",
+  "english": "held",
+  "back": "Saved",
+  "cos": 0.3221,
+  "chrf": 11.9,
+  "xcos": 0.6636
+ },
+ {
+  "id": "hi|criterion.allusion",
+  "lang": "hi",
+  "text": "प्रसंग",
+  "english": "allusion",
+  "back": "Theme",
+  "cos": 0.3227,
+  "chrf": 0.0,
+  "xcos": 0.6183
+ },
+ {
+  "id": "hi|rarity.epic",
+  "lang": "hi",
+  "text": "अति-दुर्लभ",
+  "english": "Epic",
+  "back": "Extremely rare",
+  "cos": 0.1849,
+  "chrf": 4.3,
+  "xcos": 0.3387
+ },
+ {
+  "id": "hi|rarity.legendary",
+  "lang": "hi",
+  "text": "दिग्गज",
+  "english": "Legendary",
+  "back": "Giant",
+  "cos": 0.4239,
+  "chrf": 4.9,
+  "xcos": 0.6376
+ },
+ {
+  "id": "hi|badge.writtenJudged",
+  "lang": "hi",
+  "text": "लिखे हुए प्रतिद्वंद्वी · Gemma द्वारा निर्णायक",
+  "english": "Written opponent · judged by Gemma",
+  "back": "Written Opponents · Decisive by Gemma",
+  "cos": 0.9026,
+  "chrf": 49.9,
+  "xcos": 0.9056
+ },
+ {
+  "id": "hi|theatre.titleA",
+  "lang": "hi",
+  "text": "द",
+  "english": "The",
+  "back": "The",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9222
+ },
+ {
+  "id": "hi|theatre.intro",
+  "lang": "hi",
+  "text": "वही द्वंद्व, आपके चारों ओर एक मंच पर। कार्ड खेलने के लिए इशारा करें या चुटकी भरें, माइक्रोफ़ोन दबाएँ और अपना पद बोलें। इसे इसी डिवाइस पर लिखा और परखा जाता है।",
+  "english": "The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse. It is transcribed and judged on this device.",
+  "back": "The same duel, on a platform all around you. Point or tap to play cards, press the microphone and speak your position. It is written and tested on the same device.",
+  "cos": 0.7219,
+  "chrf": 60.7,
+  "xcos": 0.8406
+ },
+ {
+  "id": "hi|theatre.questBody",
+  "lang": "hi",
+  "text": "पासथ्रू में खुलता है, जिससे मंच आपके कमरे में दिखाई देता है। कंट्रोलर से इशारा करें या हाथ से चुटकी भरें।",
+  "english": "Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand.",
+  "back": "Opens in a passthrough, making the stage appear in your room. Point with the controller or wink with your hand.",
+  "cos": 0.9104,
+  "chrf": 62.2,
+  "xcos": 0.7842
+ },
+ {
+  "id": "hi|theatre.visionBody",
+  "lang": "hi",
+  "text": "पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।",
+  "english": "Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages.",
+  "back": "Opens as a whole platform. Look at any card and swipe into it. Safari does not provide passthrough for web pages on visionOS.",
+  "cos": 0.9089,
+  "chrf": 55.4,
+  "xcos": 0.85
+ },
+ {
+  "id": "hi|theatre.writtenHint",
+  "lang": "hi",
+  "text": "लिखे हुए प्रतिद्वंद्वी से खेल रहे हैं। यहाँ मुकाबला करने के लिए युद्ध पेज पर एक मॉडल बुलाएँ।",
+  "english": "Playing the written opponent. Summon a model on the battle page to face one here.",
+  "back": "Playing against the specified opponent. Call a model on the battle page to compete here.",
+  "cos": 0.7133,
+  "chrf": 57.5,
+  "xcos": 0.8465
+ },
+ {
+  "id": "hi|theatre.declined",
+  "lang": "hi",
+  "text": "इस डिवाइस ने इमर्सिव सत्र को अस्वीकार कर दिया है।",
+  "english": "This device declined an immersive session.",
+  "back": "This device has rejected an immersive session.",
+  "cos": 0.8708,
+  "chrf": 75.1,
+  "xcos": 0.8662
+ },
+ {
+  "id": "ar|check.spells.words",
+  "lang": "ar",
+  "text": "الأسطر تبدأ، بالترتيب، بـ جمجمة",
+  "english": "Lines open, in order, with skull",
+  "back": "The lines start, in order, with a skull.",
+  "cos": 0.8272,
+  "chrf": 56.6,
+  "xcos": 0.6133
+ },
+ {
+  "id": "ar|check.growing",
+  "lang": "ar",
+  "text": "كل سطر يحتوي كلمات أكثر من السطر الذي قبله",
+  "english": "Each line has more words than the last",
+  "back": "Each line has more words than the one before it .",
+  "cos": 0.8835,
+  "chrf": 81.8,
+  "xcos": 0.8607
+ },
+ {
+  "id": "ar|check.growing.char",
+  "lang": "ar",
+  "text": "كل سطر يحتوي أحرفًا أكثر من السطر الذي قبله",
+  "english": "Each line has more characters than the last",
+  "back": "Each line contains more letters than the line before it .",
+  "cos": 0.8094,
+  "chrf": 50.6,
+  "xcos": 0.8629
+ },
+ {
+  "id": "ar|check.jueju-length",
+  "lang": "ar",
+  "text": "كل سطر من خمسة أحرف، أو كل سطر من سبعة أحرف",
+  "english": "Every line has five characters, or every line has seven",
+  "back": "Each line of five letters, or each line of seven letters",
+  "cos": 0.8064,
+  "chrf": 34.3,
+  "xcos": 0.9015
+ },
+ {
+  "id": "ar|check.luc-bat-rhyme",
+  "lang": "ar",
+  "text": "المقطع السادس من كل سطر له قافية",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth segment of each line has a chord .",
+  "cos": 0.5106,
+  "chrf": 50.1,
+  "xcos": 0.8437
+ },
+ {
+  "id": "ar|device.swell.brief",
+  "lang": "ar",
+  "text": "اجعل سطرك الأخير هو الأطول.",
+  "english": "Make your last line your longest.",
+  "back": "Make your last line the longest.",
+  "cos": 0.9884,
+  "chrf": 74.5,
+  "xcos": 0.9355
+ },
+ {
+  "id": "ar|footer.sonnetMan",
+  "lang": "ar",
+  "text": "رجل السونيت",
+  "english": "The Sonnet Man",
+  "back": "Sunni man.",
+  "cos": 0.2763,
+  "chrf": 10.5,
+  "xcos": 0.8196
+ },
+ {
+  "id": "ar|auth.nudgeBody",
+  "lang": "ar",
+  "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا أو بريدًا إلكترونيًا لتتمكن من العودة.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.",
+  "back": "Now a single password is the only way to this account. If you lose it, your account is lost. Add a second password or an email to get back.",
+  "cos": 0.8392,
+  "chrf": 59.2,
+  "xcos": 0.9425
+ },
+ {
+  "id": "ar|auth.nudgeBodyNoEmail",
+  "lang": "ar",
+  "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا لتتمكن من العودة.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.",
+  "back": "Now one passkey is the only way to this account. If you lose it, your account is lost. Add a second passkey to get back.",
+  "cos": 0.9597,
+  "chrf": 68.7,
+  "xcos": 0.9329
+ },
+ {
+  "id": "ar|auth.emailHint",
+  "lang": "ar",
+  "text": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one.",
+  "back": "On a device that does not have your passkey? Sign in with email if your account has mail.",
+  "cos": 0.9528,
+  "chrf": 65.7,
+  "xcos": 0.8837
+ },
+ {
+  "id": "ar|auth.offerBody",
+  "lang": "ar",
+  "text": "في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.",
+  "english": "Next time, sign in with your fingerprint, face, or screen lock. No code, no waiting for an email.",
+  "back": "Next time, log in with your fingerprint, face or screen lock. No code and no waiting for email.",
+  "cos": 0.9774,
+  "chrf": 77.8,
+  "xcos": 0.9327
+ },
+ {
+  "id": "ar|auth.passkeysEmpty",
+  "lang": "ar",
+  "text": "لا توجد مفاتيح مرور بعد. أضف مفتاحًا لتسجيل الدخول دون الحاجة لرمز بريدي.",
+  "english": "No passkeys yet. Add one to sign in without an email code.",
+  "back": "There are no password keys yet. Add a key to log in without needing a zip code.",
+  "cos": 0.6777,
+  "chrf": 46.8,
+  "xcos": 0.91
+ },
+ {
+  "id": "ar|auth.passkeyAdded",
+  "lang": "ar",
+  "text": "تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.",
+  "english": "Passkey added. You can sign in with it from now on.",
+  "back": "The password key has been added. You can log in with it from now on.",
+  "cos": 0.7476,
+  "chrf": 66.4,
+  "xcos": 0.9105
+ },
+ {
+  "id": "ar|auth.passkeyRemoveConfirm",
+  "lang": "ar",
+  "text": "إزالة؟",
+  "english": "Remove?",
+  "back": "Removal?",
+  "cos": 0.855,
+  "chrf": 47.4,
+  "xcos": 0.96
+ },
+ {
+  "id": "ar|auth.error.passkey_not_accepted",
+  "lang": "ar",
+  "text": "لم يُقبل مفتاح المرور هذا. سجّل الدخول باستخدام رمز مرسل عبر البريد الإلكتروني، ثم أضف مفتاح مرور جديدًا.",
+  "english": "That passkey was not accepted. Sign in with an emailed code, then add a new passkey.",
+  "back": "This passkey has not been accepted. Please log in using the code sent by email, and then add a new passkey.",
+  "cos": 0.9418,
+  "chrf": 53.7,
+  "xcos": 0.9271
+ },
+ {
+  "id": "ar|battle.titleA",
+  "lang": "ar",
+  "text": "معركة",
+  "english": "Battle",
+  "back": "Battle.",
+  "cos": 0.8806,
+  "chrf": 93.3,
+  "xcos": 0.9041
+ },
+ {
+  "id": "ar|battle.titleB",
+  "lang": "ar",
+  "text": "حلبة",
+  "english": "Arena",
+  "back": "A arena.",
+  "cos": 0.8533,
+  "chrf": 52.4,
+  "xcos": 0.6259
+ },
+ {
+  "id": "ar|battle.difficulty.player",
+  "lang": "ar",
+  "text": "اللاعب: يختار الأفضل من مسودتين",
+  "english": "Player: picks the better of two drafts",
+  "back": "Player: Choose the best of two drafts",
+  "cos": 0.9325,
+  "chrf": 54.7,
+  "xcos": 0.9297
+ },
+ {
+  "id": "ar|hand.relicNote",
+  "lang": "ar",
+  "text": "Hamlet تمنحك: جمجمة ومزحة وقبر.",
+  "english": "Hamlet lends you: skull, jest, and grave.",
+  "back": "Hamlet gives you: a skull, a joke and a tomb.",
+  "cos": 0.8494,
+  "chrf": 36.5,
+  "xcos": 0.8775
+ },
+ {
+  "id": "ar|hand.potionNote",
+  "lang": "ar",
+  "text": "Hamlet تضع لعنة على أبيات خصمك القادمة: لا يجوز أن تزيد أي كلمة من كلماتك على 5 أحرف.",
+  "english": "Hamlet curses your opponent's next verse: No word of yours may be longer than 5 letters.",
+  "back": "Hamlet places a curse on your opponent's next verse: no word of your words may exceed five letters.",
+  "cos": 0.9413,
+  "chrf": 62.1,
+  "xcos": 0.8854
+ },
+ {
+  "id": "ar|hand.potionLastRound",
+  "lang": "ar",
+  "text": "Hamlet كانت ستضع لعنة على أبيات الخصم القادمة، لكن هذه هي الجولة الأخيرة.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round.",
+  "back": "Hamlet would have cursed the opponent's next verse, but this is the last round.",
+  "cos": 0.9618,
+  "chrf": 89.7,
+  "xcos": 0.8873
+ },
+ {
+  "id": "ar|variant.bonus",
+  "lang": "ar",
+  "text": "+3 الظُّرف",
+  "english": "+3 wit",
+  "back": "+3 circumstances",
+  "cos": 0.5196,
+  "chrf": 14.8,
+  "xcos": 0.8408
+ },
+ {
+  "id": "ar|verdict.form",
+  "lang": "ar",
+  "text": "الصنعة",
+  "english": "Form",
+  "back": "Manufacture",
+  "cos": 0.3986,
+  "chrf": 4.6,
+  "xcos": 0.3888
+ },
+ {
+  "id": "ar|verdict.missed",
+  "lang": "ar",
+  "text": "لم تُستخدم",
+  "english": "missed",
+  "back": "Not used",
+  "cos": 0.3123,
+  "chrf": 18.4,
+  "xcos": 0.5886
+ },
+ {
+  "id": "ar|end.lost",
+  "lang": "ar",
+  "text": "المسرح له الليلة.",
+  "english": "The stage is theirs tonight.",
+  "back": "The theatre is for him tonight.",
+  "cos": 0.499,
+  "chrf": 40.0,
+  "xcos": 0.7612
+ },
+ {
+  "id": "ar|badge.written",
+  "lang": "ar",
+  "text": "خصم مكتوب",
+  "english": "Written opponent",
+  "back": "Letter of credit",
+  "cos": 0.2425,
+  "chrf": 13.9,
+  "xcos": 0.4866
+ },
+ {
+  "id": "ar|stats.rounds",
+  "lang": "ar",
+  "text": "الجولات الملعوبة",
+  "english": "Rounds played",
+  "back": "Difficult tours",
+  "cos": 0.2177,
+  "chrf": 6.8,
+  "xcos": 0.5208
+ },
+ {
+  "id": "ar|stats.won",
+  "lang": "ar",
+  "text": "الجولات المكتسبة",
+  "english": "Rounds won",
+  "back": "Tours acquired",
+  "cos": 0.2066,
+  "chrf": 8.7,
+  "xcos": 0.5732
+ },
+ {
+  "id": "ar|theatre.declined",
+  "lang": "ar",
+  "text": "هذا الجهاز لا يدعم الجلسات الغامرة.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support deep sessions.",
+  "cos": 0.4827,
+  "chrf": 41.8,
+  "xcos": 0.6676
+ },
+ {
+  "id": "ar|theatre.judgedRules",
+  "lang": "ar",
+  "text": "التحكيم حسب القواعد: لا يوجد نموذج يعمل.",
+  "english": "Judged by rule: no model is running.",
+  "back": "Arbitration by the Rules: No working model.",
+  "cos": 0.3646,
+  "chrf": 21.2,
+  "xcos": 0.8243
+ },
+ {
+  "id": "vi|form.luc-bat.brief",
+  "lang": "vi",
+  "text": "Một dòng sáu âm tiết, rồi một dòng tám âm tiết mà âm tiết thứ sáu hiệp vần với âm tiết cuối dòng trên.",
+  "english": "A line of six syllables, then one of eight whose sixth syllable rhymes with the end of the first.",
+  "back": "A row of six syllables, then a row of eight syllables where the sixth syllable intersperses with the last syllable above.",
+  "cos": 0.8,
+  "chrf": 54.5,
+  "xcos": 0.8325
+ },
+ {
+  "id": "vi|check.luc-bat-rhyme",
+  "lang": "vi",
+  "text": "Âm tiết thứ sáu của mỗi dòng hiệp vần",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each syllable line",
+  "cos": 0.9049,
+  "chrf": 72.0,
+  "xcos": 0.872
+ },
+ {
+  "id": "vi|device.riposte.brief",
+  "lang": "vi",
+  "text": "Dùng lại một từ có 3 chữ cái trở lên từ bài thơ vừa rồi của đối thủ để đáp trả.",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them.",
+  "back": "Reuse a word of three letters or more from the opponent's previous poem to respond.",
+  "cos": 0.6707,
+  "chrf": 49.5,
+  "xcos": 0.8334
+ },
+ {
+  "id": "vi|device.swell.brief",
+  "lang": "vi",
+  "text": "Hãy để dòng cuối là dòng dài nhất.",
+  "english": "Make your last line your longest.",
+  "back": "Let the last line be the longest.",
+  "cos": 0.8526,
+  "chrf": 43.4,
+  "xcos": 0.8156
+ },
+ {
+  "id": "vi|device.balance.brief",
+  "lang": "vi",
+  "text": "Hãy để mọi dòng có cùng số từ.",
+  "english": "Give every line the same number of words.",
+  "back": "Let each line have the same number of words.",
+  "cos": 0.9301,
+  "chrf": 68.0,
+  "xcos": 0.8351
+ },
+ {
+  "id": "vi|device.balance.brief.char",
+  "lang": "vi",
+  "text": "Hãy để mọi dòng có cùng số chữ.",
+  "english": "Give every line the same number of characters.",
+  "back": "Let each line have the same number of letters.",
+  "cos": 0.8454,
+  "chrf": 52.9,
+  "xcos": 0.8427
+ },
+ {
+  "id": "vi|device.grandeur.brief",
+  "lang": "vi",
+  "text": "Sử dụng hai từ có 3 chữ cái trở lên.",
+  "english": "Use two words of 3 letters or more.",
+  "back": "Use two words of three letters or more.",
+  "cos": 0.9962,
+  "chrf": 83.2,
+  "xcos": 0.921
+ },
+ {
+  "id": "vi|curse.no-repeats.brief",
+  "lang": "vi",
+  "text": "Bạn không được dùng bất cứ từ nào có 3 chữ cái trở lên quá hai lần.",
+  "english": "You may not use any word of 3 letters or more twice.",
+  "back": "You may not use any word with three letters or more more than twice.",
+  "cos": 0.9802,
+  "chrf": 75.5,
+  "xcos": 0.8952
+ },
+ {
+  "id": "vi|curse.no-repeats.theirs",
+  "lang": "vi",
+  "text": "Đối thủ không được dùng bất cứ từ nào có 3 chữ cái trở lên quá hai lần.",
+  "english": "They may not use any word of 3 letters or more twice.",
+  "back": "The opponent may not use any word of three letters or more more than twice.",
+  "cos": 0.7668,
+  "chrf": 71.5,
+  "xcos": 0.788
+ },
+ {
+  "id": "vi|footer.rights",
+  "lang": "vi",
+  "text": "Bản quyền thuộc về tác giả.",
+  "english": "All rights reserved.",
+  "back": "Copyright belongs to the author.",
+  "cos": 0.3709,
+  "chrf": 18.5,
+  "xcos": 0.4555
+ },
+ {
+  "id": "vi|auth.createIntro",
+  "lang": "vi",
+  "text": "Tài khoản của bạn là một khoá truy cập được lưu trên thiết bị này hoặc trong trình quản lý mật khẩu. Chúng tôi không yêu cầu tên, email hay mật khẩu.",
+  "english": "Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email, or a password.",
+  "back": "Your account is a password stored on this device or in your password manager. We do not require your name, email address or password.",
+  "cos": 0.8972,
+  "chrf": 71.3,
+  "xcos": 0.8376
+ },
+ {
+  "id": "vi|auth.createWarning",
+  "lang": "vi",
+  "text": "Nếu bạn làm mất khoá truy cập, chúng tôi không thể giúp bạn đăng nhập lại. Sau bước này, hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.",
+  "back": "If you lose your access key, we will not be able to help you log in again. After this step, please add a second key or an email address so that you can log in again.",
+  "cos": 0.7324,
+  "chrf": 51.6,
+  "xcos": 0.8789
+ },
+ {
+  "id": "vi|auth.createWarningNoEmail",
+  "lang": "vi",
+  "text": "Nếu bạn làm mất khoá truy cập, chúng tôi không thể giúp bạn đăng nhập lại. Sau bước này, hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.",
+  "back": "If you lose your access key, we will not be able to help you log in again. After this step, add a second key so that you can log in again.",
+  "cos": 0.6886,
+  "chrf": 50.4,
+  "xcos": 0.8467
+ },
+ {
+  "id": "vi|auth.nudgeBody",
+  "lang": "vi",
+  "text": "Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.",
+  "back": "Currently, an access key is the only way to log in to this account. If you lose the key, your account will be permanently lost. Please add a second key or email address so that you can log in again.",
+  "cos": 0.7984,
+  "chrf": 49.8,
+  "xcos": 0.8746
+ },
+ {
+  "id": "vi|auth.nudgeBodyNoEmail",
+  "lang": "vi",
+  "text": "Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.",
+  "back": "Currently, an access key is the only way to log in to this account. If you lose the key, your account will be permanently lost. Please add a second key so that you can log in again.",
+  "cos": 0.7756,
+  "chrf": 50.4,
+  "xcos": 0.8609
+ },
+ {
+  "id": "vi|auth.recoveryWarning",
+  "lang": "vi",
+  "text": "Một khoá truy cập là cách duy nhất để đăng nhập. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "One passkey is your only way in. Add a second passkey or an email so you can get back in.",
+  "back": "An access key is the only way to log in. Please add a second key or an email so that you can log in again.",
+  "cos": 0.6255,
+  "chrf": 49.4,
+  "xcos": 0.8691
+ },
+ {
+  "id": "vi|auth.recoveryWarningNoEmail",
+  "lang": "vi",
+  "text": "Một khoá truy cập là cách duy nhất để đăng nhập. Hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "One passkey is your only way in. Add a second passkey so you can get back in.",
+  "back": "An access key is the only way to log in. Please add a second key so that you can log in again.",
+  "cos": 0.5369,
+  "chrf": 41.8,
+  "xcos": 0.8567
+ },
+ {
+  "id": "vi|auth.emailHint",
+  "lang": "vi",
+  "text": "Đang dùng thiết bị không có khoá truy cập? Hãy đăng nhập qua email, nếu tài khoản có email.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one.",
+  "back": "Using a device without an access key? Please log in with email, if your account has email.",
+  "cos": 0.787,
+  "chrf": 58.9,
+  "xcos": 0.8207
+ },
+ {
+  "id": "vi|auth.emailPlaceholder",
+  "lang": "vi",
+  "text": "you@example.com",
+  "english": "you@example.com",
+  "back": "you@example.com",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "vi|auth.legalAfter",
+  "lang": "vi",
+  "text": ".",
+  "english": ".",
+  "back": ".",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "vi|auth.passkeyAddedOn",
+  "lang": "vi",
+  "text": "Thêm vào 15 thg 11, 2026",
+  "english": "Added Nov 15, 2026",
+  "back": "Added on Nov 15, 2026",
+  "cos": 0.9443,
+  "chrf": 75.3,
+  "xcos": 0.9206
+ },
+ {
+  "id": "vi|battle.titleA",
+  "lang": "vi",
+  "text": "Trận đấu",
+  "english": "Battle",
+  "back": "Battle.",
+  "cos": 0.8806,
+  "chrf": 93.3,
+  "xcos": 0.7876
+ },
+ {
+  "id": "vi|battle.titleB",
+  "lang": "vi",
+  "text": "Đấu trường",
+  "english": "Arena",
+  "back": "Battlefield.",
+  "cos": 0.4494,
+  "chrf": 6.2,
+  "xcos": 0.5792
+ },
+ {
+  "id": "vi|brain.downloading",
+  "lang": "vi",
+  "text": "Đang tải Gemma: 512/3 MB",
+  "english": "Downloading Gemma: 512 of 3 MB",
+  "back": "Loading Gemma: 512/3 MB",
+  "cos": 0.8611,
+  "chrf": 62.2,
+  "xcos": 0.8789
+ },
+ {
+  "id": "vi|verdict.notUsed",
+  "lang": "vi",
+  "text": "chưa sử dụng",
+  "english": "not used",
+  "back": "unused",
+  "cos": 0.5426,
+  "chrf": 32.2,
+  "xcos": 0.9344
+ },
+ {
+  "id": "vi|verdict.missed",
+  "lang": "vi",
+  "text": "bỏ lỡ",
+  "english": "missed",
+  "back": "missed",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9052
+ },
+ {
+  "id": "vi|verdict.held",
+  "lang": "vi",
+  "text": "không bị dính",
+  "english": "held",
+  "back": "Not stuck.",
+  "cos": 0.3137,
+  "chrf": 0.0,
+  "xcos": 0.4339
+ },
+ {
+  "id": "vi|badge.written",
+  "lang": "vi",
+  "text": "Đối thủ viết sẵn",
+  "english": "Written opponent",
+  "back": "Pre-written opponent",
+  "cos": 0.9072,
+  "chrf": 86.3,
+  "xcos": 0.8098
+ },
+ {
+  "id": "vi|theatre.inPassthrough",
+  "lang": "vi",
+  "text": "Chế độ kính (nhìn xuyên).",
+  "english": "In the headset (passthrough).",
+  "back": "Glass mode.",
+  "cos": 0.211,
+  "chrf": 7.4,
+  "xcos": 0.4949
+ },
+ {
+  "id": "vi|theatre.inFullStage",
+  "lang": "vi",
+  "text": "Chế độ kính (toàn cảnh).",
+  "english": "In the headset (full stage).",
+  "back": "Glass mode (panoramic).",
+  "cos": 0.2589,
+  "chrf": 8.6,
+  "xcos": 0.6393
+ },
+ {
+  "id": "vi|theatre.declined",
+  "lang": "vi",
+  "text": "Thiết bị này không hỗ trợ trải nghiệm nhập vai.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support role-playing experience.",
+  "cos": 0.4681,
+  "chrf": 32.1,
+  "xcos": 0.5968
+ },
+ {
+  "id": "vi|theatre.xrFailed",
+  "lang": "vi",
+  "text": "Không thể bắt đầu phiên trong kính.",
+  "english": "The headset session could not start.",
+  "back": "Unable to start session in glasses.",
+  "cos": 0.5137,
+  "chrf": 33.1,
+  "xcos": 0.6895
+ },
+ {
+  "id": "zh|check.luc-bat-rhyme",
+  "lang": "zh",
+  "text": "每行的第六个音节押韵",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "Rhyming the sixth syllable of each line",
+  "cos": 0.896,
+  "chrf": 78.9,
+  "xcos": 0.8119
+ },
+ {
+  "id": "zh|device.alliteration.brief",
+  "lang": "zh",
+  "text": "在同一行中，让三个词以相同的字母开头。",
+  "english": "Start three words in one line with the same letter.",
+  "back": "In the same line, let three words start with the same letter.",
+  "cos": 0.8812,
+  "chrf": 68.0,
+  "xcos": 0.9039
+ },
+ {
+  "id": "zh|device.riposte.brief",
+  "lang": "zh",
+  "text": "从对手上一首诗中取一个不少于3个字母的词，回敬给对手。",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them.",
+  "back": "Take a word of at least three letters from an opponent's poem and return it to the opponent.",
+  "cos": 0.7423,
+  "chrf": 38.4,
+  "xcos": 0.773
+ },
+ {
+  "id": "zh|house.legendary.why",
+  "lang": "zh",
+  "text": "Sonnet Man 始终押一个韵，一路到底。",
+  "english": "The Sonnet Man rides one rhyme all the way down.",
+  "back": "Sonnet Man keeps a rhyme all the way.",
+  "cos": 0.8511,
+  "chrf": 53.3,
+  "xcos": 0.7831
+ },
+ {
+  "id": "zh|footer.sonnetMan",
+  "lang": "zh",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man",
+  "back": "Sonnet Man",
+  "cos": 0.9353,
+  "chrf": 72.0,
+  "xcos": 0.9393
+ },
+ {
+  "id": "zh|auth.passkeysEmpty",
+  "lang": "zh",
+  "text": "还没有通行密钥。添加一个，就能不用邮件验证码登录。",
+  "english": "No passkeys yet. Add one to sign in without an email code.",
+  "back": "There is no passkey yet. Adding one allows you to log in without an email authentication code.",
+  "cos": 0.919,
+  "chrf": 55.6,
+  "xcos": 0.8998
+ },
+ {
+  "id": "zh|auth.passkeysAdd",
+  "lang": "zh",
+  "text": "再添加一个通行密钥",
+  "english": "Add another passkey",
+  "back": "Add another passkey",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8186
+ },
+ {
+  "id": "zh|live.curseHolding",
+  "lang": "zh",
+  "text": "持有",
+  "english": "holding",
+  "back": "Holding",
+  "cos": 1.0,
+  "chrf": 73.5,
+  "xcos": 0.7848
+ },
+ {
+  "id": "zh|verdict.held",
+  "lang": "zh",
+  "text": "未受影响",
+  "english": "held",
+  "back": "Unaffected",
+  "cos": 0.2162,
+  "chrf": 9.6,
+  "xcos": 0.3656
+ },
+ {
+  "id": "zh|end.lost",
+  "lang": "zh",
+  "text": "今夜的舞台属于他们。",
+  "english": "The stage is theirs tonight.",
+  "back": "Tonight the stage belongs to them.",
+  "cos": 0.8805,
+  "chrf": 43.5,
+  "xcos": 0.8905
+ },
+ {
+  "id": "zh|badge.written",
+  "lang": "zh",
+  "text": "预先写好的对手",
+  "english": "Written opponent",
+  "back": "Pre-written opponents",
+  "cos": 0.8227,
+  "chrf": 85.0,
+  "xcos": 0.7247
+ },
+ {
+  "id": "zh|theatre.declined",
+  "lang": "zh",
+  "text": "此设备不支持沉浸式体验。",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive experiences.",
+  "cos": 0.7106,
+  "chrf": 47.3,
+  "xcos": 0.6545
+ },
+ {
+  "id": "zh|theatre.versePrompt",
+  "lang": "zh",
+  "text": "你的诗句会显示在这里。按下麦克风并开始吟诵，请一口气读完一行。",
+  "english": "Your verse appears here. Press the microphone and speak it, one line at a breath.",
+  "back": "Your verse will appear here. Turn on the microphone and begin chanting, please finish a line in one breath.",
+  "cos": 0.8498,
+  "chrf": 51.0,
+  "xcos": 0.7873
+ },
+ {
+  "id": "ja|check.luc-bat-rhyme",
+  "lang": "ja",
+  "text": "各行の6番目の音節が韻を踏む",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each line rhymes.",
+  "cos": 0.9839,
+  "chrf": 99.3,
+  "xcos": 0.8809
+ },
+ {
+  "id": "ja|age.consentBefore",
+  "lang": "ja",
+  "text": "親または法定保護者が以下の内容を",
+  "english": "I confirm that my parent or legal guardian has reviewed the",
+  "back": "Parents or legal guardians are required to:",
+  "cos": 0.5822,
+  "chrf": 39.9,
+  "xcos": 0.6765
+ },
+ {
+  "id": "ja|age.consentAnd",
+  "lang": "ja",
+  "text": "および",
+  "english": "and",
+  "back": "And",
+  "cos": 1.0,
+  "chrf": 38.9,
+  "xcos": 0.9623
+ },
+ {
+  "id": "ja|age.consentAfter",
+  "lang": "ja",
+  "text": "私がInspired Mileを利用することに同意していることを確認します。",
+  "english": "and consents to my use of Inspired Mile.",
+  "back": "I agree to use Inspired Mile.",
+  "cos": 0.6889,
+  "chrf": 42.3,
+  "xcos": 0.6878
+ },
+ {
+  "id": "ja|auth.legalBefore",
+  "lang": "ja",
+  "text": "サインインすることで、以下の ",
+  "english": "By signing in, you agree to our ",
+  "back": "By signing in, you agree to the following :",
+  "cos": 0.8819,
+  "chrf": 80.1,
+  "xcos": 0.6912
+ },
+ {
+  "id": "ja|round.opponentPlays",
+  "lang": "ja",
+  "text": "相手がプレイ中",
+  "english": "Your opponent plays",
+  "back": "Your opponent is playing.",
+  "cos": 0.9401,
+  "chrf": 71.6,
+  "xcos": 0.8051
+ },
+ {
+  "id": "ja|round.versePlaceholder",
+  "lang": "ja",
+  "text": "一行につき詩を一行…",
+  "english": "One line of verse per line…",
+  "back": "A line of poetry for a line...",
+  "cos": 0.7414,
+  "chrf": 27.8,
+  "xcos": 0.896
+ },
+ {
+  "id": "ja|hand.potionLastRound",
+  "lang": "ja",
+  "text": "Hamletは相手の次の詩に呪いをかけますが、これが最後のラウンドです。",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round.",
+  "back": "Hamlet curses his opponent's next poem, but this is the last round.",
+  "cos": 0.8876,
+  "chrf": 66.9,
+  "xcos": 0.7995
+ },
+ {
+  "id": "ja|verdict.missed",
+  "lang": "ja",
+  "text": "失敗",
+  "english": "missed",
+  "back": "Failure",
+  "cos": 0.3998,
+  "chrf": 5.4,
+  "xcos": 0.7044
+ },
+ {
+  "id": "ja|badge.onDevice",
+  "lang": "ja",
+  "text": "Gemma · このデバイスで対戦",
+  "english": "Gemma · on this device",
+  "back": "Gemma, fight on this device",
+  "cos": 0.7776,
+  "chrf": 71.3,
+  "xcos": 0.8575
+ },
+ {
+  "id": "ja|badge.written",
+  "lang": "ja",
+  "text": "書かれた相手",
+  "english": "Written opponent",
+  "back": "The One I Wrote To",
+  "cos": 0.4303,
+  "chrf": 12.6,
+  "xcos": 0.7193
+ },
+ {
+  "id": "ja|theatre.declined",
+  "lang": "ja",
+  "text": "このデバイスは没入型セッションをサポートしていません。",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive sessions.",
+  "cos": 0.7223,
+  "chrf": 63.0,
+  "xcos": 0.716
+ },
+ {
+  "id": "ja|theatre.judgedRules",
+  "lang": "ja",
+  "text": "ルールによる判定：モデルは実行されていません。",
+  "english": "Judged by rule: no model is running.",
+  "back": "Determination by rules: The model is not executed.",
+  "cos": 0.7665,
+  "chrf": 33.2,
+  "xcos": 0.8511
+ },
+ {
+  "id": "ko|check.luc-bat-rhyme",
+  "lang": "ko",
+  "text": "각 행의 여섯째 음절이 운을 이룸",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each line represents luck.",
+  "cos": 0.7454,
+  "chrf": 79.7,
+  "xcos": 0.8366
+ },
+ {
+  "id": "ko|age.consentBefore",
+  "lang": "ko",
+  "text": "부모님 또는 법정 보호자가 다음 내용을",
+  "english": "I confirm that my parent or legal guardian has reviewed the",
+  "back": "Your parent or legal guardian:",
+  "cos": 0.7304,
+  "chrf": 44.8,
+  "xcos": 0.6776
+ },
+ {
+  "id": "ko|age.consentAfter",
+  "lang": "ko",
+  "text": "제가 Inspired Mile을 이용하는 것에 동의했음을 확인합니다.",
+  "english": "and consents to my use of Inspired Mile.",
+  "back": "I agree to use Inspired Mile.",
+  "cos": 0.6889,
+  "chrf": 42.3,
+  "xcos": 0.7243
+ },
+ {
+  "id": "ko|age.agreeAfter",
+  "lang": "ko",
+  "text": "에 동의하는 것으로 간주합니다.",
+  "english": ".",
+  "back": "By continuing to browse the site, you agree to our use of cookies.",
+  "cos": 0.109,
+  "chrf": 8.6,
+  "xcos": 0.1817
+ },
+ {
+  "id": "ko|round.opponentPlays",
+  "lang": "ko",
+  "text": "상대가 시를 읊는 중",
+  "english": "Your opponent plays",
+  "back": "He's singing a poem.",
+  "cos": 0.1476,
+  "chrf": 7.9,
+  "xcos": 0.5962
+ },
+ {
+  "id": "ko|hand.potionLastRound",
+  "lang": "ko",
+  "text": "Hamlet은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round.",
+  "back": "Hamlet can cast a curse on his opponent's next poem, but this is the last round.",
+  "cos": 0.9023,
+  "chrf": 65.4,
+  "xcos": 0.8197
+ },
+ {
+  "id": "ko|live.signature",
+  "lang": "ko",
+  "text": "시그니처 (기교 +½): Hamlet의 대사를 인용하지 않고 반영하기",
+  "english": "Signature (+½ craft): echo Hamlet's line without quoting it",
+  "back": "Signature (Skill +½): Reflect Hamlet's dialogue without quoting it",
+  "cos": 0.8048,
+  "chrf": 59.6,
+  "xcos": 0.8184
+ },
+ {
+  "id": "ko|signature.quoted",
+  "lang": "ko",
+  "text": "그대로 인용함; 에코는 본인의 행이어야 함",
+  "english": "quoted outright; an echo must be your own line",
+  "back": "Quoted; Echo should be your own line",
+  "cos": 0.9438,
+  "chrf": 43.5,
+  "xcos": 0.8422
+ },
+ {
+  "id": "ko|verdict.notUsed",
+  "lang": "ko",
+  "text": "해당 없음",
+  "english": "not used",
+  "back": "Not applicable",
+  "cos": 0.5244,
+  "chrf": 8.4,
+  "xcos": 0.721
+ },
+ {
+  "id": "ko|verdict.missed",
+  "lang": "ko",
+  "text": "실패",
+  "english": "missed",
+  "back": "Failed",
+  "cos": 0.4477,
+  "chrf": 11.7,
+  "xcos": 0.7072
+ },
+ {
+  "id": "ko|verdict.held",
+  "lang": "ko",
+  "text": "보유",
+  "english": "held",
+  "back": "Hold",
+  "cos": 0.7357,
+  "chrf": 20.8,
+  "xcos": 0.6852
+ },
+ {
+  "id": "ko|verdict.who.player",
+  "lang": "ko",
+  "text": "플레이어",
+  "english": "you",
+  "back": "Player",
+  "cos": 0.4202,
+  "chrf": 9.3,
+  "xcos": 0.4082
+ },
+ {
+  "id": "ko|verdict.who.split",
+  "lang": "ko",
+  "text": "무승부",
+  "english": "split",
+  "back": "Draw.",
+  "cos": 0.2617,
+  "chrf": 0.0,
+  "xcos": 0.3828
+ },
+ {
+  "id": "ko|end.over",
+  "lang": "ko",
+  "text": "결투가 종료되었습니다",
+  "english": "The duel is over",
+  "back": "The duel is over.",
+  "cos": 0.9827,
+  "chrf": 98.1,
+  "xcos": 0.8179
+ },
+ {
+  "id": "ko|badge.written",
+  "lang": "ko",
+  "text": "쓰인 상대",
+  "english": "Written opponent",
+  "back": "Contacts",
+  "cos": 0.121,
+  "chrf": 7.5,
+  "xcos": 0.761
+ },
+ {
+  "id": "ko|theatre.declined",
+  "lang": "ko",
+  "text": "이 기기는 몰입형 세션을 지원하지 않습니다.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive sessions.",
+  "cos": 0.7223,
+  "chrf": 63.0,
+  "xcos": 0.7078
+ },
+ {
+  "id": "ko|theatre.cursesYou",
+  "lang": "ko",
+  "text": "당신에게 걸린 저주: 내 낱말은 어느 것도 5글자를 넘을 수 없어요.",
+  "english": "Curses you: No word of yours may be longer than 5 letters.",
+  "back": "Curse on you: None of my words can exceed five letters.",
+  "cos": 0.8544,
+  "chrf": 34.7,
+  "xcos": 0.8124
+ },
+ {
+  "id": "pl|check.spells.words",
+  "lang": "pl",
+  "text": "Wersy otwierane kolejno przez czaszka",
+  "english": "Lines open, in order, with skull",
+  "back": "Verses opened successively by a skull",
+  "cos": 0.6048,
+  "chrf": 26.3,
+  "xcos": 0.7122
+ },
+ {
+  "id": "pl|age.agreeBefore",
+  "lang": "pl",
+  "text": "Przechodząc dalej, akceptujesz nasze",
+  "english": "By continuing, you agree to our",
+  "back": "By continuing, you accept our",
+  "cos": 0.8382,
+  "chrf": 68.0,
+  "xcos": 0.9192
+ },
+ {
+  "id": "pl|auth.emailPlaceholder",
+  "lang": "pl",
+  "text": "uzytkownik@przyklad.pl",
+  "english": "you@example.com",
+  "back": "user@example.com",
+  "cos": 0.8659,
+  "chrf": 75.4,
+  "xcos": 0.5917
+ },
+ {
+  "id": "pl|battle.titleA",
+  "lang": "pl",
+  "text": "Bitwa",
+  "english": "Battle",
+  "back": "Battle",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8327
+ },
+ {
+  "id": "pl|battle.titleB",
+  "lang": "pl",
+  "text": "Arena",
+  "english": "Arena",
+  "back": "Arena",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "pl|battle.cardInCity",
+  "lang": "pl",
+  "text": "Hamlet w Verona",
+  "english": "Hamlet in Verona",
+  "back": "Hamlet in Verona",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9924
+ },
+ {
+  "id": "pl|round.opponentPlays",
+  "lang": "pl",
+  "text": "Twój rywal gra",
+  "english": "Your opponent plays",
+  "back": "Your rival game",
+  "cos": 0.6351,
+  "chrf": 14.1,
+  "xcos": 0.8735
+ },
+ {
+  "id": "pl|round.versePlaceholder",
+  "lang": "pl",
+  "text": "Jeden wers w każdej linii…",
+  "english": "One line of verse per line…",
+  "back": "One verse in each line…",
+  "cos": 0.9249,
+  "chrf": 34.7,
+  "xcos": 0.848
+ },
+ {
+  "id": "pl|variant.bonus",
+  "lang": "pl",
+  "text": "+3 dowcip",
+  "english": "+3 wit",
+  "back": "+3 jokes",
+  "cos": 0.6167,
+  "chrf": 12.0,
+  "xcos": 0.8539
+ },
+ {
+  "id": "pl|signature.none",
+  "lang": "pl",
+  "text": "ta karta nie ma kwestii sygnatury",
+  "english": "this card has no signature line",
+  "back": "This card has no issue of signature",
+  "cos": 0.8661,
+  "chrf": 67.0,
+  "xcos": 0.866
+ },
+ {
+  "id": "pl|verdict.notUsed",
+  "lang": "pl",
+  "text": "nieużywane",
+  "english": "not used",
+  "back": "unused",
+  "cos": 0.5426,
+  "chrf": 32.2,
+  "xcos": 0.8808
+ },
+ {
+  "id": "pl|verdict.held",
+  "lang": "pl",
+  "text": "utrzymana",
+  "english": "held",
+  "back": "maintained",
+  "cos": 0.5353,
+  "chrf": 9.6,
+  "xcos": 0.7643
+ },
+ {
+  "id": "pl|badge.written",
+  "lang": "pl",
+  "text": "Gotowy rywal",
+  "english": "Written opponent",
+  "back": "The Ready Rival",
+  "cos": 0.3856,
+  "chrf": 3.4,
+  "xcos": 0.6096
+ },
+ {
+  "id": "pl|theatre.titleA",
+  "lang": "pl",
+  "text": "Teatr",
+  "english": "The",
+  "back": "Theatre",
+  "cos": 0.3202,
+  "chrf": 70.2,
+  "xcos": 0.3157
+ },
+ {
+  "id": "pl|theatre.questBody",
+  "lang": "pl",
+  "text": "Otwiera się w trybie passthrough, więc scena pojawia się w twoim pokoju. Wskaż kontrolerem lub uszczypnij dłonią.",
+  "english": "Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand.",
+  "back": "It opens in passthrough mode, so the scene appears in your room.",
+  "cos": 0.6318,
+  "chrf": 43.5,
+  "xcos": 0.8021
+ },
+ {
+  "id": "pl|theatre.declined",
+  "lang": "pl",
+  "text": "To urządzenie nie obsługuje sesji immersyjnej.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive sessions.",
+  "cos": 0.7223,
+  "chrf": 63.0,
+  "xcos": 0.7252
+ },
+ {
+  "id": "pl|theatre.micLoading",
+  "lang": "pl",
+  "text": "Wczytywanie dźwięku…",
+  "english": "Loading the ear…",
+  "back": "Loading audio...",
+  "cos": 0.5108,
+  "chrf": 38.3,
+  "xcos": 0.7395
+ },
+ {
+  "id": "ru|form.epistrophe.brief.char",
+  "lang": "ru",
+  "text": "Три строки, и все заканчиваются одним и тем же знаком.",
+  "english": "Three lines that all end on the same character.",
+  "back": "Three lines, and they all end with the same sign.",
+  "cos": 0.8097,
+  "chrf": 45.5,
+  "xcos": 0.8285
+ },
+ {
+  "id": "ru|check.spells.words",
+  "lang": "ru",
+  "text": "Строки по порядку, начинаются с череп",
+  "english": "Lines open, in order, with skull",
+  "back": "Lines in order, starting with skull",
+  "cos": 0.8573,
+  "chrf": 57.2,
+  "xcos": 0.6293
+ },
+ {
+  "id": "ru|check.luc-bat-rhyme",
+  "lang": "ru",
+  "text": "Шестые слоги в строках рифмуются",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "Sixth syllables in the lines rhyme",
+  "cos": 0.9384,
+  "chrf": 51.3,
+  "xcos": 0.731
+ },
+ {
+  "id": "ru|device.ring.brief.char",
+  "lang": "ru",
+  "text": "Закончи строфу тем же знаком, с которого она началась.",
+  "english": "End your verse on the same character it began with.",
+  "back": "Finish the stanza with the same sign it began.",
+  "cos": 0.6803,
+  "chrf": 30.7,
+  "xcos": 0.8297
+ },
+ {
+  "id": "ru|nav.explore",
+  "lang": "ru",
+  "text": "Исследовать",
+  "english": "Explore",
+  "back": "Investigate",
+  "cos": 0.4547,
+  "chrf": 2.1,
+  "xcos": 0.8141
+ },
+ {
+  "id": "ru|nav.toggleAudio",
+  "lang": "ru",
+  "text": "Выключить звук",
+  "english": "Toggle audio",
+  "back": "Mute",
+  "cos": 0.4145,
+  "chrf": 5.2,
+  "xcos": 0.8511
+ },
+ {
+  "id": "ru|nav.toggleMenu",
+  "lang": "ru",
+  "text": "Открыть меню",
+  "english": "Toggle menu",
+  "back": "Open Menu",
+  "cos": 0.6573,
+  "chrf": 13.0,
+  "xcos": 0.7473
+ },
+ {
+  "id": "ru|age.intro",
+  "lang": "ru",
+  "text": "Пожалуйста, подтвердите свой возраст, чтобы продолжить.",
+  "english": "Please confirm your age to continue.",
+  "back": "Please confirm your age to continue.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9322
+ },
+ {
+  "id": "ru|age.errorDob",
+  "lang": "ru",
+  "text": "Пожалуйста, выберите полную дату рождения.",
+  "english": "Please select your full date of birth.",
+  "back": "Please select a full date of birth.",
+  "cos": 0.8828,
+  "chrf": 79.2,
+  "xcos": 0.918
+ },
+ {
+  "id": "ru|age.minorBody",
+  "lang": "ru",
+  "text": "Для использования Inspired Mile вам должно быть не менее 13 лет. Пожалуйста, вернитесь, когда вы будете соответствовать возрастным требованиям.",
+  "english": "You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement.",
+  "back": "You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirements.",
+  "cos": 0.998,
+  "chrf": 98.8,
+  "xcos": 0.957
+ },
+ {
+  "id": "ru|age.teenBody",
+  "lang": "ru",
+  "text": "Так как вам нет 18 лет, для использования Inspired Mile требуется согласие родителей или опекунов.",
+  "english": "Since you are under 18, you need parental or guardian consent to use Inspired Mile.",
+  "back": "Because you are under 18, you need parental or guardian consent to use Inspired Mile.",
+  "cos": 0.9796,
+  "chrf": 93.7,
+  "xcos": 0.9198
+ },
+ {
+  "id": "ru|age.agreeBefore",
+  "lang": "ru",
+  "text": "Продолжая, вы соглашаетесь с нашими",
+  "english": "By continuing, you agree to our",
+  "back": "By continuing, you agree to our",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9494
+ },
+ {
+  "id": "ru|migrate.body",
+  "lang": "ru",
+  "text": "На этом устройстве найден локальный прогресс. Синхронизируй его с учётной записью, чтобы он был доступен на всех устройствах.",
+  "english": "We found local game progress. Sync it to your account so it's saved across devices.",
+  "back": "Local progress has been found on this device. Please sync it to your account so that it is available on all devices.",
+  "cos": 0.7707,
+  "chrf": 51.4,
+  "xcos": 0.7406
+ },
+ {
+  "id": "ru|pwa.install",
+  "lang": "ru",
+  "text": "Установите Inspired Mile для лучшего игрового опыта",
+  "english": "Install Inspired Mile for the best experience",
+  "back": "Install Inspired Mile for the best gaming experience",
+  "cos": 0.8916,
+  "chrf": 90.0,
+  "xcos": 0.8869
+ },
+ {
+  "id": "ru|auth.emailHint",
+  "lang": "ru",
+  "text": "Нет ключа доступа на этом устройстве? Войдите по почте, если она привязана к учётной записи.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one.",
+  "back": "Don't have a passkey on this device? Sign in with your email if it is linked to an account.",
+  "cos": 0.8986,
+  "chrf": 42.3,
+  "xcos": 0.7883
+ },
+ {
+  "id": "ru|auth.codeHeading",
+  "lang": "ru",
+  "text": "Введите код",
+  "english": "Enter your code",
+  "back": "Enter code",
+  "cos": 0.8734,
+  "chrf": 45.3,
+  "xcos": 0.9346
+ },
+ {
+  "id": "ru|auth.legalBefore",
+  "lang": "ru",
+  "text": "Входя в систему, вы принимаете наши ",
+  "english": "By signing in, you agree to our ",
+  "back": "By logging in, you accept our",
+  "cos": 0.7467,
+  "chrf": 43.5,
+  "xcos": 0.9133
+ },
+ {
+  "id": "ru|auth.offerBody",
+  "lang": "ru",
+  "text": "В следующий раз войдите с помощью отпечатка пальца, лица или блокировки экрана. Без кода и ожидания письма.",
+  "english": "Next time, sign in with your fingerprint, face, or screen lock. No code, no waiting for an email.",
+  "back": "Next time, log in with your fingerprint, face or screen lock. No code and no waiting for an email.",
+  "cos": 0.9811,
+  "chrf": 82.8,
+  "xcos": 0.8835
+ },
+ {
+  "id": "ru|auth.passkeysEmpty",
+  "lang": "ru",
+  "text": "Ключей доступа пока нет. Добавьте один, чтобы входить без кода из письма.",
+  "english": "No passkeys yet. Add one to sign in without an email code.",
+  "back": "There are no access keys yet. Add one to log in without the code from the email.",
+  "cos": 0.7759,
+  "chrf": 56.2,
+  "xcos": 0.8716
+ },
+ {
+  "id": "ru|auth.error.email_in_use",
+  "lang": "ru",
+  "text": "Этот адрес уже привязан к другой учётной записи. Выйдите и войдите с ним.",
+  "english": "That address already belongs to another account. Sign out and sign in with it instead.",
+  "back": "This address is already associated with another account. Log out and log in with it.",
+  "cos": 0.9259,
+  "chrf": 51.1,
+  "xcos": 0.8194
+ },
+ {
+  "id": "ru|battle.cardInCity",
+  "lang": "ru",
+  "text": "Hamlet в Verona",
+  "english": "Hamlet in Verona",
+  "back": "Hamlet in Verona",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9601
+ },
+ {
+  "id": "ru|round.items",
+  "lang": "ru",
+  "text": "Реликвии и зелья (по 1 чернилам)",
+  "english": "Relics and potions (1 ink each)",
+  "back": "Relics and Potions (each 1 ink)",
+  "cos": 0.993,
+  "chrf": 60.0,
+  "xcos": 0.8748
+ },
+ {
+  "id": "ru|hand.relicNote",
+  "lang": "ru",
+  "text": "Hamlet даёт тебе слова силы: череп, шутка и могила.",
+  "english": "Hamlet lends you: skull, jest, and grave.",
+  "back": "Hamlet gives you words of power: skull, joke and grave.",
+  "cos": 0.824,
+  "chrf": 51.4,
+  "xcos": 0.7976
+ },
+ {
+  "id": "ru|hand.potionLastRound",
+  "lang": "ru",
+  "text": "Hamlet наложила бы проклятие на следующую строфу соперника, но это последний раунд.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round.",
+  "back": "Hamlet would have cursed the opponent's next stanza, but this is the last round.",
+  "cos": 0.9314,
+  "chrf": 77.9,
+  "xcos": 0.8463
+ },
+ {
+  "id": "ru|variant.bonus",
+  "lang": "ru",
+  "text": "+3 остроумие",
+  "english": "+3 wit",
+  "back": "+3 wit",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8223
+ },
+ {
+  "id": "ru|verdict.notUsed",
+  "lang": "ru",
+  "text": "не использовалось",
+  "english": "not used",
+  "back": "Not used",
+  "cos": 1.0,
+  "chrf": 73.5,
+  "xcos": 0.9654
+ },
+ {
+  "id": "ru|verdict.missed",
+  "lang": "ru",
+  "text": "промах",
+  "english": "missed",
+  "back": "failed",
+  "cos": 0.4477,
+  "chrf": 11.7,
+  "xcos": 0.7527
+ },
+ {
+  "id": "ru|verdict.held",
+  "lang": "ru",
+  "text": "удержано",
+  "english": "held",
+  "back": "Retained",
+  "cos": 0.5151,
+  "chrf": 10.4,
+  "xcos": 0.7748
+ },
+ {
+  "id": "ru|verdict.seeResult",
+  "lang": "ru",
+  "text": "Посмотреть результат",
+  "english": "See the result",
+  "back": "See the result",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9664
+ },
+ {
+  "id": "ru|badge.written",
+  "lang": "ru",
+  "text": "Готовый соперник",
+  "english": "Written opponent",
+  "back": "A Ready Opponent",
+  "cos": 0.6115,
+  "chrf": 36.4,
+  "xcos": 0.6111
+ },
+ {
+  "id": "ru|theatre.flat",
+  "lang": "ru",
+  "text": "Играть в плоском режиме",
+  "english": "Play the flat version",
+  "back": "Play in flat mode",
+  "cos": 0.7911,
+  "chrf": 24.5,
+  "xcos": 0.7708
+ },
+ {
+  "id": "id|check.spells.words",
+  "lang": "id",
+  "text": "Baris terbuka, berurutan, dengan tengkorak",
+  "english": "Lines open, in order, with skull",
+  "back": "Open rows, sequential, with skulls",
+  "cos": 0.6435,
+  "chrf": 38.1,
+  "xcos": 0.8257
+ },
+ {
+  "id": "id|check.growing",
+  "lang": "id",
+  "text": "Setiap baris memiliki lebih banyak kata dari sebelumnya",
+  "english": "Each line has more words than the last",
+  "back": "Each line has more words than the previous one .",
+  "cos": 0.9178,
+  "chrf": 81.8,
+  "xcos": 0.8693
+ },
+ {
+  "id": "id|check.growing.char",
+  "lang": "id",
+  "text": "Setiap baris memiliki lebih banyak aksara dari sebelumnya",
+  "english": "Each line has more characters than the last",
+  "back": "Each line has more characters than the previous one",
+  "cos": 0.9477,
+  "chrf": 84.9,
+  "xcos": 0.8775
+ },
+ {
+  "id": "id|check.luc-bat-rhyme",
+  "lang": "id",
+  "text": "Suku kata keenam di setiap baris berima",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "Sixth syllable in each syllable line",
+  "cos": 0.878,
+  "chrf": 44.6,
+  "xcos": 0.8524
+ },
+ {
+  "id": "id|device.swell.name",
+  "lang": "id",
+  "text": "Gelombang Besar",
+  "english": "The Swell",
+  "back": "Big Wave",
+  "cos": 0.3522,
+  "chrf": 2.1,
+  "xcos": 0.402
+ },
+ {
+  "id": "id|nav.toggleAudio",
+  "lang": "id",
+  "text": "Atur suara",
+  "english": "Toggle audio",
+  "back": "Adjust volume",
+  "cos": 0.488,
+  "chrf": 7.4,
+  "xcos": 0.7332
+ },
+ {
+  "id": "id|nav.toggleMenu",
+  "lang": "id",
+  "text": "Buka/tutup menu",
+  "english": "Toggle menu",
+  "back": "Open/close menu",
+  "cos": 0.5771,
+  "chrf": 30.0,
+  "xcos": 0.675
+ },
+ {
+  "id": "id|age.agreeAfter",
+  "lang": "id",
+  "text": "kami.",
+  "english": ".",
+  "back": "us.",
+  "cos": 0.3093,
+  "chrf": 71.4,
+  "xcos": 0.5511
+ },
+ {
+  "id": "id|auth.legalAfter",
+  "lang": "id",
+  "text": "kami.",
+  "english": ".",
+  "back": "us.",
+  "cos": 0.3093,
+  "chrf": 71.4,
+  "xcos": 0.5511
+ },
+ {
+  "id": "id|auth.error.invalid_email",
+  "lang": "id",
+  "text": "Itu tidak terlihat seperti alamat email.",
+  "english": "That does not look like an email address.",
+  "back": "That doesn't look like an email address.",
+  "cos": 0.9808,
+  "chrf": 88.6,
+  "xcos": 0.885
+ },
+ {
+  "id": "id|battle.badge",
+  "lang": "id",
+  "text": "Arena Langsung",
+  "english": "Live Arena",
+  "back": "Arena Langsung",
+  "cos": 0.5989,
+  "chrf": 32.0,
+  "xcos": 0.8897
+ },
+ {
+  "id": "id|battle.titleA",
+  "lang": "id",
+  "text": "Pertarungan",
+  "english": "Battle",
+  "back": "Fighting",
+  "cos": 0.7549,
+  "chrf": 2.6,
+  "xcos": 0.8691
+ },
+ {
+  "id": "id|battle.titleB",
+  "lang": "id",
+  "text": "Arena",
+  "english": "Arena",
+  "back": "Arena",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "id|battle.prepareNote",
+  "lang": "id",
+  "text": "Setiap aksara hanya bisa naik panggung satu kali. Relik dan ramuan memakan tinta.",
+  "english": "Each character can take the stage once. Relics and potions cost ink.",
+  "back": "Each character can only be on stage once, relics and spices eat ink.",
+  "cos": 0.7672,
+  "chrf": 55.6,
+  "xcos": 0.8524
+ },
+ {
+  "id": "id|brain.failed",
+  "lang": "id",
+  "text": "Model tidak dapat berjalan di perangkat ini. Anda tetap bisa bermain melawan lawan tertulis.",
+  "english": "The model could not start on this device. You can still play against the written opponent.",
+  "back": "The model cannot run on this device. You can still play against written opponents.",
+  "cos": 0.8223,
+  "chrf": 74.8,
+  "xcos": 0.8588
+ },
+ {
+  "id": "id|hand.relicNote",
+  "lang": "id",
+  "text": "Hamlet memberikanmu: tengkorak, lelucon, dan kubur.",
+  "english": "Hamlet lends you: skull, jest, and grave.",
+  "back": "Hamlet gives you: a skull, a joke, and a grave.",
+  "cos": 0.8597,
+  "chrf": 45.0,
+  "xcos": 0.854
+ },
+ {
+  "id": "id|hand.potionNote",
+  "lang": "id",
+  "text": "Hamlet mengutuk syair lawan berikutnya: Tidak satu pun katamu boleh lebih dari 5 huruf.",
+  "english": "Hamlet curses your opponent's next verse: No word of yours may be longer than 5 letters.",
+  "back": "Hamlet curses the next opponent's poem: No word of yours may be more than five letters.",
+  "cos": 0.914,
+  "chrf": 62.0,
+  "xcos": 0.8868
+ },
+ {
+  "id": "id|signature.none",
+  "lang": "id",
+  "text": "kartu ini tidak memiliki dialog tanda tangan",
+  "english": "this card has no signature line",
+  "back": "This card does not have a signature dialog",
+  "cos": 0.8344,
+  "chrf": 51.9,
+  "xcos": 0.8372
+ },
+ {
+  "id": "id|badge.written",
+  "lang": "id",
+  "text": "Lawan tertulis",
+  "english": "Written opponent",
+  "back": "Opponents written",
+  "cos": 0.8687,
+  "chrf": 60.4,
+  "xcos": 0.9182
+ },
+ {
+  "id": "id|theatre.titleA",
+  "lang": "id",
+  "text": "The",
+  "english": "The",
+  "back": "The",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "id|theatre.declined",
+  "lang": "id",
+  "text": "Perangkat ini tidak mendukung sesi imersif.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive sessions.",
+  "cos": 0.7223,
+  "chrf": 63.0,
+  "xcos": 0.7346
+ },
+ {
+  "id": "id|theatre.pick",
+  "lang": "id",
+  "text": "Pilih aksara dari tanganmu.",
+  "english": "Pick a character from your hand.",
+  "back": "Pick a character from your hand.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8405
+ },
+ {
+  "id": "es|form.jueju.brief",
+  "lang": "es",
+  "text": "Cuatro versos, todos de cinco caracteres o todos de siete, la forma de una cuarteta clásica.",
+  "english": "Four lines, all of five characters or all of seven, the shape of a classical quatrain.",
+  "back": "Four verses, all of five characters or all of seven, the form of a classic quartet.",
+  "cos": 0.6228,
+  "chrf": 68.3,
+  "xcos": 0.8906
+ },
+ {
+  "id": "es|check.spells.words",
+  "lang": "es",
+  "text": "Versos abiertos, en orden, con calavera",
+  "english": "Lines open, in order, with skull",
+  "back": "Open verses, in order, with skull",
+  "cos": 0.6582,
+  "chrf": 68.2,
+  "xcos": 0.7726
+ },
+ {
+  "id": "es|footer.sonnetMan",
+  "lang": "es",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man",
+  "back": "Sonnet Man",
+  "cos": 0.9353,
+  "chrf": 72.0,
+  "xcos": 0.9393
+ },
+ {
+  "id": "es|auth.emailHint",
+  "lang": "es",
+  "text": "¿En un dispositivo sin tu llave de acceso? Inicia sesión por correo, si tu cuenta tiene uno.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one.",
+  "back": "On a device without your passkey? Sign in with email, if your account has one.",
+  "cos": 0.9951,
+  "chrf": 91.7,
+  "xcos": 0.9431
+ },
+ {
+  "id": "es|battle.titleA",
+  "lang": "es",
+  "text": "Batalla",
+  "english": "Battle",
+  "back": "Battle",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9421
+ },
+ {
+  "id": "es|battle.titleB",
+  "lang": "es",
+  "text": "Arena",
+  "english": "Arena",
+  "back": "Arena",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "es|round.cursesYou",
+  "lang": "es",
+  "text": "Hamlet te lanza la maldición Ariel: Ninguna de tus palabras puede tener más de 5 letras.",
+  "english": "Hamlet curses you with Ariel: No word of yours may be longer than 5 letters.",
+  "back": "Hamlet casts the curse Ariel: None of your words can have more than 5 letters.",
+  "cos": 0.9142,
+  "chrf": 49.8,
+  "xcos": 0.8871
+ },
+ {
+  "id": "es|verdict.notUsed",
+  "lang": "es",
+  "text": "no utilizado",
+  "english": "not used",
+  "back": "not used",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9685
+ },
+ {
+  "id": "es|verdict.missed",
+  "lang": "es",
+  "text": "fallido",
+  "english": "missed",
+  "back": "failed",
+  "cos": 0.4477,
+  "chrf": 11.7,
+  "xcos": 0.8086
+ },
+ {
+  "id": "es|verdict.held",
+  "lang": "es",
+  "text": "mantenida",
+  "english": "held",
+  "back": "maintained",
+  "cos": 0.5353,
+  "chrf": 9.6,
+  "xcos": 0.7724
+ },
+ {
+  "id": "es|badge.writtenJudged",
+  "lang": "es",
+  "text": "Rival de versos escritos · juzgado por Gemma",
+  "english": "Written opponent · judged by Gemma",
+  "back": "Rival of written verses · judged by Gemma",
+  "cos": 0.7881,
+  "chrf": 55.1,
+  "xcos": 0.8659
+ },
+ {
+  "id": "es|theatre.judgedRules",
+  "lang": "es",
+  "text": "Juzgado por regla: no hay ningún modelo en ejecución.",
+  "english": "Judged by rule: no model is running.",
+  "back": "Judged by rule: there is no running model.",
+  "cos": 0.9295,
+  "chrf": 64.3,
+  "xcos": 0.8788
+ },
+ {
+  "id": "fr|check.spells.words",
+  "lang": "fr",
+  "text": "Vers ouverts, dans l'ordre, avec crâne",
+  "english": "Lines open, in order, with skull",
+  "back": "Open worms, in order, with skull",
+  "cos": 0.5634,
+  "chrf": 68.1,
+  "xcos": 0.8574
+ },
+ {
+  "id": "fr|device.ring.brief.char",
+  "lang": "fr",
+  "text": "Terminez votre strophe par le caractère qui l’a commencée.",
+  "english": "End your verse on the same character it began with.",
+  "back": "Finish your stanza with the character that started it.",
+  "cos": 0.7813,
+  "chrf": 34.3,
+  "xcos": 0.8591
+ },
+ {
+  "id": "fr|footer.sonnetMan",
+  "lang": "fr",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man",
+  "back": "Sonnet Man",
+  "cos": 0.9353,
+  "chrf": 72.0,
+  "xcos": 0.9393
+ },
+ {
+  "id": "fr|auth.createWarning",
+  "lang": "fr",
+  "text": "Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès ou un e-mail pour pouvoir revenir.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.",
+  "back": "If you lose the access key, we will not be able to let you in.Add a second access key or an e-mail so you can come back.",
+  "cos": 0.8168,
+  "chrf": 52.4,
+  "xcos": 0.9071
+ },
+ {
+  "id": "fr|auth.createWarningNoEmail",
+  "lang": "fr",
+  "text": "Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès pour pouvoir revenir.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.",
+  "back": "If you lose the access key, we will not be able to let you in.Add a second access key to get back.",
+  "cos": 0.7811,
+  "chrf": 45.1,
+  "xcos": 0.8994
+ },
+ {
+  "id": "fr|auth.nudgeBody",
+  "lang": "fr",
+  "text": "Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès ou un e-mail pour pouvoir revenir.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.",
+  "back": "At the moment, only one access key opens this account, so if you lose it, your account will also be lost. Add a second access key or an e-mail to get back.",
+  "cos": 0.84,
+  "chrf": 45.8,
+  "xcos": 0.8603
+ },
+ {
+  "id": "fr|auth.nudgeBodyNoEmail",
+  "lang": "fr",
+  "text": "Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès pour pouvoir revenir.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.",
+  "back": "At the moment, only one access key opens this account, so if you lose it, your account will also be lost. Add a second access key to get back in.",
+  "cos": 0.8409,
+  "chrf": 45.5,
+  "xcos": 0.8459
+ },
+ {
+  "id": "fr|battle.titleB",
+  "lang": "fr",
+  "text": "Combat",
+  "english": "Arena",
+  "back": "Combat",
+  "cos": 0.3321,
+  "chrf": 3.8,
+  "xcos": 0.3306
+ },
+ {
+  "id": "fr|brain.checking",
+  "lang": "fr",
+  "text": "Vérification de la compatibilité de cet appareil…",
+  "english": "Checking what this device can run…",
+  "back": "Checking the compatibility of this device…",
+  "cos": 0.7396,
+  "chrf": 49.5,
+  "xcos": 0.723
+ },
+ {
+  "id": "fr|signature.none",
+  "lang": "fr",
+  "text": "cette carte n’a pas de réplique signature",
+  "english": "this card has no signature line",
+  "back": "this card has no signature replica",
+  "cos": 0.8214,
+  "chrf": 83.3,
+  "xcos": 0.8856
+ },
+ {
+  "id": "fr|verdict.notUsed",
+  "lang": "fr",
+  "text": "non utilisé",
+  "english": "not used",
+  "back": "not used",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9821
+ },
+ {
+  "id": "fr|verdict.missed",
+  "lang": "fr",
+  "text": "manqué",
+  "english": "missed",
+  "back": "missed",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9629
+ },
+ {
+  "id": "fr|badge.written",
+  "lang": "fr",
+  "text": "Adversaire écrit",
+  "english": "Written opponent",
+  "back": "Adversaire écrit",
+  "cos": 0.2548,
+  "chrf": 9.2,
+  "xcos": 0.9289
+ },
+ {
+  "id": "fr|theatre.visionBody",
+  "lang": "fr",
+  "text": "S’ouvre en scène complète. Regardez une carte et pincez. Safari sur visionOS ne propose pas le mode passthrough pour les pages web.",
+  "english": "Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages.",
+  "back": "Opens in full scene. Look at a map and pinch. Safari on visionOS doesn’t offer passthrough mode for web pages.",
+  "cos": 0.9067,
+  "chrf": 70.6,
+  "xcos": 0.9042
+ },
+ {
+  "id": "fr|theatre.declined",
+  "lang": "fr",
+  "text": "Cet appareil ne permet pas de session immersive.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not allow immersive session.",
+  "cos": 0.726,
+  "chrf": 67.4,
+  "xcos": 0.7677
+ },
+ {
+  "id": "fr|theatre.composingDraft",
+  "lang": "fr",
+  "text": "composition en cours… jet 3 sur 3",
+  "english": "composing… draft 3 of 3",
+  "back": "composition in progress… jet 3 sur 3",
+  "cos": 0.5821,
+  "chrf": 31.4,
+  "xcos": 0.813
+ },
+ {
+  "id": "fr|theatre.submit",
+  "lang": "fr",
+  "text": "Dites-la",
+  "english": "Speak it",
+  "back": "Say it.",
+  "cos": 0.5871,
+  "chrf": 12.7,
+  "xcos": 0.7995
+ },
+ {
+  "id": "de|check.spells.words",
+  "lang": "de",
+  "text": "Zeilen beginnen fortlaufend mit Schädel",
+  "english": "Lines open, in order, with skull",
+  "back": "Rows begin with skull",
+  "cos": 0.6533,
+  "chrf": 32.2,
+  "xcos": 0.6299
+ },
+ {
+  "id": "de|check.luc-bat-rhyme",
+  "lang": "de",
+  "text": "Die sechste Silbe jeder Zeile reimt sich",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each line rhymes",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8855
+ },
+ {
+  "id": "de|device.riposte.brief",
+  "lang": "de",
+  "text": "Wende ein Wort mit 3 Buchstaben oder mehr aus der letzten Strophe deines Gegners gegen ihn.",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them.",
+  "back": "Turn a word of 3 letters or more from your opponent's last verse against him.",
+  "cos": 0.9459,
+  "chrf": 83.9,
+  "xcos": 0.8844
+ },
+ {
+  "id": "de|device.grandeur.brief",
+  "lang": "de",
+  "text": "Verwende zwei Wörter mit 3 Buchstaben oder mehr.",
+  "english": "Use two words of 3 letters or more.",
+  "back": "Use two words of 3 letters or more.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9351
+ },
+ {
+  "id": "de|curse.no-repeats.brief",
+  "lang": "de",
+  "text": "Du darfst kein Wort mit 3 Buchstaben oder mehr zweimal verwenden.",
+  "english": "You may not use any word of 3 letters or more twice.",
+  "back": "You may not use a word of 3 letters or more twice.",
+  "cos": 0.9884,
+  "chrf": 89.0,
+  "xcos": 0.9237
+ },
+ {
+  "id": "de|curse.no-repeats.theirs",
+  "lang": "de",
+  "text": "Sie dürfen kein Wort mit 3 Buchstaben oder mehr zweimal verwenden.",
+  "english": "They may not use any word of 3 letters or more twice.",
+  "back": "You may not use a word of 3 letters or more twice.",
+  "cos": 0.8251,
+  "chrf": 79.5,
+  "xcos": 0.8913
+ },
+ {
+  "id": "de|auth.createWarning",
+  "lang": "de",
+  "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.",
+  "back": "If you lose the passkey, we can’t let you in again, so add a second passkey or email to get back in.",
+  "cos": 0.9696,
+  "chrf": 62.1,
+  "xcos": 0.9065
+ },
+ {
+  "id": "de|auth.createWarningNoEmail",
+  "lang": "de",
+  "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.",
+  "back": "If you lose the passkey, we can’t let you in again, so add a second passkey afterwards to regain access.",
+  "cos": 0.9398,
+  "chrf": 56.4,
+  "xcos": 0.8972
+ },
+ {
+  "id": "de|auth.nudgeBody",
+  "lang": "de",
+  "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.",
+  "back": "At the moment, a single passkey is the only way to access this account, so if you lose it, your account will be lost. Add a second passkey or email address to get back in.",
+  "cos": 0.954,
+  "chrf": 58.9,
+  "xcos": 0.8778
+ },
+ {
+  "id": "de|auth.nudgeBodyNoEmail",
+  "lang": "de",
+  "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.",
+  "back": "At the moment, a single passkey is the only way to access this account; if you lose it, your account will be lost. Add a second passkey so that you can regain access.",
+  "cos": 0.9177,
+  "chrf": 57.3,
+  "xcos": 0.8651
+ },
+ {
+  "id": "de|auth.recoveryWarning",
+  "lang": "de",
+  "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "One passkey is your only way in. Add a second passkey or an email so you can get back in.",
+  "back": "A single passkey is your only access, so add a second passkey or email to get back in.",
+  "cos": 0.9495,
+  "chrf": 63.6,
+  "xcos": 0.8817
+ },
+ {
+  "id": "de|auth.recoveryWarningNoEmail",
+  "lang": "de",
+  "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "One passkey is your only way in. Add a second passkey so you can get back in.",
+  "back": "A single passkey is your only access, so add a second passkey to get back in.",
+  "cos": 0.9376,
+  "chrf": 65.3,
+  "xcos": 0.8641
+ },
+ {
+  "id": "de|auth.error.email_in_use",
+  "lang": "de",
+  "text": "Diese Adresse ist bereits mit einem anderen Konto verknüpft. Melde dich ab und stattdessen mit diesem Konto an.",
+  "english": "That address already belongs to another account. Sign out and sign in with it instead.",
+  "back": "This address is already linked to another account, sign out and sign in with this account instead.",
+  "cos": 0.9271,
+  "chrf": 67.5,
+  "xcos": 0.8661
+ },
+ {
+  "id": "de|battle.titleA",
+  "lang": "de",
+  "text": "Kampf",
+  "english": "Battle",
+  "back": "Kampf",
+  "cos": 0.321,
+  "chrf": 3.4,
+  "xcos": 0.9076
+ },
+ {
+  "id": "de|battle.difficulty.player",
+  "lang": "de",
+  "text": "Spieler: wählt den besseren von zwei Entwürfen",
+  "english": "Player: picks the better of two drafts",
+  "back": "Player: chooses the better of two drafts",
+  "cos": 0.9623,
+  "chrf": 77.0,
+  "xcos": 0.8905
+ },
+ {
+  "id": "de|battle.worldCard",
+  "lang": "de",
+  "text": "Weltkarte",
+  "english": "World card",
+  "back": "World map",
+  "cos": 0.5448,
+  "chrf": 36.5,
+  "xcos": 0.9318
+ },
+ {
+  "id": "de|illegal.character-used",
+  "lang": "de",
+  "text": "Jedes Zeichen darf pro Duell einmal auf die Bühne.",
+  "english": "Each character can take the stage once per match.",
+  "back": "Each character can go on stage once per duel.",
+  "cos": 0.8401,
+  "chrf": 61.6,
+  "xcos": 0.8367
+ },
+ {
+  "id": "de|verdict.who.player",
+  "lang": "de",
+  "text": "Du",
+  "english": "you",
+  "back": "Du",
+  "cos": 0.3246,
+  "chrf": 17.9,
+  "xcos": 0.8592
+ },
+ {
+  "id": "de|end.lost",
+  "lang": "de",
+  "text": "Heute Nacht gehört die Bühne ihnen.",
+  "english": "The stage is theirs tonight.",
+  "back": "Tonight the stage belongs to them.",
+  "cos": 0.8805,
+  "chrf": 43.5,
+  "xcos": 0.8387
+ },
+ {
+  "id": "de|badge.written",
+  "lang": "de",
+  "text": "Geschriebener Gegner",
+  "english": "Written opponent",
+  "back": "Written opponent",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9056
+ },
+ {
+  "id": "de|theatre.intro",
+  "lang": "de",
+  "text": "Dasselbe Duell auf einer Bühne um dich herum. Zeig oder kneif, um eine Karte zu spielen, drück das Mikrofon und sprich deine Strophe. Sie wird auf diesem Gerät transkribiert und bewertet.",
+  "english": "The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse. It is transcribed and judged on this device.",
+  "back": "The same duel on a stage around you. Point or pinch to play a card, press the microphone and speak your stanza, which will be transcribed and scored on this device.",
+  "cos": 0.9035,
+  "chrf": 82.1,
+  "xcos": 0.8893
+ },
+ {
+  "id": "de|theatre.declined",
+  "lang": "de",
+  "text": "Dieses Gerät unterstützt keine immersive Sitzung.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive session.",
+  "cos": 0.7134,
+  "chrf": 65.7,
+  "xcos": 0.7247
+ },
+ {
+  "id": "de|age.errorDob",
+  "lang": "de",
+  "text": "Bitte wähle dein vollständiges Geburtsdatum aus.",
+  "english": "Please select your full date of birth.",
+  "back": "Please select your full date of birth.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.925
+ },
+ {
+  "id": "de|age.minorBody",
+  "lang": "de",
+  "text": "Du musst mindestens 13 Jahre alt sein, um Inspired Mile zu nutzen. Bitte komm wieder, wenn du das erforderliche Alter erreicht hast.",
+  "english": "You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement.",
+  "back": "You must be at least 13 years old to use Inspired Mile, please come back when you reach the required age.",
+  "cos": 0.9897,
+  "chrf": 78.3,
+  "xcos": 0.9584
+ },
+ {
+  "id": "de|age.consentAnd",
+  "lang": "de",
+  "text": "und",
+  "english": "and",
+  "back": "and",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9813
+ },
+ {
+  "id": "de|age.agreeBefore",
+  "lang": "de",
+  "text": "Indem du fortfährst, stimmst du unseren",
+  "english": "By continuing, you agree to our",
+  "back": "By continuing, you agree to our",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9463
+ },
+ {
+  "id": "de|age.agreeAnd",
+  "lang": "de",
+  "text": "und",
+  "english": "and",
+  "back": "and",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9813
+ },
+ {
+  "id": "it|check.spells.words",
+  "lang": "it",
+  "text": "Versi aperti, in ordine, con teschio",
+  "english": "Lines open, in order, with skull",
+  "back": "Verses open, in order, with skull",
+  "cos": 0.716,
+  "chrf": 87.0,
+  "xcos": 0.7701
+ },
+ {
+  "id": "it|check.luc-bat-rhyme",
+  "lang": "it",
+  "text": "La sesta sillaba di ogni verso rima",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each verse rhymes",
+  "cos": 0.8964,
+  "chrf": 80.4,
+  "xcos": 0.8964
+ },
+ {
+  "id": "it|device.swell.name",
+  "lang": "it",
+  "text": "L'Onda",
+  "english": "The Swell",
+  "back": "L'Onda",
+  "cos": 0.2223,
+  "chrf": 0.0,
+  "xcos": 0.5432
+ },
+ {
+  "id": "it|age.consentAnd",
+  "lang": "it",
+  "text": "e",
+  "english": "and",
+  "back": "e",
+  "cos": 0.3966,
+  "chrf": 0.0,
+  "xcos": 0.7804
+ },
+ {
+  "id": "it|auth.error.signup_retry",
+  "lang": "it",
+  "text": "L'operazione non è andata a buon fine. Riprova.",
+  "english": "That did not go through. Please try again.",
+  "back": "The operation failed. Please try again.",
+  "cos": 0.6349,
+  "chrf": 47.4,
+  "xcos": 0.7009
+ },
+ {
+  "id": "it|auth.error.invalid_code",
+  "lang": "it",
+  "text": "Il codice non è corretto o è scaduto. Controllalo o fanne inviare uno nuovo.",
+  "english": "That code is not right, or it has expired. Check it, or send a new one.",
+  "back": "The code is incorrect or has expired, please check it or have a new one sent to you.",
+  "cos": 0.8987,
+  "chrf": 41.5,
+  "xcos": 0.8969
+ },
+ {
+  "id": "it|battle.badge",
+  "lang": "it",
+  "text": "Live Arena",
+  "english": "Live Arena",
+  "back": "Live Arena",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "it|battle.titleA",
+  "lang": "it",
+  "text": "Battle",
+  "english": "Battle",
+  "back": "Battle",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "it|battle.titleB",
+  "lang": "it",
+  "text": "Arena",
+  "english": "Arena",
+  "back": "Arena",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 1.0
+ },
+ {
+  "id": "it|brain.failed",
+  "lang": "it",
+  "text": "Il modello non è riuscito ad avviarsi su questo dispositivo. Puoi comunque giocare contro l’avversario scritto.",
+  "english": "The model could not start on this device. You can still play against the written opponent.",
+  "back": "The model failed to start on this device, you can still play against the written opponent.",
+  "cos": 0.9335,
+  "chrf": 80.1,
+  "xcos": 0.9
+ },
+ {
+  "id": "it|brain.written",
+  "lang": "it",
+  "text": "Giochi contro l’avversario scritto.",
+  "english": "Playing against the written opponent.",
+  "back": "You play against the written opponent.",
+  "cos": 0.9136,
+  "chrf": 80.1,
+  "xcos": 0.8676
+ },
+ {
+  "id": "it|round.items",
+  "lang": "it",
+  "text": "Reliquie e pozioni (1 inchiostro ciascuna)",
+  "english": "Relics and potions (1 ink each)",
+  "back": "Relics and Potions (1 ink each)",
+  "cos": 1.0,
+  "chrf": 84.5,
+  "xcos": 0.8585
+ },
+ {
+  "id": "it|signature.none",
+  "lang": "it",
+  "text": "questa carta non ha una battuta firma",
+  "english": "this card has no signature line",
+  "back": "this card does not have a signature stroke",
+  "cos": 0.7909,
+  "chrf": 53.5,
+  "xcos": 0.9
+ },
+ {
+  "id": "it|verdict.held",
+  "lang": "it",
+  "text": "mantenuta",
+  "english": "held",
+  "back": "maintained",
+  "cos": 0.5353,
+  "chrf": 9.6,
+  "xcos": 0.7719
+ },
+ {
+  "id": "it|badge.writtenJudged",
+  "lang": "it",
+  "text": "Avversario scritto · giudicato da Gemma",
+  "english": "Written opponent · judged by Gemma",
+  "back": "Opponent written · reviewed by Gemma",
+  "cos": 0.9443,
+  "chrf": 53.5,
+  "xcos": 0.9248
+ },
+ {
+  "id": "it|theatre.declined",
+  "lang": "it",
+  "text": "Questo dispositivo non supporta la sessione immersiva.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support immersive session.",
+  "cos": 0.7134,
+  "chrf": 65.7,
+  "xcos": 0.7365
+ },
+ {
+  "id": "it|theatre.judgedRules",
+  "lang": "it",
+  "text": "Giudicato secondo le regole: nessun modello è in funzione.",
+  "english": "Judged by rule: no model is running.",
+  "back": "Judged by the rules: no model is in operation.",
+  "cos": 0.8536,
+  "chrf": 52.8,
+  "xcos": 0.8994
+ },
+ {
+  "id": "pt|check.spells.words",
+  "lang": "pt",
+  "text": "Versos abertos, em ordem, com caveira",
+  "english": "Lines open, in order, with skull",
+  "back": "Open verses, in order, with skull",
+  "cos": 0.6582,
+  "chrf": 68.2,
+  "xcos": 0.8078
+ },
+ {
+  "id": "pt|check.luc-bat-rhyme",
+  "lang": "pt",
+  "text": "A sexta sílaba de cada verso rima",
+  "english": "The sixth syllable of each line rhymes",
+  "back": "The sixth syllable of each verse rhymes",
+  "cos": 0.8964,
+  "chrf": 80.4,
+  "xcos": 0.8686
+ },
+ {
+  "id": "pt|device.swell.name",
+  "lang": "pt",
+  "text": "O Crescendo",
+  "english": "The Swell",
+  "back": "O Crescendo",
+  "cos": 0.1625,
+  "chrf": 4.0,
+  "xcos": 0.4739
+ },
+ {
+  "id": "pt|nav.toggleAudio",
+  "lang": "pt",
+  "text": "Alternar áudio",
+  "english": "Toggle audio",
+  "back": "Toggle audio",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8996
+ },
+ {
+  "id": "pt|nav.toggleMenu",
+  "lang": "pt",
+  "text": "Alternar menu",
+  "english": "Toggle menu",
+  "back": "Toggle Menu",
+  "cos": 1.0,
+  "chrf": 54.4,
+  "xcos": 0.9385
+ },
+ {
+  "id": "pt|auth.nudgeBody",
+  "lang": "pt",
+  "text": "Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso ou um e-mail para poder voltar.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.",
+  "back": "For now, a single access key is the only way to get into this account. If you lose it, your account will be lost and you'll need to add a second access key or an email so that you can get back in.",
+  "cos": 0.838,
+  "chrf": 61.7,
+  "xcos": 0.8725
+ },
+ {
+  "id": "pt|auth.nudgeBodyNoEmail",
+  "lang": "pt",
+  "text": "Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso para poder voltar.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.",
+  "back": "For now, a single passkey is the only way to get into this account. If you lose it, your account will be lost and you'll need to add a second passkey to get back in.",
+  "cos": 0.9472,
+  "chrf": 60.0,
+  "xcos": 0.8657
+ },
+ {
+  "id": "pt|verdict.notUsed",
+  "lang": "pt",
+  "text": "não utilizadas",
+  "english": "not used",
+  "back": "not used",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9685
+ },
+ {
+  "id": "pt|verdict.missed",
+  "lang": "pt",
+  "text": "não cumprida",
+  "english": "missed",
+  "back": "not fulfilled",
+  "cos": 0.3583,
+  "chrf": 9.6,
+  "xcos": 0.6801
+ },
+ {
+  "id": "pt|end.lost",
+  "lang": "pt",
+  "text": "O palco é seu esta noite.",
+  "english": "The stage is theirs tonight.",
+  "back": "The stage is yours tonight.",
+  "cos": 0.8565,
+  "chrf": 69.6,
+  "xcos": 0.8162
+ },
+ {
+  "id": "pt|badge.written",
+  "lang": "pt",
+  "text": "Adversário escrito",
+  "english": "Written opponent",
+  "back": "Opponent in writing",
+  "cos": 0.9382,
+  "chrf": 41.6,
+  "xcos": 0.6963
+ },
+ {
+  "id": "pt|theatre.declined",
+  "lang": "pt",
+  "text": "Este dispositivo não suporta uma sessão imersiva.",
+  "english": "This device declined an immersive session.",
+  "back": "This device does not support an immersive session.",
+  "cos": 0.7271,
+  "chrf": 70.6,
+  "xcos": 0.7411
+ },
+ {
+  "id": "pt|theatre.judgedRules",
+  "lang": "pt",
+  "text": "Julgado por regra: nenhum modelo está em execução.",
+  "english": "Judged by rule: no model is running.",
+  "back": "Judged by rule: no model is running.",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.885
+ },
+ {
+  "id": "pt|theatre.cursesYou",
+  "lang": "pt",
+  "text": "Amaldiçoa você: Nenhuma palavra sua pode ter mais de 5 letras.",
+  "english": "Curses you: No word of yours may be longer than 5 letters.",
+  "back": "Curses you: No word of yours can have more than 5 letters.",
+  "cos": 0.9421,
+  "chrf": 72.0,
+  "xcos": 0.8936
+ },
+ {
+  "id": "pt|theatre.submit",
+  "lang": "pt",
+  "text": "Diga-o",
+  "english": "Speak it",
+  "back": "Say it",
+  "cos": 0.6679,
+  "chrf": 15.7,
+  "xcos": 0.8342
+ }
+]

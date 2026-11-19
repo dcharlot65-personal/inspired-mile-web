@@ -360,6 +360,25 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
   itself; check with `grep` after writing one.
+- **Counts are ICU plurals**: `{n, plural, one {# line} other {# lines}}`, with exactly the
+  categories the language has in Unicode CLDR (Arabic six, Polish and Russian four; Chinese,
+  Japanese, Korean, Thai and Indonesian none, so they keep a bare `{n}`). The form is chosen by
+  `Intl.PluralRules`, numbers are written by `Intl.NumberFormat`, and a list of words passed as an
+  array is joined by `Intl.ListFormat` (`src/lib/verse/msg.ts`). Never write "(s)" or a gender
+  hedge such as "(a)": rephrase.
+- **Quality checks** (`scripts/lang/README.md`, results in `docs/language/QA-REPORT.md`). The
+  unit tests (`src/i18n/quality.test.ts`) fail on: a count without its plural forms, a string
+  left in English that is not in `docs/language/allow/untranslated.json`, wrong quotation marks
+  or punctuation for the language (French no-break spaces, Spanish ¿ ¡, full-width punctuation in
+  Chinese and Japanese, the Hindi danda, Vietnamese tone marks placed as Android places them:
+  khoá, not khóa), hidden or bidirectional control characters, and a string
+  that strays from `docs/language/glossary.json` (one word per term; form names with their
+  source). LanguageTool, Hunspell, back-translation and the second-model review run on the build
+  host: `bash scripts/lang/run.sh selftest|grammar|meaning|review`.
+- A new or changed string: add it to all sixteen locales, run the unit tests, then run
+  `grammar` and `meaning` on the build host and either fix what they flag or record the exception
+  with its reason in `docs/language/allow/`. Everything taken from an outside source is listed
+  in `docs/language/PROVENANCE.md`.
 
 ## Where it runs (verified 2026-11-16)
 
