@@ -64,9 +64,9 @@ const DATA: Entry[] = [
     by: 'Kevin Atkinson',
     use: 'Marks which entries of the English table are words, so a name or a fragment does not count as one.',
     source: [{ text: 'wordlist.aspell.net', href: 'http://wordlist.aspell.net/' }],
-    license: [{ text: 'SCOWL\'s permission notice (in full below)', href: '#notice-cmu' }],
-    changed: 'Only used to mark words in the English table; no list of it is shipped.',
-    duties: 'Its copyright and permission notice go with the data: in the table\'s first lines and below.',
+    license: [{ text: 'SCOWL\'s Copyright file, in full (below)', href: '#notice-cmu' }, { text: 'also served alone at /licenses/SCOWL-Copyright.txt', href: '/licenses/SCOWL-Copyright.txt' }],
+    changed: 'No list of it is shipped. The game ships a mark ("^") on each entry of the English table that SCOWL\'s word lists up to size 60 (the English, American, British and Canadian words and the contractions, and its capitalised words up to size 35) do not hold: a modified, derived form of those lists.',
+    duties: 'SCOWL\'s Copyright file says that the collective work is under Kevin Atkinson\'s copyright and the copyrights it names: VarCon\'s (Kevin Atkinson; Benjamin Titze), Ispell\'s (Geoff Kuenning), WordNet 1.6\'s (Princeton University) and UKACD\'s (J Ross Beresford); the other lists it draws on are in the public domain. Those notices ask to go with copies, and Ispell\'s asks that a modified version be marked as one, as the marks are here. The whole file is in the table\'s first lines, below, and at /licenses/SCOWL-Copyright.txt.',
   },
   {
     name: 'Wiktionary pronunciations',
@@ -223,6 +223,17 @@ const LIBRARIES: Entry[] = [
     license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
     changed: 'Nothing; copied from three.js\'s examples/jsm/libs folder.',
     duties: 'Apache 2.0: a copy of the license, and Basis Universal\'s NOTICE file, go with them. Both are in this site\'s third-party notices file (below).',
+    files: ['draco', 'basis-universal'],
+  },
+  {
+    name: 'fflate, ktx-parse, zstddec and the meshoptimizer decoder, as three.js 0.183 carries them',
+    by: 'Arjun Barrett (fflate 0.8.2); Don McCurdy (ktx-parse, zstddec 0.1.0); Yann Collet and Facebook, Inc. (the Zstandard decoder inside zstddec); Arseny Kapoulkine (meshoptimizer 1.0)',
+    use: 'Parts of three.js inside <model-viewer>. fflate packs the file "View in AR" opens on an iPhone; ktx-parse and zstddec would read a compressed KTX2 texture, and the meshoptimizer decoder a compressed mesh. No model on the site uses those last three today.',
+    source: [{ text: 'github.com/101arrowz/fflate', href: 'https://github.com/101arrowz/fflate' }, { text: 'github.com/donmccurdy/KTX-Parse', href: 'https://github.com/donmccurdy/KTX-Parse' }, { text: 'github.com/donmccurdy/zstddec', href: 'https://github.com/donmccurdy/zstddec' }, { text: 'github.com/facebook/zstd', href: 'https://github.com/facebook/zstd' }, { text: 'github.com/zeux/meshoptimizer', href: 'https://github.com/zeux/meshoptimizer' }],
+    license: [{ text: 'fflate, ktx-parse, zstddec and meshoptimizer: MIT', href: 'https://opensource.org/license/mit' }, { text: 'Zstandard: BSD License', href: 'https://github.com/facebook/zstd/blob/dev/LICENSE' }],
+    changed: 'Nothing; bundled with <model-viewer> from three.js\'s examples/jsm/libs folder (fflate.module.js, ktx-parse.module.js, zstddec.module.js, meshopt_decoder.module.js). three.js does not record which ktx-parse release its file was built from.',
+    duties: 'MIT and BSD: each one\'s copyright notice and license go with the code. They are in this site\'s third-party notices file (below).',
+    files: ['fflate', 'ktx-parse', 'zstddec', 'meshoptimizer'],
   },
   {
     name: 'Lit 3 (lit-html 3.3, lit-element 4.2, @lit/reactive-element 2.1)',
@@ -273,6 +284,7 @@ const LIBRARIES: Entry[] = [
     changed: 'Nothing; bundled as published.',
     duties: 'The GPL asks whoever passes on eSpeak NG in compiled form to give its license with it, and its corresponding source: the source code it was compiled from and the scripts that build it. The license is in this site\'s third-party notices file (below). phonemizer\'s repository holds only the compiled file, and does not say which eSpeak NG source or build scripts it was made from, so this page cannot point to them.',
     packages: ['phonemizer@1.2.1'],
+    files: ['espeak-ng'],
   },
   {
     name: 'kuromoji 0.1.2, with doublearray 0.0.2',
@@ -468,7 +480,10 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
 
         <div>
           <h2 id="notice-cmu" class="text-xl font-display font-semibold text-white mb-3">Notices: the CMU Pronouncing Dictionary and SCOWL</h2>
-          <p class="mb-3">As the English pronunciation table carries them:</p>
+          <p class="mb-3">
+            As the English pronunciation table carries them. SCOWL's is its whole Copyright file, with the notices of the
+            works it names; it is also served alone at <a href="/licenses/SCOWL-Copyright.txt" class={linkCls}>/licenses/SCOWL-Copyright.txt</a>.
+          </p>
           <pre class="whitespace-pre-wrap text-xs bg-obsidian-900/60 border border-obsidian-800 rounded-sm p-4 text-obsidian-300">{cmuNotice}</pre>
         </div>
 

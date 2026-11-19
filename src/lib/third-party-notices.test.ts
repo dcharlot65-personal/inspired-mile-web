@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error: a plain JavaScript module of the build, with no type declarations
-import { DATA, FILE_LICENSES, NOTICES, creditProblems, creditedPackages, embeddedIn, inventory, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
+import { DATA, FILE_LICENSES, NOTICES, VENDORED, cmuNotice, creditProblems, creditedFiles, creditedPackages, embeddedIn, inventory, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const read = (p: string) => readFileSync(join(root, p), 'utf8');
@@ -67,6 +67,69 @@ describe('the build against /credits', () => {
   });
 });
 
+describe('files a package carries from others', () => {
+  // three.js 0.183.2's examples/jsm/libs files that the <model-viewer> chunk holds (found in the build's module list).
+  const SHIPPED = ['examples/jsm/libs/fflate.module.js', 'examples/jsm/libs/ktx-parse.module.js', 'examples/jsm/libs/zstddec.module.js', 'examples/jsm/libs/meshopt_decoder.module.js'];
+  const three = (files: string[]) => ({ packages: [{ name: 'three', version: '0.183.2', license: 'MIT', dir: null, files: new Set(files) }], src: [] });
+
+  it('knows a folder of code by others when it sees one', () => {
+    for (const f of [...SHIPPED, 'examples/jsm/libs/draco/gltf/draco_decoder.js', 'vendor/x.js', 'src/third_party/y.js']) expect([f, VENDORED.test(f)]).toEqual([f, true]);
+    for (const f of ['build/three.module.js', 'lib/model-viewer.js', 'examples/jsm/loaders/KTX2Loader.js']) expect([f, VENDORED.test(f)]).toEqual([f, false]);
+  });
+
+  it('fails a shipped file from such a folder that no file license covers', () => {
+    const p = render(root, three(['examples/jsm/libs/new-thing.module.js'])).problems.join('\n');
+    expect(p).toMatch(/three 0\.183\.2 ships examples\/jsm\/libs\/new-thing\.module\.js, from a folder of code by others, and no FILE_LICENSES entry/);
+  });
+
+  it('covers each of the four that ship, and names them for /credits', () => {
+    const { problems, files } = render(root, three(SHIPPED));
+    expect(problems.filter((x: string) => /folder of code by others/.test(x))).toEqual([]);
+    expect(files).toEqual(['fflate', 'ktx-parse', 'zstddec', 'meshoptimizer']);
+  });
+
+  it('holds the file licenses that ship to the ids /credits names, both ways', () => {
+    expect([...creditedFiles('<div data-files="draco basis-universal"></div><div data-files="fflate"></div><div data-packages="x@1"></div>')]).toEqual(['draco', 'basis-universal', 'fflate']);
+    const inv = { packages: [], src: [] };
+    expect(creditProblems(inv, new Set(), ['fflate', 'zstddec'], new Set(['fflate', 'zstddec']))).toEqual([]);
+    const p = creditProblems(inv, new Set(), ['fflate', 'zstddec'], new Set(['fflate', 'gone'])).join('\n');
+    expect(p).toMatch(/the file license "zstddec" ships, and \/credits does not name it/);
+    expect(p).toMatch(/\/credits names the file license "gone", which does not ship/);
+  });
+
+  it('gives every file license an id of its own', () => {
+    const ids = FILE_LICENSES.map((f: { id: string }) => f.id);
+    expect(ids.every((id: string) => /^[a-z0-9-]+$/.test(id))).toBe(true);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe('the pronunciation table\'s notice', () => {
+  const table = (notice: string[]) => {
+    const dir = mkdtempSync(join(tmpdir(), 'notices-pron-'));
+    mkdirSync(join(dir, 'src/lib/verse'), { recursive: true });
+    mkdirSync(join(dir, 'public/licenses'), { recursive: true });
+    writeFileSync(join(dir, 'src/lib/verse/pron-en.ts'), `// GENERATED\nexport default \`${notice.map((l) => `# ${l}`.trimEnd()).join('\n')}\nkey\tword1\`;\n`);
+    return dir;
+  };
+
+  it('reads as the string does, not as its source escapes it', () => {
+    const dir = table(['CARNEGIE MELLON UNIVERSITY \\`\\`AS IS\'\' AND', 'mainted by M\\\\Cooper', 'a \\${x}', ...Array(8).fill('line')]);
+    const n = cmuNotice(dir);
+    expect(n).toContain("UNIVERSITY ``AS IS'' AND");
+    expect(n).toContain('mainted by M\\Cooper');
+    expect(n).toContain('a ${x}');
+    expect(n).not.toContain('\\`');
+  });
+
+  it('fails when it does not hold SCOWL\'s Copyright file whole', () => {
+    const dir = table(['The CMU Pronouncing Dictionary', ...Array(9).fill('line'), 'The collective work is Copyright 2000-2018 by Kevin Atkinson as well']);
+    writeFileSync(join(dir, 'public/licenses/SCOWL-Copyright.txt'), 'The collective work is Copyright 2000-2018 by Kevin Atkinson as well\nas any of the copyrights mentioned below:\n');
+    const p = render(dir, { packages: [], src: ['src/lib/verse/pron-en.ts'] }).problems.join('\n');
+    expect(p).toMatch(/must carry public\/licenses\/SCOWL-Copyright\.txt in full, and does not/);
+  });
+});
+
 describe('the notices themselves', () => {
   it('fails a generated module that no data source covers, and a source that covers nothing', () => {
     const dir = mkdtempSync(join(tmpdir(), 'notices-root-'));
@@ -101,9 +164,22 @@ describe('the notices themselves', () => {
       'Copyright © 1991-2026 Unicode, Inc.',
       // stopwords-iso (MIT), from its repository.
       'Copyright (c) 2020 Gene Diaz',
-      // The CMU dictionary and SCOWL, read from the table itself.
+      // The CMU dictionary and SCOWL, read from the table itself: SCOWL's whole Copyright file, with the notices
+      // of VarCon, Ispell and WordNet that it makes part of the collective work.
       'The CMU Pronouncing Dictionary is Copyright (C) 1993-2015 Carnegie Mellon',
+      "CARNEGIE MELLON UNIVERSITY ``AS IS'' AND ANY",
       'Copyright 2000-2018 by Kevin Atkinson',
+      'as any of the copyrights mentioned below:',
+      'Copyright 2016 by Benjamin Titze',
+      'Copyright 1993, Geoff Kuenning, Granada Hills, CA',
+      'WordNet 1.6 Copyright 1997 by Princeton University.',
+      'Copyright (c) J Ross Beresford 1993-1999.',
+      // three.js's examples/jsm/libs files: fflate, ktx-parse, zstddec with Zstandard, the meshoptimizer decoder.
+      'Copyright (c) 2023 Arjun Barrett',
+      'Copyright (c) 2020 Don McCurdy',
+      'For Zstandard software',
+      'Copyright (c) 2016-present, Yann Collet, Facebook, Inc.',
+      'Copyright (c) 2016-2025 Arseny Kapoulkine',
       // NAIST, jieba, OpenCC, Lucene.
       'Nara Institute of Science',
       'Copyright (c) 2013 Sun Junyi',
@@ -122,6 +198,9 @@ describe('the notices themselves', () => {
       'https://creativecommons.org/licenses/by-sa/4.0/',
       'no representations or warranties',
     ]) expect([w, notices.includes(w)]).toEqual([w, true]);
+    // SCOWL's file whole, as served alone; and no escape of the table's source left in the text.
+    expect(notices).toContain(read('public/licenses/SCOWL-Copyright.txt').replace(/\s+$/, ''));
+    expect(notices).not.toMatch(/\\`/);
     // ONNX Runtime's notices of what is compiled into it are served beside the file.
     for (const v of ['1.22', '1.31']) expect(read(`public/licenses/onnxruntime-${v}-ThirdPartyNotices.txt`)).toMatch(/THIRD PARTY SOFTWARE NOTICES AND INFORMATION/i);
   });

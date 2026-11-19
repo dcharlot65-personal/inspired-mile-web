@@ -21,6 +21,11 @@
 //   - a package that ships is not named, at its version, on /credits (the "Packages" line of an entry,
 //     data-packages), or /credits names a package that does not ship;
 //   - a FILE_LICENSES or PACKAGE_LICENSES entry matches nothing that ships;
+//   - a package ships a file from a folder of code by others inside it (libs/, vendor/, third_party/, …) that no
+//     FILE_LICENSES entry covers: a package's own license file does not speak for what it carries from others;
+//   - a FILE_LICENSES entry that ships is not named on /credits (data-files, by its id), or /credits names one
+//     that does not ship;
+//   - a DATA entry's text does not hold, in full, a file it must carry (its `holds`);
 //   - a module of src/ that ships says GENERATED in its header and no DATA entry covers it, or a DATA entry
 //     covers nothing that ships.
 import fs from 'node:fs';
@@ -33,10 +38,12 @@ const TEXTS = 'scripts/third-party/texts';
 
 /**
  * Files a package carries under another license than its own, by the package's name and the file's path
- * inside it. Each must match a file that ships, or the build fails (so a stale entry cannot linger).
+ * inside it. Each must match a file that ships, or the build fails (so a stale entry cannot linger), and /credits
+ * must name it by its id (an entry's `files`, rendered as data-files).
  */
 export const FILE_LICENSES = [
   {
+    id: 'draco',
     package: 'three',
     files: /^examples\/jsm\/libs\/draco\//,
     title: 'Draco 3D data compression: the decoder (draco_decoder.js, draco_decoder.wasm, draco_wasm_wrapper.js), by Google',
@@ -44,6 +51,7 @@ export const FILE_LICENSES = [
     texts: [`${TEXTS}/draco-LICENSE.txt`],
   },
   {
+    id: 'basis-universal',
     package: 'three',
     files: /^examples\/jsm\/libs\/basis\//,
     title: 'Basis Universal: the transcoder (basis_transcoder.js, basis_transcoder.wasm), by Binomial LLC',
@@ -51,6 +59,39 @@ export const FILE_LICENSES = [
     texts: [`${TEXTS}/basis-universal-NOTICE.txt`, `${TEXTS}/basis-universal-LICENSE.txt`],
   },
   {
+    id: 'fflate',
+    package: 'three',
+    files: /^examples\/jsm\/libs\/fflate\.module\.js$/,
+    title: 'fflate 0.8.2, by Arjun Barrett (three.js\'s examples/jsm/libs/fflate.module.js)',
+    note: 'three.js carries fflate as one file, whose header names version 0.8.2 and the MIT License (https://github.com/101arrowz/fflate). Its USDZ exporter uses it to pack the file that "View in AR" opens on an iPhone. The license, from the npm package fflate 0.8.2:',
+    texts: [`${TEXTS}/fflate-LICENSE.txt`],
+  },
+  {
+    id: 'ktx-parse',
+    package: 'three',
+    files: /^examples\/jsm\/libs\/ktx-parse\.module\.js$/,
+    title: 'ktx-parse, by Don McCurdy (three.js\'s examples/jsm/libs/ktx-parse.module.js)',
+    note: 'A minified build of ktx-parse (https://github.com/donmccurdy/KTX-Parse), read by three.js\'s KTX2 texture loader; three.js does not record which release it is. Its license file is the same in every release from 1.0.0 to 1.1.0; this one is from the npm package ktx-parse 1.0.1:',
+    texts: [`${TEXTS}/ktx-parse-LICENSE.txt`],
+  },
+  {
+    id: 'zstddec',
+    package: 'three',
+    files: /^examples\/jsm\/libs\/zstddec\.module\.js$/,
+    title: 'zstddec 0.1.0, by Don McCurdy, with the Zstandard decoder (three.js\'s examples/jsm/libs/zstddec.module.js)',
+    note: 'Read by three.js\'s KTX2 texture loader. Its WebAssembly is, byte for byte, the one the npm package zstddec 0.1.0 publishes (https://github.com/donmccurdy/zstddec); it is the Zstandard decoder (https://github.com/facebook/zstd) compiled. That package\'s license file, which holds zstddec\'s MIT License and Zstandard\'s BSD License:',
+    texts: [`${TEXTS}/zstddec-LICENSE.txt`],
+  },
+  {
+    id: 'meshoptimizer',
+    package: 'three',
+    files: /^examples\/jsm\/libs\/meshopt_decoder\.module\.js$/,
+    title: 'The meshoptimizer 1.0 decoder, by Arseny Kapoulkine (three.js\'s examples/jsm/libs/meshopt_decoder.module.js)',
+    note: 'Byte for byte the meshopt_decoder.mjs of the npm packages meshoptimizer 1.0.0 and 1.0.1 (https://github.com/zeux/meshoptimizer); <model-viewer> gives it to its glTF loader for compressed meshes. The license, from meshoptimizer 1.0.0:',
+    texts: [`${TEXTS}/meshoptimizer-LICENSE.md`],
+  },
+  {
+    id: 'espeak-ng',
     package: 'phonemizer',
     files: /^dist\//,
     title: 'eSpeak NG, compiled to WebAssembly inside phonemizer',
@@ -84,6 +125,13 @@ const VIRTUAL = [
   [/^vite\//, 'vite'],
   [/^__vite-browser-external/, 'vite'],
 ];
+
+/**
+ * Folders in which a package keeps code that others wrote (three.js's examples/jsm/libs, a vendor/ folder): every
+ * file of one that ships must have its own FILE_LICENSES entry, because the package's license file is about the
+ * package's own code.
+ */
+export const VENDORED = /(^|\/)(libs|vendor|vendored|third[-_]?party)\//i;
 
 /** The CC BY-SA 4.0 statement for the tables made from CC BY-SA sources (section 3(a)(1) and 3(b)). */
 const CC_BY_SA = `These parts of the game are adaptations of works licensed under the Creative Commons
@@ -119,8 +167,10 @@ export const DATA = [
   {
     title: 'The CMU Pronouncing Dictionary, and SCOWL (Spell Checker Oriented Word Lists)',
     covers: ['src/lib/verse/pron-en.ts'],
-    note: 'The English pronunciation table is made from both. Their notices, exactly as the table carries them in its first lines:',
+    note: 'The English pronunciation table is made from both. Their notices, exactly as the table carries them in its first lines. SCOWL\'s is its whole Copyright file, which names the other works SCOWL is made from and their notices (VarCon, Ispell, WordNet and more); it is also served alone at /licenses/SCOWL-Copyright.txt:',
     text: (root) => cmuNotice(root),
+    // SCOWL release 2020.12.07's Copyright file, byte for byte (scripts/build-pronunciation.mjs writes it from the tarball).
+    holds: ['public/licenses/SCOWL-Copyright.txt'],
   },
   {
     title: 'Snowball stemmers (jsstemmer 3.2.0), by the Snowball project',
@@ -197,14 +247,17 @@ export function licenseFiles(dir) {
   return fs.readdirSync(dir).filter((f) => LICENSE_FILE.test(f) && fs.statSync(path.join(dir, f)).isFile()).sort();
 }
 
-/** The CMU and SCOWL notices: the "#" lines at the start of the pronunciation table's data. */
+/**
+ * The CMU and SCOWL notices: the "#" lines at the start of the pronunciation table's data, as the string reads
+ * (the source escapes a back-tick, a backslash and "${" inside its template string; the text has none of that).
+ */
 export function cmuNotice(root) {
   const src = fs.readFileSync(path.join(root, 'src/lib/verse/pron-en.ts'), 'utf8');
   const data = src.slice(src.indexOf('export default `') + 'export default `'.length);
   const lines = [];
   for (const line of data.split('\n')) {
     if (!line.startsWith('#')) break;
-    lines.push(line.replace(/^# ?/, ''));
+    lines.push(line.replace(/^# ?/, '').replace(/\\([\\`$])/g, '$1'));
   }
   if (lines.length < 10) throw new Error('third-party-notices: the CMU notice was not found at the start of src/lib/verse/pron-en.ts');
   return lines.join('\n');
@@ -355,14 +408,24 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
   }
 
   out.push(`\n${RULE}\nPART 2. FILES THE PACKAGES CARRY UNDER ANOTHER LICENSE\n${RULE}`);
+  const files = [];
   for (const fl of FILE_LICENSES) {
     const hits = inv.packages.filter((p) => p.name === fl.package).flatMap((p) => [...p.files].filter((f) => fl.files.test(f)));
     if (!hits.length) {
       problems.push(`FILE_LICENSES "${fl.title}" matches no file that ships (${fl.package}, ${fl.files}): remove it`);
       continue;
     }
+    files.push(fl.id);
     out.push(`\n----- ${fl.title} -----\n${fl.note}`);
     for (const t of fl.texts) out.push(`\n[${path.basename(t)}]\n${read(path.join(root, t))}`);
+  }
+  for (const p of inv.packages) {
+    if (p.inside) continue;
+    for (const f of p.files) {
+      if (VENDORED.test(f) && !FILE_LICENSES.some((fl) => fl.package === p.name && fl.files.test(f))) {
+        problems.push(`${p.name} ${p.version} ships ${f}, from a folder of code by others, and no FILE_LICENSES entry in scripts/third-party-notices.mjs covers it: find whose it is, add its license text and an entry, and credit it on /credits`);
+      }
+    }
   }
   for (const key of Object.keys(PACKAGE_LICENSES)) {
     if (!inv.packages.some((p) => `${p.name}@${p.version}` === key)) problems.push(`PACKAGE_LICENSES names ${key}, which does not ship: remove it`);
@@ -376,6 +439,7 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
       problems.push(`DATA "${d.title}" covers nothing that ships (${d.covers.join(', ')}): remove it or correct its paths`);
       continue;
     }
+    const start = out.length;
     out.push(`\n----- ${d.title} -----\nIn the build: ${d.covers.join(', ')}.${d.note ? `\n${d.note}` : ''}`);
     for (const t of d.texts ?? []) out.push(`\n[${path.basename(t)}]\n${read(path.join(root, t))}`);
     if (d.text) {
@@ -383,6 +447,12 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
       if (t) out.push(`\n${t}`);
     }
     for (const t of d.textsAfter ?? []) out.push(`\n[${path.basename(t)}]\n${read(path.join(root, t))}`);
+    // What this entry says in the file, which must hold each of its `holds` whole.
+    const said = out.slice(start).join('\n');
+    for (const h of d.holds ?? []) {
+      if (!fs.existsSync(path.join(root, h))) problems.push(`${h} is missing (DATA "${d.title}" must carry it)`);
+      else if (!said.includes(read(path.join(root, h)))) problems.push(`DATA "${d.title}" must carry ${h} in full, and does not: regenerate what it reads from (scripts/build-pronunciation.mjs for the pronunciation table)`);
+    }
   }
   for (const f of inv.src) {
     const head = fs.readFileSync(path.join(root, f)).subarray(0, 400).toString('latin1');
@@ -390,7 +460,7 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
       problems.push(`${f} ships and says GENERATED, and no DATA entry in scripts/third-party-notices.mjs covers it: say where its data comes from and the notice it owes`);
     }
   }
-  return { text: `${out.join('\n')}\n`, problems };
+  return { text: `${out.join('\n')}\n`, problems, files };
 }
 
 /** The packages /credits names, from the data-packages attributes of its built page ("name@version" each). */
@@ -400,12 +470,26 @@ export function creditedPackages(html) {
   return names;
 }
 
-/** Problems between what ships and what /credits names. */
-export function creditProblems(inv, credited) {
+/** The FILE_LICENSES ids /credits names, from the data-files attributes of its built page. */
+export function creditedFiles(html) {
+  const ids = new Set();
+  for (const m of html.matchAll(/data-files="([^"]*)"/g)) for (const p of m[1].split(/\s+/).filter(Boolean)) ids.add(p);
+  return ids;
+}
+
+/**
+ * Problems between what ships and what /credits names: packages (name@version) and, when given, the ids of the
+ * FILE_LICENSES entries that ship (`files`, from render) against those the page names (`creditedFileIds`).
+ */
+export function creditProblems(inv, credited, files = null, creditedFileIds = new Set()) {
   const problems = [];
   const shipped = new Set(inv.packages.map(token));
   for (const p of shipped) if (!credited.has(p)) problems.push(`${p} ships, and /credits does not name it (add it to an entry's packages in src/pages/credits.astro)`);
   for (const p of credited) if (!shipped.has(p)) problems.push(`/credits names ${p}, which does not ship (remove it, or correct its version)`);
+  if (files) {
+    for (const id of files) if (!creditedFileIds.has(id)) problems.push(`the file license "${id}" ships, and /credits does not name it (add "${id}" to an entry's files in src/pages/credits.astro)`);
+    for (const id of creditedFileIds) if (!files.includes(id)) problems.push(`/credits names the file license "${id}", which does not ship (remove it, or correct its id)`);
+  }
   return problems;
 }
 
@@ -461,10 +545,13 @@ export default function thirdPartyNotices() {
         const inv = inventory(root, { modules, copied, extraPackages });
         // NOTICES_DEBUG=<file>: every module id the client bundle held, one a line (to see what was traced where).
         if (process.env.NOTICES_DEBUG) fs.writeFileSync(process.env.NOTICES_DEBUG, [...modules].sort().join('\n'));
-        const { text, problems } = render(root, inv);
+        const { text, problems, files } = render(root, inv);
         const credits = path.join(out, 'credits', 'index.html');
         if (!fs.existsSync(credits)) problems.push('dist/credits/index.html was not built');
-        else problems.push(...creditProblems(inv, creditedPackages(fs.readFileSync(credits, 'utf8'))));
+        else {
+          const html = fs.readFileSync(credits, 'utf8');
+          problems.push(...creditProblems(inv, creditedPackages(html), files, creditedFiles(html)));
+        }
         const committed = path.join(root, NOTICES);
         const current = fs.existsSync(committed) ? fs.readFileSync(committed, 'utf8') : '';
         if (process.env.NOTICES_WRITE === '1') {
@@ -477,7 +564,7 @@ export default function thirdPartyNotices() {
         fs.mkdirSync(path.join(out, 'licenses'), { recursive: true });
         fs.writeFileSync(path.join(out, 'licenses', path.basename(NOTICES)), text);
         if (problems.length) throw new Error(`third-party-notices: ${problems.length} problem(s):\n  - ${problems.join('\n  - ')}`);
-        logger.info(`${inv.packages.length} packages and ${DATA.length} data sources have their notices; /credits names every package`);
+        logger.info(`${inv.packages.length} packages, ${files.length} files under their own licenses and ${DATA.length} data sources have their notices; /credits names every package and every such file`);
       },
     },
   };

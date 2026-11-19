@@ -47,8 +47,11 @@ test('the credits page names the duties its sources carry', async ({ page }) => 
   for (const w of ['CC BY-SA 4.0', 'Nara Institute of Science and Technology', 'Carnegie Mellon University', 'SCOWL', 'US$10,000,000', 'Gemma Terms of Use', 'cynicmusic.com', 'pixelsphere.org']) {
     await expect(body).toContainText(w);
   }
-  // The CMU notice in full, as the shipped table carries it.
-  await expect(page.locator('#notice-cmu + p + pre')).toContainText('Redistributions in binary form must reproduce the above copyright notice');
+  // The CMU notice in full, as the shipped table carries it, and SCOWL's whole Copyright file after it, with the
+  // notices of the works SCOWL is made from.
+  const notice = page.locator('#notice-cmu + p + pre');
+  await expect(notice).toContainText('Redistributions in binary form must reproduce the above copyright notice');
+  for (const w of ['as any of the copyrights mentioned below:', 'Copyright 2016 by Benjamin Titze', 'Copyright 1993, Geoff Kuenning', 'WordNet 1.6 Copyright 1997 by Princeton University.']) await expect(notice).toContainText(w);
 });
 
 test('the notices the page points to are served', async ({ request }) => {
@@ -63,6 +66,11 @@ test('the notices the page points to are served', async ({ request }) => {
   expect(notices.status()).toBe(200);
   const text = await notices.text();
   for (const w of ['PART 1. SOFTWARE PACKAGES', 'Copyright (c) 2001, Dr Martin Porter', 'UNICODE LICENSE V3', 'Copyright (c) 2020 Matthew Miller']) expect(text).toContain(w);
+  // three.js's files from others (fflate, ktx-parse, zstddec with Zstandard, meshoptimizer), and SCOWL's whole file.
+  for (const w of ['Copyright (c) 2023 Arjun Barrett', 'Copyright (c) 2020 Don McCurdy', 'For Zstandard software', 'Copyright (c) 2016-2025 Arseny Kapoulkine', 'Copyright 1993, Geoff Kuenning']) expect(text).toContain(w);
+  const scowl = await request.get('/licenses/SCOWL-Copyright.txt');
+  expect(scowl.status()).toBe(200);
+  expect(await scowl.text()).toContain('as any of the copyrights mentioned below:');
   for (const v of ['1.22', '1.31']) {
     const ort = await request.get(`/licenses/onnxruntime-${v}-ThirdPartyNotices.txt`);
     expect(ort.status()).toBe(200);
@@ -75,6 +83,10 @@ test('the credits page links the notices file, and says which packages each libr
   const lit = page.locator('[data-packages~="lit-html@3.3.2"]');
   await expect(lit).toContainText('Lit 3');
   await expect(lit).toContainText('lit-html@3.3.2, lit-element@4.2.2, @lit/reactive-element@2.1.2');
+  // Files three.js carries from others are named by their file licenses (data-files), which the build checks too.
+  const libs = page.locator('[data-files~="fflate"]');
+  await expect(libs).toHaveAttribute('data-files', 'fflate ktx-parse zstddec meshoptimizer');
+  await expect(libs).toContainText('Zstandard');
 });
 
 test('at phone width the credits page does not scroll sideways, Packages lines included', async ({ page }) => {

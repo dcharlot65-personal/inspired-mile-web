@@ -3,8 +3,12 @@
  * shipped file came from. These fail when something is added to the game without its credit or its record:
  * a font family, a model, a browser library, a generated data module's source, a file of music, sound or 3D.
  */
+import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+// @ts-expect-error: a plain JavaScript module of the build, with no type declarations
+import { FILE_LICENSES } from '../../scripts/third-party-notices.mjs';
+import pronEn from './verse/pron-en';
 import { MODELS } from './brain';
 import { EAR_MODEL } from './ear';
 
@@ -105,8 +109,9 @@ describe('what the credits page says the licenses ask', () => {
     expect(entries.length).toBeGreaterThanOrEqual(10);
     for (const e of entries) {
       const name = e.match(/name: '([^']+)'/)?.[1];
-      // The Draco and Basis files are three.js's; their license is a file license (Part 2 of the notices).
-      if (/Draco/.test(name ?? '')) continue;
+      // Files three.js carries from others (Draco, Basis, fflate, …) are named by their file licenses instead
+      // (Part 2 of the notices).
+      if (/files: \[/.test(e) && !/packages: \[/.test(e)) continue;
       expect([name, /packages: \[/.test(e)]).toEqual([name, true]);
     }
   });
@@ -118,6 +123,25 @@ describe('what the credits page says the licenses ask', () => {
     // docs/CARD-ART.md says each image "was looked at before use"; it does not say by whom.
     expect(page).not.toMatch(/looked at by a person/);
     expect(read('docs/CARD-ART.md')).toMatch(/looked at before use/);
+  });
+
+  it('names every file a package carries under another license, by its id, which the build holds to what ships', () => {
+    const named = new Set([...page.matchAll(/files: \[([^\]]*)\]/g)].flatMap((m) => [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1])));
+    for (const f of FILE_LICENSES as { id: string; title: string }[]) expect([f.id, named.has(f.id)], f.title).toEqual([f.id, true]);
+    for (const w of ['fflate', 'ktx-parse', 'zstddec', 'Zstandard', 'meshoptimizer', 'Arjun Barrett', 'Don McCurdy', 'Arseny Kapoulkine']) expect(page).toContain(w);
+  });
+
+  it('carries SCOWL\'s Copyright file whole in the table, and serves it as the release has it', () => {
+    const file = readFileSync(new URL('../../public/licenses/SCOWL-Copyright.txt', import.meta.url));
+    // scowl-2020.12.07.tar.gz (the sha256 scripts/build-pronunciation.mjs pins), its Copyright file.
+    expect(createHash('sha256').update(file).digest('hex')).toBe('283326a422e29c510e2ba6805518c418ce3c35ed1fadc3eec83d2da4f6c5a055');
+    const notice = pronEn.split('\n').filter((l) => l.startsWith('#')).map((l) => l.replace(/^# ?/, '')).join('\n');
+    expect(notice).toContain(file.toString('latin1').replace(/\s+$/, ''));
+    // The sentence as SCOWL wrote it, with the notices it points to after it.
+    expect(notice).toContain('as any of the copyrights mentioned below:');
+    expect(notice).not.toContain('mentioned in its Copyright file');
+    expect(page).toContain("href: '/licenses/SCOWL-Copyright.txt'");
+    expect(page).not.toMatch(/permission notice \(in full below\)/);
   });
 
   it('gives eSpeak NG\'s license and does not claim its corresponding source is linked', () => {

@@ -14,6 +14,10 @@ carry their own license file are not here: the build reads theirs from `node_mod
 | `unicode-license-v3.txt` | https://www.unicode.org/license.txt | `e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96` |
 | `stopwords-iso-LICENSE.txt` | https://raw.githubusercontent.com/stopwords-iso/stopwords-iso/master/LICENSE (last changed in commit d5514b4f, 2020-03-05). The npm package stopwords-iso 1.1.0 (tarball sha256 `e09c4b23…1130`, the one scripts/build-function-words.mjs pins) carries no license file; its package.json says `"license": "MIT"` and names Gene Diaz as author. | `7f2982f30e863a3c9826dcc51e1ad895d2a78b1f55d4398d0f5eb9b5c0631f13` |
 | `opencc-LICENSE.txt` | https://raw.githubusercontent.com/BYVoid/OpenCC/ver.1.1.9/LICENSE (the tag docs/language/NAMES-AND-QUOTATIONS.md records). `NOTICE` at that tag: 404, none. | `b534e465949558eec2597b04f5092b5e161236a68dfbfd04d547592ac3964308` |
+| `fflate-LICENSE.txt` | The `LICENSE` of the npm package fflate 0.8.2 (https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz, tarball sha256 `61fd5061…41dc`, matching the registry's integrity `sha512-cPJU47Oa…`). three.js 0.183.2's `examples/jsm/libs/fflate.module.js` names version 0.8.2 in its header. Fetched 2026-11-19. | `805f6cb28bb8b6d3a0badd83c93bccd9671fa01a3b4b92b7042b0743325ac243` |
+| `ktx-parse-LICENSE.txt` | The `LICENSE` of the npm package ktx-parse 1.0.1 (tarball sha256 `277d2ceb…5c1d`, registry integrity `sha512-djwUWv/8…`); 1.0.0 and 1.1.0 carry the same file. three.js's `examples/jsm/libs/ktx-parse.module.js` is a minified build that matches none of those releases' files byte for byte, and three.js does not record the release. Fetched 2026-11-19. | `79847431f9ecef9cf399085cb863452e71a6dab99738f4f0c1ea06c6484b5692` |
+| `zstddec-LICENSE.txt` | The `LICENSE` of the npm package zstddec 0.1.0 (tarball sha256 `12c9fe7f…7385`, registry integrity `sha512-w2NTI8+3…`): zstddec's MIT License, then Zstandard's BSD License. The WebAssembly inside three.js's `examples/jsm/libs/zstddec.module.js` (38,976 characters of base64) is the same string as in zstddec 0.1.0's `dist/zstddec.modern.js`; 0.2.0's is different. Fetched 2026-11-19. | `8d078b49fc02bd63c1beaf4ddc629a8b48e4ba6a435415408c8209e2a5c3aacf` |
+| `meshoptimizer-LICENSE.md` | The `LICENSE.md` of the npm package meshoptimizer 1.0.0 (tarball sha256 `3bdcef74…b984`, registry integrity `sha512-xsmHsLUF…`); 1.0.1 carries the same file. three.js's `examples/jsm/libs/meshopt_decoder.module.js` (sha256 `97901fb3…1709`) is byte for byte the `meshopt_decoder.mjs` of both. Fetched 2026-11-19. | `e4a26033e3551fb2722888949fbb41e77aee628e8e8f04dcffeee301aa7e5634` |
 | `jieba-LICENSE.txt` | https://raw.githubusercontent.com/fxsjy/jieba/67fa2e36e72f69d9134b8a1037b83fbb070b9775/LICENSE (the commit the record pins) | `18ba0984839f85853b29fadaf992f7dba8fd0ca0fbeae34de2b8735222dc7a37` |
 
 Apache Lucene's attribution notice (in Part 3) is the first paragraph of
@@ -22,4 +26,8 @@ of that file is about parts of Lucene the game does not use.
 
 The Snowball license is `src/lib/verse/stem/snowball/COPYING`, beside the files it covers; the NAIST notice is
 `public/licenses/mecab-ipadic-NOTICE.txt`; the CMU and SCOWL notices are read from
-`src/lib/verse/pron-en.ts` itself.
+`src/lib/verse/pron-en.ts` itself. SCOWL's is the release's whole `Copyright` file, which
+`scripts/build-pronunciation.mjs` copies from the tarball it pins (scowl-2020.12.07.tar.gz, sha256
+`5587667c…59cc`) into the table and, byte for byte, into `public/licenses/SCOWL-Copyright.txt`
+(sha256 `283326a422e29c510e2ba6805518c418ce3c35ed1fadc3eec83d2da4f6c5a055`, 11,758 bytes); the build fails when
+the table's notice does not hold that file whole.
