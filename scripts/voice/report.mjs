@@ -6,7 +6,7 @@
  *
  *   node scripts/voice/report.mjs [--in results.json] [--write]
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { align, bootstrap, scoreWords, wer } from './score.mjs';
@@ -125,12 +125,42 @@ const same = m.results.filter((r) => r.category !== 'word' && r.new.edits === r.
 out.push('');
 out.push(`Better in ${better}, the same in ${same}.`);
 
+/** The edge texts (measure.mjs --texts scripts/voice/edge-texts.txt), when they have been measured. */
+function edgeTables(file) {
+  const e = JSON.parse(readFileSync(file, 'utf8'));
+  const s = e.summary.edge;
+  const lines = [];
+  lines.push(`Run of ${e.date.slice(0, 10)} on ${e.node}, ${e.results.length} texts (\`${e.texts}\`), ${Math.round(e.seconds / 60)} minutes; the same models and settings as above.`);
+  lines.push('');
+  lines.push('| Scored | Words | WER old (eSpeak) | WER new | New − old (points) | 95% interval (paired bootstrap) |');
+  lines.push('|---|---:|---:|---:|---:|---|');
+  lines.push(`| as written (Whisper's "10pm" against "ten p.m." counts as an error) | ${s.words} | ${pct(s.old)} | ${pct(s.new)} | ${pp(s.difference)} | ${pp(s.interval95.low)} to ${pp(s.interval95.high)} |`);
+  lines.push(`| **in spoken form** (text and both transcripts through the same normaliser) | ${s.spoken.words} | ${pct(s.spoken.old)} | ${pct(s.spoken.new)} | ${pp(s.spoken.difference)} | ${pp(s.spoken.interval95.low)} to ${pp(s.spoken.interval95.high)} |`);
+  lines.push('');
+  const worse = e.results.filter((r) => r.spoken.new > r.spoken.old);
+  const better = e.results.filter((r) => r.spoken.new < r.spoken.old);
+  lines.push(`In spoken form the new reading is heard better in ${better.length} texts, worse in ${worse.length}, the same in ${e.results.length - better.length - worse.length}. Every text, with what Whisper heard (errors in spoken form, old → new):`);
+  lines.push('');
+  lines.push('| Text | Old (eSpeak) heard | New heard | Errors |');
+  lines.push('|---|---|---|---:|');
+  const cell = (t) => t.replace(/\|/g, '\\|').replace(/\n/g, ' / ');
+  for (const r of e.results) lines.push(`| ${cell(r.text)} | ${cell(r.old.heard)} | ${cell(r.new.heard)} | ${r.spoken.old} → ${r.spoken.new}${r.spoken.new > r.spoken.old ? ' **worse**' : ''} |`);
+  return lines.join('\n');
+}
+
 const md = out.join('\n');
+const EDGE = join(ROOT, 'docs/voice/measurement-edge.json');
+const edge = existsSync(EDGE) ? edgeTables(EDGE) : null;
 if (process.argv.includes('--write')) {
-  const doc = readFileSync(DOC, 'utf8');
-  const start = doc.indexOf('<!-- tables -->');
-  const end = doc.indexOf('<!-- /tables -->');
-  if (start < 0 || end < 0) throw new Error(`${DOC} has no <!-- tables --> ... <!-- /tables --> markers`);
-  writeFileSync(DOC, `${doc.slice(0, start)}<!-- tables -->\n${md}\n${doc.slice(end)}`);
-  console.log(`wrote the tables into ${DOC}`);
-} else console.log(md);
+  let doc = readFileSync(DOC, 'utf8');
+  const put = (name, body) => {
+    const start = doc.indexOf(`<!-- ${name} -->`);
+    const end = doc.indexOf(`<!-- /${name} -->`);
+    if (start < 0 || end < 0) throw new Error(`${DOC} has no <!-- ${name} --> ... <!-- /${name} --> markers`);
+    doc = `${doc.slice(0, start)}<!-- ${name} -->\n${body}\n${doc.slice(end)}`;
+  };
+  put('tables', md);
+  if (edge) put('edge', edge);
+  writeFileSync(DOC, doc);
+  console.log(`wrote the tables${edge ? ' and the edge tables' : ''} into ${DOC}`);
+} else console.log(edge ? `${md}\n\n${edge}` : md);

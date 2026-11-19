@@ -234,6 +234,25 @@ And the other way (heard by the new reading, not the old): finna, deadass, ratch
 Better in 28, the same in 142.
 <!-- /tables -->
 
+## Edge texts: numbers, numerals, times
+
+The 401 texts hold no digit, so they could not show the defect the independent check found after
+run 3 (digits glued to letters were dropped). `scripts/voice/edge-texts.txt` is 40 texts of that
+kind: the check's four sentences first, word for word, then decades, times, text-speak, Roman
+numerals and a minus sign, including some the new reading is expected to get wrong (911 as a
+number; "Elizabeth I ruled", where the I stays a pronoun). It was committed (8f84b8e2) before
+either reading of any of them was heard. Both readings are made and transcribed exactly as above
+(`measure.mjs --texts`), and scored two ways: as written, and in spoken form, the text and both
+transcripts first put through `g2p-en.ts` `normalise()`, so that Whisper writing "10pm" for
+"ten p.m." is not an error. The same function for the text and both readings.
+
+**Margin**, written before the run: in spoken form the new WER may exceed the old by at most
+1.0 point, as for running text; every text where it is worse is listed.
+
+<!-- edge -->
+(not yet measured)
+<!-- /edge -->
+
 ## What this does not show
 
 - The models ran on onnxruntime-node (CPU) on the build host, not in a browser's WebAssembly
