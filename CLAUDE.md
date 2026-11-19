@@ -208,10 +208,21 @@ season rewards, the market, and a one-time capped import of a device's collectio
 reads it); signed out it is the device's own, for solo play. A finished online match is handed to
 the recorder (`multiplayer/results.rs`) and stored in `battle_rooms` (never the verses): the
 leaderboard, `GET /stats`, account achievements and tournament results read only those rows, and a
-win is a match. A tournament match is decided only by its room (`POST .../room`;
-`tournaments/progress.rs`). Device achievements stay on the device. `tests/economy.spec.ts` holds
-each rule (API-level, real Postgres); no route lets a client add a card, so tests seed cards with
-`psql` against the harness's database.
+win is a match. The leaderboard and the win achievements count ranked wins: at most three a UTC
+day over one opponent (`stats/handlers.rs ranked_wins!`). A tournament match is decided by its room
+(`POST .../room`; `tournaments/progress.rs`), or past its deadline (`play_by`, 48 h) by the
+scheduler: a player who waited out the room's time to arrive goes through, else the lot (round
+robin: unplayed). The final of a single-elimination bracket is round log2(first-round matches) + 1
+(`final_round`), never "a round with one match so far". Device achievements stay on the device.
+**The market and referrals are for adult accounts only** (owner, 2026-11-19): the server refuses the
+others (`auth/age.rs is_adult`, 403 "For adult accounts only") and the pages hide them
+(`src/lib/adults-only.ts`, `data-adults-only`; `/auth/me` sends `user.age_tier`). **Credits are never
+sold for money.** Cards brought over in the import cannot be sold (`import.sellable`) and earn no
+achievement; the last copy of a card seated in a room that has not ended cannot be listed (the seat
+and the listing take the same account lock). `tests/economy.spec.ts` holds each rule (API-level,
+real Postgres); no route lets a client add a card, so tests seed cards with `psql` against the
+harness's database. `src/lib/api-routes.test.ts` fails when a page calls a route (method and path)
+that no router defines.
 
 ## Building the API
 
@@ -247,7 +258,12 @@ the Astro dev server, which proxies `/api` to the API (`astro.config.mjs`). Stat
 go to `.e2e/` (git-ignored); the sign-in codes the tests read are in `.e2e/api.log`.
 
 The harness starts the API with `TOURNAMENT_CHECK_SECONDS=1` (the scheduler's look for tournaments
-to start; `E2E_TOURNAMENT_SECONDS` moves it).
+to start and for matches past their deadline; `E2E_TOURNAMENT_SECONDS` moves it), and its email-off
+copy with `TOURNAMENT_ARRIVAL_SECONDS=5` (a tournament room waits 5 s, not 240, for its second
+player; `E2E_TOURNAMENT_ARRIVAL_SECONDS` moves it), so a test can open a room there and see a no-show
+recorded. `tests/noemail-proxy.mjs` passes that origin's game socket to the email-off API. Tests count
+only the accounts they made (by id or name), never the whole `users` table: other workers create
+accounts at the same time.
 
 **The build host is shared, and no server is reused.** Default ports: 4399 (dev server),
 38490 (API, `DEV_EMAIL_LOG=1`), 38491 (API with email off), 54329 (Postgres). If another
