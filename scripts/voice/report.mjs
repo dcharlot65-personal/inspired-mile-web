@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { align, scoreWords } from './score.mjs';
+import { align, bootstrap, scoreWords, wer } from './score.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const DOC = join(ROOT, 'docs/voice/G2P-MEASUREMENT.md');
@@ -19,8 +19,8 @@ const m = JSON.parse(readFileSync(inArg > 0 ? process.argv[inArg + 1] : join(ROO
 /** The margins, fixed before the full run (G2P-MEASUREMENT.md, "Margin"). */
 export const MARGIN = { runningTextPoints: 1.0, wordsLost: 6 };
 
-const pct = (x) => `${(x * 100).toFixed(1)}%`;
-const pp = (x) => `${x >= 0 ? '+' : ''}${(x * 100).toFixed(1)}`;
+const pct = (x) => `${(x * 100).toFixed(2)}%`;
+const pp = (x) => `${x >= 0 ? '+' : '−'}${Math.abs(x * 100).toFixed(2)}`;
 const out = [];
 const NAMES = { verse: 'verses (written opponent)', acrostic: 'acrostic lines', quote: 'card quotations', model: 'verses the models wrote', word: '200 words, in "I say … again."', 'running text': '**running text (all but the words)**', all: 'everything' };
 
@@ -31,6 +31,15 @@ out.push('|---|---:|---:|---:|---:|---:|---|');
 for (const [k, s] of Object.entries(m.summary)) {
   out.push(`| ${NAMES[k] ?? k} | ${s.items} | ${s.words} | ${pct(s.old)} | ${pct(s.new)} | ${pp(s.difference)} | ${pp(s.interval95.low)} to ${pp(s.interval95.high)} |`);
 }
+// The six verses the G2P was tuned on before any full run (G2P-MEASUREMENT.md), left out.
+const DEVELOPMENT = new Set(['verse-1', 'verse-2', 'verse-3', 'verse-4', 'verse-5', 'verse-6']);
+const heldOut = m.results.filter((r) => r.category !== 'word' && !DEVELOPMENT.has(r.id));
+{
+  const o = wer(heldOut, 'old');
+  const n = wer(heldOut, 'new');
+  const ci = bootstrap(heldOut);
+  out.push(`| running text without the six development verses | ${heldOut.length} | ${o.words} | ${pct(o.wer)} | ${pct(n.wer)} | ${pp(n.wer - o.wer)} | ${pp(ci.low)} to ${pp(ci.high)} |`);
+}
 const w = m.summary.word?.targetsHeard;
 if (w) {
   out.push('');
@@ -38,7 +47,7 @@ if (w) {
 }
 const rt = m.summary['running text'];
 const verdict = [];
-if (rt) verdict.push(`running text ${pp(rt.difference)} points against a margin of +${MARGIN.runningTextPoints.toFixed(1)}: ${rt.difference * 100 <= MARGIN.runningTextPoints ? 'within' : '**outside**'}`);
+if (rt) verdict.push(`running text ${pp(rt.difference)} points (95% interval ${pp(rt.interval95.low)} to ${pp(rt.interval95.high)}) against a margin of +${MARGIN.runningTextPoints.toFixed(1)}: ${rt.difference * 100 <= MARGIN.runningTextPoints ? 'within' : '**outside**'}`);
 if (w) verdict.push(`words heard ${w.new - w.old >= 0 ? '+' : ''}${w.new - w.old} against a margin of −${MARGIN.wordsLost}: ${w.old - w.new <= MARGIN.wordsLost ? 'within' : '**outside**'}`);
 out.push('');
 out.push(`**Against the margins:** ${verdict.join('; ')}.`);

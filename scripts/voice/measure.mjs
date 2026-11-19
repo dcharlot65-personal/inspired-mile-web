@@ -28,7 +28,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { corpus } from './corpus.mjs';
-import { align, same, scoreWords } from './score.mjs';
+import { align, bootstrap, same, scoreWords, wer } from './score.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
@@ -197,17 +197,6 @@ function stressAt(ps) {
   return -1;
 }
 
-/** A seeded generator for the bootstrap, so the interval is the same every run. */
-function rng(seed) {
-  let s = seed >>> 0;
-  return () => {
-    s = (s + 0x6d2b79f5) >>> 0;
-    let t = Math.imul(s ^ (s >>> 15), 1 | s);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
 // ---------------------------------------------------------------------------
 // Run
 // ---------------------------------------------------------------------------
@@ -277,29 +266,6 @@ for (const [key, w] of seen) {
 // Summary
 // ---------------------------------------------------------------------------
 
-function wer(rows, side) {
-  const edits = rows.reduce((s, r) => s + r[side].edits, 0);
-  const n = rows.reduce((s, r) => s + r.words, 0);
-  return { edits, words: n, wer: n ? edits / n : 0 };
-}
-function bootstrap(rows, reps = 10000) {
-  const rand = rng(20261119);
-  const diffs = [];
-  for (let b = 0; b < reps; b++) {
-    let eo = 0;
-    let en = 0;
-    let n = 0;
-    for (let i = 0; i < rows.length; i++) {
-      const r = rows[Math.floor(rand() * rows.length)];
-      eo += r.old.edits;
-      en += r.new.edits;
-      n += r.words;
-    }
-    diffs.push(n ? (en - eo) / n : 0);
-  }
-  diffs.sort((a, b) => a - b);
-  return { low: diffs[Math.floor(reps * 0.025)], high: diffs[Math.floor(reps * 0.975)] };
-}
 const categories = [...new Set(results.map((r) => r.category))];
 const summary = {};
 for (const c of [...categories, 'running text', 'all']) {
