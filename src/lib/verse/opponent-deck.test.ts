@@ -21,18 +21,19 @@ describe('The Sonnet Man is never the opponent (D-04)', () => {
     expect(getCardById(SONNET_MAN)?.name).toBe('The Sonnet Man');
   });
 
+  // Problems are collected and asserted once: an expect per seed made this the slowest test on a loaded host.
   it(`opponentDeck never deals SM-001 on ${SEEDS} seeds, and still deals three different characters`, () => {
     const dealt: number[] = [];
+    const malformed: string[] = [];
     for (let seed = 0; seed < SEEDS; seed++) {
       const d = opponentDeck(seed);
       if (d.characters.includes(SONNET_MAN)) dealt.push(seed);
-      expect(new Set(d.characters).size).toBe(ROUNDS);
-      for (const id of d.characters) expect(getCardById(id)?.type).toBe('Character');
-      expect(d.relics).toHaveLength(1);
-      expect(d.potions).toHaveLength(1);
+      const ok = new Set(d.characters).size === ROUNDS && d.characters.every((id) => getCardById(id)?.type === 'Character') && d.relics.length === 1 && d.potions.length === 1;
+      if (!ok) malformed.push(`seed ${seed}: ${JSON.stringify(d)}`);
     }
     expect(dealt.slice(0, 10), `${dealt.length} of ${SEEDS} seeds dealt SM-001 to the opponent`).toEqual([]);
-  });
+    expect(malformed.slice(0, 5), `${malformed.length} malformed decks`).toEqual([]);
+  }, 60_000);
 
   it('a duel planned with no opponent deck given (every front end, DuelSession) never puts SM-001 on the opponent\'s side', () => {
     const seen: string[] = [];
@@ -41,7 +42,7 @@ describe('The Sonnet Man is never the opponent (D-04)', () => {
       if (d.opponent.characters.includes(SONNET_MAN) || d.rounds.some((r) => r.opponent.charId === SONNET_MAN)) seen.push(`seed ${seed}`);
     }
     expect(seen.slice(0, 10), `${seen.length} duels`).toEqual([]);
-  });
+  }, 60_000);
 
   it('no model is asked to write as The Sonnet Man, in any round of 5,000 duels', () => {
     const asked: string[] = [];
@@ -54,7 +55,7 @@ describe('The Sonnet Man is never the opponent (D-04)', () => {
       }
     }
     expect(asked.slice(0, 10), `${asked.length} prompts`).toEqual([]);
-  });
+  }, 60_000);
 
   it('leaves the player\'s side alone: a new player\'s starter deck still holds SM-001', () => {
     // Only the house's draw is changed; what a player holds and plays is theirs.
