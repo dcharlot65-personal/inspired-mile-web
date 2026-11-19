@@ -159,7 +159,7 @@ const vi: Record<string, string> = {
 
   // --- Thông báo ---
   'migrate.title': 'Chuyển các lá bài trên thiết bị này vào tài khoản của bạn?',
-  'migrate.body': 'Thiết bị này có những lá bài từ lúc chơi một mình. Tài khoản của bạn chỉ nhận được chúng một lần: mỗi lá một bản, lá hiếm nhất trước, đến một giới hạn. Thống kê và thành tựu của bạn vẫn ở trên thiết bị này.',
+  'migrate.body': 'Thiết bị này có những lá bài từ lúc chơi một mình. Một tài khoản chỉ nhận được chúng một lần: mỗi lá một bản, lá hiếm nhất trước, đến một giới hạn. Không thể bán những lá bài đã chuyển sang. Thống kê và thành tựu của bạn vẫn ở trên thiết bị này.',
   'migrate.limit': 'Số lá bài có thể nhận: {max}',
   'migrate.yes': 'Chuyển',
   'migrate.no': 'Bỏ qua',

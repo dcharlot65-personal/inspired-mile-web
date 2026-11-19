@@ -159,7 +159,7 @@ const pl: Record<string, string> = {
 
   // --- Komunikaty ---
   'migrate.title': 'Przenieść karty z tego urządzenia na konto?',
-  'migrate.body': 'To urządzenie ma karty z gry solo. Twoje konto może je przejąć tylko raz: po jednej z każdej karty, najpierw najrzadsze, do limitu. Statystyki i osiągnięcia zostają na tym urządzeniu.',
+  'migrate.body': 'To urządzenie ma karty z gry solo. Jedno konto może je przejąć tylko raz: po jednej z każdej karty, najpierw najrzadsze, do limitu. Przeniesionych kart nie można sprzedać. Statystyki i osiągnięcia zostają na tym urządzeniu.',
   'migrate.limit': 'Karty, które może przejąć: {max}',
   'migrate.yes': 'Przenieś',
   'migrate.no': 'Pomiń',

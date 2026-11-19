@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': '다른 플레이어와 셰익스피어 수집 카드를 사고 교환하세요.',
+  'market.meta.description': '다른 플레이어와 셰익스피어 수집 카드를 사고파세요.',
   'market.titleA': '카드 ',
   'market.titleB': '마켓',
-  'market.intro': '다른 플레이어와 카드를 사고 교환하세요. 중복 카드를 판매 매물로 올리거나, 없는 카드를 찾아보세요.',
+  'market.intro': '다른 플레이어에게 카드를 사고, 필요 없는 카드는 판매하세요. 판매되면 크레딧은 판매자에게, 카드는 구매자에게 가요.',
+  'market.adultsOnly': '마켓은 성인 계정만 이용할 수 있어요.',
   'market.tab.browse': '둘러보기',
   'market.tab.mine': '내 매물',
-  'market.tab.sell': '판매 또는 교환',
+  'market.tab.sell': '판매',
   'market.filter.all': '모든 매물',
   'market.filter.sale': '판매',
   'market.filter.trade': '교환',

@@ -159,7 +159,7 @@ const fr: Record<string, string> = {
 
   // --- Bandeaux ---
   'migrate.title': 'Ajouter les cartes de cet appareil à votre compte\u202f?',
-  'migrate.body': 'Cet appareil contient des cartes gagnées en solo. Votre compte peut les reprendre une seule fois\u00a0: un exemplaire de chaque carte, les plus rares d’abord, jusqu’à une limite. Vos statistiques et vos succès restent sur cet appareil.',
+  'migrate.body': 'Cet appareil contient des cartes gagnées en solo. Un compte peut les reprendre une seule fois\u00a0: un exemplaire de chaque carte, les plus rares d’abord, jusqu’à une limite. Les cartes reprises ne peuvent pas être vendues. Vos statistiques et vos succès restent sur cet appareil.',
   'migrate.limit': 'Cartes qu’il peut reprendre\u00a0: {max}',
   'migrate.yes': 'Les ajouter',
   'migrate.no': 'Ignorer',

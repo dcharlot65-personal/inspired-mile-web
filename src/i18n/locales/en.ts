@@ -61,7 +61,7 @@ const UI: Record<string, string> = {
 
   // --- Banners and toasts ---
   'migrate.title': 'Bring this device\'s cards to your account?',
-  'migrate.body': 'This device holds cards from solo play. Your account can take them once: one of each card, the rarest first, up to a limit. Your stats and achievements stay on this device.',
+  'migrate.body': 'This device holds cards from solo play. One account can take them, once: one of each card, the rarest first, up to a limit. Cards brought over cannot be sold. Your stats and achievements stay on this device.',
   'migrate.limit': 'Cards it can take: {max}',
   'migrate.yes': 'Bring them over',
   'migrate.no': 'Skip',

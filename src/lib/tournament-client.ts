@@ -25,7 +25,8 @@ export interface Tournament {
   status: string;
   starts_at: string;
   created_at: string;
-  entry_count?: number;
+  /** Players registered. */
+  player_count?: number;
 }
 
 export interface BracketMatch {
@@ -39,6 +40,11 @@ export interface BracketMatch {
   winner_id: string | null;
   status: string;
   room_id: string | null;
+  /** When the match is to have been played (once both players are known); then the server
+   *  decides it (docs/ECONOMY.md, "Tournaments"). */
+  play_by?: string | null;
+  /** room, bye, no_show, lot or unplayed. */
+  decided_by?: string | null;
 }
 
 export interface LeaderboardEntry {

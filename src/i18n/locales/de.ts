@@ -159,7 +159,7 @@ const de: Record<string, string> = {
 
   // --- Hinweise ---
   'migrate.title': 'Die Karten dieses Geräts in dein Konto übernehmen?',
-  'migrate.body': 'Auf diesem Gerät liegen Karten aus Einzelspielen. Dein Konto kann sie einmal übernehmen: jede Karte einmal, die seltensten zuerst, bis zu einer Grenze. Deine Statistiken und Erfolge bleiben auf diesem Gerät.',
+  'migrate.body': 'Auf diesem Gerät liegen Karten aus Einzelspielen. Ein Konto kann sie einmal übernehmen: jede Karte einmal, die seltensten zuerst, bis zu einer Grenze. Übernommene Karten können nicht verkauft werden. Deine Statistiken und Erfolge bleiben auf diesem Gerät.',
   'migrate.limit': 'Karten, die es übernehmen kann: {max}',
   'migrate.yes': 'Übernehmen',
   'migrate.no': 'Überspringen',

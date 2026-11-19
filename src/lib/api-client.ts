@@ -59,6 +59,10 @@ export interface UserResponse {
   display_name: string | null;
   auth_provider: string;
   avatar_url: string | null;
+  /** 'adult', 'teen' or 'unknown'. The market and referrals are shown only to an adult account
+   *  (src/lib/adults-only.ts); the server refuses every other one whatever a page shows. Absent
+   *  from a copy stored before 2026-11-19. */
+  age_tier?: string;
 }
 
 export interface AuthResponse {

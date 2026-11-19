@@ -159,7 +159,7 @@ const id: Record<string, string> = {
 
   // --- Pemberitahuan ---
   'migrate.title': 'Bawa kartu di perangkat ini ke akunmu?',
-  'migrate.body': 'Perangkat ini menyimpan kartu dari permainan solo. Akunmu dapat mengambilnya satu kali: satu dari setiap kartu, yang paling langka lebih dulu, sampai batas tertentu. Statistik dan pencapaianmu tetap di perangkat ini.',
+  'migrate.body': 'Perangkat ini menyimpan kartu dari permainan solo. Satu akun dapat mengambilnya satu kali: satu dari setiap kartu, yang paling langka lebih dulu, sampai batas tertentu. Kartu yang dibawa tidak bisa dijual. Statistik dan pencapaianmu tetap di perangkat ini.',
   'migrate.limit': 'Kartu yang bisa diambil: {max}',
   'migrate.yes': 'Bawa',
   'migrate.no': 'Lewati',

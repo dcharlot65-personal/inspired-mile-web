@@ -12,6 +12,7 @@
  * (src/lib/storage-backend.ts). It holds card ids and the balance, nothing else of the account.
  */
 import * as api from './api-client';
+import { ECONOMY } from './economy-rules';
 
 const KEY = 'inspired-mile-account-cards';
 const MODE_KEY = 'inspired-mile-storage-mode';
@@ -114,9 +115,18 @@ export function forgetAccountCards(): void {
   } catch { /* nothing to forget */ }
 }
 
-/** The account's cards that can be listed for sale: held, not listed, and not a starter character. */
+/**
+ * The account's cards that can be listed for sale: held, not listed, not a starter character, and
+ * not brought over from a device (those stay with the account that brought them while
+ * `import.sellable` is false: docs/ECONOMY.md). The server checks all of it again.
+ */
 export function sellableCardIds(): string[] {
   const copy = accountCopy();
   if (!copy) return [];
-  return [...new Set(copy.cards.filter((c) => !c.listed).map((c) => c.cardId))];
+  return sellable(copy.cards);
+}
+
+/** `sellableCardIds` of these rows (exported for its test). */
+export function sellable(cards: AccountCard[]): string[] {
+  return [...new Set(cards.filter((c) => !c.listed && (ECONOMY.import.sellable || c.source !== 'import')).map((c) => c.cardId))];
 }

@@ -73,14 +73,14 @@ import Layout from '../layouts/BaseLayout.astro';
           <p class="mt-2">We do not store grades, student work, or progress on assignments. The class list shows each member's username, role and joining date.</p>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Referral Data</h3>
-          <p>If you use our referral system, we store your referral code and track which accounts were referred by you, solely for the purpose of issuing referral rewards.</p>
+          <p>If you use our referral system, we store your referral code and track which accounts were referred by you, solely for the purpose of issuing referral rewards. Referrals, like the marketplace, are open to adult accounts only.</p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Cookies &amp; Local Storage</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
-            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device. The one exception: the first time you sign in on a device, it offers to move that device's cards (one of each, up to a limit) to your account, once; your stats and achievements stay on the device. Signed in, your browser also keeps a copy of your account's card list and credits balance, which it removes when you sign out.</li>
+            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device. The one exception: when you sign in on a device that holds cards from playing signed out, it offers to move them (one of each, up to a limit) to your account. Each account can take a device's cards once. Once they have gone to an account, the device does not offer them to any account again, and an account that chose to skip is not asked again on that device; the device keeps a note of both. Cards moved this way cannot be sold in the marketplace. Your stats and achievements stay on the device. Signed in, your browser also keeps a copy of your account's card list and credits balance, which it removes when you sign out.</li>
             <li><strong class="text-white">Service Worker:</strong> We use a service worker to keep copies of pages, images and scripts in your browser so the site loads faster and works offline. It does not keep our server's answers about your account, and when you sign out it removes anything it was holding for you.</li>
             <li><strong class="text-white">AI models:</strong> A model you download is kept in your browser's storage so it is not downloaded again. Clearing the browser's data for this site removes it.</li>
           </ul>

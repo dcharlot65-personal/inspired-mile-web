@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // English written in the markup is what a reader sees before the script has run.
 ---
 
-<BaseLayout title="Marketplace" description="Buy and trade Shakespeare collectible cards with other players.">
+<BaseLayout title="Marketplace" description="Buy and sell Shakespeare collectible cards with other players.">
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
@@ -16,15 +16,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Two pieces so that one can carry the gradient; the first brings its own space where the language wants one. -->
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4"><span data-i18n="market.titleA">Card </span><span class="text-gradient" data-i18n="market.titleB">Marketplace</span></h1>
         <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="market.intro">
-          Buy and trade cards with other players. Offer your duplicates for sale, or find the cards you are missing.
+          Buy cards from other players and sell the ones you can spare. A sale moves the credits and the card.
         </p>
       </div>
 
+      <!-- The market is for adult accounts only (owner, 2026-11-19): the server refuses every other
+           account, and this page shows them this instead (src/lib/adults-only.ts). -->
+      <div id="market-adults-only" hidden class="card-glass p-8 max-w-lg mx-auto text-center">
+        <p class="text-sm text-obsidian-300" data-i18n="market.adultsOnly">The market is for adult accounts only.</p>
+      </div>
+
+      <div id="market-body" hidden>
       <!-- Tabs -->
       <div class="flex flex-wrap gap-2 mb-8 justify-center">
         <button id="tab-browse" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors" data-i18n="market.tab.browse">Browse</button>
         <button id="tab-my" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.mine">My listings</button>
-        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.sell">Sell or trade</button>
+        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.sell">Sell</button>
       </div>
 
       <!-- Browse Panel -->
@@ -65,7 +72,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- Sell / Trade Panel -->
+      <!-- Sell Panel -->
       <div id="panel-sell" class="hidden">
         <div class="card-glass p-8 max-w-lg mx-auto">
           <h2 class="font-display text-xl font-bold text-obsidian-200 mb-6" data-i18n="market.sell.title">Create a listing</h2>
@@ -89,12 +96,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <script>
     import { browseListings, createListing, cancelListing, buyListing, myListings, type Listing } from '../lib/marketplace-client';
-    import { isLoggedIn } from '../lib/storage-backend';
+    import { ACCOUNT_CHANGED_EVENT, isLoggedIn } from '../lib/storage-backend';
+    import { adultsOnlyShown } from '../lib/adults-only';
     import { ACCOUNT_CARDS_EVENT, refreshAccountCards, sellableCardIds } from '../lib/account-cards';
     import { has, t } from '../i18n';
     import { date, list, plural } from '../i18n/fmt';
@@ -347,13 +356,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     // Nothing is drawn with t() before the language and this page's strings are in.
+    // Only an adult account (or, signed out, a visitor the age gate took for an adult) is shown the
+    // market; nothing is asked of the server for anyone else.
+    let opened = false;
+    function openIfAllowed() {
+      const allowed = adultsOnlyShown();
+      document.getElementById('market-adults-only')!.hidden = allowed;
+      document.getElementById('market-body')!.hidden = !allowed;
+      if (allowed && !opened) {
+        opened = true;
+        loadListings();
+        populateSellCards();
+      }
+    }
+
     initPage(['marketplace', 'shared'], { title: 'nav.marketplace', description: 'market.meta.description' })
       .catch((e) => console.error('[marketplace] the language could not be loaded', e))
       .then(() => {
         redraw();
         onPageLocaleChange(redraw);
-        loadListings();
-        populateSellCards();
+        openIfAllowed();
+        window.addEventListener(ACCOUNT_CHANGED_EVENT, openIfAllowed);
+        window.addEventListener('im-age-answered', openIfAllowed);
         window.addEventListener(ACCOUNT_CARDS_EVENT, () => populateSellCards());
       });
   </script>

@@ -20,6 +20,12 @@ const USER_KEY = 'inspired-mile-user';
 let currentMode: StorageMode = 'local';
 let currentUser: UserResponse | null = null;
 
+/** Fired on window when the signed-in account changes (signed in, out, or its age tier). */
+export const ACCOUNT_CHANGED_EVENT = 'im-account-changed';
+function announce(): void {
+  if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent(ACCOUNT_CHANGED_EVENT));
+}
+
 // ---------------------------------------------------------------------------
 // Mode Management
 // ---------------------------------------------------------------------------
@@ -50,6 +56,7 @@ export async function initStorageBackend(): Promise<void> {
       currentUser = user;
       localStorage.setItem(USER_KEY, JSON.stringify(user));
       void refreshAccountCards();
+      announce();
       return;
     } catch {
       // Session expired or server down — fall back to local
@@ -58,6 +65,7 @@ export async function initStorageBackend(): Promise<void> {
       localStorage.removeItem(MODE_KEY);
       localStorage.removeItem(USER_KEY);
       forgetAccountCards();
+      announce();
     }
   }
   currentMode = 'local';
@@ -73,6 +81,17 @@ export function activateServerMode(user: UserResponse): void {
   localStorage.setItem(USER_KEY, JSON.stringify(user));
   // Signed in, the collection is the account's (src/lib/account-cards.ts).
   void refreshAccountCards();
+  announce();
+}
+
+/** The account's age tier changed (its owner answered the age question). */
+export function setCurrentUserAgeTier(ageTier: string): void {
+  if (!currentUser) return;
+  currentUser = { ...currentUser, age_tier: ageTier };
+  try {
+    localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
+  } catch { /* the next /auth/me writes it */ }
+  announce();
 }
 
 /**
@@ -84,6 +103,7 @@ export function deactivateServerMode(): void {
   localStorage.removeItem(MODE_KEY);
   localStorage.removeItem(USER_KEY);
   forgetAccountCards();
+  announce();
 }
 
 // ---------------------------------------------------------------------------

@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'Beli dan tukar kartu koleksi Shakespeare dengan pemain lain.',
+  'market.meta.description': 'Beli dan jual kartu koleksi Shakespeare dengan pemain lain.',
   'market.titleA': 'Pasar ',
   'market.titleB': 'Kartu',
-  'market.intro': 'Beli dan tukar kartu dengan pemain lain. Tawarkan kartu gandamu untuk dijual, atau temukan kartu yang belum kamu punya.',
+  'market.intro': 'Beli kartu dari pemain lain dan jual kartu yang tidak kamu perlukan. Saat terjual, kredit pindah ke penjual dan kartu ke pembeli.',
+  'market.adultsOnly': 'Pasar hanya untuk akun orang dewasa.',
   'market.tab.browse': 'Jelajahi',
   'market.tab.mine': 'Penawaran saya',
-  'market.tab.sell': 'Jual atau tukar',
+  'market.tab.sell': 'Jual',
   'market.filter.all': 'Semua penawaran',
   'market.filter.sale': 'Dijual',
   'market.filter.trade': 'Ditukar',

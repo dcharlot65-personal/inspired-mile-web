@@ -125,9 +125,19 @@ export async function claimReward(level: number): Promise<void> {
   await seasonRequest(`/claim/${level}`, { method: 'POST' });
 }
 
-/** Calculate level progress percentage */
+/**
+ * The XP at which a season level begins, as the server counts it (backend/src/ledger.rs
+ * `xp_for_level` and `level_for`): level 1 at 0, level n at n × 200 (so level 2 at 400, level 3 at
+ * 600). Until 2026-11-19 the bar assumed (n − 1) × 200 and stood half full at level 1 with 100 XP.
+ */
+export function xpForLevel(level: number): number {
+  return level <= 1 ? 0 : level * 200;
+}
+
+/** How far through its level the season's XP is, in percent. */
 export function getLevelProgress(progress: SeasonProgress): number {
   if (progress.level >= progress.season.maxLevel) return 100;
-  const xpIntoLevel = progress.xp - ((progress.level - 1) * 200);
-  return Math.min(100, Math.max(0, (xpIntoLevel / 200) * 100));
+  const from = xpForLevel(progress.level);
+  const to = xpForLevel(progress.level + 1);
+  return Math.min(100, Math.max(0, ((progress.xp - from) / (to - from)) * 100));
 }

@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'ほかのプレイヤーとシェイクスピアのコレクションカードを売買・交換できます。',
+  'market.meta.description': 'ほかのプレイヤーとシェイクスピアのコレクションカードを売買できます。',
   'market.titleA': 'カード',
   'market.titleB': 'マーケット',
-  'market.intro': 'ほかのプレイヤーとカードを売買・交換できます。重複したカードを出品したり、足りないカードを探したりしましょう。',
+  'market.intro': 'ほかのプレイヤーからカードを買い、使わないカードを売ることができます。売れると、クレジットは出品者に、カードは購入者に移ります。',
+  'market.adultsOnly': 'マーケットは大人のアカウント専用です。',
   'market.tab.browse': '探す',
   'market.tab.mine': '自分の出品',
-  'market.tab.sell': '売る・交換する',
+  'market.tab.sell': '売る',
   'market.filter.all': 'すべての出品',
   'market.filter.sale': '販売',
   'market.filter.trade': '交換',

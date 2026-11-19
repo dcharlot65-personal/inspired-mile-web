@@ -62,6 +62,10 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   ['Listing is no longer active', 'listing_inactive'],
   ['Cannot buy your own listing', 'listing_own'],
   ['Only sales are offered', 'bad_request'],
+  ['Cards brought over from a device cannot be sold', 'card_bound'],
+  ['This card is in a match', 'card_in_play'],
+  // The market and referrals: adult accounts only (owner, 2026-11-19)
+  ['For adult accounts only', 'adults_only'],
   // Tournaments
   ['Tournament not found', 'tournament_not_found'],
   ['Tournament is not accepting registrations', 'tournament_closed'],

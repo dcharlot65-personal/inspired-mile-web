@@ -64,6 +64,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </select>
         </div>
 
+        <!-- A match nobody plays does not stop the tournament (backend/src/tournaments/progress.rs, docs/ECONOMY.md). -->
+        <p id="bracket-rule" class="text-xs text-obsidian-500 mb-4 max-w-2xl" data-i18n="tour.deadlineRule">A match not played by its date goes to the player who came to its room and waited for the other. If both or neither did, the server draws lots; in a round robin, the match is left unplayed.</p>
+
         <div id="bracket-container" class="overflow-x-auto">
           <div class="text-center py-12">
             <p class="text-sm text-obsidian-500" data-i18n="tour.selectHint">Choose a tournament to see its bracket.</p>
@@ -159,7 +162,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       listContainer.innerHTML = tournaments.map(tn => {
         const isOpen = tn.status === 'registration';
-        const entryCount = tn.entry_count ?? 0;
+        // The API calls it player_count (until 2026-11-19 the page read entry_count, which it never sent, and showed 0).
+        const entryCount = tn.player_count ?? 0;
 
         return `
           <div class="card-glass p-6 hover:border-gold-500/30 transition-colors">
@@ -312,6 +316,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         ${esc(t(state))}
                       </span>
                     </div>
+                    ${!done && m.play_by ? `<div class="text-center text-[10px] text-obsidian-500 mt-1">${esc(t('tour.label.playBy'))} <span class="text-obsidian-400">${esc(dateTime(m.play_by))}</span></div>` : ''}
                     ${mine ? `<button class="play-match-btn btn-primary text-xs w-full mt-2 py-1.5" data-match="${esc(m.id)}">${esc(t('tour.play'))}</button>` : ''}
                   </div>
                 `;

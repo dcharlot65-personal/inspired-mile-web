@@ -234,7 +234,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
                 <div class="w-44 bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl py-2">
                   <a href="/world-map" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/world-map" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.worldMap">World Map</a>
-                  <a href="/marketplace" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.marketplace">Marketplace</a>
+                  <a href="/marketplace" data-adults-only hidden class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.marketplace">Marketplace</a>
                   <a href="/vr" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/vr" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.vr">VR Gallery</a>
                   <a href="/viewer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/viewer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.viewer">3D Viewer</a>
                 </div>
@@ -431,7 +431,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <a href="/tournaments" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.tournaments">Tournaments</a>
           <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest" data-i18n="nav.explore">Explore</span></div>
           <a href="/world-map" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.worldMap">World Map</a>
-          <a href="/marketplace" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.marketplace">Marketplace</a>
+          <a href="/marketplace" data-adults-only hidden class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.marketplace">Marketplace</a>
           <a href="/vr" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.vr">VR Gallery</a>
           <a href="/viewer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/viewer" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.viewer">3D Viewer</a>
           <div class="border-t border-obsidian-800/50 mt-2 pt-2">
@@ -448,9 +448,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
     <!-- Data Migration Banner -->
     <div id="migration-banner" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-90 card-glass p-4 max-w-md bg-obsidian-900/95 backdrop-blur-lg border-gold-500/30 shadow-2xl rounded-xl">
-      <!-- Once per account: the device's own cards, one of each, the rarest first, up to the server's cap (docs/ECONOMY.md). -->
+      <!-- Once per account on the server, and offered once per device: the device's own cards, one of each, the rarest
+           first, up to the server's cap; they cannot be sold (docs/ECONOMY.md). -->
       <h4 class="text-sm font-display font-bold text-gold-300 mb-1" data-i18n="migrate.title">Bring this device's cards to your account?</h4>
-      <p class="text-xs text-obsidian-400 mb-1" data-i18n="migrate.body">This device holds cards from solo play. Your account can take them once: one of each card, the rarest first, up to a limit. Your stats and achievements stay on this device.</p>
+      <p class="text-xs text-obsidian-400 mb-1" data-i18n="migrate.body">This device holds cards from solo play. One account can take them, once: one of each card, the rarest first, up to a limit. Cards brought over cannot be sold. Your stats and achievements stay on this device.</p>
       <p id="migration-limit" class="text-xs text-obsidian-500 mb-3"></p>
       <div class="flex gap-2">
         <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5" data-i18n="migrate.yes">Bring them over</button>
@@ -489,7 +490,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               <li><a href="/playground" class="hover:text-gold-400 transition-colors" data-i18n="nav.playground">Playground</a></li>
               <li><a href="/battle" class="hover:text-gold-400 transition-colors" data-i18n="nav.battle">Battle Arena</a></li>
               <li><a href="/multiplayer" class="hover:text-gold-400 transition-colors" data-i18n="nav.multiplayer">Multiplayer</a></li>
-              <li><a href="/marketplace" class="hover:text-gold-400 transition-colors" data-i18n="nav.marketplace">Marketplace</a></li>
+              <li data-adults-only hidden><a href="/marketplace" class="hover:text-gold-400 transition-colors" data-i18n="nav.marketplace">Marketplace</a></li>
               <li><a href="/tournaments" class="hover:text-gold-400 transition-colors" data-i18n="nav.tournaments">Tournaments</a></li>
               <li><a href="/world-map" class="hover:text-gold-400 transition-colors" data-i18n="nav.worldMap">World Map</a></li>
               <li><a href="/profile" class="hover:text-gold-400 transition-colors" data-i18n="nav.profile">Profile</a></li>
@@ -719,9 +720,11 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
     <script>
       // Auth UI logic — passkeys first, an emailed one-time code as the way in without one.
-      import { initStorageBackend, isLoggedIn, getCurrentUser, logoutUser } from '../lib/storage-backend';
+      import { ACCOUNT_CHANGED_EVENT, initStorageBackend, isLoggedIn, getCurrentUser, logoutUser, setCurrentUserAgeTier } from '../lib/storage-backend';
+      import { adultsOnlyShown } from '../lib/adults-only';
       import { getMigrationStatus, importCards, type AuthResponse, type PasskeyInfo } from '../lib/api-client';
       import { getDeviceCards } from '../lib/inventory';
+      import { importDone, importSkipped, offerImport } from '../lib/import-offer';
       import { refreshAccountCards } from '../lib/account-cards';
       import { claimDailyBonus } from '../lib/credits';
       import { fillSlots, has, initI18n, onLocaleChange, t } from '../i18n';
@@ -1394,11 +1397,14 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
       onLocaleChange(drawImportLimit);
 
+      // A device offers its collection once (src/lib/import-offer.ts): after it has gone to an
+      // account, no account that signs in here is offered it again, and an account that said "Skip"
+      // is not asked again here. The server takes an import once per account whatever a page does.
       async function offerMigrationIfNeeded() {
         if (!isLoggedIn()) return;
         // The daily bonus, asked for once a day (the server pays it once a day per account).
         void claimDailyBonus();
-        if (getDeviceCards().length === 0) return;
+        if (!offerImport(getCurrentUser()?.id, getDeviceCards().length)) return;
 
         try {
           const status = await getMigrationStatus();
@@ -1419,6 +1425,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
         try {
           const result = await importCards(getDeviceCards().map((c) => c.cardId));
+          importDone(getCurrentUser()?.id);
           await refreshAccountCards();
           const resultEl = document.getElementById('migration-result')!;
           resultEl.classList.remove('hidden');
@@ -1439,6 +1446,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
       document.getElementById('migrate-no')?.addEventListener('click', () => {
         document.getElementById('migration-banner')?.classList.add('hidden');
+        importSkipped(getCurrentUser()?.id);
       });
 
       // --- The account's age ---
@@ -1454,7 +1462,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         const tier = (event as CustomEvent<{ tier?: string }>).detail?.tier;
         if (!isLoggedIn() || (tier !== 'adult' && tier !== 'teen')) return;
         try {
-          await setAccountAgeTier(tier);
+          const answer = await setAccountAgeTier(tier);
+          // What the pages show an adult account follows (src/lib/adults-only.ts).
+          setCurrentUserAgeTier(answer.age_tier);
         } catch (e) {
           // An account made for someone under 18 stays that way (backend src/auth/age.rs);
           // there is nothing to say that would help.
@@ -1463,6 +1473,17 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           showMenuMessage(errorText(e), 'error');
         }
       });
+
+      // --- The market and referrals: adult accounts only (owner, 2026-11-19) ---
+      // The server refuses every other account; the links are hidden for them (src/lib/adults-only.ts).
+      function drawAdultsOnly() {
+        const shown = adultsOnlyShown();
+        document.querySelectorAll<HTMLElement>('[data-adults-only]').forEach((el) => { el.hidden = !shown; });
+      }
+      drawAdultsOnly();
+      window.addEventListener(ACCOUNT_CHANGED_EVENT, drawAdultsOnly);
+      window.addEventListener('im-age-answered', drawAdultsOnly);
+      window.addEventListener('storage', drawAdultsOnly);
 
       // --- Init ---
       // Said once now, and again whenever the interface language is known or changes.

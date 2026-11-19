@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'Kupuj karty kolekcjonerskie z Szekspirem i wymieniaj się nimi z innymi graczami.',
+  'market.meta.description': 'Kupuj karty kolekcjonerskie z Szekspirem od innych graczy i sprzedawaj im swoje.',
   'market.titleA': 'Rynek ',
   'market.titleB': 'kart',
-  'market.intro': 'Kupuj karty i wymieniaj się nimi z innymi graczami. Wystaw swoje duplikaty na sprzedaż albo znajdź karty, których ci brakuje.',
+  'market.intro': 'Kupuj karty od innych graczy i sprzedawaj te, których nie potrzebujesz. Przy sprzedaży kredyty trafiają do sprzedającego, a karta do kupującego.',
+  'market.adultsOnly': 'Rynek jest tylko dla kont osób dorosłych.',
   'market.tab.browse': 'Przeglądaj',
   'market.tab.mine': 'Moje oferty',
-  'market.tab.sell': 'Sprzedaj lub wymień',
+  'market.tab.sell': 'Sprzedaj',
   'market.filter.all': 'Wszystkie oferty',
   'market.filter.sale': 'Na sprzedaż',
   'market.filter.trade': 'Na wymianę',

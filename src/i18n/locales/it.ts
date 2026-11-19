@@ -159,7 +159,7 @@ const it: Record<string, string> = {
 
   // --- Avvisi ---
   'migrate.title': 'Portare le carte di questo dispositivo sul tuo account?',
-  'migrate.body': 'Questo dispositivo contiene carte del gioco in solitario. Il tuo account può prenderle una sola volta: una per ogni carta, prima le più rare, fino a un limite. Statistiche e obiettivi restano su questo dispositivo.',
+  'migrate.body': 'Questo dispositivo contiene carte del gioco in solitario. Un account può prenderle una sola volta: una per ogni carta, prima le più rare, fino a un limite. Le carte portate così non si possono vendere. Statistiche e obiettivi restano su questo dispositivo.',
   'migrate.limit': 'Carte che può prendere: {max}',
   'migrate.yes': 'Portale',
   'migrate.no': 'Salta',

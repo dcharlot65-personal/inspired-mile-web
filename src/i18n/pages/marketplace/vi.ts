@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'Mua và trao đổi thẻ bài sưu tầm Shakespeare với những người chơi khác.',
+  'market.meta.description': 'Mua và bán thẻ bài sưu tầm Shakespeare với những người chơi khác.',
   'market.titleA': 'Chợ ',
   'market.titleB': 'lá bài',
-  'market.intro': 'Mua và trao đổi lá bài với những người chơi khác. Rao bán những lá bài trùng của bạn, hoặc tìm những lá bài bạn còn thiếu.',
+  'market.intro': 'Mua lá bài từ những người chơi khác và bán những lá bạn không cần. Khi bán xong, xu chuyển cho người bán và lá bài chuyển cho người mua.',
+  'market.adultsOnly': 'Chợ chỉ dành cho tài khoản của người lớn.',
   'market.tab.browse': 'Xem tin đăng',
   'market.tab.mine': 'Tin đăng của tôi',
-  'market.tab.sell': 'Bán hoặc trao đổi',
+  'market.tab.sell': 'Bán',
   'market.filter.all': 'Tất cả tin đăng',
   'market.filter.sale': 'Rao bán',
   'market.filter.trade': 'Trao đổi',

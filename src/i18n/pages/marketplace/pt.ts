@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'Compre e troque cartas colecionáveis de Shakespeare com outros jogadores.',
+  'market.meta.description': 'Compre e venda cartas colecionáveis de Shakespeare com outros jogadores.',
   'market.titleA': 'Mercado de ',
   'market.titleB': 'cartas',
-  'market.intro': 'Compre e troque cartas com outros jogadores. Ponha suas repetidas à venda ou encontre as cartas que faltam para você.',
+  'market.intro': 'Compre cartas de outros jogadores e venda as de que você não precisa. Quando uma carta é vendida, os créditos vão para quem vende e a carta para quem compra.',
+  'market.adultsOnly': 'O mercado é só para contas de adultos.',
   'market.tab.browse': 'Explorar',
   'market.tab.mine': 'Meus anúncios',
-  'market.tab.sell': 'Vender ou trocar',
+  'market.tab.sell': 'Vender',
   'market.filter.all': 'Todos os anúncios',
   'market.filter.sale': 'À venda',
   'market.filter.trade': 'Para troca',
