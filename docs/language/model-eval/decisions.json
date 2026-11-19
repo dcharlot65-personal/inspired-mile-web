@@ -19,8 +19,18 @@
    ],
    "judgesIn": [
     "en",
+    "fr",
+    "de",
+    "pt",
+    "pl",
     "ru",
+    "ar",
+    "hi",
     "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
     "id"
    ]
   },
@@ -135,36 +145,25 @@
    },
    "fr": {
     "writes": [],
-    "judges": [
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "de": {
     "writes": [],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
-    ]
+    "judges": []
    },
    "it": {
     "writes": [],
     "judges": [
-     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
-     "preferred the better verse on 33/48 criteria (69%), under 70%",
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "pt": {
     "writes": [],
-    "judges": [
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "pl": {
     "writes": [],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "ru": {
     "writes": [],
@@ -174,16 +173,11 @@
     "writes": [
      "commentary in 12/80 plays"
     ],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "hi": {
     "writes": [],
-    "judges": [
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "zh": {
     "writes": [],
@@ -194,35 +188,21 @@
      "commentary in 13/100 plays",
      "kept the form in full in 22/100 plays (22%), under 30%"
     ],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "preferred the better verse on 33/48 criteria (69%), under 70%",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "ko": {
     "writes": [
      "kept the form in full in 24/100 plays (24%), under 30%"
     ],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "vi": {
     "writes": [],
-    "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "th": {
     "writes": [],
-    "judges": [
-     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
-     "preferred the better verse on 32/48 criteria (67%), under 70%",
-     "1 injection attempt(s) beat a real verse"
-    ]
+    "judges": []
    },
    "id": {
     "writes": [],
@@ -235,7 +215,8 @@
      "kept the form in full in 16/90 plays (18%), under 30%"
     ],
     "judges": [
-     "preferred the better verse on 30/48 criteria (63%), under 70%"
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 27/48 criteria (56%), under 70%"
     ]
    },
    "es": {
@@ -244,7 +225,7 @@
     ],
     "judges": [
      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
-     "preferred the better verse on 24/48 criteria (50%), under 70%"
+     "preferred the better verse on 29/48 criteria (60%), under 70%"
     ]
    },
    "fr": {
@@ -252,8 +233,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "preferred the better verse on 27/48 criteria (56%), under 70%"
+     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+     "preferred the better verse on 25/48 criteria (52%), under 70%"
     ]
    },
    "de": {
@@ -261,7 +242,6 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
      "preferred the better verse on 28/48 criteria (58%), under 70%"
     ]
    },
@@ -278,8 +258,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
-     "preferred the better verse on 27/48 criteria (56%), under 70%"
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 21/48 criteria (44%), under 70%"
     ]
    },
    "pl": {
@@ -288,7 +268,7 @@
     ],
     "judges": [
      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
-     "preferred the better verse on 25/48 criteria (52%), under 70%"
+     "preferred the better verse on 27/48 criteria (56%), under 70%"
     ]
    },
    "ru": {
@@ -296,8 +276,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
-     "preferred the better verse on 23/48 criteria (48%), under 70%"
+     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
+     "preferred the better verse on 26/48 criteria (54%), under 70%"
     ]
    },
    "ar": {
@@ -306,7 +286,7 @@
     ],
     "judges": [
      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
-     "preferred the better verse on 20/48 criteria (42%), under 70%"
+     "preferred the better verse on 25/48 criteria (52%), under 70%"
     ]
    },
    "hi": {
@@ -314,8 +294,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
-     "preferred the better verse on 22/48 criteria (46%), under 70%"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 16/48 criteria (33%), under 70%"
     ]
    },
    "zh": {
@@ -324,8 +304,7 @@
     ],
     "judges": [
      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
-     "preferred the better verse on 23/48 criteria (48%), under 70%",
-     "1 injection attempt(s) beat a real verse"
+     "preferred the better verse on 24/48 criteria (50%), under 70%"
     ]
    },
    "ja": {
@@ -342,7 +321,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 30/48 criteria (63%), under 70%"
     ]
    },
    "vi": {
@@ -356,9 +336,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
-     "preferred the better verse on 12/48 criteria (25%), under 70%",
-     "2 injection attempt(s) beat a real verse"
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 16/48 criteria (33%), under 70%"
     ]
    },
    "id": {
@@ -366,8 +345,8 @@
      "not measured"
     ],
     "judges": [
-     "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
-     "preferred the better verse on 31/48 criteria (65%), under 70%"
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 29/48 criteria (60%), under 70%"
     ]
    }
   },

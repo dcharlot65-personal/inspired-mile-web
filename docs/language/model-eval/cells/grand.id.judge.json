@@ -5,8 +5,8 @@
  "model": "onnx-community/gemma-4-E2B-it-ONNX",
  "dtype": "q4f16",
  "judgeMethod": "compare",
- "date": "2026-11-18T01:01:21.005Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T07:23:46.352Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -28,59 +28,59 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "opponent",
-    "allusion": "opponent",
-    "flow": "opponent",
+    "allusion": "player",
+    "flow": "player",
     "wit": "player"
    },
-   "player": 6,
-   "opponent": 18,
+   "player": 18,
+   "opponent": 6,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.44140625,
-     "allusion": -5.5390625,
-     "flow": -5.8828125,
-     "wit": -4.27734375
+     "wordplay": -7.51953125,
+     "allusion": -6.837890625,
+     "flow": -7.3828125,
+     "wit": -8.7880859375
     },
     "reversed": {
-     "wordplay": 2.5546875,
-     "allusion": -4.1953125,
-     "flow": 1.390625,
-     "wit": -4.671875
+     "wordplay": -6.708984375,
+     "allusion": -8.595703125,
+     "flow": -7.853515625,
+     "wit": -9.676025390625
     }
    },
-   "ms": 3625
+   "ms": 12299
   },
   {
    "id": "id-02",
    "kind": "interface",
    "betterIsPlayer": false,
    "criteria": {
-    "wordplay": "split",
+    "wordplay": "player",
     "allusion": "opponent",
-    "flow": "opponent",
+    "flow": "player",
     "wit": "player"
    },
-   "player": 9,
-   "opponent": 15,
+   "player": 18,
+   "opponent": 6,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -5.9921875,
-     "allusion": -6.703125,
-     "flow": -7.4921875,
-     "wit": -3.40625
+     "wordplay": -8.4609375,
+     "allusion": -8.84375,
+     "flow": -9.1171875,
+     "wit": -8.951171875
     },
     "reversed": {
-     "wordplay": -5.96875,
-     "allusion": -2.671875,
-     "flow": -6.7109375,
-     "wit": -5.78125
+     "wordplay": -10.873779296875,
+     "allusion": -8.0703125,
+     "flow": -10.32421875,
+     "wit": -10.6279296875
     }
    },
-   "ms": 3405
+   "ms": 10170
   },
   {
    "id": "id-03",
@@ -98,19 +98,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 5.640625,
-     "allusion": 7.828125,
-     "flow": 5.8828125,
-     "wit": 7.7265625
+     "wordplay": -0.10546875,
+     "allusion": 3.7578125,
+     "flow": -3.0078125,
+     "wit": 5.8828125
     },
     "reversed": {
-     "wordplay": -7.265625,
-     "allusion": -8.125,
-     "flow": -7.9765625,
-     "wit": -7.125
+     "wordplay": -10.498046875,
+     "allusion": -10.40625,
+     "flow": -11.056640625,
+     "wit": -10.859375
     }
    },
-   "ms": 3392
+   "ms": 10771
   },
   {
    "id": "id-04",
@@ -120,27 +120,27 @@
     "wordplay": "opponent",
     "allusion": "opponent",
     "flow": "opponent",
-    "wit": "player"
+    "wit": "opponent"
    },
-   "player": 6,
-   "opponent": 18,
+   "player": 0,
+   "opponent": 24,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -6.5234375,
-     "allusion": -8.6328125,
-     "flow": -6.3359375,
-     "wit": 8.310546875
+     "wordplay": -11.306640625,
+     "allusion": -14.140625,
+     "flow": -10.97265625,
+     "wit": -10.947265625
     },
     "reversed": {
-     "wordplay": 3.703125,
-     "allusion": 7.40625,
-     "flow": 2.0546875,
-     "wit": 2.568359375
+     "wordplay": 11.75830078125,
+     "allusion": 7.9765625,
+     "flow": 8.43359375,
+     "wit": 9.72265625
     }
    },
-   "ms": 3418
+   "ms": 10521
   },
   {
    "id": "id-05",
@@ -158,19 +158,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -6.78125,
-     "allusion": -7.0390625,
-     "flow": -7.34375,
-     "wit": -6.64453125
+     "wordplay": -9.806640625,
+     "allusion": -9.296875,
+     "flow": -10.251953125,
+     "wit": -10.775390625
     },
     "reversed": {
-     "wordplay": -0.1171875,
-     "allusion": -0.0859375,
-     "flow": 5.109375,
-     "wit": 1.3515625
+     "wordplay": 0.7109375,
+     "allusion": -4.421875,
+     "flow": 6.1953125,
+     "wit": -1.88671875
     }
    },
-   "ms": 3882
+   "ms": 11866
   },
   {
    "id": "id-06",
@@ -188,19 +188,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -4.09375,
-     "allusion": -3.59375,
-     "flow": 1.5,
-     "wit": -4.75
+     "wordplay": -3.33984375,
+     "allusion": -6.3671875,
+     "flow": 3.828125,
+     "wit": -8.31201171875
     },
     "reversed": {
-     "wordplay": -6.96875,
-     "allusion": -7.39453125,
-     "flow": -7.515625,
-     "wit": -5.07421875
+     "wordplay": -10.76025390625,
+     "allusion": -10.75341796875,
+     "flow": -11.0029296875,
+     "wit": -10.818359375
     }
    },
-   "ms": 3794
+   "ms": 12668
   },
   {
    "id": "id-07",
@@ -218,19 +218,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.994140625,
-     "allusion": -8.029296875,
-     "flow": -7.9140625,
-     "wit": -7.203125
+     "wordplay": -8.708984375,
+     "allusion": -8.5791015625,
+     "flow": -8.14453125,
+     "wit": -8.4296875
     },
     "reversed": {
-     "wordplay": 0.6640625,
-     "allusion": -1.8515625,
-     "flow": -2.78125,
-     "wit": 1.1328125
+     "wordplay": -1.13671875,
+     "allusion": -4.671875,
+     "flow": -2.7421875,
+     "wit": -1.78125
     }
    },
-   "ms": 3698
+   "ms": 10892
   },
   {
    "id": "id-08",
@@ -248,19 +248,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 1.7890625,
-     "allusion": -0.15625,
-     "flow": 1.1484375,
-     "wit": -1.40625
+     "wordplay": 3.703125,
+     "allusion": -6.07421875,
+     "flow": 0.453125,
+     "wit": -2.44921875
     },
     "reversed": {
-     "wordplay": -8.453125,
-     "allusion": -8.65234375,
-     "flow": -8.40234375,
-     "wit": -6.33203125
+     "wordplay": -12.1240234375,
+     "allusion": -12.045913696289062,
+     "flow": -11.91650390625,
+     "wit": -10.7421875
     }
    },
-   "ms": 3570
+   "ms": 10498
   },
   {
    "id": "id-09",
@@ -278,19 +278,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -5.77734375,
-     "allusion": -8.970703125,
-     "flow": 0.03125,
-     "wit": -4.484375
+     "wordplay": -1.77734375,
+     "allusion": -8.5205078125,
+     "flow": 7.54296875,
+     "wit": -5.66632080078125
     },
     "reversed": {
-     "wordplay": -9.580078125,
-     "allusion": -9.4296875,
-     "flow": -9.9921875,
-     "wit": -7.880859375
+     "wordplay": -13.951171875,
+     "allusion": -11.610336303710938,
+     "flow": -13.8359375,
+     "wit": -12.78125
     }
    },
-   "ms": 3788
+   "ms": 13016
   },
   {
    "id": "id-10",
@@ -300,27 +300,27 @@
     "wordplay": "opponent",
     "allusion": "player",
     "flow": "opponent",
-    "wit": "player"
+    "wit": "opponent"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 6,
+   "opponent": 18,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -6.76953125,
-     "allusion": -6.4609375,
-     "flow": -6.90234375,
-     "wit": -4.62109375
+     "wordplay": -8.89453125,
+     "allusion": -8.5,
+     "flow": -9.48046875,
+     "wit": -9.5234375
     },
     "reversed": {
-     "wordplay": -5.8046875,
-     "allusion": -7.98046875,
-     "flow": -6.0625,
-     "wit": -5.3125
+     "wordplay": -8.544921875,
+     "allusion": -8.859375,
+     "flow": -8.59375,
+     "wit": -8.54052734375
     }
    },
-   "ms": 3517
+   "ms": 11250
   },
   {
    "id": "id-11",
@@ -338,19 +338,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -0.734375,
-     "allusion": 0.125,
-     "flow": -3.8359375,
-     "wit": 0.5390625
+     "wordplay": -5.9765625,
+     "allusion": -7.8359375,
+     "flow": -8.57421875,
+     "wit": -3.22265625
     },
     "reversed": {
-     "wordplay": -5.859375,
-     "allusion": -6.5234375,
-     "flow": -7.4375,
-     "wit": -4.75
+     "wordplay": -9.5,
+     "allusion": -9.7109375,
+     "flow": -10.630859375,
+     "wit": -7.3466796875
     }
    },
-   "ms": 3371
+   "ms": 10043
   },
   {
    "id": "id-12",
@@ -368,26 +368,26 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -8.728515625,
-     "allusion": -10.3125,
-     "flow": -8.484375,
-     "wit": -6.98046875
+     "wordplay": -12.556640625,
+     "allusion": -12.99609375,
+     "flow": -12.544921875,
+     "wit": -11.30078125
     },
     "reversed": {
-     "wordplay": 1.93359375,
-     "allusion": 1.125,
-     "flow": 2.859375,
-     "wit": 1.97265625
+     "wordplay": 7.5546875,
+     "allusion": 5.0625,
+     "flow": 6.6875,
+     "wit": 5.7265625
     }
    },
-   "ms": 3453
+   "ms": 11652
   }
  ],
- "seconds": 43,
+ "seconds": 136,
  "judgePrompts": {
-  "sha256": "99e438510b8e27fe7052970d520b6bb5a28e1bcf61a64bbcfe0625da931ead0f",
+  "sha256": "fed35ecda99171825d4d2eed48e4ae38c3c60a75dba8f757c7b2536d50dc6076",
   "requests": 96,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
  }
 }

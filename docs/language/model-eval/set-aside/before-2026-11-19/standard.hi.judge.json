@@ -1,0 +1,218 @@
+{
+ "tier": "standard",
+ "lang": "hi",
+ "task": "judge",
+ "model": "onnx-community/LFM3-1.7B-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-16T22:56:08.877Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "pairs": [
+  {
+   "id": "hi-01",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "split",
+    "allusion": "split",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 6,
+   "opponent": 18,
+   "source": "model",
+   "ms": 3126
+  },
+  {
+   "id": "hi-02",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "split",
+    "allusion": "opponent",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "ms": 2571
+  },
+  {
+   "id": "hi-03",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "split",
+    "wit": "opponent"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "ms": 2634
+  },
+  {
+   "id": "hi-04",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "split"
+   },
+   "player": 3,
+   "opponent": 21,
+   "source": "model",
+   "ms": 3092
+  },
+  {
+   "id": "hi-05",
+   "kind": "prose",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 3409
+  },
+  {
+   "id": "hi-06",
+   "kind": "interface",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "player",
+    "flow": "opponent",
+    "wit": "player"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "ms": 2552
+  },
+  {
+   "id": "hi-07",
+   "kind": "gibberish",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "ms": 1753
+  },
+  {
+   "id": "hi-08",
+   "kind": "injection",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "split"
+   },
+   "player": 21,
+   "opponent": 3,
+   "source": "model",
+   "ms": 1886
+  },
+  {
+   "id": "hi-09",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "ms": 1430
+  },
+  {
+   "id": "hi-10",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 1290
+  },
+  {
+   "id": "hi-11",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 6,
+   "opponent": 18,
+   "source": "model",
+   "ms": 1429
+  },
+  {
+   "id": "hi-12",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "ms": 1463
+  }
+ ],
+ "seconds": 27,
+ "code": {
+  "verse": "3b9be285931731040aa6816f6524dc772461974d73c3d0ce380d84fbd86501de",
+  "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
+  "from": "git objects of snapshot f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4, by scripts/model-eval/judge-code.mjs"
+ },
+ "judgePrompts": {
+  "sha256": "ff52b2cfad2fa88fcaa54908e37e89013812a6225e41fba0ede77d4e4a6072d1",
+  "requests": 96,
+  "at": "4d0874eb989299ca5ab2c6501c57bf2249964745",
+  "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (git objects of snapshot f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4, by scripts/model-eval/judge-code.mjs)"
+ },
+ "setAside": {
+  "date": "2026-11-18T00:36:12.366Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "the judge's prompts changed since this cell ran; judge it again (scripts/model-eval/run.mjs)"
+ }
+}

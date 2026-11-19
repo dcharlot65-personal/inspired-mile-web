@@ -5,8 +5,8 @@
  "model": "onnx-community/gemma-4-E2B-it-ONNX",
  "dtype": "q4f16",
  "judgeMethod": "compare",
- "date": "2026-11-16T21:14:18.339Z",
- "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "date": "2026-11-18T00:48:25.842Z",
+ "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -16,6 +16,11 @@
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
  "origin": "http://localhost:47731",
+ "code": {
+  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
+  "from": "the checkout the run served, by run.mjs"
+ },
  "pairs": [
   {
    "id": "pl-01",
@@ -30,7 +35,22 @@
    "player": 24,
    "opponent": 0,
    "source": "model",
-   "ms": 6529
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -1.6015625,
+     "allusion": -5.984375,
+     "flow": 4.890625,
+     "wit": -1.7734375
+    },
+    "reversed": {
+     "wordplay": -7.0859375,
+     "allusion": -6.8359375,
+     "flow": -6.953125,
+     "wit": -6.48828125
+    }
+   },
+   "ms": 4185
   },
   {
    "id": "pl-02",
@@ -40,12 +60,27 @@
     "wordplay": "opponent",
     "allusion": "opponent",
     "flow": "opponent",
-    "wit": "split"
+    "wit": "opponent"
    },
-   "player": 3,
-   "opponent": 21,
+   "player": 0,
+   "opponent": 24,
    "source": "model",
-   "ms": 5584
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -7.61328125,
+     "allusion": -7.84375,
+     "flow": -7.42578125,
+     "wit": -6.25
+    },
+    "reversed": {
+     "wordplay": -2.5390625,
+     "allusion": -4.8046875,
+     "flow": -0.7421875,
+     "wit": -2.671875
+    }
+   },
+   "ms": 3855
   },
   {
    "id": "pl-03",
@@ -60,7 +95,22 @@
    "player": 24,
    "opponent": 0,
    "source": "model",
-   "ms": 4825
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": 1.796875,
+     "allusion": 2.609375,
+     "flow": 0.9296875,
+     "wit": 3.8046875
+    },
+    "reversed": {
+     "wordplay": -6.66796875,
+     "allusion": -7.74609375,
+     "flow": -7.6015625,
+     "wit": -5.1015625
+    }
+   },
+   "ms": 3351
   },
   {
    "id": "pl-04",
@@ -69,28 +119,58 @@
    "criteria": {
     "wordplay": "player",
     "allusion": "player",
-    "flow": "opponent",
-    "wit": "opponent"
+    "flow": "player",
+    "wit": "player"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 24,
+   "opponent": 0,
    "source": "model",
-   "ms": 4602
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -5.03125,
+     "allusion": -5.9453125,
+     "flow": -6.09375,
+     "wit": 6.8125
+    },
+    "reversed": {
+     "wordplay": -13.92578125,
+     "allusion": -12.5703125,
+     "flow": -10.9267578125,
+     "wit": -12.16015625
+    }
+   },
+   "ms": 3675
   },
   {
    "id": "pl-05",
    "kind": "prose",
    "betterIsPlayer": false,
    "criteria": {
-    "wordplay": "opponent",
-    "allusion": "player",
+    "wordplay": "player",
+    "allusion": "opponent",
     "flow": "opponent",
     "wit": "opponent"
    },
    "player": 6,
    "opponent": 18,
    "source": "model",
-   "ms": 5626
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -4.78125,
+     "allusion": -6.37109375,
+     "flow": -7.2734375,
+     "wit": -5.76171875
+    },
+    "reversed": {
+     "wordplay": -5.8671875,
+     "allusion": -5.93359375,
+     "flow": -3.56640625,
+     "wit": -4.0546875
+    }
+   },
+   "ms": 4276
   },
   {
    "id": "pl-06",
@@ -99,13 +179,28 @@
    "criteria": {
     "wordplay": "opponent",
     "allusion": "opponent",
-    "flow": "split",
+    "flow": "player",
     "wit": "opponent"
    },
-   "player": 3,
-   "opponent": 21,
+   "player": 6,
+   "opponent": 18,
    "source": "model",
-   "ms": 5658
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -6.15625,
+     "allusion": -6.5703125,
+     "flow": -4.6953125,
+     "wit": -4.56640625
+    },
+    "reversed": {
+     "wordplay": -5.328125,
+     "allusion": -6.29296875,
+     "flow": -6,
+     "wit": -3.41796875
+    }
+   },
+   "ms": 3691
   },
   {
    "id": "pl-07",
@@ -120,7 +215,22 @@
    "player": 0,
    "opponent": 24,
    "source": "model",
-   "ms": 5302
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -6.8046875,
+     "allusion": -7.341796875,
+     "flow": -8.26953125,
+     "wit": -5.15625
+    },
+    "reversed": {
+     "wordplay": 0.1640625,
+     "allusion": 1.484375,
+     "flow": -3.0078125,
+     "wit": 4.40625
+    }
+   },
+   "ms": 3466
   },
   {
    "id": "pl-08",
@@ -135,7 +245,22 @@
    "player": 24,
    "opponent": 0,
    "source": "model",
-   "ms": 4756
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -1.296875,
+     "allusion": -4.8515625,
+     "flow": 0.234375,
+     "wit": -2.34375
+    },
+    "reversed": {
+     "wordplay": -8.4921875,
+     "allusion": -8.57421875,
+     "flow": -8.8515625,
+     "wit": -5.19140625
+    }
+   },
+   "ms": 3744
   },
   {
    "id": "pl-09",
@@ -143,14 +268,29 @@
    "betterIsPlayer": true,
    "criteria": {
     "wordplay": "player",
-    "allusion": "player",
+    "allusion": "opponent",
     "flow": "player",
     "wit": "player"
    },
-   "player": 24,
-   "opponent": 0,
+   "player": 18,
+   "opponent": 6,
    "source": "model",
-   "ms": 4554
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -4.296875,
+     "allusion": -7.578125,
+     "flow": -4.6796875,
+     "wit": -3.859375
+    },
+    "reversed": {
+     "wordplay": -7.015625,
+     "allusion": -6.62890625,
+     "flow": -7.91796875,
+     "wit": -5.05078125
+    }
+   },
+   "ms": 3634
   },
   {
    "id": "pl-10",
@@ -160,12 +300,27 @@
     "wordplay": "player",
     "allusion": "player",
     "flow": "opponent",
-    "wit": "opponent"
+    "wit": "player"
    },
-   "player": 12,
-   "opponent": 12,
+   "player": 18,
+   "opponent": 6,
    "source": "model",
-   "ms": 5879
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -4.6640625,
+     "allusion": -5.375,
+     "flow": -5.609375,
+     "wit": -1.28125
+    },
+    "reversed": {
+     "wordplay": -7.28515625,
+     "allusion": -7.95703125,
+     "flow": -5.2109375,
+     "wit": -4.90234375
+    }
+   },
+   "ms": 3738
   },
   {
    "id": "pl-11",
@@ -180,7 +335,22 @@
    "player": 24,
    "opponent": 0,
    "source": "model",
-   "ms": 4501
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": 1.453125,
+     "allusion": 2.6484375,
+     "flow": -4.3828125,
+     "wit": 2.0703125
+    },
+    "reversed": {
+     "wordplay": -6.75,
+     "allusion": -7.900390625,
+     "flow": -9.33984375,
+     "wit": -5.96484375
+    }
+   },
+   "ms": 3407
   },
   {
    "id": "pl-12",
@@ -195,24 +365,34 @@
    "player": 0,
    "opponent": 24,
    "source": "model",
-   "ms": 5281
+   "reading": {
+    "method": "compare",
+    "forward": {
+     "wordplay": -7.203125,
+     "allusion": -8.75,
+     "flow": -7,
+     "wit": -5.4609375
+    },
+    "reversed": {
+     "wordplay": -1.75390625,
+     "allusion": -2.203125,
+     "flow": -2.015625,
+     "wit": -2.0404052734375
+    }
+   },
+   "ms": 3408
   }
  ],
- "seconds": 63,
- "code": {
-  "verse": "3b9be285931731040aa6816f6524dc772461974d73c3d0ce380d84fbd86501de",
-  "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
-  "from": "git objects of snapshot f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4, by scripts/model-eval/judge-code.mjs"
- },
+ "seconds": 44,
  "judgePrompts": {
-  "sha256": "5daff12496195fe5d1c277c330439e4026623ce5db2ee25c9af32ddae2468e1e",
+  "sha256": "c7d406f9f942ace32ddf775613028a27b1172947b9d0385730675401b0741b2a",
   "requests": 96,
-  "at": "4d0874eb989299ca5ab2c6501c57bf2249964745",
-  "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (git objects of snapshot f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4, by scripts/model-eval/judge-code.mjs)"
+  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
  },
  "setAside": {
-  "date": "2026-11-18T00:36:09.346Z",
-  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "date": "2026-11-19T06:24:43.646Z",
+  "commit": "7e290b0fd838b53ceffb26ab33ad18164ff236df",
   "why": "the judge's prompts changed since this cell ran; judge it again (scripts/model-eval/run.mjs)"
  }
 }

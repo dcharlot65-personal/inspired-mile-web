@@ -5,8 +5,8 @@
  "model": "LiquidAI/LFM2.5-350M-ONNX",
  "dtype": "q4",
  "judgeMethod": "grade",
- "date": "2026-11-18T00:59:18.262Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T07:17:21.440Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -35,23 +35,23 @@
    "player": 9,
    "opponent": 15,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 2,
-   "reason": "unread"
+   "ms": 8
   },
   {
    "id": "vi-02",
@@ -66,23 +66,23 @@
    "player": 3,
    "opponent": 21,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 6,
-     "opponent": 18,
+     "player": 3,
+     "opponent": 21,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 2,
-   "reason": "unread"
+   "ms": 1
   },
   {
    "id": "vi-03",
@@ -112,18 +112,18 @@
      "wit": 1.0169073890211582
     },
     "rules": {
-     "player": 18,
-     "opponent": 6,
+     "player": 21,
+     "opponent": 3,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1166
+   "ms": 3228
   },
   {
    "id": "vi-04",
@@ -138,23 +138,23 @@
    "player": 9,
    "opponent": 15,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1,
-   "reason": "unread"
+   "ms": 1
   },
   {
    "id": "vi-05",
@@ -169,23 +169,23 @@
    "player": 15,
    "opponent": 9,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1,
-   "reason": "unread"
+   "ms": 1
   },
   {
    "id": "vi-06",
@@ -200,23 +200,23 @@
    "player": 9,
    "opponent": 15,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 15,
-     "opponent": 9,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "player",
+      "allusion": "opponent",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1,
-   "reason": "unread"
+   "ms": 1
   },
   {
    "id": "vi-07",
@@ -246,18 +246,18 @@
      "wit": 1.0251235127191134
     },
     "rules": {
-     "player": 9,
-     "opponent": 15,
+     "player": 6,
+     "opponent": 18,
      "criteria": {
       "wordplay": "split",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1113
+   "ms": 3076
   },
   {
    "id": "vi-08",
@@ -288,7 +288,7 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 2
   },
   {
    "id": "vi-09",
@@ -318,18 +318,18 @@
      "wit": 1.007087684936989
     },
     "rules": {
-     "player": 9,
-     "opponent": 15,
+     "player": 12,
+     "opponent": 12,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "opponent",
+      "allusion": "split",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1368
+   "ms": 3720
   },
   {
    "id": "vi-10",
@@ -359,18 +359,18 @@
      "wit": 1.0186031742826775
     },
     "rules": {
-     "player": 6,
-     "opponent": 18,
+     "player": 3,
+     "opponent": 21,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1600
+   "ms": 3145
   },
   {
    "id": "vi-11",
@@ -400,18 +400,18 @@
      "wit": 1.029143403570005
     },
     "rules": {
-     "player": 18,
-     "opponent": 6,
+     "player": 21,
+     "opponent": 3,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1307
+   "ms": 3216
   },
   {
    "id": "vi-12",
@@ -426,38 +426,30 @@
    "player": 15,
    "opponent": 9,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1,
-   "reason": "unread"
+   "ms": 1
   }
  ],
- "seconds": 7,
+ "seconds": 16,
  "judgePrompts": {
   "sha256": "b41a659e59795b75d0cd4edcbd283d44c006807f67f00c77659a8f0f14e1a6d4",
   "requests": 40,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
- },
- "rederived": [
-  {
-   "date": "2026-11-19T05:45:44.969Z",
-   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
-   "pairsChanged": 11,
-   "how": "stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run"
-  }
- ]
+ }
 }
