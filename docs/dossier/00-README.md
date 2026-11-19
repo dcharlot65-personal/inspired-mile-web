@@ -4,7 +4,7 @@
 - **Audience:** everyone who opens this folder: the team (David Charlot, founder and technical lead; Devon Glover, "The Sonnet Man", creative director; Arrocito del Diablo, co-founder for game design and card mechanics), future collaborators, contractors and coding agents, and investors who are sent a document from it.
 - **As of:** commit `0d6df6ef` (branch `integrate/wave3`, 2026-11-18 20:27 -0500, the game as it is about to ship), plus the release in flight on 2026-11-19: `fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p`, `fix/compliance`, and the nightly database backup. Branch contents were re-read at 02:16 on 2026-11-19.
 - **Status:** Draft for the team, 2026-11-19.
-- **Related documents:** all of them, listed in the index below. Start with [`01-concept-one-pager.md`](01-concept-one-pager.md), then [`03-gdd.md`](03-gdd.md), the hub; the decisions waiting on the owner are in [`28-owner-decisions.md`](28-owner-decisions.md).
+- **Related documents:** all of them, listed in the index below. Start with [`01-concept-one-pager.md`](01-concept-one-pager.md), then [`03-gdd.md`](03-gdd.md), the hub; the owner's decisions, and the eleven questions only the owner can answer, are in [`28-owner-decisions.md`](28-owner-decisions.md).
 
 ---
 
@@ -50,6 +50,17 @@ flowchart LR
 
 A proposal is never written as if it were built, and a pending fix is never written as if it were live.
 
+### Decisions, and the owner's rules of 2026-11-19
+
+Document 28 records two kinds of decision: **decided by the owner**, with the date, and **decided by default**, where a sensible default followed from the owner's standing rules or the evidence, with that rule or evidence named. A decision settles what to do; the work it calls for stays **Proposed** until it is built. Each document's closing "Owner questions" says, for every question, where it was decided, or that it is open and why. Only eleven questions are open (O-1 to O-11 in document 28): each needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+Four rules the owner gave on 2026-11-19 bind every document:
+
+1. **AI is the playtester.** No human playtests, paid or volunteer, no think-aloud sessions and no human baselines. AI players with no prior training on the game play through what a player sees and a player's controls, on self-hosted models released after 2026-04-01, on the build host; no claim says "human-level" ([`15-qa-and-test-plan.md`](15-qa-and-test-plan.md) §8).
+2. **No faux choices.** Where a default follows from the standing rules or the evidence, it is decided and recorded, not put to the owner.
+3. **A design's recommendations stand.** Nothing is cut to make the work smaller; putting work in order is not a cut.
+4. **The public contact is contact@voyagetracable.com**, for privacy pages, the press kit, store pages and the accessibility statement.
+
 ### Short forms used in citations
 
 | Short form | Means |
@@ -68,7 +79,7 @@ A proposal is never written as if it were built, and a pending fix is never writ
 |---|---|
 | New to the project | 01, 03 (§1 to §4), 26 ("The short answer"), 27 as needed |
 | An investor or funder | 01, 02, then 23; ask the team for 05 §7 and 21 |
-| The owner, deciding | 28, then 26, then 17 §8 before a deploy |
+| The owner, deciding | 28 (the open questions O-1 to O-11 are at its top), then 26, then 17 §8 before a deploy |
 | Designing cards or balance | 04 with `data/cards.csv`, 05, 06, 03 §14 |
 | Writing, translating or reviewing language | 07, 14, 04 §8, 27 |
 | Making art, sound or UI | 08, 09, 10 with `data/design-tokens.json`, 11 |
@@ -106,7 +117,7 @@ All documents have the status "Draft for the team, 2026-11-19".
 | [`12-technical-design.md`](12-technical-design.md) | How the game is built and why, and its ranked technical debt | technical lead, engineers, coding agents |
 | [`13-ai-design-and-system-cards.md`](13-ai-design-and-system-cards.md) | What AI does and never does, a card per model, injection defences, EU AI Act disclosure, the phone gap | team, engineers, counsel |
 | [`14-localisation-kit.md`](14-localisation-kit.md) | The 16 languages: what each has, how its data is made, what is wrong, how review should start | team, native reviewers, translators, engineers |
-| [`15-qa-and-test-plan.md`](15-qa-and-test-plan.md) | Test suites, deploy gates, the independent-checker method, devices, gaps | technical lead, engineers, testers |
+| [`15-qa-and-test-plan.md`](15-qa-and-test-plan.md) | Test suites, deploy gates, the independent-checker method, devices, gaps, and the AI playtests (§8) | technical lead, engineers, testers |
 | [`16-analytics-and-tracking-plan.md`](16-analytics-and-tracking-plan.md) | What is collected and promised today, and a self-hosted, privacy-first event plan with KPIs | technical lead, designers, privacy reviewers |
 | [`17-operations-runbook-and-launch-checklist.md`](17-operations-runbook-and-launch-checklist.md) | **Internal.** Hosts, deploy, rollback, backup, monitoring, incidents, and this release's checklist | operator only |
 | [`18-trust-and-safety-plan.md`](18-trust-and-safety-plan.md) | Keeping players safe when they show each other verse; what the law asks; a draft Online Safety Act risk assessment | team, moderators, school partners |
@@ -119,7 +130,7 @@ All documents have the status "Draft for the team, 2026-11-19".
 | [`25-live-ops-plan.md`](25-live-ops-plan.md) | Seasons, the daily shared verse, events, content cadence, the economy's ethical rules | team, community, data |
 | [`26-sota-gap-analysis.md`](26-sota-gap-analysis.md) | The owner's question answered: what is next, against the state of the art, ranked | the owner first; edit before investors |
 | [`27-glossary.md`](27-glossary.md) | One line for every term the dossier uses | everyone |
-| [`28-owner-decisions.md`](28-owner-decisions.md) | Decisions made, with dates, and every open question with options, trade-offs and a recommendation | the owner; the team |
+| [`28-owner-decisions.md`](28-owner-decisions.md) | Every decision, made by the owner or by default under the owner's rules, with dates and the rule or evidence behind each; the eleven questions only the owner can answer | the owner; the team |
 | [`29-postmortem-and-incident-templates.md`](29-postmortem-and-incident-templates.md) | A milestone and season postmortem template and a blameless incident review covering AI output | team, contractors |
 | [`adr/README.md`](adr/README.md) | Index of 22 architecture decision records (MADR 4.0), 0001 to 0022 | engineers, coding agents |
 
@@ -145,10 +156,10 @@ All documents have the status "Draft for the team, 2026-11-19".
 | A strings file | The game's strings are `src/i18n/locales/*.ts` and `src/i18n/pages/*`; no copy is kept here | None needed; document 14 explains them |
 | Support pages and a teacher guide | Draft FAQ answers in document 24 §7.3; school pack in document 19 §6 | Write the help pages and a one-page teacher guide before inviting classes |
 | A public "making of" postmortem | Proposed in document 29 | After launch, with Devon Glover's written approval of anything about him |
-| Devon Glover's input | Nothing in the dossier records it | The questions in document 28, Part 3 |
-| Counsel's review | Every legal statement summarises research | Review of documents 18, 19 and 20 |
-| Native-speaker review | No record shows a native speaker has read the non-English text | Document 14's review plan |
-| Real measurements | No playtest, no analytics event, no test on a real phone or headset is on record | Documents 15 §8, 16 and 21 M1 |
+| Devon Glover's input | Nothing in the dossier records it | The questions in document 28, Part 3, once the owner approaches him (O-1) |
+| Counsel's review | Every legal statement summarises research | Review of documents 18, 19 and 20, once a lawyer is hired (28 O-2) |
+| Native-speaker review | No record shows a native speaker has read the non-English text | Document 14's review plan, once readers are paid for (28 O-7) |
+| Real measurements | No playtest (human or AI), no analytics event, no test on a real phone or headset is on record | The AI playtests of document 15 §8 (Proposed), the analytics of document 16, and 21 M1 |
 
 ---
 
@@ -182,6 +193,8 @@ The dossier is docs-as-code: it lives beside the game and changes in the same co
 
 ## Owner questions
 
-1. May the dossier stay in the game's repository, which contractors will see, given that `sources/` and document 17 are internal? Or should those two move to a private store?
-2. Who keeps the dossier current: the person who changes the code (as above), or one named editor?
-3. When should the dossier be re-checked against the code: after each milestone, or after each deploy?
+All three were decided by default on 2026-11-19 (`28-owner-decisions.md` D-79); none stays open.
+
+1. May the dossier stay in the game's repository, which contractors will see, given that `sources/` and document 17 are internal? **Decided by default:** it stays while only the team can read the repository; before any contractor gets access, document 17 and `sources/` move to a private store.
+2. Who keeps the dossier current? **Decided by default:** whoever changes the code, in the same commit, as the table above says.
+3. When is the dossier re-checked against the code? **Decided by default:** a light check (links and labels) at each deploy, and a full re-check at each milestone.
