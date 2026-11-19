@@ -5,7 +5,10 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 
 ## Stack
 
-- Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
+- Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`). React 19 is still in
+  `package.json`, but its Astro integration is not in `astro.config.mjs`: no page renders a React component
+  (`src/components/ErrorBoundary.tsx` is used by none), and the integration only shipped React's client renderer.
+  Adding a React island means adding the integration back, and crediting React (the build says so).
 - **Licence (LFM models):** LFM3 1.7B and LFM2.5 350M are used under the LFM Open License v1.0, which
   covers commercial use only while the licensee and every entity under common control earn under
   US$10M a year. The owner confirmed on 2026-11-17 that Voyage Tracable LLC is under that threshold.
@@ -613,19 +616,41 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 ## The AI notice and the credits (2026-11-19)
 
 - **Before every duel the player is told who plays and who judges** (EU AI Act, Regulation (EU) 2024/1689,
-  Article 50(1), applying from 2 August 2026; 50(5): "at the latest at the time of the first interaction").
-  `src/lib/ai-notice.ts` picks one of `notice.aiBoth`, `notice.aiWrites`, `notice.aiJudges`, `notice.none` from the
-  model in use and the duel's language, by the same `modelWrites`/`modelJudges` the session is gated on; the battle
-  page (`#ai-notice` in the set-up) and the theatre show it, and multiplayer shows `notice.online` in the player's
-  language inside its English page (`#mp-ai-notice`, its `lang`/`dir` set by script). "Artificial intelligence" is
-  each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`). `src/lib/ai-notice.test.ts` and
-  `tests/ai-notice.spec.ts` (all sixteen languages) hold it. A change to who plays or judges changes the notice too.
+  Article 50(1), applying from 2 August 2026; 50(5): "at the latest at the time of the first interaction"). The
+  Digital Omnibus on AI (Regulation (EU) 2026/1744, OJ L 24.7.2026) left 50(1), 50(5) and that date as they were
+  (consolidated text 02024R1689-20260727, read from the Publications Office's Cellar; EUR-Lex itself answers
+  scripts with a bot challenge). `src/lib/ai-notice.ts` picks one of `notice.aiBoth`, `notice.aiWrites`,
+  `notice.aiJudges`, `notice.none` from the model in use and the duel's language, by the same
+  `modelWrites`/`modelJudges` the session is gated on; the battle page (`#ai-notice` in the set-up) and the theatre
+  show it, and multiplayer shows `notice.online` in the player's language inside its English page (`#mp-ai-notice`,
+  its `lang`/`dir` set by script). The theatre's notice stays invisible until the page knows whether a model will
+  play, and names a remembered model while it loads (it never says "no model" and then changes its mind).
+  "Artificial intelligence" is each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`).
+  `src/lib/ai-notice.test.ts` and `tests/ai-notice.spec.ts` (all sixteen languages) hold it. A change to who plays or
+  judges changes the notice too.
 - **`/credits` names everything the game ships or downloads**, with its licence and duties (CC BY-SA share-alike
   for the sound tables, the NAIST notice, CMU and SCOWL notices read from `pron-en.ts` itself, the LFM US$10M and
   FLUX US$5M thresholds, eSpeak NG's GPL inside kokoro-js's phonemizer). `docs/ASSETS.md` is the record of where each
   shipped file came from and what is still not traced. `src/lib/credits.test.ts` fails when a font, model, browser
   library, data source, or a music, sound or 3D file is added without its credit or its line in ASSETS.md.
   `public/fonts/OFL.txt` and `public/licenses/mecab-ipadic-NOTICE.txt` must stay beside what they license.
+- **The licence notices travel in `public/licenses/THIRD-PARTY-NOTICES.txt`, which the build writes and checks**
+  (`scripts/third-party-notices.mjs`, an integration in `astro.config.mjs`). A build strips comments, so a notice in
+  a file's header never reaches the visitor; this file holds them all, from the bundle itself: every npm package in
+  the client chunks or copied by `self-hosted-runtime.mjs` with its own licence files, packages built into another
+  package's file (found from its bundler's comments and source map), files under another licence (`FILE_LICENSES`:
+  Draco, Basis Universal, eSpeak NG), and this repository's data made from others' works (`DATA`). `npm run build`
+  FAILS when: the committed file is not what this build would write; a shipped package is not on `/credits` at its
+  exact version (each library entry's `packages`, rendered as its "Packages" line and `data-packages`), or `/credits`
+  names one that does not ship; a shipped package has no licence file and no `PACKAGE_LICENSES` text; a
+  `FILE_LICENSES`/`PACKAGE_LICENSES`/`DATA` entry covers nothing that ships; a shipped `src/` module says GENERATED
+  and no `DATA` entry covers it. After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
+  on the build host with `rb --pull`, read the diff of the notices file, and commit it. Texts no package carries are in
+  `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`); ONNX Runtime's are from its PyPI wheels,
+  because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
+- **The Terms leave third-party material to its own licence** (`terms.astro` section 10, `#third-party`, and the
+  reverse-engineering line in section 7): CC BY-SA's and the GPL's "no further restrictions". Keep that sentence if
+  the Terms are rewritten. The public contact address on privacy, terms and credits is contact@voyagetracable.com.
 
 ## Requests to other origins (the privacy policy depends on this)
 

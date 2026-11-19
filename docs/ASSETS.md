@@ -118,21 +118,58 @@ to the company site (`inspiredmile-web`), not to the game.
 
 Listed on the credits page with their licenses; the records are `docs/language/PHONETICS.md` (sound tables),
 `docs/language/NAMES-AND-QUOTATIONS.md` (card text), `docs/language/CONTENT-PROVENANCE.md` (play content),
-`docs/language/PROVENANCE.md` (interface language) and `docs/MODEL-LICENCES.md` (models). Two findings of
-this check:
+`docs/language/PROVENANCE.md` (interface language) and `docs/MODEL-LICENCES.md` (models).
 
-- **The sound tables' license notices did not reach the site.** Every `src/lib/verse/sound/data/*.ts` states
-  its source and CC BY-SA 4.0 in a `//` comment, which the build strips; the English table keeps CMU's and
-  SCOWL's notices because they are part of the data string. The credits page is now the attribution and the
-  share-alike statement for all of them (PHONETICS.md, "Licence consequence for shipping").
+**The notices travel in one file the build writes** (since the fix pass of 2026-11-19).
+`scripts/third-party-notices.mjs`, an Astro integration, reads the client bundle itself (every chunk's modules
+and every asset's source, plus the files `scripts/self-hosted-runtime.mjs` copies) and writes
+`public/licenses/THIRD-PARTY-NOTICES.txt`, served at `/licenses/THIRD-PARTY-NOTICES.txt` and linked from
+`/credits` (`#notices`). Part 1 is every npm package that ships (26 at this commit) with the license files of
+its own folder, unchanged; a package another package's file carries inside it is found from that file's bundler
+comments and source map (Transformers.js 4.3.2 carries `@huggingface/jinja` 0.5.10 and `@huggingface/tokenizers`
+0.2.0; Transformers.js 3.8.1 carries a Jinja whose version it does not record). Part 2 is the files that carry
+another license than their package's: the Draco decoder and the Basis Universal transcoder inside three.js
+(Apache 2.0), and eSpeak NG inside phonemizer (GPL-3.0-or-later). Part 3 is the data and code of this
+repository made from others' works (CMU and SCOWL, Snowball, Unicode, stopwords-iso, NAIST, the CC BY-SA
+statement with its disclaimer reference, OpenCC, jieba, Lucene). The texts it copies that no package carries are
+in `scripts/third-party/texts/` with their sources and sha256 in that folder's `SOURCES.md`. ONNX Runtime's npm
+packages carry no license file and its repository did not answer on 2026-11-19 (github.com/microsoft/onnxruntime
+gave 404), so its LICENSE and ThirdPartyNotices.txt are taken from its own Python wheels on PyPI, 1.22.0
+(sha256 `20bca649…59bc9`) and 1.31.0 (sha256 `e85c1632…7b096`), the releases nearest the two development
+builds that ship (commits `89f8206b` and `8d85527a` per their `__commit.txt`); the two notices files are served
+beside the main one.
+
+The build stops when the committed file differs from what it would write (`NOTICES_WRITE=1 npm run build`
+rewrites it), when a package ships uncredited or `/credits` names one that does not ship (each library entry's
+"Packages" line, `data-packages`), when a shipped package has no license text, when a stated file license or
+data source covers nothing that ships, and when a shipped module of `src/` says GENERATED and no data source
+covers it. The React integration is gone from `astro.config.mjs`: no page renders a React component, and it only
+put React's client renderer (220,723 bytes, which no page loaded) into the build.
+
+What this check found before that file existed:
+
+- **No license notice reached the site.** Every header notice (the sound tables' CC BY-SA line, Snowball's,
+  stopwords-iso's, Unicode's, each package's) is a comment, and the build strips comments; only the English
+  table keeps CMU's and SCOWL's notices, because they are part of its data string. A build of `20122400` had none
+  of "Permission is hereby granted", "Apache License", "Unicode, Inc" or "Martin Porter" in any of its 719
+  JavaScript files (the checker's probe).
 - **The mecab-ipadic notice did not travel with the dictionary.** `src/lib/verse/sound/ipadic/*.dat.gz` are
   binary cuts with no notice, and `scripts/sound/build-ipadic.mjs` adds none. The NAIST license asks that
   "any copy of this software, whether in its original form or modified, must include both the above copyright
   notice and the following paragraphs". `public/licenses/mecab-ipadic-NOTICE.txt` is kuromoji 0.1.2's own
   NOTICE.md section, copied unchanged (the npm tarball's sha512 matched `package-lock.json`).
+- **Libraries shipped uncredited**: Lit 3 (BSD 3-clause), gainmap-js, Jinja and tokenizers inside
+  Transformers.js, doublearray, the Draco and Basis files, kokoro-js's own Transformers.js 3.8.1 and ONNX
+  Runtime 1.22, Vite's and Rolldown's runtime lines, and the orphan React chunk.
 - **eSpeak NG is in the voice's bundle.** `kokoro-js` 1.2.1 depends on `phonemizer` 1.2.1 ("Simple text to
   phones converter using eSpeak NG"), whose `dist/phonemizer.js` is Emscripten output carrying eSpeak NG's
   API and its `espeak-ng-data`. The package declares Apache-2.0 only; eSpeak NG's README says it "is released
-  under the GPL version 3 or later". The site serves that chunk itself when a player turns the voice on. The
-  credits page names eSpeak NG, its license and its source; whether that meets GPL-3.0's terms for conveying
-  object code is the owner's question (section 6 of the GPL).
+  under the GPL version 3 or later". The site serves that chunk itself when a player turns the voice on.
+  GPL-3.0 section 6 asks whoever conveys object code to provide its Corresponding Source, including the scripts
+  that build it. phonemizer's repository (github.com/xenova/phonemizer.js, listed 2026-11-19) holds only the
+  compiled `espeakng.worker.js` and `phonemizer.js`, no eSpeak NG source, no submodule and no build script, and
+  records no eSpeak NG version, so that source cannot be pointed to. The credits page now says so instead of
+  claiming the links provide it, and the notices file carries the GPL's text. The branch `fix/voice-g2p`
+  removes phonemizer from the build (the voice reads English with its own G2P); once it is merged the build's
+  checks require the phonemizer entry, its file license and its tests to go (`CLAUDE.md`, "The AI notice and
+  the credits").
