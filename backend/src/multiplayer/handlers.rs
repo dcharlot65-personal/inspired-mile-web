@@ -313,7 +313,7 @@ async fn ws_handler(
 /// characters and that the account does not hold on the server (`owned_cards`: packs the server
 /// opened, the market, the one-time import of a device's collection). A card on sale in the
 /// market (`state = 'listed'`) is not held for this: it cannot take the stage while listed.
-async fn not_held(pool: &PgPool, user_id: uuid::Uuid, deck: &[String]) -> Result<Vec<String>, sqlx::Error> {
+async fn not_held(conn: &mut sqlx::PgConnection, user_id: uuid::Uuid, deck: &[String]) -> Result<Vec<String>, sqlx::Error> {
     let starter = starter_characters();
     let asked: Vec<String> = deck.iter().filter(|id| !starter.contains(id)).cloned().collect();
     if asked.is_empty() {
@@ -322,7 +322,7 @@ async fn not_held(pool: &PgPool, user_id: uuid::Uuid, deck: &[String]) -> Result
     let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1 AND card_id = ANY($2) AND state = 'owned'")
         .bind(user_id)
         .bind(&asked)
-        .fetch_all(pool)
+        .fetch_all(&mut *conn)
         .await?;
     Ok(asked.into_iter().filter(|id| !held.contains(id)).collect())
 }
@@ -550,8 +550,29 @@ async fn handle_event(
                 let room = room.lock().await;
                 room.has_player(claims.sub) && room.state() != RoomState::Waiting
             };
-            // Only characters the account may field: the starter ones and those it holds.
-            match if returning { Ok(Vec::new()) } else { not_held(pool, claims.sub, &deck).await } {
+            // Only characters the account may field: the starter ones and those it holds. The
+            // account is locked while its cards are checked and the seat is taken, as a listing
+            // locks it while it checks the cards seated in rooms (marketplace/handlers.rs): a card
+            // is not listed between the check and the seat.
+            // A deck of starter characters only needs no look (they cannot be listed).
+            let starter = starter_characters();
+            let mut held_lock = None;
+            let checked = if returning || deck.iter().all(|id| starter.contains(id)) {
+                Ok(Vec::new())
+            } else {
+                match pool.begin().await {
+                    Ok(mut tx) => {
+                        let missing = match crate::ledger::lock_account(&mut tx, claims.sub).await {
+                            Ok(_) => not_held(&mut tx, claims.sub, &deck).await,
+                            Err(e) => Err(e),
+                        };
+                        held_lock = Some(tx);
+                        missing
+                    }
+                    Err(e) => Err(e),
+                }
+            };
+            match checked {
                 Ok(missing) if missing.is_empty() => {}
                 Ok(missing) => {
                     let names: Vec<String> = missing
@@ -573,6 +594,11 @@ async fn handle_event(
             }
             let (tx, rx) = mpsc::channel(EVENT_BUFFER);
             let outcome = room.lock().await.join(claims.sub, &claims.username, &deck, tx);
+            if let Some(lock) = held_lock {
+                if let Err(e) = lock.commit().await {
+                    tracing::warn!(error = %e, "Could not release a player's account lock cleanly");
+                }
+            }
             match outcome {
                 Ok((conn, effects)) => {
                     run_effects(&room, effects);

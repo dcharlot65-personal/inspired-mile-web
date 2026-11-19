@@ -1,10 +1,11 @@
 //! An account's age tier, and who may change it.
 //!
-//! The tier limits what a teen account may spend (`credits`), and an account of unknown age
-//! may not give an email address. NOTHING HERE VERIFIES ANYONE'S AGE. The tier is what the
-//! visitor typed into the age gate; a child who claims to be an adult when creating an
-//! account gets an adult account, and a self-declared gate cannot prevent that. The rules
-//! below only decide who may change a tier once it is set, and when.
+//! The tier limits what a teen account may spend (`credits`), keeps the market and referrals for
+//! adult accounts (`is_adult`), and an account of unknown age may not give an email address.
+//! NOTHING HERE VERIFIES ANYONE'S AGE. The tier is what the visitor typed into the age gate; a
+//! child who claims to be an adult when creating an account gets an adult account, and a
+//! self-declared gate cannot prevent that. The rules below only decide who may change a tier once
+//! it is set, and when.
 //!
 //! THE RULES
 //!
@@ -44,6 +45,25 @@ use super::error::ApiError;
 use super::handlers::session;
 use super::sessions;
 use crate::config::Config;
+
+/// The answer of a route kept for adult accounts (the market and referrals, owner 2026-11-19;
+/// docs/ECONOMY.md): a teen account, and one whose age is unknown, are refused.
+pub const ADULTS_ONLY_MESSAGE: &str = "For adult accounts only";
+
+/// Whether the account is an adult one (`age_tier = 'adult'`). An account of unknown age is not:
+/// the market and referrals are for accounts that said they are adults.
+pub async fn is_adult(conn: &mut sqlx::PgConnection, user_id: uuid::Uuid) -> Result<bool, sqlx::Error> {
+    let tier: Option<String> = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
+        .bind(user_id)
+        .fetch_optional(&mut *conn)
+        .await?;
+    Ok(tier.as_deref() == Some("adult"))
+}
+
+/// The refusal for a route kept for adult accounts.
+pub fn adults_only() -> (axum::http::StatusCode, String) {
+    (axum::http::StatusCode::FORBIDDEN, ADULTS_ONLY_MESSAGE.into())
+}
 
 /// What an explicit answer does to an account's tier.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

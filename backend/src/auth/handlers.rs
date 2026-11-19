@@ -57,6 +57,9 @@ pub struct UserResponse {
     pub display_name: Option<String>,
     pub auth_provider: String,
     pub avatar_url: Option<String>,
+    /// `adult`, `teen` or `unknown` (auth/age.rs). The pages show the market and referrals only
+    /// to an adult account; the server refuses the others whatever a page shows.
+    pub age_tier: String,
 }
 
 #[derive(Serialize)]
@@ -163,7 +166,7 @@ async fn me(
 ) -> Result<Json<AuthResponse>, ApiError> {
     let claims = session(&jar, &pool, &config).await?.claims;
     let row = sqlx::query(
-        "SELECT id, username, email, display_name, auth_provider, avatar_url, created_at
+        "SELECT id, username, email, display_name, auth_provider, avatar_url, age_tier, created_at
          FROM users WHERE id = $1",
     )
     .bind(claims.sub)
@@ -226,7 +229,7 @@ pub async fn session(jar: &CookieJar, pool: &PgPool, config: &Config) -> Result<
 }
 
 /// Reads the columns every user query in this module selects:
-/// `id, username, email, display_name, auth_provider, avatar_url`.
+/// `id, username, email, display_name, auth_provider, avatar_url, age_tier`.
 pub fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
     UserResponse {
         id: row.get("id"),
@@ -235,6 +238,7 @@ pub fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
         display_name: row.get("display_name"),
         auth_provider: row.get("auth_provider"),
         avatar_url: row.get("avatar_url"),
+        age_tier: row.get("age_tier"),
     }
 }
 

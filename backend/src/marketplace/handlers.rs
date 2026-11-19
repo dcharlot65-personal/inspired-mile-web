@@ -1,12 +1,22 @@
-//! The card market. A listing locks one card the seller holds (`owned_cards.state = 'listed'`):
-//! it cannot be listed twice, sold elsewhere or fielded online while listed, and a cancel unlocks
-//! it. A purchase is one transaction: an active listing that is not the buyer's own, the buyer's
+//! The card market, for adult accounts only (owner, 2026-11-19: a teen account, and one whose age
+//! is unknown, can neither browse, list nor buy; it can still see and cancel its own listings).
+//!
+//! A listing locks one card the seller holds (`owned_cards.state = 'listed'`): it cannot be listed
+//! twice, sold elsewhere or fielded online while listed, and a cancel unlocks it. A card the seller
+//! has brought to a room that has not ended cannot be listed (its last copy), and a card that came
+//! over in the one-time import of a device's collection cannot be listed at all
+//! (`import.sellable`): a forged collection taken into many free accounts could otherwise be
+//! gathered into one (second check of 2026-11-19).
+//!
+//! A purchase is one transaction: an active listing that is not the buyer's own, the buyer's
 //! balance (and a teen buyer's daily limit) checked, the price moved from buyer to seller, and
 //! that very card moved to the buyer.
 //!
 //! Until 2026-11-19 a purchase marked the listing sold and gave the buyer a new copy of the card:
 //! no credits moved and the seller kept the card. Only sales are offered: a trade listing (a card
 //! for cards) needs the buyer's card moved too, which is not built (docs/ECONOMY.md).
+
+use std::sync::Arc;
 
 use axum::{
     extract::{Extension, Path, State},
@@ -18,10 +28,16 @@ use serde::{Deserialize, Serialize};
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 
-use crate::auth::Claims;
+use crate::auth::{adults_only, is_adult, Claims};
 use crate::config::Config;
 use crate::ledger;
+use crate::multiplayer::RoomManager;
 use inspired_mile_api::economy::{self, RULES};
+
+/// A card that came over in the import of a device's collection (`import.sellable` is false).
+const CARD_BOUND_MESSAGE: &str = "Cards brought over from a device cannot be sold";
+/// The seller has this card (its last copy) in a room that has not ended.
+const CARD_IN_PLAY_MESSAGE: &str = "This card is in a match";
 
 #[derive(Serialize)]
 pub struct ListingResponse {
@@ -53,15 +69,28 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/{id}/buy", post(buy_listing))
 }
 
+/// Refuse an account that is not an adult one.
+async fn adult_or_refuse(pool: &PgPool, user_id: Uuid) -> Result<(), (StatusCode, String)> {
+    let mut conn = pool.acquire().await.map_err(crate::error::internal)?;
+    if is_adult(&mut conn, user_id).await.map_err(crate::error::internal)? {
+        Ok(())
+    } else {
+        Err(adults_only())
+    }
+}
+
 async fn browse_listings(
+    Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<Vec<ListingResponse>>, (StatusCode, String)> {
-    // A listing from before cards were locked to listings (no owned_card_id) cannot be bought.
+    adult_or_refuse(&pool, claims.sub).await?;
+    // A listing from before cards were locked to listings (no owned_card_id) cannot be bought, nor
+    // one whose seller's account is no longer an adult one.
     let rows = sqlx::query(
         "SELECT l.id, l.seller_id, u.username, l.card_id, l.listing_type, l.price_credits, l.wanted_card_ids, l.status, l.created_at
          FROM card_listings l
          JOIN users u ON u.id = l.seller_id
-         WHERE l.status = 'active' AND l.owned_card_id IS NOT NULL
+         WHERE l.status = 'active' AND l.owned_card_id IS NOT NULL AND u.age_tier = 'adult'
          ORDER BY l.created_at DESC
          LIMIT 100",
     )
@@ -86,6 +115,7 @@ async fn browse_listings(
 
 async fn create_listing(
     Extension(claims): Extension<Claims>,
+    Extension(rooms): Extension<Arc<RoomManager>>,
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<CreateListingRequest>,
 ) -> Result<Json<ListingResponse>, (StatusCode, String)> {
@@ -102,21 +132,34 @@ async fn create_listing(
     }
 
     let mut tx = pool.begin().await.map_err(crate::error::internal)?;
+    // The account's lock is also the one a player takes to sit down in a room with their cards
+    // (multiplayer/handlers.rs): a card is not seated and listed at the same time.
     ledger::lock_account(&mut tx, claims.sub).await.map_err(crate::error::internal)?;
-    // One copy the seller holds and has not listed. The starter characters are no rows: they
-    // cannot be sold.
-    let owned: Option<Uuid> = sqlx::query_scalar(
-        "SELECT id FROM owned_cards WHERE user_id = $1 AND card_id = $2 AND state = 'owned'
-         ORDER BY acquired_at, id LIMIT 1 FOR UPDATE",
+    if !is_adult(&mut tx, claims.sub).await.map_err(crate::error::internal)? {
+        return Err(adults_only());
+    }
+    // The copies of this card the seller holds and has not listed. The starter characters are no
+    // rows: they cannot be sold.
+    let copies: Vec<(Uuid, String)> = sqlx::query_as(
+        "SELECT id, source FROM owned_cards WHERE user_id = $1 AND card_id = $2 AND state = 'owned'
+         ORDER BY acquired_at, id FOR UPDATE",
     )
     .bind(claims.sub)
     .bind(&body.card_id)
-    .fetch_optional(&mut *tx)
+    .fetch_all(&mut *tx)
     .await
     .map_err(crate::error::internal)?;
-    let Some(owned_card_id) = owned else {
+    if copies.is_empty() {
         return Err((StatusCode::BAD_REQUEST, "You don't own this card".into()));
+    }
+    // A card brought over from a device stays with the account that brought it.
+    let Some(owned_card_id) = copies.iter().find(|(_, source)| RULES.import.sellable || source != "import").map(|(id, _)| *id) else {
+        return Err((StatusCode::BAD_REQUEST, CARD_BOUND_MESSAGE.into()));
     };
+    // Its last copy cannot leave while the seller has it in a room that has not ended.
+    if copies.len() < 2 && rooms.cards_fielded_by(claims.sub).await.contains(&body.card_id) {
+        return Err((StatusCode::CONFLICT, CARD_IN_PLAY_MESSAGE.into()));
+    }
     sqlx::query("UPDATE owned_cards SET state = 'listed' WHERE id = $1")
         .bind(owned_card_id)
         .execute(&mut *tx)
@@ -150,9 +193,11 @@ async fn create_listing(
 }
 
 async fn get_listing(
+    Extension(claims): Extension<Claims>,
     Path(id): Path<Uuid>,
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<ListingResponse>, (StatusCode, String)> {
+    adult_or_refuse(&pool, claims.sub).await?;
     let row = sqlx::query(
         "SELECT l.id, l.seller_id, u.username, l.card_id, l.listing_type, l.price_credits, l.wanted_card_ids, l.status, l.created_at
          FROM card_listings l
@@ -281,6 +326,13 @@ async fn buy_listing(
     let card_id: String = listing.get("card_id");
 
     ledger::lock_accounts(&mut tx, claims.sub, seller_id).await.map_err(crate::error::internal)?;
+    if !is_adult(&mut tx, claims.sub).await.map_err(crate::error::internal)? {
+        return Err(adults_only());
+    }
+    // A seller whose account is no longer an adult one sells nothing (browse does not show it).
+    if !is_adult(&mut tx, seller_id).await.map_err(crate::error::internal)? {
+        return Err((StatusCode::CONFLICT, "Listing is no longer active".into()));
+    }
     let buyer_balance = ledger::debit(&mut tx, claims.sub, price, "market_buy").await.map_err(ledger::Debit::refusal)?;
     ledger::credit(&mut tx, seller_id, price, "market_sale").await.map_err(crate::error::internal)?;
 

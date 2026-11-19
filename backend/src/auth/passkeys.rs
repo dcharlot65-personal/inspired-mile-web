@@ -585,7 +585,7 @@ pub async fn signup_finish(
         "INSERT INTO users (id, username, auth_provider, age_tier, age_tier_declared)
          VALUES ($1, $2, 'passkey', $3, $3)
          ON CONFLICT DO NOTHING
-         RETURNING id, username, email, display_name, auth_provider, avatar_url",
+         RETURNING id, username, email, display_name, auth_provider, avatar_url, age_tier",
     )
     .bind(pending.user_id)
     .bind(&pending.username)
@@ -808,7 +808,7 @@ pub async fn login_finish(
     record_use(&pool, row_id, &mut passkey, &result).await?;
 
     let user_row = sqlx::query(
-        "SELECT id, username, email, display_name, auth_provider, avatar_url
+        "SELECT id, username, email, display_name, auth_provider, avatar_url, age_tier
          FROM users WHERE id = $1",
     )
     .bind(user_id)

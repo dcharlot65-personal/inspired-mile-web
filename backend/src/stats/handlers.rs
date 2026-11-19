@@ -7,6 +7,10 @@
 //! (src/lib/achievements.ts); the leaderboard and the account's record are the matches the server
 //! judged (`battle_rooms`, written by multiplayer/results.rs), and account achievements are only
 //! those the server can verify (backend/data/economy.json, `account_achievements`).
+//!
+//! The leaderboard and the win achievements count ranked wins: at most three a UTC day over any
+//! one opponent (`ranked_wins!`), so two accounts trading forfeits do not climb it. The card
+//! achievements leave out cards brought over from a device (second check of 2026-11-19).
 
 use axum::{
     extract::{Extension, State},
@@ -15,7 +19,7 @@ use axum::{
     Json, Router,
 };
 use chrono::{DateTime, Utc};
-use inspired_mile_api::economy::{self, Metrics};
+use inspired_mile_api::economy::{self, Metrics, RULES};
 use inspired_mile_api::verse::cards::starter_characters;
 use serde::Serialize;
 use sqlx::{PgPool, Row};
@@ -91,20 +95,39 @@ macro_rules! sides {
     };
 }
 
+/// Each account's ranked wins: its wins over each opponent, at most `$1` of them in a UTC day
+/// (`online.win_credits_per_opponent_per_day`, the same count that pays credits). Two accounts
+/// trading wins between them climb three places a day, not one per forfeit. A macro so that the
+/// statements that use it stay literals.
+macro_rules! ranked_wins {
+    () => {
+        "(SELECT r.user_id, COUNT(*) FILTER (WHERE r.n <= $1) AS wins FROM (
+            SELECT winner_id AS user_id,
+                   ROW_NUMBER() OVER (
+                     PARTITION BY winner_id,
+                                  CASE WHEN winner_id = player1_id THEN player2_id ELSE player1_id END,
+                                  date_trunc('day', completed_at AT TIME ZONE 'UTC')
+                     ORDER BY completed_at, id) AS n
+            FROM battle_rooms
+            WHERE state = 'completed' AND winner_id IS NOT NULL AND player1_id IS NOT NULL AND player2_id IS NOT NULL
+          ) r GROUP BY r.user_id) w"
+    };
+}
+
 async fn get_leaderboard(State((pool, _)): State<(PgPool, Config)>) -> Result<Json<Vec<LeaderboardEntry>>, (StatusCode, String)> {
     let rows = sqlx::query(concat!(
-        "SELECT u.id, u.username, u.avatar_url,
-                COUNT(*) FILTER (WHERE s.winner_id = s.user_id) AS wins,
-                COUNT(*) AS matches,
-                COALESCE(MAX(s.best), 0)::BIGINT AS best
+        "SELECT u.id, u.username, u.avatar_url, w.wins, m.matches, m.best
          FROM ",
+        ranked_wins!(),
+        " JOIN (SELECT s.user_id, COUNT(*) AS matches, COALESCE(MAX(s.best), 0)::BIGINT AS best FROM ",
         sides!(),
-        " JOIN users u ON u.id = s.user_id
-         GROUP BY u.id, u.username, u.avatar_url
-         HAVING COUNT(*) FILTER (WHERE s.winner_id = s.user_id) > 0
-         ORDER BY wins DESC, best DESC, matches ASC, u.username
+        " GROUP BY s.user_id) m ON m.user_id = w.user_id
+         JOIN users u ON u.id = w.user_id
+         WHERE w.wins > 0
+         ORDER BY w.wins DESC, m.best DESC, m.matches ASC, u.username
          LIMIT 50"
     ))
+    .bind(RULES.online.win_credits_per_opponent_per_day)
     .fetch_all(&pool)
     .await
     .map_err(crate::error::internal)?;
@@ -154,10 +177,24 @@ pub async fn online_record(pool: &PgPool, user_id: Uuid) -> Result<OnlineRecord,
     })
 }
 
-/// Different cards the account holds on the server, the starter characters included.
-async fn unique_cards(pool: &PgPool, user_id: Uuid) -> Result<(i64, i64), sqlx::Error> {
-    let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1")
+/// The account's ranked wins (`ranked_wins!`): what the leaderboard and the account
+/// achievements count.
+async fn ranked_wins(pool: &PgPool, user_id: Uuid) -> Result<i64, sqlx::Error> {
+    let wins: Option<i64> = sqlx::query_scalar(concat!("SELECT w.wins FROM ", ranked_wins!(), " WHERE w.user_id = $2"))
+        .bind(RULES.online.win_credits_per_opponent_per_day)
         .bind(user_id)
+        .fetch_optional(pool)
+        .await?;
+    Ok(wins.unwrap_or(0))
+}
+
+/// Different cards the account holds on the server, the starter characters included, and its
+/// card rows. Without `imported`, the cards that came over in the import of a device's collection
+/// are left out: the server cannot verify how a device got them, so they earn no achievement.
+async fn unique_cards(pool: &PgPool, user_id: Uuid, imported: bool) -> Result<(i64, i64), sqlx::Error> {
+    let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1 AND ($2 OR source <> 'import')")
+        .bind(user_id)
+        .bind(imported)
         .fetch_all(pool)
         .await?;
     let total: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM owned_cards WHERE user_id = $1")
@@ -178,7 +215,7 @@ async fn get_stats(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<PlayerStats>, (StatusCode, String)> {
     let online = online_record(&pool, claims.sub).await.map_err(crate::error::internal)?;
-    let (unique, total) = unique_cards(&pool, claims.sub).await.map_err(crate::error::internal)?;
+    let (unique, total) = unique_cards(&pool, claims.sub, true).await.map_err(crate::error::internal)?;
     let row = sqlx::query("SELECT packs_opened, credits FROM player_stats WHERE user_id = $1")
         .bind(claims.sub)
         .fetch_optional(&pool)
@@ -195,7 +232,8 @@ async fn list_achievements(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<Vec<UnlockedAchievement>>, (StatusCode, String)> {
     let online = online_record(&pool, claims.sub).await.map_err(crate::error::internal)?;
-    let (unique, _) = unique_cards(&pool, claims.sub).await.map_err(crate::error::internal)?;
+    let wins = ranked_wins(&pool, claims.sub).await.map_err(crate::error::internal)?;
+    let (unique, _) = unique_cards(&pool, claims.sub, false).await.map_err(crate::error::internal)?;
     let packs: i32 = sqlx::query_scalar("SELECT packs_opened FROM player_stats WHERE user_id = $1")
         .bind(claims.sub)
         .fetch_optional(&pool)
@@ -203,7 +241,7 @@ async fn list_achievements(
         .map_err(crate::error::internal)?
         .unwrap_or(0);
     let metrics = Metrics {
-        online_wins: online.wins,
+        online_wins: wins,
         online_matches: online.matches,
         online_rounds: online.rounds,
         best_round: online.best_round,

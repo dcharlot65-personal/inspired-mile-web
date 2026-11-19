@@ -471,7 +471,7 @@ async fn find_or_create_user(
     age_tier: &str,
 ) -> Result<(sqlx::postgres::PgRow, bool), ApiError> {
     let existing = sqlx::query(
-        "SELECT id, username, email, display_name, auth_provider, avatar_url
+        "SELECT id, username, email, display_name, auth_provider, avatar_url, age_tier
          FROM users WHERE lower(email) = $1 ORDER BY created_at ASC LIMIT 1",
     )
     .bind(email)
@@ -485,7 +485,7 @@ async fn find_or_create_user(
     let row = sqlx::query(
         "INSERT INTO users (username, email, auth_provider, age_tier, age_tier_declared)
          VALUES ($1, $2, 'email', $3, $3)
-         RETURNING id, username, email, display_name, auth_provider, avatar_url",
+         RETURNING id, username, email, display_name, auth_provider, avatar_url, age_tier",
     )
     .bind(&username)
     .bind(email)
@@ -601,7 +601,7 @@ pub async fn add_verify(
     }
     let row = sqlx::query(
         "UPDATE users SET email = $2, updated_at = NOW() WHERE id = $1 AND email IS NULL
-         RETURNING id, username, email, display_name, auth_provider, avatar_url",
+         RETURNING id, username, email, display_name, auth_provider, avatar_url, age_tier",
     )
     .bind(claims.sub)
     .bind(&email)
