@@ -100,7 +100,8 @@ pub async fn record_match(pool: &PgPool, record: &MatchRecord) -> Result<(), sql
 }
 
 /// What an online match pays: XP to both players (a win pays more), and credits to the winner,
-/// each within its caps.
+/// each within its caps (a day's matches for XP, and a day's matches against the same opponent;
+/// a day's wins for credits, and a day's wins over the same opponent).
 async fn pay(tx: &mut Transaction<'_, Postgres>, record: &MatchRecord, winner: Option<Uuid>) -> Result<(), sqlx::Error> {
     let [a, b] = record.players;
     ledger::lock_accounts(&mut *tx, a, b).await?;
@@ -126,11 +127,27 @@ async fn pay(tx: &mut Transaction<'_, Postgres>, record: &MatchRecord, winner: O
         }
     }
     if let Some(season) = ledger::active_season(&mut *tx).await? {
-        for player in [a, b] {
-            let amount = if Some(player) == winner { online.xp_win } else { online.xp_other };
-            let rate = Rate { amount, per_day: online.xp_matches_per_day };
-            // Wins and other matches share one daily count ("online_match").
-            ledger::xp_capped(&mut *tx, player, season, "online_match", rate).await?;
+        // Matches between these two today, this one aside: at most
+        // `xp_matches_per_opponent_per_day` of them pay XP, so an account that forfeits to its own
+        // second account pays it 300 XP a day, not 2,000 (third check of 2026-11-19).
+        let together: i64 = sqlx::query_scalar(
+            "SELECT COUNT(*) FROM battle_rooms
+             WHERE state = 'completed' AND id <> $3
+               AND ((player1_id = $1 AND player2_id = $2) OR (player1_id = $2 AND player2_id = $1))
+               AND completed_at >= (date_trunc('day', NOW() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC')",
+        )
+        .bind(a)
+        .bind(b)
+        .bind(record.room_id)
+        .fetch_one(&mut **tx)
+        .await?;
+        if economy::online_xp_pays(together) {
+            for player in [a, b] {
+                let amount = if Some(player) == winner { online.xp_win } else { online.xp_other };
+                let rate = Rate { amount, per_day: online.xp_matches_per_day };
+                // Wins and other matches share one daily count ("online_match").
+                ledger::xp_capped(&mut *tx, player, season, "online_match", rate).await?;
+            }
         }
     }
     Ok(())

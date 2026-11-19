@@ -200,7 +200,6 @@ pub struct Config {
     pub port: u16,
     pub cors_origin: String,
     pub db_max_connections: u32,
-    pub launch_date: String,
     /// WebAuthn relying-party ID. Passkeys are bound to it for good: changing it orphans
     /// every registered passkey.
     pub webauthn_rp_id: String,
@@ -310,7 +309,6 @@ impl Config {
             db_max_connections: get("DB_MAX_CONNECTIONS")
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(25),
-            launch_date: get("LAUNCH_DATE").unwrap_or_else(|| "2026-04-01".into()),
             webauthn_rp_id,
             webauthn_origins,
             email_mode,

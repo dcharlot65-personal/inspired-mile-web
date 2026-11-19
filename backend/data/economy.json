@@ -22,7 +22,8 @@
     "win_credits_per_opponent_per_day": 3,
     "xp_win": 100,
     "xp_other": 25,
-    "xp_matches_per_day": 20
+    "xp_matches_per_day": 20,
+    "xp_matches_per_opponent_per_day": 3
   },
   "packs": {
     "weights": { "Common": 50, "Uncommon": 30, "Rare": 15, "Epic": 4, "Legendary": 1 },
@@ -36,7 +37,8 @@
     "daily_pack_every_hours": 24
   },
   "import": {
-    "_comment": "The one-time move of a device's own collection into an account, on its first sign-in.",
+    "_comment": "The one-time move of a device's own collection into an account, on its first sign-in: within window_hours of the account being made, once.",
+    "window_hours": 24,
     "max_cards": 20,
     "max_by_rarity": { "Legendary": 1, "Epic": 2, "Rare": 5 },
     "sellable": false
@@ -49,7 +51,7 @@
   "market": { "price_min": 1, "price_max": 100000 },
   "teen_daily_spend": 200,
   "referral": { "referrer_credits": 100, "rewards_per_day": 3 },
-  "founding": { "credits": 500 },
+  "founding": { "_comment": "An account made before created_before (a UTC date) is brought up to these credits once.", "credits": 500, "created_before": "2026-04-01" },
   "tournaments": {
     "_comment": "A tournament match is to be played within match_hours of both its players being known (a round robin's round r within r times that, from the draw); then the server decides it (backend/src/tournaments/progress.rs).",
     "match_hours": 48

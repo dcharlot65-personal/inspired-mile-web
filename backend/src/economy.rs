@@ -38,6 +38,8 @@ pub struct Online {
     pub xp_win: i32,
     pub xp_other: i32,
     pub xp_matches_per_day: i64,
+    /// Matches between the same two accounts that pay XP in a UTC day.
+    pub xp_matches_per_opponent_per_day: i64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -60,6 +62,9 @@ pub struct Packs {
 
 #[derive(Debug, Deserialize)]
 pub struct Import {
+    /// Hours after an account is made in which it may import: the import is its first sign-in's,
+    /// not something a long-standing account can do when it likes.
+    pub window_hours: i64,
     pub max_cards: usize,
     pub max_by_rarity: HashMap<String, usize>,
     /// Whether a card that came over in the import may be listed in the market. False: it stays
@@ -90,6 +95,16 @@ pub struct Referral {
 #[derive(Debug, Deserialize)]
 pub struct Founding {
     pub credits: i32,
+    /// A UTC date (YYYY-MM-DD): an account made before it is a founding player. In the file, not
+    /// the environment, so no setting on a server can hand every new account the credits.
+    pub created_before: String,
+}
+
+impl Founding {
+    /// Whether an account made at this moment is a founding player.
+    pub fn applies_to(&self, created: chrono::DateTime<chrono::Utc>) -> bool {
+        chrono::NaiveDate::parse_from_str(&self.created_before, "%Y-%m-%d").is_ok_and(|before| created.date_naive() < before)
+    }
 }
 
 /// What an account achievement counts. Each is something the server holds itself.
@@ -231,12 +246,8 @@ pub struct ImportChoice {
 /// forged collection can bring (docs/ECONOMY.md, "The one-time import").
 pub fn choose_import(asked: &[String]) -> ImportChoice {
     let starter = starter_characters();
-    let mut distinct: Vec<&String> = Vec::new();
-    for id in asked {
-        if !distinct.contains(&id) {
-            distinct.push(id);
-        }
-    }
+    let mut seen = std::collections::HashSet::new();
+    let distinct: Vec<&String> = asked.iter().filter(|id| seen.insert(id.as_str())).collect();
     let mut known: Vec<&'static Card> = distinct
         .iter()
         .filter_map(|id| catalogue_card(id))
@@ -301,6 +312,13 @@ pub fn reached(metrics: &Metrics) -> Vec<&'static str> {
 /// them against this opponent (two accounts trading wins between them earn little).
 pub fn online_win_pays(paid_today: i64, paid_against_opponent_today: i64) -> bool {
     paid_today < RULES.online.win_credits_per_day && paid_against_opponent_today < RULES.online.win_credits_per_opponent_per_day
+}
+
+/// Whether an online match pays XP to its players, given how many matches the same two accounts
+/// have finished today before it: fewer than `xp_matches_per_opponent_per_day`. (Each player's own
+/// daily count, `xp_matches_per_day`, is kept by the ledger.)
+pub fn online_xp_pays(matches_together_today: i64) -> bool {
+    matches_together_today < RULES.online.xp_matches_per_opponent_per_day
 }
 
 #[cfg(test)]
@@ -433,6 +451,24 @@ mod tests {
         for device_only in ["scholar-novice", "quotable", "scholar", "challenge-master", "trivia-starter"] {
             assert!(!RULES.account_achievements.iter().any(|a| a.id == device_only), "{device_only}");
         }
+    }
+
+    #[test]
+    fn a_founding_player_is_one_made_before_the_files_date() {
+        use chrono::TimeZone;
+        let before = chrono::NaiveDate::parse_from_str(&RULES.founding.created_before, "%Y-%m-%d").expect("a date");
+        let midnight = chrono::Utc.from_utc_datetime(&before.and_hms_opt(0, 0, 0).unwrap());
+        assert!(RULES.founding.applies_to(midnight - chrono::Duration::seconds(1)));
+        assert!(!RULES.founding.applies_to(midnight));
+        assert!(!RULES.founding.applies_to(chrono::Utc::now()), "nobody made today is a founding player");
+    }
+
+    #[test]
+    fn online_xp_pays_for_a_few_matches_a_day_between_the_same_two() {
+        assert!(online_xp_pays(0));
+        assert!(online_xp_pays(RULES.online.xp_matches_per_opponent_per_day - 1));
+        assert!(!online_xp_pays(RULES.online.xp_matches_per_opponent_per_day));
+        assert!(RULES.online.xp_matches_per_opponent_per_day < RULES.online.xp_matches_per_day);
     }
 
     #[test]

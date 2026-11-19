@@ -174,21 +174,19 @@ async fn me(
     .await?
     .ok_or_else(ApiError::unauthorized)?;
 
-    // A founding player (an account created before LAUNCH_DATE) is brought up to the founding
-    // balance once, logged as a credit transaction. Until 2026-11-19 every /auth/me refilled it,
-    // unlogged.
-    let founding = if let Ok(launch) = chrono::NaiveDate::parse_from_str(&config.launch_date, "%Y-%m-%d") {
-        let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
-        if created.date_naive() < launch {
-            if let Err(e) = grant_founding(&pool, claims.sub).await {
-                tracing::warn!(user_id = %claims.sub, "could not grant the founding credits: {e}");
-            }
-            Some(true)
-        } else {
-            Some(false)
+    // A founding player (an account made before `founding.created_before`, a date in
+    // backend/data/economy.json) is brought up to the founding balance once, logged as a credit
+    // transaction. Until 2026-11-19 every /auth/me refilled it, unlogged; until the third check of
+    // that day the date was the server's LAUNCH_DATE setting, so a later date in a server's
+    // environment handed every new account the credits.
+    let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
+    let founding = if inspired_mile_api::economy::RULES.founding.applies_to(created) {
+        if let Err(e) = grant_founding(&pool, claims.sub).await {
+            tracing::warn!(user_id = %claims.sub, "could not grant the founding credits: {e}");
         }
+        Some(true)
     } else {
-        None
+        Some(false)
     };
 
     Ok(Json(AuthResponse {
