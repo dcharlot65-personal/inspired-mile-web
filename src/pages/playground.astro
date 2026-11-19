@@ -279,7 +279,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     import { type TriviaQuestion } from '../lib/trivia';
     import { answersMatch, localRandomChallenge, localRandomQuestions, type LocalChallenge } from '../lib/play-content';
     import { has, initI18n, isRtl, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
-    import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
+    import { initAudio, isInitialized, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
     import { getUniqueOwnedCount, getOwnedCards, getOwnedCardIds } from '../lib/inventory';
@@ -333,11 +333,11 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     }
     checkSpendingLimits();
 
-    // Start playground music on first interaction
+    // Sound starts on the first interaction. Effects only: the playground's music had no traced
+    // source and was removed (D-08).
     document.addEventListener('click', () => {
       if (!isInitialized()) initAudio();
-      playMusic('playground-ambient', 1000);
-      preloadSfx(['pack-open', 'card-flip', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'trivia-correct', 'trivia-wrong', 'challenge-win', 'challenge-lose', 'ui-click']);
+      preloadSfx(['pack-open', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'trivia-correct', 'trivia-wrong', 'challenge-win', 'challenge-lose', 'ui-click']);
     }, { once: true });
 
     // --- Pack Odds Toggle ---

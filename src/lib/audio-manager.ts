@@ -2,14 +2,17 @@
 // Handles background music, sound effects, volume control, and TTS ducking.
 // All errors are caught silently — audio is enhancement, not critical.
 
-export type MusicTrack = 'battle-beat' | 'playground-ambient' | 'collection-browse' | 'landing-ambient';
+// Only music whose source is traced ships (owner decision D-08, 2026-11-19): the playground, the
+// collection and the world map lost their untraced tracks and are silent. src/lib/audio-assets.test.ts.
+export type MusicTrack = 'battle-beat' | 'landing-ambient';
 
+// card-flip and ui-whoosh were preloaded and never played, and were removed with D-08.
 export type SfxName =
-  | 'card-flip' | 'card-shimmer'
+  | 'card-shimmer'
   | 'fanfare-common' | 'fanfare-rare' | 'fanfare-legendary'
   | 'trivia-correct' | 'trivia-wrong'
   | 'battle-victory' | 'battle-defeat'
-  | 'ui-click' | 'ui-whoosh'
+  | 'ui-click'
   | 'pack-open' | 'challenge-win' | 'challenge-lose';
 
 import type { Rarity } from './cards';
