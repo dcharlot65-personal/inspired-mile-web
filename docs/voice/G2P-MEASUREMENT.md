@@ -61,6 +61,14 @@ comparison is shown and not relied on.
    take apart (commit 577322e6, with a test that fails without it). That changed the phonemes of
    one text of the 401, `quote-54`, and no other.
 4. **Run 3** (code of 577322e6; `docs/voice/measurement.json`), the results below.
+5. **After run 3: numbers.** An independent check found digits glued to letters dropped
+   ("Back in the 90s" heard as "Back in the S", "2pac", "mp3", "10pm", "B2K"): `normalise()`
+   split letters from digits only after reading the numbers, and the tokenizer keeps letters
+   only. None of the 401 texts holds a digit, so run 3 could not see it. The fix (commit
+   d8dd3b8d) reads letters and digits written as one word before any digit alone, and adds
+   decades, am/pm, a minus sign and Roman numerals after a king's or a part's name. It changes
+   the phonemes of none of the 401 texts (`measurement.test.ts`), so run 3 stands for them as it
+   is; the cases it covers are measured on their own, below ("Edge texts").
 
 Nothing else that reads text changed between the runs (a262a1a9 only made the voice load the G2P
 on demand). In particular the little words that runs 1 and 2 still showed misheard now and then
@@ -69,8 +77,19 @@ them after seeing the measured set would be tuning on it. They are the first thi
 on texts that are not in this corpus, and then measured again.
 
 The 200 words were written down before either reading of them was heard (committed in 21446923 at
-02:12 ET, the first reading at 02:15, the list unchanged since) and are not in any list of the
-G2P.
+02:12 ET, the first reading at 02:15, the list unchanged since), and none was added to a list of
+the G2P to make it pass. They are not all unseen by the voice, though, and an earlier version of
+this file overstated that. 11 are named in the voice's code, tests or notes: most as the examples
+its rules were written for (finna, skrrt, bussin, varlet, coxcomb, Haruki, Okonkwo, Adebayo,
+Mwangi; the brief itself named finna, skrrt and varlet), and "mid" and "extra" only as ordinary
+words. 19 old stage words and Shakespeare names ('tis, forsooth, prithee, methinks, wherefore,
+alack, anon, hither, thither, o'er, Mercutio, Benvolio, Malvolio, Prospero, Caliban, Titania,
+Oberon, Rosalind, Shylock) are in the game's own pronunciation additions
+(`scripts/pronunciation-extra.txt`, written for the verse rules on 2026-11-16, before the voice
+work, and unchanged by it), which the voice's table includes, so it reads them from the table.
+`scripts/voice/corpus.mjs` records both groups (`HELD_OUT_SEEN`) and `held-out.test.ts` holds that
+record to the sources. The results give the word measure with and without them: on the 170 words
+the voice has never seen, the new reading is heard 53 times and the old 45.
 
 `src/lib/voice/measurement.test.ts` holds this file's results to the code: every text's recorded
 phonemes must be what `g2p-en.ts` gives now. Kokoro and Whisper are deterministic here (below), so
@@ -124,6 +143,12 @@ Run of 2026-11-19 on v26.13.1, 401 texts, 80 minutes. Kokoro onnx-community/Koko
 | running text without the six development verses | 195 | 2611 | 5.63% | 5.90% | +0.27 | −0.58 to +1.15 |
 
 The word itself heard (every part of it, spelt as written or a known variant): old 58 of 200, new 65 of 200.
+
+| The words | Words | Heard, old | Heard, new | New − old |
+|---|---:|---:|---:|---:|
+| all 200 | 200 | 58 | 65 | +7 |
+| not named in the voice's code, tests or notes (less 11) | 189 | 55 | 62 | +7 |
+| also not in the game's own pronunciation additions (less 19 more): never seen by the voice | 170 | 45 | 53 | +8 |
 
 **Against the margins:** running text +0.25 points (95% interval −0.60 to +1.12) against a margin of +1.0: within; words heard +7 against a margin of −6: within.
 
