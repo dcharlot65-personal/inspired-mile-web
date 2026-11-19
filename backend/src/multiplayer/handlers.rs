@@ -179,6 +179,22 @@ fn queue_gate(open: bool) -> Result<(), (StatusCode, String)> {
 ///   - a partner who has signed out since they asked (here, or on every device) is not a
 ///     player: their room is closed unused and the requester is paired with the next, or waits.
 async fn join_queue(
+    claims: Extension<Claims>,
+    queue: Extension<Arc<MatchmakingQueue>>,
+    rooms: Extension<Arc<RoomManager>>,
+    gone: Extension<ClientGone>,
+    state: State<(PgPool, Config)>,
+    peer: ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+) -> Result<Json<QueueResponse>, (StatusCode, String)> {
+    // Before anything else: a closed queue holds nobody and opens no room.
+    queue_gate(quick_match_open())?;
+    queue_for_match(claims, queue, rooms, gone, state, peer, headers).await
+}
+
+/// Quick match itself, behind the switch (`join_queue`): kept whole, with its tests, for when
+/// quick match comes back.
+async fn queue_for_match(
     Extension(claims): Extension<Claims>,
     Extension(queue): Extension<Arc<MatchmakingQueue>>,
     Extension(rooms): Extension<Arc<RoomManager>>,
@@ -187,8 +203,6 @@ async fn join_queue(
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
-    // Before anything else: a closed queue holds nobody and opens no room.
-    queue_gate(quick_match_open())?;
     let origin = origin_of(&headers, peer, &config);
     let mut rx = loop {
         match queue.enqueue(claims.sub, claims.sid, claims.username.clone(), origin.clone(), &rooms).await.map_err(refused)? {
@@ -646,6 +660,32 @@ mod tests {
         assert_eq!(queue_gate(true), Ok(()));
     }
 
+    /// The route itself, with the switch as backend/data/online-play.json holds it: while quick
+    /// match is off, a request is refused before it is queued or a room is opened.
+    #[tokio::test]
+    async fn the_queue_route_obeys_the_switch() {
+        if quick_match_open() {
+            return; // quick match is on: queue_for_match's own tests cover the route
+        }
+        let queue = Arc::new(MatchmakingQueue::new());
+        let rooms = Arc::new(RoomManager::new());
+        let (_present, gone) = ClientGone::new();
+        let who = someone();
+        let answer = join_queue(
+            Extension(who.clone()),
+            Extension(queue.clone()),
+            Extension(rooms.clone()),
+            Extension(gone),
+            State((unreachable_database(), config(&[]))),
+            ConnectInfo("198.51.100.30:50000".parse().unwrap()),
+            HeaderMap::new(),
+        )
+        .await;
+        assert_eq!(answer.err(), Some((StatusCode::FORBIDDEN, QUICK_MATCH_CLOSED.to_string())));
+        assert_eq!(queue.size().await, 0, "nobody was queued");
+        assert!(rooms.rooms_of(who.sub).await.is_empty(), "no room was opened");
+    }
+
     #[test]
     fn only_this_sites_pages_may_open_the_game_socket() {
         let c = config(&[
@@ -761,7 +801,7 @@ mod tests {
         assert_eq!(open_private(&rooms, &production, lan, claiming("198.51.100.1", None)).await, Err(StatusCode::TOO_MANY_REQUESTS));
         // Nor does asking for a quick match from there.
         let (_present, gone) = ClientGone::new();
-        let queued = join_queue(
+        let queued = queue_for_match(
             Extension(someone()),
             Extension(Arc::new(MatchmakingQueue::new())),
             Extension(rooms.clone()),
@@ -897,7 +937,7 @@ mod tests {
         let rooms = Arc::new(RoomManager::new());
         let peer: SocketAddr = "198.51.100.20:50000".parse().unwrap();
         let ask = |who: Claims, gone: ClientGone| {
-            tokio::spawn(join_queue(
+            tokio::spawn(queue_for_match(
                 Extension(who),
                 Extension(queue.clone()),
                 Extension(rooms.clone()),
