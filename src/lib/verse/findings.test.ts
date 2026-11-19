@@ -516,7 +516,7 @@ describe('finding: a potion always hit the written opponent', () => {
       }
     }
     expect([...new Set(below)]).toEqual([]);
-  });
+  }, 30_000); // about 2 s alone; past vitest's 5 s in whole-suite runs on the loaded build host (lang/model-eval, 2026-11-18)
   it('under any curse it plays the verse of its bank that loses least', async () => {
     const curses = [cast('short-lines'), cast('short-words'), cast('no-repeats'), ...['s', 't', 'r', 'n', 'o', 'i'].map((l) => cast('forbidden-letter', l))];
     for (const curse of curses) {

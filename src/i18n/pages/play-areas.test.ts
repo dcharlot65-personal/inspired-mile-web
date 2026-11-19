@@ -444,7 +444,9 @@ describe('page areas of the play content', () => {
       const problems: string[] = [];
       for (const l of LOCALES) problems.push(...areaProblems(l, await area(name, l), en));
       expect(problems).toEqual([]);
-    });
+      // The first test to load all sixteen of an area's modules: in a whole-suite run on the shared build host it
+      // took over vitest's 5 s (2026-11-18), alone well under it.
+    }, 30_000);
 
     it(`${name}: every language is translated, not English left in place`, async () => {
       const en = (await area(name, 'en'))!;
