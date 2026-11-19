@@ -38,6 +38,24 @@ These are settled. Each one binds every proposal in the dossier. A change to any
 
 Also recorded that day: the production database had **0 accounts** on 2026-11-19. Every change to accounts, cards or sessions in this release therefore affects no player.
 
+### 1.1b Before-deploy decisions from this dossier (decided 2026-11-19, after it was written)
+
+The owner chose the recommended option on each of these, put to them as four questions:
+
+| # | Decision | Option chosen | Section |
+|---|---|---|---|
+| R6 | Mark AI-written verses and synthetic speech in a machine-readable way in this release | "Accept all (Recommended)" | D-01 (option A) |
+| R7 | Take the false and stale claims off the site in this release | same answer | D-03 (option A) |
+| R8 | Keep The Sonnet Man card out of the AI opponent's draw until Devon Glover agrees | same answer | D-04 (option C) |
+| R9 | Ship the economy's launch values as tunable, with the pages moved to the new API, `docs/ECONOMY.md`, and two handler tests (a two-account purchase; capped earning) | same answer | D-05 (option A) |
+| R10 | Marketplace and referral for adults only; credits are never sold | same answer | D-06 (option B) |
+| R11 | Measure the judging lists again before deploy (never hand-edit them) | same answer | D-07 (option A) |
+| R12 | Remove the two untraced music tracks and the two unused effects; replace the other effects with traced ones within a month | same answer | D-08 (option B) |
+| R13 | Show a visible "AI" label beside each model-written verse, with R6's marking | same answer | D-12 (option B) |
+| R14 | Online play at launch by private room only, for everyone, until reports are read daily and block and mute exist; then adults-only quick match | "Private rooms only (Recommended)" | D-02 (option C) |
+| R15 | Two deploys: first the language merge with the judge, voice and compliance fixes and R6 to R8, R11 to R14; then the economy (R9, R10) with its pages and migration 020 | "Two deploys (Recommended)" | D-11 (option B) |
+| R16 | Operations minimum: the proxy secret, an encrypted copy of each nightly backup on a second machine, a self-hosted uptime check with an alert, 30-day API log rotation | "Set all four up (Recommended)" | D-10 |
+
 ### 1.2 Earlier decisions
 
 | Date | Decision | Where recorded |
