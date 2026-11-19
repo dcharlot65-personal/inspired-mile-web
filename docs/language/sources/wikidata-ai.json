@@ -1,0 +1,213 @@
+{
+ "source": "Wikidata, wbgetentities Q11660 (labels, aliases, sitelinks)",
+ "licence": "CC0 1.0",
+ "fetched": "2026-11-19T06:39:55.630Z",
+ "qid": "Q11660",
+ "revision": 2569958782,
+ "modified": "2026-11-15T20:17:52Z",
+ "langs": {
+  "en": {
+   "label": "artificial intelligence",
+   "aliases": [
+    "AI software",
+    "machine intelligence",
+    "artificially intelligent",
+    "artificial Intelligence",
+    "machine understanding",
+    "simulated intelligence",
+    "computational rationality",
+    "intelligent machine",
+    "machine thought",
+    "artificially intelligent beings",
+    "machines that can think",
+    "artificial smartness",
+    "artificial stupidity",
+    "AI science"
+   ],
+   "sitelink": "Artificial intelligence",
+   "badges": []
+  },
+  "es": {
+   "label": "inteligencia artificial",
+   "aliases": [
+    "inteligencia de la máquina",
+    "IA",
+    "I.A.",
+    "inteligencias artificiales",
+    "inteligencia computacional",
+    "pensamiento artificial"
+   ],
+   "sitelink": "Inteligencia artificial",
+   "badges": []
+  },
+  "fr": {
+   "label": "intelligence artificielle",
+   "aliases": [
+    "IA"
+   ],
+   "sitelink": "Intelligence artificielle",
+   "badges": []
+  },
+  "de": {
+   "label": "künstliche Intelligenz",
+   "aliases": [
+    "artifizielle Intelligenz",
+    "KI",
+    "KI-Wissenschaft"
+   ],
+   "sitelink": "Künstliche Intelligenz",
+   "badges": []
+  },
+  "it": {
+   "label": "intelligenza artificiale",
+   "aliases": [
+    "IA"
+   ],
+   "sitelink": "Intelligenza artificiale",
+   "badges": []
+  },
+  "pt": {
+   "label": "inteligência artificial",
+   "aliases": [
+    "IA",
+    "A.I",
+    "I.A"
+   ],
+   "sitelink": "Inteligência artificial",
+   "badges": []
+  },
+  "pt-br": {
+   "label": "inteligência artificial",
+   "aliases": [
+    "IA"
+   ],
+   "sitelink": null,
+   "badges": []
+  },
+  "pl": {
+   "label": "sztuczna inteligencja",
+   "aliases": [
+    "SI"
+   ],
+   "sitelink": "Sztuczna inteligencja",
+   "badges": []
+  },
+  "ru": {
+   "label": "искусственный интеллект",
+   "aliases": [
+    "ИИ",
+    "АИ",
+    "интеллект",
+    "искусственный разум",
+    "искусственный ум",
+    "машинный интеллект",
+    "машинный разум",
+    "интеллектуальная машина",
+    "программное обеспечение ИИ",
+    "машинное понимание",
+    "имитация интеллекта",
+    "вычислительная рациональность",
+    "машинная мысль"
+   ],
+   "sitelink": "Искусственный интеллект",
+   "badges": []
+  },
+  "ar": {
+   "label": "ذكاء اصطناعي",
+   "aliases": [
+    "ذكاء الاصناعي",
+    "الذكاء الاصناعي",
+    "الذكاء الاصطناعي",
+    "الذكاء الصناعي",
+    "ذكاء صنعي",
+    "الذكاء الصنعي",
+    "ذكاء صناعي"
+   ],
+   "sitelink": "ذكاء اصطناعي",
+   "badges": []
+  },
+  "hi": {
+   "label": "कृत्रिम बुद्धिमत्ता",
+   "aliases": [
+    "एआई",
+    "कृत्रिम होशियारी",
+    "कृत्रिम बुद्धि",
+    "आर्टिफिशियल इंटेलिजेंस",
+    "कृ॰बु॰",
+    "ए॰आई॰",
+    "आर्टिफ़िशियल इंटेलिजेंस",
+    "कृत्रिमबुद्धिमत्ता"
+   ],
+   "sitelink": "कृत्रिम बुद्धि",
+   "badges": []
+  },
+  "zh": {
+   "label": "人工智能",
+   "aliases": [
+    "人工智慧",
+    "機器智能",
+    "機械智能",
+    "智械"
+   ],
+   "sitelink": "人工智能",
+   "badges": []
+  },
+  "zh-hans": {
+   "label": "人工智能",
+   "aliases": [],
+   "sitelink": null,
+   "badges": []
+  },
+  "ja": {
+   "label": "人工知能",
+   "aliases": [
+    "人工頭脳",
+    "人工知能（AI）"
+   ],
+   "sitelink": "人工知能",
+   "badges": []
+  },
+  "ko": {
+   "label": "인공지능",
+   "aliases": [],
+   "sitelink": "인공지능",
+   "badges": []
+  },
+  "vi": {
+   "label": "trí tuệ nhân tạo",
+   "aliases": [
+    "A.I.",
+    "A I",
+    "trí thông minh nhân tạo",
+    "trí thông minh mô phỏng",
+    "trí tuệ máy móc",
+    "phần mềm AI",
+    "tư duy của máy móc",
+    "sinh vật thông minh nhân tạo",
+    "máy thông minh",
+    "tính hợp lý tính toán",
+    "máy hiểu",
+    "trí tuệ nhân tạo AI",
+    "trí tuệ nhân tạo A.I.",
+    "TTNT"
+   ],
+   "sitelink": "Trí tuệ nhân tạo",
+   "badges": []
+  },
+  "th": {
+   "label": "ปัญญาประดิษฐ์",
+   "aliases": [],
+   "sitelink": "ปัญญาประดิษฐ์",
+   "badges": []
+  },
+  "id": {
+   "label": "akal imitasi",
+   "aliases": [
+    "A.I.",
+    "akal imitasi"
+   ],
+   "sitelink": "Kecerdasan buatan",
+   "badges": []
+  }
+ }
+}

@@ -468,6 +468,12 @@ const id: Record<string, string> = {
   'battle.lang.written': '{language}: lawanmu memakai syair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.',
   'battle.lang.rules': '{language}: dinilai dengan aturan, karena {model} belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini.',
   'brain.noneShown': 'Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan.',
+  'footer.credits': 'Atribusi dan lisensi',
+  'notice.aiBoth': 'Lawanmu dan juri dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini.',
+  'notice.aiWrites': 'Lawanmu dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini. Duel dinilai dengan aturan, bukan oleh kecerdasan buatan.',
+  'notice.aiJudges': 'Juri dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya.',
+  'notice.none': 'Tidak ada kecerdasan buatan yang bermain atau menilai duel ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya, dan duel dinilai dengan aturan.',
+  'notice.online': 'Dalam duel daring, lawanmu adalah pemain lain, dan server kami menilai kedua syair dengan aturan yang tetap. Tidak ada kecerdasan buatan yang bermain atau menilai duel daring.',
 };
 
 export default id;

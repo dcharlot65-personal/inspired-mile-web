@@ -468,6 +468,12 @@ const es: Record<string, string> = {
   'battle.lang.written': '{language}: te enfrentas al rival de versos escritos, porque {model} no ha demostrado que escriba buenas estrofas en este idioma.',
   'battle.lang.rules': '{language}: se juzga por reglas, porque {model} no ha demostrado ser buen juez de estrofas en este idioma.',
   'brain.noneShown': 'Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas.',
+  'footer.credits': 'Créditos y licencias',
+  'notice.aiBoth': 'Tu rival y el juez funcionan con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo.',
+  'notice.aiWrites': 'Tu rival funciona con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo. El duelo se juzga por reglas, no con inteligencia artificial.',
+  'notice.aiJudges': 'El juez funciona con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano.',
+  'notice.none': 'Ninguna inteligencia artificial juega ni juzga este duelo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano, y el duelo se juzga por reglas.',
+  'notice.online': 'En línea, tu rival es otro jugador y nuestro servidor juzga ambas estrofas con reglas fijas. Ninguna inteligencia artificial juega ni juzga un duelo en línea.',
 };
 
 export default es;
