@@ -104,6 +104,42 @@ test.describe('Theatre', () => {
     await expect.poll(() => page.evaluate(() => (window as any).__theatre.session.move.charId)).toBe(point!.id);
   });
 
+  // The screenshots of 2026-11-19 showed the opponent's verse and the round's rules cut off at both sides on a phone:
+  // the camera held its vertical angle, so a canvas taller than wide saw a narrow slice of the stage.
+  for (const [w, h] of [[390, 844], [1280, 800]]) {
+    test(`at ${w}x${h} the panels, buttons and cards of the stage front are all inside the canvas`, async ({ page }) => {
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto('/theatre?seed=11&brain=rules');
+      await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn');
+      const r = await page.evaluate(() => {
+        const { theatre } = (window as any).__theatre;
+        const scene = theatre.scene;
+        scene.updateTransformMatrix(true);
+        const m = scene.getTransformMatrix().m;
+        const off: string[] = [];
+        const seen: string[] = [];
+        for (const mesh of scene.meshes) {
+          const n: string = mesh.name;
+          if (!(['opponent', 'round', 'verse', 'btn-mic', 'btn-clear', 'btn-submit'].includes(n) || n.startsWith('hand-'))) continue;
+          if (!mesh.isEnabled() || !mesh.isVisible) continue;
+          seen.push(n);
+          mesh.computeWorldMatrix(true);
+          for (const v of mesh.getBoundingInfo().boundingBox.vectorsWorld) {
+            const q = v.x * m[3] + v.y * m[7] + v.z * m[11] + m[15];
+            const x = (v.x * m[0] + v.y * m[4] + v.z * m[8] + m[12]) / q;
+            const y = (v.x * m[1] + v.y * m[5] + v.z * m[9] + m[13]) / q;
+            if (Math.abs(x) > 1 || Math.abs(y) > 1) { off.push(`${n} at (${x.toFixed(2)}, ${y.toFixed(2)})`); break; }
+          }
+        }
+        return { off, seen };
+      });
+      // Three panels and the starter hand (three characters, a relic and a potion) at least, with the buttons shown:
+      // a test that found none would prove nothing.
+      expect(r.seen.length, r.seen.join(', ')).toBeGreaterThanOrEqual(8);
+      expect(r.off).toEqual([]);
+    });
+  }
+
   test('offers no headset button where there is no WebXR', async ({ page }) => {
     await page.goto('/theatre?seed=11&brain=rules');
     await page.waitForFunction(() => (window as any).__theatre?.session);

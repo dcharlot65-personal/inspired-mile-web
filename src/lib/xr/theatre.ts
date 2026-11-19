@@ -87,6 +87,16 @@ const GREEN = '#34d399';
 /** Pixels per metre for panel textures: enough to read verse in a headset. */
 const PPM = 700;
 
+/**
+ * The seat's angle of view on a flat screen, in radians. Babylon holds the vertical angle (SEAT_FOV), so a canvas
+ * narrower than it is tall, a phone's, saw a slice of the stage too narrow for it: at 390 px the opponent's verse and
+ * the round's rules ran off both sides (screenshots of 2026-11-19). Where the vertical angle would show less than
+ * SEAT_ACROSS from side to side, the horizontal angle is held at SEAT_ACROSS instead: wide enough for the far panels'
+ * outer edges (about 0.85) and the buttons beside the lectern (about 1.0).
+ */
+const SEAT_FOV = 0.9;
+const SEAT_ACROSS = 1.1;
+
 interface Panel {
   mesh: Mesh;
   ui: AdvancedDynamicTexture;
@@ -102,6 +112,7 @@ export class Theatre {
   private panels: Record<string, Panel> = {};
   private buttons: Record<string, Panel> = {};
   private hand: Mesh[] = [];
+  private seat: FreeCamera;
   private handKey = '';
   mode: 'flat' | 'immersive-ar' | 'immersive-vr' = 'flat';
 
@@ -116,7 +127,8 @@ export class Theatre {
     const camera = new FreeCamera('seat', new Vector3(0, 1.5, -0.75), this.scene);
     camera.setTarget(new Vector3(0, 1.28, 2));
     camera.minZ = 0.05;
-    camera.fov = 0.9;
+    this.seat = camera;
+    this.fitView();
 
     const light = new HemisphericLight('house-lights', new Vector3(0, 1, -0.3), this.scene);
     light.intensity = 1;
@@ -142,7 +154,18 @@ export class Theatre {
     window.addEventListener('resize', this.onResize);
   }
 
-  private onResize = () => this.engine.resize();
+  private onResize = () => {
+    this.engine.resize();
+    this.fitView();
+  };
+
+  /** Hold the angle of view that shows the whole stage front on this canvas: SEAT_FOV says why. */
+  private fitView() {
+    const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
+    const narrow = aspect < Math.tan(SEAT_ACROSS / 2) / Math.tan(SEAT_FOV / 2);
+    this.seat.fovMode = narrow ? FreeCamera.FOVMODE_HORIZONTAL_FIXED : FreeCamera.FOVMODE_VERTICAL_FIXED;
+    this.seat.fov = narrow ? SEAT_ACROSS : SEAT_FOV;
+  }
 
   private buildStage() {
     const floor = MeshBuilder.CreateGround('floor', { width: 8, height: 8 }, this.scene);
