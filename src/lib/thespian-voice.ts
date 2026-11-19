@@ -159,7 +159,10 @@ export async function speak(text: string, voice?: string, lang = 'en'): Promise<
   }
 
   try {
-    const { samples, sampleRate } = await synthesise(text, voice || THESPIAN_VOICE);
+    const { samples, sampleRate, phonemes } = await synthesise(text, voice || THESPIAN_VOICE);
+    // Nothing the English reading can say (no Latin letter: another script, an emoji alone):
+    // the device's own voice, rather than an empty sound.
+    if (!phonemes.length) return speakFallback(text, lang);
     const blob = new Blob([toWav(samples, sampleRate)], { type: 'audio/wav' });
     const url = URL.createObjectURL(blob);
 
