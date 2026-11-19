@@ -187,7 +187,15 @@ export function fillSlots(el: HTMLElement, template: string): void {
  * has() and applyTranslations() need no change. Ask again after the language changes
  * (onLocaleChange): a language's areas are fetched only when that language is in use.
  */
-const AREA_LOADERS = import.meta.glob<{ default: Messages }>('./pages/*/*.ts');
+// The language tools (scripts/lang) and Playwright's specs load this module in plain Node, where import.meta.glob
+// does not exist (it is Vite's, replaced at build time): there it throws, and the module loads with no page areas.
+// Vite rewrites the call wherever it stands, so the try costs the site nothing.
+let AREA_LOADERS: Record<string, () => Promise<{ default: Messages }>>;
+try {
+  AREA_LOADERS = import.meta.glob<{ default: Messages }>('./pages/*/*.ts');
+} catch {
+  AREA_LOADERS = {};
+}
 const areasLoaded = new Map<string, Promise<void>>();
 
 export function loadArea(name: string, l: Locale = current): Promise<void> {

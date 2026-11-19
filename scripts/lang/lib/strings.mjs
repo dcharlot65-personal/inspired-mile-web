@@ -76,6 +76,8 @@ async function fillers(lang) {
     name: 'Ariel',
     // The label the page shows (src/lib/brain.ts): a Korean particle after it is chosen by its last letter.
     model: 'Gemma 4 E2B',
+    // {language}: the duel's language in the battle.lang.* notes (lang/model-eval), named in the interface's language.
+    language: new Intl.DisplayNames([lang], { type: 'language' }).of(lang === 'th' ? 'ja' : 'th'),
     email: 'a@example.com',
     city: 'Verona',
     size: `${formatNumber(3.1, lang)} GB`,
