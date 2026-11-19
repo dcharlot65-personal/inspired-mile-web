@@ -50,6 +50,7 @@ const FAULTS = [
   ['% never matches', LTS, "      case '%':\n        // A suffix: ER, E, ES, ED, ING, ELY.", "      case '%':\n        return false;\n        // A suffix"],
   ['rules read in the wrong order', LTS, 'for (const [left, match, right, out] of rules ?? []) {', 'for (const [left, match, right, out] of [...(rules ?? [])].reverse()) {'],
   ['the rules\' h unread', LTS, '|NG|CH|WH|[pbtdkgfvszmnlwyrjh]/g;', '|NG|CH|WH|[pbtdkgfvszmnlwyrj]/g;'],
+  ['a stem taken apart before one the table has whole', G2P, '  for (const s of candidates) {\n    const whole = known(s);\n    if (whole) return whole;\n  }\n', ''],
   ['"etc" read inside "etch"', G2P, "[/\\betc\\b\\.?/gi, 'et cetera']", "[/\\betc\\.?/gi, 'et cetera']"],
   ['check reads no base64', CHECK, 'for (const m of text.matchAll(BASE64_RUN)) {', 'for (const m of []) {'],
   ['check does not gunzip', CHECK, 'if (bytes[0] === 0x1f && bytes[1] === 0x8b) {', 'if (false) {'],

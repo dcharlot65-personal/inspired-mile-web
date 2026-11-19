@@ -539,6 +539,23 @@ function stems(stem: string): string[] {
   return out;
 }
 
+/**
+ * The stem a suffix was added to, of `stems(stem)`: one the table has whole before any it can
+ * only take apart. In that order "loveli(ness)" is lovely, not "lovelie", love and lie.
+ */
+function stemReading(stem: string, depth: number): string[] | null {
+  const candidates = stems(stem);
+  for (const s of candidates) {
+    const whole = known(s);
+    if (whole) return whole;
+  }
+  for (const s of candidates) {
+    const parts = morphology(s, depth + 1);
+    if (parts) return parts;
+  }
+  return null;
+}
+
 /** A word the table lacks, taken apart into words it has. Depth-limited: a part may itself be taken apart once. */
 export function morphology(w: string, depth = 0): string[] | null {
   if (depth > 1 || w.length < 3) return null;
@@ -568,23 +585,17 @@ export function morphology(w: string, depth = 0): string[] | null {
     if (base) return plural(base);
   }
   if (w.endsWith('s') && !w.endsWith('ss')) {
-    for (const s of stems(w.slice(0, -1))) {
-      const base = sub(s);
-      if (base) return plural(base);
-    }
+    const base = stemReading(w.slice(0, -1), depth);
+    if (base) return plural(base);
   }
   if (w.endsWith('ed')) {
-    for (const s of stems(w.slice(0, -2))) {
-      const base = sub(s);
-      if (base) return past(base);
-    }
+    const base = stemReading(w.slice(0, -2), depth);
+    if (base) return past(base);
   }
   for (const [suffix, sounds] of SUFFIXES) {
     if (!w.endsWith(suffix) || w.length - suffix.length < 3) continue;
-    for (const s of stems(w.slice(0, -suffix.length))) {
-      const base = sub(s);
-      if (base) return [...base, ...sounds];
-    }
+    const base = stemReading(w.slice(0, -suffix.length), depth);
+    if (base) return [...base, ...sounds];
   }
   for (const [prefix, sounds] of PREFIXES) {
     if (!w.startsWith(prefix) || w.length - prefix.length < 3) continue;

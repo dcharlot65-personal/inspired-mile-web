@@ -73,6 +73,11 @@ describe('words the table lacks', () => {
     expect(sayWord('nightlong')).toMatchObject({ ps: 'nˈItlˌɒŋ', source: 'parts' });
   });
 
+  it('takes a stem the table has whole before one it can only take apart', () => {
+    // "lovelie" (e put back) splits into love + lie, "lovely" (y for i) is a word: lovely wins.
+    expect(sayWord('loveliness')).toMatchObject({ ps: 'lˈʌvlinəs', source: 'parts' });
+  });
+
   it('holds a sound with no vowel letter, and spells short capitals', () => {
     expect(sayWord('skrrt')).toMatchObject({ ps: 'skˈɜːt', source: 'held' });
     expect(sayWord('brrr').ps).toBe('bˈɜː');
