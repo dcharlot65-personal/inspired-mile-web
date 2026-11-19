@@ -1,0 +1,6 @@
+DC-001|hamlet|Ser ou não ser, eis o problema\.
+DC-002|hamlet|Toma, é rosmaninho a flor da lembrança\.
+RL-001|hamlet|Pobre Yorick! Conheci-o, Horacio
+DC-003|hamlet|Sobem as minhas palavras, o pensamento não, e as palavras sem o pensamento não chegam ao céu\.
+PT-006|hamlet|teu tio, aproveitando a minha inconsciencia, approximou-se de mim, munido de um frasco de meimendro
+GC-003|raven|Em certo dia, á hora, á hora Da meia-noite que apavora, Eu, cahindo de somno e exausto de fadiga

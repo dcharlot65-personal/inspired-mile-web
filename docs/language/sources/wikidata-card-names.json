@@ -1,0 +1,5791 @@
+{
+ "fetched": "2026-11-16",
+ "api": "https://www.wikidata.org/w/api.php?action=wbgetentities",
+ "licence": "Wikidata labels and aliases: CC0 1.0. Wikipedia article titles: used as names only.",
+ "entities": {
+  "romeo": {
+   "enwikiTitle": "Romeo",
+   "id": "Q673361",
+   "lastrevid": 2530963848,
+   "description": "character from Shakespeare's \"Romeo and Juliet\"",
+   "labels": {
+    "en": "Romeo",
+    "fr": "Roméo Montaigu",
+    "hi": "रोमियो",
+    "it": "Romeo Montecchi",
+    "pl": "Romeo Monteki",
+    "ru": "Ромео Монтекки",
+    "zh": "羅密歐·蒙泰古",
+    "ar": "روميو",
+    "es": "Romeo",
+    "de": "Romeo",
+    "pt": "Romeu",
+    "ko": "로미오",
+    "id": "Romeo Montague",
+    "vi": "Romeo",
+    "ja": "ロミオ・モンタギュー",
+    "mul": "Romeo"
+   },
+   "aliases": {
+    "en": [
+     "Romeo Montague"
+    ],
+    "pt": [
+     "Romeo",
+     "Romeu Montague"
+    ],
+    "ko": [
+     "로미오 몬타규",
+     "로미오 몬태규",
+     "로미오 몬테규",
+     "로미오 몬터규"
+    ],
+    "vi": [
+     "Romeo Montague",
+     "Rô-mê-ô"
+    ]
+   },
+   "sitelinks": {
+    "ar": "روميو",
+    "en": "Romeo",
+    "es": "Romeo",
+    "fr": "Roméo Montaigu",
+    "hi": "रोमियो",
+    "id": "Romeo Montague",
+    "it": "Romeo Montecchi",
+    "ko": "로미오",
+    "pl": "Romeo Monteki",
+    "ru": "Ромео Монтекки",
+    "vi": "Romeo",
+    "zh": "羅密歐·蒙泰古"
+   }
+  },
+  "juliet": {
+   "enwikiTitle": "Juliet",
+   "id": "Q1092632",
+   "lastrevid": 2569429898,
+   "description": "fictional character in William Shakespeare's \"Romeo and Juliet\"",
+   "labels": {
+    "zh-hans": "朱丽叶·凯普莱特",
+    "zh-hant": "朱麗葉·凱普萊",
+    "pl": "Julia Kapulet",
+    "ru": "Джульетта Капулетти",
+    "fr": "Juliette Capulet",
+    "en": "Juliet",
+    "it": "Giulietta Capuleti",
+    "es": "Julieta",
+    "zh": "朱麗葉·凱普萊特",
+    "ar": "جولييت",
+    "vi": "Juliet",
+    "de": "Julia",
+    "ko": "줄리엣",
+    "ja": "ジュリエット・キャピュレット",
+    "id": "Juliet",
+    "pt": "Julieta Capuleto (personagem)",
+    "mul": "Juliet",
+    "hi": "जूलियट"
+   },
+   "aliases": {
+    "pl": [
+     "Julia Capuletti"
+    ],
+    "ko": [
+     "줄리엣 카풀렛",
+     "줄리엣 캐플릿",
+     "줄리엣 캐플렛",
+     "줄리엣 카풀릿"
+    ],
+    "en": [
+     "Juliet Capulet",
+     "Iuliet"
+    ],
+    "ja": [
+     "ジュリエット・クラブ",
+     "ジュリエット・キャプレット",
+     "ジュリエット",
+     "ジュリエッタ・カプレーティ"
+    ],
+    "zh": [
+     "朱丽叶",
+     "朱麗葉",
+     "茱麗葉"
+    ]
+   },
+   "sitelinks": {
+    "ar": "جولييت",
+    "en": "Juliet",
+    "es": "Julieta (personaje)",
+    "fr": "Juliette Capulet",
+    "id": "Juliet",
+    "it": "Giulietta Capuleti",
+    "ko": "줄리엣",
+    "pl": "Julia Kapulet",
+    "pt": "Julieta Capuleto (personagem)",
+    "ru": "Джульетта Капулетти",
+    "vi": "Juliet",
+    "zh": "朱麗葉·凱普萊特"
+   }
+  },
+  "hamlet": {
+   "enwikiTitle": "Prince Hamlet",
+   "id": "Q2447542",
+   "lastrevid": 2569810306,
+   "description": "character in Shakespeare's play Hamlet",
+   "labels": {
+    "ru": "Гамлет",
+    "en": "Prince Hamlet",
+    "fr": "Hamlet",
+    "it": "Amleto",
+    "pl": "Hamlet",
+    "ko": "햄릿",
+    "zh": "哈姆雷特王子",
+    "de": "Prinz Hamlet",
+    "id": "Pangeran Hamlet",
+    "ar": "الأمير هاملت",
+    "ja": "ハムレット",
+    "es": "Príncipe Hamlet",
+    "pt": "Príncipe Hamlet",
+    "hi": "प्रिंस हैमलेट"
+   },
+   "aliases": {
+    "ru": [
+     "Принц Гамлет",
+     "Гамлет, принц Датский"
+    ],
+    "fr": [
+     "prince Hamlet"
+    ],
+    "ko": [
+     "왕자 햄릿",
+     "프린스 햄릿",
+     "햄릿 왕자"
+    ],
+    "zh": [
+     "哈姆雷特 (角色)",
+     "哈姆王子"
+    ],
+    "de": [
+     "Hamlet"
+    ],
+    "it": [
+     "Principe Amleto"
+    ],
+    "en": [
+     "Hamlet"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الأمير هاملت",
+    "de": "Hamlet, Prinz von Dänemark",
+    "en": "Prince Hamlet",
+    "es": "Príncipe Hamlet",
+    "fr": "Hamlet (personnage)",
+    "id": "Pangeran Hamlet",
+    "ja": "ハムレット (キャラクター)",
+    "ko": "햄릿 왕자",
+    "pl": "Hamlet (postać)",
+    "pt": "Príncipe Hamlet",
+    "ru": "Гамлет (персонаж)"
+   }
+  },
+  "ophelia": {
+   "enwikiTitle": "Ophelia",
+   "id": "Q1800888",
+   "lastrevid": 2568385993,
+   "description": "character from Hamlet",
+   "labels": {
+    "pt": "Ofélia",
+    "ru": "Офелия",
+    "fr": "Ophélie",
+    "en": "Ophelia",
+    "es": "Ofelia",
+    "it": "Ofelia",
+    "pl": "Ofelia",
+    "id": "Ophelia",
+    "ko": "오필리아",
+    "zh-hant": "歐菲莉亞",
+    "zh-cn": "欧菲莉亚",
+    "ja": "オフィーリア",
+    "zh-hans": "奥菲利娅",
+    "de": "Ophelia",
+    "zh": "歐菲莉亞",
+    "hi": "ओफ़ीलिया"
+   },
+   "aliases": {
+    "fr": [
+     "Ofelia",
+     "Ophelie"
+    ],
+    "ko": [
+     "오필리어"
+    ],
+    "zh": [
+     "奥菲利娅",
+     "奥菲莉亚",
+     "欧菲莉亚",
+     "奧菲利亞"
+    ]
+   },
+   "sitelinks": {
+    "de": "Ophelia (Hamlet)",
+    "en": "Ophelia",
+    "es": "Ofelia (personaje)",
+    "fr": "Ophélie",
+    "id": "Ophelia",
+    "it": "Ofelia",
+    "ja": "オフィーリア",
+    "ko": "오필리아",
+    "pl": "Ofelia (postać)",
+    "pt": "Ofélia (personagem)",
+    "ru": "Офелия",
+    "zh": "歐菲莉亞"
+   }
+  },
+  "mercutio": {
+   "enwikiTitle": "Mercutio",
+   "id": "Q1767900",
+   "lastrevid": 2569444912,
+   "description": "Shakespeare character",
+   "labels": {
+    "de": "Mercutio",
+    "en": "Mercutio",
+    "es": "Mercucio",
+    "it": "Mercuzio",
+    "pl": "Merkucjo",
+    "ru": "Меркуцио",
+    "fr": "Mercutio",
+    "zh-cn": "mercutio",
+    "ko": "머큐시오",
+    "ar": "ماركيشيو",
+    "zh": "莫枯修",
+    "hi": "मरकूशियो"
+   },
+   "aliases": {
+    "ko": [
+     "머큐티오",
+     "머큐쇼",
+     "머큐소",
+     "메르쿠티오"
+    ],
+    "zh": [
+     "茂丘西奧",
+     "默庫蒂奧"
+    ]
+   },
+   "sitelinks": {
+    "ar": "ماركيشيو",
+    "de": "Mercutio",
+    "en": "Mercutio",
+    "es": "Mercucio",
+    "fr": "Mercutio",
+    "it": "Mercuzio",
+    "pl": "Merkucjo",
+    "ru": "Меркуцио"
+   }
+  },
+  "puck": {
+   "enwikiTitle": "Puck (A Midsummer Night's Dream)",
+   "id": "Q1248616",
+   "lastrevid": 2530985547,
+   "description": "character from Shakespeare's \"Midsummer Night's Dream\" play",
+   "labels": {
+    "de": "Puck",
+    "ja": "パック",
+    "fr": "Puck",
+    "ru": "Пак",
+    "es": "Puck",
+    "en": "Puck",
+    "it": "Puck",
+    "id": "Puck (A Midsummer Night's Dream)",
+    "zh": "帕克"
+   },
+   "aliases": {
+    "fr": [
+     "Pwcca",
+     "Phouka",
+     "Púca",
+     "Phooka",
+     "Pwca",
+     "Pooka"
+    ],
+    "en": [
+     "Robin Goodfellow"
+    ],
+    "de": [
+     "Puk",
+     "Droll"
+    ]
+   },
+   "sitelinks": {
+    "en": "Puck (A Midsummer Night's Dream)",
+    "es": "Puck (Shakespeare)",
+    "id": "Puck (A Midsummer Night's Dream)",
+    "it": "Puck (Sogno di una notte di mezza estate)"
+   }
+  },
+  "titania": {
+   "enwikiTitle": "Q2332221",
+   "id": "Q2332221",
+   "lastrevid": 2569852096,
+   "description": "fairy in A Midsummer Night's Dream",
+   "labels": {
+    "en": "Titania",
+    "es": "Titania",
+    "fr": "Titania",
+    "id": "Titania",
+    "it": "Titania",
+    "ja": "タイターニア",
+    "pt": "Titania",
+    "zh": "titania",
+    "ar": "تيتانيا",
+    "ru": "Титания",
+    "ko": "티타니아",
+    "hi": "टाइटेनिया"
+   },
+   "aliases": {
+    "zh": [
+     "泰坦妮亞",
+     "提泰妮婭"
+    ],
+    "en": [
+     "Queen Titania",
+     "Titania Regina"
+    ]
+   },
+   "sitelinks": {
+    "en": "Titania (A Midsummer Night's Dream)",
+    "es": "Titania (mitología)",
+    "fr": "Titania (personnage)",
+    "id": "Titania",
+    "it": "Titania (mitologia)",
+    "ja": "ティターニア",
+    "ko": "티타니아",
+    "pt": "Titania",
+    "ru": "Титания (Сон в летнюю ночь)",
+    "zh": "緹坦妮雅"
+   }
+  },
+  "escalus": {
+   "enwikiTitle": "Q15829750",
+   "id": "Q15829750",
+   "lastrevid": 2531072537,
+   "description": "character in Shakespeare's Romeo & Juliet",
+   "labels": {
+    "en": "Prince Escalus",
+    "ru": "герцог Эскал"
+   },
+   "aliases": {},
+   "sitelinks": {}
+  },
+  "friar": {
+   "enwikiTitle": "Friar Laurence",
+   "id": "Q5503354",
+   "lastrevid": 2530969553,
+   "description": "Shakespeare character",
+   "labels": {
+    "en": "Friar Laurence",
+    "ko": "프리어 로렌스",
+    "es": "Fray Lorenzo",
+    "zh": "勞倫斯神父",
+    "ru": "отец Лоренцо",
+    "it": "Frate Lorenzo",
+    "de": "Friar Laurence"
+   },
+   "aliases": {
+    "en": [
+     "El wey"
+    ]
+   },
+   "sitelinks": {
+    "en": "Friar Laurence",
+    "es": "Fray Lorenzo",
+    "it": "Frate Lorenzo"
+   }
+  },
+  "nurse": {
+   "enwikiTitle": "Nurse (Romeo and Juliet)",
+   "id": "Q7070187",
+   "lastrevid": 2531033859,
+   "description": "character in William Shakespeare's drama Romeo and Juliet",
+   "labels": {
+    "en": "Nurse",
+    "es": "Nodriza de Julieta",
+    "zh": "護士",
+    "fr": "Infirmière",
+    "ru": "Кормилица",
+    "de": "Wärterin"
+   },
+   "aliases": {
+    "zh": [
+     "奶媽"
+    ]
+   },
+   "sitelinks": {
+    "en": "Nurse (Romeo and Juliet)"
+   }
+  },
+  "prospero": {
+   "enwikiTitle": "Prospero",
+   "id": "Q978952",
+   "lastrevid": 2569491906,
+   "description": "character in Shakespeare's The Tempest",
+   "labels": {
+    "en": "Prospero",
+    "es": "Próspero",
+    "fr": "Prospero",
+    "it": "Prospero",
+    "pt": "Prospero",
+    "ja": "プロスペロ",
+    "de": "Prospero",
+    "id": "Prospero",
+    "pl": "Prospero",
+    "vi": "Prospero",
+    "zh": "普洛斯彼羅",
+    "ru": "Просперо",
+    "ko": "프로스페로",
+    "ar": "بروسبيرو",
+    "hi": "प्रॉस्पेरो"
+   },
+   "aliases": {
+    "es": [
+     "Prospero"
+    ],
+    "en": [
+     "Duke of Milan"
+    ],
+    "zh": [
+     "普羅斯佩羅"
+    ],
+    "ko": [
+     "밀라노 공작"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بروسبيرو",
+    "en": "Prospero",
+    "es": "Próspero",
+    "fr": "Prospero (La Tempête)",
+    "it": "Prospero (La tempesta)",
+    "ru": "Просперо (персонаж Шекспира)"
+   }
+  },
+  "ariel": {
+   "enwikiTitle": "Ariel (The Tempest)",
+   "id": "Q658028",
+   "lastrevid": 2545389024,
+   "description": "character in Shakespeare's The Tempest",
+   "labels": {
+    "en": "Ariel",
+    "es": "Ariel",
+    "fr": "Ariel",
+    "it": "Ariel",
+    "pl": "Ariel",
+    "ja": "エアリエル",
+    "de": "Ariel",
+    "id": "Ariel",
+    "pt": "Ariel",
+    "vi": "Ariel",
+    "ru": "Ариэль",
+    "ko": "아리엘",
+    "ar": "أرييل (العاصفة)"
+   },
+   "aliases": {
+    "ja": [
+     "アリエル"
+    ],
+    "ko": [
+     "에어리얼"
+    ]
+   },
+   "sitelinks": {
+    "en": "Ariel (The Tempest)",
+    "es": "Ariel (Shakespeare)",
+    "fr": "Ariel (La Tempête)",
+    "it": "Ariel (La tempesta)"
+   }
+  },
+  "caliban": {
+   "enwikiTitle": "Caliban",
+   "id": "Q533120",
+   "lastrevid": 2539128408,
+   "description": "character in Shakespeare's The Tempest",
+   "labels": {
+    "de": "Caliban",
+    "en": "Caliban",
+    "es": "Calibán",
+    "fr": "Caliban",
+    "it": "Calibano",
+    "ja": "キャリバン",
+    "ru": "Калибан",
+    "zh": "凱列班",
+    "pt": "Caliban"
+   },
+   "aliases": {
+    "es": [
+     "Caliban"
+    ],
+    "zh": [
+     "卡里班",
+     "卡利班"
+    ]
+   },
+   "sitelinks": {
+    "de": "Caliban (Shakespeare)",
+    "en": "Caliban",
+    "es": "Calibán",
+    "fr": "Caliban (La Tempête)",
+    "it": "Calibano (La tempesta)",
+    "ja": "キャリバン",
+    "pt": "Caliban",
+    "ru": "Калибан"
+   }
+  },
+  "benvolio": {
+   "enwikiTitle": "Benvolio",
+   "id": "Q939489",
+   "lastrevid": 2569257061,
+   "description": "Shakespeare character",
+   "labels": {
+    "it": "Benvolio",
+    "en": "Benvolio",
+    "pl": "Benvolio",
+    "fr": "Benvolio",
+    "es": "Benvolio",
+    "de": "Benvolio",
+    "ko": "벤볼리오",
+    "zh": "班福留",
+    "ar": "بنفوليو",
+    "ru": "Бенволио",
+    "vi": "Benvolio",
+    "hi": "बेनवोलियो"
+   },
+   "aliases": {
+    "en": [
+     "Benvolio Montague"
+    ],
+    "es": [
+     "Benvolio Montesco"
+    ],
+    "ko": [
+     "벤볼리오 몬테규",
+     "벤볼리오 몬타규",
+     "벤볼리오 몬태규",
+     "벤볼리오 몬터규"
+    ],
+    "zh": [
+     "班伏里歐"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بنفوليو",
+    "en": "Benvolio",
+    "es": "Benvolio",
+    "it": "Benvolio",
+    "pl": "Benvolio",
+    "ru": "Бенволио",
+    "vi": "Benvolio"
+   }
+  },
+  "tybalt": {
+   "enwikiTitle": "Tybalt",
+   "id": "Q2412073",
+   "lastrevid": 2570064295,
+   "description": "Shakespeare character",
+   "labels": {
+    "pl": "Tybalt",
+    "ru": "Тибальт",
+    "en": "Tybalt",
+    "it": "Tebaldo",
+    "es": "Teobaldo",
+    "de": "Tybalt",
+    "ko": "티볼트",
+    "ja": "ティボルト",
+    "zh": "提伯爾特",
+    "ar": "تيبالت",
+    "mul": "Tybalt",
+    "hi": "टाइबल्ट"
+   },
+   "aliases": {
+    "ru": [
+     "Тибальд"
+    ],
+    "it": [
+     "Teobaldo"
+    ],
+    "ko": [
+     "티벌트",
+     "티발트"
+    ],
+    "zh": [
+     "鐵豹",
+     "提伯特",
+     "泰伯爾特"
+    ]
+   },
+   "sitelinks": {
+    "ar": "تيبالت",
+    "en": "Tybalt",
+    "es": "Teobaldo",
+    "it": "Tebaldo (personaggio)",
+    "pl": "Tybalt",
+    "ru": "Тибальт"
+   }
+  },
+  "claudius": {
+   "enwikiTitle": "King Claudius",
+   "id": "Q1811294",
+   "lastrevid": 2569228100,
+   "description": "character in Shakespeare's Hamlet",
+   "labels": {
+    "fr": "Claudius",
+    "en": "King Claudius",
+    "pl": "Król Klaudiusz",
+    "it": "Re Claudio",
+    "ko": "클라우디우스 왕",
+    "de": "König Claudius",
+    "es": "Rey Claudio",
+    "ru": "Король Клавдий",
+    "ar": "الملك كلوديس",
+    "zh": "克勞迪國王",
+    "ja": "クローディアス",
+    "hi": "किंग क्लॉडियस"
+   },
+   "aliases": {
+    "ko": [
+     "클라우디우스",
+     "클로디우스",
+     "클로디우스 왕",
+     "클로디어스 왕",
+     "클로디어스"
+    ],
+    "en": [
+     "Claudius"
+    ],
+    "zh": [
+     "克勞地國王"
+    ],
+    "es": [
+     "Claudio"
+    ]
+   },
+   "sitelinks": {
+    "en": "King Claudius",
+    "es": "Claudio (personaje)",
+    "fr": "Claudius (Hamlet)",
+    "ko": "클라우디우스 왕",
+    "pl": "Król Klaudiusz",
+    "ru": "Король Клавдий",
+    "zh": "克勞狄斯王"
+   }
+  },
+  "oberon": {
+   "enwikiTitle": "Oberon",
+   "id": "Q1139234",
+   "lastrevid": 2530654700,
+   "description": "king of the fairies in medieval and Renaissance literature",
+   "labels": {
+    "pt": "Oberon",
+    "ru": "Оберон",
+    "fr": "Obéron",
+    "ko": "오베론",
+    "es": "Oberón",
+    "en": "Oberon",
+    "it": "Oberon",
+    "de": "Oberon",
+    "id": "Oberon",
+    "ja": "オーベロン",
+    "zh": "奥伯伦",
+    "zh-hant": "woah"
+   },
+   "aliases": {
+    "fr": [
+     "Oberon",
+     "Aubéron"
+    ],
+    "es": [
+     "Oberon"
+    ],
+    "ja": [
+     "オベロン"
+    ],
+    "en": [
+     "Auberon"
+    ],
+    "zh": [
+     "Oberon",
+     "奧布朗"
+    ]
+   },
+   "sitelinks": {
+    "de": "Oberon (Elfenkönig)",
+    "en": "Oberon",
+    "es": "Oberón (mitología)",
+    "fr": "Obéron (personnage)",
+    "id": "Oberon",
+    "it": "Oberon (mitologia)",
+    "ja": "オーベロン",
+    "ko": "오베론",
+    "pt": "Oberon",
+    "ru": "Оберон (персонаж)",
+    "zh": "奧伯隆"
+   }
+  },
+  "macbeth": {
+   "enwikiTitle": "Macbeth (character)",
+   "id": "Q10322723",
+   "lastrevid": 2568596710,
+   "description": "character from Shakespeare's play",
+   "labels": {
+    "en": "Macbeth",
+    "pt": "Macbeth (personagem)",
+    "it": "Macbeth",
+    "de": "Macbeth",
+    "fr": "Macbeth",
+    "es": "Macbeth",
+    "ja": "マクベス (架空の人物)",
+    "ru": "Макбет",
+    "ko": "맥베스",
+    "pl": "Makbet (postać)",
+    "zh": "馬克白",
+    "ar": "ماكبث",
+    "hi": "मैकबेथ"
+   },
+   "aliases": {
+    "zh": [
+     "麦克白"
+    ]
+   },
+   "sitelinks": {
+    "en": "Macbeth (character)",
+    "es": "Macbeth (personaje)",
+    "fr": "Macbeth (personnage)",
+    "it": "Macbeth (personaggio)",
+    "ko": "맥베스 (등장인물)",
+    "pl": "Makbet (postać)",
+    "pt": "Macbeth (personagem)",
+    "zh": "馬克白 (虛構角色)"
+   }
+  },
+  "ladymacbeth": {
+   "enwikiTitle": "Lady Macbeth",
+   "id": "Q2454065",
+   "lastrevid": 2569662547,
+   "description": "character from Shakespeare's play",
+   "labels": {
+    "pt": "Lady Macbeth",
+    "fr": "Lady Macbeth",
+    "en": "Lady Macbeth",
+    "it": "Lady Macbeth",
+    "de": "Lady Macbeth",
+    "es": "Lady Macbeth",
+    "ja": "マクベス夫人",
+    "ar": "ليدي ماكبث",
+    "ru": "Леди Макбет",
+    "zh": "馬克白夫人",
+    "ko": "맥베스 부인",
+    "zh-hant": "麥克白夫人",
+    "zh-hans": "麦克白夫人",
+    "pl": "Lady Makbet",
+    "hi": "लेडी मैकबेथ"
+   },
+   "aliases": {
+    "zh": [
+     "麦克白夫人"
+    ]
+   },
+   "sitelinks": {
+    "ar": "ليدي ماكبث",
+    "en": "Lady Macbeth",
+    "es": "Lady Macbeth",
+    "fr": "Lady Macbeth",
+    "it": "Lady Macbeth",
+    "ko": "맥베스 부인",
+    "pl": "Lady Makbet",
+    "pt": "Lady Macbeth",
+    "ru": "Леди Макбет"
+   }
+  },
+  "banquo": {
+   "enwikiTitle": "Banquo",
+   "id": "Q806945",
+   "lastrevid": 2568545605,
+   "description": "character in Macbeth",
+   "labels": {
+    "fr": "Banquo",
+    "en": "Banquo",
+    "pt": "Banquo",
+    "de": "Banquo",
+    "ja": "バンクォウ",
+    "pl": "Banquo",
+    "zh-hans": "Banquo",
+    "zh": "班柯",
+    "ru": "Банко",
+    "hi": "बैंको",
+    "it": "Banco",
+    "ko": "뱅쿠오",
+    "es": "Banquo",
+    "ar": "بانكو"
+   },
+   "aliases": {
+    "ja": [
+     "バンコー",
+     "バンクォオ",
+     "バンクォー"
+    ],
+    "pl": [
+     "Banko"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بانكو",
+    "de": "Banquo",
+    "en": "Banquo",
+    "es": "Banquo",
+    "fr": "Banquo",
+    "hi": "बैंको",
+    "it": "Banco (personaggio)",
+    "ja": "バンクォウ",
+    "ko": "뱅쿠오",
+    "pl": "Banko",
+    "pt": "Banquo",
+    "ru": "Банко (персонаж)"
+   }
+  },
+  "viola": {
+   "enwikiTitle": "Viola (Twelfth Night)",
+   "id": "Q7932996",
+   "lastrevid": 2531000959,
+   "description": "fictional character from the play Twelfth Night, written by William Shakespeare",
+   "labels": {
+    "en": "Viola",
+    "ru": "Виола",
+    "ja": "ヴァイオラ",
+    "fr": "Viola"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "en": "Viola (Twelfth Night)"
+   }
+  },
+  "malvolio": {
+   "enwikiTitle": "Malvolio",
+   "id": "Q3844047",
+   "lastrevid": 2570432209,
+   "description": "fictional character from Twelfth Night",
+   "labels": {
+    "en": "Malvolio",
+    "it": "Malvolio",
+    "fr": "Malvolio",
+    "ja": "マルヴォーリオ",
+    "zh": "馬伏里奧",
+    "de": "Malvolio",
+    "hi": "मालवोलियो"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "de": "Malvolio",
+    "en": "Malvolio",
+    "it": "Malvolio"
+   }
+  },
+  "olivia": {
+   "enwikiTitle": "Olivia (Twelfth Night)",
+   "id": "Q7088017",
+   "lastrevid": 2531079342,
+   "description": "fictional character from William Shakespeare's play Twelfth Night",
+   "labels": {
+    "en": "Olivia",
+    "ru": "Оливия",
+    "ja": "オリヴィア",
+    "fr": "Olivia",
+    "zh": "奥利維亞"
+   },
+   "aliases": {
+    "ru": [
+     "леди Оливия"
+    ],
+    "en": [
+     "lady Olivia"
+    ],
+    "zh": [
+     "奧利維亞"
+    ]
+   },
+   "sitelinks": {
+    "en": "Olivia (Twelfth Night)"
+   }
+  },
+  "brutus": {
+   "enwikiTitle": "Q172248",
+   "id": "Q172248",
+   "lastrevid": 2567934765,
+   "description": "assassin of Julius Caesar",
+   "labels": {
+    "ar": "بروتس",
+    "de": "Marcus Iunius Brutus",
+    "en": "Marcus Junius Brutus",
+    "es": "Marco Junio Bruto",
+    "fr": "Marcus Junius Brutus",
+    "id": "Marcus Junius Brutus",
+    "it": "Marco Giunio Bruto",
+    "ja": "マルクス・ユニウス・ブルトゥス",
+    "ko": "마르쿠스 유니우스 브루투스",
+    "pl": "Marek Juniusz Brutus",
+    "pt": "Marco Júnio Bruto",
+    "ru": "Марк Юний Брут",
+    "th": "มาร์กุส ยูนิอุส บรูตุส",
+    "vi": "Marcus Junius Brutus",
+    "zh": "马尔库斯·尤尼乌斯·布鲁图",
+    "zh-cn": "马尔库斯·尤尼乌斯·布鲁图",
+    "zh-hans": "马尔库斯·尤尼乌斯·布鲁图",
+    "zh-hant": "馬爾庫斯·尤尼烏斯·布魯圖",
+    "mul": "Marcus Junius Brutus"
+   },
+   "aliases": {
+    "zh": [
+     "马库斯‧朱尼厄斯‧布鲁图斯",
+     "马可斯·布鲁图斯"
+    ],
+    "pl": [
+     "Marcus Iunius Brutus"
+    ],
+    "ko": [
+     "마르쿠스 브루투스"
+    ],
+    "es": [
+     "Quintus Servilius Caepio Junianus",
+     "Marco Bruto",
+     "Q. Caepio Brutus"
+    ],
+    "it": [
+     "Marco Giunio Bruto Cepione",
+     "Q. Caepio Brutus",
+     "Marco Bruto",
+     "Marco Junio Bruto"
+    ],
+    "de": [
+     "Marcus Junius Brutus"
+    ],
+    "id": [
+     "Marcus Iunius Brutus",
+     "Brutus"
+    ],
+    "ja": [
+     "マルクス・ブルートゥス",
+     "ブルトゥス家",
+     "マルクス・ユニウス・ブルートゥス"
+    ],
+    "vi": [
+     "Marcus Brutus"
+    ],
+    "ar": [
+     "ماركوس جونيوس بروتس"
+    ],
+    "pt": [
+     "Marcus junius brutus",
+     "Bruto",
+     "Marco Júnio Brutus",
+     "Quinto Servílio Cepião Bruto"
+    ],
+    "ru": [
+     "Брут, Марк-Юний",
+     "Брут Марк Юний",
+     "Марк-Юний Брут",
+     "Брут Марк-Юний",
+     "Брут, Марк Юний",
+     "Марк Брут"
+    ],
+    "en": [
+     "Q. Caepio Brutus",
+     "Quintus Servilius Caepio Junianus",
+     "Marcus Iunius Brutus",
+     "Quintus Servilius Caepio Brutus",
+     "Quintus Caepio Brutus",
+     "Brutus",
+     "Marcus Junius Brutus the Younger"
+    ],
+    "th": [
+     "มาร์คัส จูนิอัส บรูตัส"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بروتس",
+    "de": "Marcus Iunius Brutus",
+    "en": "Marcus Junius Brutus",
+    "es": "Marco Junio Bruto",
+    "fr": "Marcus Junius Brutus",
+    "id": "Marcus Junius Brutus",
+    "it": "Marco Giunio Bruto",
+    "ja": "マルクス・ユニウス・ブルトゥス",
+    "ko": "마르쿠스 유니우스 브루투스",
+    "pl": "Marek Juniusz Brutus",
+    "pt": "Marco Júnio Bruto, o Jovem",
+    "ru": "Марк Юний Брут",
+    "th": "มาร์กุส ยูนิอุส บรูตุส",
+    "vi": "Marcus Junius Brutus",
+    "zh": "马尔库斯·尤利乌斯·布鲁图斯"
+   }
+  },
+  "cassius": {
+   "enwikiTitle": "Gaius Cassius Longinus",
+   "id": "Q207370",
+   "lastrevid": 2557889214,
+   "description": "ancient Roman politician, known for his role in the assassination of Julius Caesar",
+   "labels": {
+    "zh-hans": "盖乌斯·卡西乌斯·朗基努斯",
+    "zh-hant": "蓋烏斯·卡西烏斯·朗基努斯",
+    "zh-cn": "盖乌斯·卡西乌斯·朗基努斯",
+    "pl": "Gajusz Kasjusz Longinus",
+    "fr": "Caius Cassius Longinus",
+    "ko": "가이우스 카시우스 롱기누스",
+    "es": "Cayo Casio Longino",
+    "it": "Gaio Cassio Longino",
+    "de": "Gaius Cassius Longinus",
+    "id": "Gaius Cassius Longinus",
+    "ja": "ガイウス・カッシウス・ロンギヌス",
+    "en": "Gaius Cassius Longinus",
+    "pt": "Caio Cássio Longino",
+    "ru": "Гай Кассий Лонгин",
+    "zh": "盖乌斯·卡西乌斯·朗基努斯",
+    "th": "กาอิอุส กัสซิอุส ล็องกีนุส",
+    "ar": "غايوس كاسيوس لونغينوس",
+    "hi": "गैयस कैसियस लोंगिनस"
+   },
+   "aliases": {
+    "zh": [
+     "Gaius Cassius Longinus",
+     "盖乌斯·卡西乌斯",
+     "盖乌斯·卡西乌斯·隆吉努斯",
+     "该尤斯·卡西乌斯",
+     "盖乌斯·卡西乌斯·隆基努斯"
+    ],
+    "pl": [
+     "Gaius Cassius",
+     "Gaius Cassius Longinus"
+    ],
+    "fr": [
+     "Gaius Cassius Longinus"
+    ],
+    "ko": [
+     "가이우스 카시우스"
+    ],
+    "it": [
+     "Caio Cassio Longino",
+     "Cassio",
+     "Caio Cassio",
+     "Cassio Longino"
+    ],
+    "de": [
+     "Gajus Cassius"
+    ],
+    "id": [
+     "Gaius Cassius"
+    ],
+    "ja": [
+     "ガイウス・カッシウス"
+    ],
+    "pt": [
+     "Caio Longino Cássio",
+     "Gaius longinus cassius",
+     "Cássio",
+     "Gaius cassius longinus",
+     "Gaius Cassius"
+    ],
+    "es": [
+     "Gayo Casio Longino"
+    ],
+    "en": [
+     "Cassius",
+     "Caius Cassius"
+    ]
+   },
+   "sitelinks": {
+    "ar": "غايوس كاسيوس لونغينوس",
+    "de": "Gaius Cassius Longinus (Verschwörer)",
+    "en": "Gaius Cassius Longinus",
+    "es": "Cayo Casio Longino",
+    "fr": "Caius Cassius Longinus (assassin de César)",
+    "id": "Gaius Cassius Longinus",
+    "it": "Gaio Cassio Longino",
+    "ja": "ガイウス・カッシウス・ロンギヌス",
+    "ko": "가이우스 카시우스 롱기누스",
+    "pl": "Gajusz Kasjusz Longinus",
+    "pt": "Caio Cássio Longino",
+    "ru": "Гай Кассий Лонгин (заговорщик)",
+    "th": "กาอิอุส กัสซิอุส ล็องกีนุส",
+    "zh": "盖乌斯·卡西乌斯·朗基努斯"
+   }
+  },
+  "antony": {
+   "enwikiTitle": "Mark Antony",
+   "id": "Q51673",
+   "lastrevid": 2568730419,
+   "description": "Roman politician and general (83 BC – 30 BC)",
+   "labels": {
+    "id": "Marcus Antonius",
+    "ar": "مرقس أنطونيوس",
+    "de": "Marcus Antonius",
+    "es": "Marco Antonio",
+    "fr": "Marc Antoine",
+    "hi": "मार्कस आंतोनियस",
+    "it": "Marco Antonio",
+    "ja": "マルクス・アントニウス",
+    "ko": "마르쿠스 안토니우스",
+    "pl": "Marek Antoniusz",
+    "pt": "Marco António",
+    "ru": "Марк Антоний",
+    "th": "มาร์ก แอนโทนี",
+    "vi": "Marcus Antonius",
+    "zh": "马克·安东尼",
+    "en": "Mark Antony",
+    "mul": "Marcus Antonius"
+   },
+   "aliases": {
+    "en": [
+     "Marcus Antonius",
+     "Mark Anthony",
+     "Marc Anthony",
+     "Marc Antony"
+    ],
+    "ru": [
+     "Антоний"
+    ],
+    "ar": [
+     "مارك أنطوني"
+    ],
+    "th": [
+     "มาร์กุส อันโตนิอุส"
+    ]
+   },
+   "sitelinks": {
+    "ar": "مرقس أنطونيوس",
+    "de": "Marcus Antonius",
+    "en": "Mark Antony",
+    "es": "Marco Antonio",
+    "fr": "Marc Antoine",
+    "hi": "मार्कस आंतोनियस",
+    "id": "Marcus Antonius",
+    "it": "Marco Antonio",
+    "ja": "マルクス・アントニウス",
+    "ko": "마르쿠스 안토니우스",
+    "pl": "Marek Antoniusz",
+    "pt": "Marco Antônio",
+    "ru": "Марк Антоний",
+    "th": "มาร์ก แอนโทนี",
+    "vi": "Marcus Antonius",
+    "zh": "马克·安东尼"
+   }
+  },
+  "horatio": {
+   "enwikiTitle": "Horatio (Hamlet)",
+   "id": "Q3140503",
+   "lastrevid": 2569841041,
+   "description": "character in William Shakespeare's tragedy Hamlet",
+   "labels": {
+    "fr": "Horatio",
+    "en": "Horatio",
+    "pl": "Horacy",
+    "ko": "호레이쇼",
+    "ru": "Гораций",
+    "ja": "ホレイショー",
+    "es": "Horacio",
+    "zh": "赫瑞修",
+    "de": "Horatio",
+    "hi": "होरेशियो"
+   },
+   "aliases": {
+    "ru": [
+     "Горацио"
+    ]
+   },
+   "sitelinks": {
+    "en": "Horatio (Hamlet)",
+    "es": "Horacio (Hamlet)",
+    "fr": "Horatio (personnage)",
+    "pl": "Horacy (bohater Hamleta)",
+    "ru": "Горацио (персонаж)"
+   }
+  },
+  "bottom": {
+   "enwikiTitle": "Nick Bottom",
+   "id": "Q2190927",
+   "lastrevid": 2570099384,
+   "description": "character in A Midsummer Night's Dream",
+   "labels": {
+    "en": "Nick Bottom",
+    "id": "Nick Bottom",
+    "it": "Nick Bottom",
+    "zh": "尼克·波顿",
+    "fr": "Nick Bottom",
+    "ja": "ニック・ボトム",
+    "de": "Zettel",
+    "es": "Nick Bottom",
+    "hi": "निक बॉटम"
+   },
+   "aliases": {
+    "en": [
+     "Bottom",
+     "Bottom the Weaver"
+    ],
+    "de": [
+     "Nick Bottom"
+    ]
+   },
+   "sitelinks": {
+    "en": "Nick Bottom",
+    "id": "Nick Bottom",
+    "zh": "尼克·波顿"
+   }
+  },
+  "paris": {
+   "enwikiTitle": "Count Paris",
+   "id": "Q3687815",
+   "lastrevid": 2570377691,
+   "description": "Shakespeare character",
+   "labels": {
+    "it": "Conte Paride",
+    "en": "Count Paris",
+    "fr": "Comte Pâris",
+    "es": "Conde París",
+    "zh": "帕里斯伯爵",
+    "ar": "الكونت باريس",
+    "ru": "граф Парис",
+    "hi": "काउंट पेरिस"
+   },
+   "aliases": {
+    "es": [
+     "Conde Paris"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الكونت باريس",
+    "en": "Count Paris",
+    "fr": "Comte Pâris",
+    "it": "Conte Paride",
+    "ru": "Граф Парис"
+   }
+  },
+  "miranda": {
+   "enwikiTitle": "Miranda (The Tempest)",
+   "id": "Q634983",
+   "lastrevid": 2569305297,
+   "description": "character in Shakespeare's play The Tempest",
+   "labels": {
+    "vi": "Miranda",
+    "ru": "Миранда",
+    "fr": "Miranda",
+    "en": "Miranda",
+    "it": "Miranda",
+    "es": "Miranda",
+    "de": "Miranda",
+    "id": "Miranda",
+    "pl": "Miranda",
+    "pt": "Miranda",
+    "zh": "米蘭達（Miranda）",
+    "ko": "미란다",
+    "hi": "मिरांडा"
+   },
+   "aliases": {
+    "zh": [
+     "米兰达"
+    ]
+   },
+   "sitelinks": {
+    "en": "Miranda (The Tempest)",
+    "es": "Miranda (La Tempestad)",
+    "fr": "Miranda (La Tempête)",
+    "it": "Miranda (La tempesta)",
+    "ru": "Миранда (Шекспир)",
+    "vi": "Miranda (Giông tố)"
+   }
+  },
+  "yorick": {
+   "enwikiTitle": "Yorick",
+   "id": "Q1650633",
+   "lastrevid": 2569431485,
+   "description": "character in Hamlet",
+   "labels": {
+    "pt": "Yorick",
+    "en": "Yorick",
+    "it": "Yorick",
+    "ru": "Йорик",
+    "fr": "Yorick",
+    "es": "yorick",
+    "ja": "ヨリック",
+    "ko": "요릭",
+    "pl": "Yorik",
+    "hi": "योरिक"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "de": "Yorick",
+    "en": "Yorick",
+    "es": "Yorick",
+    "fr": "Crâne de Yorick",
+    "it": "Yorick",
+    "pt": "Yorick",
+    "ru": "Йорик"
+   }
+  },
+  "portia": {
+   "enwikiTitle": "Portia (The Merchant of Venice)",
+   "id": "Q7231797",
+   "lastrevid": 2563866289,
+   "description": "heroine of William Shakespeare's The Merchant of Venice",
+   "labels": {
+    "en": "Portia",
+    "ja": "ポーシャ (ヴェニスの商人)",
+    "zh": "波西亞",
+    "es": "Portia",
+    "ko": "포샤",
+    "hi": "पोर्टिया (द मर्चेंट ऑफ वेनिस)",
+    "fr": "Portia"
+   },
+   "aliases": {
+    "ko": [
+     "포르티아"
+    ]
+   },
+   "sitelinks": {
+    "en": "Portia (The Merchant of Venice)"
+   }
+  },
+  "cordelia": {
+   "enwikiTitle": "Cordelia (King Lear)",
+   "id": "Q5169921",
+   "lastrevid": 2530969159,
+   "description": "character in the play King Lear",
+   "labels": {
+    "en": "Cordelia",
+    "ru": "Корделия",
+    "es": "Cordelia",
+    "ja": "コーディリア",
+    "zh": "寇蒂莉亞",
+    "fr": "Cordelia",
+    "hi": "कॉर्डेलिया (किंग लियर)",
+    "pl": "Kordelia"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "en": "Cordelia (King Lear)",
+    "es": "Cordelia (personaje)",
+    "hi": "कॉर्डेलिया (किंग लियर)",
+    "pl": "Kordelia (postać)",
+    "ru": "Корделия (персонаж)"
+   }
+  },
+  "caesar": {
+   "enwikiTitle": "Julius Caesar",
+   "id": "Q1048",
+   "lastrevid": 2569135947,
+   "description": "Roman general and dictator",
+   "labels": {
+    "it": "Gaio Giulio Cesare",
+    "fr": "Jules César",
+    "de": "Gaius Iulius Caesar",
+    "ar": "يوليوس قيصر",
+    "hi": "जुलियस सीसर",
+    "ja": "ガイウス・ユリウス・カエサル",
+    "ko": "율리우스 카이사르",
+    "pl": "Gajusz Juliusz Cezar",
+    "pt": "Júlio César",
+    "ru": "Гай Юлий Цезарь",
+    "th": "จูเลียส ซีซาร์",
+    "zh": "凯撒",
+    "zh-cn": "凯撒",
+    "zh-hans": "凯撒",
+    "zh-hant": "凱撒",
+    "es": "Julio César",
+    "mul": "Julius Caesar",
+    "en": "Julius Caesar"
+   },
+   "aliases": {
+    "it": [
+     "Cesare",
+     "Giulio Cesare",
+     "Caio Giulio Cesare"
+    ],
+    "en": [
+     "Divine Julius"
+    ],
+    "pl": [
+     "Juliusz Cezar",
+     "Caius Iulius Caesar",
+     "Cezar"
+    ],
+    "de": [
+     "Gaius Julius Cäsar",
+     "Cäsar",
+     "Julius Cäsar"
+    ],
+    "zh": [
+     "凱撒",
+     "凯撒大帝",
+     "尤利烏斯·凱撒",
+     "凱撒大帝",
+     "尤里乌斯·凯撒"
+    ],
+    "ja": [
+     "ユリウス・カエサル",
+     "カエサル",
+     "ジュリアスシーザー",
+     "ジュリアス・シーザー",
+     "ガーイウス・ユーリウス・カエサル",
+     "ケーザル"
+    ],
+    "ru": [
+     "Гай Иулий Кесарь",
+     "Иулий Кесарь",
+     "Юлий Цезарь Гай",
+     "Юлий Цезарь",
+     "Цезарь"
+    ],
+    "es": [
+     "Gayo Julio César",
+     "Cayo Julio César",
+     "Gayo Julio Cesar",
+     "Julio Cesar"
+    ],
+    "ko": [
+     "가이우스 율리우스 카이사르",
+     "카이저",
+     "줄리어스 시저",
+     "차르",
+     "시저"
+    ],
+    "fr": [
+     "Caius Julius Caesar",
+     "César",
+     "Jules Caesar"
+    ],
+    "vi": [
+     "Caius Julius Caesar"
+    ],
+    "pt": [
+     "César"
+    ]
+   },
+   "sitelinks": {
+    "ar": "يوليوس قيصر",
+    "de": "Gaius Iulius Caesar",
+    "en": "Julius Caesar",
+    "es": "Julio César",
+    "fr": "Jules César",
+    "hi": "जुलियस सीसर",
+    "id": "Yulius Kaisar",
+    "it": "Gaio Giulio Cesare",
+    "ja": "ガイウス・ユリウス・カエサル",
+    "ko": "율리우스 카이사르",
+    "pl": "Gajusz Juliusz Cezar",
+    "pt": "Júlio César",
+    "ru": "Гай Юлий Цезарь",
+    "th": "จูเลียส ซีซาร์",
+    "vi": "Julius Caesar",
+    "zh": "尤利烏斯·凱撒"
+   }
+  },
+  "wordsworth": {
+   "enwikiTitle": "William Wordsworth",
+   "id": "Q45546",
+   "lastrevid": 2565596776,
+   "description": "English Romantic poet (1770–1850)",
+   "labels": {
+    "ar": "ويليام ووردزوورث",
+    "de": "William Wordsworth",
+    "en": "William Wordsworth",
+    "es": "William Wordsworth",
+    "fr": "William Wordsworth",
+    "hi": "विलियम वर्ड्सवर्थ",
+    "id": "William Wordsworth",
+    "it": "William Wordsworth",
+    "ja": "ウィリアム・ワーズワース",
+    "ko": "윌리엄 워즈워스",
+    "pl": "William Wordsworth",
+    "pt": "William Wordsworth",
+    "ru": "Уильям Вордсворт",
+    "th": "วิลเลียม เวิร์ดสเวิร์ธ",
+    "vi": "William Wordsworth",
+    "zh": "威廉·华兹华斯",
+    "mul": "William Wordsworth"
+   },
+   "aliases": {
+    "zh": [
+     "威廉·渥茲華",
+     "威廉·華茲渥斯",
+     "华兹华斯",
+     "華滋華斯",
+     "威廉·華滋華斯"
+    ],
+    "es": [
+     "Wordsworth"
+    ],
+    "ar": [
+     "ويليام وردزورث",
+     "وليام ووردسوورث"
+    ],
+    "pt": [
+     "Wordsworth"
+    ],
+    "ru": [
+     "Уильям Вордсворд",
+     "Вордсворд, Уильям",
+     "Вордсворт Вильям",
+     "Уордсуорт, Уильям",
+     "Уильям Уордсуорт",
+     "Уильям Уордсворт",
+     "Вордсворд Уильям",
+     "Вильям Вордсворт",
+     "Вордсворт Уильям",
+     "Вордсворт, Вильям"
+    ],
+    "fr": [
+     "Wordsworth"
+    ],
+    "ko": [
+     "윌리엄 워즈워드",
+     "워즈워스"
+    ],
+    "it": [
+     "Wordsworth"
+    ],
+    "ja": [
+     "ウィリアム・ワーズワス"
+    ],
+    "hi": [
+     "विलियम",
+     "वर्द्स्वर्थ"
+    ],
+    "en": [
+     "Wordsworth"
+    ]
+   },
+   "sitelinks": {
+    "ar": "وليم وردزورث",
+    "de": "William Wordsworth",
+    "en": "William Wordsworth",
+    "es": "William Wordsworth",
+    "fr": "William Wordsworth",
+    "hi": "विलियम वर्ड्सवर्थ",
+    "id": "William Wordsworth",
+    "it": "William Wordsworth",
+    "ja": "ウィリアム・ワーズワース",
+    "ko": "윌리엄 워즈워스",
+    "pl": "William Wordsworth",
+    "pt": "William Wordsworth",
+    "ru": "Вордсворт, Уильям",
+    "th": "วิลเลียม เวิร์ดสเวิร์ธ",
+    "vi": "William Wordsworth",
+    "zh": "威廉·华兹华斯"
+   }
+  },
+  "coleridge": {
+   "enwikiTitle": "Samuel Taylor Coleridge",
+   "id": "Q82409",
+   "lastrevid": 2565594084,
+   "description": "English poet, literary critic and philosopher (1772–1834)",
+   "labels": {
+    "ar": "صامويل تايلر كولريدج",
+    "de": "Samuel Taylor Coleridge",
+    "en": "Samuel Taylor Coleridge",
+    "es": "Samuel Taylor Coleridge",
+    "fr": "Samuel Taylor Coleridge",
+    "hi": "सैम्युअल टेलर कॉलरिज",
+    "id": "Samuel Taylor Coleridge",
+    "it": "Samuel Taylor Coleridge",
+    "ja": "サミュエル・テイラー・コールリッジ",
+    "ko": "새뮤얼 테일러 콜리지",
+    "pl": "Samuel Taylor Coleridge",
+    "pt": "Samuel Taylor Coleridge",
+    "ru": "Сэмюэл Тейлор Кольридж",
+    "th": "แซมมวล เทย์เลอร์ คอเลริดจ์",
+    "vi": "Samuel Taylor Coleridge",
+    "zh": "塞缪尔·泰勒·柯勒律治",
+    "mul": "Samuel Taylor Coleridge"
+   },
+   "aliases": {
+    "zh": [
+     "科勒律支",
+     "柯爾律治",
+     "柯勒律治"
+    ],
+    "es": [
+     "S T. Coleridge",
+     "S T Coleridge",
+     "S. T. Coleridge"
+    ],
+    "ar": [
+     "كولردج"
+    ],
+    "pt": [
+     "Samuel T. Coleridge",
+     "Samuel coleridge"
+    ],
+    "ru": [
+     "Кольридж, Самюэль Тэйлор",
+     "Колридж, Сэмюел Тейлор",
+     "Сэмюэл Кольридж",
+     "Кольридж С. Т.",
+     "Сэмюэл Тейлор Колридж",
+     "Сэмюэл Колридж",
+     "Кольридж Сэмюэл Тейлор",
+     "Кольридж Сэмюэль",
+     "Самюэль Тейлор Колридж",
+     "Колридж Сэмюэл Тейлор",
+     "Кольридж, Самуэл-Тейлор",
+     "Кольридж",
+     "Колридж, Сэмюэл Тейлор",
+     "Сэмюэль Кольридж",
+     "Кольридж, Сэмюэл",
+     "Кольридж, Сэмюэль"
+    ],
+    "ko": [
+     "사무엘 테일러 코울리지",
+     "콜리지",
+     "새뮤얼 테일러 코울리지",
+     "코울리지"
+    ],
+    "de": [
+     "S. T. Coleridge",
+     "S.T. Coleridge"
+    ],
+    "ja": [
+     "サムエル・テイラー・コールリッジ",
+     "サミュエル・テイラー・コウルリッジ",
+     "コールリッジ",
+     "コウルリッジ"
+    ],
+    "hi": [
+     "सेम्येल टेलर कोलरिज"
+    ],
+    "th": [
+     "ซามูเอล เทเลอร์ คอลริดจ์",
+     "แซมมวล เทย์เลอร์ คอเลอริดจ์"
+    ],
+    "en": [
+     "S. T. Coleridge"
+    ]
+   },
+   "sitelinks": {
+    "ar": "صامويل تايلر كولريدج",
+    "de": "Samuel Taylor Coleridge",
+    "en": "Samuel Taylor Coleridge",
+    "es": "Samuel Taylor Coleridge",
+    "fr": "Samuel Taylor Coleridge",
+    "hi": "सैम्युअल टेलर कॉलरिज",
+    "id": "Samuel Taylor Coleridge",
+    "it": "Samuel Taylor Coleridge",
+    "ja": "サミュエル・テイラー・コールリッジ",
+    "ko": "새뮤얼 테일러 콜리지",
+    "pl": "Samuel Taylor Coleridge",
+    "pt": "Samuel Taylor Coleridge",
+    "ru": "Кольридж, Сэмюэл Тейлор",
+    "th": "แซมมวล เทย์เลอร์ คอเลริดจ์",
+    "vi": "Samuel Taylor Coleridge",
+    "zh": "塞缪尔·泰勒·柯勒律治"
+   }
+  },
+  "keats": {
+   "enwikiTitle": "John Keats",
+   "id": "Q82083",
+   "lastrevid": 2565595119,
+   "description": "English Romantic poet (1795–1821)",
+   "labels": {
+    "zh": "约翰·济慈",
+    "pl": "John Keats",
+    "es": "John Keats",
+    "ar": "جون كيتس",
+    "pt": "John Keats",
+    "ru": "Джон Китс",
+    "fr": "John Keats",
+    "ko": "존 키츠",
+    "it": "John Keats",
+    "id": "John Keats",
+    "de": "John Keats",
+    "ja": "ジョン・キーツ",
+    "vi": "John Keats",
+    "en": "John Keats",
+    "hi": "जान कीट्स",
+    "th": "จอห์น คีตส์",
+    "zh-cn": "约翰·济慈",
+    "zh-hans": "约翰·济慈",
+    "mul": "John Keats"
+   },
+   "aliases": {
+    "zh": [
+     "济慈，J.",
+     "济慈",
+     "濟慈"
+    ],
+    "ar": [
+     "كيتس"
+    ],
+    "ru": [
+     "Китс Д.",
+     "Китс",
+     "Китс Джон"
+    ],
+    "ko": [
+     "존 키이츠",
+     "키츠"
+    ],
+    "ja": [
+     "キーツ"
+    ],
+    "en": [
+     "Adonais",
+     "Adonaïs"
+    ]
+   },
+   "sitelinks": {
+    "ar": "جون كيتس",
+    "de": "John Keats",
+    "en": "John Keats",
+    "es": "John Keats",
+    "fr": "John Keats",
+    "hi": "जान कीट्स",
+    "id": "John Keats",
+    "it": "John Keats",
+    "ja": "ジョン・キーツ",
+    "ko": "존 키츠",
+    "pl": "John Keats",
+    "pt": "John Keats",
+    "ru": "Китс, Джон",
+    "th": "จอห์น คีตส์",
+    "vi": "John Keats",
+    "zh": "约翰·济慈"
+   }
+  },
+  "byron": {
+   "enwikiTitle": "Lord Byron",
+   "id": "Q5679",
+   "lastrevid": 2567629727,
+   "description": "English Romantic poet and lyricist (1788–1824)",
+   "labels": {
+    "en": "Lord Byron",
+    "fr": "Lord Byron",
+    "it": "George Gordon Byron",
+    "de": "George Gordon Byron",
+    "ar": "جورج غوردون بايرون",
+    "es": "George Gordon Byron",
+    "hi": "जॉर्ज गॉर्डन बायरन",
+    "id": "George Gordon Byron",
+    "ja": "ジョージ・ゴードン・バイロン",
+    "ko": "바이런 경",
+    "pl": "George Gordon Byron",
+    "pt": "Lorde Byron",
+    "ru": "Джордж Гордон Байрон",
+    "vi": "George Gordon Byron, Nam tước Byron thứ 6",
+    "zh": "拜伦勋爵",
+    "th": "จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6",
+    "mul": "Lord Byron"
+   },
+   "aliases": {
+    "it": [
+     "George Gordon Noel Byron, VI barone di Byron",
+     "Giorgio Gordon Natale Byron",
+     "Giorgio Byron"
+    ],
+    "de": [
+     "George Gordon Noel Byron, 6. Baron Byron"
+    ],
+    "ru": [
+     "Байрон",
+     "Байрон, Джордж Гордон",
+     "Джордж Байрон",
+     "Дж. Байрон"
+    ],
+    "en": [
+     "Noel Byron",
+     "George Gordon Byron, 6th Lord Byron",
+     "George Gordon Byron, 6th Baron Byron"
+    ],
+    "ko": [
+     "제6대 바이런 남작 조지 고든 바이런",
+     "조지 고든 바이런"
+    ],
+    "pl": [
+     "Jerzy Gordon Bajron",
+     "Bajron",
+     "Jerzy Bajron"
+    ],
+    "zh": [
+     "乔治·拜伦",
+     "喬治·戈登·拜倫",
+     "拜伦",
+     "拜倫",
+     "乔治·戈登·拜伦",
+     "拜伦，G.G.",
+     "喬治·戈登·拜倫，第六代拜倫男爵"
+    ],
+    "ja": [
+     "バイロン (Byron, George Gordon Byron, 1788-1824)"
+    ]
+   },
+   "sitelinks": {
+    "ar": "جورج غوردون بايرون",
+    "de": "George Gordon Byron",
+    "en": "Lord Byron",
+    "es": "Lord Byron",
+    "fr": "Lord Byron",
+    "hi": "जॉर्ज गॉर्डन बायरन",
+    "id": "George Gordon Byron",
+    "it": "George Gordon Byron",
+    "ja": "ジョージ・ゴードン・バイロン",
+    "ko": "바이런 경",
+    "pl": "George Byron",
+    "pt": "Lorde Byron",
+    "ru": "Байрон, Джордж Гордон",
+    "th": "จอร์จ กอร์ดอน ไบรอน บารอนไบรอนที่ 6",
+    "vi": "George Gordon Byron, Nam tước Byron thứ 6",
+    "zh": "拜伦勋爵"
+   }
+  },
+  "maryshelley": {
+   "enwikiTitle": "Mary Shelley",
+   "id": "Q47152",
+   "lastrevid": 2570029270,
+   "description": "English writer (1797–1851)",
+   "labels": {
+    "ar": "ماري شيلي",
+    "de": "Mary Shelley",
+    "en": "Mary Shelley",
+    "es": "Mary Shelley",
+    "fr": "Mary Shelley",
+    "id": "Mary Shelley",
+    "it": "Mary Shelley",
+    "ja": "メアリー・シェリー",
+    "ko": "메리 셸리",
+    "pl": "Mary Shelley",
+    "pt": "Mary Shelley",
+    "ru": "Мэри Шелли",
+    "th": "แมรี เชลลีย์",
+    "vi": "Mary Shelley",
+    "zh": "玛丽·雪莱",
+    "zh-hant": "瑪麗·雪萊",
+    "mul": "Mary Shelley",
+    "hi": "मैरी शेली"
+   },
+   "aliases": {
+    "zh": [
+     "瑪莉·雪萊",
+     "科學怪人之母：瑪麗雪萊",
+     "玛丽·沃夫斯通克拉夫特·雪莱",
+     "玛丽·葛德文",
+     "瑪麗·雪萊",
+     "玛丽·戈德温"
+    ],
+    "es": [
+     "Mary Shelly",
+     "Mary W. Shelley",
+     "Mary W Shelley"
+    ],
+    "ru": [
+     "Шелли М. У.",
+     "Шелли М.",
+     "Шелли Мэри Уолстонкрафт",
+     "Мери Шелли",
+     "Шелли, Мэри Уолстонкрафт",
+     "Мэри Уолстонкрафт Шелли"
+    ],
+    "it": [
+     "Mary Godwin Wollstonecraft"
+    ],
+    "de": [
+     "Mary W. Shelley",
+     "Mary Wollstonecraft-Shelley"
+    ],
+    "ja": [
+     "メアリー・ウルストンクラーフト・シェリー",
+     "マリー・W・シェリィ",
+     "メアリー・シェリィ",
+     "マリー・W・シェリー",
+     "メアリ・W・シェリー",
+     "メアリ・シェリー",
+     "マリー・シェリー",
+     "メリー・W・シェリー",
+     "マリー・シェリイ",
+     "メリー・シェリィ",
+     "メアリー・W・シェリィ",
+     "メアリー・シェリイ",
+     "マリー・シェリィ",
+     "メリー・W・シェリィ",
+     "メアリ・シェリイ",
+     "メアリ・シェリィ",
+     "メリー・W・シェリイ",
+     "メアリ・W・シェリイ",
+     "メリー・シェリー",
+     "メアリ・W・シェリィ",
+     "マリー・W・シェリイ",
+     "メリー・シェリイ",
+     "メアリー・W・シェリイ",
+     "メアリー・W・シェリー"
+    ],
+    "th": [
+     "แมรี โวลล์สโตนคราฟต์ เชลลีย์",
+     "แมรี โวลล์สโตนคราฟ์ เชลลีย์"
+    ],
+    "ko": [
+     "메리 울스턴크래프트 셸리",
+     "메리 고드윈",
+     "메리 울스턴크래프트 고드윈"
+    ]
+   },
+   "sitelinks": {
+    "ar": "ماري شيلي",
+    "de": "Mary Shelley",
+    "en": "Mary Shelley",
+    "es": "Mary Shelley",
+    "fr": "Mary Shelley",
+    "id": "Mary Shelley",
+    "it": "Mary Shelley",
+    "ja": "メアリー・シェリー",
+    "ko": "메리 셸리",
+    "pl": "Mary Shelley",
+    "pt": "Mary Shelley",
+    "ru": "Шелли, Мэри",
+    "th": "แมรี เชลลีย์",
+    "vi": "Mary Shelley",
+    "zh": "玛丽·雪莱"
+   }
+  },
+  "poe": {
+   "enwikiTitle": "Edgar Allan Poe",
+   "id": "Q16867",
+   "lastrevid": 2565595885,
+   "description": "American writer and literary critic (1809–1849)",
+   "labels": {
+    "ar": "إدغار آلان بو",
+    "de": "Edgar Allan Poe",
+    "en": "Edgar Allan Poe",
+    "es": "Edgar Allan Poe",
+    "fr": "Edgar Allan Poe",
+    "hi": "एडगर ऍलन पो",
+    "id": "Edgar Allan Poe",
+    "it": "Edgar Allan Poe",
+    "ja": "エドガー・アラン・ポー",
+    "ko": "에드거 앨런 포",
+    "pl": "Edgar Allan Poe",
+    "pt": "Edgar Allan Poe",
+    "ru": "Эдгар Аллан По",
+    "th": "เอดการ์ แอลลัน โพ",
+    "vi": "Edgar Allan Poe",
+    "zh": "爱伦·坡",
+    "zh-hant": "愛倫·坡",
+    "mul": "Edgar Allan Poe"
+   },
+   "aliases": {
+    "en": [
+     "Quarles"
+    ],
+    "zh": [
+     "爱伦·坡，E.",
+     "埃德加·爱伦·坡",
+     "艾德加·愛倫·坡",
+     "艾倫·坡",
+     "愛倫·坡",
+     "愛德華·愛倫·坡",
+     "爱德华·艾伦·坡",
+     "愛倫坡",
+     "坡，E.A."
+    ],
+    "ja": [
+     "ポオ",
+     "エドガー・アラン・ポオ",
+     "エドガーアランポー",
+     "エドガー・A・ポー",
+     "アランポオ",
+     "ポー"
+    ],
+    "ru": [
+     "Эдгар По",
+     "По, Эдгар Аллан",
+     "Эдгар Поэ"
+    ],
+    "fr": [
+     "Poe, Edgar Allan"
+    ],
+    "es": [
+     "Poe, Edgar Allan"
+    ]
+   },
+   "sitelinks": {
+    "ar": "إدغار آلان بو",
+    "de": "Edgar Allan Poe",
+    "en": "Edgar Allan Poe",
+    "es": "Edgar Allan Poe",
+    "fr": "Edgar Allan Poe",
+    "hi": "एडगर ऍलन पो",
+    "id": "Edgar Allan Poe",
+    "it": "Edgar Allan Poe",
+    "ja": "エドガー・アラン・ポー",
+    "ko": "에드거 앨런 포",
+    "pl": "Edgar Allan Poe",
+    "pt": "Edgar Allan Poe",
+    "ru": "По, Эдгар Аллан",
+    "th": "เอดการ์ แอลลัน โพ",
+    "vi": "Edgar Allan Poe",
+    "zh": "艾德加·愛倫·坡"
+   }
+  },
+  "blake": {
+   "enwikiTitle": "William Blake",
+   "id": "Q41513",
+   "lastrevid": 2558282023,
+   "description": "English poet and artist (1757–1827)",
+   "labels": {
+    "ar": "وليم بليك",
+    "de": "William Blake",
+    "en": "William Blake",
+    "es": "William Blake",
+    "fr": "William Blake",
+    "hi": "विलियम ब्लेक",
+    "id": "William Blake",
+    "it": "William Blake",
+    "ja": "ウィリアム・ブレイク",
+    "ko": "윌리엄 블레이크",
+    "pl": "William Blake",
+    "pt": "William Blake",
+    "ru": "Уильям Блейк",
+    "th": "วิลเลียม เบลก",
+    "vi": "William Blake",
+    "zh": "威廉·布莱克",
+    "mul": "William Blake"
+   },
+   "aliases": {
+    "zh": [
+     "威廉·布雷克"
+    ],
+    "es": [
+     "Blake",
+     "Blake William"
+    ],
+    "ru": [
+     "Блейк Вильям",
+     "Блэйк, Уильям",
+     "Блейк У.",
+     "Вильям Блейк",
+     "Уильям Блэйк",
+     "Блэйк Уильям",
+     "Блейк, Вильям",
+     "Блейк Уильям"
+    ],
+    "ja": [
+     "ウィリアム・ブレーク"
+    ],
+    "th": [
+     "วิลเลียม เบลค",
+     "William Blake"
+    ],
+    "en": [
+     "W. Blake",
+     "Blake",
+     "Uil'iam Bleik"
+    ]
+   },
+   "sitelinks": {
+    "ar": "وليم بليك",
+    "de": "William Blake",
+    "en": "William Blake",
+    "es": "William Blake",
+    "fr": "William Blake",
+    "hi": "विलियम ब्लेक",
+    "id": "William Blake",
+    "it": "William Blake",
+    "ja": "ウィリアム・ブレイク",
+    "ko": "윌리엄 블레이크",
+    "pl": "William Blake",
+    "pt": "William Blake",
+    "ru": "Блейк, Уильям",
+    "th": "วิลเลียม เบลก",
+    "vi": "William Blake",
+    "zh": "威廉·布莱克"
+   }
+  },
+  "shelley": {
+   "enwikiTitle": "Percy Bysshe Shelley",
+   "id": "Q93343",
+   "lastrevid": 2560348348,
+   "description": "British Romantic poet (1792–1822)",
+   "labels": {
+    "ar": "بيرسي بيش شيلي",
+    "de": "Percy Bysshe Shelley",
+    "en": "Percy Bysshe Shelley",
+    "es": "Percy Bysshe Shelley",
+    "fr": "Percy Bysshe Shelley",
+    "hi": "पर्सी बिश शेली",
+    "id": "Percy Bysshe Shelley",
+    "it": "Percy Bysshe Shelley",
+    "ja": "パーシー・ビッシュ・シェリー",
+    "ko": "퍼시 비시 셸리",
+    "pl": "Percy Bysshe Shelley",
+    "pt": "Percy Bysshe Shelley",
+    "ru": "Перси Биш Шелли",
+    "vi": "Percy Bysshe Shelley",
+    "zh": "珀西·比希·雪莱",
+    "zh-cn": "珀西·比希·雪莱",
+    "zh-hans": "珀西·比希·雪莱",
+    "zh-hant": "珀西·比希·雪萊",
+    "mul": "Percy Bysshe Shelley"
+   },
+   "aliases": {
+    "zh": [
+     "雪莱",
+     "沛爾希·畢西·雪萊",
+     "雪萊",
+     "珀希·比西·雪莱"
+    ],
+    "pl": [
+     "Percy Shelley"
+    ],
+    "es": [
+     "Shelli Persi Bish",
+     "Percy Byssche Shelley"
+    ],
+    "ar": [
+     "بيرسي بيشي شيلي"
+    ],
+    "pt": [
+     "P. B. Shelley",
+     "Percy B. Shelley"
+    ],
+    "ru": [
+     "Шелли, Перси",
+     "Шелли П.",
+     "Шелли Перси Биш",
+     "Шелли П. Б.",
+     "Перси Шелли",
+     "Шелли Перси Биши",
+     "Перси Биши Шелли",
+     "Шелли, Перси Биш"
+    ],
+    "fr": [
+     "Percy Shelley",
+     "Percy B. Shelley"
+    ],
+    "ko": [
+     "퍼시 셸리",
+     "퍼시 바이셰 셸리",
+     "퍼시 비쉬 셸리"
+    ],
+    "it": [
+     "Percy Shelley",
+     "P. B. Shelley"
+    ],
+    "de": [
+     "Percy Shelley",
+     "P. B. Shelley",
+     "Percy B. Shelley",
+     "P.B. Shelley"
+    ],
+    "ja": [
+     "パーシー・シェリー"
+    ],
+    "hi": [
+     "शेली"
+    ],
+    "en": [
+     "Percy Shelley",
+     "Percy Byssche Shelley",
+     "Shelli Persi Bish"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بيرسي بيش شيلي",
+    "de": "Percy Bysshe Shelley",
+    "en": "Percy Bysshe Shelley",
+    "es": "Percy Bysshe Shelley",
+    "fr": "Percy Bysshe Shelley",
+    "hi": "पर्सी बिश शेली",
+    "id": "Percy Bysshe Shelley",
+    "it": "Percy Bysshe Shelley",
+    "ja": "パーシー・ビッシュ・シェリー",
+    "ko": "퍼시 비시 셸리",
+    "pl": "Percy Bysshe Shelley",
+    "pt": "Percy Bysshe Shelley",
+    "ru": "Шелли, Перси Биш",
+    "vi": "Percy Bysshe Shelley",
+    "zh": "珀西·比希·雪莱"
+   }
+  },
+  "browning": {
+   "enwikiTitle": "Elizabeth Barrett Browning",
+   "id": "Q228494",
+   "lastrevid": 2570423737,
+   "description": "English poet (1806–1861)",
+   "labels": {
+    "zh-hans": "伊丽莎白·巴雷特·勃朗宁",
+    "zh-hant": "伊麗莎白·巴雷特·勃朗寧",
+    "zh-cn": "伊丽莎白·巴雷特·勃朗宁",
+    "pl": "Elizabeth Barrett Browning",
+    "fr": "Elizabeth Barrett Browning",
+    "es": "Elizabeth Barrett Browning",
+    "it": "Elizabeth Barrett Browning",
+    "de": "Elizabeth Barrett Browning",
+    "id": "Elizabeth Barrett Browning",
+    "ja": "エリザベス・ブラウニング",
+    "en": "Elizabeth Barrett Browning",
+    "ar": "إليزابيث باريت براونينغ",
+    "pt": "Elizabeth Barrett Browning",
+    "ru": "Элизабет Барретт Браунинг",
+    "zh": "伊丽莎白·巴雷特·勃朗宁",
+    "vi": "Elizabeth Barrett Browning",
+    "ko": "엘리자베스 배럿 브라우닝"
+   },
+   "aliases": {
+    "ar": [
+     "إليزابيث براونينج",
+     "اليزابيث باريت براونينغ",
+     "إليزابيث براونينغ",
+     "اليزابيث براونينج"
+    ],
+    "en": [
+     "Elisabeth Barrett Browning",
+     "Elizabeth Barrett-Browning",
+     "Mrs. Browning",
+     "Elizabeth Barrett Browning, née Barrett",
+     "Elizaveta Barrett Brauning",
+     "Elizabeth Barrett Barrett"
+    ],
+    "es": [
+     "Elizabeth Barrett",
+     "Elizabeth Browning",
+     "Elizabeth Barrett-Browning",
+     "Elizabeth Barret-Browning",
+     "Elizabeth Barret Browning"
+    ],
+    "fr": [
+     "Elizabeth Barrett",
+     "Elizabeth Browning"
+    ],
+    "id": [
+     "Elizabeth Barrett"
+    ],
+    "ja": [
+     "エリザベス・バレット・ブラウニング"
+    ],
+    "pl": [
+     "Elizabeth Browning"
+    ],
+    "pt": [
+     "Elizabeth Barrett"
+    ],
+    "ru": [
+     "Браунинг, Элизабет Баррет",
+     "Барретт-Браунинг, Элизабет",
+     "Элизабет Браунинг"
+    ],
+    "zh": [
+     "勃朗宁夫人"
+    ],
+    "de": [
+     "Barrett Browning",
+     "Elizabeth Barrett-Browning",
+     "Elizabeth Barrett Moulton-Barrett"
+    ]
+   },
+   "sitelinks": {
+    "ar": "إليزابيث باريت براونينغ",
+    "de": "Elizabeth Barrett Browning",
+    "en": "Elizabeth Barrett Browning",
+    "es": "Elizabeth Barrett Browning",
+    "fr": "Elizabeth Barrett Browning",
+    "id": "Elizabeth Barrett Browning",
+    "it": "Elizabeth Barrett Browning",
+    "ja": "エリザベス・バレット・ブラウニング",
+    "ko": "엘리자베스 배럿 브라우닝",
+    "pl": "Elizabeth Barrett Browning",
+    "pt": "Elizabeth Barrett Browning",
+    "ru": "Браунинг, Элизабет Барретт",
+    "vi": "Elizabeth Barrett Browning",
+    "zh": "伊丽莎白·巴雷特·勃朗宁"
+   }
+  },
+  "rossetti": {
+   "enwikiTitle": "Christina Rossetti",
+   "id": "Q236596",
+   "lastrevid": 2539472166,
+   "description": "English poet (1830–1894)",
+   "labels": {
+    "pt": "Christina Rossetti",
+    "pl": "Christina Rossetti",
+    "fr": "Christina Rossetti",
+    "ru": "Кристина Джорджина Россетти",
+    "es": "Christina Rossetti",
+    "en": "Christina Rossetti",
+    "it": "Christina Rossetti",
+    "id": "Christina Rossetti",
+    "de": "Christina Rossetti",
+    "ja": "クリスティーナ・ロセッティ",
+    "vi": "Christina Rossetti",
+    "zh": "克里斯蒂娜·罗塞蒂",
+    "zh-hans": "克里斯蒂娜·罗塞蒂",
+    "ar": "كريستينا روسيتي",
+    "ko": "크리스티나 로제티",
+    "mul": "Christina Rossetti"
+   },
+   "aliases": {
+    "pt": [
+     "Christina Georgina Rossetti"
+    ],
+    "ru": [
+     "Россетти, Христина Георгина",
+     "Кристина Россетти",
+     "Россетти, Кристина",
+     "Россетти Кристина Джорджина"
+    ],
+    "es": [
+     "Christina Georgina Rossetti"
+    ],
+    "it": [
+     "Christina Georgina Rossetti"
+    ],
+    "ja": [
+     "クリスティーナ・ロゼッティ",
+     "クリスチーナ・ロセッティ",
+     "クリスチナ・ロセッティ",
+     "クリスティナ・ロセッティ",
+     "クリスティナ・ロゼッティ"
+    ],
+    "en": [
+     "Christina Georgina Rossetti",
+     "Christina G. Rossetti",
+     "Christina G.",
+     "Christina Georgina; Rosetti",
+     "Rossetti",
+     "Christina (Georgina) Rossetti"
+    ],
+    "id": [
+     "Christina Georgina Rossetti"
+    ],
+    "pl": [
+     "Christina Georgina Rossetti"
+    ]
+   },
+   "sitelinks": {
+    "ar": "كريستينا روسيتي",
+    "de": "Christina Rossetti",
+    "en": "Christina Rossetti",
+    "es": "Christina Rossetti",
+    "fr": "Christina Rossetti",
+    "id": "Christina Rossetti",
+    "it": "Christina Rossetti",
+    "ja": "クリスティーナ・ロセッティ",
+    "ko": "크리스티나 로세티",
+    "pl": "Christina Rossetti",
+    "pt": "Christina Rossetti",
+    "ru": "Россетти, Кристина Джорджина",
+    "vi": "Christina Rossetti",
+    "zh": "克里斯蒂娜·罗塞蒂"
+   }
+  },
+  "shakespeare": {
+   "enwikiTitle": "William Shakespeare",
+   "id": "Q692",
+   "lastrevid": 2569932414,
+   "description": "English playwright and poet (1564–1616)",
+   "labels": {
+    "ar": "وليم شكسبير",
+    "hi": "विलियम शेक्सपीयर",
+    "ja": "ウィリアム・シェイクスピア",
+    "ko": "윌리엄 셰익스피어",
+    "ru": "Уильям Шекспир",
+    "th": "วิลเลียม เชกสเปียร์",
+    "zh": "威廉·莎士比亚",
+    "zh-hant": "威廉·莎士比亞",
+    "zh-hans": "威廉·莎士比亚",
+    "zh-cn": "威廉·莎士比亚",
+    "mul": "William Shakespeare",
+    "vi": "William Shakespeare",
+    "pl": "William Shakespeare",
+    "en": "William Shakespeare"
+   },
+   "aliases": {
+    "zh": [
+     "莎士比亞",
+     "莎士比亚",
+     "莎翁"
+    ],
+    "ko": [
+     "셰익스피어"
+    ],
+    "ru": [
+     "У. Шекспир",
+     "Шекспир",
+     "Шекспир, Уильям",
+     "Вильям Шекспир"
+    ],
+    "ja": [
+     "シェークスピーヤ",
+     "シェークスピア",
+     "シェイクスピア",
+     "ウィリアム・シェークスピア",
+     "沙吉比亜",
+     "沙翁",
+     "シェークスペーヤ"
+    ],
+    "pl": [
+     "Szekspir",
+     "William Szekspir",
+     "Wilhelm Szekspir",
+     "Wieszcz z Awonu"
+    ],
+    "es": [
+     "El Bardo"
+    ],
+    "ar": [
+     "شكسبير"
+    ],
+    "vi": [
+     "Uy-li-am Sếch-xpia",
+     "Sếch-xpia"
+    ]
+   },
+   "sitelinks": {
+    "ar": "وليم شكسبير",
+    "de": "William Shakespeare",
+    "en": "William Shakespeare",
+    "es": "William Shakespeare",
+    "fr": "William Shakespeare",
+    "hi": "विलियम शेक्सपीयर",
+    "id": "William Shakespeare",
+    "it": "William Shakespeare",
+    "ja": "ウィリアム・シェイクスピア",
+    "ko": "윌리엄 셰익스피어",
+    "pl": "William Shakespeare",
+    "pt": "William Shakespeare",
+    "ru": "Шекспир, Уильям",
+    "th": "วิลเลียม เชกสเปียร์",
+    "vi": "William Shakespeare",
+    "zh": "威廉·莎士比亚"
+   }
+  },
+  "zeus": {
+   "enwikiTitle": "Zeus",
+   "id": "Q34201",
+   "lastrevid": 2565891776,
+   "description": "Greek god of the sky and king of the gods",
+   "labels": {
+    "zh": "宙斯",
+    "pl": "Zeus",
+    "es": "Zeus",
+    "ar": "زيوس",
+    "pt": "Zeus",
+    "ru": "Зевс",
+    "fr": "Zeus",
+    "ko": "제우스",
+    "it": "Zeus",
+    "id": "Zeus",
+    "de": "Zeus",
+    "ja": "ゼウス",
+    "vi": "Zeus",
+    "en": "Zeus",
+    "hi": "ज़्यूस",
+    "th": "ซูส",
+    "zh-hant": "宙斯",
+    "mul": "Zeus"
+   },
+   "aliases": {
+    "zh": [
+     "薛乌斯",
+     "丟斯"
+    ],
+    "pl": [
+     "Dzeus",
+     "Horkios"
+    ],
+    "es": [
+     "Zeus Cronida",
+     "Cronida",
+     "Cronión"
+    ],
+    "ar": [
+     "زيفس",
+     "زوس"
+    ],
+    "ru": [
+     "Дий",
+     "Зевес"
+    ],
+    "it": [
+     "Zeus Plousios",
+     "Zeus Chthonios",
+     "Zeus Egioco",
+     "Zeus Horkios",
+     "Zeus Eleutherios",
+     "Zeus Meilichios",
+     "Zeus Panhellenios",
+     "Zeus Lykaios",
+     "Zeus Soter",
+     "Zeus Olympios",
+     "Zeus Cronide",
+     "Zeus Katachthonios",
+     "Zeus Xenios",
+     "Zeus Aitnàios",
+     "Zeus Agoraios",
+     "Zeus Nemeos",
+     "Zeo"
+    ],
+    "de": [
+     "Zygius",
+     "Kronion"
+    ],
+    "ja": [
+     "ゼウス神像",
+     "ZEUS"
+    ],
+    "vi": [
+     "Dias",
+     "Jupiter",
+     "Thần Zeus",
+     "Thần Dớt",
+     "Dớt"
+    ],
+    "th": [
+     "เทพซุส",
+     "เทพซูส",
+     "ซุส",
+     "ซีอุส",
+     "เซอุส"
+    ],
+    "en": [
+     "Jupiter",
+     "Dias",
+     "Jove"
+    ]
+   },
+   "sitelinks": {
+    "ar": "زيوس",
+    "de": "Zeus",
+    "en": "Zeus",
+    "es": "Zeus",
+    "fr": "Zeus",
+    "hi": "ज़्यूस",
+    "id": "Zeus",
+    "it": "Zeus",
+    "ja": "ゼウス",
+    "ko": "제우스",
+    "pl": "Zeus",
+    "pt": "Zeus",
+    "ru": "Зевс",
+    "th": "ซูส",
+    "vi": "Zeus",
+    "zh": "宙斯"
+   }
+  },
+  "athena": {
+   "enwikiTitle": "Athena",
+   "id": "Q37122",
+   "lastrevid": 2566537426,
+   "description": "goddess of wisdom and war in ancient Greek religion and mythology",
+   "labels": {
+    "zh": "雅典娜",
+    "pl": "Atena",
+    "es": "Atenea",
+    "ar": "آثينا",
+    "ru": "Афина",
+    "ko": "아테나",
+    "fr": "Athéna",
+    "it": "Atena",
+    "id": "Athena",
+    "de": "Athene",
+    "ja": "アテーナー",
+    "vi": "Athena",
+    "en": "Athena",
+    "hi": "अथीना",
+    "th": "อะธีนา",
+    "zh-hant": "雅典娜",
+    "zh-cn": "雅典娜",
+    "pt": "Atena"
+   },
+   "aliases": {
+    "zh": [
+     "帕拉斯·雅典娜"
+    ],
+    "es": [
+     "Palas Atenea",
+     "Palas"
+    ],
+    "ar": [
+     "اثينا",
+     "بالاس"
+    ],
+    "pt": [
+     "Palas Atenas",
+     "Atena Partenos",
+     "Palas atená",
+     "Palas Atena",
+     "Deusa da Sabedoria",
+     "Pallas Atena"
+    ],
+    "ru": [
+     "Афина Паллада",
+     "Афина-Паллада",
+     "Полиада",
+     "Паллада"
+    ],
+    "fr": [
+     "Athéna Niké",
+     "Athéna Níkê",
+     "Athéné",
+     "Athéna Nike",
+     "Athéna Pallas"
+    ],
+    "it": [
+     "Atena Chalkioikos",
+     "Atritonia",
+     "Pallade Atena"
+    ],
+    "id": [
+     "Dewi Athena"
+    ],
+    "ja": [
+     "パラス・アテナ",
+     "パラス・アテーナー",
+     "アテナ",
+     "アテナ女神"
+    ],
+    "th": [
+     "อะทีน่า",
+     "พัลลัสอธีนา",
+     "อาเธน่า",
+     "เทพีอธีนา",
+     "อธีน่า",
+     "เอเธนา",
+     "อะธีน่า",
+     "อาธีน่า"
+    ],
+    "pl": [
+     "Pallas"
+    ],
+    "en": [
+     "Athina"
+    ],
+    "ko": [
+     "아테네"
+    ]
+   },
+   "sitelinks": {
+    "ar": "أثينا (أسطورة)",
+    "de": "Athene",
+    "en": "Athena",
+    "es": "Atenea",
+    "fr": "Athéna",
+    "hi": "अथीना",
+    "id": "Athena (mitologi)",
+    "it": "Atena",
+    "ja": "アテーナー",
+    "ko": "아테나",
+    "pl": "Atena",
+    "pt": "Atena",
+    "ru": "Афина",
+    "th": "อะธีนา",
+    "vi": "Athena (thần thoại)",
+    "zh": "雅典娜"
+   }
+  },
+  "apollo": {
+   "enwikiTitle": "Apollo",
+   "id": "Q37340",
+   "lastrevid": 2568791265,
+   "description": "god in Greek and later Roman mythology",
+   "labels": {
+    "zh": "阿波罗",
+    "pl": "Apollo",
+    "es": "Apolo",
+    "ar": "أبولو",
+    "pt": "Apolo",
+    "ru": "Аполлон",
+    "ko": "아폴론",
+    "fr": "Apollon",
+    "it": "Apollo",
+    "de": "Apollon",
+    "id": "Apollo",
+    "ja": "アポローン",
+    "vi": "Apollo",
+    "en": "Apollo",
+    "hi": "अपोलो",
+    "th": "อะพอลโล",
+    "zh-hant": "阿波羅"
+   },
+   "aliases": {
+    "zh": [
+     "阿坡罗",
+     "阿波羅"
+    ],
+    "pl": [
+     "Apollin"
+    ],
+    "es": [
+     "Febo"
+    ],
+    "ar": [
+     "أبوللو",
+     "ابولو"
+    ],
+    "pt": [
+     "Pítio",
+     "Abeo",
+     "Abeu"
+    ],
+    "ru": [
+     "Кифарет",
+     "Алексикакос",
+     "Феб",
+     "Акесий",
+     "Ἀπόλλων",
+     "Мусагет",
+     "Μουσηγέτης"
+    ],
+    "ko": [
+     "스민테우스",
+     "아폴론 신"
+    ],
+    "fr": [
+     "Loxias",
+     "Phébus Apollon",
+     "Epicourios",
+     "Phœbus",
+     "Phoebus-Apollon",
+     "Paian",
+     "Paion",
+     "Phoïbos",
+     "Phoibos"
+    ],
+    "it": [
+     "Apollo Parnopios",
+     "Dio Apollo",
+     "Carro solare di Apollo",
+     "Apollo Citaredo",
+     "Apollo Pizio"
+    ],
+    "de": [
+     "Apoll",
+     "Phöbos",
+     "Abadonna",
+     "Phoebus Apollo",
+     "Loxias",
+     "Phoibos Apollon",
+     "Apollon Lykeios",
+     "Phoibos",
+     "Apollo"
+    ],
+    "id": [
+     "Foibos"
+    ],
+    "ja": [
+     "アポロン",
+     "アポロー"
+    ],
+    "vi": [
+     "Apollon",
+     "Phoebus",
+     "Apóllōn"
+    ],
+    "th": [
+     "อพอลโล่",
+     "เทพอพอลโล"
+    ],
+    "en": [
+     "Phoebus",
+     "Apollōn",
+     "Apellōn",
+     "Apeilōn",
+     "Aploun",
+     "Apollon"
+    ]
+   },
+   "sitelinks": {
+    "ar": "أبولو (إله إغريقي)",
+    "de": "Apollon",
+    "en": "Apollo",
+    "es": "Apolo",
+    "fr": "Apollon",
+    "hi": "अपोलो",
+    "id": "Apollo (mitologi)",
+    "it": "Apollo",
+    "ja": "アポローン",
+    "ko": "아폴론",
+    "pl": "Apollo",
+    "pt": "Apolo",
+    "ru": "Аполлон",
+    "th": "อะพอลโล",
+    "vi": "Apollo",
+    "zh": "阿波罗"
+   }
+  },
+  "aphrodite": {
+   "enwikiTitle": "Aphrodite",
+   "id": "Q35500",
+   "lastrevid": 2566537505,
+   "description": "Greek goddess of love, beauty, pleasure, and procreation",
+   "labels": {
+    "zh": "阿佛罗狄忒",
+    "pl": "Afrodyta",
+    "es": "Afrodita",
+    "ar": "أفروديت",
+    "pt": "Afrodite",
+    "ru": "Афродита",
+    "ko": "아프로디테",
+    "fr": "Aphrodite",
+    "it": "Afrodite",
+    "de": "Aphrodite",
+    "id": "Afrodit",
+    "ja": "アプロディーテー",
+    "vi": "Aphrodite",
+    "en": "Aphrodite",
+    "hi": "ऐफ़्रोडाइटी",
+    "th": "แอโฟรไดที",
+    "zh-cn": "阿佛罗狄忒",
+    "zh-hans": "阿佛罗狄忒"
+   },
+   "aliases": {
+    "zh": [
+     "阿芙蘿黛蒂",
+     "阿弗洛狄忒",
+     "阿芙罗狄蒂",
+     "阿芙羅狄忒",
+     "愛芙羅黛蒂",
+     "阿芙罗狄忒",
+     "阿佛洛狄德",
+     "阿芙洛狄忒",
+     "阿佛羅狄忒",
+     "阿芙羅黛蒂",
+     "阿佛洛狄特",
+     "阿芙罗狄特",
+     "阿佛洛狄忒"
+    ],
+    "pl": [
+     "Kipryda",
+     "Dioneja",
+     "Cypryda"
+    ],
+    "es": [
+     "Cipris",
+     "Citerea"
+    ],
+    "ar": [
+     "افروديت"
+    ],
+    "pt": [
+     "Aglae",
+     "Deusa do amor",
+     "Citereia",
+     "Cipris",
+     "Citeréia"
+    ],
+    "ru": [
+     "Афродита Урания",
+     "Афрогенея",
+     "Афродита Уранская",
+     "Киприда",
+     "Идалия",
+     "Афродиты"
+    ],
+    "it": [
+     "Citerea",
+     "Cipride",
+     "Citerèa",
+     "Aφροδίτη"
+    ],
+    "de": [
+     "Kypris",
+     "Afrodite"
+    ],
+    "ja": [
+     "アプロディテ",
+     "アプロディーテ",
+     "アフロディーナ",
+     "アフロディテー",
+     "アフロディーテ",
+     "アフロディーテー",
+     "アフロディテ"
+    ],
+    "vi": [
+     "Venus"
+    ],
+    "th": [
+     "อโฟรไดท์",
+     "อะโฟร์ไดตี้",
+     "อะโฟรไดต์",
+     "อโฟรไดที",
+     "อาโฟร์ไดท์",
+     "อะโฟรไดท์"
+    ],
+    "en": [
+     "Cytherea",
+     "Erycina"
+    ]
+   },
+   "sitelinks": {
+    "ar": "أفروديت",
+    "de": "Aphrodite",
+    "en": "Aphrodite",
+    "es": "Afrodita",
+    "fr": "Aphrodite",
+    "hi": "ऐफ़्रोडाइटी",
+    "id": "Afrodit",
+    "it": "Afrodite",
+    "ja": "アプロディーテー",
+    "ko": "아프로디테",
+    "pl": "Afrodyta",
+    "pt": "Afrodite",
+    "ru": "Афродита",
+    "th": "แอโฟรไดที",
+    "vi": "Aphrodite",
+    "zh": "阿佛洛狄忒"
+   }
+  },
+  "hermes": {
+   "enwikiTitle": "Hermes",
+   "id": "Q41484",
+   "lastrevid": 2565892695,
+   "description": "Olympian god in Greek religion and mythology; the emissary and messenger of the gods; the god of trade, heraldry, merchants, commerce, roads, thieves, trickery, sports, travelers, and athletes; the son of Zeus and the Pleiad Maia",
+   "labels": {
+    "zh": "赫耳墨斯",
+    "pl": "Hermes",
+    "es": "Hermes",
+    "ar": "هيرميز",
+    "pt": "Hermes",
+    "ru": "Гермес",
+    "ko": "헤르메스",
+    "fr": "Hermès",
+    "it": "Ermes",
+    "id": "Hermes",
+    "de": "Hermes",
+    "ja": "ヘルメース",
+    "vi": "Hermes",
+    "en": "Hermes",
+    "hi": "हरमीस",
+    "th": "เฮอร์มีส",
+    "zh-hant": "赫爾墨斯"
+   },
+   "aliases": {
+    "zh": [
+     "阿耳吉豐忒斯",
+     "赫尔墨斯",
+     "希耳米",
+     "荷米斯",
+     "Hermes",
+     "赫密士",
+     "赫密斯"
+    ],
+    "ar": [
+     "هيرميس"
+    ],
+    "ru": [
+     "Меркурий",
+     "Эрмий"
+    ],
+    "fr": [
+     "Hermès psychopompe",
+     "Hermes"
+    ],
+    "it": [
+     "Hermes",
+     "Ermète",
+     "Erme"
+    ],
+    "de": [
+     "Cyllenius",
+     "Psychagog",
+     "Argeiphontes"
+    ],
+    "ja": [
+     "ハーメス",
+     "ハーミズ",
+     "ヘルメス",
+     "ハーミース",
+     "ハーミス"
+    ],
+    "th": [
+     "เฮอร์เมส",
+     "Hermes",
+     "เทพเฮอร์มีส"
+    ],
+    "es": [
+     "Argifonte"
+    ]
+   },
+   "sitelinks": {
+    "ar": "هرمس",
+    "de": "Hermes",
+    "en": "Hermes",
+    "es": "Hermes",
+    "fr": "Hermès",
+    "hi": "हरमीस",
+    "id": "Hermes",
+    "it": "Ermes",
+    "ja": "ヘルメース",
+    "ko": "헤르메스",
+    "pl": "Hermes",
+    "pt": "Hermes",
+    "ru": "Гермес",
+    "th": "เฮอร์มีส",
+    "vi": "Hermes",
+    "zh": "赫耳墨斯"
+   }
+  },
+  "hades": {
+   "enwikiTitle": "Hades",
+   "id": "Q41410",
+   "lastrevid": 2565892689,
+   "description": "god of the underworld in Greek mythology",
+   "labels": {
+    "zh": "哈得斯",
+    "pl": "Hades",
+    "es": "Hades",
+    "ar": "هاديس",
+    "pt": "Hades",
+    "ru": "Аид",
+    "fr": "Hadès",
+    "ko": "하데스",
+    "it": "Ade",
+    "de": "Hades",
+    "id": "Hades",
+    "ja": "ハーデース",
+    "vi": "Hades",
+    "en": "Hades",
+    "hi": "हादेस",
+    "th": "เฮดีส"
+   },
+   "aliases": {
+    "zh": [
+     "哈帝斯",
+     "哈德斯",
+     "黑帝斯",
+     "哈里斯",
+     "哈底斯"
+    ],
+    "pl": [
+     "Pluton",
+     "Agesandros"
+    ],
+    "es": [
+     "Aidoneo",
+     "Pluto"
+    ],
+    "ar": [
+     "هيدز",
+     "هادس"
+    ],
+    "ru": [
+     "Хадес",
+     "Дит",
+     "Загробный мир в древнегреческой мифологии",
+     "Плутон",
+     "Айдес",
+     "Орк",
+     "Гадес",
+     "Ἀΐδης",
+     "ᾍδης",
+     "Ἀϊδωνεύς",
+     "Айдоней"
+    ],
+    "fr": [
+     "Hades",
+     "Polydegmon",
+     "Adès"
+    ],
+    "ko": [
+     "플루톤",
+     "하이데스"
+    ],
+    "de": [
+     "Acheron Hades",
+     "Aidoneus"
+    ],
+    "ja": [
+     "プルトン",
+     "ハイデス",
+     "プルートン",
+     "ハーイデス",
+     "ハーイデース",
+     "アイドネウス",
+     "アイドーネウス",
+     "エウブレウス",
+     "ハイデース",
+     "ハーデス",
+     "プルートーン",
+     "ハデース",
+     "プルトーン",
+     "アイデース",
+     "エウブーレウス"
+    ],
+    "th": [
+     "เฮเดส",
+     "Hades",
+     "ฮาเดส"
+    ],
+    "it": [
+     "Hades"
+    ],
+    "en": [
+     "Pluton",
+     "Plouton"
+    ]
+   },
+   "sitelinks": {
+    "ar": "هاديس",
+    "de": "Hades",
+    "en": "Hades",
+    "es": "Hades",
+    "fr": "Hadès",
+    "hi": "हेडीस",
+    "id": "Hades",
+    "it": "Ade (divinità)",
+    "ja": "ハーデース",
+    "ko": "하데스",
+    "pl": "Hades",
+    "pt": "Hades",
+    "ru": "Аид",
+    "th": "เฮดีส",
+    "vi": "Hades",
+    "zh": "哈得斯"
+   }
+  },
+  "persephone": {
+   "enwikiTitle": "Persephone",
+   "id": "Q45967",
+   "lastrevid": 2569104887,
+   "description": "Greek goddess of the seasons and the queen of the underworld; married with Hades",
+   "labels": {
+    "zh": "珀耳塞福涅",
+    "pl": "Persefona",
+    "es": "Perséfone",
+    "ar": "بيرسيفون",
+    "pt": "Perséfone",
+    "ru": "Персефона",
+    "fr": "Perséphone",
+    "ko": "페르세포네",
+    "it": "Persefone",
+    "id": "Persefone",
+    "de": "Persephone",
+    "ja": "ペルセポネー",
+    "vi": "Persephone",
+    "en": "Persephone",
+    "hi": "पर्सिफ़ोनी",
+    "th": "เพอร์เซฟะนี"
+   },
+   "aliases": {
+    "zh": [
+     "珀尔塞福涅",
+     "普西芬妮",
+     "贝瑟芬妮",
+     "佩爾塞福涅",
+     "佩耳塞福涅",
+     "普西芬尼",
+     "佩尔塞福涅"
+    ],
+    "pl": [
+     "Kore"
+    ],
+    "es": [
+     "Core",
+     "Perséfona"
+    ],
+    "ar": [
+     "بيرسيفونى"
+    ],
+    "pt": [
+     "Persefone",
+     "Persephone"
+    ],
+    "ru": [
+     "Афила",
+     "Кора"
+    ],
+    "fr": [
+     "Persephone",
+     "Perséphoné",
+     "Korè"
+    ],
+    "it": [
+     "Kore",
+     "Persephone"
+    ],
+    "id": [
+     "Persephone",
+     "Persefon"
+    ],
+    "ja": [
+     "ペルセポネ",
+     "プラークシディケー",
+     "プラークシディケ",
+     "プラクシディケー",
+     "ペルセフォネ",
+     "ペルセポーネ"
+    ],
+    "th": [
+     "เพอร์ซิโฟเน่",
+     "เปอร์เซโฟเน",
+     "เพอร์ซิโฟเน",
+     "Persephone",
+     "เพอร์เซโฟเน"
+    ],
+    "en": [
+     "Kore"
+    ],
+    "de": [
+     "Kore",
+     "Kora"
+    ]
+   },
+   "sitelinks": {
+    "ar": "بيرسيفون",
+    "de": "Persephone",
+    "en": "Persephone",
+    "es": "Perséfone",
+    "fr": "Perséphone",
+    "hi": "पर्सिफ़ोनी",
+    "id": "Persefone",
+    "it": "Persefone",
+    "ja": "ペルセポネー",
+    "ko": "페르세포네",
+    "pl": "Persefona",
+    "pt": "Perséfone",
+    "ru": "Персефона",
+    "th": "เพอร์เซฟะนี",
+    "vi": "Persephone (thần thoại)",
+    "zh": "珀耳塞福涅"
+   }
+  },
+  "odysseus": {
+   "enwikiTitle": "Odysseus",
+   "id": "Q47231",
+   "lastrevid": 2565115888,
+   "description": "legendary Greek king of Ithaca",
+   "labels": {
+    "zh": "奥德修斯",
+    "pl": "Odyseusz",
+    "es": "Odiseo",
+    "ar": "أوديسيوس",
+    "pt": "Odisseu",
+    "ru": "Одиссей",
+    "fr": "Ulysse",
+    "ko": "오디세우스",
+    "it": "Odisseo",
+    "de": "Odysseus",
+    "id": "Odisseus",
+    "ja": "オデュッセウス",
+    "vi": "Odysseus",
+    "en": "Odysseus",
+    "th": "โอดิสเซียส",
+    "hi": "ओदुस्सेउस"
+   },
+   "aliases": {
+    "zh": [
+     "奧德修斯",
+     "俄底修斯",
+     "奧德賽斯",
+     "尤利西斯"
+    ],
+    "pl": [
+     "Odys",
+     "Ulisses"
+    ],
+    "es": [
+     "Ulises"
+    ],
+    "ar": [
+     "أوليس",
+     "اوليس"
+    ],
+    "pt": [
+     "Odysseus"
+    ],
+    "ko": [
+     "오뒷세우스",
+     "오딧세우스",
+     "오디세이우스",
+     "오디세이스"
+    ],
+    "it": [
+     "Ulisse"
+    ],
+    "de": [
+     "Ulixes",
+     "Uthuce"
+    ],
+    "id": [
+     "Odiseus",
+     "Ulysses",
+     "Odysseus"
+    ],
+    "ja": [
+     "ウリュッセウス",
+     "オデッセウス",
+     "ウリクセス"
+    ],
+    "vi": [
+     "Uylixơ"
+    ],
+    "th": [
+     "ยูลีซีส",
+     "โอดีสซุซ",
+     "ยูลิซิส",
+     "โอดีซุส",
+     "โอดิซูส",
+     "โอดีซุุส"
+    ],
+    "en": [
+     "Ulysses"
+    ],
+    "ru": [
+     "Улисс"
+    ],
+    "hi": [
+     "यूलिसिस",
+     "ओदुस्सेउस"
+    ]
+   },
+   "sitelinks": {
+    "ar": "أوديسيوس",
+    "de": "Odysseus",
+    "en": "Odysseus",
+    "es": "Odiseo",
+    "fr": "Ulysse",
+    "hi": "ओडीसियस",
+    "id": "Odisseus",
+    "it": "Ulisse",
+    "ja": "オデュッセウス",
+    "ko": "오디세우스",
+    "pl": "Odyseusz",
+    "pt": "Odisseu",
+    "ru": "Одиссей",
+    "th": "โอดิสเซียส",
+    "vi": "Odysseus",
+    "zh": "奥德修斯"
+   }
+  },
+  "medusa": {
+   "enwikiTitle": "Medusa",
+   "id": "Q160730",
+   "lastrevid": 2569184207,
+   "description": "in Greek mythology, one of the three Gorgons, described as a woman with snakes in place of hair, beheaded by Perseus",
+   "labels": {
+    "zh-hans": "美杜莎",
+    "zh-hant": "美杜莎",
+    "zh-cn": "美杜莎",
+    "pl": "Meduza",
+    "es": "Medusa",
+    "ar": "ميدوسا",
+    "pt": "Medusa",
+    "ru": "Медуза",
+    "ko": "메두사",
+    "fr": "Méduse",
+    "it": "Medusa",
+    "de": "Medusa",
+    "id": "Medusa",
+    "ja": "メドゥーサ",
+    "vi": "Medusa",
+    "en": "Medusa",
+    "th": "เมดูซา",
+    "zh": "美杜莎",
+    "hi": "मेडुसा"
+   },
+   "aliases": {
+    "zh": [
+     "梅杜莎",
+     "梅杜沙",
+     "美杜薩",
+     "墨杜萨"
+    ],
+    "ar": [
+     "مادوسا"
+    ],
+    "pt": [
+     "Morte de medusa"
+    ],
+    "ru": [
+     "Медуза Горгона",
+     "Медуса"
+    ],
+    "fr": [
+     "Gorgone Méduse",
+     "Meduse"
+    ],
+    "ja": [
+     "メデューサ",
+     "メドゥサ"
+    ],
+    "it": [
+     "Gorgone"
+    ]
+   },
+   "sitelinks": {
+    "ar": "ميدوسا",
+    "de": "Medusa",
+    "en": "Medusa",
+    "es": "Medusa (mitología)",
+    "fr": "Méduse (mythologie)",
+    "hi": "मेडुसा",
+    "id": "Medusa",
+    "it": "Medusa (mitologia)",
+    "ja": "メドゥーサ",
+    "ko": "메두사",
+    "pl": "Meduza (gorgona)",
+    "pt": "Medusa",
+    "ru": "Горгона Медуза",
+    "th": "เมดูซา",
+    "vi": "Medusa",
+    "zh": "美杜莎"
+   }
+  },
+  "achilles": {
+   "enwikiTitle": "Achilles",
+   "id": "Q41746",
+   "lastrevid": 2566537622,
+   "description": "Greek mythological hero of the Trojan War",
+   "labels": {
+    "zh": "阿喀琉斯",
+    "pl": "Achilles",
+    "es": "Aquiles",
+    "ar": "أخيل",
+    "pt": "Aquiles",
+    "ru": "Ахилл",
+    "fr": "Achille",
+    "ko": "아킬레우스",
+    "it": "Achille",
+    "de": "Achilleus",
+    "id": "Akhilles",
+    "ja": "アキレウス",
+    "vi": "Achilles",
+    "en": "Achilles",
+    "hi": "अखिल्लेउस",
+    "th": "อคิลลีส",
+    "zh-hant": "阿喀琉斯",
+    "zh-cn": "阿喀琉斯",
+    "zh-hans": "阿喀琉斯"
+   },
+   "aliases": {
+    "zh": [
+     "阿客琉斯",
+     "阿克硫斯",
+     "阿基里斯",
+     "阿溪里",
+     "阿奇里斯",
+     "阿基利斯",
+     "阿基勒斯",
+     "阿基琉斯"
+    ],
+    "es": [
+     "Aquileo",
+     "Pelida"
+    ],
+    "ar": [
+     "اخيل",
+     "آخيل"
+    ],
+    "pt": [
+     "Achiles"
+    ],
+    "ru": [
+     "Ахилесс",
+     "Ахилес",
+     "Ахиллес"
+    ],
+    "fr": [
+     "Akhilleus"
+    ],
+    "ko": [
+     "아킬레스"
+    ],
+    "it": [
+     "Pelide"
+    ],
+    "de": [
+     "Archill",
+     "Achill",
+     "Pelide",
+     "Archilles",
+     "Archilleus",
+     "Αχιλλέας"
+    ],
+    "id": [
+     "Akhiles"
+    ],
+    "en": [
+     "Peleiades",
+     "Pelides"
+    ],
+    "ja": [
+     "アキッレウス",
+     "アキレス"
+    ]
+   },
+   "sitelinks": {
+    "ar": "أخيل",
+    "de": "Achilleus",
+    "en": "Achilles",
+    "es": "Aquiles",
+    "fr": "Achille",
+    "hi": "अकिलीज़",
+    "id": "Akhilles",
+    "it": "Achille",
+    "ja": "アキレウス",
+    "ko": "아킬레우스",
+    "pl": "Achilles",
+    "pt": "Aquiles",
+    "ru": "Ахилл",
+    "th": "อคิลลีส",
+    "vi": "Achilleus",
+    "zh": "阿喀琉斯"
+   }
+  },
+  "verona": {
+   "enwikiTitle": "Verona",
+   "id": "Q2028",
+   "lastrevid": 2570005792,
+   "description": "city in Veneto, northern Italy",
+   "labels": {
+    "it": "Verona",
+    "ru": "Верона",
+    "fr": "Vérone",
+    "en": "Verona",
+    "ar": "فيرونا",
+    "de": "Verona",
+    "es": "Verona",
+    "hi": "वेरोना",
+    "id": "Verona",
+    "ja": "ヴェローナ",
+    "ko": "베로나",
+    "pl": "Werona",
+    "pt": "Verona",
+    "th": "เวโรนา",
+    "vi": "Verona",
+    "zh": "维罗纳",
+    "zh-cn": "维罗纳",
+    "zh-hans": "维罗纳",
+    "zh-hant": "維羅納",
+    "mul": "Verona"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "ar": "فيرونا",
+    "de": "Verona",
+    "en": "Verona",
+    "es": "Verona",
+    "fr": "Vérone",
+    "hi": "वेरोना",
+    "id": "Verona",
+    "it": "Verona",
+    "ja": "ヴェローナ",
+    "ko": "베로나",
+    "pl": "Werona",
+    "pt": "Verona",
+    "ru": "Верона",
+    "th": "เวโรนา",
+    "vi": "Verona",
+    "zh": "维罗纳"
+   }
+  },
+  "denmark": {
+   "enwikiTitle": "Denmark",
+   "id": "Q35",
+   "lastrevid": 2568774044,
+   "description": "country in Northern Europe",
+   "labels": {
+    "es": "Dinamarca",
+    "zh": "丹麥",
+    "hi": "डेनमार्क",
+    "ar": "الدنمارك",
+    "pt": "Dinamarca",
+    "ru": "Дания",
+    "th": "ประเทศเดนมาร์ก",
+    "de": "Dänemark",
+    "en": "Denmark",
+    "zh-cn": "丹麦",
+    "fr": "Danemark",
+    "zh-hant": "丹麥",
+    "id": "Denmark",
+    "vi": "Đan Mạch",
+    "zh-hans": "丹麦",
+    "it": "Danimarca",
+    "pl": "Dania",
+    "ja": "デンマーク",
+    "ko": "덴마크"
+   },
+   "aliases": {
+    "en": [
+     "dk",
+     "TAN",
+     "Denmark proper",
+     "metropolitan Denmark",
+     "Dania",
+     "Danmark",
+     "Danemark"
+    ],
+    "zh": [
+     "丹麦"
+    ],
+    "th": [
+     "เดนมาร์ก",
+     "เดนมาร์ค",
+     "Denmark"
+    ],
+    "fr": [
+     "Dan.",
+     "Danemark propre",
+     "Danemark métropolitain"
+    ],
+    "id": [
+     "Denmark metropolitan"
+    ],
+    "hi": [
+     "डीके"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الدنمارك",
+    "de": "Dänemark",
+    "en": "Denmark",
+    "es": "Dinamarca",
+    "fr": "Danemark (pays constitutif)",
+    "hi": "डेनमार्क",
+    "id": "Denmark",
+    "it": "Danimarca",
+    "ja": "デンマーク",
+    "ko": "덴마크",
+    "pl": "Dania",
+    "pt": "Dinamarca",
+    "ru": "Дания",
+    "th": "ประเทศเดนมาร์ก",
+    "vi": "Đan Mạch",
+    "zh": "丹麦"
+   }
+  },
+  "scotland": {
+   "enwikiTitle": "Scotland",
+   "id": "Q22",
+   "lastrevid": 2570388018,
+   "description": "country in north-west Europe, part of the United Kingdom",
+   "labels": {
+    "es": "Escocia",
+    "zh": "蘇格蘭",
+    "hi": "स्कॉट्लैण्ड",
+    "pt": "Escócia",
+    "ru": "Шотландия",
+    "de": "Schottland",
+    "ar": "إسكتلندا",
+    "en": "Scotland",
+    "zh-cn": "苏格兰",
+    "fr": "Écosse",
+    "zh-hant": "蘇格蘭",
+    "id": "Skotlandia",
+    "vi": "Scotland",
+    "zh-hans": "苏格兰",
+    "it": "Scozia",
+    "ko": "스코틀랜드",
+    "pl": "Szkocja",
+    "ja": "スコットランド",
+    "th": "ประเทศสกอตแลนด์"
+   },
+   "aliases": {
+    "ru": [
+     "Альба"
+    ],
+    "ar": [
+     "اسكوتلندا",
+     "سكوتلاند",
+     "أسكتلندا",
+     "اسكتلندا"
+    ],
+    "en": [
+     "Alba",
+     "Scotland, United Kingdom",
+     "Caledonia",
+     "Scot"
+    ],
+    "hi": [
+     "स्कॉटलैंड",
+     "स्कॉटलैण्ड",
+     "स्कॉट्लैण्ड्"
+    ],
+    "th": [
+     "แคว้นสก็อตแลนด์",
+     "สก็อตแลนด์",
+     "สก๊อตแลนด์",
+     "Scotland",
+     "แคว้นสกอตแลนด์",
+     "สก็อต",
+     "ประเทศสก็อตแลนด์",
+     "ประเทศสก๊อตแลนด์"
+    ],
+    "es": [
+     "Caledonia"
+    ],
+    "ja": [
+     "アルバ",
+     "カレドニア",
+     "スコット",
+     "蘇格蘭",
+     "すこっとらんど"
+    ],
+    "pl": [
+     "Alba",
+     "Szkocja, Wielka Brytania"
+    ],
+    "pt": [
+     "Escócia, Reino Unido"
+    ],
+    "zh": [
+     "喀里多尼亞",
+     "加勒多尼亞",
+     "阿尔巴"
+    ],
+    "vi": [
+     "Tô Cách Lan",
+     "Ê-cốt",
+     "Tô-cách-lan",
+     "Xcốt-len",
+     "Scôtlen"
+    ]
+   },
+   "sitelinks": {
+    "ar": "إسكتلندا",
+    "de": "Schottland",
+    "en": "Scotland",
+    "es": "Escocia",
+    "fr": "Écosse",
+    "hi": "स्कॉट्लैण्ड",
+    "id": "Skotlandia",
+    "it": "Scozia",
+    "ja": "スコットランド",
+    "ko": "스코틀랜드",
+    "pl": "Szkocja",
+    "pt": "Escócia",
+    "ru": "Шотландия",
+    "th": "ประเทศสกอตแลนด์",
+    "vi": "Scotland",
+    "zh": "蘇格蘭"
+   }
+  },
+  "illyria": {
+   "enwikiTitle": "Illyria",
+   "id": "Q32047",
+   "lastrevid": 2562490671,
+   "description": "classical region in the western part of the Balkan Peninsula",
+   "labels": {
+    "zh": "伊利里亚",
+    "pl": "Iliria",
+    "fr": "Illyrie",
+    "ko": "일리리아",
+    "es": "Iliria",
+    "it": "Illiria",
+    "de": "Illyrien",
+    "ja": "イリュリア",
+    "en": "Illyria",
+    "pt": "Ilíria",
+    "ru": "Иллирия",
+    "id": "Iliria",
+    "ar": "إيلورية",
+    "th": "อิลิเรีย",
+    "hi": "इल्लुरिया"
+   },
+   "aliases": {
+    "zh": [
+     "伊利里亚行省",
+     "依利里亚"
+    ],
+    "pl": [
+     "Ilyria",
+     "Illiria"
+    ],
+    "fr": [
+     "Illyriens",
+     "Illyres",
+     "Illyre"
+    ],
+    "de": [
+     "König von Illyrien",
+     "Illyrium",
+     "Königreich Illyrien",
+     "Iliria"
+    ],
+    "ja": [
+     "イリリア"
+    ],
+    "pt": [
+     "Reino ilírio",
+     "Iliricum",
+     "Iliria"
+    ],
+    "ru": [
+     "Иллирик"
+    ],
+    "it": [
+     "Illirico"
+    ],
+    "en": [
+     "Illyria and Illyrians"
+    ],
+    "ar": [
+     "إيليريا",
+     "إيلورس"
+    ]
+   },
+   "sitelinks": {
+    "ar": "إيلورية",
+    "de": "Illyrien",
+    "en": "Illyria",
+    "es": "Iliria",
+    "fr": "Illyrie",
+    "id": "Iliria",
+    "it": "Illiria",
+    "ja": "イリュリア",
+    "ko": "일리리아",
+    "pl": "Iliria",
+    "pt": "Ilíria (região)",
+    "ru": "Иллирия",
+    "th": "อิลิเรีย",
+    "zh": "伊利里亚"
+   }
+  },
+  "rome": {
+   "enwikiTitle": "Rome",
+   "id": "Q220",
+   "lastrevid": 2570017050,
+   "description": "capital and largest city of Italy",
+   "labels": {
+    "hi": "रोम",
+    "es": "Roma",
+    "zh": "罗马",
+    "pt": "Roma",
+    "ru": "Рим",
+    "th": "โรม",
+    "de": "Rom",
+    "ar": "روما",
+    "en": "Rome",
+    "zh-cn": "罗马",
+    "fr": "Rome",
+    "zh-hant": "羅馬",
+    "id": "Roma",
+    "vi": "Roma",
+    "zh-hans": "罗马",
+    "it": "Roma",
+    "pl": "Rzym",
+    "ja": "ローマ",
+    "ko": "로마"
+   },
+   "aliases": {
+    "ar": [
+     "رومية",
+     "رومة"
+    ],
+    "fr": [
+     "La ville éternelle",
+     "La ville aux sept collines",
+     "l'Urbs"
+    ],
+    "en": [
+     "The Eternal City",
+     "Rome, Italy",
+     "City of Seven Hills",
+     "Eternal City",
+     "The City of Marble",
+     "City of Marble",
+     "The Capital of the World",
+     "Capital of the World"
+    ],
+    "it": [
+     "Urbe",
+     "Città eterna",
+     "Caput Mundi",
+     "Città di Roma",
+     "RM",
+     "Città dei sette colli"
+    ],
+    "ru": [
+     "Вечный город"
+    ],
+    "es": [
+     "La Ciudad Eterna"
+    ],
+    "de": [
+     "Die Ewige Stadt"
+    ],
+    "vi": [
+     "La Mã",
+     "Thành phố vĩnh hằng",
+     "Kinh đô thế giới",
+     "Thành phố bảy ngọn đồi",
+     "Thành phố đài phun nước"
+    ],
+    "pl": [
+     "Wieczne Miasto"
+    ],
+    "ja": [
+     "永遠の都",
+     "ローマ市"
+    ],
+    "th": [
+     "โรมา"
+    ]
+   },
+   "sitelinks": {
+    "ar": "روما",
+    "de": "Rom",
+    "en": "Rome",
+    "es": "Roma",
+    "fr": "Rome",
+    "hi": "रोम",
+    "id": "Roma",
+    "it": "Roma",
+    "ja": "ローマ",
+    "ko": "로마",
+    "pl": "Rzym",
+    "pt": "Roma",
+    "ru": "Рим",
+    "th": "โรม",
+    "vi": "Roma",
+    "zh": "罗马"
+   }
+  },
+  "lakedistrict": {
+   "enwikiTitle": "Lake District",
+   "id": "Q211778",
+   "lastrevid": 2554083174,
+   "description": "mountainous region in North West England, UK",
+   "labels": {
+    "zh-hans": "湖区",
+    "zh-hant": "湖區",
+    "zh-cn": "湖区",
+    "pl": "Lake District",
+    "fr": "Lake District",
+    "es": "Distrito de los Lagos",
+    "it": "Lake District",
+    "de": "Lake District",
+    "id": "Lake District",
+    "ja": "湖水地方",
+    "en": "Lake District",
+    "pt": "Lake District",
+    "ru": "Лейк-Дистрикт",
+    "zh": "湖区",
+    "vi": "Lake District",
+    "ar": "ليك ديستريكت",
+    "th": "เลกดิสตริกต์",
+    "ko": "호수지방",
+    "hi": "लेक डिस्ट्रिक्ट"
+   },
+   "aliases": {
+    "zh": [
+     "湖区国家公园"
+    ],
+    "pl": [
+     "Kraina Jezior"
+    ],
+    "es": [
+     "Parque nacional del Distrito de los Lagos",
+     "Lake District"
+    ],
+    "it": [
+     "Lake District National Park"
+    ],
+    "de": [
+     "Cumbrian Mountains"
+    ],
+    "ja": [
+     "レイク・ディストリクト",
+     "レーク・ディストリクト",
+     "レイクディストリクト",
+     "レークディストリクト"
+    ],
+    "ru": [
+     "Озерный край"
+    ],
+    "en": [
+     "The Lakes",
+     "Lakeland",
+     "The English Lake District",
+     "English Lake District"
+    ],
+    "ko": [
+     "레이크디스트릭트",
+     "호수구역",
+     "호수 지방",
+     "호수 구역",
+     "레이크 디스트릭트"
+    ]
+   },
+   "sitelinks": {
+    "ar": "ليك ديستريكت",
+    "de": "Lake District",
+    "en": "Lake District",
+    "es": "Parque nacional del Distrito de los Lagos",
+    "fr": "Lake District",
+    "hi": "लेक डिस्ट्रिक्ट",
+    "id": "Lake District",
+    "it": "Lake District",
+    "ja": "湖水地方",
+    "ko": "레이크디스트릭트",
+    "pl": "Lake District",
+    "pt": "Lake District",
+    "ru": "Озёрный край",
+    "th": "เลกดิสตริกต์",
+    "vi": "Lake District",
+    "zh": "湖区"
+   }
+  },
+  "arden": {
+   "enwikiTitle": "Arden, Warwickshire",
+   "id": "Q4787912",
+   "lastrevid": 2434403282,
+   "description": "royal forest in England",
+   "labels": {
+    "en": "Arden",
+    "zh": "雅頓 (瓦立克郡)"
+   },
+   "aliases": {
+    "en": [
+     "Forest of Arden"
+    ]
+   },
+   "sitelinks": {
+    "en": "Arden, Warwickshire"
+   }
+  },
+  "olympus": {
+   "enwikiTitle": "Mount Olympus",
+   "id": "Q80344",
+   "lastrevid": 2566133378,
+   "description": "mountain in Elassona municipality, Greece",
+   "labels": {
+    "zh": "奥林匹斯山",
+    "pl": "Olimp",
+    "es": "Olimpo",
+    "ar": "جبل أوليمبوس",
+    "pt": "Monte Olimpo",
+    "ru": "Олимп",
+    "ko": "올림포스산",
+    "fr": "mont Olympe",
+    "it": "Olimpo",
+    "id": "Gunung Olimpus",
+    "de": "Berg Olymp",
+    "ja": "オリンポス山",
+    "vi": "Núi Ólympos",
+    "en": "Mount Olympus",
+    "th": "เขาโอลิมปัส",
+    "hi": "माउंट ओलिंपस"
+   },
+   "aliases": {
+    "zh": [
+     "奥林帕斯山",
+     "奥林波斯山",
+     "奧林帕斯山",
+     "奥林匹斯"
+    ],
+    "pl": [
+     "Park Narodowy Olympus",
+     "Park Narodowy Olimpu",
+     "Góra Olimp",
+     "Olimpos"
+    ],
+    "es": [
+     "Monte Olimpo",
+     "Parque nacional del Olimpo"
+    ],
+    "ar": [
+     "جبل اوليمبوس",
+     "أوليمبس",
+     "جبل أوليمبيا",
+     "جبل الأوليمب",
+     "جبل أولمبوس"
+    ],
+    "pt": [
+     "Cume Mitikas",
+     "Olimpo",
+     "Olímpo"
+    ],
+    "ko": [
+     "올림포스",
+     "올림푸스 산",
+     "올륌포스",
+     "올륌포스 산"
+    ],
+    "fr": [
+     "L'Olympe",
+     "Olympe",
+     "Mont Olympe"
+    ],
+    "it": [
+     "Monte Olimpo"
+    ],
+    "ja": [
+     "オリュンポス山",
+     "オリュンポス",
+     "オリンポス山 (ギリシャ)"
+    ],
+    "vi": [
+     "Núi Olympus",
+     "Đỉnh Olympus",
+     "Đỉnh Olympia"
+    ],
+    "en": [
+     "Oros Olympos",
+     "Olympus"
+    ],
+    "th": [
+     "ภูเขาโอลิมปัส",
+     "โอลิมปัส",
+     "ยอดเขาโอลิมปัส"
+    ],
+    "de": [
+     "Olymp",
+     "Olímbos",
+     "Olýmpos",
+     "Olýmbos"
+    ]
+   },
+   "sitelinks": {
+    "ar": "جبل أوليمبوس",
+    "de": "Olymp",
+    "en": "Mount Olympus",
+    "es": "Olimpo",
+    "fr": "Mont Olympe",
+    "hi": "माउंट ओलिंपस",
+    "id": "Gunung Olimpus",
+    "it": "Olimpo",
+    "ja": "オリンポス山",
+    "ko": "올림포스산",
+    "pl": "Olimp",
+    "pt": "Monte Olimpo",
+    "ru": "Олимп",
+    "th": "เขาโอลิมปัส",
+    "vi": "Núi Ólympos",
+    "zh": "奥林匹斯山"
+   }
+  },
+  "underworld": {
+   "enwikiTitle": "Greek underworld",
+   "id": "Q1521549",
+   "lastrevid": 2540210793,
+   "description": "location in Greek mythology",
+   "labels": {
+    "es": "inframundo griego",
+    "pt": "Mundo inferior",
+    "fr": "Enfers grecs",
+    "it": "Ade",
+    "id": "Dunia bawah",
+    "de": "Unterwelt der griechischen Mythologie",
+    "en": "Greek underworld",
+    "zh": "冥界",
+    "ar": "عالم سفلي إغريقي",
+    "ru": "подземное царство в древнегреческой мифологии",
+    "ja": "冥界"
+   },
+   "aliases": {
+    "pt": [
+     "Infernos"
+    ],
+    "it": [
+     "Regno dei morti"
+    ],
+    "id": [
+     "Duna bawah",
+     "Underworld"
+    ],
+    "de": [
+     "Hades",
+     "Unterwelt"
+    ],
+    "en": [
+     "Underworld",
+     "Hades"
+    ],
+    "ru": [
+     "Царство Аида",
+     "Царство теней"
+    ],
+    "es": [
+     "Inframundo",
+     "El Hades"
+    ]
+   },
+   "sitelinks": {
+    "ar": "العالم السفلي اليوناني",
+    "de": "Unterwelt der griechischen Mythologie",
+    "en": "Greek underworld",
+    "es": "Inframundo griego",
+    "fr": "Enfers grecs",
+    "id": "Dunia bawah Yunani",
+    "it": "Ade (regno)",
+    "pt": "Hades (reino)",
+    "ru": "Загробный мир в древнегреческой мифологии",
+    "zh": "冥界 (希臘神話)"
+   }
+  },
+  "w_rj": {
+   "enwikiTitle": "Romeo and Juliet",
+   "id": "Q83186",
+   "lastrevid": 2552975141,
+   "description": "tragedy by William Shakespeare",
+   "labels": {
+    "zh": "羅密歐與朱麗葉",
+    "pl": "Romeo i Julia",
+    "ar": "روميو وجولييت",
+    "pt": "Romeu e Julieta",
+    "ru": "Ромео и Джульетта",
+    "fr": "Roméo et Juliette",
+    "ko": "로미오와 줄리엣",
+    "it": "Romeo e Giulietta",
+    "id": "Romeo dan Juliet",
+    "de": "Romeo und Julia",
+    "ja": "ロミオとジュリエット",
+    "vi": "Romeo và Juliet",
+    "th": "โรเมโอและจูเลียต",
+    "hi": "रोमियो और जूलियट",
+    "zh-hant": "羅密歐與茱麗葉",
+    "es": "Romeo y Julieta",
+    "en": "Romeo and Juliet",
+    "mul": "Romeo and Juliet"
+   },
+   "aliases": {
+    "es": [
+     "Los amantes de Verona",
+     "Romeo y Julieta de William Shakespeare",
+     "La tragedia de Romeo y Julieta",
+     "El melodrama de Romeo y Julieta",
+     "La excelente y lamentable tragedia de Romeo y Julieta",
+     "La Tragedia de Romeo y Julieta"
+    ],
+    "ar": [
+     "روميو وجوليت",
+     "روميو و جولييت",
+     "روميو وجوليوت"
+    ],
+    "pt": [
+     "Julieta Capuleto",
+     "Romeo and Juliet"
+    ],
+    "fr": [
+     "Roméo & Juliette"
+    ],
+    "it": [
+     "Romeo and Juliet"
+    ],
+    "de": [
+     "Romeo and Juliet"
+    ],
+    "ja": [
+     "ロメオとジュリエッタ",
+     "ロメオとジュリエット",
+     "ロミジュリ"
+    ],
+    "vi": [
+     "Romeo and Juliet",
+     "Rômêô và Juliet"
+    ],
+    "th": [
+     "โรเมโอกับจูเลียต",
+     "โรมีโอและจูเลียต",
+     "โรเมโอจูเลียต",
+     "โรมิโอแอนจูเลียต",
+     "โรมิโอและจูเลียต",
+     "โรมิโอกับจูเลียต"
+    ],
+    "ko": [
+     "로미오 줄리엣",
+     "로미오&줄리엣"
+    ],
+    "en": [
+     "Una excelente tragedia engreída de Romeo y Iuliet",
+     "La excelentísima y lamentable tragedia de Romeo y Julieta",
+     "La tragedia de Romeo y Julieta"
+    ],
+    "zh": [
+     "鑄情",
+     "柔蜜歐與幽麗葉",
+     "柔密欧与茱丽叶"
+    ]
+   },
+   "sitelinks": {
+    "ar": "روميو وجولييت",
+    "de": "Romeo und Julia",
+    "en": "Romeo and Juliet",
+    "es": "Romeo y Julieta",
+    "fr": "Roméo et Juliette",
+    "hi": "रोमियो और जूलियट",
+    "id": "Romeo dan Juliet",
+    "it": "Romeo e Giulietta",
+    "ja": "ロミオとジュリエット",
+    "ko": "로미오와 줄리엣",
+    "pl": "Romeo i Julia",
+    "pt": "Romeu e Julieta",
+    "ru": "Ромео и Джульетта",
+    "th": "โรเมโอและจูเลียต",
+    "vi": "Romeo và Juliet",
+    "zh": "罗密欧与朱丽叶"
+   }
+  },
+  "w_hamlet": {
+   "enwikiTitle": "Hamlet",
+   "id": "Q41567",
+   "lastrevid": 2567729581,
+   "description": "tragedy by William Shakespeare",
+   "labels": {
+    "zh": "哈姆雷特",
+    "pl": "Hamlet",
+    "es": "Hamlet",
+    "ar": "هاملت",
+    "pt": "Hamlet",
+    "ru": "Гамлет",
+    "ko": "햄릿",
+    "fr": "Hamlet",
+    "it": "Amleto",
+    "de": "Hamlet",
+    "id": "Hamlet",
+    "ja": "ハムレット",
+    "vi": "Hamlet",
+    "en": "Hamlet",
+    "th": "แฮมเลต",
+    "hi": "हैमलेट",
+    "zh-cn": "哈姆雷特"
+   },
+   "aliases": {
+    "zh": [
+     "哈姆莱特",
+     "王子复仇记"
+    ],
+    "es": [
+     "La Tragedia de Hamlet, Príncipe de Dinamarca",
+     "Hamlet, Príncipe de Dinamarca"
+    ],
+    "ar": [
+     "هامليت",
+     "هملت"
+    ],
+    "pt": [
+     "A Tragédia de Hamlet, príncipe da Dinamarca"
+    ],
+    "ru": [
+     "Гамлет, принц датский",
+     "Трагическая история о Гамлете, принце датском"
+    ],
+    "fr": [
+     "Hamlet, prince de Danemark",
+     "La Tragique Histoire d’Hamlet, Prince de Danemark"
+    ],
+    "de": [
+     "Die Tragödie von Hamlet, Prinz von Dänemark"
+    ],
+    "id": [
+     "Hamlet, Pangeran Denmark"
+    ],
+    "ja": [
+     "デンマークの王子ハムレットの悲劇"
+    ],
+    "th": [
+     "แฮมเล็ต"
+    ],
+    "en": [
+     "The Tragedy of Hamlet, Prince of Denmark",
+     "Hamlet, Prince of Denmark",
+     "Tragedy of Hamlet",
+     "The Tragicall Hiſtorie of Hamlet, Prince of Denmarke"
+    ],
+    "ko": [
+     "덴마크 왕자 햄릿의 비극"
+    ],
+    "it": [
+     "La tragedia di Amleto, principe di Danimarca",
+     "Amleto, principe di Danimarca"
+    ]
+   },
+   "sitelinks": {
+    "ar": "هاملت",
+    "de": "Hamlet",
+    "en": "Hamlet",
+    "es": "Hamlet",
+    "fr": "Hamlet",
+    "hi": "हैमलेट",
+    "id": "Hamlet",
+    "it": "Amleto",
+    "ja": "ハムレット",
+    "ko": "햄릿",
+    "pl": "Hamlet",
+    "pt": "Hamlet",
+    "ru": "Гамлет",
+    "th": "แฮมเลต",
+    "vi": "Hamlet",
+    "zh": "哈姆雷特"
+   }
+  },
+  "w_mnd": {
+   "enwikiTitle": "A Midsummer Night's Dream",
+   "id": "Q104871",
+   "lastrevid": 2546594060,
+   "description": "play by William Shakespeare",
+   "labels": {
+    "zh-hans": "仲夏夜之梦",
+    "zh-hant": "仲夏夜之夢",
+    "zh-cn": "仲夏夜之梦",
+    "pl": "Sen nocy letniej",
+    "fr": "Le Songe d'une nuit d'été",
+    "ko": "한여름 밤의 꿈",
+    "es": "El sueño de una noche de verano",
+    "it": "Sogno di una notte di mezza estate",
+    "de": "Ein Sommernachtstraum",
+    "id": "Impian di Tengah Musim",
+    "ja": "夏の夜の夢",
+    "en": "A Midsummer Night's Dream",
+    "ar": "حلم ليلة منتصف الصيف",
+    "pt": "Sonho em uma noite de verão",
+    "ru": "Сон в летнюю ночь",
+    "zh": "仲夏夜之梦",
+    "vi": "A Midsummer Night's Dream",
+    "hi": "ए मिडसमर नाइट्स ड्रीम"
+   },
+   "aliases": {
+    "zh": [
+     "仲夏夜之夢"
+    ],
+    "fr": [
+     "Le Songe d'une nuit d'ete",
+     "Songe d'une nuit d'été"
+    ],
+    "es": [
+     "A midsummer night's dream",
+     "Sueño de una noche de verano",
+     "El sueno de una noche de verano",
+     "Sueno de una noche de verano"
+    ],
+    "de": [
+     "A Midsummer Night’s Dream",
+     "A Midsummer Night's Dream",
+     "Ein Mittsommernachtstraum",
+     "Sommernachtstraum",
+     "Mittsommernachtstraum",
+     "Ein Mitsommernachtstraum"
+    ],
+    "id": [
+     "A Midsummer Night's Dream",
+     "Amnd",
+     "A Midsummer Nights Dream",
+     "A Midsummer's Night Dream"
+    ],
+    "ja": [
+     "真夏の夜の夢"
+    ],
+    "ar": [
+     "حلم ليله صيف"
+    ],
+    "pt": [
+     "Sonhos de uma Noite de Verão",
+     "Sonho de uma noite de verão"
+    ],
+    "en": [
+     "A Midſommer nights Dreame"
+    ],
+    "pl": [
+     "Sen w wigilią Ś. Jana"
+    ],
+    "ru": [
+     "Сон в Иванову ночь",
+     "В ночь на Ивана сновиденье",
+     "Сон в шалую ночь"
+    ]
+   },
+   "sitelinks": {
+    "ar": "حلم ليلة منتصف الصيف",
+    "de": "Ein Sommernachtstraum",
+    "en": "A Midsummer Night's Dream",
+    "es": "El sueño de una noche de verano",
+    "fr": "Le Songe d'une nuit d'été",
+    "hi": "ए मिडसमर नाइट्स ड्रीम",
+    "id": "Impian di Tengah Musim",
+    "it": "Sogno di una notte di mezza estate",
+    "ja": "夏の夜の夢",
+    "ko": "한여름 밤의 꿈",
+    "pl": "Sen nocy letniej",
+    "pt": "Sonho de uma Noite de Verão",
+    "ru": "Сон в летнюю ночь",
+    "zh": "仲夏夜之夢"
+   }
+  },
+  "w_tempest": {
+   "enwikiTitle": "The Tempest",
+   "id": "Q86440",
+   "lastrevid": 2555906158,
+   "description": "play by William Shakespeare",
+   "labels": {
+    "zh-hans": "暴风雨",
+    "zh-hant": "暴風雨",
+    "zh-cn": "暴风雨",
+    "pl": "Burza",
+    "ko": "템페스트",
+    "fr": "La Tempête",
+    "es": "La tempestad",
+    "it": "La tempesta",
+    "de": "Der Sturm",
+    "id": "The Tempest",
+    "ja": "テンペスト",
+    "vi": "Giông tố",
+    "en": "The Tempest",
+    "ar": "العاصفة",
+    "pt": "A Tempestade",
+    "ru": "Буря",
+    "zh": "暴風雨",
+    "hi": "the tempest",
+    "th": "พายุพิโรธ"
+   },
+   "aliases": {
+    "zh": [
+     "The Tempest"
+    ],
+    "fr": [
+     "La Tempete"
+    ],
+    "de": [
+     "The Tempest"
+    ],
+    "id": [
+     "Prahara"
+    ],
+    "ar": [
+     "العاصفه"
+    ],
+    "pt": [
+     "The Tempest"
+    ],
+    "en": [
+     "Tempest"
+    ]
+   },
+   "sitelinks": {
+    "ar": "العاصفة (مسرحية)",
+    "de": "Der Sturm (Shakespeare)",
+    "en": "The Tempest",
+    "es": "La tempestad (teatro)",
+    "fr": "La Tempête (Shakespeare)",
+    "hi": "द टेम्पेस्ट",
+    "id": "The Tempest",
+    "it": "La tempesta",
+    "ja": "テンペスト (シェイクスピア)",
+    "ko": "템페스트",
+    "pl": "Burza (sztuka)",
+    "pt": "A Tempestade",
+    "ru": "Буря (пьеса)",
+    "th": "พายุพิโรธ",
+    "vi": "Giông tố (kịch)",
+    "zh": "暴風雨 (莎士比亞)"
+   }
+  },
+  "w_macbeth": {
+   "enwikiTitle": "Macbeth",
+   "id": "Q130283",
+   "lastrevid": 2555895963,
+   "description": "tragic play by William Shakespeare from the early 1600s",
+   "labels": {
+    "zh-hans": "麦克白",
+    "zh-hant": "馬克白",
+    "zh-cn": "麦克白",
+    "pl": "Makbet",
+    "es": "Macbeth",
+    "ar": "مكبث",
+    "pt": "Macbeth",
+    "ru": "Макбет",
+    "fr": "Macbeth",
+    "ko": "맥베스",
+    "it": "Macbeth",
+    "id": "Macbeth",
+    "de": "Macbeth",
+    "ja": "マクベス",
+    "vi": "Macbeth",
+    "en": "Macbeth",
+    "hi": "मैकबेथ",
+    "th": "แม็คเบ็ธ",
+    "zh": "馬克白"
+   },
+   "aliases": {
+    "zh": [
+     "麦克白",
+     "麦克佩斯"
+    ],
+    "es": [
+     "Batalla de Dunsinane"
+    ],
+    "ar": [
+     "ماكبث"
+    ],
+    "ko": [
+     "맥베드"
+    ],
+    "it": [
+     "Dramma scozzese"
+    ],
+    "de": [
+     "The Scottish Play",
+     "The Tragedy of Macbeth"
+    ],
+    "th": [
+     "แม็คเบธ",
+     "Macbeth",
+     "แมคเบธ"
+    ],
+    "en": [
+     "The Scottish Play",
+     "The Bard's Play",
+     "The Tragedy of Macbeth",
+     "Tragedy of Macbeth"
+    ],
+    "pl": [
+     "Macbeth"
+    ]
+   },
+   "sitelinks": {
+    "ar": "مكبث (مسرحية)",
+    "de": "Macbeth (Shakespeare)",
+    "en": "Macbeth",
+    "es": "Macbeth",
+    "fr": "Macbeth (Shakespeare)",
+    "hi": "मैकबेथ",
+    "id": "Macbeth",
+    "it": "Macbeth",
+    "ja": "マクベス (シェイクスピア)",
+    "ko": "맥베스 (희곡)",
+    "pl": "Makbet",
+    "pt": "Macbeth",
+    "ru": "Макбет (пьеса)",
+    "th": "แม็คเบ็ธ",
+    "vi": "Macbeth",
+    "zh": "馬克白"
+   }
+  },
+  "w_tn": {
+   "enwikiTitle": "Twelfth Night",
+   "id": "Q221211",
+   "lastrevid": 2567066188,
+   "description": "comedy by William Shakespeare",
+   "labels": {
+    "zh-hans": "第十二夜",
+    "zh-hant": "第十二夜",
+    "zh-cn": "第十二夜",
+    "pl": "Wieczór Trzech Króli",
+    "ko": "십이야",
+    "fr": "La Nuit des rois",
+    "es": "Noche de reyes",
+    "it": "La dodicesima notte",
+    "de": "Was ihr wollt",
+    "id": "Twelfth Night, or What You Will",
+    "ja": "十二夜",
+    "en": "Twelfth Night",
+    "ar": "الليلة الثانية عشرة أو كما تشاء",
+    "pt": "Twelfth Night",
+    "ru": "Двенадцатая ночь",
+    "th": "ราตรีที่สิบสอง",
+    "zh": "第十二夜",
+    "vi": "Đêm thứ mười hai"
+   },
+   "aliases": {
+    "fr": [
+     "Twelfth Night",
+     "Le soir des rois",
+     "La Nuit des rois, ou Ce que vous voudrez",
+     "Ce que vous voudrez",
+     "Le Soir des Rois ou Ce que vous voudrez"
+    ],
+    "es": [
+     "La duodecima noche",
+     "Twelfth Night or What You Will",
+     "La noche de reyes",
+     "La duodécima noche",
+     "Twelfth Night, or What You Will"
+    ],
+    "it": [
+     "Dodicesima Notte",
+     "La dodicesima notte, o quel che volete"
+    ],
+    "de": [
+     "Twelfth Night, or What You Will"
+    ],
+    "id": [
+     "Twelfth Night",
+     "Malam Keduabelas"
+    ],
+    "ar": [
+     "الليلة الثانية عشر"
+    ],
+    "pt": [
+     "A décima segunda noite",
+     "Twelfth Night or What You Will",
+     "Twelfth night, or what you will",
+     "Noite de Reis"
+    ],
+    "ru": [
+     "Двенадцатая ночь, или Как вам угодно"
+    ],
+    "th": [
+     "Twelfth Night",
+     "ราตรีที่สิบสอง หรืออะไรก็ได้"
+    ],
+    "en": [
+     "Twelfth Night, or What You Will",
+     "12th Night"
+    ],
+    "pl": [
+     "Północna godzina",
+     "Noc Trzech Króli"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الليلة الثانية عشرة أو كما تشاء",
+    "de": "Was ihr wollt",
+    "en": "Twelfth Night",
+    "es": "Noche de reyes",
+    "fr": "La Nuit des rois",
+    "id": "Twelfth Night, or What You Will",
+    "it": "La dodicesima notte",
+    "ja": "十二夜",
+    "ko": "십이야",
+    "pl": "Wieczór Trzech Króli",
+    "pt": "Noite de Reis",
+    "ru": "Двенадцатая ночь",
+    "th": "ราตรีที่สิบสอง",
+    "vi": "Đêm thứ mười hai",
+    "zh": "第十二夜"
+   }
+  },
+  "w_jc": {
+   "enwikiTitle": "Julius Caesar (play)",
+   "id": "Q215750",
+   "lastrevid": 2545481281,
+   "description": "play by William Shakespeare",
+   "labels": {
+    "zh-hans": "凯撒大帝",
+    "zh-hant": "凱撒大帝",
+    "zh-cn": "凯撒大帝",
+    "pl": "Juliusz Cezar",
+    "ko": "줄리어스 시저",
+    "fr": "Jules César",
+    "es": "Julio César",
+    "it": "Giulio Cesare",
+    "id": "Julius Caesar",
+    "de": "Julius Cäsar",
+    "ja": "ジュリアス・シーザー",
+    "en": "Julius Caesar",
+    "ar": "يوليوس قيصر",
+    "pt": "Julius Caesar",
+    "ru": "Юлий Цезарь",
+    "zh": "凱撒大帝",
+    "hi": "जुलियस सीजर",
+    "mul": "Julius Caesar",
+    "vi": "Julius Caesar"
+   },
+   "aliases": {
+    "zh": [
+     "儒略·愷撒",
+     "朱利叶斯·凯撒"
+    ],
+    "ko": [
+     "율리우스 카이사르"
+    ],
+    "es": [
+     "Julio Cesar",
+     "Popilius Lena",
+     "Julio César (Shakespeare)"
+    ],
+    "de": [
+     "Julius Caesar"
+    ],
+    "en": [
+     "The Tragedy of Julius Caesar",
+     "Tragedy of Julius Caesar"
+    ]
+   },
+   "sitelinks": {
+    "ar": "يوليوس قيصر (مسرحية)",
+    "de": "Julius Caesar (Drama)",
+    "en": "Julius Caesar (play)",
+    "es": "Julio César (Shakespeare)",
+    "fr": "Jules César (Shakespeare)",
+    "hi": "जुलियस सीजर (नाटक)",
+    "id": "Julius Caesar (drama)",
+    "it": "Giulio Cesare (Shakespeare)",
+    "ja": "ジュリアス・シーザー (シェイクスピア)",
+    "ko": "줄리어스 시저 (희곡)",
+    "pl": "Juliusz Cezar (sztuka)",
+    "pt": "Júlio César (Shakespeare)",
+    "ru": "Юлий Цезарь (пьеса)",
+    "zh": "凱撒大帝 (戲劇)"
+   }
+  },
+  "w_mov": {
+   "enwikiTitle": "The Merchant of Venice",
+   "id": "Q206400",
+   "lastrevid": 2552171526,
+   "description": "play by Shakespeare set in the Republic of Venice",
+   "labels": {
+    "zh-hans": "威尼斯商人",
+    "zh-hant": "威尼斯商人",
+    "zh-cn": "威尼斯商人",
+    "pl": "Kupiec wenecki",
+    "ko": "베니스의 상인",
+    "fr": "Le Marchand de Venise",
+    "es": "El mercader de Venecia",
+    "it": "Il mercante di Venezia",
+    "de": "Der Kaufmann von Venedig",
+    "ja": "ヴェニスの商人",
+    "en": "The Merchant of Venice",
+    "ar": "تاجر البندقية",
+    "pt": "The Merchant of Venice",
+    "ru": "Венецианский купец",
+    "th": "เวนิสวาณิช",
+    "zh": "威尼斯商人",
+    "vi": "Người lái buôn thành Venice",
+    "id": "The Merchant of Venice"
+   },
+   "aliases": {
+    "fr": [
+     "The Merchant of Venice",
+     "Marchand de Venise"
+    ],
+    "es": [
+     "Mercader de Venecia"
+    ],
+    "it": [
+     "Mercante di Venezia",
+     "II Mercante di Venezia"
+    ],
+    "de": [
+     "The merchant of Venice",
+     "Shylock",
+     "Kaufmann von Venedig"
+    ],
+    "ja": [
+     "ベニスの商人"
+    ],
+    "ar": [
+     "تاجر البندقيه"
+    ],
+    "pt": [
+     "Merchant of Venice",
+     "O Mercador de Veneza"
+    ],
+    "en": [
+     "Merchant of Venice",
+     "The moſt excellent Hiſtorie of the Merchant of Venice",
+     "The comicall Hiſtorie of the Merchant of Venice"
+    ],
+    "pl": [
+     "Lichwiarz"
+    ],
+    "ko": [
+     "베네치아의 상인"
+    ]
+   },
+   "sitelinks": {
+    "ar": "تاجر البندقية (مسرحية)",
+    "de": "Der Kaufmann von Venedig",
+    "en": "The Merchant of Venice",
+    "es": "El mercader de Venecia",
+    "fr": "Le Marchand de Venise",
+    "id": "The Merchant of Venice",
+    "it": "Il mercante di Venezia",
+    "ja": "ヴェニスの商人",
+    "ko": "베니스의 상인",
+    "pl": "Kupiec wenecki",
+    "pt": "O Mercador de Veneza",
+    "ru": "Венецианский купец",
+    "th": "เวนิสวาณิช",
+    "vi": "Người lái buôn thành Venice",
+    "zh": "威尼斯商人"
+   }
+  },
+  "w_h4p2": {
+   "enwikiTitle": "Henry IV, Part 2",
+   "id": "Q1232349",
+   "lastrevid": 2512957288,
+   "description": "play by Shakespeare",
+   "labels": {
+    "pt": "Henry IV, Part 2",
+    "pl": "Henryk IV, część 2",
+    "ru": "Генрих IV, часть 2",
+    "fr": "Henri IV, 2e partie",
+    "en": "Henry IV, Part 2",
+    "it": "Enrico IV, parte II",
+    "de": "Heinrich IV. Teil 2",
+    "ja": "ヘンリー四世 第2部",
+    "ar": "هنري الرابع، الجزء 2",
+    "zh": "亨利四世：第二部分",
+    "es": "Enrique IV, parte 2"
+   },
+   "aliases": {
+    "pt": [
+     "Henrique IV, Parte 2"
+    ],
+    "fr": [
+     "Henri IV, deuxième partie"
+    ],
+    "it": [
+     "Enrico IV, parte seconda",
+     "Enrico IV, parte 2"
+    ],
+    "de": [
+     "König Heinrich IV. Teil 2"
+    ],
+    "en": [
+     "The Second Part of King Henry the Fourth",
+     "Second Part of King Henry the Fourth",
+     "Henry IV Part 2",
+     "2 Henry IV",
+     "The Second Part of Henry the Fourth",
+     "Second Part of Henry the Fourth"
+    ],
+    "zh": [
+     "亨利四世·下",
+     "亨利五世（下）",
+     "亨利四世第2部"
+    ],
+    "pl": [
+     "Król Henryk IV. Część II"
+    ]
+   },
+   "sitelinks": {
+    "ar": "هنري الرابع (الجزء 2)",
+    "de": "Heinrich IV., Teil 2",
+    "en": "Henry IV, Part 2",
+    "es": "Enrique IV, parte 2",
+    "fr": "Henri IV (deuxième partie)",
+    "it": "Enrico IV, parte II",
+    "ja": "ヘンリー四世 第2部",
+    "pl": "Henryk IV, część 2",
+    "pt": "Henrique IV, Parte 2",
+    "ru": "Генрих IV, часть 2",
+    "zh": "亨利四世 (第二部)"
+   }
+  },
+  "w_lear": {
+   "enwikiTitle": "King Lear",
+   "id": "Q181598",
+   "lastrevid": 2565806704,
+   "description": "tragedy by William Shakespeare",
+   "labels": {
+    "zh-hans": "李尔王",
+    "zh-hant": "李爾王",
+    "zh-cn": "李尔王",
+    "pl": "Król Lear",
+    "ko": "리어왕",
+    "fr": "Le Roi Lear",
+    "es": "El rey Lear",
+    "it": "Re Lear",
+    "id": "Raja Lear",
+    "de": "König Lear",
+    "ja": "リア王",
+    "en": "King Lear",
+    "ar": "الملك لير",
+    "pt": "Rei Lear",
+    "ru": "Король Лир",
+    "zh": "李爾王",
+    "vi": "Vua Lia",
+    "hi": "किंग लीयर"
+   },
+   "aliases": {
+    "pl": [
+     "Król Lir",
+     "Król Lyr"
+    ],
+    "ko": [
+     "리어 왕"
+    ],
+    "es": [
+     "King Lear",
+     "Rey Lear"
+    ],
+    "id": [
+     "King Lear"
+    ],
+    "de": [
+     "King Lear"
+    ],
+    "pt": [
+     "O Rei Lear",
+     "King Lear"
+    ],
+    "en": [
+     "The Tragedie of King Lear",
+     "The Tragedy of King Lear",
+     "Tragedy of King Lear",
+     "The Life and Death of King Lear",
+     "Life and death of king lear"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الملك لير",
+    "de": "König Lear",
+    "en": "King Lear",
+    "es": "El rey Lear",
+    "fr": "Le Roi Lear",
+    "hi": "किंग लीयर (शेक्सपीयर कृत)",
+    "id": "Raja Lear",
+    "it": "Re Lear",
+    "ja": "リア王",
+    "ko": "리어왕",
+    "pl": "Król Lear",
+    "pt": "Rei Lear",
+    "ru": "Король Лир",
+    "vi": "Vua Lia",
+    "zh": "李爾王"
+   }
+  },
+  "w_othello": {
+   "enwikiTitle": "Othello",
+   "id": "Q26833",
+   "lastrevid": 2555914676,
+   "description": "theatrical play by William Shakespeare",
+   "labels": {
+    "zh": "奧賽羅",
+    "pl": "Otello",
+    "fr": "Othello",
+    "ko": "오셀로",
+    "es": "Otelo",
+    "it": "Otello",
+    "de": "Othello",
+    "id": "Othello",
+    "ja": "オセロ",
+    "vi": "Othello",
+    "en": "Othello",
+    "ar": "عطيل",
+    "pt": "Otelo, o Mouro de Veneza",
+    "ru": "Отелло",
+    "th": "โอเทลโล",
+    "zh-hant": "奧賽羅",
+    "zh-hans": "奥赛罗",
+    "zh-cn": "奥赛罗"
+   },
+   "aliases": {
+    "zh": [
+     "奧瑟羅",
+     "奧塞羅",
+     "奥塞罗"
+    ],
+    "fr": [
+     "Othello, le maure de Venise",
+     "Othello, The Moor of Venice"
+    ],
+    "es": [
+     "Otelo, el moro de Venecia",
+     "Casio",
+     "Otelo el moro de Venecia"
+    ],
+    "de": [
+     "Mohr von Venedig",
+     "Die Tragödie von Othello, Moor von Venedig",
+     "Die Tragödie von Othello, Mohr von Venedig",
+     "Othello, der Mohr von Venedig"
+    ],
+    "id": [
+     "Othelo"
+    ],
+    "ja": [
+     "オセロウ",
+     "オセロー"
+    ],
+    "pt": [
+     "Othello, the Moor of Venice"
+    ],
+    "ru": [
+     "Отелло, венецианский мавр"
+    ],
+    "th": [
+     "โอเทลโล่(วิลเลียม เชกสเปียร์)"
+    ],
+    "en": [
+     "The Tragedie of Othello, the Moore of Venice",
+     "Othello, the Moor of Venice",
+     "The Tragedy of Othello",
+     "Tragedy of Othello"
+    ]
+   },
+   "sitelinks": {
+    "ar": "عطيل (مسرحية)",
+    "de": "Othello",
+    "en": "Othello",
+    "es": "Otelo",
+    "fr": "Othello ou le Maure de Venise",
+    "id": "Othello",
+    "it": "Otello",
+    "ja": "オセロー",
+    "ko": "오셀로",
+    "pl": "Otello",
+    "pt": "Otelo, o Mouro de Veneza",
+    "ru": "Отелло",
+    "th": "โอเทลโล (วรรณกรรม)",
+    "vi": "Othello",
+    "zh": "奧賽羅"
+   }
+  },
+  "w_sonnet18": {
+   "enwikiTitle": "Sonnet 18",
+   "id": "Q2527863",
+   "lastrevid": 2560755527,
+   "description": "eighteenth of 154 by William Shakespeare",
+   "labels": {
+    "pt": "Soneto 18",
+    "pl": "Sonet 18",
+    "fr": "Sonnet 18",
+    "en": "Sonnet 18",
+    "it": "Sonnet 18",
+    "zh": "十四行诗 18",
+    "ru": "Сонет 18",
+    "de": "William Shakspeare's sämmtliche Gedichte/Sonett XVIII",
+    "es": "Soneto 18",
+    "ar": "سونيت 18",
+    "id": "Sonnet 18",
+    "ko": "소네트 18"
+   },
+   "aliases": {
+    "pl": [
+     "Sonet XVIII",
+     "Shall I compare thee to a Summers day?"
+    ],
+    "it": [
+     "Shall I compare thee to a summer's day"
+    ],
+    "en": [
+     "Shall I compare thee to a Summers day?",
+     "Sonnets. 18"
+    ],
+    "zh": [
+     "莎士比亞十四行詩第18首"
+    ]
+   },
+   "sitelinks": {
+    "ar": "سونيت 18",
+    "de": "Sonett 18",
+    "en": "Sonnet 18",
+    "es": "Soneto 18",
+    "fr": "Sonnet 18",
+    "id": "Sonnet 18",
+    "it": "Sonnet 18",
+    "pl": "Sonet 18 (William Szekspir)",
+    "pt": "Soneto 18",
+    "ru": "Сонет 18"
+   }
+  },
+  "w_sonnets": {
+   "enwikiTitle": "Shakespeare's sonnets",
+   "id": "Q662550",
+   "lastrevid": 2549024731,
+   "description": "collection of 154 sonnets by William Shakespeare, which covers themes such as the passage of time, love, beauty and mortality",
+   "labels": {
+    "de": "Shakespeares Sonette",
+    "en": "Shakespeare's sonnets",
+    "es": "Sonetos",
+    "fr": "Sonnets de Shakespeare",
+    "it": "Sonetti",
+    "ja": "ソネット集",
+    "pl": "Sonety Williama Szekspira",
+    "pt": "Sonetos de Shakespeare",
+    "ru": "сонеты Уильяма Шекспира",
+    "vi": "Các bài sonnet của William Shakespeare",
+    "zh": "莎士比亞十四行詩",
+    "ar": "سونيتات شكسبير",
+    "ko": "셰익스피어의 소네트"
+   },
+   "aliases": {
+    "en": [
+     "The Sonnets",
+     "Sonnets"
+    ],
+    "es": [
+     "Sonnets"
+    ],
+    "pl": [
+     "sonety"
+    ]
+   },
+   "sitelinks": {
+    "ar": "سونيتات شكسبير",
+    "de": "Shakespeares Sonette",
+    "en": "Shakespeare's sonnets",
+    "es": "Sonetos (Shakespeare)",
+    "fr": "Sonnets (Shakespeare)",
+    "it": "Sonetti (Shakespeare)",
+    "ja": "ソネット集",
+    "pl": "Sonety Williama Shakespeare’a",
+    "pt": "Sonetos de Shakespeare",
+    "ru": "Сонеты Уильяма Шекспира",
+    "vi": "Các bài sonnet của William Shakespeare",
+    "zh": "莎士比亞十四行詩"
+   }
+  },
+  "w_daffodils": {
+   "enwikiTitle": "I Wandered Lonely as a Cloud",
+   "id": "Q2295398",
+   "lastrevid": 2555908041,
+   "description": "poem by William Wordsworth",
+   "labels": {
+    "en": "I Wandered Lonely as a Cloud",
+    "it": "I Wandered Lonely as a Cloud",
+    "fr": "I Wandered Lonely as a Cloud",
+    "de": "I Wandered Lonely as a Cloud",
+    "pl": "Jak obłok ponad pasmem gór",
+    "ar": "تجولت وحيدا كسحابة"
+   },
+   "aliases": {
+    "en": [
+     "Daffodils"
+    ]
+   },
+   "sitelinks": {
+    "ar": "تجولت وحيدا كسحابة",
+    "de": "I Wandered Lonely as a Cloud",
+    "en": "I Wandered Lonely as a Cloud",
+    "fr": "I Wandered Lonely as a Cloud",
+    "it": "I Wandered Lonely as a Cloud"
+   }
+  },
+  "w_mariner": {
+   "enwikiTitle": "The Rime of the Ancient Mariner",
+   "id": "Q708177",
+   "lastrevid": 2569909441,
+   "description": "1798 poem by Samuel Taylor Coleridge",
+   "labels": {
+    "hi": "द राइम ऑफ़ द एन्शियंट मेरिनर",
+    "pt": "The Rime of the Ancient Mariner",
+    "fr": "La Complainte du vieux marin",
+    "ru": "Сказание о старом мореходе",
+    "en": "The Rime of the Ancient Mariner",
+    "es": "The Rime of the Ancient Mariner",
+    "it": "La ballata del vecchio marinaio",
+    "de": "The Rime of the Ancient Mariner",
+    "id": "The Rime of the Ancient Mariner",
+    "zh-hant": "the rime of the ancient mariner",
+    "ar": "قصيدة البحار العجوز",
+    "ja": "老水夫行",
+    "pl": "Rymy o starym marynarzu",
+    "zh": "老水手之歌 (鐵娘子歌曲)",
+    "ko": "노수부"
+   },
+   "aliases": {
+    "pt": [
+     "A balada do velho marinheiro"
+    ],
+    "fr": [
+     "Le Dit du vieux marin",
+     "The Rime of the Ancient Mariner"
+    ],
+    "ru": [
+     "Rime of the Ancient Mariner",
+     "Поэма о старом моряке",
+     "The Rime of the Ancient Mariner"
+    ],
+    "es": [
+     "La balada del anciano marinero",
+     "La balada del viejo marinero",
+     "Rime of the Ancient Mariner",
+     "Balada del viejo marinero",
+     "Rima del Anciano Marinero"
+    ],
+    "it": [
+     "La leggenda del vecchio marinaio",
+     "Rime of the Ancient Mariner",
+     "The Rime of the Ancient Mariner"
+    ],
+    "en": [
+     "The Rime of the Ancyent Marinere",
+     "The ancient mariner",
+     "Ancient Mariner"
+    ],
+    "de": [
+     "Die Ballade vom alten Seefahrer",
+     "Die Ballade vom alten Fahrensmann",
+     "Der alte Matrose",
+     "Der alte Seemann",
+     "Der alte Seefahrer"
+    ],
+    "ko": [
+     "노수부의 노래"
+    ],
+    "zh": [
+     "古舟子詠"
+    ]
+   },
+   "sitelinks": {
+    "ar": "قصيدة البحار العجوز",
+    "de": "The Rime of the Ancient Mariner",
+    "en": "The Rime of the Ancient Mariner",
+    "es": "The Rime of the Ancient Mariner",
+    "fr": "La Complainte du vieux marin",
+    "hi": "द राइम ऑफ़ द एन्शियंट मेरिनर",
+    "id": "The Rime of the Ancient Mariner",
+    "it": "La ballata del vecchio marinaio",
+    "ko": "노수부",
+    "pl": "Rymy o starym marynarzu (poemat)",
+    "pt": "The Rime of the Ancient Mariner",
+    "ru": "Сказание о старом мореходе",
+    "zh": "古舟子咏"
+   }
+  },
+  "w_endymion": {
+   "enwikiTitle": "Endymion (poem)",
+   "id": "Q2083848",
+   "lastrevid": 2481346148,
+   "description": "poem written by John Keats",
+   "labels": {
+    "en": "Endymion",
+    "de": "Endymion",
+    "ru": "Эндимион",
+    "fr": "Endymion",
+    "ja": "エンディミオン (詩)",
+    "pl": "Endymion",
+    "zh": "恩底彌翁",
+    "it": "Endimione"
+   },
+   "aliases": {
+    "zh": [
+     "恩底弥翁"
+    ],
+    "it": [
+     "Endymion"
+    ]
+   },
+   "sitelinks": {
+    "de": "Endymion (Keats)",
+    "en": "Endymion (poem)",
+    "fr": "Endymion (poème)",
+    "it": "Endimione (Keats)",
+    "pl": "Endymion (poemat)"
+   }
+  },
+  "w_shewalks": {
+   "enwikiTitle": "She Walks in Beauty",
+   "id": "Q7492082",
+   "lastrevid": 2468589143,
+   "description": "poem written by Lord Byron in 1814",
+   "labels": {
+    "en": "She Walks in Beauty",
+    "zh-hant": "她舉步娉婷",
+    "zh-cn": "她举步娉婷",
+    "zh": "雲鬢花顏金步搖",
+    "es": "She Walks in Beauty",
+    "pl": "Idzie w Piękności",
+    "ru": "Она шагает в красоте",
+    "it": "Ella passa radiosa"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "en": "She Walks in Beauty",
+    "it": "Ella passa radiosa",
+    "pl": "Idzie w Piękności",
+    "zh": "雲鬢花顏金步搖"
+   }
+  },
+  "w_frankenstein": {
+   "enwikiTitle": "Frankenstein",
+   "id": "Q150827",
+   "lastrevid": 2568684663,
+   "description": "1818 novel by Mary Shelley",
+   "labels": {
+    "zh-hans": "弗兰肯斯坦",
+    "zh-hant": "科學怪人",
+    "zh-cn": "弗兰肯斯坦",
+    "pl": "Frankenstein",
+    "fr": "Frankenstein ou le Prométhée moderne",
+    "ko": "프랑켄슈타인",
+    "es": "Frankenstein o El moderno Prometeo",
+    "it": "Frankenstein",
+    "de": "Frankenstein",
+    "id": "Frankenstein",
+    "ja": "フランケンシュタイン",
+    "vi": "Frankenstein",
+    "en": "Frankenstein; or, The Modern Prometheus",
+    "ar": "فرانكنشتاين",
+    "hi": "फ्रैंकनस्टाइन",
+    "pt": "Frankenstein",
+    "ru": "Франкенштейн, или Современный Прометей",
+    "th": "แฟรงเกนสไตน์",
+    "zh": "弗兰肯斯坦",
+    "mul": "Frankenstein; or, The Modern Prometheus"
+   },
+   "aliases": {
+    "zh": [
+     "科學怪人"
+    ],
+    "fr": [
+     "Frankenstein ou le Prométhé moderne",
+     "Frankenstein ou le Promethee moderne",
+     "Frankenstein ou Le Prométhée moderne"
+    ],
+    "it": [
+     "Frankenstein o il Prometeo moderno",
+     "Frankenstein, o il Prometeo moderno",
+     "Dr. Frankenstein",
+     "Frankenstein, o il moderno Prometeo"
+    ],
+    "de": [
+     "Frankenstein oder Der moderne Prometheus",
+     "Frankenstein or The Modern Prometheus"
+    ],
+    "ja": [
+     "フランケンシュタインの怪物"
+    ],
+    "pt": [
+     "Monstro de Frankenstein",
+     "Frankenstein ou o Moderno Prometeu"
+    ],
+    "ru": [
+     "Современный Прометей",
+     "Франкенштейн или Современный Прометей"
+    ],
+    "en": [
+     "The Modern Prometheus",
+     "1818 Frankenstein"
+    ],
+    "ar": [
+     "فرانكشتاين (رواية)",
+     "فرانكشتاين",
+     "أسطورة فرانكنشتاين",
+     "أسطورة فرانكشتاين"
+    ]
+   },
+   "sitelinks": {
+    "ar": "فرانكنشتاين",
+    "de": "Frankenstein (Roman)",
+    "en": "Frankenstein",
+    "es": "Frankenstein o El moderno Prometeo",
+    "fr": "Frankenstein ou le Prométhée moderne",
+    "hi": "फ्रैंकनस्टाइन",
+    "id": "Frankenstein (novel)",
+    "it": "Frankenstein o il moderno Prometeo",
+    "ja": "フランケンシュタイン",
+    "ko": "프랑켄슈타인",
+    "pl": "Frankenstein",
+    "pt": "Frankenstein",
+    "ru": "Франкенштейн, или Современный Прометей",
+    "th": "แฟรงเกนสไตน์",
+    "vi": "Frankenstein",
+    "zh": "科學怪人"
+   }
+  },
+  "w_raven": {
+   "enwikiTitle": "The Raven",
+   "id": "Q22726",
+   "lastrevid": 2549689668,
+   "description": "narrative poem by Edgar Allan Poe",
+   "labels": {
+    "zh": "烏鴉",
+    "pl": "Kruk",
+    "fr": "Le Corbeau",
+    "ko": "더 레이븐",
+    "es": "El cuervo",
+    "it": "Il corvo",
+    "id": "The Raven",
+    "de": "Der Rabe",
+    "ja": "大鴉",
+    "en": "The Raven",
+    "pt": "The Raven",
+    "ru": "Ворон",
+    "ar": "قصيدة الغراب",
+    "mul": "The Raven"
+   },
+   "aliases": {
+    "zh": [
+     "渡鴉"
+    ],
+    "fr": [
+     "The Raven",
+     "La Korvo"
+    ],
+    "es": [
+     "The raven"
+    ],
+    "de": [
+     "The Raven"
+    ],
+    "en": [
+     "Quoth The Raven",
+     "Raven",
+     "Nevermore!"
+    ],
+    "pt": [
+     "O Corvo"
+    ],
+    "ru": [
+     "Ворон (стихотворение)",
+     "Ворон (По)"
+    ]
+   },
+   "sitelinks": {
+    "ar": "قصيدة الغراب",
+    "de": "Der Rabe (Poe)",
+    "en": "The Raven",
+    "es": "El cuervo (poema)",
+    "fr": "Le Corbeau (poème)",
+    "id": "The Raven",
+    "it": "Il corvo (poesia)",
+    "ja": "大鴉",
+    "ko": "더 레이븐",
+    "pl": "Kruk (wiersz)",
+    "pt": "O Corvo",
+    "ru": "Ворон (стихотворение)",
+    "zh": "烏鴉 (詩)"
+   }
+  },
+  "w_auguries": {
+   "enwikiTitle": "Auguries of Innocence",
+   "id": "Q2027936",
+   "lastrevid": 2555905174,
+   "description": "poem by William Blake",
+   "labels": {
+    "en": "Auguries of Innocence",
+    "it": "Auguries of Innocence",
+    "ja": "無垢の予兆",
+    "zh": "純真的卜卦"
+   },
+   "aliases": {},
+   "sitelinks": {
+    "en": "Auguries of Innocence",
+    "it": "Auguries of Innocence"
+   }
+  },
+  "w_westwind": {
+   "enwikiTitle": "Ode to the West Wind",
+   "id": "Q3880836",
+   "lastrevid": 2555908056,
+   "description": "ode written by Percy Bysshe Shelley",
+   "labels": {
+    "en": "Ode to the West Wind",
+    "it": "Ode al vento dell'Ovest",
+    "zh": "西风颂",
+    "de": "Ode an den Westwind",
+    "pl": "Oda do wiatru zachodniego",
+    "ru": "Песнь к Западному ветру"
+   },
+   "aliases": {
+    "it": [
+     "Ode to the West Wind"
+    ]
+   },
+   "sitelinks": {
+    "en": "Ode to the West Wind",
+    "it": "Ode al vento dell'Ovest"
+   }
+  },
+  "w_sfp": {
+   "enwikiTitle": "Sonnets from the Portuguese",
+   "id": "Q945069",
+   "lastrevid": 2540221121,
+   "description": "collection of sonnets by E. B. Browning",
+   "labels": {
+    "ar": "سونيتات من البرتغال",
+    "pt": "Sonetos Portugueses",
+    "fr": "Sonnets portugais",
+    "it": "Sonnets from Portuguese",
+    "en": "Sonnets from the Portuguese",
+    "pl": "Sonety z portugalskiego",
+    "es": "Sonetos del portugués",
+    "de": "Sonette aus dem Portugiesischen"
+   },
+   "aliases": {
+    "pt": [
+     "Sonetos da Portuguesa"
+    ],
+    "fr": [
+     "Sonnets traduits du portugais",
+     "Sonnets de la Portugaise"
+    ],
+    "de": [
+     "Portugiesische Sonette"
+    ]
+   },
+   "sitelinks": {
+    "ar": "سونيتات من البرتغال",
+    "en": "Sonnets from the Portuguese",
+    "es": "Sonetos del portugués",
+    "fr": "Sonnets portugais",
+    "it": "Sonnets from the Portuguese",
+    "pl": "Sonety z portugalskiego",
+    "pt": "Sonetos Portugueses"
+   }
+  },
+  "w_odyssey": {
+   "enwikiTitle": "Odyssey",
+   "id": "Q35160",
+   "lastrevid": 2565891862,
+   "description": "epic poem attributed to Homer",
+   "labels": {
+    "zh": "奥德赛",
+    "pl": "Odyseja",
+    "es": "Odisea",
+    "ar": "أوديسة",
+    "pt": "Odisseia",
+    "ru": "Одиссея",
+    "ko": "오디세이아",
+    "fr": "Odyssée",
+    "it": "Odissea",
+    "de": "Odyssee",
+    "id": "Odisseia",
+    "ja": "オデュッセイア",
+    "vi": "Odyssey",
+    "en": "Odyssey",
+    "hi": "ओदुस्सेआ",
+    "th": "โอดิสซีย์",
+    "zh-hans": "奥德赛"
+   },
+   "aliases": {
+    "zh": [
+     "奧德賽",
+     "奧狄賽",
+     "奥德修纪",
+     "奥德修记",
+     "奥德赛漂流记",
+     "奥德赛飘流记"
+    ],
+    "es": [
+     "La odissea",
+     "La Odisea"
+    ],
+    "ar": [
+     "أوذيسة",
+     "أوديسه",
+     "الأوديسا",
+     "الأوديسة",
+     "أوديسا",
+     "ملحمة الأوديسا",
+     "اوديسة",
+     "الأوديسأ"
+    ],
+    "pt": [
+     "Bolsa dos ventos",
+     "Olisseia",
+     "A odisséia",
+     "Odisséia"
+    ],
+    "ko": [
+     "오디세이",
+     "오뒷세이아",
+     "오딧세이",
+     "오딧세이아"
+    ],
+    "fr": [
+     "Odyssée d'Homère",
+     "Odesseye",
+     "L'Odyssée"
+    ],
+    "it": [
+     "L'Odissea"
+    ],
+    "de": [
+     "Telemachie",
+     "Ἡ Ὀδύσσεια",
+     "Odyssea"
+    ],
+    "id": [
+     "Odyssey",
+     "Oddyssey"
+    ],
+    "ja": [
+     "オデッセイア",
+     "オデュッセイアー"
+    ],
+    "vi": [
+     "Trường ca Odyssey",
+     "Ôđixê"
+    ],
+    "th": [
+     "โอดิสซี"
+    ],
+    "en": [
+     "the Odyssey",
+     "Homer's Odyssey",
+     "Hom. Od."
+    ]
+   },
+   "sitelinks": {
+    "ar": "الأوديسة",
+    "de": "Odyssee",
+    "en": "Odyssey",
+    "es": "Odisea",
+    "fr": "Odyssée",
+    "hi": "ओदिसी",
+    "id": "Odisseia",
+    "it": "Odissea",
+    "ja": "オデュッセイア",
+    "ko": "오디세이아",
+    "pl": "Odyseja",
+    "pt": "Odisseia",
+    "ru": "Одиссея",
+    "th": "โอดิสซีย์",
+    "vi": "Odyssey",
+    "zh": "奥德赛"
+   }
+  },
+  "w_iliad": {
+   "enwikiTitle": "Iliad",
+   "id": "Q8275",
+   "lastrevid": 2564073733,
+   "description": "epic poem attributed to Homer",
+   "labels": {
+    "en": "Iliad",
+    "it": "Iliade",
+    "ar": "الإلياذة",
+    "de": "Ilias",
+    "es": "Ilíada",
+    "fr": "Iliade",
+    "hi": "ईलियास",
+    "id": "Iliad",
+    "ja": "イーリアス",
+    "ko": "일리아스",
+    "pl": "Iliada",
+    "pt": "Ilíada",
+    "ru": "Илиада",
+    "th": "อีเลียด",
+    "vi": "Iliad",
+    "zh": "伊利亚特",
+    "zh-cn": "伊利亚特",
+    "zh-hans": "伊利亚特",
+    "zh-hant": "伊利亞德"
+   },
+   "aliases": {
+    "ko": [
+     "일리아드"
+    ],
+    "fr": [
+     "L'Iliade",
+     "Iliade (L')",
+     "L’Iliade"
+    ],
+    "ar": [
+     "الياذة",
+     "الإلياذه",
+     "إلياذة هوميروس",
+     "إلياذة",
+     "ملحمة الإلياذة",
+     "الياذة هوميروس",
+     "الألياذة"
+    ],
+    "es": [
+     "Iliada",
+     "La Ilíada",
+     "La Ilíada de Homero"
+    ],
+    "en": [
+     "the Iliad",
+     "Hom. Il."
+    ],
+    "hi": [
+     "ईलियाद"
+    ]
+   },
+   "sitelinks": {
+    "ar": "الإلياذة",
+    "de": "Ilias",
+    "en": "Iliad",
+    "es": "Ilíada",
+    "fr": "Iliade",
+    "hi": "इलियाड",
+    "id": "Ilias",
+    "it": "Iliade",
+    "ja": "イーリアス",
+    "ko": "일리아스",
+    "pl": "Iliada",
+    "pt": "Ilíada",
+    "ru": "Илиада",
+    "th": "อีเลียด",
+    "vi": "Iliad",
+    "zh": "伊利亚特"
+   }
+  }
+ }
+}

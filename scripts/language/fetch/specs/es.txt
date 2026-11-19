@@ -1,0 +1,29 @@
+MO-001|rj|¿Pero qué luz es la que asoma por allí\?
+CA-001|rj|¿Porqué no tomas otro nombre\? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo\.
+MO-002|rj|¡Mala peste á Capuletos y Móntescos!
+VC-001|rj|Si volveis á turbar el sosiego de nuestra ciudad, me respondereis con vuestras cabezas\.
+VC-002|rj|Nada violento es duradero: ni el placer ni la pena
+MO-003|rj|Los estoy poniendo en paz\. Envaina tú
+CA-002|rj|¡Hablarme de paz, cuando tengo el acero en la mano! Más odiosa me es tal palabra que el infierno mismo
+MO-004|rj|Dicen que va allí con frecuencia á juntar su llanto con el rocío de la mañana
+VC-004|rj|Ni es ésta ocasion de galanterías sino de duelo\.
+RL-004|rj|mi afán de dártelo toda es tan profundo y tan sin límite como los abismos de la mar\.
+PT-009|rj|desleidlo en agua ó en un licor cualquiera, bebedlo, y caereis muerto en seguida, aunque tengais la fuerza de veinte hombres\.
+DC-001|hamlet|Ser, o no ser, ésa es la cuestión\.
+DC-002|hamlet|Aquí traigo romero, que es bueno para la memoria\.
+RL-001|hamlet|¡Ay! ¡Pobre Yorick! Yo le conocí, Horacio
+DC-003|hamlet|Mis palabras suben al cielo, mis afectos quedan en la tierra\.
+DC-004|hamlet|En fin, ¡se rompe ese gran corazón! Adiós, adiós, amado Príncipe\.
+PT-006|hamlet|Tu tío me sorprende en aquella hora de quietud, y trayendo consigo una ampolla de licor venenoso
+PT-002|macbeth|Aumente el trabajo: crezca la labor: hierva la caldera\.
+RL-003|macbeth|¡Me parece estar viendo el puño de una daga vuelta hacia mí!
+SC-001|macbeth|Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano\.
+SC-002|macbeth|¡Espíritus agitadores del pensamiento, despojadme de mi sexo
+SC-003|macbeth|No rey, pero padre de reyes\.
+PT-007|macbeth|ojos de lagarto, músculos de rana
+RM-001|jc|no porque amara menos á César, sino porque amaba más á Roma\.
+RM-002|jc|La culpa, querido Bruto, no es de nuestras estrellas, sino de nosotros mismos, si consentimos en ser inferiores\.
+RM-003|jc|Amigos, romanos, compatriotas, prestadme atención\.
+RL-005|mov|No es oro todo lo que reluce
+PT-004|othello|No podrás conciliar hoy el sueño tan apaciblemente como ayer, aunque la adormidera, el beleño y la mandrágora mezclen para tí sus adormecedores jugos\.
+GC-003|raven|Una fosca media noche, cuando en tristes reflexiones

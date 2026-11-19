@@ -205,8 +205,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
+    import { capitalised, cardTitle, loadCardText, withCardName } from '../lib/cards-i18n';
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+    /** A card's name in the interface language, standing alone (the English name where that language has none). */
+    const titleOf = (card: Card) => cardTitle(card, locale());
+    /**
+     * A sentence of the interface about a card: its name set off as a title where the language would need an article
+     * (cards-i18n cardNameInText), French de elided before it (d’Ophélie), and a capital first.
+     */
+    const aboutCard = (key: string, card: Card, params: Msg['vars'] = {}) =>
+      said(withCardName((name) => t(key, { ...params, card: name }), card, locale()));
+    /** A sentence of the interface, which begins with a capital even when a name it starts with is written small (Russian «граф Парис»). */
+    const said = (text: string) => capitalised(text, locale());
     const el = (tag: string, cls = '', text = '') => {
       const e = document.createElement(tag);
       if (cls) e.className = cls;
@@ -267,7 +278,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       b.appendChild(pic);
       const text = el('div', 'min-w-0');
       // Card names stay in English: they are the characters' names.
-      text.appendChild(el('p', 'text-xs font-semibold text-obsidian-100 truncate', card.name));
+      text.appendChild(el('p', 'text-xs font-semibold text-obsidian-100 truncate', titleOf(card)));
       const curse = POTION_CURSE[card.id];
       const sub =
         card.type === 'Character' ? tm(deviceForHouse(card.house, duelLang()).name) : card.type === 'Potion' ? (curse ? curseName(curse) : t('chip.curse')) : t('chip.powerWords');
@@ -377,7 +388,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const cfg = CITY_CATALOG[city];
         const b = el('button', 'variant-pick w-full text-start text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between');
         b.dataset.variantId = v.variantId;
-        b.appendChild(el('span', '', t('battle.cardInCity', { card: card.name, city })));
+        b.appendChild(el('span', '', said(t('battle.cardInCity', { card: titleOf(card), city }))));
         b.appendChild(el('span', 'text-gold-500 text-[10px]', t('variant.bonus', { n: cfg.ability.bonus, criterion: criterionName(cfg.ability.axis) })));
         picker.appendChild(b);
       }
@@ -592,7 +603,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const card = getCardById(session.move.charId)!;
       list.appendChild(checkRow(s.device.met, t('live.device', { name: deviceName(s.device.id), brief: deviceBrief(s.device.id, lang) }), written ? s.device.detail : ''));
       // A void verse lands no signature; show what would echo the line all the same.
-      list.appendChild(checkRow(s.signature.met, t('live.signature', { card: card.name }), signatureText(s.signature)));
+      list.appendChild(checkRow(s.signature.met, aboutCard('live.signature', card), signatureText(s.signature)));
       if (s.powerWords) {
         const lent = session.duel.playerRelics[session.move.relicId!];
         list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used }) : ''));
@@ -671,13 +682,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
         }
         if (!used && !cantPlay) b.addEventListener('click', () => { if (s.toggleItem(id)) playSfx('ui-click'); });
-        if (refused === 'potion-last-round' && !used) notes.push(t('hand.potionLastRound', { card: card.name }));
+        if (refused === 'potion-last-round' && !used) notes.push(aboutCard('hand.potionLastRound', card));
         items.appendChild(b);
       }
-      if (s.move.relicId) notes.push(t('hand.relicNote', { card: getCardById(s.move.relicId)!.name, words: d.playerRelics[s.move.relicId].words }));
+      if (s.move.relicId) notes.push(aboutCard('hand.relicNote', getCardById(s.move.relicId)!, { words: d.playerRelics[s.move.relicId].words }));
       if (s.move.potionId) {
         const cast = d.playerCurses[s.move.potionId];
-        notes.push(t('hand.potionNote', { card: getCardById(s.move.potionId)!.name, rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) }));
+        notes.push(aboutCard('hand.potionNote', getCardById(s.move.potionId)!, { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) }));
         // From the round that can decide the match, a potion may never get its verse to curse.
         if (s.potionAtRisk()) notes.push(t('hand.potionGamble'));
       }
@@ -700,14 +711,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       $('round-label').textContent = t('round.label', { n: s.roundIndex + 1, total: ROUNDS });
       $('form-name').textContent = tm(s.form.name);
       $('form-brief').textContent = tm(s.form.brief(plan.ctx));
-      $('opponent-name').textContent = card.name;
+      $('opponent-name').textContent = titleOf(card);
       // A Riposte house that opens the duel has nothing to turn back; it is held to its opening device.
       const device = deviceInPlay(card.house, s.duel.lang, s.roundIndex > 0);
       $('opponent-device').textContent = t('round.device', { name: tm(device.name), brief: tm(device.brief(s.duel.lang)) });
       const curse = $('opponent-curse');
       if (plan.opponent.curse) {
         const c = plan.opponent.curse;
-        curse.textContent = t('round.cursesYou', { card: card.name, name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, s.duel.lang) });
+        curse.textContent = aboutCard('round.cursesYou', card, { name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, s.duel.lang) });
         curse.classList.remove('hidden');
       } else curse.classList.add('hidden');
 
@@ -730,8 +741,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         verseEl.textContent = !s.drafting
           ? '…'
           : s.drafting.of > 1
-            ? t('round.composingDraft', { card: card.name, n: s.drafting.draft, total: s.drafting.of })
-            : t('round.composing', { card: card.name });
+            ? aboutCard('round.composingDraft', card, { n: s.drafting.draft, total: s.drafting.of })
+            : aboutCard('round.composing', card);
       } else {
         verseEl.textContent = s.opponentVerse;
         verseEl.lang = s.duel.lang;
@@ -845,8 +856,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       v.appendChild(el('p', 'text-xs uppercase tracking-wider text-obsidian-500 mb-1', t('verdict.yourAnswer')));
       v.appendChild(mine);
 
-      const theirCard = getCardById(s.duel.rounds[r.index].opponent.charId)!.name;
-      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : t('verdict.roundTheirs', { card: theirCard })));
+      const theirCard = getCardById(s.duel.rounds[r.index].opponent.charId)!;
+      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : aboutCard('verdict.roundTheirs', theirCard)));
 
       const grid = el('div', 'grid sm:grid-cols-2 gap-3');
       grid.appendChild(side(t('battle.you'), r.player, r.judge.player, r.playerTotal, 'text-crimson-300', r.bonus));
@@ -1022,7 +1033,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         // make it the duel's language too, where it is on offer and no duel is under way.
         if (!session && offered.includes(l)) langSelect.value = l;
         redraw();
+        // Card names in the new language arrive a moment later; draw again when they do.
+        void loadCardText(l).then((pack) => { if (pack) redraw(); });
       });
+      void loadCardText(locale()).then((pack) => { if (pack) redraw(); });
     });
   </script>
 </BaseLayout>

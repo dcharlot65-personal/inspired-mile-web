@@ -10,6 +10,7 @@
  * duel is created in its language. getPack() throws for a known language that
  * has not been loaded rather than quietly playing English verses.
  */
+import { loadCardText } from '../../cards-i18n';
 import { loadFunctionWords } from '../function-words';
 import { baseLang } from '../lang';
 import en from './en';
@@ -67,6 +68,8 @@ export function hasPack(lang: string): boolean {
 /** Load a language's pack. A language with no pack resolves to English. */
 export async function loadPack(lang: string): Promise<LanguagePack> {
   const b = baseLang(lang);
+  // The cards' names and quotations in this language, for the signature and the invocation.
+  await loadCardText(b);
   const have = loaded.get(b);
   if (have) return have;
   const loader = (LOADERS as Record<string, (() => Promise<{ default: LanguagePack }>) | undefined>)[b];

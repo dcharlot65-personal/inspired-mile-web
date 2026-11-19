@@ -1,0 +1,512 @@
+{
+ "SM-001": {
+  "text": "Te comparerai-je à un jour d’été ?",
+  "work": "sonnet18",
+  "page": "Sonnets de Shakespeare (trad. Hugo)/018",
+  "url": "https://fr.wikisource.org/wiki/Sonnets_de_Shakespeare_%28trad._Hugo%29/018?oldid=7372651",
+  "revid": 7372651,
+  "offset": 161,
+  "matches": 1,
+  "regex": "Te comparerai-je à un jour d’été \\?"
+ },
+ "MO-001": {
+  "text": "Mais doucement ! Quelle lumière jaillit par cette fenêtre ?",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 46747,
+  "matches": 1,
+  "regex": "(Mais doucement ! )?[Qq]uelle lumière[^?]*\\?"
+ },
+ "CA-001": {
+  "text": "Qu’y a-t-il dans un nom ? Ce que nous appelons une rose — embaumerait autant sous un autre nom.",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 48810,
+  "matches": 1,
+  "regex": "Qu.y a-t-il dans un nom \\?[^.!?;]*rose[^.!?;]*[.!?;]"
+ },
+ "DC-001": {
+  "text": "Être, ou ne pas être, c’est là la question.",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 90587,
+  "matches": 1,
+  "regex": "Être,? ou ne pas être[^.!?]*question[.!?]"
+ },
+ "DC-002": {
+  "text": "Voici du romarin ; c’est comme souvenir",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 158558,
+  "matches": 1,
+  "regex": "Voici du romarin ; c’est comme souvenir"
+ },
+ "MO-002": {
+  "text": "Malédiction sur vos deux maisons !",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 86506,
+  "matches": 2,
+  "regex": "Malédiction sur vos deux maisons !"
+ },
+ "FA-001": {
+  "text": "Seigneur, que ces mortels sont fous !",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 59308,
+  "matches": 1,
+  "regex": "Seigneur,? que ces mortels sont fous !"
+ },
+ "FA-002": {
+  "text": "Viens t’asseoir sur ce lit de fleurs,",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 78763,
+  "matches": 1,
+  "regex": "Viens[^.!?]{0,40}lit[^.!?]{0,10}fleur[^.!?,;]*[,;.!?]"
+ },
+ "RL-001": {
+  "text": "Hélas ! pauvre Yorick !… Je l’ai connu, Horatio !",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 182774,
+  "matches": 1,
+  "regex": "Hélas ! pauvre Yorick ![^.!?]*Horatio[^.!?;]*[.!?;]"
+ },
+ "RL-002": {
+  "text": "Maintenant, tous mes charmes sont détruits.",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 115380,
+  "matches": 1,
+  "regex": "Maintenant[^.!?]{0,40}charmes[^.!?,;]*[,;.!?]"
+ },
+ "PT-002": {
+  "text": "Double, double, peine et trouble !",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 75100,
+  "matches": 3,
+  "regex": "Double,? double[^.!?]*[.!?]"
+ },
+ "VC-001": {
+  "text": "Si jamais vous troublez encore nos rues, — votre vie payera le dommage fait à la paix.",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 7815,
+  "matches": 2,
+  "regex": "Si jamais vous troublez[^.!?]*[.!?]"
+ },
+ "VC-002": {
+  "text": "Ces joies violentes ont des fins violentes",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 78922,
+  "matches": 1,
+  "regex": "[Cc]es[^.!?]{0,30}violent[^.!?]*violent[^.!?,;]*"
+ },
+ "TP-001": {
+  "text": "Nous sommes de l’étoffe — dont sont faits les rêves",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 90134,
+  "matches": 1,
+  "regex": "Nous sommes de l.étoffe[^.!?,;]*rêves"
+ },
+ "TP-002": {
+  "text": "Salut, grand maître ! grave seigneur, salut !",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 15370,
+  "matches": 1,
+  "regex": "Salut,? [a-zé]+ maître[^.]*?salut !"
+ },
+ "TP-003": {
+  "text": "Cette île est à moi par Sycorax ma mère",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 23314,
+  "matches": 1,
+  "regex": "Cette île[^.!?]*Sycorax[^.!?,;]*mère"
+ },
+ "MO-003": {
+  "text": "Je ne veux ici que maintenir la paix ; rengaine ton épée,",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 5904,
+  "matches": 1,
+  "regex": "Je ne veux[^.!?]{0,60}épée[^.!?,;]*[,;.!?]"
+ },
+ "CA-002": {
+  "text": "Quoi, l’épée à la main, tu parles de paix ! Ce mot, je le hais",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 6022,
+  "matches": 1,
+  "regex": "Quoi, l’épée à la main, tu parles de paix ! Ce mot, je le hais"
+ },
+ "DC-003": {
+  "text": "Mes paroles s’envolent ; mes pensées restent en bas.",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 125289,
+  "matches": 1,
+  "regex": "Mes paroles s.envolent[^.!?]*[.!?]"
+ },
+ "FA-003": {
+  "text": "— Fâcheuse rencontre au clair de lune, fière Titania !",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 23083,
+  "matches": 1,
+  "regex": "[^.!?\\n]*clair de lune,? [a-zè]+ Titania ?[.!?]"
+ },
+ "RL-003": {
+  "text": "Est-ce un poignard que je vois là devant moi, — la poignée vers ma main ?",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 30252,
+  "matches": 1,
+  "regex": "Est-ce un poignard[^?]*\\?"
+ },
+ "PT-003": {
+  "text": "— Je puis faire une ceinture autour de la terre — en quarante minutes.",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 28994,
+  "matches": 1,
+  "regex": "[^.!?\\n]*ceinture[^.!?]*quarante minutes[.!?]"
+ },
+ "SC-001": {
+  "text": "J’ose tout ce qui sied à un homme ; — qui ose au delà n’en est plus un.",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 26143,
+  "matches": 1,
+  "regex": "J.ose tout ce qui[^.!?]*[.!?]"
+ },
+ "SC-002": {
+  "text": "Venez, venez, esprits — qui assistez les pensées meurtrières ! Désexez-moi ici",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 19633,
+  "matches": 1,
+  "regex": "Venez[^.]{0,140}ésexez-moi ici"
+ },
+ "SC-003": {
+  "text": "Tu engendreras des rois, — sans être roi toi-même",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 8803,
+  "matches": 1,
+  "regex": "Tu engendreras des rois, — sans être roi toi-même"
+ },
+ "IL-002": {
+  "text": "Il en est qui naissent grands, d’autres qui conquièrent les grandeurs, et d’autres à qui elles s’imposent.",
+  "work": "tn",
+  "page": "Le soir des rois ou ce que vous voudrez (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_soir_des_rois_ou_ce_que_vous_voudrez_%28trad._Hugo%29?oldid=15966630",
+  "revid": 15966630,
+  "offset": 60262,
+  "matches": 3,
+  "regex": "[^.!?\\n]*naissent grands[^.!?]*[.!?]"
+ },
+ "RM-003": {
+  "text": "Amis, Romains, compatriotes, prêtez-moi l’oreille.",
+  "work": "jc",
+  "page": "Jules César (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514",
+  "revid": 15966514,
+  "offset": 79491,
+  "matches": 1,
+  "regex": "Amis, Romains, compatriotes[^.!?]*[.!?]"
+ },
+ "MO-004": {
+  "text": "Voilà bien des matinées qu’on l’a vu là — augmenter de ses larmes la fraîche rosée du matin",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 9691,
+  "matches": 1,
+  "regex": "Voilà bien des matinées qu’on l’a vu là — augmenter de ses larmes la fraîche rosée du matin"
+ },
+ "DC-004": {
+  "text": "— Voici un noble cœur qui se brise. Bonne nuit, doux prince",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 209326,
+  "matches": 1,
+  "regex": "[^.!?\\n]*noble cœur[^.!?]*[.!?] Bonne nuit,? doux prince"
+ },
+ "FA-004": {
+  "text": "J’ai eu une vision extraordinaire. J’ai fait un songe : c’est au-dessus de l’esprit de l’homme de dire ce qu’était ce songe.",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 89740,
+  "matches": 1,
+  "regex": "J.ai eu une vision[^.!?]*[.!?][^.!?]*(rêve|songe)[^.!?]*[.!?]"
+ },
+ "RL-005": {
+  "text": "Tout ce qui luit n’est pas or",
+  "work": "mov",
+  "page": "Le Marchand de Venise (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Marchand_de_Venise_%28trad._Hugo%29?oldid=15966581",
+  "revid": 15966581,
+  "offset": 55068,
+  "matches": 1,
+  "regex": "Tout ce qui (luit|reluit|brille) n.est pas or"
+ },
+ "RL-006": {
+  "text": "Inquiète / est la tête qui porte une couronne !",
+  "work": "h4p2",
+  "page": "Henry IV, Deuxième Partie (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Henry_IV%2C_Deuxi%C3%A8me_Partie_%28trad._Hugo%29?oldid=15966472",
+  "revid": 15966472,
+  "offset": 81782,
+  "matches": 1,
+  "regex": "Inquiète est la tête qui porte une couronne !"
+ },
+ "RL-007": {
+  "text": "— je noierai mon livre",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 99819,
+  "matches": 1,
+  "regex": "[^.!?\\n,;]*noierai mon livre"
+ },
+ "RL-009": {
+  "text": "Dieu te bénisse, Bottom, Dieu te bénisse ! tu es métamorphosé.",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 48796,
+  "matches": 1,
+  "regex": "[^.!?\\n]*bénisse,? Bottom[^.]*?(métamorphosé|transformé|traduit|changé)[.!?]"
+ },
+ "PT-004": {
+  "text": "Ni le pavot, ni la mandragore, — ni tous les sirops narcotiques du monde",
+  "work": "othello",
+  "page": "Othello (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Othello_%28trad._Hugo%29?oldid=15966844",
+  "revid": 15966844,
+  "offset": 101365,
+  "matches": 1,
+  "regex": "[Nn]i le pavot[^.!?]*monde"
+ },
+ "PT-005": {
+  "text": "Va me chercher cette fleur ; je t’en ai montré une fois la feuille.",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 28665,
+  "matches": 1,
+  "regex": "Va me chercher cette fleur[^.!?]*[.!?]"
+ },
+ "PT-006": {
+  "text": "— À cette heure de pleine sécurité, ton oncle se glissa près de moi — avec une fiole pleine du jus maudit de la jusquiame",
+  "work": "hamlet",
+  "page": "Le second Hamlet (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629",
+  "revid": 15966629,
+  "offset": 40881,
+  "matches": 1,
+  "regex": "[^.!?\\n]*ton oncle[^.!?]*fiole[^.!?,;]*"
+ },
+ "PT-009": {
+  "text": "— Mettez ceci dans le liquide que vous voudrez, — et avalez ; eussiez-vous la force de vingt hommes, vous serez expédié immédiatement.",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 152698,
+  "matches": 2,
+  "regex": "[^.!?\\n]*liquide[^.!?]*vingt hommes[^.!?]*[.!?]"
+ },
+ "PT-001": {
+  "text": "l’amour vrai n’a jamais suivi un cours facile.",
+  "work": "mnd",
+  "page": "Le Songe d’une nuit d’été (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622",
+  "revid": 15966622,
+  "offset": 8245,
+  "matches": 1,
+  "regex": "l’amour vrai n’a jamais suivi un cours facile\\."
+ },
+ "VC-003": {
+  "text": "C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 78083,
+  "matches": 1,
+  "regex": "C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir"
+ },
+ "IL-001": {
+  "text": "je ne suis pas ce que je suis.",
+  "work": "tn",
+  "page": "Le soir des rois ou ce que vous voudrez (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_soir_des_rois_ou_ce_que_vous_voudrez_%28trad._Hugo%29?oldid=15966630",
+  "revid": 15966630,
+  "offset": 71510,
+  "matches": 1,
+  "regex": "je ne suis pas ce que je suis\\."
+ },
+ "RM-001": {
+  "text": "Ce n’est pas que j’aimasse moins César, mais j’aimais Rome davantage.",
+  "work": "jc",
+  "page": "Jules César (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514",
+  "revid": 15966514,
+  "offset": 76277,
+  "matches": 1,
+  "regex": "Ce n’est pas que j’aimasse moins César, mais j’aimais Rome davantage\\."
+ },
+ "RM-002": {
+  "text": "Si nous ne sommes que des subalternes, cher Brutus, — la faute en est à nous et non à nos étoiles.",
+  "work": "jc",
+  "page": "Jules César (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514",
+  "revid": 15966514,
+  "offset": 12416,
+  "matches": 1,
+  "regex": "Si nous ne sommes que des subalternes, cher Brutus, — la faute en est à nous et non à nos étoiles\\."
+ },
+ "RL-004": {
+  "text": "ma libéralité est aussi illimitée que la mer, — et mon amour aussi profond",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 53787,
+  "matches": 1,
+  "regex": "ma libéralité est aussi illimitée que la mer, — et mon amour aussi profond"
+ },
+ "RL-008": {
+  "text": "Ô père chéri ! — ce sont tes intérêts qui m’occupent.",
+  "work": "lear",
+  "page": "Le Roi Lear (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Le_Roi_Lear_%28trad._Hugo%29?oldid=15966612",
+  "revid": 15966612,
+  "offset": 134526,
+  "matches": 1,
+  "regex": "Ô père chéri ! — ce sont tes intérêts qui m’occupent\\."
+ },
+ "PT-007": {
+  "text": "Dans le chaudron bous et cuis. / Œil de salamandre, orteil de grenouille",
+  "work": "macbeth",
+  "page": "Macbeth (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804",
+  "revid": 15966804,
+  "offset": 75224,
+  "matches": 1,
+  "regex": "Dans le chaudron bous et cuis\\. Œil de salamandre, orteil de grenouille"
+ },
+ "PT-008": {
+  "text": "Sous cinq brassées ton père gît : / Ses os se sont changés en corail.",
+  "work": "tempest",
+  "page": "La Tempête (Shakespeare, trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548",
+  "revid": 15966548,
+  "offset": 26749,
+  "matches": 1,
+  "regex": "Sous cinq brassées ton père gît : Ses os se sont changés en corail\\."
+ },
+ "VC-004": {
+  "text": "Quand la mort parle, ce n’est pas pour l’amour le moment de parler.",
+  "work": "rj",
+  "page": "Roméo et Juliette (trad. Hugo)",
+  "url": "https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892",
+  "revid": 15966892,
+  "offset": 110613,
+  "matches": 1,
+  "regex": "Quand la mort parle, ce n’est pas pour l’amour le moment de parler\\."
+ },
+ "GC-003": {
+  "text": "Une fois, par un minuit lugubre, tandis que je m’appesantissais, faible et fatigué",
+  "work": "raven",
+  "page": "Le Corbeau (trad. Mallarmé)",
+  "url": "https://fr.wikisource.org/wiki/Le_Corbeau_%28trad._Mallarm%C3%A9%29?oldid=14245075",
+  "revid": 14245075,
+  "offset": 453,
+  "matches": 1,
+  "regex": "Une fois, par un minuit lugubre, tandis que je m’appesantissais, faible et fatigué"
+ },
+ "GC-002": {
+  "text": "Prends-y garde ; car je suis sans crainte, et par conséquent / puissant.",
+  "work": "frankenstein",
+  "page": "Frankenstein, ou le Prométhée moderne (trad. Saladin)/24",
+  "url": "https://fr.wikisource.org/wiki/Frankenstein%2C_ou_le_Prom%C3%A9th%C3%A9e_moderne_%28trad._Saladin%29/24?oldid=7020604",
+  "revid": 7020604,
+  "offset": 246861,
+  "matches": 1,
+  "regex": "Prends-y garde ; car je suis sans crainte, et par conséquent puissant\\."
+ },
+ "GC-005": {
+  "text": "Ô Vent, si l’Hiver s’approche, le Printemps peut-il être loin derrière ?",
+  "work": "westwind",
+  "page": "Ode au Vent d’Ouest",
+  "url": "https://fr.wikisource.org/wiki/Ode_au_Vent_d%E2%80%99Ouest?oldid=14624191",
+  "revid": 14624191,
+  "offset": 3936,
+  "matches": 1,
+  "regex": "Ô Vent, si l’Hiver s’approche, le Printemps peut-il être loin derrière \\?"
+ }
+}

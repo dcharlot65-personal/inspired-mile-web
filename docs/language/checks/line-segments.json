@@ -1,0 +1,4421 @@
+{
+ "tools": {
+  "kiwipiepy": "0.24.1",
+  "pythainlp": "5.1.2",
+  "thai engine": "newmm, PyThaiNLP's thai_words() dictionary and the Thai card names"
+ },
+ "koFunctionTags": [
+  "MAJ",
+  "MM",
+  "NP",
+  "VCN",
+  "VCP",
+  "VX"
+ ],
+ "koNumberTags": [
+  "MM",
+  "NR",
+  "SN"
+ ],
+ "ko": {
+  "CA-001": [
+   {
+    "word": "이름이",
+    "head": "이름",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "무엇이란",
+    "head": "무엇",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "말인가",
+    "head": "말",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "우리가",
+    "head": "우리",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "장미라",
+    "head": "장미",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "부르는",
+    "head": "부르",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "그것은",
+    "head": "그것",
+    "tag": "NP",
+    "function": true
+   }
+  ],
+  "CA-002": [
+   {
+    "word": "뭐라고",
+    "head": "뭐",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "칼을",
+    "head": "칼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "뽑아",
+    "head": "뽑",
+    "tag": "VV-R",
+    "function": false
+   },
+   {
+    "word": "들고",
+    "head": "들",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "평화를",
+    "head": "평화",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "말해",
+    "head": "말",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "말을",
+    "head": "말",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "증오한다",
+    "head": "증오",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "CA-003": [
+   {
+    "word": "결혼",
+    "head": "결혼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "바로",
+    "head": "바로",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "결혼",
+    "head": "결혼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "이야기를",
+    "head": "이야기",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "하러",
+    "head": "하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "왔단다",
+    "head": "오",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "DC-001": [
+   {
+    "word": "사느냐",
+    "head": "사",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "죽느냐",
+    "head": "죽",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "그것이",
+    "head": "그것",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "문제로다",
+    "head": "문제",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "DC-002": [
+   {
+    "word": "여기",
+    "head": "여기",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "로즈메리가",
+    "head": "로즈메리",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "있어요",
+    "head": "있",
+    "tag": "VA",
+    "function": true
+   },
+   {
+    "word": "기억을",
+    "head": "기억",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위한",
+    "head": "위하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것이지요",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   }
+  ],
+  "DC-003": [
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "말은",
+    "head": "말",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위로",
+    "head": "위",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "날아가나",
+    "head": "날아가",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "생각은",
+    "head": "생각",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아래에",
+    "head": "아래",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "남는구나",
+    "head": "남",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "DC-004": [
+   {
+    "word": "이제",
+    "head": "이제",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "고귀한",
+    "head": "고귀",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "심장이",
+    "head": "심장",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "부서지는구나",
+    "head": "부서지",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "편히",
+    "head": "편히",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "잠드소서",
+    "head": "잠들",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "다정한",
+    "head": "다정",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "왕자님",
+    "head": "왕자",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "FA-001": [
+   {
+    "word": "아",
+    "head": "아",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "인간들이란",
+    "head": "인간",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "얼마나",
+    "head": "얼마나",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "어리석은가",
+    "head": "어리석",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "FA-002": [
+   {
+    "word": "자",
+    "head": "자",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "이",
+    "head": "이",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "꽃",
+    "head": "꽃",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "침대",
+    "head": "침대",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위에",
+    "head": "위",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "앉으세요",
+    "head": "앉",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "FA-003": [
+   {
+    "word": "달빛",
+    "head": "달빛",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아래",
+    "head": "아래",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "반갑지",
+    "head": "반갑",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "않은",
+    "head": "않",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "만남이로군",
+    "head": "만남",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "오만한",
+    "head": "오만",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "티타니아",
+    "head": "티타니아",
+    "tag": "NNP",
+    "function": false
+   }
+  ],
+  "FA-004": [
+   {
+    "word": "참으로",
+    "head": "참으로",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "희한한",
+    "head": "희한",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "환상을",
+    "head": "환상",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "보았네",
+    "head": "보",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "사람의",
+    "head": "사람",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "지혜로는",
+    "head": "지혜",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "알",
+    "head": "알",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "수",
+    "head": "수",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "없는",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "꿈을",
+    "head": "꿈",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "꾸었네",
+    "head": "꾸",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "GC-001": [
+   {
+    "word": "그녀는",
+    "head": "그녀",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "아름다움",
+    "head": "아름답",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "속을",
+    "head": "속",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "걷는다",
+    "head": "걷",
+    "tag": "VV-I",
+    "function": false
+   },
+   {
+    "word": "구름",
+    "head": "구름",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없는",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "땅과",
+    "head": "땅",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "별이",
+    "head": "별",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "빛나는",
+    "head": "빛나",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "하늘의",
+    "head": "하늘",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "밤처럼",
+    "head": "밤",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "GC-002": [
+   {
+    "word": "조심하라",
+    "head": "조심",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "두려움이",
+    "head": "두려움",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없고",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "그래서",
+    "head": "그래서",
+    "tag": "MAJ",
+    "function": true
+   },
+   {
+    "word": "강하다",
+    "head": "강하",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "GC-003": [
+   {
+    "word": "어느",
+    "head": "어느",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "음울한",
+    "head": "음울",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "한밤중",
+    "head": "한",
+    "tag": "XPN",
+    "function": false
+   },
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "지치고",
+    "head": "지치",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "약해져",
+    "head": "약하",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "생각에",
+    "head": "생각",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "잠겨",
+    "head": "잠기",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "있을",
+    "head": "있",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "때",
+    "head": "때",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "GC-004": [
+   {
+    "word": "한",
+    "head": "한",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "알의",
+    "head": "알",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "모래에서",
+    "head": "모래",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "세계를",
+    "head": "세계",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "보고",
+    "head": "보",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "한",
+    "head": "한",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "송이",
+    "head": "송이",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "들꽃에서",
+    "head": "들꽃",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "천국을",
+    "head": "천국",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "본다",
+    "head": "보",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "GC-005": [
+   {
+    "word": "겨울이",
+    "head": "겨울",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "오면",
+    "head": "오",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "봄이",
+    "head": "봄",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "멀",
+    "head": "멀",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "수",
+    "head": "수",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "있으랴",
+    "head": "있",
+    "tag": "VA",
+    "function": true
+   }
+  ],
+  "IL-001": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "지금의",
+    "head": "지금",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "아닙니다",
+    "head": "아니",
+    "tag": "VCN",
+    "function": true
+   }
+  ],
+  "IL-002": [
+   {
+    "word": "어떤",
+    "head": "어떤",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "이는",
+    "head": "이",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "위대하게",
+    "head": "위대",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "태어나고",
+    "head": "태어나",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "어떤",
+    "head": "어떤",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "이는",
+    "head": "이",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "위대함을",
+    "head": "위대",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "이루며",
+    "head": "이루",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "어떤",
+    "head": "어떤",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "이는",
+    "head": "이",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "위대함을",
+    "head": "위대",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "떠안게",
+    "head": "떠안",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "된다",
+    "head": "되",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "IL-003": [
+   {
+    "word": "구해서",
+    "head": "구하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "얻은",
+    "head": "얻",
+    "tag": "VV-R",
+    "function": false
+   },
+   {
+    "word": "사랑도",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "좋지만",
+    "head": "좋",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "구하지",
+    "head": "구하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "않았는데",
+    "head": "않",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "주어진",
+    "head": "주어지",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "사랑은",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "더",
+    "head": "더",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "좋습니다",
+    "head": "좋",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "LD-001": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "골짜기와",
+    "head": "골짜기",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "언덕",
+    "head": "언덕",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위",
+    "head": "위",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "높이",
+    "head": "높이",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "떠도는",
+    "head": "떠돌",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "구름처럼",
+    "head": "구름",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "외로이",
+    "head": "외로이",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "헤매었네",
+    "head": "헤매",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "LD-002": [
+   {
+    "word": "물",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "물",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "어디에나",
+    "head": "어디",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "물",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그러나",
+    "head": "그러나",
+    "tag": "MAJ",
+    "function": true
+   },
+   {
+    "word": "마실",
+    "head": "마시",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "물은",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "한",
+    "head": "한",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "방울도",
+    "head": "방울",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없네",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "LD-003": [
+   {
+    "word": "아름다운",
+    "head": "아름답",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "것은",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "영원한",
+    "head": "영원",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "기쁨이다",
+    "head": "기쁨",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "사랑스러움은",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "더해",
+    "head": "더하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "간다",
+    "head": "가",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "LD-004": [
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "그대를",
+    "head": "그대",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "어떻게",
+    "head": "어떻",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "사랑하느냐고요",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "방법을",
+    "head": "방법",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "세어",
+    "head": "세",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "볼게요",
+    "head": "보",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "LD-005": [
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "떠나거든",
+    "head": "떠나",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "나를",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "기억해",
+    "head": "기억",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "주세요",
+    "head": "주",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "멀리",
+    "head": "멀리",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "고요한",
+    "head": "고요",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "땅으로",
+    "head": "땅",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "떠나거든",
+    "head": "떠나",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "MO-001": [
+   {
+    "word": "가만",
+    "head": "가만",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "저",
+    "head": "저",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "창문으로",
+    "head": "창문",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "비쳐",
+    "head": "비치",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "오는",
+    "head": "오",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "빛은",
+    "head": "빛",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "무엇인가",
+    "head": "무엇",
+    "tag": "NP",
+    "function": true
+   }
+  ],
+  "MO-002": [
+   {
+    "word": "너희",
+    "head": "너희",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "두",
+    "head": "두",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "집안에",
+    "head": "집안",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "저주가",
+    "head": "저주",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "내려라",
+    "head": "내리",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "MO-003": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "평화를",
+    "head": "평화",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "지키려는",
+    "head": "지키",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것뿐이네",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "칼을",
+    "head": "칼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "거두게",
+    "head": "거두",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "MO-004": [
+   {
+    "word": "여러",
+    "head": "여러",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "날",
+    "head": "날",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아침",
+    "head": "아침",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "애가",
+    "head": "애",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "거기",
+    "head": "거기",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "있는",
+    "head": "있",
+    "tag": "VA",
+    "function": true
+   },
+   {
+    "word": "것이",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "보였소",
+    "head": "보이",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "눈물로",
+    "head": "눈물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "싱그러운",
+    "head": "싱그럽",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "아침",
+    "head": "아침",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "이슬을",
+    "head": "이슬",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "더하면서",
+    "head": "더하",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "OL-001": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "구름을",
+    "head": "구름",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "모으는",
+    "head": "모으",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "자",
+    "head": "자",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "넓은",
+    "head": "넓",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "하늘의",
+    "head": "하늘",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "주인이다",
+    "head": "주인",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "OL-002": [
+   {
+    "word": "지혜의",
+    "head": "지혜",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "올빼미는",
+    "head": "올빼미",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "황혼에야",
+    "head": "황혼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "날아오른다",
+    "head": "날아오르",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "OL-003": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "노래와",
+    "head": "노래",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "치유와",
+    "head": "치유",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "빛나는",
+    "head": "빛나",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "태양의",
+    "head": "태양",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "신이다",
+    "head": "신",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "OL-004": [
+   {
+    "word": "신들조차",
+    "head": "신",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "사랑의",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "힘을",
+    "head": "힘",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "거스르지",
+    "head": "거스르",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "못한다",
+    "head": "못하",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "OL-005": [
+   {
+    "word": "생각처럼",
+    "head": "생각",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "빠르게",
+    "head": "빠르",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "신들의",
+    "head": "신",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "말을",
+    "head": "말",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "인간의",
+    "head": "인간",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "귀에",
+    "head": "귀",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "전한다",
+    "head": "전하",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "OL-006": [
+   {
+    "word": "무사",
+    "head": "무사",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "여신이여",
+    "head": "여신",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "멀리",
+    "head": "멀리",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "떠돌았던",
+    "head": "떠돌",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "꾀",
+    "head": "꾀",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "많은",
+    "head": "많",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "사내의",
+    "head": "사내",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "이야기를",
+    "head": "이야기",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "들려주소서",
+    "head": "들리",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "OL-007": [
+   {
+    "word": "잊힌",
+    "head": "잊히",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "긴",
+    "head": "길",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "삶보다",
+    "head": "삶",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "영광의",
+    "head": "영광",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "짧은",
+    "head": "짧",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "삶을",
+    "head": "삶",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "살겠다",
+    "head": "살",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "PT-001": [
+   {
+    "word": "참된",
+    "head": "참되",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "사랑의",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "길은",
+    "head": "길",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "결코",
+    "head": "결코",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "순탄한",
+    "head": "순탄",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "적이",
+    "head": "적",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "없었다",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "PT-002": [
+   {
+    "word": "곱절로",
+    "head": "곱절",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "곱절로",
+    "head": "곱절",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "고생과",
+    "head": "고생",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "근심",
+    "head": "근심",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "PT-003": [
+   {
+    "word": "사십",
+    "head": "사",
+    "tag": "NR",
+    "function": false
+   },
+   {
+    "word": "분",
+    "head": "분",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "안에",
+    "head": "안",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "지구에",
+    "head": "지구",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "띠를",
+    "head": "띠",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "한",
+    "head": "한",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "바퀴",
+    "head": "바퀴",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "두르겠습니다",
+    "head": "두르",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "PT-004": [
+   {
+    "word": "양귀비도",
+    "head": "양귀비",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "맨드레이크도",
+    "head": "맨드레이크도",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "세상의",
+    "head": "세상",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "어떤",
+    "head": "어떤",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "졸음",
+    "head": "졸음",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "오는",
+    "head": "오",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "시럽도",
+    "head": "시럽",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "PT-005": [
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "꽃을",
+    "head": "꽃",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "가져오너라",
+    "head": "가져오",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "전에",
+    "head": "전",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "네게",
+    "head": "너",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "보여",
+    "head": "보이",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "준",
+    "head": "주",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "풀이다",
+    "head": "풀",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "PT-006": [
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "마음",
+    "head": "마음",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "놓고",
+    "head": "놓",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "쉬던",
+    "head": "쉬",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "시간에",
+    "head": "시간",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "네",
+    "head": "너",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "숙부가",
+    "head": "숙부",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "저주받은",
+    "head": "저주",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "헤보나",
+    "head": "헤보",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "즙을",
+    "head": "즙",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "병에",
+    "head": "병",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "담아",
+    "head": "담",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "몰래",
+    "head": "몰래",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "다가왔다",
+    "head": "다가오",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "PT-007": [
+   {
+    "word": "가마솥에서",
+    "head": "가마솥",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "끓고",
+    "head": "끓",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "익어라",
+    "head": "익",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "영원의",
+    "head": "영원",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "눈과",
+    "head": "눈",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "개구리의",
+    "head": "개구리",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "발가락",
+    "head": "발가락",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "PT-008": [
+   {
+    "word": "다섯",
+    "head": "다섯",
+    "tag": "NR",
+    "function": false
+   },
+   {
+    "word": "길",
+    "head": "길",
+    "tag": "NNB",
+    "function": false
+   },
+   {
+    "word": "물속에",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그대",
+    "head": "그대",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "아버지",
+    "head": "아버지",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "누워",
+    "head": "눕",
+    "tag": "VV-I",
+    "function": false
+   },
+   {
+    "word": "있네",
+    "head": "있",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "그의",
+    "head": "그",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "뼈는",
+    "head": "뼈",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "산호가",
+    "head": "산호",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "되었네",
+    "head": "되",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "PT-009": [
+   {
+    "word": "이것을",
+    "head": "이것",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "아무",
+    "head": "아무",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "액체에나",
+    "head": "액체",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "타서",
+    "head": "타",
+    "tag": "VV",
+    "function": true
+   },
+   {
+    "word": "다",
+    "head": "다",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "마시시오",
+    "head": "마시",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "스무",
+    "head": "스무",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "사람의",
+    "head": "사람",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "힘이",
+    "head": "힘",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "있더라도",
+    "head": "있",
+    "tag": "VV",
+    "function": true
+   },
+   {
+    "word": "곧바로",
+    "head": "곧바로",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "저세상으로",
+    "head": "저세상",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "보낼",
+    "head": "보내",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것이오",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   }
+  ],
+  "RL-001": [
+   {
+    "word": "아",
+    "head": "아",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "불쌍한",
+    "head": "불쌍",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "요릭",
+    "head": "요릭",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "그를",
+    "head": "그",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "알았네",
+    "head": "알",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "호레이쇼",
+    "head": "호레이쇼",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "RL-002": [
+   {
+    "word": "이제",
+    "head": "이제",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "나의",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "마법은",
+    "head": "마법",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "모두",
+    "head": "모두",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "무너졌습니다",
+    "head": "무너지",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "RL-003": [
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "눈앞에",
+    "head": "눈앞",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "보이는",
+    "head": "보이",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "이것이",
+    "head": "이것",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "단검인가",
+    "head": "단검",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "RL-004": [
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "너그러움은",
+    "head": "너그럽",
+    "tag": "VA-I",
+    "function": false
+   },
+   {
+    "word": "바다처럼",
+    "head": "바다",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "끝이",
+    "head": "끝",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없고",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "사랑도",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "그만큼",
+    "head": "그만큼",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "깊어요",
+    "head": "깊",
+    "tag": "VA",
+    "function": false
+   }
+  ],
+  "RL-005": [
+   {
+    "word": "반짝이는",
+    "head": "반짝이",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것이",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "모두",
+    "head": "모두",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "금은",
+    "head": "금",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아니다",
+    "head": "아니",
+    "tag": "VCN",
+    "function": true
+   }
+  ],
+  "RL-006": [
+   {
+    "word": "왕관을",
+    "head": "왕관",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "쓴",
+    "head": "쓰",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "머리는",
+    "head": "머리",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "편히",
+    "head": "편히",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "눕지",
+    "head": "눕",
+    "tag": "VV-I",
+    "function": false
+   },
+   {
+    "word": "못한다",
+    "head": "못하",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "RL-007": [
+   {
+    "word": "나의",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "책을",
+    "head": "책",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "물에",
+    "head": "물",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "빠뜨리겠다",
+    "head": "빠뜨리",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "RL-008": [
+   {
+    "word": "오",
+    "head": "오",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "사랑하는",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아버지",
+    "head": "아버지",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "제가",
+    "head": "저",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "하는",
+    "head": "하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "일은",
+    "head": "일",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아버지의",
+    "head": "아버지",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "일입니다",
+    "head": "일",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "RL-009": [
+   {
+    "word": "맙소사",
+    "head": "맙소사",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "보텀",
+    "head": "보텀",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "자네",
+    "head": "자네",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "모습이",
+    "head": "모습",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "바뀌었네",
+    "head": "바뀌",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "RM-001": [
+   {
+    "word": "내가",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "시저를",
+    "head": "시저",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "덜",
+    "head": "덜",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "사랑해서가",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아니라",
+    "head": "아니",
+    "tag": "VCN",
+    "function": true
+   },
+   {
+    "word": "로마를",
+    "head": "로마",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "더",
+    "head": "더",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "사랑했기",
+    "head": "사랑",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "때문입니다",
+    "head": "때문",
+    "tag": "NNB",
+    "function": true
+   }
+  ],
+  "RM-002": [
+   {
+    "word": "친애하는",
+    "head": "친애",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "브루투스",
+    "head": "브루투스",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "잘못은",
+    "head": "잘못",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "우리의",
+    "head": "우리",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "별에",
+    "head": "별",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "있는",
+    "head": "있",
+    "tag": "VV",
+    "function": true
+   },
+   {
+    "word": "것이",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "아니라",
+    "head": "아니",
+    "tag": "VCN",
+    "function": true
+   },
+   {
+    "word": "우리",
+    "head": "우리",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "자신에게",
+    "head": "자신",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "있네",
+    "head": "있",
+    "tag": "VV",
+    "function": true
+   }
+  ],
+  "RM-003": [
+   {
+    "word": "친구들이여",
+    "head": "친구",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "로마인들이여",
+    "head": "로마인",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "동포들이여",
+    "head": "동포",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "귀를",
+    "head": "귀",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "빌려",
+    "head": "빌리",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "주시오",
+    "head": "주",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "SC-001": [
+   {
+    "word": "사내다운",
+    "head": "사내",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "일이라면",
+    "head": "일",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "무엇이든",
+    "head": "무엇",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "감히",
+    "head": "감히",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "하겠소",
+    "head": "하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "그",
+    "head": "그",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "이상을",
+    "head": "이상",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "감히",
+    "head": "감히",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "하는",
+    "head": "하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "자는",
+    "head": "자",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "사내가",
+    "head": "사내",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "아니오",
+    "head": "아니",
+    "tag": "VCN",
+    "function": true
+   }
+  ],
+  "SC-002": [
+   {
+    "word": "오라",
+    "head": "오",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "죽음의",
+    "head": "죽음",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "생각을",
+    "head": "생각",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "시중드는",
+    "head": "시중",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "정령들아",
+    "head": "정령",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "여기서",
+    "head": "여기",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "나의",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "여성을",
+    "head": "여성",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없애",
+    "head": "없애",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "다오",
+    "head": "달",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "SC-003": [
+   {
+    "word": "그대는",
+    "head": "그대",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "왕이",
+    "head": "왕",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "되지",
+    "head": "되",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "못하나",
+    "head": "못하",
+    "tag": "VX",
+    "function": true
+   },
+   {
+    "word": "왕들을",
+    "head": "왕",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "낳으리라",
+    "head": "낳",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "SM-001": [
+   {
+    "word": "그대를",
+    "head": "그대",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "여름날에",
+    "head": "여름날",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "비겨",
+    "head": "비기",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "볼까요",
+    "head": "보",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "TP-001": [
+   {
+    "word": "우리는",
+    "head": "우리",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "꿈을",
+    "head": "꿈",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "이루는",
+    "head": "이루",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것과",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "같은",
+    "head": "같",
+    "tag": "VA",
+    "function": true
+   },
+   {
+    "word": "재료로",
+    "head": "재료",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "되어",
+    "head": "되",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "있다",
+    "head": "있",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "TP-002": [
+   {
+    "word": "만세",
+    "head": "만세",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위대한",
+    "head": "위대",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "주인님",
+    "head": "주인",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "엄숙하신",
+    "head": "엄숙",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "어른",
+    "head": "어른",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "만세",
+    "head": "만세",
+    "tag": "IC",
+    "function": false
+   }
+  ],
+  "TP-003": [
+   {
+    "word": "이",
+    "head": "이",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "섬은",
+    "head": "섬",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "것이다",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   },
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "어머니",
+    "head": "어머니",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "시코락스가",
+    "head": "시코락스",
+    "tag": "NNP",
+    "function": false
+   },
+   {
+    "word": "물려준",
+    "head": "물려주",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "TP-004": [
+   {
+    "word": "오",
+    "head": "오",
+    "tag": "IC",
+    "function": false
+   },
+   {
+    "word": "멋진",
+    "head": "멋지",
+    "tag": "VA",
+    "function": false
+   },
+   {
+    "word": "신세계여",
+    "head": "신",
+    "tag": "XPN",
+    "function": false
+   },
+   {
+    "word": "이런",
+    "head": "이런",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "사람들이",
+    "head": "사람",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "살고",
+    "head": "살",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "있다니",
+    "head": "있",
+    "tag": "VX",
+    "function": true
+   }
+  ],
+  "UW-001": [
+   {
+    "word": "모든",
+    "head": "모든",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "영혼은",
+    "head": "영혼",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "끝내",
+    "head": "끝내",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "내게로",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "온다",
+    "head": "오",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "참을성이",
+    "head": "참을성",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "있다",
+    "head": "있",
+    "tag": "VV",
+    "function": true
+   }
+  ],
+  "UW-002": [
+   {
+    "word": "나는",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "씨앗",
+    "head": "씨앗",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "여섯",
+    "head": "여섯",
+    "tag": "NR",
+    "function": false
+   },
+   {
+    "word": "알을",
+    "head": "알",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "먹고",
+    "head": "먹",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "두",
+    "head": "두",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "세계",
+    "head": "세계",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "사이에",
+    "head": "사이",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "영원히",
+    "head": "영원히",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "묶였다",
+    "head": "묶이",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "UW-003": [
+   {
+    "word": "용기가",
+    "head": "용기",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "있다면",
+    "head": "있",
+    "tag": "VV",
+    "function": true
+   },
+   {
+    "word": "나를",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "보아라",
+    "head": "보",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "내",
+    "head": "나",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "눈길이",
+    "head": "눈길",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "네가",
+    "head": "너",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "보는",
+    "head": "보",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "마지막이",
+    "head": "마지막",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "될",
+    "head": "되",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "것이다",
+    "head": "것",
+    "tag": "NNB",
+    "function": true
+   }
+  ],
+  "VC-001": [
+   {
+    "word": "또다시",
+    "head": "또",
+    "tag": "MAG",
+    "function": false
+   },
+   {
+    "word": "우리",
+    "head": "우리",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "거리를",
+    "head": "거리",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "어지럽힌다면",
+    "head": "어지럽히",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "너희",
+    "head": "너희",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "목숨으로",
+    "head": "목숨",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "평화를",
+    "head": "평화",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "깬",
+    "head": "깨",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "값을",
+    "head": "값",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "치르리라",
+    "head": "치르",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "VC-002": [
+   {
+    "word": "이",
+    "head": "이",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "격렬한",
+    "head": "격렬",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "기쁨은",
+    "head": "기쁨",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "격렬한",
+    "head": "격렬",
+    "tag": "XR",
+    "function": false
+   },
+   {
+    "word": "끝을",
+    "head": "끝",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "맞는다",
+    "head": "맞",
+    "tag": "VV",
+    "function": false
+   }
+  ],
+  "VC-003": [
+   {
+    "word": "저는",
+    "head": "저",
+    "tag": "NP",
+    "function": true
+   },
+   {
+    "word": "아가씨의",
+    "head": "아가씨",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "기쁨을",
+    "head": "기쁨",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "위해",
+    "head": "위하",
+    "tag": "VV",
+    "function": false
+   },
+   {
+    "word": "고생하는",
+    "head": "고생",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "일꾼이랍니다",
+    "head": "일",
+    "tag": "NNG",
+    "function": false
+   }
+  ],
+  "VC-004": [
+   {
+    "word": "이런",
+    "head": "이런",
+    "tag": "MM",
+    "function": true
+   },
+   {
+    "word": "슬픔의",
+    "head": "슬픔",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "때에는",
+    "head": "때",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "구애할",
+    "head": "구애",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "시간이",
+    "head": "시간",
+    "tag": "NNG",
+    "function": false
+   },
+   {
+    "word": "없군요",
+    "head": "없",
+    "tag": "VA",
+    "function": false
+   }
+  ]
+ },
+ "th": {
+  "CA-001": [
+   "ชื่อ",
+   "นั้น",
+   "สำคัญ",
+   "ไฉน",
+   "สิ่ง",
+   "ที่",
+   "เรา",
+   "เรียก",
+   "ว่า",
+   "กุ",
+   "หลา",
+   "บ."
+  ],
+  "CA-002": [
+   "อะไร",
+   "กัน",
+   "ชักดาบ",
+   "แล้ว",
+   "ยัง",
+   "พูดถึง",
+   "สันติ",
+   "หรือ",
+   "ข้า",
+   "เกลียด",
+   "คำ",
+   "นั้น"
+  ],
+  "CA-003": [
+   "แต่งงาน",
+   "เรื่อง",
+   "แต่งงาน",
+   "นี่แหละ",
+   "ที่",
+   "แม่",
+   "มา",
+   "เพื่อ",
+   "จะ",
+   "พูด"
+  ],
+  "DC-001": [
+   "จะ",
+   "อยู่",
+   "หรือ",
+   "จะ",
+   "ตาย",
+   "นั่น",
+   "คือ",
+   "ปัญหา"
+  ],
+  "DC-002": [
+   "นี่",
+   "คือ",
+   "โรสแมรี",
+   "ไว้",
+   "สำหรับ",
+   "ความทรงจำ"
+  ],
+  "DC-003": [
+   "ถ้อยคำ",
+   "ของ",
+   "ข้า",
+   "ลอย",
+   "ขึ้น",
+   "เบื้องบน",
+   "ความคิด",
+   "ของ",
+   "ข้า",
+   "ยังอยู่",
+   "เบื้องล่าง"
+  ],
+  "DC-004": [
+   "บัดนี้",
+   "หัวใจ",
+   "อัน",
+   "สูงส่ง",
+   "แตกสลาย",
+   "ราตรีสวัสดิ์",
+   "เจ้าชาย",
+   "ผู้",
+   "อ่อนโยน"
+  ],
+  "FA-001": [
+   "พระเจ้า",
+   "มนุษย์",
+   "พวก",
+   "นี้",
+   "ช่าง",
+   "โง่เขลา",
+   "เสีย",
+   "จริง"
+  ],
+  "FA-002": [
+   "มา",
+   "เถิด",
+   "นั่งลง",
+   "บน",
+   "เตียง",
+   "ดอกไม้",
+   "นี้"
+  ],
+  "FA-003": [
+   "พบกัน",
+   "ใต้",
+   "แสงจันทร์",
+   "ช่าง",
+   "ไม่",
+   "เป็น",
+   "มงคล",
+   "ไท",
+   "ทา",
+   "เนีย",
+   "ผู้",
+   "เย่อหยิ่ง"
+  ],
+  "FA-004": [
+   "ข้า",
+   "ได้",
+   "เห็น",
+   "นิมิต",
+   "ที่",
+   "หา",
+   "ได้",
+   "ยาก",
+   "ยิ่ง",
+   "ข้า",
+   "ได้",
+   "ฝัน",
+   "เกิน",
+   "กว่า",
+   "ปัญญา",
+   "มนุษย์",
+   "จะ",
+   "บอก",
+   "ได้"
+  ],
+  "GC-001": [
+   "เธอ",
+   "เดิน",
+   "อยู่",
+   "ใน",
+   "ความงาม",
+   "ดั่ง",
+   "ราตรี",
+   "แห่ง",
+   "แดน",
+   "ไร้",
+   "เมฆ",
+   "และ",
+   "ฟ้า",
+   "พร่าง",
+   "ดาว"
+  ],
+  "GC-002": [
+   "จงระวัง",
+   "เพราะ",
+   "ข้า",
+   "ไร้",
+   "ความกลัว",
+   "จึง",
+   "ทรงพลัง"
+  ],
+  "GC-003": [
+   "ครั้งหนึ่ง",
+   "ใน",
+   "เที่ยงคืน",
+   "อัน",
+   "หม่นหมอง",
+   "ขณะที่",
+   "ฉัน",
+   "ครุ่นคิด",
+   "อ่อนแรง",
+   "และ",
+   "เหนื่อยล้า"
+  ],
+  "GC-004": [
+   "เห็น",
+   "โลก",
+   "ใน",
+   "เม็ดทราย",
+   "และ",
+   "เห็น",
+   "สวรรค์",
+   "ใน",
+   "ดอกไม้",
+   "ป่า"
+  ],
+  "GC-005": [
+   "ถ้า",
+   "ฤดูหนาว",
+   "มาถึง",
+   "ฤดูใบไม้ผลิ",
+   "จะ",
+   "อยู่",
+   "ไกล",
+   "ได้",
+   "หรือ"
+  ],
+  "IL-001": [
+   "ฉัน",
+   "ไม่",
+   "ใช่",
+   "อย่าง",
+   "ที่",
+   "ฉัน",
+   "เป็นอยู่"
+  ],
+  "IL-002": [
+   "บางคน",
+   "เกิด",
+   "มา",
+   "ยิ่งใหญ่",
+   "บางคน",
+   "ไขว่คว้า",
+   "ความยิ่งใหญ่",
+   "ได้",
+   "และ",
+   "บางคน",
+   "ถูก",
+   "ยัดเยียด",
+   "ความยิ่งใหญ่",
+   "ให้"
+  ],
+  "IL-003": [
+   "รัก",
+   "ที่",
+   "แสวงหา",
+   "มา",
+   "ได้",
+   "นั้น",
+   "ดี",
+   "แต่",
+   "รัก",
+   "ที่",
+   "ได้มา",
+   "โดย",
+   "ไม่ต้อง",
+   "แสวงหา",
+   "นั้น",
+   "ดีกว่า"
+  ],
+  "LD-001": [
+   "ฉัน",
+   "เร่ร่อน",
+   "เดียวดาย",
+   "ดั่ง",
+   "เมฆ",
+   "ที่",
+   "ลอย",
+   "สูง",
+   "เหนือ",
+   "หุบเขา",
+   "และ",
+   "เนินเขา"
+  ],
+  "LD-002": [
+   "น้ำ",
+   "น้ำ",
+   "ทุกหน",
+   "แห่ง",
+   "แต่",
+   "ไม่",
+   "มี",
+   "สัก",
+   "หยด",
+   "ให้",
+   "ดื่ม"
+  ],
+  "LD-003": [
+   "สิ่ง",
+   "ที่",
+   "งดงาม",
+   "คือ",
+   "ความสุข",
+   "ชั่วนิรันดร์",
+   "ความน่ารัก",
+   "ของ",
+   "มัน",
+   "เพิ่มพูน",
+   "ขึ้น"
+  ],
+  "LD-004": [
+   "ฉัน",
+   "รัก",
+   "เธอ",
+   "อย่างไร",
+   "ขอให้",
+   "ฉัน",
+   "นับ",
+   "วิธี",
+   "ดู"
+  ],
+  "LD-005": [
+   "จง",
+   "ระลึกถึง",
+   "ฉัน",
+   "เมื่อ",
+   "ฉัน",
+   "จากไป",
+   "จากไป",
+   "ไกล",
+   "สู่",
+   "ดินแดน",
+   "อัน",
+   "เงียบงัน"
+  ],
+  "MO-001": [
+   "แต่",
+   "ช้าก่อน",
+   "แสง",
+   "อะไร",
+   "ส่อง",
+   "ผ่าน",
+   "หน้าต่าง",
+   "บาน",
+   "นั้น"
+  ],
+  "MO-002": [
+   "ขอให้",
+   "โรค",
+   "ห่าลง",
+   "ทั้งสอง",
+   "ตระกูล",
+   "ของ",
+   "พวก",
+   "เจ้า"
+  ],
+  "MO-003": [
+   "ข้า",
+   "เพียง",
+   "รักษา",
+   "ความสงบ",
+   "เก็บ",
+   "ดาบ",
+   "ของ",
+   "เจ้า",
+   "เสีย"
+  ],
+  "MO-004": [
+   "หลาย",
+   "เช้า",
+   "แล้ว",
+   "ที่",
+   "มี",
+   "คน",
+   "เห็น",
+   "เขา",
+   "อยู่",
+   "ที่นั่น",
+   "หลั่ง",
+   "น้ำตา",
+   "เพิ่ม",
+   "น้ำค้าง",
+   "ยามเช้า",
+   "อัน",
+   "สดชื่น"
+  ],
+  "OL-001": [
+   "ข้า",
+   "คือ",
+   "ผู้",
+   "รวบรวม",
+   "เมฆ",
+   "เจ้า",
+   "แห่ง",
+   "ฟ้า",
+   "กว้าง"
+  ],
+  "OL-002": [
+   "นกฮูก",
+   "แห่ง",
+   "ปัญญา",
+   "ออก",
+   "บิน",
+   "เมื่อ",
+   "ยาม",
+   "สนธยา",
+   "เท่านั้น"
+  ],
+  "OL-003": [
+   "ข้า",
+   "คือ",
+   "เทพ",
+   "แห่ง",
+   "บทเพลง",
+   "การเยียวยา",
+   "และ",
+   "ดวงอาทิตย์",
+   "อัน",
+   "เจิดจ้า"
+  ],
+  "OL-004": [
+   "แม้แต่",
+   "เหล่า",
+   "เทพ",
+   "ก็",
+   "ไม่",
+   "อาจ",
+   "ต้าน",
+   "อำนาจ",
+   "ของ",
+   "ความรัก"
+  ],
+  "OL-005": [
+   "รวดเร็ว",
+   "ดั่ง",
+   "ความคิด",
+   "ข้า",
+   "นำ",
+   "ถ้อยคำ",
+   "ของ",
+   "เหล่า",
+   "เทพ",
+   "ไป",
+   "สู่",
+   "หู",
+   "มนุษย์"
+  ],
+  "OL-006": [
+   "โอ",
+   "เทพธิดา",
+   "แห่ง",
+   "กวี",
+   "จง",
+   "เล่า",
+   "ให้",
+   "ข้า",
+   "ฟัง",
+   "ถึง",
+   "ชาย",
+   "ผู้",
+   "มาก",
+   "อุบาย",
+   "ผู้",
+   "เร่ร่อน",
+   "ไป",
+   "ไกล"
+  ],
+  "OL-007": [
+   "ข้า",
+   "ยอม",
+   "มีชีวิต",
+   "สั้น",
+   "ที่",
+   "เปี่ยม",
+   "เกียรติยศ",
+   "ดีกว่า",
+   "ชีวิต",
+   "ยืนยาว",
+   "ที่",
+   "ถูก",
+   "ลืม"
+  ],
+  "PT-001": [
+   "หนทาง",
+   "ของ",
+   "รักแท้",
+   "ไม่",
+   "เคย",
+   "ราบรื่น"
+  ],
+  "PT-002": [
+   "ทวีคูณ",
+   "ทวีคูณ",
+   "ความ",
+   "เหนื่อยยาก",
+   "และ",
+   "ความทุกข์"
+  ],
+  "PT-003": [
+   "ข้า",
+   "จะ",
+   "คาดเข็มขัด",
+   "รอบ",
+   "โลก",
+   "ภายใน",
+   "สี่",
+   "สิบ",
+   "นาที"
+  ],
+  "PT-004": [
+   "ไม่",
+   "ว่า",
+   "ฝิ่น",
+   "แมน",
+   "เด",
+   "รก",
+   "หรือ",
+   "น้ำเชื่อม",
+   "ชวน",
+   "ง่วง",
+   "ทั้งหมด",
+   "ใน",
+   "โลก"
+  ],
+  "PT-005": [
+   "ไป",
+   "เอา",
+   "ดอกไม้",
+   "นั้น",
+   "มา",
+   "ให้",
+   "ข้า",
+   "สมุนไพร",
+   "ที่",
+   "ข้า",
+   "เคย",
+   "ชี้",
+   "ให้",
+   "เจ้า",
+   "ดู",
+   "ครั้งหนึ่ง"
+  ],
+  "PT-006": [
+   "ใน",
+   "ยาม",
+   "ที่",
+   "ข้า",
+   "หลับ",
+   "อย่าง",
+   "วางใจ",
+   "อา",
+   "ของ",
+   "เจ้า",
+   "ย่อง",
+   "เข้ามา",
+   "พร้อม",
+   "น้ำ",
+   "เฮ",
+   "โบ",
+   "นา",
+   "ต้อง",
+   "สาป",
+   "ใน",
+   "ขวด",
+   "เล็ก"
+  ],
+  "PT-007": [
+   "ใน",
+   "หม้อ",
+   "ใหญ่",
+   "จง",
+   "เดือด",
+   "และ",
+   "สุก",
+   "ตา",
+   "ของ",
+   "ซาลาแมนเดอร์",
+   "และ",
+   "นิ้วเท้า",
+   "ของ",
+   "กบ"
+  ],
+  "PT-008": [
+   "ลึก",
+   "ห้า",
+   "วา",
+   "พ่อ",
+   "ของ",
+   "เจ้า",
+   "นอน",
+   "อยู่",
+   "กระดูก",
+   "ของ",
+   "เขา",
+   "กลายเป็น",
+   "ปะการัง"
+  ],
+  "PT-009": [
+   "ใส่",
+   "สิ่ง",
+   "นี้",
+   "ลง",
+   "ใน",
+   "ของเหลว",
+   "ใด",
+   "ก็ได้",
+   "ตามใจ",
+   "แล้ว",
+   "ดื่ม",
+   "ให้",
+   "หมด",
+   "แม้",
+   "ท่าน",
+   "มี",
+   "กำลัง",
+   "เท่า",
+   "ชาย",
+   "ยี่สิบ",
+   "คน",
+   "มัน",
+   "ก็",
+   "จะ",
+   "ส่ง",
+   "ท่าน",
+   "ไป",
+   "ทันที"
+  ],
+  "RL-001": [
+   "อนิจจา",
+   "ยอ",
+   "ริก",
+   "ผู้",
+   "น่าสงสาร",
+   "ข้า",
+   "รู้จัก",
+   "เขา",
+   "โฮ",
+   "ราชิ",
+   "โอ"
+  ],
+  "RL-002": [
+   "บัดนี้",
+   "เวทมนตร์",
+   "ของ",
+   "ข้า",
+   "สิ้นฤทธิ์",
+   "หมด",
+   "แล้ว"
+  ],
+  "RL-003": [
+   "นี่",
+   "คือ",
+   "กริช",
+   "ที่",
+   "ข้า",
+   "เห็น",
+   "อยู่",
+   "ตรงหน้า",
+   "หรือ"
+  ],
+  "RL-004": [
+   "น้ำใจ",
+   "ของ",
+   "ฉัน",
+   "ไร้",
+   "ขอบเขต",
+   "ดั่ง",
+   "ทะเล",
+   "ความรัก",
+   "ของ",
+   "ฉัน",
+   "ก็",
+   "ลึก",
+   "เท่ากัน"
+  ],
+  "RL-005": [
+   "ทุกสิ่ง",
+   "ที่",
+   "แวววาว",
+   "ใช่",
+   "ว่า",
+   "จะ",
+   "เป็น",
+   "ทอง"
+  ],
+  "RL-006": [
+   "ศีรษะ",
+   "ที่",
+   "สวมมงกุฎ",
+   "ย่อม",
+   "นอน",
+   "ไม่",
+   "เป็นสุข"
+  ],
+  "RL-007": [
+   "ข้า",
+   "จะ",
+   "จม",
+   "หนังสือ",
+   "ของ",
+   "ข้า",
+   "ลง",
+   "ใน",
+   "น้ำ"
+  ],
+  "RL-008": [
+   "โอ",
+   "เสด็จ",
+   "พ่อ",
+   "ที่รัก",
+   "ลูก",
+   "กำลัง",
+   "ทำ",
+   "กิจ",
+   "ของ",
+   "พ่อ",
+   "อยู่"
+  ],
+  "RL-009": [
+   "พระเจ้า",
+   "คุ้มครอง",
+   "เจ้า",
+   "บอ",
+   "ต",
+   "ทอม",
+   "เจ้า",
+   "กลายร่าง",
+   "ไป",
+   "แล้ว"
+  ],
+  "RM-001": [
+   "มิใช่",
+   "ว่า",
+   "ข้า",
+   "รัก",
+   "ซีซาร์",
+   "น้อยลง",
+   "แต่",
+   "ข้า",
+   "รัก",
+   "กรุง",
+   "โรม",
+   "มากกว่า"
+  ],
+  "RM-002": [
+   "ความผิด",
+   "นั้น",
+   "บรูตุส",
+   "ที่รัก",
+   "มิได้",
+   "อยู่",
+   "ที่",
+   "ดวงดาว",
+   "ของ",
+   "เรา",
+   "แต่",
+   "อยู่",
+   "ที่",
+   "ตัวเรา",
+   "เอง"
+  ],
+  "RM-003": [
+   "มิตรสหาย",
+   "ชาว",
+   "โรมัน",
+   "เพื่อนร่วมชาติ",
+   "ทั้งหลาย",
+   "ขอยืม",
+   "หู",
+   "ของ",
+   "ท่าน",
+   "หน่อย"
+  ],
+  "SC-001": [
+   "ข้า",
+   "กล้า",
+   "ทำ",
+   "ทุกสิ่ง",
+   "ที่",
+   "สม",
+   "กับ",
+   "เป็น",
+   "ชาย",
+   "ผู้ใด",
+   "กล้า",
+   "ทำ",
+   "ยิ่งกว่านั้น",
+   "ย่อม",
+   "ไม่",
+   "ใช่",
+   "ชาย"
+  ],
+  "SC-002": [
+   "มา",
+   "เถิด",
+   "เหล่า",
+   "วิญญาณ",
+   "ที่",
+   "คอย",
+   "รับใช้",
+   "ความคิด",
+   "สังหาร",
+   "จง",
+   "ถอดความ",
+   "เป็น",
+   "หญิง",
+   "ของ",
+   "ข้า",
+   "เสีย",
+   "ที่นี่"
+  ],
+  "SC-003": [
+   "เจ้า",
+   "จะ",
+   "ให้กำเนิด",
+   "กษัตริย์",
+   "แม้",
+   "ตัว",
+   "เจ้า",
+   "ไม่",
+   "ได้",
+   "เป็น",
+   "กษัตริย์"
+  ],
+  "SM-001": [
+   "จะ",
+   "ให้",
+   "ฉัน",
+   "เปรียบ",
+   "เธอ",
+   "กับ",
+   "วัน",
+   "ใน",
+   "ฤดูร้อน",
+   "หรือ"
+  ],
+  "TP-001": [
+   "เรา",
+   "เป็น",
+   "สิ่ง",
+   "เดียว",
+   "กับ",
+   "ที่",
+   "ความฝัน",
+   "ถูก",
+   "สร้าง",
+   "ขึ้น",
+   "มา"
+  ],
+  "TP-002": [
+   "ขอ",
+   "คารวะ",
+   "นาย",
+   "ผู้ยิ่งใหญ่",
+   "ท่าน",
+   "ผู้สูงศักดิ์",
+   "ขอ",
+   "คารวะ"
+  ],
+  "TP-003": [
+   "เกาะ",
+   "นี้",
+   "เป็น",
+   "ของ",
+   "ข้า",
+   "ได้",
+   "มาจาก",
+   "ซิ",
+   "โค",
+   "แรกซ์",
+   "แม่",
+   "ของ",
+   "ข้า"
+  ],
+  "TP-004": [
+   "โอ",
+   "โลก",
+   "ใหม่",
+   "อัน",
+   "งดงาม",
+   "ที่",
+   "มี",
+   "ผู้คน",
+   "เช่นนี้",
+   "อยู่"
+  ],
+  "UW-001": [
+   "วิญญาณ",
+   "ทั้งปวง",
+   "มาหา",
+   "ข้า",
+   "ในที่สุด",
+   "ข้า",
+   "อดทน",
+   "รอ",
+   "ได้"
+  ],
+  "UW-002": [
+   "ข้า",
+   "กิน",
+   "เมล็ด",
+   "หก",
+   "เมล็ด",
+   "และ",
+   "ผูก",
+   "ตัวเอง",
+   "ไว้",
+   "ระหว่าง",
+   "สอง",
+   "โลก",
+   "ตลอดกาล"
+  ],
+  "UW-003": [
+   "จง",
+   "มอง",
+   "ข้า",
+   "หาก",
+   "เจ้า",
+   "กล้า",
+   "สายตา",
+   "ของ",
+   "ข้า",
+   "คือ",
+   "สิ่ง",
+   "สุดท้าย",
+   "ที่",
+   "เจ้า",
+   "จะ",
+   "ได้",
+   "เห็น"
+  ],
+  "VC-001": [
+   "หาก",
+   "พวก",
+   "เจ้า",
+   "ก่อความวุ่นวาย",
+   "บน",
+   "ถนน",
+   "ของ",
+   "เรา",
+   "อีก",
+   "ชีวิต",
+   "ของ",
+   "พวก",
+   "เจ้า",
+   "จะ",
+   "ต้อง",
+   "ชดใช้",
+   "ที่",
+   "ทำลาย",
+   "ความสงบ"
+  ],
+  "VC-002": [
+   "ความสุข",
+   "อัน",
+   "รุนแรง",
+   "เหล่านี้",
+   "ย่อม",
+   "จบ",
+   "ลง",
+   "อย่าง",
+   "รุนแรง"
+  ],
+  "VC-003": [
+   "ข้า",
+   "เป็น",
+   "คนรับใช้",
+   "ที่",
+   "เหน็ดเหนื่อย",
+   "เพื่อ",
+   "ความสุข",
+   "ของ",
+   "คุณหนู"
+  ],
+  "VC-004": [
+   "ยาม",
+   "โศกเศร้า",
+   "เช่นนี้",
+   "ไม่",
+   "มี",
+   "เวลา",
+   "ให้",
+   "เกี้ยวพาราสี"
+  ]
+ }
+}

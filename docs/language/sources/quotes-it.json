@@ -1,0 +1,512 @@
+{
+ "MO-001": {
+  "text": "Che veggo? Qual luce scende da quel verone?",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530",
+  "revid": 3803530,
+  "offset": 84690,
+  "matches": 1,
+  "regex": "Che veggo\\? Qual luce scende da quel verone\\?"
+ },
+ "CA-001": {
+  "text": "Or che è un nome per te? Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530",
+  "revid": 3803530,
+  "offset": 86510,
+  "matches": 1,
+  "regex": "Or che è un nome per te\\? Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe"
+ },
+ "MO-002": {
+  "text": "Maledizione sulle vostre due famiglie!",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_terzo?oldid=3803531",
+  "revid": 3803531,
+  "offset": 118727,
+  "matches": 1,
+  "regex": "Maledizione sulle vostre due famiglie!"
+ },
+ "VC-001": {
+  "text": "colla sua testa s’apparecchi a scontar la sua colpa colui che anche una volta sturbasse il pubblico riposo",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_primo?oldid=3803527",
+  "revid": 3803527,
+  "offset": 6942,
+  "matches": 1,
+  "regex": "colla sua testa s’apparecchi a scontar la sua colpa colui che anche una volta sturbasse il pubblico riposo"
+ },
+ "VC-002": {
+  "text": "Questi violenti trasporti terminano fra violenti dolori",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530",
+  "revid": 3803530,
+  "offset": 111046,
+  "matches": 1,
+  "regex": "Questi violenti trasporti terminano fra violenti dolori"
+ },
+ "VC-003": {
+  "text": "Per ora in me sola gravita tutta la fatica dei vostri piaceri",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530",
+  "revid": 3803530,
+  "offset": 110283,
+  "matches": 1,
+  "regex": "Per ora in me sola gravita tutta la fatica dei vostri piaceri"
+ },
+ "MO-003": {
+  "text": "Feci opera di paciere, e nulla più; rimetti la spada",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_primo?oldid=3803527",
+  "revid": 3803527,
+  "offset": 5189,
+  "matches": 1,
+  "regex": "Feci opera di paciere, e nulla più; rimetti la spada"
+ },
+ "CA-002": {
+  "text": "Colla spada ignuda osi parlare di pace? Odio questa parola",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_primo?oldid=3803527",
+  "revid": 3803527,
+  "offset": 5276,
+  "matches": 1,
+  "regex": "Colla spada ignuda osi parlare di pace\\? Odio questa parola"
+ },
+ "MO-004": {
+  "text": "Molte volte lo si è visto prevenir con queste corse l’aurora, per mescolar le sue lagrime colla rugiada del mattino",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_primo?oldid=3803527",
+  "revid": 3803527,
+  "offset": 8470,
+  "matches": 1,
+  "regex": "Molte volte lo si è visto prevenir con queste corse l’aurora, per mescolar le sue lagrime colla rugiada del mattino"
+ },
+ "CA-003": {
+  "text": "Ed è appunto di maritaggio che venni a favellarle.",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_primo?oldid=3803527",
+  "revid": 3803527,
+  "offset": 22061,
+  "matches": 1,
+  "regex": "Ed è appunto di maritaggio che venni a favellarle\\."
+ },
+ "VC-004": {
+  "text": "Questi giorni di sventura non dànno agio alle cure d’amore.",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_terzo?oldid=3803531",
+  "revid": 3803531,
+  "offset": 138664,
+  "matches": 1,
+  "regex": "Questi giorni di sventura non dànno agio alle cure d’amore\\."
+ },
+ "RL-004": {
+  "text": "il mio amore per te è vasto come l’Oceano; come l’Oceano è inesauribile",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_secondo?oldid=3803530",
+  "revid": 3803530,
+  "offset": 91137,
+  "matches": 1,
+  "regex": "il mio amore per te è vasto come l’Oceano; come l’Oceano è inesauribile"
+ },
+ "PT-009": {
+  "text": "Mettete questa droga in quel liquido che più vi piacerà; bevete poscia: e se anche aveste la lena di venti uomini, sarete in breve consunto.",
+  "work": "rj",
+  "page": "Giulietta e Romeo/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/Giulietta_e_Romeo/Atto_quinto?oldid=3803529",
+  "revid": 3803529,
+  "offset": 63160,
+  "matches": 1,
+  "regex": "Mettete questa droga in quel liquido che più vi piacerà; bevete poscia: e se anche aveste la lena di venti uomini, sarete in breve consunto\\."
+ },
+ "DC-001": {
+  "text": "Essere o non essere, ecco il gran problema",
+  "work": "hamlet",
+  "page": "Amleto/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_terzo?oldid=3794677",
+  "revid": 3794677,
+  "offset": 151802,
+  "matches": 1,
+  "regex": "Essere o non essere, ecco il gran problema"
+ },
+ "DC-002": {
+  "text": "Ecco il rosmarino che fortifica le rimembranze",
+  "work": "hamlet",
+  "page": "Amleto/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_quarto?oldid=3794674",
+  "revid": 3794674,
+  "offset": 63843,
+  "matches": 1,
+  "regex": "Ecco il rosmarino che fortifica le rimembranze"
+ },
+ "RL-001": {
+  "text": "Oimè! povero Yorick!... L’ho conosciuto, Orazio",
+  "work": "hamlet",
+  "page": "Amleto/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_quinto?oldid=3794675",
+  "revid": 3794675,
+  "offset": 86368,
+  "matches": 1,
+  "regex": "Oimè! povero Yorick!\\.\\.\\. L’ho conosciuto, Orazio"
+ },
+ "DC-003": {
+  "text": "Le mie parole s’innalzano, ma i miei pensieri rimangono in terra",
+  "work": "hamlet",
+  "page": "Amleto/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_terzo?oldid=3794677",
+  "revid": 3794677,
+  "offset": 183859,
+  "matches": 1,
+  "regex": "Le mie parole s’innalzano, ma i miei pensieri rimangono in terra"
+ },
+ "DC-004": {
+  "text": "Ora scoppia il più nobile cuore! Amabile principe, addio",
+  "work": "hamlet",
+  "page": "Amleto/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_quinto?oldid=3794675",
+  "revid": 3794675,
+  "offset": 110737,
+  "matches": 1,
+  "regex": "Ora scoppia il più nobile cuore! Amabile principe, addio"
+ },
+ "PT-006": {
+  "text": "fra pacifico sonno tuo zio mi sorprese, munito d’una fiala di veleno",
+  "work": "hamlet",
+  "page": "Amleto/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Amleto/Atto_primo?oldid=3794673",
+  "revid": 3794673,
+  "offset": 37792,
+  "matches": 1,
+  "regex": "fra pacifico sonno tuo zio mi sorprese, munito d’una fiala di veleno"
+ },
+ "FA-001": {
+  "text": "Quanto pazzi, o mio re, sono i mortali.",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_terzo?oldid=3806149",
+  "revid": 3806149,
+  "offset": 93189,
+  "matches": 1,
+  "regex": "Quanto pazzi, o mio re, sono i mortali\\."
+ },
+ "FA-002": {
+  "text": "Vieni, assiditi sopra questo letto di fiori",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_quarto?oldid=3806146",
+  "revid": 3806146,
+  "offset": 21118,
+  "matches": 1,
+  "regex": "Vieni, assiditi sopra questo letto di fiori"
+ },
+ "PT-001": {
+  "text": "il corso degli amori sinceri non fu mai senza torbidi e tempeste",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_primo?oldid=3806145",
+  "revid": 3806145,
+  "offset": 9039,
+  "matches": 1,
+  "regex": "il corso degli amori sinceri non fu mai senza torbidi e tempeste"
+ },
+ "FA-003": {
+  "text": "Ti troverò al chiaro di luna, superba Titania.",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_secondo?oldid=3806148",
+  "revid": 3806148,
+  "offset": 58396,
+  "matches": 1,
+  "regex": "Ti troverò al chiaro di luna, superba Titania\\."
+ },
+ "PT-003": {
+  "text": "Porrei una cintura alla terra in meno di quaranta minuti.",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_secondo?oldid=3806148",
+  "revid": 3806148,
+  "offset": 64357,
+  "matches": 1,
+  "regex": "Porrei una cintura alla terra in meno di quaranta minuti\\."
+ },
+ "FA-004": {
+  "text": "Ho avuta una ben strana visione. Ho avuto un sogno che è oltre le forze dell’uomo di poter esplicare",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_quarto?oldid=3806146",
+  "revid": 3806146,
+  "offset": 30732,
+  "matches": 1,
+  "regex": "Ho avuta una ben strana visione\\. Ho avuto un sogno che è oltre le forze dell’uomo di poter esplicare"
+ },
+ "RL-009": {
+  "text": "Il ciel ti benedica, Bottom, il Ciel ti benedica! tu sei ben cangiato.",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_terzo?oldid=3806149",
+  "revid": 3806149,
+  "offset": 83613,
+  "matches": 1,
+  "regex": "Il ciel ti benedica, Bottom, il Ciel ti benedica! tu sei ben cangiato\\."
+ },
+ "PT-005": {
+  "text": "vammi a trovare quel fiore. Io già te l’ho indicato.",
+  "work": "mnd",
+  "page": "Il Sogno di una notte d'estate/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Il_Sogno_di_una_notte_d%27estate/Atto_secondo?oldid=3806148",
+  "revid": 3806148,
+  "offset": 64057,
+  "matches": 1,
+  "regex": "vammi a trovare quel fiore\\. Io già te l’ho indicato\\."
+ },
+ "RL-002": {
+  "text": "Ora tutti i miei incantesimi son rotti",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quinto?oldid=3813467",
+  "revid": 3813467,
+  "offset": 69891,
+  "matches": 1,
+  "regex": "Ora tutti i miei incantesimi son rotti"
+ },
+ "TP-001": {
+  "text": "Modellati noi siamo della vana sustanza di che s’informano i sogni",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quarto?oldid=3813466",
+  "revid": 3813466,
+  "offset": 43575,
+  "matches": 1,
+  "regex": "Modellati noi siamo della vana sustanza di che s’informano i sogni"
+ },
+ "TP-002": {
+  "text": "Omaggio e salute al mio signore! potente e venerando signore, salute!",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3813465",
+  "revid": 3813465,
+  "offset": 14729,
+  "matches": 1,
+  "regex": "Omaggio e salute al mio signore! potente e venerando signore, salute!"
+ },
+ "TP-003": {
+  "text": "Ma quest’isola è mia, e tu mi rubi quello che fu di mia madre.",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3813465",
+  "revid": 3813465,
+  "offset": 21902,
+  "matches": 1,
+  "regex": "Ma quest’isola è mia, e tu mi rubi quello che fu di mia madre\\."
+ },
+ "TP-004": {
+  "text": "come bello è il genere umano; come incantatore il mondo che possiede una tal gente!",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quinto?oldid=3813467",
+  "revid": 3813467,
+  "offset": 62271,
+  "matches": 1,
+  "regex": "come bello è il genere umano; come incantatore il mondo che possiede una tal gente!"
+ },
+ "RL-007": {
+  "text": "tufferò sotto le acque il mio libro magico",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto quinto",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quinto?oldid=3813467",
+  "revid": 3813467,
+  "offset": 55426,
+  "matches": 1,
+  "regex": "tufferò sotto le acque il mio libro magico"
+ },
+ "PT-008": {
+  "text": "Sotto l’acque del mare tuo padre è sepolto; ma l’ossa sue rivivono cangiate in puro corallo.",
+  "work": "tempest",
+  "page": "La tempesta (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3813465",
+  "revid": 3813465,
+  "offset": 25111,
+  "matches": 1,
+  "regex": "Sotto l’acque del mare tuo padre è sepolto; ma l’ossa sue rivivono cangiate in puro corallo\\."
+ },
+ "PT-002": {
+  "text": "Raddoppiamo, raddoppiamo cure e travagli",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_quarto?oldid=3817369",
+  "revid": 3817369,
+  "offset": 33003,
+  "matches": 3,
+  "regex": "Raddoppiamo, raddoppiamo cure e travagli"
+ },
+ "RL-003": {
+  "text": "È egli un pugnale quel che mi veggo dinanzi, coll’elsa rivolta verso la mia mano....?",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_secondo?oldid=3817371",
+  "revid": 3817371,
+  "offset": 82081,
+  "matches": 1,
+  "regex": "È egli un pugnale quel che mi veggo dinanzi, coll’elsa rivolta verso la mia mano\\.\\.\\.\\.\\?"
+ },
+ "SC-001": {
+  "text": "io oso fare tutto quello che ad un uomo s’addice; ma chi di più far vuole, cessa d’esser tale.",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3817368",
+  "revid": 3817368,
+  "offset": 26914,
+  "matches": 1,
+  "regex": "io oso fare tutto quello che ad un uomo s’addice; ma chi di più far vuole, cessa d’esser tale\\."
+ },
+ "SC-002": {
+  "text": "Venite ora, venite tutti, o spiriti d’inferno, che incuorate all’omicidio i mortali",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3817368",
+  "revid": 3817368,
+  "offset": 20658,
+  "matches": 1,
+  "regex": "Venite ora, venite tutti, o spiriti d’inferno, che incuorate all’omicidio i mortali"
+ },
+ "SC-003": {
+  "text": "Creerai i re senza esserlo.",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_primo?oldid=3817368",
+  "revid": 3817368,
+  "offset": 10093,
+  "matches": 1,
+  "regex": "Creerai i re senza esserlo\\."
+ },
+ "PT-007": {
+  "text": "Aggiungiamo anche il tronco d’un serpe di palude, e l’occhio d’una lucertola, e il piede d’una rana",
+  "work": "macbeth",
+  "page": "Macbeth (Shakespeare-Rusconi)/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Macbeth_%28Shakespeare-Rusconi%29/Atto_quarto?oldid=3817369",
+  "revid": 3817369,
+  "offset": 33093,
+  "matches": 1,
+  "regex": "Aggiungiamo anche il tronco d’un serpe di palude, e l’occhio d’una lucertola, e il piede d’una rana"
+ },
+ "IL-001": {
+  "text": "io non sono quel che sembro.",
+  "work": "tn",
+  "page": "La dodicesima notte o quel che vorrete/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/La_dodicesima_notte_o_quel_che_vorrete/Atto_terzo?oldid=3811902",
+  "revid": 3811902,
+  "offset": 95196,
+  "matches": 1,
+  "regex": "io non sono quel che sembro\\."
+ },
+ "IL-002": {
+  "text": "Alcuni nascono grandi, altri, mercè lunghi sforzi, giungono alla grandezza, e ve n’ha a cui la grandezza di per sè si offre.",
+  "work": "tn",
+  "page": "La dodicesima notte o quel che vorrete/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/La_dodicesima_notte_o_quel_che_vorrete/Atto_secondo?oldid=3811901",
+  "revid": 3811901,
+  "offset": 84647,
+  "matches": 1,
+  "regex": "Alcuni nascono grandi, altri, mercè lunghi sforzi, giungono alla grandezza, e ve n’ha a cui la grandezza di per sè si offre\\."
+ },
+ "IL-003": {
+  "text": "l’amore che si arrende alle preghiere è di gran prezzo, ma quello che spontaneo si dona gli è d’assai superiore.",
+  "work": "tn",
+  "page": "La dodicesima notte o quel che vorrete/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/La_dodicesima_notte_o_quel_che_vorrete/Atto_terzo?oldid=3811902",
+  "revid": 3811902,
+  "offset": 95967,
+  "matches": 1,
+  "regex": "l’amore che si arrende alle preghiere è di gran prezzo, ma quello che spontaneo si dona gli è d’assai superiore\\."
+ },
+ "RM-001": {
+  "text": "Bruto amò Roma, a preferenza di Cesare.",
+  "work": "jc",
+  "page": "Giulio Cesare/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Giulio_Cesare/Atto_terzo?oldid=3803538",
+  "revid": 3803538,
+  "offset": 105581,
+  "matches": 1,
+  "regex": "Bruto amò Roma, a preferenza di Cesare\\."
+ },
+ "RM-002": {
+  "text": "Sonovi età, in cui gli uomini riescono arbitri de’ loro destini; e se schiavi noi siamo, la colpa è in noi soli.",
+  "work": "jc",
+  "page": "Giulio Cesare/Atto primo",
+  "url": "https://it.wikisource.org/wiki/Giulio_Cesare/Atto_primo?oldid=3803534",
+  "revid": 3803534,
+  "offset": 10946,
+  "matches": 1,
+  "regex": "Sonovi età, in cui gli uomini riescono arbitri de’ loro destini; e se schiavi noi siamo, la colpa è in noi soli\\."
+ },
+ "RM-003": {
+  "text": "Amici, Romani, concittadini, porgetemi attento ascolto",
+  "work": "jc",
+  "page": "Giulio Cesare/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Giulio_Cesare/Atto_terzo?oldid=3803538",
+  "revid": 3803538,
+  "offset": 108360,
+  "matches": 1,
+  "regex": "Amici, Romani, concittadini, porgetemi attento ascolto"
+ },
+ "RL-005": {
+  "text": "Tutto quello che splende non è oro",
+  "work": "mov",
+  "page": "Il Mercante di Venezia/Atto secondo",
+  "url": "https://it.wikisource.org/wiki/Il_Mercante_di_Venezia/Atto_secondo?oldid=3805628",
+  "revid": 3805628,
+  "offset": 90439,
+  "matches": 1,
+  "regex": "Tutto quello che splende non è oro"
+ },
+ "RL-006": {
+  "text": "godete del dolce riposo! Esso non è fatto per la testa che cinge una corona!",
+  "work": "h4p2",
+  "page": "Parte seconda del Re Enrico IV/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Parte_seconda_del_Re_Enrico_IV/Atto_terzo?oldid=3821279",
+  "revid": 3821279,
+  "offset": 145976,
+  "matches": 1,
+  "regex": "godete del dolce riposo! Esso non è fatto per la testa che cinge una corona!"
+ },
+ "GC-003": {
+  "text": "Una volta, a mezzanotte, mentre stanco e affaticato",
+  "work": "raven",
+  "page": "Il corvo (Poe-Ragazzoni 1896)",
+  "url": "https://it.wikisource.org/wiki/Il_corvo_%28Poe-Ragazzoni_1896%29?oldid=3807285",
+  "revid": 3807285,
+  "offset": 3403,
+  "matches": 1,
+  "regex": "Una volta, a mezzanotte, mentre stanco e affaticato"
+ },
+ "RL-008": {
+  "text": "Oh caro padre! è per te solo che m’adopero",
+  "work": "lear",
+  "page": "Il Re Lear/Atto quarto",
+  "url": "https://it.wikisource.org/wiki/Il_Re_Lear/Atto_quarto?oldid=3805977",
+  "revid": 3805977,
+  "offset": 68818,
+  "matches": 1,
+  "regex": "Oh caro padre! è per te solo che m’adopero"
+ },
+ "PT-004": {
+  "text": "nè l’oppio, nè la mandragola, nè tutti i calmanti dell’universo ti faran più trovare quel dolce sonno che ieri hai gustato per l’ultima volta.",
+  "work": "othello",
+  "page": "Otello/Atto terzo",
+  "url": "https://it.wikisource.org/wiki/Otello/Atto_terzo?oldid=3821129",
+  "revid": 3821129,
+  "offset": 157050,
+  "matches": 1,
+  "regex": "nè l’oppio, nè la mandragola, nè tutti i calmanti dell’universo ti faran più trovare quel dolce sonno che ieri hai gustato per l’ultima volta\\."
+ }
+}

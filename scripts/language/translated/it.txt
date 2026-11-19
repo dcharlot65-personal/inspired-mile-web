@@ -1,0 +1,172 @@
+[names]
+The Sonnet Man
+Messer Montecchi
+Madonna Capuleti
+Il teschio di Yorick
+Il bastone di Prospero
+Il pugnale della mente
+L’anello di Romeo
+Lo scrigno di Porzia
+La corona di Macbeth
+Il codice della tempesta
+Le lacrime di Cordelia
+La maschera di Bottom
+Filtro d’amore
+Intruglio delle streghe
+Succo del fiore di Puck
+Radice di mandragora
+Rugiada di Oberon
+Tintura di cicuta
+Estratto di vischio
+Lacrime di sirena
+Elisir dello speziale
+[houses]
+Montecchi|Capuleti|Corte danese|Foresta di Arden|Corte di Verona|Corte scozzese|Leggendario|Reliquia|Pozione|Circolo gotico|Olimpo|Oltretomba
+[elements]
+Fuoco|Passione|Grazia|Ombra|Acqua|Vento|Burlone|Natura|Morte|Arcano|Incantesimo|Oscuro|Giustizia|Terra|Lealtà|Tempesta|Aria|Bestia|Pace|Veleno|Chiaro di luna|Illusione|Malizia|Ambizione|Tenebra|Profezia|Travestimento|Vanità|Onore|Invidia|Retorica|Autorità|Commedia|Dovere|Innocenza|Devozione|Saggezza|Potere|Conoscenza|Compassione|Trasformazione|Alchimia|Oceano|Visione|Bellezza|Ribellione|Creazione|Rivoluzione|Dolore|Tuono|Luce|Amore|Velocità|Rinascita|Astuzia|Pietrificazione|Gloria
+[types]
+Personaggio|Reliquia|Pozione
+[quotes]
+LD-001	Vagavo solitario come una nuvola che fluttua in alto sopra valli e colline.
+LD-002	Acqua, acqua dappertutto, e nemmeno una goccia da bere.
+LD-003	Una cosa bella è una gioia per sempre: la sua grazia cresce.
+GC-001	Ella cammina nella bellezza, come la notte di climi senza nubi e di cieli stellati.
+GC-002	Bada; perché sono senza paura, e perciò potente.
+GC-003	Una volta, in una tetra mezzanotte, mentre meditavo, debole e stanco.
+GC-004	Vedere un mondo in un granello di sabbia e un cielo in un fiore selvatico.
+GC-005	Se viene l’inverno, può la primavera essere lontana?
+LD-004	Come ti amo? Lascia che ne conti i modi.
+LD-005	Ricordati di me quando sarò andata via, lontano, nella terra silenziosa.
+OL-001	Io sono l’adunatore di nubi, signore degli ampi cieli.
+OL-002	La civetta della saggezza spicca il volo soltanto al crepuscolo.
+OL-003	Io sono il dio del canto, della guarigione e del sole radioso.
+OL-004	Nemmeno gli dèi possono resistere al potere dell’amore.
+OL-005	Rapido come il pensiero, porto le parole degli dèi a orecchie mortali.
+UW-001	Tutte le anime vengono a me, alla fine. Sono paziente.
+UW-002	Sei semi mangiai, e mi legai per sempre fra due mondi.
+OL-006	Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano.
+UW-003	Guardami, se osi. Il mio sguardo è l’ultima cosa che vedrai.
+OL-007	Preferisco vivere una breve vita di gloria che una lunga vita dimenticata.
+SM-001	Dovrò paragonarti a un giorno d’estate?
+MO-001	Ma piano, quale luce irrompe da quella finestra?
+CA-001	Che cosa c’è in un nome? Ciò che chiamiamo rosa...
+DC-001	Essere o non essere, questo è il problema.
+DC-002	Ecco del rosmarino, che è per il ricordo.
+MO-002	La peste a tutte e due le vostre case!
+FA-001	Signore, che pazzi sono questi mortali!
+FA-002	Vieni, siediti su questo letto fiorito.
+RL-001	Ahimè, povero Yorick! Io lo conoscevo, Orazio.
+RL-002	Ora i miei incanti sono tutti spezzati.
+PT-001	Il corso del vero amore non fu mai liscio.
+PT-002	Doppio, doppio, fatica e travaglio.
+VC-001	Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata.
+VC-002	Queste gioie violente hanno fini violente.
+VC-003	Io sono la serva che fatica per il tuo piacere.
+TP-001	Siamo fatti della stessa sostanza di cui sono fatti i sogni.
+TP-002	Salve, grande padrone! Grave signore, salve!
+TP-003	Quest’isola è mia, per via di Sycorax, mia madre.
+MO-003	Io non faccio che mantenere la pace. Rinfodera la spada.
+CA-002	Come, con la spada in pugno parli di pace? Odio questa parola.
+DC-003	Le mie parole volano in alto, i miei pensieri restano in basso.
+FA-003	Malaugurato incontro al chiaro di luna, superba Titania.
+RL-003	È un pugnale questo che vedo davanti a me?
+PT-003	Metterò una cintura intorno alla terra in quaranta minuti.
+SC-001	Oso tutto ciò che si addice a un uomo; chi osa di più non lo è.
+SC-002	Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso.
+SC-003	Genererai dei re, pur non essendo re tu stesso.
+IL-001	Io non sono quello che sono.
+IL-002	Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta.
+IL-003	L’amore cercato è buono, ma dato senza essere cercato è migliore.
+RM-001	Non perché amassi meno Cesare, ma perché amavo di più Roma.
+RM-002	La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi.
+RM-003	Amici, Romani, concittadini, prestatemi orecchio!
+MO-004	Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino.
+CA-003	Sposarti, è proprio questo l’argomento di cui venivo a parlare.
+DC-004	Ora si spezza un nobile cuore. Buona notte, dolce principe.
+FA-004	Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo.
+VC-004	Questi tempi di lutto non lasciano tempo al corteggiamento.
+TP-004	O splendido mondo nuovo, che ha in sé gente simile!
+RL-004	La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo.
+RL-005	Non è tutto oro quel che luccica.
+RL-006	Inquieto giace il capo che porta una corona.
+RL-007	Annegherò il mio libro.
+RL-008	O caro padre, sono i tuoi affari quelli di cui mi occupo.
+RL-009	Dio ti benedica, Bottom! Sei trasformato!
+PT-004	Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo.
+PT-005	Portami quel fiore; l’erba che una volta ti mostrai.
+PT-006	Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala.
+PT-007	Nel calderone bolli e cuoci; occhio di tritone e dito di rana.
+PT-008	A cinque tese giace tuo padre; delle sue ossa si è fatto corallo.
+PT-009	Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante.
+[scenes]
+SM-001	Un grande palco prende forma. The Sonnet Man avanza da un riflettore dorato, microfono in mano. Le parole di Shakespeare si trasformano in rime hip-hop mentre la folla esulta.
+MO-001	Si apre la scena di un balcone al chiaro di luna. Romeo tende la mano verso l’alto mentre Giulietta appare di sopra. Petali di rosa fluttuano nell’aria. La scena pulsa di un caldo bagliore cremisi.
+CA-001	Il giardino dei Capuleti fiorisce al chiaro di luna. Giulietta sta fra le rose, gli occhi accesi di sfida. Un usignolo canta dai rami.
+DC-001	Il castello di Elsinore emerge dall’ombra. Amleto sta sugli spalti, con il teschio di Yorick sospeso accanto a lui. Una figura spettrale appare sui bastioni.
+DC-002	Un ruscello tranquillo serpeggia in un boschetto di salici. Ofelia galleggia tra i fiori di campo, sussurrando versi dimenticati. I petali girano nella corrente.
+MO-002	Una strada di Verona esplode nel caos. Mercuzio danza tra le lame, ridendo in faccia al pericolo. Scintille sprizzano dall’acciaio che si scontra.
+FA-001	La foresta incantata luccica di malizia. Puck guizza tra querce antiche, lasciando scie di polvere di fata. Sotto, i mortali addormentati fanno strani sogni.
+FA-002	Un trono di rampicanti vivi si leva dal suolo della foresta. Titania comanda la sua corte di fate mentre le lucciole illuminano le fronde. La natura stessa si inchina al suo volere.
+RL-001	Un teschio riposa sul velluto in una cripta in penombra. Una risata spettrale riecheggia mentre i ricordi del buffone di corte tremolano come la fiamma di una candela.
+RL-002	Un bastone nodoso crepita di energia arcana. La tempesta gli vortica attorno mentre Prospero sussurra il suo ultimo incantesimo. Il fulmine squarcia il cielo.
+PT-001	Una fiala luminosa pulsa di luce rosata. Cuori salgono dalla sua superficie mentre una dolce melodia riempie l’aria.
+PT-002	Un calderone ribollente erutta fumo verde. Tre figure d’ombra gli girano intorno salmodiando. Occhi brillano dal bosco oscuro.
+VC-001	Il Principe sta sui gradini del palazzo di Verona; la sua voce impone il silenzio alla folla in lotta. Uno scettro d’oro arde di autorità.
+VC-002	Una cella di monastero a lume di candela. Il frate cura il suo orto di erbe e veleni, con la saggezza incisa sul volto segnato dal tempo.
+VC-003	Una cucina calda in casa Capuleti. La balia si affaccenda con feroce devozione, una lettera segreta infilata nel grembiule.
+TP-001	Un’isola avvolta dalla tempesta. Prospero alza le mani mentre il fulmine obbedisce al suo volere e il mare ribolle al suo comando.
+TP-002	Uno spirito scintillante si dissolve in vento e luce, e si ricompone in musica. Ariel danza tra il visibile e l’invisibile.
+TP-003	L’imbocco di una grotta su una costa selvaggia. Calibano sta acquattato fra le rocce, gli occhi ardenti di rancore e di un’intelligenza primordiale.
+MO-003	Una piazza di Verona all’alba. Benvolio sta fra le spade sguainate; le sue mani aperte sono l’unica arma contro la tempesta che si addensa.
+CA-002	Un vicolo di Verona acceso dalle torce. Tebaldo sguaina lo stocco con grazia letale, gli occhi fissi sul nemico.
+DC-003	La sala del trono di Elsinore, drappeggiata di falso splendore. Claudio stringe la corona, con una fiala di veleno nascosta nelle vesti.
+FA-003	Una radura illuminata dalla luna nel folto della foresta incantata. Oberon prende corpo dall’ombra; la sua corona di corna cattura la luce d’argento.
+RL-003	Un pugnale spettrale fluttua nel buio, con la lama che gocciola sangue fantasma. La mano di Macbeth si protende, ma non riesce mai ad afferrarlo.
+PT-003	Un fiore purpureo schiacciato stilla nettare iridescente in un palmo in attesa. Ovunque cada, gli occhi cambiano, e i cuori li seguono.
+SC-001	Una sala del trono macchiata di sangue a Dunsinane. Macbeth stringe la spada con mani tremanti, la corona pesante sulla fronte. Il bosco di Birnam si muove sul colle lontano.
+SC-002	Una stanza del castello scozzese a lume di candela. Lady Macbeth percorre le fredde pietre, strofinandosi dalle mani macchie di sangue immaginarie. Le ombre le si attaccano come una seconda pelle.
+SC-003	Una brughiera scozzese nebbiosa al crepuscolo. Banco sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi.
+IL-001	Una costa dell’Illiria battuta dal vento. Viola si calca un berretto da marinaio sui capelli tagliati corti; due identità le brillano negli occhi. Il mare sussurra segreti del fratello perduto.
+IL-002	Un giardino assolato nella tenuta di Olivia. Malvolio si pavoneggia in sgargianti calze gialle con le giarrettiere incrociate, sorridente, stringendo al petto una falsa lettera d’amore.
+IL-003	Una contessa in lutto solleva il velo e rivela una bellezza che toglie il fiato. Il giardino di Olivia fiorisce di gelsomino e lavanda mentre il messaggero travestito le ruba il cuore.
+RM-001	Il Senato romano, con le colonne di marmo macchiate di cremisi. Bruto sta fra i congiurati, la lama ancora tremante. Il peso della repubblica grava sulle sue mani insanguinate.
+RM-002	Un vicolo romano a mezzanotte, alla luce delle torce. Cassio si china e sussurra sedizione con il suo aspetto magro e affamato. Lettere false gli scivolano dalla toga.
+RM-003	Il Foro romano esplode di furia. Marco Antonio leva davanti alla folla il mantello insanguinato di Cesare; le sue parole mutano il lutto in fuoco. La repubblica crolla a ogni sillaba.
+MO-004	La tenuta dei Montecchi all’alba. Messer Montecchi guarda da un’alta finestra il figlio che vaga nei frutteti nebbiosi, malato d’amore e irraggiungibile.
+CA-003	Il salone dei Capuleti, parato di seta. Madonna Capuleti dispone il destino della figlia come fiori in un vaso; l’ambizione luccica dietro ogni sorriso cortese.
+DC-004	Gli spalti di Elsinore nell’ora fredda che precede l’alba. Orazio veglia accanto ad Amleto, l’unico vero amico in una corte di serpenti.
+FA-004	Una radura nel bosco accesa di luce fatata. Bottom porta una testa d’asino con stupefatta dignità mentre Titania lo copre di ghirlande. Le fate soffocano le risa.
+VC-004	Il cimitero di Verona all’imbrunire. Paride depone fiori sulla tomba di Giulietta, ignaro dell’amante disperato che si avvicina dall’ombra.
+TP-004	Una spiaggia incontaminata sull’isola di Prospero. Miranda vede per la prima volta i naufraghi, con gli occhi spalancati di meraviglia davanti a un mondo che non sapeva esistesse.
+RL-004	Un anello d’oro riposa sul davanzale di pietra di un balcone e cattura la luce della luna. All’interno è inciso un voto che sopravvive alla morte stessa. Petali di rosa gli turbinano attorno in un vento invisibile.
+RL-005	Tre scrigni brillano in una stanza a lume di candela: oro, argento e piombo. Lo scrigno di piombo vibra di una quieta verità e premia chi è abbastanza saggio da guardare oltre le apparenze.
+RL-006	Una corona scozzese annerita posa su un cuscino macchiato di sangue. Pulsa di oscura ambizione e sussurra promesse di gloria a ogni mano che osi tendersi verso di lei.
+RL-007	Un antico tomo, rilegato in cuoio consumato dal mare, fluttua sopra un altare di pietra. Le sue pagine si voltano da sole, e ognuna evoca una tempesta diversa.
+RL-008	Una fiala di cristallo custodisce lacrime che brillano come luce di stelle imprigionata. Ogni goccia porta il dolore di una figlia che amò con troppa verità e parlò con troppa schiettezza.
+RL-009	Una maschera a testa d’asino pende da un ramo muscoso nel bosco delle fate. Chi la indossa vede il mondo con occhi incantati, e diventa irresistibile per le regine delle fate.
+PT-004	Una radice nodosa, a forma di figura urlante, viene dissotterrata a lume di candela. La terra si sgretola e ne rivela il potere antico e contorto. Lo speziale la maneggia con tremante riverenza.
+PT-005	Una goccia di rugiada resta sospesa su un’orchidea al chiaro di luna e brilla di una luce violetta ultraterrena. Una goccia sulle palpebre addormentate, e chi sogna s’innamora della prima creatura che vede.
+PT-006	Una fiala di vetro nero trasuda vapore verde in un corridoio buio. La tintura che contiene ha rovesciato re e spezzato dinastie, una goccia silenziosa dopo l’altra.
+PT-007	Bacche pallide luccicano tra scure foglie sempreverdi, raccolte sotto una luna d’inverno. L’estratto vibra della magia quieta e tenace del mondo naturale.
+PT-008	Una fiasca dal tappo di perla custodisce un liquido azzurro luminoso che si muove come un mare vivo. Dentro, minuscoli coralli crescono e si dissolvono. Sa di sale e di viaggi dimenticati.
+PT-009	Una polverosa bottega di speziale nel quartiere più povero di Mantova. Un elisir disperato riluce d’ambra in una fiala incrinata, potente abbastanza da colmare il varco tra la vita e la morte.
+LD-001	Un tappeto di narcisi dorati si stende lungo le rive di un lago immobile. Wordsworth cammina in mezzo a loro, taccuino in mano, con i monti del Cumberland che si alzano alle sue spalle.
+LD-002	Una nave in bonaccia va alla deriva su un oceano dipinto. Il vecchio marinaio fissa l’albatro che ha al collo mentre figure spettrali salgono dal mare di vetro.
+LD-003	Un giardino di Hampstead in autunno. Keats siede sotto un susino e scrive febbrilmente mentre un usignolo canta dai rami che si fanno scuri.
+GC-001	Un palazzo veneziano a mezzanotte. Byron sta sul balcone, il mantello al vento, lo sguardo sul canale buio. Alle sue spalle un manoscritto incompiuto brucia nel camino.
+GC-002	Uno studio a lume di candela a Ginevra, durante un temporale. Mary scrive al bagliore dei lampi mentre la creatura si muove nell’ombra dietro di lei. Scienza e orrore diventano una cosa sola.
+GC-003	Una stanza in penombra, rischiarata da un fuoco morente. Poe è curvo sulla scrivania quando un corvo si posa sul busto di Pallade. La parola «Mai più» riecheggia nell’ombra.
+GC-004	Una stamperia di Londra accesa di luce visionaria. Blake incide una tigre nel rame mentre la belva prende corpo dalla lastra, ardendo luminosa nelle foreste della notte.
+GC-005	La cima di una scogliera italiana battuta dal vento. Shelley affronta la tempesta a braccia aperte, mentre il vento dell’ovest strappa le pagine dal suo taccuino e le disperde sul Mediterraneo.
+LD-004	Una stanza piena di sole a Firenze. Elizabeth scrive a una finestra che dà sull’Arno, con lo spaniel ai suoi piedi. Le lettere d’amore di Robert sono aperte sulla scrivania.
+LD-005	Un giardino preraffaellita nella luce d’autunno che si spegne. Christina siede tra le foglie cadute e compone versi che dolgono di bellezza e di quieta rassegnazione.
+OL-001	Il monte Olimpo squarcia il cielo. Zeus siede su un trono di nubi, con il fulmine che gli guizza tra le dita. Sotto, il mondo dei mortali trema al suo sguardo.
+OL-002	Il Partenone splende in una luce dorata. Atena sta in piedi in armatura completa, la civetta posata sullo scudo, gli occhi grigi che vedono attraverso ogni inganno mortale.
+OL-003	Un carro d’oro corre nel cielo dell’alba. Apollo suona la lira mentre la luce del sole sgorga dalle ruote e dipinge il mondo di colori.
+OL-004	Le coste di Cipro all’alba. Afrodite sorge dalla spuma del mare; le colombe volano in cerchio e le onde le depongono perle ai piedi. Il mondo trattiene il respiro.
+OL-005	Un guizzo di sandali alati attraversa il cielo. Ermes sguscia tra i fulmini, con un messaggio divino stretto in una mano e un sorriso da ladro sul volto.
+UW-001	La sala del trono degli Inferi, illuminata da fiumi di fuoco pallido. Ade siede con Cerbero ai piedi e l’elmo dell’oscurità sul bracciolo. I morti sfilano in un silenzio senza fine.
+UW-002	Un trono diviso tra primavera e ombra. Persefone tiene una melagrana in una mano e una corona di fiori nell’altra, regina di due regni.
+OL-006	Una nave sferzata dalla tempesta doppia un promontorio roccioso. Ulisse si lega all’albero mentre le Sirene cantano dalle scogliere. Nei suoi occhi brucia il ricordo di Itaca.
+UW-003	Un tempio in rovina ai confini del mondo. Medusa si volta, con la chioma di serpenti che sibila. Guerrieri di pietra coprono il pavimento, immobili nella loro ultima carica.
+OL-007	Le pianure di Troia all’alba. Achille carica in un’armatura sfolgorante, e il suo grido di guerra squarcia l’aria. Dietro di lui le navi greche bruciano sulla riva.

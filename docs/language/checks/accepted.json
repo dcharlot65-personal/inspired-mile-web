@@ -1,0 +1,5239 @@
+{
+ "about": "Findings of the tool checks that were read and left as they are, each with the reason. A finding not listed here was fixed (fixes.json) or is open.",
+ "readBy": "Every finding was read by the engineer who did this work, a language model (Claude Opus 5.5), on 2026-11-16, not by a native speaker; each reason is that reading, and a reviewer may overrule it.",
+ "spelling": {
+  "es": {
+   "Shakespeare": "a proper name (place, person or work); the dictionary does not hold it",
+   "hip": "part of \"hip-hop\"",
+   "hop": "part of \"hip-hop\"",
+   "Elsinor": "a proper name (place, person or work); the dictionary does not hold it",
+   "Verona": "a proper name (place, person or work); the dictionary does not hold it",
+   "burbujeante": "Spanish adjective (bubbling); read as correct",
+   "Sycorax": "a proper name (place, person or work); the dictionary does not hold it",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "rarísima": "superlative of \"rara\": correct",
+   "Mantua": "a proper name (place, person or work); the dictionary does not hold it",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "Arno": "a proper name (place, person or work); the dictionary does not hold it",
+   "Florencia": "a proper name (place, person or work); the dictionary does not hold it",
+   "Robert": "a proper name (place, person or work); the dictionary does not hold it",
+   "spaniel": "a loanword used as such in this language (a breed, a plant, a music genre)",
+   "prerrafaelita": "Spanish for Pre-Raphaelite; read as correct",
+   "Recuérdame": "imperative \"recuerda\" with the enclitic \"me\": correct",
+   "Partenón": "a proper name (place, person or work); the dictionary does not hold it",
+   "Ítaca": "a proper name (place, person or work); the dictionary does not hold it",
+   "Petrificación": "Spanish \"petrificación\", capitalised as an element label"
+  },
+  "fr": {
+   "hip": "part of \"hip-hop\"",
+   "d’Elseneur": "elided \"de\" + Elseneur (Elsinore), a name",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "l’Arno": "elided article + Arno, a river",
+   "d’Ithaque": "elided \"de\" + Ithaque, a name"
+  },
+  "de": {
+   "Hop": "part of \"hip-hop\"",
+   "Capulets": "the family name with the plural -s (die Capulets)",
+   "Helsingör": "a proper name (place, person or work); the dictionary does not hold it",
+   "Feenstaub": "a German compound, read as correct",
+   "Feenhof": "a German compound, read as correct",
+   "arkaner": "adjective after the game term \"arkan\" (arkaner Energie); see Arkan",
+   "Phantomblut": "a German compound, read as correct",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "windgepeitschte": "a German compound, read as correct",
+   "Olivias": "genitive of a name (Olivias Garten): correct",
+   "Feenlicht": "a German compound, read as correct",
+   "behängt": "participle of \"behängen\": correct",
+   "meergegerbtes": "a German compound, read as correct",
+   "Feenköniginnen": "a German compound, read as correct",
+   "Feenwald": "a German compound, read as correct",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "dunkelnden": "participle of \"dunkeln\" (darkening): correct",
+   "sturmgepeitschtes": "a German compound, read as correct",
+   "Schauerkreis": "house label for \"Gothic Circle\", after Schauerroman (the German term for the Gothic novel); a coinage, for review",
+   "Arkan": "element label for \"Arcane\": coined after the game term (Arkanmagie); a reviewer may prefer another"
+  },
+  "it": {
+   "hip": "part of \"hip-hop\"",
+   "hop": "part of \"hip-hop\"",
+   "Elsinore": "a proper name (place, person or work); the dictionary does not hold it",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "siede": "present of \"sedere\" (siede): correct",
+   "Robert": "a proper name (place, person or work); the dictionary does not hold it",
+   "l’adunatore": "elided article + \"adunatore\" (the cloud-gatherer, Zeus): read as correct",
+   "Partenone": "a proper name (place, person or work); the dictionary does not hold it",
+   "dèi": "plural of \"dio\" written with the accent that tells it from the preposition \"dei\"; an accepted spelling",
+   "Arden": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  "pt": {
+   "hip": "part of \"hip-hop\"",
+   "hop": "part of \"hip-hop\"",
+   "Elsinore": "a proper name (place, person or work); the dictionary does not hold it",
+   "Sycorax": "a proper name (place, person or work); the dictionary does not hold it",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "Robert": "a proper name (place, person or work); the dictionary does not hold it",
+   "spaniel": "a loanword used as such in this language (a breed, a plant, a music genre)",
+   "Partenon": "a proper name (place, person or work); the dictionary does not hold it",
+   "Arden": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  "pl": {
+   "Kapuletów": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Kaliban": "the Polish form of Caliban (Ulrich's translation); a name",
+   "Sykoraks": "the Polish form of Sycorax; a name",
+   "Elsynoru": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Malwolio": "the Polish form of Malvolio; a name",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  "ru": {
+   "Шекспира": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "хип": "part of \"hip-hop\"",
+   "Эльсинор": "a proper name (place, person or work); the dictionary does not hold it",
+   "Эльсинора": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Бирнамский": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Дунсинане": "a proper name (place, person or work); the dictionary does not hold it",
+   "Иллирии": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Мальволио": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Оливии": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Гамлетом": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Мантуи": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Хэмпстеде": "a proper name with an inflection or particle of this language; the dictionary does not hold the name",
+   "Арно": "a proper name (place, person or work); the dictionary does not hold it",
+   "прерафаэлитов": "genitive plural of \"прерафаэлит\" (Pre-Raphaelite): correct",
+   "Парфенон": "a proper name (place, person or work); the dictionary does not hold it",
+   "Арденский": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  "ar": {
+   "هوب": "part of \"hip-hop\"",
+   "إلسينور": "a proper name (place, person or work); the dictionary does not hold it",
+   "والبتلات": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "هوراشيو": "a proper name (place, person or work); the dictionary does not hold it",
+   "تضيئها": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "واللامرئي": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "سيكوراكس": "a proper name (place, person or work); the dictionary does not hold it",
+   "متقزّح": "iridescent: read as correct",
+   "بيرنام": "a proper name (place, person or work); the dictionary does not hold it",
+   "دنسينان": "a proper name (place, person or work); the dictionary does not hold it",
+   "يليق": "\"befits\": correct",
+   "الاسكتلندية": "Scottish (nisba adjective of اسكتلندا): correct",
+   "اسكتلندية": "Scottish (nisba adjective of اسكتلندا): correct",
+   "إيلورية": "a proper name (place, person or work); the dictionary does not hold it",
+   "كونتيسة": "countess, a loanword in use",
+   "تضيئه": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "أعيروني": "\"lend me\" (imperative plural + me), as in \"lend me your ears\": correct",
+   "اسكتلندي": "Scottish (nisba adjective of اسكتلندا): correct",
+   "العشبة": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "الهيبونا": "hebona, the poison named in Hamlet",
+   "سمندل": "salamander (newt): correct",
+   "كهرمانيًا": "amber-coloured, adverbial accusative: correct",
+   "مانتوفا": "a proper name (place, person or work); the dictionary does not hold it",
+   "كمبرلاند": "a proper name (place, person or work); the dictionary does not hold it",
+   "القطرس": "the albatross: correct",
+   "هامبستيد": "a proper name (place, person or work); the dictionary does not hold it",
+   "يضيئها": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)",
+   "السبانيل": "the spaniel; a loanword",
+   "الرفائيلية": "part of \"ما قبل الرفائيلية\" (Pre-Raphaelite)",
+   "الأوليمب": "a proper name (place, person or work); the dictionary does not hold it",
+   "البارثينون": "a proper name (place, person or work); the dictionary does not hold it",
+   "وسيربيروس": "conjunction و + Cerberus, a name",
+   "إيثاكا": "a proper name (place, person or work); the dictionary does not hold it",
+   "آردن": "a proper name (place, person or work); the dictionary does not hold it",
+   "الاسكتلندي": "Scottish (nisba adjective of اسكتلندا): correct",
+   "الخيمياء": "alchemy: correct"
+  },
+  "hi": {
+   "करूँ": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "एल्सिनोर": "a proper name (place, person or work); the dictionary does not hold it",
+   "काटती": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "भूले": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "चिंगारियाँ": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "दरबार": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "परी": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "दरबारी": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "बेचारा": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "मानती": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "सिकोरैक्स": "a proper name (place, person or work); the dictionary does not hold it",
+   "शौकत": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "टपकता": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "डनसिनेन": "a proper name (place, person or work); the dictionary does not hold it",
+   "बर्नम": "a proper name (place, person or work); the dictionary does not hold it",
+   "धब्बे": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "मलती": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "आत्माओ": "vocative plural (no nasal), as in a speech to a crowd: correct",
+   "भले": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "इल्लुरिया": "a proper name (place, person or work); the dictionary does not hold it",
+   "पहचानें": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "पट्टियाँ": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "काउंटेस": "countess, a loanword",
+   "ब्रूटस": "Brutus in a translated line; Wikidata has no Hindi label, so the card shows the English name",
+   "सीसर": "Caesar as Wikidata's Hindi label writes it (जुलियस सीसर)",
+   "देशवासियो": "vocative plural (no nasal), as in a speech to a crowd: correct",
+   "मित्रो": "vocative plural (no nasal), as in a speech to a crowd: correct",
+   "रोमवासियो": "vocative plural (no nasal), as in a speech to a crowd: correct",
+   "बग़ीचों": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "भला": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "हेबोना": "a proper name (place, person or work); the dictionary does not hold it",
+   "घुलती": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "भूली": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "मैंटुआ": "a proper name (place, person or work); the dictionary does not hold it",
+   "जाओ": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "डालो": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "कम्बरलैंड": "a proper name (place, person or work); the dictionary does not hold it",
+   "अल्बाट्रॉस": "albatross, a loanword",
+   "हैम्पस्टेड": "a proper name (place, person or work); the dictionary does not hold it",
+   "रैफ़ेलाइट": "part of \"प्री-रैफ़ेलाइट\" (Pre-Raphaelite)",
+   "जाऊँ": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "पार्थेनन": "a proper name (place, person or work); the dictionary does not hold it",
+   "गुज़रते": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "सर्बेरस": "a proper name (place, person or work); the dictionary does not hold it",
+   "इथाका": "a proper name (place, person or work); the dictionary does not hold it",
+   "जलती": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "साइरनें": "plural of साइरन (siren), a loanword",
+   "युक्तियों": "a common Hindi word or inflection the dictionary lacks; read as correct",
+   "आर्डन": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  "ko": {
+   "셰익스피어의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "로미오가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "줄리엣이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "진홍빛으로": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "줄리엣은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "엘시노어": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "햄릿은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "문제로다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "오필리아는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "베로나의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "인간들이란": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "티타니아가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "요릭": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "타닥거린다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "프로스페로가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "베로나": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "침묵시킨다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "일꾼이랍니다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "정령이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "캘리번은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "시코락스가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "벤볼리오는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "것뿐이네": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "티볼트는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "알현실": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "엘시노어의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "빈터": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "오베론이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "던시네인의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "맥베스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "버남": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "사내다운": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "돌바닥을": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "정령들아": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "자들을": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "바이올라는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "일리리아의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "말볼리오는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "올리비아": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "영애가": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "올리비아의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "브루투스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "원로원": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "사랑해서가": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "카시우스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "토가에서": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "안토니우스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "카이사르의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "동포들이여": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "로마인들이여": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "친구들이여": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "대연회장": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "왔단다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "하나뿐인": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "호레이쇼는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "왕자님": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "잠드소서": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "보텀은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "숲속": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "티타니아는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "줄리엣의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "패리스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "미란다는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "신세계여": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "돌난간": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "장정한": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "보텀": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "약제사는": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "맨드레이크도": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "팅크는": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "저주받은": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "상록": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "추출액은": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "만토바의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "영약이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "호박빛으로": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "워즈워스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "컴벌랜드의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "앨버트로스를": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "키츠는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "햄스테드": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "바이런은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "베네치아": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "팔라스의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "동판에": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "블레이크가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "숲속에서": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "셸리는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "있으랴": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "로버트가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "스패니얼이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "아르노강이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "엘리자베스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "피렌체의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "가을빛": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "라파엘": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "전파풍": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "크리스티나는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "올림포스산이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "아테나는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "리라를": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "아폴론이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "아프로디테가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "자들이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "케르베로스를": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "하데스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "내게로": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "반씩": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "페르세포네는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "바위투성이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "세이렌들이": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "오디세우스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "이타카의": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "들려주소서": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "여신이여": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "메두사가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "쉿쉿거린다": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "배들이": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct",
+   "아킬레우스가": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "올림포스": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "머큐시오는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "뱅쿠오는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "아리엘은": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "클라우디우스는": "a name (person, place) with a Korean particle; the dictionary does not hold the name",
+   "왕홀이": "왕홀 (\"sceptre\") with the subject particle 이: Wikidata's Korean label for the sceptre (Q152065, revision 2544789402) and the title of its ko.wikipedia article are 왕홀 (docs/language/sources/wikidata-Q152065-sceptre.json); the dictionary does not hold it",
+   "만남이로군": "a Korean word, compound or inflected form (particle, ending, archaic ending in a line of verse) the dictionary does not generate; read as correct: 만남 (\"a meeting\") with the copula and its exclamatory ending -로군; for review: whether it gives \"ill met\" well"
+  },
+  "vi": {
+   "Shakespeare": "a proper name (place, person or work); the dictionary does not hold it",
+   "hip": "part of \"hip-hop\"",
+   "hop": "part of \"hip-hop\"",
+   "micro": "Vietnamese \"micro\" (microphone): correct",
+   "lóe": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "họa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Elsinore": "a proper name (place, person or work); the dictionary does not hold it",
+   "lũy": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "hòa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "đóa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Verona": "a proper name (place, person or work); the dictionary does not hold it",
+   "tóe": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "tỏa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "tụy": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Sycorax": "a proper name (place, person or work); the dictionary does not hold it",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Scotland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Illyria": "a proper name (place, person or work); the dictionary does not hold it",
+   "lòe": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Caesar": "a proper name (place, person or work); the dictionary does not hold it",
+   "Roma": "a proper name (place, person or work); the dictionary does not hold it (Wikidata's Vietnamese label for the city)",
+   "toga": "the Roman garment",
+   "hebona": "hebona, the poison named in Hamlet",
+   "hóa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Mantua": "a proper name (place, person or work); the dictionary does not hold it",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "Venezia": "a proper name (place, person or work); the dictionary does not hold it",
+   "tòa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Genève": "a proper name (place, person or work); the dictionary does not hold it",
+   "Nevermore": "the raven's word, quoted in English as the poem has it",
+   "Pallas": "a proper name (place, person or work); the dictionary does not hold it",
+   "London": "a proper name (place, person or work); the dictionary does not hold it",
+   "Arno": "a proper name (place, person or work); the dictionary does not hold it",
+   "Firenze": "a proper name (place, person or work); the dictionary does not hold it",
+   "Robert": "a proper name (place, person or work); the dictionary does not hold it",
+   "spaniel": "a loanword used as such in this language (a breed, a plant, a music genre)",
+   "Raphael": "a proper name (place, person or work); the dictionary does not hold it",
+   "Olympus": "a proper name (place, person or work); the dictionary does not hold it",
+   "Parthenon": "a proper name (place, person or work); the dictionary does not hold it",
+   "Síp": "Síp, the Vietnamese name of Cyprus",
+   "Cerberus": "a proper name (place, person or work); the dictionary does not hold it",
+   "Ithaca": "a proper name (place, person or work); the dictionary does not hold it",
+   "Siren": "the Sirens of the Odyssey, a name",
+   "Troia": "a proper name (place, person or work); the dictionary does not hold it",
+   "Arden": "a proper name (place, person or work); the dictionary does not hold it",
+   "Gothic": "house label \"Hội Gothic\": the art term kept as Vietnamese writes it",
+   "Hòa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)",
+   "Hóa": "the traditional tone-mark placement (hòa, thủy), used throughout the game's Vietnamese, interface included; the LibreOffice dictionary accepts only the reformed placement (hoà)"
+  },
+  "th": {
+   "เชกส": "a piece of เชกสเปียร์ (Shakespeare) as ICU cut it",
+   "นอร์": "a piece of เอลซินอร์ (Elsinore)",
+   "เอล": "a piece of เอลซินอร์ (Elsinore)",
+   "ห่าลง": "\"โรคห่าลง\" (may the plague fall): correct; ICU joined two words",
+   "ราชิ": "a piece of โฮราชิโอ (Horatio)",
+   "ซ์": "a piece of ซิโคแรกซ์ (Sycorax)",
+   "เนีย": "a piece of a transliterated name (ไททาเนีย Titania; สแปเนียล spaniel)",
+   "เนน": "a piece of ดันซิเนน (Dunsinane)",
+   "เบอร์นั": "a piece of เบอร์นัม (Birnam)",
+   "อิ": "a piece of a transliterated name (อิลิเรีย Illyria; อิทากา Ithaca)",
+   "เรีย": "a piece of อิลิเรีย (Illyria)",
+   "น์": "a piece of เคาน์เตส (countess)",
+   "เตส": "a piece of เคาน์เตส (countess)",
+   "ยี่สิบ": "twenty: a common word the dictionary lacks",
+   "แดฟโฟดิล": "daffodil, a loanword",
+   "ทร": "a piece of \"บนมหาสมุทร\" (on the ocean)",
+   "บนม": "a piece of \"บนมหาสมุทร\" (on the ocean) as ICU cut it",
+   "หาส": "a piece of \"บนมหาสมุทร\" (on the ocean)",
+   "อัล": "a piece of อัลบาทรอส (albatross)",
+   "ป์": "a piece of แฮมป์สตีด (Hampstead)",
+   "พลัม": "plum, a loanword",
+   "พรี": "a piece of พรีราฟาเอลไลต์ (Pre-Raphaelite)",
+   "เอลไลต์": "a piece of พรีราฟาเอลไลต์ (Pre-Raphaelite)",
+   "รพาร์เธ": "a piece of วิหารพาร์เธนอน (the Parthenon)",
+   "โลดี": "a piece of \"อะพอลโลดีดพิณ\" (Apollo plucks the lyre)",
+   "ไลร์": "lyre, a loanword (พิณไลร์)",
+   "อรัส": "a piece of เซอร์เบอรัส (Cerberus)",
+   "อร์เบ": "a piece of เซอร์เบอรัส (Cerberus)",
+   "สมัด": "a piece of \"โอดิสเซียสมัด\" (Odysseus binds)"
+  },
+  "id": {
+   "Shakespeare": "a proper name (place, person or work); the dictionary does not hold it",
+   "hip": "part of \"hip-hop\"",
+   "kubandingkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Elsinore": "a proper name (place, person or work); the dictionary does not hold it",
+   "Sesosok": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "terlupakan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "rosemari": "rosemary, the herb",
+   "Verona": "a proper name (place, person or work); the dictionary does not hold it",
+   "ek": "oak (pohon ek): correct",
+   "kunang": "the first half of a reduplicated word cut at the hyphen (masing-masing, mondar-mandir, kunang-kunang, berpayah-payah)",
+   "perinya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "berbonggol": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "baliknya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "celemeknya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "berpayah": "the first half of a reduplicated word cut at the hyphen (masing-masing, mondar-mandir, kunang-kunang, berpayah-payah)",
+   "bebatuan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Sycorax": "a proper name (place, person or work); the dictionary does not hold it",
+   "Sarungkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "rampingnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "rusanya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "bilahnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "menggenggamnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Belatikah": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Sekuntum": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "kulilitkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Birnam": "a proper name (place, person or work); the dictionary does not hold it",
+   "Dunsinane": "a proper name (place, person or work); the dictionary does not hold it",
+   "Skotlandia": "a proper name (place, person or work); the dictionary does not hold it",
+   "mondar": "the first half of a reduplicated word cut at the hyphen (masing-masing, mondar-mandir, kunang-kunang, berpayah-payah)",
+   "Arwahnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Illyria": "a proper name (place, person or work); the dictionary does not hold it",
+   "diterpa": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "berpengikat": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "kerudungnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "marmernya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Caesar": "a proper name (place, person or work); the dictionary does not hold it",
+   "hasutan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "toganya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "pecahlah": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Sebentuk": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "meraihnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "halamannya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "masing": "the first half of a reduplicated word cut at the hyphen (masing-masing, mondar-mandir, kunang-kunang, berpayah-payah)",
+   "kutenggelamkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "urusanmulah": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "tertahankan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "terpilin": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "mandragora": "mandrake, the plant named in Othello",
+   "pelelap": "\"sirop pelelap\" (drowsy syrups): a pe- noun from \"lelap\"; doubtful, for a reviewer",
+   "terlelap": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "kutunjukkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "hebona": "hebona, the poison named in Hamlet",
+   "Sarinya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "bersumbat": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Mantua": "a proper name (place, person or work); the dictionary does not hold it",
+   "keputusasaan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Tuangkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Cumberland": "a proper name (place, person or work); the dictionary does not hold it",
+   "Hampstead": "a proper name (place, person or work); the dictionary does not hold it",
+   "Venesia": "a proper name (place, person or work); the dictionary does not hold it",
+   "Jenewa": "a proper name (place, person or work); the dictionary does not hold it",
+   "Pallas": "a proper name (place, person or work); the dictionary does not hold it",
+   "London": "a proper name (place, person or work); the dictionary does not hold it",
+   "sekuntum": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "mungkinkah": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Arno": "a proper name (place, person or work); the dictionary does not hold it",
+   "Firenze": "a proper name (place, person or work); the dictionary does not hold it",
+   "Robert": "a proper name (place, person or work); the dictionary does not hold it",
+   "spanielnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "kuhitung": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Pra": "part of \"Pra-Raphael\" (Pre-Raphaelite)",
+   "Raphael": "a proper name (place, person or work); the dictionary does not hold it",
+   "Olimpus": "a proper name (place, person or work); the dictionary does not hold it",
+   "Parthenon": "a proper name (place, person or work); the dictionary does not hold it",
+   "hantunya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "kelabunya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "liranya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Kerberos": "a proper name (place, person or work); the dictionary does not hold it",
+   "kuikat": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Ithaka": "a proper name (place, person or work); the dictionary does not hold it",
+   "Siren": "a proper name (place, person or work); the dictionary does not hold it",
+   "Kisahkan": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "ularnya": "an affixed or cliticised form (-nya, -kah, -lah, ku-, se-, ber-, ter-, ke-…-an, di-, -kan) the dictionary does not generate; read as correct",
+   "Troya": "a proper name (place, person or work); the dictionary does not hold it",
+   "Arden": "a proper name (place, person or work); the dictionary does not hold it"
+  }
+ },
+ "grammar": [
+  {
+   "lang": "es",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Elsinor",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Mercucio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "FA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-002",
+   "field": "quote",
+   "rule": "DESHECHO_DESECHO",
+   "found": "deshechos",
+   "reason": "\"deshechos\" (undone, from deshacer) is meant: the charms are undone, not waste"
+  },
+  {
+   "lang": "es",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Calibán",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "TP-003",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Sycorax",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Elsinor",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "FA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Oberón",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Macbeth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "PT-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Macbeth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Banquo",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RM-001",
+   "field": "scene",
+   "rule": "AUN",
+   "found": "aún",
+   "reason": "\"aún\" means \"still\" here (the blade still trembling), so it takes the accent"
+  },
+  {
+   "lang": "es",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Elsinor",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "VC-004",
+   "field": "scene",
+   "rule": "PARIS",
+   "found": "Paris",
+   "reason": "the character Paris (as the card is named), not the city"
+  },
+  {
+   "lang": "es",
+   "id": "RL-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Portia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-006",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Macbeth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-009",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "RL-009",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Oberón",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Cumberland",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Hampstead",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "es",
+   "id": "LD-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "spaniel",
+   "reason": "a dog breed, a loanword"
+  },
+  {
+   "lang": "es",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_ES",
+   "found": "Ítaca",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "CA-001",
+   "field": "scene",
+   "rule": "D_N",
+   "found": "des Capulet",
+   "reason": "a family name stays invariable in French (les Capulet), as the other scenes write it"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Elseneur",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "RL-002",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "RL-002",
+   "field": "name",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "D_N",
+   "found": "des Capulet",
+   "reason": "a family name stays invariable in French (les Capulet)"
+  },
+  {
+   "lang": "fr",
+   "id": "TP-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Elseneur",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Banquo",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "PLACE_ADJ",
+   "found": "jaune criard",
+   "reason": "\"jaune criard\" is a fixed colour phrase (a garish yellow); the suggested order is wrong"
+  },
+  {
+   "lang": "fr",
+   "id": "RM-002",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Cassius",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "D_N",
+   "found": "des Capulet",
+   "reason": "a family name stays invariable in French (les Capulet)"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Elseneur",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "RL-008",
+   "field": "name",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Cordélia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "RL-009",
+   "field": "name",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "PT-005",
+   "field": "scene",
+   "rule": "PAS_DE_VIRGULE",
+   "found": ", et",
+   "reason": "a comma before \"et\" between a phrase and a clause with its own subject, for the pause; allowed"
+  },
+  {
+   "lang": "fr",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Wordsworth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Cumberland",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Hampstead",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "LD-004",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Arno",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "FR_SPELLING_RULE",
+   "found": "Ithaque",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "fr",
+   "id": "UW-003",
+   "field": "scene",
+   "rule": "AGREEMENT_POSTPONED_ADJ",
+   "found": "sifflant",
+   "reason": "\"sifflant\" is a present participle (the snakes hissing), which does not agree"
+  },
+  {
+   "lang": "fr",
+   "id": "house:Danish Court",
+   "field": "house",
+   "rule": "PREP_PAYS",
+   "found": "de",
+   "reason": "\"de Danemark\" is the classical form (le royaume de Danemark, as in Hugo's Hamlet)"
+  },
+  {
+   "lang": "de",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Helsingör",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Yoricks",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Mercutio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Feenhof",
+   "reason": "a compound (the fairy court): correct"
+  },
+  {
+   "lang": "de",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Yoricks",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "RL-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "RL-002",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Prosperos",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "TP-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Prospero",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Caliban",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Tybalt",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Helsingör",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Banquo",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Helsingör",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Prosperos",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "RL-005",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Portias",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "RL-007",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "meergegerbtes",
+   "reason": "a compound participle (sea-tanned): correct"
+  },
+  {
+   "lang": "de",
+   "id": "RL-008",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Cordelias",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Oberons",
+   "reason": "genitive of a name: correct"
+  },
+  {
+   "lang": "de",
+   "id": "PT-006",
+   "field": "name",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Schierlingstinktur",
+   "reason": "a compound (hemlock tincture): correct"
+  },
+  {
+   "lang": "de",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Wordsworth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Keats",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "dunkelnden",
+   "reason": "participle of \"dunkeln\": correct"
+  },
+  {
+   "lang": "de",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Poe",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "GC-004",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Blake",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "GC-005",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Shelley",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "de",
+   "id": "UW-001",
+   "field": "scene",
+   "rule": "FEHLERHAFTES_KOMMA_ALLG",
+   "found": ", erhellt",
+   "reason": "a comma before a trailing participle phrase (erhellt von …) is allowed"
+  },
+  {
+   "lang": "de",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "sturmgepeitschtes",
+   "reason": "a compound participle (storm-lashed): correct"
+  },
+  {
+   "lang": "de",
+   "id": "OL-007",
+   "field": "scene",
+   "rule": "GERMAN_SPELLER_RULE",
+   "found": "Achilleus",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "The",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "it",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Sonnet",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "it",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "hip-hop",
+   "reason": "the music genre"
+  },
+  {
+   "lang": "it",
+   "id": "CA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Capuleti",
+   "reason": "the Italian plural of the family name (i Capuleti)"
+  },
+  {
+   "lang": "it",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Mercuzio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "FA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Capuleti",
+   "reason": "the Italian plural of the family name (i Capuleti)"
+  },
+  {
+   "lang": "it",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Calibano",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "FA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Oberon",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "PT-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Capuleti",
+   "reason": "the Italian plural of the family name (i Capuleti)"
+  },
+  {
+   "lang": "it",
+   "id": "CA-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Capuleti",
+   "reason": "the Italian plural of the family name (i Capuleti)"
+  },
+  {
+   "lang": "it",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "RL-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Porzia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "RL-009",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "PT-004",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "mandragora",
+   "reason": "Italian for mandrake"
+  },
+  {
+   "lang": "it",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Oberon",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Wordsworth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Cumberland",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Hampstead",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Keats",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "GC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Blake",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "GC-005",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Shelley",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Christina",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "OL-001",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "adunatore",
+   "reason": "a noun from \"adunare\": \"l’adunatore di nubi\", the cloud-gatherer (Zeus): read as correct"
+  },
+  {
+   "lang": "it",
+   "id": "OL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Partenone",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "OL-004",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "dèi",
+   "reason": "plural of \"dio\", written with its accent: an accepted spelling"
+  },
+  {
+   "lang": "it",
+   "id": "OL-005",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "dèi",
+   "reason": "plural of \"dio\", written with its accent: an accepted spelling"
+  },
+  {
+   "lang": "it",
+   "id": "UW-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Persefone",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "it",
+   "id": "house:Capulet",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Capuleti",
+   "reason": "the Italian plural of the family name (i Capuleti)"
+  },
+  {
+   "lang": "it",
+   "id": "house:Forest of Arden",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_IT_IT",
+   "found": "Arden",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Mercutio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Yorick",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Caliban",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-003",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Sycorax",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Tybalt",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Claudius",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Oberon",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-003",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Banquo",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "MO-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Montéquio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "MO-004",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Montéquio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Elsinore",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Horatio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Titania",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-009",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-009",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Oberon",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Wordsworth",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Hampstead",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Poe",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "GC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Blake",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "GC-005",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Shelley",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "OL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Partenon",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "UW-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Perséfone",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "house:Montague",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Montéquio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pt",
+   "id": "house:Forest of Arden",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_PT_BR",
+   "found": "Arden",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Sonnet",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "pl",
+   "id": "CA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapuletów",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "pl",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Yorika",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Merkucjo",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Yorika",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "VC-002",
+   "field": "scene",
+   "rule": "DWA_PODMIOTY_FIN",
+   "found": "Zakonnik dogląda ogródka",
+   "reason": "\"ogródka\" is the object (genitive), not a second subject"
+  },
+  {
+   "lang": "pl",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapuletów",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "pl",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kaliban",
+   "reason": "the Polish form of Caliban (Ulrich's translation); a name"
+  },
+  {
+   "lang": "pl",
+   "id": "TP-003",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Sykoraks",
+   "reason": "the Polish form of Sycorax; a name"
+  },
+  {
+   "lang": "pl",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Benvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Tybalt",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Elsynoru",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "pl",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Dunsinane",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Birnam",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "IL-001",
+   "field": "scene",
+   "rule": "PREP_CASUS",
+   "found": "jej",
+   "reason": "\"jej\" is the possessive, which does not decline; \"zaginionym bracie\" is locative"
+  },
+  {
+   "lang": "pl",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Malwolio",
+   "reason": "the Polish form of Malvolio; a name"
+  },
+  {
+   "lang": "pl",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapuletów",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "pl",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapulet",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "CA-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapulet",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Elsynoru",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "pl",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Hampstead",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "pl",
+   "id": "OL-004",
+   "field": "scene",
+   "rule": "ZDANIA_ZLOZONE",
+   "found": "składają perły u jej stóp. Świat wstrzymuje oddech.",
+   "reason": "LanguageTool read across a full stop: these are two sentences"
+  },
+  {
+   "lang": "pl",
+   "id": "house:Capulet",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_PL_PL",
+   "found": "Kapulet",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "CA-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Капулетти",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Эльсинор",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Йорика",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Меркуцио",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Титания",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-001",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Йорика",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Просперо",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-002",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Просперо",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Капулетти",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "TP-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Просперо",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Калибан",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Бенволио",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Тибальт",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Эльсинора",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "FA-003",
+   "field": "quote",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Титания",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Макбета",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Дунсинане",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Бирнамский",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Мальволио",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Капулетти",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "CA-003",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Капулетти",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Эльсинора",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Горацио",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Титания",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Просперо",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-006",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Макбета",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-008",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Корделии",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Оберона",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "PT-009",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Мантуи",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Вордсворт",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Хэмпстеде",
+   "reason": "a proper name with an inflection or particle of this language; the dictionary does not hold the name"
+  },
+  {
+   "lang": "ru",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "pouchastvovat",
+   "found": "По сидит",
+   "reason": "\"По\" is the surname Poe (Эдгар По сидит), not the prefix по-"
+  },
+  {
+   "lang": "ru",
+   "id": "OL-001",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Зевс",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "OL-002",
+   "field": "scene",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Парфенон",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ru",
+   "id": "house:Capulet",
+   "field": "house",
+   "rule": "MORFOLOGIK_RULE_RU_RU",
+   "found": "Капулетти",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "The",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "ar",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Sonnet",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "ar",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Man",
+   "reason": "part of the product name \"The Sonnet Man\", kept in English"
+  },
+  {
+   "lang": "ar",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "syntax_0002_as_ka_2",
+   "found": "تتحوّل كلمات",
+   "reason": "a style rule against the simile kaf, misapplied to a word that begins with kaf; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "SM-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هيب هوب",
+   "reason": "hip-hop"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-001",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-001",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "قرمزي",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-001",
+   "field": "scene",
+   "rule": "AR_SIMPLE_REPLACE",
+   "found": "دافئ",
+   "reason": "\"دافئ\" (warm) and \"كل ما\" (all that) are correct as written; the suggestions change the meaning"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كابوليت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-001",
+   "field": "quote",
+   "rule": "syntax_132_in_maa",
+   "found": "إن ما نسميه",
+   "reason": "\"إنّ ما\" (indeed what) is meant, not the conditional \"إمّا\""
+  },
+  {
+   "lang": "ar",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "إلسينور",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هاملت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-001",
+   "field": "quote",
+   "rule": "grammar_0011_notjazem_lam_nafia",
+   "found": "لا أكون",
+   "reason": "the verb is correctly in the indicative after the negating \"لا\"; the suggestion is the same text"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Ophelia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "والبتلات",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "number_one_feminin",
+   "found": "أحد",
+   "reason": "\"شوارع\" (streets) is the plural of a masculine noun, so \"أحد\" is right"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ماركيشيو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Puck",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-002",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-001",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-001",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هوراشيو",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-002",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروسبيرو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-002",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروسبيرو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-001",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "VC-002",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "صومعة في",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "VC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "VC-002",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "السنون",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "AR_SIMPLE_REPLACE",
+   "found": "دافئ",
+   "reason": "\"دافئ\" (warm) and \"كل ما\" (all that) are correct as written; the suggestions change the meaning"
+  },
+  {
+   "lang": "ar",
+   "id": "VC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كابوليت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروسبيرو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-001",
+   "field": "quote",
+   "rule": "gender_0010_alladhi",
+   "found": "نفسها التي",
+   "reason": "\"المادة\" (matter) is feminine, so \"التي\" is right"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أرييل",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "واللامرئي",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-002",
+   "field": "quote",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "سلام عليك",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Caliban",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-003",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "سيكوراكس",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "ساحة في",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بنفوليو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "زقاق في",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تيبالت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-002",
+   "field": "scene",
+   "rule": "grammar_0000_jar_plural",
+   "found": "على عدوّه",
+   "reason": "the noun is not a sound masculine plural (عدوّه, his enemy; قرون, a broken plural)"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "إلسينور",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كلوديس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Oberon",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-003",
+   "field": "scene",
+   "rule": "grammar_0000_jar_plural",
+   "found": "من قرون",
+   "reason": "the noun is not a sound masculine plural (عدوّه, his enemy; قرون, a broken plural)"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ماكبث",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "متقزّح",
+   "reason": "iridescent: read as correct"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "في دنسينان",
+   "reason": "\"in Dunsinane\": a preposition and a name"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ماكبث",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بيرنام",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-001",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ما يليق",
+   "reason": "\"ما يليق\" (what befits [a man]): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الاسكتلندية",
+   "reason": "Scottish (nisba adjective of اسكتلندا): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_3",
+   "found": "تذرع ليدي",
+   "reason": "the verb comes first and \"ليدي ماكبث\" is its subject; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ماكبث",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "دم",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "syntax_0002_as_ka_2",
+   "found": "تلتصق بها كجلد",
+   "reason": "a style rule against the simile kaf, misapplied to a word that begins with kaf; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "اسكتلندية",
+   "reason": "Scottish (nisba adjective of اسكتلندا): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بانكو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "SC-003",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-001",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "شاطئ في",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "إيلورية",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Viola",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Olivia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Malvolio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كونتيسة",
+   "reason": "countess, a loanword in use"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Olivia",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "IL-003",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروتس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئه",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كاسيوس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-002",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروتس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "مرقس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أنطونيوس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RM-003",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أعيروني",
+   "reason": "\"lend me\" (imperative plural + me), as in \"lend me your ears\": correct"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "مونتاغيو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "MO-004",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "مونتاغيو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كابوليت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "CA-003",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كابوليت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "إلسينور",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Horatio",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "DC-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هاملت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "found": "فسحة في الغابة",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Bottom",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بروسبيرو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Miranda",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "TP-004",
+   "field": "scene",
+   "rule": "collo_0084_lawal_marra",
+   "found": "لأول",
+   "reason": "\"لأول مرة\" (for the first time) is standard usage; a style preference"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-004",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "حافة",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-004",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "found": "نُقش في داخله",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-005",
+   "field": "scene",
+   "rule": "number_under_10_feminin",
+   "found": "ثلاثة",
+   "reason": "\"صناديق\" (chests) is the plural of a masculine noun, so the number takes ta: \"ثلاثة\""
+  },
+  {
+   "lang": "ar",
+   "id": "RL-005",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-005",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "الرصاص",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-005",
+   "field": "quote",
+   "rule": "AR_SIMPLE_REPLACE",
+   "found": "كل ما",
+   "reason": "\"دافئ\" (warm) and \"كل ما\" (all that) are correct as written; the suggestions change the meaning"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-005",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بورشيا",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-006",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "اسكتلندي",
+   "reason": "Scottish (nisba adjective of اسكتلندا): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-006",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ماكبث",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-008",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "found": "قارورة من البلّور",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-008",
+   "field": "scene",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "تحفظ دموعًا تتلألأ كضوء",
+   "reason": "a style rule against the simile kaf (كـ \"like\"), which is standard Arabic; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-008",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كورديليا",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-009",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بوتوم",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-009",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بوتوم",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-004",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "اليبروح",
+   "reason": "mandrake: correct"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-004",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "اليبروح",
+   "reason": "mandrake: correct"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-005",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "العشبة",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-005",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أوبيرون",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-006",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "found": "قارورة من الزجاج",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-006",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الهيبونا",
+   "reason": "hebona, the poison named in Hamlet"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-006",
+   "field": "name",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الشوكران",
+   "reason": "hemlock: correct"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-007",
+   "field": "quote",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "سمندل",
+   "reason": "salamander (newt): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-008",
+   "field": "scene",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "أزرق مضيئًا يتموّج كبحر",
+   "reason": "a style rule against the simile kaf (كـ \"like\"), which is standard Arabic; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-009",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "مانتوفا",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-009",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كهرمانيًا",
+   "reason": "amber-coloured, adverbial accusative: correct"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_5",
+   "found": "بساط من أزهار النرجس",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ووردزوورث",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كمبرلاند",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-001",
+   "field": "quote",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "همت وحيدًا كسحابة",
+   "reason": "a style rule against the simile kaf (كـ \"like\"), which is standard Arabic; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-001",
+   "field": "quote",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "الوديان",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "القطرس",
+   "reason": "the albatross: correct"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-002",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "حديقة في",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هامبستيد",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كيتس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-001",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_2",
+   "found": "قصر في البندقية",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بايرون",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-001",
+   "field": "quote",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "في الجمال، كليل",
+   "reason": "a style rule against the simile kaf (كـ \"like\"), which is standard Arabic; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-002",
+   "field": "scene",
+   "rule": "AR_HOMOPHONES_REPLACE",
+   "found": "وسط",
+   "reason": "unvocalised text: \"وسط\" reads as the preposition (amid)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-002",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-002",
+   "field": "quote",
+   "rule": "grammar_0011_notjazem_lam_nafia",
+   "found": "لا أعرف",
+   "reason": "the verb is correctly in the indicative after the negating \"لا\"; the suggestion is the same text"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "يضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بالاس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "وتتردّد كلمة",
+   "reason": "a style rule against the simile kaf (كـ \"like\"), which is standard Arabic; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Nevermore",
+   "reason": "the raven's word, quoted in English as the poem has it"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-003",
+   "field": "quote",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "GC-004",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "السبانيل",
+   "reason": "the spaniel; a loanword"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "Robert",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "syntax_125_mobtadaa_nakira_1",
+   "found": "حديقة على",
+   "reason": "a scene opens with an indefinite noun phrase, like a stage direction (\"A square in Verona at dawn.\"); a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الرفائيلية",
+   "reason": "part of \"ما قبل الرفائيلية\" (Pre-Raphaelite)"
+  },
+  {
+   "lang": "ar",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كريستينا",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الأوليمب",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "زيوس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "البارثينون",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "آثينا",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-004",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أفروديت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-004",
+   "field": "quote",
+   "rule": "grammar_0010_jazem_la_nahia",
+   "found": "لا تستطيع",
+   "reason": "\"لا\" negates here (even the gods cannot resist); it does not forbid, so the indicative is right"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-005",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هيرميز",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-005",
+   "field": "quote",
+   "rule": "syntax_0002_as_ka_2",
+   "found": "أحمل كلمات",
+   "reason": "a style rule against the simile kaf, misapplied to a word that begins with kaf; a test rule"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "تضيئها",
+   "reason": "a correct form of a word the dictionary has only in part (attached pronoun, article or conjunction)"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "هاديس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-001",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "وسيربيروس",
+   "reason": "conjunction و + Cerberus, a name"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-002",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "بيرسيفون",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "أوديسيوس",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "syntax_456_bynama_sent_start_1",
+   "found": "بينما",
+   "reason": "\"بينما\" in mid-sentence (while) is standard Modern Standard Arabic; the rule is one of LanguageTool's test rules (TEST_NEW_FEATURES)"
+  },
+  {
+   "lang": "ar",
+   "id": "OL-006",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "إيثاكا",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-003",
+   "field": "scene",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "حافة",
+   "reason": "a suggestion to add vowel marks; the game's Arabic is written without them"
+  },
+  {
+   "lang": "ar",
+   "id": "UW-003",
+   "field": "scene",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "ميدوسا",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Montague",
+   "field": "house",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "مونتاغيو",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Capulet",
+   "field": "house",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "كابوليت",
+   "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Forest of Arden",
+   "field": "house",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "آردن",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Scottish Court",
+   "field": "house",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الاسكتلندي",
+   "reason": "Scottish (nisba adjective of اسكتلندا): correct"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Olympus",
+   "field": "house",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الأوليمب",
+   "reason": "a proper name (place, person or work); the dictionary does not hold it"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Alchemy",
+   "field": "element",
+   "rule": "HUNSPELL_RULE_AR",
+   "found": "الخيمياء",
+   "reason": "alchemy: correct"
+  },
+  {
+   "lang": "zh",
+   "id": "VC-002",
+   "field": "scene",
+   "rule": "wa5",
+   "found": "间",
+   "reason": "间 measures 小室 (a room), not 烛光"
+  },
+  {
+   "lang": "zh",
+   "id": "MO-003",
+   "field": "scene",
+   "rule": "wa2",
+   "found": "在出",
+   "reason": "the locative is there: 之间 closes the phrase"
+  },
+  {
+   "lang": "zh",
+   "id": "DC-003",
+   "field": "scene",
+   "rule": "wb4",
+   "found": "的",
+   "reason": "华丽 is a noun here (falsely splendid finery), so 的 is right"
+  },
+  {
+   "lang": "zh",
+   "id": "SC-001",
+   "field": "scene",
+   "rule": "wa5",
+   "found": "间",
+   "reason": "间 measures 王座厅 (a hall), not 血迹"
+  },
+  {
+   "lang": "zh",
+   "id": "SC-002",
+   "field": "scene",
+   "rule": "wa5",
+   "found": "间",
+   "reason": "间 measures 房间 (a room), not 烛光"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-004",
+   "field": "scene",
+   "rule": "wa5",
+   "found": "林间",
+   "reason": "林间 means \"among the trees\", not a measure word"
+  },
+  {
+   "lang": "zh",
+   "id": "PT-007",
+   "field": "scene",
+   "rule": "wa5",
+   "found": "间",
+   "reason": "叶间 means \"among the leaves\", not a measure word"
+  },
+  {
+   "lang": "zh",
+   "id": "LD-001",
+   "field": "scene",
+   "rule": "wa2",
+   "found": "在花",
+   "reason": "花间 carries its locative (间)"
+  },
+  {
+   "lang": "zh",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "wa2",
+   "found": "在落叶",
+   "reason": "the locative is there: 之间 closes the phrase"
+  },
+  {
+   "lang": "zh",
+   "id": "LD-005",
+   "field": "scene",
+   "rule": "wb4",
+   "found": "的",
+   "reason": "顺从 is a noun here (calm submission), so 的 is right"
+  }
+ ],
+ "meaning": [
+  {
+   "lang": "ar",
+   "id": "DC-002",
+   "field": "quote",
+   "text": "هذا إكليل الجبل، وهو للذكرى.",
+   "reason": "إكليل الجبل is rosemary; MADLAD read it word by word (\"mountain crown\")"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-007",
+   "field": "name",
+   "text": "مخطوط العاصفة",
+   "reason": "مخطوط العاصفة: the Tempest manuscript (codex)"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-004",
+   "field": "name",
+   "text": "جذر اليبروح",
+   "reason": "جذر اليبروح is mandrake root"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-006",
+   "field": "name",
+   "text": "صبغة الشوكران",
+   "reason": "صبغة الشوكران is hemlock tincture"
+  },
+  {
+   "lang": "ar",
+   "id": "PT-007",
+   "field": "name",
+   "text": "خلاصة الهدال",
+   "reason": "الهدال is mistletoe and خلاصة extract; MADLAD misread the rare word"
+  },
+  {
+   "lang": "ar",
+   "id": "house:Relic",
+   "field": "house",
+   "text": "أثر",
+   "reason": "أثر is a relic (an object left from the past)"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "الرشاقة",
+   "reason": "الرشاقة is grace (gracefulness)"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "المحتال",
+   "reason": "المحتال (the swindler) for Trickster: right in sense, harsher in tone; for review"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "الغامض",
+   "reason": "الغامض (the mysterious) for Arcane: a looser word, for review"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Disguise",
+   "field": "element",
+   "text": "التنكر",
+   "reason": "التنكر is disguise"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "الغرور",
+   "reason": "الغرور is vanity (conceit)"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Comedy",
+   "field": "element",
+   "text": "الملهاة",
+   "reason": "الملهاة is comedy (the classical word)"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Alchemy",
+   "field": "element",
+   "text": "الخيمياء",
+   "reason": "الخيمياء is alchemy"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Rebirth",
+   "field": "element",
+   "text": "الانبعاث",
+   "reason": "الانبعاث is rebirth, revival (as in \"the phoenix, a symbol of rebirth\"); MADLAD took its technical sense, emission. It replaced البعث, which also names the Ba'ath party"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "الدهاء",
+   "reason": "الدهاء is cunning; MADLAD misread it"
+  },
+  {
+   "lang": "ar",
+   "id": "type:Relic",
+   "field": "type",
+   "text": "أثر",
+   "reason": "أثر is a relic (an object left from the past)"
+  },
+  {
+   "lang": "de",
+   "id": "PT-002",
+   "field": "name",
+   "text": "Hexengebräu",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "PT-004",
+   "field": "name",
+   "text": "Alraunwurzel",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Schierlingstinktur",
+   "reason": "Schierlingstinktur is hemlock tincture"
+  },
+  {
+   "lang": "de",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "Trank",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "house:Gothic Circle",
+   "field": "house",
+   "text": "Schauerkreis",
+   "reason": "Schauerkreis: a coinage after Schauerroman (Gothic novel); copied through; for review"
+  },
+  {
+   "lang": "de",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "Anmut",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Schelm",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Poison",
+   "field": "element",
+   "text": "Gift",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Illusion",
+   "field": "element",
+   "text": "Trugbild",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Schabernack",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Envy",
+   "field": "element",
+   "text": "Neid",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Devotion",
+   "field": "element",
+   "text": "Hingabe",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Sorrow",
+   "field": "element",
+   "text": "Kummer",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "List",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "de",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "Trank",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "es",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Tintura de cicuta",
+   "reason": "Tintura de cicuta is hemlock tincture"
+  },
+  {
+   "lang": "es",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Embaucador",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "es",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Travesura",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "es",
+   "id": "element:Sorrow",
+   "field": "element",
+   "text": "Pena",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "es",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Astucia",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Teinture de ciguë",
+   "reason": "Teinture de ciguë is hemlock tincture; MADLAD read ciguë as ciguatera"
+  },
+  {
+   "lang": "fr",
+   "id": "PT-007",
+   "field": "name",
+   "text": "Extrait de gui",
+   "reason": "Extrait de gui is mistletoe extract; MADLAD read gui as willow"
+  },
+  {
+   "lang": "fr",
+   "id": "house:Underworld",
+   "field": "house",
+   "text": "Enfers",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Farceur",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Malice",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "element:Envy",
+   "field": "element",
+   "text": "Envie",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "element:Transformation",
+   "field": "element",
+   "text": "Métamorphose",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "fr",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Ruse",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "hi",
+   "id": "FA-003",
+   "field": "quote",
+   "text": "चाँदनी में यह भेंट अशुभ है, घमंडी टाइटेनिया।",
+   "reason": "\"This meeting by moonlight is ill-omened, proud Titania\": the sense of \"Ill met by moonlight\""
+  },
+  {
+   "lang": "hi",
+   "id": "RL-007",
+   "field": "name",
+   "text": "तूफ़ान की पोथी",
+   "reason": "तूफ़ान की पोथी: the Tempest's book (पोथी, a manuscript book)"
+  },
+  {
+   "lang": "hi",
+   "id": "RL-009",
+   "field": "quote",
+   "text": "भगवान तेरा भला करे, बॉटम! तेरा तो रूप ही बदल गया!",
+   "reason": "both clauses are there (\"your very form has changed\"); MADLAD dropped the second"
+  },
+  {
+   "lang": "hi",
+   "id": "PT-007",
+   "field": "name",
+   "text": "मिसलटो का सत्त",
+   "reason": "मिसलटो का सत्त: mistletoe extract (सत्त, essence); MADLAD misread it"
+  },
+  {
+   "lang": "hi",
+   "id": "PT-009",
+   "field": "name",
+   "text": "अत्तार का अमृत",
+   "reason": "अत्तार का अमृत: the druggist's elixir (अत्तार, perfumer and druggist); MADLAD read it as a name"
+  },
+  {
+   "lang": "hi",
+   "id": "house:Relic",
+   "field": "house",
+   "text": "अवशेष",
+   "reason": "अवशेष is a relic (remains)"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "लालित्य",
+   "reason": "लालित्य is grace (elegance)"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "छलिया",
+   "reason": "छलिया is a trickster"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "रहस्य",
+   "reason": "रहस्य (mystery, secret) for Arcane: the sense of the secret art"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "शरारत",
+   "reason": "शरारत is mischief; MADLAD misread it"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "अहंकार",
+   "reason": "अहंकार (pride, conceit) for Vanity"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "text": "वाक्पटुता",
+   "reason": "वाक्पटुता is eloquence, the art of rhetoric"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Alchemy",
+   "field": "element",
+   "text": "कीमिया",
+   "reason": "कीमिया is alchemy"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "चतुराई",
+   "reason": "चतुराई is cleverness, cunning"
+  },
+  {
+   "lang": "hi",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "पाषाण",
+   "reason": "पाषाण (stone) for Petrification: looser than the English, for review"
+  },
+  {
+   "lang": "hi",
+   "id": "type:Relic",
+   "field": "type",
+   "text": "अवशेष",
+   "reason": "अवशेष is a relic (remains)"
+  },
+  {
+   "lang": "id",
+   "id": "PT-002",
+   "field": "name",
+   "text": "Rebusan Para Penyihir",
+   "reason": "Rebusan Para Penyihir: the witches' brew (a stew boiled by them)"
+  },
+  {
+   "lang": "id",
+   "id": "RL-003",
+   "field": "name",
+   "text": "Belati Khayalan",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "RL-007",
+   "field": "name",
+   "text": "Kitab Badai",
+   "reason": "Kitab Badai: the book of the storm (the Tempest codex)"
+  },
+  {
+   "lang": "id",
+   "id": "PT-007",
+   "field": "name",
+   "text": "Sari Benalu",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "Ramuan",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "Keanggunan",
+   "reason": "Keanggunan is grace (elegance)"
+  },
+  {
+   "lang": "id",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Si Jahil",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "Gaib",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Enchantment",
+   "field": "element",
+   "text": "Pesona",
+   "reason": "Pesona is charm, enchantment"
+  },
+  {
+   "lang": "id",
+   "id": "element:Disguise",
+   "field": "element",
+   "text": "Penyamaran",
+   "reason": "Penyamaran is disguise; MADLAD misread it"
+  },
+  {
+   "lang": "id",
+   "id": "element:Authority",
+   "field": "element",
+   "text": "Wibawa",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Innocence",
+   "field": "element",
+   "text": "Kepolosan",
+   "reason": "Kepolosan is innocence; MADLAD misread it"
+  },
+  {
+   "lang": "id",
+   "id": "element:Sorrow",
+   "field": "element",
+   "text": "Duka",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Thunder",
+   "field": "element",
+   "text": "Guntur",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "id",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Kecerdikan",
+   "reason": "Kecerdikan is cleverness, cunning"
+  },
+  {
+   "lang": "id",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "Pembatuan",
+   "reason": "Pembatuan is petrification (turning to stone); MADLAD misread it"
+  },
+  {
+   "lang": "id",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "Ramuan",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "MO-004",
+   "field": "name",
+   "text": "Messer Montecchi",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Tintura di cicuta",
+   "reason": "Tintura di cicuta is hemlock tincture"
+  },
+  {
+   "lang": "it",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "Pozione",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "house:Underworld",
+   "field": "house",
+   "text": "Oltretomba",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Burlone",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Enchantment",
+   "field": "element",
+   "text": "Incantesimo",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Malizia",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Darkness",
+   "field": "element",
+   "text": "Tenebra",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Envy",
+   "field": "element",
+   "text": "Invidia",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Wisdom",
+   "field": "element",
+   "text": "Saggezza",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Rebellion",
+   "field": "element",
+   "text": "Ribellione",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Thunder",
+   "field": "element",
+   "text": "Tuono",
+   "reason": "Tuono is thunder; MADLAD copied it with a typo"
+  },
+  {
+   "lang": "it",
+   "id": "element:Rebirth",
+   "field": "element",
+   "text": "Rinascita",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Astuzia",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "it",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "Pozione",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "ja",
+   "id": "RL-007",
+   "field": "name",
+   "text": "嵐の古写本",
+   "reason": "嵐の古写本: the old manuscript (codex) of the Tempest"
+  },
+  {
+   "lang": "ja",
+   "id": "RL-009",
+   "field": "quote",
+   "text": "おやおや、ボトム！ おまえは姿が変わってしまった！",
+   "reason": "\"Oh my, Bottom! Your shape has changed!\": right; MADLAD dropped the first half"
+  },
+  {
+   "lang": "ja",
+   "id": "PT-006",
+   "field": "name",
+   "text": "毒人参のチンキ",
+   "reason": "毒人参のチンキ: hemlock (ドクニンジン) tincture; MADLAD misread it"
+  },
+  {
+   "lang": "ja",
+   "id": "PT-007",
+   "field": "name",
+   "text": "宿り木のエキス",
+   "reason": "宿り木のエキス is mistletoe extract (宿り木, mistletoe)"
+  },
+  {
+   "lang": "ja",
+   "id": "PT-009",
+   "field": "name",
+   "text": "薬屋の霊薬",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "優雅",
+   "reason": "優雅 is grace, elegance"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "いたずら者",
+   "reason": "いたずら者 is a trickster, a prankster"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "秘術",
+   "reason": "秘術: the secret arts, the arcane"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "いたずら",
+   "reason": "いたずら is mischief"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "text": "弁論",
+   "reason": "弁論 (oratory, argument) for Rhetoric: close, for review"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Rebellion",
+   "field": "element",
+   "text": "反逆",
+   "reason": "反逆 (rebellion, also treason): harsher than the English, for review"
+  },
+  {
+   "lang": "ja",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "狡知",
+   "reason": "狡知 is cunning, guile"
+  },
+  {
+   "lang": "ko",
+   "id": "VC-003",
+   "field": "quote",
+   "text": "저는 아가씨의 기쁨을 위해 고생하는 일꾼이랍니다.",
+   "reason": "\"I am the worker who toils for the young lady's pleasure\": the sense of the Nurse's line"
+  },
+  {
+   "lang": "ko",
+   "id": "RL-005",
+   "field": "name",
+   "text": "포샤의 상자",
+   "reason": "포샤의 상자: Portia's casket (포샤, Portia)"
+  },
+  {
+   "lang": "ko",
+   "id": "RL-007",
+   "field": "name",
+   "text": "폭풍의 고서",
+   "reason": "폭풍의 고서: the old book of the Tempest"
+  },
+  {
+   "lang": "ko",
+   "id": "RL-009",
+   "field": "quote",
+   "text": "맙소사, 보텀! 자네 모습이 바뀌었네!",
+   "reason": "\"Good heavens, Bottom! Your shape has changed!\": both clauses are there; MADLAD dropped the second"
+  },
+  {
+   "lang": "ko",
+   "id": "PT-006",
+   "field": "name",
+   "text": "독미나리 팅크",
+   "reason": "독미나리 팅크 is hemlock tincture; MADLAD misread 독미나리"
+  },
+  {
+   "lang": "ko",
+   "id": "house:Underworld",
+   "field": "house",
+   "text": "저승",
+   "reason": "저승 is the underworld, the world of the dead"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "우아",
+   "reason": "우아 (優雅) is grace, elegance"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "비전",
+   "reason": "a one-word Sino-Korean label that MADLAD read as its homograph; 비전 (秘傳) is the word for the arcane (as Korean fantasy localisation uses it); MADLAD read the loanword \"vision\""
+  },
+  {
+   "lang": "ko",
+   "id": "element:Justice",
+   "field": "element",
+   "text": "정의",
+   "reason": "a one-word Sino-Korean label that MADLAD read as its homograph; 정의 (正義) is the word for justice; MADLAD read 定義, definition"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Illusion",
+   "field": "element",
+   "text": "환영",
+   "reason": "a one-word Sino-Korean label that MADLAD read as its homograph; 환영 (幻影) is the word for an illusion; MADLAD read 歡迎, welcome"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "장난",
+   "reason": "장난 is mischief; MADLAD read it as a joke"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "허영",
+   "reason": "허영 (虛榮) is vanity"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Innocence",
+   "field": "element",
+   "text": "순수",
+   "reason": "순수 (purity) for Innocence"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Rebellion",
+   "field": "element",
+   "text": "반역",
+   "reason": "반역 (rebellion, also treason): harsher than the English, for review"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "꾀",
+   "reason": "꾀 is cunning, wiles"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "석화",
+   "reason": "a one-word Sino-Korean label that MADLAD read as its homograph; 석화 (石化) is the word for petrification"
+  },
+  {
+   "lang": "pl",
+   "id": "RL-002",
+   "field": "name",
+   "text": "Laska Prospera",
+   "reason": "Laska Prospera: Prospero's staff"
+  },
+  {
+   "lang": "pl",
+   "id": "RL-005",
+   "field": "name",
+   "text": "Szkatułka Porcji",
+   "reason": "Szkatułka Porcji: Portia's casket (Porcja, the Polish Portia)"
+  },
+  {
+   "lang": "pl",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "Mikstura",
+   "reason": "Mikstura is the potion of Polish games and fairy tales"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "Wdzięk",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Psotnik",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "Magia tajemna",
+   "reason": "Magia tajemna: arcane magic"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Psota",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Rebellion",
+   "field": "element",
+   "text": "Bunt",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Thunder",
+   "field": "element",
+   "text": "Grom",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Spryt",
+   "reason": "Spryt is cunning, wit"
+  },
+  {
+   "lang": "pl",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "Skamienienie",
+   "reason": "Skamienienie is petrification"
+  },
+  {
+   "lang": "pl",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "Mikstura",
+   "reason": "Mikstura is the potion of Polish games and fairy tales"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-002",
+   "field": "quote",
+   "text": "Dobra, dobra, canseira e tormento.",
+   "reason": "\"Dobra, dobra, canseira e tormento\": the witches' \"double, double toil and trouble\", word for word"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Tintura de cicuta",
+   "reason": "Tintura de cicuta is hemlock tincture"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Air",
+   "field": "element",
+   "text": "Ar",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Beast",
+   "field": "element",
+   "text": "Fera",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Moonlight",
+   "field": "element",
+   "text": "Luar",
+   "reason": "Luar is moonlight; MADLAD misread it"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Travessura",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "Vaidade",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Envy",
+   "field": "element",
+   "text": "Inveja",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Duty",
+   "field": "element",
+   "text": "Dever",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "pt",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Astúcia",
+   "reason": "Astúcia is cunning; MADLAD dropped the accent"
+  },
+  {
+   "lang": "ru",
+   "id": "CA-003",
+   "field": "name",
+   "text": "Синьора Капулетти",
+   "reason": "Синьора Капулетти: Lady Capulet, as Mikhalovsky's translation calls her"
+  },
+  {
+   "lang": "ru",
+   "id": "RL-005",
+   "field": "name",
+   "text": "Ларец Порции",
+   "reason": "Ларец Порции: Portia's casket"
+  },
+  {
+   "lang": "ru",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Настойка болиголова",
+   "reason": "Настойка болиголова is hemlock tincture"
+  },
+  {
+   "lang": "ru",
+   "id": "PT-007",
+   "field": "name",
+   "text": "Вытяжка омелы",
+   "reason": "Вытяжка омелы is mistletoe extract"
+  },
+  {
+   "lang": "ru",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "Зелье",
+   "reason": "Зелье is a potion"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "Изящество",
+   "reason": "Изящество is grace, elegance"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "Плут",
+   "reason": "Плут is a trickster, a rogue; MADLAD read Pluto"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "Тайная магия",
+   "reason": "Тайная магия: arcane (secret) magic"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Enchantment",
+   "field": "element",
+   "text": "Чары",
+   "reason": "Чары is enchantment, charms"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Озорство",
+   "reason": "Озорство is mischief"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Ambition",
+   "field": "element",
+   "text": "Честолюбие",
+   "reason": "Честолюбие is ambition; MADLAD misread it"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Disguise",
+   "field": "element",
+   "text": "Личина",
+   "reason": "Личина is a disguise, a mask"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Duty",
+   "field": "element",
+   "text": "Долг",
+   "reason": "Долг is duty (and debt, its other sense, which MADLAD chose)"
+  },
+  {
+   "lang": "ru",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Хитрость",
+   "reason": "Хитрость is cunning"
+  },
+  {
+   "lang": "ru",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "Зелье",
+   "reason": "Зелье is a potion"
+  },
+  {
+   "lang": "th",
+   "id": "MO-002",
+   "field": "quote",
+   "text": "ขอให้โรคห่าลงทั้งสองตระกูลของพวกเจ้า",
+   "reason": "\"May the plague fall on both your families\": right; MADLAD said leprosy"
+  },
+  {
+   "lang": "th",
+   "id": "PT-001",
+   "field": "name",
+   "text": "ยาเสน่ห์",
+   "reason": "ยาเสน่ห์ is a love potion (a charm potion)"
+  },
+  {
+   "lang": "th",
+   "id": "RL-005",
+   "field": "name",
+   "text": "หีบของปอร์เชีย",
+   "reason": "หีบของปอร์เชีย: Portia's chest"
+  },
+  {
+   "lang": "th",
+   "id": "RL-007",
+   "field": "name",
+   "text": "คัมภีร์แห่งพายุ",
+   "reason": "คัมภีร์แห่งพายุ: the book of the storm"
+  },
+  {
+   "lang": "th",
+   "id": "RL-009",
+   "field": "quote",
+   "text": "พระเจ้าคุ้มครองเจ้า บอตทอม เจ้ากลายร่างไปแล้ว",
+   "reason": "\"God protect you, Bottom, you are transformed\": right"
+  },
+  {
+   "lang": "th",
+   "id": "PT-006",
+   "field": "name",
+   "text": "ทิงเจอร์เฮมล็อก",
+   "reason": "ทิงเจอร์เฮมล็อก: hemlock tincture in Thai letters"
+  },
+  {
+   "lang": "th",
+   "id": "house:Montague",
+   "field": "house",
+   "text": "มอนตะคิว",
+   "reason": "มอนตะคิว: Montague in Thai letters"
+  },
+  {
+   "lang": "th",
+   "id": "house:Relic",
+   "field": "house",
+   "text": "ของวิเศษ",
+   "reason": "ของวิเศษ: a magical object, the relic of the game"
+  },
+  {
+   "lang": "th",
+   "id": "house:Potion",
+   "field": "house",
+   "text": "ยาวิเศษ",
+   "reason": "ยาวิเศษ: a magic draught, the potion of the game"
+  },
+  {
+   "lang": "th",
+   "id": "house:Underworld",
+   "field": "house",
+   "text": "ยมโลก",
+   "reason": "ยมโลก is the underworld (Yama's realm)"
+  },
+  {
+   "lang": "th",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "ความสง่างาม",
+   "reason": "ความสง่างาม is grace, elegance"
+  },
+  {
+   "lang": "th",
+   "id": "element:Trickster",
+   "field": "element",
+   "text": "จอมแกล้ง",
+   "reason": "จอมแกล้ง: a master prankster, the trickster"
+  },
+  {
+   "lang": "th",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "เวทลึกลับ",
+   "reason": "เวทลึกลับ: mysterious magic, the arcane"
+  },
+  {
+   "lang": "th",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "ความหยิ่งทะนง",
+   "reason": "ความหยิ่งทะนง (haughty pride) for Vanity"
+  },
+  {
+   "lang": "th",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "text": "วาทศิลป์",
+   "reason": "วาทศิลป์ is rhetoric, the art of speech"
+  },
+  {
+   "lang": "th",
+   "id": "element:Alchemy",
+   "field": "element",
+   "text": "การเล่นแร่แปรธาตุ",
+   "reason": "การเล่นแร่แปรธาตุ is alchemy (MADLAD translated it word by word)"
+  },
+  {
+   "lang": "th",
+   "id": "element:Vision",
+   "field": "element",
+   "text": "นิมิต",
+   "reason": "นิมิต is a vision (a seen sign)"
+  },
+  {
+   "lang": "th",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "เล่ห์เหลี่ยม",
+   "reason": "เล่ห์เหลี่ยม is cunning, guile"
+  },
+  {
+   "lang": "th",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "การกลายเป็นหิน",
+   "reason": "การกลายเป็นหิน: turning to stone"
+  },
+  {
+   "lang": "th",
+   "id": "type:Relic",
+   "field": "type",
+   "text": "ของวิเศษ",
+   "reason": "ของวิเศษ: a magical object, the relic of the game"
+  },
+  {
+   "lang": "th",
+   "id": "type:Potion",
+   "field": "type",
+   "text": "ยาวิเศษ",
+   "reason": "ยาวิเศษ: a magic draught, the potion of the game"
+  },
+  {
+   "lang": "vi",
+   "id": "VC-003",
+   "field": "quote",
+   "text": "Tôi là kẻ tôi đòi nhọc nhằn vì niềm vui của cô.",
+   "reason": "\"I am the servant who toils for your pleasure\": right; MADLAD misread tôi đòi (servant)"
+  },
+  {
+   "lang": "vi",
+   "id": "RL-006",
+   "field": "quote",
+   "text": "Mái đầu đội vương miện chẳng bao giờ nằm yên.",
+   "reason": "\"The crowned head never lies at rest\": right"
+  },
+  {
+   "lang": "vi",
+   "id": "RL-007",
+   "field": "name",
+   "text": "Sách phép của Giông tố",
+   "reason": "Sách phép của Giông tố: the spellbook of the Tempest"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-004",
+   "field": "name",
+   "text": "Rễ khoai ma",
+   "reason": "Rễ khoai ma: mandrake root (khoai ma, the Vietnamese name of the mandrake)"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-006",
+   "field": "quote",
+   "text": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
+   "reason": "\"…bringing the cursed hebona sap in a vial\": right after the fix; MADLAD still reads nhựa (sap) as plastic and lẻn (sneak) as a loner"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-006",
+   "field": "name",
+   "text": "Cồn thuốc độc cần",
+   "reason": "Cồn thuốc độc cần: tincture of hemlock (độc cần, 毒芹)"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-007",
+   "field": "name",
+   "text": "Tinh chất tầm gửi",
+   "reason": "Tinh chất tầm gửi is mistletoe extract"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-009",
+   "field": "name",
+   "text": "Thuốc tiên của người bào chế",
+   "reason": "Thuốc tiên của người bào chế: the apothecary's elixir"
+  },
+  {
+   "lang": "vi",
+   "id": "house:Underworld",
+   "field": "house",
+   "text": "Âm phủ",
+   "reason": "Âm phủ is the underworld"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "Duyên dáng",
+   "reason": "Duyên dáng is grace, charm"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Enchantment",
+   "field": "element",
+   "text": "Bùa mê",
+   "reason": "Bùa mê is an enchantment, a charm"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "Tinh nghịch",
+   "reason": "Tinh nghịch is mischief"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Disguise",
+   "field": "element",
+   "text": "Cải trang",
+   "reason": "Cải trang is disguise; MADLAD misread it"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Vanity",
+   "field": "element",
+   "text": "Phù phiếm",
+   "reason": "Phù phiếm is vanity (frivolity)"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "text": "Hùng biện",
+   "reason": "MADLAD copied the label through untranslated, so its back-translation says nothing about it; read as the right word for the English"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Devotion",
+   "field": "element",
+   "text": "Tận tụy",
+   "reason": "Tận tụy is devotion"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Alchemy",
+   "field": "element",
+   "text": "Giả kim",
+   "reason": "Giả kim is alchemy"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Vision",
+   "field": "element",
+   "text": "Thị kiến",
+   "reason": "Thị kiến is a (prophetic) vision"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Rebellion",
+   "field": "element",
+   "text": "Nổi loạn",
+   "reason": "Nổi loạn is rebellion"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "Mưu trí",
+   "reason": "Mưu trí is cunning, resourcefulness"
+  },
+  {
+   "lang": "vi",
+   "id": "element:Petrification",
+   "field": "element",
+   "text": "Hóa đá",
+   "reason": "Hóa đá: turning to stone"
+  },
+  {
+   "lang": "zh",
+   "id": "RL-002",
+   "field": "name",
+   "text": "普洛斯彼罗的魔杖",
+   "reason": "普洛斯彼罗的魔杖: Prospero's staff, with the Wikidata name of TP-001"
+  },
+  {
+   "lang": "zh",
+   "id": "RL-007",
+   "field": "name",
+   "text": "暴风雨魔法书",
+   "reason": "暴风雨魔法书: the Tempest's book of magic"
+  },
+  {
+   "lang": "zh",
+   "id": "RL-009",
+   "field": "name",
+   "text": "波顿的面具",
+   "reason": "波顿的面具: Bottom's mask, with the card's name for Bottom"
+  },
+  {
+   "lang": "zh",
+   "id": "PT-006",
+   "field": "name",
+   "text": "毒芹酊",
+   "reason": "毒芹酊 is hemlock tincture; MADLAD misread it"
+  },
+  {
+   "lang": "zh",
+   "id": "element:Grace",
+   "field": "element",
+   "text": "优雅",
+   "reason": "优雅 is grace, elegance"
+  },
+  {
+   "lang": "zh",
+   "id": "element:Arcane",
+   "field": "element",
+   "text": "奥术",
+   "reason": "奥术 is the arcane, as Chinese fantasy localisation uses it"
+  },
+  {
+   "lang": "zh",
+   "id": "element:Mischief",
+   "field": "element",
+   "text": "恶作剧",
+   "reason": "恶作剧 is mischief, a prank"
+  },
+  {
+   "lang": "zh",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "text": "雄辩",
+   "reason": "雄辩 is eloquence, rhetoric"
+  },
+  {
+   "lang": "zh",
+   "id": "element:Cunning",
+   "field": "element",
+   "text": "机智",
+   "reason": "机智 (quick wit) for Cunning: kinder than the English, for review"
+  }
+ ]
+}

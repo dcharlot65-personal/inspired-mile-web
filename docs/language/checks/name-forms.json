@@ -1,0 +1,4896 @@
+{
+ "tool": "Hunspell 1.7.2 library, stem() and spell() (hstem.cpp), LibreOffice dictionaries at commit c0865a85",
+ "paradigms": "scripts/language/check/declension.py (singular, by the word's ending; written by hand, not fetched)",
+ "rule": "Which candidate forms of a name word stand. A form is dropped when Hunspell knows it as an ordinary word: in Russian and Polish, where a dictionary writes its proper nouns with a capital, when it accepts the form in lower case (Банки, \"banks\"; Kora, \"bark\"), unless every entry it is a form of is the name itself; in German and Arabic, when it accepts the form as a form of anything but the name. An entry made from the name (Polish «achillesowy», the adjective of Achilles) is the name's; in Arabic so is any entry Hunspell gives for the name alone (`own`), because its dictionary parses an unknown name too (روميو as رومي and و), and the prefix then adds nothing. A form that is also another proper noun (Russian «Афины», Athens and Athena's genitive) is kept and listed as a homograph.",
+ "use": "build_card_text.py writes the forms that stand into the card text (pack.forms); src/lib/verse/echo.ts counts a verse word as a name when it is the name or one of them",
+ "languages": {
+  "ru": {
+   "Аид": {
+    "forms": [
+     "Аида",
+     "Аиду",
+     "Аиде",
+     "Аидом"
+    ],
+    "dictionaryConfirms": [
+     "Аида",
+     "Аиду",
+     "Аиде",
+     "Аидом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Айдес": {
+    "forms": [
+     "Айдеса",
+     "Айдесу",
+     "Айдесе",
+     "Айдесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Айдоней": {
+    "forms": [
+     "Айдонея",
+     "Айдонею",
+     "Айдонеем",
+     "Айдонее"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Акесий": {
+    "forms": [
+     "Акесия",
+     "Акесию",
+     "Акесием",
+     "Акесии"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Алексикакос": {
+    "forms": [
+     "Алексикакоса",
+     "Алексикакосу",
+     "Алексикакосе",
+     "Алексикакосом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Аллан": {
+    "forms": [
+     "Аллана",
+     "Аллану",
+     "Аллане",
+     "Алланом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Антоний": {
+    "forms": [
+     "Антония",
+     "Антонию",
+     "Антонием",
+     "Антонии"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Аполлон": {
+    "forms": [
+     "Аполлона",
+     "Аполлону",
+     "Аполлоне",
+     "Аполлоном"
+    ],
+    "dictionaryConfirms": [
+     "Аполлона",
+     "Аполлону",
+     "Аполлоне",
+     "Аполлоном"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ариэль": {
+    "forms": [
+     "Ариэля",
+     "Ариэлю",
+     "Ариэлем",
+     "Ариэле",
+     "Ариэли",
+     "Ариэлью"
+    ],
+    "dictionaryConfirms": [
+     "Ариэля",
+     "Ариэлю",
+     "Ариэлем",
+     "Ариэле"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Афила": {
+    "forms": [
+     "Афилы",
+     "Афиле",
+     "Афилу",
+     "Афилой",
+     "Афилою"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Афина": {
+    "forms": [
+     "Афины",
+     "Афине",
+     "Афину",
+     "Афиной",
+     "Афиною"
+    ],
+    "dictionaryConfirms": [
+     "Афине",
+     "Афину",
+     "Афиной",
+     "Афиною"
+    ],
+    "homographs": [
+     {
+      "form": "Афины",
+      "stems": [
+       "Афина",
+       "Афины"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Афина-Паллада": {
+    "forms": [
+     "Афины-Паллады",
+     "Афине-Палладе",
+     "Афину-Палладу",
+     "Афиной-Палладой",
+     "Афиною-Палладою"
+    ],
+    "dictionaryConfirms": [
+     "Афины-Паллады",
+     "Афине-Палладе",
+     "Афину-Палладу",
+     "Афиной-Палладой",
+     "Афиною-Палладою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Афрогенея": {
+    "forms": [
+     "Афрогенеи",
+     "Афрогенее",
+     "Афрогенею",
+     "Афрогенеей",
+     "Афрогенеею"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Афродита": {
+    "forms": [
+     "Афродиты",
+     "Афродите",
+     "Афродиту",
+     "Афродитой",
+     "Афродитою"
+    ],
+    "dictionaryConfirms": [
+     "Афродиты",
+     "Афродите",
+     "Афродиту",
+     "Афродитой",
+     "Афродитою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ахилес": {
+    "forms": [
+     "Ахилеса",
+     "Ахилесу",
+     "Ахилесе",
+     "Ахилесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ахилл": {
+    "forms": [
+     "Ахилла",
+     "Ахиллу",
+     "Ахилле",
+     "Ахиллом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ахиллес": {
+    "forms": [
+     "Ахиллеса",
+     "Ахиллесу",
+     "Ахиллесе",
+     "Ахиллесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Байрон": {
+    "forms": [
+     "Байрона",
+     "Байрону",
+     "Байроне",
+     "Байроном"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Банко": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Барретт": {
+    "forms": [
+     "Барретта",
+     "Барретту",
+     "Барретте",
+     "Барреттом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Бенволио": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Биш": {
+    "forms": [
+     "Биша",
+     "Бишу",
+     "Бише",
+     "Бишом",
+     "Бишем"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Блейк": {
+    "forms": [
+     "Блейка",
+     "Блейку",
+     "Блейке",
+     "Блейком"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Браунинг": {
+    "forms": [
+     "Браунинга",
+     "Браунингу",
+     "Браунинге",
+     "Браунингом"
+    ],
+    "dictionaryConfirms": [
+     "Браунинга",
+     "Браунингу",
+     "Браунинге",
+     "Браунингом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Брут": {
+    "forms": [
+     "Брута",
+     "Бруту",
+     "Бруте",
+     "Брутом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Виола": {
+    "forms": [
+     "Виолы",
+     "Виоле",
+     "Виолу",
+     "Виолой",
+     "Виолою"
+    ],
+    "dictionaryConfirms": [
+     "Виолы",
+     "Виоле",
+     "Виолу",
+     "Виолой",
+     "Виолою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Вордсворт": {
+    "forms": [
+     "Вордсворта",
+     "Вордсворту",
+     "Вордсворте",
+     "Вордсвортом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Гадес": {
+    "forms": [
+     "Гадеса",
+     "Гадесу",
+     "Гадесе",
+     "Гадесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Гамлет": {
+    "forms": [
+     "Гамлета",
+     "Гамлету",
+     "Гамлете",
+     "Гамлетом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Гермес": {
+    "forms": [
+     "Гермеса",
+     "Гермесу",
+     "Гермесе",
+     "Гермесом"
+    ],
+    "dictionaryConfirms": [
+     "Гермеса",
+     "Гермесу",
+     "Гермесе",
+     "Гермесом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Горацио": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Гордон": {
+    "forms": [
+     "Гордона",
+     "Гордону",
+     "Гордоне",
+     "Гордоном"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Джон": {
+    "forms": [
+     "Джона",
+     "Джону",
+     "Джоне",
+     "Джоном"
+    ],
+    "dictionaryConfirms": [
+     "Джона",
+     "Джону",
+     "Джоне",
+     "Джоном"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Джордж": {
+    "forms": [
+     "Джорджа",
+     "Джорджу",
+     "Джордже",
+     "Джорджом",
+     "Джорджем"
+    ],
+    "dictionaryConfirms": [
+     "Джорджа",
+     "Джорджу",
+     "Джордже"
+    ],
+    "homographs": [
+     {
+      "form": "Джорджем",
+      "stems": [
+       "Джорджем"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Джорджина": {
+    "forms": [
+     "Джорджины",
+     "Джорджине",
+     "Джорджину",
+     "Джорджиной",
+     "Джорджиною"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Джульетта": {
+    "forms": [
+     "Джульетты",
+     "Джульетте",
+     "Джульетту",
+     "Джульеттой",
+     "Джульеттою"
+    ],
+    "dictionaryConfirms": [
+     "Джульетты",
+     "Джульетте",
+     "Джульетту",
+     "Джульеттой",
+     "Джульеттою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Дий": {
+    "forms": [
+     "Дия",
+     "Дию",
+     "Дием",
+     "Дии"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Зевес": {
+    "forms": [
+     "Зевеса",
+     "Зевесу",
+     "Зевесе",
+     "Зевесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Зевс": {
+    "forms": [
+     "Зевса",
+     "Зевсу",
+     "Зевсе",
+     "Зевсом"
+    ],
+    "dictionaryConfirms": [
+     "Зевса",
+     "Зевсу",
+     "Зевсе",
+     "Зевсом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Идалия": {
+    "forms": [
+     "Идалии",
+     "Идалию",
+     "Идалией",
+     "Идалиею"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Калибан": {
+    "forms": [
+     "Калибана",
+     "Калибану",
+     "Калибане",
+     "Калибаном"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Капулетти": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Кассий": {
+    "forms": [
+     "Кассия",
+     "Кассию",
+     "Кассием",
+     "Кассии"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Киприда": {
+    "forms": [
+     "Киприды",
+     "Киприде",
+     "Киприду",
+     "Кипридой",
+     "Кипридою"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Китс": {
+    "forms": [
+     "Китса",
+     "Китсу",
+     "Китсе",
+     "Китсом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Кифарет": {
+    "forms": [
+     "Кифарета",
+     "Кифарету",
+     "Кифарете",
+     "Кифаретом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Клавдий": {
+    "forms": [
+     "Клавдия",
+     "Клавдию",
+     "Клавдием",
+     "Клавдии"
+    ],
+    "dictionaryConfirms": [
+     "Клавдием"
+    ],
+    "homographs": [
+     {
+      "form": "Клавдия",
+      "stems": [
+       "Клавдий",
+       "Клавдия"
+      ]
+     },
+     {
+      "form": "Клавдию",
+      "stems": [
+       "Клавдий",
+       "Клавдия"
+      ]
+     },
+     {
+      "form": "Клавдии",
+      "stems": [
+       "Клавдий",
+       "Клавдия"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Кольридж": {
+    "forms": [
+     "Кольриджа",
+     "Кольриджу",
+     "Кольридже",
+     "Кольриджом",
+     "Кольриджем"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Кора": {
+    "forms": [
+     "Коры",
+     "Коре",
+     "Кору",
+     "Корой",
+     "Корою"
+    ],
+    "dictionaryConfirms": [
+     "Коры",
+     "Коре",
+     "Кору",
+     "Корой",
+     "Корою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Кормилица": {
+    "forms": [
+     "Кормилицы",
+     "Кормилице",
+     "Кормилицу",
+     "Кормилицой",
+     "Кормилицою",
+     "Кормилицей",
+     "Кормилицею"
+    ],
+    "dictionaryConfirms": [
+     "Кормилицы",
+     "Кормилице",
+     "Кормилицу",
+     "Кормилицей",
+     "Кормилицею"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Король": {
+    "forms": [
+     "Короля",
+     "Королю",
+     "Королем",
+     "Короле",
+     "Короли",
+     "Королью"
+    ],
+    "dictionaryConfirms": [
+     "Короля",
+     "Королю",
+     "Королем",
+     "Короле",
+     "Короли"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Кристина": {
+    "forms": [
+     "Кристины",
+     "Кристине",
+     "Кристину",
+     "Кристиной",
+     "Кристиною"
+    ],
+    "dictionaryConfirms": [
+     "Кристины",
+     "Кристине",
+     "Кристину",
+     "Кристиной",
+     "Кристиною"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Леди": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Лоренцо": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Макбет": {
+    "forms": [
+     "Макбета",
+     "Макбету",
+     "Макбете",
+     "Макбетом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Марк": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Марка",
+      "stems": [
+       "Марк",
+       "марка",
+       "маркий"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Марку",
+      "stems": [
+       "Марк",
+       "марка"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Марке",
+      "stems": [
+       "Марк",
+       "марка"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Марком",
+      "stems": [
+       "Марк",
+       "маркий"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Медуза": {
+    "forms": [
+     "Медузы",
+     "Медузе",
+     "Медузу",
+     "Медузой",
+     "Медузою"
+    ],
+    "dictionaryConfirms": [
+     "Медузы",
+     "Медузе",
+     "Медузу",
+     "Медузой",
+     "Медузою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Медуса": {
+    "forms": [
+     "Медусы",
+     "Медусе",
+     "Медусу",
+     "Медусой",
+     "Медусою"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Меркуцио": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Миранда": {
+    "forms": [
+     "Миранды",
+     "Миранде",
+     "Миранду",
+     "Мирандой",
+     "Мирандою"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Монтекки": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Мэри": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Оберон": {
+    "forms": [
+     "Оберона",
+     "Оберону",
+     "Обероне",
+     "Обероном"
+    ],
+    "dictionaryConfirms": [
+     "Оберона",
+     "Оберону",
+     "Обероне",
+     "Обероном"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Одиссей": {
+    "forms": [
+     "Одиссеем"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Одиссея",
+      "stems": [
+       "одиссея"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Одиссею",
+      "stems": [
+       "одиссея"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Одиссее",
+      "stems": [
+       "одиссея"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Оливия": {
+    "forms": [
+     "Оливии",
+     "Оливию",
+     "Оливией",
+     "Оливиею"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Офелия": {
+    "forms": [
+     "Офелии",
+     "Офелию",
+     "Офелией",
+     "Офелиею"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Пак": {
+    "forms": [
+     "Пака",
+     "Паку",
+     "Паке",
+     "Паком"
+    ],
+    "dictionaryConfirms": [
+     "Пака",
+     "Паку",
+     "Паке",
+     "Паком"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Паллада": {
+    "forms": [
+     "Паллады",
+     "Палладе",
+     "Палладу",
+     "Палладой",
+     "Палладою"
+    ],
+    "dictionaryConfirms": [
+     "Паллады",
+     "Палладе",
+     "Палладу",
+     "Палладой",
+     "Палладою"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Парис": {
+    "forms": [
+     "Париса",
+     "Парису",
+     "Парисе",
+     "Парисом"
+    ],
+    "dictionaryConfirms": [
+     "Париса",
+     "Парису",
+     "Парисе",
+     "Парисом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Персефона": {
+    "forms": [
+     "Персефоны",
+     "Персефоне",
+     "Персефону",
+     "Персефоной",
+     "Персефоною"
+    ],
+    "dictionaryConfirms": [
+     "Персефоны",
+     "Персефоне",
+     "Персефону",
+     "Персефоной",
+     "Персефоною"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Перси": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "По": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Полиада": {
+    "forms": [
+     "Полиады",
+     "Полиаде",
+     "Полиаду",
+     "Полиадой",
+     "Полиадою"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Просперо": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ромео": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Россетти": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Синьор": {
+    "forms": [
+     "Синьором"
+    ],
+    "dictionaryConfirms": [
+     "Синьором"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Синьора",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Синьору",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Синьоре",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Синьора": {
+    "forms": [
+     "Синьорой",
+     "Синьорою"
+    ],
+    "dictionaryConfirms": [
+     "Синьорой",
+     "Синьорою"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Синьоры",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Синьоре",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Синьору",
+      "stems": [
+       "синьор",
+       "синьора"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Сэмюэл": {
+    "forms": [
+     "Сэмюэла",
+     "Сэмюэлу",
+     "Сэмюэле",
+     "Сэмюэлом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Тейлор": {
+    "forms": [
+     "Тейлора",
+     "Тейлору",
+     "Тейлоре",
+     "Тейлором"
+    ],
+    "dictionaryConfirms": [
+     "Тейлора",
+     "Тейлору",
+     "Тейлоре",
+     "Тейлором"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Тибальд": {
+    "forms": [
+     "Тибальда",
+     "Тибальду",
+     "Тибальде",
+     "Тибальдом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Тибальт": {
+    "forms": [
+     "Тибальта",
+     "Тибальту",
+     "Тибальте",
+     "Тибальтом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Титания": {
+    "forms": [
+     "Титании",
+     "Титанию",
+     "Титанией",
+     "Титаниею"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Уильям": {
+    "forms": [
+     "Уильяма",
+     "Уильяму",
+     "Уильяме",
+     "Уильямом"
+    ],
+    "dictionaryConfirms": [
+     "Уильяма",
+     "Уильяму",
+     "Уильяме",
+     "Уильямом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Улисс": {
+    "forms": [
+     "Улисса",
+     "Улиссу",
+     "Улиссе",
+     "Улиссом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Феб": {
+    "forms": [
+     "Феба",
+     "Фебу",
+     "Фебе",
+     "Фебом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Хадес": {
+    "forms": [
+     "Хадеса",
+     "Хадесу",
+     "Хадесе",
+     "Хадесом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Шелли": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Эдгар": {
+    "forms": [
+     "Эдгара",
+     "Эдгару",
+     "Эдгаре",
+     "Эдгаром"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Элизабет": {
+    "forms": [
+     "Элизабета",
+     "Элизабету",
+     "Элизабете",
+     "Элизабетом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Эрмий": {
+    "forms": [
+     "Эрмия",
+     "Эрмию",
+     "Эрмием",
+     "Эрмии"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Эскал": {
+    "forms": [
+     "Эскала",
+     "Эскалу",
+     "Эскале",
+     "Эскалом"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "герцог": {
+    "forms": [
+     "герцога",
+     "герцогу",
+     "герцоге",
+     "герцогом"
+    ],
+    "dictionaryConfirms": [
+     "герцога",
+     "герцогу",
+     "герцоге",
+     "герцогом"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "граф": {
+    "forms": [
+     "графом"
+    ],
+    "dictionaryConfirms": [
+     "графом"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "графа",
+      "stems": [
+       "граф",
+       "графа"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "графу",
+      "stems": [
+       "граф",
+       "графа"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "графе",
+      "stems": [
+       "граф",
+       "графа"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "отец": {
+    "forms": [
+     "отеца",
+     "отецу",
+     "отеце",
+     "отецом",
+     "отецем"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   }
+  },
+  "pl": {
+   "Achilles": {
+    "forms": [
+     "Achillesa",
+     "Achillesem",
+     "Achillesie",
+     "Achillesowi"
+    ],
+    "dictionaryConfirms": [
+     "Achillesa",
+     "Achillesem",
+     "Achillesie",
+     "Achillesowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Afrodyta": {
+    "forms": [
+     "Afrodycie",
+     "Afrodyto",
+     "Afrodyty",
+     "Afrodytą",
+     "Afrodytę"
+    ],
+    "dictionaryConfirms": [
+     "Afrodycie",
+     "Afrodyto",
+     "Afrodyty",
+     "Afrodytą",
+     "Afrodytę"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Agesandros": {
+    "forms": [
+     "Agesandrosa",
+     "Agesandrosem",
+     "Agesandrosie",
+     "Agesandrosowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Allan": {
+    "forms": [
+     "Allana",
+     "Allanem",
+     "Allanie",
+     "Allanowi"
+    ],
+    "dictionaryConfirms": [
+     "Allana",
+     "Allanem",
+     "Allanie",
+     "Allanowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Antoniusz": {
+    "forms": [
+     "Antoniusza",
+     "Antoniuszem",
+     "Antoniuszowi",
+     "Antoniuszu"
+    ],
+    "dictionaryConfirms": [
+     "Antoniusza",
+     "Antoniuszem",
+     "Antoniuszowi",
+     "Antoniuszu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Apollin": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Apollina",
+      "stems": [
+       "Apollina",
+       "apollina"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Apollinem",
+      "stems": [
+       "Apollinem",
+       "apollinem"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Apollinie",
+      "stems": [
+       "Apollinie",
+       "apollinie"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Apollinowi",
+      "stems": [
+       "Apollinowi",
+       "apollinowi"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Apollo": {
+    "forms": [
+     "Apolla",
+     "Apollem",
+     "Apollowi",
+     "Apollu"
+    ],
+    "dictionaryConfirms": [
+     "Apolla",
+     "Apollem",
+     "Apollowi",
+     "Apollu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ariel": {
+    "forms": [
+     "Ariela",
+     "Arielem",
+     "Arielowi",
+     "Arielu"
+    ],
+    "dictionaryConfirms": [
+     "Ariela",
+     "Arielem",
+     "Arielowi",
+     "Arielu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Atena": {
+    "forms": [
+     "Atenie",
+     "Ateno",
+     "Ateny",
+     "Ateną",
+     "Atenę"
+    ],
+    "dictionaryConfirms": [
+     "Atenie",
+     "Ateno",
+     "Ateną",
+     "Atenę"
+    ],
+    "homographs": [
+     {
+      "form": "Ateny",
+      "stems": [
+       "Atena",
+       "Ateny"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Bajron": {
+    "forms": [
+     "Bajrona",
+     "Bajronem",
+     "Bajronie",
+     "Bajronowi"
+    ],
+    "dictionaryConfirms": [
+     "Bajronowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Banko": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Banka",
+      "stems": [
+       "Banek",
+       "Banka",
+       "banka"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Bankiem",
+      "stems": [
+       "Banek",
+       "Bank",
+       "Bankiem",
+       "bank"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Bankowi",
+      "stems": [
+       "Banek",
+       "Bank",
+       "Bankowi",
+       "bank",
+       "bankowy"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Banku",
+      "stems": [
+       "Banek",
+       "Bank",
+       "Banku",
+       "bank"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Barrett": {
+    "forms": [
+     "Barretcie",
+     "Barretta",
+     "Barrettem",
+     "Barrettowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Benvolio": {
+    "forms": [
+     "Benvolia",
+     "Benvoliem",
+     "Benvoliowi",
+     "Benvoliu"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Blake": {
+    "forms": [
+     "Blake'a",
+     "Blake'owi",
+     "Blake'em",
+     "Blake'u"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Browning": {
+    "forms": [
+     "Browninga",
+     "Browningiem",
+     "Browningowi",
+     "Browningu"
+    ],
+    "dictionaryConfirms": [
+     "Browninga",
+     "Browningiem",
+     "Browningowi",
+     "Browningu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Brutus": {
+    "forms": [
+     "Brutusa",
+     "Brutusem",
+     "Brutusie",
+     "Brutusowi"
+    ],
+    "dictionaryConfirms": [
+     "Brutusa",
+     "Brutusem",
+     "Brutusie",
+     "Brutusowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Byron": {
+    "forms": [
+     "Byrona",
+     "Byronem",
+     "Byronie",
+     "Byronowi"
+    ],
+    "dictionaryConfirms": [
+     "Byrona",
+     "Byronem",
+     "Byronie",
+     "Byronowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Bysshe": {
+    "forms": [
+     "Bysshe'a",
+     "Bysshe'owi",
+     "Bysshe'em",
+     "Bysshe'u"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Christina": {
+    "forms": [
+     "Christinie",
+     "Christino",
+     "Christiny",
+     "Christiną",
+     "Christinę"
+    ],
+    "dictionaryConfirms": [
+     "Christinie",
+     "Christino",
+     "Christiny",
+     "Christiną",
+     "Christinę"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Coleridge": {
+    "forms": [
+     "Coleridge'a",
+     "Coleridge'owi",
+     "Coleridge'em",
+     "Coleridge'u"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Cypryda": {
+    "forms": [
+     "Cyprydo",
+     "Cyprydy",
+     "Cyprydzie",
+     "Cyprydą",
+     "Cyprydę"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Dioneja": {
+    "forms": [
+     "Dionei",
+     "Dioneję",
+     "Dioneją",
+     "Dionejo"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Dzeus": {
+    "forms": [
+     "Dzeusa",
+     "Dzeusem",
+     "Dzeusie",
+     "Dzeusowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Edgar": {
+    "forms": [
+     "Edgara",
+     "Edgarem",
+     "Edgarowi",
+     "Edgarze"
+    ],
+    "dictionaryConfirms": [
+     "Edgara",
+     "Edgarem",
+     "Edgarowi",
+     "Edgarze"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Elizabeth": {
+    "forms": [
+     "Elizabetha",
+     "Elizabethem",
+     "Elizabethowi",
+     "Elizabethu"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "George": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Gordon": {
+    "forms": [
+     "Gordona",
+     "Gordonem",
+     "Gordonowi"
+    ],
+    "dictionaryConfirms": [
+     "Gordona",
+     "Gordonem",
+     "Gordonowi"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Gordonie",
+      "stems": [
+       "Gordon",
+       "gordon",
+       "gordonia"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Hades": {
+    "forms": [
+     "Hadesa",
+     "Hadesem",
+     "Hadesie",
+     "Hadesowi"
+    ],
+    "dictionaryConfirms": [
+     "Hadesa",
+     "Hadesem",
+     "Hadesie",
+     "Hadesowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Hamlet": {
+    "forms": [
+     "Hamlecie",
+     "Hamleta",
+     "Hamletem",
+     "Hamletowi"
+    ],
+    "dictionaryConfirms": [
+     "Hamlecie",
+     "Hamleta",
+     "Hamletem",
+     "Hamletowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Hermes": {
+    "forms": [
+     "Hermesa",
+     "Hermesem",
+     "Hermesie",
+     "Hermesowi"
+    ],
+    "dictionaryConfirms": [
+     "Hermesa",
+     "Hermesem",
+     "Hermesie",
+     "Hermesowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Horacy": {
+    "forms": [
+     "Horacego",
+     "Horacemu",
+     "Horacym"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [
+     {
+      "form": "Horacego",
+      "stems": [
+       "Horacego",
+       "Horacy"
+      ]
+     },
+     {
+      "form": "Horacemu",
+      "stems": [
+       "Horacemu",
+       "Horacy"
+      ]
+     },
+     {
+      "form": "Horacym",
+      "stems": [
+       "Horacy",
+       "Horacym"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Horkios": {
+    "forms": [
+     "Horkiosa",
+     "Horkiosem",
+     "Horkiosie",
+     "Horkiosowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "John": {
+    "forms": [
+     "Johna",
+     "Johnem",
+     "Johnie",
+     "Johnowi"
+    ],
+    "dictionaryConfirms": [
+     "Johna",
+     "Johnem",
+     "Johnie",
+     "Johnowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Julia": {
+    "forms": [
+     "Julii",
+     "Julię",
+     "Julią",
+     "Julio"
+    ],
+    "dictionaryConfirms": [
+     "Julii",
+     "Julię",
+     "Julią"
+    ],
+    "homographs": [
+     {
+      "form": "Julio",
+      "stems": [
+       "Julia",
+       "Julio"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Kapulet": {
+    "forms": [
+     "Kapulecie",
+     "Kapuleta",
+     "Kapuletem",
+     "Kapuletowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kasjusz": {
+    "forms": [
+     "Kasjusza",
+     "Kasjuszem",
+     "Kasjuszowi",
+     "Kasjuszu"
+    ],
+    "dictionaryConfirms": [
+     "Kasjusza",
+     "Kasjuszem",
+     "Kasjuszowi",
+     "Kasjuszu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Keats": {
+    "forms": [
+     "Keatsa",
+     "Keatsem",
+     "Keatsie",
+     "Keatsowi"
+    ],
+    "dictionaryConfirms": [
+     "Keatsa",
+     "Keatsem",
+     "Keatsie",
+     "Keatsowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kipryda": {
+    "forms": [
+     "Kiprydo",
+     "Kiprydy",
+     "Kiprydzie",
+     "Kiprydą",
+     "Kiprydę"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Klaudiusz": {
+    "forms": [
+     "Klaudiusza",
+     "Klaudiuszem",
+     "Klaudiuszowi",
+     "Klaudiuszu"
+    ],
+    "dictionaryConfirms": [
+     "Klaudiusza",
+     "Klaudiuszem",
+     "Klaudiuszowi",
+     "Klaudiuszu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kore": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Król": {
+    "forms": [
+     "Króla",
+     "Królem",
+     "Królowi",
+     "Królu"
+    ],
+    "dictionaryConfirms": [
+     "Króla",
+     "Królem",
+     "Królowi",
+     "Królu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Lady": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Makbet": {
+    "forms": [
+     "Makbecie",
+     "Makbeta",
+     "Makbetem",
+     "Makbetowi"
+    ],
+    "dictionaryConfirms": [
+     "Makbecie",
+     "Makbeta",
+     "Makbetem",
+     "Makbetowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Marek": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Marka",
+      "stems": [
+       "Marek",
+       "Mark",
+       "marek",
+       "marka"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Markiem",
+      "stems": [
+       "Marco",
+       "Marek",
+       "Mark",
+       "marek",
+       "mark"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Markowi",
+      "stems": [
+       "Marek",
+       "Mark",
+       "marek",
+       "mark",
+       "markowy"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Marku",
+      "stems": [
+       "Marek",
+       "Mark",
+       "marek",
+       "mark"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Mary": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Meduza": {
+    "forms": [
+     "Meduzie",
+     "Meduzo",
+     "Meduzy",
+     "Meduzą",
+     "Meduzę"
+    ],
+    "dictionaryConfirms": [
+     "Meduzie",
+     "Meduzo",
+     "Meduzy",
+     "Meduzą",
+     "Meduzę"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Merkucjo": {
+    "forms": [
+     "Merkucja",
+     "Merkucjem",
+     "Merkucjowi",
+     "Merkucju"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Miranda": {
+    "forms": [
+     "Mirando",
+     "Mirandy",
+     "Mirandzie",
+     "Mirandą",
+     "Mirandę"
+    ],
+    "dictionaryConfirms": [
+     "Mirando",
+     "Mirandy",
+     "Mirandzie",
+     "Mirandą",
+     "Mirandę"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Monteki": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Odys": {
+    "forms": [
+     "Odysa",
+     "Odysem",
+     "Odysie",
+     "Odysowi"
+    ],
+    "dictionaryConfirms": [
+     "Odysa",
+     "Odysem",
+     "Odysie",
+     "Odysowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Odyseusz": {
+    "forms": [
+     "Odyseusza",
+     "Odyseuszem",
+     "Odyseuszowi",
+     "Odyseuszu"
+    ],
+    "dictionaryConfirms": [
+     "Odyseusza",
+     "Odyseuszem",
+     "Odyseuszowi",
+     "Odyseuszu"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ofelia": {
+    "forms": [
+     "Ofelii",
+     "Ofelię",
+     "Ofelią",
+     "Ofelio"
+    ],
+    "dictionaryConfirms": [
+     "Ofelii",
+     "Ofelię",
+     "Ofelią",
+     "Ofelio"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Pallas": {
+    "forms": [
+     "Pallasa",
+     "Pallasem",
+     "Pallasie",
+     "Pallasowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Pan": {
+    "forms": [
+     "Panowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [
+     {
+      "form": "Panowi",
+      "stems": [
+       "Pan",
+       "Panowi"
+      ]
+     }
+    ],
+    "dropped": [
+     {
+      "form": "Pana",
+      "stems": [
+       "Pan",
+       "Pana",
+       "pana"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Panem",
+      "stems": [
+       "Pan",
+       "Panem",
+       "panem"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     },
+     {
+      "form": "Panie",
+      "stems": [
+       "Pan",
+       "Panie",
+       "pani",
+       "panie"
+      ],
+      "why": "an ordinary word (accepted in lower case)"
+     }
+    ]
+   },
+   "Pani": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Percy": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Persefona": {
+    "forms": [
+     "Persefonie",
+     "Persefono",
+     "Persefony",
+     "Persefoną",
+     "Persefonę"
+    ],
+    "dictionaryConfirms": [
+     "Persefonie",
+     "Persefono",
+     "Persefony",
+     "Persefoną",
+     "Persefonę"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Poe": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Prospero": {
+    "forms": [
+     "Prospera",
+     "Prosperem",
+     "Prosperowi",
+     "Prosperze"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [
+     {
+      "form": "Prospera",
+      "stems": [
+       "Prosper",
+       "Prospero"
+      ]
+     },
+     {
+      "form": "Prosperem",
+      "stems": [
+       "Prosper",
+       "Prospero"
+      ]
+     },
+     {
+      "form": "Prosperowi",
+      "stems": [
+       "Prosper",
+       "Prospero",
+       "Prosperowy"
+      ]
+     },
+     {
+      "form": "Prosperze",
+      "stems": [
+       "Prosper",
+       "Prospero"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Romeo": {
+    "forms": [
+     "Romea",
+     "Romeem",
+     "Romeowi",
+     "Romeu"
+    ],
+    "dictionaryConfirms": [
+     "Romea",
+     "Romeem"
+    ],
+    "homographs": [
+     {
+      "form": "Romeowi",
+      "stems": [
+       "Romeo",
+       "Romeowy",
+       "romeo"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Rossetti": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Samuel": {
+    "forms": [
+     "Samuela",
+     "Samuelem",
+     "Samuelowi",
+     "Samuelu"
+    ],
+    "dictionaryConfirms": [
+     "Samuelem",
+     "Samuelowi"
+    ],
+    "homographs": [
+     {
+      "form": "Samuela",
+      "stems": [
+       "Samuel",
+       "Samuela"
+      ]
+     },
+     {
+      "form": "Samuelu",
+      "stems": [
+       "Samuel",
+       "Samuelu"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Shelley": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Taylor": {
+    "forms": [
+     "Taylora",
+     "Taylorem",
+     "Taylorowi",
+     "Taylorze"
+    ],
+    "dictionaryConfirms": [
+     "Taylora",
+     "Taylorem",
+     "Taylorowi",
+     "Taylorze"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Tybalt": {
+    "forms": [
+     "Tybalcie",
+     "Tybalta",
+     "Tybaltem",
+     "Tybaltowi"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ulisses": {
+    "forms": [
+     "Ulissesa",
+     "Ulissesem",
+     "Ulissesie",
+     "Ulissesowi"
+    ],
+    "dictionaryConfirms": [
+     "Ulissesa",
+     "Ulissesem",
+     "Ulissesie",
+     "Ulissesowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "William": {
+    "forms": [
+     "Williama",
+     "Williamem",
+     "Williamie",
+     "Williamowi"
+    ],
+    "dictionaryConfirms": [
+     "Williama",
+     "Williamem",
+     "Williamie",
+     "Williamowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Wordsworth": {
+    "forms": [
+     "Wordswortha",
+     "Wordsworthem",
+     "Wordsworthowi",
+     "Wordsworthu"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [
+     {
+      "form": "Wordswortha",
+      "stems": [
+       "Wordswortha"
+      ]
+     },
+     {
+      "form": "Wordsworthem",
+      "stems": [
+       "Wordsworthem"
+      ]
+     },
+     {
+      "form": "Wordsworthowi",
+      "stems": [
+       "Wordsworthowi"
+      ]
+     }
+    ],
+    "dropped": []
+   },
+   "Zeus": {
+    "forms": [
+     "Zeusa",
+     "Zeusem",
+     "Zeusie",
+     "Zeusowi"
+    ],
+    "dictionaryConfirms": [
+     "Zeusa",
+     "Zeusem",
+     "Zeusie",
+     "Zeusowi"
+    ],
+    "homographs": [],
+    "dropped": []
+   }
+  },
+  "de": {
+   "Achill": {
+    "forms": [
+     "Achills"
+    ],
+    "dictionaryConfirms": [
+     "Achills"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Achilleus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Afrodite": {
+    "forms": [
+     "Afrodites"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Aidoneus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Allan": {
+    "forms": [
+     "Allans"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Antonius": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Aphrodite": {
+    "forms": [
+     "Aphrodites"
+    ],
+    "dictionaryConfirms": [
+     "Aphrodites"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Apoll": {
+    "forms": [
+     "Apolls"
+    ],
+    "dictionaryConfirms": [
+     "Apolls"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Apollon": {
+    "forms": [
+     "Apollons"
+    ],
+    "dictionaryConfirms": [
+     "Apollons"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Archilleus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Argeiphontes": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ariel": {
+    "forms": [
+     "Ariels"
+    ],
+    "dictionaryConfirms": [
+     "Ariels"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Athene": {
+    "forms": [
+     "Athenes"
+    ],
+    "dictionaryConfirms": [
+     "Athenes"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Banquo": {
+    "forms": [
+     "Banquos"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Barrett": {
+    "forms": [
+     "Barretts"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Benvolio": {
+    "forms": [
+     "Benvolios"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Blake": {
+    "forms": [
+     "Blakes"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Browning": {
+    "forms": [
+     "Brownings"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Bruder": {
+    "forms": [
+     "Bruders"
+    ],
+    "dictionaryConfirms": [
+     "Bruders"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Brutus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Byron": {
+    "forms": [
+     "Byrons"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Bysshe": {
+    "forms": [
+     "Bysshes"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Caliban": {
+    "forms": [
+     "Calibans"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Capulet": {
+    "forms": [
+     "Capulets"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Cassius": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Christina": {
+    "forms": [
+     "Christinas"
+    ],
+    "dictionaryConfirms": [
+     "Christinas"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Claudius": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Coleridge": {
+    "forms": [
+     "Coleridges"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Cyllenius": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Droll": {
+    "forms": [
+     "Drolls"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Edgar": {
+    "forms": [
+     "Edgars"
+    ],
+    "dictionaryConfirms": [
+     "Edgars"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Elizabeth": {
+    "forms": [
+     "Elizabeths"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "George": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Georges",
+      "stems": [
+       "Georg"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "Gordon": {
+    "forms": [
+     "Gordons"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Graf": {
+    "forms": [
+     "Grafs"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Gräfin": {
+    "forms": [
+     "Gräfins"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Hades": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Hamlet": {
+    "forms": [
+     "Hamlets"
+    ],
+    "dictionaryConfirms": [
+     "Hamlets"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Hermes": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Horatio": {
+    "forms": [
+     "Horatios"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "John": {
+    "forms": [
+     "Johns"
+    ],
+    "dictionaryConfirms": [
+     "Johns"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Julia": {
+    "forms": [
+     "Julias"
+    ],
+    "dictionaryConfirms": [
+     "Julias"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Keats": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kora": {
+    "forms": [
+     "Koras"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kore": {
+    "forms": [
+     "Kores"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kronion": {
+    "forms": [
+     "Kronions"
+    ],
+    "dictionaryConfirms": [
+     "Kronions"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Kypris": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "König": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "Königs",
+      "stems": [
+       "König",
+       "könig",
+       "königs"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "Lady": {
+    "forms": [
+     "Ladys"
+    ],
+    "dictionaryConfirms": [
+     "Ladys"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Lorenzo": {
+    "forms": [
+     "Lorenzos"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Loxias": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Macbeth": {
+    "forms": [
+     "Macbeths"
+    ],
+    "dictionaryConfirms": [
+     "Macbeths"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Malvolio": {
+    "forms": [
+     "Malvolios"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Marcus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Mary": {
+    "forms": [
+     "Marys"
+    ],
+    "dictionaryConfirms": [
+     "Marys"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Medusa": {
+    "forms": [
+     "Medusas"
+    ],
+    "dictionaryConfirms": [
+     "Medusas"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Mercutio": {
+    "forms": [
+     "Mercutios"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Miranda": {
+    "forms": [
+     "Mirandas"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Montague": {
+    "forms": [
+     "Montagues"
+    ],
+    "dictionaryConfirms": [
+     "Montagues"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Oberon": {
+    "forms": [
+     "Oberons"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Odysseus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ophelia": {
+    "forms": [
+     "Ophelias"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Pelide": {
+    "forms": [
+     "Pelides"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Percy": {
+    "forms": [
+     "Percys"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Persephone": {
+    "forms": [
+     "Persephones"
+    ],
+    "dictionaryConfirms": [
+     "Persephones"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Phoibos": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Phöbos": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Poe": {
+    "forms": [
+     "Poes"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Prinz": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Prospero": {
+    "forms": [
+     "Prosperos"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Psychagog": {
+    "forms": [
+     "Psychagogs"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Puck": {
+    "forms": [
+     "Pucks"
+    ],
+    "dictionaryConfirms": [
+     "Pucks"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Puk": {
+    "forms": [
+     "Puks"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Romeo": {
+    "forms": [
+     "Romeos"
+    ],
+    "dictionaryConfirms": [
+     "Romeos"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Rossetti": {
+    "forms": [
+     "Rossettis"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Samuel": {
+    "forms": [
+     "Samuels"
+    ],
+    "dictionaryConfirms": [
+     "Samuels"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Shelley": {
+    "forms": [
+     "Shelleys"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Taylor": {
+    "forms": [
+     "Taylors"
+    ],
+    "dictionaryConfirms": [
+     "Taylors"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Tybalt": {
+    "forms": [
+     "Tybalts"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Ulixes": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "William": {
+    "forms": [
+     "Williams"
+    ],
+    "dictionaryConfirms": [
+     "Williams"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Wordsworth": {
+    "forms": [
+     "Wordsworths"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Wärterin": {
+    "forms": [
+     "Wärterins"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Zettel": {
+    "forms": [
+     "Zettels"
+    ],
+    "dictionaryConfirms": [
+     "Zettels"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "Zeus": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Zygius": {
+    "forms": [],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "Αχιλλέας": {
+    "forms": [
+     "Αχιλλέαςs"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   }
+  },
+  "ar": {
+   "آثينا": {
+    "forms": [
+     "وآثينا",
+     "فآثينا",
+     "بآثينا",
+     "كآثينا",
+     "لآثينا",
+     "وبآثينا",
+     "وكآثينا",
+     "ولآثينا",
+     "فبآثينا",
+     "فكآثينا",
+     "فلآثينا"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "آخيل": {
+    "forms": [
+     "وآخيل",
+     "فآخيل",
+     "بآخيل",
+     "كآخيل",
+     "لآخيل",
+     "وبآخيل",
+     "وكآخيل",
+     "ولآخيل",
+     "فبآخيل",
+     "فكآخيل",
+     "فلآخيل"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "آلان": {
+    "forms": [
+     "وآلان",
+     "فآلان",
+     "بآلان",
+     "كآلان",
+     "لآلان",
+     "وبآلان",
+     "وكآلان",
+     "ولآلان",
+     "فبآلان",
+     "فكآلان",
+     "فلآلان"
+    ],
+    "dictionaryConfirms": [
+     "وآلان",
+     "فآلان",
+     "لآلان",
+     "ولآلان",
+     "فلآلان"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "أبوللو": {
+    "forms": [
+     "وأبوللو",
+     "فأبوللو",
+     "بأبوللو",
+     "كأبوللو",
+     "لأبوللو",
+     "وبأبوللو",
+     "وكأبوللو",
+     "ولأبوللو",
+     "فبأبوللو",
+     "فكأبوللو",
+     "فلأبوللو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أبولو": {
+    "forms": [
+     "وأبولو",
+     "فأبولو",
+     "بأبولو",
+     "كأبولو",
+     "لأبولو",
+     "وبأبولو",
+     "وكأبولو",
+     "ولأبولو",
+     "فبأبولو",
+     "فكأبولو",
+     "فلأبولو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أخيل": {
+    "forms": [
+     "وأخيل",
+     "فأخيل",
+     "بأخيل",
+     "كأخيل",
+     "لأخيل",
+     "وبأخيل",
+     "وكأخيل",
+     "ولأخيل",
+     "فبأخيل",
+     "فكأخيل",
+     "فلأخيل"
+    ],
+    "dictionaryConfirms": [
+     "وأخيل",
+     "فأخيل",
+     "لأخيل",
+     "ولأخيل",
+     "فلأخيل"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "أرييل": {
+    "forms": [
+     "وأرييل",
+     "فأرييل",
+     "بأرييل",
+     "كأرييل",
+     "لأرييل",
+     "وبأرييل",
+     "وكأرييل",
+     "ولأرييل",
+     "فبأرييل",
+     "فكأرييل",
+     "فلأرييل"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أفروديت": {
+    "forms": [
+     "وأفروديت",
+     "فأفروديت",
+     "بأفروديت",
+     "كأفروديت",
+     "لأفروديت",
+     "وبأفروديت",
+     "وكأفروديت",
+     "ولأفروديت",
+     "فبأفروديت",
+     "فكأفروديت",
+     "فلأفروديت"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أنطونيوس": {
+    "forms": [
+     "وأنطونيوس",
+     "فأنطونيوس",
+     "بأنطونيوس",
+     "كأنطونيوس",
+     "لأنطونيوس",
+     "وبأنطونيوس",
+     "وكأنطونيوس",
+     "ولأنطونيوس",
+     "فبأنطونيوس",
+     "فكأنطونيوس",
+     "فلأنطونيوس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أوديسيوس": {
+    "forms": [
+     "وأوديسيوس",
+     "فأوديسيوس",
+     "بأوديسيوس",
+     "كأوديسيوس",
+     "لأوديسيوس",
+     "وبأوديسيوس",
+     "وكأوديسيوس",
+     "ولأوديسيوس",
+     "فبأوديسيوس",
+     "فكأوديسيوس",
+     "فلأوديسيوس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "أوليس": {
+    "forms": [
+     "وأوليس",
+     "فأوليس",
+     "بأوليس",
+     "كأوليس",
+     "لأوليس",
+     "وبأوليس",
+     "وكأوليس",
+     "ولأوليس",
+     "فبأوليس",
+     "فكأوليس",
+     "فلأوليس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "إدغار": {
+    "forms": [
+     "وإدغار",
+     "فإدغار",
+     "بإدغار",
+     "كإدغار",
+     "لإدغار",
+     "وبإدغار",
+     "وكإدغار",
+     "ولإدغار",
+     "فبإدغار",
+     "فكإدغار",
+     "فلإدغار"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "إليزابيث": {
+    "forms": [
+     "وإليزابيث",
+     "فإليزابيث",
+     "بإليزابيث",
+     "كإليزابيث",
+     "لإليزابيث",
+     "وبإليزابيث",
+     "وكإليزابيث",
+     "ولإليزابيث",
+     "فبإليزابيث",
+     "فكإليزابيث",
+     "فلإليزابيث"
+    ],
+    "dictionaryConfirms": [
+     "وإليزابيث",
+     "فإليزابيث",
+     "بإليزابيث",
+     "كإليزابيث",
+     "لإليزابيث",
+     "وبإليزابيث",
+     "وكإليزابيث",
+     "ولإليزابيث",
+     "فبإليزابيث",
+     "فكإليزابيث",
+     "فلإليزابيث"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "ابولو": {
+    "forms": [
+     "وابولو",
+     "فابولو",
+     "بابولو",
+     "كابولو",
+     "لابولو",
+     "وبابولو",
+     "وكابولو",
+     "ولابولو",
+     "فبابولو",
+     "فكابولو",
+     "فلابولو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "اثينا": {
+    "forms": [
+     "واثينا",
+     "فاثينا",
+     "كاثينا",
+     "لاثينا",
+     "وكاثينا",
+     "ولاثينا",
+     "فكاثينا",
+     "فلاثينا"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "باثينا",
+      "stems": [
+       "باث"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وباثينا",
+      "stems": [
+       "باث"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فباثينا",
+      "stems": [
+       "باث"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "اخيل": {
+    "forms": [
+     "واخيل",
+     "فاخيل",
+     "باخيل",
+     "كاخيل",
+     "لاخيل",
+     "وباخيل",
+     "وكاخيل",
+     "ولاخيل",
+     "فباخيل",
+     "فكاخيل",
+     "فلاخيل"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "افروديت": {
+    "forms": [
+     "وافروديت",
+     "فافروديت",
+     "بافروديت",
+     "كافروديت",
+     "لافروديت",
+     "وبافروديت",
+     "وكافروديت",
+     "ولافروديت",
+     "فبافروديت",
+     "فكافروديت",
+     "فلافروديت"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "الأمير": {
+    "forms": [
+     "والأمير",
+     "فالأمير",
+     "بالأمير",
+     "كالأمير",
+     "للأمير",
+     "وبالأمير",
+     "وكالأمير",
+     "وللأمير",
+     "فبالأمير",
+     "فكالأمير",
+     "فللأمير"
+    ],
+    "dictionaryConfirms": [
+     "والأمير",
+     "فالأمير",
+     "بالأمير",
+     "كالأمير",
+     "للأمير",
+     "وبالأمير",
+     "وكالأمير",
+     "وللأمير",
+     "فبالأمير",
+     "فكالأمير",
+     "فللأمير"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "السيد": {
+    "forms": [
+     "والسيد",
+     "فالسيد",
+     "بالسيد",
+     "كالسيد",
+     "للسيد",
+     "وبالسيد",
+     "وكالسيد",
+     "وللسيد",
+     "فبالسيد",
+     "فكالسيد",
+     "فللسيد"
+    ],
+    "dictionaryConfirms": [
+     "والسيد",
+     "فالسيد",
+     "بالسيد",
+     "كالسيد",
+     "للسيد",
+     "وبالسيد",
+     "وكالسيد",
+     "وللسيد",
+     "فبالسيد",
+     "فكالسيد",
+     "فللسيد"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "السيدة": {
+    "forms": [
+     "والسيدة",
+     "فالسيدة",
+     "بالسيدة",
+     "كالسيدة",
+     "للسيدة",
+     "وبالسيدة",
+     "وكالسيدة",
+     "وللسيدة",
+     "فبالسيدة",
+     "فكالسيدة",
+     "فللسيدة"
+    ],
+    "dictionaryConfirms": [
+     "والسيدة",
+     "فالسيدة",
+     "بالسيدة",
+     "كالسيدة",
+     "للسيدة",
+     "وبالسيدة",
+     "وكالسيدة",
+     "وللسيدة",
+     "فبالسيدة",
+     "فكالسيدة",
+     "فللسيدة"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "الكونت": {
+    "forms": [
+     "والكونت",
+     "فالكونت",
+     "بالكونت",
+     "كالكونت",
+     "للكونت",
+     "وبالكونت",
+     "وكالكونت",
+     "وللكونت",
+     "فبالكونت",
+     "فكالكونت",
+     "فللكونت"
+    ],
+    "dictionaryConfirms": [
+     "والكونت",
+     "فالكونت",
+     "بالكونت",
+     "كالكونت",
+     "للكونت",
+     "وبالكونت",
+     "وكالكونت",
+     "وللكونت",
+     "فبالكونت",
+     "فكالكونت",
+     "فللكونت"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "الملك": {
+    "forms": [
+     "والملك",
+     "فالملك",
+     "بالملك",
+     "كالملك",
+     "وبالملك",
+     "وكالملك",
+     "فبالملك",
+     "فكالملك",
+     "فللملك"
+    ],
+    "dictionaryConfirms": [
+     "والملك",
+     "فالملك",
+     "بالملك",
+     "كالملك",
+     "وبالملك",
+     "وكالملك",
+     "فبالملك",
+     "فكالملك",
+     "فللملك"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "للملك",
+      "stems": [
+       "مل",
+       "ملك"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وللملك",
+      "stems": [
+       "مل",
+       "ملك"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "اوليس": {
+    "forms": [
+     "واوليس",
+     "فاوليس",
+     "باوليس",
+     "كاوليس",
+     "لاوليس",
+     "وباوليس",
+     "وكاوليس",
+     "ولاوليس",
+     "فباوليس",
+     "فكاوليس",
+     "فلاوليس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "باريت": {
+    "forms": [
+     "وباريت",
+     "فباريت",
+     "بباريت",
+     "كباريت",
+     "لباريت",
+     "وبباريت",
+     "وكباريت",
+     "ولباريت",
+     "فبباريت",
+     "فكباريت",
+     "فلباريت"
+    ],
+    "dictionaryConfirms": [
+     "وباريت",
+     "فباريت",
+     "لباريت",
+     "ولباريت",
+     "فلباريت"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "باريس": {
+    "forms": [
+     "وباريس",
+     "فباريس",
+     "بباريس",
+     "كباريس",
+     "لباريس",
+     "وبباريس",
+     "وكباريس",
+     "ولباريس",
+     "فبباريس",
+     "فكباريس",
+     "فلباريس"
+    ],
+    "dictionaryConfirms": [
+     "وباريس",
+     "فباريس",
+     "بباريس",
+     "كباريس",
+     "لباريس",
+     "وبباريس",
+     "وكباريس",
+     "ولباريس",
+     "فبباريس",
+     "فكباريس",
+     "فلباريس"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "بالاس": {
+    "forms": [
+     "وبالاس",
+     "فبالاس",
+     "ببالاس",
+     "كبالاس",
+     "لبالاس",
+     "وببالاس",
+     "وكبالاس",
+     "ولبالاس",
+     "فببالاس",
+     "فكبالاس",
+     "فلبالاس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بانكو": {
+    "forms": [
+     "وبانكو",
+     "فبانكو",
+     "ببانكو",
+     "كبانكو",
+     "لبانكو",
+     "وببانكو",
+     "وكبانكو",
+     "ولبانكو",
+     "فببانكو",
+     "فكبانكو",
+     "فلبانكو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بايرون": {
+    "forms": [
+     "وبايرون",
+     "فبايرون",
+     "ببايرون",
+     "كبايرون",
+     "لبايرون",
+     "وببايرون",
+     "وكبايرون",
+     "ولبايرون",
+     "فببايرون",
+     "فكبايرون",
+     "فلبايرون"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "براونينغ": {
+    "forms": [
+     "وبراونينغ",
+     "فبراونينغ",
+     "ببراونينغ",
+     "كبراونينغ",
+     "لبراونينغ",
+     "وببراونينغ",
+     "وكبراونينغ",
+     "ولبراونينغ",
+     "فببراونينغ",
+     "فكبراونينغ",
+     "فلبراونينغ"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بروتس": {
+    "forms": [
+     "وبروتس",
+     "فبروتس",
+     "ببروتس",
+     "كبروتس",
+     "لبروتس",
+     "وببروتس",
+     "وكبروتس",
+     "ولبروتس",
+     "فببروتس",
+     "فكبروتس",
+     "فلبروتس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بروسبيرو": {
+    "forms": [
+     "وبروسبيرو",
+     "فبروسبيرو",
+     "ببروسبيرو",
+     "كبروسبيرو",
+     "لبروسبيرو",
+     "وببروسبيرو",
+     "وكبروسبيرو",
+     "ولبروسبيرو",
+     "فببروسبيرو",
+     "فكبروسبيرو",
+     "فلبروسبيرو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بليك": {
+    "forms": [
+     "وبليك",
+     "فبليك",
+     "ببليك",
+     "لبليك",
+     "وببليك",
+     "ولبليك",
+     "فببليك",
+     "فلبليك"
+    ],
+    "dictionaryConfirms": [
+     "وبليك",
+     "فبليك",
+     "لبليك",
+     "ولبليك"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "كبليك",
+      "stems": [
+       "كبل"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وكبليك",
+      "stems": [
+       "كبل"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فكبليك",
+      "stems": [
+       "كبل"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "بنفوليو": {
+    "forms": [
+     "وبنفوليو",
+     "فبنفوليو",
+     "ببنفوليو",
+     "كبنفوليو",
+     "لبنفوليو",
+     "وببنفوليو",
+     "وكبنفوليو",
+     "ولبنفوليو",
+     "فببنفوليو",
+     "فكبنفوليو",
+     "فلبنفوليو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بو": {
+    "forms": [
+     "وبو",
+     "فبو",
+     "ببو",
+     "لبو",
+     "وببو",
+     "ولبو",
+     "فببو",
+     "فلبو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "كبو",
+      "stems": [
+       "كبو"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وكبو",
+      "stems": [
+       "كبو"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فكبو",
+      "stems": [
+       "كبو"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "بيرسي": {
+    "forms": [
+     "وبيرسي",
+     "فبيرسي",
+     "ببيرسي",
+     "كبيرسي",
+     "لبيرسي",
+     "وببيرسي",
+     "وكبيرسي",
+     "ولبيرسي",
+     "فببيرسي",
+     "فكبيرسي",
+     "فلبيرسي"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بيرسيفون": {
+    "forms": [
+     "وبيرسيفون",
+     "فبيرسيفون",
+     "ببيرسيفون",
+     "كبيرسيفون",
+     "لبيرسيفون",
+     "وببيرسيفون",
+     "وكبيرسيفون",
+     "ولبيرسيفون",
+     "فببيرسيفون",
+     "فكبيرسيفون",
+     "فلبيرسيفون"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بيرسيفونى": {
+    "forms": [
+     "وبيرسيفونى",
+     "فبيرسيفونى",
+     "ببيرسيفونى",
+     "كبيرسيفونى",
+     "لبيرسيفونى",
+     "وببيرسيفونى",
+     "وكبيرسيفونى",
+     "ولبيرسيفونى",
+     "فببيرسيفونى",
+     "فكبيرسيفونى",
+     "فلبيرسيفونى"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "بيش": {
+    "forms": [
+     "وبيش",
+     "فبيش",
+     "ببيش",
+     "كبيش",
+     "لبيش",
+     "وببيش",
+     "وكبيش",
+     "ولبيش",
+     "فببيش",
+     "فكبيش",
+     "فلبيش"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "تايلر": {
+    "forms": [
+     "وتايلر",
+     "فتايلر",
+     "بتايلر",
+     "كتايلر",
+     "لتايلر",
+     "وبتايلر",
+     "وكتايلر",
+     "ولتايلر",
+     "فبتايلر",
+     "فكتايلر",
+     "فلتايلر"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "تيبالت": {
+    "forms": [
+     "وتيبالت",
+     "فتيبالت",
+     "بتيبالت",
+     "كتيبالت",
+     "لتيبالت",
+     "وبتيبالت",
+     "وكتيبالت",
+     "ولتيبالت",
+     "فبتيبالت",
+     "فكتيبالت",
+     "فلتيبالت"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "تيتانيا": {
+    "forms": [
+     "وتيتانيا",
+     "فتيتانيا",
+     "بتيتانيا",
+     "كتيتانيا",
+     "لتيتانيا",
+     "وبتيتانيا",
+     "وكتيتانيا",
+     "ولتيتانيا",
+     "فبتيتانيا",
+     "فكتيتانيا",
+     "فلتيتانيا"
+    ],
+    "dictionaryConfirms": [
+     "وتيتانيا",
+     "فتيتانيا",
+     "لتيتانيا",
+     "ولتيتانيا",
+     "فلتيتانيا"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "جورج": {
+    "forms": [
+     "وجورج",
+     "فجورج",
+     "بجورج",
+     "كجورج",
+     "لجورج",
+     "وبجورج",
+     "وكجورج",
+     "ولجورج",
+     "فبجورج",
+     "فكجورج",
+     "فلجورج"
+    ],
+    "dictionaryConfirms": [
+     "وجورج",
+     "فجورج",
+     "بجورج",
+     "كجورج",
+     "لجورج",
+     "وبجورج",
+     "وكجورج",
+     "ولجورج",
+     "فبجورج",
+     "فكجورج",
+     "فلجورج"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "جولييت": {
+    "forms": [
+     "وجولييت",
+     "فجولييت",
+     "بجولييت",
+     "كجولييت",
+     "لجولييت",
+     "وبجولييت",
+     "وكجولييت",
+     "ولجولييت",
+     "فبجولييت",
+     "فكجولييت",
+     "فلجولييت"
+    ],
+    "dictionaryConfirms": [
+     "وجولييت",
+     "فجولييت",
+     "بجولييت",
+     "كجولييت",
+     "لجولييت",
+     "وبجولييت",
+     "وكجولييت",
+     "ولجولييت",
+     "فبجولييت",
+     "فكجولييت",
+     "فلجولييت"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "جون": {
+    "forms": [
+     "وجون",
+     "فجون",
+     "بجون",
+     "كجون",
+     "وبجون",
+     "وكجون",
+     "فبجون",
+     "فكجون"
+    ],
+    "dictionaryConfirms": [
+     "وجون",
+     "فجون",
+     "بجون",
+     "كجون",
+     "وبجون",
+     "وكجون",
+     "فبجون",
+     "فكجون"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "لجون",
+      "stems": [
+       "جون",
+       "لجون"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "ولجون",
+      "stems": [
+       "جون",
+       "لجون"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فلجون",
+      "stems": [
+       "جون",
+       "لجون"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "روسيتي": {
+    "forms": [
+     "وروسيتي",
+     "كروسيتي",
+     "لروسيتي",
+     "وكروسيتي",
+     "ولروسيتي",
+     "فكروسيتي",
+     "فلروسيتي"
+    ],
+    "dictionaryConfirms": [
+     "وروسيتي",
+     "كروسيتي",
+     "لروسيتي",
+     "وكروسيتي",
+     "ولروسيتي",
+     "فكروسيتي",
+     "فلروسيتي"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "فروسيتي",
+      "stems": [
+       "روسي",
+       "فروسية"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "بروسيتي",
+      "stems": [
+       "بروسي",
+       "روسي"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وبروسيتي",
+      "stems": [
+       "بروسي",
+       "روسي"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فبروسيتي",
+      "stems": [
+       "بروسي",
+       "روسي"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "روميو": {
+    "forms": [
+     "وروميو",
+     "فروميو",
+     "بروميو",
+     "كروميو",
+     "لروميو",
+     "وبروميو",
+     "وكروميو",
+     "ولروميو",
+     "فبروميو",
+     "فكروميو",
+     "فلروميو"
+    ],
+    "dictionaryConfirms": [
+     "وروميو",
+     "فروميو",
+     "لروميو",
+     "ولروميو",
+     "فلروميو"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "زوس": {
+    "forms": [
+     "وزوس",
+     "فزوس",
+     "بزوس",
+     "كزوس",
+     "لزوس",
+     "وبزوس",
+     "وكزوس",
+     "ولزوس",
+     "فبزوس",
+     "فكزوس",
+     "فلزوس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "زيفس": {
+    "forms": [
+     "وزيفس",
+     "فزيفس",
+     "بزيفس",
+     "كزيفس",
+     "لزيفس",
+     "وبزيفس",
+     "وكزيفس",
+     "ولزيفس",
+     "فبزيفس",
+     "فكزيفس",
+     "فلزيفس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "زيوس": {
+    "forms": [
+     "وزيوس",
+     "فزيوس",
+     "بزيوس",
+     "كزيوس",
+     "لزيوس",
+     "وبزيوس",
+     "وكزيوس",
+     "ولزيوس",
+     "فبزيوس",
+     "فكزيوس",
+     "فلزيوس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "شيلي": {
+    "forms": [
+     "وشيلي",
+     "فشيلي",
+     "بشيلي",
+     "كشيلي",
+     "لشيلي",
+     "وبشيلي",
+     "وكشيلي",
+     "ولشيلي",
+     "فبشيلي",
+     "فكشيلي",
+     "فلشيلي"
+    ],
+    "dictionaryConfirms": [
+     "وشيلي",
+     "فشيلي",
+     "بشيلي",
+     "كشيلي",
+     "لشيلي",
+     "وبشيلي",
+     "وكشيلي",
+     "ولشيلي",
+     "فبشيلي",
+     "فكشيلي",
+     "فلشيلي"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "صامويل": {
+    "forms": [
+     "وصامويل",
+     "فصامويل",
+     "بصامويل",
+     "كصامويل",
+     "لصامويل",
+     "وبصامويل",
+     "وكصامويل",
+     "ولصامويل",
+     "فبصامويل",
+     "فكصامويل",
+     "فلصامويل"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "غوردون": {
+    "forms": [
+     "وغوردون",
+     "فغوردون",
+     "بغوردون",
+     "كغوردون",
+     "لغوردون",
+     "وبغوردون",
+     "وكغوردون",
+     "ولغوردون",
+     "فبغوردون",
+     "فكغوردون",
+     "فلغوردون"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كابوليت": {
+    "forms": [
+     "وكابوليت",
+     "فكابوليت",
+     "بكابوليت",
+     "ككابوليت",
+     "لكابوليت",
+     "وبكابوليت",
+     "وككابوليت",
+     "ولكابوليت",
+     "فبكابوليت",
+     "فككابوليت",
+     "فلكابوليت"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كاسيوس": {
+    "forms": [
+     "وكاسيوس",
+     "فكاسيوس",
+     "بكاسيوس",
+     "ككاسيوس",
+     "لكاسيوس",
+     "وبكاسيوس",
+     "وككاسيوس",
+     "ولكاسيوس",
+     "فبكاسيوس",
+     "فككاسيوس",
+     "فلكاسيوس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كريستينا": {
+    "forms": [
+     "وكريستينا",
+     "فكريستينا",
+     "بكريستينا",
+     "ككريستينا",
+     "لكريستينا",
+     "وبكريستينا",
+     "وككريستينا",
+     "ولكريستينا",
+     "فبكريستينا",
+     "فككريستينا",
+     "فلكريستينا"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كلوديس": {
+    "forms": [
+     "وكلوديس",
+     "فكلوديس",
+     "بكلوديس",
+     "ككلوديس",
+     "لكلوديس",
+     "وبكلوديس",
+     "وككلوديس",
+     "ولكلوديس",
+     "فبكلوديس",
+     "فككلوديس",
+     "فلكلوديس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كولردج": {
+    "forms": [
+     "وكولردج",
+     "فكولردج",
+     "بكولردج",
+     "ككولردج",
+     "لكولردج",
+     "وبكولردج",
+     "وككولردج",
+     "ولكولردج",
+     "فبكولردج",
+     "فككولردج",
+     "فلكولردج"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كولريدج": {
+    "forms": [
+     "وكولريدج",
+     "فكولريدج",
+     "بكولريدج",
+     "ككولريدج",
+     "لكولريدج",
+     "وبكولريدج",
+     "وككولريدج",
+     "ولكولريدج",
+     "فبكولريدج",
+     "فككولريدج",
+     "فلكولريدج"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "كيتس": {
+    "forms": [
+     "وكيتس",
+     "فكيتس",
+     "بكيتس",
+     "ككيتس",
+     "لكيتس",
+     "وبكيتس",
+     "وككيتس",
+     "ولكيتس",
+     "فبكيتس",
+     "فككيتس",
+     "فلكيتس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ليدي": {
+    "forms": [
+     "فليدي",
+     "كليدي",
+     "لليدي",
+     "وكليدي",
+     "ولليدي",
+     "فكليدي",
+     "فلليدي"
+    ],
+    "dictionaryConfirms": [
+     "فليدي",
+     "لليدي",
+     "ولليدي",
+     "فلليدي"
+    ],
+    "homographs": [],
+    "dropped": [
+     {
+      "form": "وليدي",
+      "stems": [
+       "وليد",
+       "يد",
+       "يدي"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "بليدي",
+      "stems": [
+       "بليد"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "وبليدي",
+      "stems": [
+       "بليد"
+      ],
+      "why": "a form of another word"
+     },
+     {
+      "form": "فبليدي",
+      "stems": [
+       "بليد"
+      ],
+      "why": "a form of another word"
+     }
+    ]
+   },
+   "مادوسا": {
+    "forms": [
+     "ومادوسا",
+     "فمادوسا",
+     "بمادوسا",
+     "كمادوسا",
+     "لمادوسا",
+     "وبمادوسا",
+     "وكمادوسا",
+     "ولمادوسا",
+     "فبمادوسا",
+     "فكمادوسا",
+     "فلمادوسا"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ماركيشيو": {
+    "forms": [
+     "وماركيشيو",
+     "فماركيشيو",
+     "بماركيشيو",
+     "كماركيشيو",
+     "لماركيشيو",
+     "وبماركيشيو",
+     "وكماركيشيو",
+     "ولماركيشيو",
+     "فبماركيشيو",
+     "فكماركيشيو",
+     "فلماركيشيو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ماري": {
+    "forms": [
+     "وماري",
+     "فماري",
+     "بماري",
+     "كماري",
+     "لماري",
+     "وبماري",
+     "وكماري",
+     "ولماري",
+     "فبماري",
+     "فكماري",
+     "فلماري"
+    ],
+    "dictionaryConfirms": [
+     "وماري",
+     "فماري",
+     "بماري",
+     "كماري",
+     "لماري",
+     "وبماري",
+     "وكماري",
+     "ولماري",
+     "فبماري",
+     "فكماري",
+     "فلماري"
+    ],
+    "homographs": [],
+    "dropped": []
+   },
+   "ماكبث": {
+    "forms": [
+     "وماكبث",
+     "فماكبث",
+     "بماكبث",
+     "كماكبث",
+     "لماكبث",
+     "وبماكبث",
+     "وكماكبث",
+     "ولماكبث",
+     "فبماكبث",
+     "فكماكبث",
+     "فلماكبث"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "مرقس": {
+    "forms": [
+     "ومرقس",
+     "فمرقس",
+     "بمرقس",
+     "كمرقس",
+     "لمرقس",
+     "وبمرقس",
+     "وكمرقس",
+     "ولمرقس",
+     "فبمرقس",
+     "فكمرقس",
+     "فلمرقس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "مونتاغيو": {
+    "forms": [
+     "ومونتاغيو",
+     "فمونتاغيو",
+     "بمونتاغيو",
+     "كمونتاغيو",
+     "لمونتاغيو",
+     "وبمونتاغيو",
+     "وكمونتاغيو",
+     "ولمونتاغيو",
+     "فبمونتاغيو",
+     "فكمونتاغيو",
+     "فلمونتاغيو"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ميدوسا": {
+    "forms": [
+     "وميدوسا",
+     "فميدوسا",
+     "بميدوسا",
+     "كميدوسا",
+     "لميدوسا",
+     "وبميدوسا",
+     "وكميدوسا",
+     "ولميدوسا",
+     "فبميدوسا",
+     "فكميدوسا",
+     "فلميدوسا"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هادس": {
+    "forms": [
+     "وهادس",
+     "فهادس",
+     "بهادس",
+     "كهادس",
+     "لهادس",
+     "وبهادس",
+     "وكهادس",
+     "ولهادس",
+     "فبهادس",
+     "فكهادس",
+     "فلهادس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هاديس": {
+    "forms": [
+     "وهاديس",
+     "فهاديس",
+     "بهاديس",
+     "كهاديس",
+     "لهاديس",
+     "وبهاديس",
+     "وكهاديس",
+     "ولهاديس",
+     "فبهاديس",
+     "فكهاديس",
+     "فلهاديس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هاملت": {
+    "forms": [
+     "وهاملت",
+     "فهاملت",
+     "بهاملت",
+     "كهاملت",
+     "لهاملت",
+     "وبهاملت",
+     "وكهاملت",
+     "ولهاملت",
+     "فبهاملت",
+     "فكهاملت",
+     "فلهاملت"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هيدز": {
+    "forms": [
+     "وهيدز",
+     "فهيدز",
+     "بهيدز",
+     "كهيدز",
+     "لهيدز",
+     "وبهيدز",
+     "وكهيدز",
+     "ولهيدز",
+     "فبهيدز",
+     "فكهيدز",
+     "فلهيدز"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هيرميز": {
+    "forms": [
+     "وهيرميز",
+     "فهيرميز",
+     "بهيرميز",
+     "كهيرميز",
+     "لهيرميز",
+     "وبهيرميز",
+     "وكهيرميز",
+     "ولهيرميز",
+     "فبهيرميز",
+     "فكهيرميز",
+     "فلهيرميز"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "هيرميس": {
+    "forms": [
+     "وهيرميس",
+     "فهيرميس",
+     "بهيرميس",
+     "كهيرميس",
+     "لهيرميس",
+     "وبهيرميس",
+     "وكهيرميس",
+     "ولهيرميس",
+     "فبهيرميس",
+     "فكهيرميس",
+     "فلهيرميس"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "وليم": {
+    "forms": [
+     "ووليم",
+     "فوليم",
+     "بوليم",
+     "كوليم",
+     "لوليم",
+     "وبوليم",
+     "وكوليم",
+     "ولوليم",
+     "فبوليم",
+     "فكوليم",
+     "فلوليم"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ووردزوورث": {
+    "forms": [
+     "وووردزوورث",
+     "فووردزوورث",
+     "بووردزوورث",
+     "كووردزوورث",
+     "لووردزوورث",
+     "وبووردزوورث",
+     "وكووردزوورث",
+     "ولووردزوورث",
+     "فبووردزوورث",
+     "فكووردزوورث",
+     "فلووردزوورث"
+    ],
+    "dictionaryConfirms": [],
+    "homographs": [],
+    "dropped": []
+   },
+   "ويليام": {
+    "forms": [
+     "وويليام",
+     "فويليام",
+     "بويليام",
+     "كويليام",
+     "لويليام",
+     "وبويليام",
+     "وكويليام",
+     "ولويليام",
+     "فبويليام",
+     "فكويليام",
+     "فلويليام"
+    ],
+    "dictionaryConfirms": [
+     "وويليام",
+     "فويليام",
+     "بويليام",
+     "كويليام",
+     "لويليام",
+     "وبويليام",
+     "وكويليام",
+     "ولويليام",
+     "فبويليام",
+     "فكويليام",
+     "فلويليام"
+    ],
+    "homographs": [],
+    "dropped": []
+   }
+  }
+ }
+}

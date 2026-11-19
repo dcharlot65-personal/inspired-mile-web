@@ -1,0 +1,292 @@
+{
+ "MO-001": {
+  "text": "¿Pero qué luz es la que asoma por allí?",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto II",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1642361",
+  "revid": 1642361,
+  "offset": 32941,
+  "matches": 1,
+  "regex": "¿Pero qué luz es la que asoma por allí\\?"
+ },
+ "CA-001": {
+  "text": "¿Porqué no tomas otro nombre? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo.",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto II",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1642361",
+  "revid": 1642361,
+  "offset": 34629,
+  "matches": 1,
+  "regex": "¿Porqué no tomas otro nombre\\? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo\\."
+ },
+ "MO-002": {
+  "text": "¡Mala peste á Capuletos y Móntescos!",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto III",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III?oldid=1642362",
+  "revid": 1642362,
+  "offset": 61435,
+  "matches": 1,
+  "regex": "¡Mala peste á Capuletos y Móntescos!"
+ },
+ "VC-001": {
+  "text": "Si volveis á turbar el sosiego de nuestra ciudad, me respondereis con vuestras cabezas.",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1642360",
+  "revid": 1642360,
+  "offset": 6974,
+  "matches": 1,
+  "regex": "Si volveis á turbar el sosiego de nuestra ciudad, me respondereis con vuestras cabezas\\."
+ },
+ "VC-002": {
+  "text": "Nada violento es duradero: ni el placer ni la pena",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto II",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1642361",
+  "revid": 1642361,
+  "offset": 56188,
+  "matches": 1,
+  "regex": "Nada violento es duradero: ni el placer ni la pena"
+ },
+ "MO-003": {
+  "text": "Los estoy poniendo en paz. Envaina tú",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1642360",
+  "revid": 1642360,
+  "offset": 5703,
+  "matches": 1,
+  "regex": "Los estoy poniendo en paz\\. Envaina tú"
+ },
+ "CA-002": {
+  "text": "¡Hablarme de paz, cuando tengo el acero en la mano! Más odiosa me es tal palabra que el infierno mismo",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1642360",
+  "revid": 1642360,
+  "offset": 5776,
+  "matches": 1,
+  "regex": "¡Hablarme de paz, cuando tengo el acero en la mano! Más odiosa me es tal palabra que el infierno mismo"
+ },
+ "MO-004": {
+  "text": "Dicen que va allí con frecuencia á juntar su llanto con el rocío de la mañana",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1642360",
+  "revid": 1642360,
+  "offset": 8260,
+  "matches": 1,
+  "regex": "Dicen que va allí con frecuencia á juntar su llanto con el rocío de la mañana"
+ },
+ "VC-004": {
+  "text": "Ni es ésta ocasion de galanterías sino de duelo.",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto III",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III?oldid=1642362",
+  "revid": 1642362,
+  "offset": 78656,
+  "matches": 1,
+  "regex": "Ni es ésta ocasion de galanterías sino de duelo\\."
+ },
+ "RL-004": {
+  "text": "mi afán de dártelo toda es tan profundo y tan sin límite como los abismos de la mar.",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto II",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1642361",
+  "revid": 1642361,
+  "offset": 38700,
+  "matches": 1,
+  "regex": "mi afán de dártelo toda es tan profundo y tan sin límite como los abismos de la mar\\."
+ },
+ "PT-009": {
+  "text": "desleidlo en agua ó en un licor cualquiera, bebedlo, y caereis muerto en seguida, aunque tengais la fuerza de veinte hombres.",
+  "work": "rj",
+  "page": "Romeo y Julieta (Menéndez y Pelayo tr.)/Acto V",
+  "url": "https://es.wikisource.org/wiki/Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V?oldid=1642364",
+  "revid": 1642364,
+  "offset": 107919,
+  "matches": 1,
+  "regex": "desleidlo en agua ó en un licor cualquiera, bebedlo, y caereis muerto en seguida, aunque tengais la fuerza de veinte hombres\\."
+ },
+ "DC-001": {
+  "text": "Ser, o no ser, ésa es la cuestión.",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto III",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_III?oldid=1589730",
+  "revid": 1589730,
+  "offset": 83918,
+  "matches": 1,
+  "regex": "Ser, o no ser, ésa es la cuestión\\."
+ },
+ "DC-002": {
+  "text": "Aquí traigo romero, que es bueno para la memoria.",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto IV",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_IV?oldid=1610550",
+  "revid": 1610550,
+  "offset": 148126,
+  "matches": 1,
+  "regex": "Aquí traigo romero, que es bueno para la memoria\\."
+ },
+ "RL-001": {
+  "text": "¡Ay! ¡Pobre Yorick! Yo le conocí, Horacio",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto V",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_V?oldid=1589732",
+  "revid": 1589732,
+  "offset": 169428,
+  "matches": 1,
+  "regex": "¡Ay! ¡Pobre Yorick! Yo le conocí, Horacio"
+ },
+ "DC-003": {
+  "text": "Mis palabras suben al cielo, mis afectos quedan en la tierra.",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto III",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_III?oldid=1589730",
+  "revid": 1589730,
+  "offset": 115597,
+  "matches": 1,
+  "regex": "Mis palabras suben al cielo, mis afectos quedan en la tierra\\."
+ },
+ "DC-004": {
+  "text": "En fin, ¡se rompe ese gran corazón! Adiós, adiós, amado Príncipe.",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto V",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_V?oldid=1589732",
+  "revid": 1589732,
+  "offset": 194803,
+  "matches": 1,
+  "regex": "En fin, ¡se rompe ese gran corazón! Adiós, adiós, amado Príncipe\\."
+ },
+ "PT-006": {
+  "text": "Tu tío me sorprende en aquella hora de quietud, y trayendo consigo una ampolla de licor venenoso",
+  "work": "hamlet",
+  "page": "Hamlet (Inarco Celenio trad.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Hamlet_%28Inarco_Celenio_trad.%29/Acto_I?oldid=1564601",
+  "revid": 1564601,
+  "offset": 38212,
+  "matches": 1,
+  "regex": "Tu tío me sorprende en aquella hora de quietud, y trayendo consigo una ampolla de licor venenoso"
+ },
+ "PT-002": {
+  "text": "Aumente el trabajo: crezca la labor: hierva la caldera.",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto IV",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_IV?oldid=1177538",
+  "revid": 1177538,
+  "offset": 52701,
+  "matches": 3,
+  "regex": "Aumente el trabajo: crezca la labor: hierva la caldera\\."
+ },
+ "RL-003": {
+  "text": "¡Me parece estar viendo el puño de una daga vuelta hacia mí!",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto II",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II?oldid=1177534",
+  "revid": 1177534,
+  "offset": 23554,
+  "matches": 1,
+  "regex": "¡Me parece estar viendo el puño de una daga vuelta hacia mí!"
+ },
+ "SC-001": {
+  "text": "Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano.",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1263631",
+  "revid": 1263631,
+  "offset": 20359,
+  "matches": 1,
+  "regex": "Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano\\."
+ },
+ "SC-002": {
+  "text": "¡Espíritus agitadores del pensamiento, despojadme de mi sexo",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1263631",
+  "revid": 1263631,
+  "offset": 15613,
+  "matches": 1,
+  "regex": "¡Espíritus agitadores del pensamiento, despojadme de mi sexo"
+ },
+ "SC-003": {
+  "text": "No rey, pero padre de reyes.",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto I",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I?oldid=1263631",
+  "revid": 1263631,
+  "offset": 8420,
+  "matches": 1,
+  "regex": "No rey, pero padre de reyes\\."
+ },
+ "PT-007": {
+  "text": "ojos de lagarto, músculos de rana",
+  "work": "macbeth",
+  "page": "Macbeth (Menéndez y Pelayo tr.)/Acto IV",
+  "url": "https://es.wikisource.org/wiki/Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_IV?oldid=1177538",
+  "revid": 1177538,
+  "offset": 52899,
+  "matches": 1,
+  "regex": "ojos de lagarto, músculos de rana"
+ },
+ "RM-001": {
+  "text": "no porque amara menos á César, sino porque amaba más á Roma.",
+  "work": "jc",
+  "page": "Julio César (Shakespeare, Márquez tr.)",
+  "url": "https://es.wikisource.org/wiki/Julio_C%C3%A9sar_%28Shakespeare%2C_M%C3%A1rquez_tr.%29?oldid=1257361",
+  "revid": 1257361,
+  "offset": 70161,
+  "matches": 1,
+  "regex": "no porque amara menos á César, sino porque amaba más á Roma\\."
+ },
+ "RM-002": {
+  "text": "La culpa, querido Bruto, no es de nuestras estrellas, sino de nosotros mismos, si consentimos en ser inferiores.",
+  "work": "jc",
+  "page": "Julio César (Shakespeare, Márquez tr.)",
+  "url": "https://es.wikisource.org/wiki/Julio_C%C3%A9sar_%28Shakespeare%2C_M%C3%A1rquez_tr.%29?oldid=1257361",
+  "revid": 1257361,
+  "offset": 11979,
+  "matches": 1,
+  "regex": "La culpa, querido Bruto, no es de nuestras estrellas, sino de nosotros mismos, si consentimos en ser inferiores\\."
+ },
+ "RM-003": {
+  "text": "Amigos, romanos, compatriotas, prestadme atención.",
+  "work": "jc",
+  "page": "Julio César (Shakespeare, Márquez tr.)",
+  "url": "https://es.wikisource.org/wiki/Julio_C%C3%A9sar_%28Shakespeare%2C_M%C3%A1rquez_tr.%29?oldid=1257361",
+  "revid": 1257361,
+  "offset": 72878,
+  "matches": 1,
+  "regex": "Amigos, romanos, compatriotas, prestadme atención\\."
+ },
+ "RL-005": {
+  "text": "No es oro todo lo que reluce",
+  "work": "mov",
+  "page": "El mercader de Venecia (Menéndez y Pelayo tr.)",
+  "url": "https://es.wikisource.org/wiki/El_mercader_de_Venecia_%28Men%C3%A9ndez_y_Pelayo_tr.%29?oldid=1109552",
+  "revid": 1109552,
+  "offset": 43571,
+  "matches": 1,
+  "regex": "No es oro todo lo que reluce"
+ },
+ "PT-004": {
+  "text": "No podrás conciliar hoy el sueño tan apaciblemente como ayer, aunque la adormidera, el beleño y la mandrágora mezclen para tí sus adormecedores jugos.",
+  "work": "othello",
+  "page": "Otelo (Menéndez y Pelayo tr.)/Acto III",
+  "url": "https://es.wikisource.org/wiki/Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III?oldid=1109129",
+  "revid": 1109129,
+  "offset": 75812,
+  "matches": 1,
+  "regex": "No podrás conciliar hoy el sueño tan apaciblemente como ayer, aunque la adormidera, el beleño y la mandrágora mezclen para tí sus adormecedores jugos\\."
+ },
+ "GC-003": {
+  "text": "Una fosca media noche, cuando en tristes reflexiones",
+  "work": "raven",
+  "page": "El cuervo (Pérez Bonalde tr.)",
+  "url": "https://es.wikisource.org/wiki/El_cuervo_%28P%C3%A9rez_Bonalde_tr.%29?oldid=1222156",
+  "revid": 1222156,
+  "offset": 1155,
+  "matches": 1,
+  "regex": "Una fosca media noche, cuando en tristes reflexiones"
+ }
+}

@@ -3,31 +3,48 @@
  * the rule-based comparison when no model is loaded or a reading fails.
  */
 import { CARD_CATALOG } from '../cards';
+import { getCardText } from '../cards-i18n';
 import { answerScores, brainInfo, isBrainLoaded } from '../brain';
 import { invocationNames, signatureWords } from './devices';
 import type { JudgeSplit } from './duel';
 import {
   CRITERIA, GRADE_ANSWERS, boundedByRules, combineMargins, compareMessages, expectedGrade, gradeMessages, judgeLines, rulesJudge, type Margins,
 } from './judge';
+import { localCharacterNames, localSignatureWords, wordKey } from './echo';
+import { baseLang } from './lang';
 import { languageName } from './opponent';
-import { STOP_WORDS, fold, letterCount } from './text';
+import { STOP_WORDS, fold, letterCount, wordsOf } from './text';
 
 /**
  * Words that count as literary allusion for the rule-based judge: the names a
  * character is called by, and the telling words of every card's line. Everyday
  * words in those lines ("that", "this", "with", "have") are not allusions.
+ * In a language that has its own names and lines for the cards (src/lib/cards-i18n, loaded with
+ * the language pack) those count as well as the English ones, keyed as the judge reads the verse
+ * (echo.ts wordKey: a Vietnamese word keeps its tone, so "đêm" is not every toneless "dem").
  */
-let lexicon: Set<string> | null = null;
-export function allusionLexicon(): Set<string> {
-  if (!lexicon) {
-    lexicon = new Set<string>();
-    const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
-    for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
-    for (const c of CARD_CATALOG) {
-      // A signature phrase (Viola's "not what") is not a word.
-      for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
-    }
+const lexicons = new Map<string, Set<string>>();
+export function allusionLexicon(lang = 'en'): Set<string> {
+  const b = baseLang(lang);
+  // Not cached until the language's card text is there: it arrives with loadPack.
+  const ready = b === 'en' || !!getCardText(b);
+  const have = lexicons.get(b);
+  if (have) return have;
+  const lexicon = new Set<string>();
+  const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
+  for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
+  for (const c of CARD_CATALOG) {
+    // A signature phrase (Viola's "not what") is not a word.
+    for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
   }
+  if (b !== 'en') {
+    // The judge reads a verse word by word: a Vietnamese word of several syllables (vấn đề), or a Thai one ICU cuts in
+    // pieces (โรสแมรี), is not one it can meet.
+    for (const c of CARD_CATALOG) for (const w of localSignatureWords(c, b)) if (wordsOf(w, b).length === 1) lexicon.add(wordKey(w, b));
+    // One-word names only: a longer name's titles (Russian «граф») are not allusions by themselves.
+    for (const n of localCharacterNames(b)) if (wordsOf(n, b).length === 1) lexicon.add(wordKey(n, b));
+  }
+  if (ready) lexicons.set(b, lexicon);
   return lexicon;
 }
 
@@ -56,7 +73,7 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       if (brainInfo()?.judge === 'grade') {
         // Graded alone, a verse can tell the grader what to answer: the grader never reads such a
         // line, and decides only what the rules split, by a measured margin (judge.ts gradeMessages).
-        const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+        const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(lang), previousPlayerVerse);
         // A line left out must not help its verse (an empty verse is not a better one): a round
         // with a line the grader would not read is decided by the rules alone, for both sides.
         if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) return { ...rules, reason: 'unread' };
@@ -69,5 +86,5 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       console.error('[referee] model judging failed; using the rules', err);
     }
   }
-  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(lang), previousPlayerVerse);
 }

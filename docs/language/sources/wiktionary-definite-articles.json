@@ -1,0 +1,68 @@
+{
+ "source": "English Wiktionary (en.wiktionary.org), MediaWiki API, the current revision of each page",
+ "fetched": "2026-11-18",
+ "licence": "CC BY-SA 4.0 (and GFDL); only titles, revision ids and verdicts are kept",
+ "rule": "an Article defined as \"the\", or an inflection of one; not \"a, an\" or its inflections",
+ "languages": {
+  "de": {
+   "read": {
+    "das": {
+     "revid": 95673902,
+     "definite": true
+    },
+    "dem": {
+     "revid": 95369547,
+     "definite": true
+    },
+    "den": {
+     "revid": 95437504,
+     "definite": true
+    },
+    "der": {
+     "revid": 95669769,
+     "definite": true
+    },
+    "des": {
+     "revid": 93471216,
+     "definite": true
+    },
+    "die": {
+     "revid": 95590488,
+     "definite": true
+    },
+    "ein": {
+     "revid": 93691707,
+     "definite": false
+    },
+    "eine": {
+     "revid": 95492093,
+     "definite": false
+    },
+    "einem": {
+     "revid": 92696498,
+     "definite": false
+    },
+    "einen": {
+     "revid": 92696816,
+     "definite": false
+    },
+    "einer": {
+     "revid": 94585308,
+     "definite": false
+    },
+    "eines": {
+     "revid": 92696809,
+     "definite": false
+    }
+   },
+   "definite": [
+    "das",
+    "dem",
+    "den",
+    "der",
+    "des",
+    "die"
+   ]
+  }
+ }
+}

@@ -1,0 +1,464 @@
+{
+ "about": "Every change made to the text written for the game because a check flagged it. The full before and after of each change is in the git history of scripts/language/translated/.",
+ "fixes": [
+  {
+   "lang": "fr",
+   "id": "RL-002",
+   "field": "scene",
+   "finding": "Hunspell: \"arcanique\" is not a French word",
+   "old": "crépite d’énergie arcanique",
+   "new": "crépite d’une énergie occulte",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"ceptro\", a European spelling",
+   "old": "Um ceptro dourado",
+   "new": "Um cetro dourado",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "SC-001",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"trémulas\", a European spelling",
+   "old": "mãos trémulas",
+   "new": "mãos trêmulas",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-004",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"trémula\", a European spelling",
+   "old": "com trémula reverência",
+   "new": "com trêmula reverência",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pl",
+   "id": "house:Verona Court",
+   "field": "house",
+   "finding": "Hunspell: \"werneński\" is not the adjective of Werona",
+   "old": "Dwór werneński",
+   "new": "Dwór weroński",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pl",
+   "id": "GC-001",
+   "field": "quote",
+   "finding": "LanguageTool: no comma before a comparative \"jak\"",
+   "old": "w piękności, jak noc",
+   "new": "w piękności jak noc",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ru",
+   "id": "OL-005",
+   "field": "scene",
+   "finding": "Hunspell: \"Промельк\", a rare colloquial form",
+   "old": "Промельк крылатых сандалий",
+   "new": "Мелькание крылатых сандалий",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ru",
+   "id": "GC-003",
+   "field": "scene",
+   "finding": "LanguageTool read \"По сидит\" as a misspelt \"Посидит\"",
+   "old": "По сидит",
+   "new": "Эдгар По сидит",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "de",
+   "id": "LD-003",
+   "field": "quote",
+   "finding": "LanguageTool: a capital after a colon that opens a full clause",
+   "old": ": seine Lieblichkeit wächst",
+   "new": ": Seine Lieblichkeit wächst",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-004",
+   "field": "scene",
+   "finding": "LanguageTool: 颗 is not the measure word for a head worn as a mask",
+   "old": "一颗驴头",
+   "new": "一个驴头",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ar",
+   "id": "(20 lines)",
+   "field": "quote",
+   "finding": "LanguageTool: the tanwin of the accusative stands on the letter before the alif",
+   "old": "يوماً, ملكاً, ذهباً, …",
+   "new": "يومًا, ملكًا, ذهبًا, … (as the scenes already wrote it)",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-004",
+   "field": "scene",
+   "finding": "LanguageTool PAS_D_ELISION: \"Hamlet\" takes no elision",
+   "old": "aux côtés d’Hamlet",
+   "new": "aux côtés de Hamlet",
+   "round": "this round"
+  },
+  {
+   "lang": "fr",
+   "id": "IL-002",
+   "field": "scene",
+   "finding": "LanguageTool PLACE_ADJ on \"bas jaunes criards\"; the agreement of a qualified colour is better avoided",
+   "old": "en bas jaunes criards",
+   "new": "en bas d’un jaune criard",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "OL-007",
+   "field": "quote",
+   "finding": "Hunspell: \"잊혀진\" is a double passive; the National Institute of Korean Language gives 잊힌",
+   "old": "잊혀진 긴 삶보다",
+   "new": "잊힌 긴 삶보다",
+   "round": "this round"
+  },
+  {
+   "lang": "vi",
+   "id": "RM-001",
+   "field": "quote",
+   "finding": "Hunspell: \"Rome\"; Wikidata's Vietnamese label for the city (the house label) is \"Roma\"",
+   "old": "yêu thành Rome nhiều hơn",
+   "new": "yêu thành Roma nhiều hơn",
+   "round": "this round"
+  },
+  {
+   "lang": "hi",
+   "id": "OL-001",
+   "field": "scene",
+   "finding": "Hunspell: \"ओलंपस\"; Wikidata's Hindi label is \"माउंट ओलिंपस\"",
+   "old": "ओलंपस पर्वत",
+   "new": "ओलिंपस पर्वत",
+   "round": "this round"
+  },
+  {
+   "lang": "hi",
+   "id": "house:Olympus",
+   "field": "house",
+   "finding": "as above",
+   "old": "ओलंपस",
+   "new": "ओलिंपस",
+   "round": "this round"
+  },
+  {
+   "lang": "pt",
+   "id": "(all)",
+   "field": "scene, quote, name",
+   "finding": "LanguageTool and Hunspell ran with pt-BR (the interface is Brazilian) and flagged European forms; read in full, the Portuguese card text was European Portuguese",
+   "old": "European Portuguese (\"a brilhar\", pirilampos, sumo, fumo, archotes, papoila, \"cá em baixo\", \"Sumo da flor de Puck\", \"Marco António\" in a scene)",
+   "new": "Brazilian Portuguese: 66 scenes, 27 lines and one potion name rewritten (see git log for the full diff); a scene names a character as its card does (Mercutio, Benvolio, Tybalt, Odisseu)",
+   "round": "this round"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Rebirth",
+   "field": "element",
+   "finding": "back-translation (cos 0.20, LaBSE 0.43): MADLAD read \"البعث\" as \"Al-Baath\"; the word is also the name of the Ba'ath party",
+   "old": "البعث",
+   "new": "الانبعاث",
+   "round": "this round"
+  },
+  {
+   "lang": "id",
+   "id": "VC-002",
+   "field": "quote",
+   "finding": "back-translation (cos 0.39, LaBSE 0.58): \"menggelora\" (surging) loses the \"violent ends\" of the line",
+   "old": "Kenikmatan yang menggelora ini berakhir dengan menggelora pula.",
+   "new": "Kenikmatan yang ganas ini berakhir secara ganas pula.",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Rebirth",
+   "field": "element",
+   "finding": "back-translation (cos 0.22, LaBSE 0.48) read \"재생\" as \"Play\": in an interface the word is first of all \"playback\"",
+   "old": "재생",
+   "new": "부활",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "finding": "back-translation (cos 0.36, LaBSE 0.37) read \"수사\" as \"Investigation\", its commoner sense; the discipline is 수사학",
+   "old": "수사",
+   "new": "수사학",
+   "round": "this round"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-006",
+   "field": "quote",
+   "finding": "back-translation (cos 0.55, LaBSE 0.52) read \"một lọ nhựa hebona\" as \"a plastic jar of hebona\": nhựa is both sap and plastic",
+   "old": "mang theo một lọ nhựa hebona đáng nguyền rủa.",
+   "new": "mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
+   "round": "this round"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-002",
+   "field": "name",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "O cajado de Prospero",
+   "new": "O cajado de Próspero",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-002",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… enquanto Prospero sussurra …",
+   "new": "… enquanto Próspero sussurra …",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-001",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… Prospero ergue as mãos …",
+   "new": "… Próspero ergue as mãos …",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-004",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… na ilha de Prospero …",
+   "new": "… na ilha de Próspero …",
+   "round": "second pass"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-006",
+   "field": "quote",
+   "finding": "an independent check (2026-11-16): to render \"Uneasy lies the head\" the word must be the circumstantial accusative (ḥāl) قلقًا; as written, قلق is the noun \"anxiety\", and MADLAD read the line as \"Anxiety lies on the head…\" (cos 0.78), which no tool flagged",
+   "old": "قلق يرقد الرأس الذي يلبس التاج.",
+   "new": "قلقًا يرقد الرأس الذي يلبس التاج.",
+   "round": "second pass"
+  },
+  {
+   "lang": "ru",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata, is «герцог Эскал», a duke)",
+   "old": "Князь стоит на ступенях",
+   "new": "Герцог стоит на ступенях",
+   "round": "third pass"
+  },
+  {
+   "lang": "ru",
+   "id": "MO-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): a dash, not a comma, between a subject and a predicate noun (ладони — единственное оружие)",
+   "old": "его раскрытые ладони, единственное оружие",
+   "new": "его раскрытые ладони — единственное оружие",
+   "round": "third pass"
+  },
+  {
+   "lang": "de",
+   "id": "VC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Schlegel: «Wärterin»)",
+   "old": "Die Amme eilt",
+   "new": "Die Wärterin eilt",
+   "round": "third pass"
+  },
+  {
+   "lang": "es",
+   "id": "CA-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and Menéndez y Pelayo: «Teobaldo»)",
+   "old": "Tebaldo desenvaina",
+   "new": "Teobaldo desenvaina",
+   "round": "third pass"
+  },
+  {
+   "lang": "it",
+   "id": "SC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, Wikidata and it.wikipedia: «Banco»)",
+   "old": "Banquo sta saldo",
+   "new": "Banco sta saldo",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "SC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «뱅쿠오»)",
+   "old": "뱅코는",
+   "new": "뱅쿠오는",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "MO-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «머큐시오»)",
+   "old": "머큐쇼",
+   "new": "머큐시오",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "TP-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «아리엘»)",
+   "old": "에어리얼",
+   "new": "아리엘",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "DC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card: «클라우디우스»)",
+   "old": "클로디어스",
+   "new": "클라우디우스",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): 홀 reads as \"hall\"; the sceptre is 왕홀 (Wikidata Q152065's Korean label and ko.wikipedia title)",
+   "old": "황금 홀이",
+   "new": "황금 왕홀이",
+   "round": "third pass"
+  },
+  {
+   "lang": "ko",
+   "id": "FA-003",
+   "field": "quote",
+   "finding": "the second check (2026-11-17): \"ill met\" is an unwelcome meeting; 잘못 만났군 says \"met the wrong one\" (back-translation: \"You've met the wrong man\")",
+   "old": "달빛 아래 잘못 만났군, 오만한 티타니아.",
+   "new": "달빛 아래 반갑지 않은 만남이로군, 오만한 티타니아.",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "DC-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥菲利娅»)",
+   "old": "奥菲莉娅",
+   "new": "奥菲利娅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "MO-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «莫枯修»)",
+   "old": "茂丘西奥",
+   "new": "莫枯修",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-004",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "MO-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «班福留»)",
+   "old": "班伏里奥",
+   "new": "班福留",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "DC-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «克劳迪国王»)",
+   "old": "克劳狄斯",
+   "new": "克劳迪国王",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "SC-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «麦克白夫人»)",
+   "old": "马克白夫人",
+   "new": "麦克白夫人",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "IL-002",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚»)",
+   "old": "奥丽维娅",
+   "new": "奥利维亚",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "IL-003",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «奥利维亚»)",
+   "old": "奥丽维娅",
+   "new": "奥利维亚",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "OL-004",
+   "field": "scene",
+   "finding": "the second check (2026-11-17): the scene names the character otherwise than the card does (the card, from Wikidata: «阿佛罗狄忒»)",
+   "old": "阿佛洛狄忒",
+   "new": "阿佛罗狄忒",
+   "round": "third pass"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-003",
+   "field": "quote",
+   "finding": "the second check (2026-11-17): the line names Titania otherwise than her card does (the card, from Wikidata: «缇坦妮雅»)",
+   "old": "提泰妮娅",
+   "new": "缇坦妮雅",
+   "round": "third pass"
+  },
+  {
+   "lang": "ru",
+   "id": "LD-002",
+   "field": "quote",
+   "finding": "not a finding of a tool: Gumilyov's published line is no longer used while its Russian copyright is in doubt (see \"Published lines found and not used\"); the game's own line, written in an earlier round, takes its place",
+   "old": "Вода, вода, одна вода, / Мы ничего не пьём. (Gumilyov, published)",
+   "new": "Вода, вода, везде вода, и ни капли для питья. (new)",
+   "round": "third pass"
+  }
+ ]
+}

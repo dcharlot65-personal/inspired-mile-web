@@ -1,0 +1,997 @@
+{
+ "source": "English Wiktionary via Wiktextract (kaikki.org per-part-of-speech files), Vietnamese nouns, verbs and adjectives",
+ "licence": "Wiktionary CC BY-SA 4.0 and GFDL (headwords only); Wiktextract MIT",
+ "fetched": "2026-11-17",
+ "files": {
+  "noun": {
+   "file": "kaikki.org-dictionary-Vietnamese-by-pos-noun.jsonl",
+   "url": "https://kaikki.org/dictionary/Vietnamese/pos-noun/kaikki.org-dictionary-Vietnamese-by-pos-noun.jsonl",
+   "sha256": "1eca370f89f757f9efd9ae6850465d74eae427219a9b5bf2b79402cb1839d3e6",
+   "bytes": 33646656
+  },
+  "verb": {
+   "file": "kaikki.org-dictionary-Vietnamese-by-pos-verb.jsonl",
+   "url": "https://kaikki.org/dictionary/Vietnamese/pos-verb/kaikki.org-dictionary-Vietnamese-by-pos-verb.jsonl",
+   "sha256": "a185c1712065a8d7964baa37fed198ffd91747ef28e6ef50d7dbdb7d93622066",
+   "bytes": 15076490
+  },
+  "adj": {
+   "file": "kaikki.org-dictionary-Vietnamese-by-pos-adj.jsonl",
+   "url": "https://kaikki.org/dictionary/Vietnamese/pos-adj/kaikki.org-dictionary-Vietnamese-by-pos-adj.jsonl",
+   "sha256": "0c8c69566de3dc82ba44e19f8d5fce5be93497b8e8da2cb57c34c5da31d98241",
+   "bytes": 11904729
+  }
+ },
+ "compounds": [
+  {
+   "word": "ảm đạm",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "GC-003"
+   ]
+  },
+  {
+   "word": "ánh mắt",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "UW-003"
+   ]
+  },
+  {
+   "word": "ánh sáng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-001"
+   ]
+  },
+  {
+   "word": "ánh trăng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "FA-003"
+   ]
+  },
+  {
+   "word": "bạn bè",
+   "pos": [
+    "noun",
+    "verb"
+   ],
+   "cards": [
+    "RM-003"
+   ]
+  },
+  {
+   "word": "buổi sáng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-004"
+   ]
+  },
+  {
+   "word": "bầu trời",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-001"
+   ]
+  },
+  {
+   "word": "cao quý",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "DC-004"
+   ]
+  },
+  {
+   "word": "chúa tể",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-001"
+   ]
+  },
+  {
+   "word": "chúc ngủ ngon",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "DC-004"
+   ]
+  },
+  {
+   "word": "chủ nhân",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "TP-002"
+   ]
+  },
+  {
+   "word": "chân thật",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "PT-001"
+   ]
+  },
+  {
+   "word": "chất liệu",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "TP-001"
+   ]
+  },
+  {
+   "word": "chất lỏng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-009"
+   ]
+  },
+  {
+   "word": "coi chừng",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "GC-002"
+   ]
+  },
+  {
+   "word": "con người",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "FA-004",
+    "SC-001",
+    "TP-004"
+   ]
+  },
+  {
+   "word": "cuối cùng",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "UW-003"
+   ]
+  },
+  {
+   "word": "cuồng nhiệt",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "VC-002"
+   ]
+  },
+  {
+   "word": "cất cánh",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "OL-002"
+   ]
+  },
+  {
+   "word": "cô đơn",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "LD-001"
+   ]
+  },
+  {
+   "word": "cửa sổ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-001"
+   ]
+  },
+  {
+   "word": "cưới xin",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "CA-003"
+   ]
+  },
+  {
+   "word": "dại dột",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "FA-001"
+   ]
+  },
+  {
+   "word": "dao găm",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "RL-003"
+   ]
+  },
+  {
+   "word": "dịu hiền",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "DC-004"
+   ]
+  },
+  {
+   "word": "giấc mơ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "FA-004",
+    "TP-001"
+   ]
+  },
+  {
+   "word": "giết chóc",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "SC-002"
+   ]
+  },
+  {
+   "word": "gọi là",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "CA-001"
+   ]
+  },
+  {
+   "word": "gấp đôi",
+   "pos": [
+    "verb",
+    "adj"
+   ],
+   "cards": [
+    "PT-002"
+   ]
+  },
+  {
+   "word": "hào phóng",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "RL-004"
+   ]
+  },
+  {
+   "word": "hoa hồng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "CA-001"
+   ]
+  },
+  {
+   "word": "hoàng hôn",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-002"
+   ]
+  },
+  {
+   "word": "hoàng tử",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "DC-004"
+   ]
+  },
+  {
+   "word": "hoà bình",
+   "pos": [
+    "noun",
+    "adj"
+   ],
+   "cards": [
+    "CA-002"
+   ]
+  },
+  {
+   "word": "hoà khí",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-003"
+   ]
+  },
+  {
+   "word": "hương thảo",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "DC-002"
+   ]
+  },
+  {
+   "word": "kiên nhẫn",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "UW-001"
+   ]
+  },
+  {
+   "word": "kết cục",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "VC-002"
+   ]
+  },
+  {
+   "word": "lang thang",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "LD-001",
+    "OL-006"
+   ]
+  },
+  {
+   "word": "lãng quên",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "OL-007"
+   ]
+  },
+  {
+   "word": "linh hồn",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "UW-001"
+   ]
+  },
+  {
+   "word": "lấp lánh",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "RL-005"
+   ]
+  },
+  {
+   "word": "lặng im",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "LD-005"
+   ]
+  },
+  {
+   "word": "mạnh mẽ",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "GC-002"
+   ]
+  },
+  {
+   "word": "mỏi mệt",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "GC-003"
+   ]
+  },
+  {
+   "word": "mùa xuân",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "GC-005"
+   ]
+  },
+  {
+   "word": "mùa đông",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "GC-005"
+   ]
+  },
+  {
+   "word": "mênh mông",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "RL-004"
+   ]
+  },
+  {
+   "word": "nàng thơ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-006"
+   ]
+  },
+  {
+   "word": "ngón chân",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-007"
+   ]
+  },
+  {
+   "word": "nguyền rủa",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "PT-006"
+   ]
+  },
+  {
+   "word": "ngắn ngủi",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "OL-007"
+   ]
+  },
+  {
+   "word": "người ta",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "IL-001",
+    "MO-004"
+   ]
+  },
+  {
+   "word": "nhọc nhằn",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "PT-002",
+    "VC-003"
+   ]
+  },
+  {
+   "word": "như ý",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "OL-005"
+   ]
+  },
+  {
+   "word": "nói chuyện",
+   "pos": [
+    "noun",
+    "verb"
+   ],
+   "cards": [
+    "CA-002"
+   ]
+  },
+  {
+   "word": "nửa đêm",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "GC-003"
+   ]
+  },
+  {
+   "word": "nước mắt",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-004"
+   ]
+  },
+  {
+   "word": "nữ tính",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "SC-002"
+   ]
+  },
+  {
+   "word": "phá vỡ",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "VC-001"
+   ]
+  },
+  {
+   "word": "phép thuật",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "RL-002"
+   ]
+  },
+  {
+   "word": "phục vụ",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "SC-002"
+   ]
+  },
+  {
+   "word": "phù hộ",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "RL-009"
+   ]
+  },
+  {
+   "word": "quấy rối",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "VC-001"
+   ]
+  },
+  {
+   "word": "rộng lớn",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "OL-001"
+   ]
+  },
+  {
+   "word": "rắc rối",
+   "pos": [
+    "noun",
+    "adj"
+   ],
+   "cards": [
+    "PT-002"
+   ]
+  },
+  {
+   "word": "rực rỡ",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "OL-003"
+   ]
+  },
+  {
+   "word": "sa giông",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-007"
+   ]
+  },
+  {
+   "word": "san hô",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-008"
+   ]
+  },
+  {
+   "word": "sinh ra",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "IL-002",
+    "SC-003"
+   ]
+  },
+  {
+   "word": "sức mạnh",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-004",
+    "PT-009"
+   ]
+  },
+  {
+   "word": "tai ương",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "MO-002"
+   ]
+  },
+  {
+   "word": "tang tóc",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "VC-004"
+   ]
+  },
+  {
+   "word": "thiên đường",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "GC-004"
+   ]
+  },
+  {
+   "word": "thì giờ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "VC-004"
+   ]
+  },
+  {
+   "word": "thung lũng",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "LD-001"
+   ]
+  },
+  {
+   "word": "thuốc phiện",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-004"
+   ]
+  },
+  {
+   "word": "thân mến",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "RM-002"
+   ]
+  },
+  {
+   "word": "thế giới",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "GC-004",
+    "TP-004",
+    "UW-002"
+   ]
+  },
+  {
+   "word": "tinh khôi",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "MO-004"
+   ]
+  },
+  {
+   "word": "tình yêu",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "IL-003",
+    "OL-004",
+    "PT-001"
+   ]
+  },
+  {
+   "word": "tỏ tình",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "VC-004"
+   ]
+  },
+  {
+   "word": "trái tim",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "DC-004"
+   ]
+  },
+  {
+   "word": "trí khôn",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "FA-004"
+   ]
+  },
+  {
+   "word": "trí tuệ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-002"
+   ]
+  },
+  {
+   "word": "trầm ngâm",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "GC-003"
+   ]
+  },
+  {
+   "word": "tội nghiệp",
+   "pos": [
+    "noun",
+    "verb",
+    "adj"
+   ],
+   "cards": [
+    "RL-001"
+   ]
+  },
+  {
+   "word": "tồn tại",
+   "pos": [
+    "noun",
+    "verb",
+    "adj"
+   ],
+   "cards": [
+    "DC-001"
+   ]
+  },
+  {
+   "word": "tưởng nhớ",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "DC-002"
+   ]
+  },
+  {
+   "word": "vinh quang",
+   "pos": [
+    "noun",
+    "adj"
+   ],
+   "cards": [
+    "OL-007"
+   ]
+  },
+  {
+   "word": "vĩ đại",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "IL-002",
+    "TP-002"
+   ]
+  },
+  {
+   "word": "vấn đề",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "DC-001"
+   ]
+  },
+  {
+   "word": "vương miện",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "RL-006"
+   ]
+  },
+  {
+   "word": "xi-rô",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "PT-004"
+   ]
+  },
+  {
+   "word": "yên bình",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "VC-001"
+   ]
+  },
+  {
+   "word": "yên giấc",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "PT-006"
+   ]
+  },
+  {
+   "word": "yêu dấu",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "RL-008"
+   ]
+  },
+  {
+   "word": "yêu kiều",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "LD-003"
+   ]
+  },
+  {
+   "word": "yếu ớt",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "GC-003"
+   ]
+  },
+  {
+   "word": "ý nghĩ",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "DC-003",
+    "OL-005",
+    "SC-002"
+   ]
+  },
+  {
+   "word": "êm ả",
+   "pos": [
+    "adj"
+   ],
+   "cards": [
+    "PT-001"
+   ]
+  },
+  {
+   "word": "đàn ông",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "OL-006"
+   ]
+  },
+  {
+   "word": "để lại",
+   "pos": [
+    "verb"
+   ],
+   "cards": [
+    "TP-003"
+   ]
+  },
+  {
+   "word": "đồng bào",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "RM-003"
+   ]
+  },
+  {
+   "word": "đường phố",
+   "pos": [
+    "noun"
+   ],
+   "cards": [
+    "VC-001"
+   ]
+  }
+ ]
+}

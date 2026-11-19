@@ -14,6 +14,8 @@
  * it should in each script. A `detail` is language-neutral evidence.
  */
 import type { Card, House } from '../cards';
+import { englishKey, englishNameCounts, localSignature, saidLocalName } from './echo';
+import { NAME_PHRASES, ORDINARY_NAME_PARTS } from './names-en';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
@@ -164,10 +166,17 @@ export const DEVICES: Record<string, Device> = {
     (lang) => msg(unitKey('device.ring.brief', lang)),
   ),
   invocation: d('invocation', (v, ctx) => {
-    // Words run together with single spaces, so a phrase ("sonnet man") is found only as a phrase.
-    const said = ` ${wordsOf(v, langOf(ctx)).map(fold).join(' ')} `;
-    const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `));
-    return { met: !!hit, detail: hit ?? '', words: hit ? wordsOf(hit, 'en').map(fold) : [] };
+    const lang = langOf(ctx);
+    // Words run together with single spaces, so a phrase ("sonnet man") is found only as a phrase. In another
+    // language's duel an English name is said as English writes it (./echo englishKey): Portuguese «põe», "puts",
+    // is not Poe, and Vietnamese «màn» is not "Man".
+    const said = ` ${wordsOf(v, lang).map((w) => englishKey(w, lang)).join(' ')} `;
+    // A name that is also an ordinary word of the duel's language counts as that language's own does (./echo).
+    const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `) && englishNameCounts(n, v, lang));
+    if (hit) return { met: true, detail: hit, words: wordsOf(hit, 'en').map(fold) };
+    // The character's name as the duel's language writes it counts as well (./echo).
+    const local = saidLocalName(v, lang);
+    return { met: !!local, detail: local?.name ?? '', words: local?.words ?? [] };
   }),
   grandeur: d(
     'grandeur',
@@ -231,11 +240,6 @@ export function deviceInPlay(house: House | string, lang: string, answering: boo
   const device = deviceForHouse(house, lang);
   return device.id === 'riposte' && !answering ? DEVICES[OPENING_DEVICE] : device;
 }
-
-/** Parts of a character's name that are ordinary words: said alone they name nobody. */
-const ORDINARY_NAME_PARTS = new Set(['the', 'man', 'sonnet', 'nurse', 'bottom']);
-/** How a character whose whole name is an ordinary word is called on. */
-const NAME_PHRASES: Record<string, string[]> = { Bottom: ['Nick Bottom', 'Bully Bottom', 'Bottom the weaver'] };
 
 /**
  * What counts as calling on a character: the full name ("Mark Antony", "the
@@ -320,26 +324,39 @@ export function signatureNeeded(card: Card): number {
  */
 export function checkSignature(card: Card, verse: string, lang = 'en'): DeviceResult {
   const sig = signatureWords(card);
+  const echoed = englishEchoes(sig, verse, lang);
+  // A language with its own line for this card is judged by that line, and by what the English line's measure finds (./echo).
+  const local = baseLang(lang) === 'en' ? null : localSignature(card, verse, lang, { echoed, quoted: quotesEnglish(card, verse) });
+  if (local) return local;
   const needed = signatureNeeded(card);
   if (!sig.length) return { met: false, detail: '', code: 'none' };
+  if (echoed.length < needed) return { met: false, detail: sig.slice(0, 5).join(', '), code: needed > 1 ? 'hint-two' : 'hint' };
+  if (quotesEnglish(card, verse)) return { met: false, detail: '', code: 'quoted' };
+  return { met: true, detail: echoed.slice(0, needed).join(', '), code: 'echoed', words: echoed.flatMap((w) => w.split(' ')) };
+}
+
+/** The signature words (or phrase) of the English line that a verse says. */
+function englishEchoes(sig: string[], verse: string, lang: string): string[] {
   // The quotation is English; the verse is read both by its own language's words and by English ones.
-  const spoken = wordParts(verse, 'en').map(stem);
-  const said = new Set([...wordsOf(verse, lang).map(stem), ...spoken]);
+  const said = new Set([...wordsOf(verse, lang).map(stem), ...wordParts(verse, 'en').map(stem)]);
   // A phrase is echoed when its words are said together, in its order, within a line.
   const lines = linesOf(verse).map((l) => ` ${wordParts(l, 'en').map(stem).join(' ')} `);
-  const echoed = sig.filter((w) => (w.includes(' ') ? lines.some((l) => l.includes(` ${w} `)) : said.has(w)));
-  if (echoed.length < needed) return { met: false, detail: sig.slice(0, 5).join(', '), code: needed > 1 ? 'hint-two' : 'hint' };
-  // A quotation is four of the quote's words in a row, compared word by word:
-  // "maybe or not today" does not contain "be or not to".
+  return sig.filter((w) => (w.includes(' ') ? lines.some((l) => l.includes(` ${w} `)) : said.has(w)));
+}
+
+/**
+ * Does a verse recite the English line? A quotation is four of the quote's words in a row, compared word by
+ * word: "maybe or not today" does not contain "be or not to".
+ */
+function quotesEnglish(card: Card, verse: string): boolean {
+  const spoken = wordParts(verse, 'en').map(stem);
   const quote = quoteWords(card);
   for (let i = 0; i + 4 <= quote.length; i++) {
     for (let j = 0; j + 4 <= spoken.length; j++) {
-      if (quote[i] === spoken[j] && quote[i + 1] === spoken[j + 1] && quote[i + 2] === spoken[j + 2] && quote[i + 3] === spoken[j + 3]) {
-        return { met: false, detail: '', code: 'quoted' };
-      }
+      if (quote[i] === spoken[j] && quote[i + 1] === spoken[j + 1] && quote[i + 2] === spoken[j + 2] && quote[i + 3] === spoken[j + 3]) return true;
     }
   }
-  return { met: true, detail: echoed.slice(0, needed).join(', '), code: 'echoed', words: echoed.flatMap((w) => w.split(' ')) };
+  return false;
 }
 
 // --- Curses (potions) ---

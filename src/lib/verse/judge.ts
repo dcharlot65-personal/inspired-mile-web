@@ -23,6 +23,7 @@ import { JUDGE_POOL, type JudgeSplit } from './duel';
 import { rulesFor } from './lang';
 import { rhymeEnds, rhymes } from './rhyme';
 import { CARD_CATALOG } from '../cards';
+import { wordKey } from './echo';
 import { functionKey, functionWords } from './function-words';
 import JUDGE_WORDS from './judge-words';
 import { baseLang } from './lang';
@@ -439,10 +440,12 @@ function soundScore(verse: string, lang: string): number {
   return Math.max(NO_FLOW + 1, rhymed * 2 + opening + growing - spread / Math.max(1, mean));
 }
 
-// The lexicon is the card catalogue's names and quotation words, which are English
-// whatever language the duel is fought in, so the verse is read for them as written.
+// The lexicon is the card catalogue's names and quotation words: the English ones whatever
+// language the duel is fought in, and the duel language's own where it has them (referee.ts
+// allusionLexicon). The verse is read for them as written, each word keyed as the lexicon is
+// (echo.ts wordKey, which is fold() except that a Vietnamese word keeps its tone).
 function allusionScore(verse: string, lang: string, lexicon: Set<string>): number {
-  return new Set(wordsOf(verse, lang).map(fold).filter((w) => lexicon.has(w))).size;
+  return new Set(wordsOf(verse, lang).map((w) => wordKey(w, lang)).filter((w) => lexicon.has(w))).size;
 }
 
 /** Most words thrown back that count: past this it is repetition, not wit. */

@@ -1,0 +1,71 @@
+SM-001|sonnet18|Te comparerai-je à un jour d’été \?
+MO-001|rj|(Mais doucement ! )?[Qq]uelle lumière[^?]*\?
+CA-001|rj|Qu.y a-t-il dans un nom \?[^.!?;]*rose[^.!?;]*[.!?;]
+DC-001|hamlet|Être,? ou ne pas être[^.!?]*question[.!?]
+DC-002|hamlet|[^.!?\n]*romarin[^.!?]*souvenir[^.!?]*[.!?]
+MO-002|rj|Malédiction sur vos deux maisons !
+FA-001|mnd|Seigneur,? que ces mortels sont fous !
+FA-002|mnd|Viens[^.!?]{0,40}lit[^.!?]{0,10}fleur[^.!?,;]*[,;.!?]
+RL-001|hamlet|Hélas ! pauvre Yorick ![^.!?]*Horatio[^.!?;]*[.!?;]
+RL-002|tempest|Maintenant[^.!?]{0,40}charmes[^.!?,;]*[,;.!?]
+PT-001|mnd|[^.!?\n,;]*cours d[^.!?]{0,20}amour[^.!?]*[.!?]
+PT-002|macbeth|Double,? double[^.!?]*[.!?]
+VC-001|rj|Si jamais vous troublez[^.!?]*[.!?]
+VC-002|rj|[Cc]es[^.!?]{0,30}violent[^.!?]*violent[^.!?,;]*
+VC-003|rj|[Jj]e suis [^.!?]{0,60}plaisir[^.!?]{0,40}[.!?;]
+TP-001|tempest|Nous sommes de l.étoffe[^.!?,;]*rêves
+TP-002|tempest|Salut,? [a-zé]+ maître[^.]*?salut !
+TP-003|tempest|Cette île[^.!?]*Sycorax[^.!?,;]*mère
+MO-003|rj|Je ne veux[^.!?]{0,60}épée[^.!?,;]*[,;.!?]
+CA-002|rj|Quoi[^.]{0,80}paix[^.]{0,40}hais
+DC-003|hamlet|Mes paroles s.envolent[^.!?]*[.!?]
+FA-003|mnd|[^.!?\n]*clair de lune,? [a-zè]+ Titania ?[.!?]
+RL-003|macbeth|Est-ce un poignard[^?]*\?
+PT-003|mnd|[^.!?\n]*ceinture[^.!?]*quarante minutes[.!?]
+SC-001|macbeth|J.ose tout ce qui[^.!?]*[.!?]
+SC-002|macbeth|Venez[^.]{0,140}ésexez-moi ici
+SC-003|macbeth|Tu engendreras des rois[^.!?]*[.!?]
+IL-001|tn|Je ne suis pas ce que je suis
+IL-002|tn|[^.!?\n]*naissent grands[^.!?]*[.!?]
+IL-003|tn|[^.!?\n]*amour[^.!?\n]{0,40}cherch[^.!?]*meilleur[^.!?]*[.!?]
+RM-001|jc|[^.!?\n:]*j.aimais moins César,? mais[^.!?]*Rome[^.!?]*[.!?]
+RM-002|jc|[Ll]a faute, cher Brutus[^.!?]*[.!?]
+RM-003|jc|Amis, Romains, compatriotes[^.!?]*[.!?]
+MO-004|rj|[^.!?\n]*larmes[^.!?]{0,60}rosée[^.!?,;]*
+CA-003|rj|[^.!?\n]*[Mm]ari[^.!?\n]{0,80}(sujet|thème)[^.!?]*[.!?]
+DC-004|hamlet|[^.!?\n]*noble cœur[^.!?]*[.!?] Bonne nuit,? doux prince
+FA-004|mnd|J.ai eu une vision[^.!?]*[.!?][^.!?]*(rêve|songe)[^.!?]*[.!?]
+VC-004|rj|[^.!?\n]*(temps|moments|jours|heures) de (malheur|douleur|deuil)[^.!?]*[.!?]
+TP-004|tempest|[ÔO] [^.!?\n]{0,30}nouveau monde[^.!?]*[.!?]
+RL-004|rj|Ma[^.!?\n]{0,30}illimitée que la mer[^.!?:;]*
+RL-005|mov|Tout ce qui (luit|reluit|brille) n.est pas or
+RL-006|h4p2|[^.!?\n]*tête[^.!?\n]{0,40}couronne[^.!?]*[.!?]
+RL-007|tempest|[^.!?\n,;]*noierai mon livre
+RL-008|lear|[ÔO] [^.!?\n]{0,30}père[^.!?\n]{0,40}(affaires|intérêts|cause)[^.!?]*[.!?]
+RL-009|mnd|[^.!?\n]*bénisse,? Bottom[^.]*?(métamorphosé|transformé|traduit|changé)[.!?]
+PT-004|othello|[Nn]i le pavot[^.!?]*monde
+PT-005|mnd|Va me chercher cette fleur[^.!?]*[.!?]
+PT-006|hamlet|[^.!?\n]*ton oncle[^.!?]*fiole[^.!?,;]*
+PT-007|macbeth|[Dd]ans le chaudron[^.!?]*[.!?] Œil de[^.!?,;]*,[^.!?,;]*grenouille
+PT-008|tempest|[^.!?\n]*cinq brasses[^.!?]*[.!?;][^.!?;]*corail[^.!?;]*[.!?;]
+PT-009|rj|[^.!?\n]*liquide[^.!?]*vingt hommes[^.!?]*[.!?]
+PT-001|mnd|l’amour vrai n’a jamais suivi un cours facile\.
+VC-003|rj|C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir
+IL-001|tn|je ne suis pas ce que je suis\.
+RM-001|jc|Ce n’est pas que j’aimasse moins César, mais j’aimais Rome davantage\.
+RM-002|jc|Si nous ne sommes que des subalternes, cher Brutus, — la faute en est à nous et non à nos étoiles\.
+RL-004|rj|ma libéralité est aussi illimitée que la mer, — et mon amour aussi profond
+RL-008|lear|Ô père chéri ! — ce sont tes intérêts qui m’occupent\.
+PT-007|macbeth|Dans le chaudron bous et cuis\. Œil de salamandre, orteil de grenouille
+PT-008|tempest|Sous cinq brassées ton père gît : Ses os se sont changés en corail\.
+RL-006|h4p2|Inquiète est la tête qui porte une couronne !
+PT-007|macbeth|Dans le chaudron bous et cuis\. Œil de salamandre, orteil de grenouille
+PT-008|tempest|Sous cinq brassées ton père gît : Ses os se sont changés en corail\.
+VC-004|rj|Quand la mort parle, ce n’est pas pour l’amour le moment de parler\.
+DC-002|hamlet|Voici du romarin ; c’est comme souvenir
+CA-002|rj|Quoi, l’épée à la main, tu parles de paix ! Ce mot, je le hais
+SC-003|macbeth|Tu engendreras des rois, — sans être roi toi-même
+MO-004|rj|Voilà bien des matinées qu’on l’a vu là — augmenter de ses larmes la fraîche rosée du matin
+GC-003|raven|Une fois, par un minuit lugubre, tandis que je m’appesantissais, faible et fatigué
+GC-002|frankenstein|Prends-y garde ; car je suis sans crainte, et par conséquent puissant\.
+GC-005|westwind|Ô Vent, si l’Hiver s’approche, le Printemps peut-il être loin derrière \?

@@ -222,7 +222,7 @@ export class DuelSession {
     const answered = this.opponentSource === 'model' ? previous : undefined;
     const judge = this.opts.useModel
       ? await referee(playerVerse, this.opponentVerse, this.duel.lang, answered)
-      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon(), answered);
+      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon(this.duel.lang), answered);
 
     // The opponent's verse this round was written under the curse carried in, if any.
     const carried = this.carried;
