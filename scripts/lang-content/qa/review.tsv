@@ -1,0 +1,1138 @@
+# lang	id (a string key, or spell:<word>)	verdict (ok | fixed)	note
+es	spell:*	ok	every lower-case word Hunspell does not know, read: fierecilla (La fierecilla domada), shakespeariana/o, minijuegos, yámbico, pentámetro, obsesivamente, intercámbiala, colecciónala, antipetrarquista, min/h (abbreviations), sir (lower case, as the RAE writes titles); English: wit, love-in-idleness, the, von; none misspelt
+fr	spell:*	ok	read: battle(s) (une battle de rap: current French; the core has no term for it), d'Iago, d'Exeter, d'Elseneur (elisions), antipétrarquiste; English: wit, love-in-idleness, groundlings, standers, von, the; none misspelt
+de	spell:*	ok	read: ränkeschmiedende, fünfhebigen, antipetrarkistisches, -Rede (a hyphenated compound); English: wit, love-in-idleness, the; none misspelt
+it	spell:*	ok	read: dell/nell/sull/dall/cos (elisions split at the apostrophe), minigiochi, min, antipetrarchista, romances (the English critics' term, in brackets as a gloss); English: wit, idleness, the, von; none misspelt
+pt	spell:*	ok	read: quiz, rap (loanwords in Brazilian use), antipetrarquista; English: wit, love, idleness, the; none misspelt
+pl	spell:*	ok	read: antypetrarkistowski; English: wit, von, the, love, idleness; none misspelt
+vi	spell:*	ok	read: thủy, hóa, úy, khóa (the new tone placement, which the core locale uses 34 times to 1; the dictionary has the old), păng (hoa păng-xê, pansy), violet, sonnet, iamb, rap; English: wit, love, idleness, of, for, and; none misspelt
+id	spell:*	ok	read: affixed forms the dictionary does not derive (diracun, tertatih, termurah, terkekeh, sesosok, pelamarnya, membekapnya, keputusasaannya, keberapa, kastelnya, kartunya, kariernya, diurai, dinobatkan, dilukisi, dikoleksi, berbinar, berlatar, penyihir, koleksimu, awalmu, subjudul), iambik, pansy, mnt/j (abbreviations of menit, jam); English: love-in-idleness, of, the, for, von; none misspelt
+ru	spell:*	ok	read: тан, рэп, фолио, кварто, антипетраркистский, ч (час); English: wit, love, in, idleness, groundlings, von, the; none misspelt
+ar	spell:*	ok	read: names (هاملت, مكبث, بروسبيرو …) and words with an attached prefix (وكاسيوس, لمكبث, والسونيتات); common words: متشقلبًا, الانحناءة, الأيامبي, الاسكتلندي, إلهة, الشكسبيرية; none misspelt
+hi	spell:*	not usable	not usable as run: Hunspell splits Devanagari words at combining marks (ं, र्ड, ँ …), so its list is fragments, not words; nothing concluded from it
+ko	spell:*	not usable	not usable as run: every word with a particle attached (셰익스피어의, 햄릿은) is unknown to the dictionary; nothing concluded from it
+th	spell:*	not usable	not usable as run: Thai is written without spaces between words, so Hunspell reads whole phrases as one word; nothing concluded from it
+th	trivia.170.q	ok	พายุพิโรธ is Wikidata's Thai label of The Tempest; MADLAD renders it word by word ("Storm Pyro")
+th	trivia.10.q	ok	reads: "…" comes from which play; the flag is OPUS-MT th-en's
+th	trivia.102.o3	ok	reads: นักบวช: a monk, a priest; the flag is OPUS-MT th-en's
+th	trivia.107.o1	ok	reads: จดหมาย: a letter; the flag is OPUS-MT th-en's
+th	trivia.107.o3	ok	reads: ภาพเหมือน: a portrait; the flag is OPUS-MT th-en's
+th	trivia.110.o0	ok	reads: burned down during a performance; the flag is OPUS-MT th-en's
+th	trivia.110.o2	ok	reads: collapsed because of a storm; the flag is OPUS-MT th-en's
+th	trivia.110.o3	ok	reads: demolished to be built again; the flag is OPUS-MT th-en's
+th	trivia.114.o3	ok	reads: with a short knife: a dagger; the flag is OPUS-MT th-en's
+th	trivia.119.q	ok	reads: before which battle the St Crispin's Day speech is given; the flag is OPUS-MT th-en's
+th	trivia.121.o0	ok	reads: หีบตะกั่ว: the lead casket; the flag is OPUS-MT th-en's
+th	trivia.121.o2	ok	reads: the silver casket; the flag is OPUS-MT th-en's
+th	trivia.121.o3	ok	reads: the bronze casket; the flag is OPUS-MT th-en's
+th	trivia.124.o1	ok	reads: their plans for ruling; the flag is OPUS-MT th-en's
+th	trivia.124.o2	ok	reads: their chances of marriage; the flag is OPUS-MT th-en's
+th	trivia.124.o3	ok	reads: their military strength; the flag is OPUS-MT th-en's
+th	trivia.128.o1	ok	reads: a harvest dance; the flag is OPUS-MT th-en's
+th	trivia.128.o3	ok	reads: a midsummer revel; the flag is OPUS-MT th-en's
+th	trivia.130.q	ok	reads: which character leads the amateur actors; the flag is OPUS-MT th-en's
+th	trivia.132.o1	ok	reads: claims to be the island's creator; the flag is OPUS-MT th-en's
+th	trivia.132.o2	ok	reads: claims to be the island's protector; the flag is OPUS-MT th-en's
+th	trivia.138.o1	ok	reads: ยานอนหลับ: a sleeping draught; the flag is OPUS-MT th-en's
+th	trivia.141.q	ok	reads: in which play the bumbling constable Dogberry appears; the flag is OPUS-MT th-en's
+th	trivia.142.o3	ok	reads: is executed; the flag is OPUS-MT th-en's
+th	trivia.143.o3	ok	reads: สาวใช้: a maidservant; the flag is OPUS-MT th-en's
+th	trivia.143.q	ok	reads: who Hermione is; the flag is OPUS-MT th-en's
+th	trivia.149.q	ok	reads: the name of the duke who disguises himself as a cleric; the flag is OPUS-MT th-en's
+th	trivia.153.o1	ok	reads: written in free verse instead of iambic pentameter; the flag is OPUS-MT th-en's
+th	trivia.154.o0	ok	reads: หลังค่อม: a hunched back; the flag is OPUS-MT th-en's
+th	trivia.155.q	ok	reads: who Sycorax is in พายุพิโรธ (Wikidata's Thai label of The Tempest); the flag is OPUS-MT th-en's
+th	trivia.156.q	ok	reads: the rhyme scheme of a Shakespearean sonnet; the flag is OPUS-MT th-en's
+th	trivia.157.q	ok	reads: in which play the stage direction "Exit, pursued by a bear" appears; the flag is OPUS-MT th-en's
+th	trivia.170.o3	ok	reads: the narrator; the flag is OPUS-MT th-en's
+th	trivia.170.q	ok	reads: who speaks the epilogue at the end of พายุพิโรธ; the flag is OPUS-MT th-en's
+th	trivia.172.o1	ok	reads: means only a convent; the flag is OPUS-MT th-en's
+th	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT th-en's
+th	trivia.174.o3	ok	reads: ไปเป็นฤๅษี: becomes a hermit; the flag is OPUS-MT th-en's
+th	trivia.177.o0	ok	reads: ความหึงหวง: jealousy; the flag is OPUS-MT th-en's
+th	trivia.178.q	ok	reads: what play the craftsmen perform at the wedding; the flag is OPUS-MT th-en's
+th	trivia.179.o3	ok	reads: boys acted only in comedies; the flag is OPUS-MT th-en's
+th	trivia.180.q	ok	reads: in which play the exiled duke says "…" (Duke Senior is the exiled duke); the flag is OPUS-MT th-en's
+th	trivia.181.o1	ok	reads: tragicomedy; the flag is OPUS-MT th-en's
+th	trivia.181.o2	ok	reads: ละครชนบท: country (pastoral) plays; the flag is OPUS-MT th-en's
+th	trivia.181.o3	ok	reads: ละครหน้ากาก: masque plays; the flag is OPUS-MT th-en's
+th	trivia.181.q	ok	reads: what the late plays are called; the flag is OPUS-MT th-en's
+th	trivia.183.o3	ok	reads: ไม่มีใครเลย: none of them; the flag is OPUS-MT th-en's
+th	trivia.185.o1	ok	reads: a large sum of money; the flag is OPUS-MT th-en's
+th	trivia.185.o3	ok	reads: that she leave the convent; the flag is OPUS-MT th-en's
+th	trivia.186.q	ok	reads: who says "…"; the flag is OPUS-MT th-en's
+th	trivia.187.o1	ok	reads: storage under the stage; the flag is OPUS-MT th-en's
+th	trivia.187.o2	ok	reads: backstage for the actors; the flag is OPUS-MT th-en's
+th	trivia.187.o3	ok	reads: seats for the musicians; the flag is OPUS-MT th-en's
+th	trivia.187.q	ok	reads: what the pit or yard was; the flag is OPUS-MT th-en's
+th	trivia.188.o0	ok	reads: the poem itself ("…"); the flag is OPUS-MT th-en's
+th	trivia.188.o3	ok	reads: a painting of the beloved; the flag is OPUS-MT th-en's
+th	trivia.19.q	ok	reads: which character is the queen of the fairies (ภูต); the flag is OPUS-MT th-en's
+th	trivia.190.o0	ok	reads: must choose the right casket of three (gold, silver, lead); the flag is OPUS-MT th-en's
+th	trivia.190.o1	ok	reads: must defeat one another in a fight; the flag is OPUS-MT th-en's
+th	trivia.190.o2	ok	reads: must solve a riddle; the flag is OPUS-MT th-en's
+th	trivia.191.o1	ok	reads: พ่อเฒ่ากาลเวลา: Father Time; the flag is OPUS-MT th-en's
+th	trivia.194.o1	ok	reads: เพดานผ้า: a cloth ceiling, the canopy; the flag is OPUS-MT th-en's
+th	trivia.194.o2	ok	reads: ฟากฟ้า: the firmament; the flag is OPUS-MT th-en's
+th	trivia.195.q	ok	reads: in which play a character asks the oracle at Delphi; the flag is OPUS-MT th-en's
+th	trivia.197.o2	ok	reads: a jester's cap; the flag is OPUS-MT th-en's
+th	trivia.199.o2	ok	reads: ฝูงชน: the mob; the flag is OPUS-MT th-en's
+th	trivia.199.q	ok	reads: what the standing audience in the yard was called; the flag is OPUS-MT th-en's
+th	trivia.22.o1	ok	reads: มีดสั้น: a dagger; the flag is OPUS-MT th-en's
+th	trivia.27.q	ok	reads: what Shylock demands as his bond; the flag is OPUS-MT th-en's
+th	trivia.3.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.31.q	ok	reads: in which play Beatrice and Benedick appear; the flag is OPUS-MT th-en's
+th	trivia.32.o0	ok	reads: มีดสั้น: a dagger; the flag is OPUS-MT th-en's
+th	trivia.4.o2	ok	reads: มหากาพย์: epics; the flag is OPUS-MT th-en's
+th	trivia.41.o0	ok	reads: นายทหารถือธง: the officer who bears the flag, ensign; the flag is OPUS-MT th-en's
+th	trivia.41.o3	ok	reads: รองแม่ทัพ: the deputy commander, Cassio's lieutenancy; the flag is OPUS-MT th-en's
+th	trivia.46.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.48.o0	ok	reads: the pansy (love-in-idleness); the flag is OPUS-MT th-en's
+th	trivia.52.o3	ok	reads: ละครปัญหา: the problem plays; the flag is OPUS-MT th-en's
+th	trivia.53.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.60.o0	ok	reads: drinking a sleeping potion; the flag is OPUS-MT th-en's
+th	trivia.66.o3	ok	reads: he has no opinion; the flag is OPUS-MT th-en's
+th	trivia.68.o0	ok	reads: ลา: a donkey (the checker read it as "goodbye"); the flag is OPUS-MT th-en's
+th	trivia.72.q	ok	reads: which play has a character named Shylock; the flag is OPUS-MT th-en's
+th	trivia.75.o0	ok	reads: เธนแห่งกลามิส: Thane of Glamis; the flag is OPUS-MT th-en's
+th	trivia.75.o3	ok	reads: Earl of Northumberland; the flag is OPUS-MT th-en's
+th	trivia.75.q	ok	reads: what rank (บรรดาศักดิ์) Macbeth holds at the start; the flag is OPUS-MT th-en's
+th	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT th-en's
+th	trivia.84.o0	ok	reads: สุขนาฏกรรม: comedy; the flag is OPUS-MT th-en's
+th	trivia.90.o1	ok	reads: Thane of Glamis; the flag is OPUS-MT th-en's
+th	trivia.94.o1	ok	reads: a dagger; the flag is OPUS-MT th-en's
+th	trivia.97.q	ok	reads: what the shrew is called; the flag is OPUS-MT th-en's
+th	trivia.132.o0	fixed	said Caliban claims to be the island's rightful owner (เจ้าของ); the English says ruler: now ผู้ปกครอง
+th	trivia.40.q	fixed	ungrammatical (กลายเป็นมีหัวเป็นลา); now ตัวละครถูกเปลี่ยนให้มีหัวเป็นลา, a character is given a donkey's head
+hi	trivia.107.o0	ok	reads: with a handkerchief; the flag is OPUS-MT hi-en's
+hi	trivia.110.o3	ok	reads: it was pulled down to be built again; the flag is OPUS-MT hi-en's
+hi	trivia.110.q	ok	reads: what happened to the Globe Theatre in 1613; the flag is OPUS-MT hi-en's
+hi	trivia.114.o2	ok	reads: by drowning; the flag is OPUS-MT hi-en's
+hi	trivia.121.o0	ok	reads: सीसे की पेटी: the lead casket; the flag is OPUS-MT hi-en's
+hi	trivia.121.o3	ok	reads: the bronze casket; the flag is OPUS-MT hi-en's
+hi	trivia.125.o1	ok	reads: Hamlet in Hamlet; the flag is OPUS-MT hi-en's
+hi	trivia.128.o3	ok	reads: a midsummer celebration; the flag is OPUS-MT hi-en's
+hi	trivia.135.o2	ok	reads: (on a charge) of murder; the flag is OPUS-MT hi-en's
+hi	trivia.135.o3	ok	reads: (on a charge) of treason; the flag is OPUS-MT hi-en's
+hi	trivia.136.q	ok	reads: the name of the clown in Twelfth Night; the flag is OPUS-MT hi-en's
+hi	trivia.14.o0	ok	reads: मॉन्टेग्यू: Montague (a name); the flag is OPUS-MT hi-en's
+hi	trivia.143.o1	ok	reads: a shepherdess; the flag is OPUS-MT hi-en's
+hi	trivia.143.o3	ok	reads: a maidservant; the flag is OPUS-MT hi-en's
+hi	trivia.148.q	ok	reads: which sonnet begins "…"; the flag is OPUS-MT hi-en's
+hi	trivia.151.o1	ok	reads: Goneril, Rosalind and Cordelia (the table's forms); the flag is OPUS-MT hi-en's
+hi	trivia.153.o3	ok	reads: it was printed apart from the other sonnets; the flag is OPUS-MT hi-en's
+hi	trivia.154.o0	ok	reads: कूबड़: a hump; the flag is OPUS-MT hi-en's
+hi	trivia.154.o2	ok	reads: टेढ़ा पैर: a club foot; the flag is OPUS-MT hi-en's
+hi	trivia.158.o1	ok	reads: Hamlet, as a given name; the flag is OPUS-MT hi-en's
+hi	trivia.158.o2	ok	reads: Edmund, as a given name; the flag is OPUS-MT hi-en's
+hi	trivia.160.q	ok	reads: which character goes among his soldiers in disguise before the battle; the flag is OPUS-MT hi-en's
+hi	trivia.170.o3	ok	reads: सूत्रधार: the narrator; the flag is OPUS-MT hi-en's
+hi	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT hi-en's
+hi	trivia.174.o1	ok	reads: flees to France; the flag is OPUS-MT hi-en's
+hi	trivia.174.o3	ok	reads: becomes an ascetic, a hermit; the flag is OPUS-MT hi-en's
+hi	trivia.176.q	ok	reads: how much time passes between Acts 3 and 4; the flag is OPUS-MT hi-en's
+hi	trivia.177.o1	ok	reads: ambition; the flag is OPUS-MT hi-en's
+hi	trivia.177.o3	ok	reads: revenge; the flag is OPUS-MT hi-en's
+hi	trivia.181.o1	ok	reads: tragicomedy; the flag is OPUS-MT hi-en's
+hi	trivia.181.o3	ok	reads: मास्क: masque (the genre); the flag is OPUS-MT hi-en's
+hi	trivia.187.o3	ok	reads: the musicians' place; the flag is OPUS-MT hi-en's
+hi	trivia.191.o2	ok	reads: दैववाणी: the oracle; the flag is OPUS-MT hi-en's
+hi	trivia.193.q	ok	reads: what trick Maria and Sir Toby play on Malvolio; the flag is OPUS-MT hi-en's
+hi	trivia.194.o1	ok	reads: चँदोवा: the canopy; the flag is OPUS-MT hi-en's
+hi	trivia.194.o2	ok	reads: आकाशमंडल: the firmament; the flag is OPUS-MT hi-en's
+hi	trivia.198.q	ok	reads: which play has the "band of brothers" speech; the flag is OPUS-MT hi-en's
+hi	trivia.22.o1	ok	reads: with a dagger; the flag is OPUS-MT hi-en's
+hi	trivia.26.q	ok	reads: which character is told "…"; the flag is OPUS-MT hi-en's
+hi	trivia.27.q	ok	reads: what Shylock asks as surety; the flag is OPUS-MT hi-en's
+hi	trivia.4.o2	ok	reads: epics; the flag is OPUS-MT hi-en's
+hi	trivia.41.o3	ok	reads: lieutenant; the flag is OPUS-MT hi-en's
+hi	trivia.46.q	ok	reads: which character says "…"; the flag is OPUS-MT hi-en's
+hi	trivia.48.o0	ok	reads: the pansy (love-in-idleness); the flag is OPUS-MT hi-en's
+hi	trivia.48.o3	ok	reads: बनफ़शा: the violet; the flag is OPUS-MT hi-en's
+hi	trivia.53.q	ok	reads: which character says "…"; the flag is OPUS-MT hi-en's
+hi	trivia.60.o0	ok	reads: by drinking a sleeping draught; the flag is OPUS-MT hi-en's
+hi	trivia.60.o2	ok	reads: by holding her breath; the flag is OPUS-MT hi-en's
+hi	trivia.63.o1	ok	reads: Montague (a name); the flag is OPUS-MT hi-en's
+hi	trivia.64.q	ok	reads: in which country most of the comedies are set; the flag is OPUS-MT hi-en's
+hi	trivia.68.o0	ok	reads: a donkey's; the flag is OPUS-MT hi-en's
+hi	trivia.77.o1	ok	reads: she is poisoned; the flag is OPUS-MT hi-en's
+hi	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT hi-en's
+hi	trivia.9.o0	ok	reads: बालकनी में: on the balcony; the flag is OPUS-MT hi-en's
+hi	trivia.94.o0	ok	reads: with a pillow (smothering her); the flag is OPUS-MT hi-en's
+hi	trivia.94.o1	ok	reads: with a dagger; the flag is OPUS-MT hi-en's
+vi	trivia.103.q	ok	reads: in Có gì đâu mà rộn (Wikidata's label of the play) which character fakes her death; the flag is OPUS-MT vi-en's
+vi	trivia.121.o1	ok	reads: Hộp vàng: the gold box, casket; the flag is OPUS-MT vi-en's
+vi	trivia.121.o3	ok	reads: Hộp đồng: the bronze casket; the flag is OPUS-MT vi-en's
+vi	trivia.125.o1	ok	reads: Hamlet in Hamlet; the flag is OPUS-MT vi-en's
+vi	trivia.128.o3	ok	reads: a midsummer revel; the flag is OPUS-MT vi-en's
+vi	trivia.129.o3	ok	reads: the exiled duke (Duke Senior); the flag is OPUS-MT vi-en's
+vi	trivia.132.q	ok	reads: what relationship Caliban claims with the island, in Giông tố (Wikidata's label of The Tempest); the flag is OPUS-MT vi-en's
+vi	trivia.153.q	ok	reads: what is special about Sonnet 130; the flag is OPUS-MT vi-en's
+vi	trivia.155.q	ok	reads: who Sycorax is; the flag is OPUS-MT vi-en's
+vi	trivia.159.o2	ok	reads: he is a Cypriot; the flag is OPUS-MT vi-en's
+vi	trivia.159.o3	ok	reads: he is a Spaniard; the flag is OPUS-MT vi-en's
+vi	trivia.159.q	ok	reads: where Othello is from; the flag is OPUS-MT vi-en's
+vi	trivia.160.o3	ok	reads: the Earl of Westmoreland; the flag is OPUS-MT vi-en's
+vi	trivia.167.o3	ok	reads: the Bard's anthology; the flag is OPUS-MT vi-en's
+vi	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT vi-en's
+vi	trivia.181.o1	ok	reads: Bi hài kịch: tragicomedy; the flag is OPUS-MT vi-en's
+vi	trivia.181.o3	ok	reads: Kịch mặt nạ: masque; the flag is OPUS-MT vi-en's
+vi	trivia.191.o2	ok	reads: Lời sấm: the oracle's words; the flag is OPUS-MT vi-en's
+vi	trivia.194.o1	ok	reads: Tán che: the canopy; the flag is OPUS-MT vi-en's
+vi	trivia.194.o2	ok	reads: Vòm trời: the firmament; the flag is OPUS-MT vi-en's
+vi	trivia.199.o2	ok	reads: Đám đông ô hợp: the rabble, the mob; the flag is OPUS-MT vi-en's
+vi	trivia.199.o3	ok	reads: Dân thường: commoners; the flag is OPUS-MT vi-en's
+vi	trivia.4.o2	ok	reads: Sử thi: epics; the flag is OPUS-MT vi-en's
+vi	trivia.48.o3	ok	reads: the violet; the flag is OPUS-MT vi-en's
+vi	trivia.53.o3	ok	reads: Vương công: the prince; the flag is OPUS-MT vi-en's
+vi	trivia.66.o3	ok	reads: he has no opinion; the flag is OPUS-MT vi-en's
+vi	trivia.75.o3	ok	reads: the Earl of Northumberland; the flag is OPUS-MT vi-en's
+ar	trivia.107.o1	ok	reads: رسالة: a letter; the flag is OPUS-MT ar-en's
+ar	trivia.114.o0	ok	reads: بلدغة أفعى: by the bite of an asp; the flag is OPUS-MT ar-en's
+ar	trivia.117.o2	ok	reads: بتاج: with a crown; the flag is OPUS-MT ar-en's
+ar	trivia.121.o0	ok	reads: صندوق الرصاص: the lead casket (الرصاص is also "bullets", which the checker took); the flag is OPUS-MT ar-en's
+ar	trivia.126.o1	ok	reads: تردد خطبًا: recites speeches; the flag is OPUS-MT ar-en's
+ar	trivia.127.q	ok	reads: in جعجعة بلا طحن (Wikidata's label of the play) who the scheming villain is; the flag is OPUS-MT ar-en's
+ar	trivia.137.q	ok	reads: whom Ferdinand falls in love with in العاصفة (The Tempest); the flag is OPUS-MT ar-en's
+ar	trivia.138.o3	ok	reads: شراب الحب: a love potion; the flag is OPUS-MT ar-en's
+ar	trivia.14.o1	ok	reads: كابوليت: Capulet (the table's name); the flag is OPUS-MT ar-en's
+ar	trivia.143.o2	ok	reads: ساحرة: a witch; the flag is OPUS-MT ar-en's
+ar	trivia.153.o0	ok	reads: an anti-Petrarchan sonnet that mocks conventional love poetry; the flag is OPUS-MT ar-en's
+ar	trivia.153.o1	ok	reads: written in free verse, not iambic pentameter; the flag is OPUS-MT ar-en's
+ar	trivia.154.o0	ok	reads: ظهر أحدب: a hunched back; the flag is OPUS-MT ar-en's
+ar	trivia.159.o1	ok	reads: من البندقية: from Venice (البندقية is also "the rifle", which the checker took); the flag is OPUS-MT ar-en's
+ar	trivia.170.q	ok	reads: who speaks the epilogue at the end of العاصفة; the flag is OPUS-MT ar-en's
+ar	trivia.174.o3	ok	reads: يصير ناسكًا: becomes a hermit; the flag is OPUS-MT ar-en's
+ar	trivia.181.o3	ok	reads: مسرحيات الأقنعة: masque plays; the flag is OPUS-MT ar-en's
+ar	trivia.185.o0	ok	reads: أن تضاجعه: that she lie with him (a formal verb, the English's meaning); the flag is OPUS-MT ar-en's
+ar	trivia.185.o2	ok	reads: اعترافًا علنيًّا: a public confession; the flag is OPUS-MT ar-en's
+ar	trivia.187.o2	ok	reads: the backstage for the actors; the flag is OPUS-MT ar-en's
+ar	trivia.191.o2	ok	reads: العرّافة: the oracle; the flag is OPUS-MT ar-en's
+ar	trivia.194.o2	ok	reads: القبة الزرقاء: the blue dome, the firmament; the flag is OPUS-MT ar-en's
+ar	trivia.199.o3	ok	reads: العامة: the common people; the flag is OPUS-MT ar-en's
+ar	trivia.34.o3	ok	reads: أو خير ما انتهى: "or, what ended best", a distractor for "Or, All's Well"; the flag is OPUS-MT ar-en's
+ar	trivia.59.q	ok	reads: which character the title تاجر البندقية refers to; the flag is OPUS-MT ar-en's
+ar	trivia.60.o0	ok	reads: بشراب منوّم: with a sleeping draught; the flag is OPUS-MT ar-en's
+ar	trivia.63.o0	ok	reads: كابوليت: Capulet; the flag is OPUS-MT ar-en's
+ar	trivia.68.o0	ok	reads: حمار: a donkey; the flag is OPUS-MT ar-en's
+ar	trivia.74.q	ok	reads: which poem begins with the famous line "…"; the flag is OPUS-MT ar-en's
+ar	trivia.83.o2	ok	reads: Calpurnia and Portia; the flag is OPUS-MT ar-en's
+ar	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ar-en's
+ar	trivia.97.q	ok	reads: in ترويض النمرة what "the shrew" is called; the flag is OPUS-MT ar-en's
+ar	trivia.90.o0	ok	reads: أمير كودور, "lord (amir) of Cawdor" for Thane of Cawdor: the bank renders thane as أمير throughout (75, 90), beside دوق and إيرل; no source held here gives Arabic for the title, so this is the translator's rendering, not a sourced one
+ko	trivia.102.o0	ok	reads: 남자 법학자: a male lawyer; the flag is OPUS-MT ko-en's
+ko	trivia.103.q	ok	reads: who fakes her death in '헛소동'; the flag is OPUS-MT ko-en's
+ko	trivia.108.q	ok	reads: which play ends with "The rest is silence"; the flag is OPUS-MT ko-en's
+ko	trivia.109.o2	ok	reads: 피비: Phebe (now the English name: no source has the Korean form); the flag is OPUS-MT ko-en's
+ko	trivia.117.o1	ok	reads: 칼: a sword; the flag is OPUS-MT ko-en's
+ko	trivia.121.o3	ok	reads: 청동 상자: the bronze casket; the flag is OPUS-MT ko-en's
+ko	trivia.124.o1	ok	reads: how to rule the country; the flag is OPUS-MT ko-en's
+ko	trivia.125.o3	ok	reads: Viola in '십이야'; the flag is OPUS-MT ko-en's
+ko	trivia.128.o3	ok	reads: 한여름 잔치: a midsummer feast; the flag is OPUS-MT ko-en's
+ko	trivia.135.o3	ok	reads: 반역: treason; the flag is OPUS-MT ko-en's
+ko	trivia.135.q	ok	reads: what crime Claudio is arrested for in '자에는 자로'; the flag is OPUS-MT ko-en's
+ko	trivia.138.o1	ok	reads: 잠드는 약: a sleeping draught; the flag is OPUS-MT ko-en's
+ko	trivia.139.o0	ok	reads: Cornwall (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.139.o3	ok	reads: Oswald (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.141.q	ok	reads: in which play the bumbling constable Dogberry appears; the flag is OPUS-MT ko-en's
+ko	trivia.147.o2	ok	reads: Oswald (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.147.o3	ok	reads: Cornwall (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.149.q	ok	reads: the name of the duke who disguises himself as a friar; the flag is OPUS-MT ko-en's
+ko	trivia.153.o1	ok	reads: written in free verse, not iambic pentameter; the flag is OPUS-MT ko-en's
+ko	trivia.154.o0	ok	reads: 굽은 등: a bent back; the flag is OPUS-MT ko-en's
+ko	trivia.154.o2	ok	reads: 내반족: a club foot; the flag is OPUS-MT ko-en's
+ko	trivia.162.q	ok	reads: the name of the man who watches the play in the frame story; the flag is OPUS-MT ko-en's
+ko	trivia.167.o1	ok	reads: 전집: the complete works; the flag is OPUS-MT ko-en's
+ko	trivia.167.o2	ok	reads: 사절판 모음집: the quarto collection; the flag is OPUS-MT ko-en's
+ko	trivia.170.o3	ok	reads: 해설자: the narrator; the flag is OPUS-MT ko-en's
+ko	trivia.174.o0	ok	reads: disguised as a servant called Caius, stays near Lear; the flag is OPUS-MT ko-en's
+ko	trivia.174.o3	ok	reads: 은둔자가 된다: becomes a hermit; the flag is OPUS-MT ko-en's
+ko	trivia.181.o1	ok	reads: 희비극: tragicomedy; the flag is OPUS-MT ko-en's
+ko	trivia.181.o2	ok	reads: 목가극: pastoral play; the flag is OPUS-MT ko-en's
+ko	trivia.181.o3	ok	reads: 가면극: masque; the flag is OPUS-MT ko-en's
+ko	trivia.182.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.185.o0	ok	reads: 자신과 동침할 것: that she sleep with him; the flag is OPUS-MT ko-en's
+ko	trivia.187.o3	ok	reads: 악단석: the musicians' seats; the flag is OPUS-MT ko-en's
+ko	trivia.190.o0	ok	reads: must choose the right one of three caskets (gold, silver, lead); the flag is OPUS-MT ko-en's
+ko	trivia.191.o1	ok	reads: 시간 영감: old man Time, Father Time; the flag is OPUS-MT ko-en's
+ko	trivia.191.o2	ok	reads: 신탁: the oracle; the flag is OPUS-MT ko-en's
+ko	trivia.193.o3	ok	reads: make him believe he is going deaf; the flag is OPUS-MT ko-en's
+ko	trivia.194.o1	ok	reads: 닫집: the canopy; the flag is OPUS-MT ko-en's
+ko	trivia.194.o2	ok	reads: 창공: the firmament; the flag is OPUS-MT ko-en's
+ko	trivia.197.o2	ok	reads: 광대 모자: a jester's cap; the flag is OPUS-MT ko-en's
+ko	trivia.199.o2	ok	reads: 오합지졸: the rabble; the flag is OPUS-MT ko-en's
+ko	trivia.3.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.31.q	ok	reads: in which play Beatrice and Benedick appear (sourced Korean names); the flag is OPUS-MT ko-en's
+ko	trivia.34.o2	ok	reads: 혹은 실수 연발: "or, The Comedy of Errors" (실수 연발 is Wikidata's Korean label); the flag is OPUS-MT ko-en's
+ko	trivia.34.o3	ok	reads: 혹은 끝이 좋으면: "or, All's Well"; the flag is OPUS-MT ko-en's
+ko	trivia.34.q	ok	reads: the subtitle of '십이야'; the flag is OPUS-MT ko-en's
+ko	trivia.4.o1	ok	reads: 장편소설: novels; the flag is OPUS-MT ko-en's
+ko	trivia.41.o0	ok	reads: 기수: the standard-bearer, ensign; the flag is OPUS-MT ko-en's
+ko	trivia.48.o0	ok	reads: 삼색제비꽃 (love-in-idleness): the pansy; the flag is OPUS-MT ko-en's
+ko	trivia.48.o3	ok	reads: 제비꽃: the violet; the flag is OPUS-MT ko-en's
+ko	trivia.52.o1	ok	reads: 사극: history plays; the flag is OPUS-MT ko-en's
+ko	trivia.53.o3	ok	reads: 영주: the lord of the city (the Prince); the flag is OPUS-MT ko-en's
+ko	trivia.53.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.66.o0	ok	reads: he is dying and can say no more; the flag is OPUS-MT ko-en's
+ko	trivia.68.o0	ok	reads: 당나귀: a donkey; the flag is OPUS-MT ko-en's
+ko	trivia.75.o0	ok	reads: 글래미스의 영주: Thane of Glamis; the flag is OPUS-MT ko-en's
+ko	trivia.75.o3	ok	reads: Earl of Northumberland; the flag is OPUS-MT ko-en's
+ko	trivia.75.q	ok	reads: Macbeth's title at the start; the flag is OPUS-MT ko-en's
+ko	trivia.83.o2	ok	reads: Calpurnia and Portia; the flag is OPUS-MT ko-en's
+ko	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ko-en's
+ko	trivia.84.o2	ok	reads: 사극: a history play; the flag is OPUS-MT ko-en's
+ko	trivia.9.o0	ok	reads: 발코니: the balcony; the flag is OPUS-MT ko-en's
+ko	trivia.90.o0	ok	reads: 코더의 영주: Thane of Cawdor; the flag is OPUS-MT ko-en's
+ko	trivia.90.o1	ok	reads: 글래미스의 영주: Thane of Glamis; the flag is OPUS-MT ko-en's
+ko	trivia.91.q	ok	reads: Viola's name in disguise; the flag is OPUS-MT ko-en's
+ko	trivia.94.o0	ok	reads: 베개(질식시킨다): a pillow (smothering); the flag is OPUS-MT ko-en's
+ko	trivia.94.o3	ok	reads: 밧줄: a rope; the flag is OPUS-MT ko-en's
+ko	trivia.97.o0	ok	reads: Katherina (Kate) (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ko-en's
+ko	trivia.103.o3	fixed	Ursula was 어설라, a form no source has; now 어슐라, as the ko.wikipedia cast list of 헛소동 writes her (names-evidence.tsv)
+ru	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Friar John, Friar Francis, Aaron, Lucio: Russian forms in no article held here, now in English
+ar	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Montague, and the names of Friar John and Friar Francis: in English (the title الراهب kept); Duke Senior kept as الدوق المنفي, a description
+hi	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Montague, Capulet, Friar John, Friar Francis: Hindi forms in no article held here, now in English
+ja	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Adriana, Claribel, Escalus, Phebe, Friar John, Friar Francis: in no article held here, now in English; Duke Senior kept as 老公爵, a description; the other 24 confirmed in the plays' ja.wikipedia articles
+ko	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Aaron, Adriana, Autolycus, Capulet, Claribel, Cornwall, Escalus, Katherina, Kent, Montague, Oswald, Phebe, Vincentio, Friar John, Friar Francis: in no ko.wikipedia article held here, now in English; Ursula 어슐라 from the cast list of 헛소동
+zh	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Aaron in English; Friar Francis 法兰西斯神父, the name as zh.wikipedia glosses it
+th	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Duke Senior kept as ดยุกผู้ถูกเนรเทศ, a description; the other names were already in English
+id	trivia.102.o1	ok	reads: Saudagar: a merchant; the flag is OPUS-MT id-en's
+id	trivia.110.o3	ok	reads: taken down to be built again; the flag is OPUS-MT id-en's
+id	trivia.138.o1	ok	reads: Obat tidur: a sleeping draught; the flag is OPUS-MT id-en's
+id	trivia.154.o0	ok	reads: Punggung bungkuk: a hunched back; the flag is OPUS-MT id-en's
+id	trivia.167.o2	ok	reads: Kumpulan Kuarto: the quarto collection; the flag is OPUS-MT id-en's
+id	trivia.172.o0	ok	reads: a convent, and in Elizabethan slang a brothel; the flag is OPUS-MT id-en's
+id	trivia.181.o1	ok	reads: Tragikomedi: tragicomedy; the flag is OPUS-MT id-en's
+id	trivia.183.o3	ok	reads: Tidak ada: none; the flag is OPUS-MT id-en's
+id	trivia.185.o2	ok	reads: a public confession; the flag is OPUS-MT id-en's
+id	trivia.191.o2	ok	reads: Sang Orakel: the oracle; the flag is OPUS-MT id-en's
+id	trivia.194.o1	ok	reads: Kanopi: the canopy; the flag is OPUS-MT id-en's
+id	trivia.194.o2	ok	reads: Cakrawala: the firmament; the flag is OPUS-MT id-en's
+id	trivia.197.o2	ok	reads: Topi badut: a jester's cap; the flag is OPUS-MT id-en's
+id	trivia.40.q	ok	reads: in which play a character becomes donkey-headed; the flag is OPUS-MT id-en's
+id	trivia.41.o0	ok	reads: Pembawa panji: the standard-bearer, ensign; the flag is OPUS-MT id-en's
+id	trivia.48.o0	ok	reads: the pansy (love-in-idleness); the flag is OPUS-MT id-en's
+id	trivia.52.o3	ok	reads: Lakon problem: the problem plays; the flag is OPUS-MT id-en's
+id	trivia.84.o3	ok	reads: Romansa: romance; the flag is OPUS-MT id-en's
+es	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (dueño); the English says ruler: now Dice ser su legítimo señor
+pt	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (dono); the English says ruler: now Diz ser o seu legítimo senhor
+ru	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (Он считает себя его законным хозяином); the English says ruler: now Он считает себя его законным правителем
+hi	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (वह ख़ुद को उसका असली मालिक बताता है); the English says ruler: now वह ख़ुद को उसका असली शासक बताता है
+zh	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (他自称是岛的合法主人); the English says ruler: now 他自称是岛的合法统治者
+ja	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (島の正当な持ち主だと主張する); the English says ruler: now 島の正当な支配者だと主張する
+ko	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (자신이 섬의 정당한 주인이라고 주장한다); the English says ruler: now 자신이 섬의 정당한 통치자라고 주장한다
+vi	trivia.132.o0	fixed	the right answer said Caliban claims to be the island's owner or master (Hắn tự nhận là chủ nhân chính đáng của đảo); the English says ruler: now Hắn tự nhận là người cai trị chính đáng của đảo
+ja	trivia.102.o3	ok	reads: 修道士: a monk; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.103.q	ok	reads: who fakes her death in 『空騒ぎ』; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.104.o3	ok	reads: 君主の鑑: a mirror for princes; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.107.o0	ok	reads: ハンカチ: a handkerchief; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.109.o2	ok	reads: Phebe (now in English: no source has the Japanese form); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.112.q	ok	reads: which play has a character called Caliban; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.113.o0	ok	reads: キャタリーナ: Katherina, as the ja.wikipedia article writes her; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.117.q	ok	reads: what Richard asks in exchange for his kingdom; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.121.q	ok	reads: which casket Bassanio must choose to marry Portia; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.124.o2	ok	reads: 結婚の見込み: marriage prospects; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.125.o1	ok	reads: Hamlet in 『ハムレット』; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.128.o3	ok	reads: 夏至の宴: a midsummer feast; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.130.q	ok	reads: who leads the amateur actors; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.131.q	ok	reads: who is Cordelia's father; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.132.o3	ok	reads: 何も主張しない: claims nothing (no relationship); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.135.o3	ok	reads: 反逆: treason; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.135.q	ok	reads: what crime Claudio is arrested for; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.137.o2	ok	reads: Claribel (now in English); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.138.o1	ok	reads: 眠り薬: a sleeping draught; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.138.q	ok	reads: what Romeo buys from the apothecary; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.139.o3	ok	reads: オズワルド: Oswald, as the ja.wikipedia article writes him; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.14.o1	ok	reads: キャピュレット家: the Capulets; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.141.q	ok	reads: in which play the bumbling constable Dogberry appears; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.142.o1	ok	reads: 戦死する: is killed in battle; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.142.o2	ok	reads: 毒殺される: is poisoned; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.143.o3	ok	reads: 召使い: a servant; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.145.q	ok	reads: what Hamlet calls the play within the play; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.147.o2	ok	reads: オズワルド: Oswald; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.148.q	ok	reads: which sonnet begins "…"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.149.q	ok	reads: the name of the duke disguised as a friar; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.151.o0	ok	reads: Goneril, Regan, Cordelia; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.151.o1	ok	reads: Goneril, Rosalind, Cordelia; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.151.o3	ok	reads: Goneril, Regan, Ophelia; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.152.o0	ok	reads: the English inscription, kept; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.152.q	ok	reads: what is written on the lead casket; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.153.o0	ok	reads: an anti-Petrarchan sonnet mocking conventional love poetry; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.153.o2	ok	reads: the only sonnet addressed to a man; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.154.o2	ok	reads: 内反足: a club foot; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.154.o3	ok	reads: 片目が見えない: blind in one eye; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.154.q	ok	reads: what deformity Richard says he has; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.158.o1	ok	reads: Hamlet, as a given name; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.159.o0	ok	reads: a Moor (from North Africa); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.159.q	ok	reads: where Othello is from; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.160.o1	ok	reads: エクセター公: the Duke of Exeter; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.160.q	ok	reads: who walks among his soldiers in disguise; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.161.o2	ok	reads: the English line, kept; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.163.q	ok	reads: which work is a "problem play"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.166.q	ok	reads: who dreams and warns her husband not to go to the Senate; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.167.o1	ok	reads: 全集: the complete works; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.167.o2	ok	reads: 四つ折り本集: the quarto collection; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.170.o3	ok	reads: 語り手: the narrator; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.170.q	ok	reads: who speaks the epilogue; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.171.q	ok	reads: the name of the deciding sea battle; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.174.o0	ok	reads: disguised as a servant called Caius, stays near Lear; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.174.o3	ok	reads: 隠者になる: becomes a hermit; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.175.q	ok	reads: the rival killed in a tavern brawl in 1593; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.177.q	ok	reads: what the "green-eyed monster" is; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.178.q	ok	reads: what play the craftsmen perform at the wedding; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.181.o0	ok	reads: romances (late romances); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.181.o1	ok	reads: 悲喜劇: tragicomedy; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.181.o2	ok	reads: 牧歌劇: pastoral play; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.181.o3	ok	reads: 仮面劇: masque; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.185.o0	ok	reads: 自分と一夜を共にすること: that she spend a night with him; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.185.q	ok	reads: what Angelo demands of Isabella; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.187.o3	ok	reads: 楽団の席: the musicians' seats; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.190.o0	ok	reads: choose the right casket of three (gold, silver, lead); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.190.o1	ok	reads: defeat one another in a duel; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.190.o2	ok	reads: solve a riddle; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.190.o3	ok	reads: prove their wealth; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.191.o0	ok	reads: 時（コーラス役）: Time, as Chorus; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.191.o1	ok	reads: 時の翁: Father Time; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.191.o2	ok	reads: 神託: the oracle; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.191.o3	ok	reads: オートリカス: Autolycus, as the ja.wikipedia article writes him; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.194.o0	ok	reads: 天（the Heavens）; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.194.o1	ok	reads: 天蓋: the canopy; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.194.o2	ok	reads: 蒼穹: the firmament; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.197.o2	ok	reads: 道化の帽子: a jester's cap; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.199.o2	ok	reads: 烏合の衆: the rabble; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.22.q	ok	reads: what kills Hamlet at the end; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.25.o0	ok	reads: Puck (Robin Goodfellow); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.26.q	ok	reads: who is told "Get thee to a nunnery"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.27.q	ok	reads: what Shylock demands as his bond; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.32.q	ok	reads: what floats before Macbeth and leads him to Duncan's chamber; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.33.q	ok	reads: who is the Prince of Verona; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.34.o0	ok	reads: "or, What You Will"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.34.o1	ok	reads: "or, As You Like It"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.34.o3	ok	reads: "or, All's Well"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.39.q	ok	reads: which is not a Shakespeare play; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.4.o1	ok	reads: 長編小説: novels; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.41.o0	ok	reads: 旗手: the standard-bearer, ensign; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.42.q	ok	reads: which play is called "the Scottish Play"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.46.q	ok	reads: who says "…"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.48.o0	ok	reads: 三色すみれ: the pansy; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.48.o2	ok	reads: ユリ: the lily; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.48.o3	ok	reads: スミレ: the violet; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.53.o3	ok	reads: 大公: the Prince; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.53.q	ok	reads: who says "…"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.58.q	ok	reads: where Hamlet is set; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.6.q	ok	reads: who kills Romeo; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.63.o0	ok	reads: キャピュレット家: the Capulets; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.68.q	ok	reads: what animal's head Bottom is given; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.72.q	ok	reads: which play has a character called Shylock; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.73.o0	ok	reads: Hamlet's father; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.73.o1	ok	reads: Hamlet's grandfather; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.75.o0	ok	reads: グラームズの領主: Thane of Glamis; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.75.o3	ok	reads: Earl of Northumberland; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.77.o1	ok	reads: 毒を盛られる: she is poisoned; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.89.q	ok	reads: which play has "If music be the food of love, play on"; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.9.o0	ok	reads: バルコニー: a balcony; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.90.o0	ok	reads: コーダーの領主: Thane of Cawdor; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.90.o1	ok	reads: Thane of Glamis; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.91.o0	ok	reads: シザーリオ: Cesario, as the ja.wikipedia article writes it; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.92.q	ok	reads: who kills Tybalt; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.93.o3	ok	reads: 3人とも同じ: all three equally; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.94.o0	ok	reads: 枕（窒息させる）: a pillow (smothering); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.94.o3	ok	reads: 縄: a rope; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.94.q	ok	reads: with what Othello kills Desdemona; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.97.o0	ok	reads: キャタリーナ（ケイト）: Katherina (Kate); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+ja	trivia.99.q	ok	reads: who gives the "Once more unto the breach" speech; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+zh	trivia.102.o3	ok	reads: 修士: a friar, monk; the flag is OPUS-MT zh-en's
+zh	trivia.104.o3	ok	reads: 《君王宝鉴》: A Mirror for Princes; the flag is OPUS-MT zh-en's
+zh	trivia.110.o1	ok	reads: closed by the king's order; the flag is OPUS-MT zh-en's
+zh	trivia.121.o3	ok	reads: 铜匣: the bronze casket; the flag is OPUS-MT zh-en's
+zh	trivia.132.q	ok	reads: what relationship Caliban claims with the island; the flag is OPUS-MT zh-en's
+zh	trivia.15.q	ok	reads: which play has the character Puck (帕克); the flag is OPUS-MT zh-en's
+zh	trivia.154.o0	ok	reads: 驼背: a hunched back; the flag is OPUS-MT zh-en's
+zh	trivia.160.o3	ok	reads: 威斯摩兰伯爵: the Earl of Westmoreland; the flag is OPUS-MT zh-en's
+zh	trivia.162.q	ok	reads: the name of the man who watches the play in the induction; the flag is OPUS-MT zh-en's
+zh	trivia.167.o1	ok	reads: 全集: the complete works; the flag is OPUS-MT zh-en's
+zh	trivia.167.o2	ok	reads: 四开本集: the quarto collection; the flag is OPUS-MT zh-en's
+zh	trivia.181.o0	ok	reads: 传奇剧（晚期传奇剧）: romances (late romances); the flag is OPUS-MT zh-en's
+zh	trivia.181.o1	ok	reads: 悲喜剧: tragicomedy; the flag is OPUS-MT zh-en's
+zh	trivia.181.o3	ok	reads: 假面剧: masque; the flag is OPUS-MT zh-en's
+zh	trivia.182.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.185.o2	ok	reads: 当众认罪: a public confession; the flag is OPUS-MT zh-en's
+zh	trivia.187.o3	ok	reads: 乐队席: the musicians' seats; the flag is OPUS-MT zh-en's
+zh	trivia.189.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.191.o1	ok	reads: 时间老人: Father Time; the flag is OPUS-MT zh-en's
+zh	trivia.194.o1	ok	reads: 华盖: the canopy; the flag is OPUS-MT zh-en's
+zh	trivia.194.o2	ok	reads: 苍穹: the firmament; the flag is OPUS-MT zh-en's
+zh	trivia.199.o2	ok	reads: 乌合之众: the rabble; the flag is OPUS-MT zh-en's
+zh	trivia.199.o3	ok	reads: 平民: commoners; the flag is OPUS-MT zh-en's
+zh	trivia.34.o0	ok	reads: 或名：各遂所愿: "or, What You Will", as the Chinese title has it; the flag is OPUS-MT zh-en's
+zh	trivia.34.o1	ok	reads: 或名：皆大欢喜: "or, As You Like It" (the play's Chinese label); the flag is OPUS-MT zh-en's
+zh	trivia.34.o3	ok	reads: 或名：终成眷属: "or, All's Well" (the play's Chinese label); the flag is OPUS-MT zh-en's
+zh	trivia.4.o2	ok	reads: 史诗: epics; the flag is OPUS-MT zh-en's
+zh	trivia.43.q	ok	reads: which play opens with "…"; the flag is OPUS-MT zh-en's
+zh	trivia.47.q	ok	reads: which play "…" is from; the flag is OPUS-MT zh-en's
+zh	trivia.52.o2	ok	reads: 传奇剧: the romances; the flag is OPUS-MT zh-en's
+zh	trivia.53.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.66.o3	ok	reads: 他没有意见: he has no opinion; the flag is OPUS-MT zh-en's
+zh	trivia.72.q	ok	reads: which play has a character called Shylock; the flag is OPUS-MT zh-en's
+zh	trivia.75.o0	ok	reads: 葛莱密斯爵士: Thane of Glamis, as Zhu Shenghao's Macbeth styles him; the flag is OPUS-MT zh-en's
+zh	trivia.75.o3	ok	reads: 诺森伯兰伯爵: Earl of Northumberland; the flag is OPUS-MT zh-en's
+zh	trivia.84.o3	ok	reads: 传奇剧: romance; the flag is OPUS-MT zh-en's
+zh	trivia.90.o0	ok	reads: 考特爵士: Thane of Cawdor, as Zhu Shenghao's Macbeth styles him; the flag is OPUS-MT zh-en's
+zh	trivia.90.o1	ok	reads: 葛莱密斯爵士: Thane of Glamis; the flag is OPUS-MT zh-en's
+zh	trivia.90.o3	ok	reads: 洛斯伯爵: Earl of Ross; the flag is OPUS-MT zh-en's
+zh	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT zh-en's
+zh	trivia.131.o1	ok	reads: 葛罗斯特伯爵, the Earl of Gloucester, where the English distractor says Duke; Gloucester is an earl in King Lear and the option is a wrong answer either way, so it is left
+ru	trivia.104.o0	ok	reads: «Мышеловка»: The Mousetrap; the flag is OPUS-MT ru-en's
+ru	trivia.107.o0	ok	reads: Платком: with a handkerchief; the flag is OPUS-MT ru-en's
+ru	trivia.109.o2	ok	reads: Феба: Phebe, as the ru.wikipedia article writes her; the flag is OPUS-MT ru-en's
+ru	trivia.126.o1	ok	reads: Произносит речи: makes speeches; the flag is OPUS-MT ru-en's
+ru	trivia.128.o3	ok	reads: Гулянье в Иванову ночь: a midsummer-night revel; the flag is OPUS-MT ru-en's
+ru	trivia.132.o3	ok	reads: Никакой: none; the flag is OPUS-MT ru-en's
+ru	trivia.132.q	ok	reads: what relationship Caliban claims with the island; the flag is OPUS-MT ru-en's
+ru	trivia.139.o0	ok	reads: Корнуол: Cornwall; the flag is OPUS-MT ru-en's
+ru	trivia.145.o0	ok	reads: «Мышеловка»: The Mousetrap; the flag is OPUS-MT ru-en's
+ru	trivia.147.o3	ok	reads: Корнуол: Cornwall; the flag is OPUS-MT ru-en's
+ru	trivia.149.o0	ok	reads: Винченцио: Vincentio; the flag is OPUS-MT ru-en's
+ru	trivia.154.o0	ok	reads: Горб: a hump; the flag is OPUS-MT ru-en's
+ru	trivia.154.o2	ok	reads: Косолапость: a club foot; the flag is OPUS-MT ru-en's
+ru	trivia.155.q	ok	reads: who Sycorax is; the flag is OPUS-MT ru-en's
+ru	trivia.167.o1	ok	reads: Полное собрание сочинений: the complete works; the flag is OPUS-MT ru-en's
+ru	trivia.167.o2	ok	reads: Собрание кварто: the quarto collection; the flag is OPUS-MT ru-en's
+ru	trivia.174.o0	ok	reads: disguised as a servant called Кай (Caius) to stay near Lear; the flag is OPUS-MT ru-en's
+ru	trivia.177.o1	ok	reads: Честолюбие: ambition; the flag is OPUS-MT ru-en's
+ru	trivia.181.o3	ok	reads: Маски: masques; the flag is OPUS-MT ru-en's
+ru	trivia.185.o2	ok	reads: Публичного признания: a public confession; the flag is OPUS-MT ru-en's
+ru	trivia.194.o1	ok	reads: Балдахин: the canopy; the flag is OPUS-MT ru-en's
+ru	trivia.194.o2	ok	reads: Небесный свод: the firmament; the flag is OPUS-MT ru-en's
+ru	trivia.199.o2	ok	reads: Чернь: the mob; the flag is OPUS-MT ru-en's
+ru	trivia.27.o0	ok	reads: Фунт мяса: a pound of flesh; the flag is OPUS-MT ru-en's
+ru	trivia.4.o3	ok	reads: Рассказами: short stories; the flag is OPUS-MT ru-en's
+ru	trivia.48.o3	ok	reads: Фиалки: violets; the flag is OPUS-MT ru-en's
+ru	trivia.68.o0	ok	reads: Осла: a donkey's (head); the flag is OPUS-MT ru-en's
+ru	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ru-en's
+ru	trivia.41.o0	ok	reads: Поручик (знаменосец), lieutenant (standard-bearer): the Russian translations make Iago поручик and Cassio лейтенант (Weinberg's cast list on ru.wikisource: «Яго, его поручик»), which is the distinction this question asks for; the gloss names the ensign's office
+pl	trivia.10.q	ok	reads: from which play "…" comes (sztuka: a play); the flag is OPUS-MT pl-en's
+pl	trivia.102.q	ok	reads: whom Portia disguises herself as; the flag is OPUS-MT pl-en's
+pl	trivia.109.o2	ok	reads: Febe: Phebe, as Polish writes her; the flag is OPUS-MT pl-en's
+pl	trivia.114.o2	ok	reads: Tonie: she drowns; the flag is OPUS-MT pl-en's
+pl	trivia.121.o3	ok	reads: Brązową: the bronze (casket); the flag is OPUS-MT pl-en's
+pl	trivia.128.o3	ok	reads: Zabawa w noc świętojańską: a midsummer-night revel; the flag is OPUS-MT pl-en's
+pl	trivia.129.o3	ok	reads: Książę wygnany: the exiled duke (Duke Senior); the flag is OPUS-MT pl-en's
+pl	trivia.132.o3	ok	reads: claims none; the flag is OPUS-MT pl-en's
+pl	trivia.14.o0	ok	reads: Montekich: the Montagues; the flag is OPUS-MT pl-en's
+pl	trivia.142.o3	ok	reads: Zostaje stracony: is executed; the flag is OPUS-MT pl-en's
+pl	trivia.154.o0	ok	reads: Garb: a hump; the flag is OPUS-MT pl-en's
+pl	trivia.161.o0	ok	reads: the English lines, kept; the flag is OPUS-MT pl-en's
+pl	trivia.17.q	ok	reads: from which play "…" comes; the flag is OPUS-MT pl-en's
+pl	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT pl-en's
+pl	trivia.177.q	ok	reads: what the "green-eyed monster" is; the flag is OPUS-MT pl-en's
+pl	trivia.180.q	ok	reads: in which play the exiled duke says "…"; the flag is OPUS-MT pl-en's
+pl	trivia.181.o3	ok	reads: Maski: masques; the flag is OPUS-MT pl-en's
+pl	trivia.186.q	ok	reads: who says "…"; the flag is OPUS-MT pl-en's
+pl	trivia.187.q	ok	reads: what the pit or yard was; the flag is OPUS-MT pl-en's
+pl	trivia.188.o0	ok	reads: the poem itself ("…"); the flag is OPUS-MT pl-en's
+pl	trivia.194.o1	ok	reads: Baldachim: the canopy; the flag is OPUS-MT pl-en's
+pl	trivia.35.q	ok	reads: which play has the line "…"; the flag is OPUS-MT pl-en's
+pl	trivia.63.o1	ok	reads: Montekich: the Montagues; the flag is OPUS-MT pl-en's
+pl	trivia.66.o3	ok	reads: Nie ma zdania: he has no opinion; the flag is OPUS-MT pl-en's
+pl	trivia.77.o0	ok	reads: Tonie: she drowns; the flag is OPUS-MT pl-en's
+pl	trivia.79.o0	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
+pl	trivia.79.o3	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
+pl	trivia.157.q	fixed	"didaskalium", a rare singular of didaskalia, is now "wskazówka sceniczna", the ordinary word for a stage direction
+es	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+es	pg.credits	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+es	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+es	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+es	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+es	story.enc.1-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+es	story.enc.3-1.desc	ok	burlar is to outwit (burlarse de would be to mock)
+es	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+es	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	trivia.14.o0	ok	Montesco, the Spanish name of the family (Montescos y Capuletos)
+es	trivia.34.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.63.o1	ok	as trivia.14.o0
+es	trivia.68.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+es	trivia.102.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.102.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.128.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.142.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.154.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.154.o2	ok	pie zambo is club foot
+es	trivia.181.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.199.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	pg.challenge.check	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.packs.sub	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+fr	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+fr	story.enc.2-1.desc	fixed	the ghost's verse in the duel is a strophe, the game's word for a player's or opponent's verse (vers is one line): now la strophe énigmatique
+fr	story.enc.2-3.name	ok	La Souricière, the French name of the Mousetrap
+fr	story.enc.3-1.desc	fixed	Soyez plus rusé addressed the player as a man; now Déjouez les tours du lutin farceur, which says the same of anyone
+fr	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+fr	trivia.4.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.14.o0	ok	Montaigu, the French name of the family
+fr	trivia.34.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.41.o0	ok	enseigne is Iago's rank in the French translations (Hugo: son enseigne)
+fr	trivia.63.o1	ok	as trivia.14.o0
+fr	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+fr	trivia.104.o0	ok	La Souricière, the French name of the Mousetrap
+fr	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.135.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.145.o0	ok	as trivia.104.o0
+fr	trivia.181.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.197.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+de	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+de	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+de	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+de	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+de	trivia.4.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+de	trivia.109.o2	ok	Phöbe, the German form of Phebe (Schlegel's Wie es euch gefällt); a decoy
+de	trivia.154.o2	ok	Klumpfuß is club foot
+de	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+it	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+it	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+it	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+it	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+it	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+it	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+it	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+it	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+it	trivia.43.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.52.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.79.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.103.o3	ok	Orsola, Ursula's Italian name in the translations of Molto rumore per nulla; a decoy
+it	trivia.109.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.128.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.141.q	ok	Dogberry with the Italian translations' Carruba beside it
+it	trivia.154.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.167.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.177.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.187.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.194.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+pt	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pt	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+pt	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+pt	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+pt	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+pt	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+pt	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pt	story.enc.3-1.desc	fixed	Seja mais esperto addressed the player as a man; now Vença em esperteza
+pt	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pt	trivia.4.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.14.o0	ok	Montéquio, as pt.wikipedia's Romeu e Julieta writes the family
+pt	trivia.34.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.63.o1	ok	as trivia.14.o0
+pt	trivia.66.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.83.o1	fixed	Marco António is the European spelling; the game's Portuguese is Brazilian: Marco Antônio, as the pt-br Wikidata label has it
+pt	trivia.84.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+pt	trivia.97.q	fixed	O Amansar da Fera is the European title; Brazil's (the pt-br Wikidata label) is A Megera Domada, and the question now asks for the megera
+pt	trivia.110.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.142.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.194.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.197.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.199.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.199.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pl	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.onb.next	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+pl	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pl	story.enc.1-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.enc.3-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pl	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.stars	ok	a title or label of the story page; the model rendered it literally or misread a name
+ru	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.challenge.check	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ru	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ru	pg.earned	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.packs.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.reveal.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.aiBadge	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.need	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.trivia.sub	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.worldCard	fixed	карта мира reads as 'map of the world'; now игральная карта мира, the term the core locale moves to on lang/qa-pipeline
+ru	story.difficulty.hard	ok	a difficulty level, the ordinary word for it
+ru	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ru	story.enc.1-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ru	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.enc.3-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.enc.3-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ru	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ar	pg.battle.cta	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ar	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ar	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ar	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.onb.skip	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ar	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.viewCollection	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	story.act.1.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ar	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ar	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ar	story.enc.3-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ar	story.enc.3-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ar	story.meta.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+ar	story.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+hi	pg.trivia.title	fixed	Shakespeare as शेक्सपियर; the core locale and the Wikidata label write शेक्सपीयर: every play string now does
+hi	story.act.1.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.act.3.desc	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+hi	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+hi	story.enc.2-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.sub	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+zh	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+zh	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.stat.wins	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+zh	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+zh	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+zh	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+zh	story.enc.2-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.2-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	event.now	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.hint	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ja	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.difficulty.easy	ok	a difficulty level, the ordinary word for it
+ja	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ja	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.onb.3.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ja	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.trivia.correct	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	story.act.4.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ja	story.act.5.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ja	story.difficulty.easy	ok	a difficulty level, the ordinary word for it
+ja	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ja	story.enc.1-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.1-3.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.1-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.2-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.2-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.3-1.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.5-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.5-3.narrative	fixed	最後の一篇 now 最後の詩, the core locale's word for a verse
+ja	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.challenge.placeholder	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.credits	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ko	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ko	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ko	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ko	story.act.2.name	fixed	헬싱외르 is the modern Danish town (the Wikidata label); ko.wikipedia's 햄릿 calls the play's castle town 엘시노르
+ko	story.act.4.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ko	story.act.4.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+ko	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ko	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ko	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.3-3.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.3-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ko	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+vi	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+vi	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+vi	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	story.act.4.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+vi	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+vi	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+vi	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+vi	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+vi	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	streak.pack.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	countdown.hm	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	countdown.m	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.standard	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.packs.sub	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.daily	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.trivia.sub	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.trivia.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.worldCard	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	story.act.2.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.act.5.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.act.5.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.enc.1-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.1-2.desc	fixed	as above
+th	story.enc.1-2.name	fixed	แม่นม now นางนม, the Nurse as th.wikipedia's โรเมโอและจูเลียต lists her
+th	story.enc.1-3.desc	fixed	Mercutio in Latin letters; now เมอร์คิวชิโอ, as th.wikipedia's cast list writes him
+th	story.enc.1-4.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.2-2.name	fixed	Ophelia in Latin letters; now โอฟีเลีย, as th.wikipedia's แฮมเลต writes her
+th	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.2-3.narrative	fixed	บทกวี (a poem) for the player's verse; the core locale's word is บทกลอน
+th	story.enc.2-4.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.3-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.4-2.desc	fixed	as above
+th	story.enc.4-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.5-1.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.5-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.meta.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	countdown.m	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	pg.battle.cta	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.challenge.body	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.onb.3.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+id	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	story.act.1.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.2.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.2.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.3.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+id	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+id	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+id	story.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ar	spell:هيليسينكور	ok	the Wikidata label for Helsingør (Elsinore), a name; the only word unknown to Hunspell on the second run that the first had not seen, in any language with a dictionary
+es	trivia.22.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.32.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.94.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.114.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.114.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+es	trivia.138.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	trivia.177.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+es	pg.odds.rare	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+es	pg.onb.skip	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+es	streak.pack.rare	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+fr	trivia.114.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+fr	trivia.135.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.60.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.94.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.135.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.138.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.177.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	trivia.177.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+de	pg.odds.rarity	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+it	trivia.41.o0	ok	LaBSE flag (not an OPUS-MT one): Iago's rank as this language's translations of Othello give it (alférez, alfiere, alferes, chorąży, standard-bearer); LaBSE does not pair the old military word with 'ensign'
+it	trivia.60.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+it	trivia.77.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+it	trivia.114.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+it	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+pt	trivia.41.o0	ok	LaBSE flag (not an OPUS-MT one): Iago's rank as this language's translations of Othello give it (alférez, alfiere, alferes, chorąży, standard-bearer); LaBSE does not pair the old military word with 'ensign'
+pt	trivia.114.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pt	trivia.114.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pt	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+pt	trivia.138.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pt	pg.onb.skip	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+pl	trivia.22.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.22.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.27.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.32.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.41.o0	ok	LaBSE flag (not an OPUS-MT one): Iago's rank as this language's translations of Othello give it (alférez, alfiere, alferes, chorąży, standard-bearer); LaBSE does not pair the old military word with 'ensign'
+pl	trivia.68.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.94.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.94.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.121.o0	ok	LaBSE flag (not an OPUS-MT one): the lead casket, as the adjective agreeing with the casket the question names
+pl	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.135.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.138.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.138.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.143.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.177.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.191.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.199.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	trivia.199.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+pl	pg.odds.rarity	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+pl	story.enc.3-2.name	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+ru	trivia.32.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ru	trivia.32.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ru	trivia.114.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ru	trivia.121.o0	ok	LaBSE flag (not an OPUS-MT one): the lead casket, as the adjective agreeing with the casket the question names
+ru	trivia.177.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.41.o0	ok	LaBSE flag (not an OPUS-MT one): Iago's rank as this language's translations of Othello give it (alférez, alfiere, alferes, chorąży, standard-bearer); LaBSE does not pair the old military word with 'ensign'
+ar	trivia.60.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.77.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.77.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.94.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.102.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.117.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+ar	trivia.138.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.138.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.142.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	trivia.188.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ar	story.enc.3-2.desc	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+hi	trivia.60.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	trivia.94.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	trivia.107.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	trivia.124.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+hi	trivia.185.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+hi	pg.odds.title	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+hi	pg.odds.rarity	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+zh	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+zh	trivia.142.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+zh	trivia.154.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+zh	pg.credits	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+zh	pg.challenge.original	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+ja	trivia.32.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ja	trivia.68.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ja	trivia.124.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ja	trivia.185.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ko	trivia.4.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ko	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+ko	trivia.143.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+vi	trivia.48.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+vi	trivia.49.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+vi	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+vi	story.stars	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+vi	story.difficulty.medium	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+th	trivia.32.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+th	trivia.41.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+th	trivia.102.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+th	trivia.117.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+th	trivia.126.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+th	trivia.129.o3	ok	LaBSE flag (not an OPUS-MT one): Duke Senior as the banished duke, the usual rendering where the language has no name for him
+th	trivia.191.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.22.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.32.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.32.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.32.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.68.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.94.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.102.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.102.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.114.o0	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.114.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.117.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.128.o1	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.187.o3	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	trivia.199.o2	ok	LaBSE flag (not an OPUS-MT one): a short option, in the case the question asks for; means its English option (the answer is unchanged); LaBSE scores one or two inflected words low against an English phrase
+id	pg.onb.skip	ok	LaBSE flag (not an OPUS-MT one): interface or story text; says what the English says
+pt	trivia.14.o2	ok	Escala, the prince of Verona as pt.wikipedia's Romeu e Julieta names him (fixes.tsv); the model reads the common noun 'scale'
+pt	trivia.33.o0	ok	as trivia.14.o2: the right answer, the sourced name
+pt	trivia.63.o2	ok	as trivia.14.o2
+pt	trivia.106.o3	ok	Glócester, as pt.wikipedia's Rei Lear writes him (fixes.tsv)
+pt	trivia.131.o1	ok	O conde de Glócester: the earl, as the corrected English says; the model renders conde as count
+vi	trivia.131.o1	ok	Bá tước xứ Gloucester, the earl as the corrected English says (Bá tước is the same title as in o2, the Earl of Kent); the back-translation looped
+th	story.enc.2-2.narrative	ok	re-scored after Ophelia became โอฟีเลีย (fixes.tsv); the model translated only the English quotation
+th	story.enc.2-3.desc	ok	re-scored after Claudius became คลอดิอัส (fixes.tsv); the model misread the name
+ar	trivia.41.o2	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+ar	trivia.73.o1	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+ar	trivia.159.o0	ok	مغربي, the Arabic word for the Moor of Othello's title (from North Africa as the English says)
+ar	trivia.187.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+de	trivia.142.o1	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+de	trivia.167.o1	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+es	trivia.84.o2	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+es	trivia.151.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+hi	trivia.4.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+hi	trivia.138.o1	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+hi	trivia.151.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+hi	trivia.151.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+hi	trivia.179.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+it	trivia.84.o2	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+it	trivia.149.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+it	trivia.151.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+it	trivia.199.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+ja	trivia.84.o2	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+ko	trivia.84.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+ko	trivia.179.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+pl	trivia.152.o2	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+pt	trivia.151.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+th	trivia.151.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+vi	trivia.41.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+vi	trivia.41.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+vi	trivia.104.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+vi	trivia.151.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+vi	trivia.151.o1	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+zh	trivia.4.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+zh	trivia.4.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+zh	trivia.151.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+zh	trivia.152.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+es	trivia.14.o2	ok	second pass, OPUS-MT: "Escala" back as "Scale": the model reads the name as a noun; Escala is es.wikipedia Romeo y Julieta's form for the Prince (names-evidence.tsv)
+es	trivia.33.o0	ok	second pass, OPUS-MT: as trivia.14.o2 (Escala)
+es	trivia.63.o2	ok	second pass, OPUS-MT: as trivia.14.o2 (Escala)
+fr	pg.trivia.correct	ok	second pass, OPUS-MT: "Bonnes réponses : {n}" back as "Good answers : 3"; it says Correct: 3
+hi	trivia.83.o2	ok	second pass, OPUS-MT: Latin names inside Hindi come back garbled ("Cluppania and Pattia"); the option is Calpurnia और Portia
+ja	trivia.50.o3	ok	second pass, OPUS-MT: エアロン back as "Aeron"; ja.wikipedia's cast list writes エアロン(アーロン) for Aaron
+ja	trivia.80.q	ok	second pass, OPUS-MT: back as "So, let's go back to the original." The model fails on the Latin name inside; the sentence reads: in which play does a character disguise herself as a jurist named Balthazar
+pt	pg.trivia.correct	ok	second pass, OPUS-MT: "Acertos: {n}" back as "Hits: 3"; acertos is the usual word for correct answers
+vi	pg.trivia.correct	ok	second pass, OPUS-MT: "Số câu đúng: {n}" back as "Number of verses true: 3"; câu is a question here, the usual quiz phrase for the number of correct answers
+hi	trivia.83.o2	ok	second pass, align: nearer option 0 only because the back-translation garbles the Latin names (Cluppania and Pattia); the option is Calpurnia और Portia
+hi	trivia.131.o1	ok	second pass, align: back as "Earl of Görster", nearer the Earl of Kent by noise; ग्लस्टर is hi.wikipedia King Lear's Gloucester
+ko	trivia.83.o1	ok	second pass, align: back as "Marcus Antonius and Occavis": Antony and Octavius, as its own option
+ko	trivia.151.o1	ok	second pass, align: back as "Gourrily, Roslind, and Cordelia": Goneril, Rosalind and Cordelia, its own option
+ja	trivia.50.o3	ok	second pass, align: エアロン back as "Aeron", Aaron
+ko	pg.trivia.correct	ok	second pass: flagged because the English is now "Correct: {n}"; 정답 {n}개 is the number of correct answers
+zh	pg.trivia.correct	ok	second pass: flagged because the English is now "Correct: {n}"; 答对 {n} 题 is questions answered correctly
+ja	trivia.3.q	ok	second pass, OPUS-MT: back as "A plan on both your houses!"; the quotation is kept verbatim in the question
+ja	trivia.124.o3	ok	second pass, LaBSE: 軍事力 is military strength
+ar	trivia.14.o0	ok	second pass: an option left in English by design (Montague, no Arabic source), scored only because pairs.mjs compared it with its isolates; pairs.mjs now strips them
+ar	trivia.63.o1	ok	second pass: as trivia.14.o0
+ar	trivia.29.o3	ok	second pass: the missing word of an English quotation (Stain), English by design
+fr	pg.difficulty.medium	ok	second pass, OPUS-MT: moyen back as "Average"; it is the medium difficulty
+ru	story.enc.3-1.desc	ok	second pass, OPUS-MT: back as "Sneak out the bad spirit"; Перехитри озорного духа is Outwit the mischievous spirit
+id	trivia.41.o3	ok	second pass, LaBSE: Letnan is Lieutenant (the back-translation came back empty)
+es	pg.trivia.correct	ok	second pass, MADLAD: "Aciertos: {n}" back as "Number of hits: 3"; aciertos are correct answers
+it	pg.trivia.correct	ok	second pass, MADLAD: "Risposte esatte: {n}" back as "Exact answers: 3"; esatte is correct, as in a quiz
+vi	countdown.hm	ok	second pass, MADLAD: "{h} tiếng {m} phút" back as "Two hours and fifteen minutes"; the English is "2h 15m"
+de	trivia.70.o2	ok	second pass, MADLAD: Bruder John back as "Brother John"; Friar John with the title translated and the name in English (no German source names him)

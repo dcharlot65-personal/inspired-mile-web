@@ -1,0 +1,32 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+15	la brevedad es el alma del talento	brevedad|talento	es-moratin-hamlet
+20	nada hay bueno ni malo, sino en fuerza de nuestra fantasía.	fantasía	es-moratin-hamlet
+27	usa de ingenuidad contigo mismo, y no podrás ser falso con los demás	ingenuidad|falso	es-moratin-hamlet
+42	Sabemos lo que somos ahora; pero no lo que podemos ser.	somos|ser	es-moratin-hamlet
+43	¡Fragilidad! ¡Tú tienes nombre de mujer!	Fragilidad|mujer	es-moratin-hamlet
+57	en el cielo y en la tierra hay más de lo que puede soñar tu filosofía.	tierra|filosofía	es-moratin-hamlet
+63	¡Que admirable fábrica es la del hombre! ¡Qué noble su razón!	hombre|razón	es-moratin-hamlet
+84	Para mí solo queda ya... silencio eterno.	silencio	es-moratin-hamlet
+4	¡Romeo, Romeo! ¿Por qué eres tú Romeo?	Por qué	es-mp-romeo
+35	¿Porqué no tomas otro nombre? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo.	nombre|rosa	es-mp-romeo
+6	La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo.	rosa|aroma	es-mp-romeo
+2	Triste es la ausencia y tan dulce la despedida	Triste|despedida	es-mp-romeo
+19	¡Adios, adios! Triste es la ausencia y tan dulce la despedida, que no sé cómo arrancarme de los hierros de esta ventana.	ausencia|despedida	es-mp-romeo
+12	¡Mala peste á Capuletos y Móntescos!	peste	es-mp-romeo
+34	Nada violento es duradero	violento|duradero	es-mp-romeo
+46	¿Pero qué luz es la que asoma por allí?	luz	es-mp-romeo
+96	Si el manto de la noche no me cubriera, el rubor de vírgen subiría á mis mejillas	noche|rubor	es-mp-romeo
+7	Aumente el trabajo: crezca la labor: hierva la caldera.	trabajo|labor	es-mp-macbeth
+11	¡Lejos de mí esta horrible mancha!	mancha	es-mp-macbeth
+22	¡Me parece estar viendo el puño de una daga vuelta hacia mí!	puño|daga	es-mp-macbeth
+39	Esa engañosa palabra mañana, mañana, mañana nos va llevando por dias al sepulcro	llevando|dias	es-mp-macbeth
+40	¿Qué es la vida sino una sombra, un histrion que pasa por el teatro, y á quien se olvida despues, ó la vana y ruidosa fábula de un necio?	sombra|teatro	es-mp-macbeth
+81	la vana y ruidosa fábula de un necio	ruidosa|necio	es-mp-macbeth
+89	Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano.	hombre|humano	es-mp-macbeth
+37	No soy lo que parezco.	soy|parezco	es-mp-otelo
+59	colgarla de la manga mi corazón para pasto de grajos	manga|corazón	es-mp-otelo
+64	Quien se ria del ladron podrá robarle	ria|ladron	es-mp-otelo
+80	Apagaré esta luz... y luego aquella.	luz|aquella	es-mp-otelo
+82	La fama no es sino vano ruido y falsedad é impostura, que las más veces se gana sin mérito y se pierde sin culpa.	fama|mérito	es-mp-otelo
+1	No es oro todo lo que reluce	oro|reluce	es-mp-mercader
+33	La clemencia no quiere fuerza: es como la plácida lluvia del cielo que cae sobre un campo y le fecunda	clemencia|lluvia	es-mp-mercader

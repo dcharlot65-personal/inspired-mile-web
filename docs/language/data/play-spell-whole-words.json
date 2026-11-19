@@ -1,0 +1,27 @@
+{
+ "run": "2026-11-16, on the Studio, through rb: scripts/lang-content/qa/words.mjs (Intl.Segmenter) and the shared pipeline's hspell (whole words) with its dictionaries",
+ "hunspell": "library of the shared pipeline (lang/qa-pipeline host install); dictionaries ko, th, hi of LibreOffice at the commit its dict/COMMIT names",
+ "languages": {
+  "ko": {
+   "words": 1652,
+   "rejected": 324,
+   "planted": "핵꾜 rejected",
+   "errors": 0,
+   "read": "all: loanwords (챌린지, 크레딧), names with their particles, compounds (명대사), inflected verbs"
+  },
+  "th": {
+   "words": 1105,
+   "rejected": 113,
+   "planted": "ปลาาทู rejected",
+   "errors": 0,
+   "read": "all: pieces of transliterated names as ICU's dictionary cuts them (เชกส, ร์), and valid words cut apart (อึม|ครึม)"
+  },
+  "hi": {
+   "words": 1168,
+   "rejected": 103,
+   "planted": "किताबब rejected",
+   "errors": 1,
+   "read": "all: names, and words the dictionary lacks (दरबार, दादा, हारेगा); one inconsistency fixed (trivia 183 कॉर्नवाल)"
+  }
+ }
+}

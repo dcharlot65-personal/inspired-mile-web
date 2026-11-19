@@ -1,0 +1,30 @@
+{
+ "fetched": "2026-11-18T00:27Z",
+ "source": "https://www.wikidata.org (labels, CC0)",
+ "entities": {
+  "h.cornelia": {
+   "id": "Q1119228",
+   "description": "female given name",
+   "lastrevid": 2538644222,
+   "modified": "2026-08-31T14:32:53Z",
+   "labels": {
+    "ja": "コーネリア",
+    "ru": "Корнелия",
+    "zh": "科妮莉亚",
+    "mul": "Cornelia",
+    "en": "Cornelia",
+    "de": "Cornelia"
+   },
+   "aliases": {
+    "en": [
+     "Cornelia (first name)",
+     "Cornelia (given name)"
+    ],
+    "ja": [
+     "コルネリア",
+     "コルネーリア"
+    ]
+   }
+  }
+ }
+}

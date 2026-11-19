@@ -1,0 +1,55 @@
+# Trivia options that are names but are not filled from the names table (trivia-options.json): written in each
+# language's trivia/<lang>.txt. Each named part must be a form a source gives for that character in that
+# language (a Wikidata label or alias, or a line of names-evidence.tsv), or the English name in Latin letters
+# (play-areas.test.ts, handNameProblems). x.* keys have no Wikidata item here; their sources are names-evidence.tsv.
+# question	option	keys of the names in it (comma separated)	the English name of each, as the option writes it (| separated)
+14	0	x.montague	Montague
+14	1	x.capulet	Capulet
+14	2	x.escalus	Escalus
+25	0	c.puck	Puck
+33	0	x.escalus	Escalus
+50	3	x.aaron	Aaron
+63	0	x.capulet	Capulet
+63	1	x.montague	Montague
+63	2	x.escalus	Escalus
+70	2	x.friarjohn	John
+70	3	x.friarfrancis	Francis
+83	0	h.brutus,h.cassius	Brutus|Cassius
+83	1	h.antony,h.octavius	Antony|Octavius
+83	2	h.calpurnia,h.porcia	Calpurnia|Portia
+83	3	h.cicero,h.casca	Cicero|Casca
+91	0	x.cesario	Cesario
+97	0	x.katherina	Katherina
+97	1	x.bianca	Bianca
+97	2	x.adriana	Adriana
+103	3	x.ursula	Ursula
+106	0	x.edgar	Edgar
+106	2	x.kent	Kent
+106	3	x.gloucester	Gloucester
+109	2	x.phebe	Phebe
+111	1	x.escalus.measure	Escalus
+111	2	x.lucio	Lucio
+113	0	x.katherina	Katherina
+113	1	x.bianca	Bianca
+113	2	x.adriana	Adriana
+125	0	c.juliet,p.romeo	Juliet|Romeo and Juliet
+125	1	c.hamlet,p.hamlet	Hamlet|Hamlet
+125	2	c.portia,p.merchant	Portia|The Merchant of Venice
+125	3	c.viola,p.twelfth	Viola|Twelfth Night
+127	3	x.borachio	Borachio
+131	1	x.gloucester	Gloucester
+131	2	x.kent	Kent
+131	3	x.cornwall	Cornwall
+137	2	x.claribel	Claribel
+139	0	x.cornwall	Cornwall
+139	3	x.oswald	Oswald
+147	1	x.edgar	Edgar
+147	2	x.oswald	Oswald
+147	3	x.cornwall	Cornwall
+149	0	x.vincentio	Vincentio
+149	2	x.escalus.measure	Escalus
+151	0	c.goneril,c.regan,c.cordelia	Goneril|Regan|Cordelia
+151	1	c.goneril,c.rosalind,c.cordelia	Goneril|Rosalind|Cordelia
+151	2	c.helena,c.regan,c.cordelia	Helena|Regan|Cordelia
+151	3	c.goneril,c.regan,c.ophelia	Goneril|Regan|Ophelia
+191	3	x.autolycus	Autolycus

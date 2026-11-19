@@ -1,0 +1,33 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+0	Être, ou ne pas être, c’est là la question.	Être|être	fr-hugo-hamlet
+15	la brièveté est l’âme de l’esprit	brièveté|esprit	fr-hugo-hamlet
+27	Avant tout, sois loyal envers toi-même	loyal|toi-même	fr-hugo-hamlet
+42	nous savons ce que nous sommes, mais nous ne savons pas ce que nous pouvons être.	sommes|être	fr-hugo-hamlet
+43	Fragilité, ton nom est femme !	Fragilité|femme	fr-hugo-hamlet
+53	Il y a quelque chose de pourri dans l’empire du Danemark.	pourri|Danemark	fr-hugo-hamlet
+57	Il y a plus de choses sur la terre et dans le ciel, Horatio, qu’il n’en est rêvé dans votre philosophie.	terre|philosophie	fr-hugo-hamlet
+63	Quel chef-d’œuvre que l’homme ! qu’il est noble dans sa raison !	homme|raison	fr-hugo-hamlet
+73	Il faut que je sois cruel, rien que pour être humain.	cruel|humain	fr-hugo-hamlet
+83	Ô misérable rustre, maroufle que je suis !	rustre|maroufle	fr-hugo-hamlet
+84	Le reste… c’est… silence.	reste|silence	fr-hugo-hamlet
+4	Ô Roméo ! Roméo ! pourquoi es-tu Roméo ?	pourquoi	fr-hugo-romeo
+35	Qu’y a-t-il dans un nom ? Ce que nous appelons une rose embaumerait autant sous un autre nom.	nom|rose	fr-hugo-romeo
+6	Ce que nous appelons une rose embaumerait autant sous un autre nom.	rose|embaumerait	fr-hugo-romeo
+2	Si douce est la tristesse de nos adieux	tristesse|adieux	fr-hugo-romeo
+19	Bonne nuit ! bonne nuit ! Si douce est la tristesse de nos adieux que je te dirais : bonne nuit ! jusqu’à ce qu’il soit jour.	tristesse|jour	fr-hugo-romeo
+12	Malédiction sur les deux maisons !	Malédiction|maisons	fr-hugo-romeo
+34	Ces joies violentes ont des fins violentes	joies|fins	fr-hugo-romeo
+46	Mais doucement ! Quelle lumière jaillit par cette fenêtre ?	lumière	fr-hugo-romeo
+79	Allons sagement et doucement : trébuche qui court vite	doucement|vite	fr-hugo-romeo
+96	Tu sais que le masque de la nuit est sur mon visage ; sans cela, tu verrais une virginale couleur colorer ma joue	nuit|couleur	fr-hugo-romeo
+99	Oh ! elle apprend aux flambeaux à illuminer !	flambeaux|illuminer	fr-hugo-romeo
+5	Amis, Romains, compatriotes, prêtez-moi l’oreille.	oreille	fr-hugo-cesar
+50	Je viens pour ensevelir César, non pour le louer.	ensevelir|louer	fr-hugo-cesar
+36	Le mal que font les hommes vit après eux ; le bien est souvent enterré avec leurs os	bien|enterré	fr-hugo-cesar
+8	Toi aussi, Brutus !	Brutus	fr-hugo-cesar
+69	Les hommes, à de certains moments, sont maîtres de leurs destinées.	maîtres|destinées	fr-hugo-cesar
+29	la faute en est à nous et non à nos étoiles.	nous|étoiles	fr-hugo-cesar
+31	Les lâches meurent bien des fois avant leur mort ; les vaillants ne sentent qu’une fois la mort.	vaillants|fois	fr-hugo-cesar
+47	Pas de quartier ! et déchaînera les chiens de la guerre	quartier|guerre	fr-hugo-cesar
+49	Prends garde aux Ides de Mars	Ides	fr-hugo-cesar
+52	De tous les Romains, ce fut là le plus noble.	noble	fr-hugo-cesar

@@ -1,0 +1,32 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+0	Być albo nie być, otóż-to pytanie	Być|być	pl-paszkowski-hamlet
+20	nic nie jest złem ani dobrem samo przez się, tylko myśl nasza czyni to i owo takiem.	myśl	pl-paszkowski-hamlet
+27	rzetelnym bądź sam względem siebie	rzetelnym|siebie	pl-paszkowski-hamlet
+42	Wiemy, czem jesteśmy	jesteśmy	pl-paszkowski-hamlet
+53	Jest coś butwiejącego w państwie duńskiem.	butwiejącego|państwie	pl-paszkowski-hamlet
+57	Więcej jest rzeczy na ziemi i w niebie	ziemi|niebie	pl-paszkowski-hamlet
+63	Jak doskonałym tworem jest człowiek!	tworem|człowiek	pl-paszkowski-hamlet
+73	Chcąc być powolnym, okrutnym być muszę.	okrutnym	pl-paszkowski-hamlet
+84	Reszta jest milczeniem.	Reszta|milczeniem	pl-paszkowski-hamlet
+4	Romeo, czemuż ty jesteś Romeem!	czemuż	pl-ulrich-romeo
+35	Cóż jest w nazwisku? Co różą zowiemy,	nazwisku|różą	pl-ulrich-romeo
+6	Pod innem mianem dawną woń zachowa;	mianem|woń	pl-ulrich-romeo
+12	Na oba domy zaraza niech padnie!	domy|zaraza	pl-ulrich-romeo
+46	Lecz cicho! Jakież światło z okna błyska?	światło	pl-ulrich-romeo
+96	Gdyby mi nocy maska lic nie kryła,	nocy|maska	pl-ulrich-romeo
+29	To nasza tylko, nie gwiazd naszych wina.	nasza|gwiazd	pl-ulrich-cezar
+47	Wszystkie psy wojny puszczając ze smyczy	psy|wojny	pl-ulrich-cezar
+49	Strzeż się Id marca.	Id	pl-ulrich-cezar
+50	Grzebać Cezara przychodzę, nie chwalić.	Grzebać|chwalić	pl-ulrich-cezar
+31	Trwożliwy stokroć umiera przed śmiercią	Trwożliwy|stokroć	pl-ulrich-cezar
+5	Obywatele, rodacy, Rzymianie	rodacy	pl-ulrich-cezar
+7	Podwójmy trudy, a śmiało dalej!	Podwójmy|trudy	pl-ulrich-macbeth
+11	Precz stąd, przeklęta plamo! precz! powtarzam.	plamo	pl-ulrich-macbeth
+22	Czy to jest sztylet, co przede mną błyszczy	sztylet	pl-ulrich-macbeth
+28	Kłucie w palcach mi powiada	palcach	pl-ulrich-macbeth
+39	Jutro po jutrze i po jutrze jutro	jutrze|jutro	pl-ulrich-macbeth
+81	Z krzykiem i furyą powieść przez idyotę	furyą|idyotę	pl-ulrich-macbeth
+40	To życie tylko cieniem jest przelotnym	życie|cieniem	pl-ulrich-macbeth
+59	Własne me serce przypnę do rękawa	serce|rękawa	pl-ulrich-otello
+80	Zagaśmy światło, potem — zgaśmy światło.	światło|światło	pl-ulrich-otello
+97	Bom nie jest niczem, gdym nie jest krytykiem.	niczem|krytykiem	pl-ulrich-otello

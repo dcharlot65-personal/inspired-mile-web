@@ -1,0 +1,76 @@
+{
+ "hunspell": "1.7 (the shared pipeline build)",
+ "languages": {
+  "es": {
+   "dictionary": "es",
+   "unknown": 18,
+   "errors": 0
+  },
+  "fr": {
+   "dictionary": "fr",
+   "unknown": 9,
+   "errors": 0
+  },
+  "de": {
+   "dictionary": "de",
+   "unknown": 6,
+   "errors": 0
+  },
+  "it": {
+   "dictionary": "it",
+   "unknown": 14,
+   "errors": 0
+  },
+  "pt": {
+   "dictionary": "pt-BR",
+   "unknown": 7,
+   "errors": 0
+  },
+  "pl": {
+   "dictionary": "pl",
+   "unknown": 6,
+   "errors": 0
+  },
+  "ru": {
+   "dictionary": "ru",
+   "unknown": 13,
+   "errors": 0
+  },
+  "ar": {
+   "dictionary": "ar",
+   "unknown": 63,
+   "errors": 0
+  },
+  "hi": {
+   "dictionary": "hi (not usable: Devanagari split at combining marks)",
+   "unknown": null,
+   "errors": 0
+  },
+  "zh": {
+   "dictionary": null
+  },
+  "ja": {
+   "dictionary": null
+  },
+  "ko": {
+   "dictionary": "ko (not usable: particles attached to every word)",
+   "unknown": null,
+   "errors": 0
+  },
+  "vi": {
+   "dictionary": "vi",
+   "unknown": 16,
+   "errors": 0
+  },
+  "th": {
+   "dictionary": "th (not usable: no spaces between words)",
+   "unknown": null,
+   "errors": 0
+  },
+  "id": {
+   "dictionary": "id",
+   "unknown": 32,
+   "errors": 0
+  }
+ }
+}

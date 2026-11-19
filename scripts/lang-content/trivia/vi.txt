@@ -1,0 +1,202 @@
+# Câu đố tiếng Việt. n | câu hỏi | lựa chọn 0 (đáp án đúng) | 1 | 2 | 3.   "=": tên lấy từ bảng tên (Wikidata).
+# Câu thơ của Shakespeare giữ nguyên tiếng Anh, như trên các lá bài. Tên nhân vật và tên vở kịch chưa có nhãn tiếng Việt trên Wikidata thì giữ nguyên.
+0 | Ai đã viết câu "To be, or not to be, that is the question"? | = | = | = | =
+1 | Romeo và Juliet xuất hiện trong vở kịch nào? | = | = | = | =
+2 | Lâu đài của Hamlet tên là gì? | = | = | = | =
+3 | Nhân vật nào nói câu "A plague on both your houses!"? | = | = | = | =
+4 | Shakespeare nổi tiếng nhất với thể loại tác phẩm nào? | Kịch và sonnet | Tiểu thuyết | Sử thi | Truyện ngắn
+5 | Shakespeare sinh ra ở đâu? | = | = | = | =
+6 | Ai giết Romeo trong vở Romeo và Juliet? | Không ai cả, chàng tự kết liễu đời mình | = | = | Cha của Juliet
+7 | Nhà hát của Shakespeare tên là gì? | = | = | = | Nhà hát Hoàng gia
+8 | Vở nào sau đây là hài kịch của Shakespeare? | = | = | = | =
+9 | Juliet đứng ở đâu khi Romeo nói với nàng? | Trên ban công | Trên tháp | Trên cầu | Trên mái nhà
+10 | Câu "Friends, Romans, countrymen, lend me your ears" nằm trong vở kịch nào? | = | = | = | =
+11 | Shakespeare đã viết bao nhiêu vở kịch? | 37 | 15 | 50 | 100
+12 | Vị vua Scotland nổi tiếng nào là nhân vật chính của một bi kịch của Shakespeare? | = | = | = | =
+13 | Vở kịch nào có một hòn đảo phép thuật? | = | = | = | =
+14 | Romeo thuộc gia tộc nào? | Montague | Capulet | Escalus | Laurence
+15 | Nhân vật Puck xuất hiện trong vở kịch nào? | = | = | = | =
+16 | Trong Giông tố, người hầu có phép thuật của Prospero là ai? | = | = | = | =
+17 | Câu "Double, double toil and trouble" nằm trong vở kịch nào? | = | = | = | =
+18 | Shakespeare đã viết bao nhiêu bài sonnet? | 154 | 100 | 200 | 52
+19 | Nhân vật nào là nữ hoàng của các nàng tiên? | = | = | = | =
+20 | Romeo và Juliet lấy bối cảnh ở thành phố nào? | = | = | = | =
+21 | Chú của Hamlet là ai? | = | = | = | =
+22 | Cuối vở kịch, Hamlet chết vì cái gì? | Một thanh kiếm tẩm độc | Một con dao găm | Thuốc độc trong rượu | Ngã từ trên tháp
+23 | Vở kịch nào có ba mụ phù thủy? | = | = | = | =
+24 | Ai nói "Et tu, Brute?" lúc sắp chết? | = | = | = | =
+25 | Tinh linh tinh nghịch trong A Midsummer Night's Dream tên là gì? | Puck (Robin Goodfellow) | = | = | =
+26 | Trong Hamlet, câu "Get thee to a nunnery" được nói với nhân vật nào? | = | = | = | =
+27 | Trong Người lái buôn thành Venice, Shylock đòi gì làm vật thế chấp? | Một cân thịt | Một túi vàng | Một con tàu | Một chiếc nhẫn
+28 | Trong Giông tố, người hầu quái dị của Prospero là ai? | = | = | = | =
+29 | Lady Macbeth nói "Out, damned ___!". Từ còn thiếu là gì? | Spot | Blood | Hand | Stain
+30 | Trong vở kịch nào, một nhân vật cầm chiếc đầu lâu và nói "Alas, poor Yorick"? | = | = | = | =
+31 | Hai nhân vật Beatrice và Benedick xuất hiện trong vở kịch nào? | = | = | = | =
+32 | Macbeth thấy vật gì lơ lửng trước mặt, dẫn ông tới phòng của Duncan? | Một con dao găm | Một hồn ma | Một chiếc vương miện | Một ngọn đuốc
+33 | Ai là vương công xứ Verona trong Romeo và Juliet? | Escalus | = | = | =
+34 | Phụ đề của vở Đêm thứ mười hai là gì? | Hay Tùy ý các bạn (Or, What You Will) | Hay Như các bạn thích | Hay Hài kịch của những nhầm lẫn | Hay Mọi sự đều tốt
+35 | Vở kịch nào có câu "All the world's a stage"? | = | = | = | =
+36 | Vua của các tiên trong A Midsummer Night's Dream tên là gì? | = | = | = | =
+37 | Nhân vật nào nói câu "Brevity is the soul of wit"? | = | = | = | =
+38 | Juliet muốn nói gì qua câu "What's in a name?"? | Cái tên không thay đổi con người thật của một ai đó | Nàng quên mất tên Romeo | Nàng muốn đổi tên mình | Cái tên quan trọng hơn hành động
+39 | Vở nào sau đây KHÔNG phải của Shakespeare? | = | = | = | =
+40 | Trong vở kịch nào, một nhân vật bị biến thành có đầu lừa? | = | = | = | =
+41 | Trong Othello, Iago giữ cấp bậc gì? | Sĩ quan cầm cờ | Đại úy | Tướng | Phó tướng
+42 | Vở kịch nào của Shakespeare còn được gọi là "vở kịch xứ Scotland"? | = | = | = | =
+43 | Vở kịch nào mở đầu bằng câu "Now is the winter of our discontent"? | = | = | = | =
+44 | Vở kịch nào dài nhất của Shakespeare? | = | = | = | =
+45 | Cuối vở kịch nào, Prospero bẻ gãy cây gậy phép và dìm cuốn sách của mình xuống biển? | = | = | = | =
+46 | Nhân vật nào nói câu "Lord, what fools these mortals be!"? | = | = | = | =
+47 | Câu "The quality of mercy is not strained" nằm trong vở kịch nào? | = | = | = | =
+48 | Oberon dùng nhựa của loài hoa nào để khiến người ta phải lòng nhau? | Hoa păng-xê (love-in-idleness) | Hoa hồng | Hoa huệ tây | Hoa violet
+49 | Trong Vua Lia, vua Lia có mấy người con gái? | Ba | Hai | Bốn | Một
+50 | Kẻ phản diện nào của Shakespeare nói "I am not what I am"? | = | = | = | Aaron
+51 | Các mụ phù thủy tiên tri gì với Macbeth về khu rừng Birnam? | Ông sẽ không bại trận cho tới khi khu rừng tiến về lâu đài của ông | Ông phải đốt khu rừng để được an toàn | Khu rừng che giấu kẻ thù của ông | Một cái cây sẽ đổ và đè chết ông
+52 | "Dark Lady" của Shakespeare xuất hiện trong nhóm tác phẩm nào? | Các bài sonnet | Các vở kịch lịch sử | Các vở kịch lãng mạn | Các vở kịch vấn đề
+53 | Nhân vật nào nói câu "These violent delights have violent ends"? | Tu sĩ Laurence | = | = | Vương công
+54 | Trong vở kịch nào, Rosalind và Orlando ở trong rừng Arden? | = | = | = | =
+55 | Vợ của Shakespeare tên là gì? | = | = | = | =
+56 | Shakespeare sinh vào thế kỷ nào? | Thế kỷ 16 | Thế kỷ 15 | Thế kỷ 17 | Thế kỷ 14
+57 | Vở nào sau đây là bi kịch của Shakespeare? | = | = | = | =
+58 | Hamlet lấy bối cảnh ở đâu? | = | = | = | =
+59 | Nhân vật mà nhan đề Người lái buôn thành Venice nói tới là ai? | = | = | = | =
+60 | Trong Romeo và Juliet, Juliet giả chết bằng cách nào? | Uống thuốc ngủ | Dùng bùa phép | Nín thở | Uống thuốc độc
+61 | Nhân vật nào là hoàng tử Đan Mạch? | = | = | = | =
+62 | Shakespeare thường được gọi là "The ____ of Avon". Từ còn thiếu là gì? | Bard | King | Poet | Master
+63 | Juliet thuộc gia tộc nào? | Capulet | Montague | Escalus | Laurence
+64 | Phần lớn hài kịch của Shakespeare lấy bối cảnh ở nước nào? | = | = | = | =
+65 | Ai giết Macbeth ở cuối vở kịch? | = | = | = | =
+66 | Hamlet muốn nói gì qua câu "the rest is silence"? | Chàng sắp chết và không thể nói thêm được nữa | Chàng muốn mọi người im lặng | Chàng sắp đi ngủ | Chàng không có ý kiến gì
+67 | Vở kịch nào của Shakespeare có cặp song sinh bị đắm tàu? | = | = | = | =
+68 | Trong A Midsummer Night's Dream, Bottom bị biến thành có đầu của con vật nào? | Con lừa | Con ngựa | Con gấu | Con lợn
+69 | Shakespeare dành phần lớn sự nghiệp ở thành phố nào của nước Anh? | = | = | = | =
+70 | Vị tu sĩ trong Romeo và Juliet tên là gì? | Tu sĩ Laurence | = | Tu sĩ John | Tu sĩ Francis
+71 | Ai cai quản hòn đảo phép thuật trong Giông tố? | = | = | = | =
+72 | Vở kịch nào có nhân vật tên là Shylock? | = | = | = | =
+73 | Hồn ma xuất hiện ở đầu vở Hamlet là của ai? | Cha của Hamlet | Ông của Hamlet | = | =
+74 | Bài thơ nào mở đầu bằng câu nổi tiếng "Shall I compare thee to a summer's day?" | Sonnet 18 | Sonnet 1 | Sonnet 130 | Sonnet 116
+75 | Ở đầu vở kịch, Macbeth mang tước hiệu gì? | Lãnh chúa xứ Glamis | Vua Scotland | Công tước xứ Albany | Bá tước xứ Northumberland
+76 | Vở kịch nào của Shakespeare kể về một người Moor ghen tuông? | = | = | = | =
+77 | Ophelia chết như thế nào trong Hamlet? | Nàng chết đuối | Nàng bị đầu độc | Nàng bị đâm | Nàng ngã từ trên tháp
+78 | Vị quân chủ nào trị vì nước Anh trong phần lớn sự nghiệp của Shakespeare? | = | = | = | =
+79 | Miranda, con gái của Prospero, nói gì khi lần đầu nhìn thấy những người khác? | "O brave new world" | "What magic is this" | "Father, who are they" | "I must be dreaming"
+80 | Trong vở kịch nào, một nhân vật cải trang thành luật sư tên là Balthazar? | = | = | = | =
+81 | Dưới thời vua James I, gánh hát của Shakespeare tên là gì? | = | The Queen's Players | = | The Chamberlain's Servants
+82 | Vở kịch nào mở đầu bằng một cơn bão trên biển? | = | = | = | =
+83 | Trong Julius Caesar, ai cầm đầu âm mưu ám sát Caesar? | Brutus và Cassius | Mark Antony và Octavius | Calpurnia và Portia | Cicero và Casca
+84 | A Midsummer Night's Dream thuộc thể loại nào? | Hài kịch | Bi kịch | Kịch lịch sử | Kịch lãng mạn
+85 | Vở kịch nào của Shakespeare có khu rừng Arden? | = | = | = | =
+86 | Shakespeare mất năm nào? | 1616 | 1600 | 1623 | 1590
+87 | Bạn thân nhất của Romeo là ai? | = | = | = | =
+88 | Con gái của Prospero trong Giông tố tên là gì? | = | = | = | =
+89 | Vở kịch nào có câu "If music be the food of love, play on"? | = | = | = | =
+90 | Macbeth được ban tước hiệu gì sau chiến thắng đầu tiên? | Lãnh chúa xứ Cawdor | Lãnh chúa xứ Glamis | Công tước xứ Albany | Bá tước xứ Ross
+91 | Trong Đêm thứ mười hai, Viola lấy tên gì khi cải trang thành nam giới? | Cesario | = | = | =
+92 | Ai giết Tybalt trong Romeo và Juliet? | = | = | = | =
+93 | Trong Vua Lia, người con gái nào thật lòng yêu thương cha? | = | = | = | Cả ba như nhau
+94 | Othello giết Desdemona bằng gì? | Một chiếc gối (làm nàng ngạt thở) | Một con dao găm | Thuốc độc | Một sợi dây
+95 | Nhân vật Malvolio xuất hiện trong vở kịch nào? | = | = | = | =
+96 | Mẹ của Hamlet tên là gì? | = | = | = | =
+97 | Trong The Taming of the Shrew, "cô nàng đanh đá" tên là gì? | Katherina (Kate) | Bianca | Adriana | =
+98 | Cha của Desdemona trong Othello là ai? | = | = | = | =
+99 | Nhân vật nào đọc bài diễn văn "Once more unto the breach"? | = | = | = | =
+100 | Trong The Winter's Tale, Perdita là công chúa của vương quốc nào? | = | = | = | =
+101 | Ai là công tước xứ Illyria trong Đêm thứ mười hai? | = | = | = | =
+102 | Trong Người lái buôn thành Venice, Portia cải trang thành ai? | Một nam luật sư | Một thương nhân | Một thủy thủ | Một tu sĩ
+103 | Trong Có gì đâu mà rộn, nhân vật nào giả chết? | = | = | = | Ursula
+104 | Hamlet cho diễn vở kịch lồng trong kịch nào để dò lương tâm nhà vua? | Cái bẫy chuột (The Mousetrap) | Vụ ám sát Gonzago (The Murder of Gonzago) | Vở kịch của nhà vua | Tấm gương cho các bậc vương công
+105 | Trong Julius Caesar, ai đọc bài điếu văn nổi tiếng mở đầu bằng "Friends, Romans, countrymen"? | = | = | = | =
+106 | Người bạn đồng hành trung thành của vua Lia, kẻ cải trang thành "Poor Tom", tên là gì? | Edgar | = | Kent | Gloucester
+107 | Trong Othello, Iago dùng vật gì để khiến Othello tin rằng Desdemona không chung thủy? | Một chiếc khăn tay | Một lá thư | Một chiếc nhẫn | Một bức chân dung
+108 | Vở kịch nào kết thúc bằng câu "The rest is silence"? | = | = | = | =
+109 | Ai cải trang thành chàng trai tên Ganymede trong As You Like It? | = | = | Phebe | =
+110 | Chuyện gì đã xảy ra với Globe Theatre năm 1613? | Nhà hát bị cháy rụi trong một buổi diễn | Nhà vua ra lệnh đóng cửa | Nhà hát sập trong một cơn bão | Nhà hát bị phá để xây lại
+111 | Trong Measure for Measure, ai là viên phó nhiếp chính thối nát được giao cai quản Vienna? | = | Escalus | Lucio | Claudio
+112 | Vở kịch nào của Shakespeare có nhân vật tên là Caliban? | = | = | = | =
+113 | Cô dâu của Petruchio trong The Taming of the Shrew tên là gì? | Katherina | Bianca | Adriana | =
+114 | Trong Antony and Cleopatra, Cleopatra chết như thế nào? | Bị rắn độc cắn | Uống thuốc độc | Chết đuối | Dùng dao găm
+115 | Trong Macbeth, hồn ma của Banquo ám ai? | = | = | = | =
+116 | Viên phó tướng của Othello mà Iago ghen tị tên là gì? | = | = | = | =
+117 | Trong Richard III, Richard muốn đổi vương quốc của mình lấy gì? | Một con ngựa | Một thanh kiếm | Một chiếc vương miện | Mạng sống của mình
+118 | Người anh song sinh của Viola trong Đêm thứ mười hai là ai? | = | = | = | =
+119 | Trong Henry V, bài diễn văn nổi tiếng ngày Thánh Crispin diễn ra trước trận đánh nào? | = | = | = | =
+120 | Ai giết vua Duncan trong Macbeth? | = | = | = | =
+121 | Trong Người lái buôn thành Venice, Bassanio phải chọn chiếc hộp nào để cưới được Portia? | Hộp chì | Hộp vàng | Hộp bạc | Hộp đồng
+122 | Người bạn thân và tri kỷ của Hamlet tên là gì? | = | = | = | =
+123 | Vở kịch nào của Shakespeare lấy bối cảnh Ai Cập cổ đại? | = | = | = | =
+124 | Trong Vua Lia, trước khi chia vương quốc, vua Lia yêu cầu các con gái nói ra điều gì? | Họ yêu cha nhiều đến mức nào | Kế hoạch trị vì của họ | Triển vọng hôn nhân của họ | Sức mạnh quân sự của họ
+125 | Ai nói câu "Parting is such sweet sorrow"? | Juliet trong Romeo và Juliet | Hamlet trong Hamlet | Portia trong Người lái buôn thành Venice | Viola trong Đêm thứ mười hai
+126 | Lady Macbeth làm gì một cách ám ảnh khi mộng du? | Rửa tay | Đọc diễn văn | Tìm một con dao găm | Gọi chồng
+127 | Trong Có gì đâu mà rộn, ai là kẻ phản diện bày mưu? | = | = | = | Borachio
+128 | Lễ hội của những người chăn cừu trong The Winter's Tale tên là gì? | Lễ xén lông cừu | Vũ hội mùa gặt | Lễ hội hóa trang mùa xuân | Cuộc vui giữa mùa hạ
+129 | Trong As You Like It, ai đọc đoạn thoại về "bảy lứa tuổi của đời người"? | = | = | = | Vị công tước bị lưu đày
+130 | Nhân vật nào trong A Midsummer Night's Dream dẫn dắt một nhóm diễn viên nghiệp dư? | = | = | = | =
+131 | Cha của Cordelia trong Vua Lia là ai? | Vua Lia | Bá tước xứ Gloucester | Bá tước xứ Kent | Công tước xứ Cornwall
+132 | Trong Giông tố, Caliban tự nhận mình có quan hệ gì với hòn đảo? | Hắn tự nhận là người cai trị chính đáng của đảo | Hắn tự nhận là người tạo ra đảo | Hắn tự nhận là người bảo vệ đảo | Hắn không nhận quan hệ nào
+133 | Vợ của Brutus trong Julius Caesar tên là gì? | = | = | = | =
+134 | Vở kịch nào của Shakespeare diễn ra trong khu rừng gần Athens? | = | = | = | =
+135 | Trong Measure for Measure, Claudio bị bắt vì tội gì? | Làm vị hôn thê có thai trước khi cưới | Trộm cắp | Giết người | Phản quốc
+136 | Anh hề trong Đêm thứ mười hai tên là gì? | = | = | = | =
+137 | Ferdinand phải lòng ai trong Giông tố? | = | = | Claribel | =
+138 | Romeo mua gì của người bán thuốc? | Thuốc độc | Thuốc ngủ | Thuốc chữa bệnh | Bùa yêu
+139 | Trong Vua Lia, ai làm Gloucester mù mắt? | Cornwall | = | = | Oswald
+140 | Trước khi vua James trở thành người bảo trợ, gánh hát của Shakespeare tên là gì? | = | = | = | =
+141 | Viên cảnh binh vụng về Dogberry xuất hiện trong vở kịch nào? | = | = | = | =
+142 | Antony chết như thế nào trong Antony and Cleopatra? | Ông tự lao mình vào thanh kiếm của chính mình | Ông tử trận | Ông bị đầu độc | Ông bị xử tử
+143 | Hermione trong The Winter's Tale là ai? | Hoàng hậu xứ Sicilia | Một cô gái chăn cừu | Một phù thủy | Một người hầu
+144 | Trong vở kịch nào, một nhân vật đi tất vàng với dây nịt bắt chéo? | = | = | = | =
+145 | Theo cách chính Hamlet gọi, vở kịch lồng trong kịch ở Hamlet tên là gì? | Cái bẫy chuột (The Mousetrap) | Vụ ám sát Gonzago (The Murder of Gonzago) | Lương tâm của nhà vua | Cuộc báo thù của Đan Mạch
+146 | Trong vở kịch nào, một nhân vật sống sót dù bị bỏ rơi ở Bohemia khi còn là trẻ sơ sinh? | = | = | = | =
+147 | Người con ngoài giá thú của Gloucester trong Vua Lia tên là gì? | = | Edgar | Oswald | Cornwall
+148 | Bài sonnet nào của Shakespeare mở đầu bằng "Let me not to the marriage of true minds / Admit impediments"? | Sonnet 116 | Sonnet 18 | Sonnet 130 | Sonnet 73
+149 | Trong Measure for Measure, vị công tước cải trang thành tu sĩ tên là gì? | Vincentio | = | Escalus | Claudio
+150 | Vở kịch nào được cho là vở cuối cùng Shakespeare tự mình viết? | = | = | = | =
+151 | Ba người con gái của vua Lia tên là gì? | Goneril, Regan và Cordelia | Goneril, Rosalind và Cordelia | Helena, Regan và Cordelia | Goneril, Regan và Ophelia
+152 | Trong Người lái buôn thành Venice, trên chiếc hộp chì khắc dòng chữ gì? | "Who chooseth me must give and hazard all he hath" | "Who chooseth me shall gain what many men desire" | "Who chooseth me shall get as much as he deserves" | "Who chooseth me shall find true love"
+153 | Sonnet 130 ("My mistress' eyes are nothing like the sun") có gì đặc biệt? | Đó là một bài sonnet phản Petrarca, giễu cợt lối thơ tình ước lệ | Bài thơ viết theo thể tự do chứ không theo nhịp iamb năm chân | Đó là bài sonnet duy nhất viết cho một người đàn ông | Bài thơ được xuất bản tách khỏi các bài sonnet khác
+154 | Trong Richard III, Richard nói mình mang dị tật gì? | Lưng gù | Mất một bàn tay | Bàn chân khoèo | Mù một mắt
+155 | Sycorax trong Giông tố là ai? | Mẹ của Caliban, một phù thủy cai quản hòn đảo trước Prospero | Chị em của Ariel | Người vợ đầu của Prospero | Một nữ thần biển
+156 | Sơ đồ gieo vần của một bài sonnet kiểu Shakespeare là gì? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
+157 | Lời chỉ dẫn sân khấu "Exit, pursued by a bear" nằm trong vở kịch nào? | = | = | = | =
+158 | Con trai của Shakespeare, cậu bé mất khi còn nhỏ, tên là gì? | = | Hamlet | Edmund | William
+159 | Trong Othello, Othello là người ở đâu? | Ông là người Moor (từ Bắc Phi) | Ông là người Venice | Ông là người đảo Síp | Ông là người Tây Ban Nha
+160 | Nhân vật nào trong Henry V cải trang để đi giữa binh lính của mình trước trận đánh? | Vua Henry V | Công tước xứ Exeter | Đại úy Fluellen | Bá tước xứ Westmoreland
+161 | Câu đầu tiên của Richard III là gì? | "Now is the winter of our discontent / Made glorious summer by this sun of York" | "A horse, a horse, my kingdom for a horse" | "Was ever woman in this humour wooed" | "Off with his head! So much for Buckingham"
+162 | Trong The Taming of the Shrew, nhân vật ở phần truyện khung, người ngồi xem vở kịch, tên là gì? | = | = | = | =
+163 | Tác phẩm nào sau đây của Shakespeare được xem là một "vở kịch vấn đề"? | = | = | = | =
+164 | Globe Theatre đầu tiên được xây năm nào? | 1599 | 1576 | 1610 | 1588
+165 | Trong Macbeth, lâu đài của Macduff, nơi gia đình ông bị sát hại, tên là gì? | = | = | = | =
+166 | Nhân vật nào trong Julius Caesar nằm mơ rồi cảnh báo chồng đừng tới Viện Nguyên lão? | = | = | = | =
+167 | Tuyển tập đầu tiên in chung các vở kịch của Shakespeare tên là gì? | = | Toàn tập tác phẩm | Tuyển tập khổ bốn | Hợp tuyển của Thi hào
+168 | First Folio được xuất bản năm nào? | 1623 | 1616 | 1599 | 1609
+169 | Vở kịch nào của Shakespeare có Autolycus, một gã bán hàng rong láu cá? | = | = | = | =
+170 | Ai đọc lời kết ở cuối vở Giông tố? | = | = | = | Người dẫn chuyện
+171 | Trong Antony and Cleopatra, trận hải chiến quyết định tên là gì? | = | = | = | =
+172 | Từ "nunnery" trong câu "Get thee to a nunnery" của Hamlet có lẽ mang nghĩa nước đôi nào? | Vừa là tu viện, vừa là nhà chứa trong tiếng lóng thời Elizabeth | Chỉ là tu viện | Nhà tù | Trường học cho phụ nữ
+173 | Vở kịch nào của Shakespeare có đoạn độc thoại "To-morrow, and to-morrow, and to-morrow"? | = | = | = | =
+174 | Trong Vua Lia, Kent làm gì sau khi bị trục xuất? | Cải trang thành một người hầu tên Caius để ở gần vua Lia | Trốn sang Pháp | Gia nhập quân đội Pháp | Trở thành ẩn sĩ
+175 | Nhà thơ kiêm nhà viết kịch nào, đối thủ cùng thời với Shakespeare, bị giết trong một vụ ẩu đả ở quán rượu năm 1593? | = | = | = | =
+176 | Trong The Winter's Tale, bao nhiêu thời gian trôi qua giữa hồi 3 và hồi 4? | 16 năm | 5 năm | 1 năm | 20 năm
+177 | "Green-eyed monster" mà Iago cảnh báo Othello là gì? | Lòng ghen tuông | Tham vọng | Lòng tham | Sự báo thù
+178 | Trong A Midsummer Night's Dream, những người thợ thủ công diễn vở kịch nào trong đám cưới? | = | = | = | =
+179 | Truyền thống diễn viên thiếu niên ở sân khấu thời Elizabeth là gì? | Các cậu bé đóng mọi vai nữ vì phụ nữ bị cấm lên sân khấu | Các cậu bé chỉ đóng vai trẻ em | Các cậu bé làm đạo diễn sân khấu | Các cậu bé chỉ diễn hài kịch
+180 | Trong vở kịch nào, vị công tước bị lưu đày nói "Sweet are the uses of adversity"? | = | = | = | =
+181 | Những vở kịch cuối đời của Shakespeare như The Winter's Tale và Giông tố được gọi là gì? | Kịch lãng mạn (hay kịch lãng mạn cuối đời) | Bi hài kịch | Kịch đồng quê | Kịch mặt nạ
+182 | Trong Macbeth, ai nói "By the pricking of my thumbs, / Something wicked this way comes"? | Mụ phù thủy thứ hai | Mụ phù thủy thứ nhất | = | =
+183 | Người con gái nào của vua Lia lấy công tước xứ Cornwall? | = | = | = | Không ai cả
+184 | Nhan đề đầy đủ của vở kịch thường gọi là Henry V là gì? | The Life of King Henry the Fifth | The Chronicle History of Henry V | Henry V: The Warrior King | The Reign of King Henry V
+185 | Trong Measure for Measure, Angelo đòi Isabella điều gì để đổi lấy mạng sống của em trai nàng? | Nàng phải ngủ với hắn | Một khoản tiền lớn | Một lời thú tội công khai | Nàng phải rời tu viện
+186 | Ai nói "Cowards die many times before their deaths; the valiant never taste of death but once"? | = | = | = | =
+187 | "Pit" hay "yard" trong Globe Theatre là gì? | Khu đứng xem trước sân khấu, có giá vé rẻ nhất | Kho chứa đồ dưới sân khấu | Hậu trường cho diễn viên | Khu dành cho dàn nhạc
+188 | Trong Sonnet 18, theo nhà thơ, điều gì sẽ làm cho người mình yêu trở nên bất tử? | Chính bài thơ ("So long lives this, and this gives life to thee") | Vẻ đẹp của người mình yêu | Mặt trời mùa hạ | Một bức chân dung của người mình yêu
+189 | Nhân vật nào trong Hamlet nói "Though this be madness, yet there is method in't"? | = | = | = | =
+190 | Trong Người lái buôn thành Venice, người cha quá cố của Portia đặt ra điều kiện gì cho những người cầu hôn nàng? | Họ phải chọn đúng một trong ba chiếc hộp (vàng, bạc, chì) | Họ phải đánh bại nhau trong giao đấu | Họ phải giải một câu đố | Họ phải chứng tỏ mình giàu có
+191 | Nhân vật hiện thân của Thời gian trong The Winter's Tale được gọi là gì? | Thời gian (trong vai trò dàn đồng ca) | Cha Thời gian | Lời sấm | Autolycus
+192 | Vở kịch nào của Shakespeare có lẽ được viết để tôn vinh vua James I vừa đăng quang? | = | = | = | =
+193 | Trong Đêm thứ mười hai, Maria và Sir Toby bày trò gì để trêu Malvolio? | Họ giả một bức thư tình của Olivia bảo ông ta đi tất vàng | Họ nhốt ông ta trong phòng | Họ lấy trộm quần áo của ông ta | Họ làm ông ta tin rằng mình sắp điếc
+194 | Phần mái che vẽ các vì sao phía trên sân khấu của Globe Theatre được gọi là gì? | Thiên đường (the Heavens) | Tán che | Vòm trời | Mái nhà
+195 | Trong vở kịch nào, một nhân vật đi hỏi lời sấm ở Delphi? | = | = | = | =
+196 | Ai đã xuất bản các bài sonnet của Shakespeare năm 1609? | = | = | = | =
+197 | Trong Henry V, thái tử Pháp gửi cho Henry món quà mang tính sỉ nhục nào? | Những quả bóng quần vợt | Một chiếc vương miện đồ chơi | Một chiếc mũ hề | Một thanh kiếm gỗ
+198 | Vở kịch nào của Shakespeare có bài diễn văn nổi tiếng "band of brothers"? | = | = | = | =
+199 | Những khán giả đứng xem ở khoảng sân của Globe Theatre được gọi là gì? | Groundlings | Penny standers | Đám đông ô hợp | Dân thường

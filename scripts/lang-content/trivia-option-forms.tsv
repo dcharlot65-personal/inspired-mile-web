@@ -1,0 +1,111 @@
+# A name option of the trivia written otherwise than the names table makes it, reviewed by hand, with the reason.
+# play-areas.test.ts fails on any other difference. Reasons: title (a title or common noun translated around the name),
+# shortened (the label without its disambiguator or the title the question does not need), inflected (the case the
+# question asks for), distractor (a wrong answer made from the name), number (an ordinal or counter the language writes).
+# lang	question	option	text	reason
+pt	160	0	O rei Henrique V	title	King translated; the label without its disambiguator
+pl	14	3	Laurentego	inflected	genitive of Laurenty (sourced as Ojciec Laurenty), as the other family names of the question are
+pl	52	0	W Sonetach	inflected	the case the question asks for
+pl	63	3	Laurentego	inflected	genitive of Laurenty (sourced as Ojciec Laurenty), as the other family names of the question are
+pl	160	0	Król Henryk V	title	King translated; the label without its disambiguator
+ru	52	0	В сонетах	inflected	the case the question asks for
+ru	81	0	Слуги короля (King's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ru	81	2	Слуги лорда-адмирала (Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ru	140	1	Слуги лорда-адмирала (Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ru	140	2	Слуги королевы (Queen's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ru	140	3	Слуги графа Лестера (Leicester's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	81	0	رجال الملك (King's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	81	2	رجال الأميرال (Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	140	0	رجال اللورد تشامبرلين (Lord Chamberlain's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	140	1	رجال الأميرال (Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	140	2	رجال الملكة (Queen's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	140	3	رجال إيرل ليستر (Leicester's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ar	160	0	الملك هنري الخامس	title	King translated; the label without its disambiguator
+zh	74	0	第 18 首十四行诗	number	the ordinal the language writes (第 N 首), with the label's number
+zh	74	3	第 116 首十四行诗	number	the ordinal the language writes (第 N 首), with the label's number
+zh	81	2	海军大臣剧团（Admiral's Men）	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+zh	140	1	海军大臣剧团（Admiral's Men）	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+zh	148	0	第 116 首十四行诗	number	the ordinal the language writes (第 N 首), with the label's number
+zh	148	1	第 18 首十四行诗	number	the ordinal the language writes (第 N 首), with the label's number
+ja	160	0	ヘンリー五世	number	ヘンリー五世, the kanji numeral of the ja.wikipedia article on the play (names-evidence.tsv); the label writes 5世
+ko	81	0	국왕 극단(King's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ko	81	2	해군 대신 극단(Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ko	140	0	궁내 대신 극단(Lord Chamberlain's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ko	140	1	해군 대신 극단(Admiral's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ko	140	2	여왕 극단(Queen's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+ko	140	3	레스터 백작 극단(Leicester's Men)	title	the company's name translated, as histories of the theatre in this language do, with its English name beside it
+vi	53	0	Tu sĩ Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
+vi	70	0	Tu sĩ Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
+vi	131	0	Vua Lia	title	Vua Lia is Wikidata's Vietnamese label of the play King Lear (Q181598), which is the character's name
+vi	160	0	Vua Henry V	title	King translated; the label without its disambiguator
+id	52	0	Soneta	title	the common noun (soneta, sonnets): the work has no Indonesian label
+id	53	0	Pastor Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
+id	70	0	Pastor Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
+id	160	0	Raja Henry V	title	King translated; the label without its disambiguator
+ar	16	0	Ariel	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ar	21	0	Claudius	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ar	33	1	Paris	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ar	33	2	Mercutio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ar	33	3	Tybalt	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	13	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	33	1	Paris	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	33	2	Mercutio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	33	3	Tybalt	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	82	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	89	1	A Midsummer Night's Dream	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	89	2	Romeo and Juliet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	89	3	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	111	0	Angelo	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	137	0	Miranda	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	147	0	Edmund	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	150	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	157	1	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	157	2	A Midsummer Night's Dream	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	157	3	As You Like It	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+hi	175	0	Christopher Marlowe	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	101	1	Malvolio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	101	2	Sebastian	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	101	3	Sir Toby Belch	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	130	1	Bottom	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	130	2	Snug	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	130	3	Flute	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	178	1	Troilus and Cressida	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	178	2	Romeo and Juliet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+zh	178	3	Hero and Leander	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	28	1	Ariel	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	28	2	Ferdinand	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	28	3	Stephano	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	111	3	Claudio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	129	1	Rosalind	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	129	2	Orlando	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	8	1	Hamlet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	8	2	Macbeth	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	8	3	Othello	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	12	0	Macbeth	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	16	0	Ariel	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	45	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	47	0	The Merchant of Venice	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	61	0	Hamlet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	88	0	Miranda	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	1	Paris	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	2	Mercutio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	3	Tybalt	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	95	0	Twelfth Night	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	112	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	144	0	Twelfth Night	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	150	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	163	1	Twelfth Night	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	163	2	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	163	3	Romeo and Juliet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	33	1	Paris	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	33	2	Mercutio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	33	3	Tybalt	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	70	0	Friar Lawrence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	14	3	Laurence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	63	3	Laurence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	116	0	Cassio	script	every option of this question in Latin letters: Othello's Gratiano has no Korean name in any source (ko.wikipedia's 오셀로 does not name him), and 카시오 alone in Hangul would give the answer away
+ja	83	0	ブルータスとキャシアス	shortened	the cast list of ja.wikipedia's ジュリアス・シーザー names him ケイアス・キャシアス (Caius Cassius); the option uses his family name, as the play does
+pl	125	2	Porcja w Kupcu weneckim	inflected	the locative of Kupiec wenecki (the Wikidata label), after "w"
+pl	125	3	Viola w Wieczorze Trzech Króli	inflected	the locative of Wieczór Trzech Króli (the Wikidata label), after "w"
+ru	125	2	Порция в «Венецианском купце»	inflected	the prepositional of Венецианский купец (the Wikidata label), after "в"
+ru	125	3	Виола в «Двенадцатой ночи»	inflected	the prepositional of Двенадцатая ночь (the Wikidata label), after "в"

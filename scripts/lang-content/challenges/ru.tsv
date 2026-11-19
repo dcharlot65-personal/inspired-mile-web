@@ -1,0 +1,23 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+0	Быть, или не быть? вот в чём вопрос!	Быть|быть	ru-kroneberg-hamlet
+15	И так как краткость есть душа ума	краткость|ума	ru-kroneberg-hamlet
+20	Само по себе ничто ни дурно, ни хорошо; мысль делает его тем или другим.	мысль	ru-kroneberg-hamlet
+27	Но главное: будь верен самому себе	верен|себе	ru-kroneberg-hamlet
+43	Ничтожность, женщина, твоё названье!	женщина	ru-kroneberg-hamlet
+53	Нечисто что-то в датском королевстве.	Нечисто|королевстве	ru-kroneberg-hamlet
+57	Есть многое на небе и земле	небе|земле	ru-kroneberg-hamlet
+63	Какое образцовое создание человек! Как благороден разумом!	человек|разумом	ru-kroneberg-hamlet
+83	Какой злодей, какой я раб презренный!	злодей|раб	ru-kroneberg-hamlet
+84	конец — молчанье.	конец|молчанье	ru-kroneberg-hamlet
+4	О Ромео, Ромео! Отчего, зачем	Отчего|зачем	ru-grigoryev-romeo
+35	И что такое имя? Что зовем мы розой,	имя|розой	ru-grigoryev-romeo
+6	Зовись она иначе, запах тот же!	иначе|запах	ru-grigoryev-romeo
+12	Чума на оба ваши дома	Чума|дома	ru-grigoryev-romeo
+34	Насильственным страстям - насильственный конец	страстям|конец	ru-grigoryev-romeo
+46	Но тише! Что за свет в окне мелькнул?	свет	ru-grigoryev-romeo
+79	Осторожно-медленный шаг всегда верней.	медленный|верней	ru-grigoryev-romeo
+96	Ты знаешь, маска тьмы теперь скрывает	маска|тьмы	ru-grigoryev-romeo
+37	Нет, я не тот, каким кажусь!	тот|кажусь	ru-weinberg-othello
+59	Всю выложить и дать в добычу галкам?	выложить|галкам	ru-weinberg-othello
+64	Ограбленный, смеясь своей потере,	смеясь|потере	ru-weinberg-othello
+80	Задуть свечу, а там… Задуть свечу?	свечу|свечу	ru-weinberg-othello

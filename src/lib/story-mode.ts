@@ -48,7 +48,7 @@ export const ACTS: Act[] = [
     setting: 'Denmark',
     description: 'Something is rotten in the state of Denmark. Unravel the court\'s dark secrets.',
     encounters: [
-      { id: '2-1', name: 'The Ghost\'s Warning', description: 'Decipher the ghost\'s cryptic verse.', opponent: 'DC-003', difficulty: 'medium', narrative: 'On the battlements at midnight, a spectral figure appears. King Claudius\'s ghost — or is it? The spirit speaks in riddles that only a true wordsmith can untangle.' },
+      { id: '2-1', name: 'The Ghost\'s Warning', description: 'Decipher the ghost\'s cryptic verse.', opponent: 'DC-003', difficulty: 'medium', narrative: 'On the battlements at midnight, a spectral figure appears. The dead king\'s ghost — or is it? The spirit speaks in riddles that only a true wordsmith can untangle.' },
       { id: '2-2', name: 'Ophelia\'s Garden', description: 'A poetic duel among the flowers.', opponent: 'DC-002', difficulty: 'easy', narrative: 'In the castle garden, Ophelia weaves flower crowns and speaks in the language of blooms. "There\'s rosemary, that\'s for remembrance. Can you read my floral verses?"' },
       { id: '2-3', name: 'The Mousetrap', description: 'Outsmart the cunning King Claudius.', opponent: 'DC-003', difficulty: 'hard', narrative: '"The play\'s the thing wherein I\'ll catch the conscience of the king." You must perform a verse so piercing that truth itself takes the stage.' },
       { id: '2-4', name: 'Hamlet\'s Soliloquy', description: 'Face the prince himself in a battle of words.', opponent: 'DC-001', difficulty: 'hard', narrative: 'In the great hall, Hamlet paces. "To be, or not to be..." He turns to you. "But what is YOUR answer, stranger? Speak, and let the cosmos judge."' },

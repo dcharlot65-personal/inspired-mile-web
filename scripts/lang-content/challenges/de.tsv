@@ -1,0 +1,28 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+0	Sein oder Nichtsein, das ist hier die Frage	Sein|Nichtsein	de-schlegel-hamlet
+14	Die Dame, wie mich dünkt, gelobt zu viel.	gelobt	de-schlegel-hamlet
+15	Weil Kürze dann des Witzes Seele ist	Kürze|Witzes	de-schlegel-hamlet
+20	an sich ist nichts weder gut noch böse, das Denken macht es erst dazu.	Denken	de-schlegel-hamlet
+27	Dies über alles: sei dir selber treu	selber|treu	de-schlegel-hamlet
+42	Wir wissen wohl, was wir sind, aber nicht, was wir werden können.	sind|werden	de-schlegel-hamlet
+43	Schwachheit, dein Nam’ ist Weib!	Schwachheit|Weib	de-schlegel-hamlet
+53	Etwas ist faul im Staate Dänemarks.	faul|Dänemarks	de-schlegel-hamlet
+57	Es gibt mehr Ding’ im Himmel und auf Erden	Himmel|Erden	de-schlegel-hamlet
+63	Welch ein Meisterwerk ist der Mensch! Wie edel durch Vernunft!	Mensch|Vernunft	de-schlegel-hamlet
+83	O, welch ein Schurk und niedrer Sklav bin ich!	Schurk|Sklav	de-schlegel-hamlet
+84	Der Rest ist Schweigen.	Rest|Schweigen	de-schlegel-hamlet
+4	O Romeo! warum denn Romeo?	warum	de-schlegel-romeo
+35	Was ist ein Name? Was uns Rose heißt,	Name|Rose	de-schlegel-romeo
+6	Wie es auch hieße, würde lieblich duften;	hieße|duften	de-schlegel-romeo
+2	So süß ist Trennungswehe	süß|Trennungswehe	de-schlegel-romeo
+19	Ich rief’ wohl gute Nacht, bis ich den Morgen sähe.	Nacht|Morgen	de-schlegel-romeo
+12	Hol der Henker eure beiden Häuser!	Henker|Häuser	de-schlegel-romeo
+34	So wilde Freude nimmt ein wildes Ende	Freude|Ende	de-schlegel-romeo
+46	Doch still, was schimmert durch das Fenster dort?	schimmert	de-schlegel-romeo
+79	Wer hastig läuft, der fällt: drum eile nur mit Weil’.	hastig|fällt	de-schlegel-romeo
+96	Du weißt, die Nacht verschleiert mein Gesicht,	Nacht|Gesicht	de-schlegel-romeo
+99	O, sie nur lehrt die Kerzen, hell zu glühn!	Kerzen|hell	de-schlegel-romeo
+97	ich bin nichts, oder ich bin ein Criticus.	nichts|Criticus	de-wieland-othello
+38	nehmt euch vor der Eifersucht in Acht; sie ist ein grün-äugiges Ungeheuer	Eifersucht|grün-äugiges	de-wieland-othello
+64	Der Beraubte, der dazu lächelt, stiehlt dem Räuber etwas	lächelt|Räuber	de-wieland-othello
+80	Das Licht ausgelöscht, und dann – – Das Licht auslöschen	Licht|Licht	de-wieland-othello

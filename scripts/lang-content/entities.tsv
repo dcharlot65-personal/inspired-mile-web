@@ -1,0 +1,239 @@
+# key	English Wikipedia article, or a Wikidata item id (either is used once, to find the item)	English names as written in the game's content (| separated)
+p.romeo	Romeo and Juliet	Romeo and Juliet
+p.dream	A Midsummer Night's Dream	A Midsummer Night's Dream
+p.hamlet	Hamlet	Hamlet
+p.othello	Othello	Othello
+p.macbeth	Macbeth	Macbeth
+p.caesar	Julius Caesar (play)	Julius Caesar
+p.coriolanus	Coriolanus	Coriolanus
+p.antony	Antony and Cleopatra	Antony and Cleopatra
+p.titus	Titus Andronicus	Titus Andronicus
+p.tempest	The Tempest	The Tempest
+p.twelfth	Twelfth Night	Twelfth Night
+p.winter	The Winter's Tale	The Winter's Tale
+p.pericles	Pericles, Prince of Tyre	Pericles
+p.asyou	As You Like It	As You Like It
+p.lear	King Lear	King Lear
+p.richard3	Richard III (play)	Richard III
+p.muchado	Much Ado About Nothing	Much Ado About Nothing
+p.shrew	The Taming of the Shrew	The Taming of the Shrew
+p.merchant	The Merchant of Venice	The Merchant of Venice
+p.faustus	Doctor Faustus (play)	Doctor Faustus
+p.wives	The Merry Wives of Windsor	The Merry Wives of Windsor
+p.henry5	Henry V (play)	Henry V
+p.cymbeline	Cymbeline	Cymbeline
+p.measure	Measure for Measure	Measure for Measure
+p.allswell	All's Well That Ends Well	All's Well That Ends Well
+p.lll	Love's Labour's Lost	Love's Labour's Lost
+p.errors	The Comedy of Errors	The Comedy of Errors
+p.twogents	The Two Gentlemen of Verona	The Two Gentlemen of Verona
+p.timon	Timon of Athens	Timon of Athens
+p.henry8	Henry VIII (play)	Henry VIII
+p.richard2	Richard II (play)	Richard II
+p.troilus	Troilus and Cressida	Troilus and Cressida
+p.henry4a	Henry IV, Part 1	Henry IV, Part 1|Henry IV Part 1
+p.henry4b	Henry IV, Part 2	Henry IV, Part 2
+p.henry6b	Henry VI, Part 2	Henry VI, Part 2
+w.sonnets	Shakespeare's sonnets	The Sonnets
+w.sonnet18	Sonnet 18	Sonnet 18
+w.sonnet1	Sonnet 1	Sonnet 1
+w.sonnet130	Sonnet 130	Sonnet 130
+w.sonnet116	Sonnet 116	Sonnet 116
+w.sonnet73	Sonnet 73	Sonnet 73
+w.folio	First Folio	The First Folio
+w.pyramus	Pyramus and Thisbe	Pyramus and Thisbe
+w.hero	Hero and Leander	Hero and Leander
+h.shakespeare	William Shakespeare	William Shakespeare|Shakespeare
+h.marlowe	Christopher Marlowe	Christopher Marlowe
+h.jonson	Ben Jonson	Ben Jonson
+h.milton	John Milton	John Milton
+h.hathaway	Anne Hathaway (wife of Shakespeare)	Anne Hathaway
+h.arden	Mary Shakespeare	Mary Arden
+h.elizabeth1	Elizabeth I	Queen Elizabeth I|Elizabeth Tudor
+h.henry8	Henry VIII	King Henry VIII
+h.james1	James VI and I	King James I
+h.mary1	Mary I of England	Queen Mary I
+h.parr	Catherine Parr	Catherine Parr
+h.kyd	Thomas Kyd	Thomas Kyd
+h.webster	John Webster	John Webster
+h.thorpe	Thomas Thorpe	Thomas Thorpe
+h.field	Richard Field (printer)	Richard Field
+h.jaggard	William Jaggard	William Jaggard
+h.blount	Edward Blount	Edward Blount
+h.hamnet	Hamnet Shakespeare	Hamnet
+h.henry5	Henry V of England	King Henry V
+h.henry4	Henry IV of England	King Henry IV
+h.richard3	Richard III of England	Richard III
+h.richard2	Richard II of England	Richard II
+h.john	John, King of England	King John
+h.caesar	Julius Caesar	Julius Caesar|Caesar
+h.brutus	Marcus Junius Brutus	Brutus
+h.antony	Mark Antony	Mark Antony
+h.cassius	Gaius Cassius Longinus	Cassius
+h.octavius	Augustus	Octavius
+h.calpurnia	Calpurnia (wife of Caesar)	Calpurnia
+h.porcia	Porcia (wife of Brutus)	Portia
+h.cicero	Cicero	Cicero
+h.casca	Servilius Casca	Casca
+h.octavia	Octavia the Younger	Octavia
+h.cornelia	Cornelia (wife of Caesar)	Cornelia
+h.cleopatra	Cleopatra	Cleopatra
+h.enobarbus	Gnaeus Domitius Ahenobarbus (consul 32 BC)	Enobarbus
+h.gaunt	John of Gaunt	John of Gaunt
+l.stratford	Stratford-upon-Avon	Stratford-upon-Avon
+l.london	London	London
+l.oxford	Oxford	Oxford
+l.canterbury	Canterbury	Canterbury
+l.cambridge	Cambridge	Cambridge
+l.verona	Verona	Verona
+l.venice	Venice	Venice
+l.florence	Florence	Florence
+l.rome	Rome	Rome
+l.denmark	Denmark	Denmark
+l.england	England	England
+l.scotland	Scotland	Scotland
+l.norway	Norway	Norway
+l.italy	Italy	Italy
+l.france	France	France
+l.greece	Greece	Greece
+l.spain	Spain	Spain
+l.cyprus	Cyprus	Cyprus
+l.vienna	Vienna	Vienna
+l.sicily	Sicily	Sicilia
+l.bohemia	Bohemia	Bohemia
+l.illyria	Illyria	Illyria
+l.navarre	Kingdom of Navarre	Navarre
+l.elsinore	Helsingør	Elsinore
+l.camelot	Camelot	Camelot
+l.dunsinane	Dunsinane Hill	Dunsinane
+l.inverness	Inverness	Inverness
+l.fife	Fife	Fife
+l.forres	Forres	Forres
+l.globe	Globe Theatre	The Globe Theatre|Globe Theatre
+l.rose	The Rose (theatre)	The Rose Theatre
+l.swan	The Swan (theatre)	The Swan Theatre
+l.arden	Forest of Arden	Forest of Arden
+l.delphi	Delphi	Delphi
+l.egypt	Ancient Egypt	ancient Egypt
+l.athens	Athens	Athens
+l.northafrica	North Africa	North Africa
+b.agincourt	Battle of Agincourt	The Battle of Agincourt
+b.hastings	Battle of Hastings	The Battle of Hastings
+b.crecy	Battle of Crécy	The Battle of Crecy
+b.bosworth	Battle of Bosworth Field	The Battle of Bosworth Field
+b.actium	Battle of Actium	The Battle of Actium
+b.philippi	Battle of Philippi	The Battle of Philippi
+b.alexandria	Battle of Alexandria (30 BC)	The Battle of Alexandria
+b.salamis	Battle of Salamis	The Battle of Salamis
+o.kingsmen	King's Men (playing company)	The King's Men
+o.chamberlain	Lord Chamberlain's Men	The Lord Chamberlain's Men
+o.admiral	Admiral's Men	The Admiral's Men
+o.queens	Queen Elizabeth's Men	The Queen's Men
+o.leicester	Leicester's Men	The Earl of Leicester's Men
+c.mercutio	Mercutio	Mercutio
+c.romeo	Romeo	Romeo
+c.tybalt	Tybalt	Tybalt
+c.benvolio	Benvolio	Benvolio
+c.juliet	Juliet	Juliet
+c.paris	Count Paris	Paris
+c.laurence	Friar Laurence	Friar Lawrence|Laurence
+c.nurse	Nurse (Romeo and Juliet)	The Nurse
+c.mab	Queen Mab	Queen Mab
+c.tuck	Friar Tuck	Friar Tuck
+c.hamlet	Prince Hamlet	Hamlet
+c.claudius	King Claudius	Claudius|King Claudius
+c.polonius	Polonius	Polonius
+c.horatio	Horatio (Hamlet)	Horatio
+c.laertes	Laertes (Hamlet)	Laertes
+c.ophelia	Ophelia	Ophelia
+c.gertrude	Gertrude (Hamlet)	Gertrude
+c.rosguil	Rosencrantz and Guildenstern	Rosencrantz|Guildenstern
+c.fortinbras	Fortinbras	Fortinbras
+c.yorick	Yorick	Yorick
+c.ghost	Ghost (Hamlet)	the Ghost
+c.macbeth	Macbeth (character)	Macbeth
+c.banquo	Banquo	Banquo
+c.macduff	Macduff (Macbeth)	Macduff
+c.ladymacbeth	Lady Macbeth	Lady Macbeth
+c.hecate	Hecate	Hecate
+c.witches	Three Witches	The Witches
+c.ariel	Ariel (The Tempest)	Ariel
+c.puck	Puck (A Midsummer Night's Dream)	Puck
+c.caliban	Caliban	Caliban
+c.oberon	Oberon	Oberon
+c.bottom	Nick Bottom	Bottom
+c.prospero	Prospero	Prospero
+c.ferdinand	Ferdinand (The Tempest)	Ferdinand
+c.stephano	Stephano (The Tempest)	Stephano
+c.miranda	Miranda (The Tempest)	Miranda
+c.sycorax	Sycorax	Sycorax
+c.cordelia	Cordelia (King Lear)	Cordelia
+c.goneril	Goneril	Goneril
+c.regan	Regan (King Lear)	Regan
+c.edmund	Edmund (King Lear)	Edmund
+c.iago	Iago	Iago
+c.othello	Othello (character)	Othello
+c.desdemona	Desdemona	Desdemona
+c.cassio	Michael Cassio	Cassio
+c.roderigo	Roderigo	Roderigo
+c.brabantio	Brabantio	Brabantio
+c.emilia	Emilia (Othello)	Emilia
+c.shylock	Shylock	Shylock
+c.antonio	Antonio (The Merchant of Venice)	Antonio
+c.portia	Portia (The Merchant of Venice)	Portia
+c.bassanio	Bassanio	Bassanio
+c.beatrice	Beatrice (Much Ado About Nothing)	Beatrice
+c.hero	Hero (Much Ado About Nothing)	Hero
+c.donpedro	Don Pedro (Much Ado About Nothing)	Don Pedro
+c.dogberry	Dogberry	Dogberry
+c.viola	Viola (Twelfth Night)	Viola
+c.sebastian	Sebastian (Twelfth Night)	Sebastian
+c.orsino	Orsino (Twelfth Night)	Orsino
+c.malvolio	Malvolio	Malvolio
+c.toby	Sir Toby Belch	Sir Toby Belch|Sir Toby
+c.olivia	Olivia (Twelfth Night)	Olivia
+c.maria	Maria (Twelfth Night)	Maria
+c.feste	Feste	Feste
+c.rosalind	Rosalind (As You Like It)	Rosalind
+c.orlando	Orlando (As You Like It)	Orlando
+c.jaques	Jaques (As You Like It)	Jaques
+c.touchstone	Touchstone (As You Like It)	Touchstone
+c.petruchio	Petruchio	Petruchio
+c.sly	Christopher Sly	Christopher Sly
+c.perdita	Perdita (The Winter's Tale)	Perdita
+c.angelo	Angelo (Measure for Measure)	Angelo
+c.quince	Peter Quince	Peter Quince
+c.snug	Snug (A Midsummer Night's Dream)	Snug
+c.flute	Francis Flute	Flute
+c.helena	Helena (A Midsummer Night's Dream)	Helena
+c.lysander	Lysander (A Midsummer Night's Dream)	Lysander
+c.tinkerbell	Tinker Bell	Tinker Bell
+c.fluellen	Fluellen	Captain Fluellen
+c.falstaff	Falstaff	Falstaff
+c.darklady	Dark Lady (Shakespeare)	Dark Lady
+c.benedick	Q125374100	Benedick
+c.claudio.ado	Q125374118	Claudio
+c.donjohn	Q125374125	Don John
+c.isabella	Q136447144	Isabella
+c.mariana	Q136447324	Mariana
+c.audrey	Q136447402	Audrey
+c.silvia	Q136447457	Silvia
+c.duncan	Q15698348	Duncan|King Duncan
+c.malcolm	Q16203840	Malcolm
+c.lucentio	Q20823065	Lucentio
+c.grumio	Q20823070	Grumio
+c.tranio	Q20823071	Tranio
+c.titania	Q2332221	Titania
+c.margaret	Q26904362	Margaret
+c.lear	Q28469410	Lear|King Lear
+c.alonso	Q3337857	Alonso
+c.celia	Q5057966	Celia
+c.gratiano	Q61635995	Gratiano
+c.lodovico	Q61636041	Lodovico
+c.montano	Q61636065	Montano
+c.marcellus	Q64145631	Marcellus
+c.launcelot	Q64145690	Launcelot
+c.morocco	Q64145698	Morocco
+c.balthazar	Q64145707	Balthazar
+c.trinculo	Q70204054	Trinculo
+c.rosaline	Q7367264	Rosaline

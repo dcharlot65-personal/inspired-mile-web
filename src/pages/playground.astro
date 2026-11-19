@@ -10,44 +10,41 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">Digital Playground</span>
+          <span class="text-gold-400 text-xs font-medium tracking-wide rtl:tracking-normal uppercase" data-i18n="pg.badge">Digital Playground</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          The <span class="text-gradient">Playground</span>
+          <span class="text-gradient" data-i18n="pg.title">The Playground</span>
         </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Earn digital cards through mini-games, trivia, and challenges.
-          Every card you win is yours to keep, collect, and trade.
-        </p>
+        <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="pg.intro">Earn digital cards through mini-games, trivia, and challenges. Every card you win is yours to keep, collect, and trade.</p>
       </div>
 
       <!-- Player Stats Bar -->
       <div class="card-glass p-4 mb-4 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-6 text-sm">
           <div>
-            <span class="text-xs text-obsidian-500 block">Cards Owned</span>
-            <span id="stat-cards" class="text-lg font-display font-bold text-gold-400">0</span>
-            <span class="text-xs text-obsidian-500"> / {CARD_CATALOG.length}</span>
+            <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.cards">Cards Owned</span>
+            <!-- A count out of a total reads left to right in every language: right to left, "0 / 71" was drawn 71 / 0. -->
+            <span dir="ltr"><span id="stat-cards" class="text-lg font-display font-bold text-gold-400">0</span><span class="text-xs text-obsidian-500"> / {CARD_CATALOG.length}</span></span>
           </div>
           <div class="w-px h-8 bg-obsidian-700"></div>
           <div>
-            <span class="text-xs text-obsidian-500 block">Battle Wins</span>
+            <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.wins">Battle Wins</span>
             <span id="stat-wins" class="text-lg font-display font-bold text-crimson-400">0</span>
           </div>
           <div class="w-px h-8 bg-obsidian-700"></div>
           <div>
-            <span class="text-xs text-obsidian-500 block">Trivia Score</span>
+            <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.trivia">Trivia Score</span>
             <span id="stat-trivia" class="text-lg font-display font-bold text-emerald-400">0</span>
           </div>
         </div>
-        <a href="/collection" class="btn-secondary text-xs">View Collection</a>
+        <a href="/collection" class="btn-secondary text-xs" data-i18n="pg.viewCollection">View Collection</a>
       </div>
 
       <!-- Spending Limit Banner (teen users only) -->
       <div id="spending-limit-banner" class="hidden card-glass p-3 mb-6 border-gold-500/20 bg-gold-500/5 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2 text-xs">
           <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span class="text-obsidian-300">Daily spending: <strong id="spent-today" class="text-gold-400">0</strong> / <strong class="text-gold-400">200</strong> credits</span>
+          <span class="text-obsidian-300"><span data-i18n="pg.spending">Daily spending:</span> <span dir="ltr"><strong id="spent-today" class="text-gold-400">0</strong> / <strong id="spend-limit" class="text-gold-400">200</strong></span> <span data-i18n="pg.credits">credits</span></span>
         </div>
         <div class="h-1.5 flex-1 max-w-[120px] rounded-full bg-obsidian-800 overflow-hidden">
           <div id="spending-bar" class="h-full rounded-full bg-gold-400 transition-all duration-300" style="width: 0%"></div>
@@ -64,88 +61,88 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               <span class="text-xl">&#127183;</span>
             </div>
             <div>
-              <h2 class="font-display text-lg font-bold text-obsidian-100">Card Packs</h2>
-              <p class="text-xs text-obsidian-500">Open packs to reveal cards</p>
+              <h2 class="font-display text-lg font-bold text-obsidian-100" data-i18n="pg.packs.title">Card Packs</h2>
+              <p class="text-xs text-obsidian-500" data-i18n="pg.packs.sub">Open packs to reveal cards</p>
             </div>
           </div>
           <div class="space-y-3">
-            <button id="starter-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+            <button id="starter-pack-btn" class="w-full card-glass p-3 text-start hover:border-gold-500/30 transition-all flex items-center justify-between">
               <div>
-                <span class="text-sm font-semibold text-gold-300">Starter Pack</span>
-                <p class="text-xs text-obsidian-500">3 cards to begin your collection</p>
+                <span class="text-sm font-semibold text-gold-300" data-i18n="pg.starter.name">Starter Pack</span>
+                <p class="text-xs text-obsidian-500" data-i18n="pg.starter.desc">3 cards to begin your collection</p>
               </div>
-              <span id="starter-badge" class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">FREE</span>
+              <span id="starter-badge" class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" data-i18n="pg.free">FREE</span>
             </button>
-            <button id="daily-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+            <button id="daily-pack-btn" class="w-full card-glass p-3 text-start hover:border-gold-500/30 transition-all flex items-center justify-between">
               <div>
-                <span class="text-sm font-semibold text-blue-300">Daily Pack</span>
-                <p class="text-xs text-obsidian-500">1 free card every 24 hours</p>
+                <span class="text-sm font-semibold text-blue-300" data-i18n="pg.daily.name">Daily Pack</span>
+                <p class="text-xs text-obsidian-500" data-i18n="pg.daily.desc">1 free card every 24 hours</p>
               </div>
-              <span id="daily-badge" class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">FREE</span>
+              <span id="daily-badge" class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30" data-i18n="pg.free">FREE</span>
             </button>
           </div>
         </div>
 
         <!-- Pack Odds Disclosure -->
         <div class="col-span-full card-glass p-4 border-obsidian-700/50">
-          <button id="odds-toggle" class="w-full flex items-center justify-between text-left">
-            <span class="text-xs font-semibold text-obsidian-400 uppercase tracking-wide">Card Pack Drop Rates</span>
+          <button id="odds-toggle" class="w-full flex items-center justify-between text-start">
+            <span class="text-xs font-semibold text-obsidian-400 uppercase tracking-wide rtl:tracking-normal" data-i18n="pg.odds.title">Card Pack Drop Rates</span>
             <svg id="odds-chevron" class="w-4 h-4 text-obsidian-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div id="odds-content" class="hidden mt-4 space-y-4">
             <div>
-              <h4 class="text-xs font-semibold text-obsidian-300 mb-2">Rarity Drop Rates</h4>
+              <h4 class="text-xs font-semibold text-obsidian-300 mb-2" data-i18n="pg.odds.rarity">Rarity Drop Rates</h4>
               <div class="space-y-1.5">
                 <div class="flex items-center gap-3">
-                  <span class="text-xs text-obsidian-400 w-24">Common</span>
+                  <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.common">Common</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-obsidian-500" style="width:50%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">50%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">50%</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <span class="text-xs text-obsidian-400 w-24">Uncommon</span>
+                  <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.uncommon">Uncommon</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-emerald-500/60" style="width:30%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">30%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">30%</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <span class="text-xs text-obsidian-400 w-24">Rare</span>
+                  <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.rare">Rare</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-blue-500/60" style="width:15%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">15%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">15%</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <span class="text-xs text-obsidian-400 w-24">Epic</span>
+                  <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.epic">Epic</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-purple-500/60" style="width:4%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">4%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">4%</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <span class="text-xs text-obsidian-400 w-24">Legendary</span>
+                  <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.legendary">Legendary</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-gold-500/60" style="width:1%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">1%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">1%</span>
                 </div>
               </div>
             </div>
             <div>
-              <h4 class="text-xs font-semibold text-obsidian-300 mb-2">Pack Tiers (purchased with Credits)</h4>
+              <h4 class="text-xs font-semibold text-obsidian-300 mb-2" data-i18n="pg.odds.tiers">Pack Tiers (purchased with Credits)</h4>
               <div class="grid sm:grid-cols-3 gap-2">
                 <div class="bg-obsidian-800/50 rounded-lg p-3">
-                  <p class="text-xs font-semibold text-obsidian-200">Standard Pack</p>
-                  <p class="text-[10px] text-obsidian-500 mt-1">3 cards &middot; 50 Credits</p>
-                  <p class="text-[10px] text-obsidian-500">Standard odds</p>
+                  <p class="text-xs font-semibold text-obsidian-200" data-i18n="pg.odds.standard">Standard Pack</p>
+                  <p class="text-[10px] text-obsidian-500 mt-1" data-i18n="pg.odds.standardLine">3 cards &middot; 50 Credits</p>
+                  <p class="text-[10px] text-obsidian-500" data-i18n="pg.odds.standardNote">Standard odds</p>
                 </div>
                 <div class="bg-obsidian-800/50 rounded-lg p-3 border border-blue-500/10">
-                  <p class="text-xs font-semibold text-blue-300">Rare Pack</p>
-                  <p class="text-[10px] text-obsidian-500 mt-1">5 cards &middot; 150 Credits</p>
-                  <p class="text-[10px] text-blue-400">1 Rare guaranteed</p>
+                  <p class="text-xs font-semibold text-blue-300" data-i18n="pg.odds.rare">Rare Pack</p>
+                  <p class="text-[10px] text-obsidian-500 mt-1" data-i18n="pg.odds.rareLine">5 cards &middot; 150 Credits</p>
+                  <p class="text-[10px] text-blue-400" data-i18n="pg.odds.rareNote">1 Rare guaranteed</p>
                 </div>
                 <div class="bg-obsidian-800/50 rounded-lg p-3 border border-purple-500/10">
-                  <p class="text-xs font-semibold text-purple-300">Epic Pack</p>
-                  <p class="text-[10px] text-obsidian-500 mt-1">5 cards &middot; 400 Credits</p>
-                  <p class="text-[10px] text-purple-400">1 Epic guaranteed</p>
+                  <p class="text-xs font-semibold text-purple-300" data-i18n="pg.odds.epic">Epic Pack</p>
+                  <p class="text-[10px] text-obsidian-500 mt-1" data-i18n="pg.odds.epicLine">5 cards &middot; 400 Credits</p>
+                  <p class="text-[10px] text-purple-400" data-i18n="pg.odds.epicNote">1 Epic guaranteed</p>
                 </div>
               </div>
             </div>
             <p class="text-[10px] text-obsidian-600">
-              All packs use Credits earned through gameplay. No real money purchases. Each card draw is independent.
-              For more details, see our <a href="/terms" class="text-obsidian-500 hover:text-gold-400">Terms of Service</a>.
+              <span data-i18n="pg.odds.note">All packs use Credits earned through gameplay. No real money purchases. Each card draw is independent.</span>
+              <span data-i18n="pg.odds.moreBefore">For more details, see our</span> <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms">Terms of Service</a><span data-i18n="pg.odds.moreAfter">.</span>
             </p>
           </div>
         </div>
@@ -157,17 +154,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               <span class="text-xl">&#9876;</span>
             </div>
             <div>
-              <h2 class="font-display text-lg font-bold text-obsidian-100">Battle Arena</h2>
-              <p class="text-xs text-obsidian-500">Win rap battles to earn cards</p>
+              <h2 class="font-display text-lg font-bold text-obsidian-100" data-i18n="nav.battle">Battle Arena</h2>
+              <p class="text-xs text-obsidian-500" data-i18n="pg.battle.sub">Win rap battles to earn cards</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4">
-            Challenge the Master Thespian in a Shakespeare rap battle.
-            Win a round and earn a random card from the collection.
-          </p>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.battle.body">Challenge the Master Thespian in a Shakespeare rap battle. Win a round and earn a random card from the collection.</p>
           <a href="/battle" class="btn-danger text-sm w-full justify-center">
-            Enter the Arena
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span data-i18n="pg.battle.cta">Enter the Arena</span>
+            <svg class="w-4 h-4 ms-2 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
@@ -180,16 +174,12 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               <span class="text-xl">&#129504;</span>
             </div>
             <div>
-              <h2 class="font-display text-lg font-bold text-obsidian-100">Shakespeare Trivia</h2>
-              <p class="text-xs text-obsidian-500">Test your knowledge, earn cards</p>
+              <h2 class="font-display text-lg font-bold text-obsidian-100" data-i18n="pg.trivia.title">Shakespeare Trivia</h2>
+              <p class="text-xs text-obsidian-500" data-i18n="pg.trivia.sub">Test your knowledge, earn cards</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4">
-            Answer 5 questions about Shakespeare. Score 3 or more to earn a card.
-          </p>
-          <button id="trivia-start-btn" class="btn-primary text-sm w-full justify-center">
-            Start Trivia
-          </button>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.trivia.body">Answer 5 questions about Shakespeare. Score 3 or more to earn a card.</p>
+          <button id="trivia-start-btn" class="btn-primary text-sm w-full justify-center" data-i18n="pg.trivia.start">Start Trivia</button>
         </div>
 
         <!-- Quote Challenge -->
@@ -199,16 +189,12 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               <span class="text-xl">&#128220;</span>
             </div>
             <div>
-              <h2 class="font-display text-lg font-bold text-obsidian-100">Quote Challenge</h2>
-              <p class="text-xs text-obsidian-500">Complete the famous quote</p>
+              <h2 class="font-display text-lg font-bold text-obsidian-100" data-i18n="pg.challenge.title">Quote Challenge</h2>
+              <p class="text-xs text-obsidian-500" data-i18n="pg.challenge.sub">Complete the famous quote</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4">
-            Fill in the missing words from a Shakespeare quote. Get it right, earn a card.
-          </p>
-          <button id="challenge-start-btn" class="btn-secondary text-sm w-full justify-center border-purple-500/30 text-purple-300 hover:bg-purple-500/10">
-            Start Challenge
-          </button>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.challenge.body">Fill in the missing words from a Shakespeare quote. Get it right, earn a card.</p>
+          <button id="challenge-start-btn" class="btn-secondary text-sm w-full justify-center border-purple-500/30 text-purple-300 hover:bg-purple-500/10" data-i18n="pg.challenge.start">Start Challenge</button>
         </div>
       </div>
     </div>
@@ -218,13 +204,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   <div id="onboarding-overlay" class="fixed inset-0 bg-obsidian-950/80 z-90 hidden items-center justify-center">
     <div id="onboarding-tooltip" class="absolute bg-obsidian-900 border border-gold-500/40 rounded-xl p-5 max-w-xs shadow-2xl shadow-gold-500/10 transition-all duration-500">
       <div class="flex items-center gap-2 mb-2">
-        <span id="onboarding-step" class="text-xs font-mono text-gold-500/60">1 / 3</span>
+        <!-- A step out of the total reads left to right in every language: right to left, "1 / 3" would read 3 / 1. -->
+        <span id="onboarding-step" dir="ltr" class="text-xs font-mono text-gold-500/60">1 / 3</span>
       </div>
       <h4 id="onboarding-title" class="font-display font-bold text-gold-300 mb-1"></h4>
       <p id="onboarding-desc" class="text-sm text-obsidian-300 mb-4"></p>
       <div class="flex items-center justify-between">
-        <button id="onboarding-skip" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors">Skip</button>
-        <button id="onboarding-next" class="btn-primary text-xs px-4 py-2">Next</button>
+        <button id="onboarding-skip" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors" data-i18n="pg.onb.skip">Skip</button>
+        <button id="onboarding-next" class="btn-primary text-xs px-4 py-2" data-i18n="pg.onb.next">Next</button>
       </div>
       <!-- Arrow pointer -->
       <div id="onboarding-arrow" class="absolute w-3 h-3 bg-obsidian-900 border-gold-500/40 transform rotate-45"></div>
@@ -232,10 +219,10 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   </div>
 
   <!-- Trivia Modal -->
-  <div id="trivia-modal" role="dialog" aria-modal="true" aria-label="Shakespeare Trivia" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+  <div id="trivia-modal" role="dialog" aria-modal="true" aria-label="Shakespeare Trivia" data-i18n-aria-label="pg.trivia.title" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-xl font-bold text-gold-300">Shakespeare Trivia</h3>
+        <h3 class="font-display text-xl font-bold text-gold-300" data-i18n="pg.trivia.title">Shakespeare Trivia</h3>
         <button id="trivia-close" class="text-obsidian-500 hover:text-obsidian-200 transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -243,11 +230,11 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         </button>
       </div>
       <div class="mb-4 flex items-center gap-2">
-        <span id="trivia-progress" class="text-xs font-mono text-obsidian-500">Question 1 / 5</span>
+        <span id="trivia-progress" class="text-xs font-mono rtl:font-sans text-obsidian-500"></span>
         <div class="flex-1 h-1 rounded-full bg-obsidian-800 overflow-hidden">
           <div id="trivia-bar" class="h-full bg-gold-400 rounded-full transition-all duration-300" style="width: 20%"></div>
         </div>
-        <span id="trivia-score-display" class="text-xs font-mono text-emerald-400">0 correct</span>
+        <span id="trivia-score-display" class="text-xs font-mono rtl:font-sans text-emerald-400"></span>
       </div>
       <div id="trivia-content">
         <!-- Populated by JS -->
@@ -256,10 +243,10 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   </div>
 
   <!-- Challenge Modal -->
-  <div id="challenge-modal" role="dialog" aria-modal="true" aria-label="Quote Challenge" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+  <div id="challenge-modal" role="dialog" aria-modal="true" aria-label="Quote Challenge" data-i18n-aria-label="pg.challenge.title" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-lg w-full p-6">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-xl font-bold text-purple-300">Quote Challenge</h3>
+        <h3 class="font-display text-xl font-bold text-purple-300" data-i18n="pg.challenge.title">Quote Challenge</h3>
         <button id="challenge-close" class="text-obsidian-500 hover:text-obsidian-200 transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -275,11 +262,11 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   <!-- Card Reveal Modal -->
   <div id="reveal-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-md w-full p-8 text-center">
-      <h3 id="reveal-title" class="font-display text-2xl font-bold text-gold-300 mb-6">Card Revealed!</h3>
+      <h3 id="reveal-title" class="font-display text-2xl font-bold text-gold-300 mb-6" data-i18n="pg.reveal.title">Card Revealed!</h3>
       <div id="reveal-cards" class="space-y-4">
         <!-- Populated by JS -->
       </div>
-      <button id="reveal-close" class="btn-primary mt-6">Collect</button>
+      <button id="reveal-close" class="btn-primary mt-6" data-i18n="pg.collect">Collect</button>
     </div>
   </div>
 
@@ -289,14 +276,32 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       addCard, getStats, isStarterClaimed, claimStarter,
       isDailyAvailable, claimDaily, recordTriviaCorrect, recordChallengeComplete,
     } from '../lib/inventory';
-    import { getRandomQuestions, type TriviaQuestion } from '../lib/trivia';
-    import { getRandomChallenge, checkAnswers, type QuoteChallenge } from '../lib/challenges';
+    import { type TriviaQuestion } from '../lib/trivia';
+    import { answersMatch, localRandomChallenge, localRandomQuestions, type LocalChallenge } from '../lib/play-content';
+    import { has, initI18n, isRtl, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
     import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
-    import { TRIVIA_BANK } from '../lib/trivia';
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
     import { getUniqueOwnedCount, getOwnedCards, getOwnedCardIds } from '../lib/inventory';
     import { awardRandomVariant, CITY_CATALOG } from '../lib/variants';
+
+    // --- Language ---
+    // The page's strings are a page area (src/i18n/pages/playground). Everything below
+    // waits for it (`ready`), and what was drawn with t() is drawn again when the language changes.
+    const esc = (v: unknown) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+    const rarityName = (r: string) => (has(`rarity.${r.toLowerCase()}`) ? t(`rarity.${r.toLowerCase()}`) : r);
+    const redraw: Array<() => void> = [];
+    async function useLanguage() {
+      await loadArea('playground');
+      applyTranslations();
+      document.title = `${t('pg.meta.title')} | Inspired Mile`;
+      document.querySelector('meta[name="description"]')?.setAttribute('content', t('pg.meta.description'));
+      for (const fn of redraw) fn();
+      // Says which language the page's own strings are now in (until then the markup's English shows).
+      document.documentElement.dataset.pageArea = locale();
+    }
+    const ready = initI18n().then(useLanguage);
+    onLocaleChange(() => void useLanguage());
 
     // --- Spending limit check (teen users) ---
     async function checkSpendingLimits() {
@@ -311,6 +316,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           if (banner && spentEl && bar) {
             banner.classList.remove('hidden');
             spentEl.textContent = String(data.spent_today);
+            const limitEl = document.getElementById('spend-limit');
+            if (limitEl) limitEl.textContent = String(data.daily_limit);
             const pct = Math.min(100, (data.spent_today / data.daily_limit) * 100);
             bar.style.width = `${pct}%`;
             if (pct >= 100) {
@@ -356,17 +363,15 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     const dailyBtn = document.getElementById('daily-pack-btn')!;
     const dailyBadge = document.getElementById('daily-badge')!;
 
-    if (isStarterClaimed()) {
-      starterBadge.textContent = 'CLAIMED';
-      starterBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
-      starterBtn.classList.add('opacity-50', 'pointer-events-none');
+    function markClaimed(badge: HTMLElement, btn: HTMLElement) {
+      badge.dataset.i18n = 'pg.claimed';
+      badge.textContent = has('pg.claimed') ? t('pg.claimed') : 'CLAIMED'; // before the area has loaded
+      badge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
+      btn.classList.add('opacity-50', 'pointer-events-none');
     }
 
-    if (!isDailyAvailable()) {
-      dailyBadge.textContent = 'CLAIMED';
-      dailyBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
-      dailyBtn.classList.add('opacity-50', 'pointer-events-none');
-    }
+    if (isStarterClaimed()) markClaimed(starterBadge, starterBtn);
+    if (!isDailyAvailable()) markClaimed(dailyBadge, dailyBtn);
 
     starterBtn.addEventListener('click', () => {
       if (isStarterClaimed()) return;
@@ -375,11 +380,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       claimStarter();
       incrementStat('packsOpened');
       syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-      starterBadge.textContent = 'CLAIMED';
-      starterBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
-      starterBtn.classList.add('opacity-50', 'pointer-events-none');
+      markClaimed(starterBadge, starterBtn);
       playSfx('pack-open');
-      showReveal('Starter Pack!', cards);
+      showReveal(t('pg.reveal.starter'), cards);
       const bestRarity = cards.reduce((best, c) => {
         const order = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
         return order.indexOf(c.rarity) > order.indexOf(best) ? c.rarity : best;
@@ -395,11 +398,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       claimDaily();
       incrementStat('packsOpened');
       syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-      dailyBadge.textContent = 'CLAIMED';
-      dailyBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
-      dailyBtn.classList.add('opacity-50', 'pointer-events-none');
+      markClaimed(dailyBadge, dailyBtn);
       playSfx('pack-open');
-      showReveal('Daily Card!', [card]);
+      showReveal(t('pg.reveal.daily'), [card]);
       setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 600);
       updateStats();
     });
@@ -411,6 +412,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     const revealClose = document.getElementById('reveal-close')!;
 
     function showReveal(title: string, cards: Card[]) {
+      revealTitle.removeAttribute('data-i18n'); // this title is this pack's, not the static one
       revealTitle.textContent = title;
       revealCards.innerHTML = cards.map(card => {
         const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
@@ -421,10 +423,10 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} animate-float" style="animation-delay: ${Math.random() * 0.5}s">
             <div class="flex items-center gap-4">
               ${artHtml}
-              <div class="text-left">
+              <div class="text-start">
                 <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
                 <p class="text-xs text-obsidian-400">${card.house} &middot; ${card.element}</p>
-                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
               </div>
             </div>
           </div>
@@ -449,34 +451,58 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     let triviaQuestions: TriviaQuestion[] = [];
     let triviaIndex = 0;
     let triviaScore = 0;
+    /** Questions the model wrote for this round (English only; see content-gen.ts). */
+    let triviaFromModel = new Set<TriviaQuestion>();
+    /** The language this round's questions are in; a round is finished in the language it began in. */
+    let triviaLocale = locale();
+
+    function triviaHeader() {
+      if (triviaModal.classList.contains('hidden')) return;
+      const total = triviaQuestions.length;
+      if (total && triviaIndex >= total) {
+        triviaProgress.textContent = t('pg.trivia.complete');
+        // U+2066 LEFT-TO-RIGHT ISOLATE ... U+2069: the score out of the total reads left to right in a right-to-left page too.
+        triviaScoreDisplay.textContent = `\u2066${triviaScore} / ${total}\u2069`;
+      } else {
+        triviaProgress.textContent = t('pg.trivia.progress', { n: Math.min(triviaIndex + 1, total || 5), total: total || 5 });
+        triviaScoreDisplay.textContent = t('pg.trivia.correct', { n: triviaScore });
+      }
+    }
+    redraw.push(triviaHeader);
 
     triviaStartBtn.addEventListener('click', async () => {
+      await ready;
       playSfx('ui-click');
       triviaIndex = 0;
       triviaScore = 0;
+      triviaQuestions = [];
+      triviaFromModel = new Set();
+      triviaLocale = locale();
       triviaModal.classList.remove('hidden');
+      triviaHeader();
 
-      // Show loading if AI is available
-      if (isContentGenAvailable()) {
+      // The model writes questions in English only: nothing has checked what it writes in another
+      // language. Every other language plays the bank, whose translations have been checked.
+      if (isContentGenAvailable(triviaLocale)) {
         triviaContent.innerHTML = `
           <div class="text-center py-8">
             <div class="text-2xl mb-3 animate-pulse">&#129504;</div>
-            <p class="text-sm text-obsidian-400">Generating questions...</p>
+            <p class="text-sm text-obsidian-400">${esc(t('pg.trivia.generating'))}</p>
           </div>
         `;
         const aiQuestions = await generateTriviaSet(5);
         if (aiQuestions.length >= 3) {
           triviaQuestions = aiQuestions;
-          // Pad with hardcoded if AI generated fewer than 5
-          while (triviaQuestions.length < 5) {
-            const fallbacks = getRandomQuestions(1);
-            triviaQuestions.push(fallbacks[0]);
+          triviaFromModel = new Set(aiQuestions);
+          // Pad with the bank if the model wrote fewer than 5
+          if (triviaQuestions.length < 5) {
+            triviaQuestions.push(...(await localRandomQuestions(5 - triviaQuestions.length, triviaLocale)));
           }
         } else {
-          triviaQuestions = getRandomQuestions(5);
+          triviaQuestions = await localRandomQuestions(5, triviaLocale);
         }
       } else {
-        triviaQuestions = getRandomQuestions(5);
+        triviaQuestions = await localRandomQuestions(5, triviaLocale);
       }
 
       showTriviaQuestion();
@@ -493,22 +519,23 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       }
 
       const q = triviaQuestions[triviaIndex];
-      triviaProgress.textContent = `Question ${triviaIndex + 1} / ${triviaQuestions.length}`;
       triviaBar.style.width = `${((triviaIndex + 1) / triviaQuestions.length) * 100}%`;
-      triviaScoreDisplay.textContent = `${triviaScore} correct`;
+      triviaHeader();
 
-      const isAI = !TRIVIA_BANK.some(bq => bq.question === q.question);
-      const aiBadge = isAI
-        ? '<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ml-2">AI Generated</span>'
+      const aiBadge = triviaFromModel.has(q)
+        ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ms-2" data-i18n="pg.trivia.aiBadge">${esc(t('pg.trivia.aiBadge'))}</span>`
         : '';
 
+      // The direction of the question's own language, not dir="auto": a question keeps its direction when the
+      // interface has since changed language, and an Arabic option that opens with a name in Latin letters
+      // ("Portia في تاجر البندقية") is still right to left (dir="auto" took the first letter's: left to right).
+      const qLang = triviaFromModel.has(q) ? 'en' : triviaLocale;
+      const qDir = isRtl(qLang) ? 'rtl' : 'ltr';
       triviaContent.innerHTML = `
-        <p class="text-sm text-obsidian-200 mb-4 leading-relaxed">${q.question}${aiBadge}</p>
-        <div class="space-y-2">
+        <p id="trivia-question" lang="${qLang}" dir="${qDir}" class="text-sm text-obsidian-200 mb-4 leading-relaxed">${esc(q.question)}${aiBadge}</p>
+        <div class="space-y-2" lang="${qLang}" dir="${qDir}">
           ${q.options.map((opt, i) => `
-            <button class="trivia-option w-full text-left card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">
-              ${opt}
-            </button>
+            <button dir="${qDir}" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">${esc(opt)}</button>
           `).join('')}
         </div>
       `;
@@ -547,9 +574,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     }
 
     function showTriviaResult() {
-      triviaProgress.textContent = 'Complete!';
       triviaBar.style.width = '100%';
-      triviaScoreDisplay.textContent = `${triviaScore} / ${triviaQuestions.length}`;
+      triviaHeader();
 
       const won = triviaScore >= 3;
       if (triviaScore === triviaQuestions.length) {
@@ -558,7 +584,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         const variant = awardRandomVariant(getOwnedCardIds(), 'trivia-mastery');
         if (variant) {
           setTimeout(() => {
-            (window as any).showToast(`World Card Unlocked! ${variant.city}: +${variant.ability.bonus} ${variant.ability.axis}`, 'success', 5000);
+            const axis = has(`criterion.${variant.ability.axis}`) ? t(`criterion.${variant.ability.axis}`) : variant.ability.axis;
+            (window as any).showToast(t('pg.worldCard', { city: variant.city, bonus: variant.ability.bonus, axis }), 'success', 5000);
           }, 1500);
         }
       }
@@ -575,14 +602,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         triviaContent.innerHTML = `
           <div class="text-center">
             <div class="text-4xl mb-3">&#127881;</div>
-            <p class="text-lg font-display font-bold text-emerald-400 mb-2">You scored ${triviaScore} / ${triviaQuestions.length}!</p>
-            <p class="text-sm text-obsidian-400 mb-4">You earned a card:</p>
+            <p class="text-lg font-display font-bold text-emerald-400 mb-2">${esc(t('pg.trivia.won', { n: triviaScore, total: triviaQuestions.length }))}</p>
+            <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.earned">${esc(t('pg.earned'))}</p>
             <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
               ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
               <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
-              <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+              <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
             </div>
-            <button class="btn-primary mt-4 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')">Collect</button>
+            <button class="btn-primary mt-4 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')" data-i18n="pg.collect">${esc(t('pg.collect'))}</button>
           </div>
         `;
       } else {
@@ -590,9 +617,9 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         triviaContent.innerHTML = `
           <div class="text-center">
             <div class="text-4xl mb-3">&#128172;</div>
-            <p class="text-lg font-display font-bold text-crimson-400 mb-2">You scored ${triviaScore} / ${triviaQuestions.length}</p>
-            <p class="text-sm text-obsidian-400 mb-4">You need at least 3 correct to earn a card. Try again!</p>
-            <button class="btn-secondary mt-2 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')">Close</button>
+            <p class="text-lg font-display font-bold text-crimson-400 mb-2">${esc(t('pg.trivia.lost', { n: triviaScore, total: triviaQuestions.length }))}</p>
+            <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.trivia.need">${esc(t('pg.trivia.need'))}</p>
+            <button class="btn-secondary mt-2 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')" data-i18n="pg.close">${esc(t('pg.close'))}</button>
           </div>
         `;
       }
@@ -605,22 +632,25 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     const challengeStartBtn = document.getElementById('challenge-start-btn')!;
 
     challengeStartBtn.addEventListener('click', async () => {
+      await ready;
       playSfx('ui-click');
       challengeModal.classList.remove('hidden');
+      const l = locale();
 
-      let challenge: QuoteChallenge;
+      let challenge: LocalChallenge;
 
-      if (isContentGenAvailable()) {
+      // As with trivia: the model writes challenges in English only.
+      if (isContentGenAvailable(l)) {
         challengeContent.innerHTML = `
           <div class="text-center py-8">
             <div class="text-2xl mb-3 animate-pulse">&#128220;</div>
-            <p class="text-sm text-obsidian-400">Crafting challenge...</p>
+            <p class="text-sm text-obsidian-400">${esc(t('pg.challenge.crafting'))}</p>
           </div>
         `;
         const aiChallenge = await generateChallenge();
-        challenge = aiChallenge || getRandomChallenge();
+        challenge = aiChallenge ? { ...aiChallenge, id: -1, lang: 'en' } : await localRandomChallenge(l);
       } else {
-        challenge = getRandomChallenge();
+        challenge = await localRandomChallenge(l);
       }
 
       showChallenge(challenge);
@@ -630,37 +660,49 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       challengeModal.classList.add('hidden');
     });
 
-    function showChallenge(challenge: QuoteChallenge) {
-      const blankCount = challenge.missingWords.length;
+    function showChallenge(challenge: LocalChallenge) {
+      // A line in a language other than the interface's is Shakespeare's own English: say so.
+      const original = challenge.lang === 'en' && locale() !== 'en';
+      const source = `${esc(challenge.play)} — ${esc(challenge.character)}`;
+      // The heading's language can differ from the line's: an English original is headed in the interface language
+      // where the names table has the play and the speaker (src/lib/play-content.ts).
+      const sourceLang = challenge.headingLang ?? challenge.lang;
+      const sourceAttrs = `lang="${sourceLang}" dir="${isRtl(sourceLang) ? 'rtl' : 'ltr'}"`;
+      const lineAttrs = `lang="${challenge.lang}" dir="${isRtl(challenge.lang) ? 'rtl' : 'ltr'}"`;
+      const credit = challenge.translator
+        ? `<p class="text-xs text-obsidian-500 mt-1" data-challenge-credit>${esc(t('pg.challenge.translator', { translator: challenge.translator }))}</p>`
+        : '';
 
       challengeContent.innerHTML = `
         <div class="mb-4">
-          <p class="text-xs text-obsidian-500 mb-1">${challenge.play} — ${challenge.character}</p>
+          <p class="text-xs text-obsidian-500 mb-1" data-challenge-source ${sourceAttrs}>${source}</p>
           <span class="inline-block px-2 py-0.5 text-xs rounded-full ${
             challenge.difficulty === 'easy' ? 'bg-emerald-500/20 text-emerald-400' :
             challenge.difficulty === 'medium' ? 'bg-gold-500/20 text-gold-400' :
             'bg-crimson-500/20 text-crimson-400'
-          }">${challenge.difficulty}</span>
+          }" data-i18n="pg.difficulty.${challenge.difficulty}">${esc(t(`pg.difficulty.${challenge.difficulty}`))}</span>
+          ${original ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-obsidian-700/50 text-obsidian-300 ms-1" data-i18n="pg.challenge.original">${esc(t('pg.challenge.original'))}</span>` : ''}
         </div>
-        <p class="text-lg text-obsidian-200 font-display leading-relaxed mb-6 italic">
-          "${challenge.displayQuote}"
+        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic">
+          "${esc(challenge.displayQuote)}"
         </p>
-        <div class="space-y-3 mb-4">
+        ${credit}
+        <div class="space-y-3 mb-4 mt-4">
           ${challenge.missingWords.map((_, i) => `
             <div class="flex items-center gap-2">
-              <span class="text-xs text-obsidian-500 w-16">Blank ${i + 1}:</span>
-              <input type="text" class="challenge-input flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-purple-500/50 transition-colors" placeholder="Missing word..." data-index="${i}" />
+              <span class="text-xs text-obsidian-500 w-16" data-blank="${i + 1}">${esc(t('pg.challenge.blank', { n: i + 1 }))}</span>
+              <input type="text" ${lineAttrs} autocapitalize="off" autocomplete="off" spellcheck="false" class="challenge-input flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-purple-500/50 transition-colors" placeholder="${esc(t('pg.challenge.placeholder'))}" data-i18n-placeholder="pg.challenge.placeholder" data-index="${i}" />
             </div>
           `).join('')}
         </div>
-        <button id="challenge-submit" class="btn-primary w-full">Check Answer</button>
-        <p class="text-xs text-obsidian-500 mt-2 text-center">Hint: Think about the original Shakespeare quote</p>
+        <button id="challenge-submit" class="btn-primary w-full" data-i18n="pg.challenge.check">${esc(t('pg.challenge.check'))}</button>
+        <p class="text-xs text-obsidian-500 mt-2 text-center" data-i18n="pg.challenge.hint">${esc(t('pg.challenge.hint'))}</p>
       `;
 
       document.getElementById('challenge-submit')!.addEventListener('click', () => {
         const inputs = challengeContent.querySelectorAll('.challenge-input') as NodeListOf<HTMLInputElement>;
         const answers = Array.from(inputs).map(i => i.value);
-        const correct = checkAnswers(challenge, answers);
+        const correct = answersMatch(challenge.missingWords, answers, challenge.lang);
 
         if (correct) {
           recordChallengeComplete();
@@ -676,15 +718,15 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           challengeContent.innerHTML = `
             <div class="text-center">
               <div class="text-4xl mb-3">&#127881;</div>
-              <p class="text-sm text-obsidian-400 mb-2">The full quote:</p>
-              <p class="text-sm text-obsidian-200 italic mb-4">"${challenge.fullQuote}"</p>
-              <p class="text-lg font-display font-bold text-emerald-400 mb-4">Correct! You earned a card:</p>
+              <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.full">${esc(t('pg.challenge.full'))}</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
+              <p class="text-lg font-display font-bold text-emerald-400 mb-4" data-i18n="pg.challenge.correct">${esc(t('pg.challenge.correct'))}</p>
               <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
                 ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
                 <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
-                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
               </div>
-              <button class="btn-primary mt-4 w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')">Collect</button>
+              <button class="btn-primary mt-4 w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')" data-i18n="pg.collect">${esc(t('pg.collect'))}</button>
             </div>
           `;
         } else {
@@ -692,16 +734,22 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           challengeContent.innerHTML = `
             <div class="text-center">
               <div class="text-4xl mb-3">&#128172;</div>
-              <p class="text-lg font-display font-bold text-crimson-400 mb-2">Not quite!</p>
-              <p class="text-sm text-obsidian-400 mb-2">The answer was:</p>
-              <p class="text-sm text-obsidian-200 italic mb-4">"${challenge.fullQuote}"</p>
-              <p class="text-xs text-obsidian-500 mb-4">${challenge.play} — ${challenge.character}</p>
-              <button class="btn-secondary w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')">Try Again Later</button>
+              <p class="text-lg font-display font-bold text-crimson-400 mb-2" data-i18n="pg.challenge.wrong">${esc(t('pg.challenge.wrong'))}</p>
+              <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.answer">${esc(t('pg.challenge.answer'))}</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
+              <p class="text-xs text-obsidian-500 mb-4" ${sourceAttrs}>${source}</p>
+              <button class="btn-secondary w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')" data-i18n="pg.challenge.later">${esc(t('pg.challenge.later'))}</button>
             </div>
           `;
         }
       });
     }
+    // Blank labels carry a number, which data-i18n cannot fill: relabel them on a change of language.
+    redraw.push(() => {
+      challengeContent.querySelectorAll<HTMLElement>('[data-blank]').forEach((el) => {
+        el.textContent = t('pg.challenge.blank', { n: Number(el.dataset.blank) });
+      });
+    });
     // --- Onboarding ---
     const ONBOARDING_KEY = 'inspired-mile-onboarding-done';
 
@@ -718,27 +766,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       const skipBtn = document.getElementById('onboarding-skip')!;
 
       const steps = [
-        {
-          target: '#starter-pack-btn',
-          title: 'Claim Your Starter Pack',
-          desc: 'Start here! Open your free starter pack to get your first 3 cards.',
-          position: 'bottom' as const,
-        },
-        {
-          target: '#trivia-start-btn',
-          title: 'Test Your Knowledge',
-          desc: 'Play trivia and quote challenges to earn more cards for your collection.',
-          position: 'top' as const,
-        },
-        {
-          target: 'a[href="/battle"]',
-          title: 'Enter the Battle Arena',
-          desc: 'Challenge the AI Master Thespian to a Shakespeare rap battle. Win rounds, win cards!',
-          position: 'top' as const,
-        },
+        { target: '#starter-pack-btn', title: 'pg.onb.1.title', desc: 'pg.onb.1.desc', position: 'bottom' as const },
+        { target: '#trivia-start-btn', title: 'pg.onb.2.title', desc: 'pg.onb.2.desc', position: 'top' as const },
+        { target: 'a[href="/battle"].btn-danger', title: 'pg.onb.3.title', desc: 'pg.onb.3.desc', position: 'top' as const },
       ];
 
       let currentStep = 0;
+      /** Stops placing the open step's tooltip (its listeners are removed). */
+      let reposition: (() => void) | null = null;
 
       function showStep(i: number) {
         if (i >= steps.length) {
@@ -751,9 +786,11 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         if (!target) { finishOnboarding(); return; }
 
         step.textContent = `${i + 1} / ${steps.length}`;
-        title.textContent = s.title;
-        desc.textContent = s.desc;
-        nextBtn.textContent = i === steps.length - 1 ? 'Got it!' : 'Next';
+        // Keys on the elements, so a change of language relabels the open step.
+        title.dataset.i18n = s.title;
+        desc.dataset.i18n = s.desc;
+        nextBtn.dataset.i18n = i === steps.length - 1 ? 'pg.onb.done' : 'pg.onb.next';
+        applyTranslations(tooltip);
 
         // Highlight target element
         target.style.position = 'relative';
@@ -761,36 +798,37 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         target.style.boxShadow = '0 0 0 4px rgba(212,175,55,0.4), 0 0 20px rgba(212,175,55,0.2)';
         target.style.borderRadius = '12px';
 
-        // Position tooltip near target
-        const rect = target.getBoundingClientRect();
-        const ttWidth = 288; // max-w-xs
-        const padding = 16;
-
-        if (s.position === 'bottom') {
-          tooltip.style.top = `${rect.bottom + window.scrollY + padding}px`;
-          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
-          arrow.style.top = '-6px';
-          arrow.style.left = '50%';
+        // The overlay is fixed, so the tooltip is placed in the viewport: after the target has been scrolled
+        // into view (at once, so its box is where it will stay), from the tooltip's measured size, beside the
+        // target where there is room and never outside the screen. At phone width the second target is far
+        // below the fold; placed from page coordinates before the scroll, the tooltip landed off-screen.
+        target.scrollIntoView({ block: 'center', behavior: 'instant' as ScrollBehavior });
+        const place = () => {
+          const rect = target.getBoundingClientRect();
+          const pad = 16;
+          const w = tooltip.offsetWidth || 288, h = tooltip.offsetHeight || 160;
+          const left = Math.max(pad, Math.min(rect.left + rect.width / 2 - w / 2, window.innerWidth - w - pad));
+          const below = rect.bottom + pad, above = rect.top - pad - h;
+          const fitsBelow = below + h <= window.innerHeight - pad, fitsAbove = above >= pad;
+          const wantBelow = s.position === 'bottom' ? fitsBelow || !fitsAbove : !fitsAbove && fitsBelow;
+          const top = Math.max(pad, Math.min(wantBelow ? below : above, window.innerHeight - h - pad));
+          tooltip.style.top = `${top}px`;
+          tooltip.style.left = `${left}px`;
+          // The arrow on the side that faces the target, under the target's middle.
+          const edge = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.left = `${Math.max(14, Math.min(rect.left + rect.width / 2 - left, w - 14))}px`;
           arrow.style.transform = 'translateX(-50%) rotate(45deg)';
-          arrow.style.borderTop = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderLeft = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderBottom = 'none';
-          arrow.style.borderRight = 'none';
-        } else {
-          tooltip.style.top = `${rect.top + window.scrollY - padding - 140}px`;
-          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
-          arrow.style.bottom = '-6px';
-          arrow.style.top = 'auto';
-          arrow.style.left = '50%';
-          arrow.style.transform = 'translateX(-50%) rotate(45deg)';
-          arrow.style.borderBottom = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderRight = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderTop = 'none';
-          arrow.style.borderLeft = 'none';
-        }
-
-        // Scroll target into view
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (wantBelow) Object.assign(arrow.style, { top: '-6px', bottom: 'auto', borderTop: edge, borderLeft: edge, borderBottom: 'none', borderRight: 'none' });
+          else Object.assign(arrow.style, { top: 'auto', bottom: '-6px', borderBottom: edge, borderRight: edge, borderTop: 'none', borderLeft: 'none' });
+        };
+        place();
+        // Placed again when the text arrives in another language, the page scrolls or the window changes size.
+        reposition?.();
+        window.addEventListener('scroll', place, { passive: true });
+        window.addEventListener('resize', place);
+        const watch = new ResizeObserver(place);
+        watch.observe(tooltip);
+        reposition = () => { window.removeEventListener('scroll', place); window.removeEventListener('resize', place); watch.disconnect(); reposition = null; };
       }
 
       function clearHighlights() {
@@ -806,6 +844,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       }
 
       function finishOnboarding() {
+        reposition?.();
         clearHighlights();
         overlay.classList.add('hidden');
         overlay.classList.remove('flex');
@@ -827,6 +866,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     }
 
     // Delay slightly so DOM is settled
+    // Not held up by the language: the tooltip's text carries keys and is filled when the area arrives.
     setTimeout(startOnboarding, 500);
   </script>
 </BaseLayout>

@@ -1,0 +1,202 @@
+# Quiz po polsku. n | pytanie | opcja 0 (poprawna) | 1 | 2 | 3.   „=”: nazwa wzięta z tabeli nazw (Wikidata).
+# Wersy Szekspira zostają po angielsku, tak jak na kartach.
+0 | Kto napisał „To be, or not to be, that is the question”? | = | = | = | =
+1 | W której sztuce występują Romeo i Julia? | = | = | = | =
+2 | Jak nazywa się zamek Hamleta? | = | = | = | =
+3 | Która postać mówi „A plague on both your houses!”? | = | = | = | =
+4 | Z jakiego rodzaju utworów Szekspir jest najbardziej znany? | Ze sztuk teatralnych i sonetów | Z powieści | Z poematów epickich | Z opowiadań
+5 | Gdzie urodził się Szekspir? | = | = | = | =
+6 | Kto zabija Romea w sztuce Romeo i Julia? | Nikt – sam odbiera sobie życie | = | = | Ojciec Julii
+7 | Jak nazywa się teatr Szekspira? | = | = | = | Teatr Królewski
+8 | Która z tych sztuk jest komedią Szekspira? | = | = | = | =
+9 | Gdzie stoi Julia, gdy Romeo do niej mówi? | Na balkonie | Na wieży | Na moście | Na dachu
+10 | Z której sztuki pochodzi „Friends, Romans, countrymen, lend me your ears”? | = | = | = | =
+11 | Ile sztuk napisał Szekspir? | 37 | 15 | 50 | 100
+12 | Który słynny szkocki król jest bohaterem tragedii Szekspira? | = | = | = | =
+13 | W której sztuce jest magiczna wyspa? | = | = | = | =
+14 | Do którego rodu należy Romeo? | Montekich | Kapuletów | Escalusa | Laurentego
+15 | W której sztuce występuje Puk? | = | = | = | =
+16 | Kto jest czarodziejskim sługą Prospera w Burzy? | = | = | = | =
+17 | Z której sztuki pochodzi „Double, double toil and trouble”? | = | = | = | =
+18 | Ile sonetów napisał Szekspir? | 154 | 100 | 200 | 52
+19 | Która postać jest królową elfów? | = | = | = | =
+20 | W jakim mieście rozgrywa się Romeo i Julia? | = | = | = | =
+21 | Kto jest stryjem Hamleta? | = | = | = | =
+22 | Od czego ginie Hamlet pod koniec sztuki? | Od zatrutego ostrza | Od sztyletu | Od trucizny w napoju | Od upadku z wieży
+23 | W której sztuce występują trzy czarownice? | = | = | = | =
+24 | Kto, umierając, mówi „Et tu, Brute?”? | = | = | = | =
+25 | Jak nazywa się psotny duszek w Śnie nocy letniej? | Puk (Robin Goodfellow) | = | = | =
+26 | Do której postaci w Hamlecie skierowane są słowa „Get thee to a nunnery”? | = | = | = | =
+27 | Czego w Kupcu weneckim żąda Shylock jako zastawu? | Funta ciała | Sakiewki złota | Statku | Pierścienia
+28 | Kto jest potwornym sługą Prospera w Burzy? | = | = | = | =
+29 | Lady Makbet mówi „Out, damned ___!”. Jakiego słowa brakuje? | Spot | Blood | Hand | Stain
+30 | W której sztuce postać trzyma czaszkę i mówi „Alas, poor Yorick”? | = | = | = | =
+31 | W której sztuce występują Beatrice i Benedick? | = | = | = | =
+32 | Co unosi się przed Makbetem i prowadzi go do komnaty Duncana? | Sztylet | Duch | Korona | Pochodnia
+33 | Kto jest księciem Werony w Romeo i Julii? | Escalus | = | = | =
+34 | Jaki podtytuł ma Wieczór Trzech Króli? | Albo co chcecie | Albo jak wam się podoba | Albo komedia omyłek | Albo wszystko dobre
+35 | W której sztuce pada zdanie „All the world's a stage”? | = | = | = | =
+36 | Jak ma na imię król elfów w Śnie nocy letniej? | = | = | = | =
+37 | Która postać mówi „Brevity is the soul of wit”? | = | = | = | =
+38 | Co Julia ma na myśli, mówiąc „What's in a name?”? | Że imię nie zmienia tego, kim ktoś naprawdę jest | Że zapomniała imienia Romea | Że chce zmienić własne imię | Że imiona są ważniejsze od czynów
+39 | Która z tych sztuk NIE jest dziełem Szekspira? | = | = | = | =
+40 | W której sztuce postać dostaje oślą głowę? | = | = | = | =
+41 | Jaki stopień ma Jago w Otellu? | Chorąży | Kapitan | Generał | Porucznik
+42 | Która sztuka Szekspira jest znana także jako „szkocka sztuka”? | = | = | = | =
+43 | Którą sztukę otwierają słowa „Now is the winter of our discontent”? | = | = | = | =
+44 | Która sztuka Szekspira jest najdłuższa? | = | = | = | =
+45 | Pod koniec której sztuki Prospero łamie swoją laskę i zatapia księgę? | = | = | = | =
+46 | Która postać mówi „Lord, what fools these mortals be!”? | = | = | = | =
+47 | Z której sztuki pochodzi „The quality of mercy is not strained”? | = | = | = | =
+48 | Sokiem jakiego kwiatu Oberon sprawia, że ludzie się zakochują? | Bratka (love-in-idleness) | Róży | Lilii | Fiołka
+49 | Ile córek ma Lear w Królu Learze? | Trzy | Dwie | Cztery | Jedną
+50 | Który szekspirowski czarny charakter mówi „I am not what I am”? | = | = | = | Aaron
+51 | Co czarownice przepowiadają Makbetowi o lesie Birnam? | Nie zostanie pokonany, dopóki las nie podejdzie pod jego zamek | Musi spalić las, żeby być bezpieczny | Las ukrywa jego wrogów | Drzewo runie i go przygniecie
+52 | W której grupie utworów pojawia się szekspirowska „Czarna Dama”? | W Sonetach | W kronikach historycznych | W romansach | W sztukach problemowych
+53 | Która postać mówi „These violent delights have violent ends”? | Ojciec Laurenty | = | = | Książę
+54 | W której sztuce Rosalind i Orlando przebywają w Lesie Ardeńskim? | = | = | = | =
+55 | Jak nazywała się żona Szekspira? | = | = | = | =
+56 | W którym wieku urodził się Szekspir? | W XVI wieku | W XV wieku | W XVII wieku | W XIV wieku
+57 | Która z tych sztuk jest tragedią Szekspira? | = | = | = | =
+58 | Gdzie rozgrywa się Hamlet? | = | = | = | =
+59 | Kto jest postacią tytułową Kupca weneckiego? | = | = | = | =
+60 | W jaki sposób Julia w Romeo i Julii upozorowuje własną śmierć? | Wypija napój nasenny | Rzuca zaklęcie | Wstrzymuje oddech | Zażywa truciznę
+61 | Która postać jest księciem Danii? | = | = | = | =
+62 | Szekspira często nazywa się „The ____ of Avon”. Jakiego słowa brakuje? | Bard | King | Poet | Master
+63 | Do którego rodu należy Julia? | Kapuletów | Montekich | Escalusa | Laurentego
+64 | W jakim kraju rozgrywa się większość komedii Szekspira? | = | = | = | =
+65 | Kto zabija Makbeta pod koniec sztuki? | = | = | = | =
+66 | Co Hamlet ma na myśli, mówiąc „the rest is silence”? | Umiera i nie może już nic powiedzieć | Chce, żeby wszyscy zamilkli | Idzie spać | Nie ma zdania
+67 | W której sztuce Szekspira występują bliźnięta ocalałe z katastrofy statku? | = | = | = | =
+68 | Głowę jakiego zwierzęcia dostaje Spodek (Bottom) w Śnie nocy letniej? | Osła | Konia | Niedźwiedzia | Świni
+69 | W którym angielskim mieście Szekspir spędził większość swojej kariery? | = | = | = | =
+70 | Jak nazywa się zakonnik w Romeo i Julii? | Ojciec Laurenty | = | Ojciec Jan | Ojciec Franciszek
+71 | Kto włada magiczną wyspą w Burzy? | = | = | = | =
+72 | W której sztuce występuje postać o imieniu Shylock? | = | = | = | =
+73 | Czyj duch pojawia się na początku Hamleta? | Ojca Hamleta | Dziadka Hamleta | = | =
+74 | Który wiersz zaczyna się od słynnego wersu „Shall I compare thee to a summer's day?” | = | = | = | =
+75 | Jaki tytuł nosi Makbet na początku sztuki? | Tan Glamis | Król Szkocji | Książę Albany | Hrabia Northumberland
+76 | Która sztuka Szekspira opowiada o zazdrosnym Maurze? | = | = | = | =
+77 | Jak ginie Ofelia w Hamlecie? | Tonie | Zostaje otruta | Zostaje zasztyletowana | Spada z wieży
+78 | Który monarcha rządził Anglią przez większą część kariery Szekspira? | = | = | = | =
+79 | Co mówi Miranda, córka Prospera, gdy po raz pierwszy widzi innych ludzi? | „O brave new world” | „What magic is this” | „Father, who are they” | „I must be dreaming”
+80 | W której sztuce postać przebiera się za prawnika o imieniu Balthazar? | = | = | = | =
+81 | Jak nazywała się trupa aktorska Szekspira za panowania króla Jakuba I? | = | The Queen's Players | = | The Chamberlain's Servants
+82 | Która sztuka zaczyna się od burzy na morzu? | = | = | = | =
+83 | Kto w Juliuszu Cezarze stoi na czele spisku na życie Cezara? | Brutus i Kasjusz | Marek Antoniusz i Oktawian | Kalpurnia i Porcja | Cyceron i Kaska
+84 | Do jakiego gatunku należy Sen nocy letniej? | Komedia | Tragedia | Kronika historyczna | Romans
+85 | W której sztuce Szekspira pojawia się Las Ardeński? | = | = | = | =
+86 | W którym roku zmarł Szekspir? | 1616 | 1600 | 1623 | 1590
+87 | Kto jest najlepszym przyjacielem Romea? | = | = | = | =
+88 | Jak ma na imię córka Prospera w Burzy? | = | = | Perdita | =
+89 | W której sztuce pada zdanie „If music be the food of love, play on”? | = | = | = | =
+90 | Jaki tytuł otrzymuje Makbet po pierwszym zwycięstwie w bitwie? | Tan Cawdor | Tan Glamis | Książę Albany | Hrabia Ross
+91 | Jakie męskie imię przybiera Viola w przebraniu w Wieczorze Trzech Króli? | Cesario | = | = | =
+92 | Kto zabija Tybalta w Romeo i Julii? | = | = | = | =
+93 | Która córka w Królu Learze naprawdę kocha ojca? | = | = | = | Wszystkie trzy jednakowo
+94 | Czym Otello zabija Desdemonę? | Poduszką (dusi ją) | Sztyletem | Trucizną | Sznurem
+95 | W której sztuce występuje Malvolio? | = | = | = | =
+96 | Jak ma na imię matka Hamleta? | = | = | = | =
+97 | Jak ma na imię „złośnica” w Poskromieniu złośnicy? | Katarzyna (Kasia) | Bianka | Adriana | =
+98 | Kto jest ojcem Desdemony w Otellu? | = | = | = | =
+99 | Która postać wygłasza mowę „Once more unto the breach”? | = | = | = | =
+100 | Księżniczką którego królestwa jest Perdita w Zimowej opowieści? | = | = | = | =
+101 | Kto jest księciem Ilirii w Wieczorze Trzech Króli? | = | = | = | =
+102 | Za kogo przebiera się Porcja w Kupcu weneckim? | Za prawnika | Za kupca | Za żeglarza | Za mnicha
+103 | Która postać w Wiele hałasu o nic upozorowuje własną śmierć? | = | = | = | Ursula
+104 | Jaką sztukę w sztuce wystawia Hamlet, by schwytać sumienie króla? | Pułapkę na myszy | Zabójstwo Gonzagi | Sztukę o królu | Zwierciadło władców
+105 | Kto w Juliuszu Cezarze wygłasza słynną mowę pogrzebową zaczynającą się od „Friends, Romans, countrymen”? | = | = | = | =
+106 | Jak ma na imię wierny towarzysz Leara, który udaje „Poor Toma”? | Edgar | = | Kent | Gloucester
+107 | Jakim przedmiotem Jago w Otellu przekonuje Otella o niewierności Desdemony? | Chusteczką | Listem | Pierścieniem | Portretem
+108 | Która sztuka kończy się słowami „The rest is silence”? | = | = | = | =
+109 | Kto w Jak wam się podoba przebiera się za chłopca o imieniu Ganimedes? | = | = | Phebe | =
+110 | Co stało się z teatrem Globe w 1613 roku? | Spłonął podczas przedstawienia | Zamknął go król | Zawalił się podczas burzy | Rozebrano go, by go odbudować
+111 | Kto w Miarce za miarkę jest skorumpowanym namiestnikiem, któremu powierzono Wiedeń? | = | Escalus | Lucio | Claudio
+112 | W której sztuce Szekspira występuje postać o imieniu Kaliban? | = | = | = | =
+113 | Jak ma na imię narzeczona Petruchia w Poskromieniu złośnicy? | Katarzyna | Bianka | Adriana | =
+114 | Jak ginie Kleopatra w Antoniuszu i Kleopatrze? | Od ukąszenia żmii (węża) | Od trucizny | Tonie | Od sztyletu
+115 | Kogo w Makbecie nawiedza duch Banka? | = | = | = | =
+116 | Jak nazywa się porucznik Otella, któremu Jago zazdrości? | = | = | = | =
+117 | Za co Ryszard w Ryszardzie III chce oddać swoje królestwo? | Za konia | Za miecz | Za koronę | Za życie
+118 | Który z bliźniąt jest bratem Violi w Wieczorze Trzech Króli? | = | = | = | =
+119 | Którą bitwę w Henryku V poprzedza słynna mowa na dzień świętego Kryspina? | = | = | = | =
+120 | Kto zabija króla Duncana w Makbecie? | = | = | = | =
+121 | Którą szkatułę musi wybrać Bassanio w Kupcu weneckim, by zdobyć rękę Porcji? | Ołowianą | Złotą | Srebrną | Brązową
+122 | Jak nazywa się bliski przyjaciel i powiernik Hamleta? | = | = | = | =
+123 | Która sztuka Szekspira rozgrywa się w starożytnym Egipcie? | = | = | = | =
+124 | Co w Królu Learze mają wyznać córki Leara, zanim podzieli królestwo? | Jak bardzo go kochają | Jakie mają plany rządzenia | Jakie mają widoki na małżeństwo | Jaką mają siłę wojskową
+125 | Kto mówi „Parting is such sweet sorrow”? | Julia w Romeo i Julii | Hamlet w Hamlecie | Porcja w Kupcu weneckim | Viola w Wieczorze Trzech Króli
+126 | Co Lady Makbet obsesyjnie robi, lunatykując? | Myje ręce | Recytuje przemowy | Szuka sztyletu | Woła męża
+127 | Kto w Wiele hałasu o nic jest knującym intrygi łotrem? | = | = | = | Borachio
+128 | Jak nazywa się święto pasterzy w Zimowej opowieści? | Święto strzyżenia owiec | Bal dożynkowy | Wiosenny karnawał | Zabawa w noc świętojańską
+129 | Kto w Jak wam się podoba wygłasza monolog o „siedmiu wiekach człowieka”? | = | = | = | Książę wygnany
+130 | Która postać w Śnie nocy letniej kieruje grupą aktorów amatorów? | = | = | = | =
+131 | Kto jest ojcem Kordelii w Królu Learze? | Król Lear | Hrabia Gloucester | Hrabia Kent | Książę Kornwalii
+132 | Jaki związek z wyspą przypisuje sobie Kaliban w Burzy? | Uważa się za jej prawowitego władcę | Uważa się za jej stwórcę | Uważa się za jej obrońcę | Nie przypisuje sobie żadnego
+133 | Jak ma na imię żona Brutusa w Juliuszu Cezarze? | Porcja | = | = | =
+134 | Która sztuka Szekspira rozgrywa się w lesie pod Atenami? | = | = | = | =
+135 | Za jakie przestępstwo aresztowano Claudia w Miarce za miarkę? | Za to, że jego narzeczona zaszła w ciążę przed ślubem | Za kradzież | Za morderstwo | Za zdradę stanu
+136 | Jak nazywa się błazen w Wieczorze Trzech Króli? | = | = | = | =
+137 | W kim zakochuje się Ferdynand w Burzy? | = | = | Claribel | =
+138 | Co Romeo kupuje u aptekarza? | Truciznę | Napój nasenny | Lekarstwo | Napój miłosny
+139 | Kto oślepia Gloucestera w Królu Learze? | Kornwalia | = | = | Oswald
+140 | Jak nazywała się trupa teatralna Szekspira, zanim jej patronem został król Jakub? | = | = | = | =
+141 | W której sztuce występuje Dogberry, nieporadny konstabl? | = | = | = | =
+142 | Jak ginie Antoniusz w Antoniuszu i Kleopatrze? | Rzuca się na własny miecz | Ginie w bitwie | Zostaje otruty | Zostaje stracony
+143 | Kim jest Hermiona w Zimowej opowieści? | Królową Sycylii | Pasterką | Czarownicą | Służącą
+144 | W której sztuce postać nosi żółte pończochy z podwiązkami na krzyż? | = | = | = | =
+145 | Jak nazywa się sztuka w sztuce w Hamlecie, tak jak nazywa ją sam Hamlet? | Pułapka na myszy | Zabójstwo Gonzagi | Sumienie króla | Zemsta Danii
+146 | W której sztuce postać przeżywa, choć jako niemowlę została porzucona w Czechach? | = | = | = | =
+147 | Jak ma na imię nieślubny syn Gloucestera w Królu Learze? | = | Edgar | Oswald | Kornwalia
+148 | Który sonet Szekspira zaczyna się od słów „Let me not to the marriage of true minds / Admit impediments”? | = | = | = | =
+149 | Jak ma na imię książę, który w Miarce za miarkę przebiera się za zakonnika? | Vincentio | = | Escalus | Claudio
+150 | Którą sztukę uważa się za ostatnią napisaną przez Szekspira samodzielnie? | = | = | = | =
+151 | Jak mają na imię trzy córki króla Leara? | Goneril, Regana i Kordelia | Goneril, Rosalind i Kordelia | Helena, Regana i Kordelia | Goneril, Regana i Ofelia
+152 | Jaki napis widnieje w Kupcu weneckim na ołowianej szkatule? | „Who chooseth me must give and hazard all he hath” | „Who chooseth me shall gain what many men desire” | „Who chooseth me shall get as much as he deserves” | „Who chooseth me shall find true love”
+153 | Co jest niezwykłego w Sonecie 130 („My mistress' eyes are nothing like the sun”)? | To sonet antypetrarkistowski, który drwi z konwencjonalnej poezji miłosnej | Jest napisany wierszem wolnym, a nie pentametrem jambicznym | To jedyny sonet skierowany do mężczyzny | Został wydany osobno, bez pozostałych sonetów
+154 | Jakie kalectwo przypisuje sobie Ryszard w Ryszardzie III? | Garb | Brak dłoni | Szpotawą stopę | Ślepotę na jedno oko
+155 | Kim jest Sycorax w Burzy? | Matką Kalibana, czarownicą, która władała wyspą przed Prosperem | Siostrą Ariela | Pierwszą żoną Prospera | Boginią morza
+156 | Jaki układ rymów ma sonet szekspirowski? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
+157 | W której sztuce znajduje się wskazówka sceniczna „Exit, pursued by a bear”? | = | = | = | =
+158 | Jak miał na imię syn Szekspira, który zmarł w dzieciństwie? | = | Hamlet | Edmund | William
+159 | Skąd pochodzi Otello w Otellu? | Jest Maurem (z Afryki Północnej) | Pochodzi z Wenecji | Pochodzi z Cypru | Pochodzi z Hiszpanii
+160 | Która postać w Henryku V w przebraniu chodzi przed bitwą między swoimi żołnierzami? | Król Henryk V | Książę Exeter | Kapitan Fluellen | Hrabia Westmoreland
+161 | Jak brzmi pierwszy wers Ryszarda III? | „Now is the winter of our discontent / Made glorious summer by this sun of York” | „A horse, a horse, my kingdom for a horse” | „Was ever woman in this humour wooed” | „Off with his head! So much for Buckingham”
+162 | Jak nazywa się w Poskromieniu złośnicy postać z ramy fabularnej, która ogląda przedstawienie? | = | = | = | =
+163 | Który z tych utworów Szekspira uchodzi za „sztukę problemową”? | = | = | = | =
+164 | W którym roku zbudowano pierwszy teatr Globe? | 1599 | 1576 | 1610 | 1588
+165 | Jak nazywa się w Makbecie zamek Macduffa, w którym ginie jego rodzina? | = | = | = | =
+166 | Która postać w Juliuszu Cezarze ma sen i ostrzega męża, by nie szedł do Senatu? | = | Porcja | = | =
+167 | Jak nazywa się wydanie, w którym sztuki Szekspira po raz pierwszy ukazały się razem? | = | Dzieła wszystkie | Zbiór in quarto | Antologia Barda
+168 | W którym roku wydano Pierwsze Folio? | 1623 | 1616 | 1599 | 1609
+169 | W której sztuce Szekspira występuje Autolikus, wędrowny handlarz i szelma? | = | = | = | =
+170 | Kto wygłasza epilog na końcu Burzy? | = | = | = | Narrator
+171 | Jak nazywa się rozstrzygająca bitwa morska w Antoniuszu i Kleopatrze? | = | = | = | =
+172 | Jakie podwójne znaczenie ma prawdopodobnie słowo „nunnery” w Hamletowym „Get thee to a nunnery”? | Klasztor, a w elżbietańskim slangu także dom publiczny | Tylko klasztor | Więzienie | Szkoła dla kobiet
+173 | Która sztuka Szekspira zawiera monolog „To-morrow, and to-morrow, and to-morrow”? | = | = | = | =
+174 | Co robi Kent w Królu Learze po wygnaniu? | Przebiera się za sługę o imieniu Caius, żeby pozostać blisko Leara | Ucieka do Francji | Wstępuje do armii francuskiej | Zostaje pustelnikiem
+175 | Który poeta i dramaturg, współczesny Szekspirowi rywal, zginął w karczemnej bójce w 1593 roku? | = | = | = | =
+176 | Ile czasu upływa w Zimowej opowieści między aktami 3 i 4? | 16 lat | 5 lat | 1 rok | 20 lat
+177 | Czym jest „green-eyed monster”, przed którym Jago ostrzega Otella? | Zazdrością | Ambicją | Chciwością | Zemstą
+178 | Jaką sztukę wystawiają rzemieślnicy na weselu w Śnie nocy letniej? | = | = | = | =
+179 | Na czym polegała tradycja chłopców-aktorów w teatrze elżbietańskim? | Chłopcy grali wszystkie role kobiece, bo kobietom nie wolno było występować na scenie | Chłopcy grali tylko role dziecięce | Chłopcy byli inspicjentami | Chłopcy występowali tylko w komediach
+180 | W której sztuce książę wygnany mówi „Sweet are the uses of adversity”? | = | = | = | =
+181 | Jak nazywa się późne sztuki Szekspira, takie jak Zimowa opowieść i Burza? | Romanse (lub późne romanse) | Tragikomedie | Sztuki pasterskie | Maski
+182 | Kto w Makbecie mówi „By the pricking of my thumbs, / Something wicked this way comes”? | Druga czarownica | Pierwsza czarownica | = | =
+183 | Która z córek Leara jest żoną księcia Kornwalii? | = | = | = | Żadna z nich
+184 | Jak brzmi pełny tytuł sztuki znanej jako Henryk V? | The Life of King Henry the Fifth | The Chronicle History of Henry V | Henry V: The Warrior King | The Reign of King Henry V
+185 | Czego w Miarce za miarkę Angelo żąda od Isabelli w zamian za życie jej brata? | Żeby się z nim przespała | Dużej sumy pieniędzy | Publicznego wyznania winy | Żeby opuściła klasztor
+186 | Kto mówi „Cowards die many times before their deaths; the valiant never taste of death but once”? | = | = | = | =
+187 | Czym był „pit” albo „yard” w teatrze Globe? | Miejscem stojącym przed sceną, z najtańszym wstępem | Magazynem pod sceną | Kulisami dla aktorów | Kanałem dla orkiestry
+188 | Co według poety uczyni ukochaną osobę nieśmiertelną w Sonecie 18? | Sam wiersz („So long lives this, and this gives life to thee”) | Uroda ukochanej osoby | Letnie słońce | Portret ukochanej osoby
+189 | Która postać w Hamlecie mówi „Though this be madness, yet there is method in't”? | = | = | = | =
+190 | Jaki warunek postawił zalotnikom zmarły ojciec Porcji w Kupcu weneckim? | Muszą wybrać właściwą z trzech szkatuł (złotej, srebrnej i ołowianej) | Muszą pokonać się nawzajem w walce | Muszą rozwiązać zagadkę | Muszą dowieść swojego bogactwa
+191 | Jak nazywa się postać uosabiająca Czas w Zimowej opowieści? | Czas (jako Chór) | Ojciec Czas | Wyrocznia | Autolycus
+192 | Którą sztukę Szekspir napisał prawdopodobnie w hołdzie nowo koronowanemu królowi Jakubowi I? | = | = | = | =
+193 | Jakiego figla płatają Malvoliowi Maria i sir Toby w Wieczorze Trzech Króli? | Podrabiają list miłosny od Olivii, w którym prosi go, by nosił żółte pończochy | Zamykają go w pokoju | Kradną mu ubranie | Wmawiają mu, że głuchnie
+194 | Jak nazywa się pomalowana w gwiazdy konstrukcja nad sceną teatru Globe? | Niebiosa (the Heavens) | Baldachim | Firmament | Dach
+195 | W której sztuce postać zasięga rady wyroczni w Delfach? | = | = | = | =
+196 | Kto wydał sonety Szekspira w 1609 roku? | = | = | = | =
+197 | Jaki obraźliwy podarunek Delfin przysyła Henrykowi w Henryku V? | Piłki tenisowe | Dziecięcą koronę-zabawkę | Czapkę błazna | Drewniany miecz
+198 | W której sztuce Szekspira pada słynna mowa o „band of brothers”? | = | = | = | =
+199 | Jak nazywano widzów, którzy stali na dziedzińcu teatru Globe? | Groundlings | Penny standers | Motłoch | Pospólstwo
