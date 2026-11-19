@@ -215,7 +215,8 @@ async fn cancel_listing(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
     let mut tx = pool.begin().await.map_err(crate::error::internal)?;
-    ledger::lock_account(&mut tx, claims.sub).await.map_err(crate::error::internal)?;
+    // The listing first, then the account, as a purchase locks them (listing, accounts, card):
+    // a cancel and a purchase of one listing at once wait for each other instead of deadlocking.
     let owned: Option<Option<Uuid>> = sqlx::query_scalar(
         "UPDATE card_listings SET status = 'cancelled', updated_at = NOW()
          WHERE id = $1 AND seller_id = $2 AND status = 'active'
@@ -229,6 +230,7 @@ async fn cancel_listing(
     let Some(owned) = owned else {
         return Err((StatusCode::NOT_FOUND, "Listing not found or not yours".into()));
     };
+    ledger::lock_account(&mut tx, claims.sub).await.map_err(crate::error::internal)?;
     // The card is the seller's to list, sell or field again.
     if let Some(owned_card_id) = owned {
         sqlx::query("UPDATE owned_cards SET state = 'owned' WHERE id = $1 AND user_id = $2 AND state = 'listed'")
