@@ -6,6 +6,10 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 ## Stack
 
 - Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
+- **Licence (LFM models):** LFM3 1.7B and LFM2.5 350M are used under the LFM Open License v1.0, which
+  covers commercial use only while the licensee and every entity under common control earn under
+  US$10M a year. The owner confirmed on 2026-11-17 that Voyage Tracable LLC is under that threshold.
+  Re-check this if revenue grows (`docs/MODEL-LICENCES.md`).
 - In-browser AI through `@huggingface/transformers` on WebGPU; no server does inference.
   `src/lib/brain.ts` knows three models: Gemma 4 E2B (3.1 GB), LFM3 1.7B (1.1 GB) and
   LFM2.5 350M (295 MB). Which the device can run decides what is offered, and each model
