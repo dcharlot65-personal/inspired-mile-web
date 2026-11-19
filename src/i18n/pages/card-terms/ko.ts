@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Korean.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': '등장인물',
+  'card-terms.type.relic': '유물',
+  'card-terms.type.potion': '물약',
+  'card-terms.types.character': '등장인물',
+  'card-terms.types.relic': '유물',
+  'card-terms.types.potion': '물약',
+  'card-terms.stat.atk': '공격',
+  'card-terms.stat.def': '방어',
+  'card-terms.stat.hp': '체력',
+  'card-terms.house.montague': '몬터규',
+  'card-terms.house.capulet': '캐풀렛',
+  'card-terms.house.danish-court': '덴마크 궁정',
+  'card-terms.house.forest-of-arden': '아든 숲',
+  'card-terms.house.verona-court': '베로나 궁정',
+  'card-terms.house.the-tempest': '템페스트', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': '스코틀랜드 궁정',
+  'card-terms.house.illyria': '일리리아', // Wikidata Q32047 label
+  'card-terms.house.rome': '로마', // Wikidata Q220 label
+  'card-terms.house.legendary': '전설',
+  'card-terms.house.relic': '유물',
+  'card-terms.house.potion': '물약',
+  'card-terms.house.lake-district': '호수지방', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': '고딕 서클',
+  'card-terms.house.olympus': '올림포스', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': '저승',
+  'card-terms.element.air': '공기',
+  'card-terms.element.alchemy': '연금술',
+  'card-terms.element.ambition': '야망',
+  'card-terms.element.arcane': '비전',
+  'card-terms.element.authority': '권위',
+  'card-terms.element.beast': '야수',
+  'card-terms.element.beauty': '아름다움',
+  'card-terms.element.comedy': '희극',
+  'card-terms.element.compassion': '연민',
+  'card-terms.element.creation': '창조',
+  'card-terms.element.cunning': '꾀',
+  'card-terms.element.dark': '암흑',
+  'card-terms.element.darkness': '어둠',
+  'card-terms.element.death': '죽음',
+  'card-terms.element.devotion': '헌신',
+  'card-terms.element.disguise': '변장',
+  'card-terms.element.duty': '의무',
+  'card-terms.element.earth': '대지',
+  'card-terms.element.enchantment': '마법',
+  'card-terms.element.envy': '질투',
+  'card-terms.element.fire': '불',
+  'card-terms.element.glory': '영광',
+  'card-terms.element.grace': '우아함',
+  'card-terms.element.honor': '명예',
+  'card-terms.element.illusion': '환영',
+  'card-terms.element.innocence': '순수',
+  'card-terms.element.justice': '정의',
+  'card-terms.element.knowledge': '지식',
+  'card-terms.element.light': '빛',
+  'card-terms.element.love': '사랑',
+  'card-terms.element.loyalty': '충성',
+  'card-terms.element.mischief': '장난',
+  'card-terms.element.moonlight': '달빛',
+  'card-terms.element.nature': '자연',
+  'card-terms.element.ocean': '바다',
+  'card-terms.element.passion': '열정',
+  'card-terms.element.peace': '평화',
+  'card-terms.element.petrification': '석화',
+  'card-terms.element.poison': '독',
+  'card-terms.element.power': '권력',
+  'card-terms.element.prophecy': '예언',
+  'card-terms.element.rebellion': '반역',
+  'card-terms.element.rebirth': '부활',
+  'card-terms.element.revolution': '혁명',
+  'card-terms.element.rhetoric': '웅변',
+  'card-terms.element.shadow': '그림자',
+  'card-terms.element.sorrow': '슬픔',
+  'card-terms.element.speed': '속도',
+  'card-terms.element.storm': '폭풍',
+  'card-terms.element.thunder': '천둥',
+  'card-terms.element.transformation': '변신',
+  'card-terms.element.trickster': '장난꾼',
+  'card-terms.element.vanity': '허영',
+  'card-terms.element.vision': '환시',
+  'card-terms.element.water': '물',
+  'card-terms.element.wind': '바람',
+  'card-terms.element.wisdom': '지혜',
+  'card-terms.work.romeo-and-juliet': '로미오와 줄리엣', // Wikidata Q83186 label
+  'card-terms.work.hamlet': '햄릿', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': '당신 뜻대로', // Wikidata Q237572 label
+};
+
+export default messages;

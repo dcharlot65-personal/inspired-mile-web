@@ -1,0 +1,4133 @@
+{
+ "about": "Back-translation flags (scripts/pages-lang/meaning.mjs) read and accepted, each with the reason. An entry names the exact text it excuses: change the string and the entry stops matching, and the run fails until the string is scored and read again.",
+ "entries": [
+  {
+   "lang": "es",
+   "key": "achievements.quotable.name",
+   "text": "Digno de cita",
+   "flag": "cos 0.2864, LaBSE 0.5816, chrF 5.3",
+   "back": "Worthy of mention",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "es",
+   "key": "achievements.pack-rat.name",
+   "text": "Acaparador de sobres",
+   "flag": "cos 0.1599, LaBSE 0.3667, chrF 3.5",
+   "back": "Collector of envelopes",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "es",
+   "key": "achievements.master-thespian.name",
+   "text": "Maestro de la escena",
+   "flag": "cos 0.5247, LaBSE 0.529, chrF 36.4",
+   "back": "Master of the scene",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "es",
+   "key": "achievements.pack-addict.name",
+   "text": "Adicto a los sobres",
+   "flag": "cos 0.4584, LaBSE 0.4495, chrF 35.5",
+   "back": "Addicted to envelopes",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "es",
+   "key": "card-terms.stat.hp",
+   "text": "PV",
+   "flag": "cos 0.3566, LaBSE 0.5623, chrF 25",
+   "back": "PV",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "es",
+   "key": "card-terms.element.cunning",
+   "text": "Astucia",
+   "flag": "cos 0.2431, LaBSE 0.3363, chrF 4.8",
+   "back": "Astucia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "es",
+   "key": "card-terms.element.mischief",
+   "text": "Travesura",
+   "flag": "cos 0.1639, LaBSE 0.387, chrF 4.1",
+   "back": "Travesura",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "es",
+   "key": "card-terms.element.sorrow",
+   "text": "Pena",
+   "flag": "cos 0.2302, LaBSE 0.3347, chrF 0",
+   "back": "Pena",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "es",
+   "key": "card-terms.element.trickster",
+   "text": "Embaucador",
+   "flag": "cos 0.2193, LaBSE 0.492, chrF 3.6",
+   "back": "Embaucador",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "es",
+   "key": "collection.filter.owned",
+   "text": "Las mías",
+   "flag": "cos 0.3641, LaBSE 0.3895, chrF 17",
+   "back": "Mine",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "es",
+   "key": "collection.world.empty",
+   "text": "Aún no hay variantes. ¡Gana tres batallas seguidas o consigue una puntuación perfecta en el Trivial para desbloquear tu primera carta del mundo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or get a perfect score on the Trivial to unlock your first card of the world!",
+   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "es",
+   "key": "collection.deck.clear",
+   "text": "Vaciar",
+   "flag": "cos 0.4261, LaBSE 0.3364, chrF 0",
+   "back": "Empty",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "es",
+   "key": "home.card.role",
+   "text": "Maestro de la escena",
+   "flag": "cos 0.5247, LaBSE 0.529, chrF 36.4",
+   "back": "Master of the scene",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "es",
+   "key": "profile.stat.trivia",
+   "text": "Aciertos en el Trivial",
+   "flag": "cos 0.2251, LaBSE 0.4655, chrF 32.3",
+   "back": "Hits in the Trivial",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "es",
+   "key": "profile.leaderboard.wins",
+   "text": "Victorias",
+   "flag": "cos 0.2126, LaBSE 0.4709, chrF 10",
+   "back": "Victorias",
+   "reason": "A column heading of the leaderboard (wins, best score) as the language writes it; MADLAD copies the word through or gives a synonym."
+  },
+  {
+   "lang": "es",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Clasificación no disponible",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Classification not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "es",
+   "key": "profile.leaderboard.failed",
+   "text": "No se pudo cargar la clasificación.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "The ranking could not be loaded.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "es",
+   "key": "variants.ability.BER.name",
+   "text": "Filo de cabaré",
+   "flag": "cos 0.2213, LaBSE 0.522, chrF 19.5",
+   "back": "Filo de cabaré",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.tier.gold",
+   "text": "Or",
+   "flag": "cos 0.2206, LaBSE 0.3615, chrF 0",
+   "back": "Or",
+   "reason": "A tier's name, the language's word for the metal (bronze, silver, gold); MADLAD copies it through."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.opening-act.name",
+   "text": "Lever de rideau",
+   "flag": "cos 0.3185, LaBSE 0.2596, chrF 13.8",
+   "back": "Raising the Curtain",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.quotable.name",
+   "text": "Digne d’être cité",
+   "flag": "cos 0.3235, LaBSE 0.5672, chrF 7.2",
+   "back": "Worth to be cited",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.scholar.name",
+   "text": "Érudit",
+   "flag": "cos 0.3038, LaBSE 0.3399, chrF 2.5",
+   "back": "Érudit",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.master-thespian.name",
+   "text": "Maître comédien",
+   "flag": "cos 0.4451, LaBSE 0.4693, chrF 30",
+   "back": "Master of Comedy",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "achievements.pack-addict.name",
+   "text": "Accro aux paquets",
+   "flag": "cos 0.5849, LaBSE 0.5523, chrF 45.5",
+   "back": "Addicted to packages",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.stat.hp",
+   "text": "PV",
+   "flag": "cos 0.3566, LaBSE 0.5623, chrF 25",
+   "back": "PV",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.house.underworld",
+   "text": "Enfers",
+   "flag": "cos 0.1732, LaBSE 0.2985, chrF 7.5",
+   "back": "Enfers",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.element.cunning",
+   "text": "Ruse",
+   "flag": "cos 0.4288, LaBSE 0.2812, chrF 3.9",
+   "back": "Ruse",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.element.envy",
+   "text": "Envie",
+   "flag": "cos 0.4003, LaBSE 0.3848, chrF 44.9",
+   "back": "Envie",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.element.mischief",
+   "text": "Espièglerie",
+   "flag": "cos 0.2342, LaBSE 0.392, chrF 9.9",
+   "back": "Espièglerie",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.element.transformation",
+   "text": "Métamorphose",
+   "flag": "cos 0.2848, LaBSE 0.5591, chrF 11",
+   "back": "Metamorphosis",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "fr",
+   "key": "card-terms.element.trickster",
+   "text": "Farceur",
+   "flag": "cos 0.4137, LaBSE 0.4277, chrF 7.8",
+   "back": "Farceur",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "fr",
+   "key": "collection.world.empty",
+   "text": "Aucune variante pour l’instant. Gagnez trois combats d’affilée ou obtenez un score parfait au quiz pour débloquer votre première carte du monde !",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or get a perfect score in the quiz to unlock your first map of the world!",
+   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "fr",
+   "key": "collection.deck.title",
+   "text": "Composition du jeu",
+   "flag": "cos 0.3514, LaBSE 0.283, chrF 3.9",
+   "back": "Composition of the game",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "fr",
+   "key": "collection.deck.clear",
+   "text": "Vider",
+   "flag": "cos 0.2502, LaBSE 0.4888, chrF 8",
+   "back": "Vider",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "fr",
+   "key": "collection.deck.saved",
+   "text": "Jeux enregistrés",
+   "flag": "cos 0.2603, LaBSE 0.5696, chrF 9.2",
+   "back": "Registered games",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "fr",
+   "key": "home.card.role",
+   "text": "Maître comédien",
+   "flag": "cos 0.4451, LaBSE 0.4693, chrF 30",
+   "back": "Master of Comedy",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "fr",
+   "key": "home.feature.duel.body",
+   "text": "Trois manches, trois formes. Respectez la forme, réussissez le procédé de votre carte et écrivez mieux qu’un adversaire qui tourne dans votre navigateur.",
+   "flag": "numbers 3,3 became -",
+   "back": "Respect the form, succeed in the process of your card and write better than an opponent who is running in your browser.",
+   "reason": "MADLAD dropped the opening 'three rounds, three forms', which the translation has; the rest matches."
+  },
+  {
+   "lang": "fr",
+   "key": "profile.stat.trivia",
+   "text": "Bonnes réponses au quiz",
+   "flag": "cos 0.3384, LaBSE 0.4539, chrF 6.9",
+   "back": "Good answers to the quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "fr",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Classement indisponible",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Classification not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "fr",
+   "key": "variants.ability.BER.why",
+   "text": "La tradition du cabaret berlinois et son humour pince-sans-rire",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "The tradition of Berlin cabaret and its pinch-no-laugh humour",
+   "reason": "Pince-sans-rire is French for deadpan, dry humour; MADLAD translated the idiom word by word ('pinch-no-laugh')."
+  },
+  {
+   "lang": "fr",
+   "key": "variants.ability.JHB.name",
+   "text": "Mesures de Jozi",
+   "flag": "cos 0.5783, LaBSE 0.5297, chrF 23.8",
+   "back": "Measurements of Jozi",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.quotable.name",
+   "text": "Zitierfähig",
+   "flag": "cos 0.5255, LaBSE 0.5078, chrF 26.4",
+   "back": "Citeable",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.scholar.description",
+   "text": "Schaffe ein fehlerfreies Quiz",
+   "flag": "cos 0.3771, LaBSE 0.4742, chrF 12.1",
+   "back": "Create an error-free quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.pack-rat.name",
+   "text": "Packhamster",
+   "flag": "cos 0.4386, LaBSE 0.552, chrF 29.4",
+   "back": "Packhamster",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.verse-veteran.name",
+   "text": "Strophen-Veteran",
+   "flag": "cos 0.5528, LaBSE 0.5949, chrF 36",
+   "back": "Strophe veteran",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.completionist.name",
+   "text": "Komplettsammler",
+   "flag": "cos 0.517, LaBSE 0.4522, chrF 40.8",
+   "back": "Complete collector",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "de",
+   "key": "achievements.perfect-scholar.description",
+   "text": "Fehlerfreie Quizrunden: 3",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Quiz rounds without error: 3",
+   "reason": "'Quiz rounds without a mistake: N' is a count of perfect scores said with a negation."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.type.potion",
+   "text": "Trank",
+   "flag": "cos 0.1739, LaBSE 0.3663, chrF 3.4",
+   "back": "Trank",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.types.potion",
+   "text": "Tränke",
+   "flag": "cos 0.1633, LaBSE 0.3699, chrF 2.5",
+   "back": "Tränke",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.stat.atk",
+   "text": "ANG",
+   "flag": "cos 0.3148, LaBSE 0.4056, chrF 11.1",
+   "back": "ANG",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.stat.def",
+   "text": "VER",
+   "flag": "cos 0.4179, LaBSE 0.4296, chrF 11.1",
+   "back": "VER",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.stat.hp",
+   "text": "LP",
+   "flag": "cos 0.3936, LaBSE 0.5753, chrF 25",
+   "back": "LP",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.house.potion",
+   "text": "Trank",
+   "flag": "cos 0.1739, LaBSE 0.3663, chrF 3.4",
+   "back": "Trank",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.cunning",
+   "text": "List",
+   "flag": "cos 0.1927, LaBSE 0.3295, chrF 3.9",
+   "back": "List",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.devotion",
+   "text": "Hingabe",
+   "flag": "cos 0.2355, LaBSE 0.5196, chrF 6.4",
+   "back": "Hingabe",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.envy",
+   "text": "Neid",
+   "flag": "cos 0.1878, LaBSE 0.457, chrF 0",
+   "back": "Neid",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.grace",
+   "text": "Anmut",
+   "flag": "cos 0.2679, LaBSE 0.2408, chrF 0",
+   "back": "Anmut",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.loyalty",
+   "text": "Treue",
+   "flag": "cos 0.1991, LaBSE 0.5099, chrF 0",
+   "back": "Treue",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.mischief",
+   "text": "Schabernack",
+   "flag": "cos 0.1931, LaBSE 0.1801, chrF 8",
+   "back": "Schabernack",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.poison",
+   "text": "Gift",
+   "flag": "cos 0.2488, LaBSE 0.4098, chrF 4.5",
+   "back": "Gift",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.sorrow",
+   "text": "Kummer",
+   "flag": "cos 0.2143, LaBSE 0.5683, chrF 2.8",
+   "back": "Kummer",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.speed",
+   "text": "Tempo",
+   "flag": "cos 0.4886, LaBSE 0.5483, chrF 8",
+   "back": "Tempo",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "card-terms.element.trickster",
+   "text": "Schelm",
+   "flag": "cos 0.2909, LaBSE 0.216, chrF 4",
+   "back": "Schelm",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "de",
+   "key": "collection.deck.clear",
+   "text": "Leeren",
+   "flag": "cos 0.2867, LaBSE 0.4686, chrF 7.7",
+   "back": "Leeren",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "de",
+   "key": "home.feature.duel.title",
+   "text": "Das Strophenduell",
+   "flag": "cos 0.2026, LaBSE 0.4677, chrF 20.5",
+   "back": "The strophenduell",
+   "reason": "The verse duel, in the core terms for verse and duel; MADLAD calls it a poetry slam or reads the verse word in another sense."
+  },
+  {
+   "lang": "de",
+   "key": "home.feature.private.title",
+   "text": "Von Grund auf privat",
+   "flag": "cos 0.5787, LaBSE 0.5906, chrF 26.5",
+   "back": "From scratch private",
+   "reason": "Von Grund auf privat, 'private from the ground up', says 'private by design'; MADLAD wrote 'from scratch'."
+  },
+  {
+   "lang": "de",
+   "key": "profile.stat.trivia",
+   "text": "Richtige Quizantworten",
+   "flag": "cos 0.4712, LaBSE 0.5467, chrF 41.3",
+   "back": "Correct quiz answers",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "de",
+   "key": "profile.leaderboard.wins",
+   "text": "Siege",
+   "flag": "cos 0.3674, LaBSE 0.5006, chrF 6",
+   "back": "Siege",
+   "reason": "A column heading of the leaderboard (wins, best score) as the language writes it; MADLAD copies the word through or gives a synonym."
+  },
+  {
+   "lang": "de",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Rangliste nicht verfügbar",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Ranking not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "de",
+   "key": "profile.leaderboard.failed",
+   "text": "Die Rangliste konnte nicht geladen werden.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "The leaderboard could not be loaded",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "de",
+   "key": "variants.source.trivia-mastery",
+   "text": "Quizmeisterschaft",
+   "flag": "cos 0.5321, LaBSE 0.4997, chrF 7.5",
+   "back": "Quiz championship",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "de",
+   "key": "world-map.view",
+   "text": "Ansehen",
+   "flag": "cos 0.2284, LaBSE 0.5044, chrF 5.4",
+   "back": "Ansehen",
+   "reason": "The button that opens a city's view ('view', 'open'); MADLAD copies the word through or gives a synonym."
+  },
+  {
+   "lang": "it",
+   "key": "achievements.opening-act.name",
+   "text": "Atto primo",
+   "flag": "cos 0.5456, LaBSE 0.4767, chrF 15.4",
+   "back": "Act one",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "achievements.scholar-novice.name",
+   "text": "Studioso in erba",
+   "flag": "cos 0.4938, LaBSE 0.2665, chrF 10.9",
+   "back": "Student in bloom",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "achievements.scholar.name",
+   "text": "Studioso",
+   "flag": "cos 0.1705, LaBSE 0.4659, chrF 4.6",
+   "back": "Studioso",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "achievements.pack-rat.name",
+   "text": "Accumulatore di pacchetti",
+   "flag": "cos 0.1878, LaBSE 0.4737, chrF 16.3",
+   "back": "Accumulator of packages",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "achievements.master-thespian.name",
+   "text": "Maestro di scena",
+   "flag": "cos 0.4599, LaBSE 0.5515, chrF 33",
+   "back": "Master of stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.type.potion",
+   "text": "Pozione",
+   "flag": "cos 0.274, LaBSE 0.5828, chrF 27",
+   "back": "Pozione",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.types.potion",
+   "text": "Pozioni",
+   "flag": "cos 0.1331, LaBSE 0.5713, chrF 23.6",
+   "back": "Pozioni",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.stat.hp",
+   "text": "PV",
+   "flag": "cos 0.3566, LaBSE 0.5623, chrF 25",
+   "back": "PV",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.house.potion",
+   "text": "Pozione",
+   "flag": "cos 0.274, LaBSE 0.5828, chrF 27",
+   "back": "Pozione",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.house.underworld",
+   "text": "Oltretomba",
+   "flag": "cos 0.3126, LaBSE 0.3926, chrF 6.7",
+   "back": "Oltretomba",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.cunning",
+   "text": "Astuzia",
+   "flag": "cos 0.2159, LaBSE 0.3379, chrF 4.8",
+   "back": "Astuzia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.dark",
+   "text": "Tenebra",
+   "flag": "cos 0.3157, LaBSE 0.3261, chrF 10.9",
+   "back": "Tenebra",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.enchantment",
+   "text": "Incantesimo",
+   "flag": "cos 0.2034, LaBSE 0.5949, chrF 17.5",
+   "back": "Incantesimo",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.envy",
+   "text": "Invidia",
+   "flag": "cos 0.1382, LaBSE 0.4369, chrF 17.8",
+   "back": "Invidia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.mischief",
+   "text": "Birbanteria",
+   "flag": "cos 0.1721, LaBSE 0.2999, chrF 5.8",
+   "back": "Birbanteria",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.rebellion",
+   "text": "Ribellione",
+   "flag": "cos 0.0889, LaBSE 0.5177, chrF 68.4",
+   "back": "Ribellione",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.rebirth",
+   "text": "Rinascita",
+   "flag": "cos 0.2872, LaBSE 0.5552, chrF 6.8",
+   "back": "Rinascita",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.thunder",
+   "text": "Tuono",
+   "flag": "cos 0.2118, LaBSE 0.393, chrF 9.1",
+   "back": "Tuono",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.trickster",
+   "text": "Burlone",
+   "flag": "cos 0.2169, LaBSE 0.1922, chrF 3.9",
+   "back": "Burlone",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "card-terms.element.wisdom",
+   "text": "Saggezza",
+   "flag": "cos 0.1691, LaBSE 0.588, chrF 0",
+   "back": "Saggezza",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "it",
+   "key": "collection.filter.owned",
+   "text": "Possedute",
+   "flag": "cos 0.3857, LaBSE 0.4569, chrF 11.1",
+   "back": "Possedute",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "it",
+   "key": "collection.world.empty",
+   "text": "Ancora nessuna variante. Vinci tre battaglie di fila o ottieni un punteggio perfetto al quiz per sbloccare la tua prima carta del mondo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or get a perfect score on the quiz to unlock your first card in the world!",
+   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "it",
+   "key": "collection.deck.clear",
+   "text": "Svuota",
+   "flag": "cos 0.4261, LaBSE 0.5836, chrF 0",
+   "back": "Empty",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "it",
+   "key": "home.stat.houses",
+   "text": "Casate",
+   "flag": "cos 0.3688, LaBSE 0.5836, chrF 5.6",
+   "back": "Casate",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "it",
+   "key": "home.card.role",
+   "text": "Maestro di scena",
+   "flag": "cos 0.4599, LaBSE 0.5515, chrF 33",
+   "back": "Master of stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "it",
+   "key": "profile.stat.trivia",
+   "text": "Risposte esatte ai quiz",
+   "flag": "cos 0.2912, LaBSE 0.4798, chrF 9.2",
+   "back": "Exact answers to quizzes",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "it",
+   "key": "profile.leaderboard.wins",
+   "text": "Vittorie",
+   "flag": "cos 0.2442, LaBSE 0.409, chrF 5.2",
+   "back": "Vittorie",
+   "reason": "A column heading of the leaderboard (wins, best score) as the language writes it; MADLAD copies the word through or gives a synonym."
+  },
+  {
+   "lang": "it",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Classifica non disponibile",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Classification not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "pt",
+   "key": "achievements.tier.silver",
+   "text": "Prata",
+   "flag": "cos 0.2443, LaBSE 0.5458, chrF 3.4",
+   "back": "Prata",
+   "reason": "A tier's name, the language's word for the metal (bronze, silver, gold); MADLAD copies it through."
+  },
+  {
+   "lang": "pt",
+   "key": "achievements.pack-rat.name",
+   "text": "Acumulador de pacotes",
+   "flag": "cos 0.1878, LaBSE 0.5073, chrF 16.3",
+   "back": "Accumulator of packages",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pt",
+   "key": "achievements.master-thespian.name",
+   "text": "Mestre do palco",
+   "flag": "cos 0.4723, LaBSE 0.5914, chrF 36.4",
+   "back": "Master of the stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.stat.hp",
+   "text": "PV",
+   "flag": "cos 0.3566, LaBSE 0.5623, chrF 25",
+   "back": "PV",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.air",
+   "text": "Ar",
+   "flag": "cos 0.3738, LaBSE 0.5198, chrF 35.7",
+   "back": "Ar",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.beast",
+   "text": "Fera",
+   "flag": "cos 0.3347, LaBSE 0.4483, chrF 10.4",
+   "back": "Fera",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.cunning",
+   "text": "Astúcia",
+   "flag": "cos 0.2431, LaBSE 0.3541, chrF 4.8",
+   "back": "Astucia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.dark",
+   "text": "Trevas",
+   "flag": "cos 0.3034, LaBSE 0.3589, chrF 11.4",
+   "back": "Trevas",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.duty",
+   "text": "Dever",
+   "flag": "cos 0.3055, LaBSE 0.5439, chrF 6",
+   "back": "Dever",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.envy",
+   "text": "Inveja",
+   "flag": "cos 0.2263, LaBSE 0.428, chrF 18.7",
+   "back": "Inveja",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.mischief",
+   "text": "Travessura",
+   "flag": "cos 0.1823, LaBSE 0.5458, chrF 4",
+   "back": "Travessura",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.moonlight",
+   "text": "Luar",
+   "flag": "cos 0.2962, LaBSE 0.3632, chrF 3.9",
+   "back": "Outside",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "card-terms.element.vanity",
+   "text": "Vaidade",
+   "flag": "cos 0.2865, LaBSE 0.4221, chrF 11.3",
+   "back": "Vaidade",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pt",
+   "key": "collection.filter.owned",
+   "text": "Minhas",
+   "flag": "cos 0.2755, LaBSE 0.4432, chrF 3.8",
+   "back": "Minhas",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "pt",
+   "key": "collection.world.empty",
+   "text": "Ainda não há variantes. Vença três batalhas seguidas ou faça uma pontuação perfeita no quiz para desbloquear a sua primeira carta do mundo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or make a perfect score on the quiz to unlock your first card of the world!",
+   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "pt",
+   "key": "home.card.role",
+   "text": "Mestre do palco",
+   "flag": "cos 0.4723, LaBSE 0.5914, chrF 36.4",
+   "back": "Master of the stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pt",
+   "key": "profile.stat.trivia",
+   "text": "Acertos no quiz",
+   "flag": "cos 0.367, LaBSE 0.487, chrF 5.1",
+   "back": "Hits in the quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "pt",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Ranking indisponível",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Ranking not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "pt",
+   "key": "variants.source.battle-streak",
+   "text": "Sequência de vitórias",
+   "flag": "cos 0.4909, LaBSE 0.4834, chrF 4",
+   "back": "Sequence of wins",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "pt",
+   "key": "variants.source.trivia-mastery",
+   "text": "Domínio do quiz",
+   "flag": "cos 0.457, LaBSE 0.5058, chrF 8.8",
+   "back": "Domain of the quiz",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "pl",
+   "key": "achievements.opening-act.name",
+   "text": "Akt pierwszy",
+   "flag": "cos 0.5456, LaBSE 0.5502, chrF 17.3",
+   "back": "Act One",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "achievements.pack-rat.name",
+   "text": "Chomik paczek",
+   "flag": "cos 0.3794, LaBSE 0.5996, chrF 27.8",
+   "back": "Packet hamster",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "achievements.verse-veteran.name",
+   "text": "Weteran strof",
+   "flag": "cos 0.5306, LaBSE 0.5031, chrF 47.8",
+   "back": "Veteran strophe",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "achievements.completionist.name",
+   "text": "Pełna kolekcja",
+   "flag": "cos 0.3668, LaBSE 0.3098, chrF 18",
+   "back": "The full collection",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "achievements.master-thespian.name",
+   "text": "Mistrz sceny",
+   "flag": "cos 0.4723, LaBSE 0.5956, chrF 32.6",
+   "back": "Master of the Stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.type.potion",
+   "text": "Mikstura",
+   "flag": "cos 0.3712, LaBSE 0.4043, chrF 5.4",
+   "back": "Mixture",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.stat.def",
+   "text": "OBR",
+   "flag": "cos 0.2952, LaBSE 0.3783, chrF 0",
+   "back": "OBR",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.house.potion",
+   "text": "Mikstura",
+   "flag": "cos 0.3712, LaBSE 0.4043, chrF 5.4",
+   "back": "Mixture",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.arcane",
+   "text": "Tajemna moc",
+   "flag": "cos 0.243, LaBSE 0.4623, chrF 6.6",
+   "back": "The Secret Power",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.cunning",
+   "text": "Spryt",
+   "flag": "cos 0.4242, LaBSE 0.2719, chrF 0",
+   "back": "Smart",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.grace",
+   "text": "Wdzięk",
+   "flag": "cos 0.2306, LaBSE 0.4306, chrF 0",
+   "back": "Wdzięk",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.mischief",
+   "text": "Psota",
+   "flag": "cos 0.2123, LaBSE 0.3538, chrF 2.7",
+   "back": "Psota",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.petrification",
+   "text": "Skamienienie",
+   "flag": "cos 0.2386, LaBSE 0.5233, chrF 24.3",
+   "back": "Fossilization",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.rebellion",
+   "text": "Bunt",
+   "flag": "cos 0.1383, LaBSE 0.4201, chrF 3.1",
+   "back": "Bunt",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.thunder",
+   "text": "Grom",
+   "flag": "cos 0.2622, LaBSE 0.4222, chrF 3.9",
+   "back": "Grom",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "card-terms.element.trickster",
+   "text": "Psotnik",
+   "flag": "cos 0.2737, LaBSE 0.4496, chrF 7.8",
+   "back": "Psotnik",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "pl",
+   "key": "collection.world.empty",
+   "text": "Nie masz jeszcze wariantów. Wygraj trzy bitwy z rzędu albo zdobądź komplet punktów w quizie, aby odblokować pierwszą kartę świata!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or earn a set of points in the quiz to unlock the first map of the world!",
+   "reason": "MADLAD dropped the first sentence (Nie masz jeszcze wariantów, 'you have no variants yet', which carries the negation) and read karta świata, the core files' 'world card', as 'world map'."
+  },
+  {
+   "lang": "pl",
+   "key": "home.card.role",
+   "text": "Mistrz sceny",
+   "flag": "cos 0.4723, LaBSE 0.5956, chrF 32.6",
+   "back": "Master of the Stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "pl",
+   "key": "profile.stat.trivia",
+   "text": "Poprawne odpowiedzi w quizie",
+   "flag": "cos 0.3793, LaBSE 0.4752, chrF 39.3",
+   "back": "Correct answers in the quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "pl",
+   "key": "profile.leaderboard.best",
+   "text": "Rekord",
+   "flag": "cos 0.2947, LaBSE 0.3858, chrF 5.7",
+   "back": "Record",
+   "reason": "Rekord, 'best score' as a column heading of the leaderboard."
+  },
+  {
+   "lang": "pl",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Ranking niedostępny",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Ranking not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "pl",
+   "key": "profile.leaderboard.failed",
+   "text": "Nie udało się wczytać rankingu.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "The ranking could not be loaded.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "pl",
+   "key": "rules.landIt",
+   "text": "Wykonaj go, a twój kunszt wzrośnie o połowę.",
+   "flag": "cos 0.5338, LaBSE 0.57, chrF 19.8",
+   "back": "Perform it and your skill will increase by half.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "pl",
+   "key": "variants.source.battle-streak",
+   "text": "Seria zwycięstw",
+   "flag": "cos 0.5634, LaBSE 0.5568, chrF 7.7",
+   "back": "A series of victories",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "pl",
+   "key": "variants.source.trivia-mastery",
+   "text": "Mistrzostwo w quizie",
+   "flag": "cos 0.537, LaBSE 0.5664, chrF 7.2",
+   "back": "Championship in quiz",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.scholar-novice.name",
+   "text": "Начинающий знаток",
+   "flag": "cos 0.2964, LaBSE 0.5384, chrF 12.4",
+   "back": "Beginning connoisseur",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.scholar.name",
+   "text": "Знаток",
+   "flag": "cos 0.2816, LaBSE 0.5856, chrF 4.9",
+   "back": "Knower",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.scholar.description",
+   "text": "Пройди викторину без единой ошибки",
+   "flag": "cos 0.3679, LaBSE 0.4887, chrF 9.1; the back-translation is negated, the English is not",
+   "back": "Pass the quiz without a single mistake",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.pack-rat.name",
+   "text": "Запасливый хомяк",
+   "flag": "cos 0.3446, LaBSE 0.5507, chrF 4.8",
+   "back": "Hamster",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.completionist.name",
+   "text": "Полная коллекция",
+   "flag": "cos 0.5392, LaBSE 0.3028, chrF 50.7",
+   "back": "Complete collection",
+   "reason": "Changed on 2026-11-16 from Перфекционист, which means perfectionist: 'Full collection', as the Polish title says, for collecting every card. The title, not a word for word 'completionist'."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.master-thespian.name",
+   "text": "Мастер сцены",
+   "flag": "cos 0.4622, LaBSE 0.5505, chrF 32.9",
+   "back": "Stage Master",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.challenge-adept.name",
+   "text": "Знаток испытаний",
+   "flag": "cos 0.4449, LaBSE 0.4906, chrF 6.3",
+   "back": "Test expert",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "achievements.perfect-scholar.description",
+   "text": "Викторин без единой ошибки: 3",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Quiz without a single error: 3",
+   "reason": "'Quizzes without a single mistake: 3' is a perfect score said with a negation."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.type.potion",
+   "text": "Зелье",
+   "flag": "cos 0.1625, LaBSE 0.3189, chrF 0",
+   "back": "Zelje",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.types.potion",
+   "text": "Зелья",
+   "flag": "cos 0.1917, LaBSE 0.3015, chrF 0",
+   "back": "Zelya",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.stat.def",
+   "text": "ЗАЩ",
+   "flag": "cos 0.3092, LaBSE 0.401, chrF 0",
+   "back": "WST",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.stat.hp",
+   "text": "ОЗ",
+   "flag": "cos 0.3704, LaBSE 0.4474, chrF 0",
+   "back": "GS",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.house.potion",
+   "text": "Зелье",
+   "flag": "cos 0.1625, LaBSE 0.3189, chrF 0",
+   "back": "Zelje",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.ambition",
+   "text": "Честолюбие",
+   "flag": "cos 0.2592, LaBSE 0.4386, chrF 8.9",
+   "back": "Chastity",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.arcane",
+   "text": "Тайная магия",
+   "flag": "cos 0.2623, LaBSE 0.5216, chrF 9.5",
+   "back": "Secret Magic",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.cunning",
+   "text": "Хитрость",
+   "flag": "cos 0.4871, LaBSE 0.4334, chrF 3",
+   "back": "Trick",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.duty",
+   "text": "Долг",
+   "flag": "cos 0.2911, LaBSE 0.5645, chrF 12.5",
+   "back": "Debt",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.enchantment",
+   "text": "Чары",
+   "flag": "cos 0.4801, LaBSE 0.3195, chrF 6.9",
+   "back": "Charms",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.grace",
+   "text": "Изящество",
+   "flag": "cos 0.2379, LaBSE 0.5892, chrF 10.7",
+   "back": "Elegancy",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.mischief",
+   "text": "Озорство",
+   "flag": "cos 0.1858, LaBSE 0.5165, chrF 2.1",
+   "back": "Ozorstvo",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "card-terms.element.trickster",
+   "text": "Плут",
+   "flag": "cos 0.1772, LaBSE 0.3017, chrF 2.4",
+   "back": "Pluto",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ru",
+   "key": "collection.filter.owned",
+   "text": "Мои",
+   "flag": "cos 0.3844, LaBSE 0.4741, chrF 0",
+   "back": "My",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ru",
+   "key": "collection.world.intro",
+   "text": "Твои персонажи путешествуют по планете. Побеждай в битвах и проходи викторины без ошибок, чтобы открывать варианты городов.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Your characters travel around the planet. Win battles and complete quizzes without mistakes to unlock city variants.",
+   "reason": "'Pass quizzes without mistakes' is 'ace trivia' said with a negation."
+  },
+  {
+   "lang": "ru",
+   "key": "home.card.role",
+   "text": "Мастер сцены",
+   "flag": "cos 0.4622, LaBSE 0.5505, chrF 32.9",
+   "back": "Stage Master",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ru",
+   "key": "profile.stat.trivia",
+   "text": "Верных ответов в викторине",
+   "flag": "cos 0.3793, LaBSE 0.517, chrF 39.3",
+   "back": "Correct answers in the quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ru",
+   "key": "profile.leaderboard.best",
+   "text": "Рекорд",
+   "flag": "cos 0.2947, LaBSE 0.4085, chrF 5.7",
+   "back": "Record",
+   "reason": "Рекорд, 'best score' as a column heading of the leaderboard."
+  },
+  {
+   "lang": "ru",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Таблица лидеров недоступна",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Leaderboard not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ru",
+   "key": "profile.leaderboard.failed",
+   "text": "Не удалось загрузить таблицу лидеров.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Could not load leaderboard.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ru",
+   "key": "rules.landIt",
+   "text": "Выполни приём, и мастерство вырастет в полтора раза.",
+   "flag": "cos 0.5133, LaBSE 0.4765, chrF 20",
+   "back": "Perform a trick and your skill will increase by one-and-a-half.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "ru",
+   "key": "variants.ability.BKN.name",
+   "text": "Хозяин района",
+   "flag": "cos 0.4944, LaBSE 0.5963, chrF 8.1",
+   "back": "Master of the district",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ru",
+   "key": "variants.ability.TOR.name",
+   "text": "Флоу «Шестёрки»",
+   "flag": "cos 0.5742, LaBSE 0.5806, chrF 45.1",
+   "back": "Six Flush",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ru",
+   "key": "variants.ability.SYD.name",
+   "text": "Напор гавани",
+   "flag": "cos 0.5138, LaBSE 0.4514, chrF 43.5",
+   "back": "Harbour pressure",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ru",
+   "key": "world-map.view",
+   "text": "Открыть",
+   "flag": "cos 0.3037, LaBSE 0.5756, chrF 6.2",
+   "back": "Open",
+   "reason": "Открыть ('open') for the button that opens a city's view."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.opening-act.name",
+   "text": "الفصل الأول",
+   "flag": "cos 0.2243, LaBSE 0.4162, chrF 1.7",
+   "back": "CHAPTER I",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.bards-apprentice.name",
+   "text": "تلميذ الشاعر",
+   "flag": "cos 0.3858, LaBSE 0.5339, chrF 9.7",
+   "back": "The poet's pupil",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.wordsmith.name",
+   "text": "صائغ الكلمات",
+   "flag": "cos 0.4378, LaBSE 0.4661, chrF 25.7",
+   "back": "Word forming",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.scholar.description",
+   "text": "أحرز نتيجة كاملة في المسابقة",
+   "flag": "cos 0.337, LaBSE 0.5727, chrF 11.3",
+   "back": "Completed the Competition",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.pack-rat.name",
+   "text": "مكدّس الحزم",
+   "flag": "cos 0.487, LaBSE 0.4925, chrF 27.3",
+   "back": "Package pack",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.verse-veteran.name",
+   "text": "محارب الأبيات القديم",
+   "flag": "cos 0.5341, LaBSE 0.4911, chrF 8.8",
+   "back": "The Old Poetry Warrior",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.master-thespian.name",
+   "text": "أستاذ المسرح",
+   "flag": "cos 0.2776, LaBSE 0.5327, chrF 11.4",
+   "back": "Professor of theatre",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.virtuoso.name",
+   "text": "البارع",
+   "flag": "cos 0.1434, LaBSE 0.2763, chrF 5.4",
+   "back": "Good.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.hundred-rounds.name",
+   "text": "قائد المئة",
+   "flag": "cos 0.2721, LaBSE 0.3973, chrF 8.5; numbers - became 100",
+   "back": "Commander 100.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.relic-hunter.name",
+   "text": "صائد الآثار",
+   "flag": "cos 0.3926, LaBSE 0.4425, chrF 8.6",
+   "back": "Archaeologist.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "achievements.trivia-enthusiast.name",
+   "text": "عاشق المسابقات",
+   "flag": "cos 0.3383, LaBSE 0.5902, chrF 7.9",
+   "back": "Lover of competitions.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.type.relic",
+   "text": "أثر",
+   "flag": "cos 0.3441, LaBSE 0.4138, chrF 3.8",
+   "back": "Impact",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.stat.atk",
+   "text": "هجوم",
+   "flag": "cos 0.3454, LaBSE 0.4334, chrF 8.8",
+   "back": "Attack.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.stat.def",
+   "text": "دفاع",
+   "flag": "cos 0.4096, LaBSE 0.4491, chrF 8.3",
+   "back": "Defence.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.stat.hp",
+   "text": "صحة",
+   "flag": "cos 0.2734, LaBSE 0.3166, chrF 17.9",
+   "back": "Health",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.house.relic",
+   "text": "أثر",
+   "flag": "cos 0.3441, LaBSE 0.4138, chrF 3.8",
+   "back": "Impact",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.alchemy",
+   "text": "الخيمياء",
+   "flag": "cos 0.4062, LaBSE 0.4631, chrF 17.3",
+   "back": "Chemistry",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.arcane",
+   "text": "السحر الخفي",
+   "flag": "cos 0.2708, LaBSE 0.5302, chrF 9.3",
+   "back": "Secret magic.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.cunning",
+   "text": "الدهاء",
+   "flag": "cos 0.2921, LaBSE 0.4633, chrF 0",
+   "back": "Grease",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.disguise",
+   "text": "التنكر",
+   "flag": "cos 0.2066, LaBSE 0.4829, chrF 6.4",
+   "back": "Denial.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.grace",
+   "text": "الرشاقة",
+   "flag": "cos 0.2026, LaBSE 0.4083, chrF 0",
+   "back": "Slim.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.rebirth",
+   "text": "البعث",
+   "flag": "cos 0.1979, LaBSE 0.4324, chrF 7.3",
+   "back": "Al-Baath",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.trickster",
+   "text": "المحتال",
+   "flag": "cos 0.4211, LaBSE 0.5268, chrF 22.6",
+   "back": "The fraudster.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "card-terms.element.vanity",
+   "text": "الغرور",
+   "flag": "cos 0.2674, LaBSE 0.3848, chrF 7.8",
+   "back": "Arrogance.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.filter.owned",
+   "text": "ما أملكه",
+   "flag": "cos 0.2577, LaBSE 0.5739, chrF 3.3",
+   "back": "What I have.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.deck.title",
+   "text": "بناء الرزمة",
+   "flag": "cos 0.2983, LaBSE 0.5841, chrF 31.5",
+   "back": "Build the package",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.deck.clear",
+   "text": "أفرغ",
+   "flag": "cos 0.4389, LaBSE 0.4411, chrF 0",
+   "back": "Empty.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.deck.saved",
+   "text": "الرزم المحفوظة",
+   "flag": "cos 0.2298, LaBSE 0.579, chrF 18.6",
+   "back": "Archived packages",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.deck.activate",
+   "text": "فعّل",
+   "flag": "cos 0.4763, LaBSE 0.4726, chrF 42.6",
+   "back": "Active.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.deck.edit",
+   "text": "عدّل",
+   "flag": "cos 0.5711, LaBSE 0.5078, chrF 17",
+   "back": "Modified",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "collection.modal.ar",
+   "text": "اعرض بالواقع المعزَّز",
+   "flag": "cos 0.4721, LaBSE 0.4925, chrF 6.8",
+   "back": "Augmented reality.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ar",
+   "key": "home.card.role",
+   "text": "أستاذ المسرح",
+   "flag": "cos 0.2776, LaBSE 0.5327, chrF 11.4",
+   "back": "Professor of theatre",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ar",
+   "key": "home.card.bard",
+   "text": "شاعر",
+   "flag": "cos 0.4698, LaBSE 0.5627, chrF 0",
+   "back": "Poet.",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "ar",
+   "key": "home.feature.duel.title",
+   "text": "مبارزة الأبيات",
+   "flag": "cos 0.4009, LaBSE 0.4453, chrF 4.3",
+   "back": "Poetry Slam",
+   "reason": "The verse duel, in the core terms for verse and duel; MADLAD calls it a poetry slam or reads the verse word in another sense."
+  },
+  {
+   "lang": "ar",
+   "key": "home.feature.duel.body",
+   "text": "ثلاث جولات، ثلاثة قوالب. التزم بالقالب، وأتقن حيلة بطاقتك، واكتب أفضل من خصم يعمل داخل متصفحك.",
+   "flag": "numbers 3,3 became -",
+   "back": "Stick to the template, master your card trick, and write better than a counter running inside your browser.",
+   "reason": "MADLAD dropped the opening 'three rounds, three forms' (ثلاث جولات، ثلاثة قوالب), which the translation has, and read خصم (opponent) as 'counter'."
+  },
+  {
+   "lang": "ar",
+   "key": "profile.stat.wins",
+   "text": "نزالات رابحة",
+   "flag": "cos 0.4675, LaBSE 0.3398, chrF 15.1",
+   "back": "Winning bets.",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ar",
+   "key": "profile.stat.trivia",
+   "text": "إجابات صحيحة في المسابقة",
+   "flag": "cos 0.4196, LaBSE 0.4712, chrF 36.5",
+   "back": "Correct answers in the contest",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ar",
+   "key": "profile.leaderboard.battles",
+   "text": "النزالات",
+   "flag": "cos 0.2727, LaBSE 0.5438, chrF 6.6",
+   "back": "Infections",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "ar",
+   "key": "profile.leaderboard.unavailable",
+   "text": "لوحة الصدارة غير متاحة",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Front panel not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.LDN.name",
+   "text": "أرض الشاعر",
+   "flag": "cos 0.3781, LaBSE 0.4824, chrF 6",
+   "back": "Land of the Poet",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.PAR.name",
+   "text": "الأبيات الراقية",
+   "flag": "cos 0.4004, LaBSE 0.4344, chrF 6.5",
+   "back": "Fine poetry.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.SEO.name",
+   "text": "إيقاع الموجة الكورية",
+   "flag": "cos 0.4818, LaBSE 0.4375, chrF 17.8",
+   "back": "The Beat of the Korean Wave",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.BER.name",
+   "text": "حدّة الكباريه",
+   "flag": "cos 0.1877, LaBSE 0.3104, chrF 8.8",
+   "back": "Supercar speed.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.JHB.name",
+   "text": "أبيات جوزي",
+   "flag": "cos 0.4043, LaBSE 0.4994, chrF 11.9",
+   "back": "Juzi's poems",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.IST.name",
+   "text": "أبيات الملتقى",
+   "flag": "cos 0.1802, LaBSE 0.4746, chrF 10.9",
+   "back": "Address of the Forum",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.SYD.name",
+   "text": "حيوية الميناء",
+   "flag": "cos 0.373, LaBSE 0.5995, chrF 6.5",
+   "back": "Port vitality",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ar",
+   "key": "variants.ability.KGN.why",
+   "text": "الدانسهول الجامايكي وشعر الدَّب",
+   "flag": "cos 0.4275, LaBSE 0.5628, chrF 53.9",
+   "back": "Jamaican dansehall and bear hair.",
+   "reason": "الدَّب transliterates 'dub' (shadda and fatha written); MADLAD read دُبّ 'bear' and شَعر 'hair'. Not from a source: a native reader should confirm the usual Arabic name of dub poetry."
+  },
+  {
+   "lang": "hi",
+   "key": "about.vision.title",
+   "text": "हमारी सोच",
+   "flag": "cos 0.4709, LaBSE 0.5323, chrF 7.1",
+   "back": "Our thinking",
+   "reason": "हमारी सोच ('our thinking, our outlook') heads the vision section; MADLAD gives the literal 'our thinking'. Not from a source: a native reader may prefer दृष्टि."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.opening-act.name",
+   "text": "पहला अंक",
+   "flag": "cos 0.2487, LaBSE 0.3131, chrF 5",
+   "back": "First digit",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.bards-apprentice.name",
+   "text": "कवि का शागिर्द",
+   "flag": "cos 0.4463, LaBSE 0.3934, chrF 8.2",
+   "back": "Disciple of the poet",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.scholar.description",
+   "text": "प्रश्नोत्तरी में पूरे अंक लाएँ",
+   "flag": "cos 0.4176, LaBSE 0.5809, chrF 16.2",
+   "back": "Bring whole scores in quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.pack-rat.name",
+   "text": "पैक जमाखोर",
+   "flag": "cos 0.4906, LaBSE 0.5682, chrF 25.7",
+   "back": "Pack Collector",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.verse-veteran.name",
+   "text": "कविता का पुराना खिलाड़ी",
+   "flag": "cos 0.353, LaBSE 0.591, chrF 10.8",
+   "back": "Poet's Old Player",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source). Read: पुराना खिलाड़ी is the Hindi idiom for an old hand, a veteran, and कविता का says of what; MADLAD reads कविता का as \"poet's\"."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.completionist.name",
+   "text": "पूरा संग्रह",
+   "flag": "cos 0.3737, LaBSE 0.3203, chrF 21.5",
+   "back": "Full Collection",
+   "reason": "Changed on 2026-11-16 from पूर्णताप्रेमी, which MADLAD read as 'perfectionist': 'the full collection' (संग्रह, the core files' word for the collection), for collecting every card."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.master-thespian.name",
+   "text": "मंच का उस्ताद",
+   "flag": "cos 0.4723, LaBSE 0.5085, chrF 32.6",
+   "back": "Master of the Stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.virtuoso.name",
+   "text": "कलावंत",
+   "flag": "cos 0.3001, LaBSE 0.4939, chrF 11.3",
+   "back": "Artist",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "achievements.hundred-rounds.name",
+   "text": "शतवीर",
+   "flag": "cos 0.2586, LaBSE 0.5646, chrF 5.8",
+   "back": "Shatvir",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.type.relic",
+   "text": "अवशेष",
+   "flag": "cos 0.4244, LaBSE 0.5462, chrF 11.5",
+   "back": "Remnants",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.type.potion",
+   "text": "काढ़ा",
+   "flag": "cos 0.5447, LaBSE 0.4032, chrF 3.4",
+   "back": "Juice",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.types.potion",
+   "text": "काढ़े",
+   "flag": "cos 0.2432, LaBSE 0.2521, chrF 2.5",
+   "back": "Remove",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.stat.atk",
+   "text": "हमला",
+   "flag": "cos 0.4077, LaBSE 0.4619, chrF 9.3",
+   "back": "Attack",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.stat.def",
+   "text": "बचाव",
+   "flag": "cos 0.3445, LaBSE 0.4229, chrF 0",
+   "back": "Rescue",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.stat.hp",
+   "text": "जीवन",
+   "flag": "cos 0.2574, LaBSE 0.2786, chrF 0",
+   "back": "Life",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.house.relic",
+   "text": "अवशेष",
+   "flag": "cos 0.4244, LaBSE 0.5462, chrF 11.5",
+   "back": "Remnants",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.house.potion",
+   "text": "काढ़ा",
+   "flag": "cos 0.5447, LaBSE 0.4032, chrF 3.4",
+   "back": "Juice",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.alchemy",
+   "text": "कीमिया",
+   "flag": "cos 0.292, LaBSE 0.4351, chrF 9.6",
+   "back": "Kemia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.arcane",
+   "text": "गूढ़ विद्या",
+   "flag": "cos 0.2838, LaBSE 0.4698, chrF 5.4",
+   "back": "Mystery",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.cunning",
+   "text": "चतुराई",
+   "flag": "cos 0.5774, LaBSE 0.346, chrF 4.4",
+   "back": "Cleverness",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.dark",
+   "text": "तमस",
+   "flag": "cos 0.2783, LaBSE 0.4124, chrF 5.7",
+   "back": "Tammuz",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.grace",
+   "text": "लालित्य",
+   "flag": "cos 0.1994, LaBSE 0.4924, chrF 7.1",
+   "back": "Latitude",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.mischief",
+   "text": "शरारत",
+   "flag": "cos 0.1698, LaBSE 0.586, chrF 2.1",
+   "back": "Shaarat",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.rhetoric",
+   "text": "वाक्पटुता",
+   "flag": "cos 0.2394, LaBSE 0.3718, chrF 6.1",
+   "back": "Eloquence",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.trickster",
+   "text": "छलिया",
+   "flag": "cos 0.2257, LaBSE 0.4303, chrF 2",
+   "back": "Shalia",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "card-terms.element.vanity",
+   "text": "अहंकार",
+   "flag": "cos 0.43, LaBSE 0.5019, chrF 0",
+   "back": "Ego",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "hi",
+   "key": "collection.filter.owned",
+   "text": "मेरे पास",
+   "flag": "cos 0.2269, LaBSE 0.4624, chrF 4",
+   "back": "I have",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "hi",
+   "key": "collection.deck.synergies",
+   "text": "सक्रिय मेल",
+   "flag": "cos 0.3535, LaBSE 0.4904, chrF 30.1",
+   "back": "Active Mail",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "hi",
+   "key": "home.card.role",
+   "text": "मंच का उस्ताद",
+   "flag": "cos 0.4723, LaBSE 0.5085, chrF 32.6",
+   "back": "Master of the Stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "hi",
+   "key": "home.card.bard",
+   "text": "कवि",
+   "flag": "cos 0.4684, LaBSE 0.5374, chrF 0",
+   "back": "Poet",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "hi",
+   "key": "home.ready.arena",
+   "text": "अखाड़े में उतरें",
+   "flag": "cos 0.2159, LaBSE 0.5654, chrF 12.3",
+   "back": "Go to the court",
+   "reason": "अखाड़े में उतरें: 'step into the arena' (akhara, the wrestling ring); MADLAD gave 'court'."
+  },
+  {
+   "lang": "hi",
+   "key": "profile.stat.trivia",
+   "text": "प्रश्नोत्तरी के सही उत्तर",
+   "flag": "cos 0.5171, LaBSE 0.4028, chrF 30.2",
+   "back": "The correct answer to the quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "hi",
+   "key": "profile.leaderboard.unavailable",
+   "text": "लीडरबोर्ड उपलब्ध नहीं है",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Leaderboard not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "hi",
+   "key": "profile.leaderboard.failed",
+   "text": "लीडरबोर्ड लोड नहीं हो सका।",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Could not load leaderboard.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "hi",
+   "key": "rules.landIt",
+   "text": "इसे साध लें तो आपका शिल्प डेढ़ गुना हो जाता है।",
+   "flag": "cos 0.511, LaBSE 0.5491, chrF 32.7; numbers - became 2",
+   "back": "If you master it, your craft becomes two and a half times better.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "hi",
+   "key": "variants.source.battle-streak",
+   "text": "लगातार जीत",
+   "flag": "cos 0.3745, LaBSE 0.4373, chrF 2.7",
+   "back": "Continuous wins",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "hi",
+   "key": "variants.source.trivia-mastery",
+   "text": "प्रश्नोत्तरी में महारत",
+   "flag": "cos 0.552, LaBSE 0.5801, chrF 23",
+   "back": "Master the quiz",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "hi",
+   "key": "variants.ability.LDN.name",
+   "text": "कवि का अपना घर",
+   "flag": "cos 0.4584, LaBSE 0.4556, chrF 30.5",
+   "back": "The Poet's Home",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "hi",
+   "key": "variants.ability.SEO.name",
+   "text": "कोरियाई लहर की ताल",
+   "flag": "cos 0.5409, LaBSE 0.3941, chrF 18.2",
+   "back": "Korean Wave Rhythm",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "hi",
+   "key": "variants.ability.JHB.name",
+   "text": "जोज़ी की पंक्तियाँ",
+   "flag": "cos 0.5989, LaBSE 0.5566, chrF 24.3",
+   "back": "Jozi's Lines",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "zh",
+   "key": "about.free.earn.title",
+   "text": "赢取点数",
+   "flag": "cos 0.1899, LaBSE 0.5309, chrF 9.7",
+   "back": "Number of points won",
+   "reason": "赢取点数, 'earn points': 点数 is this area's word for credits throughout (about.free.body, about.free.safe.l2)."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.first-blood.name",
+   "text": "首战告捷",
+   "flag": "cos 0.5159, LaBSE 0.5692, chrF 41.1",
+   "back": "The First Battle",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.quotable.name",
+   "text": "妙语连珠",
+   "flag": "cos 0.1445, LaBSE 0.2892, chrF 3.9",
+   "back": "Miyuki Renju",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.scholar.description",
+   "text": "在问答中全部答对",
+   "flag": "cos 0.3761, LaBSE 0.3737, chrF 20.6",
+   "back": "Answer all of the questions correctly",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.pack-rat.name",
+   "text": "囤包达人",
+   "flag": "cos 0.2957, LaBSE 0.4878, chrF 6.2",
+   "back": "The Bagmaster",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.completionist.name",
+   "text": "全收集者",
+   "flag": "cos 0.3059, LaBSE 0.5538, chrF 8.9",
+   "back": "Total collector",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.master-thespian.name",
+   "text": "舞台大师",
+   "flag": "cos 0.4622, LaBSE 0.5764, chrF 32.9",
+   "back": "Stage Master",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "achievements.virtuoso.name",
+   "text": "大家手笔",
+   "flag": "cos 0.2397, LaBSE 0.2612, chrF 2.7",
+   "back": "Pens.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.stat.atk",
+   "text": "攻击",
+   "flag": "cos 0.2895, LaBSE 0.5098, chrF 8.8",
+   "back": "Attacks",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.stat.def",
+   "text": "防御",
+   "flag": "cos 0.4022, LaBSE 0.4627, chrF 8.8",
+   "back": "Defence",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.stat.hp",
+   "text": "生命",
+   "flag": "cos 0.2574, LaBSE 0.2851, chrF 0",
+   "back": "Life",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.alchemy",
+   "text": "炼金",
+   "flag": "cos 0.3175, LaBSE 0.528, chrF 4.2",
+   "back": "Gold refining",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.arcane",
+   "text": "奥术",
+   "flag": "cos 0.2337, LaBSE 0.5502, chrF 4.8",
+   "back": "Martial arts",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.cunning",
+   "text": "狡黠",
+   "flag": "cos 0.2749, LaBSE 0.4792, chrF 4.4",
+   "back": "Decepticon",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.grace",
+   "text": "优雅",
+   "flag": "cos 0.2379, LaBSE 0.4825, chrF 10.7",
+   "back": "Elegancy",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.mischief",
+   "text": "恶作剧",
+   "flag": "cos 0.5173, LaBSE 0.5748, chrF 8.8",
+   "back": "Malice",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.rhetoric",
+   "text": "雄辩",
+   "flag": "cos 0.2394, LaBSE 0.5134, chrF 6.1",
+   "back": "Eloquence",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "card-terms.element.wind",
+   "text": "疾风",
+   "flag": "cos 0.4656, LaBSE 0.5324, chrF 5.4",
+   "back": "Cyclone",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "zh",
+   "key": "collection.deck.title",
+   "text": "组建牌组",
+   "flag": "cos 0.4142, LaBSE 0.499, chrF 6.8",
+   "back": "Forming a card group",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "zh",
+   "key": "collection.modal.ar",
+   "text": "用增强现实查看",
+   "flag": "cos 0.5234, LaBSE 0.4604, chrF 8.7",
+   "back": "Augmented Reality",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "zh",
+   "key": "home.card.role",
+   "text": "舞台大师",
+   "flag": "cos 0.4622, LaBSE 0.5764, chrF 32.9",
+   "back": "Stage Master",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "zh",
+   "key": "home.card.bard",
+   "text": "吟游诗人",
+   "flag": "cos 0.2616, LaBSE 0.4394, chrF 4.8",
+   "back": "Ginga poets",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "zh",
+   "key": "profile.stat.trivia",
+   "text": "问答答对数",
+   "flag": "cos 0.1775, LaBSE 0.4685, chrF 9.7",
+   "back": "Question and answer logarithm",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "zh",
+   "key": "rules.landIt",
+   "text": "做到它，技艺再加一半。",
+   "flag": "cos 0.497, LaBSE 0.5831, chrF 10.8",
+   "back": "To do it, skill plus half.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.source.battle-streak",
+   "text": "连胜",
+   "flag": "cos 0.1057, LaBSE 0.332, chrF 1.5",
+   "back": "Lin Cheng",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.source.trivia-mastery",
+   "text": "问答精通",
+   "flag": "cos 0.4792, LaBSE 0.5544, chrF 9.3",
+   "back": "Knowledge of questions and answers",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.ability.LDN.name",
+   "text": "诗人的主场",
+   "flag": "cos 0.4584, LaBSE 0.4403, chrF 30.5",
+   "back": "The Poet's Home",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.ability.SAO.name",
+   "text": "贫民窟之火",
+   "flag": "cos 0.4531, LaBSE 0.5583, chrF 12.7",
+   "back": "Slum fires",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.ability.SEO.name",
+   "text": "韩流律动",
+   "flag": "cos 0.12, LaBSE 0.3552, chrF 4",
+   "back": "Han Rui-jin",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.ability.BER.name",
+   "text": "卡巴莱锋芒",
+   "flag": "cos 0.3873, LaBSE 0.5341, chrF 18.4",
+   "back": "Caballé",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "zh",
+   "key": "variants.ability.JHB.name",
+   "text": "约堡押韵",
+   "flag": "cos 0.1682, LaBSE 0.4192, chrF 7.8",
+   "back": "Joburg rhythm",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ja",
+   "key": "about.intro",
+   "text": "私たちは、コレクションカードとAIの体験を組み合わせたデジタルエンターテインメントのプラットフォームをつくっています。人と人とのつながりを置き換えるのではなく深める技術で、人びとが交流し、楽しめるようにすることが私たちの使命です。",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "We are creating a digital entertainment platform that combines collectible cards and AI experience.",
+   "reason": "'... and does not replace it': the English 'enhances rather than replaces', said with a negation."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.first-blood.name",
+   "text": "初勝利",
+   "flag": "cos 0.4698, LaBSE 0.5782, chrF 29.8",
+   "back": "First victory",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.scholar-novice.name",
+   "text": "学者の卵",
+   "flag": "cos 0.5893, LaBSE 0.5338, chrF 40.3",
+   "back": "Scholar's egg",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.quotable.name",
+   "text": "名言の使い手",
+   "flag": "cos 0.4633, LaBSE 0.323, chrF 1.7",
+   "back": "Sayings and sayings",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.bards-apprentice.name",
+   "text": "詩人の弟子",
+   "flag": "cos 0.4544, LaBSE 0.5589, chrF 10.8",
+   "back": "Poet's disciple",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.scholar.description",
+   "text": "クイズで全問正解する",
+   "flag": "cos 0.4565, LaBSE 0.4918, chrF 10.1",
+   "back": "Answer all the questions in a quiz.",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.pack-rat.name",
+   "text": "パックため込み屋",
+   "flag": "cos 0.2813, LaBSE 0.5625, chrF 18.4",
+   "back": "Pac-Man",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.master-thespian.name",
+   "text": "舞台の名手",
+   "flag": "cos 0.1129, LaBSE 0.3662, chrF 10.8",
+   "back": "Artists on stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.virtuoso.name",
+   "text": "名人",
+   "flag": "cos 0.2008, LaBSE 0.4582, chrF 7.6",
+   "back": "Famous people",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "achievements.trivia-enthusiast.name",
+   "text": "クイズ好き",
+   "flag": "cos 0.2613, LaBSE 0.4746, chrF 4.3",
+   "back": "I like quizzes.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.stat.atk",
+   "text": "攻撃",
+   "flag": "cos 0.4077, LaBSE 0.5077, chrF 9.3",
+   "back": "Attack",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.stat.def",
+   "text": "防御",
+   "flag": "cos 0.4022, LaBSE 0.4627, chrF 8.8",
+   "back": "Defence",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.stat.hp",
+   "text": "体力",
+   "flag": "cos 0.1446, LaBSE 0.4679, chrF 10.4",
+   "back": "Physical strength",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.arcane",
+   "text": "秘術",
+   "flag": "cos 0.2846, LaBSE 0.5847, chrF 9.8",
+   "back": "Secret arts",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.cunning",
+   "text": "狡知",
+   "flag": "cos 0.3532, LaBSE 0.4426, chrF 3",
+   "back": "Wise.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.grace",
+   "text": "優雅",
+   "flag": "cos 0.2379, LaBSE 0.4966, chrF 10.7",
+   "back": "Elegancy",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.mischief",
+   "text": "いたずら",
+   "flag": "cos 0.0431, LaBSE 0.4917, chrF 4",
+   "back": "It's a joke.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.rebellion",
+   "text": "反逆",
+   "flag": "cos 0.5028, LaBSE 0.5497, chrF 8",
+   "back": "Treason",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.rhetoric",
+   "text": "弁論",
+   "flag": "cos 0.564, LaBSE 0.5947, chrF 6.2",
+   "back": "Argument",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "card-terms.element.thunder",
+   "text": "雷",
+   "flag": "cos 0.2985, LaBSE 0.5523, chrF 0",
+   "back": "Ray.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ja",
+   "key": "collection.deck.synergies",
+   "text": "発動中のシナジー",
+   "flag": "cos 0.5918, LaBSE 0.4659, chrF 18.5",
+   "back": "Synargy in action",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ja",
+   "key": "collection.deck.activate",
+   "text": "使用する",
+   "flag": "cos 0.219, LaBSE 0.5437, chrF 6",
+   "back": "I'll use it.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ja",
+   "key": "collection.deck.notOwned",
+   "text": "持っていないカード：Hamlet",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Hamlet",
+   "reason": "持っていないカード ('cards you do not have') carries the negation; MADLAD kept only the card's name."
+  },
+  {
+   "lang": "ja",
+   "key": "home.card.role",
+   "text": "舞台の名手",
+   "flag": "cos 0.1129, LaBSE 0.3662, chrF 10.8",
+   "back": "Artists on stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ja",
+   "key": "home.card.bard",
+   "text": "詩人",
+   "flag": "cos 0.5211, LaBSE 0.5399, chrF 0",
+   "back": "Poets",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "ja",
+   "key": "profile.stat.trivia",
+   "text": "クイズの正解数",
+   "flag": "cos 0.3277, LaBSE 0.5215, chrF 28.5",
+   "back": "Number of correct answers in a quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ja",
+   "key": "profile.leaderboard.unavailable",
+   "text": "ランキングは利用できません",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Rankings are not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ja",
+   "key": "profile.leaderboard.failed",
+   "text": "ランキングを読み込めませんでした。",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Could not load the rankings.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ja",
+   "key": "rules.landIt",
+   "text": "決めると、技巧にその半分が加わります。",
+   "flag": "cos 0.5488, LaBSE 0.5693, chrF 24.7",
+   "back": "When you decide, half of that is added to your skill.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "ja",
+   "key": "variants.source.battle-streak",
+   "text": "連勝",
+   "flag": "cos 0.5211, LaBSE 0.4534, chrF 3",
+   "back": "Victory",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "ja",
+   "key": "variants.ability.LDN.name",
+   "text": "詩人の本拠地",
+   "flag": "cos 0.4627, LaBSE 0.3536, chrF 30.9",
+   "back": "Poet's Home",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ja",
+   "key": "variants.ability.PAR.name",
+   "text": "オートクチュールの詩",
+   "flag": "cos 0.4262, LaBSE 0.5001, chrF 9.1",
+   "back": "Autocuture poetry",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ja",
+   "key": "variants.ability.NRB.name",
+   "text": "語り部の才",
+   "flag": "cos 0.4315, LaBSE 0.407, chrF 10.1",
+   "back": "Narrative talent",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.first-blood.name",
+   "text": "첫 승리",
+   "flag": "cos 0.4623, LaBSE 0.5732, chrF 29.1",
+   "back": "First victory.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.opening-act.name",
+   "text": "제1막",
+   "flag": "cos 0.2025, LaBSE 0.3745, chrF 5.2",
+   "back": "Chapter 1",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.bards-apprentice.name",
+   "text": "시인의 제자",
+   "flag": "cos 0.4463, LaBSE 0.4827, chrF 8.2",
+   "back": "Disciple of the poet",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.wordsmith.name",
+   "text": "말의 장인",
+   "flag": "cos 0.3638, LaBSE 0.4903, chrF 9.6",
+   "back": "The Master of Horses",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.scholar.description",
+   "text": "퀴즈를 모두 맞히기",
+   "flag": "cos 0.4316, LaBSE 0.436, chrF 6.6",
+   "back": "Match all the quizzes",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.pack-rat.name",
+   "text": "팩 모으기 대장",
+   "flag": "cos 0.4852, LaBSE 0.5627, chrF 25",
+   "back": "Pack Collector.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.completionist.name",
+   "text": "완전 수집가",
+   "flag": "cos 0.3203, LaBSE 0.4956, chrF 8.8",
+   "back": "Total collector.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.master-thespian.name",
+   "text": "무대의 거장",
+   "flag": "cos 0.4569, LaBSE 0.3604, chrF 30.2",
+   "back": "The master of the stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.virtuoso.name",
+   "text": "명인",
+   "flag": "cos 0.1831, LaBSE 0.3394, chrF 6.2",
+   "back": "A master.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.hundred-rounds.name",
+   "text": "백인대장",
+   "flag": "cos 0.2322, LaBSE 0.334, chrF 7.1",
+   "back": "White Chief.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "achievements.first-challenge.name",
+   "text": "명대사를 찾는 사람",
+   "flag": "cos 0.5459, LaBSE 0.5969, chrF 18.1",
+   "back": "Looking for a quote",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.stat.atk",
+   "text": "공격",
+   "flag": "cos 0.3454, LaBSE 0.4924, chrF 8.8",
+   "back": "Attack.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.stat.def",
+   "text": "방어",
+   "flag": "cos 0.4096, LaBSE 0.4371, chrF 8.3",
+   "back": "Defence.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.stat.hp",
+   "text": "체력",
+   "flag": "cos 0.1661, LaBSE 0.464, chrF 10",
+   "back": "Physical strength.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.house.underworld",
+   "text": "저승",
+   "flag": "cos 0.3874, LaBSE 0.4746, chrF 8.7",
+   "back": "Afterlife.",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.arcane",
+   "text": "비전",
+   "flag": "cos 0.2561, LaBSE 0.306, chrF 2.7",
+   "back": "Vision.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.cunning",
+   "text": "꾀",
+   "flag": "cos 0.4211, LaBSE 0.4995, chrF 2.5",
+   "back": "Trick.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.grace",
+   "text": "우아함",
+   "flag": "cos 0.2312, LaBSE 0.5349, chrF 10.3",
+   "back": "Elegancy.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.illusion",
+   "text": "환영",
+   "flag": "cos 0.1128, LaBSE 0.271, chrF 4.2",
+   "back": "Welcome.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.innocence",
+   "text": "순수",
+   "flag": "cos 0.4421, LaBSE 0.3498, chrF 3.1",
+   "back": "Pure",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.justice",
+   "text": "정의",
+   "flag": "cos 0.2384, LaBSE 0.5508, chrF 9.1",
+   "back": "Definition",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.mischief",
+   "text": "장난",
+   "flag": "cos 0.1053, LaBSE 0.5381, chrF 3.9",
+   "back": "I'm kidding.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.petrification",
+   "text": "석화",
+   "flag": "cos 0.291, LaBSE 0.2963, chrF 6.6",
+   "back": "Lithography",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.rebellion",
+   "text": "반역",
+   "flag": "cos 0.4359, LaBSE 0.3116, chrF 7.8",
+   "back": "Treason.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.rhetoric",
+   "text": "웅변",
+   "flag": "cos 0.2394, LaBSE 0.3752, chrF 6.1",
+   "back": "Eloquence",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.vanity",
+   "text": "허영",
+   "flag": "cos 0.2562, LaBSE 0.228, chrF 2.8",
+   "back": "Heung.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "card-terms.element.vision",
+   "text": "환시",
+   "flag": "cos 0.35, LaBSE 0.5106, chrF 18.5",
+   "back": "Hallucinations.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "ko",
+   "key": "collection.world.empty",
+   "text": "아직 변형이 없어요. 배틀에서 세 번 연속 이기거나 퀴즈를 모두 맞히면 첫 월드 카드가 열려요!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row, or answer all the quizzes to unlock your first World Card!",
+   "reason": "MADLAD dropped the first sentence (아직 변형이 없어요, 'no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "ko",
+   "key": "collection.deck.activate",
+   "text": "사용하기",
+   "flag": "cos 0.4019, LaBSE 0.5469, chrF 4.8",
+   "back": "Use",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "ko",
+   "key": "collection.deck.notOwned",
+   "text": "보유하지 않은 카드: Hamlet",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Missing card: Hamlet",
+   "reason": "보유하지 않은 카드 ('cards you do not hold') carries the negation; MADLAD wrote 'missing card'."
+  },
+  {
+   "lang": "ko",
+   "key": "home.card.role",
+   "text": "무대의 거장",
+   "flag": "cos 0.4723, LaBSE 0.3604, chrF 36.4",
+   "back": "Master of the stage",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "ko",
+   "key": "home.card.bard",
+   "text": "시인",
+   "flag": "cos 0.4698, LaBSE 0.4515, chrF 0",
+   "back": "Poet.",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "ko",
+   "key": "profile.stat.trivia",
+   "text": "퀴즈 정답",
+   "flag": "cos 0.4306, LaBSE 0.5851, chrF 4.2",
+   "back": "The Quiz",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "ko",
+   "key": "profile.leaderboard.unavailable",
+   "text": "순위표를 사용할 수 없어요",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Leaderboards are not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "ko",
+   "key": "rules.landIt",
+   "text": "성공하면 기교에 그 절반이 더해져요.",
+   "flag": "cos 0.4259, LaBSE 0.5251, chrF 15.2",
+   "back": "If you succeed, you get half of the trick.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.source.battle-streak",
+   "text": "연승",
+   "flag": "cos 0.3313, LaBSE 0.3003, chrF 0",
+   "back": "Running win",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.source.trivia-mastery",
+   "text": "퀴즈 정복",
+   "flag": "cos 0.5779, LaBSE 0.4953, chrF 6.6",
+   "back": "Quiz Conquest",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.LDN.name",
+   "text": "시인의 안방",
+   "flag": "cos 0.3412, LaBSE 0.2955, chrF 9.9",
+   "back": "The Poet's Room",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.PAR.name",
+   "text": "오트 쿠튀르 시",
+   "flag": "cos 0.4546, LaBSE 0.3565, chrF 28.2",
+   "back": "Haute-Couture City",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.SEO.name",
+   "text": "한류 가락",
+   "flag": "cos 0.0943, LaBSE 0.1665, chrF 2.8",
+   "back": "Hangul.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.JHB.name",
+   "text": "조지의 랩 가사",
+   "flag": "cos 0.2117, LaBSE 0.3636, chrF 8.5",
+   "back": "George's Rap Lyrics",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.SYD.name",
+   "text": "항구의 기세",
+   "flag": "cos 0.3816, LaBSE 0.5093, chrF 5.6",
+   "back": "The Port",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "ko",
+   "key": "variants.ability.SYD.why",
+   "text": "격식을 따지지 않는 호주의 유머",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Australian humor without formalities",
+   "reason": "격식을 따지지 않는 ('not standing on formality') is 'irreverent' said with a negation."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.scholar-novice.name",
+   "text": "Học giả mới vào nghề",
+   "flag": "cos 0.3763, LaBSE 0.4697, chrF 6.2",
+   "back": "Newcomers to the profession.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.bards-apprentice.name",
+   "text": "Học trò của Thi sĩ",
+   "flag": "cos 0.4154, LaBSE 0.526, chrF 8.8",
+   "back": "Poet's pupil.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.pack-rat.name",
+   "text": "Kẻ tích trữ gói bài",
+   "flag": "cos 0.2785, LaBSE 0.4686, chrF 6.9",
+   "back": "Deck Keeper",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.verse-veteran.name",
+   "text": "Lão làng làng thơ",
+   "flag": "cos 0.1658, LaBSE 0.4342, chrF 4.2",
+   "back": "Old man, old man.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.completionist.name",
+   "text": "Người sưu tầm trọn bộ",
+   "flag": "cos 0.4647, LaBSE 0.5034, chrF 29.8",
+   "back": "The complete collector.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.master-thespian.name",
+   "text": "Bậc thầy sân khấu",
+   "flag": "cos 0.4877, LaBSE 0.5686, chrF 35.8",
+   "back": "Master of the stage.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.virtuoso.name",
+   "text": "Bậc kỳ tài",
+   "flag": "cos 0.1375, LaBSE 0.4007, chrF 6.4",
+   "back": "Genius.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "achievements.hundred-rounds.name",
+   "text": "Bách phu trưởng",
+   "flag": "cos 0.1745, LaBSE 0.2629, chrF 7.4",
+   "back": "Chief Bafu",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.type.relic",
+   "text": "Bảo vật",
+   "flag": "cos 0.45, LaBSE 0.527, chrF 3.4",
+   "back": "Treasure.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.stat.atk",
+   "text": "Công",
+   "flag": "cos 0.2424, LaBSE 0.3836, chrF 0",
+   "back": "Public",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.stat.def",
+   "text": "Thủ",
+   "flag": "cos 0.2968, LaBSE 0.2595, chrF 0",
+   "back": "Owner",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.stat.hp",
+   "text": "Máu",
+   "flag": "cos 0.2565, LaBSE 0.2741, chrF 0",
+   "back": "Blood.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.house.relic",
+   "text": "Bảo vật",
+   "flag": "cos 0.45, LaBSE 0.527, chrF 3.4",
+   "back": "Treasure.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.house.underworld",
+   "text": "Âm phủ",
+   "flag": "cos 0.2626, LaBSE 0.3633, chrF 3.5",
+   "back": "Surface",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.alchemy",
+   "text": "Giả kim",
+   "flag": "cos 0.2971, LaBSE 0.4638, chrF 9.4",
+   "back": "Fake metal",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.cunning",
+   "text": "Mưu mẹo",
+   "flag": "cos 0.329, LaBSE 0.2941, chrF 12.4",
+   "back": "Hint",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.devotion",
+   "text": "Tận tuỵ",
+   "flag": "cos 0.3492, LaBSE 0.4863, chrF 4.2",
+   "back": "Selfish.",
+   "reason": "Tận tuỵ ('devotion'), with the tone on the second vowel as lang/qa-pipeline's rule asks; MADLAD read it as 'selfish', where it had read tận tụy as 'dedication'."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.disguise",
+   "text": "Cải trang",
+   "flag": "cos 0.0597, LaBSE 0.556, chrF 6.2",
+   "back": "Edit Page",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.enchantment",
+   "text": "Bùa mê",
+   "flag": "cos 0.4009, LaBSE 0.4894, chrF 3.3",
+   "back": "Magic.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.grace",
+   "text": "Duyên dáng",
+   "flag": "cos 0.2879, LaBSE 0.4707, chrF 7.1",
+   "back": "Elegant.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.mischief",
+   "text": "Tinh nghịch",
+   "flag": "cos 0.4761, LaBSE 0.5513, chrF 2.1",
+   "back": "Playful.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.petrification",
+   "text": "Hoá đá",
+   "flag": "cos 0.2553, LaBSE 0.3589, chrF 4.2",
+   "back": "Flowers.",
+   "reason": "Hoá đá ('turning to stone'), with the tone on the second vowel as lang/qa-pipeline's rule asks; MADLAD read hoa ('flower'), where it had read hóa đá as 'stones'."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.poison",
+   "text": "Độc",
+   "flag": "cos 0.3452, LaBSE 0.4925, chrF 0",
+   "back": "Duck",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.prophecy",
+   "text": "Tiên tri",
+   "flag": "cos 0.142, LaBSE 0.4536, chrF 2.1",
+   "back": "Tiên tri",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.rebellion",
+   "text": "Nổi loạn",
+   "flag": "cos 0.5342, LaBSE 0.577, chrF 10.1",
+   "back": "Riot.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.rhetoric",
+   "text": "Hùng biện",
+   "flag": "cos 0.1401, LaBSE 0.5306, chrF 2.1",
+   "back": "Hùng biện",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "card-terms.element.vanity",
+   "text": "Phù phiếm",
+   "flag": "cos 0.218, LaBSE 0.5185, chrF 3.4",
+   "back": "Fake.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "vi",
+   "key": "collection.deck.synergies",
+   "text": "Cộng hưởng đang có hiệu lực",
+   "flag": "cos 0.2709, LaBSE 0.4303, chrF 12.7",
+   "back": "Resonance is in effect.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "vi",
+   "key": "collection.deck.activate",
+   "text": "Dùng bộ này",
+   "flag": "cos 0.2473, LaBSE 0.3706, chrF 5.8",
+   "back": "Use this one.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "vi",
+   "key": "home.stat.houses",
+   "text": "Gia tộc",
+   "flag": "cos 0.4747, LaBSE 0.5776, chrF 0",
+   "back": "Family.",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "vi",
+   "key": "home.card.role",
+   "text": "Bậc thầy sân khấu",
+   "flag": "cos 0.4877, LaBSE 0.5686, chrF 35.8",
+   "back": "Master of the stage.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "vi",
+   "key": "home.card.bard",
+   "text": "Thi sĩ",
+   "flag": "cos 0.4698, LaBSE 0.529, chrF 0",
+   "back": "Poet.",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "vi",
+   "key": "home.platform.title",
+   "text": "Nền tảng của chúng tôi",
+   "flag": "cos 0.3905, LaBSE 0.5656, chrF 10.3",
+   "back": "Our foundation.",
+   "reason": "Nền tảng của chúng tôi, 'our platform': nền tảng means both platform and foundation, and MADLAD took the second."
+  },
+  {
+   "lang": "vi",
+   "key": "home.ready.earn",
+   "text": "Kiếm lá bài",
+   "flag": "cos 0.586, LaBSE 0.5698, chrF 15.8",
+   "back": "Draw a card",
+   "reason": "Kiếm lá bài, 'earn cards' (lá bài is the core files' word for a card); MADLAD wrote 'draw a card'."
+  },
+  {
+   "lang": "vi",
+   "key": "rules.synergy",
+   "text": "Montague, từ hai nhân vật trở lên: Hamlet cộng ba phần tư vào tay nghề của bạn thay vì một nửa.",
+   "flag": "lower bound lost",
+   "back": "Montague, from two characters up: Hamlet adds three quarters to your skill instead of half.",
+   "reason": "'Three quarters ... instead of half' is in the translation; MADLAD wrote 'not half', 'three to four', or dropped the bound of 'two or more'."
+  },
+  {
+   "lang": "vi",
+   "key": "variants.ability.SEO.name",
+   "text": "Nhịp làn sóng Hàn",
+   "flag": "cos 0.4438, LaBSE 0.4665, chrF 20.1",
+   "back": "Korean Wave Beat",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "vi",
+   "key": "variants.ability.JHB.name",
+   "text": "Câu rap Jozi",
+   "flag": "cos 0.5747, LaBSE 0.5634, chrF 27",
+   "back": "Dog rap Jozi",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "vi",
+   "key": "variants.ability.SYD.name",
+   "text": "Khí thế bến cảng",
+   "flag": "cos 0.4539, LaBSE 0.5128, chrF 25.1",
+   "back": "Harbor atmosphere.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "about.journey.e5",
+   "text": "แพลตฟอร์มเปิดให้ใช้งาน",
+   "flag": "cos 0.5129, LaBSE 0.5466, chrF 42.9",
+   "back": "Platform enabled.",
+   "reason": "แพลตฟอร์มเปิดให้ใช้งาน, 'the platform opens for use': the meaning of 'goes live'."
+  },
+  {
+   "lang": "th",
+   "key": "about.join.battle",
+   "text": "ลองสังเวียนประชัน",
+   "flag": "cos 0.051, LaBSE 0.5455, chrF 8.9",
+   "back": "Let's make a circle.",
+   "reason": "ลองสังเวียนประชัน, 'try the Battle Arena': สังเวียนประชัน is the core files' name for the battle page (nav.battle); MADLAD did not recognise it."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.first-blood.name",
+   "text": "ชัยชนะแรก",
+   "flag": "cos 0.4623, LaBSE 0.5613, chrF 29.1",
+   "back": "First victory.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.opening-act.name",
+   "text": "องก์เปิดม่าน",
+   "flag": "cos 0.2836, LaBSE 0.4872, chrF 24.6",
+   "back": "Open the curtain.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.scholar-novice.name",
+   "text": "นักปราชญ์มือใหม่",
+   "flag": "cos 0.4689, LaBSE 0.4341, chrF 6.8",
+   "back": "Novice philosopher.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.quotable.name",
+   "text": "วาทะน่าจดจำ",
+   "flag": "cos 0.2662, LaBSE 0.4369, chrF 24.3",
+   "back": "It's memorable.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.bards-apprentice.name",
+   "text": "ศิษย์ของกวี",
+   "flag": "cos 0.4564, LaBSE 0.4664, chrF 8.8",
+   "back": "The disciple of the poet.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.scholar.description",
+   "text": "ทำควิซได้คะแนนเต็ม",
+   "flag": "cos 0.4603, LaBSE 0.5762, chrF 15.8",
+   "back": "You've scored the quiz.",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.pack-rat.name",
+   "text": "นักกักตุนซอง",
+   "flag": "cos 0.3195, LaBSE 0.3346, chrF 0",
+   "back": "The prisoner.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.verse-veteran.name",
+   "text": "ผู้ช่ำชองบทกลอน",
+   "flag": "cos 0.3431, LaBSE 0.4013, chrF 15.7",
+   "back": "Poetry master.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.completionist.name",
+   "text": "นักสะสมครบชุด",
+   "flag": "cos 0.4668, LaBSE 0.4296, chrF 30.7",
+   "back": "A complete collector.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.master-thespian.name",
+   "text": "ยอดนักแสดง",
+   "flag": "cos 0.209, LaBSE 0.3018, chrF 10.3",
+   "back": "Superstar.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.virtuoso.name",
+   "text": "ยอดฝีมือ",
+   "flag": "cos 0.0924, LaBSE 0.5167, chrF 6",
+   "back": "Great work.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.hundred-rounds.name",
+   "text": "นายกองร้อย",
+   "flag": "cos 0.2918, LaBSE 0.4031, chrF 11.6",
+   "back": "Coronel.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.battle-master.name",
+   "text": "เจ้าแห่งการประชัน",
+   "flag": "cos 0.4862, LaBSE 0.5592, chrF 5.1",
+   "back": "The Lord of Conflict.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.trivia-enthusiast.name",
+   "text": "คนรักควิซ",
+   "flag": "cos 0.5725, LaBSE 0.4435, chrF 5.6",
+   "back": "Quiz lovers.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.challenge-adept.name",
+   "text": "ผู้ชำนาญภารกิจท้าทาย",
+   "flag": "cos 0.4516, LaBSE 0.5779, chrF 58.6",
+   "back": "Challenger.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.pack-addict.name",
+   "text": "ติดการแกะซอง",
+   "flag": "cos 0.2032, LaBSE 0.4665, chrF 6.3",
+   "back": "I'm stuck opening the envelope.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "achievements.perfect-scholar.name",
+   "text": "นักปราชญ์ไร้ที่ติ",
+   "flag": "cos 0.5133, LaBSE 0.4251, chrF 8.1",
+   "back": "An impeccable sage.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.type.relic",
+   "text": "ของวิเศษ",
+   "flag": "cos 0.0757, LaBSE 0.4386, chrF 3.1",
+   "back": "It's amazing.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.type.potion",
+   "text": "ยาวิเศษ",
+   "flag": "cos 0.5067, LaBSE 0.3496, chrF 4.2",
+   "back": "Magical medicine.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.types.relic",
+   "text": "ของวิเศษ",
+   "flag": "cos 0.081, LaBSE 0.4333, chrF 4.6",
+   "back": "It's amazing.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.types.potion",
+   "text": "ยาวิเศษ",
+   "flag": "cos 0.5101, LaBSE 0.3111, chrF 3.8",
+   "back": "Magical medicine.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.stat.atk",
+   "text": "โจมตี",
+   "flag": "cos 0.3135, LaBSE 0.399, chrF 8.8",
+   "back": "Attack!",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.stat.def",
+   "text": "ป้องกัน",
+   "flag": "cos 0.2605, LaBSE 0.4049, chrF 0",
+   "back": "Protection.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.stat.hp",
+   "text": "พลังชีวิต",
+   "flag": "cos 0.1996, LaBSE 0.3396, chrF 0",
+   "back": "Life force.",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.house.montague",
+   "text": "มอนตะคิว",
+   "flag": "cos 0.2737, LaBSE 0.5405, chrF 24.9",
+   "back": "Montecuccoli.",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.house.relic",
+   "text": "ของวิเศษ",
+   "flag": "cos 0.0757, LaBSE 0.4386, chrF 3.1",
+   "back": "It's amazing.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.house.potion",
+   "text": "ยาวิเศษ",
+   "flag": "cos 0.5067, LaBSE 0.3496, chrF 4.2",
+   "back": "Magical medicine.",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.house.underworld",
+   "text": "ยมโลก",
+   "flag": "cos 0.2275, LaBSE 0.5841, chrF 30.5",
+   "back": "Yeah, world.",
+   "reason": "A house's name, translated for the game (where lang/names-quotes has another label it is listed in labels-vs-names-quotes.tsv); MADLAD reads it as an ordinary word or a name."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.alchemy",
+   "text": "การเล่นแร่แปรธาตุ",
+   "flag": "cos 0.3219, LaBSE 0.3006, chrF 8.1",
+   "back": "Play minerals.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.arcane",
+   "text": "เวทลึกลับ",
+   "flag": "cos 0.2277, LaBSE 0.4984, chrF 8.3",
+   "back": "Mysterious magic.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.comedy",
+   "text": "สุขนาฏกรรม",
+   "flag": "cos 0.3979, LaBSE 0.3749, chrF 17.8",
+   "back": "Tragedy.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.cunning",
+   "text": "เล่ห์เหลี่ยม",
+   "flag": "cos 0.1593, LaBSE 0.3004, chrF 7.1",
+   "back": "Rectangle",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.enchantment",
+   "text": "มนตร์สะกด",
+   "flag": "cos 0.3916, LaBSE 0.4323, chrF 1.7",
+   "back": "Spell.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.grace",
+   "text": "ความสง่างาม",
+   "flag": "cos 0.3529, LaBSE 0.5753, chrF 7.4",
+   "back": "Beauty.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.petrification",
+   "text": "การกลายเป็นหิน",
+   "flag": "cos 0.2444, LaBSE 0.3126, chrF 11",
+   "back": "Turning into stone.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.rhetoric",
+   "text": "วาทศิลป์",
+   "flag": "cos 0.1579, LaBSE 0.4369, chrF 2.2",
+   "back": "Watts.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.trickster",
+   "text": "จอมเจ้าเล่ห์",
+   "flag": "cos 0.245, LaBSE 0.34, chrF 3.5",
+   "back": "You're a fool.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.vanity",
+   "text": "ความหลงตัว",
+   "flag": "cos 0.2592, LaBSE 0.5534, chrF 4.5",
+   "back": "The obsession.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "card-terms.element.vision",
+   "text": "นิมิต",
+   "flag": "cos 0.2629, LaBSE 0.3922, chrF 5.6",
+   "back": "Nimit.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "th",
+   "key": "collection.filter.owned",
+   "text": "ที่มีอยู่",
+   "flag": "cos 0.2698, LaBSE 0.5944, chrF 3.4",
+   "back": "Available",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "th",
+   "key": "collection.deck.title",
+   "text": "จัดสำรับ",
+   "flag": "cos 0.0069, LaBSE 0.2183, chrF 5.8",
+   "back": "Prepare a meal.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "th",
+   "key": "collection.deck.saved",
+   "text": "สำรับที่บันทึกไว้",
+   "flag": "cos 0.3752, LaBSE 0.5937, chrF 28.5",
+   "back": "Saved envelope.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "th",
+   "key": "collection.deck.active",
+   "text": "ใช้อยู่",
+   "flag": "cos 0.3628, LaBSE 0.5883, chrF 3.4",
+   "back": "In use",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "th",
+   "key": "collection.deck.activate",
+   "text": "ใช้สำรับนี้",
+   "flag": "cos 0.2759, LaBSE 0.3817, chrF 6.2",
+   "back": "Use this.",
+   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
+  },
+  {
+   "lang": "th",
+   "key": "home.stat.houses",
+   "text": "ตระกูล",
+   "flag": "cos 0.4747, LaBSE 0.5183, chrF 0",
+   "back": "Family.",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "th",
+   "key": "home.card.role",
+   "text": "ยอดนักแสดง",
+   "flag": "cos 0.209, LaBSE 0.3018, chrF 10.3",
+   "back": "Superstar.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "th",
+   "key": "home.card.bard",
+   "text": "กวี",
+   "flag": "cos 0.4698, LaBSE 0.5039, chrF 0",
+   "back": "Poet.",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "th",
+   "key": "home.feature.duel.title",
+   "text": "การประชันบทกลอน",
+   "flag": "cos 0.3957, LaBSE 0.5942, chrF 4.2",
+   "back": "Poetry Slam.",
+   "reason": "The verse duel, in the core terms for verse and duel; MADLAD calls it a poetry slam or reads the verse word in another sense."
+  },
+  {
+   "lang": "th",
+   "key": "home.houses.cards",
+   "text": "การ์ด: 3",
+   "flag": "numbers 3 became -",
+   "back": "Cards:",
+   "reason": "MADLAD dropped the number; the translation has it (การ์ด: 3)."
+  },
+  {
+   "lang": "th",
+   "key": "home.ready.arena",
+   "text": "เข้าสังเวียน",
+   "flag": "cos 0.357, LaBSE 0.5077, chrF 5.6",
+   "back": "Go on tour.",
+   "reason": "เข้าสังเวียน, 'enter the ring/arena'; MADLAD wrote 'go on tour'."
+  },
+  {
+   "lang": "th",
+   "key": "profile.stat.cards",
+   "text": "การ์ด (ไม่ซ้ำ / ทั้งหมด)",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Cards (Not Duplicate / All)",
+   "reason": "A stat's label as the language says it ('correct quiz answers', 'battles won'); MADLAD paraphrases it or misreads a word."
+  },
+  {
+   "lang": "th",
+   "key": "profile.leaderboard.battles",
+   "text": "การประชัน",
+   "flag": "cos 0.2642, LaBSE 0.5717, chrF 2.1",
+   "back": "Convergence.",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "th",
+   "key": "profile.leaderboard.unavailable",
+   "text": "กระดานผู้นำยังใช้ไม่ได้",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "The leaderboard is not yet available.",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "th",
+   "key": "rules.landIt",
+   "text": "ทำให้สำเร็จแล้วฝีมือของคุณจะเพิ่มขึ้นอีกครึ่งหนึ่ง",
+   "flag": "cos 0.3744, LaBSE 0.5788, chrF 16",
+   "back": "If you succeed, your skills will increase by half.",
+   "reason": "'Land it, and your craft grows by half again' is what the translation says; MADLAD paraphrased it."
+  },
+  {
+   "lang": "th",
+   "key": "rules.potion.letter",
+   "text": "สาปบทกลอนถัดไปของคู่ต่อสู้ด้วย Hamlet: บทกลอนของคู่ต่อสู้ห้ามมีตัวอักษรหนึ่งตัว ซึ่งยาวิเศษจะระบุเมื่อแจกการประชัน",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Curse the opponent's next poem with Hamlet: The opponent's poem must contain one character, which is specified by the cure when a match is dealt.",
+   "reason": "ห้ามมี means 'must not contain': the translation keeps the prohibition; MADLAD dropped it."
+  },
+  {
+   "lang": "th",
+   "key": "rules.synergy",
+   "text": "Montague ตั้งแต่สองตัวละครขึ้นไป: Hamlet เพิ่มฝีมือของคุณสามในสี่แทนที่จะเป็นครึ่งหนึ่ง",
+   "flag": "lower bound lost; numbers 2,3 became 2,3,4",
+   "back": "Montague from two characters up: Hamlet adds your skill three to four instead of half.",
+   "reason": "'Three quarters ... instead of half' is in the translation; MADLAD wrote 'not half', 'three to four', or dropped the bound of 'two or more'."
+  },
+  {
+   "lang": "th",
+   "key": "rules.deck.unknownCard",
+   "text": "การ์ดที่ไม่รู้จัก: XX-000",
+   "flag": "numbers 000 became -",
+   "back": "Unknown card: %s",
+   "reason": "MADLAD wrote %s for the card id; the translation keeps it (XX-000)."
+  },
+  {
+   "lang": "th",
+   "key": "variants.count",
+   "text": "การ์ดแบบเมือง: 3",
+   "flag": "cos 0.3524, LaBSE 0.5855, chrF 18.9",
+   "back": "City Cards: 3",
+   "reason": "การ์ดแบบเมือง ('city card') is the Thai pages' word for a variant throughout (variants.unlocked, variants.count)."
+  },
+  {
+   "lang": "th",
+   "key": "variants.source.battle-streak",
+   "text": "ชนะต่อเนื่อง",
+   "flag": "cos 0.3322, LaBSE 0.4323, chrF 2.6",
+   "back": "Continuous wins.",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "th",
+   "key": "variants.source.trivia-mastery",
+   "text": "เชี่ยวชาญควิซ",
+   "flag": "cos 0.5601, LaBSE 0.4683, chrF 34",
+   "back": "Quizmaster.",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.BKN.name",
+   "text": "เจ้าถิ่นประจำย่าน",
+   "flag": "cos 0.2359, LaBSE 0.5833, chrF 10.5",
+   "back": "The neighbors.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.LDN.name",
+   "text": "ถิ่นของกวี",
+   "flag": "cos 0.4678, LaBSE 0.3403, chrF 12.4",
+   "back": "The poet's home.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.PAR.name",
+   "text": "บทกลอนชั้นสูง",
+   "flag": "cos 0.2939, LaBSE 0.5456, chrF 4.5",
+   "back": "A high-class poem.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.SEO.name",
+   "text": "ลีลากระแสเกาหลี",
+   "flag": "cos 0.225, LaBSE 0.2673, chrF 14.8",
+   "back": "Korean dance.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.CAI.name",
+   "text": "ปัญญาของอาลักษณ์",
+   "flag": "cos 0.5688, LaBSE 0.5535, chrF 21.8",
+   "back": "The wisdom of symbols.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.JHB.name",
+   "text": "ท่อนแร็ปแห่งโจซี",
+   "flag": "cos 0.1968, LaBSE 0.4772, chrF 12.4",
+   "back": "Josie's rap piece.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "th",
+   "key": "variants.ability.SYD.name",
+   "text": "ความฮึกเหิมแห่งอ่าว",
+   "flag": "cos 0.3949, LaBSE 0.5411, chrF 5.6",
+   "back": "The excitement of the bay.",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "id",
+   "key": "about.vision.title",
+   "text": "Visi",
+   "flag": "cos 0.2491, LaBSE 0.4176, chrF 0",
+   "back": "All",
+   "reason": "Visi is the Indonesian word for a vision statement (KBBI: visi); MADLAD wrote 'All'."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.first-blood.name",
+   "text": "Kemenangan perdana",
+   "flag": "cos 0.4623, LaBSE 0.5528, chrF 29.1",
+   "back": "First victory.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.scholar-novice.name",
+   "text": "Cendekiawan muda",
+   "flag": "cos 0.3492, LaBSE 0.5657, chrF 8.3",
+   "back": "Young scientist.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.bards-apprentice.name",
+   "text": "Murid sang Pujangga",
+   "flag": "cos 0.3151, LaBSE 0.5845, chrF 10.2",
+   "back": "Pujangga's disciple",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.completionist.name",
+   "text": "Pelengkap koleksi",
+   "flag": "cos 0.2659, LaBSE 0.4307, chrF 39.7",
+   "back": "Complementary collection",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.master-thespian.name",
+   "text": "Maestro panggung",
+   "flag": "cos 0.4053, LaBSE 0.5688, chrF 23.1",
+   "back": "Stagemaster.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "achievements.trivia-enthusiast.name",
+   "text": "Penggemar kuis",
+   "flag": "cos 0.4536, LaBSE 0.5662, chrF 4.7",
+   "back": "Quiz fan",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.type.potion",
+   "text": "Ramuan",
+   "flag": "cos 0.1734, LaBSE 0.2974, chrF 2.8",
+   "back": "Ramuan",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.types.potion",
+   "text": "Ramuan",
+   "flag": "cos 0.1199, LaBSE 0.2573, chrF 2.5",
+   "back": "Ramuan",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.stat.atk",
+   "text": "SER",
+   "flag": "cos 0.2864, LaBSE 0.3304, chrF 0",
+   "back": "SER",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.stat.def",
+   "text": "TAH",
+   "flag": "cos 0.3713, LaBSE 0.4263, chrF 0",
+   "back": "TAH",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.stat.hp",
+   "text": "NYAWA",
+   "flag": "cos 0.266, LaBSE 0.2376, chrF 0",
+   "back": "NYAWA",
+   "reason": "A card stat's short label (ATK, DEF, HP) written as the language's own word for attack, defence or life; MADLAD expands it, renames it or reads another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.house.potion",
+   "text": "Ramuan",
+   "flag": "cos 0.1734, LaBSE 0.2974, chrF 2.8",
+   "back": "Ramuan",
+   "reason": "The card type in the core locale files' own word for it (relic, potion); one word on its own back-translates to a synonym or to another sense of the word."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.arcane",
+   "text": "Ilmu gaib",
+   "flag": "cos 0.2367, LaBSE 0.5552, chrF 5.2",
+   "back": "Mystery.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.compassion",
+   "text": "Welas asih",
+   "flag": "cos 0.1246, LaBSE 0.4284, chrF 10.6",
+   "back": "Welas asih",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.cunning",
+   "text": "Kelicikan",
+   "flag": "cos 0.1657, LaBSE 0.4062, chrF 4.8",
+   "back": "Stupid.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.dark",
+   "text": "Kelam",
+   "flag": "cos 0.3136, LaBSE 0.4444, chrF 6",
+   "back": "Kelam",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.disguise",
+   "text": "Penyamaran",
+   "flag": "cos 0.3765, LaBSE 0.4465, chrF 4.3",
+   "back": "Silence",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.glory",
+   "text": "Kejayaan",
+   "flag": "cos 0.3634, LaBSE 0.5201, chrF 0",
+   "back": "Success",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.grace",
+   "text": "Keanggunan",
+   "flag": "cos 0.37, LaBSE 0.3746, chrF 10.7",
+   "back": "Glamour.",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.innocence",
+   "text": "Kepolosan",
+   "flag": "cos 0.2721, LaBSE 0.4155, chrF 0",
+   "back": "Nullity",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.mischief",
+   "text": "Keusilan",
+   "flag": "cos 0.1772, LaBSE 0.4703, chrF 6.2",
+   "back": "Keusilan",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.petrification",
+   "text": "Pembatuan",
+   "flag": "cos 0.1908, LaBSE 0.4945, chrF 3.5",
+   "back": "Merge",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.poison",
+   "text": "Racun",
+   "flag": "cos 0.2014, LaBSE 0.5758, chrF 11.1",
+   "back": "Racon",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.sorrow",
+   "text": "Duka",
+   "flag": "cos 0.2593, LaBSE 0.3828, chrF 0",
+   "back": "Duka",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.thunder",
+   "text": "Guntur",
+   "flag": "cos 0.3189, LaBSE 0.4098, chrF 10.2",
+   "back": "Guntur",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "card-terms.element.trickster",
+   "text": "Si penipu ulung",
+   "flag": "cos 0.3371, LaBSE 0.565, chrF 13",
+   "back": "The great deceiver",
+   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+  },
+  {
+   "lang": "id",
+   "key": "collection.world.empty",
+   "text": "Belum ada varian. Menangkan tiga pertarungan berturut-turut atau raih nilai sempurna di kuis untuk membuka kartu dunia pertamamu!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Win three battles in a row or score perfect on the quiz to unlock your first world card!",
+   "reason": "MADLAD dropped the first sentence (Belum ada varian, 'no variants yet', which carries the negation); the rest matches."
+  },
+  {
+   "lang": "id",
+   "key": "home.stat.houses",
+   "text": "Wangsa",
+   "flag": "cos 0.2116, LaBSE 0.3592, chrF 2.8",
+   "back": "Wangsa",
+   "reason": "The core locale files' word for a house (a family) or a battle, alone as a label."
+  },
+  {
+   "lang": "id",
+   "key": "home.card.role",
+   "text": "Maestro panggung",
+   "flag": "cos 0.4053, LaBSE 0.5688, chrF 23.1",
+   "back": "Stagemaster.",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+  },
+  {
+   "lang": "id",
+   "key": "home.card.bard",
+   "text": "Pujangga",
+   "flag": "cos 0.2742, LaBSE 0.4783, chrF 5.2",
+   "back": "Pujangga",
+   "reason": "The card's role, the language's word for a poet or bard; MADLAD gives 'poet' or reads it as a name."
+  },
+  {
+   "lang": "id",
+   "key": "profile.leaderboard.unavailable",
+   "text": "Papan peringkat belum tersedia",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Scoreboard not available",
+   "reason": "Said with a negation ('not available', 'could not load'), as the English says it with 'Un-' and 'Failed'."
+  },
+  {
+   "lang": "id",
+   "key": "variants.source.battle-streak",
+   "text": "Kemenangan beruntun",
+   "flag": "cos 0.5027, LaBSE 0.515, chrF 4.3",
+   "back": "Wins in a row",
+   "reason": "How a variant was won, a two-word label; MADLAD gives a synonym or reads it as a name."
+  },
+  {
+   "lang": "id",
+   "key": "variants.ability.LDN.name",
+   "text": "Kandang sang Pujangga",
+   "flag": "cos 0.1372, LaBSE 0.4774, chrF 4.4",
+   "back": "Kandang sang Pujangga",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "id",
+   "key": "variants.ability.PAR.name",
+   "text": "Syair adibusana",
+   "flag": "cos 0.1633, LaBSE 0.5241, chrF 6.2",
+   "back": "Syair adibusana",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "id",
+   "key": "variants.ability.SEO.name",
+   "text": "Irama gelombang Korea",
+   "flag": "cos 0.5409, LaBSE 0.431, chrF 18.2",
+   "back": "Korean Wave Rhythm",
+   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  }
+ ]
+}

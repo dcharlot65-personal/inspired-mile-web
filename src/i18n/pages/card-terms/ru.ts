@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Russian.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Персонаж',
+  'card-terms.type.relic': 'Реликвия',
+  'card-terms.type.potion': 'Зелье',
+  'card-terms.types.character': 'Персонажи',
+  'card-terms.types.relic': 'Реликвии',
+  'card-terms.types.potion': 'Зелья',
+  'card-terms.stat.atk': 'АТК',
+  'card-terms.stat.def': 'ЗАЩ',
+  'card-terms.stat.hp': 'ОЗ',
+  'card-terms.house.montague': 'Монтекки',
+  'card-terms.house.capulet': 'Капулетти',
+  'card-terms.house.danish-court': 'Датский двор',
+  'card-terms.house.forest-of-arden': 'Арденский лес',
+  'card-terms.house.verona-court': 'Веронский двор',
+  'card-terms.house.the-tempest': 'Буря', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Шотландский двор',
+  'card-terms.house.illyria': 'Иллирия', // Wikidata Q32047 label
+  'card-terms.house.rome': 'Рим', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Легендарная',
+  'card-terms.house.relic': 'Реликвия',
+  'card-terms.house.potion': 'Зелье',
+  'card-terms.house.lake-district': 'Лейк-Дистрикт', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Готический круг',
+  'card-terms.house.olympus': 'Олимп', // Wikidata Q70054479 label
+  'card-terms.house.underworld': 'Подземный мир',
+  'card-terms.element.air': 'Воздух',
+  'card-terms.element.alchemy': 'Алхимия',
+  'card-terms.element.ambition': 'Честолюбие',
+  'card-terms.element.arcane': 'Тайная магия',
+  'card-terms.element.authority': 'Власть',
+  'card-terms.element.beast': 'Зверь',
+  'card-terms.element.beauty': 'Красота',
+  'card-terms.element.comedy': 'Комедия',
+  'card-terms.element.compassion': 'Сострадание',
+  'card-terms.element.creation': 'Созидание',
+  'card-terms.element.cunning': 'Хитрость',
+  'card-terms.element.dark': 'Мрак',
+  'card-terms.element.darkness': 'Тьма',
+  'card-terms.element.death': 'Смерть',
+  'card-terms.element.devotion': 'Преданность',
+  'card-terms.element.disguise': 'Маскировка',
+  'card-terms.element.duty': 'Долг',
+  'card-terms.element.earth': 'Земля',
+  'card-terms.element.enchantment': 'Чары',
+  'card-terms.element.envy': 'Зависть',
+  'card-terms.element.fire': 'Огонь',
+  'card-terms.element.glory': 'Слава',
+  'card-terms.element.grace': 'Изящество',
+  'card-terms.element.honor': 'Честь',
+  'card-terms.element.illusion': 'Иллюзия',
+  'card-terms.element.innocence': 'Невинность',
+  'card-terms.element.justice': 'Справедливость',
+  'card-terms.element.knowledge': 'Знание',
+  'card-terms.element.light': 'Свет',
+  'card-terms.element.love': 'Любовь',
+  'card-terms.element.loyalty': 'Верность',
+  'card-terms.element.mischief': 'Озорство',
+  'card-terms.element.moonlight': 'Лунный свет',
+  'card-terms.element.nature': 'Природа',
+  'card-terms.element.ocean': 'Океан',
+  'card-terms.element.passion': 'Страсть',
+  'card-terms.element.peace': 'Мир',
+  'card-terms.element.petrification': 'Окаменение',
+  'card-terms.element.poison': 'Яд',
+  'card-terms.element.power': 'Могущество',
+  'card-terms.element.prophecy': 'Пророчество',
+  'card-terms.element.rebellion': 'Бунт',
+  'card-terms.element.rebirth': 'Возрождение',
+  'card-terms.element.revolution': 'Революция',
+  'card-terms.element.rhetoric': 'Риторика',
+  'card-terms.element.shadow': 'Тень',
+  'card-terms.element.sorrow': 'Скорбь',
+  'card-terms.element.speed': 'Скорость',
+  'card-terms.element.storm': 'Буря',
+  'card-terms.element.thunder': 'Гром',
+  'card-terms.element.transformation': 'Превращение',
+  'card-terms.element.trickster': 'Плут',
+  'card-terms.element.vanity': 'Тщеславие',
+  'card-terms.element.vision': 'Видение',
+  'card-terms.element.water': 'Вода',
+  'card-terms.element.wind': 'Ветер',
+  'card-terms.element.wisdom': 'Мудрость',
+  'card-terms.work.romeo-and-juliet': 'Ромео и Джульетта', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Гамлет', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'Как вам это понравится', // Wikidata Q237572 label
+};
+
+export default messages;

@@ -1,34 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import T from '../components/T.astro';
+import { loadArea, t } from '../i18n';
+import { achievementDescription, achievementName } from '../i18n/pages/terms';
 import { ACHIEVEMENTS } from '../lib/achievements';
+
+// English at build time; the script at the foot of the page puts it in the visitor's language.
+await Promise.all(['profile', 'card-terms', 'achievements'].map((a) => loadArea(a)));
+const label = 'text-xs text-obsidian-500 mt-1';
+const sub = 'text-xs text-obsidian-500 uppercase tracking-wider mb-3';
 ---
 
-<BaseLayout title="Profile" description="View your player stats, achievements, collection, and leaderboard ranking.">
+<BaseLayout title="Profile" description={t('profile.meta.description')} descriptionKey="profile.meta.description" i18nAreas={['profile']}>
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Profile</span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase" data-i18n-html="nav.profile">{t('nav.profile')}</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          Player <span class="text-gradient">Profile</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Track your progress, achievements, and collection across the Inspired Mile universe.
-        </p>
+        <T k="profile.title" as="h1" class="text-4xl sm:text-5xl font-display font-bold mb-4" />
+        <T k="profile.intro" as="p" class="text-obsidian-400 max-w-2xl mx-auto" />
       </div>
 
       <!-- Player Info -->
       <div id="player-info" class="card-glass p-6 mb-8">
         <div class="flex items-center gap-4">
-          <div id="player-avatar" class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center text-2xl text-obsidian-500">
+          <div id="player-avatar" class="w-16 h-16 shrink-0 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center text-2xl text-obsidian-500">
             &#128100;
           </div>
-          <div>
-            <h2 id="player-name" class="font-display text-xl font-bold text-obsidian-200">Guest Player</h2>
-            <p id="player-auth" class="text-xs text-obsidian-500">Playing locally &mdash; sign in to sync your progress</p>
+          <div class="min-w-0">
+            <h2 id="player-name" class="font-display text-xl font-bold text-obsidian-200">{t('profile.guest')}</h2>
+            <p id="player-auth" class="text-xs text-obsidian-500 break-words">{t('profile.local')}</p>
           </div>
         </div>
       </div>
@@ -58,33 +62,33 @@ import { ACHIEVEMENTS } from '../lib/achievements';
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8" id="stats-content">
         <div class="card-glass p-5 text-center">
           <p class="text-2xl font-display font-bold text-gold-400" id="stat-wins">0</p>
-          <p class="text-xs text-obsidian-500 mt-1">Battle Wins</p>
+          <T k="profile.stat.wins" as="p" class={label} />
         </div>
         <div class="card-glass p-5 text-center">
           <p class="text-2xl font-display font-bold text-obsidian-200" id="stat-battles">0</p>
-          <p class="text-xs text-obsidian-500 mt-1">Total Battles</p>
+          <T k="profile.stat.battles" as="p" class={label} />
         </div>
         <div class="card-glass p-5 text-center">
           <p class="text-2xl font-display font-bold text-emerald-400" id="stat-winrate">0%</p>
-          <p class="text-xs text-obsidian-500 mt-1">Win Rate</p>
+          <T k="profile.stat.winRate" as="p" class={label} />
         </div>
         <div class="card-glass p-5 text-center">
           <p class="text-2xl font-display font-bold text-purple-400" id="stat-highscore">0</p>
-          <p class="text-xs text-obsidian-500 mt-1">Highest Score</p>
+          <T k="profile.stat.highScore" as="p" class={label} />
         </div>
         <div class="card-glass p-5 text-center">
-          <p class="text-2xl font-display font-bold text-obsidian-200" id="stat-cards">0 / 0</p>
-          <p class="text-xs text-obsidian-500 mt-1">Cards (unique / total)</p>
+          <p class="text-2xl font-display font-bold text-obsidian-200" id="stat-cards" dir="ltr">0 / 0</p>
+          <T k="profile.stat.cards" as="p" class={label} />
         </div>
         <div class="card-glass p-5 text-center">
           <p class="text-2xl font-display font-bold text-crimson-400" id="stat-trivia">0</p>
-          <p class="text-xs text-obsidian-500 mt-1">Trivia Correct</p>
+          <T k="profile.stat.trivia" as="p" class={label} />
         </div>
       </div>
 
       <!-- Achievements -->
       <div class="mb-8">
-        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Achievements</h2>
+        <T k="profile.achievements" as="h2" class="font-display text-xl font-bold text-obsidian-200 mb-4" />
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="achievements-grid">
           {ACHIEVEMENTS.map(a => (
             <div
@@ -93,8 +97,8 @@ import { ACHIEVEMENTS } from '../lib/achievements';
               data-tier={a.tier}
             >
               <div class="text-2xl mb-2">{a.icon}</div>
-              <p class="text-xs font-display font-bold text-obsidian-300 mb-1">{a.name}</p>
-              <p class="text-[10px] text-obsidian-500">{a.description}</p>
+              <p class="achievement-name text-xs font-display font-bold text-obsidian-300 mb-1">{achievementName(a)}</p>
+              <p class="achievement-description text-[10px] text-obsidian-500">{achievementDescription(a)}</p>
             </div>
           ))}
         </div>
@@ -102,22 +106,18 @@ import { ACHIEVEMENTS } from '../lib/achievements';
 
       <!-- Collection Summary -->
       <div class="mb-8">
-        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Collection</h2>
+        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4" data-i18n-html="nav.collection">{t('nav.collection')}</h2>
         <div class="card-glass p-6">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Cards by House -->
             <div>
-              <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Cards by House</h3>
-              <div id="house-bars" class="space-y-2">
-                <p class="text-xs text-obsidian-600">Collect cards to see breakdown</p>
-              </div>
+              <T k="profile.byHouse" as="h3" class={sub} />
+              <div id="house-bars" class="space-y-2"></div>
             </div>
             <!-- Cards by Rarity -->
             <div>
-              <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Cards by Rarity</h3>
-              <div id="rarity-bars" class="space-y-2">
-                <p class="text-xs text-obsidian-600">Collect cards to see breakdown</p>
-              </div>
+              <T k="profile.byRarity" as="h3" class={sub} />
+              <div id="rarity-bars" class="space-y-2"></div>
             </div>
           </div>
         </div>
@@ -125,30 +125,26 @@ import { ACHIEVEMENTS } from '../lib/achievements';
 
       <!-- Global Leaderboard -->
       <div class="mb-8">
-        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Global Leaderboard</h2>
-        <div id="leaderboard-container" class="card-glass overflow-hidden">
+        <T k="profile.leaderboard.title" as="h2" class="font-display text-xl font-bold text-obsidian-200 mb-4" />
+        <div id="leaderboard-container" class="card-glass overflow-x-auto">
           <div class="text-center py-12">
             <div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-            <p class="text-sm text-obsidian-500">Loading leaderboard...</p>
+            <T k="profile.leaderboard.loading" as="p" class="text-sm text-obsidian-500" />
           </div>
         </div>
       </div>
 
       <!-- Recent Activity -->
       <div>
-        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Recent Activity</h2>
+        <T k="profile.recent.title" as="h2" class="font-display text-xl font-bold text-obsidian-200 mb-4" />
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="card-glass p-5">
-            <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Latest Cards</h3>
-            <div id="recent-cards" class="space-y-2">
-              <p class="text-xs text-obsidian-600">No cards acquired yet.</p>
-            </div>
+            <T k="profile.recent.cards" as="h3" class={sub} />
+            <div id="recent-cards" class="space-y-2"></div>
           </div>
           <div class="card-glass p-5">
-            <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Latest Achievements</h3>
-            <div id="recent-achievements" class="space-y-2">
-              <p class="text-xs text-obsidian-600">No achievements unlocked yet.</p>
-            </div>
+            <T k="profile.recent.achievements" as="h3" class={sub} />
+            <div id="recent-achievements" class="space-y-2"></div>
           </div>
         </div>
       </div>
@@ -159,218 +155,216 @@ import { ACHIEVEMENTS } from '../lib/achievements';
     import { getPlayerStats, getAchievementProgress, getUnlockedAchievements, ACHIEVEMENTS } from '../lib/achievements';
     import { getOwnedCards, getOwnedCardIds } from '../lib/inventory';
     import { CARD_CATALOG } from '../lib/cards';
-    import { isLoggedIn, getCurrentUser } from '../lib/storage-backend';
+    import { getCurrentUser } from '../lib/storage-backend';
     import { getLeaderboard } from '../lib/api-client';
+    import { t } from '../i18n';
+    import { day, escapeHtml as esc, initPage, num, percent } from '../i18n/pages/runtime';
+    import { achievementDescription, achievementName, houseName, rarityName, tierName } from '../i18n/pages/terms';
 
-    // --- Player Info ---
+    const byId = (id: string) => document.getElementById(id)!;
     const user = getCurrentUser();
-    if (user) {
-      const avatarEl = document.getElementById('player-avatar')!;
-      if (user.avatar_url) {
-        avatarEl.innerHTML = `<img src="${user.avatar_url}" alt="${user.username}" class="w-16 h-16 rounded-full object-cover" />`;
-      }
-      document.getElementById('player-name')!.textContent = user.display_name || user.username;
-      document.getElementById('player-auth')!.textContent = user.email ? `Signed in as ${user.email}` : 'Signed in';
-    }
-
-    // --- Stats ---
     const stats = getPlayerStats();
     const ownedIds = getOwnedCardIds();
     const ownedCards = getOwnedCards();
+    const cardMap = new Map(CARD_CATALOG.map(c => [c.id, c]));
+    const hint = (key: string) => `<p class="text-xs text-obsidian-600">${esc(t(key))}</p>`;
 
-    document.getElementById('stat-wins')!.textContent = String(stats.battleWins);
-    document.getElementById('stat-battles')!.textContent = String(stats.totalBattles);
-    document.getElementById('stat-winrate')!.textContent = stats.totalBattles > 0
-      ? `${Math.round((stats.battleWins / stats.totalBattles) * 100)}%`
-      : '0%';
-    document.getElementById('stat-highscore')!.textContent = String(stats.highestScore);
-    document.getElementById('stat-cards')!.textContent = `${ownedIds.size} / ${ownedCards.length}`;
-    document.getElementById('stat-trivia')!.textContent = String(stats.triviaCorrect);
+    // --- Player Info ---
+    function renderPlayer() {
+      if (!user) {
+        byId('player-name').textContent = t('profile.guest');
+        byId('player-auth').textContent = t('profile.local');
+        return;
+      }
+      if (user.avatar_url) {
+        byId('player-avatar').innerHTML = `<img src="${esc(user.avatar_url)}" alt="${esc(user.username)}" class="w-16 h-16 rounded-full object-cover" />`;
+      }
+      byId('player-name').textContent = user.display_name || user.username;
+      byId('player-auth').textContent = user.email ? t('profile.signedInAs', { email: user.email }) : t('auth.signedIn');
+    }
+
+    // --- Stats ---
+    function renderStats() {
+      byId('stat-wins').textContent = num(stats.battleWins);
+      byId('stat-battles').textContent = num(stats.totalBattles);
+      byId('stat-winrate').textContent = percent(stats.totalBattles > 0 ? stats.battleWins / stats.totalBattles : 0);
+      byId('stat-highscore').textContent = num(stats.highestScore);
+      byId('stat-cards').textContent = `${num(ownedIds.size)} / ${num(ownedCards.length)}`;
+      byId('stat-trivia').textContent = num(stats.triviaCorrect);
+    }
 
     // --- Achievements ---
-    const progress = getAchievementProgress();
     const tierBorderColors: Record<string, string> = {
       bronze: 'border-amber-500/60',
       silver: 'border-gray-400/60',
       gold: 'border-gold-500/60',
     };
 
-    progress.forEach(({ achievement, unlocked }) => {
-      const el = document.querySelector(`[data-achievement-id="${achievement.id}"]`) as HTMLElement | null;
-      if (!el) return;
-      if (unlocked) {
-        el.classList.remove('opacity-40');
-        el.classList.add('opacity-100');
-        const tier = el.dataset.tier || 'bronze';
-        const borderClass = tierBorderColors[tier] || 'border-obsidian-700';
-        el.classList.remove('border-obsidian-700/50');
-        el.classList.add(borderClass);
-      }
-    });
+    function renderAchievements() {
+      getAchievementProgress().forEach(({ achievement, unlocked }) => {
+        const el = document.querySelector(`[data-achievement-id="${achievement.id}"]`) as HTMLElement | null;
+        if (!el) return;
+        el.querySelector('.achievement-name')!.textContent = achievementName(achievement);
+        el.querySelector('.achievement-description')!.textContent = achievementDescription(achievement);
+        if (unlocked) {
+          el.classList.remove('opacity-40', 'border-obsidian-700/50');
+          el.classList.add('opacity-100', tierBorderColors[el.dataset.tier || 'bronze'] || 'border-obsidian-700');
+        }
+      });
+    }
 
     // --- Collection Summary ---
-    const cardMap = new Map(CARD_CATALOG.map(c => [c.id, c]));
+    const houseColors: Record<string, string> = {
+      Montague: 'bg-crimson-500', Capulet: 'bg-purple-500', 'Danish Court': 'bg-blue-500',
+      'Forest of Arden': 'bg-emerald-500', 'Verona Court': 'bg-rose-500', 'The Tempest': 'bg-cyan-500',
+      Legendary: 'bg-gold-500', Relic: 'bg-amber-600', Potion: 'bg-emerald-600',
+    };
+    const rarityColors: Record<string, string> = {
+      Common: 'bg-obsidian-500', Uncommon: 'bg-emerald-500', Rare: 'bg-blue-500',
+      Epic: 'bg-purple-500', Legendary: 'bg-gold-500',
+    };
+    const rarityOrder = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
 
-    if (ownedIds.size > 0) {
-      // House breakdown
-      const houseCounts = new Map<string, number>();
-      for (const id of ownedIds) {
-        const card = cardMap.get(id);
-        if (card) {
-          houseCounts.set(card.house, (houseCounts.get(card.house) || 0) + 1);
-        }
-      }
-      const maxHouse = Math.max(...houseCounts.values(), 1);
-      const houseColors: Record<string, string> = {
-        Montague: 'bg-crimson-500', Capulet: 'bg-purple-500', 'Danish Court': 'bg-blue-500',
-        'Forest of Arden': 'bg-emerald-500', 'Verona Court': 'bg-rose-500', 'The Tempest': 'bg-cyan-500',
-        Legendary: 'bg-gold-500', Relic: 'bg-amber-600', Potion: 'bg-emerald-600',
-      };
-
-      const houseBars = document.getElementById('house-bars')!;
-      houseBars.innerHTML = [...houseCounts.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .map(([house, count]) => {
-          const pct = Math.round((count / maxHouse) * 100);
-          const color = houseColors[house] || 'bg-obsidian-600';
-          return `<div class="flex items-center gap-2">
-            <span class="text-[10px] text-obsidian-400 w-24 text-right shrink-0">${house}</span>
+    function bars(counts: [string, number][], name: (id: string) => string, colors: Record<string, string>): string {
+      const max = Math.max(...counts.map(([, n]) => n), 1);
+      return counts.map(([id, count]) => `<div class="flex items-center gap-2">
+            <span class="text-[10px] text-obsidian-400 w-24 text-end shrink-0 break-words">${esc(name(id))}</span>
             <div class="flex-1 bg-obsidian-800 rounded-full h-2 overflow-hidden">
-              <div class="${color} h-full rounded-full" style="width: ${pct}%"></div>
+              <div class="${colors[id] || 'bg-obsidian-600'} h-full rounded-full" style="width: ${Math.round((count / max) * 100)}%"></div>
             </div>
-            <span class="text-[10px] text-obsidian-500 w-6">${count}</span>
-          </div>`;
-        }).join('');
+            <span class="text-[10px] text-obsidian-500 w-6">${num(count)}</span>
+          </div>`).join('');
+    }
 
-      // Rarity breakdown
+    function renderCollection() {
+      if (ownedIds.size === 0) {
+        byId('house-bars').innerHTML = hint('profile.collectFirst');
+        byId('rarity-bars').innerHTML = hint('profile.collectFirst');
+        return;
+      }
+      const houseCounts = new Map<string, number>();
       const rarityCounts = new Map<string, number>();
       for (const id of ownedIds) {
         const card = cardMap.get(id);
-        if (card) {
-          rarityCounts.set(card.rarity, (rarityCounts.get(card.rarity) || 0) + 1);
-        }
+        if (!card) continue;
+        houseCounts.set(card.house, (houseCounts.get(card.house) || 0) + 1);
+        rarityCounts.set(card.rarity, (rarityCounts.get(card.rarity) || 0) + 1);
       }
-      const maxRarity = Math.max(...rarityCounts.values(), 1);
-      const rarityColors: Record<string, string> = {
-        Common: 'bg-obsidian-500', Uncommon: 'bg-emerald-500', Rare: 'bg-blue-500',
-        Epic: 'bg-purple-500', Legendary: 'bg-gold-500',
-      };
-      const rarityOrder = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
-
-      const rarityBars = document.getElementById('rarity-bars')!;
-      rarityBars.innerHTML = rarityOrder
-        .filter(r => rarityCounts.has(r))
-        .map(rarity => {
-          const count = rarityCounts.get(rarity)!;
-          const pct = Math.round((count / maxRarity) * 100);
-          const color = rarityColors[rarity] || 'bg-obsidian-600';
-          return `<div class="flex items-center gap-2">
-            <span class="text-[10px] text-obsidian-400 w-24 text-right shrink-0">${rarity}</span>
-            <div class="flex-1 bg-obsidian-800 rounded-full h-2 overflow-hidden">
-              <div class="${color} h-full rounded-full" style="width: ${pct}%"></div>
-            </div>
-            <span class="text-[10px] text-obsidian-500 w-6">${count}</span>
-          </div>`;
-        }).join('');
+      byId('house-bars').innerHTML = bars([...houseCounts.entries()].sort((a, b) => b[1] - a[1]), houseName, houseColors);
+      byId('rarity-bars').innerHTML = bars(rarityOrder.filter(r => rarityCounts.has(r)).map(r => [r, rarityCounts.get(r)!]), rarityName, rarityColors);
     }
 
     // --- Global Leaderboard ---
-    const leaderboardContainer = document.getElementById('leaderboard-container')!;
+    type Entries = Awaited<ReturnType<typeof getLeaderboard>>;
+    /** What the leaderboard request came to; drawn again when the language changes, without asking twice. */
+    let board: { entries: Entries } | { failed: 'offline' | 'error' } | null = null;
 
-    async function loadLeaderboard() {
-      try {
-        const entries = await getLeaderboard();
-        if (entries.length === 0) {
-          leaderboardContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">No leaderboard data yet. Win battles to appear here!</p></div>';
-          return;
-        }
-
-        const currentUserId = user?.id;
-
-        leaderboardContainer.innerHTML = `
+    function renderLeaderboard() {
+      const box = byId('leaderboard-container');
+      if (!board) return; // still loading: the spinner and its line are in the markup
+      if ('failed' in board) {
+        box.innerHTML = board.failed === 'offline'
+          ? `<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">${esc(t('profile.leaderboard.unavailable'))}</p><p class="text-xs text-obsidian-500">${esc(t('profile.leaderboard.unavailableBody'))}</p></div>`
+          : `<div class="text-center py-12"><p class="text-sm text-crimson-400">${esc(t('profile.leaderboard.failed'))}</p></div>`;
+        return;
+      }
+      if (board.entries.length === 0) {
+        box.innerHTML = `<div class="text-center py-12"><p class="text-sm text-obsidian-500">${esc(t('profile.leaderboard.empty'))}</p></div>`;
+        return;
+      }
+      const currentUserId = user?.id;
+      box.innerHTML = `
           <table class="w-full text-sm">
             <thead>
               <tr class="text-xs text-obsidian-500 uppercase tracking-wider border-b border-obsidian-700/50">
-                <th class="text-left px-4 py-3">#</th>
-                <th class="text-left px-4 py-3">Player</th>
-                <th class="text-center px-4 py-3">Wins</th>
-                <th class="text-center px-4 py-3">Battles</th>
-                <th class="text-center px-4 py-3">Best</th>
+                <th class="text-start px-4 py-3">#</th>
+                <th class="text-start px-4 py-3">${esc(t('profile.leaderboard.player'))}</th>
+                <th class="text-center px-4 py-3">${esc(t('profile.leaderboard.wins'))}</th>
+                <th class="text-center px-4 py-3">${esc(t('profile.leaderboard.battles'))}</th>
+                <th class="text-center px-4 py-3">${esc(t('profile.leaderboard.best'))}</th>
               </tr>
             </thead>
             <tbody>
-              ${entries.map(e => {
+              ${board.entries.map(e => {
                 const isMe = currentUserId && e.user_id === currentUserId;
                 return `
                   <tr class="border-b border-obsidian-800/50 ${isMe ? 'bg-gold-500/5' : ''}">
-                    <td class="px-4 py-3 font-mono ${e.rank <= 3 ? 'text-gold-400 font-bold' : 'text-obsidian-500'}">${e.rank}</td>
+                    <td class="px-4 py-3 font-mono ${e.rank <= 3 ? 'text-gold-400 font-bold' : 'text-obsidian-500'}">${num(e.rank)}</td>
                     <td class="px-4 py-3">
                       <div class="flex items-center gap-2">
                         ${e.avatar_url
-                          ? `<img src="${e.avatar_url}" alt="" class="w-6 h-6 rounded-full object-cover" />`
+                          ? `<img src="${esc(e.avatar_url)}" alt="" class="w-6 h-6 rounded-full object-cover" />`
                           : `<div class="w-6 h-6 rounded-full bg-obsidian-700 flex items-center justify-center text-[10px] text-obsidian-500">&#128100;</div>`
                         }
-                        <span class="text-obsidian-200 font-medium ${isMe ? 'text-gold-400' : ''}">${e.username}${isMe ? ' (you)' : ''}</span>
+                        <span class="font-medium ${isMe ? 'text-gold-400' : 'text-obsidian-200'}" data-user-text>${esc(isMe ? t('profile.leaderboard.you', { name: e.username }) : e.username)}</span>
                       </div>
                     </td>
-                    <td class="px-4 py-3 text-center text-emerald-400">${e.battle_wins}</td>
-                    <td class="px-4 py-3 text-center text-obsidian-400">${e.total_battles}</td>
-                    <td class="px-4 py-3 text-center text-purple-400">${e.highest_score}</td>
+                    <td class="px-4 py-3 text-center text-emerald-400">${num(e.battle_wins)}</td>
+                    <td class="px-4 py-3 text-center text-obsidian-400">${num(e.total_battles)}</td>
+                    <td class="px-4 py-3 text-center text-purple-400">${num(e.highest_score)}</td>
                   </tr>
                 `;
               }).join('')}
             </tbody>
           </table>
         `;
+    }
+
+    async function loadLeaderboard() {
+      try {
+        board = { entries: await getLeaderboard() };
       } catch (e: any) {
-        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
-        leaderboardContainer.innerHTML = isOffline
-          ? '<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Leaderboard Unavailable</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
-          : '<div class="text-center py-12"><p class="text-sm text-crimson-400">Failed to load leaderboard.</p></div>';
+        const offline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
+        board = { failed: offline ? 'offline' : 'error' };
       }
+      renderLeaderboard();
     }
 
     // --- Recent Activity ---
-    // Last 5 cards acquired
-    const recentCardsEl = document.getElementById('recent-cards')!;
-    const sortedCards = [...ownedCards].sort((a, b) => b.acquiredAt - a.acquiredAt).slice(0, 5);
-    if (sortedCards.length > 0) {
-      recentCardsEl.innerHTML = sortedCards.map(c => {
+    const rarityColor: Record<string, string> = { Common: 'text-obsidian-400', Uncommon: 'text-emerald-400', Rare: 'text-blue-400', Epic: 'text-purple-400', Legendary: 'text-gold-400' };
+    const tierColor: Record<string, string> = { bronze: 'text-amber-400', silver: 'text-gray-400', gold: 'text-gold-400' };
+
+    function renderRecent() {
+      // Last 5 cards acquired. A card's name is shown as the card data gives it.
+      const sortedCards = [...ownedCards].sort((a, b) => b.acquiredAt - a.acquiredAt).slice(0, 5);
+      byId('recent-cards').innerHTML = sortedCards.length === 0 ? hint('profile.recent.noCards') : sortedCards.map(c => {
         const card = cardMap.get(c.cardId);
-        const name = card?.name || c.cardId;
         const rarity = card?.rarity || 'Common';
-        const rarityColor: Record<string, string> = { Common: 'text-obsidian-400', Uncommon: 'text-emerald-400', Rare: 'text-blue-400', Epic: 'text-purple-400', Legendary: 'text-gold-400' };
-        return `<div class="flex items-center justify-between">
-          <span class="text-xs text-obsidian-300">${name}</span>
-          <div class="flex items-center gap-2">
-            <span class="text-[10px] ${rarityColor[rarity] || 'text-obsidian-500'}">${rarity}</span>
-            <span class="text-[10px] text-obsidian-600">${new Date(c.acquiredAt).toLocaleDateString()}</span>
+        return `<div class="flex items-center justify-between gap-2">
+          <span class="text-xs text-obsidian-300" data-card-text><bdi>${esc(card?.name || c.cardId)}</bdi></span>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-[10px] ${rarityColor[rarity] || 'text-obsidian-500'}">${esc(rarityName(rarity))}</span>
+            <span class="text-[10px] text-obsidian-600">${esc(day(c.acquiredAt))}</span>
           </div>
         </div>`;
       }).join('');
-    }
 
-    // Last 5 achievements unlocked
-    const recentAchEl = document.getElementById('recent-achievements')!;
-    const unlocked = getUnlockedAchievements();
-    const sortedAch = [...unlocked].sort((a, b) => b.unlockedAt - a.unlockedAt).slice(0, 5);
-    if (sortedAch.length > 0) {
+      // Last 5 achievements unlocked
       const achMap = new Map(ACHIEVEMENTS.map(a => [a.id, a]));
-      recentAchEl.innerHTML = sortedAch.map(u => {
+      const sortedAch = [...getUnlockedAchievements()].sort((a, b) => b.unlockedAt - a.unlockedAt).slice(0, 5);
+      byId('recent-achievements').innerHTML = sortedAch.length === 0 ? hint('profile.recent.noAchievements') : sortedAch.map(u => {
         const ach = achMap.get(u.id);
         if (!ach) return '';
-        const tierColor: Record<string, string> = { bronze: 'text-amber-400', silver: 'text-gray-400', gold: 'text-gold-400' };
-        return `<div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
+        return `<div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
             <span class="text-sm">${ach.icon}</span>
-            <span class="text-xs text-obsidian-300">${ach.name}</span>
+            <span class="text-xs text-obsidian-300">${esc(achievementName(ach))}</span>
           </div>
-          <span class="text-[10px] ${tierColor[ach.tier] || 'text-obsidian-500'}">${ach.tier}</span>
+          <span class="text-[10px] shrink-0 ${tierColor[ach.tier] || 'text-obsidian-500'}">${esc(tierName(ach.tier))}</span>
         </div>`;
       }).join('');
     }
 
-    // --- Init ---
+    // Everything a script draws, in the interface language; drawn again whenever that changes.
+    void initPage(['profile', 'card-terms', 'achievements'], () => {
+      renderPlayer();
+      renderStats();
+      renderAchievements();
+      renderCollection();
+      renderLeaderboard();
+      renderRecent();
+    });
+
     loadLeaderboard();
 
     // Hide loading skeleton once content is ready

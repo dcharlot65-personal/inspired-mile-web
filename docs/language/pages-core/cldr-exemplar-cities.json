@@ -1,0 +1,1322 @@
+{
+ "version": "46.0.0",
+ "fetched": "2026-11-16T18:17:35.321Z",
+ "source": "https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json",
+ "regionSource": "https://cdn.jsdelivr.net/npm/cldr-localenames-full@46.0.0/main/<locale>/territories.json",
+ "cities": {
+  "en": {
+   "TKY": {
+    "name": "Tokyo",
+    "explicit": false
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "London",
+    "explicit": false
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "Sao Paulo",
+    "explicit": false
+   },
+   "SEO": {
+    "name": "Seoul",
+    "explicit": false
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Mexico City",
+    "explicit": false
+   },
+   "CAI": {
+    "name": "Cairo",
+    "explicit": false
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "es": {
+   "TKY": {
+    "name": "Tokio",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "Londres",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "París",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "São Paulo",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Seúl",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlín",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "Ciudad de México",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "El Cairo",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Acra",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "Johannesburgo",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Estambul",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sídney",
+    "explicit": true
+   }
+  },
+  "fr": {
+   "TKY": {
+    "name": "Tokyo",
+    "explicit": false
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "Londres",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "São Paulo",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Séoul",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Mexico",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Le Caire",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manille",
+    "explicit": true
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "de": {
+   "TKY": {
+    "name": "Tokio",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "London",
+    "explicit": false
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "São Paulo",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Seoul",
+    "explicit": false
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Mexiko-Stadt",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Kairo",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "it": {
+   "TKY": {
+    "name": "Tokyo",
+    "explicit": false
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "Londra",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "Parigi",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "San Paolo",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Seul",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlino",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "Città del Messico",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Il Cairo",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "pt": {
+   "TKY": {
+    "name": "Tóquio",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "Londres",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "São Paulo",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Seul",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Nairóbi",
+    "explicit": true
+   },
+   "BER": {
+    "name": "Berlim",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "Cidade do México",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Cairo",
+    "explicit": false
+   },
+   "ACC": {
+    "name": "Acra",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "Joanesburgo",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istambul",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "pl": {
+   "TKY": {
+    "name": "Tokio",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "Londyn",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "Paryż",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "Sao Paulo",
+    "explicit": false
+   },
+   "SEO": {
+    "name": "Seul",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Meksyk (miasto)",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Kair",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Akra",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Stambuł",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "ru": {
+   "TKY": {
+    "name": "Токио",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "Лагос",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "Лондон",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "Париж",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "Сан-Паулу",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "Сеул",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "Найроби",
+    "explicit": true
+   },
+   "BER": {
+    "name": "Берлин",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "Мехико",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "Каир",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Аккра",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "Йоханнесбург",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "Манила",
+    "explicit": true
+   },
+   "IST": {
+    "name": "Стамбул",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "Торонто",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "Сидней",
+    "explicit": true
+   }
+  },
+  "ar": {
+   "TKY": {
+    "name": "طوكيو",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "لاغوس",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "لندن",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "باريس",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "ساو باولو",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "سول",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "نيروبي",
+    "explicit": true
+   },
+   "BER": {
+    "name": "برلين",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "مكسيكو سيتي",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "القاهرة",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "أكرا",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "جوهانسبرغ",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "مانيلا",
+    "explicit": true
+   },
+   "IST": {
+    "name": "إسطنبول",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "تورونتو",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "سيدني",
+    "explicit": true
+   }
+  },
+  "hi": {
+   "TKY": {
+    "name": "टोक्यो",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "लागोस",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "लंदन",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "पेरिस",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "साओ पाउलो",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "सिओल",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "नैरोबी",
+    "explicit": true
+   },
+   "BER": {
+    "name": "बर्लिन",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "मेक्सिको सिटी",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "कायरो",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "एक्रा",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "जोहांसबर्ग",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "मनीला",
+    "explicit": true
+   },
+   "IST": {
+    "name": "इस्तांबुल",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "टोरंटो",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "सिडनी",
+    "explicit": true
+   }
+  },
+  "zh": {
+   "TKY": {
+    "name": "东京",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "拉各斯",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "伦敦",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "巴黎",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "圣保罗",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "首尔",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "内罗毕",
+    "explicit": true
+   },
+   "BER": {
+    "name": "柏林",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "墨西哥城",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "开罗",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "阿克拉",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "约翰内斯堡",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "马尼拉",
+    "explicit": true
+   },
+   "IST": {
+    "name": "伊斯坦布尔",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "多伦多",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "悉尼",
+    "explicit": true
+   }
+  },
+  "ja": {
+   "TKY": {
+    "name": "東京",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "ラゴス",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "ロンドン",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "パリ",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "サンパウロ",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "ソウル",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "ナイロビ",
+    "explicit": true
+   },
+   "BER": {
+    "name": "ベルリン",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "メキシコシティー",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "カイロ",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "アクラ",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "ヨハネスブルグ",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "マニラ",
+    "explicit": true
+   },
+   "IST": {
+    "name": "イスタンブール",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "トロント",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "シドニー",
+    "explicit": true
+   }
+  },
+  "ko": {
+   "TKY": {
+    "name": "도쿄",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "라고스",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "런던",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "파리",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "상파울루",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "서울",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "나이로비",
+    "explicit": true
+   },
+   "BER": {
+    "name": "베를린",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "멕시코 시티",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "카이로",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "아크라",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "요하네스버그",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "마닐라",
+    "explicit": true
+   },
+   "IST": {
+    "name": "이스탄불",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "토론토",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "시드니",
+    "explicit": true
+   }
+  },
+  "vi": {
+   "TKY": {
+    "name": "Tokyo",
+    "explicit": false
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "London",
+    "explicit": false
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "Sao Paulo",
+    "explicit": false
+   },
+   "SEO": {
+    "name": "Seoul",
+    "explicit": false
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Mexico City",
+    "explicit": false
+   },
+   "CAI": {
+    "name": "Cairo",
+    "explicit": false
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  },
+  "th": {
+   "TKY": {
+    "name": "โตเกียว",
+    "explicit": true
+   },
+   "LGS": {
+    "name": "ลากอส",
+    "explicit": true
+   },
+   "LDN": {
+    "name": "ลอนดอน",
+    "explicit": true
+   },
+   "PAR": {
+    "name": "ปารีส",
+    "explicit": true
+   },
+   "SAO": {
+    "name": "เซาเปาลู",
+    "explicit": true
+   },
+   "SEO": {
+    "name": "โซล",
+    "explicit": true
+   },
+   "NRB": {
+    "name": "ไนโรเบีย",
+    "explicit": true
+   },
+   "BER": {
+    "name": "เบอร์ลิน",
+    "explicit": true
+   },
+   "MEX": {
+    "name": "เม็กซิโกซิตี",
+    "explicit": true
+   },
+   "CAI": {
+    "name": "ไคโร",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "อักกรา",
+    "explicit": true
+   },
+   "JHB": {
+    "name": "โจฮันเนสเบอร์ก",
+    "explicit": true
+   },
+   "MNL": {
+    "name": "มะนิลา",
+    "explicit": true
+   },
+   "IST": {
+    "name": "อิสตันบูล",
+    "explicit": true
+   },
+   "TOR": {
+    "name": "โทรอนโต",
+    "explicit": true
+   },
+   "SYD": {
+    "name": "ซิดนีย์",
+    "explicit": true
+   }
+  },
+  "id": {
+   "TKY": {
+    "name": "Tokyo",
+    "explicit": false
+   },
+   "LGS": {
+    "name": "Lagos",
+    "explicit": false
+   },
+   "LDN": {
+    "name": "London",
+    "explicit": false
+   },
+   "PAR": {
+    "name": "Paris",
+    "explicit": false
+   },
+   "SAO": {
+    "name": "Sao Paulo",
+    "explicit": false
+   },
+   "SEO": {
+    "name": "Seoul",
+    "explicit": false
+   },
+   "NRB": {
+    "name": "Nairobi",
+    "explicit": false
+   },
+   "BER": {
+    "name": "Berlin",
+    "explicit": false
+   },
+   "MEX": {
+    "name": "Mexico City",
+    "explicit": false
+   },
+   "CAI": {
+    "name": "Kairo",
+    "explicit": true
+   },
+   "ACC": {
+    "name": "Accra",
+    "explicit": false
+   },
+   "JHB": {
+    "name": "Johannesburg",
+    "explicit": false
+   },
+   "MNL": {
+    "name": "Manila",
+    "explicit": false
+   },
+   "IST": {
+    "name": "Istanbul",
+    "explicit": false
+   },
+   "TOR": {
+    "name": "Toronto",
+    "explicit": false
+   },
+   "SYD": {
+    "name": "Sydney",
+    "explicit": false
+   }
+  }
+ },
+ "regions": {
+  "en": {
+   "142": "Asia",
+   "150": "Europe",
+   "009": "Oceania",
+   "029": "Caribbean",
+   "003": "North America",
+   "013": "Central America",
+   "005": "South America",
+   "011": "Western Africa",
+   "014": "Eastern Africa",
+   "015": "Northern Africa",
+   "018": "Southern Africa",
+   "030": "Eastern Asia",
+   "034": "Southern Asia",
+   "035": "Southeast Asia"
+  },
+  "es": {
+   "142": "Asia",
+   "150": "Europa",
+   "009": "Oceanía",
+   "029": "Caribe",
+   "003": "América del Norte",
+   "013": "Centroamérica",
+   "005": "Sudamérica",
+   "011": "África occidental",
+   "014": "África oriental",
+   "015": "África septentrional",
+   "018": "África meridional",
+   "030": "Asia oriental",
+   "034": "Asia meridional",
+   "035": "Sudeste asiático"
+  },
+  "fr": {
+   "142": "Asie",
+   "150": "Europe",
+   "009": "Océanie",
+   "029": "Caraïbes",
+   "003": "Amérique du Nord",
+   "013": "Amérique centrale",
+   "005": "Amérique du Sud",
+   "011": "Afrique occidentale",
+   "014": "Afrique orientale",
+   "015": "Afrique septentrionale",
+   "018": "Afrique australe",
+   "030": "Asie de l’Est",
+   "034": "Asie du Sud",
+   "035": "Asie du Sud-Est"
+  },
+  "de": {
+   "142": "Asien",
+   "150": "Europa",
+   "009": "Ozeanien",
+   "029": "Karibik",
+   "003": "Nordamerika",
+   "013": "Mittelamerika",
+   "005": "Südamerika",
+   "011": "Westafrika",
+   "014": "Ostafrika",
+   "015": "Nordafrika",
+   "018": "Südliches Afrika",
+   "030": "Ostasien",
+   "034": "Südasien",
+   "035": "Südostasien"
+  },
+  "it": {
+   "142": "Asia",
+   "150": "Europa",
+   "009": "Oceania",
+   "029": "Caraibi",
+   "003": "Nord America",
+   "013": "America Centrale",
+   "005": "America del Sud",
+   "011": "Africa occidentale",
+   "014": "Africa orientale",
+   "015": "Nordafrica",
+   "018": "Africa del Sud",
+   "030": "Asia orientale",
+   "034": "Asia del Sud",
+   "035": "Sud-est asiatico"
+  },
+  "pt": {
+   "142": "Ásia",
+   "150": "Europa",
+   "009": "Oceania",
+   "029": "Caribe",
+   "003": "América do Norte",
+   "013": "América Central",
+   "005": "América do Sul",
+   "011": "África Ocidental",
+   "014": "África Oriental",
+   "015": "África Setentrional",
+   "018": "África Meridional",
+   "030": "Ásia Oriental",
+   "034": "Ásia Meridional",
+   "035": "Sudeste Asiático"
+  },
+  "pl": {
+   "142": "Azja",
+   "150": "Europa",
+   "009": "Oceania",
+   "029": "Karaiby",
+   "003": "Ameryka Północna",
+   "013": "Ameryka Środkowa",
+   "005": "Ameryka Południowa",
+   "011": "Afryka Zachodnia",
+   "014": "Afryka Wschodnia",
+   "015": "Afryka Północna",
+   "018": "Afryka Południowa",
+   "030": "Azja Wschodnia",
+   "034": "Azja Południowa",
+   "035": "Azja Południowo-Wschodnia"
+  },
+  "ru": {
+   "142": "Азия",
+   "150": "Европа",
+   "009": "Океания",
+   "029": "Карибы",
+   "003": "Северная Америка",
+   "013": "Центральная Америка",
+   "005": "Южная Америка",
+   "011": "Западная Африка",
+   "014": "Восточная Африка",
+   "015": "Северная Африка",
+   "018": "Южная Африка",
+   "030": "Восточная Азия",
+   "034": "Южная Азия",
+   "035": "Юго-Восточная Азия"
+  },
+  "ar": {
+   "142": "آسيا",
+   "150": "أوروبا",
+   "009": "أوقيانوسيا",
+   "029": "الكاريبي",
+   "003": "أمريكا الشمالية",
+   "013": "أمريكا الوسطى",
+   "005": "أمريكا الجنوبية",
+   "011": "غرب أفريقيا",
+   "014": "شرق أفريقيا",
+   "015": "شمال أفريقيا",
+   "018": "أفريقيا الجنوبية",
+   "030": "شرق آسيا",
+   "034": "جنوب آسيا",
+   "035": "جنوب شرق آسيا"
+  },
+  "hi": {
+   "142": "एशिया",
+   "150": "यूरोप",
+   "009": "ओशिआनिया",
+   "029": "कैरिबियन",
+   "003": "उत्तर अमेरिका",
+   "013": "मध्य अमेरिका",
+   "005": "दक्षिण अमेरिका",
+   "011": "पश्चिमी अफ़्रीका",
+   "014": "पूर्वी अफ़्रीका",
+   "015": "उत्तरी अफ़्रीका",
+   "018": "दक्षिणी अफ़्रीका",
+   "030": "पूर्वी एशिया",
+   "034": "दक्षिणी एशिया",
+   "035": "दक्षिण-पूर्व एशिया"
+  },
+  "zh": {
+   "142": "亚洲",
+   "150": "欧洲",
+   "009": "大洋洲",
+   "029": "加勒比地区",
+   "003": "北美洲",
+   "013": "中美洲",
+   "005": "南美洲",
+   "011": "西非",
+   "014": "东非",
+   "015": "北非",
+   "018": "南部非洲",
+   "030": "东亚",
+   "034": "南亚",
+   "035": "东南亚"
+  },
+  "ja": {
+   "142": "アジア",
+   "150": "ヨーロッパ",
+   "009": "オセアニア",
+   "029": "カリブ",
+   "003": "北アメリカ大陸",
+   "013": "中央アメリカ",
+   "005": "南アメリカ",
+   "011": "西アフリカ",
+   "014": "東アフリカ",
+   "015": "北アフリカ",
+   "018": "南部アフリカ",
+   "030": "東アジア",
+   "034": "南アジア",
+   "035": "東南アジア"
+  },
+  "ko": {
+   "142": "아시아",
+   "150": "유럽",
+   "009": "오세아니아",
+   "029": "카리브 제도",
+   "003": "북아메리카",
+   "013": "중앙 아메리카",
+   "005": "남아메리카",
+   "011": "서부 아프리카",
+   "014": "동부 아프리카",
+   "015": "북부 아프리카",
+   "018": "남부 아프리카",
+   "030": "동아시아",
+   "034": "남아시아",
+   "035": "동남아시아"
+  },
+  "vi": {
+   "142": "Châu Á",
+   "150": "Châu Âu",
+   "009": "Châu Đại Dương",
+   "029": "Ca-ri-bê",
+   "003": "Bắc Mỹ",
+   "013": "Trung Mỹ",
+   "005": "Nam Mỹ",
+   "011": "Tây Phi",
+   "014": "Đông Phi",
+   "015": "Bắc Phi",
+   "018": "Miền Nam Châu Phi",
+   "030": "Đông Á",
+   "034": "Nam Á",
+   "035": "Đông Nam Á"
+  },
+  "th": {
+   "142": "เอเชีย",
+   "150": "ยุโรป",
+   "009": "โอเชียเนีย",
+   "029": "แคริบเบียน",
+   "003": "อเมริกาเหนือ",
+   "013": "อเมริกากลาง",
+   "005": "อเมริกาใต้",
+   "011": "แอฟริกาตะวันตก",
+   "014": "แอฟริกาตะวันออก",
+   "015": "แอฟริกาเหนือ",
+   "018": "แอฟริกาตอนใต้",
+   "030": "เอเชียตะวันออก",
+   "034": "เอเชียใต้",
+   "035": "เอเชียตะวันออกเฉียงใต้"
+  },
+  "id": {
+   "142": "Asia",
+   "150": "Eropa",
+   "009": "Oseania",
+   "029": "Kepulauan Karibia",
+   "003": "Amerika Utara",
+   "013": "Amerika Tengah",
+   "005": "Amerika Selatan",
+   "011": "Afrika Bagian Barat",
+   "014": "Afrika Bagian Timur",
+   "015": "Afrika Bagian Utara",
+   "018": "Afrika Bagian Selatan",
+   "030": "Asia Bagian Timur",
+   "034": "Asia Bagian Selatan",
+   "035": "Asia Tenggara"
+  }
+ }
+}

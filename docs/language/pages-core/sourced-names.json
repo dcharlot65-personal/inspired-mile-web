@@ -1,0 +1,2854 @@
+{
+ "generated": "2026-11-16",
+ "wikidata": {
+  "fetched": "2026-11-16T17:17:30.731Z",
+  "licence": "CC0 1.0",
+  "api": "https://www.wikidata.org/w/api.php?action=wbgetentities"
+ },
+ "cldr": {
+  "version": "46.0.0",
+  "fetched": "2026-11-16T18:17:35.321Z",
+  "licence": "Unicode License v3",
+  "source": "https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json"
+ },
+ "entries": {
+  "variants.city.TKY": {
+   "en": {
+    "value": "Tokyo",
+    "source": "Wikidata Q1490 label"
+   },
+   "es": {
+    "value": "Tokio",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"Tokio\")"
+   },
+   "fr": {
+    "value": "Tokyo",
+    "source": "Wikidata Q1490 label"
+   },
+   "de": {
+    "value": "Tokio",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"Tokio\")"
+   },
+   "it": {
+    "value": "Tokyo",
+    "source": "Wikidata Q1490 label"
+   },
+   "pt": {
+    "value": "Tóquio",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"Tóquio\")"
+   },
+   "pl": {
+    "value": "Tokio",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"Tokio\")"
+   },
+   "ru": {
+    "value": "Токио",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"Токио\")"
+   },
+   "ar": {
+    "value": "طوكيو",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"طوكيو\")"
+   },
+   "hi": {
+    "value": "टोक्यो",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"टोक्यो\")"
+   },
+   "zh": {
+    "value": "东京",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"东京都\")"
+   },
+   "ja": {
+    "value": "東京",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"東京都\")"
+   },
+   "ko": {
+    "value": "도쿄",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"도쿄도\")"
+   },
+   "vi": {
+    "value": "Tokyo",
+    "source": "Wikidata Q1490 label"
+   },
+   "th": {
+    "value": "โตเกียว",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1490 has \"โตเกียว\")"
+   },
+   "id": {
+    "value": "Tokyo",
+    "source": "Wikidata Q1490 label"
+   }
+  },
+  "variants.city.LGS": {
+   "en": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "es": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "fr": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "de": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "it": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "pt": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label (pt)"
+   },
+   "pl": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "ru": {
+    "value": "Лагос",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"Лагос\")"
+   },
+   "ar": {
+    "value": "لاغوس",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"لاغوس\")"
+   },
+   "hi": {
+    "value": "लागोस",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"लागोस\")"
+   },
+   "zh": {
+    "value": "拉各斯",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"拉各斯\")"
+   },
+   "ja": {
+    "value": "ラゴス",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"ラゴス\")"
+   },
+   "ko": {
+    "value": "라고스",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"라고스\")"
+   },
+   "vi": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   },
+   "th": {
+    "value": "ลากอส",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8673 has \"เลกอส\")"
+   },
+   "id": {
+    "value": "Lagos",
+    "source": "Wikidata Q8673 label"
+   }
+  },
+  "variants.city.BKN": {
+   "en": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "es": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "fr": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "de": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "it": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "pt": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label (pt-br)"
+   },
+   "pl": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "ru": {
+    "value": "Бруклин",
+    "source": "Wikidata Q18419 label"
+   },
+   "ar": {
+    "value": "بروكلين",
+    "source": "Wikidata Q18419 label"
+   },
+   "hi": {
+    "value": "ब्रुकलीन",
+    "source": "Wikidata Q18419 label"
+   },
+   "zh": {
+    "value": "布鲁克林区",
+    "source": "Wikidata Q18419 label (zh-hans)"
+   },
+   "ja": {
+    "value": "ブルックリン区",
+    "source": "Wikidata Q18419 label"
+   },
+   "ko": {
+    "value": "브루클린",
+    "source": "Wikidata Q18419 label"
+   },
+   "vi": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   },
+   "th": {
+    "value": "บรุกลิน",
+    "source": "Wikidata Q18419 label"
+   },
+   "id": {
+    "value": "Brooklyn",
+    "source": "Wikidata Q18419 label"
+   }
+  },
+  "variants.city.LDN": {
+   "en": {
+    "value": "London",
+    "source": "Wikidata Q84 label"
+   },
+   "es": {
+    "value": "Londres",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Londres\")"
+   },
+   "fr": {
+    "value": "Londres",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Londres\")"
+   },
+   "de": {
+    "value": "London",
+    "source": "Wikidata Q84 label"
+   },
+   "it": {
+    "value": "Londra",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Londra\")"
+   },
+   "pt": {
+    "value": "Londres",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Londres\")"
+   },
+   "pl": {
+    "value": "Londyn",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Londyn\")"
+   },
+   "ru": {
+    "value": "Лондон",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"Лондон\")"
+   },
+   "ar": {
+    "value": "لندن",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"لندن\")"
+   },
+   "hi": {
+    "value": "लंदन",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"लंदन\")"
+   },
+   "zh": {
+    "value": "伦敦",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"伦敦\")"
+   },
+   "ja": {
+    "value": "ロンドン",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"ロンドン\")"
+   },
+   "ko": {
+    "value": "런던",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"런던\")"
+   },
+   "vi": {
+    "value": "Luân Đôn",
+    "source": "Wikidata Q84 label"
+   },
+   "th": {
+    "value": "ลอนดอน",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q84 has \"ลอนดอน\")"
+   },
+   "id": {
+    "value": "London",
+    "source": "Wikidata Q84 label"
+   }
+  },
+  "variants.city.MUM": {
+   "en": {
+    "value": "Mumbai",
+    "source": "Wikidata Q1156 label"
+   },
+   "es": {
+    "value": "Bombay",
+    "source": "Wikidata Q1156 label"
+   },
+   "fr": {
+    "value": "Bombay",
+    "source": "Wikidata Q1156 label"
+   },
+   "de": {
+    "value": "Mumbai",
+    "source": "Wikidata Q1156 label"
+   },
+   "it": {
+    "value": "Mumbai",
+    "source": "Wikidata Q1156 label"
+   },
+   "pt": {
+    "value": "Bombaim",
+    "source": "Wikidata Q1156 label (pt-br)"
+   },
+   "pl": {
+    "value": "Mumbaj",
+    "source": "Wikidata Q1156 label"
+   },
+   "ru": {
+    "value": "Мумбаи",
+    "source": "Wikidata Q1156 label"
+   },
+   "ar": {
+    "value": "مومباي",
+    "source": "Wikidata Q1156 label"
+   },
+   "hi": {
+    "value": "मुम्बई",
+    "source": "Wikidata Q1156 label"
+   },
+   "zh": {
+    "value": "孟买",
+    "source": "Wikidata Q1156 label (zh-cn)"
+   },
+   "ja": {
+    "value": "ムンバイ",
+    "source": "Wikidata Q1156 label"
+   },
+   "ko": {
+    "value": "뭄바이",
+    "source": "Wikidata Q1156 label"
+   },
+   "vi": {
+    "value": "Mumbai",
+    "source": "Wikidata Q1156 label"
+   },
+   "th": {
+    "value": "มุมไบ",
+    "source": "Wikidata Q1156 label"
+   },
+   "id": {
+    "value": "Mumbai",
+    "source": "Wikidata Q1156 label"
+   }
+  },
+  "variants.city.PAR": {
+   "en": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label"
+   },
+   "es": {
+    "value": "París",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"París\")"
+   },
+   "fr": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label"
+   },
+   "de": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label"
+   },
+   "it": {
+    "value": "Parigi",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"Parigi\")"
+   },
+   "pt": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label (pt-br)"
+   },
+   "pl": {
+    "value": "Paryż",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"Paryż\")"
+   },
+   "ru": {
+    "value": "Париж",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"Париж\")"
+   },
+   "ar": {
+    "value": "باريس",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"باريس\")"
+   },
+   "hi": {
+    "value": "पेरिस",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"पेरिस\")"
+   },
+   "zh": {
+    "value": "巴黎",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"巴黎\")"
+   },
+   "ja": {
+    "value": "パリ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"パリ\")"
+   },
+   "ko": {
+    "value": "파리",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"파리\")"
+   },
+   "vi": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label"
+   },
+   "th": {
+    "value": "ปารีส",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q90 has \"ปารีส\")"
+   },
+   "id": {
+    "value": "Paris",
+    "source": "Wikidata Q90 label"
+   }
+  },
+  "variants.city.SAO": {
+   "en": {
+    "value": "São Paulo",
+    "source": "Wikidata Q174 label"
+   },
+   "es": {
+    "value": "São Paulo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"São Paulo\")"
+   },
+   "fr": {
+    "value": "São Paulo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"São Paulo\")"
+   },
+   "de": {
+    "value": "São Paulo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"São Paulo\")"
+   },
+   "it": {
+    "value": "San Paolo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"San Paolo\")"
+   },
+   "pt": {
+    "value": "São Paulo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"São Paulo\")"
+   },
+   "pl": {
+    "value": "São Paulo",
+    "source": "Wikidata Q174 label"
+   },
+   "ru": {
+    "value": "Сан-Паулу",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"Сан-Паулу\")"
+   },
+   "ar": {
+    "value": "ساو باولو",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"ساو باولو\")"
+   },
+   "hi": {
+    "value": "साओ पाउलो",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"साओ पाउलो\")"
+   },
+   "zh": {
+    "value": "圣保罗",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"圣保罗\")"
+   },
+   "ja": {
+    "value": "サンパウロ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"サンパウロ\")"
+   },
+   "ko": {
+    "value": "상파울루",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"상파울루\")"
+   },
+   "vi": {
+    "value": "São Paulo",
+    "source": "Wikidata Q174 label"
+   },
+   "th": {
+    "value": "เซาเปาลู",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q174 has \"เซาเปาลู\")"
+   },
+   "id": {
+    "value": "São Paulo",
+    "source": "Wikidata Q174 label"
+   }
+  },
+  "variants.city.SEO": {
+   "en": {
+    "value": "Seoul",
+    "source": "Wikidata Q8684 label"
+   },
+   "es": {
+    "value": "Seúl",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Seúl\")"
+   },
+   "fr": {
+    "value": "Séoul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Séoul\")"
+   },
+   "de": {
+    "value": "Seoul",
+    "source": "Wikidata Q8684 label"
+   },
+   "it": {
+    "value": "Seul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Seul\")"
+   },
+   "pt": {
+    "value": "Seul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Seul\")"
+   },
+   "pl": {
+    "value": "Seul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Seul\")"
+   },
+   "ru": {
+    "value": "Сеул",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"Сеул\")"
+   },
+   "ar": {
+    "value": "سول",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"سول\")"
+   },
+   "hi": {
+    "value": "सिओल",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"सियोल\")"
+   },
+   "zh": {
+    "value": "首尔",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"首尔\")"
+   },
+   "ja": {
+    "value": "ソウル",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"ソウル特別市\")"
+   },
+   "ko": {
+    "value": "서울",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"서울특별시\")"
+   },
+   "vi": {
+    "value": "Seoul",
+    "source": "Wikidata Q8684 label"
+   },
+   "th": {
+    "value": "โซล",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q8684 has \"โซล\")"
+   },
+   "id": {
+    "value": "Seoul",
+    "source": "Wikidata Q8684 label"
+   }
+  },
+  "variants.city.NRB": {
+   "en": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "es": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "fr": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "de": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "it": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "pt": {
+    "value": "Nairóbi",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"Nairóbi\")"
+   },
+   "pl": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "ru": {
+    "value": "Найроби",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"Найроби\")"
+   },
+   "ar": {
+    "value": "نيروبي",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"نيروبي\")"
+   },
+   "hi": {
+    "value": "नैरोबी",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"नायरोबी\")"
+   },
+   "zh": {
+    "value": "内罗毕",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"内罗毕\")"
+   },
+   "ja": {
+    "value": "ナイロビ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"ナイロビ\")"
+   },
+   "ko": {
+    "value": "나이로비",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"나이로비\")"
+   },
+   "vi": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   },
+   "th": {
+    "value": "ไนโรเบีย",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3870 has \"ไนโรบี\")"
+   },
+   "id": {
+    "value": "Nairobi",
+    "source": "Wikidata Q3870 label"
+   }
+  },
+  "variants.city.BER": {
+   "en": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   },
+   "es": {
+    "value": "Berlín",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"Berlín\")"
+   },
+   "fr": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   },
+   "de": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   },
+   "it": {
+    "value": "Berlino",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"Berlino\")"
+   },
+   "pt": {
+    "value": "Berlim",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"Berlim\")"
+   },
+   "pl": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   },
+   "ru": {
+    "value": "Берлин",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"Берлин\")"
+   },
+   "ar": {
+    "value": "برلين",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"برلين\")"
+   },
+   "hi": {
+    "value": "बर्लिन",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"बर्लिन\")"
+   },
+   "zh": {
+    "value": "柏林",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"柏林\")"
+   },
+   "ja": {
+    "value": "ベルリン",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"ベルリン\")"
+   },
+   "ko": {
+    "value": "베를린",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"베를린\")"
+   },
+   "vi": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   },
+   "th": {
+    "value": "เบอร์ลิน",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q64 has \"เบอร์ลิน\")"
+   },
+   "id": {
+    "value": "Berlin",
+    "source": "Wikidata Q64 label"
+   }
+  },
+  "variants.city.MEX": {
+   "en": {
+    "value": "Mexico City",
+    "source": "Wikidata Q1489 label"
+   },
+   "es": {
+    "value": "Ciudad de México",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Ciudad de México\")"
+   },
+   "fr": {
+    "value": "Mexico",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Mexico\")"
+   },
+   "de": {
+    "value": "Mexiko-Stadt",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Mexiko-Stadt\")"
+   },
+   "it": {
+    "value": "Città del Messico",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Città del Messico\")"
+   },
+   "pt": {
+    "value": "Cidade do México",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Cidade do México\")"
+   },
+   "pl": {
+    "value": "Meksyk",
+    "source": "NOT FROM A SOURCE: CLDR gives \"Meksyk (miasto)\", a disambiguated form; the Wikidata label (Q1489) is used"
+   },
+   "ru": {
+    "value": "Мехико",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"Мехико\")"
+   },
+   "ar": {
+    "value": "مكسيكو سيتي",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"مدينة مكسيكو\")"
+   },
+   "hi": {
+    "value": "मेक्सिको सिटी",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"मेक्सिको नगर\")"
+   },
+   "zh": {
+    "value": "墨西哥城",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"墨西哥城\")"
+   },
+   "ja": {
+    "value": "メキシコシティー",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"メキシコシティ\")"
+   },
+   "ko": {
+    "value": "멕시코 시티",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"멕시코시티\")"
+   },
+   "vi": {
+    "value": "Thành phố México",
+    "source": "Wikidata Q1489 label"
+   },
+   "th": {
+    "value": "เม็กซิโกซิตี",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1489 has \"เม็กซิโกซิตี\")"
+   },
+   "id": {
+    "value": "Kota Meksiko",
+    "source": "Wikidata Q1489 label"
+   }
+  },
+  "variants.city.CAI": {
+   "en": {
+    "value": "Cairo",
+    "source": "Wikidata Q85 label"
+   },
+   "es": {
+    "value": "El Cairo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"El Cairo\")"
+   },
+   "fr": {
+    "value": "Le Caire",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Le Caire\")"
+   },
+   "de": {
+    "value": "Kairo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Kairo\")"
+   },
+   "it": {
+    "value": "Il Cairo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Il Cairo\")"
+   },
+   "pt": {
+    "value": "Cairo",
+    "source": "Wikidata Q85 label (pt-br)"
+   },
+   "pl": {
+    "value": "Kair",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Kair\")"
+   },
+   "ru": {
+    "value": "Каир",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Каир\")"
+   },
+   "ar": {
+    "value": "القاهرة",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"القاهرة\")"
+   },
+   "hi": {
+    "value": "कायरो",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"क़ाहिरा\")"
+   },
+   "zh": {
+    "value": "开罗",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"开罗\")"
+   },
+   "ja": {
+    "value": "カイロ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"カイロ\")"
+   },
+   "ko": {
+    "value": "카이로",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"카이로\")"
+   },
+   "vi": {
+    "value": "Cairo",
+    "source": "Wikidata Q85 label"
+   },
+   "th": {
+    "value": "ไคโร",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"ไคโร\")"
+   },
+   "id": {
+    "value": "Kairo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q85 has \"Kairo\")"
+   }
+  },
+  "variants.city.ACC": {
+   "en": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   },
+   "es": {
+    "value": "Acra",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"Acra\")"
+   },
+   "fr": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   },
+   "de": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   },
+   "it": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   },
+   "pt": {
+    "value": "Acra",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"Acra\")"
+   },
+   "pl": {
+    "value": "Akra",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"Akra\")"
+   },
+   "ru": {
+    "value": "Аккра",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"Аккра\")"
+   },
+   "ar": {
+    "value": "أكرا",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"أكرا\")"
+   },
+   "hi": {
+    "value": "एक्रा",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"अक्रा\")"
+   },
+   "zh": {
+    "value": "阿克拉",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"阿克拉\")"
+   },
+   "ja": {
+    "value": "アクラ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"アクラ\")"
+   },
+   "ko": {
+    "value": "아크라",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"아크라\")"
+   },
+   "vi": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   },
+   "th": {
+    "value": "อักกรา",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3761 has \"อักกรา\")"
+   },
+   "id": {
+    "value": "Accra",
+    "source": "Wikidata Q3761 label"
+   }
+  },
+  "variants.city.JHB": {
+   "en": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   },
+   "es": {
+    "value": "Johannesburgo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"Johannesburgo\")"
+   },
+   "fr": {
+    "value": "Johannesbourg",
+    "source": "Wikidata Q34647 label"
+   },
+   "de": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   },
+   "it": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   },
+   "pt": {
+    "value": "Joanesburgo",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"Joanesburgo\")"
+   },
+   "pl": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   },
+   "ru": {
+    "value": "Йоханнесбург",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"Йоханнесбург\")"
+   },
+   "ar": {
+    "value": "جوهانسبرغ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"جوهانسبرغ\")"
+   },
+   "hi": {
+    "value": "जोहांसबर्ग",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"जोहानिसबर्ग\")"
+   },
+   "zh": {
+    "value": "约翰内斯堡",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"约翰内斯堡\")"
+   },
+   "ja": {
+    "value": "ヨハネスブルグ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"ヨハネスブルグ\")"
+   },
+   "ko": {
+    "value": "요하네스버그",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"요하네스버그\")"
+   },
+   "vi": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   },
+   "th": {
+    "value": "โจฮันเนสเบอร์ก",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q34647 has \"โจฮันเนสเบิร์ก\")"
+   },
+   "id": {
+    "value": "Johannesburg",
+    "source": "Wikidata Q34647 label"
+   }
+  },
+  "variants.city.MNL": {
+   "en": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "es": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "fr": {
+    "value": "Manille",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"Manille\")"
+   },
+   "de": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "it": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "pt": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label (pt-br)"
+   },
+   "pl": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "ru": {
+    "value": "Манила",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"Манила\")"
+   },
+   "ar": {
+    "value": "مانيلا",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"مانيلا\")"
+   },
+   "hi": {
+    "value": "मनीला",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"मनीला\")"
+   },
+   "zh": {
+    "value": "马尼拉",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"马尼拉\")"
+   },
+   "ja": {
+    "value": "マニラ",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"マニラ\")"
+   },
+   "ko": {
+    "value": "마닐라",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"마닐라\")"
+   },
+   "vi": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   },
+   "th": {
+    "value": "มะนิลา",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q1461 has \"มะนิลา\")"
+   },
+   "id": {
+    "value": "Manila",
+    "source": "Wikidata Q1461 label"
+   }
+  },
+  "variants.city.IST": {
+   "en": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   },
+   "es": {
+    "value": "Estambul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"Estambul\")"
+   },
+   "fr": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   },
+   "de": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   },
+   "it": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   },
+   "pt": {
+    "value": "Istambul",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"Istambul\")"
+   },
+   "pl": {
+    "value": "Stambuł",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"Stambuł\")"
+   },
+   "ru": {
+    "value": "Стамбул",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"Стамбул\")"
+   },
+   "ar": {
+    "value": "إسطنبول",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"إسطنبول\")"
+   },
+   "hi": {
+    "value": "इस्तांबुल",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"इस्तांबुल\")"
+   },
+   "zh": {
+    "value": "伊斯坦布尔",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"伊斯坦布尔\")"
+   },
+   "ja": {
+    "value": "イスタンブール",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"イスタンブール\")"
+   },
+   "ko": {
+    "value": "이스탄불",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"이스탄불\")"
+   },
+   "vi": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   },
+   "th": {
+    "value": "อิสตันบูล",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q406 has \"อิสตันบูล\")"
+   },
+   "id": {
+    "value": "Istanbul",
+    "source": "Wikidata Q406 label"
+   }
+  },
+  "variants.city.TOR": {
+   "en": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "es": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "fr": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "de": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "it": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "pt": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label (pt-br)"
+   },
+   "pl": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "ru": {
+    "value": "Торонто",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"Торонто\")"
+   },
+   "ar": {
+    "value": "تورونتو",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"تورنتو\")"
+   },
+   "hi": {
+    "value": "टोरंटो",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"टोरण्टो\")"
+   },
+   "zh": {
+    "value": "多伦多",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"多伦多\")"
+   },
+   "ja": {
+    "value": "トロント",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"トロント\")"
+   },
+   "ko": {
+    "value": "토론토",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"토론토\")"
+   },
+   "vi": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   },
+   "th": {
+    "value": "โทรอนโต",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q172 has \"โทรอนโต\")"
+   },
+   "id": {
+    "value": "Toronto",
+    "source": "Wikidata Q172 label"
+   }
+  },
+  "variants.city.SYD": {
+   "en": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "es": {
+    "value": "Sídney",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"Sídney\")"
+   },
+   "fr": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "de": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "it": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "pt": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label (pt-br)"
+   },
+   "pl": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "ru": {
+    "value": "Сидней",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"Сидней\")"
+   },
+   "ar": {
+    "value": "سيدني",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"سيدني\")"
+   },
+   "hi": {
+    "value": "सिडनी",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"सिडनी\")"
+   },
+   "zh": {
+    "value": "悉尼",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"悉尼\")"
+   },
+   "ja": {
+    "value": "シドニー",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"シドニー\")"
+   },
+   "ko": {
+    "value": "시드니",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"시드니\")"
+   },
+   "vi": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   },
+   "th": {
+    "value": "ซิดนีย์",
+    "source": "CLDR 46.0.0 exemplarCity (Wikidata Q3130 has \"ซิดนีย์\")"
+   },
+   "id": {
+    "value": "Sydney",
+    "source": "Wikidata Q3130 label"
+   }
+  },
+  "variants.city.OSA": {
+   "en": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "es": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "fr": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "de": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "it": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "pt": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label (pt-br)"
+   },
+   "pl": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "ru": {
+    "value": "Осака",
+    "source": "Wikidata Q35765 label"
+   },
+   "ar": {
+    "value": "أوساكا",
+    "source": "Wikidata Q35765 label"
+   },
+   "hi": {
+    "value": "ओसाका",
+    "source": "Wikidata Q35765 label"
+   },
+   "zh": {
+    "value": "大阪市",
+    "source": "Wikidata Q35765 label (zh-cn)"
+   },
+   "ja": {
+    "value": "大阪市",
+    "source": "Wikidata Q35765 label"
+   },
+   "ko": {
+    "value": "오사카시",
+    "source": "Wikidata Q35765 label"
+   },
+   "vi": {
+    "value": "Ōsaka",
+    "source": "Wikidata Q35765 label"
+   },
+   "th": {
+    "value": "โอซากะ",
+    "source": "Wikidata Q35765 label"
+   },
+   "id": {
+    "value": "Osaka",
+    "source": "Wikidata Q35765 label"
+   }
+  },
+  "variants.city.KGN": {
+   "en": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "es": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "fr": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "de": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "it": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "pt": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label (pt-br)"
+   },
+   "pl": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "ru": {
+    "value": "Кингстон",
+    "source": "Wikidata Q34692 label"
+   },
+   "ar": {
+    "value": "كينغستون",
+    "source": "Wikidata Q34692 label"
+   },
+   "hi": {
+    "value": "किंग्सटन",
+    "source": "Wikidata Q34692 label"
+   },
+   "zh": {
+    "value": "金斯敦",
+    "source": "Wikidata Q34692 label (zh-cn)"
+   },
+   "ja": {
+    "value": "キングストン",
+    "source": "Wikidata Q34692 label"
+   },
+   "ko": {
+    "value": "킹스턴",
+    "source": "Wikidata Q34692 label"
+   },
+   "vi": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   },
+   "th": {
+    "value": "คิงส์ตัน",
+    "source": "Wikidata Q34692 label"
+   },
+   "id": {
+    "value": "Kingston",
+    "source": "Wikidata Q34692 label"
+   }
+  },
+  "variants.region.eurasia": {
+   "en": {
+    "value": "Eurasia",
+    "source": "Wikidata Q5401 label"
+   },
+   "es": {
+    "value": "Eurasia",
+    "source": "Wikidata Q5401 label"
+   },
+   "fr": {
+    "value": "Eurasie",
+    "source": "Wikidata Q5401 label"
+   },
+   "de": {
+    "value": "Eurasien",
+    "source": "Wikidata Q5401 label"
+   },
+   "it": {
+    "value": "Eurasia",
+    "source": "Wikidata Q5401 label"
+   },
+   "pt": {
+    "value": "Eurásia",
+    "source": "Wikidata Q5401 label (pt-br)"
+   },
+   "pl": {
+    "value": "Eurazja",
+    "source": "Wikidata Q5401 label"
+   },
+   "ru": {
+    "value": "Евразия",
+    "source": "Wikidata Q5401 label"
+   },
+   "ar": {
+    "value": "أوراسيا",
+    "source": "Wikidata Q5401 label"
+   },
+   "hi": {
+    "value": "यूरेशिया",
+    "source": "Wikidata Q5401 label"
+   },
+   "zh": {
+    "value": "亚欧大陆",
+    "source": "Wikidata Q5401 label (zh-cn)"
+   },
+   "ja": {
+    "value": "ユーラシア",
+    "source": "Wikidata Q5401 label"
+   },
+   "ko": {
+    "value": "유라시아",
+    "source": "Wikidata Q5401 label"
+   },
+   "vi": {
+    "value": "Lục địa Á-Âu",
+    "source": "Wikidata Q5401 label \"lục địa Á-Âu\", first letter capitalised, as the CLDR 46.0.0 vi region names beside it are (Châu Á, Châu Âu)"
+   },
+   "th": {
+    "value": "ทวีปยูเรเชีย",
+    "source": "Wikidata Q5401 label"
+   },
+   "id": {
+    "value": "Eurasia",
+    "source": "Wikidata Q5401 label"
+   }
+  },
+  "variants.region.142": {
+   "en": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "es": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "fr": {
+    "value": "Asie",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "de": {
+    "value": "Asien",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "it": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "pt": {
+    "value": "Ásia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "pl": {
+    "value": "Azja",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ru": {
+    "value": "Азия",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ar": {
+    "value": "آسيا",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "hi": {
+    "value": "एशिया",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "zh": {
+    "value": "亚洲",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ja": {
+    "value": "アジア",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ko": {
+    "value": "아시아",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "vi": {
+    "value": "Châu Á",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "th": {
+    "value": "เอเชีย",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "id": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   }
+  },
+  "variants.region.150": {
+   "en": {
+    "value": "Europe",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "es": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "fr": {
+    "value": "Europe",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "de": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "it": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "pt": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "pl": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ru": {
+    "value": "Европа",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ar": {
+    "value": "أوروبا",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "hi": {
+    "value": "यूरोप",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "zh": {
+    "value": "欧洲",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ja": {
+    "value": "ヨーロッパ",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ko": {
+    "value": "유럽",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "vi": {
+    "value": "Châu Âu",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "th": {
+    "value": "ยุโรป",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "id": {
+    "value": "Eropa",
+    "source": "CLDR 46.0.0 territory 150"
+   }
+  },
+  "variants.region.009": {
+   "en": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "es": {
+    "value": "Oceanía",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "fr": {
+    "value": "Océanie",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "de": {
+    "value": "Ozeanien",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "it": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "pt": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "pl": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ru": {
+    "value": "Океания",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ar": {
+    "value": "أوقيانوسيا",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "hi": {
+    "value": "ओशिआनिया",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "zh": {
+    "value": "大洋洲",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ja": {
+    "value": "オセアニア",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ko": {
+    "value": "오세아니아",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "vi": {
+    "value": "Châu Đại Dương",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "th": {
+    "value": "โอเชียเนีย",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "id": {
+    "value": "Oseania",
+    "source": "CLDR 46.0.0 territory 009"
+   }
+  },
+  "variants.region.029": {
+   "en": {
+    "value": "Caribbean",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "es": {
+    "value": "Caribe",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "fr": {
+    "value": "Caraïbes",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "de": {
+    "value": "Karibik",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "it": {
+    "value": "Caraibi",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "pt": {
+    "value": "Caribe",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "pl": {
+    "value": "Karaiby",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ru": {
+    "value": "Карибы",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ar": {
+    "value": "الكاريبي",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "hi": {
+    "value": "कैरिबियन",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "zh": {
+    "value": "加勒比地区",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ja": {
+    "value": "カリブ",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ko": {
+    "value": "카리브 제도",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "vi": {
+    "value": "Ca-ri-bê",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "th": {
+    "value": "แคริบเบียน",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "id": {
+    "value": "Kepulauan Karibia",
+    "source": "CLDR 46.0.0 territory 029"
+   }
+  },
+  "variants.region.003": {
+   "en": {
+    "value": "North America",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "es": {
+    "value": "América del Norte",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "fr": {
+    "value": "Amérique du Nord",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "de": {
+    "value": "Nordamerika",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "it": {
+    "value": "Nord America",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "pt": {
+    "value": "América do Norte",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "pl": {
+    "value": "Ameryka Północna",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ru": {
+    "value": "Северная Америка",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ar": {
+    "value": "أمريكا الشمالية",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "hi": {
+    "value": "उत्तर अमेरिका",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "zh": {
+    "value": "北美洲",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ja": {
+    "value": "北アメリカ大陸",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ko": {
+    "value": "북아메리카",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "vi": {
+    "value": "Bắc Mỹ",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "th": {
+    "value": "อเมริกาเหนือ",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "id": {
+    "value": "Amerika Utara",
+    "source": "CLDR 46.0.0 territory 003"
+   }
+  },
+  "variants.region.013": {
+   "en": {
+    "value": "Central America",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "es": {
+    "value": "Centroamérica",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "fr": {
+    "value": "Amérique centrale",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "de": {
+    "value": "Mittelamerika",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "it": {
+    "value": "America Centrale",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "pt": {
+    "value": "América Central",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "pl": {
+    "value": "Ameryka Środkowa",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ru": {
+    "value": "Центральная Америка",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ar": {
+    "value": "أمريكا الوسطى",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "hi": {
+    "value": "मध्य अमेरिका",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "zh": {
+    "value": "中美洲",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ja": {
+    "value": "中央アメリカ",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ko": {
+    "value": "중앙 아메리카",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "vi": {
+    "value": "Trung Mỹ",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "th": {
+    "value": "อเมริกากลาง",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "id": {
+    "value": "Amerika Tengah",
+    "source": "CLDR 46.0.0 territory 013"
+   }
+  },
+  "variants.region.005": {
+   "en": {
+    "value": "South America",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "es": {
+    "value": "Sudamérica",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "fr": {
+    "value": "Amérique du Sud",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "de": {
+    "value": "Südamerika",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "it": {
+    "value": "America del Sud",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "pt": {
+    "value": "América do Sul",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "pl": {
+    "value": "Ameryka Południowa",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ru": {
+    "value": "Южная Америка",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ar": {
+    "value": "أمريكا الجنوبية",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "hi": {
+    "value": "दक्षिण अमेरिका",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "zh": {
+    "value": "南美洲",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ja": {
+    "value": "南アメリカ",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ko": {
+    "value": "남아메리카",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "vi": {
+    "value": "Nam Mỹ",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "th": {
+    "value": "อเมริกาใต้",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "id": {
+    "value": "Amerika Selatan",
+    "source": "CLDR 46.0.0 territory 005"
+   }
+  },
+  "variants.region.011": {
+   "en": {
+    "value": "Western Africa",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "es": {
+    "value": "África occidental",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "fr": {
+    "value": "Afrique occidentale",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "de": {
+    "value": "Westafrika",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "it": {
+    "value": "Africa occidentale",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "pt": {
+    "value": "África Ocidental",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "pl": {
+    "value": "Afryka Zachodnia",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ru": {
+    "value": "Западная Африка",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ar": {
+    "value": "غرب أفريقيا",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "hi": {
+    "value": "पश्चिमी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "zh": {
+    "value": "西非",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ja": {
+    "value": "西アフリカ",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ko": {
+    "value": "서부 아프리카",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "vi": {
+    "value": "Tây Phi",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "th": {
+    "value": "แอฟริกาตะวันตก",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "id": {
+    "value": "Afrika Bagian Barat",
+    "source": "CLDR 46.0.0 territory 011"
+   }
+  },
+  "variants.region.014": {
+   "en": {
+    "value": "Eastern Africa",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "es": {
+    "value": "África oriental",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "fr": {
+    "value": "Afrique orientale",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "de": {
+    "value": "Ostafrika",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "it": {
+    "value": "Africa orientale",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "pt": {
+    "value": "África Oriental",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "pl": {
+    "value": "Afryka Wschodnia",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ru": {
+    "value": "Восточная Африка",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ar": {
+    "value": "شرق أفريقيا",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "hi": {
+    "value": "पूर्वी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "zh": {
+    "value": "东非",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ja": {
+    "value": "東アフリカ",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ko": {
+    "value": "동부 아프리카",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "vi": {
+    "value": "Đông Phi",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "th": {
+    "value": "แอฟริกาตะวันออก",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "id": {
+    "value": "Afrika Bagian Timur",
+    "source": "CLDR 46.0.0 territory 014"
+   }
+  },
+  "variants.region.015": {
+   "en": {
+    "value": "Northern Africa",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "es": {
+    "value": "África septentrional",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "fr": {
+    "value": "Afrique septentrionale",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "de": {
+    "value": "Nordafrika",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "it": {
+    "value": "Nordafrica",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "pt": {
+    "value": "África Setentrional",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "pl": {
+    "value": "Afryka Północna",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ru": {
+    "value": "Северная Африка",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ar": {
+    "value": "شمال أفريقيا",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "hi": {
+    "value": "उत्तरी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "zh": {
+    "value": "北非",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ja": {
+    "value": "北アフリカ",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ko": {
+    "value": "북부 아프리카",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "vi": {
+    "value": "Bắc Phi",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "th": {
+    "value": "แอฟริกาเหนือ",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "id": {
+    "value": "Afrika Bagian Utara",
+    "source": "CLDR 46.0.0 territory 015"
+   }
+  },
+  "variants.region.018": {
+   "en": {
+    "value": "Southern Africa",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "es": {
+    "value": "África meridional",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "fr": {
+    "value": "Afrique australe",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "de": {
+    "value": "Südliches Afrika",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "it": {
+    "value": "Africa del Sud",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "pt": {
+    "value": "África Meridional",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "pl": {
+    "value": "Afryka Południowa",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ru": {
+    "value": "Южная Африка",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ar": {
+    "value": "أفريقيا الجنوبية",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "hi": {
+    "value": "दक्षिणी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "zh": {
+    "value": "南部非洲",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ja": {
+    "value": "南部アフリカ",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ko": {
+    "value": "남부 아프리카",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "vi": {
+    "value": "Miền Nam Châu Phi",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "th": {
+    "value": "แอฟริกาตอนใต้",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "id": {
+    "value": "Afrika Bagian Selatan",
+    "source": "CLDR 46.0.0 territory 018"
+   }
+  },
+  "variants.region.030": {
+   "en": {
+    "value": "Eastern Asia",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "es": {
+    "value": "Asia oriental",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "fr": {
+    "value": "Asie de l’Est",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "de": {
+    "value": "Ostasien",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "it": {
+    "value": "Asia orientale",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "pt": {
+    "value": "Ásia Oriental",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "pl": {
+    "value": "Azja Wschodnia",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ru": {
+    "value": "Восточная Азия",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ar": {
+    "value": "شرق آسيا",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "hi": {
+    "value": "पूर्वी एशिया",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "zh": {
+    "value": "东亚",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ja": {
+    "value": "東アジア",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ko": {
+    "value": "동아시아",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "vi": {
+    "value": "Đông Á",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "th": {
+    "value": "เอเชียตะวันออก",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "id": {
+    "value": "Asia Bagian Timur",
+    "source": "CLDR 46.0.0 territory 030"
+   }
+  },
+  "variants.region.034": {
+   "en": {
+    "value": "Southern Asia",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "es": {
+    "value": "Asia meridional",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "fr": {
+    "value": "Asie du Sud",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "de": {
+    "value": "Südasien",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "it": {
+    "value": "Asia del Sud",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "pt": {
+    "value": "Ásia Meridional",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "pl": {
+    "value": "Azja Południowa",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ru": {
+    "value": "Южная Азия",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ar": {
+    "value": "جنوب آسيا",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "hi": {
+    "value": "दक्षिणी एशिया",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "zh": {
+    "value": "南亚",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ja": {
+    "value": "南アジア",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ko": {
+    "value": "남아시아",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "vi": {
+    "value": "Nam Á",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "th": {
+    "value": "เอเชียใต้",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "id": {
+    "value": "Asia Bagian Selatan",
+    "source": "CLDR 46.0.0 territory 034"
+   }
+  },
+  "variants.region.035": {
+   "en": {
+    "value": "Southeast Asia",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "es": {
+    "value": "Sudeste asiático",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "fr": {
+    "value": "Asie du Sud-Est",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "de": {
+    "value": "Südostasien",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "it": {
+    "value": "Sud-est asiatico",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "pt": {
+    "value": "Sudeste Asiático",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "pl": {
+    "value": "Azja Południowo-Wschodnia",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ru": {
+    "value": "Юго-Восточная Азия",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ar": {
+    "value": "جنوب شرق آسيا",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "hi": {
+    "value": "दक्षिण-पूर्व एशिया",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "zh": {
+    "value": "东南亚",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ja": {
+    "value": "東南アジア",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ko": {
+    "value": "동남아시아",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "vi": {
+    "value": "Đông Nam Á",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "th": {
+    "value": "เอเชียตะวันออกเฉียงใต้",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "id": {
+    "value": "Asia Tenggara",
+    "source": "CLDR 46.0.0 territory 035"
+   }
+  },
+  "card-terms.house.rome": {
+   "en": {
+    "value": "Rome",
+    "source": "Wikidata Q220 label"
+   },
+   "es": {
+    "value": "Roma",
+    "source": "Wikidata Q220 label"
+   },
+   "fr": {
+    "value": "Rome",
+    "source": "Wikidata Q220 label"
+   },
+   "de": {
+    "value": "Rom",
+    "source": "Wikidata Q220 label"
+   },
+   "it": {
+    "value": "Roma",
+    "source": "Wikidata Q220 label"
+   },
+   "pt": {
+    "value": "Roma",
+    "source": "Wikidata Q220 label (pt-br)"
+   },
+   "pl": {
+    "value": "Rzym",
+    "source": "Wikidata Q220 label"
+   },
+   "ru": {
+    "value": "Рим",
+    "source": "Wikidata Q220 label"
+   },
+   "ar": {
+    "value": "روما",
+    "source": "Wikidata Q220 label"
+   },
+   "hi": {
+    "value": "रोम",
+    "source": "Wikidata Q220 label"
+   },
+   "zh": {
+    "value": "罗马",
+    "source": "Wikidata Q220 label (zh-cn)"
+   },
+   "ja": {
+    "value": "ローマ",
+    "source": "Wikidata Q220 label"
+   },
+   "ko": {
+    "value": "로마",
+    "source": "Wikidata Q220 label"
+   },
+   "vi": {
+    "value": "Roma",
+    "source": "Wikidata Q220 label"
+   },
+   "th": {
+    "value": "โรม",
+    "source": "Wikidata Q220 label"
+   },
+   "id": {
+    "value": "Roma",
+    "source": "Wikidata Q220 label"
+   }
+  },
+  "card-terms.house.illyria": {
+   "en": {
+    "value": "Illyria",
+    "source": "Wikidata Q32047 label"
+   },
+   "es": {
+    "value": "Iliria",
+    "source": "Wikidata Q32047 label"
+   },
+   "fr": {
+    "value": "Illyrie",
+    "source": "Wikidata Q32047 label"
+   },
+   "de": {
+    "value": "Illyrien",
+    "source": "Wikidata Q32047 label"
+   },
+   "it": {
+    "value": "Illiria",
+    "source": "Wikidata Q32047 label"
+   },
+   "pt": {
+    "value": "Ilíria",
+    "source": "Wikidata Q32047 label (pt)"
+   },
+   "pl": {
+    "value": "Iliria",
+    "source": "Wikidata Q32047 label"
+   },
+   "ru": {
+    "value": "Иллирия",
+    "source": "Wikidata Q32047 label"
+   },
+   "ar": {
+    "value": "إيلورية",
+    "source": "Wikidata Q32047 label"
+   },
+   "hi": {
+    "value": "इल्लुरिया",
+    "source": "Wikidata Q32047 label"
+   },
+   "zh": {
+    "value": "伊利里亚",
+    "source": "Wikidata Q32047 label (zh)"
+   },
+   "ja": {
+    "value": "イリュリア",
+    "source": "Wikidata Q32047 label"
+   },
+   "ko": {
+    "value": "일리리아",
+    "source": "Wikidata Q32047 label"
+   },
+   "vi": {
+    "value": "Illyria",
+    "source": "NOT FROM A SOURCE: no Wikidata label in vi; the name is kept as in English"
+   },
+   "th": {
+    "value": "อิลิเรีย",
+    "source": "Wikidata Q32047 label"
+   },
+   "id": {
+    "value": "Iliria",
+    "source": "Wikidata Q32047 label"
+   }
+  },
+  "card-terms.house.the-tempest": {
+   "en": {
+    "value": "The Tempest",
+    "source": "Wikidata Q86440 label"
+   },
+   "es": {
+    "value": "La tempestad",
+    "source": "Wikidata Q86440 label"
+   },
+   "fr": {
+    "value": "La Tempête",
+    "source": "Wikidata Q86440 label"
+   },
+   "de": {
+    "value": "Der Sturm",
+    "source": "Wikidata Q86440 label"
+   },
+   "it": {
+    "value": "La tempesta",
+    "source": "Wikidata Q86440 label"
+   },
+   "pt": {
+    "value": "A Tempestade",
+    "source": "Wikidata Q86440 label (pt)"
+   },
+   "pl": {
+    "value": "Burza",
+    "source": "Wikidata Q86440 label"
+   },
+   "ru": {
+    "value": "Буря",
+    "source": "Wikidata Q86440 label"
+   },
+   "ar": {
+    "value": "العاصفة",
+    "source": "Wikidata Q86440 label"
+   },
+   "hi": {
+    "value": "द टेम्पेस्ट",
+    "source": "NOT FROM A SOURCE: the Wikidata hi label is the lower-case English \"the tempest\"; transliterated by hand"
+   },
+   "zh": {
+    "value": "暴风雨",
+    "source": "Wikidata Q86440 label (zh-cn)"
+   },
+   "ja": {
+    "value": "テンペスト",
+    "source": "Wikidata Q86440 label"
+   },
+   "ko": {
+    "value": "템페스트",
+    "source": "Wikidata Q86440 label"
+   },
+   "vi": {
+    "value": "Giông tố",
+    "source": "Wikidata Q86440 label"
+   },
+   "th": {
+    "value": "พายุพิโรธ",
+    "source": "Wikidata Q86440 label"
+   },
+   "id": {
+    "value": "The Tempest",
+    "source": "Wikidata Q86440 label"
+   }
+  },
+  "card-terms.house.lake-district": {
+   "en": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "es": {
+    "value": "Distrito de los Lagos",
+    "source": "Wikidata Q211778 label"
+   },
+   "fr": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "de": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "it": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "pt": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label (pt)"
+   },
+   "pl": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "ru": {
+    "value": "Лейк-Дистрикт",
+    "source": "Wikidata Q211778 label"
+   },
+   "ar": {
+    "value": "ليك ديستريكت",
+    "source": "Wikidata Q211778 label"
+   },
+   "hi": {
+    "value": "लेक डिस्ट्रिक्ट",
+    "source": "Wikidata Q211778 label"
+   },
+   "zh": {
+    "value": "湖区",
+    "source": "Wikidata Q211778 label (zh-cn)"
+   },
+   "ja": {
+    "value": "湖水地方",
+    "source": "Wikidata Q211778 label"
+   },
+   "ko": {
+    "value": "호수지방",
+    "source": "Wikidata Q211778 label"
+   },
+   "vi": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   },
+   "th": {
+    "value": "เลกดิสตริกต์",
+    "source": "Wikidata Q211778 label"
+   },
+   "id": {
+    "value": "Lake District",
+    "source": "Wikidata Q211778 label"
+   }
+  },
+  "card-terms.work.romeo-and-juliet": {
+   "en": {
+    "value": "Romeo and Juliet",
+    "source": "Wikidata Q83186 label"
+   },
+   "es": {
+    "value": "Romeo y Julieta",
+    "source": "Wikidata Q83186 label"
+   },
+   "fr": {
+    "value": "Roméo et Juliette",
+    "source": "Wikidata Q83186 label"
+   },
+   "de": {
+    "value": "Romeo und Julia",
+    "source": "Wikidata Q83186 label"
+   },
+   "it": {
+    "value": "Romeo e Giulietta",
+    "source": "Wikidata Q83186 label"
+   },
+   "pt": {
+    "value": "Romeu e Julieta",
+    "source": "Wikidata Q83186 label (pt-br)"
+   },
+   "pl": {
+    "value": "Romeo i Julia",
+    "source": "Wikidata Q83186 label"
+   },
+   "ru": {
+    "value": "Ромео и Джульетта",
+    "source": "Wikidata Q83186 label"
+   },
+   "ar": {
+    "value": "روميو وجولييت",
+    "source": "Wikidata Q83186 label"
+   },
+   "hi": {
+    "value": "रोमियो और जूलियट",
+    "source": "Wikidata Q83186 label"
+   },
+   "zh": {
+    "value": "罗密欧与朱丽叶",
+    "source": "NOT FROM A SOURCE: Wikidata has only a Traditional-script zh label (羅密歐與朱麗葉); written here in Simplified characters by hand"
+   },
+   "ja": {
+    "value": "ロミオとジュリエット",
+    "source": "Wikidata Q83186 label"
+   },
+   "ko": {
+    "value": "로미오와 줄리엣",
+    "source": "Wikidata Q83186 label"
+   },
+   "vi": {
+    "value": "Romeo và Juliet",
+    "source": "Wikidata Q83186 label"
+   },
+   "th": {
+    "value": "โรเมโอและจูเลียต",
+    "source": "Wikidata Q83186 label"
+   },
+   "id": {
+    "value": "Romeo dan Juliet",
+    "source": "Wikidata Q83186 label"
+   }
+  },
+  "card-terms.work.hamlet": {
+   "en": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "es": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "fr": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "de": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "it": {
+    "value": "Amleto",
+    "source": "Wikidata Q41567 label"
+   },
+   "pt": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label (pt)"
+   },
+   "pl": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "ru": {
+    "value": "Гамлет",
+    "source": "Wikidata Q41567 label"
+   },
+   "ar": {
+    "value": "هاملت",
+    "source": "Wikidata Q41567 label"
+   },
+   "hi": {
+    "value": "हैमलेट",
+    "source": "Wikidata Q41567 label"
+   },
+   "zh": {
+    "value": "哈姆雷特",
+    "source": "Wikidata Q41567 label (zh-cn)"
+   },
+   "ja": {
+    "value": "ハムレット",
+    "source": "Wikidata Q41567 label"
+   },
+   "ko": {
+    "value": "햄릿",
+    "source": "Wikidata Q41567 label"
+   },
+   "vi": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   },
+   "th": {
+    "value": "แฮมเลต",
+    "source": "Wikidata Q41567 label"
+   },
+   "id": {
+    "value": "Hamlet",
+    "source": "Wikidata Q41567 label"
+   }
+  },
+  "card-terms.work.as-you-like-it": {
+   "en": {
+    "value": "As You Like It",
+    "source": "Wikidata Q237572 label"
+   },
+   "es": {
+    "value": "Como gustéis",
+    "source": "Wikidata Q237572 label"
+   },
+   "fr": {
+    "value": "Comme il vous plaira",
+    "source": "Wikidata Q237572 label"
+   },
+   "de": {
+    "value": "Wie es euch gefällt",
+    "source": "Wikidata Q237572 label"
+   },
+   "it": {
+    "value": "Come vi piace",
+    "source": "Wikidata Q237572 label"
+   },
+   "pt": {
+    "value": "As You Like It",
+    "source": "Wikidata Q237572 label (pt-br)"
+   },
+   "pl": {
+    "value": "Jak wam się podoba",
+    "source": "Wikidata Q237572 label"
+   },
+   "ru": {
+    "value": "Как вам это понравится",
+    "source": "Wikidata Q237572 label"
+   },
+   "ar": {
+    "value": "كما تشاء",
+    "source": "Wikidata Q237572 label"
+   },
+   "hi": {
+    "value": "ऐज़ यू लाइक इट",
+    "source": "Wikidata Q237572 label"
+   },
+   "zh": {
+    "value": "皆大欢喜",
+    "source": "Wikidata Q237572 label (zh-cn)"
+   },
+   "ja": {
+    "value": "お気に召すまま",
+    "source": "Wikidata Q237572 label"
+   },
+   "ko": {
+    "value": "당신 뜻대로",
+    "source": "Wikidata Q237572 label"
+   },
+   "vi": {
+    "value": "As You Like It",
+    "source": "NOT FROM A SOURCE: no Wikidata label in vi; the original title is kept"
+   },
+   "th": {
+    "value": "As You Like It",
+    "source": "NOT FROM A SOURCE: no Wikidata label in th; the original title is kept"
+   },
+   "id": {
+    "value": "As You Like It",
+    "source": "Wikidata Q237572 label"
+   }
+  },
+  "card-terms.house.olympus": {
+   "en": {
+    "value": "Olympus",
+    "source": "Wikidata Q70054479 label"
+   },
+   "es": {
+    "value": "Olimpo",
+    "source": "Wikidata Q70054479 label"
+   },
+   "fr": {
+    "value": "Olympe",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in fr; derived by hand from the Mount Olympus label (Q80344: \"mont Olympe\")"
+   },
+   "de": {
+    "value": "Olymp",
+    "source": "Wikidata Q70054479 label"
+   },
+   "it": {
+    "value": "Olimpo",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in it; derived by hand from the Mount Olympus label (Q80344: \"Olimpo\")"
+   },
+   "pt": {
+    "value": "Olimpo",
+    "source": "Wikidata Q70054479 label"
+   },
+   "pl": {
+    "value": "Olimp",
+    "source": "Wikidata Q70054479 label"
+   },
+   "ru": {
+    "value": "Олимп",
+    "source": "Wikidata Q70054479 label"
+   },
+   "ar": {
+    "value": "الأوليمب",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in ar; derived by hand from the Mount Olympus label (Q80344: \"جبل أوليمبوس\")"
+   },
+   "hi": {
+    "value": "ओलिंपस",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in hi; derived by hand from the Mount Olympus label (Q80344: \"माउंट ओलिंपस\")"
+   },
+   "zh": {
+    "value": "奥林匹斯",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in zh; derived by hand from the Mount Olympus label (Q80344: \"奥林匹斯山\")"
+   },
+   "ja": {
+    "value": "オリンポス",
+    "source": "Wikidata Q70054479 label"
+   },
+   "ko": {
+    "value": "올림포스",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in ko; derived by hand from the Mount Olympus label (Q80344: \"올림포스산\")"
+   },
+   "vi": {
+    "value": "Olympus",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in vi; derived by hand from the Mount Olympus label (Q80344: \"Núi Ólympos\")"
+   },
+   "th": {
+    "value": "โอลิมปัส",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in th; derived by hand from the Mount Olympus label (Q80344: \"เขาโอลิมปัส\")"
+   },
+   "id": {
+    "value": "Olimpus",
+    "source": "NOT FROM A SOURCE: Wikidata Q70054479 has no usable label in id; derived by hand from the Mount Olympus label (Q80344: \"Gunung Olimpus\")"
+   }
+  }
+ }
+}

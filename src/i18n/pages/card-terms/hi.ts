@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Hindi.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'पात्र',
+  'card-terms.type.relic': 'अवशेष',
+  'card-terms.type.potion': 'काढ़ा',
+  'card-terms.types.character': 'पात्र',
+  'card-terms.types.relic': 'अवशेष',
+  'card-terms.types.potion': 'काढ़े',
+  'card-terms.stat.atk': 'हमला',
+  'card-terms.stat.def': 'बचाव',
+  'card-terms.stat.hp': 'जीवन',
+  'card-terms.house.montague': 'मोंटेग्यू',
+  'card-terms.house.capulet': 'कैपुलेट',
+  'card-terms.house.danish-court': 'डेनमार्क का दरबार',
+  'card-terms.house.forest-of-arden': 'आर्डन का वन',
+  'card-terms.house.verona-court': 'वेरोना का दरबार',
+  'card-terms.house.the-tempest': 'द टेम्पेस्ट', // not from a source: see docs/language/pages-core
+  'card-terms.house.scottish-court': 'स्कॉटलैंड का दरबार',
+  'card-terms.house.illyria': 'इल्लुरिया', // Wikidata Q32047 label
+  'card-terms.house.rome': 'रोम', // Wikidata Q220 label
+  'card-terms.house.legendary': 'पौराणिक',
+  'card-terms.house.relic': 'अवशेष',
+  'card-terms.house.potion': 'काढ़ा',
+  'card-terms.house.lake-district': 'लेक डिस्ट्रिक्ट', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'गॉथिक मंडली',
+  'card-terms.house.olympus': 'ओलिंपस', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'पाताल लोक',
+  'card-terms.element.air': 'वायु',
+  'card-terms.element.alchemy': 'कीमिया',
+  'card-terms.element.ambition': 'महत्वाकांक्षा',
+  'card-terms.element.arcane': 'गूढ़ विद्या',
+  'card-terms.element.authority': 'अधिकार',
+  'card-terms.element.beast': 'पशु',
+  'card-terms.element.beauty': 'सौंदर्य',
+  'card-terms.element.comedy': 'हास्य',
+  'card-terms.element.compassion': 'करुणा',
+  'card-terms.element.creation': 'सृजन',
+  'card-terms.element.cunning': 'चतुराई',
+  'card-terms.element.dark': 'तमस',
+  'card-terms.element.darkness': 'अंधकार',
+  'card-terms.element.death': 'मृत्यु',
+  'card-terms.element.devotion': 'समर्पण',
+  'card-terms.element.disguise': 'भेस',
+  'card-terms.element.duty': 'कर्तव्य',
+  'card-terms.element.earth': 'पृथ्वी',
+  'card-terms.element.enchantment': 'सम्मोहन',
+  'card-terms.element.envy': 'ईर्ष्या',
+  'card-terms.element.fire': 'अग्नि',
+  'card-terms.element.glory': 'गौरव',
+  'card-terms.element.grace': 'लालित्य',
+  'card-terms.element.honor': 'सम्मान',
+  'card-terms.element.illusion': 'भ्रम',
+  'card-terms.element.innocence': 'मासूमियत',
+  'card-terms.element.justice': 'न्याय',
+  'card-terms.element.knowledge': 'ज्ञान',
+  'card-terms.element.light': 'प्रकाश',
+  'card-terms.element.love': 'प्रेम',
+  'card-terms.element.loyalty': 'निष्ठा',
+  'card-terms.element.mischief': 'शरारत',
+  'card-terms.element.moonlight': 'चाँदनी',
+  'card-terms.element.nature': 'प्रकृति',
+  'card-terms.element.ocean': 'महासागर',
+  'card-terms.element.passion': 'जुनून',
+  'card-terms.element.peace': 'शांति',
+  'card-terms.element.petrification': 'पाषाणीकरण',
+  'card-terms.element.poison': 'विष',
+  'card-terms.element.power': 'शक्ति',
+  'card-terms.element.prophecy': 'भविष्यवाणी',
+  'card-terms.element.rebellion': 'विद्रोह',
+  'card-terms.element.rebirth': 'पुनर्जन्म',
+  'card-terms.element.revolution': 'क्रांति',
+  'card-terms.element.rhetoric': 'वाक्पटुता',
+  'card-terms.element.shadow': 'छाया',
+  'card-terms.element.sorrow': 'शोक',
+  'card-terms.element.speed': 'गति',
+  'card-terms.element.storm': 'तूफ़ान',
+  'card-terms.element.thunder': 'गर्जन',
+  'card-terms.element.transformation': 'रूपांतरण',
+  'card-terms.element.trickster': 'छलिया',
+  'card-terms.element.vanity': 'अहंकार',
+  'card-terms.element.vision': 'दिव्य दृष्टि',
+  'card-terms.element.water': 'जल',
+  'card-terms.element.wind': 'पवन',
+  'card-terms.element.wisdom': 'बुद्धिमत्ता',
+  'card-terms.work.romeo-and-juliet': 'रोमियो और जूलियट', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'हैमलेट', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'ऐज़ यू लाइक इट', // Wikidata Q237572 label
+};
+
+export default messages;

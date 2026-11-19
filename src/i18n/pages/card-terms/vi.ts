@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Vietnamese.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Nhân vật',
+  'card-terms.type.relic': 'Bảo vật',
+  'card-terms.type.potion': 'Thuốc phép',
+  'card-terms.types.character': 'Nhân vật',
+  'card-terms.types.relic': 'Bảo vật',
+  'card-terms.types.potion': 'Thuốc phép',
+  'card-terms.stat.atk': 'Công',
+  'card-terms.stat.def': 'Thủ',
+  'card-terms.stat.hp': 'Máu',
+  'card-terms.house.montague': 'Montague',
+  'card-terms.house.capulet': 'Capulet',
+  'card-terms.house.danish-court': 'Triều đình Đan Mạch',
+  'card-terms.house.forest-of-arden': 'Rừng Arden',
+  'card-terms.house.verona-court': 'Triều đình Verona',
+  'card-terms.house.the-tempest': 'Giông tố', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Triều đình Scotland',
+  'card-terms.house.illyria': 'Illyria', // not from a source: see docs/language/pages-core
+  'card-terms.house.rome': 'Roma', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Huyền thoại',
+  'card-terms.house.relic': 'Bảo vật',
+  'card-terms.house.potion': 'Thuốc phép',
+  'card-terms.house.lake-district': 'Lake District', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Nhóm Gothic',
+  'card-terms.house.olympus': 'Olympus', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'Âm phủ',
+  'card-terms.element.air': 'Khí',
+  'card-terms.element.alchemy': 'Giả kim',
+  'card-terms.element.ambition': 'Tham vọng',
+  'card-terms.element.arcane': 'Huyền thuật',
+  'card-terms.element.authority': 'Quyền uy',
+  'card-terms.element.beast': 'Mãnh thú',
+  'card-terms.element.beauty': 'Sắc đẹp',
+  'card-terms.element.comedy': 'Hài kịch',
+  'card-terms.element.compassion': 'Lòng trắc ẩn',
+  'card-terms.element.creation': 'Sáng tạo',
+  'card-terms.element.cunning': 'Mưu mẹo',
+  'card-terms.element.dark': 'U tối',
+  'card-terms.element.darkness': 'Bóng tối',
+  'card-terms.element.death': 'Cái chết',
+  'card-terms.element.devotion': 'Tận tuỵ',
+  'card-terms.element.disguise': 'Cải trang',
+  'card-terms.element.duty': 'Bổn phận',
+  'card-terms.element.earth': 'Đất',
+  'card-terms.element.enchantment': 'Bùa mê',
+  'card-terms.element.envy': 'Đố kỵ',
+  'card-terms.element.fire': 'Lửa',
+  'card-terms.element.glory': 'Vinh quang',
+  'card-terms.element.grace': 'Duyên dáng',
+  'card-terms.element.honor': 'Danh dự',
+  'card-terms.element.illusion': 'Ảo ảnh',
+  'card-terms.element.innocence': 'Ngây thơ',
+  'card-terms.element.justice': 'Công lý',
+  'card-terms.element.knowledge': 'Tri thức',
+  'card-terms.element.light': 'Ánh sáng',
+  'card-terms.element.love': 'Tình yêu',
+  'card-terms.element.loyalty': 'Trung thành',
+  'card-terms.element.mischief': 'Tinh nghịch',
+  'card-terms.element.moonlight': 'Ánh trăng',
+  'card-terms.element.nature': 'Thiên nhiên',
+  'card-terms.element.ocean': 'Đại dương',
+  'card-terms.element.passion': 'Đam mê',
+  'card-terms.element.peace': 'Hoà bình',
+  'card-terms.element.petrification': 'Hoá đá',
+  'card-terms.element.poison': 'Độc',
+  'card-terms.element.power': 'Quyền lực',
+  'card-terms.element.prophecy': 'Tiên tri',
+  'card-terms.element.rebellion': 'Nổi loạn',
+  'card-terms.element.rebirth': 'Tái sinh',
+  'card-terms.element.revolution': 'Cách mạng',
+  'card-terms.element.rhetoric': 'Hùng biện',
+  'card-terms.element.shadow': 'Bóng',
+  'card-terms.element.sorrow': 'Sầu muộn',
+  'card-terms.element.speed': 'Tốc độ',
+  'card-terms.element.storm': 'Bão',
+  'card-terms.element.thunder': 'Sấm',
+  'card-terms.element.transformation': 'Biến hình',
+  'card-terms.element.trickster': 'Kẻ tinh quái',
+  'card-terms.element.vanity': 'Phù phiếm',
+  'card-terms.element.vision': 'Linh ảnh',
+  'card-terms.element.water': 'Nước',
+  'card-terms.element.wind': 'Gió',
+  'card-terms.element.wisdom': 'Trí tuệ',
+  'card-terms.work.romeo-and-juliet': 'Romeo và Juliet', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Hamlet', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'As You Like It', // not from a source: see docs/language/pages-core
+};
+
+export default messages;

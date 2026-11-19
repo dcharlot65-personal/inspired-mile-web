@@ -177,22 +177,64 @@ export function fillSlots(el: HTMLElement, template: string): void {
   el.replaceChildren(...slotPieces(template).map((p) => ('slot' in p ? (slots.get(p.slot) ?? document.createTextNode(`{${p.slot}}`)) : document.createTextNode(p.text))));
 }
 
-/** Fill every element under `root` that carries a data-i18n key. */
+/**
+ * A page's own messages. Each page (or data file) keeps its strings apart from the core
+ * locale files, in ./pages/<area>/<locale>.ts, and asks for them when it needs them:
+ *
+ *   await loadArea('collection')    then t('collection.title') as usual
+ *
+ * The area's English and its text in `l` are merged into that locale's messages, so t(),
+ * has() and applyTranslations() need no change. Ask again after the language changes
+ * (onLocaleChange): a language's areas are fetched only when that language is in use.
+ */
+const AREA_LOADERS = import.meta.glob<{ default: Messages }>('./pages/*/*.ts');
+const areasLoaded = new Map<string, Promise<void>>();
+
+export function loadArea(name: string, l: Locale = current): Promise<void> {
+  const id = `${l}/${name}`;
+  let pending = areasLoaded.get(id);
+  if (!pending) {
+    pending = (async () => {
+      const target = await loadMessages(l);
+      // English first, so a key the language lacks (or a file that will not load) still reads as text.
+      for (const code of l === 'en' ? ['en'] : ['en', l]) {
+        const load = AREA_LOADERS[`./pages/${name}/${code}.ts`];
+        if (!load) {
+          if (code === 'en') console.error(`[i18n] no such area: "${name}"`);
+          continue;
+        }
+        try {
+          Object.assign(target, (await load()).default);
+        } catch (err) {
+          console.error(`[i18n] could not load area "${name}" in "${code}"`, err);
+          areasLoaded.delete(id);
+        }
+      }
+    })();
+    areasLoaded.set(id, pending);
+  }
+  return pending;
+}
+
+/**
+ * Fill every element under `root` that carries a data-i18n key. A key nobody has yet (a page
+ * area still on its way) is left alone: the markup keeps its own text rather than show the key.
+ */
 export function applyTranslations(root: ParentNode = document): void {
   root.querySelectorAll<HTMLElement>('[data-i18n-slots]').forEach((el) => {
-    fillSlots(el, t(el.dataset.i18nSlots!));
+    if (has(el.dataset.i18nSlots!)) fillSlots(el, t(el.dataset.i18nSlots!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-    el.textContent = t(el.dataset.i18n!);
+    if (has(el.dataset.i18n!)) el.textContent = t(el.dataset.i18n!);
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-placeholder]').forEach((el) => {
-    el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
+    if (has(el.dataset.i18nPlaceholder!)) el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-title]').forEach((el) => {
-    el.setAttribute('title', t(el.dataset.i18nTitle!));
+    if (has(el.dataset.i18nTitle!)) el.setAttribute('title', t(el.dataset.i18nTitle!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-aria-label]').forEach((el) => {
-    el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
+    if (has(el.dataset.i18nAriaLabel!)) el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
   });
 }
 

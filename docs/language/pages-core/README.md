@@ -1,0 +1,251 @@
+# The first pages in sixteen languages: where the text came from and how it was checked
+
+Pages: home, about, collection (with the deck builder and the card detail view), profile and
+world map, and the data they show (cities and their abilities, what each card does, deck rules,
+achievements, the words printed on every card). Branch `lang/pages-core`, 2026-11-16.
+
+Languages: en es fr de it pt pl ru ar hi zh ja ko vi th id. Portuguese is Brazilian and Chinese
+is Simplified, as in the core locale files.
+
+The owner's direction: "language must be perfect and there are known solutions for this
+globally. language doesn't always need a generative model. there are deterministic tools and
+other generative tools as well." So a name or a rule that a recognised source can give was taken
+from that source, and what a language model wrote was checked by tools that did not write it.
+RESULTS.md, beside this file, says what those tools found.
+
+## Where each kind of text comes from
+
+| Text | Source | Kept in |
+|---|---|---|
+| Numbers, percentages, dates, month names, lists | The browser's `Intl` (Unicode CLDR), at run time: `num`, `percent`, `day`, `monthOfYear`, `list` in `src/i18n/pages/runtime.ts`. No string of ours. | nowhere |
+| Quotation marks around a card's line | CLDR 49 `delimiters.json` (quotationStart, quotationEnd); French adds its no-break spaces inside « ». `quoted()` in `src/i18n/pages/runtime.ts`. | `cldr-quotes.json` |
+| Regions of the world ("Western Africa") | CLDR 46 territory names by UN M.49 code (cldr-localenames-full 46.0.0), kept in the `variants` area. Not asked of `Intl.DisplayNames` at run time: Chromium's trimmed ICU data answers "011" for Western Africa (seen in the browser tests, 2026-11-16). English changed with it: "West Africa" is now "Western Africa", "South Asia" "Southern Asia", as CLDR has them. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
+| City names, 16 of 20 | CLDR 46 `exemplarCity` (cldr-dates-full 46.0.0, timeZoneNames), where the language lists one; otherwise the Wikidata label. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
+| City names: Brooklyn, Mumbai, Osaka, Kingston | Wikidata labels (CLDR has no time zone named for them). | `variants/<lang>.ts`, `wikidata-labels.json` |
+| "Eurasia"; the play titles on the home page; the houses Rome, Illyria, The Tempest, Lake District; Olympus where Wikidata has it | Wikidata labels. | `variants`, `card-terms`, `wikidata-labels.json` |
+| The game's own terms (verse, round, deck, relic, potion, craft, ink…) | The core locale files `src/i18n/locales/*.ts`, word for word. | `terminology` below |
+| Everything else: 378 strings a language | Written by a language model (Claude), then checked as RESULTS.md describes. **Not reviewed by a native speaker.** | `src/i18n/pages/<area>/<lang>.ts` |
+
+`sourced-names.json` lists every value taken from a source, per language, with the source it
+came from. `src/i18n/pages.test.ts` fails if a module and that record disagree, so a name cannot
+be "corrected" from memory without the record being changed too, and (since 2026-11-17) if the
+record disagrees with the fetched file it cites (`wikidata-labels.json`, `cldr-exemplar-cities.json`),
+so a value cannot be recorded as a source's when it is not. That second test found one: Vietnamese
+Eurasia ships "Lục địa Á-Âu", recorded as the Wikidata label, which is "lục địa Á-Âu". The record now
+says the first letter was capitalised, as the CLDR Vietnamese region names beside it are (Châu Á,
+Châu Âu); that is the only change made to a sourced value.
+
+### Licences and dates
+
+- Unicode CLDR 46.0.0, Unicode License v3. Fetched 2026-11-16 from
+  `https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json` and
+  `…/cldr-localenames-full@46.0.0/main/<locale>/territories.json`
+  (`node scripts/pages-lang/fetch-cldr-cities.mjs`). Number, date and list formats are not
+  fetched: they are whatever CLDR the player's browser ships.
+- Unicode CLDR 49.0.0, Unicode License v3. Quotation marks fetched 2026-11-16 from
+  `https://raw.githubusercontent.com/unicode-org/cldr-json/49.0.0/cldr-json/cldr-misc-full/main/<lang>/delimiters.json`
+  (`node scripts/pages-lang/fetch-cldr-quotes.mjs`). The same values as `docs/language/sources/cldr.json`
+  on branch `lang/qa-pipeline`.
+- Unicode CLDR 46.0.0, Unicode License v3. Month context transforms fetched 2026-11-17 from
+  `https://cdn.jsdelivr.net/npm/cldr-misc-full@46.0.0/main/<locale>/contextTransforms.json`
+  (`cldr-context-transforms.json`; ar, hi, zh, ja, ko and th have no such file in CLDR 46).
+- Wikidata, CC0 1.0. Labels fetched 2026-11-16 with `wbgetentities` for the item ids recorded in
+  `wikidata-labels.json`. For Chinese the `zh-cn` label is used, then `zh-hans`, then `zh`; for
+  Portuguese `pt-br`, then `pt`. The file says which was used for each item.
+
+### Names that are NOT from a source
+
+Fifteen values, marked `NOT FROM A SOURCE` in `sourced-names.json`:
+
+- Olympus (the house) in fr it ar hi zh ko vi th id: Wikidata's item for the mythological
+  Olympus (Q70054479) has no label in those languages; written by hand from the label of Mount
+  Olympus (Q80344).
+- The Tempest in Hindi: Wikidata's Hindi label is the lower-case English "the tempest";
+  transliterated by hand (द टेम्पेस्ट).
+- Romeo and Juliet in Chinese: Wikidata has only the Traditional-script label; written in
+  Simplified characters by hand.
+- As You Like It in Vietnamese and Thai, Illyria in Vietnamese: no Wikidata label; the original
+  name is kept.
+- Mexico City in Polish: CLDR gives "Meksyk (miasto)", a disambiguated form not fit for a card;
+  the Wikidata label "Meksyk" is used.
+
+Where CLDR and Wikidata disagree on a city, CLDR was followed and the Wikidata form is in the
+record beside it (for example Thai Nairobi: CLDR ไนโรเบีย, Wikidata ไนโรบี; Hindi Cairo: CLDR
+कायरो, Wikidata क़ाहिरा). A native reviewer should look at those rows first. Two sources also
+give the formal name of a municipality where a shorter one is usual: Osaka is 大阪市 / 오사카시 /
+"Ōsaka" (vi) in Wikidata, Brooklyn 布鲁克林区 / ブルックリン区.
+
+## Not translated, and why
+
+- **Card names, quotations and scene texts**: another engineer is sourcing names and quotations
+  from published translations. These pages show whatever the card data layer gives
+  (`data-card-text` in the markup). The scene text in the card detail view is English until that
+  layer has it.
+- **Attire and hairstyle options of a city** (160 style names such as "agbada modern",
+  "two block"), shown in a city's detail on the world map and beside a variant. English, marked
+  `lang="en"` and `data-style-name`. No source was found for them and they were not written by
+  hand: many are names of styles, and a wrong rendering of one would read as an error about
+  someone's culture.
+- **Proper names**: people, "Sarasota, FL", "Shakespeare on the Go", festivals, products and
+  models (`data-proper-name` where they stand alone).
+- **`src/lib/inventory.ts`** has no text a player sees.
+- **`src/lib/battle-rules.ts`** still exports its English descriptions for anything that reads
+  them; the pages now use `src/i18n/pages/rules-text.ts`, which says the same in the interface
+  language.
+
+## The document title and description
+
+Every page names itself in the interface language through the layout's `titleKey`, `descriptionKey`
+and `i18nAreas`; a page in the navigation that gives no `titleKey` gets its navigation entry's name.
+The five pages above have their own keys. The battle page and the theatre, which no other language
+branch owns, now use their own introductions as descriptions (core keys `battle.intro`,
+`theatre.intro`) and the theatre's name from the about page (`about.tech.theatre.title`): no new
+strings. Classroom, season and story have no navigation entry and pass no key yet; their branches
+(lang/pages-rest, lang/pages-play) can pass one. Every page of those branches still passes an English
+`description` with no `descriptionKey`, so their descriptions stay English until they do.
+
+## Right-to-left and other scripts: what the code does, not the strings
+
+- A count out of a total in Arabic is written `11/71`, with no spaces round the slash: with spaces the
+  bidirectional algorithm showed the total first (71 / 11).
+- A signed number ("+50", "+2 Wordplay", "+6 craft") is put in a left-to-right isolate on a
+  right-to-left page by `signedLtr()` in `runtime.ts`, at run time; without it Arabic showed 50+.
+- A list of words is joined as the language joins a list (`list()`, Intl's conjunction lists). Intl's
+  "unit" lists, meant for measurements, put nothing between items in Chinese and Japanese.
+- In Japanese and Chinese an h1 or h2 keeps its accented word whole (`global.css`), so a heading too
+  wide for a phone breaks before the accent rather than inside it.
+- Dates on the about page's timeline are not set in the monospace font in Arabic: it has no Arabic,
+  and the fallback pulled the letters apart.
+- Pages in Arabic, Hindi, Thai, Chinese, Japanese and Korean synthesise no italic
+  (`font-synthesis-style: none`, `global.css`): their fonts have no italic face, and the play titles
+  set in italic on the Arabic home page came out as slanted Arabic letters.
+- The battle page names a world card's city as the world map does (`cityName()`, the `variants`
+  area); the integration's "World card: {city}" row had been given the catalog's English key.
+
+## How the strings are built
+
+- A count is written as a label and a number ("Variants unlocked: 2"), never as a number and a
+  noun, so no language has to choose a noun form after a number. Achievement descriptions were
+  reworded the same way ("Battles won: 25"); the number comes from the achievement's `goal`.
+  If the runtime's plural support (branch `lang/qa-pipeline`) is preferred later, these keys are
+  the ones to convert. Until 2026-11-17 two did not hold to this: the Wordsmith and Virtuoso
+  descriptions put the goal before a plural noun in es, fr, de, it, pt and vi ("Consigue {n}
+  puntos"), right for 35 and 45 and wrong for a goal of 1; they now read "Puntuación en una sola
+  ronda: {n} o más". `pages.test.ts` ("a count") now holds the rule: in the ten languages whose
+  nouns agree with a number (en es fr de it pt pl ru ar hi), the word after a count must be one of a
+  closed list of words that do not agree ("or", "to", "of them"…), or the criterion named after a
+  score bonus as the core's `variant.bonus` names it ("+6 craft", a mass noun). In zh, ja, ko, vi, th
+  and id a counter or a bare noun follows and nothing agrees.
+- A month standing alone (the about page's timeline) is capitalised where CLDR 46's
+  contextTransforms say a stand-alone month name is (es, fr, it, pl, ru: "Abr 2025"); Intl itself
+  applies no capitalisation context. The record is `cldr-context-transforms.json`.
+- A sentence is never assembled from pieces across a language boundary. What a card does is
+  shown as separate lines (the device's brief, "Land it to…", the house's line), each a whole
+  message.
+- A message may carry two marks: `<b>…</b>` (the accent) and `<a>…</a>` (a link whose address
+  the page supplies). Everything else in a message is escaped before it reaches the page.
+
+## Terminology
+
+Taken from the core locale files; these pages introduce no second word for any of them.
+
+| | verse | round | deck | card | relic | potion | duel | battle | craft | house |
+|---|---|---|---|---|---|---|---|---|---|---|
+| es | estrofa | ronda | mazo | carta | reliquia | poción | duelo | batalla | oficio | casa |
+| fr | strophe | manche | jeu | carte | relique | potion | duel | combat | métier | maison |
+| de | Strophe | Runde | Deck | Karte | Relikt | Trank | Duell | Kampf | Handwerk | Haus |
+| it | strofa | round | mazzo | carta | reliquia | pozione | duello | battaglia | mestiere | casata |
+| pt | estrofe | rodada | baralho | carta | relíquia | poção | duelo | batalha | ofício | casa |
+| pl | strofa | runda | talia | karta | relikwia | mikstura | pojedynek | bitwa | kunszt | dom |
+| ru | строфа | раунд | колода | карта | реликвия | зелье | дуэль | битва | мастерство | дом |
+| ar | أبيات | جولة | رزمة | بطاقة | أثر | جرعة | مبارزة | نزال | صنعة | بيت |
+| hi | कविता | दौर | डेक | कार्ड | अवशेष | काढ़ा | द्वंद्व | युद्ध | शिल्प | घराना |
+| zh | 诗 | 回合 | 牌组 | 卡牌 | 圣物 | 药水 | 对决 | 对战 | 技艺 | 家族 |
+| ja | 詩 | ラウンド | デッキ | カード | 遺物 | 薬 | 決闘 | バトル | 技巧 | 家門 |
+| ko | 시 | 라운드 | 덱 | 카드 | 유물 | 물약 | 결투 | 배틀 | 기교 | 가문 |
+| vi | bài thơ | hiệp | bộ bài | lá bài | bảo vật | thuốc phép | trận đấu | trận đấu | tay nghề | gia tộc |
+| th | บทกลอน | ยก | สำรับ | การ์ด | ของวิเศษ | ยาวิเศษ | การประชัน | การประชัน | ฝีมือ | ตระกูล |
+| id | syair | ronde | dek | kartu | relik | ramuan | duel | pertarungan | keahlian | wangsa |
+
+Hindi's verse was पद, as main's core files have it; lang/qa-pipeline (fa198bc) changed it to कविता
+from English Wiktionary's "verse" table (पद reads as "post" or "foot"), and these pages followed on
+2026-11-17. Until that branch is in main, main's core Hindi still says पद (see RESULTS.md, "Order of
+merging").
+
+Also from the core files, and held to them by `scripts/pages-lang/mechanical.mjs` (its
+`CORE_TERMS`, each with the key it was read from): trivia (es **el Trivial**, fr/de/it/pt/pl
+Quiz, ru викторина, ar مسابقة, hi प्रश्नोत्तरी, zh 问答, ja クイズ, ko 퀴즈, vi đố vui, th ควิซ, id
+kuis), achievement, world card, collection and multiplayer. A card variant is संस्करण in Hindi:
+the core files use रूप for the verse form (छंद-रूप), so it cannot also mean a variant.
+
+### Labels that another branch also translates
+
+Branch `lang/names-quotes` (the card data layer) carries its own house, element, rarity and
+type labels per language, translated for the game as these are. 126 of the 1,214 labels the
+two have in common differ (`labels-vs-names-quotes.tsv`; for example Polish Montekowie and
+Monteki, Russian Подземный мир and Подземное царство). When both branches are in main, one
+module should own these labels and the other should read them from it; that is not decided
+here.
+
+Things found in the core files while reading them, left as they are (those files belong to the
+quality pass on branch `lang/qa-pipeline`):
+
+- French, German and Russian use one phrase for both "World card" and "World map" (Carte du
+  monde, Weltkarte, Карта мира). On the world map page the badge "World cards" and the title
+  "World map" therefore differ only by number.
+- Vietnamese says both "lá bài" and "thẻ bài" for a card. These pages say "lá bài", and "thẻ bài
+  sưu tầm" only for "collectible cards", as the footer does.
+- The core Vietnamese and Thai have a word for the duel and none of their own for a battle;
+  these pages use the duel's word for both (trận đấu, การประชัน).
+- The duel page writes numbers as plain digits; these pages write them through `Intl`. In the
+  build host's Chromium, `Intl` writes Arabic with Latin digits (71, 43%, 11 / 12 in the
+  screenshots of 2026-11-16), so the two agree there. A browser whose CLDR data defaults Arabic
+  to Arabic-Indic digits (١٢٣) would show those on these pages and not on the duel page; not
+  checked in any other browser.
+
+## Running the checks again
+
+```bash
+RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
+# keys, placeholders, marks, sourced names, every card and city named in every language
+~/kani-logs/remote/rb . -- "$RB npx vitest run src/i18n/pages.test.ts"
+# the five pages in sixteen languages, in a browser
+~/kani-logs/remote/rb . -- "$RB npx playwright test tests/pages-i18n.spec.ts"
+# that the page unit tests can go red (one break at a time, every file restored)
+~/kani-logs/remote/rb . -- "$RB node scripts/mutate-pages.mjs"
+# French and German spacing (light: runs anywhere); --check changes nothing
+python3 scripts/pages-lang/typography.py --check
+# the mechanical rules and glossary of lang/qa-pipeline over these areas (light: runs anywhere)
+QA_SRC=$(mktemp -d); git archive lang/qa-pipeline scripts/lang src/lib/verse/msg.ts docs/language | tar -x -C "$QA_SRC"
+QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs --selftest
+QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs
+# names inside sentences against CLDR and Wikidata (light)
+node scripts/pages-lang/names-in-text.mjs --selftest && node scripts/pages-lang/names-in-text.mjs
+# grammar: on the build host, start the LanguageTool server on a port of your own, then
+#   java -Xmx4g -cp $Q/LanguageTool-6.6/languagetool-server.jar org.languagetool.server.HTTPServer --port <port>
+LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --selftest
+LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --out grammar.json
+# meaning: back-translation with lang/qa-pipeline's own backtranslate.py (MADLAD-400 on the host's
+# GPU, MiniLM and LaBSE scores), one language at a time, then the control. Long: run it detached.
+node scripts/pages-lang/pairs.mjs pairs.json --min-words 1            # every string
+git archive lang/qa-pipeline scripts/lang | tar -x -C <dir on the host>   # QA_SRC=<that dir>/scripts/lang
+QA_SRC=... WORK=<dir> nohup bash scripts/pages-lang/meaning-run.sh pairs.json > <dir>/run.log 2>&1 &
+# after changing strings: only those, merged over the earlier run
+node scripts/pages-lang/pairs.mjs changed.json --min-words 1 --changed <earlier>/bt.json
+BASE=<earlier dir> QA_SRC=... WORK=<new dir> nohup bash scripts/pages-lang/meaning-run.sh changed.json > ... &
+# then, here: which strings drifted (exit 1 on an unread flag, a string not scored, a stale entry)
+node scripts/pages-lang/meaning.mjs --selftest && node scripts/pages-lang/meaning.mjs --bt docs/language/pages-core/bt.json
+# spelling (Hunspell) and back-translation (MADLAD-400), with the tools branch lang/qa-pipeline installed
+Q=/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline
+~/kani-logs/remote/rb . -- "$RB HSPELL=$Q/hunspell/bin/hspell DICT_DIR=$Q/dict node scripts/pages-lang/spell.mjs --selftest"
+~/kani-logs/remote/rb . -- "$RB HSPELL=$Q/hunspell/bin/hspell DICT_DIR=$Q/dict node scripts/pages-lang/spell.mjs --out spell.json"
+# screenshots to look at (start a dev server on a port of your own first)
+node scripts/page-shots.mjs http://localhost:<port> <outDir> ar,de,ja,es
+```
+
+`scripts/pages-lang/` is a stand-in: when the pipeline of `lang/qa-pipeline` is in main, point
+it at `src/i18n/pages/` and delete these scripts. The meaning check already runs that pipeline's
+own `backtranslate.py` (taken from the branch at b7c5459, and at fa198bc for the strings changed on
+2026-11-17; the file is the same at both); `meaning.mjs` applies its rule (MiniLM
+and LaBSE both under 0.6) and adds a check of the back-translation's words (negation, bounds,
+numbers) that the scores were shown to miss (RESULTS.md).

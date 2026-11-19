@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n';
 ---
 
-<BaseLayout title="Battle Arena" description="A duel of verses: play your cards, keep the form, and out-write an AI that runs entirely in your browser.">
+<BaseLayout title="Battle Arena" description={t('battle.intro')} descriptionKey="battle.intro">
 
   <!-- Every visible string on this page is a message key (src/i18n). The English here is what
        shows until the script has run; data-i18n fills it in the visitor's language. -->
@@ -195,7 +196,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { initAudio, isInitialized, playMusic, playRarityFanfare, playSfx, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { getActiveDeck } from '../lib/deck-manager';
     import { holdWakeLock, mountStorageNote, releaseWakeLock } from '../lib/pwa';
-    import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
+    import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility, type WorldCity } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
     import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
     import { JUDGE_POOL, ROUNDS, normalizeSeed, starterDeck, type DuelDeck, type RoundResult, type VerseScore, type WorldCard } from '../lib/verse/duel';
@@ -208,6 +209,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { loadSound } from '../lib/verse/sound';
     import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
+    import { loadArea, type Locale } from '../i18n';
     import type { Msg } from '../lib/verse/msg';
     import { capitalised, cardTitle, loadCardText, withCardName } from '../lib/cards-i18n';
 
@@ -251,6 +253,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let voiceEnabled = false;
     let variantAbility: CityAbility | null = null;
     let equippedCity = '';
+    // A world card's city as the world map names it (CLDR's or Wikidata's name, the 'variants' page
+    // area), the catalog's English key until that has come. The area and the module that reads it are
+    // fetched after start-up, and only for a player who owns a world card, so they change nothing on
+    // the page for anyone else.
+    let cityName = (city: string): string => city;
+    const loadCityNames = (l?: Locale) =>
+      Promise.all([loadArea('variants', l), import('../i18n/pages/terms')]).then(([, terms]) => {
+        cityName = (city) => (city in CITY_CATALOG ? terms.cityName(city as WorldCity) : city);
+      });
     /** What the arena is showing, so a change of language can draw it again. */
     let view: 'setup' | 'round' | 'verdict' | 'finished' = 'setup';
     let matchResult: 'player' | 'opponent' | null = null;
@@ -398,7 +409,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function renderEquipped() {
       const label = $('equipped-variant-label');
       if (variantAbility) {
-        label.textContent = `${equippedCity} (${t('variant.bonus', { n: variantAbility.bonus, criterion: criterionName(variantAbility.axis) })})`;
+        label.textContent = `${cityName(equippedCity)} (${t('variant.bonus', { n: variantAbility.bonus, criterion: criterionName(variantAbility.axis) })})`;
         label.className = 'ms-2 text-xs font-semibold text-gold-400';
       } else {
         label.textContent = t('battle.noneEquipped');
@@ -422,7 +433,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const cfg = CITY_CATALOG[city];
         const b = el('button', 'variant-pick w-full text-start text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between');
         b.dataset.variantId = v.variantId;
-        b.appendChild(el('span', '', said(t('battle.cardInCity', { card: titleOf(card), city }))));
+        b.appendChild(el('span', '', said(t('battle.cardInCity', { card: titleOf(card), city: cityName(city) }))));
         b.appendChild(el('span', 'text-gold-500 text-[10px]', t('variant.bonus', { n: cfg.ability.bonus, criterion: criterionName(cfg.ability.axis) })));
         picker.appendChild(b);
       }
@@ -846,7 +857,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // The world card's bonus is part of the round score, so it has a row of its own.
       if (bonus) {
         row(
-          t('verdict.worldCard', { city: bonus.label }),
+          // The engine carries the catalog's English key; the page shows the city's name in the language (CLDR or Wikidata).
+          t('verdict.worldCard', { city: cityName(bonus.label) }),
           bonus.points ? t('variant.bonus', { n: bonus.points, criterion: criterionName(bonus.criterion) }) : t('verdict.notTaken', { criterion: criterionName(bonus.criterion) }),
           bonus.points ? 'text-gold-300 font-semibold' : 'text-obsidian-400',
         );
@@ -1072,6 +1084,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       fillLanguages();
       loadDeck();
       renderVariantPicker();
+      // The picker is drawn again when the city names arrive; a duel's verdict comes long after.
+      if (getOwnedVariants().length) void loadCityNames().then(renderVariantPicker);
       updateSubmit();
       mountStorageNote($('brain-status'));
       initBrain();
@@ -1086,6 +1100,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         redraw();
         // Card names in the new language arrive a moment later; draw again when they do.
         void loadCardText(l).then((pack) => { if (pack) redraw(); });
+        // Then once more with the city names, when that language's area has come.
+        if (getOwnedVariants().length) void loadCityNames(l).then(() => locale() === l && redraw());
       });
       void loadCardText(locale()).then((pack) => { if (pack) redraw(); });
     });

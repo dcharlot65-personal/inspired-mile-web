@@ -1,0 +1,1366 @@
+{
+ "fetched": "2026-11-16T17:17:30.731Z",
+ "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1490|Q8673|Q18419|Q84|Q1156|Q90|Q174|Q8684|Q3870|Q64|Q1489|Q85|Q3761|Q34647|Q1461|Q406|Q172|Q3130|Q35765|Q34692|Q692|Q83186|Q41567|Q237572|Q86440|Q5401|Q2028|Q220|Q32047|Q70054479|Q2937718|Q1521549|Q4787912|Q60|Q80344|Q211778|Q11401|Q864|Q207302|Q80056&props=labels|descriptions&languages=en|es|fr|de|it|pt|pl|ru|ar|hi|zh|ja|ko|vi|th|id|zh-hans|zh-cn|pt-br|mul&format=json",
+ "entities": {
+  "Tokyo": {
+   "qid": "Q1490",
+   "enDescription": "capital and largest city of Japan",
+   "labels": {
+    "en": "Tokyo",
+    "es": "Tokio",
+    "fr": "Tokyo",
+    "de": "Tokio",
+    "it": "Tokyo",
+    "pt": "Tóquio",
+    "pl": "Tokio",
+    "ru": "Токио",
+    "ar": "طوكيو",
+    "hi": "टोक्यो",
+    "zh": "东京都",
+    "ja": "東京都",
+    "ko": "도쿄도",
+    "vi": "Tokyo",
+    "th": "โตเกียว",
+    "id": "Tokyo"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Tóquio",
+    "pt-br": "Tóquio"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "東京都",
+    "zh-hans": "东京都",
+    "zh-cn": "东京都"
+   }
+  },
+  "Lagos": {
+   "qid": "Q8673",
+   "enDescription": "largest city and former capital of Nigeria",
+   "labels": {
+    "en": "Lagos",
+    "es": "Lagos",
+    "fr": "Lagos",
+    "de": "Lagos",
+    "it": "Lagos",
+    "pt": "Lagos",
+    "pl": "Lagos",
+    "ru": "Лагос",
+    "ar": "لاغوس",
+    "hi": "लागोस",
+    "zh": "拉各斯",
+    "ja": "ラゴス",
+    "ko": "라고스",
+    "vi": "Lagos",
+    "th": "เลกอส",
+    "id": "Lagos"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Lagos",
+    "pt-br": null
+   },
+   "mul": "Lagos",
+   "zhAll": {
+    "zh": "拉各斯",
+    "zh-hans": "拉各斯",
+    "zh-cn": "拉各斯"
+   }
+  },
+  "Brooklyn": {
+   "qid": "Q18419",
+   "enDescription": "borough of New York City, New York, United States",
+   "labels": {
+    "en": "Brooklyn",
+    "es": "Brooklyn",
+    "fr": "Brooklyn",
+    "de": "Brooklyn",
+    "it": "Brooklyn",
+    "pt": "Brooklyn",
+    "pl": "Brooklyn",
+    "ru": "Бруклин",
+    "ar": "بروكلين",
+    "hi": "ब्रुकलीन",
+    "zh": "布鲁克林区",
+    "ja": "ブルックリン区",
+    "ko": "브루클린",
+    "vi": "Brooklyn",
+    "th": "บรุกลิน",
+    "id": "Brooklyn"
+   },
+   "zhFrom": "zh-hans",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Brooklyn",
+    "pt-br": "Brooklyn"
+   },
+   "mul": "Brooklyn",
+   "zhAll": {
+    "zh": "布魯克林區",
+    "zh-hans": "布鲁克林区",
+    "zh-cn": null
+   }
+  },
+  "London": {
+   "qid": "Q84",
+   "enDescription": "capital and largest city of England and the United Kingdom",
+   "labels": {
+    "en": "London",
+    "es": "Londres",
+    "fr": "Londres",
+    "de": "London",
+    "it": "Londra",
+    "pt": "Londres",
+    "pl": "Londyn",
+    "ru": "Лондон",
+    "ar": "لندن",
+    "hi": "लंदन",
+    "zh": "伦敦",
+    "ja": "ロンドン",
+    "ko": "런던",
+    "vi": "Luân Đôn",
+    "th": "ลอนดอน",
+    "id": "London"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Londres",
+    "pt-br": "Londres"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "倫敦",
+    "zh-hans": "伦敦",
+    "zh-cn": "伦敦"
+   }
+  },
+  "Mumbai": {
+   "qid": "Q1156",
+   "enDescription": "capital city in Maharashtra, India",
+   "labels": {
+    "en": "Mumbai",
+    "es": "Bombay",
+    "fr": "Bombay",
+    "de": "Mumbai",
+    "it": "Mumbai",
+    "pt": "Bombaim",
+    "pl": "Mumbaj",
+    "ru": "Мумбаи",
+    "ar": "مومباي",
+    "hi": "मुम्बई",
+    "zh": "孟买",
+    "ja": "ムンバイ",
+    "ko": "뭄바이",
+    "vi": "Mumbai",
+    "th": "มุมไบ",
+    "id": "Mumbai"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Bombaim",
+    "pt-br": "Bombaim"
+   },
+   "mul": "Mumbai",
+   "zhAll": {
+    "zh": "孟买",
+    "zh-hans": "孟买",
+    "zh-cn": "孟买"
+   }
+  },
+  "Paris": {
+   "qid": "Q90",
+   "enDescription": "capital and most populous city in France",
+   "labels": {
+    "en": "Paris",
+    "es": "París",
+    "fr": "Paris",
+    "de": "Paris",
+    "it": "Parigi",
+    "pt": "Paris",
+    "pl": "Paryż",
+    "ru": "Париж",
+    "ar": "باريس",
+    "hi": "पेरिस",
+    "zh": "巴黎",
+    "ja": "パリ",
+    "ko": "파리",
+    "vi": "Paris",
+    "th": "ปารีส",
+    "id": "Paris"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Paris",
+    "pt-br": "Paris"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "巴黎",
+    "zh-hans": "巴黎",
+    "zh-cn": "巴黎"
+   }
+  },
+  "Sao Paulo": {
+   "qid": "Q174",
+   "enDescription": "largest city of Brazil, and capital of the State of São Paulo",
+   "labels": {
+    "en": "São Paulo",
+    "es": "São Paulo",
+    "fr": "São Paulo",
+    "de": "São Paulo",
+    "it": "San Paolo",
+    "pt": "São Paulo",
+    "pl": "São Paulo",
+    "ru": "Сан-Паулу",
+    "ar": "ساو باولو",
+    "hi": "साओ पाउलो",
+    "zh": "圣保罗",
+    "ja": "サンパウロ",
+    "ko": "상파울루",
+    "vi": "São Paulo",
+    "th": "เซาเปาลู",
+    "id": "São Paulo"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "São Paulo",
+    "pt-br": "São Paulo"
+   },
+   "mul": "São Paulo",
+   "zhAll": {
+    "zh": "聖保羅",
+    "zh-hans": "圣保罗",
+    "zh-cn": "圣保罗"
+   }
+  },
+  "Seoul": {
+   "qid": "Q8684",
+   "enDescription": "capital and largest city of South Korea",
+   "labels": {
+    "en": "Seoul",
+    "es": "Seúl",
+    "fr": "Séoul",
+    "de": "Seoul",
+    "it": "Seul",
+    "pt": "Seul",
+    "pl": "Seul",
+    "ru": "Сеул",
+    "ar": "سول",
+    "hi": "सियोल",
+    "zh": "首尔",
+    "ja": "ソウル特別市",
+    "ko": "서울특별시",
+    "vi": "Seoul",
+    "th": "โซล",
+    "id": "Seoul"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Seul",
+    "pt-br": "Seul"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "首爾",
+    "zh-hans": "首尔",
+    "zh-cn": "首尔"
+   }
+  },
+  "Nairobi": {
+   "qid": "Q3870",
+   "enDescription": "capital city of Kenya",
+   "labels": {
+    "en": "Nairobi",
+    "es": "Nairobi",
+    "fr": "Nairobi",
+    "de": "Nairobi",
+    "it": "Nairobi",
+    "pt": "Nairóbi",
+    "pl": "Nairobi",
+    "ru": "Найроби",
+    "ar": "نيروبي",
+    "hi": "नायरोबी",
+    "zh": "内罗毕",
+    "ja": "ナイロビ",
+    "ko": "나이로비",
+    "vi": "Nairobi",
+    "th": "ไนโรบี",
+    "id": "Nairobi"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Nairóbi",
+    "pt-br": "Nairóbi"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "奈洛比",
+    "zh-hans": "内罗毕",
+    "zh-cn": "内罗毕"
+   }
+  },
+  "Berlin": {
+   "qid": "Q64",
+   "enDescription": "federated state, capital and largest city of Germany",
+   "labels": {
+    "en": "Berlin",
+    "es": "Berlín",
+    "fr": "Berlin",
+    "de": "Berlin",
+    "it": "Berlino",
+    "pt": "Berlim",
+    "pl": "Berlin",
+    "ru": "Берлин",
+    "ar": "برلين",
+    "hi": "बर्लिन",
+    "zh": "柏林",
+    "ja": "ベルリン",
+    "ko": "베를린",
+    "vi": "Berlin",
+    "th": "เบอร์ลิน",
+    "id": "Berlin"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Berlim",
+    "pt-br": "Berlim"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "柏林",
+    "zh-hans": "柏林",
+    "zh-cn": "柏林"
+   }
+  },
+  "Mexico City": {
+   "qid": "Q1489",
+   "enDescription": "capital and largest city of Mexico",
+   "labels": {
+    "en": "Mexico City",
+    "es": "Ciudad de México",
+    "fr": "Mexico",
+    "de": "Mexiko-Stadt",
+    "it": "Città del Messico",
+    "pt": "Cidade do México",
+    "pl": "Meksyk",
+    "ru": "Мехико",
+    "ar": "مدينة مكسيكو",
+    "hi": "मेक्सिको नगर",
+    "zh": "墨西哥城",
+    "ja": "メキシコシティ",
+    "ko": "멕시코시티",
+    "vi": "Thành phố México",
+    "th": "เม็กซิโกซิตี",
+    "id": "Kota Meksiko"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Cidade do México",
+    "pt-br": "Cidade do México"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "墨西哥城",
+    "zh-hans": "墨西哥城",
+    "zh-cn": "墨西哥城"
+   }
+  },
+  "Cairo": {
+   "qid": "Q85",
+   "enDescription": "capital city of Egypt",
+   "labels": {
+    "en": "Cairo",
+    "es": "El Cairo",
+    "fr": "Le Caire",
+    "de": "Kairo",
+    "it": "Il Cairo",
+    "pt": "Cairo",
+    "pl": "Kair",
+    "ru": "Каир",
+    "ar": "القاهرة",
+    "hi": "क़ाहिरा",
+    "zh": "开罗",
+    "ja": "カイロ",
+    "ko": "카이로",
+    "vi": "Cairo",
+    "th": "ไคโร",
+    "id": "Kairo"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Cairo",
+    "pt-br": "Cairo"
+   },
+   "mul": "القاهرة",
+   "zhAll": {
+    "zh": "開羅",
+    "zh-hans": "开罗",
+    "zh-cn": "开罗"
+   }
+  },
+  "Accra": {
+   "qid": "Q3761",
+   "enDescription": "capital city of Ghana",
+   "labels": {
+    "en": "Accra",
+    "es": "Acra",
+    "fr": "Accra",
+    "de": "Accra",
+    "it": "Accra",
+    "pt": "Acra",
+    "pl": "Akra",
+    "ru": "Аккра",
+    "ar": "أكرا",
+    "hi": "अक्रा",
+    "zh": "阿克拉",
+    "ja": "アクラ",
+    "ko": "아크라",
+    "vi": "Accra",
+    "th": "อักกรา",
+    "id": "Accra"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Acra",
+    "pt-br": "Acra"
+   },
+   "mul": "Accra",
+   "zhAll": {
+    "zh": "阿克拉",
+    "zh-hans": "阿克拉",
+    "zh-cn": "阿克拉"
+   }
+  },
+  "Johannesburg": {
+   "qid": "Q34647",
+   "enDescription": "largest city in South Africa",
+   "labels": {
+    "en": "Johannesburg",
+    "es": "Johannesburgo",
+    "fr": "Johannesbourg",
+    "de": "Johannesburg",
+    "it": "Johannesburg",
+    "pt": "Joanesburgo",
+    "pl": "Johannesburg",
+    "ru": "Йоханнесбург",
+    "ar": "جوهانسبرغ",
+    "hi": "जोहानिसबर्ग",
+    "zh": "约翰内斯堡",
+    "ja": "ヨハネスブルグ",
+    "ko": "요하네스버그",
+    "vi": "Johannesburg",
+    "th": "โจฮันเนสเบิร์ก",
+    "id": "Johannesburg"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Joanesburgo",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "约翰内斯堡",
+    "zh-hans": "约翰内斯堡",
+    "zh-cn": "约翰内斯堡"
+   }
+  },
+  "Manila": {
+   "qid": "Q1461",
+   "enDescription": "capital city of the Philippines",
+   "labels": {
+    "en": "Manila",
+    "es": "Manila",
+    "fr": "Manille",
+    "de": "Manila",
+    "it": "Manila",
+    "pt": "Manila",
+    "pl": "Manila",
+    "ru": "Манила",
+    "ar": "مانيلا",
+    "hi": "मनीला",
+    "zh": "马尼拉",
+    "ja": "マニラ",
+    "ko": "마닐라",
+    "vi": "Manila",
+    "th": "มะนิลา",
+    "id": "Manila"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Manila",
+    "pt-br": "Manila"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "马尼拉市",
+    "zh-hans": "马尼拉",
+    "zh-cn": "马尼拉"
+   }
+  },
+  "Istanbul": {
+   "qid": "Q406",
+   "enDescription": "largest city in Turkey",
+   "labels": {
+    "en": "Istanbul",
+    "es": "Estambul",
+    "fr": "Istanbul",
+    "de": "Istanbul",
+    "it": "Istanbul",
+    "pt": "Istambul",
+    "pl": "Stambuł",
+    "ru": "Стамбул",
+    "ar": "إسطنبول",
+    "hi": "इस्तांबुल",
+    "zh": "伊斯坦布尔",
+    "ja": "イスタンブール",
+    "ko": "이스탄불",
+    "vi": "Istanbul",
+    "th": "อิสตันบูล",
+    "id": "Istanbul"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Istambul",
+    "pt-br": "Istambul"
+   },
+   "mul": "İstanbul",
+   "zhAll": {
+    "zh": "伊斯坦堡",
+    "zh-hans": "伊斯坦布尔",
+    "zh-cn": "伊斯坦布尔"
+   }
+  },
+  "Toronto": {
+   "qid": "Q172",
+   "enDescription": "capital and largest city of the province of Ontario, Canada",
+   "labels": {
+    "en": "Toronto",
+    "es": "Toronto",
+    "fr": "Toronto",
+    "de": "Toronto",
+    "it": "Toronto",
+    "pt": "Toronto",
+    "pl": "Toronto",
+    "ru": "Торонто",
+    "ar": "تورنتو",
+    "hi": "टोरण्टो",
+    "zh": "多伦多",
+    "ja": "トロント",
+    "ko": "토론토",
+    "vi": "Toronto",
+    "th": "โทรอนโต",
+    "id": "Toronto"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Toronto",
+    "pt-br": "Toronto"
+   },
+   "mul": "Toronto",
+   "zhAll": {
+    "zh": "多伦多",
+    "zh-hans": "多伦多",
+    "zh-cn": "多伦多"
+   }
+  },
+  "Sydney": {
+   "qid": "Q3130",
+   "enDescription": "capital city of New South Wales, Australia",
+   "labels": {
+    "en": "Sydney",
+    "es": "Sídney",
+    "fr": "Sydney",
+    "de": "Sydney",
+    "it": "Sydney",
+    "pt": "Sydney",
+    "pl": "Sydney",
+    "ru": "Сидней",
+    "ar": "سيدني",
+    "hi": "सिडनी",
+    "zh": "悉尼",
+    "ja": "シドニー",
+    "ko": "시드니",
+    "vi": "Sydney",
+    "th": "ซิดนีย์",
+    "id": "Sydney"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Sydney",
+    "pt-br": "Sydney"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "悉尼",
+    "zh-hans": "悉尼",
+    "zh-cn": "悉尼"
+   }
+  },
+  "Osaka": {
+   "qid": "Q35765",
+   "enDescription": "designated city in Osaka Prefecture, Japan",
+   "labels": {
+    "en": "Osaka",
+    "es": "Osaka",
+    "fr": "Osaka",
+    "de": "Osaka",
+    "it": "Osaka",
+    "pt": "Osaka",
+    "pl": "Osaka",
+    "ru": "Осака",
+    "ar": "أوساكا",
+    "hi": "ओसाका",
+    "zh": "大阪市",
+    "ja": "大阪市",
+    "ko": "오사카시",
+    "vi": "Ōsaka",
+    "th": "โอซากะ",
+    "id": "Osaka"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Osaka",
+    "pt-br": "Osaka"
+   },
+   "mul": "Ōsaka-shi",
+   "zhAll": {
+    "zh": "大阪市",
+    "zh-hans": "大阪市",
+    "zh-cn": "大阪市"
+   }
+  },
+  "Kingston": {
+   "qid": "Q34692",
+   "enDescription": "capital of Jamaica",
+   "labels": {
+    "en": "Kingston",
+    "es": "Kingston",
+    "fr": "Kingston",
+    "de": "Kingston",
+    "it": "Kingston",
+    "pt": "Kingston",
+    "pl": "Kingston",
+    "ru": "Кингстон",
+    "ar": "كينغستون",
+    "hi": "किंग्सटन",
+    "zh": "金斯敦",
+    "ja": "キングストン",
+    "ko": "킹스턴",
+    "vi": "Kingston",
+    "th": "คิงส์ตัน",
+    "id": "Kingston"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Kingston",
+    "pt-br": "Kingston"
+   },
+   "mul": "Kingston",
+   "zhAll": {
+    "zh": "金斯敦",
+    "zh-hans": "金斯敦",
+    "zh-cn": "金斯敦"
+   }
+  },
+  "William Shakespeare": {
+   "qid": "Q692",
+   "enDescription": "English playwright and poet (1564–1616)",
+   "labels": {
+    "en": "William Shakespeare",
+    "es": null,
+    "fr": null,
+    "de": null,
+    "it": null,
+    "pt": null,
+    "pl": "William Shakespeare",
+    "ru": "Уильям Шекспир",
+    "ar": "وليم شكسبير",
+    "hi": "विलियम शेक्सपीयर",
+    "zh": "威廉·莎士比亚",
+    "ja": "ウィリアム・シェイクスピア",
+    "ko": "윌리엄 셰익스피어",
+    "vi": "William Shakespeare",
+    "th": "วิลเลียม เชกสเปียร์",
+    "id": null
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": null,
+    "pt-br": null
+   },
+   "mul": "William Shakespeare",
+   "zhAll": {
+    "zh": "威廉·莎士比亚",
+    "zh-hans": "威廉·莎士比亚",
+    "zh-cn": "威廉·莎士比亚"
+   }
+  },
+  "Romeo and Juliet": {
+   "qid": "Q83186",
+   "enDescription": "tragedy by William Shakespeare",
+   "labels": {
+    "en": "Romeo and Juliet",
+    "es": "Romeo y Julieta",
+    "fr": "Roméo et Juliette",
+    "de": "Romeo und Julia",
+    "it": "Romeo e Giulietta",
+    "pt": "Romeu e Julieta",
+    "pl": "Romeo i Julia",
+    "ru": "Ромео и Джульетта",
+    "ar": "روميو وجولييت",
+    "hi": "रोमियो और जूलियट",
+    "zh": "羅密歐與朱麗葉",
+    "ja": "ロミオとジュリエット",
+    "ko": "로미오와 줄리엣",
+    "vi": "Romeo và Juliet",
+    "th": "โรเมโอและจูเลียต",
+    "id": "Romeo dan Juliet"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Romeu e Julieta",
+    "pt-br": "Romeu e Julieta"
+   },
+   "mul": "Romeo and Juliet",
+   "zhAll": {
+    "zh": "羅密歐與朱麗葉",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Hamlet": {
+   "qid": "Q41567",
+   "enDescription": "tragedy by William Shakespeare",
+   "labels": {
+    "en": "Hamlet",
+    "es": "Hamlet",
+    "fr": "Hamlet",
+    "de": "Hamlet",
+    "it": "Amleto",
+    "pt": "Hamlet",
+    "pl": "Hamlet",
+    "ru": "Гамлет",
+    "ar": "هاملت",
+    "hi": "हैमलेट",
+    "zh": "哈姆雷特",
+    "ja": "ハムレット",
+    "ko": "햄릿",
+    "vi": "Hamlet",
+    "th": "แฮมเลต",
+    "id": "Hamlet"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Hamlet",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "哈姆雷特",
+    "zh-hans": null,
+    "zh-cn": "哈姆雷特"
+   }
+  },
+  "As You Like It": {
+   "qid": "Q237572",
+   "enDescription": "pastoral comedy by William Shakespeare",
+   "labels": {
+    "en": "As You Like It",
+    "es": "Como gustéis",
+    "fr": "Comme il vous plaira",
+    "de": "Wie es euch gefällt",
+    "it": "Come vi piace",
+    "pt": "As You Like It",
+    "pl": "Jak wam się podoba",
+    "ru": "Как вам это понравится",
+    "ar": "كما تشاء",
+    "hi": "ऐज़ यू लाइक इट",
+    "zh": "皆大欢喜",
+    "ja": "お気に召すまま",
+    "ko": "당신 뜻대로",
+    "vi": null,
+    "th": null,
+    "id": "As You Like It"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "As You Like It",
+    "pt-br": "As You Like It"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "皆大歡喜",
+    "zh-hans": "皆大欢喜",
+    "zh-cn": "皆大欢喜"
+   }
+  },
+  "The Tempest": {
+   "qid": "Q86440",
+   "enDescription": "play by William Shakespeare",
+   "labels": {
+    "en": "The Tempest",
+    "es": "La tempestad",
+    "fr": "La Tempête",
+    "de": "Der Sturm",
+    "it": "La tempesta",
+    "pt": "A Tempestade",
+    "pl": "Burza",
+    "ru": "Буря",
+    "ar": "العاصفة",
+    "hi": "the tempest",
+    "zh": "暴风雨",
+    "ja": "テンペスト",
+    "ko": "템페스트",
+    "vi": "Giông tố",
+    "th": "พายุพิโรธ",
+    "id": "The Tempest"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "A Tempestade",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "暴風雨",
+    "zh-hans": "暴风雨",
+    "zh-cn": "暴风雨"
+   }
+  },
+  "Eurasia": {
+   "qid": "Q5401",
+   "enDescription": "continental landmass comprising Europe and Asia",
+   "labels": {
+    "en": "Eurasia",
+    "es": "Eurasia",
+    "fr": "Eurasie",
+    "de": "Eurasien",
+    "it": "Eurasia",
+    "pt": "Eurásia",
+    "pl": "Eurazja",
+    "ru": "Евразия",
+    "ar": "أوراسيا",
+    "hi": "यूरेशिया",
+    "zh": "亚欧大陆",
+    "ja": "ユーラシア",
+    "ko": "유라시아",
+    "vi": "lục địa Á-Âu",
+    "th": "ทวีปยูเรเชีย",
+    "id": "Eurasia"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Eurásia",
+    "pt-br": "Eurásia"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "歐亞大陸",
+    "zh-hans": null,
+    "zh-cn": "亚欧大陆"
+   }
+  },
+  "Verona": {
+   "qid": "Q2028",
+   "enDescription": "city in Veneto, northern Italy",
+   "labels": {
+    "en": "Verona",
+    "es": "Verona",
+    "fr": "Vérone",
+    "de": "Verona",
+    "it": "Verona",
+    "pt": "Verona",
+    "pl": "Werona",
+    "ru": "Верона",
+    "ar": "فيرونا",
+    "hi": "वेरोना",
+    "zh": "维罗纳",
+    "ja": "ヴェローナ",
+    "ko": "베로나",
+    "vi": "Verona",
+    "th": "เวโรนา",
+    "id": "Verona"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Verona",
+    "pt-br": "Verona"
+   },
+   "mul": "Verona",
+   "zhAll": {
+    "zh": "维罗纳",
+    "zh-hans": "维罗纳",
+    "zh-cn": "维罗纳"
+   }
+  },
+  "Rome": {
+   "qid": "Q220",
+   "enDescription": "capital and largest city of Italy",
+   "labels": {
+    "en": "Rome",
+    "es": "Roma",
+    "fr": "Rome",
+    "de": "Rom",
+    "it": "Roma",
+    "pt": "Roma",
+    "pl": "Rzym",
+    "ru": "Рим",
+    "ar": "روما",
+    "hi": "रोम",
+    "zh": "罗马",
+    "ja": "ローマ",
+    "ko": "로마",
+    "vi": "Roma",
+    "th": "โรม",
+    "id": "Roma"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Roma",
+    "pt-br": "Roma"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "罗马",
+    "zh-hans": "罗马",
+    "zh-cn": "罗马"
+   }
+  },
+  "Illyria": {
+   "qid": "Q32047",
+   "enDescription": "classical region in the western part of the Balkan Peninsula",
+   "labels": {
+    "en": "Illyria",
+    "es": "Iliria",
+    "fr": "Illyrie",
+    "de": "Illyrien",
+    "it": "Illiria",
+    "pt": "Ilíria",
+    "pl": "Iliria",
+    "ru": "Иллирия",
+    "ar": "إيلورية",
+    "hi": "इल्लुरिया",
+    "zh": "伊利里亚",
+    "ja": "イリュリア",
+    "ko": "일리리아",
+    "vi": null,
+    "th": "อิลิเรีย",
+    "id": "Iliria"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Ilíria",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "伊利里亚",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Olympus (mythology)": {
+   "qid": "Q70054479",
+   "enDescription": "mountain home of the gods in Greek mythology",
+   "labels": {
+    "en": "Olympus",
+    "es": "Olimpo",
+    "fr": "mont Olympe",
+    "de": "Olymp",
+    "it": null,
+    "pt": "Olimpo",
+    "pl": "Olimp",
+    "ru": "Олимп",
+    "ar": null,
+    "hi": null,
+    "zh": null,
+    "ja": "オリンポス",
+    "ko": null,
+    "vi": null,
+    "th": null,
+    "id": null
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Olimpo",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": null,
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Capulets": {
+   "qid": "Q2937718",
+   "enDescription": "family",
+   "labels": {
+    "en": "Capulets",
+    "es": null,
+    "fr": "Capulet",
+    "de": null,
+    "it": "Capuleti",
+    "pt": null,
+    "pl": null,
+    "ru": "Капулетти",
+    "ar": null,
+    "hi": null,
+    "zh": null,
+    "ja": "キャピュレット家",
+    "ko": null,
+    "vi": null,
+    "th": null,
+    "id": null
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": null,
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": null,
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Greek underworld": {
+   "qid": "Q1521549",
+   "enDescription": "location in Greek mythology",
+   "labels": {
+    "en": "Greek underworld",
+    "es": "inframundo griego",
+    "fr": "Enfers grecs",
+    "de": "Unterwelt der griechischen Mythologie",
+    "it": "Ade",
+    "pt": "Mundo inferior",
+    "pl": null,
+    "ru": "подземное царство в древнегреческой мифологии",
+    "ar": "عالم سفلي إغريقي",
+    "hi": null,
+    "zh": "冥界",
+    "ja": "冥界",
+    "ko": null,
+    "vi": null,
+    "th": null,
+    "id": "Dunia bawah"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Mundo inferior",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "冥界",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Arden (forest)": {
+   "qid": "Q4787912",
+   "enDescription": "royal forest in England",
+   "labels": {
+    "en": "Arden",
+    "es": null,
+    "fr": null,
+    "de": null,
+    "it": null,
+    "pt": null,
+    "pl": null,
+    "ru": null,
+    "ar": null,
+    "hi": null,
+    "zh": "雅頓 (瓦立克郡)",
+    "ja": null,
+    "ko": null,
+    "vi": null,
+    "th": null,
+    "id": null
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": null,
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "雅頓 (瓦立克郡)",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "New York City": {
+   "qid": "Q60",
+   "enDescription": "most populous city in the United States",
+   "labels": {
+    "en": "New York City",
+    "es": "Nueva York",
+    "fr": "New York",
+    "de": "New York City",
+    "it": "New York",
+    "pt": "Nova Iorque",
+    "pl": "Nowy Jork",
+    "ru": "Нью-Йорк",
+    "ar": "نيويورك",
+    "hi": "न्यूयॉर्क नगर",
+    "zh": "纽约",
+    "ja": "ニューヨーク",
+    "ko": "뉴욕",
+    "vi": "Thành phố New York",
+    "th": "นครนิวยอร์ก",
+    "id": "Kota New York"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Nova Iorque",
+    "pt-br": "Nova Iorque"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "纽约",
+    "zh-hans": "纽约",
+    "zh-cn": "纽约"
+   }
+  },
+  "Mount Olympus": {
+   "qid": "Q80344",
+   "enDescription": "mountain in Elassona municipality, Greece",
+   "labels": {
+    "en": "Mount Olympus",
+    "es": "Olimpo",
+    "fr": "mont Olympe",
+    "de": "Berg Olymp",
+    "it": "Olimpo",
+    "pt": "Monte Olimpo",
+    "pl": "Olimp",
+    "ru": "Олимп",
+    "ar": "جبل أوليمبوس",
+    "hi": "माउंट ओलिंपस",
+    "zh": "奥林匹斯山",
+    "ja": "オリンポス山",
+    "ko": "올림포스산",
+    "vi": "Núi Ólympos",
+    "th": "เขาโอลิมปัส",
+    "id": "Gunung Olimpus"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Monte Olimpo",
+    "pt-br": "Monte Olimpo"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "奥林匹斯山",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Lake District": {
+   "qid": "Q211778",
+   "enDescription": "mountainous region in North West England, UK",
+   "labels": {
+    "en": "Lake District",
+    "es": "Distrito de los Lagos",
+    "fr": "Lake District",
+    "de": "Lake District",
+    "it": "Lake District",
+    "pt": "Lake District",
+    "pl": "Lake District",
+    "ru": "Лейк-Дистрикт",
+    "ar": "ليك ديستريكت",
+    "hi": "लेक डिस्ट्रिक्ट",
+    "zh": "湖区",
+    "ja": "湖水地方",
+    "ko": "호수지방",
+    "vi": "Lake District",
+    "th": "เลกดิสตริกต์",
+    "id": "Lake District"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "Lake District",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "湖区",
+    "zh-hans": "湖区",
+    "zh-cn": "湖区"
+   }
+  },
+  "hip hop": {
+   "qid": "Q11401",
+   "enDescription": "rhythmic music accompanied by rhyming speech",
+   "labels": {
+    "en": "hip-hop",
+    "es": "hip-hop",
+    "fr": "hip-hop",
+    "de": "Hip-Hop",
+    "it": "hip hop",
+    "pt": "hip-hop",
+    "pl": "hip-hop",
+    "ru": "хип-хоп",
+    "ar": "هيب هوب",
+    "hi": "हिप हॉप संगीत",
+    "zh": "嘻哈音樂",
+    "ja": "ヒップホップ・ミュージック",
+    "ko": "힙합 음악",
+    "vi": "nhạc hip hop",
+    "th": "ฮิปฮอป",
+    "id": "hip hop"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "hip-hop",
+    "pt-br": "hip-hop"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "嘻哈音樂",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  },
+  "Pokemon": {
+   "qid": "Q864",
+   "enDescription": "Japanese media franchise",
+   "labels": {
+    "en": "Pokémon",
+    "es": "Pokémon",
+    "fr": "Pokémon",
+    "de": "Pokémon-Franchise",
+    "it": "Pokémon",
+    "pt": "Pokémon",
+    "pl": "Pokémon",
+    "ru": "Покемон",
+    "ar": "بوكيمون",
+    "hi": "पॉकेमॉन",
+    "zh": "宝可梦系列",
+    "ja": "ポケットモンスター",
+    "ko": "포켓몬스터",
+    "vi": "Pokémon",
+    "th": "โปเกมอน",
+    "id": "Pokémon"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Pokémon",
+    "pt-br": "Pokémon"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "寶可夢系列",
+    "zh-hans": "精灵宝可梦",
+    "zh-cn": "宝可梦系列"
+   }
+  },
+  "Magic: The Gathering": {
+   "qid": "Q207302",
+   "enDescription": "1993 collectible card game",
+   "labels": {
+    "en": "Magic: The Gathering",
+    "es": "Magic: El encuentro",
+    "fr": "Magic : L'Assemblée",
+    "de": "Magic: The Gathering",
+    "it": "Magic: l'Adunanza",
+    "pt": "Magic: The Gathering",
+    "pl": "Magic: The Gathering",
+    "ru": "Magic: The Gathering",
+    "ar": "ماجيك: ذا غاثرينغ",
+    "hi": null,
+    "zh": "万智牌",
+    "ja": "マジック:ザ・ギャザリング",
+    "ko": "매직 더 개더링",
+    "vi": "Magic: The Gathering",
+    "th": "เมจิกเดอะแกเธอริง",
+    "id": "Magic: The Gathering"
+   },
+   "zhFrom": "zh-cn",
+   "ptFrom": "pt-br",
+   "ptAll": {
+    "pt": "Magic: The Gathering",
+    "pt-br": "Magic: The Gathering"
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "万智牌",
+    "zh-hans": "万智牌",
+    "zh-cn": "万智牌"
+   }
+  },
+  "sonnet": {
+   "qid": "Q80056",
+   "enDescription": "form of poetry with fourteen lines and strict rhyming structure",
+   "labels": {
+    "en": "sonnet",
+    "es": "soneto",
+    "fr": "sonnet",
+    "de": "Sonett",
+    "it": "sonetto",
+    "pt": "soneto",
+    "pl": "sonet",
+    "ru": "сонет",
+    "ar": "سونيتة",
+    "hi": "सॉनेट",
+    "zh": "十四行诗",
+    "ja": "ソネット",
+    "ko": "소네트",
+    "vi": "sonnet",
+    "th": "ซอนเน็ต",
+    "id": "soneta"
+   },
+   "zhFrom": "zh",
+   "ptFrom": "pt",
+   "ptAll": {
+    "pt": "soneto",
+    "pt-br": null
+   },
+   "mul": null,
+   "zhAll": {
+    "zh": "十四行诗",
+    "zh-hans": null,
+    "zh-cn": null
+   }
+  }
+ }
+}

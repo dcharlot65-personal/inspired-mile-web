@@ -1,8 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadArea, t } from '../i18n';
+
+// The document title and description in the interface language (BaseLayout's titleKey and
+// descriptionKey): the theatre's name as the about page gives it, and this page's own intro.
+await loadArea('about');
 ---
 
-<BaseLayout title="The Theatre" description="The duel of verses staged in 3D: play in a Quest 3 or Vision Pro headset, or on a flat screen.">
+<BaseLayout title={t('about.tech.theatre.title')} titleKey="about.tech.theatre.title" description={t('theatre.intro')} descriptionKey="theatre.intro" i18nAreas={['about']}>
   <section class="section-padding">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-8">

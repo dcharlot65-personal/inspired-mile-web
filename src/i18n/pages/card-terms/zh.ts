@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Chinese (Simplified).
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': '角色',
+  'card-terms.type.relic': '圣物',
+  'card-terms.type.potion': '药水',
+  'card-terms.types.character': '角色',
+  'card-terms.types.relic': '圣物',
+  'card-terms.types.potion': '药水',
+  'card-terms.stat.atk': '攻击',
+  'card-terms.stat.def': '防御',
+  'card-terms.stat.hp': '生命',
+  'card-terms.house.montague': '蒙太古',
+  'card-terms.house.capulet': '凯普莱特',
+  'card-terms.house.danish-court': '丹麦宫廷',
+  'card-terms.house.forest-of-arden': '亚登森林',
+  'card-terms.house.verona-court': '维罗纳宫廷',
+  'card-terms.house.the-tempest': '暴风雨', // Wikidata Q86440 label (zh-cn)
+  'card-terms.house.scottish-court': '苏格兰宫廷',
+  'card-terms.house.illyria': '伊利里亚', // Wikidata Q32047 label (zh)
+  'card-terms.house.rome': '罗马', // Wikidata Q220 label (zh-cn)
+  'card-terms.house.legendary': '传说',
+  'card-terms.house.relic': '圣物',
+  'card-terms.house.potion': '药水',
+  'card-terms.house.lake-district': '湖区', // Wikidata Q211778 label (zh-cn)
+  'card-terms.house.gothic-circle': '哥特圈',
+  'card-terms.house.olympus': '奥林匹斯', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': '冥界',
+  'card-terms.element.air': '风',
+  'card-terms.element.alchemy': '炼金',
+  'card-terms.element.ambition': '野心',
+  'card-terms.element.arcane': '奥术',
+  'card-terms.element.authority': '权威',
+  'card-terms.element.beast': '野兽',
+  'card-terms.element.beauty': '美',
+  'card-terms.element.comedy': '喜剧',
+  'card-terms.element.compassion': '慈悲',
+  'card-terms.element.creation': '创造',
+  'card-terms.element.cunning': '狡黠',
+  'card-terms.element.dark': '幽暗',
+  'card-terms.element.darkness': '黑暗',
+  'card-terms.element.death': '死亡',
+  'card-terms.element.devotion': '忠贞',
+  'card-terms.element.disguise': '伪装',
+  'card-terms.element.duty': '责任',
+  'card-terms.element.earth': '大地',
+  'card-terms.element.enchantment': '魔咒',
+  'card-terms.element.envy': '嫉妒',
+  'card-terms.element.fire': '火',
+  'card-terms.element.glory': '荣耀',
+  'card-terms.element.grace': '优雅',
+  'card-terms.element.honor': '荣誉',
+  'card-terms.element.illusion': '幻象',
+  'card-terms.element.innocence': '纯真',
+  'card-terms.element.justice': '正义',
+  'card-terms.element.knowledge': '知识',
+  'card-terms.element.light': '光',
+  'card-terms.element.love': '爱',
+  'card-terms.element.loyalty': '忠诚',
+  'card-terms.element.mischief': '恶作剧',
+  'card-terms.element.moonlight': '月光',
+  'card-terms.element.nature': '自然',
+  'card-terms.element.ocean': '海洋',
+  'card-terms.element.passion': '激情',
+  'card-terms.element.peace': '和平',
+  'card-terms.element.petrification': '石化',
+  'card-terms.element.poison': '毒',
+  'card-terms.element.power': '权力',
+  'card-terms.element.prophecy': '预言',
+  'card-terms.element.rebellion': '反叛',
+  'card-terms.element.rebirth': '重生',
+  'card-terms.element.revolution': '革命',
+  'card-terms.element.rhetoric': '雄辩',
+  'card-terms.element.shadow': '暗影',
+  'card-terms.element.sorrow': '哀伤',
+  'card-terms.element.speed': '迅捷',
+  'card-terms.element.storm': '风暴',
+  'card-terms.element.thunder': '雷霆',
+  'card-terms.element.transformation': '变形',
+  'card-terms.element.trickster': '捣蛋鬼',
+  'card-terms.element.vanity': '虚荣',
+  'card-terms.element.vision': '灵视',
+  'card-terms.element.water': '水',
+  'card-terms.element.wind': '疾风',
+  'card-terms.element.wisdom': '智慧',
+  'card-terms.work.romeo-and-juliet': '罗密欧与朱丽叶', // not from a source: see docs/language/pages-core
+  'card-terms.work.hamlet': '哈姆雷特', // Wikidata Q41567 label (zh-cn)
+  'card-terms.work.as-you-like-it': '皆大欢喜', // Wikidata Q237572 label (zh-cn)
+};
+
+export default messages;
