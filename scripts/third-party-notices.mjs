@@ -25,7 +25,8 @@
 //     FILE_LICENSES entry covers: a package's own license file does not speak for what it carries from others;
 //   - a FILE_LICENSES entry that ships is not named on /credits (data-files, by its id), or /credits names one
 //     that does not ship;
-//   - a DATA entry's text does not hold, in full, a file it must carry (its `holds`);
+//   - a DATA entry's text, or the notice of a file it covers that ships, does not hold in full a file it must carry
+//     (its `holds`);
 //   - a module of src/ that ships says GENERATED in its header and no DATA entry covers it, or a DATA entry
 //     covers nothing that ships.
 import fs from 'node:fs';
@@ -169,8 +170,11 @@ export const DATA = [
     covers: ['src/lib/verse/pron-en.ts'],
     note: 'The English pronunciation table is made from both. Their notices, exactly as the table carries them in its first lines. SCOWL\'s is its whole Copyright file, which names the other works SCOWL is made from and their notices (VarCon, Ispell, WordNet and more); it is also served alone at /licenses/SCOWL-Copyright.txt:',
     text: (root) => cmuNotice(root),
-    // SCOWL release 2020.12.07's Copyright file, byte for byte (scripts/build-pronunciation.mjs writes it from the tarball).
+    // SCOWL release 2020.12.07's Copyright file, byte for byte (scripts/build-pronunciation.mjs writes it from the tarball):
+    // this entry's text, and the notice of every file it covers that ships (noticeOf), must hold it whole. A table
+    // added to `covers` that carries a shorter notice fails the build.
     holds: ['public/licenses/SCOWL-Copyright.txt'],
+    noticeOf: (root, file) => cmuNotice(root, file),
   },
   {
     title: 'Snowball stemmers (jsstemmer 3.2.0), by the Snowball project',
@@ -251,15 +255,15 @@ export function licenseFiles(dir) {
  * The CMU and SCOWL notices: the "#" lines at the start of the pronunciation table's data, as the string reads
  * (the source escapes a back-tick, a backslash and "${" inside its template string; the text has none of that).
  */
-export function cmuNotice(root) {
-  const src = fs.readFileSync(path.join(root, 'src/lib/verse/pron-en.ts'), 'utf8');
+export function cmuNotice(root, file = 'src/lib/verse/pron-en.ts') {
+  const src = fs.readFileSync(path.join(root, file), 'utf8');
   const data = src.slice(src.indexOf('export default `') + 'export default `'.length);
   const lines = [];
   for (const line of data.split('\n')) {
     if (!line.startsWith('#')) break;
     lines.push(line.replace(/^# ?/, '').replace(/\\([\\`$])/g, '$1'));
   }
-  if (lines.length < 10) throw new Error('third-party-notices: the CMU notice was not found at the start of src/lib/verse/pron-en.ts');
+  if (lines.length < 10) throw new Error(`third-party-notices: the CMU notice was not found at the start of ${file}'s data`);
   return lines.join('\n');
 }
 
@@ -448,11 +452,7 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
     }
     for (const t of d.textsAfter ?? []) out.push(`\n[${path.basename(t)}]\n${read(path.join(root, t))}`);
     // What this entry says in the file, which must hold each of its `holds` whole.
-    const said = out.slice(start).join('\n');
-    for (const h of d.holds ?? []) {
-      if (!fs.existsSync(path.join(root, h))) problems.push(`${h} is missing (DATA "${d.title}" must carry it)`);
-      else if (!said.includes(read(path.join(root, h)))) problems.push(`DATA "${d.title}" must carry ${h} in full, and does not: regenerate what it reads from (scripts/build-pronunciation.mjs for the pronunciation table)`);
-    }
+    problems.push(...heldProblems(root, d, hits, out.slice(start).join('\n')));
   }
   for (const f of inv.src) {
     const head = fs.readFileSync(path.join(root, f)).subarray(0, 400).toString('latin1');
@@ -461,6 +461,33 @@ Nothing in the site's Terms of Service restricts what these licenses allow you t
     }
   }
   return { text: `${out.join('\n')}\n`, problems, files };
+}
+
+/**
+ * A DATA entry's `holds`: files whose text must be whole in what the entry says in the notices file (`said`), and in
+ * the notice of each file it covers that ships (`hits`, read with its noticeOf).
+ */
+export function heldProblems(root, d, hits, said) {
+  const problems = [];
+  for (const h of d.holds ?? []) {
+    if (!fs.existsSync(path.join(root, h))) {
+      problems.push(`${h} is missing (DATA "${d.title}" must carry it)`);
+      continue;
+    }
+    const want = read(path.join(root, h));
+    if (!said.includes(want)) problems.push(`DATA "${d.title}" must carry ${h} in full, and does not: regenerate what it reads from (scripts/build-pronunciation.mjs for the pronunciation table)`);
+    for (const f of d.noticeOf ? hits : []) {
+      let notice;
+      try {
+        notice = d.noticeOf(root, f);
+      } catch (e) {
+        problems.push(`${f} ships under DATA "${d.title}", and its notice cannot be read: ${e.message}`);
+        continue;
+      }
+      if (!notice.includes(want)) problems.push(`${f} ships under DATA "${d.title}", and its own notice does not hold ${h} in full: regenerate it so that it carries the whole file`);
+    }
+  }
+  return problems;
 }
 
 /** The packages /credits names, from the data-packages attributes of its built page ("name@version" each). */

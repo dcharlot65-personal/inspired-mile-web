@@ -654,7 +654,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   and no `DATA` entry covers it; a package ships a file from a `libs/`, `vendor/` or `third_party/` folder that no
   `FILE_LICENSES` entry covers (a package's licence file speaks only for its own code); a `FILE_LICENSES` entry that
   ships is not named on `/credits` by its id (an entry's `files`, `data-files`), or one named there does not ship;
-  a `DATA` entry's text does not hold a file it must carry whole (`holds`: SCOWL's Copyright file). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
+  a `DATA` entry's text, or the notice of a file it covers, does not hold a file it must carry whole (`holds`: SCOWL's
+  Copyright file, in `pron-en.ts` and in any other table added to that entry's `covers`). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
   on the build host with `rb --pull`, read the diff of the notices file, and commit it. Texts no package carries are in
   `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`); ONNX Runtime's are from its PyPI wheels,
   because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).

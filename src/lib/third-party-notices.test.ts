@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error: a plain JavaScript module of the build, with no type declarations
-import { DATA, FILE_LICENSES, NOTICES, VENDORED, cmuNotice, creditProblems, creditedFiles, creditedPackages, embeddedIn, inventory, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
+import { DATA, FILE_LICENSES, NOTICES, VENDORED, cmuNotice, creditProblems, creditedFiles, creditedPackages, embeddedIn, heldProblems, inventory, packageOf, render, token } from '../../scripts/third-party-notices.mjs';
 
 const root = new URL('../../', import.meta.url).pathname;
 const read = (p: string) => readFileSync(join(root, p), 'utf8');
@@ -127,6 +127,19 @@ describe('the pronunciation table\'s notice', () => {
     writeFileSync(join(dir, 'public/licenses/SCOWL-Copyright.txt'), 'The collective work is Copyright 2000-2018 by Kevin Atkinson as well\nas any of the copyrights mentioned below:\n');
     const p = render(dir, { packages: [], src: ['src/lib/verse/pron-en.ts'] }).problems.join('\n');
     expect(p).toMatch(/must carry public\/licenses\/SCOWL-Copyright\.txt in full, and does not/);
+  });
+
+  it('fails any other covered file whose own notice is shorter, as a second table built from SCOWL would be', () => {
+    const scowl = ['The collective work is Copyright 2000-2018 by Kevin Atkinson as well', 'as any of the copyrights mentioned below:'];
+    const dir = table(['The CMU Pronouncing Dictionary', ...Array(9).fill('line'), ...scowl]);
+    writeFileSync(join(dir, 'public/licenses/SCOWL-Copyright.txt'), `${scowl.join('\n')}\n`);
+    writeFileSync(join(dir, 'src/lib/verse/other.ts'), `export default \`${['The CMU Pronouncing Dictionary', ...Array(9).fill('line'), scowl[0]].map((l) => `# ${l}`).join('\n')}\nk\tw1\`;\n`);
+    const d = DATA.find((x: { holds?: string[] }) => x.holds);
+    const said = cmuNotice(dir);
+    expect(heldProblems(dir, d, ['src/lib/verse/pron-en.ts'], said)).toEqual([]);
+    const p = heldProblems(dir, d, ['src/lib/verse/pron-en.ts', 'src/lib/verse/other.ts'], said).join('\n');
+    expect(p).toMatch(/src\/lib\/verse\/other\.ts ships under DATA .*own notice does not hold public\/licenses\/SCOWL-Copyright\.txt in full/);
+    expect(p).not.toMatch(/pron-en\.ts ships/);
   });
 });
 
