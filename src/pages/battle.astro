@@ -959,6 +959,9 @@ import { t } from '../i18n';
 
     function finish(winner: 'player' | 'opponent') {
       releaseWakeLock('duel');
+      // A battle counts when it ends, as the theatre counts it ("Opening Act: complete your first battle").
+      incrementStat('totalBattles');
+      showStats();
       view = 'finished';
       matchResult = winner;
       reward = null;
@@ -1045,7 +1048,6 @@ import { t } from '../i18n';
       holdWakeLock('duel');
       $('duel-setup').classList.add('hidden');
       $('battle-arena').classList.remove('hidden');
-      incrementStat('totalBattles');
       showStats();
       if (!isInitialized()) initAudio();
       playMusic('battle-beat', 800);

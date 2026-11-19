@@ -51,6 +51,34 @@ test.describe('Theatre', () => {
     expect(errors, errors.join('\n')).toEqual([]);
   });
 
+  // The theatre starts a duel as the page opens. Counted then, a visitor who only looked at the page had
+  // "Opening Act: complete your first battle" unlocked (seen in the 2026-11-18 screenshots, in every language).
+  test('a duel counts as a battle when it ends, not when the page opens it', async ({ page }) => {
+    await page.goto('/theatre?seed=11&brain=rules');
+    await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn');
+    await page.waitForTimeout(500);
+    const battles = () => page.evaluate(() => JSON.parse(localStorage.getItem('inspired-mile-player-stats') ?? '{}').totalBattles ?? 0);
+    expect(await battles()).toBe(0);
+    await expect(page.locator('#achievement-toasts')).not.toContainText('Opening Act');
+    for (let round = 0; round < 3; round++) {
+      const phase = await page.evaluate(() => (window as any).__theatre.session.phase);
+      if (phase === 'finished') break;
+      const id = await page.evaluate(() => {
+        const s = (window as any).__theatre.session;
+        return s.duel.player.characters.find((c: string) => !s.characterUsed(c));
+      });
+      await page.evaluate((c) => (window as any).__theatre.act({ type: 'character', id: c }), id);
+      await page.fill('#typed-verse', 'Who dares to stand upon my stage?\nI put the question to thy rage');
+      await page.evaluate(() => (window as any).__theatre.act({ type: 'submit' }));
+      await page.waitForFunction(() => (window as any).__theatre.session.phase === 'verdict');
+      expect(await battles()).toBe(0);
+      await page.evaluate(() => (window as any).__theatre.act({ type: 'next' }));
+      await page.waitForFunction(() => ['player-turn', 'finished'].includes((window as any).__theatre.session.phase));
+    }
+    await page.waitForFunction(() => (window as any).__theatre.session.phase === 'finished');
+    expect(await battles()).toBe(1);
+  });
+
   test('clicking a card on the canvas picks it', async ({ page }) => {
     await page.goto('/theatre?seed=11&brain=rules');
     await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn');

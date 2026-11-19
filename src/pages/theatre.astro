@@ -149,7 +149,11 @@ await loadArea('about');
         }
         case 'next':
           if (session.phase === 'finished') start(Math.floor(Math.random() * 2 ** 31));
-          else await session.next();
+          else {
+            await session.next();
+            // A battle counts when it ends ("Opening Act: complete your first battle"), not when the page opens one.
+            if (session.phase === 'finished') incrementStat('totalBattles');
+          }
           break;
         case 'mic':
           if (isListening()) return finishTake();
@@ -187,7 +191,6 @@ await loadArea('about');
         useModel,
         onChange: redraw,
       });
-      incrementStat('totalBattles');
       holdWakeLock('theatre');
       session.beginRound();
       (window as any).__theatre = { theatre, act, get session() { return session; } };
