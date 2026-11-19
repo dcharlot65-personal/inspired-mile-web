@@ -250,8 +250,69 @@ transcripts first put through `g2p-en.ts` `normalise()`, so that Whisper writing
 1.0 point, as for running text; every text where it is worse is listed.
 
 <!-- edge -->
-(not yet measured)
+Run of 2026-11-19 on v26.13.1, 40 texts (`scripts/voice/edge-texts.txt`), 16 minutes; the same models and settings as above.
+
+| Scored | Words | WER old (eSpeak) | WER new | New − old (points) | 95% interval (paired bootstrap) |
+|---|---:|---:|---:|---:|---|
+| as written (Whisper's "10pm" against "ten p.m." counts as an error) | 302 | 17.88% | 16.56% | −1.32 | −5.07 to +2.84 |
+| **in spoken form** (text and both transcripts through the same normaliser) | 356 | 9.83% | 3.93% | −5.90 | −10.43 to −2.30 |
+
+In spoken form the new reading is heard better in 10 texts, worse in 1, the same in 29. Every text, with what Whisper heard (errors in spoken form, old → new):
+
+| Text | Old (eSpeak) heard | New heard | Errors |
+|---|---|---|---:|
+| Back in the 90s we were young. | Back in the 90s, we were young. | Back in the 90s, we were young. | 0 → 0 |
+| My mp3 plays at 3am. | My MP3 plays at 3am. | My MP3 plays at 3am. | 0 → 0 |
+| In the 1990s the B2K crew. | In the 1990s, the B2K crew. | In the 1990s, the B2K crew. | 0 → 0 |
+| At 10pm I rhyme like 2pac, 4ever. | At 10pm I rhyme like 2 pack forever. | At 10pm I rhyme like 2 pack forever. | 1 → 1 |
+| This beat is gr8, my m8. | This beat is GR8, my M8. | This beat is great, my mate. | 4 → 1 |
+| The K9 unit barks at the top 10s. | The K9 unit box at the top 10s. | The K9 unit box at the top 10s. | 1 → 1 |
+| Richard III limps across the stage, Henry V roars. | Richard Roman III, limps across the stage, Henry V. Rawls. | Richard III limps across the stage, Henry V. Rawls. | 3 → 1 |
+| Henry VIII had 6 wives and no regrets. | Henry Roman 8 had six wives and no regrets. | Henry VIII had six wives and no regrets. | 2 → 0 |
+| At 3:30 p.m. the curtain rose on Act I. | At 330 pm, the curtain rose on act I. | At 330 pm, the curtain rose on Act 1. | 5 → 4 |
+| Act II, Scene iv: the lovers meet. | Act Room 2, Scene Room 4, The Lovers Meet. | Act 2 Scene 4 The Lovers Meet | 2 → 0 |
+| The temperature fell to -5 by 7 AM. | The temperature fell to minus 5 by 7am. | The temperature fell to minus 5 by 7am. | 0 → 0 |
+| One billion is 1e9, give or take. | 1 billion is 1 E9 give or take | 1 billion is 1 E9. Give or take. | 0 → 0 |
+| The clock struck 12 and I was gone by 1. | The clock struck 12 and I was gone by one. | The clock struck 12 and I was gone by one. | 0 → 0 |
+| I spit 16 bars in 3 minutes flat. | I spit 16 bars in three minutes flat. | I spit 16 bars in three minutes flat. | 0 → 0 |
+| My rhymes are worth $5.50 and yours are worth 0. | My rhymes are worth $5.50 and yours are worth zero. | My rhymes are worth $5.50 and yours are worth zero. | 0 → 0 |
+| Room 101, floor 23, the 4th door on the left. | Room 101, floor 23, the fourth door on the left. | Room 101, floor 23, the fourth door on the left. | 0 → 0 |
+| In the 2020s we stream, in the 1920s they swung. | In the 2020s, we stream in the 1920s they swung. | In the 2020s, we stream in the 1920s they swung. | 0 → 0 |
+| Call me l8r, I gotta go 2day. | Call me L-8R. I got to go to day. | Call me later. I got to go today. | 7 → 2 |
+| R2D2 beeps while the droid rolls on. | R2D2 beeps while the droid rolls on. | R2D2 beeps while the droid rolls on. | 0 → 0 |
+| Y2K came and went in 1999. | Y2K came and went in 1999. | Y2K came and went in 1999. | 0 → 0 |
+| COVID-19 kept us home in 2020. | COVID-19 kept us home in 2020. | COVID-19 kept us home in 2020. | 0 → 0 |
+| Sonnet XVIII is the one with the summer day. | Sonnet Roman 18 is the one with the summer day. | Sonnet 18 is the one with the summer day. | 1 → 0 |
+| World War II ended in 1945. | World War II ended in 1945. | World War II ended in 1945. | 0 → 0 |
+| Pope John Paul II spoke 8 languages. | Pope John Paul Rheumann II spoke eight languages. | Pope John Paul II spoke eight languages. | 2 → 0 |
+| Elizabeth I ruled for 44 years. | Elizabeth I ruled for 44 years. | Elizabeth I ruled for 44 years. | 0 → 0 |
+| Louis XIV built a palace of mirrors. | Louis Roman 14 built a palace of mirrors. | Lewis XIV built a palace of mirrors. | 2 → 3 **worse** |
+| Chapter 11 and Chapter XII close the book. | Chapter 11 and Chapter 12 closed the book. | Chapter 11 and Chapter 12 closed the book. | 1 → 1 |
+| He won 3-0 in round 2. | He won 3-0 in round 2. | He won three to zero in round two. | 0 → 0 |
+| At 6 a.m. I write, at 11 p.m. I fight. | At 6am, I write at 11pm, I fight. | At 6am, I write at 11pm, I fight. | 0 → 0 |
+| Agent 007 drives a DB5. | Agent 007 drives a DB5. | Agent 007 drives a DB5. | 0 → 0 |
+| Malcolm X said it plain. | Malcolm X said it plain. | Malcolm X said it plain. | 0 → 0 |
+| One step 4ward, 2 steps back. | One step forward, two steps back. | One step forward, two steps back. | 0 → 0 |
+| Some1 call 911. | Some one call 911. | Someone call 911. | 2 → 0 |
+| The 1800s gave us steam, the 1900s gave us flight. | The 1800s gave us steam, the 1900s gave us flight. | The 1800s gave us steam, the 1900s gave us flight. | 0 → 0 |
+| I got 99 problems and a verse is not 1. | I got 99 problems and a verse is not one. | I got 99 problems and a verse is not one. | 0 → 0 |
+| Count it down: 3, 2, 1, go! | Count it down 3-2-1 Go | Count it down 3, 2, 1, go. | 2 → 0 |
+| In 1600 the Globe was new. | In 1600, the globe was new. | In 1600, the globe was new. | 0 → 0 |
+| Ten past 10 on the 10th of May. | 10 past 10 on the 10th of May. | 10 past 10 on the 10th of May. | 0 → 0 |
+| Henry VI, Part 2, is rarely played. | Henry VI Part II is rarely played. | Henry VI Part II is rarely played. | 0 → 0 |
+| My score went up 100% in 24 hours. | My score went up 100% in 24 hours. | My score went up 100% in 24 hours. | 0 → 0 |
 <!-- /edge -->
+
+**Against the margin:** in spoken form −5.90 points (95% interval −10.43 to −2.30) against +1.0:
+within, and the interval is wholly below zero. The check's four sentences are now heard exactly as
+the old reading's are. Most of the gain is the Roman numerals, which eSpeak NG read with the word
+"Roman" ("Henry Roman 8", "Act Room 2") and text-speak (gr8, l8r, 2day). The one text heard worse
+is "Louis XIV": the CMU table's first reading of Louis (L UW1 IY0) is heard as "Lewis". What the
+scoring cannot tell: when Whisper writes digits ("911", "3am") both readings are scored through the
+same normaliser, so "Some1 call 911" counts as right whether the voice said "nine one one" or
+"nine hundred and eleven" (it says the latter; a person would say the former), and the small
+as-written difference (−1.32, interval −5.07 to +2.84) shows the same 40 texts without that help.
+"Elizabeth I ruled" keeps I as the pronoun, as designed, and Whisper still wrote "Elizabeth I".
 
 ## What this does not show
 

@@ -1,0 +1,3831 @@
+{
+ "date": "2026-11-19T16:32:26.664Z",
+ "host": "",
+ "node": "v26.13.1",
+ "kokoro": {
+  "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
+  "dtype": "q8",
+  "voice": "bm_george",
+  "speed": 0.95,
+  "runtime": "onnxruntime-node (cpu)"
+ },
+ "whisper": {
+  "model": "onnx-community/whisper-base",
+  "dtype": "q8",
+  "transformers": "4.3.2",
+  "options": {
+   "language": "en",
+   "task": "transcribe",
+   "chunk_length_s": 30
+  }
+ },
+ "seconds": 953.911,
+ "texts": "scripts/voice/edge-texts.txt",
+ "summary": {
+  "edge": {
+   "items": 40,
+   "words": 302,
+   "old": 0.17880794701986755,
+   "new": 0.16556291390728478,
+   "difference": -0.013245033112582766,
+   "interval95": {
+    "low": -0.050724637681159424,
+    "high": 0.028391167192429023
+   },
+   "spoken": {
+    "words": 356,
+    "old": 0.09831460674157304,
+    "new": 0.03932584269662921,
+    "difference": -0.058988764044943826,
+    "interval95": {
+     "low": -0.10434782608695652,
+     "high": -0.02295918367346939
+    }
+   }
+  },
+  "running text": {
+   "items": 40,
+   "words": 302,
+   "old": 0.17880794701986755,
+   "new": 0.16556291390728478,
+   "difference": -0.013245033112582766,
+   "interval95": {
+    "low": -0.050724637681159424,
+    "high": 0.028391167192429023
+   },
+   "spoken": {
+    "words": 356,
+    "old": 0.09831460674157304,
+    "new": 0.03932584269662921,
+    "difference": -0.058988764044943826,
+    "interval95": {
+     "low": -0.10434782608695652,
+     "high": -0.02295918367346939
+    }
+   }
+  },
+  "all": {
+   "items": 40,
+   "words": 302,
+   "old": 0.17880794701986755,
+   "new": 0.16556291390728478,
+   "difference": -0.013245033112582766,
+   "interval95": {
+    "low": -0.050724637681159424,
+    "high": 0.028391167192429023
+   },
+   "spoken": {
+    "words": 356,
+    "old": 0.09831460674157304,
+    "new": 0.03932584269662921,
+    "difference": -0.058988764044943826,
+    "interval95": {
+     "low": -0.10434782608695652,
+     "high": -0.02295918367346939
+    }
+   }
+  }
+ },
+ "phonemesAgainstEspeak": {
+  "table": {
+   "words": 165,
+   "same": 150,
+   "distance": 18,
+   "length": 694,
+   "stressSame": 163,
+   "phonemeErrorRate": 0.025936599423631124,
+   "identical": 0.9090909090909091,
+   "stressAgreement": 0.9878787878787879
+  },
+  "little": {
+   "words": 25,
+   "same": 24,
+   "distance": 2,
+   "length": 58,
+   "stressSame": 25,
+   "phonemeErrorRate": 0.034482758620689655,
+   "identical": 0.96,
+   "stressAgreement": 1
+  },
+  "letters": {
+   "words": 2,
+   "same": 2,
+   "distance": 0,
+   "length": 11,
+   "stressSame": 0,
+   "phonemeErrorRate": 0,
+   "identical": 1,
+   "stressAgreement": 0
+  },
+  "rules": {
+   "words": 1,
+   "same": 0,
+   "distance": 1,
+   "length": 5,
+   "stressSame": 1,
+   "phonemeErrorRate": 0.2,
+   "identical": 0,
+   "stressAgreement": 1
+  }
+ },
+ "worse": [
+  {
+   "id": "edge-5",
+   "old": 0,
+   "new": 2,
+   "lost": [
+    "gr8 (heard \"great\")",
+    "m8 (heard \"mate\")"
+   ],
+   "text": "This beat is gr8, my m8.",
+   "oldHeard": "This beat is GR8, my M8.",
+   "newHeard": "This beat is great, my mate."
+  },
+  {
+   "id": "edge-9",
+   "old": 4,
+   "new": 5,
+   "lost": [
+    "i (heard \"1\")"
+   ],
+   "text": "At 3:30 p.m. the curtain rose on Act I.",
+   "oldHeard": "At 330 pm, the curtain rose on act I.",
+   "newHeard": "At 330 pm, the curtain rose on Act 1."
+  },
+  {
+   "id": "edge-28",
+   "old": 0,
+   "new": 4,
+   "lost": [
+    "3 (heard \"to\")",
+    "0 (heard \"zero\")",
+    "2 (heard \"two\")"
+   ],
+   "text": "He won 3-0 in round 2.",
+   "oldHeard": "He won 3-0 in round 2.",
+   "newHeard": "He won three to zero in round two."
+  }
+ ],
+ "words": [
+  {
+   "word": "back",
+   "source": "table",
+   "ours": "bˈak",
+   "espeak": "bˈak",
+   "espeakMisaki": "bˈak",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "in",
+   "source": "little",
+   "ours": "ˈɪn",
+   "espeak": "ˈɪn",
+   "espeakMisaki": "ˈɪn",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "the",
+   "source": "little",
+   "ours": "ðˈiː",
+   "espeak": "ðˈə",
+   "espeakMisaki": "ðˈə",
+   "distance": 2,
+   "length": 2,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "nineties",
+   "source": "table",
+   "ours": "nˈIntiz",
+   "espeak": "nˈaɪntiz",
+   "espeakMisaki": "nˈIntiz",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "we",
+   "source": "little",
+   "ours": "wˈiː",
+   "espeak": "wˈiː",
+   "espeakMisaki": "wˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "were",
+   "source": "little",
+   "ours": "wˈɜː",
+   "espeak": "wˈɜː",
+   "espeakMisaki": "wˈɜː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "young",
+   "source": "table",
+   "ours": "jˈʌŋ",
+   "espeak": "jˈʌŋ",
+   "espeakMisaki": "jˈʌŋ",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "my",
+   "source": "little",
+   "ours": "mˈI",
+   "espeak": "mˈaɪ",
+   "espeakMisaki": "mˈI",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "mp",
+   "source": "letters",
+   "ours": "ˈɛm pˈiː",
+   "espeak": "ˌɛmpˈiː",
+   "espeakMisaki": "ˌɛmpˈiː",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": false
+  },
+  {
+   "word": "three",
+   "source": "table",
+   "ours": "θɹˈiː",
+   "espeak": "θɹˈiː",
+   "espeakMisaki": "θɹˈiː",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "plays",
+   "source": "table",
+   "ours": "plˈAz",
+   "espeak": "plˈeɪz",
+   "espeakMisaki": "plˈAz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "at",
+   "source": "little",
+   "ours": "ˈat",
+   "espeak": "ˈat",
+   "espeakMisaki": "ˈat",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "a",
+   "source": "little",
+   "ours": "ˈA",
+   "espeak": "ˈeɪ",
+   "espeakMisaki": "ˈA",
+   "distance": 0,
+   "length": 1,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "m",
+   "source": "table",
+   "ours": "ˈɛm",
+   "espeak": "ˈɛm",
+   "espeakMisaki": "ˈɛm",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "nineteen",
+   "source": "table",
+   "ours": "nˈIntˈiːn",
+   "espeak": "nˈaɪntiːn",
+   "espeakMisaki": "nˈIntiːn",
+   "distance": 0,
+   "length": 7,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "b",
+   "source": "table",
+   "ours": "bˈiː",
+   "espeak": "bˈiː",
+   "espeakMisaki": "bˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "two",
+   "source": "table",
+   "ours": "tˈuː",
+   "espeak": "tˈuː",
+   "espeakMisaki": "tˈuː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "k",
+   "source": "table",
+   "ours": "kˈA",
+   "espeak": "kˈeɪ",
+   "espeakMisaki": "kˈA",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "crew",
+   "source": "table",
+   "ours": "kɹˈuː",
+   "espeak": "kɹˈuː",
+   "espeakMisaki": "kɹˈuː",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "ten",
+   "source": "table",
+   "ours": "tˈɛn",
+   "espeak": "tˈɛn",
+   "espeakMisaki": "tˈɛn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "p",
+   "source": "table",
+   "ours": "pˈiː",
+   "espeak": "pˈiː",
+   "espeakMisaki": "pˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "i",
+   "source": "little",
+   "ours": "ˈI",
+   "espeak": "ˈaɪ",
+   "espeakMisaki": "ˈI",
+   "distance": 0,
+   "length": 1,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rhyme",
+   "source": "table",
+   "ours": "ɹˈIm",
+   "espeak": "ɹˈaɪm",
+   "espeakMisaki": "ɹˈIm",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "like",
+   "source": "table",
+   "ours": "lˈIk",
+   "espeak": "lˈaɪk",
+   "espeakMisaki": "lˈIk",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "pac",
+   "source": "table",
+   "ours": "pˈak",
+   "espeak": "pˈak",
+   "espeakMisaki": "pˈak",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "forever",
+   "source": "table",
+   "ours": "fəɹˈɛvə",
+   "espeak": "fəɹˈɛvə",
+   "espeakMisaki": "fəɹˈɛvə",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "this",
+   "source": "table",
+   "ours": "ðˈɪs",
+   "espeak": "ðˈɪs",
+   "espeakMisaki": "ðˈɪs",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "beat",
+   "source": "table",
+   "ours": "bˈiːt",
+   "espeak": "bˈiːt",
+   "espeakMisaki": "bˈiːt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "is",
+   "source": "little",
+   "ours": "ˈɪz",
+   "espeak": "ˈɪz",
+   "espeakMisaki": "ˈɪz",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "grate",
+   "source": "table",
+   "ours": "ɡɹˈAt",
+   "espeak": "ɡɹˈeɪt",
+   "espeakMisaki": "ɡɹˈAt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "mate",
+   "source": "table",
+   "ours": "mˈAt",
+   "espeak": "mˈeɪt",
+   "espeakMisaki": "mˈAt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "nine",
+   "source": "table",
+   "ours": "nˈIn",
+   "espeak": "nˈaɪn",
+   "espeakMisaki": "nˈIn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "unit",
+   "source": "table",
+   "ours": "jˈuːnət",
+   "espeak": "jˈuːnɪt",
+   "espeakMisaki": "jˈuːnɪt",
+   "distance": 1,
+   "length": 6,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "barks",
+   "source": "table",
+   "ours": "bˈɑːks",
+   "espeak": "bˈɑːks",
+   "espeakMisaki": "bˈɑːks",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "top",
+   "source": "table",
+   "ours": "tˈɒp",
+   "espeak": "tˈɒp",
+   "espeakMisaki": "tˈɒp",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "tens",
+   "source": "table",
+   "ours": "tˈɛnz",
+   "espeak": "tˈɛnz",
+   "espeakMisaki": "tˈɛnz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "richard",
+   "source": "table",
+   "ours": "ɹˈɪʧəd",
+   "espeak": "ɹˈɪtʃəd",
+   "espeakMisaki": "ɹˈɪʧəd",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "third",
+   "source": "table",
+   "ours": "θˈɜːd",
+   "espeak": "θˈɜːd",
+   "espeakMisaki": "θˈɜːd",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "limps",
+   "source": "table",
+   "ours": "lˈɪmps",
+   "espeak": "lˈɪmps",
+   "espeakMisaki": "lˈɪmps",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "across",
+   "source": "table",
+   "ours": "əkɹˈɒs",
+   "espeak": "əkɹˈɒs",
+   "espeakMisaki": "əkɹˈɒs",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "stage",
+   "source": "table",
+   "ours": "stˈAʤ",
+   "espeak": "stˈeɪdʒ",
+   "espeakMisaki": "stˈAʤ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "henry",
+   "source": "table",
+   "ours": "hˈɛnɹi",
+   "espeak": "hˈɛnɹi",
+   "espeakMisaki": "hˈɛnɹi",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fifth",
+   "source": "table",
+   "ours": "fˈɪfθ",
+   "espeak": "fˈɪfθ",
+   "espeakMisaki": "fˈɪfθ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "roars",
+   "source": "table",
+   "ours": "ɹˈɔːz",
+   "espeak": "ɹˈɔːz",
+   "espeakMisaki": "ɹˈɔːz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "eighth",
+   "source": "table",
+   "ours": "ˈAtθ",
+   "espeak": "ˈeɪtθ",
+   "espeakMisaki": "ˈAtθ",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "had",
+   "source": "little",
+   "ours": "hˈad",
+   "espeak": "hˈad",
+   "espeakMisaki": "hˈad",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "six",
+   "source": "table",
+   "ours": "sˈɪks",
+   "espeak": "sˈɪks",
+   "espeakMisaki": "sˈɪks",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "wives",
+   "source": "table",
+   "ours": "wˈIvz",
+   "espeak": "wˈaɪvz",
+   "espeakMisaki": "wˈIvz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "and",
+   "source": "little",
+   "ours": "ˈand",
+   "espeak": "ˈand",
+   "espeakMisaki": "ˈand",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "no",
+   "source": "table",
+   "ours": "nˈQ",
+   "espeak": "nˈəʊ",
+   "espeakMisaki": "nˈQ",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "regrets",
+   "source": "table",
+   "ours": "ɹɪɡɹˈɛts",
+   "espeak": "ɹɪɡɹˈɛts",
+   "espeakMisaki": "ɹɪɡɹˈɛts",
+   "distance": 0,
+   "length": 7,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "thirty",
+   "source": "table",
+   "ours": "θˈɜːtˌiː",
+   "espeak": "θˈɜːti",
+   "espeakMisaki": "θˈɜːti",
+   "distance": 1,
+   "length": 5,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "curtain",
+   "source": "table",
+   "ours": "kˈɜːtᵊn",
+   "espeak": "kˈɜːtən",
+   "espeakMisaki": "kˈɜːtən",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rose",
+   "source": "table",
+   "ours": "ɹˈQz",
+   "espeak": "ɹˈəʊz",
+   "espeakMisaki": "ɹˈQz",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "on",
+   "source": "little",
+   "ours": "ˈɒn",
+   "espeak": "ˈɒn",
+   "espeakMisaki": "ˈɒn",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "act",
+   "source": "table",
+   "ours": "ˈakt",
+   "espeak": "ˈakt",
+   "espeakMisaki": "ˈakt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "one",
+   "source": "table",
+   "ours": "wˈʌn",
+   "espeak": "wˈɒn",
+   "espeakMisaki": "wˈɒn",
+   "distance": 1,
+   "length": 3,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "scene",
+   "source": "table",
+   "ours": "sˈiːn",
+   "espeak": "sˈiːn",
+   "espeakMisaki": "sˈiːn",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "four",
+   "source": "table",
+   "ours": "fˈɔː",
+   "espeak": "fˈɔː",
+   "espeakMisaki": "fˈɔː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "lovers",
+   "source": "table",
+   "ours": "lˈʌvəz",
+   "espeak": "lˈʌvəz",
+   "espeakMisaki": "lˈʌvəz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "meet",
+   "source": "table",
+   "ours": "mˈiːt",
+   "espeak": "mˈiːt",
+   "espeakMisaki": "mˈiːt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "temperature",
+   "source": "table",
+   "ours": "tˈɛmpɹəʧə",
+   "espeak": "tˈɛmpɹɪtʃə",
+   "espeakMisaki": "tˈɛmpɹɪʧə",
+   "distance": 1,
+   "length": 8,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "fell",
+   "source": "table",
+   "ours": "fˈɛl",
+   "espeak": "fˈɛl",
+   "espeakMisaki": "fˈɛl",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "to",
+   "source": "little",
+   "ours": "tˈuː",
+   "espeak": "tˈuː",
+   "espeakMisaki": "tˈuː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "minus",
+   "source": "table",
+   "ours": "mˈInəs",
+   "espeak": "mˈaɪnəs",
+   "espeakMisaki": "mˈInəs",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "five",
+   "source": "table",
+   "ours": "fˈIv",
+   "espeak": "fˈaɪv",
+   "espeakMisaki": "fˈIv",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "by",
+   "source": "little",
+   "ours": "bˈI",
+   "espeak": "bˈaɪ",
+   "espeakMisaki": "bˈI",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "seven",
+   "source": "table",
+   "ours": "sˈɛvən",
+   "espeak": "sˈɛvən",
+   "espeakMisaki": "sˈɛvən",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "billion",
+   "source": "table",
+   "ours": "bˈɪljən",
+   "espeak": "bˈɪliən",
+   "espeakMisaki": "bˈɪlɪən",
+   "distance": 1,
+   "length": 6,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "e",
+   "source": "table",
+   "ours": "ˈiː",
+   "espeak": "ˈiː",
+   "espeakMisaki": "ˈiː",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "give",
+   "source": "table",
+   "ours": "ɡˈɪv",
+   "espeak": "ɡˈɪv",
+   "espeakMisaki": "ɡˈɪv",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "or",
+   "source": "little",
+   "ours": "ˈɔː",
+   "espeak": "ˈɔː",
+   "espeakMisaki": "ˈɔː",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "take",
+   "source": "table",
+   "ours": "tˈAk",
+   "espeak": "tˈeɪk",
+   "espeakMisaki": "tˈAk",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "clock",
+   "source": "table",
+   "ours": "klˈɒk",
+   "espeak": "klˈɒk",
+   "espeakMisaki": "klˈɒk",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "struck",
+   "source": "table",
+   "ours": "stɹˈʌk",
+   "espeak": "stɹˈʌk",
+   "espeakMisaki": "stɹˈʌk",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "twelve",
+   "source": "table",
+   "ours": "twˈɛlv",
+   "espeak": "twˈɛlv",
+   "espeakMisaki": "twˈɛlv",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "was",
+   "source": "little",
+   "ours": "wˈɒz",
+   "espeak": "wˈɒz",
+   "espeakMisaki": "wˈɒz",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "gone",
+   "source": "table",
+   "ours": "ɡˈɒn",
+   "espeak": "ɡˈɒn",
+   "espeakMisaki": "ɡˈɒn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "spit",
+   "source": "table",
+   "ours": "spˈɪt",
+   "espeak": "spˈɪt",
+   "espeakMisaki": "spˈɪt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sixteen",
+   "source": "table",
+   "ours": "sɪkstˈiːn",
+   "espeak": "sˈɪkstiːn",
+   "espeakMisaki": "sˈɪkstiːn",
+   "distance": 0,
+   "length": 8,
+   "same": true,
+   "stressSame": false
+  },
+  {
+   "word": "bars",
+   "source": "table",
+   "ours": "bˈɑːz",
+   "espeak": "bˈɑːz",
+   "espeakMisaki": "bˈɑːz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "minutes",
+   "source": "table",
+   "ours": "mˈɪnəts",
+   "espeak": "mˈɪnɪts",
+   "espeakMisaki": "mˈɪnɪts",
+   "distance": 1,
+   "length": 6,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "flat",
+   "source": "table",
+   "ours": "flˈat",
+   "espeak": "flˈat",
+   "espeakMisaki": "flˈat",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rhymes",
+   "source": "table",
+   "ours": "ɹˈImz",
+   "espeak": "ɹˈaɪmz",
+   "espeakMisaki": "ɹˈImz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "are",
+   "source": "little",
+   "ours": "ˈɑː",
+   "espeak": "ˈɑː",
+   "espeakMisaki": "ˈɑː",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "worth",
+   "source": "table",
+   "ours": "wˈɜːθ",
+   "espeak": "wˈɜːθ",
+   "espeakMisaki": "wˈɜːθ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "dollars",
+   "source": "table",
+   "ours": "dˈɒləz",
+   "espeak": "dˈɒləz",
+   "espeakMisaki": "dˈɒləz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fifty",
+   "source": "table",
+   "ours": "fˈɪfti",
+   "espeak": "fˈɪfti",
+   "espeakMisaki": "fˈɪfti",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "cents",
+   "source": "table",
+   "ours": "sˈɛnts",
+   "espeak": "sˈɛnts",
+   "espeakMisaki": "sˈɛnts",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "yours",
+   "source": "table",
+   "ours": "jˈʊəz",
+   "espeak": "jˈɔːz",
+   "espeakMisaki": "jˈɔːz",
+   "distance": 2,
+   "length": 4,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "zero",
+   "source": "table",
+   "ours": "zˈɪəɹQ",
+   "espeak": "zˈiəɹəʊ",
+   "espeakMisaki": "zˈɪəɹQ",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "room",
+   "source": "table",
+   "ours": "ɹˈuːm",
+   "espeak": "ɹˈuːm",
+   "espeakMisaki": "ɹˈuːm",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "hundred",
+   "source": "table",
+   "ours": "hˈʌndɹəd",
+   "espeak": "hˈʌndɹɪd",
+   "espeakMisaki": "hˈʌndɹɪd",
+   "distance": 1,
+   "length": 7,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "floor",
+   "source": "table",
+   "ours": "flˈɔː",
+   "espeak": "flˈɔː",
+   "espeakMisaki": "flˈɔː",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "twenty",
+   "source": "table",
+   "ours": "twˈɛnti",
+   "espeak": "twˈɛnti",
+   "espeakMisaki": "twˈɛnti",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fourth",
+   "source": "table",
+   "ours": "fˈɔːθ",
+   "espeak": "fˈɔːθ",
+   "espeakMisaki": "fˈɔːθ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "door",
+   "source": "table",
+   "ours": "dˈɔː",
+   "espeak": "dˈɔː",
+   "espeakMisaki": "dˈɔː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "left",
+   "source": "table",
+   "ours": "lˈɛft",
+   "espeak": "lˈɛft",
+   "espeakMisaki": "lˈɛft",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "twenties",
+   "source": "table",
+   "ours": "twˈɛntiz",
+   "espeak": "twˈɛntiz",
+   "espeakMisaki": "twˈɛntiz",
+   "distance": 0,
+   "length": 7,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "stream",
+   "source": "table",
+   "ours": "stɹˈiːm",
+   "espeak": "stɹˈiːm",
+   "espeakMisaki": "stɹˈiːm",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "they",
+   "source": "little",
+   "ours": "ðˈA",
+   "espeak": "ðˈeɪ",
+   "espeakMisaki": "ðˈA",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "swung",
+   "source": "table",
+   "ours": "swˈʌŋ",
+   "espeak": "swˈʌŋ",
+   "espeakMisaki": "swˈʌŋ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "call",
+   "source": "table",
+   "ours": "kˈɔːl",
+   "espeak": "kˈɔːl",
+   "espeakMisaki": "kˈɔːl",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "me",
+   "source": "little",
+   "ours": "mˈiː",
+   "espeak": "mˈiː",
+   "espeakMisaki": "mˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "later",
+   "source": "table",
+   "ours": "lˈAtə",
+   "espeak": "lˈeɪtə",
+   "espeakMisaki": "lˈAtə",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "gotta",
+   "source": "table",
+   "ours": "ɡˈɒtə",
+   "espeak": "ɡˈɒtə",
+   "espeakMisaki": "ɡˈɒtə",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "go",
+   "source": "table",
+   "ours": "ɡˈQ",
+   "espeak": "ɡˈəʊ",
+   "espeakMisaki": "ɡˈQ",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "today",
+   "source": "table",
+   "ours": "tədˈA",
+   "espeak": "tədˈeɪ",
+   "espeakMisaki": "tədˈA",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "r",
+   "source": "table",
+   "ours": "ˈɑː",
+   "espeak": "ˈɑː",
+   "espeakMisaki": "ˈɑː",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "d",
+   "source": "table",
+   "ours": "dˈiː",
+   "espeak": "dˈiː",
+   "espeakMisaki": "dˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "beeps",
+   "source": "table",
+   "ours": "bˈiːps",
+   "espeak": "bˈiːps",
+   "espeakMisaki": "bˈiːps",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "while",
+   "source": "table",
+   "ours": "wˈIl",
+   "espeak": "wˈaɪl",
+   "espeakMisaki": "wˈIl",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "droid",
+   "source": "table",
+   "ours": "dɹˈYd",
+   "espeak": "dɹˈɔɪd",
+   "espeakMisaki": "dɹˈYd",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rolls",
+   "source": "table",
+   "ours": "ɹˈQlz",
+   "espeak": "ɹˈəʊlz",
+   "espeakMisaki": "ɹˈQlz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "y",
+   "source": "table",
+   "ours": "wˈI",
+   "espeak": "wˈaɪ",
+   "espeakMisaki": "wˈI",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "came",
+   "source": "table",
+   "ours": "kˈAm",
+   "espeak": "kˈeɪm",
+   "espeakMisaki": "kˈAm",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "went",
+   "source": "table",
+   "ours": "wˈɛnt",
+   "espeak": "wˈɛnt",
+   "espeakMisaki": "wˈɛnt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "ninety",
+   "source": "table",
+   "ours": "nˈInti",
+   "espeak": "nˈaɪnti",
+   "espeakMisaki": "nˈInti",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "covid",
+   "source": "rules",
+   "ours": "kˈʌvɪd",
+   "espeak": "kˈɒvɪd",
+   "espeakMisaki": "kˈɒvɪd",
+   "distance": 1,
+   "length": 5,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "kept",
+   "source": "table",
+   "ours": "kˈɛpt",
+   "espeak": "kˈɛpt",
+   "espeakMisaki": "kˈɛpt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "us",
+   "source": "little",
+   "ours": "ˈʌs",
+   "espeak": "ˈʌs",
+   "espeakMisaki": "ˈʌs",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "home",
+   "source": "table",
+   "ours": "hˈQm",
+   "espeak": "hˈəʊm",
+   "espeakMisaki": "hˈQm",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sonnet",
+   "source": "table",
+   "ours": "sˈɒnɪt",
+   "espeak": "sˈɒnɪt",
+   "espeakMisaki": "sˈɒnɪt",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "eighteen",
+   "source": "table",
+   "ours": "Atˈiːn",
+   "espeak": "ˈeɪtiːn",
+   "espeakMisaki": "ˈAtiːn",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": false
+  },
+  {
+   "word": "with",
+   "source": "little",
+   "ours": "wˈɪð",
+   "espeak": "wˈɪð",
+   "espeakMisaki": "wˈɪð",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "summer",
+   "source": "table",
+   "ours": "sˈʌmə",
+   "espeak": "sˈʌmə",
+   "espeakMisaki": "sˈʌmə",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "day",
+   "source": "table",
+   "ours": "dˈA",
+   "espeak": "dˈeɪ",
+   "espeakMisaki": "dˈA",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "world",
+   "source": "table",
+   "ours": "wˈɜːld",
+   "espeak": "wˈɜːld",
+   "espeakMisaki": "wˈɜːld",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "war",
+   "source": "table",
+   "ours": "wˈɔː",
+   "espeak": "wˈɔː",
+   "espeakMisaki": "wˈɔː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "ended",
+   "source": "table",
+   "ours": "ˈɛndɪd",
+   "espeak": "ˈɛndɪd",
+   "espeakMisaki": "ˈɛndɪd",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "forty",
+   "source": "table",
+   "ours": "fˈɔːti",
+   "espeak": "fˈɔːti",
+   "espeakMisaki": "fˈɔːti",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "pope",
+   "source": "table",
+   "ours": "pˈQp",
+   "espeak": "pˈəʊp",
+   "espeakMisaki": "pˈQp",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "john",
+   "source": "table",
+   "ours": "ʤˈɒn",
+   "espeak": "dʒˈɒn",
+   "espeakMisaki": "ʤˈɒn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "paul",
+   "source": "table",
+   "ours": "pˈɔːl",
+   "espeak": "pˈɔːl",
+   "espeakMisaki": "pˈɔːl",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "second",
+   "source": "table",
+   "ours": "sˈɛkənd",
+   "espeak": "sˈɛkənd",
+   "espeakMisaki": "sˈɛkənd",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "spoke",
+   "source": "table",
+   "ours": "spˈQk",
+   "espeak": "spˈəʊk",
+   "espeakMisaki": "spˈQk",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "eight",
+   "source": "table",
+   "ours": "ˈAt",
+   "espeak": "ˈeɪt",
+   "espeakMisaki": "ˈAt",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "languages",
+   "source": "table",
+   "ours": "lˈaŋɡwəʤɪz",
+   "espeak": "lˈaŋɡwɪdʒɪz",
+   "espeakMisaki": "lˈaŋɡwɪʤɪz",
+   "distance": 1,
+   "length": 9,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "elizabeth",
+   "source": "table",
+   "ours": "ɪlˈɪzəbəθ",
+   "espeak": "ɪlˈɪzəbəθ",
+   "espeakMisaki": "ɪlˈɪzəbəθ",
+   "distance": 0,
+   "length": 8,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "ruled",
+   "source": "table",
+   "ours": "ɹˈuːld",
+   "espeak": "ɹˈuːld",
+   "espeakMisaki": "ɹˈuːld",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "for",
+   "source": "little",
+   "ours": "fˈɔː",
+   "espeak": "fˈɔː",
+   "espeakMisaki": "fˈɔː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "years",
+   "source": "table",
+   "ours": "jˈɪəz",
+   "espeak": "jˈiəz",
+   "espeakMisaki": "jˈɪəz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "louis",
+   "source": "table",
+   "ours": "lˈuːɪs",
+   "espeak": "lˈuːi",
+   "espeakMisaki": "lˈuːi",
+   "distance": 2,
+   "length": 4,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "fourteenth",
+   "source": "table",
+   "ours": "fˈɔːtˈiːnθ",
+   "espeak": "fˈɔːtiːnθ",
+   "espeakMisaki": "fˈɔːtiːnθ",
+   "distance": 0,
+   "length": 8,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "built",
+   "source": "table",
+   "ours": "bˈɪlt",
+   "espeak": "bˈɪlt",
+   "espeakMisaki": "bˈɪlt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "palace",
+   "source": "table",
+   "ours": "pˈaləs",
+   "espeak": "pˈalɪs",
+   "espeakMisaki": "pˈalɪs",
+   "distance": 1,
+   "length": 5,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "of",
+   "source": "little",
+   "ours": "ˈɒv",
+   "espeak": "ˈɒv",
+   "espeakMisaki": "ˈɒv",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "mirrors",
+   "source": "table",
+   "ours": "mˈɪɹəz",
+   "espeak": "mˈɪɹəz",
+   "espeakMisaki": "mˈɪɹəz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "chapter",
+   "source": "table",
+   "ours": "ʧˈaptə",
+   "espeak": "tʃˈaptə",
+   "espeakMisaki": "ʧˈaptə",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "eleven",
+   "source": "table",
+   "ours": "ɪlˈɛvən",
+   "espeak": "ɪlˈɛvən",
+   "espeakMisaki": "ɪlˈɛvən",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "close",
+   "source": "table",
+   "ours": "klˈQs",
+   "espeak": "klˈəʊs",
+   "espeakMisaki": "klˈQs",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "book",
+   "source": "table",
+   "ours": "bˈʊk",
+   "espeak": "bˈʊk",
+   "espeakMisaki": "bˈʊk",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "he",
+   "source": "little",
+   "ours": "hˈiː",
+   "espeak": "hˈiː",
+   "espeakMisaki": "hˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "won",
+   "source": "table",
+   "ours": "wˈʌn",
+   "espeak": "wˈʌn",
+   "espeakMisaki": "wˈʌn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "round",
+   "source": "table",
+   "ours": "ɹˈWnd",
+   "espeak": "ɹˈaʊnd",
+   "espeakMisaki": "ɹˈWnd",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "write",
+   "source": "table",
+   "ours": "ɹˈIt",
+   "espeak": "ɹˈaɪt",
+   "espeakMisaki": "ɹˈIt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fight",
+   "source": "table",
+   "ours": "fˈIt",
+   "espeak": "fˈaɪt",
+   "espeakMisaki": "fˈIt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "agent",
+   "source": "table",
+   "ours": "ˈAʤənt",
+   "espeak": "ˈeɪdʒənt",
+   "espeakMisaki": "ˈAʤənt",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "oh",
+   "source": "table",
+   "ours": "ˈQ",
+   "espeak": "ˈəʊ",
+   "espeakMisaki": "ˈQ",
+   "distance": 0,
+   "length": 1,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "drives",
+   "source": "table",
+   "ours": "dɹˈIvz",
+   "espeak": "dɹˈaɪvz",
+   "espeakMisaki": "dɹˈIvz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "db",
+   "source": "letters",
+   "ours": "dˈiː bˈiː",
+   "espeak": "dˌiːbˈiː",
+   "espeakMisaki": "dˌiːbˈiː",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": false
+  },
+  {
+   "word": "malcolm",
+   "source": "table",
+   "ours": "mˈalkəm",
+   "espeak": "mˈalkəm",
+   "espeakMisaki": "mˈalkəm",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "x",
+   "source": "table",
+   "ours": "ˈɛks",
+   "espeak": "ˈɛks",
+   "espeakMisaki": "ˈɛks",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "said",
+   "source": "table",
+   "ours": "sˈɛd",
+   "espeak": "sˈɛd",
+   "espeakMisaki": "sˈɛd",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "it",
+   "source": "little",
+   "ours": "ˈɪt",
+   "espeak": "ˈɪt",
+   "espeakMisaki": "ˈɪt",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "plain",
+   "source": "table",
+   "ours": "plˈAn",
+   "espeak": "plˈeɪn",
+   "espeakMisaki": "plˈAn",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "step",
+   "source": "table",
+   "ours": "stˈɛp",
+   "espeak": "stˈɛp",
+   "espeakMisaki": "stˈɛp",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "forward",
+   "source": "table",
+   "ours": "fˈɔːwəd",
+   "espeak": "fˈɔːwəd",
+   "espeakMisaki": "fˈɔːwəd",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "steps",
+   "source": "table",
+   "ours": "stˈɛps",
+   "espeak": "stˈɛps",
+   "espeakMisaki": "stˈɛps",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "someone",
+   "source": "table",
+   "ours": "sˈʌmwˌʌn",
+   "espeak": "sˈʌmwɒn",
+   "espeakMisaki": "sˈʌmwɒn",
+   "distance": 1,
+   "length": 6,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "hundreds",
+   "source": "table",
+   "ours": "hˈʌndɹədz",
+   "espeak": "hˈʌndɹɪdz",
+   "espeakMisaki": "hˈʌndɹɪdz",
+   "distance": 1,
+   "length": 8,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "gave",
+   "source": "table",
+   "ours": "ɡˈAv",
+   "espeak": "ɡˈeɪv",
+   "espeakMisaki": "ɡˈAv",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "steam",
+   "source": "table",
+   "ours": "stˈiːm",
+   "espeak": "stˈiːm",
+   "espeakMisaki": "stˈiːm",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "flight",
+   "source": "table",
+   "ours": "flˈIt",
+   "espeak": "flˈaɪt",
+   "espeakMisaki": "flˈIt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "got",
+   "source": "table",
+   "ours": "ɡˈɒt",
+   "espeak": "ɡˈɒt",
+   "espeakMisaki": "ɡˈɒt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "problems",
+   "source": "table",
+   "ours": "pɹˈɒbləmz",
+   "espeak": "pɹˈɒbləmz",
+   "espeakMisaki": "pɹˈɒbləmz",
+   "distance": 0,
+   "length": 8,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "verse",
+   "source": "table",
+   "ours": "vˈɜːs",
+   "espeak": "vˈɜːs",
+   "espeakMisaki": "vˈɜːs",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "not",
+   "source": "table",
+   "ours": "nˈɒt",
+   "espeak": "nˈɒt",
+   "espeakMisaki": "nˈɒt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "count",
+   "source": "table",
+   "ours": "kˈWnt",
+   "espeak": "kˈaʊnt",
+   "espeakMisaki": "kˈWnt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "down",
+   "source": "table",
+   "ours": "dˈWn",
+   "espeak": "dˈaʊn",
+   "espeakMisaki": "dˈWn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "globe",
+   "source": "table",
+   "ours": "ɡlˈQb",
+   "espeak": "ɡlˈəʊb",
+   "espeakMisaki": "ɡlˈQb",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "new",
+   "source": "table",
+   "ours": "nˈuː",
+   "espeak": "njˈuː",
+   "espeakMisaki": "njˈuː",
+   "distance": 1,
+   "length": 4,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "past",
+   "source": "table",
+   "ours": "pˈɑːst",
+   "espeak": "pˈast",
+   "espeakMisaki": "pˈast",
+   "distance": 2,
+   "length": 4,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "tenth",
+   "source": "table",
+   "ours": "tˈɛnθ",
+   "espeak": "tˈɛnθ",
+   "espeakMisaki": "tˈɛnθ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "may",
+   "source": "table",
+   "ours": "mˈA",
+   "espeak": "mˈeɪ",
+   "espeakMisaki": "mˈA",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sixth",
+   "source": "table",
+   "ours": "sˈɪksθ",
+   "espeak": "sˈɪksθ",
+   "espeakMisaki": "sˈɪksθ",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "part",
+   "source": "table",
+   "ours": "pˈɑːt",
+   "espeak": "pˈɑːt",
+   "espeakMisaki": "pˈɑːt",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rarely",
+   "source": "table",
+   "ours": "ɹˈɛːli",
+   "espeak": "ɹˈeəli",
+   "espeakMisaki": "ɹˈɛːli",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "played",
+   "source": "table",
+   "ours": "plˈAd",
+   "espeak": "plˈeɪd",
+   "espeakMisaki": "plˈAd",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "score",
+   "source": "table",
+   "ours": "skˈɔː",
+   "espeak": "skˈɔː",
+   "espeakMisaki": "skˈɔː",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "up",
+   "source": "table",
+   "ours": "ˈʌp",
+   "espeak": "ˈʌp",
+   "espeakMisaki": "ˈʌp",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "percent",
+   "source": "table",
+   "ours": "pəsˈɛnt",
+   "espeak": "pəsˈɛnt",
+   "espeakMisaki": "pəsˈɛnt",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "hours",
+   "source": "table",
+   "ours": "ˈWəz",
+   "espeak": "ˈaʊəz",
+   "espeakMisaki": "ˈWəz",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  }
+ ],
+ "results": [
+  {
+   "id": "edge-1",
+   "category": "edge",
+   "text": "Back in the 90s we were young.",
+   "words": 7,
+   "old": {
+    "phonemes": "bˈak ɪnðə nˈaɪntiz wiː wɜː jˈʌŋ.",
+    "heard": "Back in the 90s, we were young.",
+    "edits": 0,
+    "seconds": 3.05,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "bˈak ɪn ðə nˈIntiz wiː wɜː jˈʌŋ.",
+    "heard": "Back in the 90s, we were young.",
+    "edits": 0,
+    "seconds": 2.975,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-2",
+   "category": "edge",
+   "text": "My mp3 plays at 3am.",
+   "words": 5,
+   "old": {
+    "phonemes": "maɪ ˌɛmpˈiː θɹˈiː plˈeɪz at θɹˈiː ˌeɪˈɛm.",
+    "heard": "My MP3 plays at 3am.",
+    "edits": 0,
+    "seconds": 3.6,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mI ˈɛm pˈiː θɹˈiː plˈAz ɐt θɹˈiː ˈA ˈɛm.",
+    "heard": "My MP3 plays at 3am.",
+    "edits": 0,
+    "seconds": 3.7,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-3",
+   "category": "edge",
+   "text": "In the 1990s the B2K crew.",
+   "words": 6,
+   "old": {
+    "phonemes": "ɪnðə nˈaɪntiːn nˈaɪntiz ðə bˈiː tˈuː kˈeɪ kɹˈuː.",
+    "heard": "In the 1990s, the B2K crew.",
+    "edits": 0,
+    "seconds": 3.875,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɪn ðə nˈIntˈiːn nˈIntiz ðə bˈiː tˈuː kˈA kɹˈuː.",
+    "heard": "In the 1990s, the B2K crew.",
+    "edits": 0,
+    "seconds": 3.925,
+    "ops": []
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-4",
+   "category": "edge",
+   "text": "At 10pm I rhyme like 2pac, 4ever.",
+   "words": 7,
+   "old": {
+    "phonemes": "at tˈɛn pˌiːˈɛm aɪ ɹˈaɪm lˈaɪk tˈuː pˈak, fˈɔːɹ ˈɛvə.",
+    "heard": "At 10pm I rhyme like 2 pack forever.",
+    "edits": 3,
+    "seconds": 4.275,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "2"
+     },
+     {
+      "op": "S",
+      "ref": "2pac",
+      "hyp": "pack"
+     },
+     {
+      "op": "S",
+      "ref": "4ever",
+      "hyp": "forever"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɐt tˈɛn pˈiː ˈɛm ˌI ɹˈIm lˈIk tˈuː pˈak, fəɹˈɛvə.",
+    "heard": "At 10pm I rhyme like 2 pack forever.",
+    "edits": 3,
+    "seconds": 4.1,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "2"
+     },
+     {
+      "op": "S",
+      "ref": "2pac",
+      "hyp": "pack"
+     },
+     {
+      "op": "S",
+      "ref": "4ever",
+      "hyp": "forever"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 10,
+    "old": 1,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-5",
+   "category": "edge",
+   "text": "This beat is gr8, my m8.",
+   "words": 6,
+   "old": {
+    "phonemes": "ðɪs bˈiːt ɪz dʒˌiːˈɑːɹ ˈeɪt, maɪ ˈɛm ˈeɪt.",
+    "heard": "This beat is GR8, my M8.",
+    "edits": 0,
+    "seconds": 3.5,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ðˈɪs bˈiːt ɪz ɡɹˈAt, mI mˈAt.",
+    "heard": "This beat is great, my mate.",
+    "edits": 2,
+    "seconds": 2.725,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "gr8",
+      "hyp": "great"
+     },
+     {
+      "op": "S",
+      "ref": "m8",
+      "hyp": "mate"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 6,
+    "old": 4,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-6",
+   "category": "edge",
+   "text": "The K9 unit barks at the top 10s.",
+   "words": 8,
+   "old": {
+    "phonemes": "ðə kˈeɪ nˈaɪn jˈuːnɪt bˈɑːks at ðə tˈɒp tˈɛnz.",
+    "heard": "The K9 unit box at the top 10s.",
+    "edits": 1,
+    "seconds": 3.85,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "barks",
+      "hyp": "box"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ðə kˈA nˈIn jˈuːnət bˈɑːks ɐt ðə tˈɒp tˈɛnz.",
+    "heard": "The K9 unit box at the top 10s.",
+    "edits": 1,
+    "seconds": 3.775,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "barks",
+      "hyp": "box"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 1,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-7",
+   "category": "edge",
+   "text": "Richard III limps across the stage, Henry V roars.",
+   "words": 9,
+   "old": {
+    "phonemes": "ɹˈɪtʃəd ɹˌəʊmən θɹˈiː lˈɪmps əkɹˌɒs ðə stˈeɪdʒ, hˈɛnɹi vˈiː ɹˈɔːz.",
+    "heard": "Richard Roman III, limps across the stage, Henry V. Rawls.",
+    "edits": 2,
+    "seconds": 5.075,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "roars",
+      "hyp": "rawls"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɹˈɪʧəd ðə θˈɜːd lˈɪmps əkɹˈɒs ðə stˈAʤ, hˈɛnɹi ðə fˈɪfθ ɹˈɔːz.",
+    "heard": "Richard III limps across the stage, Henry V. Rawls.",
+    "edits": 1,
+    "seconds": 5.025,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "roars",
+      "hyp": "rawls"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 11,
+    "old": 3,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-8",
+   "category": "edge",
+   "text": "Henry VIII had 6 wives and no regrets.",
+   "words": 8,
+   "old": {
+    "phonemes": "hˈɛnɹi ɹˌəʊmən ˈeɪt had sˈɪks wˈaɪvz and nˈəʊ ɹɪɡɹˈɛts.",
+    "heard": "Henry Roman 8 had six wives and no regrets.",
+    "edits": 3,
+    "seconds": 4.175,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "viii",
+      "hyp": "8"
+     },
+     {
+      "op": "S",
+      "ref": "6",
+      "hyp": "six"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "hˈɛnɹi ði ˈAtθ had sˈɪks wˈIvz and nˈQ ɹɪɡɹˈɛts.",
+    "heard": "Henry VIII had six wives and no regrets.",
+    "edits": 1,
+    "seconds": 4.025,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "6",
+      "hyp": "six"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-9",
+   "category": "edge",
+   "text": "At 3:30 p.m. the curtain rose on Act I.",
+   "words": 11,
+   "old": {
+    "phonemes": "at θɹˈiː θˈɜːti pˈiːˈɛm ðə kˈɜːtən ɹˈəʊz ˌɒn ˈakt ˈaɪ.",
+    "heard": "At 330 pm, the curtain rose on act I.",
+    "edits": 4,
+    "seconds": 4.725,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "3"
+     },
+     {
+      "op": "D",
+      "ref": "30"
+     },
+     {
+      "op": "S",
+      "ref": "p",
+      "hyp": "330"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "pm"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɐt θɹˈiː θˈɜːtˌiː pˈiː ˈɛm. ðə kˈɜːtᵊn ɹˈQz ɒn ˈakt wˈʌn.",
+    "heard": "At 330 pm, the curtain rose on Act 1.",
+    "edits": 5,
+    "seconds": 4.725,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "3"
+     },
+     {
+      "op": "D",
+      "ref": "30"
+     },
+     {
+      "op": "S",
+      "ref": "p",
+      "hyp": "330"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "pm"
+     },
+     {
+      "op": "S",
+      "ref": "i",
+      "hyp": "1"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 11,
+    "old": 5,
+    "new": 4
+   }
+  },
+  {
+   "id": "edge-10",
+   "category": "edge",
+   "text": "Act II, Scene iv: the lovers meet.",
+   "words": 7,
+   "old": {
+    "phonemes": "ˈakt ɹˌəʊmən tˈuː, sˈiːn ɹˌəʊmən fˈɔː: ðə lˈʌvəz mˈiːt.",
+    "heard": "Act Room 2, Scene Room 4, The Lovers Meet.",
+    "edits": 4,
+    "seconds": 4.075,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "room"
+     },
+     {
+      "op": "S",
+      "ref": "ii",
+      "hyp": "2"
+     },
+     {
+      "op": "I",
+      "hyp": "room"
+     },
+     {
+      "op": "S",
+      "ref": "iv",
+      "hyp": "4"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˈakt tˈuː, sˈiːn fˈɔː: ðə lˈʌvəz mˈiːt.",
+    "heard": "Act 2 Scene 4 The Lovers Meet",
+    "edits": 2,
+    "seconds": 3.35,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "ii",
+      "hyp": "2"
+     },
+     {
+      "op": "S",
+      "ref": "iv",
+      "hyp": "4"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 7,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-11",
+   "category": "edge",
+   "text": "The temperature fell to -5 by 7 AM.",
+   "words": 8,
+   "old": {
+    "phonemes": "ðə tˈɛmpɹɪtʃə fˈɛl tə mˈaɪnəs fˈaɪv baɪ sˈɛvən ˌeɪˈɛm.",
+    "heard": "The temperature fell to minus 5 by 7am.",
+    "edits": 3,
+    "seconds": 4.475,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "minus"
+     },
+     {
+      "op": "D",
+      "ref": "7"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "7am"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ðə tˈɛmpɹəʧə fˈɛl tə mˈInəs fˈIv bI sˈɛvən ˈA ˈɛm.",
+    "heard": "The temperature fell to minus 5 by 7am.",
+    "edits": 3,
+    "seconds": 4.375,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "minus"
+     },
+     {
+      "op": "D",
+      "ref": "7"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "7am"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 10,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-12",
+   "category": "edge",
+   "text": "One billion is 1e9, give or take.",
+   "words": 7,
+   "old": {
+    "phonemes": "wˈɒn bˈɪliən ɪz wˈɒn ˈiː nˈaɪn, ɡˈɪv ɔː tˈeɪk.",
+    "heard": "1 billion is 1 E9 give or take",
+    "edits": 3,
+    "seconds": 3.775,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "one",
+      "hyp": "1"
+     },
+     {
+      "op": "I",
+      "hyp": "1"
+     },
+     {
+      "op": "S",
+      "ref": "1e9",
+      "hyp": "e9"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "wˈʌn bˈɪljən ɪz wˈʌn ˈiː nˈIn, ɡˈɪv ɔː tˈAk.",
+    "heard": "1 billion is 1 E9. Give or take.",
+    "edits": 3,
+    "seconds": 3.8,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "one",
+      "hyp": "1"
+     },
+     {
+      "op": "I",
+      "hyp": "1"
+     },
+     {
+      "op": "S",
+      "ref": "1e9",
+      "hyp": "e9"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-13",
+   "category": "edge",
+   "text": "The clock struck 12 and I was gone by 1.",
+   "words": 10,
+   "old": {
+    "phonemes": "ðə klˈɒk stɹˈʌk twˈɛlv and aɪ wɒz ɡɒn baɪ wˈɒn.",
+    "heard": "The clock struck 12 and I was gone by one.",
+    "edits": 1,
+    "seconds": 3.8,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "1",
+      "hyp": "one"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ðə klˈɒk stɹˈʌk twˈɛlv and ˌI wɒz ɡˈɒn bI wˈʌn.",
+    "heard": "The clock struck 12 and I was gone by one.",
+    "edits": 1,
+    "seconds": 3.775,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "1",
+      "hyp": "one"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 10,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-14",
+   "category": "edge",
+   "text": "I spit 16 bars in 3 minutes flat.",
+   "words": 8,
+   "old": {
+    "phonemes": "aɪ spˈɪt sˈɪkstiːn bˈɑːz ɪn θɹˈiː mˈɪnɪts flˈat.",
+    "heard": "I spit 16 bars in three minutes flat.",
+    "edits": 1,
+    "seconds": 3.6,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "3",
+      "hyp": "three"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˌI spˈɪt sɪkstˈiːn bˈɑːz ɪn θɹˈiː mˈɪnəts flˈat.",
+    "heard": "I spit 16 bars in three minutes flat.",
+    "edits": 1,
+    "seconds": 3.725,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "3",
+      "hyp": "three"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-15",
+   "category": "edge",
+   "text": "My rhymes are worth $5.50 and yours are worth 0.",
+   "words": 11,
+   "old": {
+    "phonemes": "maɪ ɹˈaɪmz ɑː wˈɜːθ fˈaɪv dˈɒləz and fˈɪfti sˈɛnts and jˈɔːz ɑː wˈɜːθ zˈiəɹəʊ.",
+    "heard": "My rhymes are worth $5.50 and yours are worth zero.",
+    "edits": 1,
+    "seconds": 5.775,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "0",
+      "hyp": "zero"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "mI ɹˈImz ɑː wˈɜːθ fˈIv dˈɒləz and fˈɪfti sˈɛnts and jˈʊəz ɑː wˈɜːθ zˈɪəɹQ.",
+    "heard": "My rhymes are worth $5.50 and yours are worth zero.",
+    "edits": 1,
+    "seconds": 5.8,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "0",
+      "hyp": "zero"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 14,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-16",
+   "category": "edge",
+   "text": "Room 101, floor 23, the 4th door on the left.",
+   "words": 10,
+   "old": {
+    "phonemes": "ɹˈuːm wˈɒn hˈʌndɹɪdən wˈɒn, flˈɔː twˈɛnti θɹˈiː, ðə fˈɔːθ dˈɔːɹ ɒnðə lˈɛft.",
+    "heard": "Room 101, floor 23, the fourth door on the left.",
+    "edits": 1,
+    "seconds": 5.35,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "4th",
+      "hyp": "fourth"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɹˈuːm wˈʌn hˈʌndɹəd and wˈʌn, flˈɔː twˈɛnti θɹˈiː, ðə fˈɔːθ dˈɔːɹ ɒn ðə lˈɛft.",
+    "heard": "Room 101, floor 23, the fourth door on the left.",
+    "edits": 1,
+    "seconds": 5.55,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "4th",
+      "hyp": "fourth"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 14,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-17",
+   "category": "edge",
+   "text": "In the 2020s we stream, in the 1920s they swung.",
+   "words": 10,
+   "old": {
+    "phonemes": "ɪnðə twˈɛnti twˈɛntiz wiː stɹˈiːm, ɪnðə nˈaɪntiːn twˈɛntiz ðeɪ swˈʌŋ.",
+    "heard": "In the 2020s, we stream in the 1920s they swung.",
+    "edits": 0,
+    "seconds": 5.2,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɪn ðə twˈɛnti twˈɛntiz wiː stɹˈiːm, ɪn ðə nˈIntˈiːn twˈɛntiz ðA swˈʌŋ.",
+    "heard": "In the 2020s, we stream in the 1920s they swung.",
+    "edits": 0,
+    "seconds": 5.325,
+    "ops": []
+   },
+   "spoken": {
+    "words": 12,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-18",
+   "category": "edge",
+   "text": "Call me l8r, I gotta go 2day.",
+   "words": 7,
+   "old": {
+    "phonemes": "kˈɔːl mˌiː ˈɛl ˈeɪt ˈɑː, aɪ ɡˈɒtə ɡˌəʊ tˈuː dˈeɪ.",
+    "heard": "Call me L-8R. I got to go to day.",
+    "edits": 6,
+    "seconds": 3.875,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "l"
+     },
+     {
+      "op": "S",
+      "ref": "l8r",
+      "hyp": "8r"
+     },
+     {
+      "op": "I",
+      "hyp": "got"
+     },
+     {
+      "op": "S",
+      "ref": "gotta",
+      "hyp": "to"
+     },
+     {
+      "op": "I",
+      "hyp": "to"
+     },
+     {
+      "op": "S",
+      "ref": "2day",
+      "hyp": "day"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "kˈɔːl miː lˈAtə, ˌI ɡˈɒtə ɡˈQ tədˈA.",
+    "heard": "Call me later. I got to go today.",
+    "edits": 4,
+    "seconds": 3.275,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "l8r",
+      "hyp": "later"
+     },
+     {
+      "op": "I",
+      "hyp": "got"
+     },
+     {
+      "op": "S",
+      "ref": "gotta",
+      "hyp": "to"
+     },
+     {
+      "op": "S",
+      "ref": "2day",
+      "hyp": "today"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 7,
+    "old": 7,
+    "new": 2
+   }
+  },
+  {
+   "id": "edge-19",
+   "category": "edge",
+   "text": "R2D2 beeps while the droid rolls on.",
+   "words": 7,
+   "old": {
+    "phonemes": "ˈɑː tˈuː dˈiː tˈuː bˈiːps wˌaɪl ðə dɹˈɔɪd ɹˈəʊlz ˈɒn.",
+    "heard": "R2D2 beeps while the droid rolls on.",
+    "edits": 0,
+    "seconds": 4.075,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ˈɑː tˈuː dˈiː tˈuː bˈiːps wˈIl ðə dɹˈYd ɹˈQlz ˈɒn.",
+    "heard": "R2D2 beeps while the droid rolls on.",
+    "edits": 0,
+    "seconds": 4.1,
+    "ops": []
+   },
+   "spoken": {
+    "words": 10,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-20",
+   "category": "edge",
+   "text": "Y2K came and went in 1999.",
+   "words": 6,
+   "old": {
+    "phonemes": "wˈaɪ tˈuː kˈeɪ kˈeɪm and wɛnt ɪn nˈaɪntiːn nˈaɪnti nˈaɪn.",
+    "heard": "Y2K came and went in 1999.",
+    "edits": 0,
+    "seconds": 4.375,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "wˈI tˈuː kˈA kˈAm and wˈɛnt ɪn nˈIntˈiːn nˈInti nˈIn.",
+    "heard": "Y2K came and went in 1999.",
+    "edits": 0,
+    "seconds": 4.325,
+    "ops": []
+   },
+   "spoken": {
+    "words": 10,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-21",
+   "category": "edge",
+   "text": "COVID-19 kept us home in 2020.",
+   "words": 7,
+   "old": {
+    "phonemes": "kˈɒvɪd  nˈaɪntiːn kˈɛpt ˌʌs hˈəʊm ɪn twˈɛnti twˈɛnti.",
+    "heard": "COVID-19 kept us home in 2020.",
+    "edits": 0,
+    "seconds": 4.25,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "kˈʌvɪd nˈIntˈiːn kˈɛpt ʌs hˈQm ɪn twˈɛnti twˈɛnti.",
+    "heard": "COVID-19 kept us home in 2020.",
+    "edits": 0,
+    "seconds": 4.175,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-22",
+   "category": "edge",
+   "text": "Sonnet XVIII is the one with the summer day.",
+   "words": 9,
+   "old": {
+    "phonemes": "sˈɒnɪt ɹˌəʊmən ˈeɪtiːn ɪz ðə wˈɒn wɪððə sˈʌmə dˈeɪ.",
+    "heard": "Sonnet Roman 18 is the one with the summer day.",
+    "edits": 2,
+    "seconds": 4.45,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "xviii",
+      "hyp": "18"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "sˈɒnɪt Atˈiːn ɪz ðə wˈʌn wɪð ðə sˈʌmə dˈA.",
+    "heard": "Sonnet 18 is the one with the summer day.",
+    "edits": 1,
+    "seconds": 3.975,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "xviii",
+      "hyp": "18"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 1,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-23",
+   "category": "edge",
+   "text": "World War II ended in 1945.",
+   "words": 6,
+   "old": {
+    "phonemes": "wˈɜːld wˈɔː ɹˌəʊmən tˈuː ˈɛndɪd ɪn nˈaɪntiːn fˈɔːti fˈaɪv.",
+    "heard": "World War II ended in 1945.",
+    "edits": 0,
+    "seconds": 4.425,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "wˈɜːld wˈɔː tˈuː ˈɛndɪd ɪn nˈIntˈiːn fˈɔːti fˈIv.",
+    "heard": "World War II ended in 1945.",
+    "edits": 0,
+    "seconds": 4.075,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-24",
+   "category": "edge",
+   "text": "Pope John Paul II spoke 8 languages.",
+   "words": 7,
+   "old": {
+    "phonemes": "pˈəʊp dʒˈɒn pˈɔːl ɹˌəʊmən tˈuː spˈəʊk ˈeɪt lˈaŋɡwɪdʒɪz.",
+    "heard": "Pope John Paul Rheumann II spoke eight languages.",
+    "edits": 2,
+    "seconds": 4.275,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "rheumann"
+     },
+     {
+      "op": "S",
+      "ref": "8",
+      "hyp": "eight"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "pˈQp ʤˈɒn pˈɔːl ðə sˈɛkənd spˈQk ˈAt lˈaŋɡwəʤɪz.",
+    "heard": "Pope John Paul II spoke eight languages.",
+    "edits": 1,
+    "seconds": 4.225,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "8",
+      "hyp": "eight"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-25",
+   "category": "edge",
+   "text": "Elizabeth I ruled for 44 years.",
+   "words": 6,
+   "old": {
+    "phonemes": "ɪlˈɪzəbəθ aɪ ɹˈuːld fɔː fˈɔːti fˈɔː jˈiəz.",
+    "heard": "Elizabeth I ruled for 44 years.",
+    "edits": 0,
+    "seconds": 3.8,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɪlˈɪzəbəθ ˌI ɹˈuːld fɔː fˈɔːti fˈɔː jˈɪəz.",
+    "heard": "Elizabeth I ruled for 44 years.",
+    "edits": 0,
+    "seconds": 3.875,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-26",
+   "category": "edge",
+   "text": "Louis XIV built a palace of mirrors.",
+   "words": 7,
+   "old": {
+    "phonemes": "lˈuːi ɹˌəʊmən fˈɔːtiːn bˈɪlt ɐ pˈalɪs ɒv mˈɪɹəz.",
+    "heard": "Louis Roman 14 built a palace of mirrors.",
+    "edits": 2,
+    "seconds": 4.1,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "xiv",
+      "hyp": "14"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "lˈuːɪs ðə fˈɔːtˈiːnθ bˈɪlt ɐ pˈaləs əv mˈɪɹəz.",
+    "heard": "Lewis XIV built a palace of mirrors.",
+    "edits": 1,
+    "seconds": 4.075,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "louis",
+      "hyp": "lewis"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 2,
+    "new": 3
+   }
+  },
+  {
+   "id": "edge-27",
+   "category": "edge",
+   "text": "Chapter 11 and Chapter XII close the book.",
+   "words": 8,
+   "old": {
+    "phonemes": "tʃˈaptəɹ ɪlˈɛvən and tʃˈaptə ɹˌəʊmən twˈɛlv klˈəʊs ðə bˈʊk.",
+    "heard": "Chapter 11 and Chapter 12 closed the book.",
+    "edits": 2,
+    "seconds": 4.25,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "xii",
+      "hyp": "12"
+     },
+     {
+      "op": "S",
+      "ref": "close",
+      "hyp": "closed"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ʧˈaptəɹ ɪlˈɛvən and ʧˈaptə twˈɛlv klˈQz ðə bˈʊk.",
+    "heard": "Chapter 11 and Chapter 12 closed the book.",
+    "edits": 2,
+    "seconds": 4.2,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "xii",
+      "hyp": "12"
+     },
+     {
+      "op": "S",
+      "ref": "close",
+      "hyp": "closed"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 1,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-28",
+   "category": "edge",
+   "text": "He won 3-0 in round 2.",
+   "words": 7,
+   "old": {
+    "phonemes": "hiː wˈʌn θɹˈiː tə zˈiəɹəʊ ɪn ɹˈaʊnd tˈuː.",
+    "heard": "He won 3-0 in round 2.",
+    "edits": 0,
+    "seconds": 3.525,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "hiː wˈʌn θɹˈiː tə zˈɪəɹQ ɪn ɹˈWnd tˈuː.",
+    "heard": "He won three to zero in round two.",
+    "edits": 4,
+    "seconds": 3.525,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "three"
+     },
+     {
+      "op": "S",
+      "ref": "3",
+      "hyp": "to"
+     },
+     {
+      "op": "S",
+      "ref": "0",
+      "hyp": "zero"
+     },
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "two"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-29",
+   "category": "edge",
+   "text": "At 6 a.m. I write, at 11 p.m. I fight.",
+   "words": 12,
+   "old": {
+    "phonemes": "at sˈɪks ˈeɪˈɛm. aɪ ɹˈaɪt, at ɪlˈɛvən pˈiːˈɛm. aɪ fˈaɪt.",
+    "heard": "At 6am, I write at 11pm, I fight.",
+    "edits": 6,
+    "seconds": 4.625,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "6"
+     },
+     {
+      "op": "D",
+      "ref": "a"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "6am"
+     },
+     {
+      "op": "D",
+      "ref": "11"
+     },
+     {
+      "op": "D",
+      "ref": "p"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "11pm"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɐt sˈɪks ˈA ˈɛm. ˌI ɹˈIt, ɐt ɪlˈɛvən pˈiː ˈɛm. ˌI fˈIt.",
+    "heard": "At 6am, I write at 11pm, I fight.",
+    "edits": 6,
+    "seconds": 4.575,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "6"
+     },
+     {
+      "op": "D",
+      "ref": "a"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "6am"
+     },
+     {
+      "op": "D",
+      "ref": "11"
+     },
+     {
+      "op": "D",
+      "ref": "p"
+     },
+     {
+      "op": "S",
+      "ref": "m",
+      "hyp": "11pm"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 12,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-30",
+   "category": "edge",
+   "text": "Agent 007 drives a DB5.",
+   "words": 5,
+   "old": {
+    "phonemes": "ˈeɪdʒənt zˈiəɹəʊzˈiəɹəʊ sˈɛvən dɹˈaɪvz ɐ dˌiːbˈiː fˈaɪv.",
+    "heard": "Agent 007 drives a DB5.",
+    "edits": 0,
+    "seconds": 4.65,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ˈAʤənt ˈQ ˈQ sˈɛvən dɹˈIvz ɐ dˈiː bˈiː fˈIv.",
+    "heard": "Agent 007 drives a DB5.",
+    "edits": 0,
+    "seconds": 4.225,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-31",
+   "category": "edge",
+   "text": "Malcolm X said it plain.",
+   "words": 5,
+   "old": {
+    "phonemes": "mˈalkəm ˈɛks sˈɛd ɪt plˈeɪn.",
+    "heard": "Malcolm X said it plain.",
+    "edits": 0,
+    "seconds": 2.75,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mˈalkəm ˈɛks sˈɛd ɪt plˈAn.",
+    "heard": "Malcolm X said it plain.",
+    "edits": 0,
+    "seconds": 2.75,
+    "ops": []
+   },
+   "spoken": {
+    "words": 5,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-32",
+   "category": "edge",
+   "text": "One step 4ward, 2 steps back.",
+   "words": 6,
+   "old": {
+    "phonemes": "wˈɒn stˈɛp fˈɔː wˈɔːd, tˈuː stˈɛps bˈak.",
+    "heard": "One step forward, two steps back.",
+    "edits": 2,
+    "seconds": 3.325,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "4ward",
+      "hyp": "forward"
+     },
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "two"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "wˈʌn stˈɛp fˈɔːwəd, tˈuː stˈɛps bˈak.",
+    "heard": "One step forward, two steps back.",
+    "edits": 2,
+    "seconds": 3.1,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "4ward",
+      "hyp": "forward"
+     },
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "two"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 6,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-33",
+   "category": "edge",
+   "text": "Some1 call 911.",
+   "words": 3,
+   "old": {
+    "phonemes": "sˌʌm wˈɒn kˈɔːl nˈaɪn hˈʌndɹɪdən ɪlˈɛvən.",
+    "heard": "Some one call 911.",
+    "edits": 2,
+    "seconds": 3.6,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "some"
+     },
+     {
+      "op": "S",
+      "ref": "some1",
+      "hyp": "one"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "sˈʌmwˌʌn kˈɔːl nˈIn hˈʌndɹəd and ɪlˈɛvən.",
+    "heard": "Someone call 911.",
+    "edits": 1,
+    "seconds": 3.65,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "some1",
+      "hyp": "someone"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 6,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-34",
+   "category": "edge",
+   "text": "The 1800s gave us steam, the 1900s gave us flight.",
+   "words": 10,
+   "old": {
+    "phonemes": "ðɪ ˈeɪtiːn hˈʌndɹɪdz ɡˈeɪv ˌʌs stˈiːm, ðə nˈaɪntiːn hˈʌndɹɪdz ɡˈeɪv ˌʌs flˈaɪt.",
+    "heard": "The 1800s gave us steam, the 1900s gave us flight.",
+    "edits": 0,
+    "seconds": 5.6,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ði Atˈiːn hˈʌndɹədz ɡˈAv ʌs stˈiːm, ðə nˈIntˈiːn hˈʌndɹədz ɡˈAv ʌs flˈIt.",
+    "heard": "The 1800s gave us steam, the 1900s gave us flight.",
+    "edits": 0,
+    "seconds": 5.4,
+    "ops": []
+   },
+   "spoken": {
+    "words": 12,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-35",
+   "category": "edge",
+   "text": "I got 99 problems and a verse is not 1.",
+   "words": 10,
+   "old": {
+    "phonemes": "aɪ ɡɒt nˈaɪnti nˈaɪn pɹˈɒbləmz and ɐ vˈɜːs ɪz nˌɒt wˈɒn.",
+    "heard": "I got 99 problems and a verse is not one.",
+    "edits": 1,
+    "seconds": 4.35,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "1",
+      "hyp": "one"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˌI ɡˈɒt nˈInti nˈIn pɹˈɒbləmz and ɐ vˈɜːs ɪz nˈɒt wˈʌn.",
+    "heard": "I got 99 problems and a verse is not one.",
+    "edits": 1,
+    "seconds": 4.55,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "1",
+      "hyp": "one"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 11,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-36",
+   "category": "edge",
+   "text": "Count it down: 3, 2, 1, go!",
+   "words": 7,
+   "old": {
+    "phonemes": "kˈaʊnt ɪt dˈaʊn: θɹˈiː, tˈuː, wˈɒn, ɡˈəʊ!",
+    "heard": "Count it down 3-2-1 Go",
+    "edits": 0,
+    "seconds": 3.3,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "kˈWnt ɪt dˈWn: θɹˈiː, tˈuː, wˈʌn, ɡˈQ!",
+    "heard": "Count it down 3, 2, 1, go.",
+    "edits": 0,
+    "seconds": 3.2,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-37",
+   "category": "edge",
+   "text": "In 1600 the Globe was new.",
+   "words": 6,
+   "old": {
+    "phonemes": "ɪn sˈɪkstiːn hˈʌndɹɪd ðə ɡlˈəʊb wɒz njˈuː.",
+    "heard": "In 1600, the globe was new.",
+    "edits": 0,
+    "seconds": 3.55,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɪn sɪkstˈiːn hˈʌndɹəd ðə ɡlˈQb wɒz nˈuː.",
+    "heard": "In 1600, the globe was new.",
+    "edits": 0,
+    "seconds": 3.55,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-38",
+   "category": "edge",
+   "text": "Ten past 10 on the 10th of May.",
+   "words": 8,
+   "old": {
+    "phonemes": "tˈɛn pˈast tˈɛn ɒnðə tˈɛnθ ɒv mˈeɪ.",
+    "heard": "10 past 10 on the 10th of May.",
+    "edits": 1,
+    "seconds": 3.35,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "ten",
+      "hyp": "10"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "tˈɛn pˈɑːst tˈɛn ɒn ðə tˈɛnθ əv mˈA.",
+    "heard": "10 past 10 on the 10th of May.",
+    "edits": 1,
+    "seconds": 3.375,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "ten",
+      "hyp": "10"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-39",
+   "category": "edge",
+   "text": "Henry VI, Part 2, is rarely played.",
+   "words": 7,
+   "old": {
+    "phonemes": "hˈɛnɹi vˌiːˈaɪ, pˈɑːt tˈuː, ɪz ɹˈeəli plˈeɪd.",
+    "heard": "Henry VI Part II is rarely played.",
+    "edits": 1,
+    "seconds": 3.95,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "ii"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "hˈɛnɹi ðə sˈɪksθ, pˈɑːt tˈuː, ɪz ɹˈɛːli plˈAd.",
+    "heard": "Henry VI Part II is rarely played.",
+    "edits": 1,
+    "seconds": 4,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "ii"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-40",
+   "category": "edge",
+   "text": "My score went up 100% in 24 hours.",
+   "words": 8,
+   "old": {
+    "phonemes": "maɪ skˈɔː wɛnt ˌʌp wˈɒn hˈʌndɹɪd pəsˈɛnt ɪn twˈɛnti fˈɔːɹ ˈaʊəz.",
+    "heard": "My score went up 100% in 24 hours.",
+    "edits": 0,
+    "seconds": 4.75,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mI skˈɔː wˈɛnt ˈʌp wˈʌn hˈʌndɹəd pəsˈɛnt ɪn twˈɛnti fˈɔːɹ ˈWəz.",
+    "heard": "My score went up 100% in 24 hours.",
+    "edits": 0,
+    "seconds": 4.75,
+    "ops": []
+   },
+   "spoken": {
+    "words": 11,
+    "old": 0,
+    "new": 0
+   }
+  }
+ ]
+}
