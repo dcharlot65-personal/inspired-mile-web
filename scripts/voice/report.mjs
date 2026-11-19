@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { align, bootstrap, scoreWords, wer } from './score.mjs';
+import { HELD_OUT_SEEN } from './corpus.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const DOC = join(ROOT, 'docs/voice/G2P-MEASUREMENT.md');
@@ -44,6 +45,22 @@ const w = m.summary.word?.targetsHeard;
 if (w) {
   out.push('');
   out.push(`The word itself heard (every part of it, spelt as written or a known variant): old ${w.old} of ${w.of}, new ${w.new} of ${w.of}.`);
+  // Not all 200 are unseen by the voice (corpus.mjs HELD_OUT_SEEN): the same measure without them.
+  const named = new Set(HELD_OUT_SEEN.named);
+  const additions = new Set(HELD_OUT_SEEN.additions);
+  const words = m.results.filter((r) => r.category === 'word');
+  const heard = (rows) => [rows.filter((r) => r.old.targetHeard).length, rows.filter((r) => r.new.targetHeard).length, rows.length];
+  out.push('');
+  out.push('| The words | Words | Heard, old | Heard, new | New − old |');
+  out.push('|---|---:|---:|---:|---:|');
+  for (const [what, rows] of [
+    ['all 200', words],
+    [`not named in the voice's code, tests or notes (less ${named.size})`, words.filter((r) => !named.has(r.target))],
+    [`also not in the game's own pronunciation additions (less ${additions.size} more): never seen by the voice`, words.filter((r) => !named.has(r.target) && !additions.has(r.target))],
+  ]) {
+    const [o, n, of] = heard(rows);
+    out.push(`| ${what} | ${of} | ${o} | ${n} | ${n - o >= 0 ? '+' : '−'}${Math.abs(n - o)} |`);
+  }
 }
 const rt = m.summary['running text'];
 const verdict = [];

@@ -15,7 +15,7 @@
  *
  * Needs `node --import ./scripts/sound/ts-resolve.mjs` (it imports the game's TypeScript).
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -26,6 +26,49 @@ export function slangAndNames() {
     .split('\n')
     .map((l) => l.trim())
     .filter((l) => l && !l.startsWith('#'));
+}
+
+/**
+ * The words of slang-and-names.txt that the voice's own sources name, so they are not fully held
+ * out from it. docs/voice/G2P-MEASUREMENT.md gives the word measure with and without them.
+ *
+ *   named      named in the voice's code, tests or notes, most as the examples its rules were
+ *              written for (finna, skrrt, bussin, varlet, coxcomb, Haruki, Okonkwo, Adebayo,
+ *              Mwangi); "mid" and "extra" only as ordinary words there, counted all the same.
+ *   additions  in the game's own pronunciation additions (scripts/pronunciation-extra.txt, written
+ *              for the verse rules on 2026-11-16, before the voice work, and unchanged by it), which
+ *              the voice's table includes, so it reads them from the table.
+ *
+ * src/lib/voice/held-out.test.ts holds this to the sources (voiceSources): it fails when a source
+ * names a word of the list that is not here, or when a word here is no longer named.
+ */
+export const HELD_OUT_SEEN = {
+  named: ['finna', 'skrrt', 'bussin', 'varlet', 'coxcomb', 'Okonkwo', 'Adebayo', 'Haruki', 'Mwangi', 'mid', 'extra'],
+  additions: ["'tis", 'forsooth', 'prithee', 'methinks', 'wherefore', 'alack', 'anon', 'hither', 'thither', "o'er", 'Mercutio', 'Benvolio', 'Malvolio', 'Prospero', 'Caliban', 'Titania', 'Oberon', 'Rosalind', 'Shylock'],
+};
+
+/** The files the voice is made of and described in (not its generated tables, not this list's own two files). */
+export function voiceSources() {
+  const dir = (d, keep) => readdirSync(join(ROOT, d)).filter(keep).map((f) => `${d}/${f}`);
+  return [
+    ...dir('src/lib/voice', (f) => f.endsWith('.ts') && !['lexicon-en.ts', 'nrl-rules.ts', 'kokoro-vocab.ts'].includes(f)),
+    ...dir('scripts/voice', (f) => !['slang-and-names.txt', 'corpus.mjs'].includes(f)),
+    'src/lib/thespian-voice.ts', 'src/lib/thespian-voice.test.ts', 'tests/voice.spec.ts', 'scripts/build-voice-lexicon.mjs', 'scripts/build-nrl-rules.mjs',
+    'scripts/check-no-espeak.mjs', 'scripts/pronunciation-extra.txt', 'astro.config.mjs', 'CLAUDE.md',
+  ].filter((f) => existsSync(join(ROOT, f)));
+}
+
+/** Each word of slang-and-names.txt that a voice source names (as a whole word, any case), with the files. */
+export function heldOutNamedInSources() {
+  const found = new Map();
+  const texts = voiceSources().map((f) => [f, readFileSync(join(ROOT, f), 'utf8')]);
+  for (const w of slangAndNames()) {
+    const core = w.replace(/'+$/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(?<![\\p{L}\\p{N}_])${core}(?![\\p{L}\\p{N}_])`, 'iu');
+    const files = texts.filter(([, t]) => re.test(t)).map(([f]) => f);
+    if (files.length) found.set(w, files);
+  }
+  return found;
 }
 
 export async function corpus() {
