@@ -50,6 +50,12 @@ pub struct BracketMatch {
     status: String,
     /// The stored result (`battle_rooms`) of the room that decided the match.
     room_id: Option<Uuid>,
+    /// When the match is to have been played (both players known); then the server decides it
+    /// (`progress::decide_overdue`).
+    play_by: Option<String>,
+    /// How it was decided: room, bye, no_show, lot or unplayed (None while undecided, and for a
+    /// match decided before this was kept).
+    decided_by: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -249,7 +255,7 @@ async fn get_bracket(
 ) -> Result<Json<Vec<BracketMatch>>, (StatusCode, String)> {
     let rows = sqlx::query(
         "SELECT m.id, m.round, m.match_order, m.player1_id, m.player2_id, m.winner_id, m.status, m.room_id,
-                u1.username as p1_name, u2.username as p2_name
+                m.play_by, m.decided_by, u1.username as p1_name, u2.username as p2_name
          FROM tournament_matches m
          LEFT JOIN users u1 ON u1.id = m.player1_id
          LEFT JOIN users u2 ON u2.id = m.player2_id
@@ -272,6 +278,8 @@ async fn get_bracket(
         winner_id: r.get("winner_id"),
         status: r.get("status"),
         room_id: r.get("room_id"),
+        play_by: r.get::<Option<chrono::DateTime<chrono::Utc>>, _>("play_by").map(|t| t.to_rfc3339()),
+        decided_by: r.get("decided_by"),
     }).collect();
 
     Ok(Json(matches))
@@ -313,6 +321,10 @@ async fn get_leaderboard(
 /// The room a tournament match is played in: the live one already open for it, or a new one
 /// with both players' seats held. Either player may ask; the room is judged like any other, and
 /// its result, stored by the server, is the match's result (`progress::from_room`).
+///
+/// The room is opened while the tournament and the match are locked, in the order every result
+/// and the scheduler lock them: a match past its time that the scheduler is deciding at that
+/// moment is either decided first (and no room is opened) or sees this room and waits for it.
 async fn open_match_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
@@ -321,16 +333,24 @@ async fn open_match_room(
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<MatchRoomResponse>, (StatusCode, String)> {
+    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
+    sqlx::query("SELECT 1 FROM tournaments WHERE id = $1 FOR UPDATE")
+        .bind(tournament_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(crate::error::internal)?
+        .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
     let m = sqlx::query(
         "SELECT m.player1_id, m.player2_id, m.status, u1.username AS p1_name, u2.username AS p2_name
          FROM tournament_matches m
          LEFT JOIN users u1 ON u1.id = m.player1_id
          LEFT JOIN users u2 ON u2.id = m.player2_id
-         WHERE m.id = $1 AND m.tournament_id = $2",
+         WHERE m.id = $1 AND m.tournament_id = $2
+         FOR UPDATE OF m",
     )
     .bind(match_id)
     .bind(tournament_id)
-    .fetch_optional(&pool)
+    .fetch_optional(&mut *tx)
     .await
     .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
@@ -354,8 +374,9 @@ async fn open_match_room(
         .map_err(crate::multiplayer::handlers::refused)?;
     sqlx::query("UPDATE tournament_matches SET status = 'in_progress' WHERE id = $1 AND status = 'pending'")
         .bind(match_id)
-        .execute(&pool)
+        .execute(&mut *tx)
         .await
         .map_err(crate::error::internal)?;
+    tx.commit().await.map_err(crate::error::internal)?;
     Ok(Json(MatchRoomResponse { room_id }))
 }

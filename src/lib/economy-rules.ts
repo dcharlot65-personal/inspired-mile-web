@@ -36,12 +36,13 @@ export const ECONOMY = rules as unknown as {
     daily_pack_cards: number;
     daily_pack_every_hours: number;
   };
-  import: { max_cards: number; max_by_rarity: Record<string, number> };
+  import: { max_cards: number; max_by_rarity: Record<string, number>; sellable: boolean };
   device: { trivia_cards_per_day: number; challenge_cards_per_day: number };
   market: { price_min: number; price_max: number };
   teen_daily_spend: number;
   referral: { referrer_credits: number; rewards_per_day: number };
   founding: { credits: number };
+  tournaments: { match_hours: number };
   account_achievements: Array<{ id: string; metric: string; goal: number }>;
 };
 

@@ -62,6 +62,17 @@ pub struct Packs {
 pub struct Import {
     pub max_cards: usize,
     pub max_by_rarity: HashMap<String, usize>,
+    /// Whether a card that came over in the import may be listed in the market. False: it stays
+    /// with the account that imported it, so a forged collection taken into many accounts cannot
+    /// be gathered into one (docs/ECONOMY.md).
+    pub sellable: bool,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct Tournaments {
+    /// Hours a match has to be played once both its players are known (a round robin's round r:
+    /// r times this, from the draw). Then the scheduler decides it (`tournaments::progress`).
+    pub match_hours: i32,
 }
 
 #[derive(Debug, Deserialize)]
@@ -116,6 +127,7 @@ pub struct Rules {
     pub teen_daily_spend: i32,
     pub referral: Referral,
     pub founding: Founding,
+    pub tournaments: Tournaments,
     pub account_achievements: Vec<AccountAchievement>,
 }
 

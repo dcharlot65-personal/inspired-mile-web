@@ -38,7 +38,8 @@
   "import": {
     "_comment": "The one-time move of a device's own collection into an account, on its first sign-in.",
     "max_cards": 20,
-    "max_by_rarity": { "Legendary": 1, "Epic": 2, "Rare": 5 }
+    "max_by_rarity": { "Legendary": 1, "Epic": 2, "Rare": 5 },
+    "sellable": false
   },
   "device": {
     "_comment": "Signed out, the browser keeps its own collection for solo play. Trivia and quote challenges add a card to it at most this many times a day each.",
@@ -49,6 +50,10 @@
   "teen_daily_spend": 200,
   "referral": { "referrer_credits": 100, "rewards_per_day": 3 },
   "founding": { "credits": 500 },
+  "tournaments": {
+    "_comment": "A tournament match is to be played within match_hours of both its players being known (a round robin's round r within r times that, from the draw); then the server decides it (backend/src/tournaments/progress.rs).",
+    "match_hours": 48
+  },
   "account_achievements": [
     { "id": "first-blood", "metric": "online_wins", "goal": 1 },
     { "id": "battle-master", "metric": "online_wins", "goal": 10 },

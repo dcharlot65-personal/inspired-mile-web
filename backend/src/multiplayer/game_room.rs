@@ -22,6 +22,9 @@
 //! When a match ends, the room hands its result (who played, who won and how, rounds and
 //! points; never the verses) to the recorder once (`MatchRecord`, written by `results.rs`). Those
 //! results are the leaderboard, the rankings and the tournament results: nothing else feeds them.
+//! A tournament room whose time to arrive runs out with one player there and the other never
+//! come says so too (`RoomReport::NoShow`): at the match's deadline that decides it
+//! (`tournaments::progress::decide_overdue`).
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -95,6 +98,9 @@ pub struct Timing {
     /// How long a finished room still answers a player who comes back for the result. After
     /// this it is closed: it takes nobody and shows nothing, and the next sweep empties it.
     pub linger: Duration,
+    /// How long the first player into a tournament match's room waits for the other
+    /// (`TOURNAMENT_ARRIVAL` in service; `TOURNAMENT_ARRIVAL_SECONDS` shortens it for tests).
+    pub tournament_arrival: Duration,
 }
 
 impl Default for Timing {
@@ -104,6 +110,7 @@ impl Default for Timing {
             reconnect: Duration::from_secs(45),
             arrival: Duration::from_secs(60),
             linger: FINISHED_LINGER,
+            tournament_arrival: TOURNAMENT_ARRIVAL,
         }
     }
 }
@@ -389,8 +396,21 @@ impl EndReason {
 }
 
 /// How long the first player into a tournament room waits for the other (a quick match waits
-/// `Timing::arrival`). Under `UNVISITED_ROOM`, so a room nobody comes to is still swept.
+/// `Timing::arrival`). Under `UNVISITED_ROOM`, so a room nobody comes to is still swept; a
+/// shorter time may be configured (`Timing::tournament_arrival`), never a longer one.
 pub const TOURNAMENT_ARRIVAL: Duration = Duration::from_secs(240);
+const _: () = assert!(TOURNAMENT_ARRIVAL.as_secs() < UNVISITED_ROOM.as_secs(), "a tournament room nobody comes to must still be swept");
+
+/// What a room hands the recorder (`results.rs`).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum RoomReport {
+    /// A match the server judged, once, when it ends.
+    Match(MatchRecord),
+    /// A tournament match's room: its time to arrive ran out while `present` sat ready in it and
+    /// the other player never came. Nothing is decided now; at the match's deadline a player who
+    /// waited for an absent opponent goes through (`tournaments::progress::decide_overdue`).
+    NoShow { room_id: Uuid, tournament_match: Uuid, present: Uuid },
+}
 
 /// Something the room needs done later. See [`run_effects`].
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -473,7 +493,7 @@ pub struct GameRoom {
     /// Closed: the opponent never came, or the room was swept. It takes nobody now.
     closed: bool,
     /// Where the finished match is sent to be stored (`results.rs`). None in unit tests.
-    recorder: Option<mpsc::UnboundedSender<MatchRecord>>,
+    recorder: Option<mpsc::UnboundedSender<RoomReport>>,
     /// The tournament match this room was opened for.
     tournament_match: Option<Uuid>,
     /// Wall-clock time of the first round, for the record.
@@ -528,7 +548,7 @@ impl GameRoom {
 
     /// Hand finished matches to this recorder (the manager does this for every room it opens).
     #[cfg(test)]
-    pub fn record_to(&mut self, recorder: mpsc::UnboundedSender<MatchRecord>) {
+    pub fn record_to(&mut self, recorder: mpsc::UnboundedSender<RoomReport>) {
         self.recorder = Some(recorder);
     }
 
@@ -912,6 +932,14 @@ impl GameRoom {
         } else {
             "The player who invited you is not here. Ask them for a new link."
         };
+        // A tournament match keeps the name of the player who waited for an absent opponent.
+        let here: Vec<Uuid> = self.seats.iter().filter(|s| s.joined() && s.tx.is_some()).map(|s| s.user_id).collect();
+        if let (Some(tournament_match), [present], Some(recorder)) = (self.tournament_match, here.as_slice(), &self.recorder) {
+            let report = RoomReport::NoShow { room_id: self.id, tournament_match, present: *present };
+            if recorder.send(report).is_err() {
+                tracing::error!(room_id = %self.id, "a tournament no-show could not be handed to the recorder");
+            }
+        }
         let event = ServerEvent::Error { code: "opponent_absent", message: message.into() };
         for seat in 0..self.seats.len() {
             self.send(seat, event.clone());
@@ -920,6 +948,15 @@ impl GameRoom {
         self.closed = true;
         self.state = RoomState::Completed;
         self.completed_at = Some(Instant::now());
+    }
+
+    /// The characters this player has brought to the room and could still play: the deck of a
+    /// seat taken in a room that has not ended.
+    fn fielded_by(&self, user_id: Uuid) -> &[String] {
+        match self.seat_of(user_id) {
+            Some(seat) if self.state != RoomState::Completed && !self.closed => &self.seats[seat].deck,
+            _ => &[],
+        }
     }
 
     /// The round's time is up. A late timer for a round already decided does nothing.
@@ -1014,7 +1051,7 @@ impl GameRoom {
         if !self.recorded {
             if let (Some(record), Some(recorder)) = (self.record(), &self.recorder) {
                 self.recorded = true;
-                if recorder.send(record).is_err() {
+                if recorder.send(RoomReport::Match(record)).is_err() {
                     tracing::error!(room_id = %self.id, "a finished match could not be handed to the recorder");
                 }
             }
@@ -1131,7 +1168,7 @@ pub struct RoomManager {
     opening: Mutex<()>,
     timing: Timing,
     /// Every room it opens hands its finished match here (`results.rs`).
-    recorder: Option<mpsc::UnboundedSender<MatchRecord>>,
+    recorder: Option<mpsc::UnboundedSender<RoomReport>>,
 }
 
 /// Why a room could not be opened.
@@ -1164,7 +1201,7 @@ impl RoomManager {
     }
 
     /// Every room opened from now on hands its finished match to `recorder`.
-    pub fn with_recorder(mut self, recorder: mpsc::UnboundedSender<MatchRecord>) -> Self {
+    pub fn with_recorder(mut self, recorder: mpsc::UnboundedSender<RoomReport>) -> Self {
         self.recorder = Some(recorder);
         self
     }
@@ -1252,7 +1289,7 @@ impl RoomManager {
         room.recorder = self.recorder.clone();
         if tournament_match.is_some() {
             room.tournament_match = tournament_match;
-            room.timing.arrival = TOURNAMENT_ARRIVAL;
+            room.timing.arrival = self.timing.tournament_arrival.min(TOURNAMENT_ARRIVAL);
         }
         let paired = room.paired;
         room.arrival_armed = paired;
@@ -1300,6 +1337,34 @@ impl RoomManager {
             }
         }
         mine
+    }
+
+    /// The characters this player has in a room that has not ended (seated before the match, or
+    /// playing it): a card fielded there cannot be listed in the market while it may still take
+    /// the stage (marketplace/handlers.rs). Each room is looked at under its own lock.
+    pub async fn cards_fielded_by(&self, user_id: Uuid) -> Vec<String> {
+        let mut cards = Vec::new();
+        for (_, room) in self.all().await {
+            let room = room.lock().await;
+            for card in room.fielded_by(user_id) {
+                if !cards.contains(card) {
+                    cards.push(card.clone());
+                }
+            }
+        }
+        cards
+    }
+
+    /// Whether a room for this tournament match is open and has not ended: the match is being
+    /// played, or a player is waiting in it, so its deadline waits for it.
+    pub async fn tournament_room_live(&self, tournament_match: Uuid) -> bool {
+        for (_, room) in self.all().await {
+            let room = room.lock().await;
+            if room.tournament_match == Some(tournament_match) && !room.gone() && room.state() != RoomState::Completed {
+                return true;
+            }
+        }
+        false
     }
 
     /// Take these rooms away: each is closed under its own lock (it takes nobody from then
@@ -2135,7 +2200,7 @@ mod tests {
         t.room.submit(t.b, 0, DECK_B[0], PLAIN).unwrap();
         assert!(rx.try_recv().is_err(), "nothing is recorded before the match ends");
         t.room.forfeit(t.b);
-        let record = rx.try_recv().expect("the end of the match is recorded");
+        let RoomReport::Match(record) = rx.try_recv().expect("the end of the match is recorded") else { panic!("a match record") };
         assert_eq!(record.players, [t.a, t.b]);
         assert_eq!(record.winner, Some(0));
         assert_eq!(record.reason, EndReason::Forfeit);
@@ -2169,10 +2234,57 @@ mod tests {
         room.lock().await.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
         room.lock().await.join(b, "bob", &deck(&DECK_B), tx_b).unwrap();
         room.lock().await.forfeit(a);
-        let record = rx.try_recv().expect("recorded");
+        let RoomReport::Match(record) = rx.try_recv().expect("recorded") else { panic!("a match record") };
         assert_eq!(record.tournament_match, Some(m));
         assert_eq!(record.winner, Some(1));
         // A finished room is not given out again for the match: a new one is opened.
         assert_ne!(rooms.open_tournament_room(&seats, "203.0.113.1", m).await.unwrap(), id);
+    }
+
+    #[tokio::test]
+    async fn a_tournament_room_says_who_waited_when_the_other_never_came() {
+        let (tx, mut rx) = mpsc::unbounded_channel();
+        let rooms = RoomManager::new().with_recorder(tx);
+        let (a, b, m) = (Uuid::new_v4(), Uuid::new_v4(), Uuid::new_v4());
+        let seats = [(a, "ann".to_string()), (b, "bob".to_string())];
+        let id = rooms.open_tournament_room(&seats, "203.0.113.1", m).await.unwrap();
+        let room = rooms.get_room(id).await.unwrap();
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        assert!(rooms.tournament_room_live(m).await, "a player waits in it");
+        room.lock().await.arrival_expired();
+        assert_eq!(rx.try_recv().expect("reported"), RoomReport::NoShow { room_id: id, tournament_match: m, present: a });
+        assert!(rx.try_recv().is_err(), "nothing else: no match was played");
+        assert!(!rooms.tournament_room_live(m).await, "the room has closed");
+
+        // Nobody came at all: nobody waited, nothing is said.
+        let id = rooms.open_tournament_room(&seats, "203.0.113.1", m).await.unwrap();
+        rooms.get_room(id).await.unwrap().lock().await.arrival_expired();
+        assert!(rx.try_recv().is_err());
+        // A quick match whose opponent never came is no tournament's business.
+        let quick = rooms.open_room(&seats, &["203.0.113.1".to_string(), "203.0.113.2".to_string()]).await.unwrap();
+        let room = rooms.get_room(quick).await.unwrap();
+        let (tx_a, _rx_a2) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        room.lock().await.arrival_expired();
+        assert!(rx.try_recv().is_err());
+    }
+
+    #[tokio::test]
+    async fn the_cards_a_player_has_brought_to_a_room_are_known_until_it_ends() {
+        let rooms = RoomManager::new();
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let id = rooms.create_room(&[(a, "ann".to_string())], &["203.0.113.1".to_string()]).await.unwrap();
+        let room = rooms.get_room(id).await.unwrap();
+        assert!(rooms.cards_fielded_by(a).await.is_empty(), "a seat held, no deck yet");
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        assert_eq!(rooms.cards_fielded_by(a).await, deck(&DECK_A), "seated, waiting for a friend");
+        assert!(rooms.cards_fielded_by(b).await.is_empty());
+        let (tx_b, _rx_b) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(b, "bob", &deck(&DECK_B), tx_b).unwrap();
+        assert_eq!(rooms.cards_fielded_by(a).await, deck(&DECK_A), "playing");
+        room.lock().await.forfeit(b);
+        assert!(rooms.cards_fielded_by(a).await.is_empty(), "the match is over");
     }
 }

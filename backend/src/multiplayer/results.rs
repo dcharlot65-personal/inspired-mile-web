@@ -9,35 +9,53 @@
 //!
 //! These rows are the public leaderboard, every account's online record, account achievements
 //! and tournament results (stats/handlers.rs). Nothing a client says is among them.
+//!
+//! A tournament room whose opponent never came reports who waited (`RoomReport::NoShow`); that is
+//! kept on the match (`tournaments::progress::note_no_show`) for its deadline.
 
 use inspired_mile_api::economy::{self, Rate, RULES};
 use sqlx::{PgPool, Postgres, Transaction};
 use tokio::sync::mpsc;
 use uuid::Uuid;
 
-use super::game_room::MatchRecord;
+use super::game_room::{MatchRecord, RoomReport};
 use crate::ledger;
 
-/// Write each finished match as it comes. A write that fails is tried again a few times; one
-/// that still fails is logged with the whole result, so an operator can enter it by hand.
-pub async fn run_recorder(pool: PgPool, mut rx: mpsc::UnboundedReceiver<MatchRecord>) {
-    while let Some(record) = rx.recv().await {
+/// Write each report as it comes. A write that fails is tried again a few times; one that
+/// still fails is logged in full, so an operator can enter it by hand.
+pub async fn run_recorder(pool: PgPool, mut rx: mpsc::UnboundedReceiver<RoomReport>) {
+    while let Some(report) = rx.recv().await {
         let mut attempt = 0;
         loop {
             attempt += 1;
-            match record_match(&pool, &record).await {
+            let written = match &report {
+                RoomReport::Match(record) => record_match(&pool, record).await,
+                RoomReport::NoShow { tournament_match, present, .. } => record_no_show(&pool, *tournament_match, *present).await,
+            };
+            let room_id = match &report {
+                RoomReport::Match(record) => record.room_id,
+                RoomReport::NoShow { room_id, .. } => *room_id,
+            };
+            match written {
                 Ok(()) => break,
                 Err(e) if attempt < 4 => {
-                    tracing::warn!(room_id = %record.room_id, attempt, "could not store a finished match yet: {e}");
+                    tracing::warn!(%room_id, attempt, "could not store a room's report yet: {e}");
                     tokio::time::sleep(std::time::Duration::from_millis(500 * attempt)).await;
                 }
                 Err(e) => {
-                    tracing::error!(room_id = %record.room_id, ?record, "a finished match was NOT stored: {e}");
+                    tracing::error!(%room_id, ?report, "a room's report was NOT stored: {e}");
                     break;
                 }
             }
         }
     }
+}
+
+/// A player waited out a tournament room's time to arrive and the opponent never came.
+async fn record_no_show(pool: &PgPool, tournament_match: Uuid, present: Uuid) -> Result<(), sqlx::Error> {
+    let mut tx = pool.begin().await?;
+    crate::tournaments::progress::note_no_show(&mut tx, tournament_match, present).await?;
+    tx.commit().await
 }
 
 /// Store one finished match, its rewards and its tournament result, all or nothing. A match

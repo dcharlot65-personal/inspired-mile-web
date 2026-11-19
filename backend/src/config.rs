@@ -237,6 +237,10 @@ pub struct Config {
     /// Seconds between the tournament scheduler's looks for tournaments to start
     /// (`TOURNAMENT_CHECK_SECONDS`, default 30). The tests shorten it.
     pub tournament_check_seconds: u64,
+    /// `TOURNAMENT_ARRIVAL_SECONDS`: how long the first player into a tournament match's room
+    /// waits for the other, when shorter than `multiplayer::game_room::TOURNAMENT_ARRIVAL` (240 s).
+    /// For the tests: a longer value, or none, leaves the 240 s.
+    pub tournament_arrival_seconds: Option<u64>,
 }
 
 impl Config {
@@ -342,6 +346,9 @@ impl Config {
                 .and_then(|v| v.trim().parse().ok())
                 .filter(|n| *n > 0)
                 .unwrap_or(30),
+            tournament_arrival_seconds: get("TOURNAMENT_ARRIVAL_SECONDS")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0),
         };
         Ok((config, warnings))
     }
