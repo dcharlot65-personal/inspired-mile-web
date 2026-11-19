@@ -49,8 +49,9 @@ test.describe('What the site claims', () => {
   });
 
   test('the playground lists no packs for sale, and says no real money buys anything', async ({ page }) => {
+    // The first-visit tour would cover the page (and can come up after a skip): mark it seen before the page loads.
+    await page.addInitScript(() => localStorage.setItem('inspired-mile-onboarding-done', '1'));
     await page.goto('/playground');
-    await page.evaluate(() => document.getElementById('onboarding-skip')?.click());
     await page.click('#odds-toggle');
     await expect(page.locator('#odds-content')).toBeVisible();
     await expect(page.locator('[data-i18n="pg.odds.tiers"]')).toHaveCount(0);
