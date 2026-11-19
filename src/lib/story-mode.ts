@@ -86,7 +86,9 @@ export const ACTS: Act[] = [
     encounters: [
       { id: '5-1', name: 'The Scottish King', description: 'Face the bloody Macbeth.', opponent: 'SC-001', difficulty: 'hard', narrative: 'The stage is set for tragedy. Macbeth stands bloodied, crown askew. "Tomorrow, and tomorrow, and tomorrow..." Can you match the weight of his despair?' },
       { id: '5-2', name: 'Rome\'s Betrayal', description: 'Debate with Brutus himself.', opponent: 'RM-001', difficulty: 'hard', narrative: '"Not that I loved Caesar less, but that I loved Rome more." Brutus turns to you from the Senate steps. "Convince me, stranger, that words can mend what daggers broke."' },
-      { id: '5-3', name: 'The Final Bow', description: 'Face The Sonnet Man in the ultimate battle.', opponent: 'SM-001', difficulty: 'hard', narrative: 'The Globe Theatre falls silent. A single spotlight illuminates The Sonnet Man himself. "All the world\'s a stage. You have played your part well. Now — one last verse, and the curtain falls."' },
+      // Not The Sonnet Man: a real performer's persona, which the game neither deals to its opponent nor gives invented lines
+      // (owner decision D-04, 2026-11-19; doc 07 §6). Mark Antony closes the Roman story Brutus opens in 5-2.
+      { id: '5-3', name: 'The Final Bow', description: 'Face Mark Antony in the ultimate battle.', opponent: 'RM-003', difficulty: 'hard', narrative: 'The Globe Theatre falls silent. A single spotlight illuminates Mark Antony himself. "Friends, Romans, countrymen, lend me your ears! You have played your part well. Now — one last verse, and the curtain falls."' },
     ],
   },
 ];

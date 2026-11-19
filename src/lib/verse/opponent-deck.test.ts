@@ -63,3 +63,22 @@ describe('The Sonnet Man is never the opponent (D-04)', () => {
     expect(CARD_CATALOG.some((c) => c.id === SONNET_MAN && c.type === 'Character')).toBe(true);
   });
 });
+
+describe('nor Story Mode\'s opponent, nor a voice it gives words to (D-04; doc 07 §6.2)', () => {
+  it('no encounter names SM-001 as its opponent, or puts The Sonnet Man in its text', async () => {
+    const { ACTS } = await import('../story-mode');
+    const found = ACTS.flatMap((act) => act.encounters)
+      .filter((e) => NEVER_THE_OPPONENT.includes(e.opponent) || /Sonnet Man/.test(`${e.name} ${e.description} ${e.narrative}`))
+      .map((e) => e.id);
+    expect(found).toEqual([]);
+  });
+
+  it('in any of the sixteen languages', async () => {
+    const found: string[] = [];
+    for (const l of ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id']) {
+      const m: Record<string, string> = (await import(`../../i18n/pages/story/${l}.ts`)).default;
+      for (const [k, v] of Object.entries(m)) if (k.startsWith('story.enc.') && /Sonnet Man/.test(v)) found.push(`${l} ${k}`);
+    }
+    expect(found).toEqual([]);
+  });
+});

@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Reise in dieser Einzelspieler-Kampagne durch Shakespeares Welten.",
   'story.badge': "Kampagne",
   'story.title': "Story-Modus",
-  'story.intro': "Reise in 5 Akten durch Shakespeares größte Werke. Tritt in Versduellen gegen legendäre Figuren an und lüfte die Geheimnisse des Globe.",
+  'story.intro': 'Reise in 5 Akten durch Shakespeares größte Werke und lüfte die Geheimnisse des Globe. In dieser Version des Spiels öffnet eine Begegnung ihre Szene, startet aber kein Duell.',
   'story.journey': "Deine Reise",
   'story.progress': "{done} / {total} Begegnungen abgeschlossen",
   'story.stars': "Sterne",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Streite mit Brutus selbst.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Brutus wendet sich dir von den Stufen des Senats zu. „Überzeuge mich, Fremdling, dass Worte heilen können, was Dolche zerbrachen.“",
   'story.enc.5-3.name': "Die letzte Verbeugung",
-  'story.enc.5-3.desc': "Tritt im entscheidenden Kampf gegen The Sonnet Man an.",
-  'story.enc.5-3.narrative': "Im Globe Theatre wird es still. Ein einzelner Scheinwerfer beleuchtet The Sonnet Man selbst. \"All the world's a stage.\" „Du hast deine Rolle gut gespielt. Nun: eine letzte Strophe, und der Vorhang fällt.“",
+  'story.enc.5-3.desc': "Tritt im entscheidenden Kampf gegen Marcus Antonius an.",
+  'story.enc.5-3.narrative': "Im Globe Theatre wird es still. Ein einzelner Scheinwerfer beleuchtet Marcus Antonius selbst. \"Friends, Romans, countrymen, lend me your ears!\" „Du hast deine Rolle gut gespielt. Nun: eine letzte Strophe, und der Vorhang fällt.“",
 };
 
 export default messages;

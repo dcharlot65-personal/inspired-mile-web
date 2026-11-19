@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Jelajahi dunia-dunia Shakespeare dalam kampanye pemain tunggal ini.",
   'story.badge': "Kampanye",
   'story.title': "Mode Cerita",
-  'story.intro': "Tempuh 5 babak melintasi karya-karya terbesar Shakespeare. Hadapi tokoh-tokoh legendaris dalam pertarungan sajak dan singkap rahasia Globe Theatre.",
+  'story.intro': 'Tempuh 5 babak melintasi karya-karya terbesar Shakespeare dan singkap rahasia Globe Theatre. Di versi game ini, setiap perjumpaan membuka adegannya, tetapi tidak memulai duel.',
   'story.journey': "Perjalananmu",
   'story.progress': "{done} / {total} perjumpaan selesai",
   'story.stars': "Bintang",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Berdebatlah dengan Brutus sendiri.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Brutus berpaling kepadamu dari tangga Senat. \"Yakinkan aku, orang asing, bahwa kata-kata dapat memperbaiki apa yang dirusak belati.\"",
   'story.enc.5-3.name': "Salam Penutup",
-  'story.enc.5-3.desc': "Hadapi The Sonnet Man dalam pertarungan pamungkas.",
-  'story.enc.5-3.narrative': "Globe Theatre hening. Satu lampu sorot menerangi The Sonnet Man sendiri. \"All the world's a stage.\" \"Kau telah memainkan peranmu dengan baik. Sekarang, satu syair terakhir, lalu tirai turun.\"",
+  'story.enc.5-3.desc': "Hadapi Marcus Antonius dalam pertarungan pamungkas.",
+  'story.enc.5-3.narrative': "Globe Theatre hening. Satu lampu sorot menerangi Marcus Antonius sendiri. \"Friends, Romans, countrymen, lend me your ears!\" \"Kau telah memainkan peranmu dengan baik. Sekarang, satu syair terakhir, lalu tirai turun.\"",
 };
 
 export default messages;

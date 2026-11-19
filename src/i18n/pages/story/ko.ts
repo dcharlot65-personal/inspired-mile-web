@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "싱글 플레이 캠페인으로 셰익스피어의 세계를 여행하세요.",
   'story.badge': "캠페인",
   'story.title': "스토리 모드",
-  'story.intro': "셰익스피어의 걸작들을 넘나드는 5막의 여정. 이름난 인물들과 시 배틀을 벌이고 글로브 극장의 비밀을 밝혀내세요.",
+  'story.intro': '셰익스피어의 걸작들을 넘나드는 5막의 여정. 글로브 극장의 비밀을 밝혀내세요. 이 버전의 게임에서는 대결을 열면 그 장면이 나오지만, 결투는 시작되지 않아요.',
   'story.journey': "나의 여정",
   'story.progress': "{done} / {total} 대결 완료",
   'story.stars': "별",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "브루투스 본인과 논쟁하세요.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" 브루투스가 원로원 계단에서 당신을 돌아본다. \"이방인이여, 단검이 부순 것을 말이 고칠 수 있다고 나를 설득해 보라.\"",
   'story.enc.5-3.name': "마지막 인사",
-  'story.enc.5-3.desc': "궁극의 배틀에서 The Sonnet Man과 맞서세요.",
-  'story.enc.5-3.narrative': "글로브 극장이 조용해진다. 한 줄기 조명이 The Sonnet Man 본인을 비춘다. \"All the world's a stage.\" \"그대는 맡은 역을 잘 해냈다. 이제 마지막 시 한 편, 그리고 막이 내린다.\"",
+  'story.enc.5-3.desc': "궁극의 배틀에서 마르쿠스 안토니우스와 맞서세요.",
+  'story.enc.5-3.narrative': "글로브 극장이 조용해진다. 한 줄기 조명이 마르쿠스 안토니우스 본인을 비춘다. \"Friends, Romans, countrymen, lend me your ears!\" \"그대는 맡은 역을 잘 해냈다. 이제 마지막 시 한 편, 그리고 막이 내린다.\"",
 };
 
 export default messages;

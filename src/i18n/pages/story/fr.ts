@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Voyagez à travers les mondes de Shakespeare dans cette campagne solo.",
   'story.badge': "Campagne",
   'story.title': "Mode histoire",
-  'story.intro': "Traversez 5 actes à travers les plus grandes œuvres de Shakespeare. Affrontez des personnages légendaires dans des combats de vers et percez les secrets du Globe.",
+  'story.intro': 'Traversez 5 actes à travers les plus grandes œuvres de Shakespeare et percez les secrets du Globe. Dans cette version du jeu, une rencontre ouvre sa scène, mais ne lance aucun duel.',
   'story.journey': "Votre voyage",
   'story.progress': "{done} / {total} rencontres terminées",
   'story.stars': "Étoiles",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Débattez avec Brutus en personne.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Brutus se tourne vers vous depuis les marches du Sénat. « Convaincs-moi, toi qui viens d'ailleurs, que les mots peuvent réparer ce que les poignards ont brisé. »",
   'story.enc.5-3.name': "Le dernier salut",
-  'story.enc.5-3.desc': "Affrontez The Sonnet Man dans l'ultime combat.",
-  'story.enc.5-3.narrative': "Le théâtre du Globe fait silence. Un seul projecteur éclaire The Sonnet Man en personne. \"All the world's a stage.\" « Tu as bien joué ton rôle. À présent, une dernière strophe, et le rideau tombe. »",
+  'story.enc.5-3.desc': "Affrontez Marc Antoine dans l'ultime combat.",
+  'story.enc.5-3.narrative': "Le théâtre du Globe fait silence. Un seul projecteur éclaire Marc Antoine en personne. \"Friends, Romans, countrymen, lend me your ears!\" « Tu as bien joué ton rôle. À présent, une dernière strophe, et le rideau tombe. »",
 };
 
 export default messages;
