@@ -71,6 +71,8 @@ import { t } from '../i18n';
         <div class="mt-6 p-4 rounded-lg border border-obsidian-700/50 bg-obsidian-900/30">
           <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.mind">Your opponent's mind</span>
           <p id="brain-status" class="text-sm text-obsidian-300 mt-1">Checking what this device can run…</p>
+          <!-- Who plays and who judges this duel, said before it starts (EU AI Act Article 50; src/lib/ai-notice.ts). -->
+          <p id="ai-notice" role="note" data-opponent="written" data-judge="rules" class="mt-3 text-sm text-obsidian-100 border border-gold-500/30 bg-gold-500/10 rounded-sm px-3 py-2">No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.</p>
           <div id="brain-choices" class="hidden mt-3 flex flex-wrap gap-3">
             <button id="brain-model-btn" class="btn-primary text-sm"></button>
             <button id="brain-other-btn" class="hidden btn-secondary text-sm"></button>
@@ -190,6 +192,7 @@ import { t } from '../i18n';
 
   <script>
     import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges, modelsToOffer, modelWrites, rememberedModel, type Tier } from '../lib/brain';
+    import { aiNotice } from '../lib/ai-notice';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
@@ -363,6 +366,19 @@ import { t } from '../i18n';
       note.dataset.writer = info && modelWrites(info, lang) ? 'model' : 'written';
       note.dataset.judge = info && modelJudges(info, lang) ? 'model' : 'rules';
       note.classList.toggle('hidden', lines.length === 0);
+      renderNotice();
+    }
+    /**
+     * Before the duel: whether artificial intelligence plays and judges it, named, or a program with prepared
+     * verses and the rules (EU AI Act Article 50(1), told at the first interaction, 50(5)). It follows the
+     * model in use and the duel's language, by the same lists the duel itself is gated on.
+     */
+    function renderNotice() {
+      const n = aiNotice(useModel ? brainInfo() : null, langSelect.value || 'en');
+      const notice = $('ai-notice');
+      say$(notice, n.key, n.vars);
+      notice.dataset.opponent = n.opponent;
+      notice.dataset.judge = n.judge;
     }
     // A duel language's verse data and sound data (the Japanese analyser's dictionary and its
     // loanword lists are 5.1 MB, the English table 0.5 MB) start loading as soon as the visitor shows
@@ -537,6 +553,7 @@ import { t } from '../i18n';
         localStorage.setItem(BRAIN_KEY, 'rules');
         $('brain-choices').classList.add('hidden');
         say$($('brain-status'), 'brain.writtenReload');
+        renderNotice();
         ready('brain.noModel');
       });
       // Someone who has already downloaded a model does not need asking again: that same model is

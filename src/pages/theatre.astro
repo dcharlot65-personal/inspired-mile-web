@@ -27,6 +27,8 @@ await loadArea('about');
         <a href="/battle" class="text-xs text-obsidian-400 hover:text-gold-400 underline" data-i18n="theatre.flat">Play the flat version</a>
       </div>
       <p id="theatre-status" class="text-center text-xs font-mono rtl:font-sans text-obsidian-500 mb-4">Raising the curtain…</p>
+      <!-- Who plays and who judges, said before the duel (EU AI Act Article 50; src/lib/ai-notice.ts). -->
+      <p id="ai-notice" role="note" data-opponent="written" data-judge="rules" class="max-w-2xl mx-auto mb-4 text-center text-sm text-obsidian-100 border border-gold-500/30 bg-gold-500/10 rounded-sm px-3 py-2">No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.</p>
 
       <div class="card-glass overflow-hidden rounded-xl">
         <canvas id="theatre-canvas" class="w-full block touch-none" style="height: min(70vh, 640px);"></canvas>
@@ -59,6 +61,7 @@ await loadArea('about');
 
   <script>
     import { brainInfo, detectCapability, loadBrain, modelJudges, rememberedModel } from '../lib/brain';
+    import { aiNotice } from '../lib/ai-notice';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
@@ -178,10 +181,27 @@ await loadArea('about');
 
     const theatre = new Theatre(document.getElementById('theatre-canvas') as HTMLCanvasElement, act);
 
-    async function start(seed: number) {
-      // The duel is fought in the language chosen on the battle page; its verse data loads first.
+    /** The duel is fought in the language chosen on the battle page. */
+    function duelLang(): string {
       const stored = localStorage.getItem('inspired-mile-duel-lang');
-      const lang = stored && hasPack(stored) ? stored : 'en';
+      return stored && hasPack(stored) ? stored : 'en';
+    }
+
+    /**
+     * Before the duel: whether artificial intelligence plays and judges it, or a program with prepared verses
+     * and the rules (EU AI Act Article 50(1) and (5)), by the same lists the duel is gated on.
+     */
+    const noticeEl = document.getElementById('ai-notice')!;
+    function renderNotice() {
+      const n = aiNotice(useModel ? brainInfo() : null, session?.duel.lang ?? duelLang());
+      noticeEl.textContent = t(n.key, n.vars);
+      noticeEl.dataset.opponent = n.opponent;
+      noticeEl.dataset.judge = n.judge;
+    }
+
+    async function start(seed: number) {
+      // The duel's verse data loads first.
+      const lang = duelLang();
       await Promise.all([loadPack(lang), loadSound(lang)]);
       session = new DuelSession({
         seed,
@@ -223,6 +243,7 @@ await loadArea('about');
       const info = useModel ? brainInfo() : null;
       if (info) status('theatre.running', { model: info.label });
       else status('theatre.writtenHint');
+      renderNotice();
 
       const mode = await Theatre.supportedMode();
       if (mode) {
@@ -247,8 +268,10 @@ await loadArea('about');
     }
     initI18n().then(() => {
       status('theatre.raising');
+      renderNotice();
       onLocaleChange(() => {
         if (statusMsg) statusEl.textContent = t(statusMsg.key, statusMsg.vars);
+        renderNotice();
         labelEnter();
         redraw();
       });
