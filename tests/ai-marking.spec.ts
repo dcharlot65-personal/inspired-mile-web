@@ -70,6 +70,68 @@ test.describe('A verse a model wrote is marked', () => {
     });
   }
 
+  /** A duel whose first verse the stand-in model wrote, in English, with the interface in `ui`. */
+  async function modelDuel(page: Page, ui: string) {
+    const seed = await seedTheModelWins();
+    await standInModel(page, VERSE);
+    await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
+    await page.goto(`/battle?brain=grand&seed=${seed}`);
+    await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B');
+    await setLists(page, 'grand', ['en'], []);
+    await page.selectOption('#language', 'en');
+    await page.click('#start-duel');
+    await expect(page.locator('#opponent-verse')).toHaveAttribute('data-source', 'model', { timeout: 60_000 });
+    await expect(page.locator('#opponent-ai-label')).toBeVisible();
+  }
+
+  test('a screen reader is told: the label and the verse are one polite live region, written once, not on every keystroke', async ({ page }) => {
+    await modelDuel(page, 'en');
+    const region = await page.evaluate(() => {
+      const of = (id: string) => document.getElementById(id)!.closest('[aria-live]');
+      return { verse: of('opponent-verse')?.id, label: of('opponent-ai-label')?.id, live: of('opponent-verse')?.getAttribute('aria-live'), atomic: of('opponent-verse')?.getAttribute('aria-atomic') };
+    });
+    expect(region).toEqual({ verse: 'opponent-said', label: 'opponent-said', live: 'polite', atomic: 'true' });
+    // Typing redraws the round; the live region must not change, or a screen reader reads the verse again at every key.
+    await page.evaluate(() => {
+      (window as any).__regionChanges = 0;
+      new MutationObserver((records) => { (window as any).__regionChanges += records.length; })
+        .observe(document.getElementById('opponent-said')!, { childList: true, characterData: true, subtree: true });
+    });
+    await page.locator('#verse-input').pressSequentially('The moon is bright tonight', { delay: 20 });
+    await expect(page.locator('#live-craft')).not.toHaveText('0');
+    expect(await page.evaluate(() => (window as any).__regionChanges)).toBe(0);
+  });
+
+  for (const ui of ['ar', 'ja']) {
+    test(`the label sits at the start of the verse it labels (${ui} interface, English duel)`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 900 });
+      await modelDuel(page, ui);
+      await expect(page.locator('#opponent-ai-label')).toHaveText(LABEL[ui]);
+      const [label, verse] = await Promise.all([page.locator('#opponent-ai-label').boundingBox(), page.locator('#opponent-verse').boundingBox()]);
+      // An English verse starts at the left: the label above it starts there too (on the Arabic page it sat ~700 px away, at the right).
+      expect(Math.abs(label!.x - verse!.x)).toBeLessThan(24);
+      expect(label!.y).toBeLessThan(verse!.y);
+      expect(verse!.y - (label!.y + label!.height)).toBeLessThan(24);
+    });
+  }
+
+  for (const ui of ['en', 'de', 'ru', 'ar', 'hi']) {
+    test(`at phone width each control under the verse stays on one line (${ui})`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
+      await startDuel(page, '/battle?brain=rules&seed=11');
+      for (const id of ['mic-label', 'voice-label']) {
+        expect(await page.locator(`#${id}`).evaluate((el) => el.getClientRects().length), id).toBe(1);
+      }
+      expect(await page.locator('#submit-verse').evaluate((el) => {
+        const r = document.createRange();
+        r.selectNodeContents(el);
+        return new Set([...r.getClientRects()].map((x) => Math.round(x.top))).size;
+      }), 'submit-verse').toBe(1);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    });
+  }
+
   test('the written opponent\'s verse carries no label and no mark, with no model loaded', async ({ page }) => {
     await startDuel(page, '/battle?brain=rules&seed=11');
     const verse = page.locator('#opponent-verse');

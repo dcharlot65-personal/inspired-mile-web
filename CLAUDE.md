@@ -114,9 +114,21 @@ Text a model wrote is marked where it appears (EU AI Act Art. 50(2), D-01; D-12)
 carries `data-ai-generated` (model, repository, revision, dtype) and `data-ai-source`
 (`src/lib/ai-marking.ts`), set from `DuelSession.opponentModel`, never guessed from the text, with
 a visible `ai.label` beside the verse (battle page, Theatre stage and its text copy
-`#theatre-opponent-verse`); the playground's model-written trivia and quote challenges carry the
-mark and the "AI Generated" badge (`pg.trivia.aiBadge`); the voice setting reads "AI voice". A new place that shows, shares or exports a model's text must carry the same mark
-(`docs/AI-MARKING.md`; `tests/ai-marking.spec.ts`).
+`#theatre-opponent-verse`). On the battle page the label and the verse are one polite live region
+(`#opponent-said`, laid out in the duel language's direction so the label starts where the verse does);
+write its text only when it changes, since the round redraws on every keystroke. The playground's
+model-written trivia and quote challenges carry the mark on every element that shows their text, on
+every screen (`src/lib/ai-marking.test.ts` reads the markup), and the "AI Generated" badge
+(`pg.trivia.aiBadge`); the voice setting reads "AI voice". A new place that shows, shares or exports a
+model's text must carry the same mark (`docs/AI-MARKING.md`, which also compares the method with the
+Commission's Code of Practice and lists the commit each model's `main` held on 2026-11-19: check it
+before a deploy; `tests/ai-marking.spec.ts`).
+
+**What play pays** is one switch, `ECONOMY_LIVE` in `src/lib/economy-live.ts`: false while nothing calls
+`earnCredits`, `addXP` or `buyPack` (as on this branch), and then the Season Pass shows no XP rates and says
+play earns none, and the playground's odds list no packs for sale. `src/lib/economy-live.test.ts` fails when
+the switch and the callers disagree, so a merge that makes play pay must turn it on. Copy that holds either
+way says only that credits are never bought with real money (about, terms, privacy).
 
 ## Online play (multiplayer)
 

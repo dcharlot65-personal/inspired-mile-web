@@ -144,6 +144,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
                 </div>
               </div>
             </div>
+            )}
             <p class="text-[10px] text-obsidian-600">
               <span data-i18n="pg.odds.note">No real money purchases. Each card draw is independent.</span>
               <span data-i18n="pg.odds.moreBefore">For more details, see our</span> <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms">Terms of Service</a><span data-i18n="pg.odds.moreAfter">.</span>
@@ -546,7 +547,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
         <p id="trivia-question" lang="${qLang}" dir="${qDir}" class="text-sm text-obsidian-200 mb-4 leading-relaxed"${mark}>${esc(q.question)}${aiBadge}</p>
         <div class="space-y-2" lang="${qLang}" dir="${qDir}"${mark}>
           ${q.options.map((opt, i) => `
-            <button dir="${qDir}" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">${esc(opt)}</button>
+            <button dir="${qDir}" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}"${mark}>${esc(opt)}</button>
           `).join('')}
         </div>
       `;
@@ -685,22 +686,28 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
       const sourceLang = challenge.headingLang ?? challenge.lang;
       const sourceAttrs = `lang="${sourceLang}" dir="${isRtl(sourceLang) ? 'rtl' : 'ltr'}"`;
       const lineAttrs = `lang="${challenge.lang}" dir="${isRtl(challenge.lang) ? 'rtl' : 'ltr'}"`;
+      // A challenge the model wrote: its quotation and the play and speaker it names carry the mark on every screen that
+      // shows them (the challenge and both answers), and the answers carry the badge too (docs/AI-MARKING.md).
+      const mark = aiAttributes(challengeModel, esc);
+      const aiBadge = challengeModel
+        ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ms-1" data-i18n="pg.trivia.aiBadge">${esc(t('pg.trivia.aiBadge'))}</span>`
+        : '';
       const credit = challenge.translator
         ? `<p class="text-xs text-obsidian-500 mt-1" data-challenge-credit>${esc(t('pg.challenge.translator', { translator: challenge.translator }))}</p>`
         : '';
 
       challengeContent.innerHTML = `
         <div class="mb-4">
-          <p class="text-xs text-obsidian-500 mb-1" data-challenge-source ${sourceAttrs}>${source}</p>
+          <p class="text-xs text-obsidian-500 mb-1" data-challenge-source ${sourceAttrs}${mark}>${source}</p>
           <span class="inline-block px-2 py-0.5 text-xs rounded-full ${
             challenge.difficulty === 'easy' ? 'bg-emerald-500/20 text-emerald-400' :
             challenge.difficulty === 'medium' ? 'bg-gold-500/20 text-gold-400' :
             'bg-crimson-500/20 text-crimson-400'
           }" data-i18n="pg.difficulty.${challenge.difficulty}">${esc(t(`pg.difficulty.${challenge.difficulty}`))}</span>
           ${original ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-obsidian-700/50 text-obsidian-300 ms-1" data-i18n="pg.challenge.original">${esc(t('pg.challenge.original'))}</span>` : ''}
-          ${challengeModel ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ms-1" data-i18n="pg.trivia.aiBadge">${esc(t('pg.trivia.aiBadge'))}</span>` : ''}
+          ${aiBadge}
         </div>
-        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic"${aiAttributes(challengeModel, esc)}>
+        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic"${mark}>
           "${esc(challenge.displayQuote)}"
         </p>
         ${credit}
@@ -736,7 +743,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
             <div class="text-center">
               <div class="text-4xl mb-3">&#127881;</div>
               <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.full">${esc(t('pg.challenge.full'))}</p>
-              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" data-challenge-full ${lineAttrs}${mark}>"${esc(challenge.fullQuote)}"</p>${aiBadge}
               <p class="text-lg font-display font-bold text-emerald-400 mb-4" data-i18n="pg.challenge.correct">${esc(t('pg.challenge.correct'))}</p>
               <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
                 ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
@@ -753,8 +760,8 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
               <div class="text-4xl mb-3">&#128172;</div>
               <p class="text-lg font-display font-bold text-crimson-400 mb-2" data-i18n="pg.challenge.wrong">${esc(t('pg.challenge.wrong'))}</p>
               <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.answer">${esc(t('pg.challenge.answer'))}</p>
-              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
-              <p class="text-xs text-obsidian-500 mb-4" ${sourceAttrs}>${source}</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" data-challenge-full ${lineAttrs}${mark}>"${esc(challenge.fullQuote)}"</p>
+              <p class="text-xs text-obsidian-500 mb-4" data-challenge-source ${sourceAttrs}${mark}>${source}</p>${aiBadge}
               <button class="btn-secondary w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')" data-i18n="pg.challenge.later">${esc(t('pg.challenge.later'))}</button>
             </div>
           `;
