@@ -47,7 +47,7 @@ const MODELS: Entry[] = [
   },
 ];
 
-const SHARE_ALIKE = 'Attribution (this page), and share-alike: the tables we made from it are themselves licensed under CC BY-SA 4.0, and so is any table made from them. The license\'s disclaimer of warranties (its section 5) applies to them; the statement in this site\'s third-party notices file (below) says so.';
+const SHARE_ALIKE = 'Attribution (this page), and share-alike: we license the tables we made from it under CC BY-SA 4.0, and so must anyone who makes a table from them. What we took from it stays its authors\' copyright, and we claim no copyright over it. The license\'s disclaimer of warranties (its section 5) applies to them; the statement in this site\'s third-party notices file (below) says so.';
 
 const DATA: Entry[] = [
   {
@@ -129,7 +129,7 @@ const DATA: Entry[] = [
     source: [{ text: 'edrdg.org', href: 'https://www.edrdg.org/' }, { text: 'github.com/scriptin/jmdict-simplified', href: 'https://github.com/scriptin/jmdict-simplified' }],
     license: [{ text: 'CC BY-SA 4.0 (EDRDG\'s license statement)', href: 'https://www.edrdg.org/edrdg/licence.html' }],
     changed: 'Reduced to katakana spellings the analyser\'s dictionary lacks (two lists, each naming its source and license in its first lines).',
-    duties: SHARE_ALIKE,
+    duties: `${SHARE_ALIKE} EDRDG's license statement says so in as many words: users of material from its files must not claim copyright over that material. The words in these two lists stay the copyright of James William Breen and the Electronic Dictionary Research and Development Group.`,
   },
   {
     name: 'stopwords-iso 1.1.0',
@@ -307,13 +307,13 @@ const LIBRARIES: Entry[] = [
     packages: ['@simplewebauthn/browser@14.0.0'],
   },
   {
-    name: 'Tailwind CSS 4, Vite 8 and Rolldown 1, with Astro 7',
-    by: 'Tailwind Labs; VoidZero and the Vite and Rolldown contributors; the Astro project',
-    use: 'The site is built with them. Astro makes the pages and sends none of its own code; Tailwind CSS writes part of the stylesheet; Vite and Rolldown bundle the scripts and add a few lines of their own to them (the module loader and its preloading).',
-    source: [{ text: 'tailwindcss.com', href: 'https://tailwindcss.com/' }, { text: 'vite.dev', href: 'https://vite.dev/' }, { text: 'rolldown.rs', href: 'https://rolldown.rs/' }, { text: 'astro.build', href: 'https://astro.build/' }],
-    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    name: 'Tailwind CSS 4, Vite 8 and Rolldown 1, with Astro 7; esbuild and Rollup inside Rolldown',
+    by: 'Tailwind Labs; VoidZero and the Vite and Rolldown contributors; the Astro project; Evan Wallace (esbuild) and the Rollup contributors',
+    use: 'The site is built with them. Astro makes the pages and sends none of its own code; Tailwind CSS writes part of the stylesheet; Vite and Rolldown bundle the scripts and add a few lines of their own to them (the module loader and its preloading). The helpers with which Rolldown joins modules in the bundle (its rolldown-runtime file) are derived from esbuild\'s runtime, and Rolldown is a port of Rollup: Rolldown\'s THIRD-PARTY-LICENSE file carries the licenses of both.',
+    source: [{ text: 'tailwindcss.com', href: 'https://tailwindcss.com/' }, { text: 'vite.dev', href: 'https://vite.dev/' }, { text: 'rolldown.rs', href: 'https://rolldown.rs/' }, { text: 'astro.build', href: 'https://astro.build/' }, { text: 'esbuild.github.io', href: 'https://esbuild.github.io/' }, { text: 'rollupjs.org', href: 'https://rollupjs.org/' }],
+    license: [{ text: 'MIT License (each of them, esbuild and Rollup included)', href: 'https://opensource.org/license/mit' }],
     changed: 'Nothing.',
-    duties: 'Their copyright and permission notices go with the code they put in the site: they are in this site\'s third-party notices file (below).',
+    duties: 'Their copyright and permission notices go with the code they put in the site: they are in this site\'s third-party notices file (below), esbuild\'s and Rollup\'s under Rolldown, from its THIRD-PARTY-LICENSE file.',
     packages: ['tailwindcss@4.3.5', 'vite@8.3.8', 'rolldown@1.2.19'],
   },
 ];
@@ -415,6 +415,7 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
             How a verse is read, in sixteen languages, comes from these sources. Several are under CC BY-SA 4.0: the tables the
             game made from Wiktionary, CC-CEDICT, JMdict and JMnedict are adaptations of them and are licensed under
             <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" class={linkCls}>CC BY-SA 4.0</a> too.
+            What they hold that was taken from those works stays the copyright of those works' authors; we claim no copyright over it.
           </p>
           <div class="space-y-6">
             {DATA.map((e) => <EntryBlock e={e} />)}

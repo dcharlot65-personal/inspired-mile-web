@@ -89,6 +89,18 @@ describe('the credits page', () => {
     expect(page).toContain('/licenses/mecab-ipadic-NOTICE.txt');
     // The share-alike duty and the license conditions the owner must watch.
     for (const w of ['CC BY-SA 4.0', 'US$10,000,000', 'US$5,000,000', 'Gemma Terms of Use', 'generated with artificial intelligence']) expect(page).toContain(w);
+    // No copyright is claimed over what was taken from the CC BY-SA works; EDRDG's licence statement asks it in so
+    // many words for JMdict and JMnedict.
+    expect(page).not.toContain('themselves licensed under CC BY-SA 4.0');
+    expect(page).toContain('we claim no copyright over it');
+    const jm = page.slice(page.indexOf("name: 'JMdict and JMnedict'"), page.indexOf("name: 'stopwords-iso"));
+    expect(jm).toMatch(/must not claim copyright over that material/);
+    expect(jm).toMatch(/stay the copyright of James William Breen and the Electronic Dictionary Research and Development Group/);
+  });
+
+  it('names what Rolldown puts in the bundle from others: esbuild\'s runtime, and Rollup, with the file that licenses them', () => {
+    const entry = page.slice(page.indexOf("name: 'Tailwind CSS 4"), page.indexOf('const FONTS = ['));
+    for (const w of ['esbuild', 'Evan Wallace', 'Rollup', 'THIRD-PARTY-LICENSE', 'rolldown@1.2.19']) expect([w, entry.includes(w)]).toEqual([w, true]);
   });
 });
 

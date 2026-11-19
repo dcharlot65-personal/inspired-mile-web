@@ -14,6 +14,9 @@ describe('the Terms of Service and third-party material', () => {
     expect(para).toContain('href="/credits"');
     expect(para).toContain('nothing in these Terms restricts what that license allows you to do with that material');
     expect(para).toMatch(/CC BY-SA 4\.0 and the GNU General Public License/);
+    // EDRDG's licence statement: "Users of material from the files must NOT claim copyright over that material."
+    expect(para).toContain('we claim no copyright over them or over what our own works take from them');
+    expect(para).toMatch(/JMdict and JMnedict, for one, stay the copyright of James William Breen and the Electronic Dictionary Research and Development Group/);
     // The reverse-engineering ban says it does not reach third-party material.
     expect(terms).toMatch(/reverse-engineer the Service or its game mechanics \(this does not limit what the license of any third-party material/);
   });
