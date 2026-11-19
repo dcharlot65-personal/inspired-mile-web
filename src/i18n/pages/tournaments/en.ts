@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': 'Starts:',
   'tour.playersOf': '{n} of {max}',
   'tour.register': 'Register',
+  'tour.play': 'Play your match',
   'tour.viewBracket': 'See the bracket',
   'tour.toast.signIn': 'Sign in to register.',
   'tour.toast.registered': 'You are registered.',

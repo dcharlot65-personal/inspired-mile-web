@@ -1,109 +1,60 @@
 /**
- * Credits — Client-side in-game currency API.
- * Communicates with the /api/v1/credits backend.
+ * Credits and season XP from solo play, as the server pays them.
+ *
+ * Solo play happens in the browser, where the server cannot see it: the page reports what
+ * happened (a source: a solo duel won, a trivia round, a quote challenge, the daily bonus) and
+ * the server pays that source's fixed amount, at most so many times a day
+ * (backend/data/economy.json). The page never names an amount, and nothing is earned signed out
+ * or offline: solo play then keeps to this device's own collection (src/lib/inventory.ts).
+ *
+ * Credits are spent only on what the server sells at its own price: packs
+ * (`buyPack` in api-client.ts) and market listings.
  */
+import { earnCredits } from './api-client';
+import { accountCopy, setAccountCredits, signedInUserId } from './account-cards';
+import { addXP } from './seasons';
+import type { SoloSource } from './economy-rules';
 
-import { getStorageMode } from './storage-backend';
-
-const STORAGE_KEY = 'inspired-mile-credits';
-const API_BASE = import.meta.env.PUBLIC_API_URL || '';
-
-/** Get current credit balance (local or server) */
-export function getCredits(): number {
-  if (typeof window === 'undefined') return 0;
-  try {
-    return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
-  } catch {
-    return 0;
-  }
+export interface Earned {
+  /** Credits added now: 0 once today's cap for the source is reached. */
+  granted: number;
+  /** The balance after it. */
+  credits: number;
 }
 
-/** Set local credit balance */
-function setLocalCredits(amount: number): void {
-  if (typeof window === 'undefined') return;
-  try {
-    localStorage.setItem(STORAGE_KEY, String(amount));
-  } catch { /* quota */ }
+/** Report a solo activity. Null when signed out; throws (ApiError, TypeError) when the server refuses or cannot be reached. */
+export async function earnSolo(source: SoloSource): Promise<Earned | null> {
+  if (!signedInUserId()) return null;
+  const answer = await earnCredits(source);
+  setAccountCredits(answer.credits);
+  // Season XP for the same activity, within its own cap. Nothing when no season runs.
+  void addXP(source);
+  return { granted: answer.granted, credits: answer.credits };
 }
 
-/** Earn credits from a game activity */
-export async function earnCredits(source: string, amount?: number): Promise<number> {
-  // Default amounts for local mode
-  const defaults: Record<string, number> = {
-    battle_win: 50,
-    trivia: 30,
-    challenge: 20,
-    daily: 10,
-  };
-  const earned = amount ?? defaults[source] ?? 10;
+/** The account's balance as last fetched on this device; null when signed out or not fetched yet. */
+export function creditBalance(): number | null {
+  return accountCopy()?.credits ?? null;
+}
 
-  if (getStorageMode() === 'server') {
+const DAILY_KEY = 'inspired-mile-daily-bonus';
+
+/**
+ * The daily bonus, asked for at most once a day per device (the server pays it once a day per
+ * account whatever the device says).
+ */
+export async function claimDailyBonus(): Promise<Earned | null> {
+  const user = signedInUserId();
+  if (!user) return null;
+  const today = `${user}:${new Date().toISOString().slice(0, 10)}`;
+  try {
+    if (localStorage.getItem(DAILY_KEY) === today) return null;
+  } catch { /* ask anyway */ }
+  const earned = await earnSolo('daily').catch(() => null);
+  if (earned) {
     try {
-      const token = localStorage.getItem('inspired-mile-token');
-      const res = await fetch(`${API_BASE}/api/v1/credits/earn`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ source, amount: earned }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setLocalCredits(data.credits);
-        return data.credits;
-      }
-    } catch { /* fall through to local */ }
+      localStorage.setItem(DAILY_KEY, today);
+    } catch { /* asked again next time; the server pays once */ }
   }
-
-  const current = getCredits() + earned;
-  setLocalCredits(current);
-  return current;
-}
-
-/** Spend credits */
-export async function spendCredits(amount: number, reason: string): Promise<{ success: boolean; balance: number }> {
-  const current = getCredits();
-  if (current < amount) return { success: false, balance: current };
-
-  if (getStorageMode() === 'server') {
-    try {
-      const token = localStorage.getItem('inspired-mile-token');
-      const res = await fetch(`${API_BASE}/api/v1/credits/spend`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ amount, reason }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setLocalCredits(data.credits);
-        return { success: true, balance: data.credits };
-      }
-      return { success: false, balance: current };
-    } catch { /* fall through to local */ }
-  }
-
-  const newBalance = current - amount;
-  setLocalCredits(newBalance);
-  return { success: true, balance: newBalance };
-}
-
-/** Sync credit balance from server */
-export async function syncCredits(): Promise<number> {
-  if (getStorageMode() !== 'server') return getCredits();
-  try {
-    const token = localStorage.getItem('inspired-mile-token');
-    const res = await fetch(`${API_BASE}/api/v1/credits`, {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      setLocalCredits(data.credits);
-      return data.credits;
-    }
-  } catch { /* ignore */ }
-  return getCredits();
+  return earned;
 }

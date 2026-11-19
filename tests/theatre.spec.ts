@@ -51,6 +51,21 @@ test.describe('Theatre', () => {
     expect(errors, errors.join('\n')).toEqual([]);
   });
 
+  /** A verse that keeps each form (the duel spec's, by form id). */
+  const KEEPS: Record<string, string> = {
+    couplet: 'Who dares to stand upon my stage?\nI put the question to thy rage',
+    'quatrain-aabb': 'Who dares to stand upon my stage?\nI put the question to thy rage\nThy candle gutters in the night\nAnd mine shall be the only light',
+    'quatrain-abab': 'Who dares to stand upon my stage?\nThy candle gutters in the night\nI put the question to thy rage\nAnd mine shall be the only light',
+    tercet: 'Who dares to stand upon my stage?\nI put the question plainly now\nAnd wait in vain to hear thy rage',
+    anaphora: 'Who dares to stand upon my stage?\nWho brings a candle to the sun?\nWho answers when the question comes?',
+    crescendo: 'Who dares?\nI put the question\nAnd none of thy poor lines can answer it tonight',
+    epistrophe: 'The crowd will roar tonight\nThe stage is mine tonight\nThe rival falls tonight',
+    haiku: 'Who dares to stand here?\nI put the question to thee\nThe night will not speak',
+    'heroic-couplet': 'Who dares to stand upon my midnight stage?\nI put the question to thy empty rage',
+  };
+  const keeping = (form: string, acrostic: string) =>
+    form === 'acrostic' ? [...acrostic.toUpperCase()].map((c) => `${c} question waits for thee`).join('\n') : KEEPS[form] ?? KEEPS.couplet;
+
   // The theatre starts a duel as the page opens. Counted then, a visitor who only looked at the page had
   // "Opening Act: complete your first battle" unlocked (seen in the 2026-11-18 screenshots, in every language).
   test('a duel counts as a battle when it ends, not when the page opens it', async ({ page }) => {
@@ -58,6 +73,7 @@ test.describe('Theatre', () => {
     await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn');
     await page.waitForTimeout(500);
     const battles = () => page.evaluate(() => JSON.parse(localStorage.getItem('inspired-mile-player-stats') ?? '{}').totalBattles ?? 0);
+    const wins = () => page.evaluate(() => JSON.parse(localStorage.getItem('inspired-mile-player-stats') ?? '{}').battleWins ?? 0);
     expect(await battles()).toBe(0);
     await expect(page.locator('#achievement-toasts')).not.toContainText('Opening Act');
     for (let round = 0; round < 3; round++) {
@@ -68,15 +84,28 @@ test.describe('Theatre', () => {
         return s.duel.player.characters.find((c: string) => !s.characterUsed(c));
       });
       await page.evaluate((c) => (window as any).__theatre.act({ type: 'character', id: c }), id);
-      await page.fill('#typed-verse', 'Who dares to stand upon my stage?\nI put the question to thy rage');
+      // A verse that keeps the round's form, so that the player can take a round.
+      const { form, acrostic } = await page.evaluate(() => {
+        const s = (window as any).__theatre.session;
+        return { form: s.plan.formId as string, acrostic: (s.plan.ctx.acrostic ?? '') as string };
+      });
+      await page.fill('#typed-verse', keeping(form, acrostic));
       await page.evaluate(() => (window as any).__theatre.act({ type: 'submit' }));
       await page.waitForFunction(() => (window as any).__theatre.session.phase === 'verdict');
       expect(await battles()).toBe(0);
+      // A round won is not a battle won (until 2026-11-19 each one counted).
+      expect(await wins()).toBe(0);
       await page.evaluate(() => (window as any).__theatre.act({ type: 'next' }));
       await page.waitForFunction(() => ['player-turn', 'finished'].includes((window as any).__theatre.session.phase));
     }
     await page.waitForFunction(() => (window as any).__theatre.session.phase === 'finished');
     expect(await battles()).toBe(1);
+    const { won, rounds } = await page.evaluate(() => {
+      const s = (window as any).__theatre.session;
+      return { won: s.winner === 'player', rounds: s.results.filter((r: { winner: string }) => r.winner === 'player').length };
+    });
+    expect(rounds, 'the player takes a round here, so rounds and matches can be told apart').toBeGreaterThan(0);
+    expect(await wins()).toBe(won ? 1 : 0);
   });
 
   test('clicking a card on the canvas picks it', async ({ page }) => {

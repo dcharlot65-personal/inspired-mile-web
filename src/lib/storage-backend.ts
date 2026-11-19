@@ -10,6 +10,7 @@
 import * as api from './api-client';
 import type { UserResponse } from './api-client';
 import { forgetUserCaches } from './pwa';
+import { forgetAccountCards, refreshAccountCards } from './account-cards';
 
 export type StorageMode = 'local' | 'server';
 
@@ -48,6 +49,7 @@ export async function initStorageBackend(): Promise<void> {
       currentMode = 'server';
       currentUser = user;
       localStorage.setItem(USER_KEY, JSON.stringify(user));
+      void refreshAccountCards();
       return;
     } catch {
       // Session expired or server down — fall back to local
@@ -55,6 +57,7 @@ export async function initStorageBackend(): Promise<void> {
       currentUser = null;
       localStorage.removeItem(MODE_KEY);
       localStorage.removeItem(USER_KEY);
+      forgetAccountCards();
     }
   }
   currentMode = 'local';
@@ -68,6 +71,8 @@ export function activateServerMode(user: UserResponse): void {
   currentUser = user;
   localStorage.setItem(MODE_KEY, 'server');
   localStorage.setItem(USER_KEY, JSON.stringify(user));
+  // Signed in, the collection is the account's (src/lib/account-cards.ts).
+  void refreshAccountCards();
 }
 
 /**
@@ -78,6 +83,7 @@ export function deactivateServerMode(): void {
   currentUser = null;
   localStorage.removeItem(MODE_KEY);
   localStorage.removeItem(USER_KEY);
+  forgetAccountCards();
 }
 
 // ---------------------------------------------------------------------------

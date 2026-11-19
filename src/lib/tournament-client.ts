@@ -69,24 +69,10 @@ export async function getLeaderboard(id: string): Promise<LeaderboardEntry[]> {
   return request(`/${id}/leaderboard`);
 }
 
-export interface MatchCompletionResponse {
-  match_id: string;
-  winner_id: string;
-  tournament_completed: boolean;
-  next_match_id: string | null;
-}
-
-export async function completeMatch(
-  tournamentId: string,
-  matchId: string,
-  winnerId: string,
-  battleRoomId?: string,
-): Promise<MatchCompletionResponse> {
-  return request(`/${tournamentId}/matches/${matchId}/complete`, {
-    method: 'POST',
-    body: JSON.stringify({
-      winner_id: winnerId,
-      battle_room_id: battleRoomId ?? null,
-    }),
-  });
+/**
+ * The room a tournament match is played in (the same one for both players). Its result, as the
+ * server judges it, decides the match: no player names a winner.
+ */
+export async function openMatchRoom(tournamentId: string, matchId: string): Promise<{ room_id: string }> {
+  return request(`/${tournamentId}/matches/${matchId}/room`, { method: 'POST' });
 }

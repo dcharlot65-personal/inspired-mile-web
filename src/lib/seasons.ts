@@ -7,6 +7,7 @@
  */
 
 import { ApiError } from './api-client';
+import { ECONOMY } from './economy-rules';
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || '';
 
@@ -33,12 +34,16 @@ export interface SeasonReward {
   claimed: boolean;
 }
 
-/** XP rates for display */
+/**
+ * XP per solo activity, for display, keyed by the activity's word on the page (`activity.<key>`).
+ * The server pays these and caps each per day (backend/data/economy.json): a "battle" is a solo
+ * duel won (`solo_win`); an online match pays its own XP when the server records it.
+ */
 export const XP_RATES: Record<string, number> = {
-  battle: 100,
-  trivia: 50,
-  challenge: 40,
-  daily: 25,
+  battle: ECONOMY.solo.xp.solo_win.amount,
+  trivia: ECONOMY.solo.xp.trivia.amount,
+  challenge: ECONOMY.solo.xp.challenge.amount,
+  daily: ECONOMY.solo.xp.daily.amount,
 };
 
 /**
@@ -90,7 +95,7 @@ export async function getCurrentSeason(): Promise<SeasonProgress | null> {
   }
 }
 
-/** Add XP from an activity */
+/** Report a solo activity for season XP: the source only; the server sets the amount and caps it. */
 export async function addXP(source: string): Promise<SeasonProgress | null> {
   try {
     return toProgress(await seasonRequest('/xp', { method: 'POST', body: JSON.stringify({ source }) }));

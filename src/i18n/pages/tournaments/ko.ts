@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': '시작:',
   'tour.playersOf': '{n} / {max}',
   'tour.register': '참가 신청',
+  'tour.play': '경기하기',
   'tour.viewBracket': '대진표 보기',
   'tour.toast.signIn': '참가 신청하려면 로그인하세요.',
   'tour.toast.registered': '참가 신청을 마쳤어요.',

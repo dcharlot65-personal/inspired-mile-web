@@ -42,9 +42,9 @@ import Layout from '../layouts/BaseLayout.astro';
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Gameplay Data</h3>
           <p class="mb-2">As you use the platform, we collect and store:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
-            <li>Card collection, deck configurations, and inventory</li>
-            <li>Game statistics (battle wins, trivia scores, challenges completed, packs opened)</li>
-            <li>Achievement progress and unlocks</li>
+            <li>The cards your account holds, and where each came from (a pack, the marketplace, a season reward, or the one-time move of a device's cards)</li>
+            <li>The results of your multiplayer battles, as our server judged them (below), which make your online record and the public leaderboard</li>
+            <li>Packs opened and the achievements our server can work out from the above</li>
             <li>Credits balance and transaction history (virtual currency only)</li>
             <li>World Card variants and city discoveries</li>
             <li>Tournament participation and results</li>
@@ -61,6 +61,7 @@ import Layout from '../layouts/BaseLayout.astro';
             <li>The verse is held in our server's memory while the battle lasts, and for up to two minutes after it ends so that a player whose connection dropped can still see the result. A battle that never finishes is removed from memory about half an hour after it began. The verse is not written to our database or to our server log.</li>
             <li>While you write, the page keeps your unsent verse in its own tab's storage on your device, so that a reload does not lose it. It is never sent anywhere until you submit it. The page deletes it when the battle ends, or when you leave the room, while the battle page is open. If the battle ends while that tab is showing another page, the verse stays in the tab until the tab comes back to the battle page and finds the battle over, or until you sign out and the tab comes back to that page, or until the tab is closed (a browser that reopens a closed tab may bring the tab's storage back with it).</li>
           </ul>
+          <p class="mt-3"><strong class="text-white">Results.</strong> When a multiplayer battle ends, our server writes its result to our database: the two accounts, which one won and how (on rounds, on points, by a forfeit or by a dropped connection), the rounds each took, each side's points and best round, and when the battle began and ended. Not the verses. The results are your online record; the public leaderboard shows the usernames of the accounts with the most wins.</p>
           <p class="mt-3"><strong class="text-white">Reports.</strong> If you report a multiplayer battle, we store your account identifier, the battle's identifier and the reason you type (up to 500 characters), in our database and in our server log.</p>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Classroom Data</h3>
@@ -79,7 +80,7 @@ import Layout from '../layouts/BaseLayout.astro';
           <h2 class="text-xl font-display font-semibold text-white mb-3">Cookies &amp; Local Storage</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
-            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device; game state is synced to our server only when you create an account.</li>
+            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device. The one exception: the first time you sign in on a device, it offers to move that device's cards (one of each, up to a limit) to your account, once; your stats and achievements stay on the device. Signed in, your browser also keeps a copy of your account's card list and credits balance, which it removes when you sign out.</li>
             <li><strong class="text-white">Service Worker:</strong> We use a service worker to keep copies of pages, images and scripts in your browser so the site loads faster and works offline. It does not keep our server's answers about your account, and when you sign out it removes anything it was holding for you.</li>
             <li><strong class="text-white">AI models:</strong> A model you download is kept in your browser's storage so it is not downloaded again. Clearing the browser's data for this site removes it.</li>
           </ul>
@@ -149,6 +150,7 @@ import Layout from '../layouts/BaseLayout.astro';
             <li><strong class="text-white">Account data:</strong> Retained as long as your account is active. You may request deletion at any time.</li>
             <li><strong class="text-white">Gameplay data:</strong> Retained as long as your account is active and deleted upon account deletion.</li>
             <li><strong class="text-white">Battle verses:</strong> Solo verses never reach us. Multiplayer verses are held in our server's memory during the battle and for up to two minutes after it ends (a battle that never finishes, about half an hour after it began), and are not written to our database or our server log.</li>
+            <li><strong class="text-white">Battle results:</strong> The result of a multiplayer battle (above) is kept as long as either account is, as part of the gameplay data.</li>
             <li><strong class="text-white">Reports:</strong> A report you send about a multiplayer battle is kept until we delete it.</li>
             <li><strong class="text-white">Server logs:</strong> Retained for up to 30 days.</li>
             <li><strong class="text-white">Classroom data:</strong> Retained until it is deleted. There is no delete button for a classroom yet: a teacher who wants one deleted should write to us at the address below.</li>

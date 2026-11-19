@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': '开始时间：',
   'tour.playersOf': '{n} / {max}',
   'tour.register': '报名',
+  'tour.play': '进行你的比赛',
   'tour.viewBracket': '查看对阵表',
   'tour.toast.signIn': '登录后才能报名。',
   'tour.toast.registered': '你已报名成功。',

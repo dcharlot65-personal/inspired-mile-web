@@ -117,6 +117,8 @@ test.describe('Verse duel', () => {
     await open(page);
     await start(page);
     const chars = ['DC-001', 'MO-001', 'CA-001'];
+    const winsStored = () => page.evaluate(() => JSON.parse(localStorage.getItem('inspired-mile-player-stats') ?? '{}').battleWins ?? 0);
+    let roundsWon = 0;
     for (let round = 0; round < 3; round++) {
       await expect(page.locator('#round-label')).toHaveText(`Round ${round + 1} of 3`);
       // A character already played cannot be played again.
@@ -129,6 +131,9 @@ test.describe('Verse duel', () => {
       await expect(verdict).toHaveAttribute('data-winner', /player|opponent/);
       await expect(verdict).toContainText('Round score');
       await expect(verdict).toContainText('Judged by rule');
+      if ((await verdict.getAttribute('data-winner')) === 'player') roundsWon += 1;
+      // A round won is not a battle won (until 2026-11-19 every round won was counted as one).
+      expect(await winsStored(), 'battle wins after a round').toBe(0);
       if (await page.locator('#next-round').innerText() === 'See the result') break;
       await page.click('#next-round');
       await expect(page.locator('#opponent-verse')).not.toHaveText('…');
@@ -138,6 +143,12 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#duel-again')).toBeVisible();
     expect(Number(await page.locator('#rounds-played').innerText())).toBeGreaterThanOrEqual(2);
     await expect(page.locator('#battles-total')).toHaveText('1');
+    // A win is a match: one battle won, or none, whatever the rounds.
+    const won = (await page.locator('#verdict').getAttribute('data-match')) === 'player';
+    expect(roundsWon, 'the player takes a round in this duel, so rounds and matches can be told apart').toBeGreaterThan(0);
+    expect(await winsStored()).toBe(won ? 1 : 0);
+    // Signed out, a match won pays a card for this device's own collection.
+    await expect(page.locator('#battle-reward')).toHaveCount(won ? 1 : 0);
   });
 
   test('the same seed draws the same forms and the same opening verse', async ({ page }) => {

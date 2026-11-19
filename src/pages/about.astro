@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
+import { ECONOMY } from '../lib/economy-rules';
 import { loadArea, t } from '../i18n';
 import { monthOfYear, quoted, yearOnly } from '../i18n/pages/runtime';
 
@@ -61,7 +62,9 @@ const timeline: { when: When; event: string; done: boolean }[] = [
 const whenText = (w: When) => ('month' in w ? monthOfYear(w.month[0], w.month[1]) : t(w.key, { year: yearOnly(w.year) }));
 
 const tech = ['collectibles', 'ai', 'theatre', 'speech', 'market'];
-const credits = [50, 30, 20, 10];
+// What each solo activity pays, as the server pays it (backend/data/economy.json): a battle won,
+// a trivia round, a quote challenge, the daily bonus.
+const credits = (['solo_win', 'trivia', 'challenge', 'daily'] as const).map((s) => ECONOMY.solo.credits[s].amount);
 const FOUNDED = 2025;
 const lists = [
   { id: 'forever', icon: '&#9989;', tone: 'emerald' },

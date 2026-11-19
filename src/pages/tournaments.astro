@@ -82,8 +82,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { listTournaments, registerForTournament, getBracket, getLeaderboard, type Tournament, type BracketMatch, type LeaderboardEntry } from '../lib/tournament-client';
-    import { isLoggedIn } from '../lib/storage-backend';
+    import { listTournaments, registerForTournament, getBracket, getLeaderboard, openMatchRoom, type Tournament, type BracketMatch, type LeaderboardEntry } from '../lib/tournament-client';
+    import { getCurrentUser, isLoggedIn } from '../lib/storage-backend';
     import { has, t } from '../i18n';
     import { dateTime, num } from '../i18n/fmt';
     import { errorText, esc, initPage, onPageLocaleChange } from '../i18n/page';
@@ -290,7 +290,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               ${[...roundMatches].sort((a, b) => a.match_order - b.match_order).map(m => {
                 const p1Won = m.winner_id && m.winner_id === m.player1_id;
                 const p2Won = m.winner_id && m.winner_id === m.player2_id;
-                const state = m.status === 'in_progress' ? 'tour.match.live' : m.status === 'completed' ? 'tour.match.done' : 'tour.match.pending';
+                // A bye is decided when the bracket is drawn: the player in it goes through.
+                const done = m.status === 'completed' || m.status === 'bye';
+                const state = m.status === 'in_progress' ? 'tour.match.live' : done ? 'tour.match.done' : 'tour.match.pending';
+                // My match, with both players known and not decided: its room, judged by the server, decides it.
+                const me = getCurrentUser()?.id;
+                const mine = !!me && (m.player1_id === me || m.player2_id === me) && !!m.player1_id && !!m.player2_id && !done;
                 const player = (name: string | null, won: unknown) => `
                     <div class="flex items-center justify-between gap-2 py-1 ${won ? 'text-gold-400 font-semibold' : 'text-obsidian-300'} text-sm">
                       <bdi>${esc(name || bye)}</bdi>
@@ -303,10 +308,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <div class="border-t border-obsidian-700/50 my-1"></div>
                     ${player(m.player2_name, p2Won)}
                     <div class="text-center mt-1">
-                      <span class="text-[10px] uppercase ${m.status === 'in_progress' ? 'text-purple-400' : m.status === 'completed' ? 'text-obsidian-500' : 'text-obsidian-600'}">
+                      <span class="text-[10px] uppercase ${m.status === 'in_progress' ? 'text-purple-400' : done ? 'text-obsidian-500' : 'text-obsidian-600'}">
                         ${esc(t(state))}
                       </span>
                     </div>
+                    ${mine ? `<button class="play-match-btn btn-primary text-xs w-full mt-2 py-1.5" data-match="${esc(m.id)}">${esc(t('tour.play'))}</button>` : ''}
                   </div>
                 `;
               }).join('')}
@@ -315,6 +321,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       `;
     }
+
+    // Play my match: the server opens (or gives again) the match's room, and the duel is played there.
+    bracketContainer.addEventListener('click', async (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('.play-match-btn');
+      if (!btn || !bracketSelect.value) return;
+      btn.disabled = true;
+      try {
+        const { room_id } = await openMatchRoom(bracketSelect.value, btn.dataset.match!);
+        location.href = `/multiplayer?room=${encodeURIComponent(room_id)}`;
+      } catch (e) {
+        toast(errorText(e), 'error');
+        btn.disabled = false;
+      }
+    });
 
     async function loadLeaderboard(tournamentId: string) {
       try {

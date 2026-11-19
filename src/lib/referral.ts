@@ -12,7 +12,10 @@ export interface ReferralInfo {
 export interface RedeemResult {
   success: boolean;
   message: string;
+  /** Always 0: redeeming a code gives the redeemer nothing (until 2026-11-19 the answer promised 5 packs and gave none). */
   packs_granted: number;
+  /** What the player who invited them received (a fixed amount, a few times a day at most). */
+  referrer_credits: number;
 }
 
 async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
@@ -33,7 +36,7 @@ export async function getReferralCode(): Promise<ReferralInfo> {
   return apiFetch('/referral');
 }
 
-/** Redeem a referral code — grants 5 free packs to the redeemer. */
+/** Redeem a referral code: the player who invited you receives credits; you receive nothing. */
 export async function redeemCode(code: string): Promise<RedeemResult> {
   return apiFetch('/referral/redeem', {
     method: 'POST',

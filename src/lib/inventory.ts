@@ -1,7 +1,17 @@
 /**
- * User Inventory — Tracks which cards the user owns.
- * Persists to localStorage. No server needed.
+ * The collection a page plays with.
+ *
+ * Signed out, it is this device's own (localStorage), for solo play: the device's starter and
+ * daily packs and what solo play wins add to it, and nothing of it reaches the server except a
+ * one-time capped import when an account is first signed in on the device (docs/ECONOMY.md).
+ *
+ * Signed in, it is the account's, as the server holds it (src/lib/account-cards.ts): cards come
+ * only from the server, so nothing here adds to it. `getOwnedCards` and the functions built on
+ * it answer with the account's cards then; the device's counters (battle wins, trivia) stay the
+ * device's.
  */
+import { ECONOMY } from './economy-rules';
+import { accountCopy, usingAccountCards } from './account-cards';
 
 export type AcquisitionSource = 'starter' | 'daily' | 'pack' | 'battle' | 'trivia' | 'challenge' | 'purchase';
 export interface OwnedCard {
@@ -51,25 +61,39 @@ function saveInventory(inv: InventoryData): void {
   } catch { /* quota exceeded */ }
 }
 
+/** Add a card to this device's own collection (signed out only: signed in, cards come from the server). */
 export function addCard(cardId: string, source: AcquisitionSource): OwnedCard {
   const inv = getInventory();
   const entry: OwnedCard = {
     cardId,
     acquiredAt: Date.now(),
     source,
-    state: 'owned',
   };
   inv.cards.push(entry);
   saveInventory(inv);
   return entry;
 }
 
-export function hasCard(cardId: string): boolean {
-  const inv = getInventory();
-  return inv.cards.some(c => c.cardId === cardId);
+/** The device's own collection, whoever is signed in: what an import would offer. */
+export function getDeviceCards(): OwnedCard[] {
+  return getInventory().cards;
 }
 
+export function hasCard(cardId: string): boolean {
+  return getOwnedCards().some(c => c.cardId === cardId);
+}
+
+/** The collection to play with: the account's when signed in, this device's otherwise. */
 export function getOwnedCards(): OwnedCard[] {
+  if (usingAccountCards()) {
+    const copy = accountCopy();
+    // Until the account's cards have been fetched on this device it holds its starter characters.
+    const starter = copy?.starter ?? [];
+    return [
+      ...starter.map((cardId): OwnedCard => ({ cardId, acquiredAt: 0, source: 'starter' })),
+      ...(copy?.cards ?? []).map((c): OwnedCard => ({ cardId: c.cardId, acquiredAt: c.acquiredAt, source: c.source as AcquisitionSource })),
+    ];
+  }
   return getInventory().cards;
 }
 
@@ -82,7 +106,7 @@ export function getUniqueOwnedCount(): number {
 }
 
 export function getDuplicateCount(cardId: string): number {
-  return getInventory().cards.filter(c => c.cardId === cardId).length;
+  return getOwnedCards().filter(c => c.cardId === cardId).length;
 }
 
 /** Check if starter pack has been claimed */
@@ -121,7 +145,33 @@ export function claimDaily(): void {
   saveInventory(inv);
 }
 
-/** Increment battle wins counter */
+/**
+ * Cards a solo trivia round or quote challenge may add to this device's collection today (UTC):
+ * `device.trivia_cards_per_day` and `device.challenge_cards_per_day` in backend/data/economy.json.
+ * Until 2026-11-19 each paid a card every time, without end.
+ */
+const DEVICE_REWARDS_KEY = 'inspired-mile-device-rewards';
+
+export function takeDeviceCard(kind: 'trivia' | 'challenge'): boolean {
+  if (typeof window === 'undefined') return false;
+  const day = new Date().toISOString().slice(0, 10);
+  const cap = kind === 'trivia' ? ECONOMY.device.trivia_cards_per_day : ECONOMY.device.challenge_cards_per_day;
+  let record: { day: string; trivia: number; challenge: number } = { day, trivia: 0, challenge: 0 };
+  try {
+    const raw = JSON.parse(localStorage.getItem(DEVICE_REWARDS_KEY) || 'null');
+    if (raw && raw.day === day) record = { day, trivia: Number(raw.trivia) || 0, challenge: Number(raw.challenge) || 0 };
+  } catch { /* a fresh day */ }
+  if (record[kind] >= cap) return false;
+  record[kind] += 1;
+  try {
+    localStorage.setItem(DEVICE_REWARDS_KEY, JSON.stringify(record));
+  } catch {
+    return false; // without storage the count cannot be kept: no card
+  }
+  return true;
+}
+
+/** Increment battle wins counter (one per match won, not per round) */
 export function recordBattleWin(): void {
   const inv = getInventory();
   inv.battleWins++;
@@ -146,7 +196,7 @@ export function recordChallengeComplete(): void {
 export function getStats(): { totalCards: number; uniqueCards: number; battleWins: number; triviaCorrect: number; challengesCompleted: number } {
   const inv = getInventory();
   return {
-    totalCards: inv.cards.length,
+    totalCards: getOwnedCards().length,
     uniqueCards: getUniqueOwnedCount(),
     battleWins: inv.battleWins,
     triviaCorrect: inv.triviaCorrect,

@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': 'เริ่ม:',
   'tour.playersOf': '{n} จาก {max}',
   'tour.register': 'สมัคร',
+  'tour.play': 'เล่นแมตช์ของคุณ',
   'tour.viewBracket': 'ดูสายการแข่งขัน',
   'tour.toast.signIn': 'ลงชื่อเข้าใช้เพื่อสมัคร',
   'tour.toast.registered': 'คุณสมัครเรียบร้อยแล้ว',

@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': 'Mulai:',
   'tour.playersOf': '{n} dari {max}',
   'tour.register': 'Daftar',
+  'tour.play': 'Mainkan pertandinganmu',
   'tour.viewBracket': 'Lihat bagan pertandingan',
   'tour.toast.signIn': 'Masuk untuk mendaftar.',
   'tour.toast.registered': 'Pendaftaranmu berhasil.',

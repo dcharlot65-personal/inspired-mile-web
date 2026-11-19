@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': 'Начало:',
   'tour.playersOf': '{n} из {max}',
   'tour.register': 'Записаться',
+  'tour.play': 'Сыграть свой матч',
   'tour.viewBracket': 'Открыть сетку',
   'tour.toast.signIn': 'Войди, чтобы записаться.',
   'tour.toast.registered': 'Запись на турнир принята.',

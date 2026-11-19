@@ -218,8 +218,12 @@ export async function getMe(): Promise<AuthResponse> {
 }
 
 // ---------------------------------------------------------------------------
-// Inventory
+// Inventory: the cards the account holds on the server
 // ---------------------------------------------------------------------------
+//
+// Cards come only from the server (docs/ECONOMY.md): the starter characters (held by every
+// account without a row), free and bought packs the server opens, season rewards, and a
+// one-time capped import of a device's collection. There is no call that adds a card.
 
 export interface ServerOwnedCard {
   id: string;
@@ -227,21 +231,67 @@ export interface ServerOwnedCard {
   acquired_at: string;
   source: string;
   state: string;
+  /** On sale in the market: locked until the listing is cancelled. */
+  listed: boolean;
 }
 
 export async function getInventory(): Promise<ServerOwnedCard[]> {
   return request('/inventory');
 }
 
-export async function addCard(cardId: string, source: string): Promise<ServerOwnedCard> {
-  return request('/inventory/add', {
-    method: 'POST',
-    body: JSON.stringify({ card_id: cardId, source }),
-  });
-}
-
 export async function getInventoryStats(): Promise<{ unique_cards: number; total_cards: number }> {
   return request('/inventory/stats');
+}
+
+export interface InventoryStatus {
+  starter_claimed: boolean;
+  daily_available: boolean;
+  next_daily_at: string | null;
+  credits: number;
+  /** Held by every account without a row; they cannot be sold. */
+  starter_characters: string[];
+}
+
+export async function getInventoryStatus(): Promise<InventoryStatus> {
+  return request('/inventory/status');
+}
+
+export interface PackAnswer {
+  cards: { id: string; card_id: string }[];
+  /** The balance after it. */
+  credits: number;
+}
+
+/** The free starter pack (once per account) or daily pack (once a day), opened by the server. */
+export async function claimPack(kind: 'starter' | 'daily'): Promise<PackAnswer> {
+  return request('/inventory/claim', { method: 'POST', body: JSON.stringify({ kind }) });
+}
+
+/** A pack of a tier, at the server's price, opened by the server. */
+export async function buyPack(tier: 'standard' | 'rare' | 'epic'): Promise<PackAnswer> {
+  return request('/inventory/packs', { method: 'POST', body: JSON.stringify({ tier }) });
+}
+
+// ---------------------------------------------------------------------------
+// Credits and season XP for solo play
+// ---------------------------------------------------------------------------
+
+export interface EarnAnswer {
+  credits: number;
+  /** Credits added now: the source's fixed amount, or 0 once today's cap is reached. */
+  granted: number;
+  source: string;
+  earned_today: number;
+  per_day: number;
+}
+
+/** Report a solo activity. The server pays its fixed amount within its daily cap; the page names no amount. */
+export async function earnCredits(source: string): Promise<EarnAnswer> {
+  return request('/credits/earn', { method: 'POST', body: JSON.stringify({ source }) });
+}
+
+export async function getCreditBalance(): Promise<{ credits: number }> {
+  return request('/credits');
 }
 
 // ---------------------------------------------------------------------------
@@ -260,45 +310,33 @@ export async function getVariants(): Promise<ServerOwnedVariant[]> {
   return request('/variants');
 }
 
-export async function unlockVariant(variantId: string, baseCardId: string, source: string): Promise<ServerOwnedVariant> {
-  return request('/variants/unlock', {
-    method: 'POST',
-    body: JSON.stringify({ variant_id: variantId, base_card_id: baseCardId, source }),
-  });
-}
-
 export async function getEligibleVariants(): Promise<{ base_card_id: string }[]> {
   return request('/variants/eligible');
 }
 
 // ---------------------------------------------------------------------------
-// Stats & Achievements
+// Stats & Achievements: what the server knows, from matches it judged
 // ---------------------------------------------------------------------------
 
+export interface OnlineRecord {
+  wins: number;
+  losses: number;
+  draws: number;
+  matches: number;
+  rounds: number;
+  best_round: number;
+}
+
 export interface ServerPlayerStats {
-  battle_wins: number;
-  total_battles: number;
-  total_rounds: number;
-  highest_score: number;
-  trivia_correct: number;
-  trivia_perfect: number;
-  challenges_completed: number;
+  online: OnlineRecord;
   unique_cards: number;
   total_cards: number;
   packs_opened: number;
-  variants_unlocked: number;
-  unique_cities: number;
+  credits: number;
 }
 
 export async function getStats(): Promise<ServerPlayerStats> {
   return request('/stats');
-}
-
-export async function updateStats(partial: Partial<ServerPlayerStats>): Promise<ServerPlayerStats> {
-  return request('/stats', {
-    method: 'POST',
-    body: JSON.stringify(partial),
-  });
 }
 
 export interface ServerAchievement {
@@ -306,21 +344,17 @@ export interface ServerAchievement {
   unlocked_at: string;
 }
 
+/** The account achievements the server can verify (never claimed by the page). */
 export async function getAchievements(): Promise<ServerAchievement[]> {
   return request('/stats/achievements');
-}
-
-export async function checkAchievements(achievementIds: string[]): Promise<string[]> {
-  return request('/stats/achievements', {
-    method: 'POST',
-    body: JSON.stringify({ achievement_ids: achievementIds }),
-  });
 }
 
 // ---------------------------------------------------------------------------
 // Leaderboard (public — no auth required)
 // ---------------------------------------------------------------------------
 
+/** Online matches the server judged: `battle_wins` is matches won, `total_battles` matches
+ *  finished, `highest_score` the best total of one round (backend/src/stats/handlers.rs). */
 export interface LeaderboardEntry {
   rank: number;
   user_id: string;
@@ -336,7 +370,7 @@ export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
 }
 
 // ---------------------------------------------------------------------------
-// Migration
+// The one-time import of a device's collection
 // ---------------------------------------------------------------------------
 
 export interface MigrationStatus {
@@ -344,39 +378,24 @@ export interface MigrationStatus {
   migrated_at: string | null;
   cards_count: number | null;
   achievements_count: number | null;
+  /** The most cards an import takes. */
+  max_cards: number;
 }
 
-export interface MigrationPayload {
-  cards: { card_id: string; acquired_at: number | null; source: string }[];
-  stats: {
-    battle_wins: number;
-    total_battles: number;
-    total_rounds: number;
-    highest_score: number;
-    trivia_correct: number;
-    trivia_perfect: number;
-    challenges_completed: number;
-    unique_cards: number;
-    total_cards: number;
-    packs_opened: number;
-  };
-  achievements: string[];
-  variants?: { variant_id: string; base_card_id: string; acquired_at: number | null; source: string }[];
-}
-
-export interface MigrationResult {
-  cards_synced: number;
-  achievements_synced: number;
-  variants_synced: number;
+export interface ImportResult {
+  imported: string[];
+  left_out: number;
+  max_cards: number;
 }
 
 export async function getMigrationStatus(): Promise<MigrationStatus> {
   return request('/migrate/status');
 }
 
-export async function syncMigration(payload: MigrationPayload): Promise<MigrationResult> {
-  return request('/migrate/sync', {
+/** Offer the device's cards once; the server takes at most `max_cards`, the rarest first. */
+export async function importCards(cardIds: string[]): Promise<ImportResult> {
+  return request('/migrate/import', {
     method: 'POST',
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ cards: cardIds }),
   });
 }

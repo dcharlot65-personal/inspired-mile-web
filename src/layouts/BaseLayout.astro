@@ -448,10 +448,12 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
     <!-- Data Migration Banner -->
     <div id="migration-banner" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-90 card-glass p-4 max-w-md bg-obsidian-900/95 backdrop-blur-lg border-gold-500/30 shadow-2xl rounded-xl">
-      <h4 class="text-sm font-display font-bold text-gold-300 mb-1" data-i18n="migrate.title">Sync Your Data?</h4>
-      <p class="text-xs text-obsidian-400 mb-3" data-i18n="migrate.body">We found local game progress. Sync it to your account so it's saved across devices.</p>
+      <!-- Once per account: the device's own cards, one of each, the rarest first, up to the server's cap (docs/ECONOMY.md). -->
+      <h4 class="text-sm font-display font-bold text-gold-300 mb-1" data-i18n="migrate.title">Bring this device's cards to your account?</h4>
+      <p class="text-xs text-obsidian-400 mb-1" data-i18n="migrate.body">This device holds cards from solo play. Your account can take them once: one of each card, the rarest first, up to a limit. Your stats and achievements stay on this device.</p>
+      <p id="migration-limit" class="text-xs text-obsidian-500 mb-3"></p>
       <div class="flex gap-2">
-        <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5" data-i18n="migrate.yes">Sync Data</button>
+        <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5" data-i18n="migrate.yes">Bring them over</button>
         <button id="migrate-no" class="btn-secondary text-xs px-4 py-1.5" data-i18n="migrate.no">Skip</button>
       </div>
       <p id="migration-result" class="hidden text-xs mt-2"></p>
@@ -718,8 +720,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <script>
       // Auth UI logic — passkeys first, an emailed one-time code as the way in without one.
       import { initStorageBackend, isLoggedIn, getCurrentUser, logoutUser } from '../lib/storage-backend';
-      import { getMigrationStatus, syncMigration, type AuthResponse, type MigrationPayload, type PasskeyInfo } from '../lib/api-client';
-      import { getPlayerStats } from '../lib/achievements';
+      import { getMigrationStatus, importCards, type AuthResponse, type PasskeyInfo } from '../lib/api-client';
+      import { getDeviceCards } from '../lib/inventory';
+      import { refreshAccountCards } from '../lib/account-cards';
+      import { claimDailyBonus } from '../lib/credits';
       import { fillSlots, has, initI18n, onLocaleChange, t } from '../i18n';
       import {
         AuthFlowError,
@@ -1379,23 +1383,32 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         updateAuthUI();
       });
 
-      // --- Data Migration ---
+      // --- The one-time import of this device's cards ---
+      // Signed in, the collection is the account's (src/lib/account-cards.ts). The cards this device
+      // collected signed out can come over once per account, capped by the server: one of each, the
+      // rarest first (backend/src/migration/handlers.rs). Stats and achievements stay on the device.
+      let importLimit = 0;
+      function drawImportLimit() {
+        const el = document.getElementById('migration-limit');
+        if (el) el.textContent = importLimit ? t('migrate.limit', { max: importLimit }) : '';
+      }
+      onLocaleChange(drawImportLimit);
+
       async function offerMigrationIfNeeded() {
         if (!isLoggedIn()) return;
-
-        // Check if user has localStorage data worth migrating
-        const localInventory = localStorage.getItem('inspired-mile-inventory');
-        const localStats = localStorage.getItem('inspired-mile-stats');
-        const localAchievements = localStorage.getItem('inspired-mile-achievements');
-        if (!localInventory && !localStats && !localAchievements) return;
+        // The daily bonus, asked for once a day (the server pays it once a day per account).
+        void claimDailyBonus();
+        if (getDeviceCards().length === 0) return;
 
         try {
           const status = await getMigrationStatus();
           if (status.migrated) return;
+          importLimit = status.max_cards;
         } catch {
           return; // Server unreachable
         }
 
+        drawImportLimit();
         document.getElementById('migration-banner')?.classList.remove('hidden');
       }
 
@@ -1405,43 +1418,12 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         btn.disabled = true;
 
         try {
-          const inventory = JSON.parse(localStorage.getItem('inspired-mile-inventory') || '{"cards":[]}');
-          const stats = getPlayerStats();
-          const achievements = JSON.parse(localStorage.getItem('inspired-mile-achievements') || '[]');
-          const variants = JSON.parse(localStorage.getItem('inspired-mile-variants') || '[]');
-
-          const payload: MigrationPayload = {
-            cards: (inventory.cards || []).map((c: any) => ({
-              card_id: c.cardId || c.card_id,
-              acquired_at: c.acquiredAt || null,
-              source: c.source || 'migration',
-            })),
-            stats: {
-              battle_wins: stats.battleWins || 0,
-              total_battles: stats.totalBattles || 0,
-              total_rounds: stats.totalRounds || 0,
-              highest_score: stats.highestScore || 0,
-              trivia_correct: stats.triviaCorrect || 0,
-              trivia_perfect: stats.triviaPerfect || 0,
-              challenges_completed: stats.challengesCompleted || 0,
-              unique_cards: stats.uniqueCards || 0,
-              total_cards: stats.totalCards || 0,
-              packs_opened: stats.packsOpened || 0,
-            },
-            achievements: achievements.map((a: any) => a.id || a),
-            variants: variants.map((v: any) => ({
-              variant_id: v.variantId || v.variant_id,
-              base_card_id: v.baseCardId || v.base_card_id,
-              acquired_at: v.acquiredAt || null,
-              source: v.source || 'migration',
-            })),
-          };
-
-          const result = await syncMigration(payload);
+          const result = await importCards(getDeviceCards().map((c) => c.cardId));
+          await refreshAccountCards();
           const resultEl = document.getElementById('migration-result')!;
           resultEl.classList.remove('hidden');
           resultEl.classList.add('text-emerald-400');
-          resultEl.textContent = t('migrate.done', { cards: result.cards_synced, achievements: result.achievements_synced });
+          resultEl.textContent = t('migrate.done', { cards: result.imported.length });
           setTimeout(() => {
             document.getElementById('migration-banner')?.classList.add('hidden');
           }, 3000);
@@ -1499,6 +1481,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       authBtn.setAttribute('aria-expanded', 'false');
       initStorageBackend().then(() => {
         updateAuthUI();
+        // Signed in on this visit: the daily bonus, asked for once a day (src/lib/credits.ts).
+        if (isLoggedIn()) void claimDailyBonus();
       });
     </script>
     <!-- Service Worker Registration -->

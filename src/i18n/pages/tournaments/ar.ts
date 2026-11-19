@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'tour.label.starts': 'تبدأ:',
   'tour.playersOf': '{n} من {max}',
   'tour.register': 'سجّل',
+  'tour.play': 'العب مباراتك',
   'tour.viewBracket': 'عرض جدول البطولة',
   'tour.toast.signIn': 'سجّل الدخول لتتسجّل في البطولة.',
   'tour.toast.registered': 'تم تسجيلك في البطولة.',

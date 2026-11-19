@@ -7,6 +7,7 @@ import { TRIVIA_BANK } from '../../lib/trivia';
 import { CHALLENGE_BANK } from '../../lib/challenges';
 import { ACTS } from '../../lib/story-mode';
 import { CITY_CATALOG } from '../../lib/variants';
+import { ECONOMY } from '../../lib/economy-rules';
 import { MIN_LOCAL_CHALLENGES, answersMatch, challengesFrom, localChallenges, localRandomQuestions, localTriviaBank, ownChallenges, triviaBankFrom } from '../../lib/play-content';
 
 /**
@@ -357,6 +358,8 @@ export const COUNTS: Record<string, Record<string, number[]>> = {
   'pg.trivia.progress': { n: upTo(TRIVIA_ROUND, 1), total: [TRIVIA_ROUND] },
   'pg.challenge.blank': { n: upTo(MOST_BLANKS, 1) },
   'pg.worldCard': { bonus: [...new Set(Object.values(CITY_CATALOG).map((c) => c.ability.bonus))] },
+  // What a trivia round or a quote challenge pays the account (backend/data/economy.json).
+  'pg.earnedCredits': { n: [ECONOMY.solo.credits.trivia.amount, ECONOMY.solo.credits.challenge.amount] },
   'story.progress': { done: upTo(STORY_TOTAL), total: [STORY_TOTAL] },
   'countdown.hm': { h: upTo(23, 1), m: upTo(59) },
   'countdown.m': { m: upTo(59) },

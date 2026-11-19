@@ -15,12 +15,14 @@ const messages: Record<string, string> = {
   'pg.stat.cards': 'Cards Owned',
   'pg.stat.wins': 'Battle Wins',
   'pg.stat.trivia': 'Trivia Score',
+  'pg.stat.credits': 'Credits',
   'pg.viewCollection': 'View Collection',
   'pg.spending': 'Daily spending:',
   'pg.credits': 'credits',
 
   'pg.packs.title': 'Card Packs',
   'pg.packs.sub': 'Open packs to reveal cards',
+  'pg.rewardNote': 'Signed in, play earns credits for your account, and credits buy packs. Signed out, it earns cards for this device.',
   'pg.starter.name': 'Starter Pack',
   'pg.starter.desc': '3 cards to begin your collection',
   'pg.daily.name': 'Daily Pack',
@@ -45,12 +47,12 @@ const messages: Record<string, string> = {
   'pg.odds.moreAfter': '.',
 
   'pg.battle.sub': 'Win rap battles to earn cards',
-  'pg.battle.body': 'Challenge the Master Thespian in a Shakespeare rap battle. Win a round and earn a random card from the collection.',
+  'pg.battle.body': 'Challenge the Master Thespian in a Shakespeare rap battle. Win the duel and earn a reward.',
   'pg.battle.cta': 'Enter the Arena',
 
   'pg.trivia.title': 'Shakespeare Trivia',
   'pg.trivia.sub': 'Test your knowledge, earn cards',
-  'pg.trivia.body': 'Answer 5 questions about Shakespeare. Score 3 or more to earn a card.',
+  'pg.trivia.body': 'Answer 5 questions about Shakespeare. Score 3 or more to earn a reward.',
   'pg.trivia.start': 'Start Trivia',
   'pg.trivia.progress': 'Question {n} / {total}',
   'pg.trivia.correct': 'Correct: {n}',
@@ -59,12 +61,12 @@ const messages: Record<string, string> = {
   'pg.trivia.aiBadge': 'AI Generated',
   'pg.trivia.won': 'You scored {n} / {total}!',
   'pg.trivia.lost': 'You scored {n} / {total}',
-  'pg.trivia.need': 'You need at least 3 correct to earn a card. Try again!',
+  'pg.trivia.need': 'You need at least 3 correct to earn a reward. Try again!',
   'pg.worldCard': 'World Card Unlocked! {city}: +{bonus} {axis}',
 
   'pg.challenge.title': 'Quote Challenge',
   'pg.challenge.sub': 'Complete the famous quote',
-  'pg.challenge.body': 'Fill in the missing words from a Shakespeare quote. Get it right, earn a card.',
+  'pg.challenge.body': 'Fill in the missing words from a Shakespeare quote. Get it right, earn a reward.',
   'pg.challenge.start': 'Start Challenge',
   'pg.challenge.crafting': 'Crafting challenge...',
   'pg.challenge.blank': 'Blank {n}:',
@@ -84,6 +86,10 @@ const messages: Record<string, string> = {
   'pg.difficulty.hard': 'hard',
 
   'pg.earned': 'You earned a card:',
+
+  'pg.earnedCredits': 'Credits earned: {n}',
+
+  'pg.capReached': 'No more rewards for this today. Come back tomorrow.',
   'pg.collect': 'Collect',
   'pg.close': 'Close',
   'pg.reveal.title': 'Card Revealed!',
