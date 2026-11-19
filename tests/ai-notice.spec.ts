@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { MODELS } from '../src/lib/brain';
-import { setLists, standInModel } from './stand-in-model';
+import { setLists, standInModel, stubCount } from './stand-in-model';
 
 /**
  * Before a first duel the player is told, in their language, who plays and who judges: artificial
@@ -72,6 +72,45 @@ for (const l of LOCALES) {
       const notice = page.locator('#ai-notice');
       await expect(notice).toBeVisible();
       await expect(notice).toHaveText(s['notice.none']);
+    });
+
+    test('theatre, a remembered model: while it loads, the notice already names it, and never says that no model plays', async ({ page }) => {
+      const s = await strings(l);
+      const m = MODELS.grand;
+      await inLocale(page, l);
+      // The visitor chose Gemma on the battle page before; this device can run it.
+      await page.addInitScript(() => {
+        localStorage.setItem('inspired-mile-brain', 'grand');
+        Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => 16 });
+      });
+      await standInModel(page);
+      // The model library is held back, so the page is still loading the model while the notice is read.
+      let release!: () => void;
+      const held = new Promise<void>((r) => (release = r));
+      await page.route(/huggingface[_/]transformers/, async (route) => {
+        await held;
+        await route.fallback();
+      });
+      const seen: string[] = [];
+      await page.exposeFunction('__noticeSeen', (text: string) => seen.push(text));
+      await page.addInitScript(() => {
+        // Every text the notice shows while visible, from the first one on.
+        new MutationObserver(() => {
+          const n = document.getElementById('ai-notice');
+          if (n && !n.classList.contains('invisible')) (window as any).__noticeSeen(n.textContent);
+        }).observe(document, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class'] });
+      });
+      await page.goto('/theatre?seed=11');
+      const notice = page.locator('#ai-notice');
+      // The duel's language is English, which the model writes and judges.
+      await expect(notice).toBeVisible();
+      await expect(notice).toHaveText(say(s['notice.aiBoth'], m.label));
+      await expect(notice).toHaveAttribute('data-opponent', 'model');
+      expect((await stubCount(page)).loads, 'the model is still loading').toEqual([]);
+      release();
+      await expect.poll(async () => (await stubCount(page)).loads.length, { timeout: 30_000 }).toBeGreaterThan(0);
+      await expect(notice).toHaveText(say(s['notice.aiBoth'], m.label));
+      expect(seen.filter((t) => t === s['notice.none']), 'the notice never said no model plays').toEqual([]);
     });
 
     test('multiplayer: another player and the server\'s rules, said in the player\'s language inside the English page', async ({ page }) => {

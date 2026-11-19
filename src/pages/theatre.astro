@@ -27,8 +27,9 @@ await loadArea('about');
         <a href="/battle" class="text-xs text-obsidian-400 hover:text-gold-400 underline" data-i18n="theatre.flat">Play the flat version</a>
       </div>
       <p id="theatre-status" class="text-center text-xs font-mono rtl:font-sans text-obsidian-500 mb-4">Raising the curtain…</p>
-      <!-- Who plays and who judges, said before the duel (EU AI Act Article 50; src/lib/ai-notice.ts). -->
-      <p id="ai-notice" role="note" data-opponent="written" data-judge="rules" class="max-w-2xl mx-auto mb-4 text-center text-sm text-obsidian-100 border border-gold-500/30 bg-gold-500/10 rounded-sm px-3 py-2">No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.</p>
+      <!-- Who plays and who judges, said before the duel (EU AI Act Article 50; src/lib/ai-notice.ts). Shown once the
+           page knows whether a model will play: a remembered model is named while it loads. -->
+      <p id="ai-notice" role="note" data-opponent="written" data-judge="rules" class="invisible max-w-2xl mx-auto mb-4 text-center text-sm text-obsidian-100 border border-gold-500/30 bg-gold-500/10 rounded-sm px-3 py-2">No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.</p>
 
       <div class="card-glass overflow-hidden rounded-xl">
         <canvas id="theatre-canvas" class="w-full block touch-none" style="height: min(70vh, 640px);"></canvas>
@@ -60,7 +61,7 @@ await loadArea('about');
   </section>
 
   <script>
-    import { brainInfo, detectCapability, loadBrain, modelJudges, rememberedModel } from '../lib/brain';
+    import { brainInfo, detectCapability, loadBrain, MODELS, modelJudges, rememberedModel, type ModelSpec } from '../lib/brain';
     import { aiNotice } from '../lib/ai-notice';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
@@ -82,6 +83,11 @@ await loadArea('about');
 
     let session: DuelSession | undefined;
     let useModel = false;
+    // The model being loaded for this duel, while it loads: the duel waits for it, and is played with it
+    // unless it fails, so the notice names it meanwhile rather than saying that no model plays.
+    let loadingModel: ModelSpec | null = null;
+    // Until the page knows whether a model will play (the device is asked first), the notice is not shown.
+    let noticeKnown = false;
     // The microphone button and the status line remember the message they show, so a
     // change of interface language can say it again.
     let micMsg: Msg = { key: 'theatre.micSpeak' };
@@ -193,10 +199,11 @@ await loadArea('about');
      */
     const noticeEl = document.getElementById('ai-notice')!;
     function renderNotice() {
-      const n = aiNotice(useModel ? brainInfo() : null, session?.duel.lang ?? duelLang());
+      const n = aiNotice(useModel ? brainInfo() : loadingModel, session?.duel.lang ?? duelLang());
       noticeEl.textContent = t(n.key, n.vars);
       noticeEl.dataset.opponent = n.opponent;
       noticeEl.dataset.judge = n.judge;
+      noticeEl.classList.toggle('invisible', !noticeKnown);
     }
 
     async function start(seed: number) {
@@ -231,7 +238,10 @@ await loadArea('about');
       // never a bigger download than theirs, nor a model used in no language (docs/language/MODEL-EVAL.md).
       const cap = await detectCapability();
       const want = rememberedModel(cap, localStorage.getItem('inspired-mile-brain'));
-      if (params.get('brain') !== 'rules' && want) {
+      if (params.get('brain') !== 'rules' && want) loadingModel = MODELS[want];
+      noticeKnown = true;
+      renderNotice();
+      if (loadingModel && want) {
         status('brain.summoning');
         useModel = await loadBrain(want, (p) => {
           // The loader reports its progress in English.
@@ -240,6 +250,7 @@ await loadArea('about');
           statusEl.textContent = down ? t('brain.downloading', { model: down[1], done: down[2], total: down[3] }) : p.text;
         });
       }
+      loadingModel = null;
       const info = useModel ? brainInfo() : null;
       if (info) status('theatre.running', { model: info.label });
       else status('theatre.writtenHint');
