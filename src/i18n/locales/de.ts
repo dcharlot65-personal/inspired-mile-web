@@ -468,7 +468,7 @@ const de: Record<string, string> = {
   'battle.lang.written': '{language}: Du spielst gegen den Gegner mit geschriebenen Strophen, weil {model} nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt.',
   'battle.lang.rules': '{language}: Nach Regeln bewertet, weil {model} nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist.',
   'brain.noneShown': 'Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln.',
-  'footer.credits': 'Credits und Lizenzen',
+  'footer.credits': 'Quellen und Lizenzen',
   'notice.aiBoth': 'Dein Gegner und der Richter werden von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft.',
   'notice.aiWrites': 'Dein Gegner wird von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft. Das Duell wird nach Regeln bewertet, nicht von künstlicher Intelligenz.',
   'notice.aiJudges': 'Der Richter wird von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt.',
