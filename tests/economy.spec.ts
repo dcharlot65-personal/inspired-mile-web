@@ -813,22 +813,25 @@ test.describe('the third check of 2026-11-19', () => {
   });
 
   test("cards: a device's cards come over only on an account's first day, not when a long-standing account likes", async () => {
+    // An account made two days ago, that has never imported: the checker's R5 brought a Legendary
+    // in to an account that had played already.
+    const old = await account();
+    sql(`UPDATE users SET created_at = NOW() - INTERVAL '2 days' WHERE id = '${old.id}'`);
+    const late = await old.call('POST', '/migrate/import', { cards: ['OL-001', 'DC-001'] });
+    expect([late.status, late.text]).toEqual([403, "A device's cards come over only in an account's first 24 hours"]);
+    expect(await held(old)).toEqual([]);
+    expect(sql(`SELECT COUNT(*) FROM migration_log WHERE user_id = '${old.id}'`)).toBe('0');
+    expect((await old.call('GET', '/migrate/status')).body, 'the page offers nothing').toMatchObject({ migrated: false, open: false });
+
+    // A new account may, for its first day.
     const fresh = await account();
     const status = (await fresh.call('GET', '/migrate/status')).body;
     expect(status).toMatchObject({ migrated: false, open: true });
     const hours = (Date.parse(status.open_until) - Date.now()) / 3600000;
     expect(hours, 'about a day from sign-up').toBeGreaterThan(23);
     expect(hours).toBeLessThanOrEqual(24);
-
-    // An account made two days ago, that has never imported: the checker's R5 brought a Legendary
-    // in to an account that had played already.
-    const old = await account();
-    sql(`UPDATE users SET created_at = NOW() - INTERVAL '2 days' WHERE id = '${old.id}'`);
-    expect((await old.call('GET', '/migrate/status')).body).toMatchObject({ migrated: false, open: false });
-    const late = await old.call('POST', '/migrate/import', { cards: ['OL-001', 'DC-001'] });
-    expect(late.status, late.text).toBe(403);
-    expect(await held(old)).toEqual([]);
-    expect(sql(`SELECT COUNT(*) FROM migration_log WHERE user_id = '${old.id}'`)).toBe('0');
+    expect((await fresh.call('POST', '/migrate/import', { cards: ['DC-001'] })).status).toBe(200);
+    expect((await fresh.call('GET', '/migrate/status')).body).toMatchObject({ migrated: true, open: false });
   });
 
   test('tournaments: past its deadline no new room is opened for a match, so reopening rooms cannot hold the deadline off', async () => {
