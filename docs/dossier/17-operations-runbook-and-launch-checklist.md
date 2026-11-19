@@ -273,15 +273,14 @@ The service worker fetches pages network-first, so returning visitors get the ro
 | Script | `~/backups/inspired_mile/backup.sh` on prod |
 | Schedule | LaunchAgent `com.inspiredmile.db-backup`, daily at 04:10 |
 | Kept | 14 days |
-| Restore tested | 2026-11-19 |
-| Dump format, compression, encryption, file names | **not recorded here** (verify and add) |
-| Off-host copy | **none** |
+| Restore tested | 2026-11-19: the 06:11Z dump restored into a scratch database with matching row counts; the 08:20Z copy fetched from the Studio, decrypted on the dev Mac, byte-identical (sha256 `4592e9d6…`) to prod's dump |
+| Dump format and names | `pg_dump -Fc` (custom format), checked with `pg_restore --list` before it is kept; `inspired_mile-<UTC yyyymmddThhmmssZ>.dump`, written as `.partial` and renamed; log in `backup.log` beside it |
+| Off-host copy (done 2026-11-19, owner decision R16) | Each dump is encrypted with gpg to public key `4F40996E5A957F7F7BD9E2366C1A31705D45DC89` and streamed to the build Studio (`100.100.141.123`), `/Volumes/macos_4TB_external_1/backups/inspired_mile/inspired_mile-<stamp>.dump.gpg`, kept 14 days, `received.log` beside it. Prod pushes with `~/.ssh/inspiredmile_backup_push`, a key the Studio's `authorized_keys` restricts (`restrict,command=...`) to `~/inspiredmile-backup-recv.sh`, which takes only a name matching the dump pattern and refuses empty input (tested: shell commands, paths, empty and port forwards refused). A failed push is logged as `FAILED to copy` and never stops the local backup |
+| The private key | Generated on the dev Mac 2026-11-19: keyring `~/.gnupg-inspiredmile-backup`, export and restore steps in `~/inspired-mile-backup-key/` (`README.txt`). The owner is to keep `inspired-mile-db-backup-SECRET.asc` offline (it has no passphrase); without it the Studio copies cannot be read |
 
 **Gaps (proposed fixes):**
 
-- **Same machine:** a disk failure or loss of prod loses the database and every backup. Copy each night's dump to a second machine over Tailscale (for example a dated directory on the build host's external volume, or another host the owner chooses), and keep 14 days there too.
-- **Encryption:** dumps may hold email addresses (none today: production had 0 accounts on 2026-11-19). Encrypt the off-host copy.
-- **Freshness alarm:** nothing says if the 04:10 job stops. Check daily that the newest dump is less than 26 hours old (section 6.4).
+- **Freshness alarm:** nothing says if the 04:10 job stops or the push starts failing. Check daily that the newest dump and the newest Studio copy are less than 26 hours old, and alert on a `FAILED to copy` line (section 6.4).
 - **Privacy:** a deleted account survives in backups for up to 14 days; say so in the privacy policy's retention section.
 
 ### 6.2 Restore drill (proposed: monthly, and after any change to `backup.sh`)
@@ -306,9 +305,13 @@ Record each drill in section 9.
 4. Run the migration check against the restored database before starting the API (section 4.2).
 5. Start the API; check health; note the data lost since the dump.
 
-### 6.4 Monitoring (as built: none) and what to add
+### 6.4 Monitoring and what to add
 
-**As built:** no uptime check, alert or dashboard names the site (tech §10.4). What exists: `GET /api/v1/health` ("ok"); operator notices in the API log; the production smoke suite run by hand; prod's Caddy error log.
+**Installed 2026-11-19 (owner decision R16):** an uptime check on the build Studio, `~/inspiredmile-uptime/check.sh`, LaunchAgent `com.inspiredmile.uptime`, every 5 minutes: the public page and `https://sonnetman.inspiredmile.com/api/v1/health` must answer 200. Two failures in a row send "Sonnet Man is down" (repeated at most every 6 hours while it stays down) and recovery sends "Sonnet Man is back up"; every check that fails is logged in `uptime.log` beside it. Alerts go by email through Resend (the owner's choice) once `~/inspiredmile-uptime/alert.env` on the Studio holds `RESEND_API_KEY`, `ALERT_FROM` (an address on a domain verified in Resend) and `ALERT_TO`; until then each alert is logged as "not sent (no alert.env)". Tested with a dead address (alert on the second failure, none on the third, recovery noted). It does not touch the Studio's external volume, so the volume-consent dialog that holds launchd jobs there does not apply.
+
+**API log rotation (done 2026-11-19):** `~/sites/logs/rotate-inspiredmile.sh` on prod, LaunchAgent `com.inspiredmile.log-rotate`, daily at 04:20: each API log is appended to `<name>.<UTC yyyymmdd>` and truncated in place (launchd holds it open for append), and copies older than 30 days are deleted, as the privacy policy promises. Tested: the API kept running and kept writing.
+
+**Before this, as built:** no uptime check, alert or dashboard named the site (tech §10.4). What exists: `GET /api/v1/health` ("ok"); operator notices in the API log; the production smoke suite run by hand; prod's Caddy error log.
 
 **Log lines to know** (`CLAUDE.md:274-291`; `backend/.env.production.template`):
 
@@ -333,7 +336,7 @@ Record each drill in section 9.
 
 Whether the fleet's existing telemetry hub on prod can run these checks and alert is **not known**; it should be checked before building anything new.
 
-**API log rotation (gap):** the privacy policy promises server logs are kept no more than 30 days (`src/pages/privacy.astro:131,153`), and the API's launchd logs have no recorded rotation (tech §9). launchd holds the log file open, so renaming it does not stop the API writing to it until a restart. **Proposed:** have the API write its own daily log files (for example with the `tracing-appender` crate's daily rolling writer) and delete files older than 30 days in its maintenance task; until then, prune by hand after each restart and note it in section 9.
+**Proxy secret (owner decision R16, not yet done):** the site's front proxy is the M4's Caddy (`10.10.10.1`), whose configuration is not in site-ops. The owner chose to bring it into site-ops first, add `header_up X-Proxy-Secret` there, deploy it the site-ops way, and only then set `PROXY_SECRET` on prod (setting it first would make every visitor one client). It matters only once the new API ships, since `main`'s API does not read it.
 
 **Error reporting:** none. Proposed: GlitchTip (doc 16 §5).
 
