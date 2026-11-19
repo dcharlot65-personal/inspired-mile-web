@@ -157,9 +157,9 @@ raw text. The single-player page previews `DuelSession.preview()` of the same te
 scores (`src/lib/battle-preview.test.ts`).
 
 What the room enforces besides the rules: three to five characters, each a starter character
-(`ONLINE_STARTER`: the first three of the catalogue) or one the account's `owned_cards` holds
-(`handlers.rs not_held`; the collection is otherwise the browser's, so this binds a deck to
-what the account records, not to what a player paid for); at most `MAX_ROOMS_PER_USER` live
+(`ONLINE_STARTER`: the first three of the catalogue) or one the account holds on the server
+(`handlers.rs not_held`: `owned_cards` with `state = 'owned'`; a card on sale is locked, and cards
+come only from the server: docs/ECONOMY.md); at most `MAX_ROOMS_PER_USER` live
 rooms per account and `MAX_ROOMS_PER_ADDRESS` (40) per network (an IPv4 address or an IPv6 /48:
 `handlers.rs origin_of`, the client address as every other limit finds it, `auth::client_addr`,
 so a forwarding header counts only from `TRUSTED_PROXIES` and with `PROXY_SECRET` when it is
@@ -191,6 +191,27 @@ holds the room) and removes it. The build itself (a const assertion in game_room
 `FINISHED_LINGER + SWEEP_EVERY <= POLICY_AFTER_THE_END` (120 s), and
 src/lib/privacy-retention.test.ts holds the policy's words to `POLICY_AFTER_THE_END`. Change any
 of these and the policy together.
+
+## The economy and the rankings (docs/ECONOMY.md)
+
+The server is the authority (owner, 2026-11-19). Every amount, rate and cap is in ONE file,
+`backend/data/economy.json`: the API compiles it in (`backend/src/economy.rs`, pure rules;
+`backend/src/ledger.rs`, every credit, XP and card movement, under a per-account row lock, logged in
+`credit_transactions` / `xp_transactions`) and the pages import it (`src/lib/economy-rules.ts`;
+`economy-rules.test.ts` holds the pages' own numbers to it). A request that names an amount is a
+400. Solo sources (`solo_win`, `trivia`, `challenge`, `daily`) pay fixed amounts with daily caps
+(UTC days). Cards come only from the server: starter characters (no row, never sold), free and
+bought packs drawn with the server's randomness (`POST /inventory/claim`, `/inventory/packs`),
+season rewards, the market, and a one-time capped import of a device's collection
+(`POST /migrate/import`). Signed in, every page's collection is the account's
+(`src/lib/account-cards.ts`, a copy in localStorage removed at sign-out; `inventory.ts getOwnedCards`
+reads it); signed out it is the device's own, for solo play. A finished online match is handed to
+the recorder (`multiplayer/results.rs`) and stored in `battle_rooms` (never the verses): the
+leaderboard, `GET /stats`, account achievements and tournament results read only those rows, and a
+win is a match. A tournament match is decided only by its room (`POST .../room`;
+`tournaments/progress.rs`). Device achievements stay on the device. `tests/economy.spec.ts` holds
+each rule (API-level, real Postgres); no route lets a client add a card, so tests seed cards with
+`psql` against the harness's database.
 
 ## Building the API
 
@@ -224,6 +245,9 @@ Postgres and two copies of the real API (`tests/start-backend.sh`; needs `initdb
 `createdb` and `cargo` on `PATH`, hence `/opt/homebrew/bin` and `~/.cargo/bin` above), and
 the Astro dev server, which proxies `/api` to the API (`astro.config.mjs`). State and logs
 go to `.e2e/` (git-ignored); the sign-in codes the tests read are in `.e2e/api.log`.
+
+The harness starts the API with `TOURNAMENT_CHECK_SECONDS=1` (the scheduler's look for tournaments
+to start; `E2E_TOURNAMENT_SECONDS` moves it).
 
 **The build host is shared, and no server is reused.** Default ports: 4399 (dev server),
 38490 (API, `DEV_EMAIL_LOG=1`), 38491 (API with email off), 54329 (Postgres). If another
