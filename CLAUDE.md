@@ -538,7 +538,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   or meanwhile add `MEVAL_SET_ASIDE=1` to move it to `docs/language/model-eval/set-aside/`, where
   it counts as not measured (a cell of that name set aside before is kept, moved to
   `set-aside/before-<day>/`: `src/lib/model-eval-aside.ts`). The same variable with `model-eval.judge.test.ts` sets aside judging
-  cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
+  cells whose prompts changed. A change that reaches only some plays' prompts (a card out of the
+  opponent's draw) can instead have just those plays written again by the model,
+  `MEVAL_STALE=1 TASKS=write run.mjs`, which records them under `remeasured` and touches the
+  repository's cells only. `run.mjs` measures set-aside cells again. New cells: copy them into
   `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
   `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.
   Each judged pair also keeps the model's raw reading (`referee.ts JudgeReading`), and

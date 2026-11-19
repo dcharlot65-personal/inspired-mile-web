@@ -131,6 +131,9 @@ if (aside.length) out.push('', `${aside.length} cell(s) set aside, and counted a
 // Writing cells scored again from their stored drafts after a rule change (src/lib/model-eval.rescore.test.ts).
 const rescored = cells.filter((c) => c.rescored?.length);
 if (rescored.length) out.push('', `${rescored.length} writing cells were scored again from their stored drafts after a change to the rules, without running the model: ${rescored.map((c) => `${c.file.replace('cells/', '')} (${c.rescored.map((r) => `${r.playsChanged} plays, at ${String(r.commit).slice(0, 8)}`).join('; ')})`).join(', ')}.`);
+// Writing cells in which the plays a change to the duel's draw reached were written again by the model (run.mjs MEVAL_STALE=1).
+const remeasured = cells.filter((c) => c.remeasured?.length);
+if (remeasured.length) out.push('', `${remeasured.length} writing cells had the plays whose prompt the code no longer gave written again by the model, in the same slots, the cell's other plays as first measured: ${remeasured.map((c) => `${c.file.replace('cells/', '')} (${c.remeasured.map((r) => `${r.plays.map((p) => `seed ${p.seed} round ${p.roundIndex}, ${p.was} → ${p.now}`).join(', ')}, on ${r.date.slice(0, 10)}`).join('; ')})`).join(', ')}.`);
 
 // --- The result in brief, at the top of the page ---
 const brief = [];
