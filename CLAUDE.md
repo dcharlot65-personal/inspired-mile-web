@@ -593,7 +593,7 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   use the glob): pwa.ts is imported where a model has loaded. Otherwise every Playwright run stops before
   its first test ("(intermediate value).glob is not a function"). `src/i18n/index.ts` itself now loads in Node
   with no page areas (its glob is inside a try) for the language tools (`scripts/lang`), which import it.
-- A page whose own text is English in every language (multiplayer, privacy, terms) marks its body
+- A page whose own text is English in every language (multiplayer, privacy, terms, credits) marks its body
   `lang="en" dir="ltr"`, or an Arabic page lays it out right to left (`tests/english-pages-rtl.spec.ts`).
 - `@tailwindcss/upgrade` rewrites plain words in data files as classes ("a ring" became
   "a ring-3"). Diff `src/lib/*.ts` after running it.
@@ -609,6 +609,23 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   line-break rules of Japanese and Chinese (no closing punctuation opens a line, no opening
   bracket ends one) and Thai's ๆ and ฯ: `src/lib/xr/line-break.ts`, checked on what Babylon drew
   in `tests/theatre.spec.ts`.
+
+## The AI notice and the credits (2026-11-19)
+
+- **Before every duel the player is told who plays and who judges** (EU AI Act, Regulation (EU) 2024/1689,
+  Article 50(1), applying from 2 August 2026; 50(5): "at the latest at the time of the first interaction").
+  `src/lib/ai-notice.ts` picks one of `notice.aiBoth`, `notice.aiWrites`, `notice.aiJudges`, `notice.none` from the
+  model in use and the duel's language, by the same `modelWrites`/`modelJudges` the session is gated on; the battle
+  page (`#ai-notice` in the set-up) and the theatre show it, and multiplayer shows `notice.online` in the player's
+  language inside its English page (`#mp-ai-notice`, its `lang`/`dir` set by script). "Artificial intelligence" is
+  each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`). `src/lib/ai-notice.test.ts` and
+  `tests/ai-notice.spec.ts` (all sixteen languages) hold it. A change to who plays or judges changes the notice too.
+- **`/credits` names everything the game ships or downloads**, with its licence and duties (CC BY-SA share-alike
+  for the sound tables, the NAIST notice, CMU and SCOWL notices read from `pron-en.ts` itself, the LFM US$10M and
+  FLUX US$5M thresholds, eSpeak NG's GPL inside kokoro-js's phonemizer). `docs/ASSETS.md` is the record of where each
+  shipped file came from and what is still not traced. `src/lib/credits.test.ts` fails when a font, model, browser
+  library, data source, or a music, sound or 3D file is added without its credit or its line in ASSETS.md.
+  `public/fonts/OFL.txt` and `public/licenses/mecab-ipadic-NOTICE.txt` must stay beside what they license.
 
 ## Requests to other origins (the privacy policy depends on this)
 
