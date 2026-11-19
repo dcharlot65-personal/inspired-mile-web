@@ -136,7 +136,9 @@ async fn redeem_code(
 
     Ok(Json(RedeemResponse {
         success: true,
-        message: "Referral code redeemed! You get 5 free packs!".into(),
+        // The words say what the code above does: the referrer gets 100 credits, the redeemer nothing.
+        // (packs_granted below is a number no code grants; changing the reply's data is not a matter of words.)
+        message: "Referral code redeemed. The player who invited you receives 100 credits.".into(),
         packs_granted: 5,
     }))
 }
