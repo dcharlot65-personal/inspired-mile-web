@@ -31,7 +31,7 @@ use inspired_mile_api::verse::LANG;
 use super::game_room::{
     run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
 };
-use super::matchmaking::{Enqueued, MatchmakingQueue};
+use super::matchmaking::{quick_match_open, Enqueued, MatchmakingQueue};
 use crate::auth::{client_addr, Claims};
 use crate::config::Config;
 use crate::request_task::ClientGone;
@@ -154,6 +154,21 @@ fn queue_answer(room_id: Option<Uuid>, position: usize, status: &str) -> Json<Qu
     Json(QueueResponse { room_id, position, status: status.into() })
 }
 
+/// What a quick-match request is told while quick match is switched off (owner decision D-02,
+/// `backend/data/online-play.json`). The page hides quick match then; this reaches only a page
+/// cached from before, or a client of its own.
+const QUICK_MATCH_CLOSED: &str =
+    "Quick match is switched off for now: online duels are played in private rooms. Open a room and send its link to someone you know.";
+
+/// Whether a quick-match request may go on: while quick match is switched off, never.
+fn queue_gate(open: bool) -> Result<(), (StatusCode, String)> {
+    if open {
+        Ok(())
+    } else {
+        Err((StatusCode::FORBIDDEN, QUICK_MATCH_CLOSED.to_string()))
+    }
+}
+
 /// Ask for a match and wait up to `QUEUE_WAIT` for one. The answer is "matched" with the
 /// room to join, "timeout", or "cancelled" (the player left the queue or asked again from
 /// another tab).
@@ -172,6 +187,8 @@ async fn join_queue(
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
+    // Before anything else: a closed queue holds nobody and opens no room.
+    queue_gate(quick_match_open())?;
     let origin = origin_of(&headers, peer, &config);
     let mut rx = loop {
         match queue.enqueue(claims.sub, claims.sid, claims.username.clone(), origin.clone(), &rooms).await.map_err(refused)? {
@@ -621,6 +638,12 @@ mod tests {
         let mut headers = HeaderMap::new();
         headers.insert(header::ORIGIN, origin.parse().unwrap());
         headers
+    }
+
+    #[test]
+    fn a_quick_match_request_is_refused_while_quick_match_is_switched_off() {
+        assert_eq!(queue_gate(false), Err((StatusCode::FORBIDDEN, QUICK_MATCH_CLOSED.to_string())));
+        assert_eq!(queue_gate(true), Ok(()));
     }
 
     #[test]

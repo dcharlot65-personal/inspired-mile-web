@@ -14,11 +14,38 @@
 //! anything else. A waiting player who has since reached a limit (they opened rooms while
 //! they waited) is told so and leaves the queue; the requester goes on to the next player,
 //! or waits.
+//!
+//! **Quick match is switched off** while `quick_match_open()` is false: online duels are then
+//! played by private room only, for everyone (owner decision D-02, 2026-11-19). The switch is
+//! `quickMatch` in `backend/data/online-play.json`, the one file the server and the page both read;
+//! `join_queue` refuses at once (403, `QUICK_MATCH_CLOSED` in handlers.rs), and the page hides
+//! quick match and says why. Private rooms are not touched by it.
 
+use std::sync::LazyLock;
+
+use serde::Deserialize;
 use tokio::sync::{oneshot, Mutex};
 use uuid::Uuid;
 
 use super::game_room::{Refusal, RoomError, RoomManager};
+
+/// Who may meet whom online, as `backend/data/online-play.json` says. Compiled in: the API is
+/// rebuilt when it changes.
+#[derive(Deserialize)]
+struct OnlinePlay {
+    #[serde(rename = "quickMatch")]
+    quick_match: bool,
+}
+const ONLINE_PLAY_JSON: &str = include_str!("../../data/online-play.json");
+static ONLINE_PLAY: LazyLock<OnlinePlay> =
+    LazyLock::new(|| serde_json::from_str(ONLINE_PLAY_JSON).expect("backend/data/online-play.json says whether quick match is open"));
+
+/// Whether a player may ask for a quick match. False at launch (D-02): before it is turned on
+/// again, the matchmaker must pair adult accounts only, which it does not do yet (it never reads
+/// the age tier), and reports must be read every day.
+pub fn quick_match_open() -> bool {
+    ONLINE_PLAY.quick_match
+}
 
 /// What a waiting player is told: the room they were paired into, or why they cannot be.
 pub type Pairing = Result<Uuid, RoomError>;
@@ -150,6 +177,15 @@ impl MatchmakingQueue {
 mod tests {
     use super::*;
     use crate::multiplayer::game_room::RoomState;
+
+    #[test]
+    fn the_switch_is_read_from_the_file_the_page_reads() {
+        let file: serde_json::Value = serde_json::from_str(ONLINE_PLAY_JSON).unwrap();
+        assert_eq!(Some(quick_match_open()), file["quickMatch"].as_bool());
+        // A file that does not say is not read as either answer.
+        assert!(serde_json::from_str::<OnlinePlay>(r#"{"about": "no switch"}"#).is_err());
+        assert!(serde_json::from_str::<OnlinePlay>(r#"{"quickMatch": "no"}"#).is_err());
+    }
 
     /// A session for a request; the queue only passes it on.
     fn sid() -> Uuid {

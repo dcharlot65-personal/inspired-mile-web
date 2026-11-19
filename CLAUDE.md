@@ -131,6 +131,15 @@ The two engines are held together by golden vectors. After ANY change to `src/li
 `npx vitest run` fails while those files are stale. If the parity test fails, fix the Rust;
 never loosen the comparison. Online play has no relics, potions or ink yet.
 
+**Quick match is switched off at launch, by decision** (D-02, 2026-11-19): online duels are by
+private room only, for everyone, until reports are read every day and players can block and
+mute; then quick match for adults only. The one switch is `quickMatch` in
+`backend/data/online-play.json`, read by the server (`matchmaking.rs quick_match_open`, compiled
+in: rebuild the API after changing it; `join_queue` answers 403) and by the page, which then
+renders no quick-match controls and says why (`#mp-quick-closed`). Before turning it on, the
+matchmaker must pair adult accounts only: it does not read the age tier yet. The quick-match
+tests in `tests/multiplayer.spec.ts` skip while it is off; one test holds page and server to it.
+
 **Online duels are English only, by decision** (2026-11-17). The server's engine is the English
 path; the other fifteen languages are read by sound tables, kuromoji (Japanese) and the
 browser's word segmenter (Chinese, Thai), which a Rust server could not reproduce exactly, and a
