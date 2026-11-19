@@ -445,8 +445,11 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   (Italian «medusa», German "Puck") counts as that language's own does (`englishNameCounts`, the one call in
   devices.ts). Unspaced, a katakana name counts only as a whole katakana run; a Chinese name not beside another piece
   of a foreign name (`carriesOn`: Xinhua's transliteration characters, `pack.transliteration`,
-  `fetch/transliteration.py`: 哈德斯菲尔德, 迪帕克); a Thai name only where the letters beside it are words the
-  invocation knows (`thNameAt`: the Thai pronunciation table, so tests that read Thai invocations `loadSound('th')`);
+  `fetch/transliteration.py`: 哈德斯菲尔德, 迪帕克), nor beside one such character that is also a word where a middle
+  dot, the clause's end or 是 marks a foreign name (`foreignAround`: 保罗·格罗塞蒂, 布莱克雷, 王子班柯希); a Thai name only
+  where the letters beside it are words the invocation knows (`thNameAt`: the Thai pronunciation table, so tests that
+  read Thai invocations `loadSound('th')`; a foreign name whose syllables happen to be Thai words, ออกซุส, still
+  invokes: docs/language/NAMES-AND-QUOTATIONS.md);
   and a Chinese or Thai name not where a dictionary word or a Wikipedia title holding it surrounds it
   (`pack.containing`, `fetch/containing_words.py`: 圣安东尼奥, 宙斯盾, อัสซุส). No alias is the Roman god Wikidata says
   is the Greek one (`fetch/counterparts.py`: Jupiter, Плутон). The tests read wordfreq's and the Thai National
@@ -583,6 +586,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 
 ## Gotchas
 
+- Playwright specs import `src/lib/brain.ts` (its model lists) in Node, where `import.meta.glob` does not
+  exist. Keep brain.ts's static imports free of anything that reaches `src/i18n/index.ts` (its page areas
+  use the glob): pwa.ts is imported where a model has loaded. Otherwise every Playwright run stops before
+  its first test ("(intermediate value).glob is not a function").
+- A page whose own text is English in every language (multiplayer, privacy, terms) marks its body
+  `lang="en" dir="ltr"`, or an Arabic page lays it out right to left (`tests/english-pages-rtl.spec.ts`).
 - `@tailwindcss/upgrade` rewrites plain words in data files as classes ("a ring" became
   "a ring-3"). Diff `src/lib/*.ts` after running it.
 - The stylesheet is imported once, in `BaseLayout.astro`. Do not import it per page.
