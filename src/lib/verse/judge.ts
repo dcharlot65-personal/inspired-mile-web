@@ -232,7 +232,9 @@ export function judgeLines(verse: string, lang = 'en'): { text: string; left: nu
  * languages, and Gemma 4 E2B passed the judging bar in four; this wording, on the same code,
  * measured two such losses and fourteen passing. The labelled pairs now hold those planted
  * instructions in all sixteen languages (set I), so a wording is measured against them too.
- * Re-measured after the switch: see "The compare wording put back" in MODEL-EVAL.md.
+ * Re-measured after the switch, all 48 judging cells ("The compare wording put back" in
+ * MODEL-EVAL.md): Gemma 4 E2B loses two planted pairs (es, it) and judges the other fourteen
+ * languages; LFM3 1.7B loses none and judges Vietnamese only, as under both earlier wordings.
  */
 export function compareMessages(verseA: string, verseB: string, criterion: Criterion, langName: string) {
   return [
