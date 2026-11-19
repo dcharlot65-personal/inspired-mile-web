@@ -1,0 +1,72 @@
+{
+  "_comment": "Every amount, rate and cap of the game's economy, in one file. The API compiles it in (backend/src/economy.rs) and the pages import it (src/lib/economy-rules.ts). docs/ECONOMY.md says why each number is what it is; every number here is tunable. A day is a UTC calendar day.",
+  "solo": {
+    "_comment": "Solo play happens in the browser, where the server cannot see it. Each source pays a fixed amount, at most per_day times per account per UTC day. A client that names an amount is refused.",
+    "credits": {
+      "solo_win": { "amount": 50, "per_day": 3 },
+      "trivia": { "amount": 30, "per_day": 3 },
+      "challenge": { "amount": 20, "per_day": 5 },
+      "daily": { "amount": 10, "per_day": 1 }
+    },
+    "xp": {
+      "solo_win": { "amount": 100, "per_day": 3 },
+      "trivia": { "amount": 50, "per_day": 3 },
+      "challenge": { "amount": 40, "per_day": 5 },
+      "daily": { "amount": 25, "per_day": 1 }
+    }
+  },
+  "online": {
+    "_comment": "Paid by the server when it records a match it judged (multiplayer/results.rs).",
+    "win_credits": 50,
+    "win_credits_per_day": 10,
+    "win_credits_per_opponent_per_day": 3,
+    "xp_win": 100,
+    "xp_other": 25,
+    "xp_matches_per_day": 20
+  },
+  "packs": {
+    "weights": { "Common": 50, "Uncommon": 30, "Rare": 15, "Epic": 4, "Legendary": 1 },
+    "tiers": [
+      { "tier": "standard", "cards": 3, "guaranteed": null, "price": 50 },
+      { "tier": "rare", "cards": 5, "guaranteed": "Rare", "price": 150 },
+      { "tier": "epic", "cards": 5, "guaranteed": "Epic", "price": 400 }
+    ],
+    "starter_pack_cards": 3,
+    "daily_pack_cards": 1,
+    "daily_pack_every_hours": 24
+  },
+  "import": {
+    "_comment": "The one-time move of a device's own collection into an account, on its first sign-in.",
+    "max_cards": 20,
+    "max_by_rarity": { "Legendary": 1, "Epic": 2, "Rare": 5 }
+  },
+  "device": {
+    "_comment": "Signed out, the browser keeps its own collection for solo play. Trivia and quote challenges add a card to it at most this many times a day each.",
+    "trivia_cards_per_day": 3,
+    "challenge_cards_per_day": 3
+  },
+  "market": { "price_min": 1, "price_max": 100000 },
+  "teen_daily_spend": 200,
+  "referral": { "referrer_credits": 100, "rewards_per_day": 3 },
+  "founding": { "credits": 500 },
+  "account_achievements": [
+    { "id": "first-blood", "metric": "online_wins", "goal": 1 },
+    { "id": "battle-master", "metric": "online_wins", "goal": 10 },
+    { "id": "master-thespian", "metric": "online_wins", "goal": 25 },
+    { "id": "legend-50-wins", "metric": "online_wins", "goal": 50 },
+    { "id": "opening-act", "metric": "online_matches", "goal": 1 },
+    { "id": "bards-apprentice", "metric": "online_matches", "goal": 10 },
+    { "id": "verse-veteran", "metric": "online_rounds", "goal": 25 },
+    { "id": "hundred-rounds", "metric": "online_rounds", "goal": 100 },
+    { "id": "wordsmith", "metric": "best_round", "goal": 35 },
+    { "id": "virtuoso", "metric": "best_round", "goal": 45 },
+    { "id": "card-collector", "metric": "unique_cards", "goal": 5 },
+    { "id": "relic-hunter", "metric": "unique_cards", "goal": 15 },
+    { "id": "half-collection", "metric": "unique_cards", "goal": 24 },
+    { "id": "completionist", "metric": "unique_cards", "goal": 48 },
+    { "id": "first-pack", "metric": "packs_opened", "goal": 1 },
+    { "id": "pack-rat", "metric": "packs_opened", "goal": 10 },
+    { "id": "pack-collector", "metric": "packs_opened", "goal": 25 },
+    { "id": "pack-addict", "metric": "packs_opened", "goal": 50 }
+  ]
+}
