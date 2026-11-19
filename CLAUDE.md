@@ -70,7 +70,8 @@ can (`review4.test.ts` MASH-V). In Japanese a katakana word counts beside a word
 and in a verse with one line of Japanese or more a dictionary's katakana words count in a run of two
 or more (サッカーボール) or alone: the analyser's (IPADIC), or a run as written that IPADIC has whole, or
 JMdict's words or JMnedict's names have whole at LISTED_WHOLE full-size kana or LISTED_LONG characters
-(ユーチューブ, ワンツー, レノン, ラッパー; with two full-size kana the lists spell a fifth of random pairs,
+with at most LISTED_LONG_MARKS (1) long mark (ユーチューブ, ワンツー, レノン, ラッパー; two kana each held long,
+アーミー, are a list's word in 435 of 4,761 random cases, so ゲーマー and コービー count alone no more; with two full-size kana the lists spell a fifth of random pairs,
 so レゴ, バズ and フェス stay void alone), or as two words of IPADIC's or JMdict's of LOANWORD_PART
 characters or more (スイートドリーム; `text.ts katakanaListed`, `review5.test.ts`); one written apart
 with APART_WHOLE full-size kana counts beside katakana no dictionary has (プレイリスト スポティファイ);

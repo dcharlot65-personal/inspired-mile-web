@@ -17,7 +17,7 @@ import { loadPronunciation } from './pronounce';
 import { allusionLexicon } from './referee';
 import { loadSound } from './sound';
 import { japaneseLexicon, japaneseListed, setJapaneseLexicon } from './sound/kana';
-import { APART_WHOLE, LISTED_LONG, LISTED_WHOLE, LOANWORD_PART, copyOf, isContentWord, linesOf, substance, wordsOf } from './text';
+import { APART_WHOLE, LISTED_LONG, LISTED_LONG_MARKS, LISTED_WHOLE, LOANWORD_PART, copyOf, isContentWord, linesOf, substance, wordsOf } from './text';
 
 const log = (k: string, v: unknown) => console.log(`MEASURE ${k} ${JSON.stringify(v)}`);
 
@@ -32,7 +32,7 @@ const haiku = (first: string) => `${first}\n夜の街を\n歩いてく`;
 const counts = (v: string) => substance(v, 'ja').ok && !scoreForm(getForm('haiku'), v, { lang: 'ja' }).thin;
 
 /** What the third check's 211 and the fourth pass's 155 leave void alone on a line (review5, engine check 3). */
-const VOID3 = ['アデル', 'ルイアームストロング', 'レゴ', 'レディー・ガガ', 'スポティファイ', 'クラウトン', 'バチャータ', 'ズーク', 'ソカ', 'エリカバドゥ', 'ウータンクラン', 'チャンスザラッパー', 'バスタライムス', 'ミッシーエリオット', 'ラキム', 'ケーアールエスワン'];
+const VOID3 = ['アデル', 'ルイアームストロング', 'レゴ', 'バービー', 'レディー・ガガ', 'スポティファイ', 'クラウトン', 'バチャータ', 'ズーク', 'ソカ', 'ブードゥー', 'エリカバドゥ', 'ウータンクラン', 'チャンスザラッパー', 'バスタライムス', 'ミッシーエリオット', 'ラキム', 'ケーアールエスワン'];
 const VOID4 = ['ピクリズ', 'アキー', 'ハリエットタブマン', 'ニッキーミナージュ', 'ドクタードレー', 'アリシアキーズ', 'ジャクメル', 'カパイシャン', 'シタデル', 'ペチョンビル', 'ゴナイーヴ', 'ラーラ', 'コンパディレクト', 'ニュージャックスウィング', 'ファンドレイザー', 'フェイダウェイ', 'アリウープ'];
 /** Kana written full size (text.ts fullKana): not a small kana or the long mark. */
 const fullKana = (w: string) => [...w].filter((c) => !/[ァィゥェォッャュョヮヵヶー]/u.test(c)).length;
@@ -125,7 +125,7 @@ describe('engine check 2, blocker 2: a loanword or a name a dictionary has count
   const inDictionary = (w: string) =>
     w.split('・').every((part) => {
       const whole = japaneseListed(part);
-      if (whole === 'ipadic' || (whole && (fullKana(part) >= LISTED_WHOLE || part.length >= LISTED_LONG))) return true;
+      if (whole === 'ipadic' || (whole && (fullKana(part) >= LISTED_WHOLE || (part.length >= LISTED_LONG && [...part].filter((c) => c === 'ー').length <= LISTED_LONG_MARKS)))) return true;
       for (let k = LOANWORD_PART; k + LOANWORD_PART <= part.length; k++) {
         const a = japaneseListed(part.slice(0, k));
         const b = japaneseListed(part.slice(k));
@@ -384,6 +384,40 @@ describe('engine check 3, blocker: a word or a name of the lists counts whole on
     log('engine check 3: best of 60 with random runs (shape and reading: rounds, wins, void)', rows);
     for (const shape of Object.keys(lines)) expect([shape, rows[`${shape} lists`].wins <= rows[`${shape} ipadic`].wins + 1]).toEqual([shape, true]);
   }, 900_000);
+});
+
+describe('engine check 4, blocker: two kana each held long (XーYー) stay out; a word of the lists counts from LISTED_LONG characters only with at most LISTED_LONG_MARKS long marks', () => {
+  const PLAIN = [...'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ'];
+  const held = PLAIN.flatMap((a) => PLAIN.map((b) => `${a}ー${b}ー`));
+
+  it('all 4,761 alone on a line: the lists add at most 1 in 200 (at 955172d8 they added 435: アーミー, リービー, ゴーラー)', () => {
+    const now = held.filter((x) => counts(haiku(x)));
+    const before = new Set(ipadicOnly(() => held.filter((x) => counts(haiku(x)))));
+    const added = now.filter((x) => !before.has(x));
+    log('engine check 4: XーYー alone on a line (lines, counted, with IPADIC alone, added by the lists)', [held.length, now.length, before.size, added.length, added.slice(0, 12)]);
+    expect(held.length).toBe(4761);
+    expect(added.length / held.length).toBeLessThanOrEqual(0.005);
+  }, 600_000);
+
+  it('tercets of one XーYー run a line around one line of Japanese: the lists let at most 1 in 200 more count (at 955172d8, 62 against 20 of 2,000)', () => {
+    const ok = (v: string) => substance(v, 'ja').ok && !scoreForm(getForm('tercet'), v, { lang: 'ja' }).thin;
+    const r = rng(4442);
+    const pick = () => held[Math.floor(r() * held.length)];
+    const verses = Array.from({ length: 2000 }, () => `${pick()}\n君を待つ夜\n${pick()}`);
+    const counted = verses.filter(ok).length;
+    const alone = ipadicOnly(() => verses.filter(ok).length);
+    log('engine check 4: XーYー tercets (verses, counted, with IPADIC alone)', [verses.length, counted, alone]);
+    expect((counted - alone) / verses.length).toBeLessThanOrEqual(0.005);
+  }, 600_000);
+
+  it('the cost, alone on a line: words of two full-size kana and two long marks no longer count by themselves (with a particle they do); one long mark still counts', () => {
+    const LOST = ['ゲーマー', 'コービー', 'バービー', 'フーディー', 'ブードゥー', 'ルーター'];
+    const KEPT = ['ラッパー', 'タトゥー', 'ウェーブ', 'ユーチューブ', 'ワンツー'];
+    log('engine check 4: the cost (word, alone, with a particle)', [...LOST, ...KEPT].map((w) => [w, counts(haiku(w)), counts(haiku(`${w}の`))]));
+    for (const w of LOST) expect([w, counts(haiku(w)), counts(haiku(`${w}の`))]).toEqual([w, false, true]);
+    for (const w of KEPT) expect([w, counts(haiku(w))]).toEqual([w, true]);
+    expect(LISTED_LONG_MARKS).toBe(1);
+  });
 });
 
 describe('engine check 3, concern: a word a dictionary has, written apart, counts beside one no dictionary has, from APART_WHOLE full-size kana', () => {

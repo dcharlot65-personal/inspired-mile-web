@@ -809,6 +809,22 @@ files), `npm run build`, `scripts/gen-verse-golden.sh` with no file changed (onl
 Rust engine reads no Japanese), `cargo test --release` 49 + 135 + 8, `npx playwright test` 234 passed and
 8 skipped.
 
+## Engine pass, fifth round (after the engine check's fourth round, 2026-11-18, on integrate/wave3)
+
+The fourth check's blocker: a word of the lists of two full-size kana and two long marks (アーミー,
+リービー, ゴーラー) is four characters, so `LISTED_LONG` counted it, and the lists spell 435 of the 4,761
+runs `XーYー` of the 69 plain kana. Now a word of the lists counts from `LISTED_LONG` characters only
+with at most `LISTED_LONG_MARKS` (1) long mark (`text.ts katakanaListed`); the checker's V1.
+
+`review5.test.ts` 'engine check 4' (the Studio, through rb): before the change, all three tests red:
+`XーYー` alone on a line 930 counted against 496 with IPADIC alone (434 added, 9.1%); tercets of one
+such run a line 72 against 20 of 2,000; ゲーマー counted alone. After: 496 against 496 (0 added); 20
+against 20; ゲーマー, コービー, バービー, フーディー, ブードゥー and ルーター void alone and counted with a
+particle; ラッパー, タトゥー, ウェーブ, ユーチューブ and ワンツー still count alone. The other blocks of
+review3, review4 and review5 passed unchanged except the exact void lists: the third check's 211 now
+leave バービー and ブードゥー void alone too, and this pass's own 165 leave ゲーマー, フーディー and
+コービー (each in no dictionary at the length counted, and each counted with a particle).
+
 ## Mutation runs
 
 First pass: each defence broken in turn, on a build host (22 mutations): every one turned at least

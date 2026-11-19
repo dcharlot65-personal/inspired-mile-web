@@ -949,6 +949,17 @@ function fullKana(run: string): number {
 export const LISTED_WHOLE = 3;
 export const LISTED_LONG = 4;
 /**
+ * Long marks a word of the lists may hold and still count from LISTED_LONG characters. Two kana each
+ * held long (アーミー, リービー, ゴーラー) are four characters, and the lists spell 435 of the 4,761 such
+ * runs of the 69 plain kana: alone on a line they counted 930 times against 496 with IPADIC alone, and in
+ * tercets of one such run a line 72 against 20 of 2,000 (the engine's fourth check, 2026-11-18). With
+ * at most one long mark the lists add next to none. It costs, alone on a line, ゲーマー, コービー, バービー,
+ * フーディー, ブードゥー, フューチャー and ルーター (with a particle they count); ラッパー, タトゥー and ウェーブ,
+ * with one long mark, still count (review5.test.ts 'engine check 4').
+ */
+export const LISTED_LONG_MARKS = 1;
+const longMarks = (run: string) => [...run].filter((c) => c === 'ー').length;
+/**
  * Full-size kana a katakana word written apart (katakana on neither side) needs to count on its own,
  * whatever katakana stands beside it on the line (knownUnits). Counted in characters (three or four,
  * marks included), it let a duel's best of 60 lines of random two-kana runs with marks win 14 and 6
@@ -959,13 +970,14 @@ export const APART_WHOLE = 4;
 
 /**
  * Does a dictionary have this katakana, as written: whole (IPADIC; JMdict's words and JMnedict's
- * names of LISTED_WHOLE full-size kana or LISTED_LONG characters), or as two words of IPADIC's or
+ * names of LISTED_WHOLE full-size kana, or LISTED_LONG characters with at most LISTED_LONG_MARKS long
+ * marks), or as two words of IPADIC's or
  * JMdict's (not names) of LOANWORD_PART characters or more?
  */
 function katakanaListed(run: string): boolean {
   if (run.length < 2) return false;
   const whole = japaneseListed(run);
-  if (whole === 'ipadic' || (whole !== null && (fullKana(run) >= LISTED_WHOLE || run.length >= LISTED_LONG))) return true;
+  if (whole === 'ipadic' || (whole !== null && (fullKana(run) >= LISTED_WHOLE || (run.length >= LISTED_LONG && longMarks(run) <= LISTED_LONG_MARKS)))) return true;
   const word = (w: string) => {
     const l = japaneseListed(w);
     return l === 'ipadic' || l === 'word';

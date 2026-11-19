@@ -279,7 +279,9 @@ usable dictionary word, with no table loaded.
   floor asks them whether a run of katakana is a word (`text.ts knownUnits`, `review5.test.ts`). A
   sound model of IPADIC's own katakana was measured first and does not tell loanwords from random
   katakana. A word of the lists counts whole only at three full-size kana (small kana and the long
-  mark left out) or four characters (`text.ts LISTED_WHOLE`, `LISTED_LONG`): the lists hold 1,039 of
+  mark left out) or four characters with at most one long mark (`text.ts LISTED_WHOLE`, `LISTED_LONG`,
+  `LISTED_LONG_MARKS`: two kana each held long, アーミー, リービー, are a list's word in 435 of the 4,761
+  such runs, so ゲーマー, コービー and バービー count only with a particle): the lists hold 1,039 of
   the 4,761 pairs of plain katakana, and counting them let lines of short random runs count thirteen
   times as often as before the lists (the engine's third check, 2026-11-18). One written apart beside
   katakana no dictionary has counts on its own from four full-size kana (`APART_WHOLE`: プレイリスト
