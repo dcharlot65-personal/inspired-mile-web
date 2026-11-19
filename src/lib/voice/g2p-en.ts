@@ -198,6 +198,16 @@ function afterW(w: string, g: Spelling): boolean {
   return /(w|wh|qu)$/.test(w.slice(0, g.start + g.text.indexOf('a')));
 }
 
+/**
+ * Spelt au, aw or ought: the dictionary sometimes writes these AA (it merges "caught" and "cot",
+ * as much of America does); British speech keeps the vowel of "thought" (bought, caught, dawn).
+ */
+function thoughtSpelling(g: Spelling | null, w: string): boolean {
+  if (CLOTH_AU.has(w)) return false;
+  if (g) return /au|aw/.test(g.text) || (g.text.startsWith('ou') && w.slice(g.end).startsWith('ght'));
+  return /au|aw|ought/.test(w);
+}
+
 /** The vowel the dictionary writes AA: that of "lot" (ɒ) when spelt with o, or a after w or qu; otherwise that of "father". */
 function lotVowel(g: Spelling | null, w: string): boolean {
   if (g) {
@@ -212,11 +222,26 @@ function lotVowel(g: Spelling | null, w: string): boolean {
 function clothVowel(g: Spelling | null, w: string): boolean {
   if (CLOTH_AU.has(w)) return true;
   if (g) {
+    // An a after w or qu is the vowel of "lot" ("want", "wash", "squad"), except before l
+    // ("walk", "wall") and in "water".
+    if (g.text === 'a' && afterW(w, g)) return !/^l(k|l|ls|t)?$|^l(k|t)/.test(w.slice(g.end)) && !w.startsWith('water');
     if (g.text.includes('a')) return false;
     if (g.text.startsWith('ou')) return !w.slice(g.end).startsWith('ght');
     return g.text.startsWith('o');
   }
   return !w.includes('a') && !w.includes('ought');
+}
+
+/**
+ * The reduced vowel of the endings -ed after t or d ("blunted"), -es after a hissing sound
+ * ("verses") and -est ("comest"): the dictionary writes AH0, British speech says ɪ.
+ */
+function britishIEnding(phones: string[], i: number): boolean {
+  const tail = phones.slice(i + 1).join(' ');
+  const prev = bare(phones[i - 1] ?? '');
+  if (tail === 'D') return prev === 'T' || prev === 'D';
+  if (tail === 'Z') return SIBILANT.has(prev);
+  return tail === 'S T';
 }
 
 /** A reduced vowel that is only the sound of the l or n after it: "little" lˈɪtᵊl, "button" bˈʌtᵊn. */
@@ -266,7 +291,7 @@ export function britishFromCmu(phones: string[], w: string): Said {
     let sym: string;
     switch (v) {
       case 'AA':
-        sym = rColoured ? 'ɑː' : lotVowel(g, w) ? 'ɒ' : 'ɑː';
+        sym = rColoured ? 'ɑː' : thoughtSpelling(g, w) ? 'ɔː' : lotVowel(g, w) ? 'ɒ' : 'ɑː';
         break;
       case 'AO':
         sym = rColoured ? 'ɔː' : rVowel ? (g && w.slice(g.end).startsWith('rr') ? 'ɒ' : 'ɔː') : clothVowel(g, w) ? 'ɒ' : 'ɔː';
@@ -275,6 +300,10 @@ export function britishFromCmu(phones: string[], w: string): Said {
         sym = rColoured ? 'ɑː' : s > 0 && bath ? 'ɑː' : 'a';
         break;
       case 'AH':
+        if (s === 0 && britishIEnding(phones, i)) {
+          sym = 'ɪ';
+          break;
+        }
         // Stressed and spelt a after w ("what", "was"): the vowel of "lot" in British speech.
         if (s > 0 && !rColoured && (CLOTH_AU.has(w) || (g?.text === 'a' && afterW(w, g)))) sym = 'ɒ';
         else sym = rColoured ? 'ɜː' : s > 0 ? 'ʌ' : syllabicSchwa(phones, i) ? 'ᵊ' : 'ə';
@@ -355,17 +384,20 @@ export function americanFromCmu(phones: string[]): Said {
 /**
  * Little words said weak, as running speech says them ("the" ðə, "of" əv), and strong at the end
  * of a phrase ("what art thou?"). British forms; [weak, strong, ends with an unsaid r].
+ * Measured (docs/voice/G2P-MEASUREMENT.md, the development verses): thy, thou, thee and thine
+ * said with no stress were heard as "the", "they're", "then"; "and" as ənd was heard as "in".
+ * So the old pronouns keep a stress and "and" its vowel.
  */
 const FUNCTION_GB: Record<string, [string, string, boolean?]> = {
-  a: ['ɐ', 'ˈA'], an: ['ɐn', 'ˈan'], the: ['ðə', 'ðˈiː'], and: ['ənd', 'ˈand'], of: ['əv', 'ˈɒv'], to: ['tə', 'tˈuː'],
+  a: ['ɐ', 'ˈA'], an: ['ɐn', 'ˈan'], the: ['ðə', 'ðˈiː'], and: ['and', 'ˈand'], of: ['əv', 'ˈɒv'], to: ['tə', 'tˈuː'],
   at: ['ɐt', 'ˈat'], as: ['ɐz', 'ˈaz'], for: ['fɔː', 'fˈɔː', true], from: ['fɹɒm', 'fɹˈɒm'], or: ['ɔː', 'ˈɔː', true],
   nor: ['nɔː', 'nˈɔː', true], in: ['ɪn', 'ˈɪn'], on: ['ɒn', 'ˈɒn'], is: ['ɪz', 'ˈɪz'], it: ['ɪt', 'ˈɪt'], its: ['ɪts', 'ˈɪts'],
   "it's": ['ɪts', 'ˈɪts'], was: ['wɒz', 'wˈɒz'], were: ['wɜː', 'wˈɜː', true], are: ['ɑː', 'ˈɑː', true], am: ['am', 'ˈam'],
   be: ['biː', 'bˈiː'], been: ['biːn', 'bˈiːn'], but: ['bʌt', 'bˈʌt'], by: ['bI', 'bˈI'], with: ['wɪð', 'wˈɪð'],
   than: ['ðan', 'ðˈan'], that: ['ðat', 'ðˈat'], his: ['hɪz', 'hˈɪz'], her: ['hɜː', 'hˈɜː', true], him: ['hɪm', 'hˈɪm'],
   he: ['hiː', 'hˈiː'], she: ['ʃiː', 'ʃˈiː'], we: ['wiː', 'wˈiː'], me: ['miː', 'mˈiː'], you: ['juː', 'jˈuː'],
-  your: ['jɔː', 'jˈɔː', true], my: ['mI', 'mˈI'], thy: ['ðI', 'ðˈI'], thee: ['ðiː', 'ðˈiː'], thou: ['ðW', 'ðˈW'],
-  thine: ['ðIn', 'ðˈIn'], our: ['Wə', 'ˈWə', true], us: ['ʌs', 'ˈʌs'], them: ['ðɛm', 'ðˈɛm'], they: ['ðA', 'ðˈA'],
+  your: ['jɔː', 'jˈɔː', true], my: ['mI', 'mˈI'], thy: ['ðˌI', 'ðˈI'], thee: ['ðˌiː', 'ðˈiː'], thou: ['ðˈW', 'ðˈW'],
+  thine: ['ðˌIn', 'ðˈIn'], our: ['Wə', 'ˈWə', true], us: ['ʌs', 'ˈʌs'], them: ['ðɛm', 'ðˈɛm'], they: ['ðA', 'ðˈA'],
   their: ['ðɛː', 'ðˈɛː', true], can: ['kan', 'kˈan'], could: ['kʊd', 'kˈʊd'], will: ['wɪl', 'wˈɪl'], would: ['wʊd', 'wˈʊd'],
   shall: ['ʃal', 'ʃˈal'], should: ['ʃʊd', 'ʃˈʊd'], must: ['mʌst', 'mˈʌst'], do: ['duː', 'dˈuː'], does: ['dʌz', 'dˈʌz'],
   did: ['dɪd', 'dˈɪd'], has: ['haz', 'hˈaz'], have: ['hav', 'hˈav'], had: ['had', 'hˈad'], hath: ['haθ', 'hˈaθ'],

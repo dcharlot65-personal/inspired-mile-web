@@ -19,7 +19,8 @@ describe('the voice reads the CMU table in British symbols (misaki conventions)'
     ['go', 'ɡˈQ'], ['day', 'dˈA'], ['boy', 'bˈY'], ['how', 'hˈW'], ['bath', 'bˈɑːθ'], ['cat', 'kˈat'], ['dance', 'dˈɑːns'],
     ['very', 'vˈɛɹi'], ['mary', 'mˈɛːɹi'], ['sorry', 'sˈɒɹi'], ['story', 'stˈɔːɹi'], ['hurry', 'hˈʌɹi'], ['little', 'lˈɪtᵊl'],
     ['what', 'wˈɒt'], ['quality', 'kwˈɒləti'], ['happy', 'hˈapi'], ['question', 'kwˈɛsʧən'], ['judge', 'ʤˈʌʤ'],
-    ['sing', 'sˈɪŋ'], ['measure', 'mˈɛʒə'],
+    ['sing', 'sˈɪŋ'], ['measure', 'mˈɛʒə'], ['bought', 'bˈɔːt'], ['blunted', 'blˈʌntɪd'], ['verses', 'vˈɜːsɪz'],
+    ['comest', 'kˈʌmɪst'], ['wanted', 'wˈɒntɪd'], ['water', 'wˈɔːtə'], ['walk', 'wˈɔːk'],
   ])('%s is %s', (word, expected) => {
     const r = sayWord(word);
     expect(r.source).toBe('table');
@@ -32,6 +33,10 @@ describe('the voice reads the CMU table in British symbols (misaki conventions)'
     expect(ps('for ever')).toBe('fɔːɹ ˈɛvə.');
     // A pause between the words: no r.
     expect(ps('the car, is')).toBe('ðə kˈɑː, ˈɪz.');
+  });
+
+  it('keeps a stress on the old pronouns and the vowel of "and" (heard as "the" and "in" without)', () => {
+    expect(ps('Thy rhymes and thou hast lost thine, for thee')).toBe('ðˌI ɹˈImz and ðˈW hˈast lˈɒst ðˈIn, fɔː ðˈiː.');
   });
 
   it('says the little words weak, and strong where a phrase ends', () => {
