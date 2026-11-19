@@ -465,6 +465,58 @@ test.describe('the server is the authority over the economy and the rankings', (
   });
 });
 
+test.describe('the pages keep to the server', () => {
+  test('signed in, the playground opens packs on the server and shows the balance; nothing goes into the device', async ({ browser }) => {
+    const ann = await account();
+    giveCredits(ann, 60);
+    const user = (await ann.call('GET', '/auth/me')).body.user;
+    const context = await browser.newContext({
+      baseURL: E2E.webOrigin,
+      storageState: { cookies: [], origins: [{ origin: E2E.webOrigin, localStorage: [
+        { name: 'inspired-mile-age-verified', value: 'adult' },
+        { name: 'inspired-mile-onboarding-done', value: '1' },
+        // What the page keeps after a sign-in (src/lib/storage-backend.ts).
+        { name: 'inspired-mile-storage-mode', value: 'server' },
+        { name: 'inspired-mile-user', value: JSON.stringify(user) },
+        // Today's daily bonus already asked for on this device, so the balance stays what the test set.
+        { name: 'inspired-mile-daily-bonus', value: `${user.id}:${new Date().toISOString().slice(0, 10)}` },
+      ] }] },
+    });
+    await context.addCookies([{ name: 'im_token', value: ann.token, url: E2E.webOrigin }]);
+    try {
+      const page = await context.newPage();
+      await page.goto('/playground');
+      await expect(page.locator('#stat-credits')).toHaveText('60');
+      await expect(page.locator('#buy-packs')).toBeVisible();
+      await expect(page.locator('#starter-badge')).toHaveAttribute('data-i18n', 'pg.free');
+
+      await page.click('#starter-pack-btn');
+      await expect(page.locator('#reveal-modal')).toBeVisible();
+      await expect(page.locator('#reveal-cards > *')).toHaveCount(3);
+      expect((await held(ann)).length, 'the server opened the starter pack').toBe(3);
+      await page.click('#reveal-close');
+      await expect(page.locator('#starter-badge')).toHaveAttribute('data-i18n', 'pg.claimed');
+
+      await page.click('.buy-pack-btn[data-tier="standard"]');
+      await expect(page.locator('#reveal-cards > *')).toHaveCount(3);
+      await expect(page.locator('#stat-credits')).toHaveText('10');
+      expect((await held(ann)).length).toBe(6);
+      expect(await credits(ann)).toBe(10);
+      await page.click('#reveal-close');
+      // Ten credits do not buy a 50-credit pack: the server says so, and nothing changes.
+      await page.click('.buy-pack-btn[data-tier="standard"]');
+      await expect(page.locator('#achievement-toasts')).toContainText('You do not have enough credits.');
+      expect((await held(ann)).length).toBe(6);
+
+      // The device's own collection was not touched.
+      const device = await page.evaluate(() => JSON.parse(localStorage.getItem('inspired-mile-inventory') ?? '{"cards":[]}').cards.length);
+      expect(device).toBe(0);
+    } finally {
+      await context.close();
+    }
+  });
+});
+
 function zeroStats() {
   return { battle_wins: 0, total_battles: 0, total_rounds: 0, highest_score: 0, trivia_correct: 0, trivia_perfect: 0, challenges_completed: 0, unique_cards: 0, total_cards: 0, packs_opened: 0 };
 }
