@@ -144,11 +144,15 @@ Kokoro's tokenizer and `generate_from_ids`, in pieces of at most 400 symbols (Ko
   from. Every symbol must be in Kokoro's vocabulary (`kokoro-vocab.ts`, pinned to the tokenizer's
   revision): its tokenizer silently deletes any other.
 - Tests: `src/lib/voice/g2p-en.test.ts` and `no-espeak.test.ts`
-  (`node scripts/voice/mutate-voice.mjs` on the build host plants 32 faults; each must turn them
+  (`node scripts/voice/mutate-voice.mjs` on the build host plants 33 faults; each must turn them
   red), `tests/voice.spec.ts` (the real Kokoro speaks, Whisper must hear it, no served script holds
-  eSpeak; and a duel with the voice off fetches none of the voice).
+  eSpeak; and a duel with the voice off fetches none of the voice). `src/lib/voice/measurement.test.ts`
+  fails when the G2P reads any text of the measurement differently from the measured code: then
+  measure again (below) and commit the new `docs/voice/measurement.json` with the tables.
+  `scripts/voice/say.mjs "<text>" out.wav` writes what the voice says, for the ear's model test
+  (`FAKE_MIC_WAV=out.wav npx playwright test -c playwright.model.config.ts tests/model/ear.spec.ts`).
 - Measured by ear: `node --import ./scripts/sound/ts-resolve.mjs scripts/voice/measure.mjs` (build
-  host, about an hour) reads `scripts/voice/corpus.mjs` both ways and transcribes both with the
+  host, 40 minutes to an hour) reads `scripts/voice/corpus.mjs` both ways and transcribes both with the
   game's Whisper; results and the margin in `docs/voice/G2P-MEASUREMENT.md`. The 200 words of
   `scripts/voice/slang-and-names.txt` are held out: never add one of them to a list in
   `src/lib/voice/` to make it pass. After changing the G2P, run the measurement again.
