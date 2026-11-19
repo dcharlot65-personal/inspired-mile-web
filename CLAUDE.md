@@ -446,10 +446,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   devices.ts). Unspaced, a katakana name counts only as a whole katakana run; a Chinese name not beside another piece
   of a foreign name (`carriesOn`: Xinhua's transliteration characters, `pack.transliteration`,
   `fetch/transliteration.py`: 哈德斯菲尔德, 迪帕克), nor beside one such character that is also a word where a middle
-  dot, the clause's end or 是 marks a foreign name (`foreignAround`: 保罗·格罗塞蒂, 布莱克雷, 王子班柯希); a Thai name only
+  dot, the clause's end or 是 marks a foreign name (`foreignAround`: 保罗·格罗塞蒂, 布莱克雷, 王子班柯希; five of the fourth
+  names check's pieces still invoke: 拉帕里斯伯爵, 托帕克大桥, 阿不都拉哈德斯, 哈德斯克拉布尔, 普羅丟斯); a Thai name only
   where the letters beside it are words the invocation knows (`thNameAt`: the Thai pronunciation table, so tests that
   read Thai invocations `loadSound('th')`; a foreign name whose syllables happen to be Thai words, ออกซุส, still
-  invokes: docs/language/NAMES-AND-QUOTATIONS.md);
+  invokes, and word segmentation cannot tell it either: `Intl.Segmenter` cuts ยู|โด|ซุส as it cuts ผม|พบ|ซุส, so only a
+  list of such names or a model could; docs/language/NAMES-AND-QUOTATIONS.md);
   and a Chinese or Thai name not where a dictionary word or a Wikipedia title holding it surrounds it
   (`pack.containing`, `fetch/containing_words.py`: 圣安东尼奥, 宙斯盾, อัสซุส). No alias is the Roman god Wikidata says
   is the Greek one (`fetch/counterparts.py`: Jupiter, Плутон). The tests read wordfreq's and the Thai National
@@ -589,7 +591,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - Playwright specs import `src/lib/brain.ts` (its model lists) in Node, where `import.meta.glob` does not
   exist. Keep brain.ts's static imports free of anything that reaches `src/i18n/index.ts` (its page areas
   use the glob): pwa.ts is imported where a model has loaded. Otherwise every Playwright run stops before
-  its first test ("(intermediate value).glob is not a function").
+  its first test ("(intermediate value).glob is not a function"). `src/i18n/index.ts` itself now loads in Node
+  with no page areas (its glob is inside a try) for the language tools (`scripts/lang`), which import it.
 - A page whose own text is English in every language (multiplayer, privacy, terms) marks its body
   `lang="en" dir="ltr"`, or an Arabic page lays it out right to left (`tests/english-pages-rtl.spec.ts`).
 - `@tailwindcss/upgrade` rewrites plain words in data files as classes ("a ring" became
