@@ -45,6 +45,7 @@
    "هايكو": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
   },
   "de": {
+   "KI-Stimme": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01).",
    "Durchsichtmodus": "A German compound of two dictionary words, which the dictionary does not list whole. (Durchsicht + Modus, the game's word for passthrough).",
    "Epiphora": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know.",
    "Haiku": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know.",
@@ -101,6 +102,7 @@
    "Épiphore": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
   },
   "hi": {
+   "सकने": "The oblique infinitive of सकना (चल सकने वाले, 'able to run'), a form the dictionary does not generate (brain.noneShown, from an earlier merge; read on fix/predeploy, 2026-11-19).",
    "com": "Part of the placeholder address you@example.com.",
    "example": "Part of the placeholder address you@example.com.",
    "you": "Part of the placeholder address you@example.com.",

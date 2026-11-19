@@ -3784,34 +3784,44 @@
     "xcontrol": 0.4109
    },
    "voice.off": {
-    "text": "Voz: desactivada",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9433,
-    "xcontrol": 0.8421
+    "text": "Voz de IA: desactivada",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Disabled",
+    "cos": 0.808,
+    "chrf": 28.1,
+    "controlCos": 0.7465,
+    "xcos": 0.8762,
+    "xcontrol": 0.7985
    },
    "voice.on": {
-    "text": "Voz: activada",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9194,
-    "xcontrol": 0.6194
+    "text": "Voz de IA: activada",
+    "english": "AI voice: On",
+    "back": "AI Voice: Enabled",
+    "cos": 0.8385,
+    "chrf": 32.6,
+    "controlCos": 0.8097,
+    "xcos": 0.8745,
+    "xcontrol": 0.6257
    },
    "voice.loading": {
-    "text": "Voz: cargando…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9592,
-    "xcontrol": 0.2644
+    "text": "Voz de IA: cargando…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.8997,
+    "xcontrol": 0.3769
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    },
    "verdict.yourAnswer": {
     "text": "Tu respuesta",
@@ -4642,6 +4652,36 @@
     "controlCos": 0.0527,
     "xcos": 0.744,
     "xcontrol": 0.2807
+   },
+   "battle.lang.written": {
+    "text": "tailandés: te enfrentas al rival de versos escritos, porque Gemma 4 E2B no ha demostrado que escriba buenas estrofas en este idioma.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the rival of written verses, because Gemma 4 E2B has not proven that she writes good stanzas in this language.",
+    "cos": 0.9018,
+    "chrf": 65.2,
+    "controlCos": 0.7825,
+    "xcos": 0.8976,
+    "xcontrol": 0.7788
+   },
+   "battle.lang.rules": {
+    "text": "tailandés: se juzga por reglas, porque Gemma 4 E2B no ha demostrado ser buen juez de estrofas en este idioma.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: it is judged by rules, because Gemma 4 E2B has not proven to be a good judge of verses in this language.",
+    "cos": 0.9599,
+    "chrf": 76.9,
+    "controlCos": 0.3778,
+    "xcos": 0.8914,
+    "xcontrol": 0.3203
+   },
+   "brain.noneShown": {
+    "text": "Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has been shown to write or judge stanzas well, so you face the rival of written verses and are judged by rules.",
+    "cos": 0.7162,
+    "chrf": 60.9,
+    "controlCos": 0.0161,
+    "xcos": 0.8854,
+    "xcontrol": 0.0895
    },
    "pack:relics.RL-001.0": {
     "text": "calavera",
@@ -8876,34 +8916,44 @@
     "xcontrol": 0.2854
    },
    "voice.off": {
-    "text": "Voix : désactivée",
-    "english": "Voice: Off",
-    "back": "Voice: disabled",
-    "cos": 0.7053,
-    "chrf": 43.7,
-    "controlCos": 0.6251,
-    "xcos": 0.928,
-    "xcontrol": 0.8227
+    "text": "Voix d’IA : désactivée",
+    "english": "AI voice: Off",
+    "back": "AI voice: disabled",
+    "cos": 0.808,
+    "chrf": 56.5,
+    "controlCos": 0.7465,
+    "xcos": 0.8724,
+    "xcontrol": 0.7877
    },
    "voice.on": {
-    "text": "Voix : activée",
-    "english": "Voice: On",
-    "back": "Voice: Enabled",
-    "cos": 0.6829,
-    "chrf": 52.3,
-    "controlCos": 0.7566,
-    "xcos": 0.902,
-    "xcontrol": 0.6013
+    "text": "Voix d’IA : activée",
+    "english": "AI voice: On",
+    "back": "AI Voice: Enabled",
+    "cos": 0.8385,
+    "chrf": 32.6,
+    "controlCos": 0.8097,
+    "xcos": 0.8761,
+    "xcontrol": 0.612
    },
    "voice.loading": {
-    "text": "Voix : chargement…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9516,
-    "xcontrol": 0.2211
+    "text": "Voix d’IA : chargement…",
+    "english": "AI voice: loading…",
+    "back": "AI voice: loading...",
+    "cos": 0.9859,
+    "chrf": 89.8,
+    "controlCos": 0.5081,
+    "xcos": 0.8853,
+    "xcontrol": 0.3246
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    },
    "verdict.yourAnswer": {
     "text": "Votre réponse",
@@ -9734,6 +9784,36 @@
     "controlCos": 0.0866,
     "xcos": 0.8659,
     "xcontrol": 0.3015
+   },
+   "battle.lang.written": {
+    "text": "thaï : vous affrontez l’adversaire aux strophes écrites, car Gemma 4 E2B n’a pas montré qu’il écrit de bonnes strophes dans cette langue.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the opponent with written verses, because Gemma 4 E2B has not shown that he writes good verses in this language.",
+    "cos": 0.9516,
+    "chrf": 74.0,
+    "controlCos": 0.7803,
+    "xcos": 0.867,
+    "xcontrol": 0.7432
+   },
+   "battle.lang.rules": {
+    "text": "thaï : jugé par règles, car Gemma 4 E2B n’a pas montré qu’il est bon juge des strophes dans cette langue.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by rules, as Gemma 4 E2B has not shown that it is a good judge of verses in this language.",
+    "cos": 0.9746,
+    "chrf": 80.5,
+    "controlCos": 0.4219,
+    "xcos": 0.882,
+    "xcontrol": 0.3548
+   },
+   "brain.noneShown": {
+    "text": "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has shown that it writes good stanzas or is a good judge of them, so you face the opponent with written stanzas, and judgment is made by rules.",
+    "cos": 0.8304,
+    "chrf": 63.7,
+    "controlCos": 0.0757,
+    "xcos": 0.8925,
+    "xcontrol": 0.0476
    },
    "pack:relics.RL-001.0": {
     "text": "crâne",
@@ -13968,34 +14048,44 @@
     "xcontrol": 0.4294
    },
    "voice.off": {
-    "text": "Stimme: aus",
-    "english": "Voice: Off",
-    "back": "Voice: off",
+    "text": "KI-Stimme: aus",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
     "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8954,
-    "xcontrol": 0.8758
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.7942,
+    "xcontrol": 0.7689
    },
    "voice.on": {
-    "text": "Stimme: an",
-    "english": "Voice: On",
-    "back": "Voice: on",
+    "text": "KI-Stimme: an",
+    "english": "AI voice: On",
+    "back": "AI voice: on",
     "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.8799,
-    "xcontrol": 0.6153
+    "chrf": 73.5,
+    "controlCos": 0.8223,
+    "xcos": 0.7708,
+    "xcontrol": 0.5557
    },
    "voice.loading": {
-    "text": "Stimme: lädt …",
-    "english": "Voice: loading…",
-    "back": "Voice: lädt …",
-    "cos": 0.5411,
-    "chrf": 42.3,
-    "controlCos": 0.0951,
-    "xcos": 0.9297,
-    "xcontrol": 0.2877
+    "text": "KI-Stimme: lädt …",
+    "english": "AI voice: loading…",
+    "back": "KI-Stimme: lädt ...",
+    "cos": 0.1276,
+    "chrf": 9.5,
+    "controlCos": 0.1392,
+    "xcos": 0.8296,
+    "xcontrol": 0.2918
+   },
+   "ai.label": {
+    "text": "KI",
+    "english": "AI",
+    "back": "KI",
+    "cos": 0.2687,
+    "chrf": 25.0,
+    "controlCos": 0.1923,
+    "xcos": 0.6314,
+    "xcontrol": 0.2808
    },
    "verdict.yourAnswer": {
     "text": "Deine Antwort",
@@ -14826,6 +14916,36 @@
     "controlCos": 0.1174,
     "xcos": 0.7671,
     "xcontrol": 0.175
+   },
+   "battle.lang.written": {
+    "text": "Thailändisch: Du spielst gegen den Gegner mit geschriebenen Strophen, weil Gemma 4 E2B nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You play against the opponent with written verses because Gemma 4 E2B has not shown that it writes good verses in this language.",
+    "cos": 0.93,
+    "chrf": 61.7,
+    "controlCos": 0.7789,
+    "xcos": 0.8764,
+    "xcontrol": 0.7578
+   },
+   "battle.lang.rules": {
+    "text": "Thailändisch: Nach Regeln bewertet, weil Gemma 4 E2B nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judged according to rules because Gemma 4 E2B has not shown that it is a good judge for verses in this language.",
+    "cos": 0.9772,
+    "chrf": 70.9,
+    "controlCos": 0.4448,
+    "xcos": 0.8483,
+    "xcontrol": 0.347
+   },
+   "brain.noneShown": {
+    "text": "Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "None of the models that can run on this device have shown to write good stanzas or score stanzas well, so you play against your opponent with written stanzas and are scored according to rules.",
+    "cos": 0.6032,
+    "chrf": 43.8,
+    "controlCos": 0.0495,
+    "xcos": 0.8254,
+    "xcontrol": 0.0691
    },
    "pack:relics.RL-001.0": {
     "text": "Schädel",
@@ -19060,34 +19180,44 @@
     "xcontrol": 0.3992
    },
    "voice.off": {
-    "text": "Voce: spenta",
-    "english": "Voice: Off",
-    "back": "Voice: off",
-    "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8967,
-    "xcontrol": 0.838
+    "text": "Voce IA: spenta",
+    "english": "AI voice: Off",
+    "back": "Voice IA: off",
+    "cos": 0.8172,
+    "chrf": 26.1,
+    "controlCos": 0.7081,
+    "xcos": 0.8027,
+    "xcontrol": 0.7611
    },
    "voice.on": {
-    "text": "Voce: accesa",
-    "english": "Voice: On",
-    "back": "Voice: on",
-    "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.9144,
-    "xcontrol": 0.6739
+    "text": "Voce IA: accesa",
+    "english": "AI voice: On",
+    "back": "Voice IA: on",
+    "cos": 0.8001,
+    "chrf": 25.4,
+    "controlCos": 0.6648,
+    "xcos": 0.8186,
+    "xcontrol": 0.6547
    },
    "voice.loading": {
-    "text": "Voce: caricamento…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9365,
-    "xcontrol": 0.2651
+    "text": "Voce IA: caricamento…",
+    "english": "AI voice: loading…",
+    "back": "Item IA: loading...",
+    "cos": 0.452,
+    "chrf": 42.3,
+    "controlCos": 0.2552,
+    "xcos": 0.8534,
+    "xcontrol": 0.3505
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    },
    "verdict.yourAnswer": {
     "text": "La tua risposta",
@@ -19918,6 +20048,36 @@
     "controlCos": 0.0746,
     "xcos": 0.7506,
     "xcontrol": 0.1088
+   },
+   "battle.lang.written": {
+    "text": "thailandese: affronti l’avversario dalle strofe scritte, perché Gemma 4 E2B non ha dimostrato di scrivere buone strofe in questa lingua.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: face the opponent from the written verses, because Gemma 4 E2B has not proven to write good verses in this language.",
+    "cos": 0.9569,
+    "chrf": 63.6,
+    "controlCos": 0.7871,
+    "xcos": 0.887,
+    "xcontrol": 0.7803
+   },
+   "battle.lang.rules": {
+    "text": "thailandese: giudicato secondo regole, perché Gemma 4 E2B non ha dimostrato di essere un buon giudice di strofe in questa lingua.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged according to rules, because Gemma 4 E2B did not prove to be a good judge of verses in this language.",
+    "cos": 0.9651,
+    "chrf": 66.8,
+    "controlCos": 0.4106,
+    "xcos": 0.8879,
+    "xcontrol": 0.3427
+   },
+   "brain.noneShown": {
+    "text": "Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can perform has been shown to write or judge verses well, so face the opponent from the written verses and judge according to rules.",
+    "cos": 0.8873,
+    "chrf": 54.7,
+    "controlCos": 0.0434,
+    "xcos": 0.8718,
+    "xcontrol": 0.052
    },
    "pack:relics.RL-001.0": {
     "text": "teschio",
@@ -24152,34 +24312,44 @@
     "xcontrol": 0.4253
    },
    "voice.off": {
-    "text": "Voz: desligada",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "Voz de IA: desligada",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8898,
-    "xcontrol": 0.7887
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8744,
+    "xcontrol": 0.7829
    },
    "voice.on": {
-    "text": "Voz: ligada",
-    "english": "Voice: On",
-    "back": "Voice: on",
+    "text": "Voz de IA: ligada",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.91,
-    "xcontrol": 0.6689
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8613,
+    "xcontrol": 0.6469
    },
    "voice.loading": {
-    "text": "Voz: carregando…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.9572,
-    "xcontrol": 0.2691
+    "text": "Voz de IA: carregando…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.9054,
+    "xcontrol": 0.3806
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    },
    "verdict.yourAnswer": {
     "text": "Sua resposta",
@@ -25010,6 +25180,36 @@
     "controlCos": 0.0527,
     "xcos": 0.915,
     "xcontrol": 0.2679
+   },
+   "battle.lang.written": {
+    "text": "tailandês: você enfrenta o adversário de estrofes escritas, porque Gemma 4 E2B não mostrou que escreve boas estrofes neste idioma.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the opponent of written stanzas, because Gemma 4 E2B has not shown that she writes good stanzas in this language.",
+    "cos": 0.9292,
+    "chrf": 70.6,
+    "controlCos": 0.7622,
+    "xcos": 0.8857,
+    "xcontrol": 0.7635
+   },
+   "battle.lang.rules": {
+    "text": "tailandês: julgado por regras, porque Gemma 4 E2B não mostrou ser um bom juiz de estrofes neste idioma.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by rules, because Gemma 4 E2B has not shown to be a good stanza judge in this language.",
+    "cos": 0.954,
+    "chrf": 75.1,
+    "controlCos": 0.4168,
+    "xcos": 0.868,
+    "xcontrol": 0.3178
+   },
+   "brain.noneShown": {
+    "text": "Nenhum modelo que este dispositivo consiga executar mostrou que escreve ou julga bem as estrofes, por isso você enfrenta o adversário de estrofes escritas e o julgamento é feito por regras.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can perform has shown to write or judge stanzas well, so you face the opponent of written stanzas and judgment is made by rules.",
+    "cos": 0.8249,
+    "chrf": 59.8,
+    "controlCos": 0.0761,
+    "xcos": 0.8759,
+    "xcontrol": 0.1022
    },
    "pack:relics.RL-001.0": {
     "text": "caveira",
@@ -29604,34 +29804,44 @@
     "xcontrol": 0.3816
    },
    "voice.off": {
-    "text": "Głos: wyłączony",
-    "english": "Voice: Off",
-    "back": "Voice: off",
-    "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.946,
-    "xcontrol": 0.8527
+    "text": "Głos SI: wyłączony",
+    "english": "AI voice: Off",
+    "back": "SI voice: off",
+    "cos": 0.708,
+    "chrf": 55.6,
+    "controlCos": 0.6089,
+    "xcos": 0.8493,
+    "xcontrol": 0.7706
    },
    "voice.on": {
-    "text": "Głos: włączony",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9281,
-    "xcontrol": 0.615
+    "text": "Głos SI: włączony",
+    "english": "AI voice: On",
+    "back": "SI voice: enabled",
+    "cos": 0.5719,
+    "chrf": 52.5,
+    "controlCos": 0.5867,
+    "xcos": 0.838,
+    "xcontrol": 0.5595
    },
    "voice.loading": {
-    "text": "Głos: wczytywanie…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.8607,
-    "xcontrol": 0.287
+    "text": "Głos SI: wczytywanie…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.7598,
+    "xcontrol": 0.3411
+   },
+   "ai.label": {
+    "text": "SI",
+    "english": "AI",
+    "back": "SI",
+    "cos": 0.3417,
+    "chrf": 25.0,
+    "controlCos": 0.1575,
+    "xcos": 0.7144,
+    "xcontrol": 0.3144
    },
    "verdict.yourAnswer": {
     "text": "Twoja odpowiedź",
@@ -30462,6 +30672,36 @@
     "controlCos": 0.0918,
     "xcos": 0.8559,
     "xcontrol": 0.1995
+   },
+   "battle.lang.written": {
+    "text": "tajski: grasz z rywalem z gotowymi strofami, bo model Gemma 4 E2B nie wykazał, że dobrze pisze strofy w tym języku.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you play against a rival with ready stanzas, because the Gemma 4 E2B model has not shown that it writes stanzas well in this language.",
+    "cos": 0.8475,
+    "chrf": 54.4,
+    "controlCos": 0.7207,
+    "xcos": 0.8534,
+    "xcontrol": 0.7326
+   },
+   "battle.lang.rules": {
+    "text": "tajski: ocena według reguł, bo model Gemma 4 E2B nie wykazał, że jest dobrym sędzią strof w tym języku.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: evaluation according to the rules, because Gemma 4 E2B did not show that it is a good judge of verses in this language.",
+    "cos": 0.9175,
+    "chrf": 67.2,
+    "controlCos": 0.3402,
+    "xcos": 0.8542,
+    "xcontrol": 0.3767
+   },
+   "brain.noneShown": {
+    "text": "Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has shown to write or evaluate stanzas well, so you play with a rival with ready-made stanzas and the evaluation takes place according to the rules.",
+    "cos": 0.5739,
+    "chrf": 48.9,
+    "controlCos": 0.0371,
+    "xcos": 0.7781,
+    "xcontrol": 0.1208
    },
    "pack:relics.RL-001.0": {
     "text": "czaszka",
@@ -35056,34 +35296,44 @@
     "xcontrol": 0.3934
    },
    "voice.off": {
-    "text": "Голос: выключен",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "Голос ИИ: выключен",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9396,
-    "xcontrol": 0.8514
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8653,
+    "xcontrol": 0.7912
    },
    "voice.on": {
-    "text": "Голос: включён",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "Голос ИИ: включён",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9388,
-    "xcontrol": 0.6226
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8661,
+    "xcontrol": 0.5748
    },
    "voice.loading": {
-    "text": "Голос: загрузка…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9431,
-    "xcontrol": 0.2826
+    "text": "Голос ИИ: загрузка…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.8715,
+    "xcontrol": 0.3239
+   },
+   "ai.label": {
+    "text": "ИИ",
+    "english": "AI",
+    "back": "II",
+    "cos": 0.3753,
+    "chrf": 25.0,
+    "controlCos": 0.1983,
+    "xcos": 0.6853,
+    "xcontrol": 0.3028
    },
    "verdict.yourAnswer": {
     "text": "Твой ответ",
@@ -35914,6 +36164,36 @@
     "controlCos": 0.0283,
     "xcos": 0.7543,
     "xcontrol": 0.1309
+   },
+   "battle.lang.written": {
+    "text": "тайский: играет соперник с готовыми строфами, потому что модель Gemma 4 E2B не показала, что хорошо пишет строфы на этом языке.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: plays a rival with ready verses, because the Gemma 4 E2B model has not shown that it writes verses well in this language.",
+    "cos": 0.8312,
+    "chrf": 54.3,
+    "controlCos": 0.7049,
+    "xcos": 0.8733,
+    "xcontrol": 0.7836
+   },
+   "battle.lang.rules": {
+    "text": "тайский: судят по правилам, потому что модель Gemma 4 E2B не показала, что может быть хорошим судьёй строф на этом языке.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by the rules, because the Gemma 4 E2B model has not shown that it can be a good judge of verses in this language.",
+    "cos": 0.9452,
+    "chrf": 74.1,
+    "controlCos": 0.4189,
+    "xcos": 0.8698,
+    "xcontrol": 0.3874
+   },
+   "brain.noneShown": {
+    "text": "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can run this device, has not shown that well writes or judges stanzas, so plays rival with ready stanzas, and judge by the rules.",
+    "cos": 0.7335,
+    "chrf": 45.9,
+    "controlCos": 0.0641,
+    "xcos": 0.8293,
+    "xcontrol": 0.1084
    },
    "pack:relics.RL-001.0": {
     "text": "череп",
@@ -40698,34 +40978,44 @@
     "xcontrol": 0.3659
    },
    "voice.off": {
-    "text": "الصوت: متوقف",
-    "english": "Voice: Off",
-    "back": "Sound: Mute",
-    "cos": 0.5386,
-    "chrf": 5.4,
-    "controlCos": 0.5062,
-    "xcos": 0.8877,
-    "xcontrol": 0.8242
+    "text": "صوت الذكاء الاصطناعي: متوقف",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.7195,
+    "xcontrol": 0.6508
    },
    "voice.on": {
-    "text": "الصوت: يعمل",
-    "english": "Voice: On",
-    "back": "Sound: On",
-    "cos": 0.7126,
-    "chrf": 15.9,
-    "controlCos": 0.4502,
-    "xcos": 0.8602,
-    "xcontrol": 0.643
+    "text": "صوت الذكاء الاصطناعي: يعمل",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
+    "cos": 1.0,
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.7087,
+    "xcontrol": 0.5961
    },
    "voice.loading": {
-    "text": "الصوت: جارٍ التحميل…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9027,
-    "xcontrol": 0.2019
+    "text": "صوت الذكاء الاصطناعي: جارٍ التحميل…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.8097,
+    "xcontrol": 0.3198
+   },
+   "ai.label": {
+    "text": "ذكاء اصطناعي",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.405,
+    "xcontrol": 0.2444
    },
    "verdict.yourAnswer": {
     "text": "جوابك",
@@ -41556,6 +41846,36 @@
     "controlCos": 0.065,
     "xcos": 0.8296,
     "xcontrol": 0.1636
+   },
+   "battle.lang.written": {
+    "text": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Facing the challenge of written verses, as Gemma 4 E2B has not proven to be proficient in writing verses in this language.",
+    "cos": 0.8577,
+    "chrf": 48.0,
+    "controlCos": 0.7476,
+    "xcos": 0.8816,
+    "xcontrol": 0.811
+   },
+   "battle.lang.rules": {
+    "text": "التايلاندية: الحكم بالقواعد، لأن Gemma 4 E2B لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Rule judgment, as Gemma 4 E2B has not been proven to judge verses in this language.",
+    "cos": 0.9119,
+    "chrf": 48.4,
+    "controlCos": 0.4014,
+    "xcos": 0.87,
+    "xcontrol": 0.3366
+   },
+   "brain.noneShown": {
+    "text": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can be operated by this device has been proven to write or judge verses, so written verses are faced and rules are judged.",
+    "cos": 0.7162,
+    "chrf": 40.3,
+    "controlCos": 0.0015,
+    "xcos": 0.8722,
+    "xcontrol": 0.0572
    },
    "pack:relics.RL-001.0": {
     "text": "جمجمة",
@@ -45790,34 +46110,44 @@
     "xcontrol": 0.2917
    },
    "voice.off": {
-    "text": "आवाज़: बंद",
-    "english": "Voice: Off",
-    "back": "Volume: Off",
-    "cos": 0.5911,
-    "chrf": 38.4,
-    "controlCos": 0.4534,
-    "xcos": 0.9291,
-    "xcontrol": 0.8482
+    "text": "एआई आवाज़: बंद",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8853,
+    "xcontrol": 0.8134
    },
    "voice.on": {
-    "text": "आवाज़: चालू",
-    "english": "Voice: On",
-    "back": "Volume: On",
-    "cos": 0.5765,
-    "chrf": 30.0,
-    "controlCos": 0.3473,
-    "xcos": 0.9248,
-    "xcontrol": 0.6648
+    "text": "एआई आवाज़: चालू",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
+    "cos": 1.0,
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8923,
+    "xcontrol": 0.664
    },
    "voice.loading": {
-    "text": "आवाज़: लोड हो रही है…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9037,
-    "xcontrol": 0.2409
+    "text": "एआई आवाज़: लोड हो रही है…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.8507,
+    "xcontrol": 0.356
+   },
+   "ai.label": {
+    "text": "एआई",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 0.8423,
+    "xcontrol": 0.3187
    },
    "verdict.yourAnswer": {
     "text": "आपका जवाब",
@@ -46648,6 +46978,36 @@
     "controlCos": 0.1116,
     "xcos": 0.6782,
     "xcontrol": 0.2121
+   },
+   "battle.lang.written": {
+    "text": "थाई: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You will face an opponent with written poems, because Gemma 4 E2B has not shown that she can write good poetry in this language.",
+    "cos": 0.8928,
+    "chrf": 66.3,
+    "controlCos": 0.7026,
+    "xcos": 0.8076,
+    "xcontrol": 0.664
+   },
+   "battle.lang.rules": {
+    "text": "थाई: निर्णय नियमों से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: The decision will be by the rules, because Gemma 4 E2B has not shown that she is a good judge of this language's poetry.",
+    "cos": 0.8891,
+    "chrf": 64.8,
+    "controlCos": 0.3768,
+    "xcos": 0.8122,
+    "xcontrol": 0.3604
+   },
+   "brain.noneShown": {
+    "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can run on this device has shown to write good poetry or be a good judge of poetry, so you will face an opponent with written poems and the decision will be made by rules.",
+    "cos": 0.7029,
+    "chrf": 50.6,
+    "controlCos": 0.004,
+    "xcos": 0.7553,
+    "xcontrol": 0.1308
    },
    "pack:relics.RL-001.0": {
     "text": "खोपड़ी",
@@ -50522,34 +50882,44 @@
     "xcontrol": 0.3218
    },
    "voice.off": {
-    "text": "语音：关",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9294,
-    "xcontrol": 0.8695
+    "text": "人工智能语音：关",
+    "english": "AI voice: Off",
+    "back": "Artificial Intelligence Voice: Off",
+    "cos": 0.8803,
+    "chrf": 45.4,
+    "controlCos": 0.8261,
+    "xcos": 0.7951,
+    "xcontrol": 0.7366
    },
    "voice.on": {
-    "text": "语音：开",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9255,
-    "xcontrol": 0.6698
+    "text": "人工智能语音：开",
+    "english": "AI voice: On",
+    "back": "Artificial Intelligence Voice: On",
+    "cos": 0.8894,
+    "chrf": 40.4,
+    "controlCos": 0.7103,
+    "xcos": 0.7946,
+    "xcontrol": 0.6126
    },
    "voice.loading": {
-    "text": "语音：加载中…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9308,
-    "xcontrol": 0.2365
+    "text": "人工智能语音：加载中…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.8335,
+    "xcontrol": 0.3439
+   },
+   "ai.label": {
+    "text": "人工智能",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.5579,
+    "xcontrol": 0.3052
    },
    "verdict.yourAnswer": {
     "text": "你的应对",
@@ -51380,6 +51750,36 @@
     "controlCos": 0.157,
     "xcos": 0.8876,
     "xcontrol": 0.1708
+   },
+   "battle.lang.written": {
+    "text": "泰语：你将面对预先写好诗句的对手，因为 Gemma 4 E2B 尚未证明它能用这种语言写好诗。",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You will face a pre-written poem opponent, because Gemma 4 E2B has not yet proven that it can write poetry in this language.",
+    "cos": 0.8858,
+    "chrf": 65.3,
+    "controlCos": 0.6817,
+    "xcos": 0.869,
+    "xcontrol": 0.7422
+   },
+   "battle.lang.rules": {
+    "text": "泰语：按规则评判，因为 Gemma 4 E2B 尚未证明它能胜任这种语言的诗歌裁判。",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judged according to the rules, as Gemma 4 E2B has not yet proven its competence in the poetry judgement of this language.",
+    "cos": 0.8979,
+    "chrf": 47.0,
+    "controlCos": 0.3839,
+    "xcos": 0.8769,
+    "xcontrol": 0.3432
+   },
+   "brain.noneShown": {
+    "text": "这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No working model of the machine has yet proven itself to write or judge poetry, so you’ll face a pre-written opponent and be judged according to rules.",
+    "cos": 0.6867,
+    "chrf": 40.4,
+    "controlCos": 0.0177,
+    "xcos": 0.8004,
+    "xcontrol": 0.024
    },
    "pack:relics.RL-001.0": {
     "text": "骷髅",
@@ -55254,34 +55654,44 @@
     "xcontrol": 0.3824
    },
    "voice.off": {
-    "text": "音声：オフ",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "AI音声：オフ",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9543,
-    "xcontrol": 0.8656
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.9648,
+    "xcontrol": 0.8808
    },
    "voice.on": {
-    "text": "音声：オン",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "AI音声：オン",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9516,
-    "xcontrol": 0.6359
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.9666,
+    "xcontrol": 0.7111
    },
    "voice.loading": {
-    "text": "音声：読み込み中…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.9202,
-    "xcontrol": 0.2252
+    "text": "AI音声：読み込み中…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.9331,
+    "xcontrol": 0.5017
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    },
    "verdict.yourAnswer": {
     "text": "あなたの返し",
@@ -56112,6 +56522,36 @@
     "controlCos": 0.1456,
     "xcos": 0.7674,
     "xcontrol": 0.1607
+   },
+   "battle.lang.written": {
+    "text": "タイ語：あらかじめ書かれた詩を出す相手と対戦します。Gemma 4 E2Bがこの言語でうまく詩を書けることは確かめられていないためです。",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Play against a pre-written poem. Gemma 4 E2B has not been proven to write poetry well in this language.",
+    "cos": 0.84,
+    "chrf": 49.4,
+    "controlCos": 0.7191,
+    "xcos": 0.8333,
+    "xcontrol": 0.7165
+   },
+   "battle.lang.rules": {
+    "text": "タイ語：規則で審査します。Gemma 4 E2Bがこの言語の詩の審判をうまく務められることは確かめられていないためです。",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judge by rules. Gemma 4 E2B has not been proven to judge poetry in this language properly.",
+    "cos": 0.9106,
+    "chrf": 47.2,
+    "controlCos": 0.4354,
+    "xcos": 0.8254,
+    "xcontrol": 0.3862
+   },
+   "brain.noneShown": {
+    "text": "この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "None of the models that run on this terminal have been tested to write or review poems properly. Therefore, they compete against a pre-written poet and are judged according to rules.",
+    "cos": 0.4591,
+    "chrf": 31.5,
+    "controlCos": -0.0357,
+    "xcos": 0.7901,
+    "xcontrol": 0.0851
    },
    "pack:relics.RL-001.0": {
     "text": "骸骨",
@@ -59986,34 +60426,44 @@
     "xcontrol": 0.3899
    },
    "voice.off": {
-    "text": "음성: 꺼짐",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "인공지능 음성: 꺼짐",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9291,
-    "xcontrol": 0.8372
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8544,
+    "xcontrol": 0.7685
    },
    "voice.on": {
-    "text": "음성: 켜짐",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "인공지능 음성: 켜짐",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9223,
-    "xcontrol": 0.6638
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8313,
+    "xcontrol": 0.6622
    },
    "voice.loading": {
-    "text": "음성: 불러오는 중…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.8344,
-    "xcontrol": 0.2666
+    "text": "인공지능 음성: 불러오는 중…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.7777,
+    "xcontrol": 0.3491
+   },
+   "ai.label": {
+    "text": "인공지능",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.6514,
+    "xcontrol": 0.2669
    },
    "verdict.yourAnswer": {
     "text": "내 답",
@@ -60844,6 +61294,36 @@
     "controlCos": 0.1456,
     "xcos": 0.7582,
     "xcontrol": 0.1316
+   },
+   "battle.lang.written": {
+    "text": "태국어: 미리 쓰인 시를 내는 상대와 겨뤄요. Gemma 4 E2B가 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Compete with a pre-written poem, because Gemma 4 E2B has not been confirmed to write well in this language.",
+    "cos": 0.824,
+    "chrf": 58.1,
+    "controlCos": 0.7105,
+    "xcos": 0.8784,
+    "xcontrol": 0.7966
+   },
+   "battle.lang.rules": {
+    "text": "태국어: 규칙으로 심사해요. Gemma 4 E2B가 이 언어로 쓴 시의 심판을 잘 맡는다는 것이 확인되지 않았기 때문이에요.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judge according to the rules, because Gemma 4 E2B hasn't been proven to judge poems in this language.",
+    "cos": 0.9056,
+    "chrf": 53.5,
+    "controlCos": 0.4089,
+    "xcos": 0.8791,
+    "xcontrol": 0.3944
+   },
+   "brain.noneShown": {
+    "text": "이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No one of the models that I can run on this device has proven to write or review poems well, so I compete with someone who puts in a pre-written poem and I judge it according to rules.",
+    "cos": 0.5414,
+    "chrf": 39.3,
+    "controlCos": -0.0331,
+    "xcos": 0.8114,
+    "xcontrol": 0.0698
    },
    "pack:relics.RL-001.0": {
     "text": "해골",
@@ -65078,34 +65558,44 @@
     "xcontrol": 0.2935
    },
    "voice.off": {
-    "text": "Giọng đọc: tắt",
-    "english": "Voice: Off",
-    "back": "Speak: Off",
-    "cos": 0.7395,
-    "chrf": 23.0,
-    "controlCos": 0.5246,
-    "xcos": 0.8418,
-    "xcontrol": 0.7676
+    "text": "Giọng đọc AI: tắt",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8695,
+    "xcontrol": 0.8026
    },
    "voice.on": {
-    "text": "Giọng đọc: bật",
-    "english": "Voice: On",
-    "back": "Speak: On",
-    "cos": 0.6904,
-    "chrf": 15.9,
-    "controlCos": 0.3745,
-    "xcos": 0.8296,
-    "xcontrol": 0.6496
+    "text": "Giọng đọc AI: bật",
+    "english": "AI voice: On",
+    "back": "AI voice: enabled",
+    "cos": 0.8385,
+    "chrf": 64.8,
+    "controlCos": 0.8097,
+    "xcos": 0.8492,
+    "xcontrol": 0.7457
    },
    "voice.loading": {
-    "text": "Giọng đọc: đang tải…",
-    "english": "Voice: loading…",
-    "back": "Speak: Loading...",
-    "cos": 0.7192,
-    "chrf": 30.2,
-    "controlCos": 0.1502,
-    "xcos": 0.8592,
-    "xcontrol": 0.2267
+    "text": "Giọng đọc AI: đang tải…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.886,
+    "xcontrol": 0.4538
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    },
    "verdict.yourAnswer": {
     "text": "Lời đáp của bạn",
@@ -65936,6 +66426,36 @@
     "controlCos": 0.1712,
     "xcos": 0.7896,
     "xcontrol": 0.2903
+   },
+   "battle.lang.written": {
+    "text": "Tiếng Thái: bạn đấu với đối thủ dùng thơ viết sẵn, vì Gemma 4 E2B chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you compete with opponents using pre-written poetry, since Gemma 4 E2B has not proven to be good at writing poetry in this language.",
+    "cos": 0.8294,
+    "chrf": 52.1,
+    "controlCos": 0.6982,
+    "xcos": 0.8346,
+    "xcontrol": 0.7145
+   },
+   "battle.lang.rules": {
+    "text": "Tiếng Thái: chấm điểm theo quy tắc, vì Gemma 4 E2B chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: scoring according to the rules, because Gemma 4 E2B has not proven itself as a good judge for poetry in this language.",
+    "cos": 0.8802,
+    "chrf": 59.9,
+    "controlCos": 0.3708,
+    "xcos": 0.8179,
+    "xcontrol": 0.3668
+   },
+   "brain.noneShown": {
+    "text": "Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model on which this device runs has proven to be a good poetry writer or judge, so you compete with opponents using pre-written poems, and the scoring follows the rules.",
+    "cos": 0.6642,
+    "chrf": 43.2,
+    "controlCos": 0.0162,
+    "xcos": 0.7875,
+    "xcontrol": 0.1137
    },
    "pack:relics.RL-001.0": {
     "text": "đầu lâu",
@@ -69100,14 +69620,14 @@
     "xcontrol": 0.3353
    },
    "brain.failed": {
-    "text": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้วได้",
+    "text": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้",
     "english": "The model could not start on this device. You can still play against the written opponent.",
-    "back": "The model can't be started on this device. You can still play against an opponent who has already written a poem.",
-    "cos": 0.8254,
-    "chrf": 70.5,
-    "controlCos": 0.4853,
-    "xcos": 0.8106,
-    "xcontrol": 0.4336
+    "back": "The model can't start on this device. You can still play against an opponent who has already written a poem.",
+    "cos": 0.8461,
+    "chrf": 75.7,
+    "controlCos": 0.4723,
+    "xcos": 0.8077,
+    "xcontrol": 0.4253
    },
    "brain.noModel": {
     "text": "กำลังเล่นโดยไม่มีโมเดล",
@@ -69120,14 +69640,14 @@
     "xcontrol": 0.3048
    },
    "brain.written": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
     "english": "Playing against the written opponent.",
     "back": "Playing with an opponent who's already written a poem.",
     "cos": 0.7823,
     "chrf": 50.4,
     "controlCos": 0.4653,
-    "xcos": 0.6264,
-    "xcontrol": 0.3279
+    "xcos": 0.6184,
+    "xcontrol": 0.3244
    },
    "brain.noWebgpu": {
     "text": "เบราว์เซอร์นี้ไม่มี WebGPU คู่ต่อสู้จึงใช้บทกลอนที่เขียนไว้ล่วงหน้า และการตัดสินใช้กฎ ส่วนอื่นทำงานได้ทั้งหมด",
@@ -69170,14 +69690,14 @@
     "xcontrol": 0.0399
    },
    "brain.writtenReload": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
     "english": "Playing against the written opponent. You can summon the model any time by reloading.",
-    "back": "You're playing with a rival who has already written a poem. You can invite the model at any time by reloading this page.",
-    "cos": 0.4982,
-    "chrf": 51.1,
-    "controlCos": 0.0182,
-    "xcos": 0.688,
-    "xcontrol": 0.0817
+    "back": "You're playing with an opponent who has already written a poem. You can invite the model at any time by reloading this page.",
+    "cos": 0.5808,
+    "chrf": 57.7,
+    "controlCos": 0.0402,
+    "xcos": 0.6845,
+    "xcontrol": 0.0878
    },
    "round.label": {
     "text": "ยกที่ 3 จาก 3",
@@ -69810,34 +70330,44 @@
     "xcontrol": 0.267
    },
    "voice.off": {
-    "text": "เสียงอ่าน: ปิด",
-    "english": "Voice: Off",
-    "back": "Speak: Off",
-    "cos": 0.7395,
-    "chrf": 23.0,
-    "controlCos": 0.5246,
-    "xcos": 0.7822,
-    "xcontrol": 0.7292
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: ปิด",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.573,
+    "xcontrol": 0.5107
    },
    "voice.on": {
-    "text": "เสียงอ่าน: เปิด",
-    "english": "Voice: On",
-    "back": "Speak: On",
-    "cos": 0.6904,
-    "chrf": 15.9,
-    "controlCos": 0.3745,
-    "xcos": 0.7709,
-    "xcontrol": 0.6287
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: เปิด",
+    "english": "AI voice: On",
+    "back": "AI reads: On",
+    "cos": 0.6829,
+    "chrf": 17.6,
+    "controlCos": 0.5377,
+    "xcos": 0.5338,
+    "xcontrol": 0.4845
    },
    "voice.loading": {
-    "text": "เสียงอ่าน: กำลังโหลด…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.8327,
-    "xcontrol": 0.2165
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: กำลังโหลด…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.6548,
+    "xcontrol": 0.1639
+   },
+   "ai.label": {
+    "text": "ปัญญาประดิษฐ์",
+    "english": "AI",
+    "back": "Artificial Intelligence.",
+    "cos": 0.7459,
+    "chrf": 16.1,
+    "controlCos": 0.3589,
+    "xcos": 0.3706,
+    "xcontrol": 0.2709
    },
    "verdict.yourAnswer": {
     "text": "คำตอบโต้ของคุณ",
@@ -70290,24 +70820,24 @@
     "xcontrol": 0.3929
    },
    "badge.writtenJudged": {
-    "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B",
+    "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B",
     "english": "Written opponent · judged by Gemma 4 E2B",
-    "back": "Fighter with pre-written poem · Judged by Gemma 4 E2B",
-    "cos": 0.7234,
-    "chrf": 54.9,
-    "controlCos": 0.451,
-    "xcos": 0.7823,
-    "xcontrol": 0.4509
+    "back": "Fighter using a pre-written poem · Judged by Gemma 4 E2B",
+    "cos": 0.7228,
+    "chrf": 54.7,
+    "controlCos": 0.4931,
+    "xcos": 0.7766,
+    "xcontrol": 0.4353
    },
    "badge.written": {
-    "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+    "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
     "english": "Written opponent",
-    "back": "A fighter with a poem written.",
-    "cos": 0.5664,
-    "chrf": 28.0,
-    "controlCos": 0.1807,
-    "xcos": 0.5541,
-    "xcontrol": 0.2655
+    "back": "A contestant who uses a pre-written poem.",
+    "cos": 0.5234,
+    "chrf": 30.2,
+    "controlCos": 0.1529,
+    "xcos": 0.5339,
+    "xcontrol": 0.2604
    },
    "stats.rounds": {
     "text": "ยกที่เล่น",
@@ -70470,14 +71000,14 @@
     "xcontrol": 0.1293
    },
    "theatre.writtenHint": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
     "english": "Playing the written opponent. Summon a model on the battle page to face one here.",
-    "back": "Playing with an opponent who's already written a poem, inviting the model to face it here.",
-    "cos": 0.7257,
-    "chrf": 44.6,
-    "controlCos": 0.2556,
-    "xcos": 0.743,
-    "xcontrol": 0.1685
+    "back": "Playing with an opponent who uses a pre-written poem, inviting the opposite model to face it here.",
+    "cos": 0.6856,
+    "chrf": 44.1,
+    "controlCos": 0.2246,
+    "xcos": 0.7371,
+    "xcontrol": 0.176
    },
    "theatre.enterAr": {
     "text": "เข้า: เวทีในห้องของคุณ",
@@ -70668,6 +71198,36 @@
     "controlCos": 0.1121,
     "xcos": 0.8734,
     "xcontrol": 0.2153
+   },
+   "battle.lang.written": {
+    "text": "ญี่ปุ่น: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Japan: You're going to encounter an opponent who uses already written poems, because Gemma 4 E2B hasn't yet shown that she can write poems in this language.",
+    "cos": 0.7027,
+    "chrf": 57.1,
+    "controlCos": 0.5223,
+    "xcos": 0.8336,
+    "xcontrol": 0.6915
+   },
+   "battle.lang.rules": {
+    "text": "ญี่ปุ่น: ตัดสินด้วยกฎ เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Japan: Judging by the rules, because Gemma 4 E2B hasn't yet shown herself as a good judge of this language poem.",
+    "cos": 0.7681,
+    "chrf": 59.8,
+    "controlCos": 0.3518,
+    "xcos": 0.8379,
+    "xcontrol": 0.3205
+   },
+   "brain.noneShown": {
+    "text": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว และตัดสินด้วยกฎ",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "There's no working model of this device that has shown to be good at writing or judging poems, so you're going to have a competitor who uses an already-written poem and judges by rules.",
+    "cos": 0.6643,
+    "chrf": 45.4,
+    "controlCos": -0.0405,
+    "xcos": 0.8247,
+    "xcontrol": 0.1211
    },
    "pack:relics.RL-001.0": {
     "text": "กะโหลก",
@@ -73832,14 +74392,14 @@
     "xcontrol": 0.4072
    },
    "brain.failed": {
-    "text": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis.",
+    "text": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis.",
     "english": "The model could not start on this device. You can still play against the written opponent.",
-    "back": "Models can't run on this device, but you can still play against opponents with written poetry.",
-    "cos": 0.6977,
-    "chrf": 57.9,
-    "controlCos": 0.4989,
-    "xcos": 0.8707,
-    "xcontrol": 0.4929
+    "back": "Models can't run on this device, but you can still play against opponents with written poems.",
+    "cos": 0.7035,
+    "chrf": 58.2,
+    "controlCos": 0.4881,
+    "xcos": 0.8584,
+    "xcontrol": 0.5075
    },
    "brain.noModel": {
     "text": "Bermain tanpa model.",
@@ -73852,14 +74412,14 @@
     "xcontrol": 0.3815
    },
    "brain.written": {
-    "text": "Bermain melawan lawan bersyair tertulis.",
+    "text": "Bermain melawan lawan dengan syair tertulis.",
     "english": "Playing against the written opponent.",
-    "back": "Play against written poetry opponents.",
-    "cos": 0.7509,
-    "chrf": 53.1,
-    "controlCos": 0.4215,
-    "xcos": 0.9277,
-    "xcontrol": 0.2735
+    "back": "Play against an opponent with a written poem.",
+    "cos": 0.7993,
+    "chrf": 56.5,
+    "controlCos": 0.4778,
+    "xcos": 0.8238,
+    "xcontrol": 0.2712
    },
    "brain.noWebgpu": {
     "text": "Peramban ini tidak punya WebGPU, jadi lawan memainkan syair yang sudah ditulis dan penilaian memakai aturan. Selebihnya berjalan seperti biasa.",
@@ -73902,14 +74462,14 @@
     "xcontrol": 0.0605
    },
    "brain.writtenReload": {
-    "text": "Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
+    "text": "Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
     "english": "Playing against the written opponent. You can summon the model any time by reloading.",
-    "back": "You can call the model at any time by reloading the page.",
-    "cos": 0.604,
-    "chrf": 43.2,
-    "controlCos": -0.0043,
-    "xcos": 0.8987,
-    "xcontrol": 0.0636
+    "back": "Play against an opponent with a written poem. You can call the model at any time by reloading the page.",
+    "cos": 0.7471,
+    "chrf": 62.6,
+    "controlCos": 0.0432,
+    "xcos": 0.8728,
+    "xcontrol": 0.0718
    },
    "round.label": {
     "text": "Ronde 3 dari 3",
@@ -74542,34 +75102,44 @@
     "xcontrol": 0.4313
    },
    "voice.off": {
-    "text": "Suara: mati",
-    "english": "Voice: Off",
-    "back": "Sound: off",
-    "cos": 0.7209,
-    "chrf": 9.5,
-    "controlCos": 0.5678,
-    "xcos": 0.8584,
-    "xcontrol": 0.7964
+    "text": "Suara AI: mati",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8747,
+    "xcontrol": 0.8128
    },
    "voice.on": {
-    "text": "Suara: nyala",
-    "english": "Voice: On",
-    "back": "Sound: flare",
-    "cos": 0.3268,
-    "chrf": 7.8,
-    "controlCos": 0.2801,
-    "xcos": 0.8797,
-    "xcontrol": 0.6467
+    "text": "Suara AI: nyala",
+    "english": "AI voice: On",
+    "back": "AI voice: on",
+    "cos": 1.0,
+    "chrf": 73.5,
+    "controlCos": 0.8223,
+    "xcos": 0.9123,
+    "xcontrol": 0.7539
    },
    "voice.loading": {
-    "text": "Suara: memuat…",
-    "english": "Voice: loading…",
-    "back": "Sound: loading...",
-    "cos": 0.6955,
-    "chrf": 46.2,
-    "controlCos": 0.0866,
-    "xcos": 0.931,
-    "xcontrol": 0.2798
+    "text": "Suara AI: memuat…",
+    "english": "AI voice: loading…",
+    "back": "AI voice: loading...",
+    "cos": 0.9859,
+    "chrf": 89.8,
+    "controlCos": 0.5081,
+    "xcos": 0.9493,
+    "xcontrol": 0.5006
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    },
    "verdict.yourAnswer": {
     "text": "Jawabanmu",
@@ -75022,24 +75592,24 @@
     "xcontrol": 0.4039
    },
    "badge.writtenJudged": {
-    "text": "Lawan bersyair tertulis · dinilai Gemma 4 E2B",
+    "text": "Lawan dengan syair tertulis · dinilai Gemma 4 E2B",
     "english": "Written opponent · judged by Gemma 4 E2B",
-    "back": "A rival poet wrote · rated Gemma 4 E2B",
-    "cos": 0.7392,
-    "chrf": 30.3,
-    "controlCos": 0.3978,
-    "xcos": 0.9104,
-    "xcontrol": 0.5102
+    "back": "Opponent with written poem · rated Gemma 4 E2B",
+    "cos": 0.8615,
+    "chrf": 47.7,
+    "controlCos": 0.6685,
+    "xcos": 0.8653,
+    "xcontrol": 0.5059
    },
    "badge.written": {
-    "text": "Lawan bersyair tertulis",
+    "text": "Lawan dengan syair tertulis",
     "english": "Written opponent",
-    "back": "Poetic opponents are written",
-    "cos": 0.7179,
-    "chrf": 60.2,
-    "controlCos": 0.1827,
-    "xcos": 0.8934,
-    "xcontrol": 0.227
+    "back": "Opponent with a written poem",
+    "cos": 0.8041,
+    "chrf": 54.9,
+    "controlCos": 0.305,
+    "xcos": 0.7337,
+    "xcontrol": 0.2098
    },
    "stats.rounds": {
     "text": "Ronde dimainkan",
@@ -75400,6 +75970,36 @@
     "controlCos": 0.1511,
     "xcos": 0.7133,
     "xcontrol": 0.2253
+   },
+   "battle.lang.written": {
+    "text": "Thai: lawanmu memakai syair tertulis, karena Gemma 4 E2B belum terbukti mampu menulis syair dengan baik dalam bahasa ini.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: your opponent uses written poetry, because Gemma 4 E2B has not proven to be able to write poetry well in this language.",
+    "cos": 0.8713,
+    "chrf": 62.8,
+    "controlCos": 0.7154,
+    "xcos": 0.8695,
+    "xcontrol": 0.7847
+   },
+   "battle.lang.rules": {
+    "text": "Thai: dinilai dengan aturan, karena Gemma 4 E2B belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by the rules, as Gemma 4 E2B has not proven capable of being a good poem jury in this language.",
+    "cos": 0.8562,
+    "chrf": 56.3,
+    "controlCos": 0.3883,
+    "xcos": 0.8508,
+    "xcontrol": 0.3428
+   },
+   "brain.noneShown": {
+    "text": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "There is no model that this device can run that has proven to write or evaluate poems well, so your opponent uses written poems and the evaluation is done by rules.",
+    "cos": 0.6538,
+    "chrf": 49.4,
+    "controlCos": -0.0251,
+    "xcos": 0.812,
+    "xcontrol": 0.1186
    },
    "pack:relics.RL-001.0": {
     "text": "tengkorak",

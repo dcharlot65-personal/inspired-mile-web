@@ -1,5 +1,5 @@
 {
- "ran": "2026-11-18T01:20:41.258Z",
+ "ran": "2026-11-19T12:06:05.808Z",
  "languagetool": {
   "version": "6.6",
   "buildDate": "2025-03-27 20:50:25 +0100",
@@ -190,9 +190,9 @@
  "languages": {
   "en": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 189,
-    "sentences": 635
+    "sentences": 639
    },
    "languagetool": "en-US",
    "hunspell": [
@@ -1765,13 +1765,16 @@
      "Microphone not allowed"
     ],
     "ui:voice.off": [
-     "Voice: Off"
+     "AI voice: Off"
     ],
     "ui:voice.on": [
-     "Voice: On"
+     "AI voice: On"
     ],
     "ui:voice.loading": [
-     "Voice: loading…"
+     "AI voice: loading…"
+    ],
+    "ui:ai.label": [
+     "AI"
     ],
     "ui:verdict.yourAnswer": [
      "Your answer"
@@ -2021,6 +2024,15 @@
     ],
     "ui:theatre.judging": [
      "Judging…"
+    ],
+    "ui:battle.lang.written": [
+     "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language."
+    ],
+    "ui:battle.lang.rules": [
+     "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language."
+    ],
+    "ui:brain.noneShown": [
+     "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule."
     ],
     "pack:acrostic.0": [
      "bard"
@@ -2593,9 +2605,9 @@
   },
   "es": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 128,
-    "sentences": 574
+    "sentences": 578
    },
    "languagetool": "es",
    "hunspell": [
@@ -4457,13 +4469,16 @@
      "Micrófono no permitido"
     ],
     "ui:voice.off": [
-     "Voz: desactivada"
+     "Voz de IA: desactivada"
     ],
     "ui:voice.on": [
-     "Voz: activada"
+     "Voz de IA: activada"
     ],
     "ui:voice.loading": [
-     "Voz: cargando…"
+     "Voz de IA: cargando…"
+    ],
+    "ui:ai.label": [
+     "IA"
     ],
     "ui:verdict.yourAnswer": [
      "Tu respuesta"
@@ -4713,6 +4728,15 @@
     ],
     "ui:theatre.judging": [
      "Juzgando…"
+    ],
+    "ui:battle.lang.written": [
+     "tailandés: te enfrentas al rival de versos escritos, porque Gemma 4 E2B no ha demostrado que escriba buenas estrofas en este idioma."
+    ],
+    "ui:battle.lang.rules": [
+     "tailandés: se juzga por reglas, porque Gemma 4 E2B no ha demostrado ser buen juez de estrofas en este idioma."
+    ],
+    "ui:brain.noneShown": [
+     "Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas."
     ],
     "pack:acrostic.0": [
      "luna"
@@ -5102,9 +5126,9 @@
   },
   "fr": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 128,
-    "sentences": 574
+    "sentences": 578
    },
    "languagetool": "fr",
    "hunspell": [
@@ -6849,13 +6873,16 @@
      "Micro non autorisé"
     ],
     "ui:voice.off": [
-     "Voix : désactivée"
+     "Voix d’IA : désactivée"
     ],
     "ui:voice.on": [
-     "Voix : activée"
+     "Voix d’IA : activée"
     ],
     "ui:voice.loading": [
-     "Voix : chargement…"
+     "Voix d’IA : chargement…"
+    ],
+    "ui:ai.label": [
+     "IA"
     ],
     "ui:verdict.yourAnswer": [
      "Votre réponse"
@@ -7105,6 +7132,15 @@
     ],
     "ui:theatre.judging": [
      "Jugement…"
+    ],
+    "ui:battle.lang.written": [
+     "thaï : vous affrontez l’adversaire aux strophes écrites, car Gemma 4 E2B n’a pas montré qu’il écrit de bonnes strophes dans cette langue."
+    ],
+    "ui:battle.lang.rules": [
+     "thaï : jugé par règles, car Gemma 4 E2B n’a pas montré qu’il est bon juge des strophes dans cette langue."
+    ],
+    "ui:brain.noneShown": [
+     "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles."
     ],
     "pack:acrostic.0": [
      "lune"
@@ -7494,9 +7530,9 @@
   },
   "de": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 132,
-    "sentences": 578
+    "sentences": 582
    },
    "languagetool": "de-DE",
    "hunspell": [
@@ -7504,8 +7540,8 @@
    ],
    "counts": {
     "languagetool": 39,
-    "hunspell": 85,
-    "allowed": 124,
+    "hunspell": 88,
+    "allowed": 127,
     "open": 0
    },
    "hits": [
@@ -8776,6 +8812,39 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:voice.off",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: aus",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.on",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: an",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.loading",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: lädt …",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:verdict.roundScore",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -10041,13 +10110,16 @@
      "Mikrofon nicht erlaubt"
     ],
     "ui:voice.off": [
-     "Stimme: aus"
+     "KI-Stimme: aus"
     ],
     "ui:voice.on": [
-     "Stimme: an"
+     "KI-Stimme: an"
     ],
     "ui:voice.loading": [
-     "Stimme: lädt …"
+     "KI-Stimme: lädt …"
+    ],
+    "ui:ai.label": [
+     "KI"
     ],
     "ui:verdict.yourAnswer": [
      "Deine Antwort"
@@ -10297,6 +10369,15 @@
     ],
     "ui:theatre.judging": [
      "Wird bewertet …"
+    ],
+    "ui:battle.lang.written": [
+     "Thailändisch: Du spielst gegen den Gegner mit geschriebenen Strophen, weil Gemma 4 E2B nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt."
+    ],
+    "ui:battle.lang.rules": [
+     "Thailändisch: Nach Regeln bewertet, weil Gemma 4 E2B nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist."
+    ],
+    "ui:brain.noneShown": [
+     "Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln."
     ],
     "pack:acrostic.0": [
      "mond"
@@ -10698,9 +10779,9 @@
   },
   "it": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 128,
-    "sentences": 574
+    "sentences": 578
    },
    "languagetool": "it",
    "hunspell": [
@@ -13712,13 +13793,16 @@
      "Microfono non consentito"
     ],
     "ui:voice.off": [
-     "Voce: spenta"
+     "Voce IA: spenta"
     ],
     "ui:voice.on": [
-     "Voce: accesa"
+     "Voce IA: accesa"
     ],
     "ui:voice.loading": [
-     "Voce: caricamento…"
+     "Voce IA: caricamento…"
+    ],
+    "ui:ai.label": [
+     "IA"
     ],
     "ui:verdict.yourAnswer": [
      "La tua risposta"
@@ -13968,6 +14052,15 @@
     ],
     "ui:theatre.judging": [
      "Giudizio in corso…"
+    ],
+    "ui:battle.lang.written": [
+     "thailandese: affronti l’avversario dalle strofe scritte, perché Gemma 4 E2B non ha dimostrato di scrivere buone strofe in questa lingua."
+    ],
+    "ui:battle.lang.rules": [
+     "thailandese: giudicato secondo regole, perché Gemma 4 E2B non ha dimostrato di essere un buon giudice di strofe in questa lingua."
+    ],
+    "ui:brain.noneShown": [
+     "Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole."
     ],
     "pack:acrostic.0": [
      "luna"
@@ -14357,9 +14450,9 @@
   },
   "pt": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 130,
-    "sentences": 576
+    "sentences": 580
    },
    "languagetool": "pt-BR",
    "hunspell": [
@@ -17657,13 +17750,16 @@
      "Microfone não permitido"
     ],
     "ui:voice.off": [
-     "Voz: desligada"
+     "Voz de IA: desligada"
     ],
     "ui:voice.on": [
-     "Voz: ligada"
+     "Voz de IA: ligada"
     ],
     "ui:voice.loading": [
-     "Voz: carregando…"
+     "Voz de IA: carregando…"
+    ],
+    "ui:ai.label": [
+     "IA"
     ],
     "ui:verdict.yourAnswer": [
      "Sua resposta"
@@ -17913,6 +18009,15 @@
     ],
     "ui:theatre.judging": [
      "Julgando…"
+    ],
+    "ui:battle.lang.written": [
+     "tailandês: você enfrenta o adversário de estrofes escritas, porque Gemma 4 E2B não mostrou que escreve boas estrofes neste idioma."
+    ],
+    "ui:battle.lang.rules": [
+     "tailandês: julgado por regras, porque Gemma 4 E2B não mostrou ser um bom juiz de estrofes neste idioma."
+    ],
+    "ui:brain.noneShown": [
+     "Nenhum modelo que este dispositivo consiga executar mostrou que escreve ou julga bem as estrofes, por isso você enfrenta o adversário de estrofes escritas e o julgamento é feito por regras."
     ],
     "pack:acrostic.0": [
      "lua"
@@ -18308,9 +18413,9 @@
   },
   "pl": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 126,
-    "sentences": 608
+    "sentences": 612
    },
    "languagetool": "pl-PL",
    "hunspell": [
@@ -22037,13 +22142,16 @@
      "Brak zgody na mikrofon"
     ],
     "ui:voice.off": [
-     "Głos: wyłączony"
+     "Głos SI: wyłączony"
     ],
     "ui:voice.on": [
-     "Głos: włączony"
+     "Głos SI: włączony"
     ],
     "ui:voice.loading": [
-     "Głos: wczytywanie…"
+     "Głos SI: wczytywanie…"
+    ],
+    "ui:ai.label": [
+     "SI"
     ],
     "ui:verdict.yourAnswer": [
      "Twoja odpowiedź"
@@ -22293,6 +22401,15 @@
     ],
     "ui:theatre.judging": [
      "Ocenianie…"
+    ],
+    "ui:battle.lang.written": [
+     "tajski: grasz z rywalem z gotowymi strofami, bo model Gemma 4 E2B nie wykazał, że dobrze pisze strofy w tym języku."
+    ],
+    "ui:battle.lang.rules": [
+     "tajski: ocena według reguł, bo model Gemma 4 E2B nie wykazał, że jest dobrym sędzią strof w tym języku."
+    ],
+    "ui:brain.noneShown": [
+     "Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł."
     ],
     "pack:acrostic.0": [
      "noc"
@@ -22676,9 +22793,9 @@
   },
   "ru": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 130,
-    "sentences": 612
+    "sentences": 616
    },
    "languagetool": "ru-RU",
    "hunspell": [
@@ -24665,13 +24782,16 @@
      "Нет доступа к микрофону"
     ],
     "ui:voice.off": [
-     "Голос: выключен"
+     "Голос ИИ: выключен"
     ],
     "ui:voice.on": [
-     "Голос: включён"
+     "Голос ИИ: включён"
     ],
     "ui:voice.loading": [
-     "Голос: загрузка…"
+     "Голос ИИ: загрузка…"
+    ],
+    "ui:ai.label": [
+     "ИИ"
     ],
     "ui:verdict.yourAnswer": [
      "Твой ответ"
@@ -24921,6 +25041,15 @@
     ],
     "ui:theatre.judging": [
      "Идёт оценка…"
+    ],
+    "ui:battle.lang.written": [
+     "тайский: играет соперник с готовыми строфами, потому что модель Gemma 4 E2B не показала, что хорошо пишет строфы на этом языке."
+    ],
+    "ui:battle.lang.rules": [
+     "тайский: судят по правилам, потому что модель Gemma 4 E2B не показала, что может быть хорошим судьёй строф на этом языке."
+    ],
+    "ui:brain.noneShown": [
+     "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам."
     ],
     "pack:acrostic.0": [
      "рок"
@@ -25316,18 +25445,18 @@
   },
   "ar": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 115,
-    "sentences": 633
+    "sentences": 637
    },
    "languagetool": "ar",
    "hunspell": [
     "ar"
    ],
    "counts": {
-    "languagetool": 179,
+    "languagetool": 181,
     "hunspell": 39,
-    "allowed": 218,
+    "allowed": 220,
     "open": 0
    },
    "hits": [
@@ -27393,6 +27522,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:battle.lang.written",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:brain.noneShown",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
      "id": "pack:relics.RL-001.1",
      "rule": "HUNSPELL_RULE_AR",
      "category": "TYPOS",
@@ -29279,13 +29434,16 @@
      "الميكروفون غير مسموح به"
     ],
     "ui:voice.off": [
-     "الصوت: متوقف"
+     "صوت الذكاء الاصطناعي: متوقف"
     ],
     "ui:voice.on": [
-     "الصوت: يعمل"
+     "صوت الذكاء الاصطناعي: يعمل"
     ],
     "ui:voice.loading": [
-     "الصوت: جارٍ التحميل…"
+     "صوت الذكاء الاصطناعي: جارٍ التحميل…"
+    ],
+    "ui:ai.label": [
+     "ذكاء اصطناعي"
     ],
     "ui:verdict.yourAnswer": [
      "جوابك"
@@ -29535,6 +29693,15 @@
     ],
     "ui:theatre.judging": [
      "جارٍ التحكيم…"
+    ],
+    "ui:battle.lang.written": [
+     "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة."
+    ],
+    "ui:battle.lang.rules": [
+     "التايلاندية: الحكم بالقواعد، لأن Gemma 4 E2B لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة."
+    ],
+    "ui:brain.noneShown": [
+     "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد."
     ],
     "pack:acrostic.0": [
      "قمر"
@@ -29885,9 +30052,9 @@
   },
   "hi": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 130,
-    "sentences": 576
+    "sentences": 580
    },
    "languagetool": null,
    "hunspell": [
@@ -29895,8 +30062,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 111,
-    "allowed": 111,
+    "hunspell": 116,
+    "allowed": 116,
     "open": 0
    },
    "hits": [
@@ -30892,6 +31059,50 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:voice.off",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: बंद",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.on",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: चालू",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.loading",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: लोड हो रही है…",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:ai.label",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:theatre.badge",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -31065,6 +31276,17 @@
      "message": "not in the hi dictionary",
      "replacements": [],
      "allowed": "A polite imperative in -एँ, written with the chandrabindu as the game's Hindi does throughout (27 times, never with the anusvara); checked, the hi_IN list knows neither spelling (सुनाएँ, सुनाएं)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:brain.noneShown",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+     "at": "सकने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "The oblique infinitive of सकना (चल सकने वाले, 'able to run'), a form the dictionary does not generate (brain.noneShown, from an earlier merge; read on fix/predeploy, 2026-11-19)."
     },
     {
      "tool": "hunspell",
@@ -32168,13 +32390,16 @@
      "माइक्रोफ़ोन की अनुमति नहीं है"
     ],
     "ui:voice.off": [
-     "आवाज़: बंद"
+     "एआई आवाज़: बंद"
     ],
     "ui:voice.on": [
-     "आवाज़: चालू"
+     "एआई आवाज़: चालू"
     ],
     "ui:voice.loading": [
-     "आवाज़: लोड हो रही है…"
+     "एआई आवाज़: लोड हो रही है…"
+    ],
+    "ui:ai.label": [
+     "एआई"
     ],
     "ui:verdict.yourAnswer": [
      "आपका जवाब"
@@ -32424,6 +32649,15 @@
     ],
     "ui:theatre.judging": [
      "परखा जा रहा है…"
+    ],
+    "ui:battle.lang.written": [
+     "थाई: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।"
+    ],
+    "ui:battle.lang.rules": [
+     "थाई: निर्णय नियमों से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।"
+    ],
+    "ui:brain.noneShown": [
+     "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।"
     ],
     "pack:acrostic.0": [
      "कमल"
@@ -32819,9 +33053,9 @@
   },
   "zh": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 137,
-    "sentences": 565
+    "sentences": 569
    },
    "languagetool": "zh-CN",
    "hunspell": null,
@@ -33940,13 +34174,16 @@
      "未获准使用麦克风"
     ],
     "ui:voice.off": [
-     "语音：关"
+     "人工智能语音：关"
     ],
     "ui:voice.on": [
-     "语音：开"
+     "人工智能语音：开"
     ],
     "ui:voice.loading": [
-     "语音：加载中…"
+     "人工智能语音：加载中…"
+    ],
+    "ui:ai.label": [
+     "人工智能"
     ],
     "ui:verdict.yourAnswer": [
      "你的应对"
@@ -34196,6 +34433,15 @@
     ],
     "ui:theatre.judging": [
      "评判中…"
+    ],
+    "ui:battle.lang.written": [
+     "泰语：你将面对预先写好诗句的对手，因为 Gemma 4 E2B 尚未证明它能用这种语言写好诗。"
+    ],
+    "ui:battle.lang.rules": [
+     "泰语：按规则评判，因为 Gemma 4 E2B 尚未证明它能胜任这种语言的诗歌裁判。"
+    ],
+    "ui:brain.noneShown": [
+     "这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。"
     ],
     "pack:acrostic.0": [
      "风花雪月"
@@ -34612,9 +34858,9 @@
   },
   "ja": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 133,
-    "sentences": 561
+    "sentences": 565
    },
    "languagetool": "ja-JP",
    "hunspell": null,
@@ -35653,13 +35899,16 @@
      "マイクが許可されていません"
     ],
     "ui:voice.off": [
-     "音声：オフ"
+     "AI音声：オフ"
     ],
     "ui:voice.on": [
-     "音声：オン"
+     "AI音声：オン"
     ],
     "ui:voice.loading": [
-     "音声：読み込み中…"
+     "AI音声：読み込み中…"
+    ],
+    "ui:ai.label": [
+     "AI"
     ],
     "ui:verdict.yourAnswer": [
      "あなたの返し"
@@ -35909,6 +36158,15 @@
     ],
     "ui:theatre.judging": [
      "審査中…"
+    ],
+    "ui:battle.lang.written": [
+     "タイ語：あらかじめ書かれた詩を出す相手と対戦します。Gemma 4 E2Bがこの言語でうまく詩を書けることは確かめられていないためです。"
+    ],
+    "ui:battle.lang.rules": [
+     "タイ語：規則で審査します。Gemma 4 E2Bがこの言語の詩の審判をうまく務められることは確かめられていないためです。"
+    ],
+    "ui:brain.noneShown": [
+     "この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。"
     ],
     "pack:acrostic.0": [
      "さくら"
@@ -36313,9 +36571,9 @@
   },
   "ko": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 127,
-    "sentences": 555
+    "sentences": 559
    },
    "languagetool": null,
    "hunspell": [
@@ -37026,7 +37284,7 @@
      "id": "ui:voice.on",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "음성: 켜짐",
+     "text": "인공지능 음성: 켜짐",
      "at": "켜짐",
      "message": "not in the ko dictionary",
      "replacements": [],
@@ -38292,13 +38550,16 @@
      "마이크가 허용되지 않았어요"
     ],
     "ui:voice.off": [
-     "음성: 꺼짐"
+     "인공지능 음성: 꺼짐"
     ],
     "ui:voice.on": [
-     "음성: 켜짐"
+     "인공지능 음성: 켜짐"
     ],
     "ui:voice.loading": [
-     "음성: 불러오는 중…"
+     "인공지능 음성: 불러오는 중…"
+    ],
+    "ui:ai.label": [
+     "인공지능"
     ],
     "ui:verdict.yourAnswer": [
      "내 답"
@@ -38548,6 +38809,15 @@
     ],
     "ui:theatre.judging": [
      "심사하는 중…"
+    ],
+    "ui:battle.lang.written": [
+     "태국어: 미리 쓰인 시를 내는 상대와 겨뤄요. Gemma 4 E2B가 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요."
+    ],
+    "ui:battle.lang.rules": [
+     "태국어: 규칙으로 심사해요. Gemma 4 E2B가 이 언어로 쓴 시의 심판을 잘 맡는다는 것이 확인되지 않았기 때문이에요."
+    ],
+    "ui:brain.noneShown": [
+     "이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요."
     ],
     "pack:acrostic.0": [
      "소나기"
@@ -38934,9 +39204,9 @@
   },
   "vi": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 131,
-    "sentences": 577
+    "sentences": 581
    },
    "languagetool": null,
    "hunspell": [
@@ -40403,13 +40673,16 @@
      "Micrô chưa được cho phép"
     ],
     "ui:voice.off": [
-     "Giọng đọc: tắt"
+     "Giọng đọc AI: tắt"
     ],
     "ui:voice.on": [
-     "Giọng đọc: bật"
+     "Giọng đọc AI: bật"
     ],
     "ui:voice.loading": [
-     "Giọng đọc: đang tải…"
+     "Giọng đọc AI: đang tải…"
+    ],
+    "ui:ai.label": [
+     "AI"
     ],
     "ui:verdict.yourAnswer": [
      "Lời đáp của bạn"
@@ -40659,6 +40932,15 @@
     ],
     "ui:theatre.judging": [
      "Đang chấm…"
+    ],
+    "ui:battle.lang.written": [
+     "Tiếng Thái: bạn đấu với đối thủ dùng thơ viết sẵn, vì Gemma 4 E2B chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này."
+    ],
+    "ui:battle.lang.rules": [
+     "Tiếng Thái: chấm điểm theo quy tắc, vì Gemma 4 E2B chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này."
+    ],
+    "ui:brain.noneShown": [
+     "Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc."
     ],
     "pack:acrostic.0": [
      "thơ"
@@ -41057,9 +41339,9 @@
   },
   "th": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 117,
-    "sentences": 545
+    "sentences": 549
    },
    "languagetool": null,
    "hunspell": [
@@ -42427,13 +42709,13 @@
      "โหลด Gemma 4 E2B บนอุปกรณ์เครื่องนี้แล้ว โมเดลนี้มีขนาดเล็ก จึงทำหน้าที่ตัดสินบทกลอน ส่วนคู่ต่อสู้ใช้บทกลอนที่เขียนไว้ล่วงหน้า"
     ],
     "ui:brain.failed": [
-     "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้วได้"
+     "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้"
     ],
     "ui:brain.noModel": [
      "กำลังเล่นโดยไม่มีโมเดล"
     ],
     "ui:brain.written": [
-     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว"
+     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว"
     ],
     "ui:brain.noWebgpu": [
      "เบราว์เซอร์นี้ไม่มี WebGPU คู่ต่อสู้จึงใช้บทกลอนที่เขียนไว้ล่วงหน้า และการตัดสินใช้กฎ ส่วนอื่นทำงานได้ทั้งหมด"
@@ -42448,7 +42730,7 @@
      "อัญเชิญ Gemma 4 E2B (3.1 GB): ดาวน์โหลดเบากว่า"
     ],
     "ui:brain.writtenReload": [
-     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่"
+     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่"
     ],
     "ui:round.label": [
      "ยกที่ 3 จาก 3"
@@ -42640,13 +42922,16 @@
      "ไม่ได้รับอนุญาตให้ใช้ไมโครโฟน"
     ],
     "ui:voice.off": [
-     "เสียงอ่าน: ปิด"
+     "เสียงอ่านจากปัญญาประดิษฐ์: ปิด"
     ],
     "ui:voice.on": [
-     "เสียงอ่าน: เปิด"
+     "เสียงอ่านจากปัญญาประดิษฐ์: เปิด"
     ],
     "ui:voice.loading": [
-     "เสียงอ่าน: กำลังโหลด…"
+     "เสียงอ่านจากปัญญาประดิษฐ์: กำลังโหลด…"
+    ],
+    "ui:ai.label": [
+     "ปัญญาประดิษฐ์"
     ],
     "ui:verdict.yourAnswer": [
      "คำตอบโต้ของคุณ"
@@ -42784,10 +43069,10 @@
      "Gemma 4 E2B · บนอุปกรณ์เครื่องนี้"
     ],
     "ui:badge.writtenJudged": [
-     "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B"
+     "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B"
     ],
     "ui:badge.written": [
-     "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว"
+     "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว"
     ],
     "ui:stats.rounds": [
      "ยกที่เล่น"
@@ -42838,7 +43123,7 @@
      "Gemma 4 E2B กำลังทำงานบนอุปกรณ์เครื่องนี้"
     ],
     "ui:theatre.writtenHint": [
-     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่"
+     "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่"
     ],
     "ui:theatre.enterAr": [
      "เข้า: เวทีในห้องของคุณ"
@@ -42896,6 +43181,15 @@
     ],
     "ui:theatre.judging": [
      "กำลังตัดสิน…"
+    ],
+    "ui:battle.lang.written": [
+     "ญี่ปุ่น: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี"
+    ],
+    "ui:battle.lang.rules": [
+     "ญี่ปุ่น: ตัดสินด้วยกฎ เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี"
+    ],
+    "ui:brain.noneShown": [
+     "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว และตัดสินด้วยกฎ"
     ],
     "pack:acrostic.0": [
      "ฟ้า ดิน น้ำ ลม"
@@ -43252,9 +43546,9 @@
   },
   "id": {
    "strings": {
-    "ui": 428,
+    "ui": 432,
     "pack": 129,
-    "sentences": 557
+    "sentences": 561
    },
    "languagetool": null,
    "hunspell": [
@@ -45480,13 +45774,13 @@
      "Gemma 4 E2B sudah dimuat di perangkat ini. Modelnya kecil: ia menilai syair, sedangkan lawan memainkan syair yang sudah ditulis."
     ],
     "ui:brain.failed": [
-     "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis."
+     "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis."
     ],
     "ui:brain.noModel": [
      "Bermain tanpa model."
     ],
     "ui:brain.written": [
-     "Bermain melawan lawan bersyair tertulis."
+     "Bermain melawan lawan dengan syair tertulis."
     ],
     "ui:brain.noWebgpu": [
      "Peramban ini tidak punya WebGPU, jadi lawan memainkan syair yang sudah ditulis dan penilaian memakai aturan. Selebihnya berjalan seperti biasa."
@@ -45501,7 +45795,7 @@
      "Panggil Gemma 4 E2B (3,1 GB): unduhan yang lebih ringan"
     ],
     "ui:brain.writtenReload": [
-     "Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman."
+     "Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman."
     ],
     "ui:round.label": [
      "Ronde 3 dari 3"
@@ -45693,13 +45987,16 @@
      "Mikrofon tidak diizinkan"
     ],
     "ui:voice.off": [
-     "Suara: mati"
+     "Suara AI: mati"
     ],
     "ui:voice.on": [
-     "Suara: nyala"
+     "Suara AI: nyala"
     ],
     "ui:voice.loading": [
-     "Suara: memuat…"
+     "Suara AI: memuat…"
+    ],
+    "ui:ai.label": [
+     "AI"
     ],
     "ui:verdict.yourAnswer": [
      "Jawabanmu"
@@ -45837,10 +46134,10 @@
      "Gemma 4 E2B · di perangkat ini"
     ],
     "ui:badge.writtenJudged": [
-     "Lawan bersyair tertulis · dinilai Gemma 4 E2B"
+     "Lawan dengan syair tertulis · dinilai Gemma 4 E2B"
     ],
     "ui:badge.written": [
-     "Lawan bersyair tertulis"
+     "Lawan dengan syair tertulis"
     ],
     "ui:stats.rounds": [
      "Ronde dimainkan"
@@ -45949,6 +46246,15 @@
     ],
     "ui:theatre.judging": [
      "Menilai…"
+    ],
+    "ui:battle.lang.written": [
+     "Thai: lawanmu memakai syair tertulis, karena Gemma 4 E2B belum terbukti mampu menulis syair dengan baik dalam bahasa ini."
+    ],
+    "ui:battle.lang.rules": [
+     "Thai: dinilai dengan aturan, karena Gemma 4 E2B belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini."
+    ],
+    "ui:brain.noneShown": [
+     "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan."
     ],
     "pack:acrostic.0": [
      "raja"
