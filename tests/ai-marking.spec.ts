@@ -97,8 +97,13 @@ test.describe('A verse a model wrote is marked', () => {
       new MutationObserver((records) => { (window as any).__regionChanges += records.length; })
         .observe(document.getElementById('opponent-said')!, { childList: true, characterData: true, subtree: true });
     });
-    await page.locator('#verse-input').pressSequentially('The moon is bright tonight', { delay: 20 });
-    await expect(page.locator('#live-craft')).not.toHaveText('0');
+    // Choosing who answers and typing both redraw the round; the checklist is redrawn from the same changes (it says
+    // what the verse does so far), so it shows the redraws happened.
+    await page.locator('#hand-characters [data-char-id]').first().click();
+    await expect(page.locator('#live-checks li')).not.toHaveCount(1);
+    const checks = await page.locator('#live-checks').innerText();
+    await page.locator('#verse-input').pressSequentially('The moon is bright tonight\nAnd I sing', { delay: 20 });
+    await expect.poll(() => page.locator('#live-checks').innerText()).not.toBe(checks);
     expect(await page.evaluate(() => (window as any).__regionChanges)).toBe(0);
   });
 
