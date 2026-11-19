@@ -58,4 +58,21 @@ test('the notices the page points to are served', async ({ request }) => {
   const ofl = await request.get('/fonts/OFL.txt');
   expect(ofl.status()).toBe(200);
   expect(await ofl.text()).toContain('SIL OPEN FONT LICENSE Version 1.1');
+  // The notices of every package and work the build ships (scripts/third-party-notices.mjs), and ONNX Runtime's.
+  const notices = await request.get('/licenses/THIRD-PARTY-NOTICES.txt');
+  expect(notices.status()).toBe(200);
+  const text = await notices.text();
+  for (const w of ['PART 1. SOFTWARE PACKAGES', 'Copyright (c) 2001, Dr Martin Porter', 'UNICODE LICENSE V3', 'Copyright (c) 2020 Matthew Miller']) expect(text).toContain(w);
+  for (const v of ['1.22', '1.31']) {
+    const ort = await request.get(`/licenses/onnxruntime-${v}-ThirdPartyNotices.txt`);
+    expect(ort.status()).toBe(200);
+  }
+});
+
+test('the credits page links the notices file, and says which packages each library entry covers', async ({ page }) => {
+  await page.goto('/credits');
+  await expect(page.locator('a#third-party-notices')).toHaveAttribute('href', '/licenses/THIRD-PARTY-NOTICES.txt');
+  const lit = page.locator('[data-packages~="lit-html@3.3.2"]');
+  await expect(lit).toContainText('Lit 3');
+  await expect(lit).toContainText('lit-html@3.3.2, lit-element@4.2.2, @lit/reactive-element@2.1.2');
 });

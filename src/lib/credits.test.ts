@@ -88,6 +88,44 @@ describe('the credits page', () => {
   });
 });
 
+describe('what the credits page says the licenses ask', () => {
+  it('points to the notices file the build writes, and to ONNX Runtime\'s, which this site serves', () => {
+    expect(page).toContain("const NOTICES_FILE = '/licenses/THIRD-PARTY-NOTICES.txt'");
+    expect(page).toContain('id="third-party-notices" href={NOTICES_FILE}');
+    for (const v of ['1.22', '1.31']) expect(page).toContain(`/licenses/onnxruntime-${v}-ThirdPartyNotices.txt`);
+    // No duty line may say a notice goes with the code without saying where it is.
+    for (const m of page.matchAll(/duties: '(\\'|[^'])*'/g)) {
+      if (/go(es)? with (the )?(code|copies|data)/.test(m[0])) expect([m[0], /notices file|first lines|that file|which goes with the code/.test(m[0])]).toEqual([m[0], true]);
+    }
+  });
+
+  it('names every library entry\'s packages, which the build holds to the bundle', () => {
+    const block = page.slice(page.indexOf('const LIBRARIES: Entry[] = ['), page.indexOf('const FONTS = ['));
+    const entries = block.split(/\n  \{\n/).slice(1);
+    expect(entries.length).toBeGreaterThanOrEqual(10);
+    for (const e of entries) {
+      const name = e.match(/name: '([^']+)'/)?.[1];
+      // The Draco and Basis files are three.js's; their license is a file license (Part 2 of the notices).
+      if (/Draco/.test(name ?? '')) continue;
+      expect([name, /packages: \[/.test(e)]).toEqual([name, true]);
+    }
+  });
+
+  it('says what was done to the data, as the build scripts do it, and nothing the record does not show', () => {
+    // scripts/build-function-words.mjs lower-cases, normalises and drops entries; the page said "kept as published".
+    expect(page).not.toContain('kept as published');
+    expect(page).toMatch(/lower-cased and put in Unicode NFC form, without its entries of more than one word or with no letter/);
+    // docs/CARD-ART.md says each image "was looked at before use"; it does not say by whom.
+    expect(page).not.toMatch(/looked at by a person/);
+    expect(read('docs/CARD-ART.md')).toMatch(/looked at before use/);
+  });
+
+  it('gives eSpeak NG\'s license and does not claim its corresponding source is linked', () => {
+    expect(page).not.toMatch(/both are at the eSpeak NG and phonemizer links/);
+    expect(page).toMatch(/phonemizer.{0,40}repository holds only the compiled file/);
+  });
+});
+
 describe('docs/ASSETS.md', () => {
   it('records every music, sound and 3D file the site serves, by name', () => {
     for (const dir of ['public/audio/music', 'public/audio/sfx', 'public/models', 'public/models/splats']) {

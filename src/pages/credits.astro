@@ -47,7 +47,7 @@ const MODELS: Entry[] = [
   },
 ];
 
-const SHARE_ALIKE = 'Attribution (this page), and share-alike: the tables we made from it are themselves licensed under CC BY-SA 4.0, and so is any table made from them.';
+const SHARE_ALIKE = 'Attribution (this page), and share-alike: the tables we made from it are themselves licensed under CC BY-SA 4.0, and so is any table made from them. The license\'s disclaimer of warranties (its section 5) applies to them; the statement in this site\'s third-party notices file (below) says so.';
 
 const DATA: Entry[] = [
   {
@@ -102,7 +102,7 @@ const DATA: Entry[] = [
     source: [{ text: 'unicode.org/charts/unihan.html', href: 'https://www.unicode.org/charts/unihan.html' }, { text: 'cldr.unicode.org', href: 'https://cldr.unicode.org/' }],
     license: [{ text: 'Unicode License v3', href: 'https://www.unicode.org/license.txt' }],
     changed: 'Reduced to the readings and words the game needs.',
-    duties: 'The copyright notice and license go with the data (in each generated file\'s header, and here).',
+    duties: 'The copyright and permission notice go with the data: the Unicode License is in this site\'s third-party notices file (below).',
   },
   {
     name: 'Unicode confusables (UTS #39), version 18.0.0',
@@ -111,7 +111,7 @@ const DATA: Entry[] = [
     source: [{ text: 'unicode.org/reports/tr39', href: 'https://www.unicode.org/reports/tr39/' }],
     license: [{ text: 'Unicode License v3', href: 'https://www.unicode.org/license.txt' }],
     changed: '586 entries kept: single letters whose prototype is one Latin letter.',
-    duties: 'The copyright notice and license go with the data.',
+    duties: 'The copyright and permission notice go with the data: the Unicode License is in this site\'s third-party notices file (below).',
   },
   {
     name: 'mecab-ipadic 2.7.0-20070801',
@@ -137,8 +137,8 @@ const DATA: Entry[] = [
     use: 'The little words of each language, which never count as words that tell.',
     source: [{ text: 'github.com/stopwords-iso/stopwords-iso', href: 'https://github.com/stopwords-iso/stopwords-iso' }],
     license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
-    changed: 'One list per language, kept as published.',
-    duties: 'The copyright and permission notice go with copies.',
+    changed: 'Each language\'s list lower-cased and put in Unicode NFC form, without its entries of more than one word or with no letter.',
+    duties: 'The copyright and permission notice go with copies: they are in this site\'s third-party notices file (below). The npm package carries no license file, so the notice there is its repository\'s.',
   },
   {
     name: 'Snowball stemmers 3.2.0',
@@ -147,7 +147,7 @@ const DATA: Entry[] = [
     source: [{ text: 'snowballstem.org', href: 'https://snowballstem.org/' }],
     license: [{ text: 'BSD 3-Clause License', href: 'https://opensource.org/license/bsd-3-clause' }],
     changed: 'Nothing: the project\'s generated JavaScript, copied unchanged.',
-    duties: 'The copyright notice, conditions and disclaimer go with copies.',
+    duties: 'The copyright notice, conditions and disclaimer go with copies: they are in this site\'s third-party notices file (below).',
   },
   {
     name: 'Wikidata and Wikipedia',
@@ -174,55 +174,115 @@ const DATA: Entry[] = [
     source: [{ text: 'github.com/BYVoid/OpenCC', href: 'https://github.com/BYVoid/OpenCC' }, { text: 'lucene.apache.org', href: 'https://lucene.apache.org/' }, { text: 'github.com/fxsjy/jieba', href: 'https://github.com/fxsjy/jieba' }, { text: 'github.com/PyThaiNLP/pythainlp', href: 'https://github.com/PyThaiNLP/pythainlp' }],
     license: [{ text: 'OpenCC and Lucene: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'jieba: MIT', href: 'https://opensource.org/license/mit' }, { text: 'Wikipedia: CC BY-SA 4.0', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }, { text: 'PyThaiNLP\'s word list: CC0 1.0', href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
     changed: 'Only the characters and words the game\'s card text needs.',
-    duties: 'Notices and credit as each license asks; share-alike for what comes from Wikipedia.',
+    duties: 'Apache 2.0 (OpenCC, Lucene): a copy of the license and Lucene\'s attribution notice; MIT (jieba): its copyright and permission notice. All are in this site\'s third-party notices file (below). Share-alike for what comes from Wikipedia.',
   },
 ];
 
+// Each library entry names the npm packages it covers at their versions. The build checks that list against
+// what the bundle really holds, both ways, and writes every package's license file into
+// public/licenses/THIRD-PARTY-NOTICES.txt (scripts/third-party-notices.mjs): a package that ships uncredited,
+// or one named here that does not ship, stops the build.
+const NOTICES_FILE = '/licenses/THIRD-PARTY-NOTICES.txt';
+const IN_NOTICES = 'Its license file and notices are in this site\'s third-party notices file (below), which goes with the code.';
 const LIBRARIES: Entry[] = [
   {
     name: 'Babylon.js 9.36 (core, GUI, loaders)',
-    by: 'The Babylon.js team',
+    by: 'The Babylon.js team; its NOTICE file also credits the Khronos Group and meshoptimizer (Arseny Kapoulkine)',
     use: 'The Theatre, the VR gallery and the 3D viewer\'s splats.',
     source: [{ text: 'github.com/BabylonJS/Babylon.js', href: 'https://github.com/BabylonJS/Babylon.js' }],
     license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
     changed: 'Nothing; bundled, with its online hand and controller models turned off.',
-    duties: 'Its license and notices go with the code.',
+    duties: 'Apache 2.0: a copy of the license and the attribution notices of its NOTICE file go with the code. Both are in this site\'s third-party notices file (below).',
+    packages: ['@babylonjs/core@9.36.0', '@babylonjs/gui@9.36.0', '@babylonjs/loaders@9.36.0'],
   },
   {
-    name: '<model-viewer> 4.4, with three.js 0.183',
-    by: 'Google; the three.js authors',
+    name: '<model-viewer> 4.4',
+    by: 'Google',
     use: 'The 3D model and "View in AR" on the collection and the viewer.',
-    source: [{ text: 'github.com/google/model-viewer', href: 'https://github.com/google/model-viewer' }, { text: 'github.com/mrdoob/three.js', href: 'https://github.com/mrdoob/three.js' }],
-    license: [{ text: 'model-viewer: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'three.js: MIT', href: 'https://opensource.org/license/mit' }],
+    source: [{ text: 'github.com/google/model-viewer', href: 'https://github.com/google/model-viewer' }],
+    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
     changed: 'Nothing; served from this site instead of a public CDN.',
-    duties: 'Their licenses and notices go with the code.',
+    duties: IN_NOTICES,
+    packages: ['@google/model-viewer@4.4.0'],
+  },
+  {
+    name: 'three.js 0.183',
+    by: 'The three.js authors',
+    use: 'Draws <model-viewer>\'s 3D model.',
+    source: [{ text: 'github.com/mrdoob/three.js', href: 'https://github.com/mrdoob/three.js' }],
+    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing; bundled with <model-viewer>.',
+    duties: 'Its copyright and permission notice go with the code: they are in this site\'s third-party notices file (below).',
+    packages: ['three@0.183.2'],
+  },
+  {
+    name: 'The Draco decoder and the Basis Universal transcoder, as three.js 0.183 carries them',
+    by: 'Google (Draco); Binomial LLC (Basis Universal)',
+    use: 'Would unpack a compressed 3D model or texture for <model-viewer>. No model on the site is compressed today; they are served from this site so that one that is never sends your browser to Google for a decoder.',
+    source: [{ text: 'github.com/google/draco', href: 'https://github.com/google/draco' }, { text: 'github.com/BinomialLLC/basis_universal', href: 'https://github.com/BinomialLLC/basis_universal' }],
+    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    changed: 'Nothing; copied from three.js\'s examples/jsm/libs folder.',
+    duties: 'Apache 2.0: a copy of the license, and Basis Universal\'s NOTICE file, go with them. Both are in this site\'s third-party notices file (below).',
+  },
+  {
+    name: 'Lit 3 (lit-html 3.3, lit-element 4.2, @lit/reactive-element 2.1)',
+    by: 'Google LLC',
+    use: 'The web-component base that <model-viewer> is built on.',
+    source: [{ text: 'github.com/lit/lit', href: 'https://github.com/lit/lit' }],
+    license: [{ text: 'BSD 3-Clause License', href: 'https://opensource.org/license/bsd-3-clause' }],
+    changed: 'Nothing; bundled with <model-viewer>.',
+    duties: 'Its copyright notice, conditions and disclaimer go with the code: they are in this site\'s third-party notices file (below).',
+    packages: ['lit-html@3.3.2', 'lit-element@4.2.2', '@lit/reactive-element@2.1.2'],
+  },
+  {
+    name: 'gainmap-js 3.4',
+    by: 'MONOGRID',
+    use: 'Reads HDR "gain map" images for <model-viewer>.',
+    source: [{ text: 'github.com/MONOGRID/gainmap-js', href: 'https://github.com/MONOGRID/gainmap-js' }],
+    license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing; bundled with <model-viewer>.',
+    duties: 'Its copyright and permission notice go with the code: they are in this site\'s third-party notices file (below).',
+    packages: ['@monogrid/gainmap-js@3.4.0'],
   },
   {
     name: 'Transformers.js 4.3 and ONNX Runtime Web 1.31 (a development build)',
     by: 'Hugging Face; Microsoft',
-    use: 'Runs the language models and Whisper in your browser.',
-    source: [{ text: 'github.com/huggingface/transformers.js', href: 'https://github.com/huggingface/transformers.js' }, { text: 'github.com/microsoft/onnxruntime', href: 'https://github.com/microsoft/onnxruntime' }],
-    license: [{ text: 'Transformers.js: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'ONNX Runtime: MIT', href: 'https://opensource.org/license/mit' }],
+    use: 'Runs the language models and Whisper in your browser. Transformers.js\'s own file carries Hugging Face\'s Jinja template reader (0.5.10) and tokenizers (0.2.0) inside it.',
+    source: [{ text: 'github.com/huggingface/transformers.js', href: 'https://github.com/huggingface/transformers.js' }, { text: 'onnxruntime.ai', href: 'https://onnxruntime.ai/' }],
+    license: [{ text: 'Transformers.js and tokenizers: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'Jinja (@huggingface/jinja) and ONNX Runtime: MIT', href: 'https://opensource.org/license/mit' }],
     changed: 'Nothing; ONNX Runtime\'s WebAssembly files are served from this site instead of a public CDN.',
-    duties: 'Their licenses and notices go with the code.',
+    duties: 'Their licenses and notices go with the code: they are in this site\'s third-party notices file (below). ONNX Runtime\'s WebAssembly is compiled with code of others, whose notices ONNX Runtime publishes; this site serves them too (/licenses/onnxruntime-1.31-ThirdPartyNotices.txt).',
+    packages: ['@huggingface/transformers@4.3.2', '@huggingface/jinja@0.5.10', '@huggingface/tokenizers@0.2.0', 'onnxruntime-web@1.31.0-dev.20260914-8d85527a0', 'onnxruntime-common@1.30.0'],
   },
   {
-    name: 'kokoro-js 1.2.1, with phonemizer 1.2.1 and eSpeak NG',
-    by: 'hexgrad (kokoro-js); Xenova (phonemizer); the eSpeak NG contributors',
-    use: 'Reads English verse aloud with Kokoro. phonemizer, which kokoro-js uses to turn text into sounds, contains eSpeak NG compiled to WebAssembly.',
-    source: [{ text: 'github.com/hexgrad/kokoro', href: 'https://github.com/hexgrad/kokoro' }, { text: 'github.com/xenova/phonemizer.js', href: 'https://github.com/xenova/phonemizer.js' }, { text: 'github.com/espeak-ng/espeak-ng', href: 'https://github.com/espeak-ng/espeak-ng' }],
-    license: [{ text: 'kokoro-js and phonemizer: Apache 2.0, as their packages declare', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'eSpeak NG: GNU General Public License, version 3 or later', href: 'https://www.gnu.org/licenses/gpl-3.0.html' }],
-    changed: 'Nothing; bundled as published, and loaded only when you turn the voice on.',
-    duties: 'Apache 2.0 for kokoro-js and phonemizer. eSpeak NG\'s GPL asks that whoever passes on its compiled form also gives its license and offers its corresponding source; both are at the eSpeak NG and phonemizer links here.',
+    name: 'kokoro-js 1.2.1, with its own Transformers.js 3.8.1 and ONNX Runtime Web 1.22 (a development build)',
+    by: 'hexgrad (kokoro-js); Hugging Face; Microsoft',
+    use: 'Reads English verse aloud with Kokoro, loaded only when you turn the voice on. It carries an older Transformers.js of its own, whose file carries Hugging Face\'s Jinja template reader inside it (its version is not recorded there), and that Transformers.js its own ONNX Runtime.',
+    source: [{ text: 'github.com/hexgrad/kokoro', href: 'https://github.com/hexgrad/kokoro' }, { text: 'github.com/huggingface/transformers.js', href: 'https://github.com/huggingface/transformers.js' }],
+    license: [{ text: 'kokoro-js and Transformers.js: Apache 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'Jinja and ONNX Runtime: MIT', href: 'https://opensource.org/license/mit' }],
+    changed: 'Nothing; bundled as published, and its ONNX Runtime\'s WebAssembly served from this site instead of a public CDN.',
+    duties: 'Their licenses and notices go with the code: they are in this site\'s third-party notices file (below), and ONNX Runtime 1.22\'s notices of the code compiled into it at /licenses/onnxruntime-1.22-ThirdPartyNotices.txt.',
+    packages: ['kokoro-js@1.2.1', '@huggingface/transformers@3.8.1', '@huggingface/jinja', 'onnxruntime-web@1.22.0-dev.20250409-89f8206ba4', 'onnxruntime-common@1.21.0'],
   },
   {
-    name: 'kuromoji 0.1.2',
+    name: 'phonemizer 1.2.1, with eSpeak NG',
+    by: 'Xenova (phonemizer); the eSpeak NG contributors',
+    use: 'kokoro-js uses it to turn English text into sounds before Kokoro speaks them, loaded only when you turn the voice on. Its file is eSpeak NG compiled to WebAssembly.',
+    source: [{ text: 'github.com/xenova/phonemizer.js', href: 'https://github.com/xenova/phonemizer.js' }, { text: 'github.com/espeak-ng/espeak-ng', href: 'https://github.com/espeak-ng/espeak-ng' }],
+    license: [{ text: 'phonemizer: Apache 2.0, as its package declares', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'eSpeak NG: GNU General Public License, version 3 or later', href: 'https://www.gnu.org/licenses/gpl-3.0.html' }],
+    changed: 'Nothing; bundled as published.',
+    duties: 'The GPL asks whoever passes on eSpeak NG in compiled form to give its license with it, and its corresponding source: the source code it was compiled from and the scripts that build it. The license is in this site\'s third-party notices file (below). phonemizer\'s repository holds only the compiled file, and does not say which eSpeak NG source or build scripts it was made from, so this page cannot point to them.',
+    packages: ['phonemizer@1.2.1'],
+  },
+  {
+    name: 'kuromoji 0.1.2, with doublearray 0.0.2',
     by: 'Takuya Asano and contributors',
-    use: 'The Japanese analyser.',
-    source: [{ text: 'github.com/takuyaa/kuromoji.js', href: 'https://github.com/takuyaa/kuromoji.js' }],
-    license: [{ text: 'Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+    use: 'The Japanese analyser, and the dictionary structure it reads.',
+    source: [{ text: 'github.com/takuyaa/kuromoji.js', href: 'https://github.com/takuyaa/kuromoji.js' }, { text: 'github.com/takuyaa/doublearray', href: 'https://github.com/takuyaa/doublearray' }],
+    license: [{ text: 'kuromoji: Apache License 2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }, { text: 'doublearray: MIT', href: 'https://opensource.org/license/mit' }],
     changed: 'Nothing in the code; its dictionary is cut down (above).',
-    duties: 'Its license and notices go with the code.',
+    duties: 'Their licenses and kuromoji\'s NOTICE go with the code: they are in this site\'s third-party notices file (below).',
+    packages: ['kuromoji@0.1.2', 'doublearray@0.0.2'],
   },
   {
     name: 'SimpleWebAuthn (browser) 14',
@@ -231,16 +291,18 @@ const LIBRARIES: Entry[] = [
     source: [{ text: 'github.com/MasterKale/SimpleWebAuthn', href: 'https://github.com/MasterKale/SimpleWebAuthn' }],
     license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
     changed: 'Nothing.',
-    duties: 'Its copyright and permission notice go with the code.',
+    duties: 'Its copyright and permission notice go with the code: they are in this site\'s third-party notices file (below).',
+    packages: ['@simplewebauthn/browser@14.0.0'],
   },
   {
-    name: 'Astro 7 and Tailwind CSS 4',
-    by: 'The Astro project; Tailwind Labs',
-    use: 'The site is built with them: Astro makes the pages, Tailwind CSS the stylesheet.',
-    source: [{ text: 'astro.build', href: 'https://astro.build/' }, { text: 'tailwindcss.com', href: 'https://tailwindcss.com/' }],
+    name: 'Tailwind CSS 4, Vite 8 and Rolldown 1, with Astro 7',
+    by: 'Tailwind Labs; VoidZero and the Vite and Rolldown contributors; the Astro project',
+    use: 'The site is built with them. Astro makes the pages and sends none of its own code; Tailwind CSS writes part of the stylesheet; Vite and Rolldown bundle the scripts and add a few lines of their own to them (the module loader and its preloading).',
+    source: [{ text: 'tailwindcss.com', href: 'https://tailwindcss.com/' }, { text: 'vite.dev', href: 'https://vite.dev/' }, { text: 'rolldown.rs', href: 'https://rolldown.rs/' }, { text: 'astro.build', href: 'https://astro.build/' }],
     license: [{ text: 'MIT License', href: 'https://opensource.org/license/mit' }],
     changed: 'Nothing.',
-    duties: 'Their copyright and permission notices go with the code they put in the site.',
+    duties: 'Their copyright and permission notices go with the code they put in the site: they are in this site\'s third-party notices file (below).',
+    packages: ['tailwindcss@4.3.5', 'vite@8.3.8', 'rolldown@1.2.19'],
   },
 ];
 
@@ -259,7 +321,7 @@ const ART: Entry[] = [
     use: 'Every card\'s picture, and the picture shared with links to the site.',
     source: [{ text: 'black-forest-labs/flux-3-image-klein', href: 'https://huggingface.co/black-forest-labs/flux-3-image-klein' }],
     license: [{ text: 'FLUX Kommunity License v1.0 (for the model; Black Forest Labs claims no ownership of what it makes)', href: 'https://huggingface.co/black-forest-labs/flux-3-image-klein' }],
-    changed: 'Generated on the company\'s own machines and saved as WebP. Each was looked at by a person before it was used.',
+    changed: 'Generated on the company\'s own machines and saved as WebP. Each was looked at before it was used.',
     duties: 'These pictures were generated with artificial intelligence. Commercial use of what the model makes is licensed to a "Qualifying User": one whose revenue, with its affiliates\', is below US$5,000,000 a year. What it makes must be reviewed before it is published.',
   },
   {
@@ -411,6 +473,19 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
         </div>
 
         <div>
+          <h2 id="notices" class="text-xl font-display font-semibold text-white mb-3">Third-party notices</h2>
+          <p>
+            The license texts and notices of every package and work above that asks for them, as they go with the copies this
+            site sends to your browser, are in one file, written from the build itself:
+            <a id="third-party-notices" href={NOTICES_FILE} class={linkCls}>{NOTICES_FILE}</a>. The notices of the code compiled
+            into ONNX Runtime are served beside it:
+            <a href="/licenses/onnxruntime-1.31-ThirdPartyNotices.txt" class={linkCls}>ONNX Runtime 1.31</a> and
+            <a href="/licenses/onnxruntime-1.22-ThirdPartyNotices.txt" class={linkCls}>ONNX Runtime 1.22</a>. Nothing in our
+            <a href="/terms" class={linkCls}>Terms of Service</a> restricts what these licenses allow you to do with these works.
+          </p>
+        </div>
+
+        <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Notice: mecab-ipadic</h2>
           <p>
             The full notice of the Nara Institute of Science and Technology, with the conditions of ICOT Free Software that
@@ -423,7 +498,7 @@ const linkCls = 'text-accent hover:text-accent-light transition-colors underline
           <h2 class="text-xl font-display font-semibold text-white mb-3">Contact</h2>
           <p>
             If your work is in the game and is not credited as you wish, write to
-            <a href="mailto:david@davidjcharlot.com" class={linkCls}>david@davidjcharlot.com</a>.
+            <a href="mailto:contact@voyagetracable.com" class={linkCls}>contact@voyagetracable.com</a>.
           </p>
         </div>
       </div>
