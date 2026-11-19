@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Chave',
   'tour.select': 'Escolha um torneio…',
   'tour.selectHint': 'Escolha um torneio para ver a chave.',
-  'tour.deadlineRule': 'Uma partida não jogada até o prazo fica com o jogador que veio jogá-la e esperou o outro. Se os dois fizeram isso, ou nenhum, o servidor sorteia, exceto em um torneio todos contra todos, em que a partida fica sem ser jogada.',
+  'tour.deadlineRule': 'Uma partida não jogada até o prazo fica com o jogador que veio jogá-la e esperou o outro. Se os dois fizeram isso, ou nenhum, ninguém a vence: na eliminação simples os dois saem do torneio, e em um torneio todos contra todos a partida fica sem ser jogada. Só uma partida jogada conta como vitória.',
   'tour.leaderboard': 'Classificação',
   'tour.empty': 'Ainda não há torneios. Volte em breve.',
   'tour.status.registration': 'Inscrições abertas',

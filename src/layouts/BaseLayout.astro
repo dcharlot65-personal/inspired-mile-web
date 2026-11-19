@@ -724,7 +724,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       import { adultsOnlyShown } from '../lib/adults-only';
       import { getMigrationStatus, importCards, type AuthResponse, type PasskeyInfo } from '../lib/api-client';
       import { getDeviceCards } from '../lib/inventory';
-      import { importDone, importSkipped, offerImport } from '../lib/import-offer';
+      import { importDone, importIds, importSkipped, offerImport } from '../lib/import-offer';
       import { refreshAccountCards } from '../lib/account-cards';
       import { claimDailyBonus } from '../lib/credits';
       import { fillSlots, has, initI18n, onLocaleChange, t } from '../i18n';
@@ -1388,8 +1388,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
       // --- The one-time import of this device's cards ---
       // Signed in, the collection is the account's (src/lib/account-cards.ts). The cards this device
-      // collected signed out can come over once per account, capped by the server: one of each, the
-      // rarest first (backend/src/migration/handlers.rs). Stats and achievements stay on the device.
+      // collected signed out can come over once per account, on its first sign-in (its first hours),
+      // capped by the server: one of each, the rarest first (backend/src/migration/handlers.rs).
+      // Stats and achievements stay on the device.
       let importLimit = 0;
       function drawImportLimit() {
         const el = document.getElementById('migration-limit');
@@ -1408,7 +1409,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
         try {
           const status = await getMigrationStatus();
-          if (status.migrated) return;
+          if (status.migrated || status.open === false) return;
           importLimit = status.max_cards;
         } catch {
           return; // Server unreachable
@@ -1424,7 +1425,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         btn.disabled = true;
 
         try {
-          const result = await importCards(getDeviceCards().map((c) => c.cardId));
+          const result = await importCards(importIds(getDeviceCards()));
           importDone(getCurrentUser()?.id);
           await refreshAccountCards();
           const resultEl = document.getElementById('migration-result')!;

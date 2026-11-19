@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': '대진표',
   'tour.select': '토너먼트 선택…',
   'tour.selectHint': '토너먼트를 선택하면 대진표를 볼 수 있어요.',
-  'tour.deadlineRule': '기한까지 치르지 않은 경기는 경기하러 와서 상대를 기다린 플레이어의 승리가 돼요. 둘 다 그랬거나 아무도 그러지 않았다면 서버가 추첨으로 정해요. 단, 리그전에서는 그 경기가 치르지 않은 채로 남아요.',
+  'tour.deadlineRule': '기한까지 치르지 않은 경기는 경기하러 와서 상대를 기다린 플레이어의 승리가 돼요. 둘 다 그랬거나 아무도 그러지 않았다면 아무도 이기지 않아요. 싱글 엘리미네이션에서는 두 사람 모두 탈락하고, 리그전에서는 그 경기가 치르지 않은 채로 남아요. 실제로 치른 경기만 승리로 쳐요.',
   'tour.leaderboard': '순위표',
   'tour.empty': '아직 토너먼트가 없어요. 조금 뒤에 다시 확인해 주세요.',
   'tour.status.registration': '참가 신청 중',

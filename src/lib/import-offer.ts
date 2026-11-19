@@ -30,6 +30,16 @@ function skipped(): string[] {
   }
 }
 
+/**
+ * What the banner sends: each different card the device holds, once. The device keeps a row per
+ * card it collected (a card won ten times is ten rows), and the server takes one copy of each; until
+ * the third check of 2026-11-19 every row was sent, and a device with more than 500 rows was refused
+ * whole ("Too many cards"), so the players who had played most could never bring their cards over.
+ */
+export function importIds(deviceCards: ReadonlyArray<{ cardId: string }>): string[] {
+  return [...new Set(deviceCards.map((c) => c.cardId))];
+}
+
 /** Whether to offer this device's cards to this account now. */
 export function offerImport(userId: string | null | undefined, deviceCards: number): boolean {
   if (!userId || deviceCards === 0) return false;

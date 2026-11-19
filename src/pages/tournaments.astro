@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- A match nobody plays does not stop the tournament (backend/src/tournaments/progress.rs, docs/ECONOMY.md). -->
-        <p id="bracket-rule" class="text-xs text-obsidian-500 mb-4 max-w-2xl" data-i18n="tour.deadlineRule">A match not played by its date goes to the player who came to its room and waited for the other. If both or neither did, the server draws lots; in a round robin, the match is left unplayed.</p>
+        <p id="bracket-rule" class="text-xs text-obsidian-500 mb-4 max-w-2xl" data-i18n="tour.deadlineRule">A match not played by its deadline goes to the player who came to play it and waited for the other. If both or neither did, nobody wins it: in single elimination both players are out, and in a round robin it is left unplayed. Only a match played counts as a win.</p>
 
         <div id="bracket-container" class="overflow-x-auto">
           <div class="text-center py-12">

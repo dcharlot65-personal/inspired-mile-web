@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Tabellone',
   'tour.select': 'Scegli un torneo…',
   'tour.selectHint': 'Scegli un torneo per vedere il suo tabellone.',
-  'tour.deadlineRule': 'Una partita non giocata entro la scadenza va al giocatore che è venuto a giocarla e ha aspettato l’altro. Se l’hanno fatto entrambi o nessuno, il server tira a sorte, tranne nel girone all’italiana, dove la partita resta non giocata.',
+  'tour.deadlineRule': 'Una partita non giocata entro la scadenza va al giocatore che è venuto a giocarla e ha aspettato l’altro. Se l’hanno fatto entrambi o nessuno, non la vince nessuno: nell’eliminazione diretta escono entrambi, e nel girone all’italiana la partita resta non giocata. Conta come vittoria solo una partita giocata.',
   'tour.leaderboard': 'Classifica',
   'tour.empty': 'Non ci sono ancora tornei. Torna presto.',
   'tour.status.registration': 'Iscrizioni aperte',

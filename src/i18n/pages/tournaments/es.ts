@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Cuadro',
   'tour.select': 'Elige un torneo…',
   'tour.selectHint': 'Elige un torneo para ver su cuadro.',
-  'tour.deadlineRule': 'Una partida que no se juegue antes de su fecha límite es para el jugador que vino a jugarla y esperó al otro. Si lo hicieron los dos o ninguno, el servidor la sortea, salvo en un torneo de todos contra todos, donde la partida queda sin jugar.',
+  'tour.deadlineRule': 'Una partida que no se juegue antes de su fecha límite es para el jugador que vino a jugarla y esperó al otro. Si lo hicieron los dos o ninguno, nadie la gana: en eliminación directa quedan fuera los dos, y en un torneo de todos contra todos la partida queda sin jugar. Solo una partida jugada cuenta como victoria.',
   'tour.leaderboard': 'Clasificación',
   'tour.empty': 'Todavía no hay torneos. Vuelve pronto.',
   'tour.status.registration': 'Inscripción abierta',

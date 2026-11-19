@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Turnierbaum',
   'tour.select': 'Turnier wählen\u00a0…',
   'tour.selectHint': 'Wähle ein Turnier, um seinen Turnierbaum zu sehen.',
-  'tour.deadlineRule': 'Ein Match, das bis zu seiner Frist nicht gespielt wurde, geht an den Spieler, der zum Spielen kam und auf den anderen gewartet hat. Haben das beide oder keiner getan, entscheidet das Los des Servers, außer im Format „jeder gegen jeden“: Dort bleibt das Match ungespielt.',
+  'tour.deadlineRule': 'Ein Match, das bis zu seiner Frist nicht gespielt wurde, geht an den Spieler, der zum Spielen kam und auf den anderen gewartet hat. Haben das beide oder keiner getan, gewinnt es niemand: Im K.‑o.‑System scheiden beide aus, im Format „jeder gegen jeden“ bleibt das Match ungespielt. Als Sieg zählt nur ein gespieltes Match.',
   'tour.leaderboard': 'Rangliste',
   'tour.empty': 'Es gibt noch keine Turniere. Schau bald wieder vorbei.',
   'tour.status.registration': 'Anmeldung offen',

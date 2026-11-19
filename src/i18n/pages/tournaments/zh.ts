@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': '对阵表',
   'tour.select': '选择一项锦标赛…',
   'tour.selectHint': '选择一项锦标赛以查看它的对阵表。',
-  'tour.deadlineRule': '未在截止时间前进行的比赛，判给前来比赛并等候对手的玩家。如果双方都这样做了，或都没有，服务器抽签决定；循环赛中，这场比赛记为未进行。',
+  'tour.deadlineRule': '未在截止时间前进行的比赛，判给前来比赛并等候对手的玩家。如果双方都这样做了，或都没有，则无人获胜：单败淘汰制中双方都被淘汰，循环赛中这场比赛记为未进行。只有实际进行的比赛才算胜场。',
   'tour.leaderboard': '排行榜',
   'tour.empty': '目前还没有锦标赛。请过些时候再来看看。',
   'tour.status.registration': '报名中',

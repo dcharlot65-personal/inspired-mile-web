@@ -28,6 +28,7 @@ export const ECONOMY = rules as unknown as {
     xp_win: number;
     xp_other: number;
     xp_matches_per_day: number;
+    xp_matches_per_opponent_per_day: number;
   };
   packs: {
     weights: Record<string, number>;
@@ -36,12 +37,12 @@ export const ECONOMY = rules as unknown as {
     daily_pack_cards: number;
     daily_pack_every_hours: number;
   };
-  import: { max_cards: number; max_by_rarity: Record<string, number>; sellable: boolean };
+  import: { window_hours: number; max_cards: number; max_by_rarity: Record<string, number>; sellable: boolean };
   device: { trivia_cards_per_day: number; challenge_cards_per_day: number };
   market: { price_min: number; price_max: number };
   teen_daily_spend: number;
   referral: { referrer_credits: number; rewards_per_day: number };
-  founding: { credits: number };
+  founding: { credits: number; created_before: string };
   tournaments: { match_hours: number };
   account_achievements: Array<{ id: string; metric: string; goal: number }>;
 };

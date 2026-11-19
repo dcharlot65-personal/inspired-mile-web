@@ -384,6 +384,10 @@ export interface MigrationStatus {
   achievements_count: number | null;
   /** The most cards an import takes. */
   max_cards: number;
+  /** Whether the account may still import: it has not, and it is in its first hours
+   *  (economy.json `import.window_hours`). Absent from an older API. */
+  open?: boolean;
+  open_until?: string | null;
 }
 
 export interface ImportResult {

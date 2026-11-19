@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Sơ đồ thi đấu',
   'tour.select': 'Chọn một giải đấu…',
   'tour.selectHint': 'Chọn một giải đấu để xem sơ đồ thi đấu.',
-  'tour.deadlineRule': 'Trận nào không đấu trước hạn chót sẽ thuộc về người chơi đã đến đấu và chờ đối thủ. Nếu cả hai cùng làm vậy, hoặc không ai làm, máy chủ sẽ bốc thăm, trừ thể thức vòng tròn, nơi trận được coi là chưa đấu.',
+  'tour.deadlineRule': 'Trận nào không đấu trước hạn chót sẽ thuộc về người chơi đã đến đấu và chờ đối thủ. Nếu cả hai cùng làm vậy, hoặc không ai làm, thì không ai thắng: ở thể thức loại trực tiếp cả hai bị loại, còn ở thể thức vòng tròn trận được coi là chưa đấu. Chỉ trận đã đấu mới được tính là thắng.',
   'tour.leaderboard': 'Bảng xếp hạng',
   'tour.empty': 'Chưa có giải đấu nào. Hãy quay lại sau nhé.',
   'tour.status.registration': 'Đang mở đăng ký',

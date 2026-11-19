@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Drabinka',
   'tour.select': 'Wybierz turniej…',
   'tour.selectHint': 'Wybierz turniej, aby zobaczyć jego drabinkę.',
-  'tour.deadlineRule': 'Mecz nierozegrany do terminu przypada graczowi, który przyszedł go rozegrać i czekał na drugiego. Jeśli zrobili to obaj albo żaden, serwer losuje, z wyjątkiem turnieju każdy z każdym, w którym mecz pozostaje nierozegrany.',
+  'tour.deadlineRule': 'Mecz nierozegrany do terminu przypada graczowi, który przyszedł go rozegrać i czekał na drugiego. Jeśli zrobili to obaj albo żaden, nikt go nie wygrywa: gdy formatem jest system pucharowy, odpadają obaj, a w turnieju każdy z każdym mecz pozostaje nierozegrany. Za zwycięstwo liczy się tylko rozegrany mecz.',
   'tour.leaderboard': 'Klasyfikacja',
   'tour.empty': 'Nie ma jeszcze turniejów. Zajrzyj wkrótce.',
   'tour.status.registration': 'Zapisy otwarte',

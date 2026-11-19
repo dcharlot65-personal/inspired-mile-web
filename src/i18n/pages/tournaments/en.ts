@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Bracket',
   'tour.select': 'Choose a tournament…',
   'tour.selectHint': 'Choose a tournament to see its bracket.',
-  'tour.deadlineRule': 'A match not played by its deadline goes to the player who came to play it and waited for the other. If both or neither did, the server draws lots, except in a round robin, where the match is left unplayed.',
+  'tour.deadlineRule': 'A match not played by its deadline goes to the player who came to play it and waited for the other. If both or neither did, nobody wins it: in single elimination both players are out, and in a round robin it is left unplayed. Only a match played counts as a win.',
   'tour.leaderboard': 'Standings',
   'tour.empty': 'There are no tournaments yet. Check back soon.',
   'tour.status.registration': 'Registration open',

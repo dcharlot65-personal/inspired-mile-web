@@ -170,4 +170,14 @@ describe("the sign-in offer of a device's collection", () => {
     // The second check of 2026-11-19: every account signed in on one device was offered the same cards.
     for (const who of ['bob', 'cat', 'ann']) expect(offerImport(who, 5), who).toBe(false);
   });
+
+  it('sends each different card once, however many rows the device holds of it', async () => {
+    // Third check of 2026-11-19: 520 rows of six cards were sent whole, and the server refused
+    // more than 500 ("Too many cards"), so the device could never bring its cards over.
+    const { importIds } = await import('./import-offer');
+    const six = ['DC-001', 'DC-002', 'MO-002', 'MO-003', 'CA-002', 'CA-003'];
+    const rows = Array.from({ length: 520 }, (_, i) => ({ cardId: six[i % 6], acquiredAt: i, source: 'battle' }));
+    expect(importIds(rows)).toEqual(six);
+    expect(importIds([])).toEqual([]);
+  });
 });

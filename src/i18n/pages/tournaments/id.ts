@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'tour.tab.bracket': 'Bagan pertandingan',
   'tour.select': 'Pilih turnamen…',
   'tour.selectHint': 'Pilih turnamen untuk melihat bagan pertandingannya.',
-  'tour.deadlineRule': 'Pertandingan yang tidak dimainkan sebelum batas waktunya menjadi milik pemain yang datang untuk memainkannya dan menunggu lawannya. Jika keduanya atau tak satu pun melakukannya, server mengundi, kecuali dalam sistem kompetisi, yang pertandingannya dibiarkan tidak dimainkan.',
+  'tour.deadlineRule': 'Pertandingan yang tidak dimainkan sebelum batas waktunya menjadi milik pemain yang datang untuk memainkannya dan menunggu lawannya. Jika keduanya atau tak satu pun melakukannya, tidak ada yang menang: dalam sistem gugur keduanya tersingkir, dan dalam sistem kompetisi pertandingannya dibiarkan tidak dimainkan. Hanya pertandingan yang dimainkan yang dihitung sebagai kemenangan.',
   'tour.leaderboard': 'Klasemen',
   'tour.empty': 'Belum ada turnamen. Kembali lagi nanti.',
   'tour.status.registration': 'Pendaftaran dibuka',
