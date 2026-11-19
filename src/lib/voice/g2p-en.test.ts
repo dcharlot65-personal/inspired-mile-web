@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import lexicon from './lexicon-en';
 import { installVoiceLexicon, normalise, phonemizeEnglish, sayWord, splitForKokoro } from './g2p-en';
-import { leftMatch, rightMatch, ruleCodes } from './lts-en';
+import { codesOf, leftMatch, rightMatch, ruleCodes } from './lts-en';
+import { NRL_RULES } from './nrl-rules';
 import { KOKORO_VOCAB } from './kokoro-vocab';
 // @ts-ignore a plain ES module of the build scripts
 import { corpus, slangAndNames } from '../../../scripts/voice/corpus.mjs';
@@ -93,6 +94,13 @@ describe('the letter-to-sound rules apply as NRL Report 7948 says', () => {
     expect(rightMatch('%', 'X ', 0)).toBe(false);
   });
 
+  it('reads every code of every rule\'s output (the table writes h, not HH)', () => {
+    for (const rules of Object.values(NRL_RULES)) {
+      for (const [, match, , out] of rules) expect(codesOf(out).join(''), match).toBe(out.replace(/ /g, ''));
+    }
+    expect(sayWord('haruki').ps.startsWith('h')).toBe(true);
+  });
+
   it('reads whole words rule by rule', () => {
     expect(ruleCodes('cat')).toEqual(['k', 'AE', 't']);
     expect(ruleCodes('made')).toEqual(['m', 'EY', 'd']);
@@ -105,7 +113,7 @@ describe('text', () => {
     ['1599', 'fifteen ninety-nine'], ['2026', 'twenty twenty-six'], ['2005', 'two thousand and five'], ['105', 'one hundred and five'],
     ['3:30', 'three thirty'], ['7:00', "seven o'clock"], ['$5.50', 'five dollars and fifty cents'], ['£1', 'one pound'],
     ['21st', 'twenty-first'], ['3.14', 'three point one four'], ['1,000', 'one thousand'], ['50%', 'fifty percent'],
-    ['1-2', 'one to two'], ['Dr. Smith', 'Doctor Smith'],
+    ['1-2', 'one to two'], ['Dr. Smith', 'Doctor Smith'], ['etc.', 'et cetera'], ['etch the stone', 'etch the stone'],
   ])('%s is read as "%s"', (text, said) => {
     expect(normalise(text)).toBe(said);
   });

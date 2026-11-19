@@ -44,6 +44,8 @@ const FAULTS = [
   ['# in a left context needs no vowel', LTS, "      case '#':\n        if (!isVowel(text[i])) return false;\n        i--;", "      case '#':\n        i--;"],
   ['% never matches', LTS, "      case '%':\n        // A suffix: ER, E, ES, ED, ING, ELY.", "      case '%':\n        return false;\n        // A suffix"],
   ['rules read in the wrong order', LTS, 'for (const [left, match, right, out] of rules ?? []) {', 'for (const [left, match, right, out] of [...(rules ?? [])].reverse()) {'],
+  ['the rules\' h unread', LTS, '|NG|CH|WH|[pbtdkgfvszmnlwyrjh]/g;', '|NG|CH|WH|[pbtdkgfvszmnlwyrj]/g;'],
+  ['"etc" read inside "etch"', G2P, "[/\\betc\\b\\.?/gi, 'et cetera']", "[/\\betc\\.?/gi, 'et cetera']"],
   ['check reads no base64', CHECK, 'for (const m of text.matchAll(BASE64_RUN)) {', 'for (const m of []) {'],
   ['check does not gunzip', CHECK, 'if (bytes[0] === 0x1f && bytes[1] === 0x8b) {', 'if (false) {'],
   ['check finds the name inside other words', CHECK, '(?<![A-Za-z])(?:eSpeak|ESPEAK|espeak[-_]ng)', '(?:eSpeak|ESPEAK|espeak[-_]ng|espeak)'],

@@ -717,7 +717,7 @@ function yearWords(y: number): string {
 const ABBREVIATIONS: Array<[RegExp, string]> = [
   [/\bMrs\.?(?=\s+[A-Z])/g, 'Missus'], [/\bMr\.?(?=\s+[A-Z])/g, 'Mister'], [/\bMs\.?(?=\s+[A-Z])/g, 'Miz'], [/\bDr\.(?=\s+[A-Z])/g, 'Doctor'],
   [/\bSt\.(?=\s+[A-Z])/g, 'Saint'], [/\bProf\.(?=\s+[A-Z])/g, 'Professor'], [/\bCapt\.(?=\s+[A-Z])/g, 'Captain'], [/\bSgt\.(?=\s+[A-Z])/g, 'Sergeant'],
-  [/\bJr\.?(?=\W|$)/g, 'Junior'], [/\bvs\.?(?=\s)/gi, 'versus'], [/\betc\.?/gi, 'et cetera'], [/&c\./g, 'et cetera'], [/\be\.g\.(?=\s|$)/gi, 'for example'],
+  [/\bJr\.?(?=\W|$)/g, 'Junior'], [/\bvs\.?(?=\s)/gi, 'versus'], [/\betc\b\.?/gi, 'et cetera'], [/&c\./g, 'et cetera'], [/\be\.g\.(?=\s|$)/gi, 'for example'],
   [/\bi\.e\.(?=\s|$)/gi, 'that is'], [/\bNo\.(?=\s*\d)/g, 'number'],
 ];
 

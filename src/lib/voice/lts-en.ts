@@ -109,11 +109,16 @@ export function rightMatch(pattern: string, text: string, at: number): boolean {
   return true;
 }
 
-/** The rules' phoneme codes in an output string ("AXgEHn" is AX g EH n). */
-const CODE = /IY|IH|EY|EH|AE|AA|AO|OW|UH|UW|ER|AX|AH|AY|AW|OY|TH|DH|SH|ZH|HH|NG|CH|WH|[pbtdkgfvszmnlwyrj]/g;
+/** The rules' phoneme codes in an output string ("AXgEHn" is AX g EH n; the table writes "how" as h, not HH). */
+const CODE = /IY|IH|EY|EH|AE|AA|AO|OW|UH|UW|ER|AX|AH|AY|AW|OY|TH|DH|SH|ZH|HH|NG|CH|WH|[pbtdkgfvszmnlwyrjh]/g;
+
+/** The codes of one rule's output, in order. */
+export function codesOf(out: string): string[] {
+  return [...out.matchAll(CODE)].map((m) => m[0]);
+}
 /** Rule code -> CMU phone. AX (a reduced vowel) becomes an unstressed AH; WH is said "w" (the voice is British). */
 const TO_CMU: Record<string, string> = {
-  AX: 'AH', WH: 'W', p: 'P', b: 'B', t: 'T', d: 'D', k: 'K', g: 'G', f: 'F', v: 'V', s: 'S', z: 'Z', m: 'M', n: 'N',
+  AX: 'AH', WH: 'W', h: 'HH', p: 'P', b: 'B', t: 'T', d: 'D', k: 'K', g: 'G', f: 'F', v: 'V', s: 'S', z: 'Z', m: 'M', n: 'N',
   l: 'L', w: 'W', y: 'Y', r: 'R', j: 'JH',
 };
 const CMU_VOWELS = new Set(['AA', 'AE', 'AH', 'AO', 'AW', 'AY', 'EH', 'ER', 'EY', 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']);
@@ -131,7 +136,7 @@ export function ruleCodes(word: string): string[] {
       if (!match || !text.startsWith(match, i)) continue;
       if (!leftMatch(left, text, i - 1)) continue;
       if (!rightMatch(right, text, i + match.length)) continue;
-      for (const m of out.matchAll(CODE)) codes.push(m[0]);
+      codes.push(...codesOf(out));
       read = match.length;
       break;
     }
