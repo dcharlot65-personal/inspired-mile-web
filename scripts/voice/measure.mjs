@@ -4,6 +4,12 @@
  *
  *   node --import ./scripts/sound/ts-resolve.mjs scripts/voice/measure.mjs [--out docs/voice/measurement.json]
  *        [--only verse,quote] [--limit N] [--threads 6] [--wav-dir DIR]
+ *        [--texts scripts/voice/edge-texts.txt --out docs/voice/measurement-edge.json]
+ *
+ * --texts reads those texts instead of the corpus (one per line, "#" a comment), each scored a
+ * second way too: the text and both transcripts first put in spoken form by g2p-en.ts normalise()
+ * ("10pm" and "10 p.m." are both "ten P M"), so that how Whisper chose to write a number does not
+ * count, only what it heard. The same function for the text and both readings.
  *
  * Run on the build host after `npm ci` (it downloads Kokoro and Whisper, about 160 MB, from the
  * Hugging Face hub). For every text of scripts/voice/corpus.mjs it makes two readings with the same
@@ -28,9 +34,18 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { corpus } from './corpus.mjs';
+import { measureHostProblem } from './host.mjs';
 import { align, bootstrap, same, scoreWords, wer } from './score.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+{
+  // Before any download: Whisper's onnxruntime-node has no binary for some hosts (Intel macOS).
+  const problem = measureHostProblem(ROOT);
+  if (problem) {
+    console.error(`[measure] cannot run on this host: ${problem}`);
+    process.exit(2);
+  }
+}
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
@@ -41,11 +56,12 @@ const ONLY = arg('only', '') ? new Set(arg('only', '').split(',')) : null;
 const LIMIT = Number(arg('limit', '0')) || Infinity;
 const THREADS = Number(arg('threads', '6'));
 const WAV_DIR = arg('wav-dir', '');
+const TEXTS = arg('texts', '');
 
 const KOKORO = 'onnx-community/Kokoro-82M-v1.0-ONNX';
 const WHISPER = 'onnx-community/whisper-base';
 
-const { installVoiceLexicon, phonemizeEnglish, sayWord } = await import(join(ROOT, 'src/lib/voice/g2p-en.ts'));
+const { installVoiceLexicon, normalise, phonemizeEnglish, sayWord } = await import(join(ROOT, 'src/lib/voice/g2p-en.ts'));
 const { readAloud, THESPIAN_VOICE, THESPIAN_SPEED, toWav } = await import(join(ROOT, 'src/lib/thespian-voice.ts'));
 installVoiceLexicon((await import(join(ROOT, 'src/lib/voice/lexicon-en.ts'))).default);
 
@@ -201,7 +217,15 @@ function stressAt(ps) {
 // Run
 // ---------------------------------------------------------------------------
 
-let items = await corpus();
+/** The texts of a --texts file: one per line, "#" a comment. */
+function textsFile(file) {
+  const lines = readFileSync(file, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
+  return lines.map((text, i) => ({ id: `edge-${i + 1}`, category: 'edge', text }));
+}
+/** Words of a text in spoken form, for scoring a --texts run the second way. */
+const spokenWords = (text) => scoreWords(normalise(text));
+
+let items = TEXTS ? textsFile(TEXTS) : await corpus();
 if (ONLY) items = items.filter((i) => ONLY.has(i.category));
 items = items.slice(0, LIMIT);
 if (WAV_DIR) mkdirSync(WAV_DIR, { recursive: true });
@@ -227,6 +251,10 @@ for (const [k, item] of items.entries()) {
     old: { phonemes: oldPs, heard: oldHeard, edits: o.edits, seconds: oldAudio.audio.length / oldAudio.sampling_rate, ops: o.ops.filter((x) => x.op !== '=') },
     new: { phonemes: fresh.phonemes.join(' '), heard: newHeard, edits: n.edits, seconds: fresh.samples.length / fresh.sampleRate, ops: n.ops.filter((x) => x.op !== '=') },
   };
+  if (TEXTS) {
+    const sref = spokenWords(item.text);
+    r.spoken = { words: sref.length, old: align(sref, spokenWords(oldHeard)).edits, new: align(sref, spokenWords(newHeard)).edits };
+  }
   if (item.target) {
     const want = scoreWords(item.target);
     const got = (heard) => {
@@ -274,6 +302,12 @@ for (const c of [...categories, 'running text', 'all']) {
   const o = wer(rows, 'old');
   const n = wer(rows, 'new');
   summary[c] = { items: rows.length, words: o.words, old: o.wer, new: n.wer, difference: n.wer - o.wer, interval95: bootstrap(rows) };
+  if (rows.every((r) => r.spoken)) {
+    const sp = rows.map((r) => ({ words: r.spoken.words, old: { edits: r.spoken.old }, new: { edits: r.spoken.new } }));
+    const so = wer(sp, 'old');
+    const sn = wer(sp, 'new');
+    summary[c].spoken = { words: so.words, old: so.wer, new: sn.wer, difference: sn.wer - so.wer, interval95: bootstrap(sp) };
+  }
   const targets = rows.filter((r) => r.target);
   if (targets.length) {
     summary[c].targetsHeard = { old: targets.filter((r) => r.old.targetHeard).length, new: targets.filter((r) => r.new.targetHeard).length, of: targets.length };
@@ -308,6 +342,7 @@ const report = {
   kokoro: { model: KOKORO, dtype: 'q8', voice: THESPIAN_VOICE, speed: THESPIAN_SPEED, runtime: 'onnxruntime-node (cpu)' },
   whisper: { model: WHISPER, dtype: 'q8', transformers: T4.env.version, options: { language: 'en', task: 'transcribe', chunk_length_s: 30 } },
   seconds: (Date.now() - started) / 1000,
+  texts: TEXTS || 'scripts/voice/corpus.mjs',
   summary,
   phonemesAgainstEspeak: bySource,
   worse,

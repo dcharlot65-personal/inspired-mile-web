@@ -1,0 +1,46 @@
+# Edge texts for the voice measurement (scripts/voice/measure.mjs --texts): numbers glued to
+# letters, decades, times, text-speak, Roman numerals and a minus sign, the cases the 401-text
+# corpus has none of (it holds no digit). Written on 2026-11-19 after the independent check found
+# digits dropped (its four sentences by ear come first, word for word), and before either reading
+# of any of these was heard. Some are expected to go wrong (911 is read as a number, not digit by
+# digit; "Elizabeth I ruled" keeps I as the pronoun): they stay in. One text per line.
+Back in the 90s we were young.
+My mp3 plays at 3am.
+In the 1990s the B2K crew.
+At 10pm I rhyme like 2pac, 4ever.
+This beat is gr8, my m8.
+The K9 unit barks at the top 10s.
+Richard III limps across the stage, Henry V roars.
+Henry VIII had 6 wives and no regrets.
+At 3:30 p.m. the curtain rose on Act I.
+Act II, Scene iv: the lovers meet.
+The temperature fell to -5 by 7 AM.
+One billion is 1e9, give or take.
+The clock struck 12 and I was gone by 1.
+I spit 16 bars in 3 minutes flat.
+My rhymes are worth $5.50 and yours are worth 0.
+Room 101, floor 23, the 4th door on the left.
+In the 2020s we stream, in the 1920s they swung.
+Call me l8r, I gotta go 2day.
+R2D2 beeps while the droid rolls on.
+Y2K came and went in 1999.
+COVID-19 kept us home in 2020.
+Sonnet XVIII is the one with the summer day.
+World War II ended in 1945.
+Pope John Paul II spoke 8 languages.
+Elizabeth I ruled for 44 years.
+Louis XIV built a palace of mirrors.
+Chapter 11 and Chapter XII close the book.
+He won 3-0 in round 2.
+At 6 a.m. I write, at 11 p.m. I fight.
+Agent 007 drives a DB5.
+Malcolm X said it plain.
+One step 4ward, 2 steps back.
+Some1 call 911.
+The 1800s gave us steam, the 1900s gave us flight.
+I got 99 problems and a verse is not 1.
+Count it down: 3, 2, 1, go!
+In 1600 the Globe was new.
+Ten past 10 on the 10th of May.
+Henry VI, Part 2, is rarely played.
+My score went up 100% in 24 hours.
