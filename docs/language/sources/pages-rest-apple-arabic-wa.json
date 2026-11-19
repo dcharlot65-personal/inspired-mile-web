@@ -1,0 +1,79 @@
+{
+ "source": "Apple Arabic web pages, text with markup removed",
+ "fetched": "2026-11-16T23:20:31.275Z",
+ "licence": "Apple Inc. text, quoted as evidence of usage",
+ "pages": {
+  "https://www.apple.com/ae-ar/icloud/": {
+   "status": 200,
+   "attached": 13,
+   "spaced": 0,
+   "examplesAttached": [
+    "وApple",
+    "وiPadOS",
+    "وiPad",
+    "وMac",
+    "وHomePod"
+   ],
+   "examplesSpaced": []
+  },
+  "https://www.apple.com/ae-ar/airpods/": {
+   "status": 200,
+   "attached": 15,
+   "spaced": 0,
+   "examplesAttached": [
+    "وSiri",
+    "وiPadOS",
+    "وmacOS",
+    "وtvOS",
+    "وAirPods",
+    "وwatchOS"
+   ],
+   "examplesSpaced": []
+  },
+  "https://www.apple.com/ae-ar/apple-vision-pro/": {
+   "status": 200,
+   "attached": 28,
+   "spaced": 0,
+   "examplesAttached": [
+    "وApple",
+    "وInsta360",
+    "وCanon.",
+    "وiPad",
+    "وMac.",
+    "وiPhone",
+    "وiOS",
+    "وiPadOS"
+   ],
+   "examplesSpaced": []
+  },
+  "https://support.apple.com/ar-ae/guide/apple-vision-pro/tan1e2a29e00/visionos": {
+   "status": 200,
+   "attached": 0,
+   "spaced": 1,
+   "examplesAttached": [],
+   "examplesSpaced": [
+    "و visionOS"
+   ]
+  },
+  "https://support.apple.com/ar-ae/guide/iphone/iph42ab2f3a7/ios": {
+   "status": 200,
+   "attached": 0,
+   "spaced": 13,
+   "examplesAttached": [],
+   "examplesSpaced": [
+    "و iCloud",
+    "و EarPods",
+    "و Mac",
+    "و TTY",
+    "و iPhone",
+    "و iPadOS",
+    "و macOS",
+    "و watchOS"
+   ]
+  }
+ },
+ "total": {
+  "attached": 56,
+  "spaced": 14
+ }
+}

@@ -11,11 +11,17 @@ import { Engine, Scene, ArcRotateCamera, HemisphericLight, Vector3, Color3, Colo
 import '@babylonjs/loaders';
 
 import { CARD_CATALOG } from './cards';
+import { msg, type Msg } from './verse/msg';
 
 export interface VREngineOptions {
   canvas: HTMLCanvasElement;
-  onStatusChange?: (status: string) => void;
-  onError?: (error: string) => void;
+  /**
+   * What the gallery is doing, as a message key and its variables (src/i18n/pages/viewer),
+   * never a sentence: the page says it in the interface language.
+   */
+  onStatusChange?: (status: Msg) => void;
+  /** What went wrong, likewise as a key. The technical detail goes to the console. */
+  onError?: (error: Msg) => void;
 }
 
 export class VRCardEngine {
@@ -180,7 +186,7 @@ export class VRCardEngine {
         const mesh = info.pickInfo.pickedMesh;
         if (mesh?.metadata?.cardId) {
           this.options.onStatusChange?.(
-            `Selected: ${mesh.metadata.cardName} (${mesh.metadata.cardId})`
+            msg('vr.status.selected', { card: mesh.metadata.cardName, id: mesh.metadata.cardId })
           );
         }
       }
@@ -194,7 +200,7 @@ export class VRCardEngine {
       // async set-up on browsers with no WebXR, where no catch here can see it.
       const xr = (navigator as any).xr;
       if (!xr || !(await xr.isSessionSupported('immersive-vr'))) {
-        this.options.onStatusChange?.('No VR headset detected — showing the gallery in 3D');
+        this.options.onStatusChange?.(msg('vr.status.noHeadset'));
         return false;
       }
       this.xrExperience = await WebXRDefaultExperience.CreateAsync(this.scene, {
@@ -212,10 +218,11 @@ export class VRCardEngine {
         inputOptions: { doNotLoadControllerMeshes: true, disableOnlineControllerRepository: true },
       });
 
-      this.options.onStatusChange?.('WebXR ready — click "Enter VR" button');
+      this.options.onStatusChange?.(msg('vr.status.ready'));
       return true;
     } catch (e: any) {
-      this.options.onError?.(`WebXR not available: ${e.message}`);
+      console.error('[vr-engine] WebXR could not start', e);
+      this.options.onError?.(msg('vr.error.webxr'));
       return false;
     }
   }
@@ -231,7 +238,7 @@ export class VRCardEngine {
       this.engine.resize();
     });
 
-    this.options.onStatusChange?.('3D Gallery loaded — orbit with mouse, scroll to zoom');
+    this.options.onStatusChange?.(msg('vr.status.gallery'));
   }
 
   /** Stop and dispose */

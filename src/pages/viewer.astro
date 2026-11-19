@@ -2,49 +2,41 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="3D Viewer" description="View performance art card models as Gaussian splats and GLB meshes.">
+<BaseLayout title="3D Viewer" description="Look at the cards' 3D models, as Gaussian splats or as GLB meshes.">
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-8">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">3D Models</span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase" data-i18n="viewer.badge">3D models</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          Card <span class="text-gradient">Viewer</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Explore your cards as 3D models. Toggle between Gaussian splat rendering and GLB mesh view.
-          Orbit with mouse, scroll to zoom.
+        <!-- Two pieces so that one can carry the gradient; the first brings its own space where the language wants one. -->
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4"><span data-i18n="viewer.titleA">Card </span><span class="text-gradient" data-i18n="viewer.titleB">Viewer</span></h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="viewer.intro">
+          Explore your cards as 3D models. Switch between the Gaussian splat and the GLB mesh. Drag to turn the model, scroll to zoom.
         </p>
       </div>
 
       <!-- Controls -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
         <!-- Card selector -->
-        <select id="card-select" class="bg-obsidian-900 border border-obsidian-700 text-obsidian-200 text-sm rounded-lg px-4 py-2 focus:border-gold-500/50 focus:outline-hidden">
-          <option value="">Select a card...</option>
+        <select id="card-select" aria-label="Choose a card…" data-i18n-aria-label="viewer.select" class="max-w-full bg-obsidian-900 border border-obsidian-700 text-obsidian-200 text-sm rounded-lg px-4 py-2 focus:border-gold-500/50 focus:outline-hidden">
+          <option value="" data-i18n="viewer.select">Choose a card…</option>
         </select>
 
-        <!-- View mode toggle -->
-        <div class="flex rounded-lg border border-obsidian-700 overflow-hidden">
-          <button id="mode-splat" class="px-4 py-2 text-xs font-medium bg-gold-500/20 text-gold-400 border-r border-obsidian-700">
-            Splat
-          </button>
-          <button id="mode-glb" class="px-4 py-2 text-xs font-medium text-obsidian-400 hover:text-gold-400 transition-colors">
-            GLB
-          </button>
+        <!-- View mode toggle. "Splat" and "GLB" are the names of the two formats, the same in every language. -->
+        <div class="flex rounded-lg border border-obsidian-700 overflow-hidden" role="group" aria-label="Kind of model" data-i18n-aria-label="viewer.modeLabel">
+          <button id="mode-splat" class="px-4 py-2 text-xs font-medium bg-gold-500/20 text-gold-400 border-e border-obsidian-700" lang="en" translate="no">Splat</button>
+          <button id="mode-glb" class="px-4 py-2 text-xs font-medium text-obsidian-400 hover:text-gold-400 transition-colors" lang="en" translate="no">GLB</button>
         </div>
 
-        <button id="reset-camera-btn" class="text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors">
-          Reset Camera
-        </button>
+        <button id="reset-camera-btn" class="text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors" data-i18n="viewer.reset">Reset the camera</button>
       </div>
 
       <!-- Status bar -->
-      <div class="text-center mb-4 flex items-center justify-center gap-4">
-        <span id="viewer-status" class="text-xs font-mono text-obsidian-500">Initializing 3D viewer...</span>
+      <div class="text-center mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+        <span id="viewer-status" role="status" class="text-xs text-obsidian-500" data-i18n="viewer.status.init">Starting the 3D viewer…</span>
         <span id="fps-counter" class="text-xs font-mono text-obsidian-600 hidden"></span>
       </div>
 
@@ -60,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div id="loading-overlay" class="hidden absolute inset-0 bg-obsidian-950/80 flex items-center justify-center">
           <div class="text-center">
             <div class="w-8 h-8 border-2 border-gold-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
-            <span class="text-xs text-obsidian-400">Loading 3D model...</span>
+            <span class="text-xs text-obsidian-400" data-i18n="viewer.status.loading">Loading the model…</span>
           </div>
         </div>
       </div>
@@ -68,19 +60,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Instructions -->
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="card-glass p-4 text-center">
-          <div class="text-2xl mb-2">&#128270;</div>
-          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Splat View</h3>
-          <p class="text-xs text-obsidian-400">Gaussian splat rendering via Babylon.js. Orbit, zoom, pan for a photorealistic 3D view of the model.</p>
+          <div class="text-2xl mb-2" aria-hidden="true">&#128270;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-i18n="viewer.card.splat.title">Splat view</h3>
+          <p class="text-xs text-obsidian-400" data-i18n="viewer.card.splat.body">Gaussian splats drawn by Babylon.js. Turn, zoom and move around a lifelike 3D picture of the model.</p>
         </div>
         <div class="card-glass p-4 text-center">
-          <div class="text-2xl mb-2">&#127922;</div>
-          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">GLB View</h3>
-          <p class="text-xs text-obsidian-400">Standard mesh via model-viewer. Supports AR on mobile devices for augmented reality placement.</p>
+          <div class="text-2xl mb-2" aria-hidden="true">&#127922;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-i18n="viewer.card.glb.title">GLB view</h3>
+          <p class="text-xs text-obsidian-400" data-i18n="viewer.card.glb.body">An ordinary mesh shown with model-viewer. On a phone it can place the model in your room in augmented reality.</p>
         </div>
         <div class="card-glass p-4 text-center">
-          <div class="text-2xl mb-2">&#128241;</div>
-          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Mobile AR</h3>
-          <p class="text-xs text-obsidian-400">In GLB mode, tap "View in AR" on mobile for augmented reality card viewing.</p>
+          <div class="text-2xl mb-2" aria-hidden="true">&#128241;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-i18n="viewer.card.ar.title">AR on a phone</h3>
+          <p class="text-xs text-obsidian-400" data-i18n="viewer.card.ar.body">In the GLB view on a phone, tap “View in AR” to see the card in your room.</p>
         </div>
       </div>
     </div>
@@ -90,6 +82,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { SplatViewer } from '../lib/splat-viewer';
     import { AR_MODELS, buildModelViewerHTML, loadModelViewer } from '../lib/ar-viewer';
     import { CARD_CATALOG } from '../lib/cards';
+    import type { Msg } from '../lib/verse/msg';
+    import { t, tm } from '../i18n';
+    import { num } from '../i18n/fmt';
+    import { initPage, onPageLocaleChange } from '../i18n/page';
 
     // DOM refs
     const canvas = document.getElementById('splat-canvas') as HTMLCanvasElement;
@@ -110,22 +106,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     characterCards.forEach(card => {
       const opt = document.createElement('option');
       opt.value = card.id;
+      // Card names are not translated (src/lib/cards.ts).
       opt.textContent = `${card.id} — ${card.name}`;
+      opt.lang = 'en';
       cardSelect.appendChild(opt);
     });
 
     const fpsEl = document.getElementById('fps-counter')!;
 
+    // The status line is kept as a message key, so it can be said again in another language.
+    // Until the viewer reports something, the markup's own data-i18n key is what is shown.
+    let status: Msg | null = null;
+    let lastFps: number | null = null;
+    let ready = false;
+
+    function setStatus(m: Msg) {
+      status = m;
+      drawStatus();
+    }
+
+    function drawStatus() {
+      if (!ready) return; // the language is not in yet: keep what the markup says
+      if (status) {
+        statusEl.removeAttribute('data-i18n');
+        statusEl.textContent = tm(status);
+      }
+      if (lastFps !== null) fpsEl.textContent = t('viewer.fps', { n: num(Math.round(lastFps)) });
+    }
+
     // Initialize Babylon splat viewer
     function initViewer() {
       viewer = new SplatViewer({
         canvas,
-        onStatusChange: (msg) => { statusEl.textContent = msg; },
-        onError: (err) => { statusEl.textContent = `Error: ${err}`; loadingOverlay.classList.add('hidden'); },
+        onStatusChange: setStatus,
+        onError: (err) => { setStatus(err); loadingOverlay.classList.add('hidden'); },
         onFpsUpdate: (fps) => {
-          fpsEl.classList.remove('hidden');
-          fpsEl.textContent = `${fps.toFixed(0)} fps`;
+          lastFps = fps;
           fpsEl.className = `text-xs font-mono ${fps >= 30 ? 'text-emerald-500' : fps >= 15 ? 'text-yellow-500' : 'text-crimson-400'}`;
+          drawStatus();
         },
       });
       viewer.start();
@@ -145,14 +163,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           try {
             // The component is bundled with the site and loaded on first use of GLB mode.
             await loadModelViewer();
-            glbContainer.innerHTML = buildModelViewerHTML(config);
-            statusEl.textContent = `GLB loaded — ${cardId}`;
+            glbContainer.innerHTML = buildModelViewerHTML(config, t('viewer.ar'));
+            setStatus({ key: 'viewer.status.glbLoaded', vars: { card: cardId } });
           } catch (err) {
             console.error('[viewer] 3D viewer failed to load', err);
-            statusEl.textContent = 'The 3D viewer could not be loaded.';
+            setStatus({ key: 'viewer.error.glbViewer' });
           }
         } else {
-          statusEl.textContent = `No GLB model configured for ${cardId}`;
+          setStatus({ key: 'viewer.status.noGlb', vars: { card: cardId } });
         }
       }
 
@@ -174,12 +192,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (mode === 'splat') {
         canvas.style.display = 'block';
         glbContainer.classList.add('hidden');
-        modeSplatBtn.className = ACTIVE_CLASS + ' border-r border-obsidian-700';
+        modeSplatBtn.className = ACTIVE_CLASS + ' border-e border-obsidian-700';
         modeGlbBtn.className = INACTIVE_CLASS;
       } else {
         canvas.style.display = 'none';
         glbContainer.classList.remove('hidden');
-        modeSplatBtn.className = INACTIVE_CLASS + ' border-r border-obsidian-700';
+        modeSplatBtn.className = INACTIVE_CLASS + ' border-e border-obsidian-700';
         modeGlbBtn.className = ACTIVE_CLASS;
       }
 
@@ -195,7 +213,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       viewer?.resetCamera();
     });
 
-    // Init
-    initViewer();
+    /** Everything built with t(), drawn again. */
+    function redraw() {
+      drawStatus();
+      // The "view in AR" button lives inside the model-viewer element; rename it in place.
+      const ar = glbContainer.querySelector('[slot="ar-button"]');
+      if (ar) ar.textContent = t('viewer.ar');
+    }
+
+    // Init. The viewer starts at once; its words wait for the language. A browser with no
+    // WebGL makes the engine throw: the page still gets its language, and says so.
+    try {
+      initViewer();
+    } catch (e) {
+      console.error('[viewer] the 3D viewer could not start', e);
+      setStatus({ key: 'viewer.error.init' });
+    }
+    initPage(['viewer'], { title: 'nav.viewer', description: 'viewer.meta.description' })
+      .catch((e) => console.error('[viewer] the language could not be loaded', e))
+      .then(() => {
+        ready = true;
+        redraw();
+        onPageLocaleChange(redraw);
+      });
   </script>
 </BaseLayout>

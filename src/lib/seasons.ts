@@ -1,9 +1,13 @@
 /**
  * Seasons / Battle Pass — Client-side season tracking.
  * Syncs XP/level progress with /api/v1/seasons backend.
+ *
+ * Nothing here is shown to the player as written: the page (src/pages/season.astro)
+ * turns XP sources and reward types into words in the interface language.
  */
 
-const STORAGE_KEY = 'inspired-mile-season';
+import { ApiError } from './api-client';
+
 const API_BASE = import.meta.env.PUBLIC_API_URL || '';
 
 export interface SeasonInfo {
@@ -37,34 +41,50 @@ export const XP_RATES: Record<string, number> = {
   daily: 25,
 };
 
-function getToken(): string | null {
-  if (typeof window === 'undefined') return null;
-  return localStorage.getItem('inspired-mile-token');
+/**
+ * The API signs a player in with the httpOnly `im_token` cookie, so every
+ * request here sends credentials. (Until 2026-11 this file sent a bearer token
+ * read from localStorage, which nothing has stored since sign-in moved to
+ * passkeys: every call answered null.)
+ */
+async function seasonRequest<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const res = await fetch(`${API_BASE}/api/v1/seasons${path}`, {
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    ...options,
+  });
+  // The status and the body, for src/lib/api-errors.ts to turn into a code. Never shown as they are.
+  if (!res.ok) throw new ApiError(res.status, await res.text());
+  return res.json();
 }
 
-/** Get current season progress */
-export async function getCurrentSeason(): Promise<SeasonProgress | null> {
-  const token = getToken();
-  if (!token) return null;
+function toProgress(data: any): SeasonProgress {
+  return {
+    season: {
+      id: data.season.id,
+      name: data.season.name,
+      startDate: data.season.start_date,
+      endDate: data.season.end_date,
+      maxLevel: data.season.max_level,
+    },
+    xp: data.xp,
+    level: data.level,
+    xpToNext: data.xp_to_next,
+  };
+}
 
+/**
+ * Current season progress, or the reason there is none: throws ApiError
+ * (401 signed out, 404 no season running) or TypeError (no answer).
+ */
+export async function fetchCurrentSeason(): Promise<SeasonProgress> {
+  return toProgress(await seasonRequest('/current'));
+}
+
+/** Get current season progress; null when signed out, when no season runs, or offline. */
+export async function getCurrentSeason(): Promise<SeasonProgress | null> {
   try {
-    const res = await fetch(`${API_BASE}/api/v1/seasons/current`, {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return {
-      season: {
-        id: data.season.id,
-        name: data.season.name,
-        startDate: data.season.start_date,
-        endDate: data.season.end_date,
-        maxLevel: data.season.max_level,
-      },
-      xp: data.xp,
-      level: data.level,
-      xpToNext: data.xp_to_next,
-    };
+    return await fetchCurrentSeason();
   } catch {
     return null;
   }
@@ -72,32 +92,8 @@ export async function getCurrentSeason(): Promise<SeasonProgress | null> {
 
 /** Add XP from an activity */
 export async function addXP(source: string): Promise<SeasonProgress | null> {
-  const token = getToken();
-  if (!token) return null;
-
   try {
-    const res = await fetch(`${API_BASE}/api/v1/seasons/xp`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({ source }),
-    });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return {
-      season: {
-        id: data.season.id,
-        name: data.season.name,
-        startDate: data.season.start_date,
-        endDate: data.season.end_date,
-        maxLevel: data.season.max_level,
-      },
-      xp: data.xp,
-      level: data.level,
-      xpToNext: data.xp_to_next,
-    };
+    return toProgress(await seasonRequest('/xp', { method: 'POST', body: JSON.stringify({ source }) }));
   } catch {
     return null;
   }
@@ -105,15 +101,8 @@ export async function addXP(source: string): Promise<SeasonProgress | null> {
 
 /** Get all season rewards */
 export async function getRewards(): Promise<SeasonReward[]> {
-  const token = getToken();
-  if (!token) return [];
-
   try {
-    const res = await fetch(`${API_BASE}/api/v1/seasons/rewards`, {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    if (!res.ok) return [];
-    const data = await res.json();
+    const data = await seasonRequest<any[]>('/rewards');
     return data.map((r: any) => ({
       level: r.level,
       rewardType: r.reward_type,
@@ -126,26 +115,14 @@ export async function getRewards(): Promise<SeasonReward[]> {
   }
 }
 
-/** Claim a level reward */
-export async function claimReward(level: number): Promise<boolean> {
-  const token = getToken();
-  if (!token) return false;
-
-  try {
-    const res = await fetch(`${API_BASE}/api/v1/seasons/claim/${level}`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    return res.ok;
-  } catch {
-    return false;
-  }
+/** Claim a level reward. Throws ApiError or TypeError when it cannot. */
+export async function claimReward(level: number): Promise<void> {
+  await seasonRequest(`/claim/${level}`, { method: 'POST' });
 }
 
 /** Calculate level progress percentage */
 export function getLevelProgress(progress: SeasonProgress): number {
   if (progress.level >= progress.season.maxLevel) return 100;
-  const xpForThisLevel = progress.level * 200;
   const xpIntoLevel = progress.xp - ((progress.level - 1) * 200);
   return Math.min(100, Math.max(0, (xpIntoLevel / 200) * 100));
 }

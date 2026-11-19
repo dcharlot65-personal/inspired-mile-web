@@ -1,0 +1,96 @@
+{
+ "source": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/1cdfff555f4a21f71ccc978290e2e212e2f8b168/<module>/<values-dir>/strings.xml",
+ "commit": "1cdfff555f4a21f71ccc978290e2e212e2f8b168",
+ "licence": "Apache License 2.0 (Android Open Source Project)",
+ "fetched": "2026-11-16T23:25:39.168Z",
+ "terms": {
+  "install": {
+   "module": "packages/PackageInstaller/res",
+   "name": "install",
+   "text": {
+    "en": "Install",
+    "es": "Instalar",
+    "fr": "Installer",
+    "de": "Installieren",
+    "it": "Installa",
+    "pt": "Instalar",
+    "pl": "Zainstaluj",
+    "ru": "Установить",
+    "ar": "تثبيت",
+    "hi": "इंस्टॉल करें",
+    "zh": "安装",
+    "ja": "インストール",
+    "ko": "설치",
+    "vi": "Cài đặt",
+    "th": "ติดตั้ง",
+    "id": "Instal"
+   }
+  },
+  "notNow": {
+   "module": "core/res/res",
+   "name": "autofill_save_notnow",
+   "text": {
+    "en": "Not now",
+    "es": "Ahora no",
+    "fr": "Pas maintenant",
+    "de": "Nicht jetzt",
+    "it": "Non ora",
+    "pt": "Agora não",
+    "pl": "Nie teraz",
+    "ru": "Не сейчас",
+    "ar": "ليس الآن",
+    "hi": "अभी नहीं",
+    "zh": "以后再说",
+    "ja": "後で",
+    "ko": "나중에",
+    "vi": "Để sau",
+    "th": "ไว้ทีหลัง",
+    "id": "Lain kali"
+   }
+  },
+  "gestures": {
+   "module": "core/res/res",
+   "name": "capability_desc_canPerformGestures",
+   "text": {
+    "en": "Can tap, swipe, pinch, and perform other gestures.",
+    "es": "Puedes tocar y pellizcar la pantalla, deslizar el dedo y hacer otros gestos.",
+    "fr": "Permet d'appuyer sur l'écran, de le balayer, de le pincer et d'effectuer d'autres gestes.",
+    "de": "Tippen, Wischen, Zusammenziehen und andere Touch-Gesten möglich.",
+    "it": "Consente di toccare, far scorrere, pizzicare ed eseguire altri gesti.",
+    "pt": "Toque, deslize, faça gestos de pinça e faça outros gestos.",
+    "pl": "Obsługuje kliknięcia, przesunięcia, ściągnięcia palców i inne gesty.",
+    "ru": "Может выполнять жесты нажатия, пролистывания, масштабирования и т. д.",
+    "ar": "يمكن النقر والتمرير بسرعة والتصغير أو التكبير بإصبعين وتنفيذ إيماءات أخرى.",
+    "hi": "इस सेवा के ज़रिए टैप, स्वाइप, पिंच और बाकी जेस्चर किए जा सकते हैं.",
+    "zh": "可执行点按、滑动、双指张合等手势。",
+    "ja": "タップ、スワイプ、ピンチ、その他の操作を行えます。",
+    "ko": "탭, 스와이프, 확대/축소 및 기타 동작을 실행할 수 있습니다.",
+    "vi": "Có thể nhấn, vuốt, chụm và thực hiện các cử chỉ khác.",
+    "th": "สามารถแตะ เลื่อน บีบ และทำท่าทางสัมผัสอื่นๆ",
+    "id": "Dapat mengetuk, menggeser, mencubit, dan melakukan isyarat lainnya."
+   }
+  },
+  "characters": {
+   "module": "core/res/res",
+   "name": "policydesc_limitPassword",
+   "text": {
+    "en": "Control the length and the characters allowed in screen lock passwords and PINs.",
+    "es": "Controla la longitud y los caracteres permitidos en los PIN y en las contraseñas de bloqueo de pantalla.",
+    "fr": "Gérer le nombre et le type de caractères autorisés dans les mots de passe et les codes d'accès de verrouillage de l'écran",
+    "de": "Zulässige Länge und Zeichen für Passwörter für die Displaysperre festlegen",
+    "it": "Controlla la lunghezza e i caratteri ammessi nelle password e nei PIN del blocco schermo.",
+    "pt": "Controla o tamanho e os caracteres permitidos nos PINs e nas senhas do bloqueio de tela.",
+    "pl": "Kontrolowanie długości haseł blokady ekranu i kodów PIN oraz dozwolonych w nich znaków.",
+    "ru": "Контролировать длину и символы при вводе пароля и PIN-кода.",
+    "ar": "للتحكم في الطول والأحرف المسموح بها في كلمات المرور وأرقام التعريف الشخصي في قفل الشاشة.",
+    "hi": "स्‍क्रीन लॉक पासवर्ड और पिन की लंबाई और उनमें स्वीकृत वर्णों को नियंत्रित करना.",
+    "zh": "控制锁屏密码和 PIN 码所允许的长度和字符。",
+    "ja": "画面ロックのパスワードとPINの長さと使用できる文字を制御します。",
+    "ko": "화면 잠금 비밀번호와 PIN에 허용되는 길이와 문자 수를 제어합니다.",
+    "vi": "Kiểm soát độ dài và ký tự được phép trong mật khẩu khóa màn hình và mã PIN.",
+    "th": "ควบคุมความยาวและอักขระที่สามารถใช้ในรหัสผ่านของการล็อกหน้าจอและ PIN",
+    "id": "Mengontrol panjang dan karakter yang diizinkan dalam sandi dan PIN kunci layar."
+   }
+  }
+ }
+}

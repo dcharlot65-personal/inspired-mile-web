@@ -1,0 +1,1835 @@
+{
+ "about": "The terms of the page areas (src/i18n/pages: classroom, marketplace, tournaments, season, viewer, shared, pwa), one word per thing per language, and where each word comes from. Checked by scripts/pages-rest/terms.mjs and src/i18n/pages-rest-terms.test.ts: each relation against the saved source answers in docs/language/sources, each area string whose English uses the term against the word, and each verdict of docs/language/pages-rest-meaning.json that names a source against this record. The tables of docs/language/pages-rest.md are drawn from this file (node scripts/pages-rest/terms.mjs --write).",
+ "relations": {
+  "same": "the source's word, apart from letter case, Arabic vowel marks, quotation marks and hyphens (where sourceForm is given, the source writes the word that way and the strings inflect it: the note says how)",
+  "part": "a part of the source's word (the source's longer name, shortened)",
+  "contains": "the source's word with more written beside it",
+  "script": "the source's Traditional Chinese word written in Simplified characters, by the character map given",
+  "other": "the source has a word, and the strings use another: the note says why. Not from the source.",
+  "none": "the source has nothing in this language: the word is the model's, with no source"
+ },
+ "fields": {
+  "word": "the word as the strings write it",
+  "spellings": "other forms the strings write it in (inflections, or the stem they share); a string whose English uses the term must contain the word or one of these",
+  "notIn": "strings that rightly word it otherwise, with the reason",
+  "from": "for Wikidata: which of its words is meant, its label (the default) or the title of its Wikipedia article",
+  "item": "for a term with two Wikidata items: the one this language's word comes from",
+  "source": "for this language only, a source other than the term's"
+ },
+ "groups": [
+  {
+   "id": "school",
+   "title": "School",
+   "terms": [
+    "teacher",
+    "student",
+    "class",
+    "assignment",
+    "characters"
+   ]
+  },
+  {
+   "id": "tournaments",
+   "title": "Tournaments",
+   "terms": [
+    "single_elimination",
+    "round_robin",
+    "bracket",
+    "bye"
+   ]
+  },
+  {
+   "id": "technology",
+   "title": "Technology",
+   "terms": [
+    "vr",
+    "ar",
+    "splat",
+    "select_gesture"
+   ]
+  },
+  {
+   "id": "game",
+   "title": "The game",
+   "terms": [
+    "credits",
+    "multiple_choice"
+   ]
+  },
+  {
+   "id": "install",
+   "title": "Install guidance",
+   "terms": [
+    "share_button",
+    "add_to_home_screen",
+    "install",
+    "not_now"
+   ]
+  },
+  {
+   "id": "manifest",
+   "title": "The manifest's description",
+   "terms": [
+    "rap_battle",
+    "card_game"
+   ]
+  }
+ ],
+ "terms": {
+  "teacher": {
+   "en": "teacher",
+   "find": "\\bteachers?\\b",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q37226"
+   },
+   "langs": {
+    "es": {
+     "word": "docente",
+     "rel": "other",
+     "note": "One form for a man and a woman. The model's choice; no recorded source."
+    },
+    "fr": {
+     "word": "enseignant",
+     "rel": "same",
+     "from": "article",
+     "note": "The label, enseignant ou enseignante, where the teacher names themself.",
+     "notIn": {
+      "classroom.teacher.check1": "J’enseigne, j’assure des formations: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
+    },
+    "de": {
+     "word": "Lehrkraft",
+     "spellings": [
+      "Lehrkräfte"
+     ],
+     "rel": "other",
+     "note": "Not gendered. The model's choice; no recorded source."
+    },
+    "it": {
+     "word": "insegnante",
+     "spellings": [
+      "insegnanti"
+     ],
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Insegno, mi occupo di formazione: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
+    },
+    "pt": {
+     "word": "professor",
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Dou aulas, trabalho com formação: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
+    },
+    "pl": {
+     "word": "nauczyciel",
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Uczę, prowadzę szkolenia: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
+    },
+    "ru": {
+     "word": "учитель",
+     "spellings": [
+      "учител"
+     ],
+     "rel": "same"
+    },
+    "ar": {
+     "word": "معلّم",
+     "rel": "other",
+     "note": "Both are standard. The model's choice; no recorded source.",
+     "notIn": {
+      "classroom.teacher.check1": "أعمل في التدريس: a verb, so that the teacher’s declaration reads the same for a woman and a man"
+     }
+    },
+    "hi": {
+     "word": "शिक्षक",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "教师",
+     "spellings": [
+      "老师"
+     ],
+     "rel": "same",
+     "note": "老师 where a pupil speaks of their own teacher (the student's consent)."
+    },
+    "ja": {
+     "word": "教員",
+     "spellings": [
+      "先生"
+     ],
+     "rel": "same",
+     "note": "先生 where a pupil speaks of their own teacher."
+    },
+    "ko": {
+     "word": "교사",
+     "spellings": [
+      "선생님"
+     ],
+     "rel": "same",
+     "note": "선생님 where a pupil speaks of their own teacher."
+    },
+    "vi": {
+     "word": "giáo viên",
+     "rel": "same"
+    },
+    "th": {
+     "word": "ครู",
+     "rel": "same"
+    },
+    "id": {
+     "word": "guru",
+     "rel": "same"
+    }
+   }
+  },
+  "student": {
+   "en": "student",
+   "find": "\\bstudents?\\b",
+   "source": {
+    "kind": "wikidata",
+    "items": [
+     "Q48282",
+     "Q48942"
+    ]
+   },
+   "langs": {
+    "es": {
+     "word": "estudiante",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "élève",
+     "item": "Q48942",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Schüler",
+     "item": "Q48942",
+     "from": "article",
+     "rel": "same",
+     "note": "Both forms written: Schülerin oder Schüler.",
+     "notIn": {
+      "classroom.wizard.s2.title": "Mit der Klasse teilen: share it with the class, the tour's way of naming the students together in a heading"
+     }
+    },
+    "it": {
+     "word": "studente",
+     "spellings": [
+      "studenti"
+     ],
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "estudante",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "uczeń",
+     "spellings": [
+      "uczni"
+     ],
+     "item": "Q48942",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "ученик",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "طالب",
+     "spellings": [
+      "طلاب"
+     ],
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "विद्यार्थी",
+     "spellings": [
+      "विद्यार्थि"
+     ],
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "学生",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "生徒",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "학생",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "học sinh",
+     "item": "Q48942",
+     "rel": "same"
+    },
+    "th": {
+     "word": "นักเรียน",
+     "item": "Q48282",
+     "rel": "same"
+    },
+    "id": {
+     "word": "siswa",
+     "item": "Q48942",
+     "rel": "same"
+    }
+   }
+  },
+  "class": {
+   "en": "class",
+   "find": "\\bclass(?:es|rooms?)?\\b",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q18204"
+   },
+   "langs": {
+    "es": {
+     "word": "clase",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "classe",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Klasse",
+     "rel": "part",
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group"
+     }
+    },
+    "it": {
+     "word": "classe",
+     "spellings": [
+      "classi"
+     ],
+     "rel": "same"
+    },
+    "pt": {
+     "word": "turma",
+     "rel": "none",
+     "note": "The Brazilian word for a class as a group.",
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group"
+     }
+    },
+    "pl": {
+     "word": "klasa",
+     "spellings": [
+      "klas"
+     ],
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group"
+     }
+    },
+    "ru": {
+     "word": "класс",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "صف",
+     "rel": "other",
+     "note": "Both are used; صف is the shorter. The model's choice; no recorded source."
+    },
+    "hi": {
+     "word": "कक्षा",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "班级",
+     "rel": "script",
+     "script": {
+      "級": "级"
+     },
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group",
+      "classroom.title": "课堂 (the classroom, lessons) names the mode; 班级 is the class as a group",
+      "classroom.meta.title": "课堂 (the classroom, lessons) names the mode; 班级 is the class as a group",
+      "classroom.gate.body": "课堂 (the classroom, lessons) names the mode; 班级 is the class as a group"
+     }
+    },
+    "ja": {
+     "word": "クラス",
+     "rel": "part",
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group"
+     }
+    },
+    "ko": {
+     "word": "학급",
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check3After": "classroom use: use in teaching, not the class as a group"
+     }
+    },
+    "vi": {
+     "word": "lớp học",
+     "spellings": [
+      "lớp"
+     ],
+     "rel": "none"
+    },
+    "th": {
+     "word": "ชั้นเรียน",
+     "rel": "none"
+    },
+    "id": {
+     "word": "kelas",
+     "rel": "same"
+    }
+   }
+  },
+  "assignment": {
+   "en": "assignment (compared with homework)",
+   "find": "\\bassignments?\\b",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q753877"
+   },
+   "langs": {
+    "es": {
+     "word": "tarea",
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    },
+    "fr": {
+     "word": "devoir",
+     "rel": "part"
+    },
+    "de": {
+     "word": "Aufgabe",
+     "rel": "part"
+    },
+    "it": {
+     "word": "compito",
+     "spellings": [
+      "compiti"
+     ],
+     "sourceForm": "compiti",
+     "rel": "part",
+     "note": "The singular of the source's compiti."
+    },
+    "pt": {
+     "word": "tarefa",
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    },
+    "pl": {
+     "word": "zadanie",
+     "spellings": [
+      "zada"
+     ],
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    },
+    "ru": {
+     "word": "задание",
+     "spellings": [
+      "задани"
+     ],
+     "rel": "part"
+    },
+    "ar": {
+     "word": "واجب",
+     "rel": "part"
+    },
+    "hi": {
+     "word": "कार्य",
+     "rel": "part",
+     "note": "The second half of गृहकार्य (home + work). The least sure of these words."
+    },
+    "zh": {
+     "word": "作业",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "課題",
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    },
+    "ko": {
+     "word": "과제",
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    },
+    "vi": {
+     "word": "bài tập",
+     "rel": "part"
+    },
+    "th": {
+     "word": "งานที่มอบหมาย",
+     "rel": "other",
+     "note": "Work given out. The model's choice; no recorded source. งาน alone only where the string itself says who gives the work, or sits under the heading งานที่มอบหมาย; each such string is listed in notIn.",
+     "notIn": {
+      "classroom.assign.new": "The button sits beside the heading งานที่มอบหมาย (classroom.assign.title), which names what it makes: + งานใหม่.",
+      "classroom.wizard.s3.body": "The sentence says who gives the work: สร้างงานให้ชั้นเรียนของคุณ, the teacher makes it for the class.",
+      "error.teachers_only": "The sentence says who gives the work: เฉพาะครู… ที่สร้างงานได้, only the teacher makes it."
+     }
+    },
+    "id": {
+     "word": "tugas",
+     "rel": "other",
+     "note": "An assignment, done at home or not. The model's choice; no recorded source."
+    }
+   }
+  },
+  "single_elimination": {
+   "en": "single elimination",
+   "find": "single elimination",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q864897"
+   },
+   "langs": {
+    "es": {
+     "word": "eliminación directa",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "élimination directe",
+     "rel": "part"
+    },
+    "de": {
+     "word": "K.‑o.‑System",
+     "rel": "same",
+     "from": "article",
+     "note": "Non-breaking hyphens, so that it does not break at its own hyphen."
+    },
+    "it": {
+     "word": "eliminazione diretta",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "eliminação simples",
+     "rel": "none"
+    },
+    "pl": {
+     "word": "system pucharowy",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "на выбывание",
+     "rel": "part"
+    },
+    "ar": {
+     "word": "خروج المغلوب",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "एकल उन्मूलन",
+     "rel": "part"
+    },
+    "zh": {
+     "word": "单败淘汰制",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "ノックアウト方式",
+     "rel": "part"
+    },
+    "ko": {
+     "word": "싱글 엘리미네이션",
+     "rel": "part"
+    },
+    "vi": {
+     "word": "loại trực tiếp",
+     "rel": "part"
+    },
+    "th": {
+     "word": "แพ้คัดออก",
+     "rel": "part"
+    },
+    "id": {
+     "word": "sistem gugur",
+     "rel": "same"
+    }
+   }
+  },
+  "round_robin": {
+   "en": "round robin",
+   "find": "round robin",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q841144"
+   },
+   "langs": {
+    "es": {
+     "word": "todos contra todos",
+     "rel": "part"
+    },
+    "fr": {
+     "word": "toutes rondes",
+     "rel": "part"
+    },
+    "de": {
+     "word": "jeder gegen jeden",
+     "rel": "part",
+     "from": "article"
+    },
+    "it": {
+     "word": "girone all’italiana",
+     "rel": "same",
+     "from": "article"
+    },
+    "pt": {
+     "word": "todos contra todos",
+     "rel": "part"
+    },
+    "pl": {
+     "word": "system kołowy",
+     "spellings": [
+      "każdy z każdym"
+     ],
+     "rel": "same",
+     "note": "The everyday każdy z każdym is written beside it, and alone in running text."
+    },
+    "ru": {
+     "word": "круговая система",
+     "rel": "same",
+     "from": "article"
+    },
+    "ar": {
+     "word": "دورة روبن",
+     "spellings": [
+      "نظام الدوري"
+     ],
+     "rel": "same",
+     "note": "The everyday نظام الدوري is written before it, and alone in running text."
+    },
+    "hi": {
+     "word": "राउंड-रॉबिन",
+     "rel": "part"
+    },
+    "zh": {
+     "word": "循环赛",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "総当たり戦",
+     "rel": "other",
+     "note": "The Japanese article glosses its label, リーグ戦, as 総当たり戦; the plainer word was kept."
+    },
+    "ko": {
+     "word": "리그전",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "vòng tròn",
+     "rel": "part"
+    },
+    "th": {
+     "word": "พบกันหมด",
+     "rel": "part"
+    },
+    "id": {
+     "word": "sistem kompetisi",
+     "rel": "same"
+    }
+   }
+  },
+  "bracket": {
+   "en": "bracket",
+   "find": "\\bbrackets?\\b",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q4953688"
+   },
+   "langs": {
+    "es": {
+     "word": "cuadro",
+     "rel": "none"
+    },
+    "fr": {
+     "word": "tableau",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Turnierbaum",
+     "rel": "same"
+    },
+    "it": {
+     "word": "tabellone",
+     "rel": "none"
+    },
+    "pt": {
+     "word": "chave",
+     "rel": "none"
+    },
+    "pl": {
+     "word": "drabinka",
+     "spellings": [
+      "drabink"
+     ],
+     "rel": "none"
+    },
+    "ru": {
+     "word": "сетка",
+     "spellings": [
+      "сетк"
+     ],
+     "rel": "same"
+    },
+    "ar": {
+     "word": "جدول البطولة",
+     "spellings": [
+      "جدول"
+     ],
+     "rel": "same"
+    },
+    "hi": {
+     "word": "ब्रैकेट",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "对阵表",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "トーナメント表",
+     "rel": "none"
+    },
+    "ko": {
+     "word": "대진표",
+     "rel": "none"
+    },
+    "vi": {
+     "word": "sơ đồ thi đấu",
+     "rel": "none"
+    },
+    "th": {
+     "word": "สายการแข่งขัน",
+     "rel": "none"
+    },
+    "id": {
+     "word": "bagan pertandingan",
+     "rel": "none"
+    }
+   }
+  },
+  "bye": {
+   "en": "bye",
+   "find": "\\bbyes?\\b",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q1268659"
+   },
+   "langs": {
+    "es": {
+     "word": "Exento",
+     "rel": "other",
+     "note": "The adjective of the article's Exención; the label is the English word."
+    },
+    "fr": {
+     "word": "Exempt",
+     "rel": "other",
+     "note": "The label and the article are the English word. The model's choice; no recorded source."
+    },
+    "de": {
+     "word": "Freilos",
+     "rel": "same"
+    },
+    "it": {
+     "word": "Bye",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "Folga",
+     "rel": "none"
+    },
+    "pl": {
+     "word": "Wolny los",
+     "rel": "none"
+    },
+    "ru": {
+     "word": "Без соперника",
+     "rel": "none"
+    },
+    "ar": {
+     "word": "تأهّل دون لعب",
+     "rel": "other",
+     "note": "A description: the label (لقاء) means a meeting, and the article's word (استبقاء) is not one a player would know."
+    },
+    "hi": {
+     "word": "बाई",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "轮空",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "不戦勝",
+     "rel": "none"
+    },
+    "ko": {
+     "word": "부전승",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "Miễn đấu",
+     "rel": "none"
+    },
+    "th": {
+     "word": "บาย",
+     "rel": "none"
+    },
+    "id": {
+     "word": "Bye",
+     "rel": "part"
+    }
+   }
+  },
+  "vr": {
+   "en": "virtual reality",
+   "find": "virtual reality",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q170519"
+   },
+   "langs": {
+    "es": {
+     "word": "realidad virtual",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "réalité virtuelle",
+     "rel": "same"
+    },
+    "de": {
+     "word": "virtuelle Realität",
+     "spellings": [
+      "virtuellen Realität"
+     ],
+     "rel": "same"
+    },
+    "it": {
+     "word": "realtà virtuale",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "realidade virtual",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "rzeczywistość wirtualna",
+     "spellings": [
+      "rzeczywistości wirtualnej"
+     ],
+     "rel": "same"
+    },
+    "ru": {
+     "word": "виртуальная реальность",
+     "spellings": [
+      "виртуальной реальности"
+     ],
+     "rel": "same"
+    },
+    "ar": {
+     "word": "واقع افتراضي",
+     "spellings": [
+      "الواقع الافتراضي"
+     ],
+     "rel": "same"
+    },
+    "hi": {
+     "word": "वर्चुअल रियलिटी",
+     "rel": "other",
+     "note": "The core locale's word; the owner may prefer the Hindi-rooted term throughout."
+    },
+    "zh": {
+     "word": "虚拟现实",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "バーチャルリアリティ",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "가상 현실",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "thực tế ảo",
+     "rel": "same"
+    },
+    "th": {
+     "word": "ความเป็นจริงเสมือน",
+     "rel": "same"
+    },
+    "id": {
+     "word": "realitas virtual",
+     "rel": "same"
+    }
+   }
+  },
+  "ar": {
+   "en": "augmented reality",
+   "find": "augmented reality",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q254183"
+   },
+   "langs": {
+    "es": {
+     "word": "realidad aumentada",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "réalité augmentée",
+     "rel": "same"
+    },
+    "de": {
+     "word": "erweiterte Realität",
+     "spellings": [
+      "erweiterter Realität"
+     ],
+     "rel": "same"
+    },
+    "it": {
+     "word": "realtà aumentata",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "realidade aumentada",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "rzeczywistość rozszerzona",
+     "spellings": [
+      "rzeczywistości rozszerzonej"
+     ],
+     "rel": "same"
+    },
+    "ru": {
+     "word": "дополненная реальность",
+     "spellings": [
+      "дополненной реальности"
+     ],
+     "rel": "same"
+    },
+    "ar": {
+     "word": "واقع معزز",
+     "spellings": [
+      "الواقع المعزز"
+     ],
+     "rel": "same"
+    },
+    "hi": {
+     "word": "ऑगमेंटेड रियलिटी",
+     "rel": "other",
+     "note": "As वर्चुअल रियलिटी: the core locale's way with these words."
+    },
+    "zh": {
+     "word": "增强现实",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "拡張現実",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "증강 현실",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "thực tế tăng cường",
+     "rel": "same",
+     "from": "article"
+    },
+    "th": {
+     "word": "ความเป็นจริงเสริม",
+     "rel": "same"
+    },
+    "id": {
+     "word": "realitas tertambah",
+     "rel": "same"
+    }
+   }
+  },
+  "splat": {
+   "en": "Gaussian splat",
+   "find": "gaussian splat",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q123134457"
+   },
+   "langs": {
+    "es": {
+     "word": "splat gaussiano",
+     "spellings": [
+      "splats gaussianos"
+     ],
+     "rel": "none"
+    },
+    "fr": {
+     "word": "splat gaussien",
+     "spellings": [
+      "splats gaussiens"
+     ],
+     "rel": "other",
+     "note": "The article keeps the English name of the technique; the strings name the thing it draws."
+    },
+    "de": {
+     "word": "Gaussian Splat",
+     "rel": "part"
+    },
+    "it": {
+     "word": "splat gaussiano",
+     "spellings": [
+      "splat gaussiani"
+     ],
+     "rel": "none"
+    },
+    "pt": {
+     "word": "splat gaussiano",
+     "spellings": [
+      "splats gaussianos"
+     ],
+     "rel": "other",
+     "note": "The English splat kept, as in the other Latin-script languages. The model's choice; no recorded source."
+    },
+    "pl": {
+     "word": "splat gaussowski",
+     "spellings": [
+      "splat"
+     ],
+     "rel": "none"
+    },
+    "ru": {
+     "word": "гауссов сплат",
+     "spellings": [
+      "сплат"
+     ],
+     "rel": "none"
+    },
+    "ar": {
+     "word": "Gaussian Splat",
+     "spellings": [
+      "Splat"
+     ],
+     "rel": "other",
+     "note": "The English name kept. The model's choice; no recorded source."
+    },
+    "hi": {
+     "word": "गॉसियन स्प्लैट",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "高斯泼溅",
+     "rel": "none"
+    },
+    "ja": {
+     "word": "ガウシアン・スプラッティング",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "가우시안 스플랫",
+     "rel": "none"
+    },
+    "vi": {
+     "word": "Gaussian splat",
+     "rel": "none"
+    },
+    "th": {
+     "word": "Gaussian splat",
+     "rel": "none"
+    },
+    "id": {
+     "word": "Gaussian splat",
+     "rel": "none"
+    }
+   }
+  },
+  "select_gesture": {
+   "en": "pinch (to select, on Apple Vision Pro)",
+   "find": "\\bpinch\\b",
+   "source": {
+    "kind": "apple-vision"
+   },
+   "langs": {
+    "es": {
+     "word": "toca el dedo índice con el pulgar",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "faites se toucher votre index et votre pouce",
+     "rel": "same"
+    },
+    "de": {
+     "word": "tippe dann deinen Zeigefinger und Daumen zusammen",
+     "rel": "same"
+    },
+    "it": {
+     "word": "tocca con l’indice e il pollice",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "faça o gesto de pinça",
+     "sourceForm": "gestos de pinça",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Portuguese; the singular of Android's gestos de pinça."
+    },
+    "pl": {
+     "word": "ściągnij palce",
+     "sourceForm": "ściągnięcia palców",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Polish; the imperative of Android's ściągnięcia palców."
+    },
+    "ru": {
+     "word": "сожми пальцы",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "other",
+     "note": "Apple publishes no Apple Vision Pro guide in Russian, and Android's Russian names the zoom the gesture does (масштабирование), not the gesture. The model's choice; no recorded source."
+    },
+    "ar": {
+     "word": "اضغط بإصبعي السبابة والإبهام معًا",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "पिंच करें",
+     "sourceForm": "पिंच",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Hindi; Android's पिंच, with करें."
+    },
+    "zh": {
+     "word": "互点食指和拇指",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "人差し指と親指をタップして",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "검지와 엄지를 함께 탭",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "chụm ngón tay",
+     "sourceForm": "chụm",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Vietnamese; Android's chụm, with ngón tay (fingers)."
+    },
+    "th": {
+     "word": "บีบนิ้ว",
+     "sourceForm": "บีบ",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Thai; Android's บีบ, with นิ้ว (fingers)."
+    },
+    "id": {
+     "word": "cubit",
+     "sourceForm": "mencubit",
+     "source": {
+      "kind": "aosp",
+      "term": "gestures"
+     },
+     "rel": "same",
+     "note": "Apple publishes no Apple Vision Pro guide in Indonesian; the imperative of Android's mencubit."
+    }
+   }
+  },
+  "credits": {
+   "en": "credits (the game's currency)",
+   "find": "\\bcredits?\\b",
+   "source": {
+    "kind": "model"
+   },
+   "langs": {
+    "es": {
+     "word": "crédito",
+     "rel": "none"
+    },
+    "fr": {
+     "word": "crédit",
+     "rel": "none"
+    },
+    "de": {
+     "word": "Credit",
+     "rel": "none"
+    },
+    "it": {
+     "word": "credito",
+     "spellings": [
+      "crediti"
+     ],
+     "rel": "none"
+    },
+    "pt": {
+     "word": "crédito",
+     "rel": "none"
+    },
+    "pl": {
+     "word": "kredyt",
+     "rel": "none"
+    },
+    "ru": {
+     "word": "кредит",
+     "rel": "none"
+    },
+    "ar": {
+     "word": "نقطة",
+     "spellings": [
+      "نقاط",
+      "نقطت"
+     ],
+     "rel": "none",
+     "note": "Points: a countable word with clean forms for one, two and many."
+    },
+    "hi": {
+     "word": "क्रेडिट",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "点",
+     "rel": "none",
+     "note": "点数 as a noun on its own."
+    },
+    "ja": {
+     "word": "クレジット",
+     "rel": "none"
+    },
+    "ko": {
+     "word": "크레딧",
+     "rel": "none"
+    },
+    "vi": {
+     "word": "xu",
+     "rel": "none",
+     "note": "Coins, the usual word for a game's currency."
+    },
+    "th": {
+     "word": "เครดิต",
+     "rel": "none"
+    },
+    "id": {
+     "word": "kredit",
+     "rel": "none"
+    }
+   }
+  },
+  "multiple_choice": {
+   "en": "multiple choice",
+   "find": "multiple-choice",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q867668"
+   },
+   "langs": {
+    "es": {
+     "word": "opción múltiple",
+     "rel": "part"
+    },
+    "fr": {
+     "word": "à choix multiples",
+     "rel": "part"
+    },
+    "de": {
+     "word": "Multiple-Choice",
+     "rel": "same"
+    },
+    "it": {
+     "word": "a scelta multipla",
+     "rel": "part"
+    },
+    "pt": {
+     "word": "múltipla escolha",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "wielokrotnego wyboru",
+     "rel": "other",
+     "note": "The label, pytanie zamknięte, is any closed question. The model's choice; no recorded source."
+    },
+    "ru": {
+     "word": "с выбором ответа",
+     "rel": "other",
+     "note": "Shorter than the label. The model's choice; no recorded source."
+    },
+    "ar": {
+     "word": "أسئلة اختيار من متعدد",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "बहुविकल्पीय",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "选择题",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "選択式",
+     "rel": "other",
+     "note": "The label, 多肢選択法, is the testing method's technical name. The model's choice; no recorded source."
+    },
+    "ko": {
+     "word": "객관식",
+     "rel": "other",
+     "note": "The everyday school word; the label, 선다형 문제, is the technical one. The model's choice; no recorded source."
+    },
+    "vi": {
+     "word": "trắc nghiệm",
+     "rel": "part"
+    },
+    "th": {
+     "word": "ปรนัย",
+     "rel": "none"
+    },
+    "id": {
+     "word": "pilihan ganda",
+     "rel": "none"
+    }
+   }
+  },
+  "share_button": {
+   "en": "the Share button",
+   "keys": [
+    "pwa.install.iosStep1"
+   ],
+   "source": {
+    "kind": "apple-home"
+   },
+   "langs": {
+    "es": {
+     "word": "el botón Compartir",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "le bouton Partager",
+     "rel": "same"
+    },
+    "de": {
+     "word": "die Taste „Teilen“",
+     "rel": "same"
+    },
+    "it": {
+     "word": "il pulsante Condividi",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "botão Compartilhar",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "przycisk udostępniania",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "кнопки «Поделиться»",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "زر مشاركة",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "“शेयर करें” बटन",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "“共享”按钮",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "共有ボタン",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "공유 버튼",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "nút Chia sẻ",
+     "rel": "same"
+    },
+    "th": {
+     "word": "ปุ่มแชร์",
+     "rel": "same"
+    },
+    "id": {
+     "word": "tombol Bagikan",
+     "rel": "same"
+    }
+   }
+  },
+  "add_to_home_screen": {
+   "en": "Add to Home Screen",
+   "keys": [
+    "pwa.install.iosStep2"
+   ],
+   "source": {
+    "kind": "apple-home"
+   },
+   "langs": {
+    "es": {
+     "word": "Añadir a pantalla de inicio",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "Sur l’écran d’accueil",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Zu Home-Bildschirm hinzufügen",
+     "rel": "same"
+    },
+    "it": {
+     "word": "Aggiungi alla schermata Home",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "Adicionar à Tela de Início",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "Do ekranu głównego",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "На экран „Домой“",
+     "rel": "same",
+     "note": "Apple writes «На экран \"Домой\"»; the inner quotation marks are written „…“, as Russian nests them."
+    },
+    "ar": {
+     "word": "إضافة إلى الشاشة الرئيسية",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "होम स्क्रीन पर जोड़ें",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "添加到主屏幕",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "ホーム画面に追加",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "홈 화면에 추가",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "Thêm vào Màn hình chính",
+     "rel": "same"
+    },
+    "th": {
+     "word": "เพิ่มไปยังหน้าจอโฮม",
+     "rel": "same"
+    },
+    "id": {
+     "word": "Tambah ke Layar Utama",
+     "rel": "same"
+    }
+   }
+  },
+  "install": {
+   "en": "Install (the button)",
+   "keys": [
+    "pwa.install.accept"
+   ],
+   "source": {
+    "kind": "aosp",
+    "term": "install"
+   },
+   "langs": {
+    "es": {
+     "word": "Instalar",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "Installer",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Installieren",
+     "rel": "same"
+    },
+    "it": {
+     "word": "Installa",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "Instalar",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "Zainstaluj",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "Установить",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "تثبيت",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "इंस्टॉल करें",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "安装",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "インストール",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "설치",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "Cài đặt",
+     "rel": "same"
+    },
+    "th": {
+     "word": "ติดตั้ง",
+     "rel": "same"
+    },
+    "id": {
+     "word": "Instal",
+     "rel": "same"
+    }
+   }
+  },
+  "not_now": {
+   "en": "Not now (the button)",
+   "keys": [
+    "pwa.install.dismiss"
+   ],
+   "source": {
+    "kind": "aosp",
+    "term": "notNow"
+   },
+   "langs": {
+    "es": {
+     "word": "Ahora no",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "Pas maintenant",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Nicht jetzt",
+     "rel": "same"
+    },
+    "it": {
+     "word": "Non ora",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "Agora não",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "Nie teraz",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "Не сейчас",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "ليس الآن",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "अभी नहीं",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "以后再说",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "後で",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "나중에",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "Để sau",
+     "rel": "same"
+    },
+    "th": {
+     "word": "ไว้ทีหลัง",
+     "rel": "same"
+    },
+    "id": {
+     "word": "Lain kali",
+     "rel": "same"
+    }
+   }
+  },
+  "rap_battle": {
+   "en": "rap battle",
+   "find": "rap-battle",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q12302979"
+   },
+   "langs": {
+    "es": {
+     "word": "batalla de rap",
+     "spellings": [
+      "batallas de rap"
+     ],
+     "rel": "same"
+    },
+    "fr": {
+     "word": "battle de rap",
+     "rel": "contains"
+    },
+    "de": {
+     "word": "Battle-Rap",
+     "rel": "same"
+    },
+    "it": {
+     "word": "battaglie rap",
+     "rel": "none"
+    },
+    "pt": {
+     "word": "batalha de rap",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "battle rap",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "рэп-баттл",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "باتل راب",
+     "rel": "same"
+    },
+    "hi": {
+     "word": "रैप-बैटल",
+     "rel": "none"
+    },
+    "zh": {
+     "word": "说唱对战",
+     "rel": "other",
+     "note": "Wikidata has only Traditional Chinese, and 饒舌 is the Taiwanese word for rap; 说唱 is the mainland's. The model's choice; no recorded source."
+    },
+    "ja": {
+     "word": "MCバトル",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "배틀 랩",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "rap chiến",
+     "rel": "same"
+    },
+    "th": {
+     "word": "แร็ปแบตเทิล",
+     "rel": "none"
+    },
+    "id": {
+     "word": "adu rap",
+     "rel": "same"
+    }
+   }
+  },
+  "card_game": {
+   "en": "card game",
+   "find": "card game",
+   "source": {
+    "kind": "wikidata",
+    "item": "Q142714"
+   },
+   "langs": {
+    "es": {
+     "word": "juego de cartas",
+     "rel": "other",
+     "note": "Naipes are playing cards; the core locale's word for the game's cards is cartas."
+    },
+    "fr": {
+     "word": "jeu de cartes",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Kartenspiel",
+     "rel": "same"
+    },
+    "it": {
+     "word": "gioco di carte",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "jogo de cartas",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "gra karciana",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "карточная игра",
+     "rel": "same"
+    },
+    "ar": {
+     "word": "لعبة بطاقات",
+     "rel": "other",
+     "note": "ورق is playing cards; the core locale's word for the game's cards is بطاقة."
+    },
+    "hi": {
+     "word": "कार्ड गेम",
+     "rel": "other",
+     "note": "ताश is playing cards; the core locale's word for the game's cards is कार्ड."
+    },
+    "zh": {
+     "word": "卡牌游戏",
+     "rel": "same"
+    },
+    "ja": {
+     "word": "カードゲーム",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "카드 게임",
+     "rel": "same"
+    },
+    "vi": {
+     "word": "trò chơi bài",
+     "rel": "same"
+    },
+    "th": {
+     "word": "เกมการ์ด",
+     "rel": "other",
+     "note": "ไพ่ is playing cards; the core locale's word for the game's cards is การ์ด."
+    },
+    "id": {
+     "word": "permainan kartu",
+     "rel": "same"
+    }
+   }
+  },
+  "characters": {
+   "en": "characters (of a join code: letters and digits)",
+   "find": "\\b6-character\\b|\\b6 characters\\b",
+   "source": {
+    "kind": "aosp",
+    "term": "characters"
+   },
+   "langs": {
+    "es": {
+     "word": "caracteres",
+     "rel": "same"
+    },
+    "fr": {
+     "word": "caractères",
+     "rel": "same"
+    },
+    "de": {
+     "word": "Zeichen",
+     "rel": "same"
+    },
+    "it": {
+     "word": "caratteri",
+     "rel": "same"
+    },
+    "pt": {
+     "word": "caracteres",
+     "rel": "same"
+    },
+    "pl": {
+     "word": "znaków",
+     "rel": "same"
+    },
+    "ru": {
+     "word": "символов",
+     "sourceForm": "символы",
+     "rel": "same",
+     "note": "The genitive plural of Android’s символы, after a number."
+    },
+    "ar": {
+     "word": "أحرف",
+     "rel": "same",
+     "note": "Android’s word for the characters of a password; أحرف وأرقام (letters and digits) where the error says what a code is made of."
+    },
+    "hi": {
+     "word": "वर्ण",
+     "rel": "same"
+    },
+    "zh": {
+     "word": "位",
+     "rel": "other",
+     "note": "6 位 counts the places of a code, as Chinese counts a code’s characters; Android has 字符. The model’s choice; no recorded source."
+    },
+    "ja": {
+     "word": "文字",
+     "rel": "same"
+    },
+    "ko": {
+     "word": "글자",
+     "rel": "other",
+     "note": "Android has 문자; 6글자 is the everyday count. The model’s choice; no recorded source."
+    },
+    "vi": {
+     "word": "ký tự",
+     "rel": "same"
+    },
+    "th": {
+     "word": "อักขระ",
+     "rel": "same"
+    },
+    "id": {
+     "word": "karakter",
+     "rel": "same"
+    }
+   }
+  }
+ }
+}

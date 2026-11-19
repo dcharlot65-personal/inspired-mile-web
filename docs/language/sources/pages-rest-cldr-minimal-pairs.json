@@ -1,0 +1,80 @@
+{
+ "source": "https://github.com/unicode-org/cldr/blob/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/main/<lang>.xml, <numbers><minimalPairs><pluralMinimalPairs>",
+ "tag": "release-49",
+ "commit": "96e54b273d2da4ec6fbad350ba19ff23fa24a588",
+ "fetched": "2026-11-18T00:14:37.612Z",
+ "licence": "Unicode License v3 (https://www.unicode.org/license.txt)",
+ "pairs": {
+  "en": {
+   "one": "{0} day",
+   "other": "{0} days"
+  },
+  "es": {
+   "one": "{0} día",
+   "many": "{0} de días",
+   "other": "{0} días"
+  },
+  "fr": {
+   "one": "{0} jour",
+   "many": "{0} de jours",
+   "other": "{0} jours"
+  },
+  "de": {
+   "one": "{0} Tag",
+   "other": "{0} Tage"
+  },
+  "it": {
+   "one": "{0} giorno",
+   "many": "{0} di giorni",
+   "other": "{0} giorni"
+  },
+  "pt": {
+   "one": "{0} dia",
+   "many": "{0} de dias",
+   "other": "{0} dias"
+  },
+  "pl": {
+   "one": "{0} miesiąc",
+   "few": "{0} miesiące",
+   "many": "{0} miesięcy",
+   "other": "{0} miesiąca"
+  },
+  "ru": {
+   "one": "из {0} книги за {0} день",
+   "few": "из {0} книг за {0} дня",
+   "many": "из {0} книг за {0} дней",
+   "other": "из {0} книги за {0} дня"
+  },
+  "ar": {
+   "zero": "{0} ولد حضر",
+   "one": "ولد واحد حضر",
+   "two": "ولدان حضرا",
+   "few": "{0} أولاد حضروا",
+   "many": "{0} ولدًا حضروا",
+   "other": "{0} ولد حضروا"
+  },
+  "hi": {
+   "one": "{0} घंटा",
+   "other": "{0} घंटे"
+  },
+  "zh": {
+   "other": "{0} 天"
+  },
+  "ja": {
+   "other": "{0}日"
+  },
+  "ko": {
+   "other": "{0}일"
+  },
+  "vi": {
+   "one": "Bạn có {0} mặt hàng trong giỏ hàng; bạn có muốn mua nó?",
+   "other": "Bạn có {0} mặt hàng trong giỏ hàng; bạn có muốn mua chúng?"
+  },
+  "th": {
+   "other": "{0} วัน"
+  },
+  "id": {
+   "other": "{0} hari"
+  }
+ }
+}

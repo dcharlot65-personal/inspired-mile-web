@@ -12,37 +12,66 @@
  *      both again.
  *   3. A screen wake lock while a duel or the Theatre is on stage.
  *
- * Every string a player can see is in PWA_STRINGS, so it can be localised in one place.
+ * Every string a player can see is in the "pwa" page area (src/i18n/pages/pwa), in sixteen
+ * languages; PWA_STRINGS is its English.
  * The decisions are pure functions (tested in pwa.test.ts); the parts that touch the
  * browser are thin and guarded, because every API used here is missing somewhere.
  */
 
+import { has, initI18n, loadArea, onLocaleChange, t } from '../i18n';
+import { intlLocale } from '../i18n/fmt';
+import EN from '../i18n/pages/pwa/en';
+
+/**
+ * The English of every string a player can see here: the reference of the "pwa" page area
+ * (src/i18n/pages/pwa/<locale>.ts), which holds the same sentences in all sixteen languages.
+ * What is shown is in the interface language once that area has arrived (say(), below).
+ */
 export const PWA_STRINGS = {
   install: {
-    regionLabel: 'Install Sonnet Man',
-    title: 'Install Sonnet Man first',
+    regionLabel: EN['pwa.install.regionLabel'],
+    title: EN['pwa.install.title'],
     /** Browsers that offer their own install dialog (Chrome, Edge, Android). */
-    promptBody: 'It opens full screen, and an installed app is far less likely to have a downloaded model cleared by the browser.',
+    promptBody: EN['pwa.install.promptBody'],
     /** iPhone and iPad: there is no install dialog, and the app has storage of its own. */
-    iosBody: 'On iPhone and iPad the Home Screen app shares nothing with this tab. Add it before you sign in or download a model, or you will do both twice.',
-    iosStep1: 'Tap the Share button.',
-    iosStep2: 'Choose “Add to Home Screen”.',
-    accept: 'Install',
-    dismiss: 'Not now',
+    iosBody: EN['pwa.install.iosBody'],
+    iosStep1: EN['pwa.install.iosStep1'],
+    iosStep2: EN['pwa.install.iosStep2'],
+    accept: EN['pwa.install.accept'],
+    dismiss: EN['pwa.install.dismiss'],
   },
   storage: {
     /** {size} is replaced by the amount stored, e.g. "1.1 GB". */
-    kept: '{size} kept on this device. Your browser will not clear it on its own.',
-    keptNoSize: 'Your download is kept on this device. Your browser will not clear it on its own.',
-    atRisk: '{size} stored, but your browser may clear this if the device runs short of space or you stay away for a while.',
-    atRiskNoSize: 'Your download is stored, but your browser may clear this if the device runs short of space or you stay away for a while.',
+    kept: EN['pwa.storage.kept'],
+    keptNoSize: EN['pwa.storage.keptNoSize'],
+    atRisk: EN['pwa.storage.atRisk'],
+    atRiskNoSize: EN['pwa.storage.atRiskNoSize'],
     /** Added to the at-risk line where installing would help. */
-    installHint: 'Installing the app helps keep it.',
-    lessThanOneMb: 'Less than 1 MB',
-    megabytes: '{n} MB',
-    gigabytes: '{n} GB',
+    installHint: EN['pwa.storage.installHint'],
+    lessThanOneMb: EN['pwa.storage.lessThan'].replace('{size}', '1 MB'),
   },
 } as const;
+
+/**
+ * A sentence of the install guidance or the storage note: in the interface language when
+ * the "pwa" area is in, in English until then (and for good, if it never arrives).
+ */
+function say(key: string, vars: Record<string, string> = {}): string {
+  if (has(key)) return t(key, vars);
+  return (EN[key] ?? key).replace(/\{([a-zA-Z_]+)\}/g, (whole, name: string) => vars[name] ?? whole);
+}
+
+/** The "pwa" area in the current language. A failure is not an error: English stands in. */
+function loadWords(): Promise<void> {
+  return initI18n()
+    .then(() => loadArea('pwa'))
+    .catch((err) => console.warn('[pwa] could not load its words', err));
+}
+
+/** A number of megabytes or gigabytes as the language writes it (Unicode CLDR, through Intl): "1.1 GB", "1,1 Go", "1,1 ГБ". */
+function bytesIn(n: number, unit: 'megabyte' | 'gigabyte', digits: number): string {
+  return new Intl.NumberFormat(intlLocale(), { style: 'unit', unit, unitDisplay: 'short', minimumFractionDigits: digits, maximumFractionDigits: digits }).format(n);
+}
 
 // ---------------------------------------------------------------------------
 // Pure parts
@@ -86,10 +115,9 @@ export function installMode(ctx: InstallContext): InstallMode {
 
 /** A storage size as a player would say it: "295 MB", "1.1 GB". */
 export function formatBytes(bytes: number): string {
-  const s = PWA_STRINGS.storage;
-  if (!Number.isFinite(bytes) || bytes < 1e6) return s.lessThanOneMb;
-  if (bytes < 1e9) return s.megabytes.replace('{n}', String(Math.round(bytes / 1e6)));
-  return s.gigabytes.replace('{n}', (bytes / 1e9).toFixed(1));
+  if (!Number.isFinite(bytes) || bytes < 1e6) return say('pwa.storage.lessThan', { size: bytesIn(1, 'megabyte', 0) });
+  if (bytes < 1e9) return bytesIn(Math.round(bytes / 1e6), 'megabyte', 0);
+  return bytesIn(Math.round(bytes / 1e8) / 10, 'gigabyte', 1);
 }
 
 export interface StorageNote {
@@ -103,12 +131,11 @@ export interface StorageNote {
  * @param canInstall installing would help (a tab, on a browser that installs)
  */
 export function storageNote(persisted: boolean, usage: number | null, canInstall = false): StorageNote {
-  const s = PWA_STRINGS.storage;
   const known = usage !== null && Number.isFinite(usage) && usage > 0;
   const size = known ? formatBytes(usage) : '';
-  if (persisted) return { state: 'kept', text: known ? s.kept.replace('{size}', size) : s.keptNoSize };
-  const text = known ? s.atRisk.replace('{size}', size) : s.atRiskNoSize;
-  return { state: 'at-risk', text: canInstall ? `${text} ${s.installHint}` : text };
+  if (persisted) return { state: 'kept', text: known ? say('pwa.storage.kept', { size }) : say('pwa.storage.keptNoSize') };
+  const text = known ? say('pwa.storage.atRisk', { size }) : say('pwa.storage.atRiskNoSize');
+  return { state: 'at-risk', text: canInstall ? `${text} ${say('pwa.storage.installHint')}` : text };
 }
 
 /** What navigator.wakeLock.request() resolves to, as far as this module uses it. */
@@ -303,6 +330,7 @@ export function mountStorageNote(anchor: HTMLElement): void {
 
   async function refresh() {
     if (!storageOutcome()?.model) return;
+    await loadWords();
     let persisted = storageOutcome()?.persisted ?? false;
     let usage: number | null = null;
     try {
@@ -322,6 +350,8 @@ export function mountStorageNote(anchor: HTMLElement): void {
   }
 
   window.addEventListener(STORAGE_EVENT, refresh);
+  // Said again in each language the player switches to.
+  onLocaleChange(() => void refresh());
   refresh();
 }
 
@@ -371,11 +401,26 @@ function hideInstall(): void {
   document.getElementById('pwa-install')?.remove();
 }
 
-function showInstall(): void {
+let drawing = 0;
+
+async function showInstall(): Promise<void> {
+  // The words first. Two calls on the way (start-up and the browser's offer): the later one draws.
+  const turn = ++drawing;
+  await loadWords();
+  if (turn !== drawing) return;
   const mode = installMode(installContext());
   hideInstall();
   if (mode === 'none') return;
-  const s = PWA_STRINGS.install;
+  const s = {
+    regionLabel: say('pwa.install.regionLabel'),
+    title: say('pwa.install.title'),
+    promptBody: say('pwa.install.promptBody'),
+    iosBody: say('pwa.install.iosBody'),
+    iosStep1: say('pwa.install.iosStep1'),
+    iosStep2: say('pwa.install.iosStep2'),
+    accept: say('pwa.install.accept'),
+    dismiss: say('pwa.install.dismiss'),
+  };
 
   // Small, at the foot of the page, under the age gate (z-200) and never full width on a desktop.
   const box = el('div', 'fixed bottom-3 inset-x-3 sm:inset-x-auto sm:right-4 sm:bottom-4 sm:max-w-sm z-150 bg-obsidian-900 border border-gold-500/40 rounded-xl shadow-2xl p-4');
@@ -440,13 +485,17 @@ export function initPwa(): void {
         // Keep the browser's own mini-bar away; ours explains why to install first.
         e.preventDefault();
         deferredPrompt = e as InstallPromptEvent;
-        showInstall();
+        void showInstall();
       });
       window.addEventListener('appinstalled', () => {
         deferredPrompt = null;
         hideInstall();
       });
-      showInstall();
+      // An offer on screen is drawn again in each language the player switches to.
+      onLocaleChange(() => {
+        if (document.getElementById('pwa-install')) void showInstall();
+      });
+      void showInstall();
     }
   } catch (err) {
     console.warn('[pwa] init failed', err);

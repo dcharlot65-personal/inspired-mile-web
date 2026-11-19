@@ -361,6 +361,47 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   page string is translated back again on the build host (`scripts/pages-lang/meaning-run.sh`,
   then `node scripts/pages-lang/meaning.mjs --bt docs/language/pages-core/bt.json`, which fails on
   a string not scored since it changed).
+- **Page areas of the classroom, marketplace, tournaments, season and viewer pages** (lang/pages-rest)
+  use the same `src/i18n/pages/<area>/<locale>.ts` files through their own helper,
+  `initPage([areas], meta)` (`src/i18n/page.ts`; the pages above use `src/i18n/pages/runtime.ts`),
+  which calls `loadArea`. `loadArea(name)` fetches one language only;
+  redraw with `onPageLocaleChange(fn)` (not `onLocaleChange`), which fetches the page's areas
+  in the new language before calling `fn`. Areas of this branch: `classroom`, `marketplace`,
+  `tournaments`, `season`, `viewer` (viewer and VR gallery), `shared` (API error messages,
+  activity names, credits, error boundary, offline page, the manifest's names), `pwa` (install
+  guidance and the storage note, `src/lib/pwa.ts`). Counted messages are
+  `key.one`, `key.few`, … `key.other`, picked by `plural()` in `src/i18n/fmt.ts`; a language
+  has exactly the forms CLDR gives it, and a form joins its number to its noun as CLDR's plural
+  minimal pairs do (fr, es, it, pt `many`: `{n} de crédits`; saved in
+  `docs/language/sources/pages-rest-cldr-minimal-pairs.json`). Numbers, dates and lists go through
+  `fmt.ts` (Intl).
+  Line breaks: `global.css` sets `word-break: auto-phrase` and `line-break: strict` on `:lang(ja)`
+  (Chromium breaks Japanese between phrases, not inside カード) and `word-break: keep-all` on
+  `:lang(ko)` (Korean breaks at its spaces); `tests/pages-rest.spec.ts` reads where the lines of
+  this branch's pages break in both and fails on a break inside a word.
+  `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says what no
+  tool has checked. One word per thing: `docs/language/pages-rest-terms.json` gives each
+  language's word for 21 terms and how it stands to its source (Wikidata, Apple, Android, or
+  none: the model's); `src/i18n/pages-rest-terms.test.ts` fails on a string that uses another
+  word, on a relation the saved source does not bear out, and on a verdict that claims a source
+  the record does not give. The doc's term tables are drawn from the record
+  (`node scripts/pages-rest/terms.mjs --write`). After changing one of these strings,
+  back-translate it on the build host (`scripts/pages-rest/lang-host.sh bt-pairs`), merge the
+  rows into `docs/language/results/pages-rest/bt.json`, rank the whole file
+  (`lang-host.sh rank`), run `lang-host.sh spell` and `grammar` again, copy the results in, and
+  run `node scripts/pages-rest/summarise.mjs docs/language/results/pages-rest --strict`: it
+  fails on a string back-translated, spelt or parsed as it no longer stands, and on a flagged
+  string with no verdict in `docs/language/pages-rest-meaning.json`.
+- **API errors**: a page never shows `e.message`. Client libraries throw `ApiError`; the page
+  calls `errorText(e)`, which turns the failure into a code (`src/lib/api-errors.ts`) and the
+  code into `error.<code>` in the `shared` area. A handler that gains a new answer fails
+  `src/lib/api-errors.test.ts` (it reads `backend/src`) until the answer has a code and a
+  sentence in sixteen languages.
+- `public/offline.html` and the `*_localized` members of `public/manifest.json` (name,
+  description, each shortcut's name) are written by `node scripts/pages-rest/build-static.mjs`
+  from the `shared` area; run it after changing a string there, and after a merge that touches
+  `manifest.json`. It refuses when the manifest's English differs from the area's English
+  (`app.name`, `app.description`, `app.shortcut.*`): translate the new English first.
 - **The duel's language** is a separate choice. The engine (`src/lib/verse`) returns message
   keys, never sentences; `english.ts` renders them for the model's prompt, which is always
   English. Per-language data (acrostic words, forbidden letters, power words, the written

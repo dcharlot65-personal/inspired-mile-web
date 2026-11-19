@@ -1,71 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { XP_RATES } from '../lib/seasons';
+// Every sentence on this page is a key in src/i18n/pages/season (and "shared"); the
+// English written in the markup is what a reader sees before the script has run.
+// Icons as character references, as this page has always written them: one of them carries an invisible variation selector.
+const rates = [
+  { source: 'battle', icon: '&#x2694;&#xFE0F;' },
+  { source: 'trivia', icon: '&#x1F9E0;' },
+  { source: 'challenge', icon: '&#x1F4DC;' },
+  { source: 'daily', icon: '&#x2B50;' },
+];
+const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', challenge: 'Challenge', daily: 'Daily' };
 ---
 
-<BaseLayout title="Season Pass" description="Level up your Season Pass to unlock exclusive rewards in Inspired Mile.">
+<BaseLayout title="Season Pass" description="Raise the level of your Season Pass to unlock rewards in Inspired Mile.">
 
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Season 1</span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase" id="season-badge">Season 1</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          <span class="text-gradient">Season Pass</span>
+          <span class="text-gradient" data-i18n="season.title">Season Pass</span>
         </h1>
-        <p class="text-obsidian-400 text-lg max-w-2xl mx-auto">
-          Play battles, trivia, and challenges to earn XP. Level up to unlock exclusive cards, credits, and titles.
+        <p class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="season.intro">
+          Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.
         </p>
       </div>
 
       <!-- Season Progress Bar -->
       <div id="season-progress" class="card-glass p-6 rounded-2xl mb-8">
-        <div class="flex items-center justify-between mb-3">
-          <div>
-            <h3 class="text-lg font-display font-bold text-obsidian-200" id="season-name">Loading...</h3>
+        <div class="flex items-center justify-between gap-4 mb-3">
+          <div class="min-w-0">
+            <h3 class="text-lg font-display font-bold text-obsidian-200 break-words"><bdi id="season-name">Loading…</bdi></h3>
             <p class="text-xs text-obsidian-500" id="season-dates"></p>
           </div>
-          <div class="text-right">
+          <div class="text-end shrink-0">
             <span class="text-2xl font-display font-bold text-gold-400" id="season-level">1</span>
-            <span class="text-xs text-obsidian-500 block">Level</span>
+            <span class="text-xs text-obsidian-500 block" data-i18n="season.level">Level</span>
           </div>
         </div>
+        <!-- The bar fills from the side the language starts on. -->
         <div class="w-full h-3 bg-obsidian-800 rounded-full overflow-hidden">
-          <div id="xp-bar" class="h-full bg-linear-to-r from-purple-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+          <div id="xp-bar" class="h-full bg-linear-to-r rtl:bg-linear-to-l from-purple-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
         </div>
-        <div class="flex justify-between mt-1">
-          <span class="text-[10px] text-obsidian-500" id="xp-current">0 XP</span>
-          <span class="text-[10px] text-obsidian-500" id="xp-next">Next: 200 XP</span>
+        <div class="flex flex-wrap justify-between gap-x-3 mt-1">
+          <span class="text-[10px] text-obsidian-500" id="xp-current"></span>
+          <span class="text-[10px] text-obsidian-500" id="xp-next"></span>
         </div>
       </div>
 
       <!-- XP Rates -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-        <div class="card-glass p-4 rounded-xl text-center">
-          <span class="text-2xl">&#x2694;&#xFE0F;</span>
-          <p class="text-sm font-bold text-obsidian-200 mt-1">Battle</p>
-          <p class="text-xs text-purple-400">+100 XP</p>
-        </div>
-        <div class="card-glass p-4 rounded-xl text-center">
-          <span class="text-2xl">&#x1F9E0;</span>
-          <p class="text-sm font-bold text-obsidian-200 mt-1">Trivia</p>
-          <p class="text-xs text-purple-400">+50 XP</p>
-        </div>
-        <div class="card-glass p-4 rounded-xl text-center">
-          <span class="text-2xl">&#x1F4DC;</span>
-          <p class="text-sm font-bold text-obsidian-200 mt-1">Challenge</p>
-          <p class="text-xs text-purple-400">+40 XP</p>
-        </div>
-        <div class="card-glass p-4 rounded-xl text-center">
-          <span class="text-2xl">&#x2B50;</span>
-          <p class="text-sm font-bold text-obsidian-200 mt-1">Daily</p>
-          <p class="text-xs text-purple-400">+25 XP</p>
-        </div>
+        {rates.map((r) => (
+          <div class="card-glass p-4 rounded-xl text-center">
+            <span class="text-2xl" aria-hidden="true" set:html={r.icon} />
+            <p class="text-sm font-bold text-obsidian-200 mt-1 break-words hyphens-auto" data-i18n={`activity.${r.source}`}>{english[r.source]}</p>
+            <p class="text-xs text-purple-400" data-xp-rate={XP_RATES[r.source]}>+{XP_RATES[r.source]} XP</p>
+          </div>
+        ))}
       </div>
 
       <!-- Reward Track -->
-      <h2 class="text-xl font-display font-bold text-obsidian-200 mb-4">Reward Track</h2>
+      <h2 class="text-xl font-display font-bold text-obsidian-200 mb-4" data-i18n="season.track">Reward track</h2>
       <div id="reward-track" class="space-y-2 mb-8">
         <div class="card-glass p-4 rounded-xl animate-pulse">
           <div class="bg-obsidian-800 rounded-sm h-4 w-1/3"></div>
@@ -74,12 +73,130 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- Sign In Prompt -->
       <div id="season-signin" class="hidden card-glass p-8 rounded-2xl text-center">
-        <p class="text-obsidian-400 mb-4">Sign in to track your Season Pass progress across devices.</p>
-        <button class="btn-primary text-sm px-6 py-2" onclick="document.getElementById('auth-btn')?.click()">
-          Sign In
-        </button>
+        <p class="text-obsidian-400 mb-4" data-i18n="season.signIn">Sign in to keep your Season Pass progress on every device.</p>
+        <button id="season-signin-btn" class="btn-primary text-sm px-6 py-2" data-i18n="auth.signIn">Sign In</button>
       </div>
     </div>
   </section>
+
+  <script>
+    import { claimReward, fetchCurrentSeason, getLevelProgress, getRewards, type SeasonProgress, type SeasonReward } from '../lib/seasons';
+    import { apiErrorCode } from '../lib/api-errors';
+    import { t } from '../i18n';
+    import { dateRange, num, plural, signed } from '../i18n/fmt';
+    import { errorText, esc, initPage, onPageLocaleChange, isolate } from '../i18n/page';
+
+    const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
+
+    type State =
+      | { state: 'loading' }
+      | { state: 'signed-out' }
+      | { state: 'no-season' }
+      | { state: 'failed'; error: unknown }
+      | { state: 'ready'; progress: SeasonProgress; rewards: SeasonReward[] };
+    let season: State = { state: 'loading' };
+
+    const $ = (id: string) => document.getElementById(id)!;
+
+    $('season-signin-btn').addEventListener('click', () => document.getElementById('auth-btn')?.click());
+
+    /** What a reward is, in words. A kind the page does not know is shown under "Reward". */
+    function rewardText(r: SeasonReward): string {
+      if (r.rewardType === 'credits' && Number.isFinite(Number(r.rewardValue))) return plural('credits', Number(r.rewardValue));
+      const key = ['pack', 'card', 'title'].includes(r.rewardType) ? `season.reward.${r.rewardType}` : 'season.reward.unknown';
+      // The reward's own name is the server's data, in whatever script it is written.
+      return t(key, { name: isolate(r.rewardValue) });
+    }
+
+    function draw() {
+      const ready = season.state === 'ready' ? season : null;
+      $('season-badge').textContent = t('season.badge', { n: num(ready?.progress.season.id ?? 1) });
+      document.querySelectorAll<HTMLElement>('[data-xp-rate]').forEach((el) => {
+        el.textContent = t('season.xpGain', { n: signed(Number(el.dataset.xpRate)) });
+      });
+
+      $('season-signin').classList.toggle('hidden', season.state !== 'signed-out');
+      $('season-progress').classList.toggle('hidden', season.state === 'signed-out');
+
+      const track = $('reward-track');
+      if (!ready) {
+        const message =
+          season.state === 'loading' ? t('season.loading')
+          : season.state === 'no-season' ? t('error.no_active_season')
+          : season.state === 'failed' ? errorText(season.error)
+          : '';
+        $('season-name').textContent = message;
+        $('season-dates').textContent = '';
+        $('season-level').textContent = num(1);
+        $('xp-bar').style.width = '0%';
+        $('xp-current').textContent = '';
+        $('xp-next').textContent = '';
+        if (season.state !== 'loading') track.innerHTML = '';
+        return;
+      }
+
+      const { progress, rewards } = ready;
+      const top = progress.level >= progress.season.maxLevel;
+      $('season-name').textContent = progress.season.name;
+      $('season-dates').textContent = dateRange(progress.season.startDate, progress.season.endDate);
+      $('season-level').textContent = num(progress.level);
+      $('xp-bar').style.width = `${getLevelProgress(progress)}%`;
+      $('xp-current').textContent = t('season.xp', { n: num(progress.xp) });
+      $('xp-next').textContent = top ? t('season.maxed') : t('season.next', { n: num(progress.xpToNext) });
+
+      if (rewards.length === 0) {
+        track.innerHTML = `<p class="text-obsidian-500 text-center py-4">${esc(t('season.track.empty'))}</p>`;
+        return;
+      }
+      track.innerHTML = [...rewards].sort((a, b) => a.level - b.level).map((r) => {
+        const reached = progress.level >= r.level;
+        const action = r.claimed
+          ? `<span class="text-xs text-emerald-400 shrink-0">${esc(t('season.claimed'))}</span>`
+          : reached
+            ? `<button class="claim-btn btn-primary text-xs px-4 py-2 shrink-0" data-level="${r.level}">${esc(t('season.claim'))}</button>`
+            : `<span class="text-xs text-obsidian-500 shrink-0">${esc(t('season.locked', { n: num(r.level) }))}</span>`;
+        return `
+          <div class="card-glass p-4 rounded-xl flex items-center justify-between gap-3 ${reached ? '' : 'opacity-60'}">
+            <div class="min-w-0">
+              <p class="text-xs text-purple-400">${esc(t('season.reward.level', { n: num(r.level) }))}${r.isPremium ? ` &middot; <span class="text-gold-400">${esc(t('season.reward.premium'))}</span>` : ''}</p>
+              <p class="text-sm font-bold text-obsidian-200 break-words">${esc(rewardText(r))}</p>
+            </div>
+            ${action}
+          </div>
+        `;
+      }).join('');
+
+      track.querySelectorAll<HTMLElement>('.claim-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          try {
+            await claimReward(Number(btn.dataset.level));
+            await load();
+          } catch (e) {
+            toast(errorText(e), 'error');
+          }
+        });
+      });
+    }
+
+    async function load() {
+      try {
+        const progress = await fetchCurrentSeason();
+        season = { state: 'ready', progress, rewards: await getRewards() };
+      } catch (e) {
+        const code = apiErrorCode(e);
+        season = code === 'not_signed_in' ? { state: 'signed-out' } : code === 'no_active_season' ? { state: 'no-season' } : { state: 'failed', error: e };
+      }
+      draw();
+    }
+
+    // Nothing is drawn with t() before the language and this page's strings are in.
+    initPage(['season', 'shared'], { title: 'season.meta.title', description: 'season.meta.description' })
+      .catch((e) => console.error('[season] the language could not be loaded', e))
+      .then(() => {
+        draw();
+        onPageLocaleChange(draw);
+        load();
+      });
+  </script>
 
 </BaseLayout>
