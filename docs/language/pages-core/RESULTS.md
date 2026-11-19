@@ -577,3 +577,36 @@ if one is missing; the other areas have pipelines of their own.
   ошибки*, *बिना किसी गलती के*). Read and accepted in `allow-meaning.json`; the entry for the removed
   `about.free.earn.title` went with it. `meaning.mjs --bt bt.json`: every string scored, **0 open**,
   exit 0.
+
+## Fifth pass: the claims the first check found left (2026-11-19, fix/predeploy, fix pass)
+
+The check after the fourth pass found the About page still saying credits are earned by playing
+(nothing in this build pays any: `src/lib/economy-live.ts`), and the collection page still saying
+battles unlock world cards (only a perfect trivia round awards one, as `world-map.intro` already
+says). In these areas, in sixteen languages:
+
+| key | was (English) | now |
+|---|---|---|
+| `about.free.body` | "Credits are earned through gameplay, never purchased with real money." | "Credits are never bought with real money." (each language keeps its old words for that half) |
+| `collection.world.intro` | "Win battles and ace trivia to unlock city variants." | "Get a perfect trivia score to unlock city variants." |
+| `collection.world.empty` | "Win three battles in a row or get a perfect trivia score to unlock your first World Card!" | "Get a perfect trivia score to unlock your first World Card!" (each language keeps its old words for a perfect score) |
+
+Checked with this area's tools, each with its own output folder:
+
+- **Mechanical** (`mechanical.mjs`, this branch's `scripts/lang` as `QA_SRC`): self-test, all 18
+  known-bad strings flagged; **0 open** findings.
+- **Spelling** (Hunspell, the pipeline's dictionaries, the iMac Pro): on the three strings, only words
+  the old strings had too: de *Credits*, ko *월드*, *크레딧은*, id *Tokoh-tokohmu*. None is a misspelling.
+- **Grammar** (LanguageTool 6.6, picky, the iMac Pro): pt QUIS_QUIZ on *quiz* (the word the strings
+  used before and the area's other strings use), and ar `grammar_0010_jazem_la_nahia` on *لا تُشترى*:
+  the rule takes لا for the prohibitive, which wants the jussive, but here it negates a passive
+  present ("are not bought"), so the indicative is right. Read: neither is an error.
+- **Meaning** (`meaning-run.sh` on the Studio's GPU, this branch's `scripts/lang/backtranslate.py`; the 45
+  pairs `pairs.mjs --changed` found, merged into `bt.json`): MiniLM cosine median 0.93, 0.84 and 0.70
+  (lowest 0.67, 0.73, 0.55), LaBSE median 0.86, 0.81 and 0.83 (lowest 0.78, 0.70, 0.73); none is flagged
+  by both. The word rule flagged `collection.world.empty` in es, fr, it, pt, pl, vi, th and id ("the
+  English is negated, the back-translation is not"): MADLAD dropped the first sentence ("No variants
+  yet"), which carries the negation, as it did for the old wording; and `collection.world.intro` in ru,
+  which says a perfect score as «без единой ошибки», "without a single mistake", as `world-map.intro`
+  does. Read, and recorded in `allow-meaning.json` against the new wording; the eight entries for the
+  old wording went. `meaning.mjs --bt bt.json`: every string scored, **0 open**, exit 0.
