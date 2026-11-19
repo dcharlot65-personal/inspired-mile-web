@@ -722,7 +722,7 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
       ['zh', '本田车队的总部在布莱克雷'], ['zh', '迈克尔·布莱克森是演员'], ['zh', '保罗·格罗塞蒂是学者'], ['zh', '托罗密欧·司卡皮是厨师'],
       ['zh', '布蘭登·哈德斯提是演員'], ['zh', '记者里哈德斯·汤姆森斯'], ['zh', '彼得·安东尼松是画家'], ['zh', '漢斯·丟斯特'],
       ['zh', '朱麗葉特·劉易斯主演'], ['zh', '蘇珊·雪萊登配音'], ['zh', '王子班柯希'], ['zh', '里奧布朗庫子爵'], ['zh', '他去了里奧布朗庫'],
-      ['zh', '梯丟斯是英雄'],
+      ['zh', '梯丟斯是英雄'], ['zh', '布莱克森是演员'], ['zh', '安东尼松是画家'], // no dot: 是 right after the one character
     ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
   });
   it('a name with a word of one character beside it, where nothing marks a foreign name, still lands', () => {
