@@ -123,6 +123,49 @@ describe('text', () => {
     expect(normalise(text)).toBe(said);
   });
 
+  it.each([
+    // Decades and counts.
+    ['the 90s', 'the nineties'], ["the '60s", 'the sixties'], ['the 1990s', 'the nineteen nineties'], ['the 1800s', 'the eighteen hundreds'],
+    ['top 10s', 'top tens'],
+    // Times with am and pm, glued or not.
+    ['10pm', 'ten P M'], ['3am', 'three A M'], ['3:30pm', 'three thirty P M'], ['7:00 a.m.', 'seven A M.'], ['at 7 AM we met', 'at seven A M we met'],
+    // Letters and digits written as one word.
+    ['mp3', 'MP three'], ['MP3s', 'MP threes'], ['B2K', 'B two K'], ['K9', 'K nine'], ['R2D2', 'R two D two'], ['1e9', 'one e nine'], ['2pac', 'two pac'],
+    // A digit for its sound, only when the table has the word it spells, and never in capitals.
+    ['4ever', 'forever'], ['gr8 m8', 'grate mate'], ['l8r', 'later'], ['2day', 'today'], ['any1', 'anyone'], ['b4', 'B four'], ['G8', 'G eight'],
+    // A minus sign; a decimal before a letter.
+    ['-5', 'minus five'], ['it fell to -12', 'it fell to minus twelve'], ['1.5x', 'one point five x'],
+    // Roman numerals that are numbers.
+    ['Henry VIII', 'Henry the eighth'], ['Richard III', 'Richard the third'], ['Henry V', 'Henry the fifth'], ['Elizabeth I.', 'Elizabeth the first.'],
+    ["Henry VIII's wives", "Henry the eighth's wives"], ['Act III, Scene ii', 'Act three, Scene two'], ['Act I, Scene i', 'Act one, Scene one'],
+    ['World War II', 'World War two'], ['Sonnet XVIII', 'Sonnet eighteen'], ['Pope John Paul II', 'Pope John Paul the second'], ['Rocky II', 'Rocky two'],
+    // And the I's and X's that are not.
+    ['Malcolm X', 'Malcolm X'], ['Shall I compare thee', 'Shall I compare thee'], ['Henry I saw', 'Henry I saw'], ['the war I fought', 'the war I fought'],
+    ['the night\nI walk', 'the night\nI walk'], ['Mom XXX', 'Mom XXX'], ['And I am kind', 'And I am kind'],
+  ])('%j is read as %j', (text, said) => {
+    expect(normalise(text)).toBe(said);
+  });
+
+  it('says the letters of a time as letters ("A M", not the article)', () => {
+    expect(ps('3am')).toBe('θɹˈiː ˈA ˈɛm.');
+    expect(ps('A dog')).toBe('ɐ dˈɒɡ.');
+  });
+
+  it('leaves no digit unread, whatever is glued to it', () => {
+    // Seeded: words of letters, digits and marks in every order.
+    let seed = 20261119;
+    const rand = (n: number) => ((seed = (seed * 1103515245 + 12345) % 2 ** 31) % n);
+    const parts = ['a', 'mp', 'K', 'gr', 'ever', 's', 'th', 'pm', 'am', 'e', '_', "'", '-', '.', ',', ':', '%', '$', '£', '−', '/', 'x', 'ß', 'é', 'п'];
+    const failures: string[] = [];
+    for (let k = 0; k < 3000; k++) {
+      let w = '';
+      for (let j = 0, n = 1 + rand(5); j < n; j++) w += rand(2) ? String(rand(3) ? rand(10) : rand(100000)) : parts[rand(parts.length)];
+      const text = `${parts[rand(parts.length)]} ${w} ${parts[rand(parts.length)]}`;
+      if (/\d/.test(normalise(text))) failures.push(`${JSON.stringify(text)} -> ${JSON.stringify(normalise(text))}`);
+    }
+    expect(failures.slice(0, 10)).toEqual([]);
+  });
+
   it('pauses at the end of a line of verse, and ends the verse', () => {
     expect(ps('a dog\nthe cat')).toBe('ɐ dˈɒɡ, ðə kˈat.');
     expect(ps('a dog;\nthe cat!')).toBe('ɐ dˈɒɡ; ðə kˈat!');

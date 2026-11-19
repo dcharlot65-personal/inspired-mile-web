@@ -6,8 +6,12 @@
  * for it: no-espeak.ts, astro.config.mjs). This module does that work instead, from sources that
  * are not GPL:
  *
- *   1. the text is normalised: numbers, ordinals, years, money, times and common abbreviations
- *      become words, dashes and ellipses become the marks Kokoro knows, and a line of verse that
+ *   1. the text is normalised: numbers, ordinals, years, decades, money, times (10pm, 3:30 a.m.),
+ *      a minus sign, Roman numerals after a king's name or a part's (Henry VIII, Act III) and
+ *      common abbreviations become words; letters and digits written as one word are read
+ *      together before any digit is read alone (mp3 "M P three", B2K, the 90s "nineties",
+ *      text-speak like gr8 or 4ever when the table has the word it spells), so no digit is ever
+ *      dropped; dashes and ellipses become the marks Kokoro knows, and a line of verse that
  *      ends without punctuation ends with a comma (a pause, as a reader takes one);
  *   2. each word is looked up in the CMU Pronouncing Dictionary (lexicon-en.ts, BSD-style
  *      licence; built by scripts/build-voice-lexicon.mjs from the same pinned file as the verse
@@ -628,9 +632,11 @@ const stripMarks = (w: string): string => w.normalize('NFD').replace(/\p{M}+/gu,
  * How one word is said. `prev` and `next` are the words beside it in the same phrase (lower
  * case, '' at a phrase's edge); `phraseEnd` says nothing follows it before a pause.
  */
-export function sayWord(word: string, { prev = '', next = '', phraseEnd = false, british = true } = {}): WordReading {
+export function sayWord(word: string, { prev = '', next = '', phraseEnd = false, british = true, spelt = false } = {}): WordReading {
   const w = stripMarks(word).toLowerCase();
   const map = (phones: string[]): Said => (british ? britishFromCmu(phones, w) : americanFromCmu(phones));
+  // One of a row of capital letters said one by one ("A M" of a time, "A B C"): the letter's name, not "a".
+  if (spelt) return { word, ...spellOut(w, british), source: 'letters' };
   // Own keys only: "constructor" is a word too.
   const little = Object.hasOwn(FUNCTION_GB, w) ? FUNCTION_GB[w] : undefined;
   if (little && british) {
@@ -725,6 +731,111 @@ function yearWords(y: number): string {
   return `${numberWords(hi)} ${lo < 10 ? `oh ${ONES[lo]}` : numberWords(lo)}`;
 }
 
+/** A run of digits as said: a year in a year's range, a whole number, or digit by digit after a leading 0. */
+function numberSaid(m: string): string {
+  const n = Number(m.replace(/,/g, ''));
+  if (/^0\d/.test(m)) return [...m].map((d) => (d === '0' ? 'oh' : ONES[Number(d)])).join(' ');
+  if (/^\d{4}$/.test(m) && ((n >= 1100 && n < 2000) || (n >= 2010 && n < 2100))) return yearWords(n);
+  return numberWords(n);
+}
+
+/** A number's words made plural, as decades and counts are said: nineties, nineteen hundreds, sixes, tens. */
+function pluralOf(words: string): string {
+  if (words.endsWith('x')) return `${words}es`;
+  if (words.endsWith('y')) return `${words.slice(0, -1)}ies`;
+  return `${words}s`;
+}
+
+/**
+ * A digit written for its sound inside a word ("gr8", "4ever", "2day", "any1"): the spellings it
+ * stands for. Taken only when the whole word that results is in the table, so "2pac" stays two
+ * and pac, and a code in capitals ("G8", "B2K") is never read this way.
+ */
+const DIGIT_SOUNDS: Record<string, string[]> = { '1': ['one', 'won'], '2': ['to', 'too'], '4': ['for', 'fore'], '8': ['ate', 'ait'] };
+
+/** Letters and digits written as one word: "mp3", "B2K", "4ever", "1e9", "MP3s". */
+function gluedWord(token: string): string {
+  const digits = token.match(/\d/g) ?? [];
+  const letters = token.replace(/\d/g, '');
+  // Text-speak is written in small letters (a capital to start a line at most).
+  if (lexicon && digits.length === 1 && /^[A-Z]?[a-z]+$/.test(letters) && (letters.length >= 2 || digits[0] === '8')) {
+    for (const sound of DIGIT_SOUNDS[digits[0]] ?? []) {
+      const word = token.replace(/\d/, sound).toLowerCase();
+      if (lexicon.has(word)) return word;
+    }
+  }
+  const runs = token.match(/\d+|[A-Za-z]+/g) ?? [];
+  const out: string[] = [];
+  for (let i = 0; i < runs.length; i++) {
+    const r = runs[i];
+    if (/^\d/.test(r)) {
+      // "MP3s", "K9s": an s straight after the number is its plural.
+      if (runs[i + 1] === 's') {
+        out.push(pluralOf(numberSaid(r)));
+        i++;
+      } else out.push(numberSaid(r));
+    } else if (!/[aeiouy]/i.test(r) && r.length <= 3) {
+      // No vowel letter: letters said one by one ("mp" in "mp3" is M P, not a hum).
+      out.push(r.toUpperCase());
+    } else out.push(r);
+  }
+  return out.join(' ');
+}
+
+/** Given names kings, queens and popes are numbered under (not "Malcolm": Malcolm X is not the tenth). */
+const REGNAL = new Set([
+  'alexander', 'alfonso', 'amenhotep', 'anne', 'antiochus', 'benedict', 'boniface', 'carlos', 'casimir', 'charles', 'christian', 'clement',
+  'constantine', 'cyrus', 'darius', 'david', 'duncan', 'edgar', 'edmund', 'edward', 'elizabeth', 'ferdinand', 'francis', 'frederick',
+  'george', 'gregory', 'gustav', 'gustavus', 'harald', 'harold', 'henri', 'henry', 'innocent', 'isabella', 'ivan', 'james', 'john',
+  'joseph', 'juan', 'leo', 'leopold', 'louis', 'manuel', 'mary', 'napoleon', 'nicholas', 'olaf', 'otto', 'paul', 'pedro', 'peter',
+  'philip', 'pius', 'ptolemy', 'rama', 'rameses', 'ramesses', 'richard', 'robert', 'rudolf', 'selim', 'sigismund', 'stephen',
+  'suleiman', 'thutmose', 'umberto', 'urban', 'victor', 'wilhelm', 'william', 'xerxes',
+]);
+/** Words a numbered part follows: Act III, Scene ii, Part I, Sonnet XVIII, World War II. */
+const SECTION = new Set(['act', 'scene', 'part', 'book', 'chapter', 'canto', 'psalm', 'sonnet', 'volume', 'vol', 'episode', 'round', 'war', 'level', 'stage', 'phase', 'article', 'section']);
+
+/** The value of a Roman numeral (strict form, 1 to 3999), or 0. */
+function romanValue(s: string): number {
+  const u = s.toUpperCase();
+  if (!u || !/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(u)) return 0;
+  const V: Record<string, number> = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  let n = 0;
+  for (let i = 0; i < u.length; i++) n += V[u[i]] < (V[u[i + 1]] ?? 0) ? -V[u[i]] : V[u[i]];
+  return n;
+}
+
+/**
+ * Roman numerals where they are numbers: after a king's or a pope's name an ordinal ("Henry VIII"
+ * Henry the Eighth), after a part's name a cardinal ("Act III" act three, "Scene ii"), and after
+ * another capitalised word a cardinal when it is two letters or more of I, V and X ("Rocky II";
+ * not X's alone, which are kisses). A lone I is the pronoun unless the word before is a name of
+ * that kind or a capitalised part's name and no small word follows ("Elizabeth I.", "Act I," but
+ * "Henry I saw", "the war I fought"). Only on one line: a line's last word and the next line's
+ * "I" are not a king and his number.
+ */
+function romanNumerals(t: string): string {
+  return t.replace(/(^|[^\p{L}\p{M}'’])(\p{L}+)([ \t]+)([IVXLCDM]+|[ivx]+)(?![\p{L}\p{M}\d])(?=([ \t]+[a-z]+)?)/gmu, (all, pre: string, word: string, sp: string, num: string, after?: string) => {
+    const n = romanValue(num);
+    if (!n) return all;
+    const lower = word.toLowerCase();
+    const capital = /^\p{Lu}/u.test(word);
+    const small = num === num.toLowerCase();
+    const loneI = num.toUpperCase() === 'I';
+    const smallWordNext = !!after && !/^[ \t]+(of|and)$/.test(after);
+    if (capital && REGNAL.has(lower) && !small && n < 40) {
+      if (loneI && smallWordNext) return all;
+      if (num.length === 1 && !loneI && num !== 'V') return all;
+      return `${pre}${word}${sp}the ${ordinalWords(n)}`;
+    }
+    if (SECTION.has(lower) && (n < 40 || !small)) {
+      if (loneI && (!capital || smallWordNext)) return all;
+      return `${pre}${word}${sp}${numberWords(n)}`;
+    }
+    if (capital && !small && num.length >= 2 && /^[IVX]+$/.test(num) && !/^X+$/.test(num) && n < 40) return `${pre}${word}${sp}${numberWords(n)}`;
+    return all;
+  });
+}
+
 const ABBREVIATIONS: Array<[RegExp, string]> = [
   [/\bMrs\.?(?=\s+[A-Z])/g, 'Missus'], [/\bMr\.?(?=\s+[A-Z])/g, 'Mister'], [/\bMs\.?(?=\s+[A-Z])/g, 'Miz'], [/\bDr\.(?=\s+[A-Z])/g, 'Doctor'],
   [/\bSt\.(?=\s+[A-Z])/g, 'Saint'], [/\bProf\.(?=\s+[A-Z])/g, 'Professor'], [/\bCapt\.(?=\s+[A-Z])/g, 'Captain'], [/\bSgt\.(?=\s+[A-Z])/g, 'Sergeant'],
@@ -740,6 +851,7 @@ export function normalise(text: string): string {
   for (const [re, to] of ABBREVIATIONS) t = t.replace(re, to);
   // An initial ("J. K.") is a letter, not the end of a sentence.
   t = t.replace(/\b([A-Z])\.(?=\s*[A-Z][.\s])/g, '$1 ');
+  t = romanNumerals(t);
   t = t.replace(/[$£€](\d+(?:,\d{3})*)(?:\.(\d{1,2}))?/g, (_, whole: string, cents?: string) => {
     const n = Number(whole.replace(/,/g, ''));
     const unit = _.startsWith('$') ? 'dollar' : _.startsWith('£') ? 'pound' : 'euro';
@@ -748,21 +860,29 @@ export function normalise(text: string): string {
     const c = Number(cents.padEnd(2, '0'));
     return `${main} and ${numberWords(c)} ${unit === 'pound' ? (c === 1 ? 'penny' : 'pence') : c === 1 ? 'cent' : 'cents'}`;
   });
-  t = t.replace(/\b(\d{1,2}):(\d{2})\b/g, (_, h: string, m: string) => (Number(m) === 0 ? `${numberWords(Number(h))} o'clock` : `${numberWords(Number(h))} ${Number(m) < 10 ? `oh ${ONES[Number(m)]}` : numberWords(Number(m))}`));
+  const clock = (h: string, m?: string): string => {
+    const mm = Number(m ?? 0);
+    if (!m) return numberWords(Number(h));
+    return mm === 0 ? `${numberWords(Number(h))} o'clock` : `${numberWords(Number(h))} ${mm < 10 ? `oh ${ONES[mm]}` : numberWords(mm)}`;
+  };
+  // "10pm", "3am", "3:30 p.m.", "7 AM": the time, then the two letters.
+  t = t.replace(/\b(\d{1,2})(?::(\d{2}))?\s?([AaPp])\.?\s?[Mm](\.?)(?![\p{L}\p{M}\d])/gu, (_, h: string, m: string | undefined, ap: string, dot: string) => `${m ? clock(h, m).replace(" o'clock", '') : clock(h)} ${ap.toUpperCase()} M${dot}`);
+  t = t.replace(/\b(\d{1,2}):(\d{2})\b/g, (_, h: string, m: string) => clock(h, m));
   t = t.replace(/\b(\d+)(st|nd|rd|th)\b/gi, (_, n: string) => ordinalWords(Number(n)));
   t = t.replace(/(\d)-(?=\d)/g, '$1 to ');
+  // A minus sign: "-5" at the start of a number, and the sign "−" wherever it is.
+  t = t.replace(/(^|[\s(\[{"“'])-(?=\d)/g, '$1minus ').replace(/−/g, ' minus ');
   t = t.replace(/\b(\d+)%/g, '$1 percent');
-  t = t.replace(/\b(\d+)\.(\d+)\b/g, (_, a: string, b: string) => `${numberWords(Number(a))} point ${[...b].map((d) => ONES[Number(d)]).join(' ')}`);
-  t = t.replace(/\b\d{1,3}(?:,\d{3})+\b|\b\d+\b/g, (m: string) => {
-    const n = Number(m.replace(/,/g, ''));
-    if (/^0\d/.test(m)) return [...m].map((d) => (d === '0' ? 'oh' : ONES[Number(d)])).join(' ');
-    if (/^\d{4}$/.test(m) && ((n >= 1100 && n < 2000) || (n >= 2010 && n < 2100))) return yearWords(n);
-    return numberWords(n);
-  });
+  t = t.replace(/\b(\d+)\.(\d+)(?!\d)(?=([A-Za-z])?)/g, (_, a: string, b: string, letter?: string) => `${numberWords(Number(a))} point ${[...b].map((d) => ONES[Number(d)]).join(' ')}${letter ? ' ' : ''}`);
+  // Decades and counts: "the 90s", "the '60s", "the 1990s", "top 10s".
+  t = t.replace(/(?<![\p{L}\p{M}\d])'?(\d+)s(?![\p{L}\p{M}\d])/gu, (_, n: string) => pluralOf(numberSaid(n)));
+  // Letters and digits written as one word, read before the digits alone so none is lost.
+  t = t.replace(/(?<![\p{L}\p{M}\d])(?=[A-Za-z\d]*\d)(?=[A-Za-z\d]*[A-Za-z])[A-Za-z\d]+(?![\p{L}\p{M}\d])/gu, gluedWord);
+  t = t.replace(/\b\d{1,3}(?:,\d{3})+\b|\b\d+\b/g, numberSaid);
+  // Any digits still left (next to a letter of another script, or an underscore) are said too.
+  t = t.replace(/\d+/g, (m: string) => ` ${numberSaid(m)} `);
   t = t.replace(/&/g, ' and ').replace(/\+/g, ' plus ').replace(/@/g, ' at ').replace(/%/g, ' percent ');
   t = t.replace(/[()[\]{}]/g, ', ');
-  // Letters and digits glued together ("2pac" after the numbers above, "mp3") are read apart.
-  t = t.replace(/([a-zA-Z])(\d)/g, '$1 $2').replace(/(\d)([a-zA-Z])/g, '$1 $2');
   return t;
 }
 
@@ -817,11 +937,13 @@ export function phonemizeEnglish(text: string, { british = true } = {}): Phrase 
   const words: WordReading[] = [];
   const readings: Array<WordReading | null> = toks.map(() => null);
   const wordAt = (i: number): string => (toks[i]?.kind === 'word' ? toks[i].text.toLowerCase() : '');
+  const capitalLetter = (i: number): boolean => toks[i]?.kind === 'word' && /^[A-Z]$/.test(toks[i].text);
   for (let i = 0; i < toks.length; i++) {
     const t = toks[i];
     if (t.kind !== 'word') continue;
     const phraseEnd = i + 1 >= toks.length || (toks[i + 1].kind === 'punct' && CLOSING.includes(toks[i + 1].text)) || toks[i + 1].text === '—';
-    readings[i] = sayWord(t.text, { prev: wordAt(i - 1), next: wordAt(i + 1), phraseEnd, british });
+    const spelt = t.text === 'A' && capitalLetter(i + 1);
+    readings[i] = sayWord(t.text, { prev: wordAt(i - 1), next: wordAt(i + 1), phraseEnd, british, spelt });
   }
   // "the" and "to" before a vowel; an r kept before a vowel.
   for (let i = 0; i < toks.length; i++) {
