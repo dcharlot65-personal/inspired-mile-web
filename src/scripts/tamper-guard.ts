@@ -4,6 +4,13 @@
  * Monitors the DOM for injected dangerous elements (scripts, iframes,
  * forms, embeds) and periodically audits links for hijacking.
  * Shows a warning banner if tampering is detected.
+ *
+ * The link audit looks only at links the page did not arrive with: one added after the page loaded,
+ * or one whose address changed since. A link in the page as this site served it is the site's own
+ * (the credits page links each license's publisher, the privacy policy each company it names), and
+ * an attacker who could change the served page could change this script too, so it is not audited.
+ * Before 2026-11-19 every link was held to ALLOWED_DOMAINS, and /credits and /privacy showed the
+ * warning to every visitor three seconds after load (tests/tamper-guard.spec.ts).
  */
 
 const DANGEROUS_TAGS = new Set([
@@ -76,7 +83,7 @@ const ALLOWED_DOMAINS = new Set([
 ]);
 
 /** Grace period (ms) to allow Astro hydration before monitoring starts */
-const GRACE_PERIOD = 3000;
+export const GRACE_PERIOD = 3000;
 
 /** Link audit interval (ms) */
 const LINK_AUDIT_INTERVAL = 30000;
@@ -136,11 +143,23 @@ function isDangerousNode(node: Node): boolean {
   return false;
 }
 
-function auditLinks() {
+/** Each link the page arrived with, and its address then. */
+type Served = WeakMap<Element, string>;
+
+function servedLinks(): Served {
+  const served: Served = new WeakMap();
+  document.querySelectorAll('a[href]').forEach((a) => served.set(a, (a as HTMLAnchorElement).href));
+  return served;
+}
+
+function auditLinks(served: Served) {
   const links = document.querySelectorAll('a[href]');
   for (const link of links) {
     const href = (link as HTMLAnchorElement).href;
     if (!href) continue;
+
+    // A link as the page was served, at the address it was served with.
+    if (served.get(link) === href) continue;
 
     // Skip non-http links (mailto:, tel:, #, javascript:void, blob:, data:)
     if (!href.startsWith('http://') && !href.startsWith('https://')) continue;
@@ -169,6 +188,8 @@ export function initTamperGuard() {
   // Record all scripts present at load time
   const knownScripts = new WeakSet<Element>();
   document.querySelectorAll('script').forEach((s) => knownScripts.add(s));
+  // And every link, now: this runs as a module script, after the served page has been parsed.
+  const served = servedLinks();
 
   // Wait for Astro hydration to complete before monitoring
   setTimeout(() => {
@@ -200,7 +221,7 @@ export function initTamperGuard() {
     });
 
     // Periodic link integrity audit
-    auditLinks();
-    setInterval(auditLinks, LINK_AUDIT_INTERVAL);
+    auditLinks(served);
+    setInterval(() => auditLinks(served), LINK_AUDIT_INTERVAL);
   }, GRACE_PERIOD);
 }
