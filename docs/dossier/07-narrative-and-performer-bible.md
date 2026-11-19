@@ -40,7 +40,7 @@ A world bible for a card game of verse needs only a few rules. Proposed, built f
 4. **The stage tours.** The cities are tour stops of the troupe, where a character takes on a local style. That keeps the variants' premise and gives live events (festivals, school visits) a place in the fiction.
 5. **The audience is everyone.** Mixed ages, many languages, classrooms. Nothing in the world needs violence beyond the source plays, and nothing in it is about the player's identity.
 
-Whether The Sonnet Man has a role in the world (host, headliner, or card) is for Devon Glover and the owner to decide (§6.3).
+Whether The Sonnet Man has a role in the world (host, headliner, or card) is for Devon Glover to choose: by default he is offered the licensed persona or the host (§6.3; `28-owner-decisions.md` D-14).
 
 ## 3. The houses as voices
 
@@ -355,13 +355,15 @@ Questions for the owner to put to Devon Glover. None has an answer in the reposi
 
 ## 9. Owner questions
 
-1. Which persona option (§6.3) does the owner propose to Devon Glover, and by when?
-2. Before launch, is SM-001 taken out of the opponent's draw, or restricted to approved verses?
-3. Is the story's closing line for The Sonnet Man replaced now?
-4. Is the product's public name "verse duel" or "rap battle"? Is "Master Thespian" retired?
-5. Who writes the world's few rules (§2.2) and the character sheets (§4.2): Arrocito del Diablo, a contracted writer, or both?
-6. Who is the native reviewer for each language's voice note (§5.6)?
-7. Should the opponent's English voice change from a British male voice, and should the voice be off when the opponent is SM-001?
-8. Is the story mode (§7) in scope for launch or the first season?
-9. Who drafts and negotiates the talent agreement, and is a budget for his fees and recordings set?
-10. Who wrote the "game's own" lines and the written opponent's verses, and may they be credited? (Not known: no authorship is recorded, design §6.)
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Which persona option (§6.3) is proposed to Devon Glover, and by when? **Decided by default:** put options A and B to him and let him choose, C only if he declines both; until a licence says otherwise, no model writes and no synthetic voice speaks as The Sonnet Man (28 D-14). When to ask him is part of **Open (28 O-1)**.
+2. Before launch, is SM-001 taken out of the opponent's draw, or restricted to approved verses? **Decided by the owner (2026-11-19, R8):** out of the opponent's draw entirely until he decides; approved verses later, if he agrees (28 D-04).
+3. Is the story's closing line for The Sonnet Man replaced now? **Decided by default:** yes, with a Shakespeare line spoken by the stage now, or later with his own approved words (28 D-14).
+4. Is the product's public name "verse duel" or "rap battle"? Is "Master Thespian" retired? **Decided by default:** "verse duel" until Devon Glover says otherwise; "Master Thespian" stays unless he dislikes it (28 D-37).
+5. Who writes the world's few rules (§2.2) and the character sheets (§4.2)? **Decided by default:** Arrocito del Diablo (28 D-62).
+6. Who is the native reviewer for each language's voice note (§5.6)? **Decided by default:** reviewers work one language at a time in document 14's order (28 D-50). **Open (28 O-7):** paying them.
+7. Should the opponent's English voice change from a British male voice, and should the voice be off when the opponent is SM-001? **Decided by default:** one voice until there are measured voices to choose from (28 D-55). SM-001 is out of the AI opponent's hand entirely (R8), so its voice does not arise until Devon Glover agrees (28 D-04, D-14).
+8. Is story mode (§7) in scope for launch or the first season? **Decided by default:** in scope, and finished first of the hidden systems (28 D-39).
+9. Who drafts and negotiates the talent agreement, and is there a budget for his fees and recordings? **Open (28 O-1 and O-2):** whether to ask him, and a lawyer to draft it; his fees and recordings are terms of that agreement.
+10. Who wrote the "game's own" lines and the written opponent's verses, and may they be credited? **Fact to find out** (28, Facts to find out, 4); no authorship is recorded (design §6).

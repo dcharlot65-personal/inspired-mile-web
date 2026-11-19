@@ -135,7 +135,7 @@ flowchart LR
 - **The meta loop** is collect, build, duel, win a card.
 - **The loop does not require collecting.** A new player duels at once with the starter deck: The Sonnet Man, Romeo, Juliet, Yorick's Skull and the Love Potion (`src/lib/verse/duel.ts:287-295`; `src/lib/cards.ts:33,42,51,105,123`).
 - **Only a solo match won on `/battle` pays a card.** A win in the Theatre or online pays nothing (D§4.3). This is an open problem (§14.5).
-- **Match length is Not known.** No clock runs in solo play and nobody has timed a duel. The forms are short, two to four lines (D§1.4), unlike the "sonnet a move" the research assumed (R-des §1). The research's reference is about three minutes a match and about five minutes a mobile session (R-des §1). *Proposed*: time it in the first playtests (`15-qa-and-test-plan.md`, `16-analytics-and-tracking-plan.md`).
+- **Match length is Not known.** No clock runs in solo play and nobody has timed a duel. The forms are short, two to four lines (D§1.4), unlike the "sonnet a move" the research assumed (R-des §1). The research's reference is about three minutes a match and about five minutes a mobile session (R-des §1). *Proposed*: time it first in the AI playtests, where AI players with no prior training on the game play through the page alone on the build host (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63), then with live aggregate analytics after launch (`16-analytics-and-tracking-plan.md`).
 
 ---
 
@@ -733,7 +733,7 @@ As built (T§4; D§1.6-1.8):
   - for voice out: Kitten TTS 2 nano and pico (2026-11-13, Apache 2.0; 8 languages), and Supertonic 3 (vendor release 2026-04-29; on the Hugging Face hub from 2026-05-06; OpenRAIL-M, whose terms forbid harming minors and require output to be disclosed as machine-made) for the rest;
   - for judging: d1-2B (2026-10-27), which returns a score rather than text (R-prod §2.3, §3).
 
-  Whether to keep the older models by exception is an owner question (§15).
+  Whether to keep the older models was decided by default on 2026-11-19: remove LFM2.5 now, keep Whisper base and Kokoro until newer models are measured to do their jobs (`28-owner-decisions.md` D-28; §15).
 
 Detail: `13-ai-design-and-system-cards.md`, `12-technical-design.md`.
 
@@ -984,45 +984,48 @@ Each problem gives what the fact bases found, a proposed direction, its evidence
 
 ## 15. Owner questions
 
-Each item is Not known from the record. Questions for Devon Glover are to be asked of him; nothing here assumes his answer.
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved. Questions for Devon Glover are to be asked of him; nothing here assumes his answer.
 
 ### For David Charlot (founder, technical lead)
 
-1. **Judge languages.** After `fix/judge-wording` is measured again, which languages will Gemma 4 E2B judge? (§4.10)
-2. **The economy branch.** Under `fix/server-authority`:
-   - The branch answers how cards are collected and what the rates are (§7.2; 05 §7.1). Are those rates and caps the launch values, and will `docs/ECONOMY.md` be written before deploy? (§7.2)
-3. **Bought credits.** Can credits ever be bought? (§14.5)
-4. **The AI notice and marking.** The Article 50(1) notice's wording is on the branch (§9.3); has a native speaker read it in each language? Does Sonnet Man count as a "provider" under Article 50(2), and should marking join this release, since the cautious reading makes it due at deploy? (§9.3)
-5. **The model-date rule.** Whisper base, Kokoro-82M and LFM2.5 350M predate the post-2026-04-01 rule. Keep them by exception, or replace them? Remove the never-offered lite tier? (§9.4)
-6. **Self-hosting.** Should the hosted analytics script and the third-party email service, which is off in production, give way to self-hosted equivalents under the free-and-self-hosted rule? Should model weights be served, pinned, from the game's own origin? (§9.4)
-7. **Unwired modules.** Are story mode, the Season Pass, tournaments' match play, house allegiance, streaks, weekly events, draft mode and referral to be wired or dropped? (§13)
-8. **Classroom.** Is it to be shown before it records progress? Is the classroom audience 13 and over by decision, given that under-13s are blocked? (§2.1, §14.4)
-9. **Teens online.** Should quick match pair teen accounts with adult strangers? (§8)
-10. **Match length.** Is a target match length wanted, and a solo clock? (§3, §4.4)
-11. **Authorship.** Who wrote the written opponent's verses in each language, and the "game's own" card lines? (D§6.1, D§11)
-12. **Art licences.** What are the licence terms of the image model recorded for the card art, of the variant art's model, and of the music, sound effects and 3D files? (§10; `fix/compliance` covers provenance)
+1. **Judge languages.** Which languages will Gemma 4 E2B judge after the re-measurement? (§4.10) **Decided by the owner (2026-11-19, R11):** the cells are measured again on the build host before deploy and the lists are derived, never hand-edited; which languages pass is known only after the run (28 D-07).
+2. **The economy branch.** Are the rates and caps of `fix/server-authority` the launch values, and will `docs/ECONOMY.md` be written before deploy? (§7.2; 05 §7.1) **Decided by the owner (2026-11-19, R9):** yes, as tunable launch values, with `docs/ECONOMY.md` and two handler tests before deploy (28 D-05).
+3. **Bought credits.** Can credits ever be bought? (§14.5) **Decided by the owner (2026-11-19, R10):** no, credits are never sold; **decided by default:** packs are never sold either (28 D-56).
+4. **The AI notice and marking.** (§9.3) **Decided by the owner (2026-11-19, R6 and R13):** machine-readable marking and a visible "AI" label beside each model-written verse ship in this release (28 D-01, D-12). **Open (28 O-2):** whether the EU AI Act treats the company as a "provider" goes to a lawyer. A native read of the notice in each language waits until readers are paid for (**Open, 28 O-7**; D-50).
+5. **The model-date rule.** Whisper base, Kokoro-82M and LFM2.5 350M predate the post-2026-04-01 rule. (§9.4) **Decided by default:** remove LFM2.5 now; keep Whisper base and Kokoro until a newer model is measured to do each job, with a review each quarter (28 D-28).
+6. **Self-hosting.** (§9.4) **Decided by default:** self-hosted Umami replaces the hosted analytics script (28 D-25); emailed codes go through Resend, as the owner directed on 2026-11-16, once its account exists (28 D-24, O-11); model weights are pinned now and served from the game's own origin once traffic shows the bandwidth (28 D-26).
+7. **Unwired modules.** Story mode, the Season Pass, tournaments' match play, house allegiance, streaks, weekly events, draft mode and referral: wired or dropped? (§13) **Decided by default:** finish story mode first; hide the season pass, tournaments, house allegiance, draft mode and weekly events until each can be played end to end, with none deleted from the plan; replace streaks with a forgiving streak; referral and the marketplace for adults only (R10) (28 D-39).
+8. **Classroom.** Is it shown before it records progress, and is its audience 13 and over? (§2.1, §14.4) **Decided by default:** the tour's promises come off now (R7), the roster page stays reachable by link only, classroom v1 is built, then one 13+ class pilots it (28 D-51); 13 and over (28 D-23).
+9. **Teens online.** Should quick match pair teen accounts with adult strangers? (§8) **Decided by the owner (2026-11-19, R14):** no; online play is by private room only at launch, then adults-only quick match (28 D-02).
+10. **Match length.** A target match length, and a solo clock? (§3, §4.4) **Decided by default:** about five minutes a match and no solo clock (28 D-40); the AI playtests time it first (`15-qa-and-test-plan.md` §8).
+11. **Authorship.** Who wrote the written opponent's verses in each language, and the "game's own" card lines? (D§6.1, D§11) **Fact to find out** (28, Facts to find out, 4).
+12. **Art and audio licences.** (§10) **Decided by default:** the card-art model's US$5M revenue condition is recorded beside the LFM one, its release date is found, and the 198 variant pictures are removed (28 D-33); whether the company is under that revenue is **Open (28 O-9)**. **Decided by the owner (2026-11-19, R12):** the two untraced tracks and the two unused effects are removed, and the other effects replaced within a month (28 D-08). Where the rest of the audio and the 3D figure came from is a **fact to find out** (28, Facts to find out, 9).
 
 ### For Devon Glover (creative director), to ask him
 
+These are his to answer; asking him is part of the agreement you would ask him for (28 O-1; the gathered list is 28 Part 3).
+
 13. Has he seen or reviewed the game, and what may it say about him (the About page biography, the "Shakespeare on the Go" badge, the product name)?
-14. Is there a written agreement for the use of his name, "The Sonnet Man", and his programme's name? The research recommends one with specific AI terms and his own counsel (R-prod §5.8).
+14. Will he sign a written agreement for the use of his name, "The Sonnet Man", and his programme's name, with specific AI terms and his own counsel, as the research recommends (R-prod §5.8)?
 15. Is the Sonnet Man card's art meant to depict him? If so, does he approve it; if not, should it change so it does not suggest his likeness?
 16. May the AI opponent ever play "as" The Sonnet Man card? If so, labelled how?
-17. Would he want to record performances for the game, such as a recite-then-remix round or model answers after a round? On what terms?
+17. Would he record performances for the game, such as a round where a player recites a Shakespeare passage and then remixes it, or model answers after a round? On what terms?
 18. Should the game be called a "rap battle" or a "verse duel"? How should hip-hop be present, given that the written opponent's voice today is mock-Early-Modern?
-19. Would he want a fifth design pillar about his own performance (§1.3)? Would he want "beat the Sonnet Man" challenges tied to his calendar?
+19. Would he want one of the game's design principles (§1.3) to be about his own performance? Would he want "beat the Sonnet Man" challenges tied to his calendar?
 20. Which plays and sonnets should the first story acts and decks favour?
 
 ### For Arrocito del Diablo (game design, card mechanics)
 
-21. Card stats: retire ATK, DEF, HP and element from the face, or give them a role that shapes writing? (§14.1)
-22. Should characters within a house differ by more than their signature? (§14.1)
-23. The Sonnet Man: keep him as the free starter Legendary, or change the starter deck or his rarity? (§14.6)
-24. Should rarity mean anything in play? Should duplicates have a use? (§5, §14.5)
-25. Difficulty: adopt bank tiers for the written opponent (Apprentice, Player, Master)? (§14.2)
-26. Should relics, potions and ink come to online play?
-27. Should a trailing player get a stake or an exit, such as raising the stakes before round three or bowing out for a smaller loss? (R-des §1)
-28. Achievements: should the counters be fixed ("Completionist" says 48 of 71 cards; "Relic Hunter" checks 15 cards of any type; "battle wins" count rounds)? (§7.1)
+Each was decided by default on 2026-11-19 so that work can go ahead (28 Part 6). His weekly review (28 D-49) may change any of them; a change is recorded in 28 as a new decision.
+
+21. Card stats: retire ATK, DEF, HP and element from the face, or give them a role? (§14.1) **Decided by default:** off the card face until they have a role in writing; they stay in the card data for the redesign (28 D-42).
+22. Should characters within a house differ by more than their signature? (§14.1) **Decided by default:** yes, each gets one condition of its own (28 D-42).
+23. The Sonnet Man as the free starter Legendary? (§14.6) **Decided by default:** his place in the starter deck and his rarity wait on Devon Glover's answer (28 D-43, O-1).
+24. Should rarity mean anything in play, and should duplicates have a use? (§5, §14.5) **Decided by default:** rarity stays a collecting tier, not power; duplicates get a use, designed in the card redesign (28 D-43).
+25. Difficulty: bank tiers for the written opponent (Apprentice, Player, Master)? (§14.2) **Decided by default:** yes, as the base of the adaptive opponent, which is the default; the difficulty labels stay beside it (28 D-41).
+26. Should relics, potions and the ink that pays for them come to online play? **Decided by default:** they stay solo until online rules are written (28 D-42).
+27. Should a trailing player get a stake or an exit, such as raising the stakes before round three or bowing out for a smaller loss? (R-des §1) **Decided by default:** built behind a switch and compared, with and without, in the AI playtests before it ships (28 D-44; `15-qa-and-test-plan.md` §8).
+28. Achievements: should the counters be fixed ("Completionist" says 48 of 71 cards; "Relic Hunter" checks 15 cards of any type; "battle wins" count rounds)? (§7.1) **Decided by default:** yes, to match the server's counters (28 D-45).
 
 ---
 

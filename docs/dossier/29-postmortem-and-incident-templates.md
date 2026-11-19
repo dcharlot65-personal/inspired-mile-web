@@ -55,6 +55,7 @@ Copy this block into a new file and fill every field. Write "Not known" rather t
 | Tests added; gates run before deploy | | |
 | Players in the period (accounts; weekly active) | | |
 | First-duel funnel (landing → first verse → first duel finished) | | |
+| AI playtest runs: time to a first valid verse, voids, rounds won against each opponent, where players got stuck (per AI player and model family) | | |
 | D1 / D7 return (if measured) | | |
 | Incidents (by severity) and their reviews | | |
 | Reports received; median time to read | | |
@@ -66,8 +67,8 @@ For each: what happened, why it worked, and how to keep it.
 ## 3. What went wrong (three to five)
 For each: what happened, what it cost, the cause in the system (not a person), and what changes.
 
-## 4. What players and testers told us
-Playtest findings, report themes, support questions. Quote players only with consent.
+## 4. What AI playtests and players' reports showed us
+AI playtest findings (15-qa-and-test-plan.md §8: name the AI player, its version and what was measured; never present an AI result as what people would do), report themes, support questions. Quote players only with consent.
 
 ## 5. Against the pillars
 For each pillar in 01-concept-one-pager.md: did the period make it stronger or weaker? Evidence.
@@ -77,7 +78,7 @@ For each pillar in 01-concept-one-pager.md: did the period make it stronger or w
 |---|---|---|---|---|
 
 ## 7. Decisions for the owner
-Each one added to 28-owner-decisions.md, with its options.
+Each one added to 28-owner-decisions.md, with its options: decided by default where the standing rules or the evidence give an answer; open only if it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
 
 ## 8. Documents to update
 Which dossier documents this period made stale (see 00-README.md, "Keeping it current").
@@ -210,7 +211,9 @@ Questions the M0 postmortem should answer: did the five branches merge cleanly o
 
 ## Owner questions
 
-1. Is `docs/postmortems/` the right home, and should reviews be committed straight to `main` like other documents?
-2. Who other than David Charlot may lead an incident and write its review?
-3. Should incident reviews that involve player content stay outside the repository (it is shared with contractors), in a private store?
-4. Will a public "making of" postmortem be written after launch? If so, Devon Glover must approve anything about him in writing: when should he be asked?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved. All four were decided by default (28 D-79).
+
+1. Is `docs/postmortems/` the right home, and are reviews committed straight to `main`? **Decided by default:** yes to both, under "land it, don't gate it" (28 D-79).
+2. Who other than David Charlot may lead an incident and write its review? **Decided by default:** only David Charlot, until a second person is hired (28 D-79); hiring is money (**Open, 28 O-7**).
+3. Should incident reviews that involve player content stay outside the repository? **Decided by default:** yes, in a private store, since the repository is shared with contractors (28 D-79).
+4. Will a public "making of" postmortem be written after launch, and when is Devon Glover asked? **Decided by default:** it waits until after launch, and comes to the owner, and to Devon Glover for anything about him, before it is published (28 D-79).

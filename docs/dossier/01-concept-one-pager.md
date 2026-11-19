@@ -64,6 +64,8 @@ The same research found no proof of demand. Its closest analogue, a party game w
 
 ## Questions for the owner
 
-1. Which pillars does the team accept, and does Devon Glover want a fifth pillar about his own performance? Ask him; do not assume.
-2. Is the game a "verse duel" or a "rap battle"? The site uses both names.
-3. Is the classroom audience 13 and over by decision, given that under-13s are blocked?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Which design pillars does the team accept, and does Devon Glover want a fifth about his own performance? **Decided by default:** the four pillars above; a fifth only if Devon Glover wants one, which is his to say (28 D-38).
+2. Is the game a "verse duel" or a "rap battle"? The site uses both names. **Decided by default:** "verse duel", as built, until Devon Glover says otherwise (28 D-37).
+3. Is the classroom audience 13 and over by decision? **Decided by default:** yes, 13 and over, for this release and the first pilot (28 D-23).

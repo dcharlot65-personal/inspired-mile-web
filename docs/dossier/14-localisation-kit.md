@@ -287,16 +287,16 @@ No native speaker has read any language (tech §6.4). Tools cover grammar in onl
 
 ### 12.2 Who
 
-Per language, two people:
+Per language, one person and one kind of run:
 
-1. **A native reader with a literary ear** (a poet, a teacher of literature, a translator of verse) for the written opponent's verses, form names, card lines and register;
-2. **A native player** for the interface in play, through a think-aloud session (section 12.4).
+1. **A native reader with a literary ear** (a poet, a teacher of literature, a translator of verse) for the written opponent's verses, form names, card lines and register. This is language review, not playtesting; paying readers is the owner's money (`28-owner-decisions.md` O-7, D-50).
+2. **AI players in that language** for the interface in play (Proposed). Under the owner's rule of 2026-11-19, "AI is the playtester", no native player is recruited or observed: AI players with no prior training on the game play the interface in that language through what a player sees and a player's controls, on the build host (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63). They show where play in that language stalls or voids; they cannot say whether a verse sounds right to a native ear, which stays the reader's job.
 
-The legal sentences of the age gate and sign-in also need a lawyer's reading (item 7). How reviewers are found and paid is the owner's decision (section 14); the owner's "free and self-hosted" rule concerns software and assets, not people.
+The legal sentences of the age gate and sign-in also need a lawyer's reading (item 7; `28-owner-decisions.md` O-2). How readers are found and paid is the owner's money (O-7); the owner's "free and self-hosted" rule concerns software and assets, not people.
 
 ### 12.3 Which languages first
 
-**Proposed order**, for the owner to change once player data exists (`16-analytics-and-tracking-plan.md` tracks the language mix):
+**Proposed order**, which stands (decided by default: `28-owner-decisions.md` D-50) and changes once player data exists (`16-analytics-and-tracking-plan.md` tracks the language mix):
 
 | Round | Languages | Why |
 |---|---|---|
@@ -310,7 +310,7 @@ The research suggests a localisation kit for the first two languages before a ve
 ### 12.4 How
 
 1. **Send the kit:** this document, the language's rows of `GLOSSARY.md`, its `HUMAN-REVIEW.md` items, the pack file, its card text with sources, and screenshots of every page at phone and desktop width (the browser suite can produce them on the build host).
-2. **Read first, then play:** the reader marks the pack and the card lines; the player plays three duels and the main pages while thinking aloud, observed by a team member. Five users per round find about 85% of usability problems; three rounds of five beat one of fifteen (prod-research §6.4).
+2. **Read first, then play:** the reader marks the pack and the card lines; then the AI players play three duels and the main pages in that language (`15-qa-and-test-plan.md` §8), and their stuck points, voids and misread verdicts are added to the reader's findings for the reader to judge. The research's practice of think-aloud rounds with people (prod-research §6.4) is not used: the owner ruled it out on 2026-11-19.
 3. **Record every finding** in a sheet: key or file, current text, issue type (meaning, grammar, register, form, culture, layout), proposed text, severity (blocks play, misleads, reads oddly, preference).
 4. **Feed changes back through the pipeline:** a reviewer's change goes through the same tools, and a native reader may overrule a tool, with the reason recorded (`HUMAN-REVIEW.md` item 20).
 5. **Sign-off:** a language is "reviewed" when no "blocks play" or "misleads" finding is open, and the reader signs the language's style sheet (section 9). Proposed record: `docs/language/review/<lang>.md`.
@@ -352,11 +352,13 @@ For the store page, the press kit and the in-game language picker (proposed, des
 
 ## 14. Owner questions
 
-1. Who are the native reviewers, how are they found, and is there a budget to pay them?
-2. Is the proposed review order (section 12.3) right, or does the team know where its first players will come from?
-3. Should the Portuguese interface stay Brazilian (as built) or the verse move to Brazilian *você*?
-4. Should "Sonnet Man" and "Shakespeare on the Go" be written into the glossary's do-not-translate list?
-5. (Answered in this release: `/credits` names Wikisource, the Unicode data, the browser's CLDR plural rules and the NAIST notice for mecab-ipadic, which is now served beside the dictionary.) Has a reviewer read the page's "adapted" wording for each table?
-6. Should a language be hidden from the picker until it is reviewed, or shown with a "not yet reviewed" note?
-7. For Devon Glover: how should his Shakespeare-meets-hip-hop style read in other languages, and does he want a say in each language's tone? (Nothing here assumes his answer.)
-8. For Arrocito del Diablo: should power words be theme nouns or direct translations (item 24), and should the Chinese 双手 rule stand (item 27)?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Who are the native readers, how are they found, and will they be paid? **Open (28 O-7):** will you pay native speakers to read each language's text, and how much? **Decided by default:** one language at a time, in this document's order (28 D-50).
+2. Is the review order of section 12.3 right? **Decided by default:** yes, starting with the launch market's languages; it changes once player data shows where players come from (28 D-50).
+3. Should Portuguese stay Brazilian? **Decided by default:** yes, keep Brazilian Portuguese (28 D-50).
+4. Should "Sonnet Man" and "Shakespeare on the Go" go on the do-not-translate list? **Decided by default:** yes (28 D-50).
+5. Has a reader checked the "adapted" wording on `/credits` for each table? A check for each language's reader once one is paid (28 D-50, O-7).
+6. Hide a language from the picker until it is reviewed, or show it with a note? **Decided by default:** show it, with a "not yet reviewed" note; marketing names only reviewed languages (28 D-50).
+7. For Devon Glover: how should his style read in other languages, and does he want a say in each language's tone? A question for him, part of 28 O-1; nothing here assumes his answer.
+8. For Arrocito del Diablo: power words as theme nouns or direct translations (item 24), and does the Chinese 双手 rule stand (item 27)? **Decided by default:** theme nouns, checked against dictionaries and Wiktionary now and by a native reader once one is paid; the 双手 rule stands until a native reader reviews it. Arrocito del Diablo's weekly review may change either (28 D-47, D-49).

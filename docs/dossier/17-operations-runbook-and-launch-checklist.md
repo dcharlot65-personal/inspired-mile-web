@@ -481,10 +481,12 @@ Tick each item and write who did it and when in section 9.
 
 ## 11. Owner questions
 
-1. Set `PROXY_SECRET` for this release? It needs a change to the origin's Caddy, which is outside site-ops (tech §3.4).
-2. Where should the off-host backup copy live, and how should it be encrypted?
-3. Which alert channel should monitoring use, and who acts when David Charlot is unreachable?
-4. Bring the 10.10.10.1 Caddy block for the site into site-ops, so it is versioned with the rest?
-5. Should a failover to prod's tunnel be rehearsed once, so the mirror is a real standby?
-6. Who is the named person for online-content reports and takedowns, and when is NCMEC registration done?
-7. Should Article 50(2) marking be added to this release, given that the cautious reading makes it due at deploy (doc 13 §7.2)?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Set the secret that stops a spoofed visitor address from the front proxy, for this release? **Decided by the owner (2026-11-19, R16):** the live origin's proxy settings are brought into site-ops first, then the secret is set (28 D-10, D-61).
+2. Where should the off-machine backup copy live, and how should it be encrypted? **Decided by the owner (2026-11-19, R16):** done on 2026-11-19, an encrypted copy on a second machine, restore-tested (section 6.1; 28 D-10).
+3. How should monitoring alert, and who acts when David Charlot cannot be reached? **Decided by the owner (2026-11-19, R16):** alerts by email from the uptime check installed that day. **Open (28 O-11):** will you set up the email-sending account (Resend) and say which inbox the alerts go to? **Decided by default:** David Charlot is the only operator until a second person is hired; the rollback stays written step by step (28 D-10).
+4. Bring the live origin's proxy settings for the site into site-ops, so they are versioned with the rest? **Decided by the owner (2026-11-19, R16):** yes, first (28 D-61).
+5. Rehearse a failover to the mirror once, so it is a real standby? **Decided by default:** yes, once (28 D-61).
+6. Who is the named person for online-content reports and takedowns, and when is the company registered with the US child-safety reporting line? **Decided by default:** David Charlot reads reports daily and is the responsible person until a second person is trained (28 D-16, D-22). **Open (28 O-6):** may the company register with NCMEC's CyberTipline, with you named as the person responsible?
+7. Add machine-readable marking of AI output to this release? **Decided by the owner (2026-11-19, R6):** yes (28 D-01).

@@ -520,13 +520,15 @@ Each gap is As built unless marked; each proposal is labelled.
 
 ## 12. Owner questions
 
-1. Who wrote the English written-opponent verses and the ten "game's own" lines, and may they be credited? (Not known: no authorship is recorded.)
-2. Do ATK, DEF, HP and element stay on the card face, get a meaning, or go?
-3. Should the Legendary rarity of The Sonnet Man card stay while every new player is dealt it, or should the starter deck change?
-4. Which new houses come first: the other languages' literatures, the African diaspora and Caribbean, or a house built with Devon Glover? Who chooses the poets?
-5. Is a sonnet form wanted for a long or ranked mode, and in which languages first?
-6. Which native speakers will review the 15 languages, in what order, and who pays for it?
-7. Should Forest of Arden be renamed (its cast is the Dream's), and Illyria's why line replaced with a Twelfth Night line?
-8. Are the city variants (and their 198 orphaned photoreal images) kept, repainted in the card style, or dropped?
-9. Should the card detail view show each line's source?
-10. Which art faults are repainted before launch, and who signs off each image?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Who wrote the English written-opponent verses and the ten "game's own" lines, and may they be credited? **Fact to find out** (28, Facts to find out, 4); no authorship is recorded.
+2. Do ATK, DEF, HP and element stay on the card face, get a meaning, or go? **Decided by default:** off the card face until they have a role in writing; they stay in the card data for the redesign (28 D-42).
+3. Should The Sonnet Man card stay Legendary while every new player is dealt it? **Decided by default:** its rarity and its place in the starter deck wait on Devon Glover's answer (28 D-43, O-1).
+4. Which new houses come first, and who chooses the poets? **Decided by default:** first a house from each other language's own literature, then the African diaspora and the Caribbean, and a house built with Devon Glover only if he wants one; Arrocito del Diablo chooses the poets from public-domain sources (28 D-64).
+5. Is a sonnet form wanted, and in which languages first? **Decided by default:** a Shakespearean sonnet form as a separate long mode, never the default duel; English first, then each language as its form rules are measured (28 D-65).
+6. Which native speakers will review the 15 languages, in what order, and who pays? **Decided by default:** one language at a time in document 14's order (28 D-50). **Open (28 O-7):** paying native readers.
+7. Should Forest of Arden be renamed, and Illyria's "why" line replaced with a Twelfth Night line? **Decided by default:** yes to both (28 D-47).
+8. Are the city variants and their 198 unused photoreal pictures kept, repainted or dropped? **Decided by default:** the 198 pictures are removed, since they were made by cloud inference and no page shows them (28 D-33); the city variants stay hidden from players until they have a job in the duel, and stay in the plan (28 D-39).
+9. Should the card detail view show each line's source? **Decided by default:** yes, the work and the act and scene or line (28 D-66).
+10. Which art faults are repainted before launch, and who signs off each image? **Decided by default:** the eight listed faults are repainted before launch; Devon Glover signs off anything that could read as him, the owner the rest (28 D-54).

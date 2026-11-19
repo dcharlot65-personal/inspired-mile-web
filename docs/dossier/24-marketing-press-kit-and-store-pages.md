@@ -59,7 +59,7 @@
 | "Made with / performed by / the game of Devon Glover." | No recording, verse, voice or music of his is in the game, and no licence is recorded | design §6.1, §11 |
 | "Shakespeare on the Go." | The name of Devon Glover's programme | design §6.1 |
 | "15-second AI scenes for every card." | Not built; each card's scene is a sentence of text | design §9 |
-| "+50 credits a battle" (or any rate) | Not wired at `0d6df6ef`. In this release the server sets fixed rates with daily caps in `backend/data/economy.json` (05 §7.1); quote a rate only once the owner confirms the launch values and the pages show it | design §4.6; `fix/server-authority` |
+| "+50 credits a battle" (or any rate) | Not wired at `0d6df6ef`. In this release the server sets fixed rates with daily caps in `backend/data/economy.json` (05 §7.1); quote a rate only once the pages show it. The owner accepted the rates as tunable launch values (R9), and the site is to show the real rates, read from `economy.json` (decided by default: 28 D-05) | design §4.6; `fix/server-authority` |
 | "Track your students' progress." "FERPA compliant." | No progress is recorded; nothing supports the compliance claim | design §3, §4.13 |
 | "Walk through your collection in VR." | The gallery shows the whole catalogue | design §7.6 |
 | "See every card in 3D and AR." | One model exists, The Sonnet Man's, and it is a point cloud | design §7.6 |
@@ -68,6 +68,7 @@
 | "Season Pass." "Tournaments." | Neither can be played through from a page | design §3 |
 | "Play in your headset." | Tested only on an emulated Quest 3; headsets get no model | design §3, §7.5 |
 | "Learn Shakespeare" or any learning outcome | No study of the game exists | sota-design §6 |
+| "Playtested with players", "players find it easy", or anything "human-level" | The playtesters are AI players, by the owner's rule of 2026-11-19 (Proposed plan: `15-qa-and-test-plan.md` §8). An AI result may be quoted only as what was measured, with which AI player and version, never as what people would do | 28 D-63 |
 | "Nothing leaves your device." (without "solo duel") | Online verses go to the server; analytics load after the age gate; model downloads tell the model host the player's address | tech §1.4, §9 |
 
 ### 2.3 Copy already on the live site to fix (Proposed)
@@ -158,13 +159,13 @@ Built on the presskit() structure: factsheet, description, history, features, vi
 | Feature list | Section 2.1 | | |
 | Screenshots | No: none was taken for this dossier (no browser was run) | | Capture on the build host: duel set-up, the live checklist mid-verse, a verdict, the collection, the Theatre on a flat screen; each language page once translated |
 | Trailer | No | | Section 9 |
-| Logo and icon | Partly: a gold "IM" favicon and app icons at 192 and 512 px (design §7.1) | No logo pack or wordmark recorded | Commission a wordmark; export SVG and PNG on dark and light |
-| Key art | No | | Generated brand imagery under rule 6 in section 1, or a human illustrator; never Devon's likeness |
+| Logo and icon | Partly: a gold "IM" favicon and app icons at 192 and 512 px (design §7.1) | No logo pack or wordmark recorded | One master monogram and a wordmark in the game's display face (decided by default: 28 D-54, D-59); export SVG and PNG on dark and light |
+| Key art | No | | From a real screenshot of a verdict, not a generated performer (decided by default: 28 D-59); any generated brand image follows rule 6 in section 1; never Devon's likeness |
 | Card art samples | Yes: 71 paintings | AI-generated; seven known faults (design §7.2) | Choose only fault-free cards; label as AI-generated |
 | Team | About page: four names (design §3) | Devon's biography there is the company's text; whether he approved it is Not known | His bio and photo only as he supplies them |
 | Credits | In this release: `/credits` for the open data (`fix/compliance`) | | Add people, tools and licences |
 | AI disclosure | Section 4.2 | | |
-| Contact | Not known | | A press address |
+| Contact | contact@voyagetracable.com, the owner-approved public contact (28 D-59) | | Print it in the kit, on the itch.io page and on any store listing |
 | Creator permission | No | | "You may stream and monetise video of Sonnet Man." Music must be cleared first (`22-risk-register.md` R05) |
 
 ### 5.2 What the kit must never contain
@@ -183,7 +184,7 @@ Built on the presskit() structure: factsheet, description, history, features, vi
 | Title | Sonnet Man (installed name: "Sonnet Man: the duel of verses") | design §6.1 |
 | Developer and publisher | Inspired Mile, the trading name of Voyage Tracable, LLC, Sarasota, Florida | design §6.1 |
 | Where | sonnetman.inspiredmile.com, in any modern browser; installable as a web app | design §8 |
-| Release date | Not known. A site is live; this release is being prepared | tech §0 |
+| Release date | Not known. A site is live; this release is being prepared, and launches quietly with no fixed public date (decided by default: 28 D-59) | tech §0 |
 | Price | Free. No ads. No real-money purchases | design §9 |
 | Players | 1 (solo against the computer); 2 online (English, account needed) | design §1, §5 |
 | Match | Three rounds, first to two; no clock solo; 180 seconds a round online | design §1.2, §5.2 |
@@ -199,6 +200,7 @@ Built on the presskit() structure: factsheet, description, history, features, vi
 | Music | Four tracks. In this release two are traced byte for byte to CC0 tracks on OpenGameArt (`battle-beat`, `landing-ambient`); two tracks and all 14 effects remain untraced, and `/credits` says so | design §7.3; `fix/compliance`, `docs/ASSETS.md` |
 | 3D and headsets | A 3D stage for the duel in the browser, with WebXR; tested in emulation | design §7.5 |
 | Team | David Charlot (founder, technical lead), Devon Glover (creative director, as listed on the About page), Arrocito del Diablo (co-founder, game design), Treston Knight (listed; role Not known) | design §3 |
+| Contact | contact@voyagetracable.com | 28 D-59 |
 
 ---
 
@@ -258,7 +260,7 @@ The last line must change as milestones land (`21-production-plan-and-roadmap.md
 - **Why does my browser ask for the microphone?** Only when you press the microphone button to speak a verse. Your browser asks once; you can change it later in the site settings (in Chrome and Edge, the icon left of the address; in Safari, Settings for This Website; in Firefox, the permissions icon). The sound is turned into text on your device and is not sent anywhere.
 - **How big is the AI model, where is it kept, and how do I delete it?** About 3.1 GB for Gemma 4 E2B (1.1 GB for the lighter model). It is downloaded from the model host once and kept in your browser's storage for this site. To remove it, clear this site's data in your browser's settings. [Confirm against the shipped model panel before publishing.]
 - **I lost my passkey. Can I get back in?** Not today. Email sign-in is built but switched off, so a lost passkey cannot be recovered. Add a second passkey on another device while you can. [Rewrite if email sign-in is switched on.]
-- **How do I see or delete my data?** Write to the address in the privacy policy. There is no delete button yet; we delete accounts by hand on request. [Name the role mailbox and the response time once set: `19-privacy-pack.md` §8.]
+- **How do I see or delete my data?** Write to contact@voyagetracable.com, the address the privacy policy gives. There is no delete button yet; we delete accounts by hand on request, until the self-service delete is built (28 D-21). [Add the response time once set: `19-privacy-pack.md` §8.]
 - **I am a teacher. Where do I start?** [Write a one-page teacher guide before inviting any class: what classroom mode does and does not do today (it records no progress), the 13+ age rule, and what data is kept. Draft it from `19-privacy-pack.md` §6.]
 
 ### 7.4 Language landing pages (Proposed)
@@ -310,7 +312,7 @@ All facts: sota-production §1.1, §1.2.
 > - Solo duels run entirely in your browser.
 > - On a capable computer, an optional small AI model writes your opponent's verse.
 >
-> Plays in your browser at sonnetman.inspiredmile.com.
+> Plays in your browser at sonnetman.inspiredmile.com. Contact: contact@voyagetracable.com.
 
 **AI disclosure:** section 4.2.
 
@@ -320,6 +322,7 @@ All facts: sota-production §1.1, §1.2.
 - **Short description (80 characters):** Write a verse, win the duel. Free card game in 16 languages. No ads.
 - **Full description:** the home-page "How it plays" and "Features" (7.1), the AI disclosure (4.2), and the line "Report any AI verse from the menu", which must exist first (sota-production §1.2).
 - **Assets:** 512 × 512 icon; 1024 × 500 feature graphic; 2 to 8 phone screenshots (sota-production §7.17).
+- **Contact email:** contact@voyagetracable.com.
 
 ---
 
@@ -356,7 +359,7 @@ The first three beats and the end card.
 
 ### 10.1 Accounts
 
-Whether Inspired Mile has its own social accounts is Not known. The site's footer links Devon Glover's own channels (design §5.8). Do not post on his channels or tag him without his agreement.
+Whether Inspired Mile has its own social accounts is Not known. Opening accounts in the company's name waits on the owner (28 O-10); the public contact meanwhile is contact@voyagetracable.com (28 D-59). The site's footer links Devon Glover's own channels (design §5.8). Do not post on his channels or tag him without his agreement.
 
 ### 10.2 What to post
 
@@ -398,18 +401,22 @@ As built, analytics count page views only (tech §9). Proposed: self-hosted, coo
 
 ## Owner questions
 
-1. Is there a launch date for this release, and who announces it?
-2. Who approves public copy, and how fast?
-3. May the game use "Shakespeare on the Go" at all? (It is Devon Glover's programme name.)
-4. Does Inspired Mile have social accounts and a press address?
-5. Is there a logo or wordmark beyond the "IM" favicon?
-6. For key art, a generated image under the default (central people Black, of Haitian descent), or a commissioned illustrator?
-7. `fix/compliance` fixes only the referral reply. Should the rest of section 2.3 (About, classroom tour, VR gallery, world map, playground, home, sitemap) be fixed before this deploy, or right after?
-8. Should the game keep "rap battle" anywhere, given that it is a verse duel?
-9. `fix/server-authority` sets the rates (05 §7.1). Should the site publish them, and are they the launch values?
-10. Who wrote the English written opponent's verses: a person, a model, or both? The FAQ and the AI disclosure depend on it.
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Is there a launch date, and who announces it? **Decided by default:** launch quietly after the two deploys of R15, with no fixed public date (28 D-59). **Open (28 O-10):** when should the game be announced, and by whom?
+2. Who approves public copy? **Decided by default:** the owner approves all public copy (28 D-59).
+3. May the game use "Shakespeare on the Go"? **Decided by default:** not in marketing until Devon Glover agrees (28 D-15).
+4. Does Inspired Mile have social accounts and a press address? **Decided by default:** the press and public contact is contact@voyagetracable.com (28 D-59). **Open (28 O-10):** may the company open its own accounts on itch.io and on social networks?
+5. Is there a logo or wordmark beyond the "IM" favicon? **Decided by default:** one master monogram and a wordmark in the game's display face (28 D-54, D-59).
+6. Key art: a generated image or a commissioned illustrator? **Decided by default:** key art from a real screenshot of a verdict, not a generated performer (28 D-59).
+7. Fix the rest of section 2.3 before this deploy, or right after? **Decided by the owner (2026-11-19, R7):** all of it, in this release (28 D-03).
+8. Keep "rap battle" anywhere? **Decided by default:** "verse duel" until Devon Glover says otherwise (28 D-37).
+9. Should the site publish the rates, and are they the launch values? **Decided by the owner (2026-11-19, R9):** they are tunable launch values. **Decided by default:** where the About page listed the old amounts, it shows the real rates, read from `economy.json` (28 D-05).
+10. Who wrote the English written opponent's verses? **Fact to find out**, from the owner (28, Facts to find out, 4).
 
 ### Questions for Devon Glover (to ask him; nothing here assumes an answer)
+
+These are his to answer; asking them is part of 28 O-1.
 
 1. May the game name him in marketing, and how?
 2. Which biography and photos may it use?

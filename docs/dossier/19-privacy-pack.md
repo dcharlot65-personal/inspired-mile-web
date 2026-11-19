@@ -51,9 +51,9 @@ Terms used:
 | Controller | Voyage Tracable LLC, a Florida LLC, DBA Inspired Mile, Sarasota, FL | As built: `src/pages/privacy.astro` (Overview); `src/layouts/BaseLayout.astro:521` |
 | Privacy contact | A personal email address of the founder, on the policy and the Terms | As built: `src/pages/privacy.astro` (Contact) |
 | Privacy lead and COPPA security coordinator | David Charlot | Proposed |
-| EU and UK representatives | None | Proposed: appoint (research, section 9) |
+| EU and UK representatives | None | Proposed: appoint when EU or UK players stop being occasional (research, section 9; decided by default, `28-owner-decisions.md` D-27; paying for them is open, O-5) |
 
-**Proposed:** publish a role address such as a privacy mailbox on the company's own domain, so requests do not depend on one person's personal inbox.
+**Proposed:** publish **contact@voyagetracable.com**, the public contact the owner approved on 2026-11-19, as the privacy contact on the policy and the Terms, so requests do not depend on one person's personal inbox. The founder's personal address comes off both pages. Decided by default to change before this deploy (`28-owner-decisions.md` D-73).
 
 ---
 
@@ -130,7 +130,7 @@ A restart clears all of it (tech §1.2).
 
 **A leak to fix.** A private-room invitation is a link of the form `/multiplayer?room=<id>`, and the room id is the invitation (As built: `src/pages/multiplayer.astro:445-448`; design §5.1). Plausible receives the page address with its query string. So the analytics company receives live invitation tokens. **Proposed:** send Plausible the page address without the query string, or move the room id out of the query.
 
-**Proposed: bring statistics in house.** The owner's standing rule is free and self-hosted. Umami (MIT, "does not use any cookies") would run on the Postgres already in place (prod research §6.1 [V]). Whether the company pays for Plausible's hosted service is Not known. In the UK, aggregate statistics may run without consent if the user is told and can object simply and for free (PECR Schedule A1, in force 2026-02-05; research). Offer a visible statistics switch, on by default for adults, **off by default for teen and classroom accounts** (Children's code standard 7, below). Never record verse text, and never turn on session replay (prod research §6.2, §6.3).
+**Proposed: bring statistics in house.** The owner's standing rule is free and self-hosted. Umami (MIT, "does not use any cookies") would run on the Postgres already in place (prod research §6.1 [V]). Whether the company pays for Plausible's hosted service is Not known. Decided by default on 2026-11-19: Umami, self-hosted, replaces it (`28-owner-decisions.md` D-25). In the UK, aggregate statistics may run without consent if the user is told and can object simply and for free (PECR Schedule A1, in force 2026-02-05; research). Offer a visible statistics switch, on by default for adults, **off by default for teen and classroom accounts** (Children's code standard 7, below). Never record verse text, and never turn on session replay (prod research §6.2, §6.3).
 
 ### 3.7 How data moves
 
@@ -175,10 +175,11 @@ High-risk signals present: children (13 to 17) admitted; a mode built for school
 
 ### Step 3. Consultation (Proposed)
 
-- Five-player think-aloud rounds, as the playtest research recommends, including 3 or 4 students with consent and 3 or 4 teachers (prod research §6.4 [V]). Ask what they expect to happen to their verses and their voice.
-- Parents: a short survey through a pilot school.
+- **No human playtests or surveys.** The playtest research recommends five-person think-aloud rounds, with students and teachers among them, and the earlier draft added a parents' survey through a pilot school (prod research §6.4 [V]). The owner ruled out human playtests on 2026-11-19 ("AI is the playtester"; `28-owner-decisions.md` D-63), so neither is used.
+- **A comprehension check of the notices, by AI players** (`15-qa-and-test-plan.md` §8). First-time AI players with no prior training on the game read only what a player sees (the privacy policy, the teen summary, the AI notice, the sign-in and online-play screens), in the launch languages, and are asked: where does my verse go, how long is it kept, does my voice leave this device, and who sees a verse I report? Each answer is scored against this pack's data inventory (section 3). A question most runs answer wrongly marks a notice to rewrite in plainer words. The check shows whether the page says it plainly; it is not a record of what people expect.
+- GDPR Article 35(9) asks for the views of the people concerned "where appropriate". The record should say that this AI check stands in for asking players directly, and why, for the company's lawyer to confirm (`28-owner-decisions.md` O-2).
 - Devon Glover, on how his name and persona appear to young players (`18-trust-and-safety-plan.md`, questions to ask him).
-- Record who was asked, what they said and what changed.
+- Record what was checked, the results and what changed.
 
 ### Step 4. Necessity and proportionality
 
@@ -225,7 +226,7 @@ Likelihood: remote, possible, probable. Severity: minimal, significant, severe. 
 | R5 | Remove the false statements; publish an honest school summary (section 6) | Proposed; `fix/compliance` does not change the classroom strings (its diff does not touch them) | Low |
 | R6 | Strip query strings; self-hosted statistics; off by default for teens and classes | Proposed | Low |
 | R7 | Disclosed in the policy | As built | Low |
-| R7 | Serve weights from the company's own origin | Proposed; owner question, size and cost Not known | Low |
+| R7 | Serve weights from the company's own origin | Proposed; decided by default: once traffic shows the bandwidth it needs (`28-owner-decisions.md` D-26) | Low |
 | R8 | The security programme in section 5.3 | Proposed | Low |
 | R9 | Sign-out clears the user object, the seat and non-static caches | As built (tech §1.5; `storage-backend.ts:76-80`) | Low |
 | R9 | A "Remove my data from this device" button; shorter sessions for class accounts | Proposed | Low |
@@ -289,7 +290,7 @@ The standards are listed in the research (prod research §5.3 [V]). Status is As
 | Schools served | Secondary and older students only | Primary and middle schools too |
 | Cost | Low | High: school consent flow, agreements, commerce off, audits |
 
-**Proposed:** Option A for this release and the first classroom pilot (with 13+ students), and both written documents below adopted now anyway. They cost little, they are what schools ask for, and the research lists them as "already due" if children are served (prod research §8, tier 0).
+**Proposed, and decided by default on 2026-11-19** (`28-owner-decisions.md` D-23): Option A for this release and the first classroom pilot (with 13+ students), and both written documents below adopted now anyway. They cost little, they are what schools ask for, and the research lists them as "already due" if children are served (prod research §8, tier 0).
 
 ### 5.3 Draft written information security programme (§312.8(b))
 
@@ -432,7 +433,7 @@ Built from the COPPA school-consent limits (section 5.6), England's guidance and
 > - **Scores are for practice, not grades.** Each verdict shows the rule behind it.
 > - **You can delete your class at any time,** and we delete everything at the end of our agreement.
 > - **Ages:** students must be 13 or older.
-> - **Contact:** [privacy mailbox].
+> - **Contact:** contact@voyagetracable.com.
 
 Every line is either true today or must be made true before the summary is used: switching commerce off for student accounts, class deletion and school sign-in are Proposed.
 
@@ -505,7 +506,7 @@ Every line is either true today or must be made true before the summary is used:
 
 | Step | What |
 |---|---|
-| 1. Receive | Through the privacy mailbox, or a signed-in request form, which proves who is asking better than an email can |
+| 1. Receive | By email to contact@voyagetracable.com, or a signed-in request form, which proves who is asking better than an email can |
 | 2. Verify | Passkey-only accounts have no email: ask the requester to sign in and use the in-game tool. For a parent asking about a teen, ask for a signed-in request from the teen's account plus the parent's contact |
 | 3. Acknowledge | Within 30 days. The UK requires complaints to be acknowledged within 30 days (DUAA, research: prod research §5.3 [V]) |
 | 4. Act | Within the policy's 30 days |
@@ -526,7 +527,7 @@ Every line is either true today or must be made true before the summary is used:
 | **Connecticut Data Privacy Act, minors' provisions** | "Most likely state privacy law to apply" if any known child data is processed | No design that significantly increases minors' use; no targeted ads; impact assessments | prod research §5.2 [V, threshold U] |
 | California AADC; Maryland Kids Code; Nebraska AADC | Probably not: below their thresholds | — | prod research §5.2 [S] |
 | Colorado and Arkansas minors' laws | Check | Not researched | prod research §5.2 [U] |
-| Florida, the company's home state | Not researched | — | Owner question |
+| Florida, the company's home state | Not researched | — | For the company's lawyer (`28-owner-decisions.md` O-2) |
 
 **GDPR ages of digital consent** (research: prod research §5.3 [S, dated 2021]): 13 in Belgium, Denmark, Estonia, Finland, Latvia, Malta, Portugal, Sweden and the UK; 14 in Austria, Bulgaria, Cyprus, Italy, Lithuania and Spain; 15 in Czechia, France and Greece; 16 in Croatia, Germany, Hungary, Ireland, Luxembourg, the Netherlands, Poland, Romania and Slovakia. Re-check each before relying on it. The core game rests on contract, not consent, so these ages matter for optional statistics, marketing and referrals. **Proposed:** keep all three off for anyone the gate marks as a teen.
 
@@ -548,7 +549,7 @@ Every line is either true today or must be made true before the summary is used:
 | 8 | Says online verses are never written to the database | Add the report exception, if adopted (`18-trust-and-safety-plan.md` §6.2) |
 | 9 | Says nothing of server-judged match records | Add them (`fix/server-authority`) |
 | 10 | English only, adult register (design §8) | A plain teen summary in all 16 languages (Children's code standard 4) |
-| 11 | The personal contact address | A role mailbox |
+| 11 | The personal contact address | contact@voyagetracable.com, the owner-approved public contact; before this deploy (`28-owner-decisions.md` D-73) |
 | 12 | No AI notice | **In this release (`fix/compliance`):** the EU AI Act Article 50(1) notice |
 | 13 | No retention policy in the COPPA sense | Publish section 5.4's text once each figure is built |
 | 14 | No mention of the internal operations behind identifiers | Name them (section 5.5) |
@@ -557,20 +558,22 @@ Every line is either true today or must be made true before the summary is used:
 
 ## Owner questions
 
-1. **Under-13s:** Option A (13 and over) or Option B (school consent for under-13s)? (5.2)
-2. **Statistics:** does the company pay for Plausible's hosted service? May it move to self-hosted Umami, off by default for teen and class accounts? (3.6)
-3. **Email:** Resend is a hosted third-party service and email sign-in is off. Will email stay off, or is a self-hosted sender wanted? (3.6)
-4. **Model files:** should the weights be served from the company's own servers, to end the Hugging Face disclosure? Size and hosting cost are Not known. (Step 6, R7)
-5. **Match records:** in this release each match is one `battle_rooms` row without verses (players, rounds won, points, best round, end reason, times). How long should it be kept: 24 months, or less? (3.2, 7)
-6. **API logs:** how are they rotated today? (3.4)
-7. **Database access:** who holds administrative access to the production database? (5.3)
-8. **Report evidence:** accept keeping a reported verse for 90 days, or 1 year where the law requires? (7)
-9. **Inactive accounts:** delete after 24 months without sign-in? (7)
-10. **Representatives:** appoint EU and UK representatives, which costs money? When? (9)
-11. **Counsel:** who reviews this pack, the COPPA "directed to children" question, FERPA, state student-privacy laws, breach-notification laws and Florida's own laws? (5.1, 5.3, 6.3, 9)
-12. **Market start:** in which countries will the game be promoted first? That decides which laws in section 9 matter first.
-13. **`fix/compliance` scope:** it covers items 1 and 12 of section 10 and none of the classroom strings in 6.2. Should the other twelve policy items and the classroom strings be done before this deploy, or right after?
-14. **Schools:** is a school pilot planned, with which school, and in which month? That sets the order of sections 6.2 to 6.4.
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. **Under-13s:** 13 and over, or school consent for younger pupils? **Decided by default:** 13 and over for this release and the first pilot, with the security programme and retention policy adopted now anyway (28 D-23).
+2. **Statistics:** does the company pay for the hosted service (Plausible)? May it move to self-hosted Umami, off by default for teen and class accounts? **Decided by default:** yes, Umami (28 D-25). Whether a paid account exists is a **fact to find out** (28, Facts to find out, 7).
+3. **Email sign-in:** stay off, or a self-hosted sender? **Decided by default:** emailed codes through Resend, as the owner directed on 2026-11-16, once its account and key exist; passkey-only until then (28 D-24). **Open (28 O-11):** will you set up that email account?
+4. **Model files:** serve the weights from the company's own servers, so the model hub no longer learns players' addresses? **Decided by default:** pin revisions now; serve them from the game's own site once traffic shows the bandwidth (28 D-26).
+5. **Match records:** keep each match record 24 months, or less? **Decided by default:** 24 months (28 D-20).
+6. **API logs:** how are they rotated? **Answered 2026-11-19:** 30-day rotation installed (R16; 28 D-10).
+7. **Database access:** who holds administrative access to the production database? **Decided by default:** David Charlot alone until a second person is hired (28 D-61).
+8. **Report evidence:** keep a reported verse 90 days, or 1 year where the law requires? **Decided by default:** yes, both as stated (28 D-17).
+9. **Inactive accounts:** delete after 24 months without sign-in? **Decided by default:** yes, with an email first if email is on (28 D-20).
+10. **Representatives:** appoint the EU and UK representatives, which costs money, and when? **Open (28 O-5):** will you pay for one in each once players there stop being occasional?
+11. **A lawyer:** who reviews this pack, whether the game is "directed to children" under COPPA, FERPA, state student-privacy and breach laws, and Florida's laws? **Open (28 O-2):** will you hire a lawyer, and when? Signing the risk assessment in section 4 is **open (28 O-3)**.
+12. **First countries:** where is the game promoted first? **Decided by default:** the US, then the UK (28 D-57).
+13. **The remaining policy changes:** before this deploy, or right after? **Decided by default:** before, every item of section 10 that makes the policy match the deployed code (items 2, 3, 5, 6, 9 and 11; item 4 with the economy deploy); items 8 and 13 with their features; item 10 right after; the classroom strings with classroom v1 (28 D-73).
+14. **Schools:** is a pilot planned, with which school, and when? **Decided by default:** classroom v1 first, then one 13+ class, through Devon Glover's network if he agrees; the school's data agreement comes to the owner then (28 D-51).
 
 **To ask Devon Glover** (nothing here assumes his answer):
 1. Will his school and festival partners want to pilot classroom mode, and what do they require of a vendor's privacy terms?

@@ -19,13 +19,15 @@ Groups: 1 The dossier's own words · 2 Sonnet Man's game terms · 3 Game industr
 ## 1. The dossier's own words
 
 - **As built**: what the code at commit `0d6df6ef` does, read from the code and cited to a file and line.
+- **Decided by default**: a decision in `28-owner-decisions.md` made without asking the owner, because a sensible default followed from the owner's standing rules or the evidence; it names the rule or evidence and binds the documents, and the work it calls for stays proposed until built.
 - **Dossier**: this set of numbered design and production documents in `docs/dossier/`, worked backward from the built game.
 - **Fact base**: `sources/as-built-design.md` and `sources/as-built-tech.md`, which record what is built, each fact cited.
 - **In this release**: a change the owner decided on 2026-11-19 that is in flight on a named branch and not yet deployed.
 - **Model-date rule**: the owner's standing rule that only AI models released after 2026-04-01 may be used.
 - **Not known**: a fact nobody has established; each one goes to a document's "Owner questions".
+- **Open question (O-n)**: one of the questions in `28-owner-decisions.md` that only the owner can answer, because it needs their money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
 - **Owner**: David Charlot, founder and technical lead, who sets the standing rules.
-- **Owner decision (D-nn)**: a numbered open decision in `28-owner-decisions.md`, with its options, trade-offs and a recommendation; once taken it moves to that document's Part 1 with its date.
+- **Owner decision (D-nn)**: a numbered decision in `28-owner-decisions.md`, with its options and trade-offs: decided by the owner (Part 1, with its date) or decided by default under the standing rules; where part of it needs the owner, it points to an open question (O-n).
 - **Proposed**: a recommendation in a dossier document, with the research behind it; nothing labelled so exists.
 - **Release branches**: `fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p` and `fix/compliance`, the four branches of the release in flight.
 - **Self-hosted rule**: the owner's standing rule of free and self-hosted tools only: no paid APIs at runtime or for assets, and no cloud inference.
@@ -189,7 +191,7 @@ Groups: 1 The dossier's own words · 2 Sonnet Man's game terms · 3 Game industr
 - **Pitch deck**: the slides that win funding or a partner: what, why, who, cost, date.
 - **Pity timer**: a guarantee that a rare reward arrives after a set number of misses.
 - **Placeholder art**: rough art kept until final art is made.
-- **Playtest**: watching real people play to find what fails; a think-aloud playtest asks them to say what they think.
+- **Playtest**: playing a game to find what fails. In this project the playtesters are AI players with no prior training on the game, who see only what a player sees and use only a player's controls; the owner ruled out human playtests on 2026-11-19 (`15-qa-and-test-plan.md` §8, proposed).
 - **Portal**: a website that hosts many web games, such as Poki or CrazyGames.
 - **Postmortem**: a written review after a milestone of what went well and badly.
 - **Power analysis**: working out, before an experiment, how many players it needs.
@@ -342,17 +344,20 @@ Groups: 1 The dossier's own words · 2 Sonnet Man's game terms · 3 Game industr
 
 - **ADR (architecture decision record)**: a short numbered note of one technical decision and why.
 - **AGENTS.md**: a file at the root of a repository that tells AI agents how to work in it.
+- **AI playtest** (proposed): a run in which an AI player with no prior training on the game plays it through the parity interface, on a self-hosted model released after 2026-04-01, on the build host; it measures time to a first valid verse, voids, rounds won against each opponent and where players get stuck (`15-qa-and-test-plan.md` §8).
 - **cargo test**: the Rust test runner.
 - **Dead code**: code no page reaches.
 - **Docs-as-code**: documents written and reviewed with the same tools as the code.
 - **Mutation test**: deliberately breaking code to prove a test notices.
+- **Parity interface** (proposed): what an AI player is given: the rendered page as an image, or its screen-reader text, and a player's controls; never the scoring code, its constants or the API's data. Not the same as *parity* between the server and the browser (section 6).
 - **Playwright**: the browser test framework.
 - **Provenance**: the recorded source, licence and method behind a piece of data, text or art.
+- **Reference player** (proposed): a scripted player that bounds the AI playtests' results and is never reported as a playtester: a random floor, the written opponent's own verses typed in as the player's, and a rules-aware solver that may read the code.
 - **RFC**: a written proposal circulated for comment before a decision.
 - **SBOM**: a software bill of materials, listing every component and its licence.
 - **Stub**: a screen that exists with no play behind it.
 - **Technical debt**: known shortcuts and faults that will cost effort later.
-- **Think-aloud**: a playtest method in which the player speaks their thoughts while playing.
+- **Think-aloud**: a human playtest method in which the player speaks their thoughts while playing; not used in this project, where AI is the playtester (owner, 2026-11-19).
 - **vitest**: the test runner for the game's pure logic.
 - **Blameless review**: an incident review that asks what in the system let a failure happen, never who to blame (`29-postmortem-and-incident-templates.md`).
 - **Postmortem**: a written look back after a milestone, launch or season: vital stats, what went right, what went wrong, actions (`29-postmortem-and-incident-templates.md`).

@@ -56,7 +56,7 @@ The company site lives in a separate repository, `inspiredmile-web`. Its design 
 - **Pictures.** Painted with FLUX 3 Image Klein on the owner's machines. Seven looping films were made from the paintings with self-hosted open video models: five with Kandinsky 6.0 Video (released 2026-10-06, MIT) and the two threshold films with LTX-2.5 (released 2026-08-11, LTX-2.x Community License, free under US$10M revenue).
 - **Disclosure.** Every milestone says "Made by machine" where the picture is seen, as both video licences ask.
 - **Motion.** All motion stops under `prefers-reduced-motion`, and every film has a pause control.
-- **An open licence problem.** The five Kandinsky films are decoded by a video VAE under Tencent's Hunyuan Community License, which excludes the EU, the UK and South Korea. The notes leave the remedy to the owner: block those files there, accept the risk, or remake them.
+- **An open licence problem.** The five Kandinsky films are decoded by a video VAE under Tencent's Hunyuan Community License, which excludes the EU, the UK and South Korea. The notes left the remedy to the owner: block those files there, accept the risk, or remake them. Decided by default: visitors from those three places see the still paintings in place of the five films, and the five are remade with LTX-2.5 (`28-owner-decisions.md` D-68).
 
 The company page shows a Sonnet Man card picture (`src/assets/sonnet-man.webp` there, alt text "The Sonnet Man card: a performer on a stage ringed with fire"). Its bytes differ from the game's current `public/images/cards/sm-001.webp`. Which version is meant to be current is **Not known**.
 
@@ -252,7 +252,7 @@ Two other owner directions touch the same pictures, so the scope needs stating:
 | Picture | Who is central | Rule that governs | As built | Kind |
 |---|---|---|---|---|
 | Brand imagery: the home hero, store and press art, posters, social images, trailers, the intro, the company site | an invented person | **Black, of Haitian descent, by default** | The company site's traveller follows it. The game's home hero reuses the SM-001 card (below). | As built / Proposed |
-| Character cards | a literary or mythic character | the global casting rotation | 53 characters across nine casts | As built; scope to confirm (owner question) |
+| Character cards | a literary or mythic character | the global casting rotation | 53 characters across nine casts | As built; scope decided by default (`28-owner-decisions.md` D-53) |
 | The ten Romantic and Victorian poets (Wordsworth to Rossetti) | real historical people | the real-person exception: the rule does not apply | Cast like stage roles through the rotation ("played by an actor") | As built; to confirm |
 | SM-001 The Sonnet Man | the stage name of a real, living person | the real-person exception, and his consent | Painted as "a Black actor of African descent"; the prompt names no one and asks for no likeness (`build_prompts.py:66-68`). Whether it is meant to depict him is **Not known**. | Decision needed |
 
@@ -287,7 +287,7 @@ Until that is settled, do not use SM-001's picture in new marketing.
 **Proposed:**
 
 1. Take the 198 files out of the shipped build. They cost 16 MB and are seen by no one.
-2. Decide whether world cards need pictures at all. Today they are a +2 bonus and a name.
+2. Decide whether world cards need pictures at all. Today they are a +2 bonus and a name. Decided by default: no new pictures until the card redesign gives world cards a role (`28-owner-decisions.md` D-69).
 3. If they do, paint them locally in the house's own tradition, with the city as the setting, not as a photoreal costume change.
 4. Drop skin tone from the random cosmetic draw. Making a character's skin tone a random collectible reads badly next to the casting rules above; if tone stays, let the player choose it.
 
@@ -475,22 +475,24 @@ flowchart LR
 
 ## Owner questions
 
-1. Is the SM-001 card meant to depict Devon Glover, or a persona? Which company-site Sonnet Man picture is current?
-2. Does the brand-imagery default (Black, of Haitian descent) cover only marketing and brand pictures, with the card characters following the global casting rotation? Should the ten real Romantic and Victorian poets keep their rotation casting?
-3. When was FLUX 3 Image Klein released? Its licence (read in this release from the weights' own `LICENSE.md`) allows commercial use of outputs only under US$5M group revenue. Is that acceptable, and what is the plan if revenue nears it?
-4. Where are the PNG masters, prompts and seeds of the 71 paintings archived?
-5. (Answered in this release: `docs/ASSETS.md` covers music, effects, 3D, images and fonts.) Should the variant pictures, made through a hosted Hugging Face Space, be kept, given the no-cloud-inference rule that came later?
-6. Should the 198 variant pictures be removed, and should world cards have pictures at all? Should skin tone stay a random cosmetic?
-7. Are 3D cards and AR in scope for the next six months?
-8. The 3D files come from the owner's own pipeline and the icons from this repository (`docs/ASSETS.md`). Which model made the 3D figure, and under what terms?
-9. For the company site: which remedy for the five Kandinsky films (block in the EU, UK and South Korea, accept, or remake)?
-10. Should the stats (ATK, DEF, HP) leave the card face? (With Arrocito.)
-11. Is a light theme wanted, or only a high-contrast option?
-12. Should this document state the reason for the imagery rule, or only the rule? (A reviewer suggested keeping the owner's personal background out of a document for contractors and investors; it has been removed pending the owner's answer.)
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Is the SM-001 card meant to show Devon Glover, and which company-site picture of The Sonnet Man is current? The first is his to answer (28 Part 3, question 3; O-1); the second is a fact to find out (28, Facts to find out, 14).
+2. Does the brand-imagery default cover only brand and marketing pictures, and how are the real poets cast? **Decided by default:** brand and marketing imagery only; card characters keep the 2026-11-16 global casting; real poets and Shakespeare's characters as the house tradition casts them (28 D-53).
+3. When was FLUX 3 Image Klein released, and is its US$5M revenue condition acceptable? **Decided by default:** record the condition beside the LFM one, with a repaint plan if revenue nears it (28 D-33). The release date is a fact to find out (28, Facts to find out, 5). **Open (28 O-9):** roughly what is the company's yearly revenue?
+4. Where are the masters, prompts and seeds of the 71 paintings archived? **Decided by default:** archived with their prompts and seeds, recorded in `docs/ASSETS.md` (28 D-54).
+5. Should the variant pictures made through a hosted service be kept, given the no-cloud-inference rule? **Decided by default:** no; the 198 variant pictures are removed (28 D-33).
+6. Remove the 198 variant pictures? Should world cards have pictures? Should skin tone stay a random cosmetic? **Decided by default:** the 198 are removed (28 D-33); world cards get no new pictures until the card redesign gives them a role; skin tone leaves the random draw, and if it stays, the player chooses it (28 D-69).
+7. Are 3D cards and AR in scope for the next six months? **Decided by default:** 3D and AR work comes after the duel has players; an order, not a cut (28 D-54).
+8. Which model made the 3D figure, and under what terms? A fact to find out (28, Facts to find out, 9).
+9. Which remedy for the company site's five Kandinsky films? **Decided by default:** stills in place of the five films for visitors from the EU, the UK and South Korea, and the five remade with LTX-2.5, which then serve everyone (28 D-68).
+10. Should the stats leave the card face? **Decided by default:** yes, until they have a role in writing; they stay in the card data for the redesign. Arrocito del Diablo's weekly review may change it (28 D-42, D-49).
+11. A light theme, or only a high-contrast option? **Decided by default:** a high-contrast option rather than a light theme (28 D-54).
+12. Should this document state the reason for the imagery rule? **Decided by default:** it states the rule without the owner's personal background, which stays private (28 D-53).
 
 ## Questions to ask Devon Glover
 
-Nothing in this document records his words, views or approvals. Ask him:
+Nothing in this document records his words, views or approvals. Asking him is part of `28-owner-decisions.md` O-1. Ask him:
 
 1. Do you want The Sonnet Man card to show you? If so, which photographs may be used, what may be stylised, and what must never be made?
 2. What do you want to review as creative director (card art, brand pictures, the intro), and how quickly can you turn reviews around?

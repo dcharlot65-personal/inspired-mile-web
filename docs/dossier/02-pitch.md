@@ -3,7 +3,7 @@
 - **Purpose:** the story we tell investors and partners, and a 12-slide deck outline with speaker notes, every claim traceable.
 - **Audience:** the founders first, who will present it; then investors, education and arts funders, school partners and other partners.
 - **As of:** commit `0d6df6ef`, plus the release in flight on 2026-11-19 (`fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p`, `fix/compliance`, and a nightly database backup).
-- **Status:** Draft for the team, 2026-11-19. Not for sending until the owner questions at the end are answered.
+- **Status:** Draft for the team, 2026-11-19. Not for sending until the open owner questions at the end (the ask, the monthly spend and Devon Glover's agreement: `28-owner-decisions.md` O-1 and O-8) are answered.
 - **Related documents:** `01-concept-one-pager.md`, `03-gdd.md`, `21-production-plan-and-roadmap.md`, `22-risk-register.md`, `23-market-and-competitors.md`, `24-marketing-press-kit-and-store-pages.md`, `20-legal-and-licence-register.md`, `07-narrative-and-performer-bible.md`; also `00-README.md` (index), `28-owner-decisions.md`.
 
 ## How this document handles evidence
@@ -217,15 +217,17 @@ Each slide has a headline that states its point, what appears on it, the visual,
 
 ## Owner questions
 
-1. **The ask.** How much, from whom, in what instrument, for what milestones? Does the 2025 brief's $300K to $1M still stand?
-2. **First audience.** Who is this pitch for first: education and arts funders, school partners, angel investors, or a publisher? The research suggests funders and schools rather than console publishers (`R-prod` §7.1).
-3. **Budget and burn.** Monthly cost and runway are not recorded anywhere.
-4. **Devon Glover** (ask him; do not assume):
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. **The ask.** How much, from whom, in what form, for which milestones? Does the 2025 brief's $300K to $1M still stand? **Open (28 O-8):** what will the company ask funders for?
+2. **First audience.** Who is this pitch for first? **Decided by default:** education and arts funders and school partners, as the research suggests (`R-prod` §7.1) (28 D-57).
+3. **Budget and burn.** Monthly cost and runway are not recorded anywhere. **Open (28 O-8):** what does the company spend each month now? What it can spend next year is 28 O-7.
+4. **Devon Glover.** These are his to answer, as part of the agreement you would ask him for (**Open, 28 O-1**; the questions to put to him are in 28 Part 3):
    - May his name, title and photograph appear in the deck?
-   - Is there a written licence for his name and persona, as the research recommends (`R-prod` §5.8)?
+   - Will he sign a written licence for his name and persona, as the research recommends (`R-prod` §5.8)?
    - What does he want said about his role?
-5. **The team.** Is Treston Knight on the current team, and in what role?
-6. **Revenue model.** Which of school licences, grants, supporters or events should the deck present?
-7. **Grants and programmes.** Were any of those named in the roadmap applied for, such as NSF SBIR or Meta Horizon Start? Not known.
-8. **Live build.** When this release is deployed, may the deck link to it, and to which language demo?
-9. **The name.** "Verse duel" or "rap battle"? (With Devon Glover.)
+5. **The team.** Is Treston Knight on the current team, and in what role? **Fact to find out** (28, Facts to find out, 11); any work he contributed is listed so that a lawyer can arrange a written transfer (28 D-58, O-2).
+6. **Revenue model.** Which routes should the deck present? **Decided by default:** education and arts grants, then school licences invoiced yearly, then recurring supporters; never ads; credits and packs are never sold (28 D-56).
+7. **Grants and programmes.** Were any of those named in the roadmap applied for, such as NSF SBIR or Meta Horizon Start? **Fact to find out** (28, Facts to find out, 12).
+8. **Live build.** May the deck link to the live game? **Decided by default:** yes, once this release is deployed (28 D-59).
+9. **The name.** "Verse duel" or "rap battle"? **Decided by default:** "verse duel" until Devon Glover says otherwise (28 D-37).

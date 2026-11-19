@@ -8,7 +8,7 @@
 
 **Status:** Draft for the team, 2026-11-19.
 
-**Related documents:** `21-production-plan-and-roadmap.md` (milestones and backlog IDs B01 to B38), `23-market-and-competitors.md`, `24-marketing-press-kit-and-store-pages.md`, `25-live-ops-plan.md`, `17-operations-runbook-and-launch-checklist.md`, `13-ai-design-and-system-cards.md`, `18-trust-and-safety-plan.md`, `19-privacy-pack.md`, `11-accessibility-plan-and-statement.md`, `sources/as-built-design.md`, `sources/as-built-tech.md`, `research/sota-design-2026-11.md`, `research/sota-production-2026-11.md`; also `00-README.md` (index), `28-owner-decisions.md`, `29-postmortem-and-incident-templates.md`.
+**Related documents:** `21-production-plan-and-roadmap.md` (milestones and backlog IDs B01 to B39), `15-qa-and-test-plan.md` §8 (the AI playtests), `23-market-and-competitors.md`, `24-marketing-press-kit-and-store-pages.md`, `25-live-ops-plan.md`, `17-operations-runbook-and-launch-checklist.md`, `13-ai-design-and-system-cards.md`, `18-trust-and-safety-plan.md`, `19-privacy-pack.md`, `11-accessibility-plan-and-statement.md`, `sources/as-built-design.md`, `sources/as-built-tech.md`, `research/sota-design-2026-11.md`, `research/sota-production-2026-11.md`; also `00-README.md` (index), `28-owner-decisions.md`, `29-postmortem-and-incident-templates.md`.
 
 > **How to read the labels.** **As built**: in the code at `0d6df6ef`. **In this release**: decided on 2026-11-19, being done on the named branch, not shipped. **Proposed**: a recommendation, with the research behind it. **Not known**: unrecorded; listed in the Owner questions.
 >
@@ -98,6 +98,7 @@ quadrantChart
 | R32 | Shipped models break the date rule | Policy | 5 | 2 | 10 | DC | Mitigate | Open |
 | R33 | Offline play untested | Technical | 2 | 2 | 4 | DC | Accept, watch | Open |
 | R34 | Thin web security headers | Technical | 3 | 3 | 9 | DC | Mitigate | Open |
+| R35 | AI playtest results read as what people would do | Design, process | 3 | 3 | 9 | DC, AdD | Mitigate | Open |
 | R40 | No proven demand | Market | 4 | 4 | 16 | DC, AdD | Mitigate | Open |
 | R41 | Player hostility to generative AI | Market | 4 | 3 | 12 | DC | Mitigate | Open |
 | R42 | Players cannot find it; online queues stay empty | Market | 4 | 3 | 12 | DC | Mitigate | Open |
@@ -226,7 +227,7 @@ quadrantChart
 
 - **Cause → event → effect.** Phones, tablets and headsets get no model (tech §4.1). The written opponent plays from a small bank (17 English verses, 17 spares) and difficulty does nothing without a model (design §1.6) → repetition within a few matches → players leave.
 - **Mitigation.** Proposed: the adaptive opponent (M2), a larger written bank (B18), and phone models only if they beat the rules (M5).
-- **Trigger.** Playtesters notice repeats; second-session return falls under target (`25-live-ops-plan.md`).
+- **Trigger.** AI playtest runs meet the same opponent verses again within a few duels (`15-qa-and-test-plan.md` §8, Proposed); second-session return falls under target (`25-live-ops-plan.md`).
 
 ### R22. Judge manipulation and prompt injection (9)
 
@@ -293,6 +294,13 @@ quadrantChart
 - **Cause.** No content security policy; the live origin's headers sit outside the operations repository; the optional proxy shared secret is not configured anywhere readable (tech §12, item 12).
 - **Mitigation.** Proposed: a strict policy matching the third-party allowlist the tests already hold (tech §1.4).
 
+### R35. AI playtest results read as what people would do (9)
+
+- **Cause → event → effect.** Under the owner's rule of 2026-11-19, "AI is the playtester" (`28-owner-decisions.md` D-63), AI players with no prior training on the game are the playtesters (`15-qa-and-test-plan.md` §8, Proposed) → a result (time to a first verse, where players stall, win rates) is quoted as if it were how people play → the design is tuned to what models find easy, or a public claim overstates what was measured.
+- **Shared tastes.** The game's model judge is Gemma 4 E2B, so a Gemma 4 player may share the judge's tastes and score better than another family would (`15-qa-and-test-plan.md` §8.2).
+- **Mitigation.** Proposed: every result says what was measured and which AI player and version produced it, and no claim says "human-level"; results are reported per model family, with three families playing; reference players (a random floor, the written opponent's own verses, a rules-aware solver) bound each result; thresholds are written down before the first run; live numbers from real players (`16-analytics-and-tracking-plan.md`) replace the AI runs' first values as soon as they exist (`15-qa-and-test-plan.md` §8.5).
+- **Trigger.** After launch, live numbers differ from the AI runs' first values by more than the runs' own interval.
+
 ---
 
 ## 6. Market risks
@@ -300,7 +308,7 @@ quadrantChart
 ### R40. No proven demand for a written-verse duel (16)
 
 - **Evidence.** No shipped 2024 to 2026 game lets players write verse that code and a model score at scale; the closest, a party pack with a local AI judge, drew one Steam review and was delisted (sota-design, bottom line; §2).
-- **Mitigation.** Proposed: the vertical slice and its playtests before more building (M1); cheap channels; audiences that already exist (classrooms, Devon's audience, daily word players) (`23-market-and-competitors.md`).
+- **Mitigation.** Proposed: the vertical slice and its AI playtests before more building (M1; `15-qa-and-test-plan.md` §8), which show whether a newcomer can reach and finish a duel; cheap channels; audiences that already exist (classrooms, Devon's audience, daily word players) (`23-market-and-competitors.md`). Demand itself shows only in live numbers from real players (`16-analytics-and-tracking-plan.md`), never in AI results (R35).
 - **Trigger.** Slice exit criteria missed (`21-production-plan-and-roadmap.md` §5.6).
 
 ### R41. Player hostility to generative AI (12)
@@ -331,7 +339,7 @@ quadrantChart
 ### R46. Matches too long for a session (9)
 
 - **Evidence.** About three minutes is the reference card match; a top-quartile mobile session is about 5.2 minutes (sota-design §1). Sonnet Man's match length has never been measured.
-- **Mitigation.** Proposed: measure in the slice; short forms as the default.
+- **Mitigation.** Proposed: measure match length in the slice's AI playtests (`15-qa-and-test-plan.md` §8.3), then in live analytics; short forms as the default.
 
 ---
 
@@ -346,7 +354,7 @@ quadrantChart
 ### R51. One founder holds the whole system (15)
 
 - **Cause → effect.** The code was built in three days by one founder with AI agents (`21-production-plan-and-roadmap.md` §2); deploys, credentials and operations sit with one person → illness or absence stops the game.
-- **Mitigation.** Proposed: this dossier and the runbook; a second trusted person with deploy access and a sealed credentials record; restore drills.
+- **Mitigation.** Proposed: this dossier and the runbook; a second trusted person with deploy access and a sealed credentials record, once one is hired (decided by default: 28 D-10; the money is 28 O-7); restore drills.
 
 ### R52. No native-speaker review (12)
 
@@ -408,21 +416,25 @@ quadrantChart
 
 ## Owner questions
 
-1. Is there a signed agreement with Devon Glover for the name, persona, likeness and biography? If not, when?
-2. Who holds "Sonnet Man", "Inspired Mile" and "Shakespeare on the Go" as names or marks?
-3. Was the February 2026 build's AI public before 2026-08-02 (decides the Art 50(2) date)?
-4. Do the music and effects get licences, or are they replaced?
-5. The FLUX Kommunity License is now read (`docs/ASSETS.md`): commercial use of outputs only under US$5M group revenue. Is that accepted (R06)?
-6. (Answered by `fix/server-authority`: it does not; a solo win pays only a capped claim of 50 credits at most 3 times a day, and adds no card to an account: 05 §7.1.) Is that the intended design?
-7. Where is the backup kept, and is there an off-site copy?
-8. Who reads reports, and how fast must they be answered?
-9. Does a self-hosted moderation model on the server fit "no cloud inference", or must moderation models stay in the browser?
-10. Do the email service and the hosted analytics fit the free and self-hosted rule, or should both move?
-11. Do Whisper base and Kokoro stay until measured replacements exist, given the date rule?
-12. Will EU and UK representatives be appointed (sota-production §5.3)?
-13. Who, besides you, can deploy and restore if you are away?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Is there a signed agreement with Devon Glover for the name, persona, likeness and biography? **Open (28 O-1):** will you ask him to sign a written agreement, with his own lawyer reading it?
+2. Who holds "Sonnet Man", "Inspired Mile" and "Shakespeare on the Go" as names or marks? **Decided by default:** "Shakespeare on the Go" is not used in marketing until he agrees, and the free public registers are searched now, with the results recorded in doc 20 §10 (28 D-15). **Open (28 O-4):** do you want to pay to search and register the names as trade marks, in the US first?
+3. Was the February 2026 build's AI public before 2026-08-02? **Fact to find out** (28, Facts to find out, 2); less urgent now that R6 marks AI output in this release.
+4. Do the music and effects get licences, or are they replaced? **Decided by the owner (2026-11-19, R12):** remove the two untraced tracks and the two unused effects; replace the other effects with traced ones within a month (28 D-08).
+5. Is the card-art model's licence condition (commercial use only under US$5M group revenue) accepted (R06)? **Decided by default:** record it beside the LFM one, with a repaint plan if revenue nears it (28 D-33). **Open (28 O-9):** how many people does the company employ, and roughly what is its yearly revenue?
+6. Is the capped solo claim (50 credits at most 3 times a day, no card to an account) the intended design? **Decided by the owner (2026-11-19, R9):** yes, as tunable launch values (28 D-05).
+7. Where is the backup kept, and is there an off-site copy? **Decided by the owner (2026-11-19, R16):** an encrypted copy on a second machine, installed and restore-tested on 2026-11-19 (28 D-10).
+8. Who reads reports, and how fast? **Decided by default:** the founder reads them daily, and the Terms say "we aim to review within 48 hours" (28 D-16).
+9. May a moderation model run on the server, or must it stay in the browser? **Decided by default:** in the receiving player's browser, under the owner's 2026-11-16 direction "in-browser models only"; the server applies rules only, the word list and the contact-details patterns (28 D-18).
+10. Should the email service and the hosted analytics move? **Decided by default:** emailed codes go through Resend, as the owner directed on 2026-11-16, once its account and key exist (28 D-24; that account is **Open, 28 O-11**); analytics move to self-hosted Umami (28 D-25).
+11. Do Whisper base and Kokoro stay until measured replacements exist? **Decided by default:** yes, under the owner's "replace as proven" rule, with a review each quarter; LFM2.5 leaves now (28 D-28).
+12. Will EU and UK representatives be appointed? **Open (28 O-5):** when players from the EU or the UK start using the game regularly, will you pay for a local representative in each?
+13. Who, besides you, can deploy and restore if you are away? **Decided by default:** no one yet; David Charlot is the only operator until a second person is hired (28 D-10), which is money (**Open, 28 O-7**).
 
 ### Questions for Devon Glover (to ask him; nothing here assumes an answer)
+
+These are his to answer; asking them is part of 28 O-1.
 
 1. Will he sign a licence, with his own counsel, covering name, persona, likeness, biography and any AI use described specifically?
 2. Is he content for an AI opponent to play a card called "The Sonnet Man"?

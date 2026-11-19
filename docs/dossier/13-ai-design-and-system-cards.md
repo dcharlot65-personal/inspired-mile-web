@@ -250,7 +250,7 @@ Proposed, in order of cost:
 2. **A small classifier on the desktop path.** content-safety-guard-small (Horizon-Labs, 2026-09-27, Apache 2.0, 141M parameters, int8 ONNX 268 MB, runs in Transformers.js `text-classification`) flags 15 categories. Its card warns that fraud, misinformation and `sexual_minors` have F1 below 0.45: "Do not rely on it alone for child-safety" (prod-research §4.2). Run it on the model's draft; a flagged draft is replaced by the written verse.
 3. **A model that does not answer certain verses.** When the player's verse is flagged, the opponent does not answer it; the written opponent plays. This keeps the bot inside SB 243's game exclusion.
 4. **A language check of the model's draft** against the duel's language (Proposed: a rule-based check from the game's own pinned script and function-word data, which needs no model. fastText `lid.176`, which tech §4.2 names, dates from 2017 under CC BY-SA 3.0 and fails the owner's post-2026-04-01 model rule.)
-5. **Online:** the same list on the server before a verse reaches the opponent; reports kept with the reported verse for review (as built a report's room has already dropped its verses: ADR 0014); a review tool; NCMEC registration before any user-to-user feature grows (prod-research §4.3).
+5. **Online:** the same list on the server before a verse reaches the opponent; reports kept with the reported verse for review (as built a report's room has already dropped its verses: ADR 0014); a review tool; NCMEC registration before any user-to-user feature grows (prod-research §4.3; the registration names the owner, so it is `28-owner-decisions.md` O-6).
 
 ---
 
@@ -348,7 +348,7 @@ Source: prod-research §3.2. **Proposed:** Kitten TTS 2 nano for its eight langu
 
 ### 8.5 Moderation candidates (after 2026-04-01)
 
-content-safety-guard-small (section 6.3); Roblox PII classifier v2 (2026-08-03, 0.6B, Apache 2.0, "from 17 to 189 languages", browser support not stated) for contact details and "move off-platform" patterns in online verses (prod-research §4.2). Both would run on the server or the desktop only after measurement; the server running a classifier is inference on the server, which ADR 0001 rules out for verse judging: **the owner must decide whether a server-side safety classifier is allowed.**
+content-safety-guard-small (section 6.3); Roblox PII classifier v2 (2026-08-03, 0.6B, Apache 2.0, "from 17 to 189 languages", browser support not stated) for contact details and "move off-platform" patterns in online verses (prod-research §4.2). Both would run on the server or the desktop only after measurement; the server running a classifier is inference on the server, which ADR 0001 rules out for verse judging. **Decided by default** (`28-owner-decisions.md` D-18), under the owner's 2026-11-16 direction "in-browser models only": the classifier runs in the receiving player's browser on desktops; the server applies only rules (the word list and the contact-details patterns); a server-side model would need the owner to change that direction.
 
 ---
 
@@ -385,18 +385,20 @@ Rules that keep the measurement honest: a language with no result file is unsupp
 
 ## 11. Owner questions
 
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved. None of the owner's questions here stays open.
+
 **For the owner**
 
-1. The three models that predate the 2026-04-01 rule (LFM2.5 350M, Whisper base, Kokoro-82M): remove, replace, or keep by exception until the replacements are measured?
-2. Should LFM3 still be offered when it only judges Vietnamese?
-3. Should Article 50(2) marking ship in this release? The cautious reading makes it due at deploy (section 7.2). Was any AI feature of the game live before 2026-08-02?
-4. Is a server-side safety classifier for online verses allowed under the "no cloud inference" rule (it would run on the studio's own server)?
-5. The Article 50(1) notice's text and placement are now known (section 7.1). `/credits` discloses that the card art is AI-made (as the FLUX licence asks); should it, or the notice, also say that the translations and the written opponent's verses were drafted with a language model (section 7.3)?
-6. Should the model stop writing under The Sonnet Man card until Devon Glover decides (section 7.4)?
-7. Pin model weights to revisions now, and re-measure before each move?
-8. Approve a d1-2B judging experiment (it carries the same US$10M condition as LFM3)?
+1. The three models that predate the 2026-04-01 rule: remove, replace or keep? **Decided by default:** remove LFM2.5 350M now; keep Whisper base and Kokoro-82M until a newer model is measured to do each job, reviewed each quarter (28 D-28).
+2. Should LFM3 still be offered when it judges only Vietnamese? **Decided by default:** yes, while it is the only measured Vietnamese judge; dropped when Gemma passes Vietnamese judging (28 D-29).
+3. Should machine-readable marking of AI output ship in this release? **Decided by the owner (2026-11-19, R6):** yes (28 D-01).
+4. May a safety classifier for online verses run on the studio's own server? **Decided by default:** no; under the owner's "in-browser models only" direction it runs in the receiving player's browser on desktops, and the server applies only rules (28 D-18).
+5. Should `/credits` or the notice say that the translations and the written opponent's verses were drafted with a language model? **Decided by default:** one line per language until a native speaker has read it, and a line on `/credits` about the written opponent (28 D-34).
+6. Should the model stop writing under The Sonnet Man card until Devon Glover decides? **Decided by the owner (2026-11-19, R8):** the card stays out of the AI opponent's draw entirely until he agrees (28 D-04); no model writes as The Sonnet Man until a licence says otherwise (28 D-14).
+7. Pin model weights to revisions now, and re-measure before each move? **Decided by default:** pin now (28 D-26).
+8. Run a d1-2B judging experiment? **Decided by default:** yes, on the build host against the same cells; it ships only if it passes (28 D-31).
 
-**For Devon Glover** (nothing here assumes his answer)
+**For Devon Glover** (nothing here assumes his answer; asking him is part of 28 O-1)
 
 9. May an AI model write verse under the name and card "The Sonnet Man"? If so, with what label, and in which modes?
 10. May the game state, in its AI notice, that he does not write the AI's verses? What wording does he want?
@@ -404,8 +406,8 @@ Rules that keep the measurement honest: a language with no result file is unsupp
 12. Would he record lines of his own (labelled as his) for the game, and on what terms? Does he refuse any synthetic voice, even a preset one, near his persona?
 13. Which subjects should the AI opponent never touch in his name?
 
-**Not known (to find out)**
+**Not known (to find out), and two answered by default**
 
-14. The release dates of LFM2.5 350M and of the Whisper base checkpoint, from primary sources.
-15. Who listens to `fix/voice-g2p`'s 200-word measurement (words outside the CMU dictionary go to the NRL letter-to-sound rules), and what pass mark is wanted.
-16. In this release a solo win, however judged, earns only the capped solo claim (50 credits, at most 3 a day; 05 §7.1). Should a duel judged by the model earn the same as one judged by the rules?
+14. The release dates of LFM2.5 350M and of the Whisper base checkpoint, from their publishers. A fact to find out (28, Facts to find out, 5).
+15. Who listens to `fix/voice-g2p`'s 200-word measurement, and what is the pass mark? **Decided by default:** a self-hosted speech recogniser on the build host transcribes each word, the owner hears only the words it misses, and the voice ships when no word fails (28 D-09).
+16. Should a duel judged by the model earn the same as one judged by the rules? **Decided by default:** the same (28 D-36).

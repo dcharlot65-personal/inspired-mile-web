@@ -509,13 +509,15 @@ Ranked by risk to players, data and the company. "Status" says whether this rele
 
 ## 14. Owner questions
 
-1. Which commit is live now, and does production's environment set the old cloud-model key? Main's multiplayer judge calls a cloud model when it is set (tech §13).
-2. (Answered: `fix/server-authority` adds `020_server_authority.sql`, additive.) Will the branch add any more before deploy?
-3. Does `docs/ECONOMY.md` cover XP, achievements, seasons and referrals, or only credits, cards, the marketplace, leaderboard and tournaments?
-4. Should Article 50(2) marking join this release? The cautious reading makes it due at deploy (doc 13 §7.2). Was any AI feature of the game live before 2026-08-02 (the February build had a cloud AI)? That alone could bring the 2026-12-02 transition into play.
-5. What should happen to the three models that predate the 2026-04-01 rule: replace, keep by exception, or remove (LFM2.5 is offered nowhere already)?
-6. Replace hosted Plausible with a self-hosted tool to meet "free and self-hosted only"? Does the Plausible account exist and is it paid (tech §13)?
-7. Set the proxy secret before launch? It needs a change on the origin's proxy configuration, which is outside site-ops (tech §3.4).
-8. Is React to be removed, and the dead NFT and wallet schema dropped?
-9. Turn email on (it needs a Resend key, a paid third party beyond its free tier: Not known which tier), or stay passkey-only?
-10. How large must online play get before matches should survive a deploy?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Which commit is live now, and does production still set the old cloud-model key? A fact for the operator to check before deploy (28, Facts to find out, 1; D-10).
+2. Will `fix/server-authority` add more migrations than `020_server_authority.sql` before deploy? Answered as far as the branch goes: it adds that one, additive. Any further one is recorded when it lands.
+3. Does `docs/ECONOMY.md` cover only credits and cards, or everything the server pays? **Decided by default:** everything the server pays, XP, achievements, seasons and referral included (28 D-05).
+4. Should machine-readable marking of AI output join this release? **Decided by the owner (2026-11-19, R6):** yes (28 D-01).
+5. What happens to the three models that predate the 2026-04-01 rule? **Decided by default:** remove LFM2.5 now; keep Whisper base and Kokoro until a newer model is measured to do each job, reviewed each quarter (28 D-28).
+6. Replace the hosted analytics with a self-hosted tool? **Decided by default:** self-hosted Umami, and the hosted script removed (28 D-25). Whether a hosted account exists and is paid is a fact to find out (28, Facts to find out, 7).
+7. Set the proxy secret before launch? **Decided by the owner (2026-11-19, R16):** the live origin's proxy block is brought into site-ops first, then the secret is set (28 D-10).
+8. Remove React, and drop the dead NFT and wallet schema? **Decided by default:** yes, both (28 D-39).
+9. Turn email sign-in on, or stay passkey-only? **Decided by default:** emailed codes go through Resend, as the owner directed on 2026-11-16, once its account and key exist; passkey-only until then (28 D-24). **Open (28 O-11):** will you set up the Resend account?
+10. How large must online play get before a match should survive a deploy? **Decided by default:** store match snapshots only once analytics show a deploy would end real matches (28 D-61).

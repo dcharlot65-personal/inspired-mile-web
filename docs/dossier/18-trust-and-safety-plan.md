@@ -173,22 +173,24 @@ The research recommends cheap checks first and models second, run on the company
 
 **Proposed test corpus.** Before any layer ships, run it over the game's own Shakespeare: the 71 card lines and the 104 quote challenges in every language they exist (design §6.4). Every line must pass. This follows the project's habit of proving a check can fail before trusting it (tech §7.1, mutation scripts). A second set of known-bad verses per language, written by native speakers, must be caught.
 
-### 5.3 Where the classifier runs: an owner decision
+### 5.3 Where the classifier runs (decided by default, 2026-11-19)
 
 The owner's direction of 2026-11-16 was "in-browser models only, no cloud provider" (`CLAUDE.md:639-644`). A moderation model on the company's own server is not a cloud provider, but it is a server running a model. Two options:
 
 | Option | How | For | Against |
 |---|---|---|---|
-| A. Server-side (Proposed) | Layers 1 to 4 run in the API on the company's own hardware before the verse is relayed | Cannot be bypassed; one place to update; online verses already reach the server (As built: tech §2.3) | A model on the server; needs CPU and memory; must be measured |
-| B. On the receiving device | The opponent's browser runs layer 4 before it shows the verse, and hides a flagged verse behind "Show anyway" and "Report" | Nothing new on the server; the sender cannot bypass it, because the check runs on the receiver's device | 268 MB download, too much for phones; a verse that should be stopped still arrives; the server keeps layers 1 to 3 |
+| A. Server-side (the earlier proposal) | Layers 1 to 4 run in the API on the company's own hardware before the verse is relayed | Cannot be bypassed; one place to update; online verses already reach the server (As built: tech §2.3) | A model on the server; needs CPU and memory; must be measured |
+| B. On the receiving device (decided by default) | The opponent's browser runs layer 4 before it shows the verse, and hides a flagged verse behind "Show anyway" and "Report" | Nothing new on the server; the sender cannot bypass it, because the check runs on the receiver's device | 268 MB download, too much for phones; a verse that should be stopped still arrives; the server keeps layers 1 to 3 |
 
 Either way, layers 1 to 3 run on the server.
+
+**Decided by default (2026-11-19), under the owner's 2026-11-16 direction "in-browser models only":** B (`28-owner-decisions.md` D-18). The server keeps the parts of layers 1 to 3 that are rules, not models: the cleaner, the word lists and the contact-details patterns. The model parts (the Roblox PII classifier of layer 3, and layer 4) run in the receiving player's browser on desktops. On phones the server's rules and the daily reading of reports (D-16) carry the load, and private rooms only at launch (R14, D-02) keep strangers apart meanwhile. A server-side model would need the owner to change the 2026-11-16 direction; nothing here asks for it.
 
 ### 5.4 Language coverage
 
 | Language | Online today | Word list | Contact patterns | Harm classifier | Native reviewer |
 |---|---|---|---|---|---|
-| en | Yes (As built) | 20 entries (As built); full list Proposed | Proposed | Proposed | Owner question |
+| en | Yes (As built) | 20 entries (As built); full list Proposed | Proposed | Proposed | None yet; paying readers is an open question (`28-owner-decisions.md` O-7) |
 | es fr de it pt pl ru ar hi zh ja ko vi th id | No (As built) | Proposed, LDNOOBW seed plus review | Proposed; phone and handle formats differ by country | Coverage per language Not known | None for any language (tech §6.4) |
 
 **Proposed gate:** no language opens for online play until it has a reviewed word list, contact patterns, a measured classifier result on its Shakespeare corpus, and a person who can read reports in it.
@@ -222,7 +224,7 @@ Either way, layers 1 to 3 run on the server.
 2. **Accept reports only from a player who held a seat in the room.**
 3. **Replace `prompt()` with a small dialog.** Categories: hate or harassment; threat or self-harm; sexual; personal details or "talk elsewhere"; cheating or tricking the judge; other. A free-text box (500 characters). A line saying a person reads every report. In all 16 languages.
 4. **Block (Proposed).** After a report, offer "Never match me with this player again". Store it as a pair the matchmaker skips. The EU guidelines on minors recommend block and mute for any user; they exempt micro and small companies, but the cost is low (prod research §4.3 [V]).
-5. **A public notice route.** A web form, and an address, for anyone, signed in or not, to report illegal content. It doubles as the TAKE IT DOWN Act notice form, though a text game with no image upload has near-zero exposure to that law (prod research §5.2 [V]). The EU's notice-and-action rule lets anyone send a notice (section 10).
+5. **A public notice route.** A web form, and the published address contact@voyagetracable.com (the owner-approved public contact), for anyone, signed in or not, to report illegal content. It doubles as the TAKE IT DOWN Act notice form, though a text game with no image upload has near-zero exposure to that law (prod research §5.2 [V]). The EU's notice-and-action rule lets anyone send a notice (section 10).
 6. **A review tool.** Build it as a Rust command-line tool on the server, used by the named reviewer only, and keep it off the public web. It lists pending reports with their evidence and records each decision in a `moderation_actions` table: dismiss, warn, pause, ban, close, escalate. It writes the statement of reasons for sending. A command-line tool keeps the attack surface small and fits the full-Rust preference.
 7. **Close the loop.** The reporter learns the report was handled, but not the action taken against another player.
 
@@ -235,7 +237,7 @@ Either way, layers 1 to 3 run on the server.
 | Hate, harassment, personal details | 48 hours | 48 hours | Matches the Terms' promise (`terms.astro:115`) |
 | Cheating, judge tricks, other | 7 days | 7 days | Change the Terms to say so, or meet 48 hours |
 
-The Terms should promise only what one founder can meet. If 48 hours cannot be met every day of the year, change the sentence (`fix/compliance` changes the privacy policy only; its diff does not touch `src/pages/terms.astro`, so the 48-hour sentence stays as it is in this release).
+The Terms should promise only what one founder can meet. If 48 hours cannot be met every day of the year, change the sentence (`fix/compliance` changes the privacy policy only; its diff does not touch `src/pages/terms.astro`, so the 48-hour sentence stays as it is in this release). **Decided by default (2026-11-19):** the founder reads reports daily, and the Terms say "we aim to review within 48 hours" until two people cover it (`28-owner-decisions.md` D-16).
 
 ### 6.4 The flow
 
@@ -257,7 +259,7 @@ flowchart TD
 ### 6.5 Appeals (Proposed)
 
 - One appeal per decision, by reply to the statement of reasons, within 14 days.
-- Reviewed by a different person from the first reviewer where one exists. With one founder, an outside volunteer reviewer would do (owner question).
+- Reviewed by a different person from the first reviewer where one exists. **Decided by default (2026-11-19):** with one founder, the founder reads an appeal again after at least a day, and a second person does once one is hired; no outside volunteer, who would read players' reported verses (`28-owner-decisions.md` D-16; hiring is O-7).
 - The research notes that AI-decided ranked outcomes for children are significant automated decisions under GDPR and suggests human review on request (prod research §5.3 [V for the principle, inference for the game]). The same appeal path serves.
 
 ---
@@ -285,13 +287,13 @@ flowchart TD
 
 ### 7.2 Proposed changes
 
-1. **Teens match only with teens.** Quick match pairs a teen account only with another teen account. A private-room link from an adult account cannot seat a teen account, unless both are members of the same class (owner decision; section 14).
+1. **Teens match only with teens.** Quick match pairs a teen account only with another teen account. A private-room link from an adult account cannot seat a teen account, unless both are members of the same class. (The owner decided on 2026-11-19, R14: online play by private room only at launch, then adults-only quick match once reports are read daily; `28-owner-decisions.md` D-02.)
 2. **Contact-details layer on every verse involving a teen** (section 5.2, layer 3).
 3. **Classroom private by default.** Verses are seen only within the match or the class, with no profiles and no friend discovery (prod research §4.3, point 2).
 4. **Never relay voice between players.** That also keeps PEGI's "unrestricted communication" rating (PEGI 18) out of reach (prod research §4.3, §5.6 [V]).
 5. **Self-harm help on the device.** When a player's solo verse contains self-harm phrases, show a short, kind note with help resources for the player's country. The check runs in the browser and sends nothing anywhere, so the solo privacy promise holds. Outside the game-bot exclusion, California's SB 243 asks for a published suicide and self-harm protocol (prod research §5.2 [V]). This doubles as one.
 6. **Model output guardrails** (section 8.3).
-7. **Under-13 players** stay blocked until the owner decides on a school-consent path (`19-privacy-pack.md`, section 5).
+7. **Under-13 players** stay blocked: 13 and over for this release and the first pilot, decided by default on 2026-11-19 (`19-privacy-pack.md`, section 5; `28-owner-decisions.md` D-23).
 
 ### 7.3 Age assurance
 
@@ -363,7 +365,7 @@ California's SB 243 excludes a game bot only if it is "limited to replies relate
 
 - **In this release (`fix/compliance`):** the EU AI Act Article 50(1) notice. Since 2026-08-02, people must be told they are interacting with an AI system, at the latest at first interaction, unless it is obvious (prod research §5.4 [S for the article text]; design research §3 [V]).
 - **Proposed wording,** after the design research's model: "Your opponent and judge are small AI models running on your device, or fixed rules when no model runs. The Sonnet Man card's verses are not written by Devon Glover." (design research §3, "Against Sonnet Man").
-- **Not in this release, and due:** Article 50(2) machine-readable marking of AI-generated text and synthetic speech, "as far as technically feasible". The deadline is 2026-12-02 for systems already on the market before 2026-08-02, and now for others (prod research §5.4 [V]). Whether Sonnet Man's AI features were on the market before 2026-08-02 is Not known. `20-legal-and-licence-register.md` (section 9) carries the date.
+- **Added to this release by the owner's decision of 2026-11-19 (R6; `28-owner-decisions.md` D-01), not yet on a branch:** Article 50(2) machine-readable marking of AI-generated text and synthetic speech, "as far as technically feasible". The deadline is 2026-12-02 for systems already on the market before 2026-08-02, and now for others (prod research §5.4 [V]). Whether Sonnet Man's AI features were on the market before 2026-08-02 is Not known. `20-legal-and-licence-register.md` (section 9) carries the date.
 
 ---
 
@@ -457,7 +459,7 @@ The rows follow the 17 kinds of priority illegal content in Ofcom's guidance [U:
 
 ### 10.2 Notice form (Proposed)
 
-One form, in all 16 languages, at a public address, linked from every page's footer. It asks for [U: the elements below follow Article 16 as generally summarised; check against EUR-Lex]:
+One form, in all 16 languages, at a public address, linked from every page's footer, with contact@voyagetracable.com published beside it for notices sent by email. It asks for [U: the elements below follow Article 16 as generally summarised; check against EUR-Lex]:
 1. what the content is and why the sender thinks it is illegal;
 2. where it is: the match link or round, the tournament or class name;
 3. the sender's name and email, except where the notice concerns child sexual abuse;
@@ -482,9 +484,9 @@ Sent to the author of any verse or name the company removes or restricts, or who
 | Role | Who | Duties |
 |---|---|---|
 | Accountable person (UK Act); reviewer of reports | David Charlot, until someone else is named | Owns this plan; reviews reports; files NCMEC reports; signs the risk assessments |
-| Second reviewer, for appeals and for cover when the first is away | Not known (owner question) | Appeals; cover |
-| Language readers | Not known; none exist for any language (tech §6.4) | Review word lists; read reports in their language |
-| Creative approvals for The Sonnet Man's persona | Devon Glover, if he agrees (section 14) | Approves persona guidelines, banned topics and sample verses (prod research §5.8 item 4) |
+| Second reviewer, for appeals and for cover when the first is away | None until a second person is hired (`28-owner-decisions.md` D-16; hiring is O-7) | Appeals; cover |
+| Language readers | Not known; none exist for any language (tech §6.4); online play stays English only meanwhile (`28-owner-decisions.md` D-16, D-48; paying readers is O-7) | Review word lists; read reports in their language |
+| Creative approvals for The Sonnet Man's persona | Devon Glover, if he agrees (the questions to ask him, at the end) | Approves persona guidelines, banned topics and sample verses (prod research §5.8 item 4) |
 
 Text-only reports spare reviewers from images, but self-harm and abuse reports are still hard to read. Rotate the work, and keep it out of anyone's evening.
 
@@ -511,7 +513,7 @@ Track monthly, and publish a short yearly note. The DSA exempts micro companies 
 | EU DSA Arts 16 and 17 | Yes, as a hosting service; any size | Sections 10.2 and 10.3 | Before online play is promoted |
 | EU DSA Arts 19 to 28 | No; micro enterprise | Follow the minors guidelines anyway | — |
 | EU AI Act Art 50(1), AI notice | Yes | **In this release (`fix/compliance`)** | Since 2026-08-02 |
-| EU AI Act Art 50(2), machine-readable marking | Yes, "as far as technically feasible" | Proposed | 2026-12-02, or now (8.4) |
+| EU AI Act Art 50(2), machine-readable marking | Yes, "as far as technically feasible" | Proposed; the owner chose to add it to this release (R6; `28-owner-decisions.md` D-01) | 2026-12-02, or now (8.4) |
 | US 18 U.S.C. §2258A, NCMEC reporting | Likely, if the game is a "provider" [U] | Section 7.4 | Before online play is promoted |
 | US TAKE IT DOWN Act | Near zero for a text game with no images [inference] | One-page notice form (6.2 point 5) | Process was required by 2026-05-19 for covered platforms |
 | California SB 243 (companion chatbots) | Depends on guardrails | Section 8.3 | In force 2026-01-01 [U] |
@@ -533,20 +535,22 @@ Track monthly, and publish a short yearly note. The DSA exempts micro companies 
 
 ## Owner questions
 
-1. **Matching:** should teen accounts be matched only with teens, or kept to private rooms and classes? (7.2)
-2. **Moderation model on the server:** may a moderation classifier run on the company's own server, or must it stay in browsers? (5.3)
-3. **Second reviewer:** who reviews appeals and covers when you are away? Would an outside volunteer be acceptable? (6.5, 11)
-4. **Language readers:** who can read reports and review word lists in the 15 other languages, and which languages come online first? (5.4)
-5. **The Terms' 48-hour promise:** keep it and staff it, or change it? (`fix/compliance` does not touch the Terms.) (6.3)
-6. **Report evidence:** do you accept keeping a reported verse, which changes the "never written to our database" promise for reported verses only? (6.2 point 1)
-7. **Tournaments:** in this release anyone signed in may still create one, and names are not filtered. Limit creation (to staff, or to adults), filter names, or hide tournaments? (2.3, 5.5)
-8. **Solo wins:** in this release a solo win adds no card to an account and pays only a capped claim (50 credits, at most 3 a day); no solo result reaches the leaderboard, which reads only server-judged matches (05 §7.1). Accept that? (8.1)
-9. **Match records:** in this release each server-judged match is one `battle_rooms` row (players, rounds won, points, best round, how it ended, times; no verse). How long should it be kept? No retention is set. (2.3)
-10. **Market date:** were the AI opponent and judge publicly live before 2026-08-02? That decides the Article 50(2) date. (8.4)
-11. **UK players:** do you expect UK players at launch? Will you run Ofcom's online regulation checker? (9.1)
-12. **NCMEC and Pathways:** may the company register with NCMEC's CyberTipline and join Tech Coalition Pathways now? (7.4)
-13. **Self-harm note:** which help resources should the on-device note show, and who checks them per country? (7.2 point 5)
-14. **Legal review:** who will check this plan's legal statements, and when? (top of document)
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. **Matching:** should teen accounts meet only teens, or stay in private rooms and classes? **Decided by the owner (2026-11-19, R14):** private rooms only for everyone at launch; then adults-only quick match once reports are read daily (28 D-02).
+2. **Moderation model:** may a moderation model run on the company's own server, or must it stay in browsers? **Decided by default:** in the receiving player's browser, under the owner's direction "in-browser models only"; the server keeps the rule-based checks (28 D-18; section 5.3).
+3. **Second reviewer:** who reviews appeals and covers when you are away? Would an outside volunteer do? **Decided by default:** the founder, re-reading an appeal after at least a day; a second person once one is hired; no outside volunteer (28 D-16). Paying for that person is **open (28 O-7)**.
+4. **Language readers:** who reads reports and word lists in the other 15 languages, and which language goes online next? **Decided by default:** online play stays English only, so other readers wait; the next language is the first the Rust engine reproduces exactly and that has a native reviewer (28 D-16, D-48). Paying readers is **open (28 O-7)**.
+5. **The Terms' 48-hour promise:** keep and staff it, or change it? **Decided by default:** "we aim to review within 48 hours" until two people cover it (28 D-16).
+6. **Report evidence:** keep a reported verse, which changes the "never written to our database" promise for reported verses only? **Decided by default:** keep the verse and the reported account 90 days, 1 year where the law requires, and change the policy sentence in the same commit (28 D-17).
+7. **Tournaments:** who may create one, and are names filtered? **Decided by default:** hidden until a page can play them; then staff-created only, names filtered, under-18s only in class or teen-only tournaments (28 D-19).
+8. **Solo wins:** in this release a solo win adds no card to an account and pays only a capped claim; accept that? **Decided by the owner (2026-11-19, R9)**, and by default a model-judged solo duel earns the same as a rules-judged one (28 D-05, D-36).
+9. **Match records:** how long is each server-judged match record kept? **Decided by default:** 24 months (28 D-20).
+10. **Market date:** were the AI opponent and judge publicly live before 2026-08-02? **Fact to find out** (28, Facts to find out, 2); less urgent now that the owner chose to mark AI output in this release (R6).
+11. **UK players:** expected at launch? Run Ofcom's free online checker? **Decided by default:** first markets are the US, then the UK; the checker is run before the game is promoted in the UK (28 D-22, D-57).
+12. **The US child-safety reporting line:** may the company register with NCMEC's CyberTipline and join the Tech Coalition's free Pathways programme now? **Open (28 O-6):** may it, with you named as the person responsible?
+13. **Self-harm note:** which help resources does it show, and who checks them? **Decided by default:** one help line per launch country, from that country's official listing, checked by the founder (28 D-22).
+14. **Legal review:** who checks this plan's legal statements, and when? **Open (28 O-2):** will you hire a lawyer, and when?
 
 **To ask Devon Glover** (nothing here assumes his answer):
 1. May the AI opponent play The Sonnet Man card at all? If so, only with verses he has written or approved, or also with model verse under guidelines he sets?

@@ -198,12 +198,14 @@ New content is what players read as progress (sota-design §1). Sixteen language
 |---|---|---|---|---|
 | Daily prompts | None | Daily, from a 60-day bank | A line and its source | A native reader |
 | Weekly prompts | None | Weekly | A theme | A native reader |
-| Forms | 12 (design §1.4) | One new form or form variant a season | A rule in code for each language, or "not offered" | Measured against published verse in that language, as the sound data was (tech §6.2) |
-| Written-opponent verses | 17 English verses, 17 spares, 36 acrostic lines (design §1.6) | Grow English first; then each language | Verses that keep the form by code | Code check plus a native reader |
-| Cards | 71 (design §2) | A small set each quarter, after the card redesign (`21-production-plan-and-roadmap.md` M6) | Name, line, scene in 15 languages from sources (tech §6.3) | The card-text checks; art looked at by a person (design §7.2) |
+| Forms | 12 (design §1.4) | One new form or form variant a season | A rule in code for each language, or "not offered" | Measured against published verse in that language, as the sound data was (tech §6.2); an AI playtest run |
+| Written-opponent verses | 17 English verses, 17 spares, 36 acrostic lines (design §1.6) | Grow English first; then each language | Verses that keep the form by code | Code check, a native reader and an AI playtest run |
+| Cards | 71 (design §2) | A small set each quarter, after the card redesign (`21-production-plan-and-roadmap.md` M6) | Name, line, scene in 15 languages from sources (tech §6.3) | The card-text checks; art looked at by a person (design §7.2); an AI playtest run |
 | Trivia and quote challenges | 200 questions; 104 challenges (design §4.3) | A themed batch with each season | Translation and checks | Fact-checked by a person; no model-written fact unchecked (design §6.9) |
 | World cards | 20 cities (design §4.12) | Hold until the card redesign decides their future | | |
 | Story acts | A stub (design §3) | Hold until finished or removed (`21-production-plan-and-roadmap.md` M12) | | |
+
+**The AI playtest run** (Proposed: `15-qa-and-test-plan.md` §8.5; `28-owner-decisions.md` D-63): before a form, an opponent verse set or a card set ships, AI players with no prior training on the game play it through the page and a player's controls on the build host, to check that it can be understood from what is drawn, that it adds no new place where players get stuck, and that no house gets a free or impossible round.
 
 A balance change ships with a note that says what changed and why. Mega Crit's lesson after its first patch was review-bombed: say that progress "will not be linear and no change is necessarily permanent", and avoid so many changes that wins feel cheap (sota-design §1).
 
@@ -285,6 +287,8 @@ Names follow the "noun plus past-tense verb" convention (sota-production §7.19)
 
 The research warns that its retention benchmarks are optimistic for a web game with no install (sota-production §6.3).
 
+**Before launch** (Proposed): the first values for time to a first verse, match length, first-duel completion and the win rates come from the AI playtests (`15-qa-and-test-plan.md` §8.3), reported per AI player and model family. Live numbers from real players replace them as soon as those exist; an AI value is never presented as what people do (`22-risk-register.md` R35).
+
 ### 10.4 Experiments (Proposed)
 
 - Two arms, a sample size fixed in advance by a power analysis, Evan Miller's sequential stopping rule implemented in Rust (sota-production §6.3).
@@ -318,6 +322,7 @@ In this release, the server owns every credit and card (`fix/server-authority`, 
 | Review metrics against section 10.3 | Weekly | DC, AdD |
 | Season plan and theme | Monthly, a week before the season | AdD |
 | Balance changes | At season boundaries | AdD, approved by DC |
+| AI playtest runs on new content and each release candidate (`15-qa-and-test-plan.md` §8.5) | Before each content drop and season, and per release | DC, on the build host; findings to AdD |
 | Content drops (forms, cards) | Quarterly | AdD and DC |
 | Anything involving Devon Glover | As agreed with him | DC, ask Devon |
 
@@ -335,6 +340,7 @@ DC is David Charlot; AdD is Arrocito del Diablo. These are proposals until each 
 - [ ] The daily verse built, with a 60-day English prompt bank.
 - [ ] A forgiving streak (freezes, repair), no night notifications for minors.
 - [ ] Self-hosted analytics and error reporting, with the tracking plan.
+- [ ] An AI playtest run of the season's new forms, cards and prompts, with no new place where players get stuck and the win rates inside their bands (`15-qa-and-test-plan.md` §8.5).
 - [ ] Monitoring and an alert on a failed backup.
 - [ ] Report review in place (`22-risk-register.md` R08).
 - [ ] A news page and an in-game banner.
@@ -344,17 +350,21 @@ DC is David Charlot; AdD is Arrocito del Diablo. These are proposals until each 
 
 ## Owner questions
 
-1. Monthly seasons, or seasons aligned to school terms?
-2. Will credits ever be sold? (This plan assumes never.)
-3. (Answered: yes, in this release packs of 50, 150 and 400 credits are bought with earned credits.) Should random packs stay purchasable at all, or should earned credits buy only chosen cards, to keep the game clear of loot-box rules?
-4. (Answered: the founding top-up becomes a one-time, logged grant of 500 credits.) Who counts as a founding player, given 0 accounts today?
-5. Who reads reports, and within what time?
-6. Which languages get a daily verse first, and who reads their prompts?
-7. Does hosted analytics move to a self-hosted tool, per the free and self-hosted rule?
-8. May players under 18 take part in open tournaments?
-9. Should the marketplace stay on for adults after this release, or wait for the card redesign?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Monthly seasons, or seasons aligned to school terms? **Decided by default:** one calendar month, with Season 2 running two months to cover World Poetry Day and National Poetry Month; classroom material follows school terms separately (28 D-76).
+2. Will credits ever be sold? **Decided by the owner (2026-11-19, R10):** never. **Decided by default:** packs are never sold either, and there are never ads (28 D-56).
+3. Should random packs stay, or should earned credits buy only chosen cards? **Decided by the owner (2026-11-19, R10):** packs stay, bought only with earned credits; buying chosen cards instead is revisited with Arrocito del Diablo when the cards are redesigned (28 D-06).
+4. Who counts as a founding player, given 0 accounts? **Decided by default:** every account created before Season 1 starts, each with one logged 500-credit grant; the server's launch date is set to Season 1's start (28 D-77).
+5. Who reads reports, and how fast? **Decided by default:** the founder reads them daily, and the Terms say "we aim to review within 48 hours" (28 D-16).
+6. Which languages get a daily verse first, and who reads their prompts? **Decided by default:** English first; each other language once a native reader has checked its prompts and a bank of 60 days exists (28 D-78). Paying native readers is **Open (28 O-7)**.
+7. Does the hosted analytics move to a self-hosted tool? **Decided by default:** yes, to self-hosted Umami (28 D-25).
+8. May players under 18 take part in open tournaments? **Decided by default:** no; under-18s play only in class or teen-only tournaments, and tournaments stay hidden until a page can play them (28 D-19).
+9. Should the marketplace stay on for adults after this release? **Decided by the owner (2026-11-19, R10):** yes, for adults only (28 D-06).
 
 ### Questions for Devon Glover (to ask him; nothing here assumes an answer)
+
+These are his to answer; asking them is part of 28 O-1.
 
 1. Would he take part in a headline duel or a prompt once a season, and on what terms?
 2. Which of his dates, if any, may the event calendar follow?

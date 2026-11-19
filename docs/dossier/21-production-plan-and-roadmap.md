@@ -177,12 +177,12 @@ The order follows three rules (Proposed):
 
 ### 4.2 Now, next, later (Proposed windows)
 
-No dates have been set by the owner (Not known). The windows below are proposals, tied to fixed outside dates where they exist.
+No dates have been set by the owner. Decided by default on 2026-11-19: there is no fixed public date, and each deploy goes out when its gates pass; announcing the game is open (`28-owner-decisions.md` D-59, O-10). The windows below are proposals, tied to fixed outside dates where they exist.
 
 | Window | Milestones | Outside dates that shape it |
 |---|---|---|
 | **Now** (November to December 2026) | M0 this release; M7 trust and safety minimum; Article 50(2) marking | EU AI Act Art 50(2): assume due at this deploy; the transition to 2026-12-02 covers only systems on the market before 2026-08-02 (sota-production §5.4; `13-ai-design-and-system-cards.md` §7.2) |
-| **Next** (December 2026 to February 2027) | M1 vertical slice and playtests; M2 adaptive opponent; M6 card redesign; M8 accessibility; M13 Devon Glover licence | Vermont's Age-Appropriate Design Code takes effect 2027-01-01 with no revenue threshold (sota-production §5.2) |
+| **Next** (December 2026 to February 2027) | M1 vertical slice and its AI playtests (`15-qa-and-test-plan.md` §8); M2 adaptive opponent; M6 card redesign; M8 accessibility; M13 Devon Glover licence | Vermont's Age-Appropriate Design Code takes effect 2027-01-01 with no revenue threshold (sota-production §5.2) |
 | **Later** (March to June 2027) | M3 speech that meets the date rule; M5 phone models; M4 server languages, one by one; M9 classroom beta; M10 Season 1 | World Poetry Day 21 March; Shakespeare's birthday 23 April; US National Poetry Month in April; Poetry Out Loud National Finals 26 to 28 April 2027; ADA Title II WCAG 2.1 AA for large public entities from 26 April 2027 (sota-production §7.16; sota-design §6) |
 
 ### 4.3 Milestone definitions
@@ -203,8 +203,8 @@ Section 5 is its brief.
 - **Why.** As built, difficulty only changes how many drafts a model writes. Wherever the written opponent plays, which is every phone and headset, Apprentice, Player and Master meet the same verses (design §1.6). The English bank is small: 17 verses over 8 forms, 17 spares, 36 acrostic lines (design §1.6).
 - **Starting point.** `spike/duel-planner` (not merged): a planner over the exact rules that chooses the opponent's card and item plays, with a small learned value network, an integer-only kernel with Kani proofs, and an adaptive strength that aims each player's chance of taking a round near one half. It decides from a public view: the player's unplayed cards are never read. It is English only, because the Rust engine scores English only (`planner/README.md` on that branch).
 - **Scope.** Merge the planner as a WebAssembly module behind the written opponent. Grow the written verse bank in English. Say on screen that the opponent adapts (sota-design §4: hidden adjustment breeds distrust; named tiers suit a game sold on fair judging).
-- **Exit criteria.** The held-out results meet the pre-registered rules in the spike's `planner/docs/ADAPTIVE-PREREG.md` (on `spike/duel-planner`). The module is byte-identical across builders. The fairness test passes. A playtest of five players per round shows they notice and accept the change.
-- **Decision needed.** Whether the adaptive opponent replaces the three difficulty labels, or sits beside them (owner and Arrocito).
+- **Exit criteria.** The held-out results meet the pre-registered rules in the spike's `planner/docs/ADAPTIVE-PREREG.md` (on `spike/duel-planner`). The module is byte-identical across builders. The fairness test passes. In the AI playtests (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63), first-time AI players win rounds against it inside the 40 to 60% band, reported per model family, and most runs, asked what the opponent does, can say from the page alone that it adapts; the thresholds are written down before the first run.
+- **Decided by default (2026-11-19).** The adaptive opponent is the default, and the three difficulty labels stay as a choice beside it (`28-owner-decisions.md` D-41); Arrocito del Diablo's weekly review may change it (D-49).
 
 #### M3. A speech recogniser that meets the date rule
 
@@ -241,7 +241,7 @@ Section 5 is its brief.
   - All 198 world-card variant images are orphaned, in an older photoreal style.
   - 17 of 18 configured 3D models and 52 of 53 splats do not exist.
 - **Scope.** Show the house device, signature words, power words and curses on the card face. Drop or give meaning to the stats. Decide what duplicates do. Repaint the faulty cards and look at every image before publishing, as the art script requires (`scripts/art/gen_cards.py:9`). Decide whether variants and 3D are kept or removed.
-- **Decisions needed.** Arrocito leads the mechanics. Devon is asked about anything that touches the Sonnet Man card. The owner decides the art direction for redrawn cards: the recorded card-art direction is a global cast, "we are a global planet and represent everyone" (`scripts/art/build_prompts.py:3-10`), while the owner's default for generated brand imagery is central people who are Black, of Haitian descent. Which governs card art is an Owner question.
+- **Decisions needed.** Arrocito leads the mechanics. Devon is asked about anything that touches the Sonnet Man card. The owner decides the art direction for redrawn cards: the recorded card-art direction is a global cast, "we are a global planet and represent everyone" (`scripts/art/build_prompts.py:3-10`), while the owner's default for generated brand imagery is central people who are Black, of Haitian descent. **Decided by default (2026-11-19), under that rule's own words ("in generated brand imagery"):** card characters keep the global cast; the default covers brand and marketing imagery only (`28-owner-decisions.md` D-53).
 
 #### M7. Trust and safety for online verses
 
@@ -253,13 +253,13 @@ Section 5 is its brief.
 #### M8. Accessibility pass
 
 - **Scope** (As built gaps, design §8): honour reduced motion; open the desktop menus by keyboard; announce the verdict with `aria-live`; measure contrast; ship fonts that cover Vietnamese tone marks; give the Theatre a DOM equivalent.
-- **Exit criteria.** A WCAG 2.1 AA conformance report (sota-design §6, §8).
+- **Exit criteria.** A WCAG 2.1 AA conformance report (sota-design §6, §8), and the AI playtests' keyboard and screen-reader-text runs finish a duel (`15-qa-and-test-plan.md` §8.1). Those runs say whether the duel can be finished that way, not how a disabled player experiences it; no disabled playtesters are recruited (`28-owner-decisions.md` D-52).
 
 #### M9. Classroom beta with pilot schools
 
 - **Why.** The classroom tour promises progress tracking that does not exist and shows "FERPA compliant" (design §3, `/classroom`). Districts adopt through single sign-on and LTI, and want privacy certificates (sota-design §6).
 - **Scope.** Either build progress records or remove the promise. Clever or ClassLink rostering and an LTI 1.3 launch (not Google sign-in, which the owner excluded on 2026-11-16; ADR 0009). Credits, marketplace and referral off for student accounts. A data protection impact assessment, a COPPA pack, a school pack, and a teacher-hosted live format (sota-production §5.1, §7.22; sota-design §6).
-- **Exit criteria.** Two pilot schools run it for a term (Not known which schools).
+- **Exit criteria.** Two pilot schools run it for a term (Not known which schools). The first pilot is one 13+ class after classroom v1, through Devon Glover's network if he agrees (decided by default: `28-owner-decisions.md` D-51); each school's data agreement comes to the owner to sign.
 
 #### M10. Live ops and Season 1
 
@@ -268,11 +268,11 @@ Section 5 is its brief.
 #### M11. Native-speaker review
 
 - **Why.** No string, verse, name or scene in any language has been read by a native speaker (tech §6.4). `docs/language/HUMAN-REVIEW.md` lists 28 items in priority order.
-- **Scope.** One paid reviewer per language, starting with the languages marketing will name first.
+- **Scope.** One paid reviewer per language, starting with the languages marketing will name first. Paying them waits on the owner's budget (`28-owner-decisions.md` O-7).
 
 #### M12. Decisions on unfinished systems
 
-Story mode (a stub), house allegiance, draft mode, streaks, weekly events and referral: wire each, or remove it and its page copy. Whether each was deferred or dropped is Not known (design §11).
+Story mode (a stub), house allegiance, draft mode, streaks, weekly events and referral: wire each, or remove it and its page copy. Whether each was deferred or dropped is Not known (design §11). **Decided by default (2026-11-19), under the owner's rule that recommendations are ordered, not cut:** story mode is finished first; the others stay hidden from players until each has a job in the duel, and none is dropped from the plan; streaks become the forgiving streak of `25-live-ops-plan.md` §5.4 (`28-owner-decisions.md` D-39).
 
 #### M13. Devon Glover: licence and content
 
@@ -318,13 +318,20 @@ Story mode (a stub), house allegiance, draft mode, streaks, weekly events and re
 
 ### 5.5 How it is tested
 
-Three rounds of think-aloud playtests with five players each, then 3 or 4 each from teachers, students aged 13 to 17 with consent, adult wordsmiths and non-English players (sota-production §6.4).
+**Proposed: by AI players** (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63). The owner ruled out human playtests on 2026-11-19 ("AI is the playtester"), so the research's think-aloud rounds of five people (sota-production §6.4) are not used. First-time AI players with no prior training on the game play the slice through what a player sees, on the phone-width page or its screen-reader text, with a player's controls only, never the scoring code. Self-hosted models released after 2026-04-01 play (§8.2 there), on the build host, against a local build. Each risk in 5.4 maps to a measure:
+
+1. Whether the duel can be followed for three matches in a row: the share of runs that finish three duels within the step budget, and where the others stop. Whether people come back is measured only after launch, by the live analytics of `16-analytics-and-tracking-plan.md`.
+2. Whether the rule judge's verdict explains itself: after each round the AI player says what decided it, and its answer is scored against the verdict's breakdown.
+3. Repetition: how often the written opponent repeats a verse across one player's five duels, from the run log, and whether a player that keeps its own notes remarks on it.
+4. Start-up speed on a real phone: not an AI measure; the device matrix of `15-qa-and-test-plan.md` §6.3.
 
 ### 5.6 Exit criteria
 
-- At least 70% of playtesters reach a first submitted verse without help (Poki calls over 70% conversion-to-play "solid": sota-design §4).
-- The median match takes five minutes or less.
-- Most playtesters can say why they won or lost a round.
+Thresholds are written down before the first run and never moved after the results (`15-qa-and-test-plan.md` §8.5).
+
+- In the English first-time runs, at least the pre-set share of runs reach a first valid verse (accepted and scored, not voided) within the step budget, reported per model family. Poki calls over 70% conversion-to-play "solid" for people (sota-design §4); the AI threshold is set on its own scale and is not read as a human figure.
+- The median duel in the AI runs takes five minutes or less (`25-live-ops-plan.md` §10.3's target). A model's speed is not a person's, so the number of actions per duel is reported beside the seconds.
+- In most runs, the AI player's stated reason for a round matches the verdict's breakdown.
 - The quality bar in 5.3 is met and measured, not estimated.
 
 ---
@@ -373,6 +380,7 @@ Three rounds of think-aloud playtests with five players each, then 3 or 4 each f
 | B36 | Apple App Store build | Won't (for now) | sota-production §1.2: riskiest store | L | none | |
 | B37 | Selling credits or random packs | Won't | sota-design §7; sota-production §5.7 | | none | |
 | B38 | Web portals (Poki, CrazyGames, YouTube Playables) for the full game | Won't | sota-production §1.1 | | none | |
+| B39 | AI playtests: the parity interface (the page or its screen-reader text, a player's controls), self-hosted models released after 2026-04-01, the measures and the run log, on the build host | Must | `15-qa-and-test-plan.md` §8; the owner's rule of 2026-11-19, "AI is the playtester" | M | M1 | DC |
 
 ---
 
@@ -386,7 +394,7 @@ Three rounds of think-aloud playtests with five players each, then 3 or 4 each f
 | Devon Glover | Creative director; Shakespeare content, performance, brand ambassador | Nothing is assumed. Every use of his name, likeness, voice or work waits for his written agreement (section 8) |
 | Arrocito del Diablo | Co-founder; game design, card mechanics, strategy | Proposed owner of duel balance, card redesign, the written opponent's verses and the daily verse |
 | Treston Knight | Listed on the About page (design §3, `/about`) | Role in production: Not known |
-| Contractors (Proposed) | Native-speaker reviewers; a lawyer for the talent licence, COPPA and the OSA assessment; a composer or a licensed music library | To hire per milestone |
+| Contractors (Proposed) | Native-speaker reviewers; a lawyer for the talent licence, COPPA and the OSA assessment; a composer or a licensed music library | To hire per milestone, once the owner sets a budget (`28-owner-decisions.md` O-2, O-7) |
 
 **How the code is made, stated honestly.** One founder works with AI coding agents. The 659 commits of the revival were made in three days that way (section 2). That speed is real, and so is its cost: rework, merge churn and systems left unwired (section 2.3). Investors should read the team as one technical founder plus agents, a performer-educator and a game designer, not as a studio.
 
@@ -415,7 +423,7 @@ R is responsible, A accountable, C consulted, I informed. Devon's column says "a
 
 ### 7.4 Budget
 
-Not known. The repository records no budget, burn rate or runway. The 2025 brief targeted a seed round of $300K to $1M from grants and angels (`PROJECT_BRIEF.md`), and the 2026 roadmap planned 3 to 5 hours a week per person (`ROADMAP.md`). Neither is current. Funders expect a budget of months left times monthly burn (sota-production §7.1, §7.13).
+Not known. The repository records no budget, burn rate or runway. The 2025 brief targeted a seed round of $300K to $1M from grants and angels (`PROJECT_BRIEF.md`), and the 2026 roadmap planned 3 to 5 hours a week per person (`ROADMAP.md`). Neither is current. Funders expect a budget of months left times monthly burn (sota-production §7.1, §7.13). Both are open questions for the owner (`28-owner-decisions.md` O-7, O-8).
 
 ---
 
@@ -433,23 +441,27 @@ Not known. The repository records no budget, burn rate or runway. The 2025 brief
 
 ## Owner questions
 
-1. What release date, if any, is set for this deploy and for each milestone?
-2. What is the budget, the monthly burn and the runway?
-3. Was the February 2026 build, with its AI features, public before 2026-08-02? That decides whether the Article 50(2) marking deadline is 2026-12-02 or already passed.
-4. `fix/server-authority` sets the rates and caps (05 §7.1) and makes the 50, 150 and 400-credit pack tiers buyable with earned credits (`POST /inventory/packs`). Are those the launch values?
-5. What is Whistle's licence, and does Cactus publish a release date? (Its publisher is Cactus and its repository dates from 2026-09-30: `09-audio-bible.md` §7.)
-6. Two decisions are waiting in `spike/replacements`: how to read the Whisper bar where its two clauses disagree, and whether recognisers that retrain a pre-2026-04-01 checkpoint meet the date rule.
-7. Does the adaptive opponent replace the three difficulty labels, or sit beside them?
-8. For redrawn card art, which direction governs: the recorded global-cast direction, or the default of central people who are Black, of Haitian descent?
-9. Story mode, house allegiance, draft mode, streaks, weekly events, referral: deferred or dropped?
-10. What is Treston Knight's role, and how many hours a week can Devon and Arrocito give now?
-11. Which two schools could pilot the classroom beta?
-12. `fix/compliance` only records the music and effects (two tracks traced to CC0; the rest untraced). Replace the untraced files before deploy, after, or never?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Is a release date set for this deploy and each milestone? **Decided by default:** no fixed public date; each deploy goes out when its gates pass, and the windows of section 4.2 stand (28 D-59). **Open (28 O-10):** when should the game be announced, and by whom?
+2. What is the budget, the monthly spend and the runway? **Open (28 O-7, O-8):** what can the company spend in the next year, and on what; what will it ask funders for, and what does it spend each month now?
+3. Was the February 2026 build, with its AI features, public before 2026-08-02? **Fact to find out** (28, Facts to find out, 2); less urgent now that the owner chose to mark AI output in this release (R6; 28 D-01).
+4. Are the economy branch's rates, caps and pack prices the launch values? **Decided by the owner (2026-11-19, R9):** yes, as tunable launch values (28 D-05).
+5. What is Whistle's licence, and does its publisher give a release date? **Fact to find out** (28, Facts to find out, 6); until both are known, Whistle waits (28 D-32).
+6. How is the Whisper bar read where its two clauses disagree, and do recognisers retrained from an older model meet the date rule? **Decided by default:** the stricter reading holds (28 D-74); a retrain counts only if its publisher announced it as its own release after 2026-04-01 (28 D-30).
+7. Does the adaptive opponent replace the three difficulty labels, or sit beside them? **Decided by default:** beside them, as the default (28 D-41).
+8. For redrawn card art, which direction governs? **Decided by default:** the global cast for card characters; the brand-imagery default for brand and marketing imagery only (28 D-53).
+9. Story mode, house allegiance, draft mode, streaks, weekly events, referral: deferred or dropped? **Decided by default:** story mode first; the rest hidden until each has a job in the duel, none dropped; streaks replaced by a forgiving streak (28 D-39).
+10. What is Treston Knight's role, and how many hours a week can Devon Glover and Arrocito del Diablo give? **Fact to find out** from the owner (28, Facts to find out, 11).
+11. Which schools could pilot the classroom beta? **Decided by default:** one 13+ class after classroom v1, through Devon Glover's network if he agrees; the school's agreement comes to the owner then (28 D-51).
+12. Replace the untraced music and effects before deploy, after, or never? **Decided by the owner (2026-11-19, R12):** remove the two untraced tracks and the two unused effects now; replace the other effects with traced ones within a month (28 D-08).
 
 ### Questions for Devon Glover (to ask him; nothing here assumes an answer)
 
-1. Will he sign a licence for his name, likeness, persona and biography, and with whose counsel?
-2. Does he agree to an AI opponent that plays a card called "The Sonnet Man", and to the prompt that tells the model to write as that card? If not, what should change?
+These are part of asking him for an agreement (`28-owner-decisions.md` O-1, and the full list in its Part 3).
+
+1. Will he sign a licence for his name, likeness, persona and biography, with his own lawyer?
+2. Does he agree to an AI opponent that plays a card called "The Sonnet Man", and to the instruction that tells the model to write as that card? If not, what should change? (Until he answers, the card stays out of the AI's hand: R8.)
 3. Which of his own recordings or lines, if any, may the game use, and how should they be credited?
 4. Is the SM-001 painting meant to depict him? Should it?
 5. What should the game never do with his persona (topics, styles, uses)?
@@ -457,7 +469,9 @@ Not known. The repository records no budget, burn rate or runway. The 2025 brief
 
 ### Questions for Arrocito del Diablo
 
-1. What should the card stats become, or should they go?
-2. What should duplicate cards do?
-3. Should The Sonnet Man stay in every starter deck?
-4. Which forms make the five-minute default duel?
+Each was decided by default on 2026-11-19 so that work can go ahead; his weekly review may change any of them, recorded as a new decision (`28-owner-decisions.md` D-49).
+
+1. What should the card stats become, or should they go? **Decided by default:** off the card face until they have a role in writing; kept in the card data for the redesign (28 D-42).
+2. What should duplicate cards do? **Decided by default:** they get a use, designed with him in the card redesign, M6 (28 D-43).
+3. Should The Sonnet Man stay in every starter deck? **Decided by default:** that waits on Devon Glover's answer (28 D-43, O-1).
+4. Which forms make the five-minute default duel? **Decided by default:** the two-to-four-line forms (28 D-44).

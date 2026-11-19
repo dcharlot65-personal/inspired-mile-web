@@ -199,8 +199,8 @@ flowchart TD
 
 Notes:
 
-- **Card rewards for a first match.** In this release a solo win adds no card to an account (`fix/server-authority`; 05 §7.1); whether the page still adds one to a signed-out device collection is for the page work to settle (Owner questions). The flow above assumes the offer to sign in comes with the result.
-- **Measure, then tune.** Record two timings on the device, never sent unless analytics consent exists: landing to first submit, and match length. Five moderated playtests on phones before changing the round count.
+- **Card rewards for a first match.** In this release a solo win adds no card to an account (`fix/server-authority`; 05 §7.1); a signed-out first win adds one card to the device collection (decided by default: `28-owner-decisions.md` D-46). The flow above assumes the offer to sign in comes with the result.
+- **Measure, then tune.** Record two timings on the device, never sent unless analytics consent exists: landing to first submit, and match length. Before changing the round count, run the AI playtests at the phone width, before and after the change (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63).
 - **Short matches stay short.** Keep the 2-4 line forms as the default; if a long form (a sonnet) is ever added, make it a separate long mode.
 
 ---
@@ -391,16 +391,16 @@ Computed for this document from the token values against the page (`#0d0b09`) an
 
 ## 9. Usability testing
 
-**Proposed.** Nothing in the repository records a usability test with players.
+**Proposed.** Nothing in the repository records a usability test with players. Under the owner's rule of 2026-11-19, "AI is the playtester" (`28-owner-decisions.md` D-63), usability is tested by AI players with no prior training on the game, who see only the page as drawn (or its screen-reader text) and use only a player's controls, run on the build host (`15-qa-and-test-plan.md` §8). No person is recruited, paid or observed.
 
-| Round | Who | What | Measures |
+| Round | Who plays | What | Measures |
 |---|---|---|---|
-| 1, before changing the first-time flow | 5 players aged 13+, on their own phones, one at a time | from a link to the end of a first match, thinking aloud | taps and seconds to first submit; where they hesitate; whether they understand why they won or lost |
-| 2, after the "Duel now" flow | 5 new players | the same task | the same, against round 1 |
-| 3, classroom | 2 teachers, 1 class | create a class, students join and duel | time to a class of students in a duel |
-| 4, accessibility | screen-reader, keyboard-only and low-vision players | a match | completion; blockers (`11-accessibility-plan-and-statement.md`) |
+| 1, before changing the first-time flow | each AI player of `15-qa-and-test-plan.md` §8.2, every run starting with no memory, at the phone width and on the desktop | from the landing page to the end of a first match | actions and seconds to a first valid verse; voids; where runs get stuck; whether the player can say why it won or lost (`15-qa-and-test-plan.md` §8.3) |
+| 2, after the "Duel now" flow | the same players, fresh runs | the same task | the same, against round 1 |
+| 3, classroom | AI players following a teacher-and-students script through the classroom pages: one creates a class, others join and duel | create a class, students join and duel | actions and time to a class of students in a duel; where the script stalls |
+| 4, accessibility | AI players on the accessible-text view, keyboard only (`15-qa-and-test-plan.md` §8.1) | a match | completion; blockers (`11-accessibility-plan-and-statement.md`). This shows whether the duel can be finished that way, not how a disabled person experiences it |
 
-Celia Hodent's usability heuristics (signs and feedback, clarity, form follows function, consistency, minimum workload, error prevention and recovery, flexibility) are the checklist for reviewing recordings (`research/sota-production-2026-11.md` §7.7).
+Celia Hodent's usability heuristics (signs and feedback, clarity, form follows function, consistency, minimum workload, error prevention and recovery, flexibility) are the checklist for reviewing the run recordings (`research/sota-production-2026-11.md` §7.7).
 
 ---
 
@@ -416,25 +416,27 @@ Celia Hodent's usability heuristics (signs and feedback, clarity, form follows f
 | 6 | Hide pages that cannot be played end to end; fix the sitemap | 2, 3 |
 | 7 | A phone layout with a sticky action bar | 6 |
 | 8 | Model offer after the first match | 5, 7 |
-| 9 | Five-player phone playtests, before and after | 9 |
+| 9 | AI playtests at the phone width, before and after | 9 |
 
 ---
 
 ## Owner questions
 
-1. In this release (`fix/server-authority`, 05 §7.1) a signed-out browser keeps its own collection for solo play, and a solo win adds no card to an account; trivia and quote challenges add a card to the device at most 3 times a day each. Should a first solo win still give a signed-out player a card, as the playground promises?
-2. `fix/compliance` shows the notice as one sentence under "Your opponent's mind" on the battle page, under the Theatre's status line, and on the multiplayer page (commit `13ff3148`). Is that placement final, or should it also sit beside the opponent's first verse, as this document's flow proposes?
-3. Should Story, Season and Tournaments be hidden until they can be played?
-4. Is "Duel now" on the home page acceptable as the first action, ahead of the Playground?
-5. Should an intro open the game, as the owner's other games do? Who appears in it?
-6. Who will run the first five playtests, and with whom (age 13+, consent)?
-7. Should the Theatre be in the main navigation?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved. None of these stays open.
+
+1. Should a signed-out player's first solo win still give a card, as the playground promises? **Decided by default:** yes; a signed-out first win adds one card to the device collection, so the promise holds before sign-in (28 D-46).
+2. Is the AI notice's placement final, or should it also sit beside the opponent's first verse? **Decided by the owner (2026-11-19, R13):** a visible "AI" label beside each model-written verse. **Decided by default:** the notice stays where `fix/compliance` puts it, and the label starts with the opponent's first verse; both are announced to screen readers (28 D-12).
+3. Should Story, Season and Tournaments be hidden until they can be played? **Decided by default:** yes, hidden until each can be played end to end; story mode is finished first (28 D-39, D-19).
+4. Is "Duel now" the home page's first action, ahead of the Playground? **Decided by default:** yes (28 D-40).
+5. Should an intro open the game, and who appears in it? **Decided by default:** a short intro made from the game's own duel, skippable at once and never shown twice, with Devon Glover's recorded performance added if he agrees (28 D-40).
+6. Who runs the first playtests, and with whom? **Decided by the owner (2026-11-19): AI is the playtester.** No person takes part; whoever changes the duel runs the AI playtests of section 9 on the build host (28 D-63, D-62).
+7. Should the Theatre be in the main navigation? **Decided by default:** yes, in the Play menu (28 D-40).
 
 ## Questions to ask Devon Glover
 
-Nothing here records his words, views or approvals. Ask him:
+Nothing here records his words, views or approvals. Asking him is part of `28-owner-decisions.md` O-1. Ask him:
 
 1. Would you record a short, skippable welcome for the first duel?
 2. Should the first lesson use a line of yours, or a line of Shakespeare's?
 3. In your classroom work, what is the first verse task that works with a new student?
-4. Would you take part in, or watch, the first playtests?
+4. Would you like to see what the AI playtests find about the first duel, before changes that touch your persona?

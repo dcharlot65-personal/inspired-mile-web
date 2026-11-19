@@ -8,7 +8,7 @@
 
 **Status:** Draft for the team, 2026-11-19.
 
-**Related documents:** `05-systems-economy-and-balance.md`, `19-privacy-pack.md`, `25-live-ops-plan.md`, `12-technical-design.md`, `13-ai-design-and-system-cards.md` (judge agreement), `15-qa-and-test-plan.md` (playtests), `17-operations-runbook-and-launch-checklist.md` (logs and monitoring), `adr/0018-analytics-after-age-gate.md`, `src/pages/privacy.astro`, `research/sota-production-2026-11.md` §6 and §7.19; also `00-README.md` (index), `28-owner-decisions.md`.
+**Related documents:** `05-systems-economy-and-balance.md`, `19-privacy-pack.md`, `25-live-ops-plan.md`, `12-technical-design.md`, `13-ai-design-and-system-cards.md` (judge agreement), `15-qa-and-test-plan.md` (AI playtests, §8), `17-operations-runbook-and-launch-checklist.md` (logs and monitoring), `adr/0018-analytics-after-age-gate.md`, `src/pages/privacy.astro`, `research/sota-production-2026-11.md` §6 and §7.19; also `00-README.md` (index), `28-owner-decisions.md`.
 
 ---
 
@@ -119,7 +119,7 @@ Moving the analytics script from plausible.io to the site's own origin removes a
 | US | COPPA's internal-operations exception allows a persistent identifier alone for analysing and maintaining the service, never to profile or contact (prod-research §6.2); under-13 visitors are already blocked | default on, with the same toggle |
 | Classroom accounts, any region | prod-research §6 "For Sonnet Man" | operational counters only; no cohort marker; no experiments |
 
-How the game knows the region is a design choice: the edge already passes a country header to the server. **Not decided** (section 10).
+How the game knows the region: the edge already passes a country header to the server. **Decided by default (2026-11-19):** use that country; an unknown country is treated as the EU (`28-owner-decisions.md` D-72).
 
 ### 6.2 Retention without an identifier
 
@@ -265,7 +265,7 @@ Benchmarks are from the dated research; they are context, not targets the team h
 | View | Audience | Cadence | Owner |
 |---|---|---|---|
 | Funnel and retention (sections 8.1, 8.2) | the team, investors | weekly | David Charlot |
-| Balance (8.3) | Arrocito del Diablo | weekly during playtests; per season after | Arrocito del Diablo |
+| Balance (8.3) | Arrocito del Diablo | weekly during the AI playtests before launch (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63); per season after | Arrocito del Diablo |
 | Judge agreement (8.4) | David Charlot | after every release and every model change | David Charlot |
 | Quality (8.5) | David Charlot | daily after a deploy | David Charlot |
 
@@ -287,10 +287,12 @@ Benchmarks are from the dated research; they are context, not targets the team h
 
 ## 11. Owner questions
 
-1. Replace hosted Plausible now? Does the Plausible account exist, and is it paid (tech §13)?
-2. Umami plus a Rust endpoint, or the Rust endpoint alone?
-3. Default the statistics toggle on outside the EU, and opt-in inside it? How should the game decide the region?
-4. Add a "dispute the verdict" control to the verdict screen (it changes the design, so Arrocito del Diablo and Devon Glover should see it)?
-5. What win-rate bands should the duel aim for against the written opponent and the model, per difficulty (Arrocito del Diablo)?
-6. Which numbers may be shown to investors, and at what cadence?
-7. `fix/compliance` corrects the cookie name and the Plausible domain (section 3). Should the 30-day log promise be changed now, or kept and met by setting API log rotation before deploy?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved. None of these stays open.
+
+1. Replace the hosted analytics service (Plausible) now? Does its account exist, and is it paid? **Decided by default:** yes, replaced by self-hosted Umami, under "free and self-hosted only" (28 D-25). Whether a paid account exists is a **fact to find out** (28, Facts to find out, 7); closing it, if so, comes to the owner.
+2. Umami with a small Rust endpoint, or the Rust endpoint alone? **Decided by default:** Umami; a small Rust endpoint only for an event Umami cannot record (28 D-25).
+3. Should the statistics switch be on by default outside the EU and wait for opt-in inside it, and how does the game know the region? **Decided by default:** yes, as section 6.1 proposes, using the country the edge already passes; an unknown country is treated as the EU (28 D-72).
+4. Add a "dispute the verdict" control to the verdict screen? **Decided by default:** built behind a switch and compared in the AI playtests before it ships (28 D-44).
+5. Which win rates should the duel aim for? **Decided by default:** 40 to 60% against the adaptive opponent and 45 to 55% against the written one (28 D-44); Arrocito del Diablo's weekly review may change them (28 D-49).
+6. Which numbers may investors see, and how often? **Decided by default:** aggregate numbers from the self-hosted analytics, published monthly (28 D-25).
+7. Change the policy's 30-day log promise, or keep it and rotate the API's logs? **Decided by the owner (2026-11-19, R16):** the promise stands; 30-day rotation was installed on 2026-11-19 (28 D-10).

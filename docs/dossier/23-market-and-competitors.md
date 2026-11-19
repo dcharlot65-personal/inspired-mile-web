@@ -273,7 +273,7 @@ Every clause is As built except "helps referee" on phones, where the rules judge
 | Online is English only | design §5.1 | One language at a time on the server (M4) |
 | Much of the meta-game is unwired | design §3, §4 | Finish or remove (M12) |
 | No native-speaker review | tech §6.4 | M11 |
-| Demand unproven | sota-design §2 | The vertical slice and its playtests |
+| Demand unproven | sota-design §2 | The vertical slice and its AI playtests (`15-qa-and-test-plan.md` §8, Proposed), which show whether a newcomer can reach and finish a duel; demand itself shows only in live numbers from real players (`16-analytics-and-tracking-plan.md`) |
 
 ---
 
@@ -334,14 +334,18 @@ Each input needs a source before it is used. Until then, plan for niche-sized or
 
 ## Owner questions
 
-1. Which segment comes first: wordsmiths and daily players (recommended), or classrooms?
-2. Which revenue route should be explored first, and with which partner?
-3. Is there a nonprofit, university or theatre partner for grant applications?
-4. Is there any budget for market research or a paid playtest panel?
-5. Should a guest-only lite build go to any portal, given that none allows a link back to the full game on CrazyGames?
-6. Which languages should marketing name at launch, given that none has had a native-speaker read?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Which players come first: wordsmiths and daily players, or classrooms? **Decided by default:** wordsmiths and daily word players first; classrooms after classroom v1, since classroom is the furthest from ready (28 D-75).
+2. Which revenue route first, and with which partner? **Decided by default:** never sell credits or packs, never ads; explore education and arts grants, then school licences invoiced yearly, then recurring supporters; each application or contract comes to you to sign (28 D-56).
+3. Is there a nonprofit, university or theatre partner for grant applications? **Fact to find out**, from the owner (28, Facts to find out, 12).
+4. Is there a budget for market research? **Open (28 O-7):** how much can the company spend in the next year, and on what? There is no paid playtest panel: AI is the playtester (28 D-63).
+5. Should a guest-only lite build go to any portal? **Decided by default:** no portal build, since none fits "no ads"; an itch.io page links to the site once the company may open that account (28 D-59, O-10).
+6. Which languages should marketing name at launch? **Decided by default:** only languages a native speaker has reviewed (28 D-50).
 
 ### Questions for Devon Glover (to ask him; nothing here assumes an answer)
+
+These are his to answer; asking them is part of 28 O-1.
 
 1. Would he introduce the game to schools or audiences he works with, and on what terms?
 2. How large are his own audiences, and which channels does he want the game to use or avoid?

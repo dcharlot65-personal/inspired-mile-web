@@ -183,7 +183,7 @@ Every device adds the same +0.5, but the rules make some trivial and some imposs
 | Heroic Couplet under Short Breath | About ten syllables in at most five words | needs long words; hard |
 | Brevity (Illyria) in a Heroic Couplet | About ten syllables in at most six words | tension |
 
-**Proposed:** measure each device's landing rate per form with real players (§11) and price devices by difficulty: a hard device earns more, a near-free one less, or the forms a house is drawn against are chosen so no house gets a free or impossible round. Mega Crit removed "do nothing" options and Hearthstone found prescriptive mechanics homogenised its meta (research/sota-design §1).
+**Proposed:** measure each device's landing rate per form and language in the AI playtests before launch (`15-qa-and-test-plan.md` §8.3), and with live aggregate counts after it (§11); then choose the forms a house is drawn against so no house gets a free or impossible round, and also price devices by difficulty (a hard device earns more, a near-free one less) if dealing alone leaves a gap (decided by default: `28-owner-decisions.md` D-67). Mega Crit removed "do nothing" options and Hearthstone found prescriptive mechanics homogenised its meta (research/sota-design §1).
 
 ### 5.4 Signatures are not equally hard
 
@@ -365,7 +365,7 @@ flowchart LR
 
 ### 7.4 What the release does not settle
 
-Listed with the owner questions in §12: whether a signed-out player's `/battle` win still adds a card to the device collection (the pages are not yet changed); whether a season runs at launch; whether teens and classroom accounts may use the market and referrals; whether the market has a fee; and the content of `docs/ECONOMY.md`.
+Settled on 2026-11-19 (§12; `28-owner-decisions.md`): a signed-out player's `/battle` win adds one card to the device collection (D-46; the pages are not yet changed); no season runs at launch (D-39); the market and referral are for adults only (R10, D-06), with no fee at launch (D-06); `docs/ECONOMY.md` explains every number the server pays (D-05).
 
 ## 8. Proposed economy design
 
@@ -482,7 +482,7 @@ flowchart TD
 
 **Stopping sandbagging.** Proposed: rewards for a solo win scale with the opponent's strength in that match (a win against a weakened opponent pays less), and the estimate falls more slowly than it rises. Both answer the spike's exploit without hiding anything from the player.
 
-**Acceptance before it ships.** Re-run the spike's pre-registered rules (R1 even odds, R2 settling, S1 strength not following the score, V no tells, R4 variety, R8 fairness) on the shipped controller, then measure real players (§11): at least 80% of players who finish 10 matches land in the 40-60% band, and none sit at 0% or 100%.
+**Acceptance before it ships.** Re-run the spike's pre-registered rules (R1 even odds, R2 settling, S1 strength not following the score, V no tells, R4 variety, R8 fairness) on the shipped controller; then run the AI playtests against it before it ships (`15-qa-and-test-plan.md` §8; `28-owner-decisions.md` D-63), with AI players of each model family playing 10 matches or more; after launch, check the same bar on live aggregate counts (§11): at least 80% of players who finish 10 matches land in the 40-60% band, and none sit at 0% or 100%.
 
 ## 11. What must be measured to balance the game
 
@@ -504,19 +504,21 @@ As built, almost nothing is measured. Plausible records page views after the age
 | Is the economy paced? | credits earned and spent per day by source; cap-hit rate; days to 24, 36 and 71 cards; duplicate rate; marketplace volume and prices | server ledger (In this release) |
 | Is online healthy? | queue wait, abandonment, disconnects, forfeits, reports per 100 matches | server |
 
-**Playtests.** Rounds of five players with think-aloud, three rounds rather than one of fifteen, plus three or four each of teachers, students (with consent), adult wordsmiths and non-English players (research/sota-production §6.4). No real playtest exists in the repository (`planner/docs/ADAPTIVE-PREREG.md` §3: "Real playtests: none exist").
+**Playtests (Proposed).** The owner's rule of 2026-11-19 is that AI is the playtester (`28-owner-decisions.md` D-63): no human playtests, think-aloud sessions or human baselines. AI players with no prior training on the game play through what a player sees (the rendered page, or its screen-reader text) and a player's controls, never the scoring code or its constants, on self-hosted models released after 2026-04-01, run on the build host against a local build (`15-qa-and-test-plan.md` §8). Before any player arrives they give the first values for this section's table: time to a first valid verse, voids, rounds won against each opponent, device and signature landing rates, match length and where players get stuck (§8.3 there). Results are reported per AI player and model family, never as what people would do. No playtest of any kind exists in the repository (`planner/docs/ADAPTIVE-PREREG.md` §3: "Real playtests: none exist").
 
 ## 12. Owner questions
 
-1. Are the rates and caps in `backend/data/economy.json` the launch values, and when will `docs/ECONOMY.md` record why each number is what it is?
-2. Does a signed-out player's `/battle` win still add a card to the device collection, now that the release caps trivia and challenge cards there at 3 a day each? (The pages are not yet changed on the branch.)
-3. Is the one-time import (20 cards: at most 1 Legendary, 2 Epic, 5 Rare) the right size for a player who collected before signing in?
-4. Will a season be seeded at launch? No migration inserts one.
-5. Are marketplace sales and referral rewards off for teen and classroom accounts? Is there a marketplace fee? Do "completionist" (48) and "relic-hunter" (15 of any type) keep their goals?
-6. Is rarity to mean power, or stay a collecting tier only? Should The Sonnet Man stay in every starter deck?
-7. Should device difficulty be priced (hard devices earn more), or should forms be dealt so no house gets a free or impossible round?
-8. Is the adaptive opponent the default in solo play, with the fixed tiers kept beside it? Does it come from the spike's planner (English first) or from a simpler draft-selection controller in every language?
-9. Who writes the larger written-opponent bank the no-model tier needs, and in which languages first?
-10. Which judging languages does Gemma keep after `fix/judge-wording`'s cells are measured again? (Not known until the measurement runs.)
-11. Is first-party analytics (self-hosted, aggregate, consented) approved for balance data, and is the solo "counts only" stream acceptable under the privacy promise?
-12. Should Theatre wins pay a card, as `/battle` wins do?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Are the rates and caps in `backend/data/economy.json` the launch values, and when will `docs/ECONOMY.md` explain each number? **Decided by the owner (2026-11-19, R9):** yes, as tunable launch values; **decided by default:** `docs/ECONOMY.md` is written before deploy and explains every number the server pays, XP, achievements, seasons and referral included (28 D-05).
+2. Does a signed-out player's `/battle` win still add a card to the device collection? **Decided by default:** yes, one card, so the playground's promise holds before sign-in (28 D-46).
+3. Is the one-time import of 20 cards (at most 1 Legendary, 2 Epic, 5 Rare) the right size? **Decided by default:** it keeps that limit as a tunable value (28 D-05).
+4. Will a season be seeded at launch? **Decided by default:** no; the season pass stays hidden until it can be played (28 D-39). Seasons will run a calendar month (28 D-76), and every account made before Season 1 starts counts as a founding player (28 D-77).
+5. Are marketplace sales and referral rewards off for teen and classroom accounts; is there a marketplace fee; do "Completionist" and "Relic Hunter" keep their goals? **Decided by the owner (2026-11-19, R10):** marketplace and referral for adults only (28 D-06). **Decided by default:** no marketplace fee at launch (28 D-06); the device counters are fixed to match the server's, "Completionist" at 71 and "Relic Hunter" on relics (28 D-45).
+6. Is rarity power, or a collecting tier only? Should The Sonnet Man stay in every starter deck? **Decided by default:** a collecting tier, not power; his place in the starter deck waits on Devon Glover's answer (28 D-43, O-1).
+7. Should device difficulty be priced, or forms dealt so no house gets a free or impossible round? **Decided by default:** measure landing rates in the AI playtests, then deal forms so no house gets a free or impossible round, and price devices as well if dealing alone leaves a gap (28 D-67).
+8. Is the adaptive opponent the default in solo play, and does it come from the spike's planner or a simpler controller? **Decided by default:** the default, built on bank tiers so that it works on phones, with the fixed labels kept beside it; English first from the spike's planner, bank tiers in the other languages until it covers them (28 D-41).
+9. Who writes the larger written-opponent bank, and in which languages first? **Decided by default:** writers per language once they are paid for, English first, reviewed by Devon Glover for tone if he agrees; until then the English bank grows first (28 D-62). **Open (28 O-7):** paying those writers.
+10. Which judging languages does Gemma keep after the re-measurement? **Decided by the owner (2026-11-19, R11):** the cells are measured again before deploy; which languages pass is known only after the run (28 D-07).
+11. Is self-hosted, aggregate analytics approved for balance data? **Decided by default:** yes, self-hosted Umami, aggregate only, after the age gate and off by default for teen and class accounts (28 D-25), with the statistics switch set by region (28 D-72).
+12. Should Theatre wins pay a card, as `/battle` wins do? **Decided by default:** yes (28 D-46).

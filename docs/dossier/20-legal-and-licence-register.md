@@ -40,7 +40,7 @@ Two terms:
 2. **Assets with no recorded licence remain the largest open item.** None is recorded for the four music tracks (two carry other artists' tags), the 14 sound effects, the 3D model and splat, or the 198 variant images. The card art's licence (FLUX Kommunity License) is named but its text is not saved (tech §11.3; design §7).
 3. **Liquid AI's LFM licence stops at US$10M group revenue, counting affiliates under common control.** An investor who takes control could push the group over it. The owner confirmed on 2026-11-17 that the company is under it (`docs/MODEL-LICENCES.md:6-16`). Leaving costs little: LFM3 is used only to judge Vietnamese (tech §4.1).
 4. **There is no written agreement with Devon Glover in the repository,** although the product, a domain, a card and possibly AI verse use his persona (design §6.1). New York and California law make vague digital-replica terms void (prod research §5.8). This agreement is the keystone of the register (prod research §7.20).
-5. **Trade marks are unsearched.** Nobody has recorded who owns "Sonnet Man", "The Sonnet Man", "Shakespeare on the Go" or "Inspired Mile", or whether any is registered (owner questions).
+5. **Trade marks are unsearched.** Nobody has recorded who owns "Sonnet Man", "The Sonnet Man", "Shakespeare on the Go" or "Inspired Mile", or whether any is registered. The free public registers are searched now (decided by default, `28-owner-decisions.md` D-15); paying for a full search and registering is open (O-4).
 6. **Machine-readable marking of AI output (EU AI Act Article 50(2)) should be treated as due at this deploy.** The grace period to 2026-12-02 covers only systems on the market before 2026-08-02; the in-browser models reached the public later, so the cautious reading is that it applies already (`13-ai-design-and-system-cards.md` §7.2; prod research §5.4). Adding it to this release is an owner decision (`28-owner-decisions.md`). The calendar is in section 9.
 
 ---
@@ -81,7 +81,7 @@ Weights are downloaded by the player's browser from the Hugging Face hub, not fr
 | **LFM2.5 350M** (`LiquidAI/LFM2.5-350M-ONNX`, 295 MB) | Listed in `MODELS` but used in no language, so never offered (tech §4.1) | LFM Open License v1.0 | As LFM3 | As LFM3 | **Not known** | Remove it from `MODELS`: it ships nothing and carries a licence |
 | **Whisper base** (`onnx-community/whisper-base`, q8, ~80 MB) | Browser, speech to text | **MIT** (prod research §5.10 [V]) | Keep the copyright and permission notice | Not met: not on the site | **No**: older (prod research §2, "For Sonnet Man": "Older defaults such as Kokoro and Whisper do not" qualify) | Notice on `/credits`. Successor candidate after the cutoff: Moonshine Streaming per language (MIT, repos 2026-08-24, 7 languages besides English; browser speed unmeasured) (prod research §3.1 [V]) |
 | **Kokoro-82M v1.0** (`onnx-community/Kokoro-82M-v1.0-ONNX`, q8, ~80 MB), through kokoro-js | Browser, English voice | **Apache 2.0** weights, trained partly on CC BY data (prod research §5.10 [V]) | Licence copy; NOTICE | Not met | **No**: no release since 2025-02-27 (prod research §2.1 [V]) | Licence on `/credits`. Successor candidate: Kitten TTS 2 nano or pico (Apache 2.0, 2026-11-13, 8 languages, 4 to 17 MB a language; browser use not stated) (prod research §3.2 [V]). The GPL item is in section 6 |
-| Build-host models, not shipped: MADLAD-400 3B, all-MiniLM-L6-v2, LaBSE, Gemma 4 26B-A4B QAT | Offline language checks (`HF_HUB_OFFLINE=1`) | Apache 2.0 (tech §11.1) | None to players: nothing ships | — | Gemma 4 26B-A4B: yes (Gemma 4 family). The other three: **no** [U on dates] | Owner question: does the date rule cover build tools? |
+| Build-host models, not shipped: MADLAD-400 3B, all-MiniLM-L6-v2, LaBSE, Gemma 4 26B-A4B QAT | Offline language checks (`HF_HUB_OFFLINE=1`) | Apache 2.0 (tech §11.1) | None to players: nothing ships | — | Gemma 4 26B-A4B: yes (Gemma 4 family). The other three: **no** [U on dates] | Decided by default (2026-11-19): the date rule covers build-host models too; these are recorded and replaced as proven (`28-owner-decisions.md` D-30) |
 
 ### 4.1 The LFM US$10M condition
 
@@ -180,7 +180,7 @@ The research proposes the same page, named "Open data and models", plus the eSpe
 
 **The past (Proposed, for counsel).** GPL version 3 has rules for restoring a licence after a violation stops [U: section 8 of GPLv3; check with counsel]. Record the date the fix deployed, and keep this finding and its fix in the register.
 
-**A related open item.** Kokoro itself predates the owner's 2026-04-01 rule (section 4). The fix keeps Kokoro. Whether to replace it, for example with Kitten TTS 2 once its browser use is shown, is an owner question.
+**A related open item.** Kokoro itself predates the owner's 2026-04-01 rule (section 4). The fix keeps Kokoro. Decided by default (2026-11-19), under the owner's "replace as proven" rule: it is kept until a newer model, for example Kitten TTS 2 once its browser use is shown, is measured to do the job, with a dated review each quarter (`28-owner-decisions.md` D-28).
 
 ---
 
@@ -298,7 +298,7 @@ Every dated obligation in the research, with what it means for Sonnet Man. "Appl
 | 2025-07-04 | France: the CNIL's tightened audience-measurement exemption (no user ids, IP cut by at least 2 bytes, data kept 25 months at most, no heatmaps, session recording or A/B tests). The CNIL reportedly withdrew its list of exempt tools on 2026-01-01 [S] | Yes, for French players' statistics | `19-privacy-pack.md` §3.6 |
 | 2025-07-24 | UK children's risk assessments due | Yes, teens are admitted | Draft (`18-trust-and-safety-plan.md` §9.4) |
 | 2025-08-02 | EU AI Act rules for general-purpose AI models | No: they fall on Google and Liquid as model providers | — |
-| 2025-10-01 | Colorado minors' amendments [U] | Check | Owner question |
+| 2025-10-01 | Colorado minors' amendments [U] | Check | For the company's lawyer (`28-owner-decisions.md` O-2) |
 | 2025-12-10 | Australia social-media minimum age 16 | Probably not (Roblox and Steam assessed as not required) [S] | — |
 | 2026-01-01 | California SB 243 companion chatbots [U on date]; Nebraska AADC operative | SB 243 depends on guardrails; Nebraska probably below threshold | `18-trust-and-safety-plan.md` §8.3 |
 | 2026-02-05 | UK PECR Schedule A1: statistics without consent if informed and able to object | Yes | `19-privacy-pack.md` §3.6 |
@@ -312,7 +312,7 @@ Every dated obligation in the research, with what it means for Sonnet Man. "Appl
 | 2026-06 | PEGI rules for games submitted from June 2026: paid random items PEGI 16; time-limited offers PEGI 12; return rewards PEGI 7 or 12; unrestricted communication PEGI 18 | Only if rated | Keep a PEGI 7 to 12 design (prod research §5.6) |
 | 2026-06-04 | Texas SB 2420 app-store age rules | Only for a store app | — |
 | 2026-06-10 | EU Code of Practice on transparency of AI-generated content, final | Yes, as a method for Art 50(2) | Proposed |
-| 2026-07-01 | Arkansas teen privacy act [U] | Check | Owner question |
+| 2026-07-01 | Arkansas teen privacy act [U] | Check | For the company's lawyer (`28-owner-decisions.md` O-2) |
 | 2026-07-27 | EU Digital Omnibus on AI in force | Sets the 2026-12-02 date | — |
 | 2026-08-02 | **EU AI Act Article 50 applies**: AI notice at first interaction (50(1)) | Yes | **In this release (`fix/compliance`)** |
 | 2026-08-31 | Google Play target API 36 | Only for a store build | — |
@@ -367,14 +367,14 @@ timeline
 
 ## 10. Trade marks
 
-Nothing in the repository records a trade-mark search, application or registration, or who owns which name. Each item below is an owner question; none assumes an answer.
+Nothing in the repository records a trade-mark search, application or registration, or who owns which name. The questions below are for the owner and Devon Glover; none assumes an answer. Paying for a full search and registering the marks is open (`28-owner-decisions.md` O-4); the free public registers are searched now and the results recorded here (decided by default, D-15); what Devon Glover holds is part of O-1.
 
 | Name or mark | Where the game uses it (As built) | Questions |
 |---|---|---|
 | "Sonnet Man", "The Sonnet Man" | Product name, installed app name, the site's subdomain, the passkey dialog name, the SM-001 card (section 7.1) | Who owns it? Is it registered or applied for, in the US or elsewhere? On what terms may the company use it as the product's name, and what happens to that name if the agreement with Devon Glover ends? |
 | "Shakespeare on the Go" | Home-page badge, marked as his programme's name (`src/pages/index.astro:47-48`) | Who owns it? Is the company licensed to show it? |
 | "Inspired Mile" | Company DBA, domain, footer, Plausible site name | Has a clearance search been run? Is it registered? A state fictitious-name filing is not a trade mark [U]. Which classes: downloadable game software and online game services are usually classes 9 and 41 [U]. Which countries, given 16 languages? |
-| The "IM" favicon and the gold-on-obsidian style | Every page | Is a logo mark wanted? |
+| The "IM" favicon and the gold-on-obsidian style | Every page | Is a logo mark wanted? Decided by default: one master monogram and a wordmark in the game's display face (`28-owner-decisions.md` D-54, D-59); registering it is part of O-4 |
 | "Master Thespian", house names, card names | Labels and cards (design §6.1, §6.2) | Any conflicts? Not searched |
 | Third parties' marks inside generated art | A swoosh-like mark on trainers in a variant image (design §7.2) | Remove the image (section 8.2); add "no brand marks" to every art prompt |
 | Domains | `inspiredmile.com` in use | Are `sonnetman` domains held, or wanted? |
@@ -458,20 +458,22 @@ Keep the SBOM internal. Share it with schools, platforms and investors on reques
 
 ## Owner questions
 
-1. **Devon Glover:** is there any agreement, email or understanding with him today about the name, the card, the persona or AI use? Who will draft the agreement in section 7, and will he have his own counsel?
-2. **Trade marks:** who owns "Sonnet Man", "The Sonnet Man" and "Shakespeare on the Go"? Has anyone searched or filed for them, or for "Inspired Mile"? In which countries should the company file? (section 10)
-3. **The members' agreement:** is the operating agreement complete? Does it assign the members' work on the game to the LLC? Has Treston Knight, or anyone else, contributed work that needs an assignment? (section 3)
-4. **Assets:** where did the four music tracks, the 14 sound effects, the SM-001 model and splat, and the icons come from, and under what licence? If unknown, replace or remove? (`fix/compliance` settles two music tracks, CC0, and the icons and 3D files' origin; two tracks, all 14 effects and the model behind the 3D figure stay untraced.) (section 8.2)
-5. **Variant images:** may the 198 orphaned variant images be removed from the site? (section 8.2)
-6. **FLUX licence:** the text is now read from the weights' own file (`docs/ASSETS.md`): commercial use of outputs only under US$5M group revenue. Is that condition accepted beside the LFM one, and what is FLUX 3 Image Klein's release date? (section 8.2)
-7. **The model date rule:** Whisper base and Kokoro predate 2026-04-01. Replace them (with Moonshine Streaming and Kitten TTS 2 once measured), or accept them for now? Does the rule cover build-host models? What is LFM2.5 350M's release date? (LFM3 1.7B was announced on 2026-10-27, inside the rule.) (section 4)
-8. **LFM2.5 350M:** may it leave `MODELS`, since it is offered nowhere? (section 4)
-9. **Live build:** does the deployed site include the `phonemizer` chunk today? When will `fix/voice-g2p` reach production, and should the voice be switched off on the live site until then? (section 6.2)
-10. **Art 50(2) date:** were the AI opponent and judge publicly live before 2026-08-02? (section 9.2)
-11. **`/credits` scope:** the page names each item of section 5.1 by a text search (section 5.1). Who reads it in full before deploy?
-12. **Translations:** may the test add a publication-year check, and a 1945 death-year rule for Spanish lines? (section 8.3)
-13. **Counsel:** who will review this register, the Terms, the AI-art and AI-code ownership questions, GPLv3 cure, and Florida law? (sections 3, 6.2, 12)
-14. **Weights hosting:** if the company serves model weights itself, it plainly distributes them. Is that wanted? (section 4)
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. **Devon Glover:** is there any agreement or understanding with him today, who drafts the agreement of section 7, and will he have his own lawyer? **Open (28 O-1):** will you ask him to sign a written agreement, with his own lawyer reading it? Whether anything exists today is a **fact to find out** from you (28, Facts to find out, 4, and the questions to put to him in 28 Part 3).
+2. **Trade marks:** who owns "Sonnet Man", "The Sonnet Man", "Shakespeare on the Go" and "Inspired Mile", and where should the company file? **Decided by default:** the free public registers are searched now; "Shakespeare on the Go" is not used in marketing until he agrees (28 D-15). **Open (28 O-4):** do you want to pay to search and register the marks, in the US first?
+3. **The members' agreement:** does the operating agreement give the members' work on the game to the company, and does anyone else, Treston Knight included, need to sign over their work? **Decided by default:** every contributor is listed in section 3 with what they made (28 D-58). **Open (28 O-2):** a lawyer to check the agreement and draft the transfers. Treston Knight's role is a **fact to find out** from you (28, Facts to find out, 11).
+4. **Assets:** where did the music, the effects, the 3D figure and the icons come from? **Decided by the owner (2026-11-19, R12):** remove the two untraced tracks and the two unused effects, and replace the other effects with traced ones within a month (28 D-08). The remaining sources are a **fact to find out** (28, Facts to find out, 9).
+5. **Variant images:** may the 198 unused variant pictures come off the site? **Decided by default:** yes, under "no cloud inference": they were made through a hosted service and no page shows them (28 D-33).
+6. **The card-art licence:** is its condition (commercial use only under US$5 million a year of group revenue) accepted, and when was FLUX 3 Image Klein released? **Decided by default:** record the condition beside the LFM one, with a repaint plan if revenue nears it (28 D-33). **Open (28 O-9):** the company's yearly revenue and headcount. The release date is a **fact to find out** (28, Facts to find out, 5).
+7. **The model date rule:** replace Whisper base and Kokoro, or keep them for now? Does the rule cover build-host models? When was LFM2.5 350M released? **Decided by default:** keep both until a newer model is measured to do each job, reviewed each quarter (28 D-28); the rule covers build-host models too (28 D-30). LFM2.5's release date is a **fact to find out** (28, Facts to find out, 5).
+8. **LFM2.5 350M:** may it leave the model list, since it is offered nowhere? **Decided by default:** yes, now (28 D-28).
+9. **Live build:** does the live site still carry the GPL voice code, when does the fix reach it, and should the voice be off until then? **Decided by default:** the fix ships in the first deploy, and the voice is switched off on the live site if that deploy slips by more than a week (28 D-09). Which commit is live is a **fact to find out** (28, Facts to find out, 1).
+10. **The AI marking date:** were the AI opponent and judge publicly live before 2026-08-02? **Fact to find out** (28, Facts to find out, 2); less urgent now that the owner chose to mark AI output in this release (R6; 28 D-01).
+11. **The credits page:** who reads it in full before deploy? **Decided by default:** reading it in full is one of the checks that block the deploy (28 D-10).
+12. **Translations:** add a publication-year check, and the 1945 rule for Spanish lines, to the test? **Decided by default:** yes, and confirm that no Folger text ships (28 D-60).
+13. **A lawyer:** who reviews this register, the Terms, who owns AI-made art and code, how a GPL breach is cured, and Florida law? **Open (28 O-2):** will you hire a lawyer, and when?
+14. **Weights hosting:** serving the model files from the company's own site makes the company their distributor; is that wanted? **Decided by default:** yes, once traffic shows the bandwidth, with each licence served beside its files (28 D-26).
 
 **To ask Devon Glover** (nothing here assumes his answer):
 1. Do you hold, or have you applied for, any trade mark in "The Sonnet Man", "Sonnet Man" or "Shakespeare on the Go"? Are you happy for the product to carry the name "Sonnet Man"?
@@ -479,7 +481,7 @@ Keep the SBOM internal. Share it with schools, platforms and investors on reques
 3. Is the SM-001 painting meant to be you? If so, which image of you would you approve instead?
 4. Would you record performances, lines or remixes for the game? On what terms, and who would own them?
 5. Do you want any synthetic version of your voice, ever? (The default here is no.)
-6. Where are you domiciled, and who is your counsel or agent for this?
+6. Where do you live, and who is your lawyer or agent for this?
 7. Which topics, words and styles must the persona never use, especially with teen and classroom players?
 8. Would you like your own music, or artists you name, in place of the current tracks?
 9. How would you like to be credited, and on which pages?

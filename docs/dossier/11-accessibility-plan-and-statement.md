@@ -145,14 +145,14 @@ The XAG numbers 102, 109 and 116 come from the research; other guidelines are na
 
 ### Phases
 
-**Proposed.** Dates are working targets for the team to confirm.
+**Proposed.** Dates are working targets; they stand as the plan (decided by default: `28-owner-decisions.md` D-52).
 
 | Phase | By | Work | Done when |
 |---|---|---|---|
 | **0. Blockers** | before any school pilot, and no later than 2027-01-31 | Keyboard play of the whole duel (chips, items, menus); live region for the verdict; semantic colour layer for contrast; focus ring; dialog component | A keyboard-only and a screen-reader run complete a match on `/battle` |
 | **1. WCAG 2.2 AA on 2D pages** | 2027-03-31, four weeks before the 2027-04-26 ADA date | Reduced motion; targets; zoom and reflow; language of parts; sound panel; online timing options; error prevention for purchases | An internal audit of every page finds no AA failure; a conformance report drafted |
 | **2. Publish** | 2027-04-15 | Accessibility statement live; conformance report for districts (a common format is the VPAT; its use here is an assumption) | Both linked from the footer and the classroom pages |
-| **3. Beyond AA** | 2027 | Text-size setting to 200%; read-aloud of card text; high-contrast theme; XR comfort settings; disabled playtesters each release | |
+| **3. Beyond AA** | 2027 | Text-size setting to 200%; read-aloud of card text; high-contrast theme; XR comfort settings; the AI keyboard and screen-reader-text runs each release (`15-qa-and-test-plan.md` §8.1) | |
 
 ### Settings to add
 
@@ -187,8 +187,8 @@ A "dyslexia font" is not proposed: a 2026 meta-analysis of 15 studies found no r
 | Windows, Firefox and Chrome | NVDA; keyboard only; forced colours |
 | macOS, Safari | VoiceOver; zoom 200% and 400% |
 
-- **People.** Recruit disabled players for the playtests in `10-ux-flows-and-design-system.md` §9; pay them fairly (an owner decision).
-- **Owner of accessibility.** One named person signs off each phase and answers the statement's contact address (**Not known** who).
+- **AI playtests.** Under the owner's rule of 2026-11-19, "AI is the playtester", no disabled players are recruited (`28-owner-decisions.md` D-52, D-63). Each release, AI players with no prior training on the game play a whole duel using only the keyboard and the page's screen-reader text, as a screen-reader user meets it (`15-qa-and-test-plan.md` §8.1; `10-ux-flows-and-design-system.md` §9, round 4). These runs show whether the duel can be finished that way; they do not show how a disabled person experiences the game, and nothing published may say they do. The team's own checks with VoiceOver, TalkBack and NVDA in the matrix above stay.
+- **Owner of accessibility.** David Charlot signs off each phase until a contractor is hired, and the statement's contact is contact@voyagetracable.com, the owner-approved public address (decided by default: `28-owner-decisions.md` D-52).
 
 ### The 3D Theatre and the VR gallery
 
@@ -198,7 +198,7 @@ The Theatre and gallery are canvases. **Proposed:** declare `/battle` as the acc
 
 ## 9. Draft accessibility statement
 
-> **DRAFT. Not for publication.** Every claim below must be checked against a real audit before it goes live. The contact address and dates are placeholders.
+> **DRAFT. Not for publication.** Every claim below must be checked against a real audit before it goes live. The dates are placeholders; the contact address is the owner-approved public address.
 
 ### Accessibility of Sonnet Man
 
@@ -231,7 +231,7 @@ Inspired Mile (Voyage Tracable, LLC) wants everyone to be able to play Sonnet Ma
 
 **How we checked.** By reviewing our own code in November 2026. No independent audit or test with assistive technology has been done yet. We plan both before [date].
 
-**Tell us.** If something stops you playing, write to **[accessibility contact to be decided]**. We aim to reply within [5] working days, and to give you another way to do what you were trying to do.
+**Tell us.** If something stops you playing, write to **contact@voyagetracable.com**. We aim to reply within [5] working days, and to give you another way to do what you were trying to do.
 
 *Prepared [date]. Last reviewed [date].*
 
@@ -239,20 +239,21 @@ Inspired Mile (Voyage Tracable, LLC) wants everyone to be able to play Sonnet Ma
 
 ## Owner questions
 
-1. Who owns accessibility, signs off each phase and answers the statement's contact address? Which address?
-2. Are the phase dates acceptable? Is a school pilot planned before 2027-04-26?
-3. Is there a budget to pay disabled playtesters and, later, an independent audit?
-4. Which conformance-report format do the target districts ask for?
-5. `fix/compliance`'s Article 50(1) notice is page text on the battle and multiplayer pages and under the Theatre's status line (commit `13ff3148`). Is it announced to screen readers when it is redrawn after the model or language changes? Not known: check it in the screen-reader pass.
-6. `fix/server-authority` changes no page; a pack or market purchase is an API call only. Should the page that offers it ask for confirmation before credits are spent (WCAG 3.3.4)?
-7. Should the Theatre and VR gallery stay public while they cannot be made accessible, with `/battle` declared as the equivalent?
-8. Is the game likely to ship as an App Store or Play Store app (which brings Apple's accessibility labels into play)?
-9. What are the company's headcount and annual turnover? They decide whether the European Accessibility Act's microenterprise exemption applies; the exemption is an inference until then.
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Who owns accessibility and answers the statement's contact address, and which address? **Decided by default:** David Charlot, until a contractor is hired; the address is contact@voyagetracable.com (28 D-52).
+2. Do the phase dates stand, and is a school pilot planned before 2027-04-26? **Decided by default:** the phases keep this document's dates; a pilot comes after classroom v1, with one 13+ class (28 D-52, D-51).
+3. Should disabled players be paid to test the game, and later an outside audit? **Decided by the owner (2026-11-19): AI is the playtester**, so no one is recruited; AI players run the duel by keyboard and screen-reader text each release (28 D-63, D-52). **Open (28 O-7):** will you pay for an outside accessibility audit, and when?
+4. Which conformance-report format? **Decided by default:** a WCAG 2.1 AA report in the VPAT format, before any US district pilot (28 D-52).
+5. Is the AI notice announced to screen readers when it is redrawn? A check, not a decision: it is to be announced (28 D-12), and the screen-reader pass and the AI accessible-text runs check it (`15-qa-and-test-plan.md` §8.1).
+6. Should a purchase with credits ask for confirmation first (WCAG 3.3.4)? **Decided by default:** yes, a confirm step on every pack or market purchase, and an undo where possible (28 D-71).
+7. Should the Theatre and VR gallery stay public, with `/battle` as the accessible equivalent? **Decided by default:** yes (28 D-52).
+8. Will the game ship as an App Store or Play Store app? **Decided by default:** no store build is planned, and none before account deletion exists (28 D-59).
+9. How many people does the company employ, and what is its yearly revenue? It decides the European Accessibility Act's exemption for very small companies. **Open (28 O-9).**
 
 ## Questions to ask Devon Glover
 
-Nothing here records his words, views or approvals. Ask him:
+Nothing here records his words, views or approvals. Asking him is part of `28-owner-decisions.md` O-1. Ask him:
 
 1. In your school work, which accommodations do students most often need for reciting or writing verse?
 2. Would you want your recorded lines captioned in every language, or in English only?
-3. Do you know teachers or students with disabilities who would test the game?

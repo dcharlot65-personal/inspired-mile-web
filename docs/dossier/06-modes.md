@@ -347,7 +347,7 @@ Set-up details: the deck is the saved active deck if it has at least three valid
 
 **In this release** (`fix/server-authority`). The `/variants/unlock` route is removed. Variants stay a solo feature kept on the device; the server only lists the variants an account already holds (`backend/src/variants/handlers.rs` on the branch). How the pages present this is pending.
 
-**Proposal.** Decide the variants' future (`04-content-and-card-bible.md` §8.4 and owner question 8): either paint them in the card style and show them, or fold the cities into the cards as a cosmetic and drop the 101,760 count. The hip-hop city framing (Brooklyn, Lagos, Kingston, Manila) is the brand's natural map for Devon Glover's touring; build it with him.
+**Proposal.** Decide the variants' future in the card redesign (`04-content-and-card-bible.md` §8.4 and owner question 8; until then they stay hidden and in the plan, and the 198 unused pictures are removed: `28-owner-decisions.md` D-39, D-33): either paint them in the card style and show them, or fold the cities into the cards as a cosmetic and drop the 101,760 count. The hip-hop city framing (Brooklyn, Lagos, Kingston, Manila) is the brand's natural map for Devon Glover's touring; build it with him.
 
 ---
 
@@ -414,14 +414,16 @@ Sources: design §3. The age gate covers every page except privacy, terms and ab
 
 ## 17. Owner questions
 
-1. Which hidden modes go into the navigation at launch: Theatre now; Story, Season and Classroom only once they work?
-2. Does the Theatre pay cards and earn the solo rewards, as `/battle` does?
-3. Is Story to be built for launch or after? It is the most-wanted missing mode by its own copy (design §6.5).
-4. Who may create tournaments: an operator only, or teachers too?
-5. Is Classroom kept for launch? If so, the "FERPA compliant" and "scores" promises must go; who decides rostering (Clever, ClassLink, LTI 1.3)? Google Workspace for Education sign-in would conflict with ADR 0009 ("no passwords, no Google"): revisit that only by an explicit owner decision.
-6. Are marketplace sales off for teen and classroom accounts?
-7. Will online play stay English only at launch, and which language comes next?
-8. Is verse text to be stored for asynchronous "ghost" duels, with the author's consent, or does the two-minute rule stay absolute?
-9. Do the 3D viewer and the VR gallery stay, change, or go?
-10. Are the city variants kept? If so, how are they earned once `/variants/unlock` is removed?
-11. Should teen accounts be kept out of quick match with adult strangers?
+Settled on 2026-11-19 in `28-owner-decisions.md`: decided by default under the owner's standing rules where a sensible default existed; open only where it needs the owner's money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+
+1. Which hidden modes go into the navigation at launch? **Decided by default:** the Theatre goes into the Play menu now (28 D-40); Story, Season and Classroom stay hidden until each can be played end to end (28 D-39, D-51).
+2. Does the Theatre pay cards and earn the solo rewards, as `/battle` does? **Decided by default:** yes (28 D-46).
+3. Is Story built for launch or after? **Decided by default:** it is finished first of the hidden systems, as the first campaign (28 D-39; `21-production-plan-and-roadmap.md` M12).
+4. Who may create tournaments? **Decided by default:** tournaments are hidden until a page can play them; then staff only, with names filtered, and under-18s only in class or teen-only tournaments (28 D-19).
+5. Is Classroom kept for launch, and who decides rostering? **Decided by default:** the "FERPA compliant" and "scores" promises come off now (R7); the roster page stays reachable by link only until classroom v1 is built; rostering by Clever and ClassLink, and Google sign-in only by an explicit owner decision (28 D-51).
+6. Are marketplace sales off for teen and classroom accounts? **Decided by the owner (2026-11-19, R10):** yes; the marketplace and referral are for adults only (28 D-06).
+7. Will online play stay English only at launch, and which language comes next? **Decided (2026-11-17):** English only at launch; **decided by default:** the next language is the first that the Rust engine reproduces exactly and that has a native reviewer (28 D-48).
+8. Is verse text stored for "ghost" duels, or does the two-minute rule stay absolute? **Decided by default:** the two-minute rule stays until ghost duels are designed with the author's consent (28 D-20).
+9. Do the 3D viewer and the VR gallery stay, change or go? **Decided by default:** the 3D viewer is hidden for cards without files (28 D-39); the VR gallery stays public, with `/battle` named as its accessible equivalent (28 D-52); new 3D and AR work comes after the duel has players, an order and not a cut (28 D-54).
+10. Are the city variants kept, and how are they earned once `/variants/unlock` is removed? **Decided by default:** they stay in the plan, hidden from players until they have a job in the duel; how they are earned is set when they return (28 D-39).
+11. Should teen accounts be kept out of quick match with adult strangers? **Decided by the owner (2026-11-19, R14):** yes; online play is by private room only at launch, then adults-only quick match (28 D-02).
