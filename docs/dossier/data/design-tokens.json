@@ -1,0 +1,1940 @@
+{
+  "$description": "Sonnet Man design tokens in the W3C Design Tokens Community Group format (first stable version 2025.10). Read from src/styles/global.css and the classes the pages use at commit 0d6df6ef. Every token carries $extensions.com.inspiredmile.dossier.status: \"as-built\" (in the code), \"as-built (unused)\", or \"proposed\" (a recommendation in 10-ux-flows-and-design-system.md, not in the code). contrastOnObsidian950 is a WCAG 2 contrast ratio computed for this document against the page background #0d0b09; it was not measured in a browser. Draft for the team, 2026-11-19.",
+  "color": {
+    "gold": {
+      "$description": "The gold ramp, defined in the @theme block of src/styles/global.css.",
+      "50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9922,
+            0.9725,
+            0.9098
+          ],
+          "alpha": 1.0,
+          "hex": "#fdf8e8"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:25",
+            "contrastOnObsidian950": 18.49
+          }
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9804,
+            0.9373,
+            0.7725
+          ],
+          "alpha": 1.0,
+          "hex": "#faefc5"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:26",
+            "contrastOnObsidian950": 17.04
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9608,
+            0.8745,
+            0.549
+          ],
+          "alpha": 1.0,
+          "hex": "#f5df8c"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:27",
+            "contrastOnObsidian950": 14.8
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9412,
+            0.7882,
+            0.3059
+          ],
+          "alpha": 1.0,
+          "hex": "#f0c94e"
+        },
+        "$description": "Headline accent, the middle stop of text-gradient; the home card name.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:28",
+            "contrastOnObsidian950": 12.32
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9098,
+            0.7059,
+            0.1255
+          ],
+          "alpha": 1.0,
+          "hex": "#e8b420"
+        },
+        "$description": "The primary accent: active navigation, form names, scores, ink, links on hover, btn-secondary text, Theatre accents.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:29",
+            "contrastOnObsidian950": 10.27
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8314,
+            0.5882,
+            0.0588
+          ],
+          "alpha": 1.0,
+          "hex": "#d4960f"
+        },
+        "$description": "btn-primary fill; focus border at 50% on the verse box; borders at 20-40%.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:30",
+            "contrastOnObsidian950": 7.64
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7176,
+            0.4549,
+            0.0392
+          ],
+          "alpha": 1.0,
+          "hex": "#b7740a"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:31",
+            "contrastOnObsidian950": 5.16
+          }
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5725,
+            0.3333,
+            0.0471
+          ],
+          "alpha": 1.0,
+          "hex": "#92550c"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:32",
+            "contrastOnObsidian950": 3.3
+          }
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4745,
+            0.2667,
+            0.0706
+          ],
+          "alpha": 1.0,
+          "hex": "#794412"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:33",
+            "contrastOnObsidian950": 2.48
+          }
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4039,
+            0.2196,
+            0.0824
+          ],
+          "alpha": 1.0,
+          "hex": "#673815"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:34",
+            "contrastOnObsidian950": 2.01
+          }
+        }
+      }
+    },
+    "obsidian": {
+      "$description": "The obsidian ramp, defined in the @theme block of src/styles/global.css.",
+      "50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9569,
+            0.9529,
+            0.949
+          ],
+          "alpha": 1.0,
+          "hex": "#f4f3f2"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:36",
+            "contrastOnObsidian950": 17.73
+          }
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8902,
+            0.8824,
+            0.8706
+          ],
+          "alpha": 1.0,
+          "hex": "#e3e1de"
+        },
+        "$description": "Body text (body default).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:37",
+            "contrastOnObsidian950": 15.05
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7882,
+            0.7686,
+            0.7451
+          ],
+          "alpha": 1.0,
+          "hex": "#c9c4be"
+        },
+        "$description": "Score numbers, form brief.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:38",
+            "contrastOnObsidian950": 11.34
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6627,
+            0.6314,
+            0.5922
+          ],
+          "alpha": 1.0,
+          "hex": "#a9a197"
+        },
+        "$description": "Navigation links, page intros, secondary text.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:39",
+            "contrastOnObsidian950": 7.7
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5647,
+            0.5216,
+            0.4706
+          ],
+          "alpha": 1.0,
+          "hex": "#908578"
+        },
+        "$description": "Notes, quotes on cards, chip sub-lines. Lowest step that passes 4.5:1 on the page background.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:40",
+            "contrastOnObsidian950": 5.44
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.498,
+            0.4588,
+            0.4039
+          ],
+          "alpha": 1.0,
+          "hex": "#7f7567"
+        },
+        "$description": "Small labels (uppercase field labels, craft so far, checklist detail). Fails 4.5:1 on the page (4.34) and on card-glass (4.12).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:41",
+            "contrastOnObsidian950": 4.34
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.4235,
+            0.3804,
+            0.3412
+          ],
+          "alpha": 1.0,
+          "hex": "#6c6157"
+        },
+        "$description": "Seed note under the duel, unmet checklist marker, mobile menu group labels. Fails 4.5:1 (3.26).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:42",
+            "contrastOnObsidian950": 3.26
+          }
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3451,
+            0.3059,
+            0.2824
+          ],
+          "alpha": 1.0,
+          "hex": "#584e48"
+        },
+        "$description": "Borders of panels, inputs and chips (2.43:1 on the page: below 3:1 for non-text contrast).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:43",
+            "contrastOnObsidian950": 2.43
+          }
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.298,
+            0.2627,
+            0.2471
+          ],
+          "alpha": 1.0,
+          "hex": "#4c433f"
+        },
+        "$description": "Progress-bar track, hover fills.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:44",
+            "contrastOnObsidian950": 2.04
+          }
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.102,
+            0.0902,
+            0.0784
+          ],
+          "alpha": 1.0,
+          "hex": "#1a1714"
+        },
+        "$description": "Panels, inputs, selects (card-glass at 60%).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:45",
+            "contrastOnObsidian950": 1.1
+          }
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.051,
+            0.0431,
+            0.0353
+          ],
+          "alpha": 1.0,
+          "hex": "#0d0b09"
+        },
+        "$description": "Page background; manifest theme and background colour.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:46",
+            "contrastOnObsidian950": 1.0
+          }
+        }
+      }
+    },
+    "crimson": {
+      "$description": "The crimson ramp, defined in the @theme block of src/styles/global.css.",
+      "50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9961,
+            0.949,
+            0.949
+          ],
+          "alpha": 1.0,
+          "hex": "#fef2f2"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:48",
+            "contrastOnObsidian950": 17.96
+          }
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9961,
+            0.8863,
+            0.8863
+          ],
+          "alpha": 1.0,
+          "hex": "#fee2e2"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:49",
+            "contrastOnObsidian950": 16.08
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9961,
+            0.7922,
+            0.7922
+          ],
+          "alpha": 1.0,
+          "hex": "#fecaca"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:50",
+            "contrastOnObsidian950": 13.58
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9882,
+            0.6471,
+            0.6471
+          ],
+          "alpha": 1.0,
+          "hex": "#fca5a5"
+        },
+        "$description": "Curse notice text.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:51",
+            "contrastOnObsidian950": 10.35
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9725,
+            0.4431,
+            0.4431
+          ],
+          "alpha": 1.0,
+          "hex": "#f87171"
+        },
+        "$description": "ATK stat, sign-out hover, danger text.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:52",
+            "contrastOnObsidian950": 7.1
+          }
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8627,
+            0.149,
+            0.149
+          ],
+          "alpha": 1.0,
+          "hex": "#dc2626"
+        },
+        "$description": "btn-danger fill; Live badge dot; curse notice at 10-30%.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:53",
+            "contrastOnObsidian950": 4.07
+          }
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7255,
+            0.1098,
+            0.1098
+          ],
+          "alpha": 1.0,
+          "hex": "#b91c1c"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:54",
+            "contrastOnObsidian950": 3.04
+          }
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6,
+            0.1059,
+            0.1059
+          ],
+          "alpha": 1.0,
+          "hex": "#991b1b"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:55",
+            "contrastOnObsidian950": 2.36
+          }
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.498,
+            0.1137,
+            0.1137
+          ],
+          "alpha": 1.0,
+          "hex": "#7f1d1d"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:56",
+            "contrastOnObsidian950": 1.96
+          }
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.2706,
+            0.0392,
+            0.0392
+          ],
+          "alpha": 1.0,
+          "hex": "#450a0a"
+        },
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:57",
+            "contrastOnObsidian950": 1.22
+          }
+        }
+      }
+    },
+    "tailwind-default": {
+      "$description": "Tailwind 4 default hues the game uses beside its own ramps (rarity, stats, checklist marks). Values read from tailwindcss 4.1.18 theme.css; the game locks tailwindcss 4.3.5, so confirm they are unchanged. hex is an sRGB conversion made for this document.",
+      "emerald-400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.765,
+            0.177,
+            163.223
+          ],
+          "alpha": 1,
+          "hex": "#00d492"
+        },
+        "$description": "Uncommon rarity text; HP stat; met checklist mark.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:733; src/pages/battle.astro:633",
+            "contrastOnObsidian950": 10.13
+          }
+        }
+      },
+      "blue-400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.707,
+            0.165,
+            254.624
+          ],
+          "alpha": 1,
+          "hex": "#51a2ff"
+        },
+        "$description": "Rare rarity text; DEF stat.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:734; src/pages/collection.astro:111",
+            "contrastOnObsidian950": 7.45
+          }
+        }
+      },
+      "purple-400": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.714,
+            0.203,
+            305.504
+          ],
+          "alpha": 1,
+          "hex": "#c27aff"
+        },
+        "$description": "Epic rarity text; chosen relic or potion border (at 70%).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:735; src/pages/battle.astro:730",
+            "contrastOnObsidian950": 7.04
+          }
+        }
+      },
+      "white": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 1,
+          "hex": "#ffffff"
+        },
+        "$description": "btn-danger text (4.83:1 on crimson-500).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:92-95"
+          }
+        }
+      }
+    },
+    "rarity": {
+      "$description": "Rarity pill colours: text colour on a translucent fill of the same hue (src/lib/cards.ts:731-737). Rarity is also written as a word on the pill, so it is not shown by colour alone.",
+      "common": {
+        "$value": "{color.obsidian.400}",
+        "$description": "Common: text obsidian-400 on obsidian-700 at 50%. Pill contrast about 3.60:1 over card-glass (computed): below 4.5:1.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:732"
+          }
+        }
+      },
+      "uncommon": {
+        "$value": "{color.tailwind-default.emerald-400}",
+        "$description": "Uncommon: emerald-400 on emerald-500 at 20%.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:733"
+          }
+        }
+      },
+      "rare": {
+        "$value": "{color.tailwind-default.blue-400}",
+        "$description": "Rare: blue-400 on blue-500 at 20%.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:734"
+          }
+        }
+      },
+      "epic": {
+        "$value": "{color.tailwind-default.purple-400}",
+        "$description": "Epic: purple-400 on purple-500 at 20%.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:735"
+          }
+        }
+      },
+      "legendary": {
+        "$value": "{color.gold.400}",
+        "$description": "Legendary: gold-400 on gold-500 at 20% (about 7.59:1, computed).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/cards.ts:736"
+          }
+        }
+      }
+    },
+    "stat": {
+      "$description": "ATK, DEF and HP labels on character cards. The stats play no part in a duel (sources/as-built-design.md section 1.3).",
+      "atk": {
+        "$value": "{color.crimson.400}",
+        "$description": "ATK.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/pages/collection.astro:111"
+          }
+        }
+      },
+      "def": {
+        "$value": "{color.tailwind-default.blue-400}",
+        "$description": "DEF.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/pages/collection.astro:112"
+          }
+        }
+      },
+      "hp": {
+        "$value": "{color.tailwind-default.emerald-400}",
+        "$description": "HP.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/pages/collection.astro:113"
+          }
+        }
+      }
+    },
+    "glow": {
+      "$description": "Translucent gold used by glow-gold and pulse-glow.",
+      "gold-15": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8314,
+            0.5882,
+            0.0588
+          ],
+          "alpha": 0.15,
+          "hex": "#d4960f"
+        },
+        "$description": "glow-gold inner shadow colour, rgba(212,150,15,0.15).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:125-129"
+          }
+        }
+      },
+      "gold-05": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8314,
+            0.5882,
+            0.0588
+          ],
+          "alpha": 0.05,
+          "hex": "#d4960f"
+        },
+        "$description": "glow-gold outer shadow colour, rgba(212,150,15,0.05).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:125-129"
+          }
+        }
+      }
+    },
+    "semantic": {
+      "$description": "PROPOSED semantic layer (10-ux-flows-and-design-system.md). Not in the code: pages use the ramp steps directly. Each alias is chosen so that text passes 4.5:1 on surface.page and surface.panel.",
+      "surface": {
+        "page": {
+          "$value": "{color.obsidian.950}",
+          "$description": "Page background.",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "panel": {
+          "$value": "{color.obsidian.900}",
+          "$description": "Panels and inputs (card-glass is this at 60% over the page).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "raised": {
+          "$value": "{color.obsidian.800}",
+          "$description": "Hover and selected fills.",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{color.obsidian.100}",
+          "$description": "Body and verse text (15.05:1).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "secondary": {
+          "$value": "{color.obsidian.300}",
+          "$description": "Intros and secondary text (7.70:1).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "muted": {
+          "$value": "{color.obsidian.400}",
+          "$description": "Smallest permitted text colour, replacing obsidian-500 and -600 wherever text is essential (5.44:1 on the page, 5.16:1 on card-glass).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "accent": {
+          "$value": "{color.gold.400}",
+          "$description": "Accent text and active states (10.27:1).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "on-accent": {
+          "$value": "{color.obsidian.950}",
+          "$description": "Text on a gold fill (7.64:1 on gold-500).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "danger": {
+          "$value": "{color.crimson.400}",
+          "$description": "Danger and curse text (7.10:1).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "success": {
+          "$value": "{color.tailwind-default.emerald-400}",
+          "$description": "Met checks and wins (10.13:1).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        }
+      },
+      "border": {
+        "control": {
+          "$value": "{color.obsidian.500}",
+          "$description": "Borders that identify a control (inputs, chips, selects): obsidian-500 gives 4.34:1 on the page, above the 3:1 non-text minimum that obsidian-700 (2.43:1) misses.",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        },
+        "decorative": {
+          "$value": "{color.obsidian.700}",
+          "$description": "Borders that only group content.",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "$value": "{color.gold.400}",
+          "$description": "A 2 px solid focus ring with a 2 px offset on every interactive element (10.27:1 on the page).",
+          "$extensions": {
+            "com.inspiredmile.dossier": {
+              "status": "proposed"
+            }
+          }
+        }
+      }
+    }
+  },
+  "font": {
+    "$description": "Font families (src/styles/global.css:59-61; files in public/fonts, Latin and Latin-ext subsets only).",
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Playfair Display",
+        "Georgia",
+        "serif"
+      ],
+      "$description": "Every heading, card names, verses (opponent verse and the verse box).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:59,293-295"
+        }
+      }
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ],
+      "$description": "Body text.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:60,289-291"
+        }
+      }
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "JetBrains Mono",
+        "monospace"
+      ],
+      "$description": "Card ids, round label, scores, seed.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:61"
+        }
+      }
+    },
+    "unused": {
+      "$description": "Declared with @font-face and shipped (88,232 bytes of woff2), used by no class or token. Proposed: remove.",
+      "outfit": {
+        "$type": "fontFamily",
+        "$value": [
+          "Outfit"
+        ],
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built (unused)",
+            "source": "src/styles/global.css:246-266; public/fonts/fonts.css"
+          }
+        }
+      },
+      "space-grotesk": {
+        "$type": "fontFamily",
+        "$value": [
+          "Space Grotesk"
+        ],
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built (unused)",
+            "source": "public/fonts/fonts.css"
+          }
+        }
+      }
+    }
+  },
+  "font-weight": {
+    "$description": "Weights used (Tailwind defaults).",
+    "medium": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "semibold": {
+      "$type": "fontWeight",
+      "$value": 600,
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "bold": {
+      "$type": "fontWeight",
+      "$value": 700,
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    }
+  },
+  "font-size": {
+    "$description": "Type sizes in use (Tailwind 4 defaults, 1 rem = 16 px). 10 px and 11 px arbitrary sizes also appear (card chip sub-line, checklist detail, mobile menu group label).",
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      },
+      "$description": "line height 1.3333",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.875,
+        "unit": "rem"
+      },
+      "$description": "line height 1.4286",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "base": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      },
+      "$description": "line height 1.5",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.125,
+        "unit": "rem"
+      },
+      "$description": "line height 1.5556",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      },
+      "$description": "line height 1.4",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      },
+      "$description": "line height 1.3333",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.875,
+        "unit": "rem"
+      },
+      "$description": "line height 1.2",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "4xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.25,
+        "unit": "rem"
+      },
+      "$description": "line height 1.1111",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "5xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3,
+        "unit": "rem"
+      },
+      "$description": "line height 1",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "arbitrary-10px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 10,
+        "unit": "px"
+      },
+      "$description": "text-[10px]: card chip sub-line (device or curse) in the duel; mobile menu group labels.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:300; src/layouts/BaseLayout.astro:427,432"
+        }
+      }
+    },
+    "arbitrary-11px": {
+      "$type": "dimension",
+      "$value": {
+        "value": 11,
+        "unit": "px"
+      },
+      "$description": "text-[11px]: checklist detail; \"sign out everywhere\".",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:638"
+        }
+      }
+    },
+    "proposed-minimum": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "PROPOSED: the smallest text size on any page; replaces the 10 px and 11 px sizes.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "proposed"
+        }
+      }
+    }
+  },
+  "line-height": {
+    "$description": "Line heights.",
+    "relaxed": {
+      "$type": "number",
+      "$value": 1.625,
+      "$description": "leading-relaxed: verse box, card quotes.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    }
+  },
+  "letter-spacing": {
+    "$description": "Letter spacing. Set to 0 for Arabic, Hindi and Thai pages (src/styles/global.css:131-139).",
+    "wide": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.025,
+        "unit": "em"
+      },
+      "$description": "tracking-wide",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "wider": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.05,
+        "unit": "em"
+      },
+      "$description": "tracking-wider: uppercase field labels.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "widest": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.1,
+        "unit": "em"
+      },
+      "$description": "tracking-widest: mobile menu group labels.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    }
+  },
+  "typography": {
+    "$description": "Composite text styles as the duel screen uses them.",
+    "page-title": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontSize": {
+          "value": 3,
+          "unit": "rem"
+        },
+        "fontWeight": "{font-weight.bold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        },
+        "lineHeight": 1
+      },
+      "$description": "h1 on wide screens (text-4xl on phones, text-5xl from sm).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:17"
+        }
+      }
+    },
+    "form-name": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontSize": "{font-size.xl}",
+        "fontWeight": "{font-weight.bold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        },
+        "lineHeight": 1.4
+      },
+      "$description": "The round's form name, in gold-400.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:101"
+        }
+      }
+    },
+    "verse": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.display}",
+        "fontSize": "{font-size.lg}",
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        },
+        "lineHeight": 1.625
+      },
+      "$description": "Opponent verse and the player's verse box.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:124,145-146"
+        }
+      }
+    },
+    "field-label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.body}",
+        "fontSize": "{font-size.xs}",
+        "fontWeight": 400,
+        "letterSpacing": "{letter-spacing.wider}",
+        "lineHeight": 1.3333
+      },
+      "$description": "Uppercase field labels in obsidian-500.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:30"
+        }
+      }
+    },
+    "meta-mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontSize": "{font-size.xs}",
+        "fontWeight": 400,
+        "letterSpacing": "{letter-spacing.wider}",
+        "lineHeight": 1.3333
+      },
+      "$description": "Round label, card ids, scores.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:100"
+        }
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.body}",
+        "fontSize": "{font-size.base}",
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        },
+        "lineHeight": 1.5
+      },
+      "$description": "Running text.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:289-291"
+        }
+      }
+    }
+  },
+  "space": {
+    "$description": "Spacing: Tailwind 4 multiplies one base unit (0.25 rem = 4 px).",
+    "unit": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      },
+      "$description": "The spacing base; p-4 is 4 units (1 rem).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "section-x-phone": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      },
+      "$description": "section-padding horizontal, phones (px-4).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:121-123"
+        }
+      }
+    },
+    "section-x-sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      },
+      "$description": "section-padding horizontal from sm (px-6).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:121-123"
+        }
+      }
+    },
+    "section-x-lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      },
+      "$description": "section-padding horizontal from lg (px-8).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:121-123"
+        }
+      }
+    },
+    "section-y-phone": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      },
+      "$description": "section-padding vertical, phones (py-16).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:121-123"
+        }
+      }
+    },
+    "section-y-sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "rem"
+      },
+      "$description": "section-padding vertical from sm (py-24).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:121-123"
+        }
+      }
+    },
+    "header-height": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      },
+      "$description": "Fixed header; main content starts below it (pt-16).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/layouts/BaseLayout.astro:464"
+        }
+      }
+    },
+    "target-minimum": {
+      "$type": "dimension",
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      },
+      "$description": "PROPOSED: the smallest hit area of any control (WCAG 2.2 SC 2.5.8); 44 px preferred for the duel controls on phones.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "proposed"
+        }
+      }
+    }
+  },
+  "radius": {
+    "$description": "Corner radii.",
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      },
+      "$description": "rounded-sm: curse notice, opponent portrait, element tags.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      },
+      "$description": "rounded-lg: buttons, inputs, chips.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      },
+      "$description": "rounded-xl: card-glass panels, menus.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:97-99"
+        }
+      }
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      },
+      "$description": "rounded-2xl: the home hero card, story scenes.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/index.astro:92"
+        }
+      }
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": {
+        "value": 9999,
+        "unit": "px"
+      },
+      "$description": "rounded-full: badges, rarity pills, avatar.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "tailwindcss default theme"
+        }
+      }
+    }
+  },
+  "blur": {
+    "$description": "Backdrop blur.",
+    "panel": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "card-glass backdrop-blur-md.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:97-99"
+        }
+      }
+    },
+    "menu": {
+      "$type": "dimension",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Dropdown and mobile menu backdrop-blur-lg.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/layouts/BaseLayout.astro:195,220,423"
+        }
+      }
+    }
+  },
+  "shadow": {
+    "glow-gold": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "{color.glow.gold-15}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 0,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 30,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": "{color.glow.gold-05}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 0,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 60,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "Soft gold halo on the home hero card.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:125-129"
+        }
+      }
+    }
+  },
+  "gradient": {
+    "text-gold": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "{color.gold.400}",
+          "position": 0
+        },
+        {
+          "color": "{color.gold.300}",
+          "position": 0.5
+        },
+        {
+          "color": "{color.gold.500}",
+          "position": 1
+        }
+      ],
+      "$description": "text-gradient: left-to-right gold on headline accents (clipped to the text).",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/styles/global.css:101-103"
+        }
+      }
+    },
+    "progress": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "{color.gold.500}",
+          "position": 0
+        },
+        {
+          "color": "{color.gold.400}",
+          "position": 1
+        }
+      ],
+      "$description": "Model download bar.",
+      "$extensions": {
+        "com.inspiredmile.dossier": {
+          "status": "as-built",
+          "source": "src/pages/battle.astro:83"
+        }
+      }
+    }
+  },
+  "motion": {
+    "$description": "Durations and easing. No prefers-reduced-motion rule exists anywhere in src (sources/as-built-design.md section 8).",
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": {
+          "value": 150,
+          "unit": "ms"
+        },
+        "$description": "Tailwind default transition; dropdown menus.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/layouts/BaseLayout.astro:217"
+          }
+        }
+      },
+      "base": {
+        "$type": "duration",
+        "$value": {
+          "value": 300,
+          "unit": "ms"
+        },
+        "$description": "Buttons, chips, card hover zoom, progress bar.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:82-95"
+          }
+        }
+      },
+      "card-flip": {
+        "$type": "duration",
+        "$value": {
+          "value": 600,
+          "unit": "ms"
+        },
+        "$description": "Card flip on hover.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:303-305"
+          }
+        }
+      },
+      "pulse-glow": {
+        "$type": "duration",
+        "$value": {
+          "value": 3000,
+          "unit": "ms"
+        },
+        "$description": "Looping gold glow (infinite).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:321-328"
+          }
+        }
+      },
+      "float": {
+        "$type": "duration",
+        "$value": {
+          "value": 4000,
+          "unit": "ms"
+        },
+        "$description": "Looping float of the home card (infinite).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:331-338"
+          }
+        }
+      },
+      "scan-line": {
+        "$type": "duration",
+        "$value": {
+          "value": 2000,
+          "unit": "ms"
+        },
+        "$description": "Looping scan line (infinite).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:341-348"
+          }
+        }
+      },
+      "typewriter": {
+        "$type": "duration",
+        "$value": {
+          "value": 2000,
+          "unit": "ms"
+        },
+        "$description": "Typewriter reveal (once).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/styles/global.css:351-360"
+          }
+        }
+      },
+      "music-duck": {
+        "$type": "duration",
+        "$value": {
+          "value": 300,
+          "unit": "ms"
+        },
+        "$description": "Music falls to 0.15 while the voice speaks.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/audio-manager.ts:36-38"
+          }
+        }
+      },
+      "music-unduck": {
+        "$type": "duration",
+        "$value": {
+          "value": 500,
+          "unit": "ms"
+        },
+        "$description": "Music returns after the voice.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "src/lib/audio-manager.ts:36-38"
+          }
+        }
+      },
+      "feedback-max": {
+        "$type": "duration",
+        "$value": {
+          "value": 100,
+          "unit": "ms"
+        },
+        "$description": "PROPOSED: the longest delay between an input and its visible confirmation (research/sota-design-2026-11.md section 4).",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "proposed"
+          }
+        }
+      },
+      "reduced": {
+        "$type": "duration",
+        "$value": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "$description": "PROPOSED: every looping or decorative animation under prefers-reduced-motion: reduce.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "proposed"
+          }
+        }
+      }
+    },
+    "easing": {
+      "standard": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.4,
+          0,
+          0.2,
+          1
+        ],
+        "$description": "Tailwind ease-in-out and default transition timing.",
+        "$extensions": {
+          "com.inspiredmile.dossier": {
+            "status": "as-built",
+            "source": "tailwindcss default theme"
+          }
+        }
+      }
+    }
+  }
+}
