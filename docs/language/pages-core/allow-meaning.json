@@ -2131,14 +2131,6 @@
   },
   {
    "lang": "zh",
-   "key": "about.free.earn.title",
-   "text": "赢取点数",
-   "flag": "cos 0.1899, LaBSE 0.5309, chrF 9.7",
-   "back": "Number of points won",
-   "reason": "赢取点数, 'earn points': 点数 is this area's word for credits throughout (about.free.body, about.free.safe.l2)."
-  },
-  {
-   "lang": "zh",
    "key": "achievements.first-blood.name",
    "text": "首战告捷",
    "flag": "cos 0.5159, LaBSE 0.5692, chrF 41.1",
@@ -4128,6 +4120,38 @@
    "flag": "cos 0.5409, LaBSE 0.431, chrF 18.2",
    "back": "Korean Wave Rhythm",
    "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "fr",
+   "key": "world-map.intro",
+   "text": "Les personnages de Shakespeare parcourent le globe. Chaque ville accorde une capacité de combat unique. Débloquez des variantes en réussissant un quiz sans faute.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare’s characters travel the globe, and each city grants a unique combat ability. Unlock variations by completing a quiz without failing.",
+   "reason": "\"Sans faute\" (without a mistake) is how French says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "pl",
+   "key": "world-map.intro",
+   "text": "Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty, przechodząc quiz bez jednego błędu.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the world and each city gives you a unique battle ability. Unlock variants by completing the quiz without a single mistake.",
+   "reason": "\"Bez jednego błędu\" (without a single mistake) is how Polish says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "ru",
+   "key": "world-map.intro",
+   "text": "Персонажи Шекспира путешествуют по планете. Каждый город даёт особую боевую способность. Открывай варианты, пройдя викторину без единой ошибки.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the planet. Each city gives a special combat ability. Unlock options by completing the quiz without a single mistake.",
+   "reason": "«Без единой ошибки» (without a single mistake) is how Russian says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "hi",
+   "key": "world-map.intro",
+   "text": "शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। बिना किसी गलती के प्रश्नोत्तरी का एक दौर पूरा करके संस्करण खोलें।",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the world. Each city gives a unique ability to war. Open the version by completing a round of quizzes without making any mistakes.",
+   "reason": "\"बिना किसी गलती के\" (without any mistake) is how Hindi says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
   }
  ]
 }

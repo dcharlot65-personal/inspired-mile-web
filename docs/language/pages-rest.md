@@ -747,6 +747,35 @@ sentences. With them laid over the strings (`LANGQA_OVERLAY`), that branch's too
 hit (the same false alarms), and back-translation of each proposal at cos 0.66 to 0.98 and LaBSE
 0.84 to 0.93, none flagged.
 
+## Fourth pass: what the classroom and the VR gallery no longer promise (2026-11-19, fix/predeploy)
+
+Owner decision D-03 took off the site what the code does not do. In these areas, in sixteen
+languages:
+
+| key | was (English) | now |
+|---|---|---|
+| `classroom.meta.description`, `classroom.intro` | teachers "follow their students' progress" | teachers set trivia and challenges for their students (Classroom Mode keeps class names, members and assignments, nothing else: `privacy.astro`) |
+| `classroom.student.check3` | "my teacher can see my progress and what I do in the classroom" | "my teacher can see that I joined the classroom, and when" (the class list shows each member's joining date) |
+| `classroom.wizard.s4.*` (4 keys) | a tour step "Follow progress", with "FERPA compliant" | removed; the tour has three steps |
+| `vr.meta.description`, `vr.intro` | "walk through your collection" | "every card in the game" (`vr-engine.ts` shows the catalogue) |
+
+Checked with this area's own tools (`lang-host.sh`, each step with its own output folder):
+`bt-merge.mjs stale` found 105 strings: these 75, and 30 that earlier merges had changed
+(`pwa.*`, `market.*`, Thai sign-in wording, Vietnamese *xoá*). MADLAD-400 on the Studio and LaBSE
+scored them (`bt-pairs`), `bt-merge.mjs merge` put them in (and dropped the 60 rows of the removed
+tour step), the whole file was ranked again (`rank`, the iMac Pro), and Hunspell and LanguageTool ran
+over every string (`spell`, `grammar`, the iMac Pro, with the pipeline's own installation; the
+Studio was over `rb`'s load limit). The spelling result agrees with the committed one word for word
+but for words that left with the changed strings (FERPA-konform, koleksimu, Shakespeare-mu, and
+the Vietnamese spellings with the accent moved).
+
+- The five strings: none flagged in any language; MiniLM cosine 0.64 or more (medians 0.81 to
+  0.95), LaBSE 0.66 or more, and each one's own English ranked nearest (rank 1) in all fifteen.
+- LanguageTool on them: pt *quizzes* (the word the strings used before, and the terms record's),
+  pt WORDINESS on *pode ver que* (a style hint), ar *وVision* (the conjunction written onto the
+  product name, as the old string did). Read: none is an error.
+- `summarise.mjs docs/language/results/pages-rest --strict`: exit 0.
+
 ## Proof that the checks can fail
 
 `node scripts/pages-rest/mutate.mjs --browser` breaks one thing at a time on the build host,

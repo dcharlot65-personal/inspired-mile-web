@@ -4,7 +4,7 @@
   "en": {
    "checked": true,
    "code": "en-US",
-   "strings": 291,
+   "strings": 287,
    "hits": [
     {
      "key": "classroom.teacher.check1",
@@ -204,10 +204,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Classroom Mode",
-    "classroom.meta.description": "Teachers create classrooms, set Shakespeare trivia and challenges, and follow their students' progress.",
+    "classroom.meta.description": "Teachers create classrooms and set Shakespeare trivia and challenges for their students.",
     "classroom.badge": "Education",
     "classroom.title": "Classroom Mode",
-    "classroom.intro": "Create or join a classroom. Teachers set Shakespeare trivia and challenges, and follow their students' progress.",
+    "classroom.intro": "Create or join a classroom. Teachers set Shakespeare trivia and challenges for their students.",
     "classroom.gate.title": "Before you begin",
     "classroom.gate.body": "Classroom Mode is made for schools. Choose your role to continue.",
     "classroom.role.teacher": "I am a teacher",
@@ -222,7 +222,7 @@
     "classroom.student.intro": "Before you join a classroom, please confirm the following:",
     "classroom.student.check1": "My parent or legal guardian knows I am using Inspired Mile for schoolwork and has given permission.",
     "classroom.student.check2": "My teacher has given me a join code for a classroom.",
-    "classroom.student.check3": "I understand that my teacher can see my progress and what I do in the classroom.",
+    "classroom.student.check3": "I understand that my teacher can see that I joined the classroom, and when.",
     "classroom.student.continue": "Continue as a student",
     "classroom.join.tab": "Join a classroom",
     "classroom.create.tab": "Create a classroom",
@@ -272,10 +272,6 @@
     "classroom.wizard.s3.trivia": "5 multiple-choice questions on Shakespeare",
     "classroom.wizard.s3.challenge": "Fill in the missing words of famous quotations",
     "classroom.wizard.s3.battle": "A three-round duel of verses, judged on the device",
-    "classroom.wizard.s4.title": "Follow progress",
-    "classroom.wizard.s4.body": "See what each student has completed, their scores and the cards they have earned. The data stays inside the classroom: students see their own progress, and you see everyone's.",
-    "classroom.wizard.s4.visibility": "Who can see a student's progress",
-    "classroom.wizard.s4.ferpa": "FERPA compliant",
     "market.meta.description": "Buy and trade Shakespeare collectible cards with other players.",
     "market.intro": "Buy and trade cards with other players. Offer your duplicates for sale, or find the cards you are missing.",
     "market.tab.browse": "Browse",
@@ -396,9 +392,9 @@
     "viewer.card.glb.body": "An ordinary mesh shown with model-viewer. On a phone it can place the model in your room in augmented reality.",
     "viewer.card.ar.title": "AR on a phone",
     "viewer.card.ar.body": "In the GLB view on a phone, tap “View in AR” to see the card in your room.",
-    "vr.meta.description": "Walk through your Shakespeare card collection in virtual reality.",
+    "vr.meta.description": "Walk through every Shakespeare card in the game in virtual reality.",
     "vr.badge": "Virtual reality",
-    "vr.intro": "Walk through your collection in 3D. It works on Quest 3 and Vision Pro through WebXR, and with a mouse on a computer.",
+    "vr.intro": "Walk through every card in the game in 3D. It works on Quest 3 and Vision Pro through WebXR, and with a mouse on a computer.",
     "vr.enter": "Enter VR",
     "vr.status.loading": "Loading the 3D engine…",
     "vr.status.gallery": "The 3D gallery is loaded. Drag to look around, scroll to zoom.",
@@ -499,7 +495,7 @@
   "es": {
    "checked": true,
    "code": "es",
-   "strings": 293,
+   "strings": 289,
    "hits": [
     {
      "key": "classroom.role.teacherHint",
@@ -700,10 +696,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Modo Clase",
-    "classroom.meta.description": "Los docentes crean clases, ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.",
+    "classroom.meta.description": "Los docentes crean clases y ponen trivial y desafíos sobre Shakespeare a sus estudiantes.",
     "classroom.badge": "Educación",
     "classroom.title": "Modo Clase",
-    "classroom.intro": "Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.",
+    "classroom.intro": "Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare a sus estudiantes.",
     "classroom.gate.title": "Antes de empezar",
     "classroom.gate.body": "El Modo Clase está pensado para centros educativos. Elige tu papel para continuar.",
     "classroom.role.teacher": "Soy docente",
@@ -718,7 +714,7 @@
     "classroom.student.intro": "Antes de unirte a una clase, confirma lo siguiente:",
     "classroom.student.check1": "Mi padre, mi madre o mi tutor legal sabe que uso Inspired Mile para las tareas de clase y me ha dado permiso.",
     "classroom.student.check2": "Mi docente me ha dado un código de acceso a una clase.",
-    "classroom.student.check3": "Entiendo que mi docente puede ver mi progreso y lo que hago en la clase.",
+    "classroom.student.check3": "Entiendo que mi docente puede ver que me uní a la clase, y cuándo.",
     "classroom.student.continue": "Continuar como estudiante",
     "classroom.join.tab": "Unirse a una clase",
     "classroom.create.tab": "Crear una clase",
@@ -769,10 +765,6 @@
     "classroom.wizard.s3.trivia": "5 preguntas de opción múltiple sobre Shakespeare",
     "classroom.wizard.s3.challenge": "Completar las palabras que faltan en citas famosas",
     "classroom.wizard.s3.battle": "Un duelo de estrofas a tres rondas, juzgado en el dispositivo",
-    "classroom.wizard.s4.title": "Sigue el progreso",
-    "classroom.wizard.s4.body": "Consulta lo que ha completado cada estudiante, sus puntuaciones y las cartas que ha ganado. Los datos no salen de la clase: cada estudiante ve su propio progreso y tú ves el de todos.",
-    "classroom.wizard.s4.visibility": "Quién puede ver el progreso de un estudiante",
-    "classroom.wizard.s4.ferpa": "Conforme con la FERPA",
     "market.meta.description": "Compra e intercambia cartas coleccionables de Shakespeare con otros jugadores.",
     "market.intro": "Compra e intercambia cartas con otros jugadores. Pon a la venta tus repetidas o encuentra las que te faltan.",
     "market.tab.browse": "Explorar",
@@ -893,9 +885,9 @@
     "viewer.card.glb.body": "Una malla corriente mostrada con model-viewer. En un móvil puede colocar el modelo en tu habitación con realidad aumentada.",
     "viewer.card.ar.title": "AR en el móvil",
     "viewer.card.ar.body": "En la vista GLB de un móvil, toca «Ver en AR» para ver la carta en tu habitación.",
-    "vr.meta.description": "Recorre tu colección de cartas de Shakespeare en realidad virtual.",
+    "vr.meta.description": "Recorre todas las cartas de Shakespeare del juego en realidad virtual.",
     "vr.badge": "Realidad virtual",
-    "vr.intro": "Recorre tu colección en 3D. Funciona en Quest 3 y Vision Pro mediante WebXR, y con ratón en un ordenador.",
+    "vr.intro": "Recorre todas las cartas del juego en 3D. Funciona en Quest 3 y Vision Pro mediante WebXR, y con ratón en un ordenador.",
     "vr.enter": "Entrar en VR",
     "vr.status.loading": "Cargando el motor 3D…",
     "vr.status.gallery": "La galería 3D está cargada. Arrastra para mirar alrededor y usa la rueda para acercarte.",
@@ -997,7 +989,7 @@
   "fr": {
    "checked": true,
    "code": "fr",
-   "strings": 293,
+   "strings": 289,
    "hits": [
     {
      "key": "classroom.role.student",
@@ -1112,10 +1104,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Mode Classe",
-    "classroom.meta.description": "Les enseignants créent des classes, donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.",
+    "classroom.meta.description": "Les enseignants créent des classes et donnent des quiz et des défis sur Shakespeare à leurs élèves.",
     "classroom.badge": "Éducation",
     "classroom.title": "Mode Classe",
-    "classroom.intro": "Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.",
+    "classroom.intro": "Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare à leurs élèves.",
     "classroom.gate.title": "Avant de commencer",
     "classroom.gate.body": "Le Mode Classe est conçu pour les établissements scolaires. Choisissez votre rôle pour continuer.",
     "classroom.role.teacher": "Je suis enseignant ou enseignante",
@@ -1130,7 +1122,7 @@
     "classroom.student.intro": "Avant de rejoindre une classe, veuillez confirmer ce qui suit :",
     "classroom.student.check1": "Mon parent ou mon tuteur légal sait que j’utilise Inspired Mile pour mon travail scolaire et m’en a donné la permission.",
     "classroom.student.check2": "Mon enseignant m’a donné un code d’accès à une classe.",
-    "classroom.student.check3": "Je comprends que mon enseignant peut voir mes progrès et ce que je fais dans la classe.",
+    "classroom.student.check3": "Je comprends que mon enseignant peut voir que j’ai rejoint la classe, et quand.",
     "classroom.student.continue": "Continuer en tant qu’élève",
     "classroom.join.tab": "Rejoindre une classe",
     "classroom.create.tab": "Créer une classe",
@@ -1181,10 +1173,6 @@
     "classroom.wizard.s3.trivia": "5 questions à choix multiples sur Shakespeare",
     "classroom.wizard.s3.challenge": "Retrouver les mots manquants de citations célèbres",
     "classroom.wizard.s3.battle": "Un duel de strophes en trois manches, jugé sur l’appareil",
-    "classroom.wizard.s4.title": "Suivez les progrès",
-    "classroom.wizard.s4.body": "Consultez ce que chaque élève a terminé, ses scores et les cartes qu’il a gagnées. Les données restent dans la classe : chaque élève voit ses propres progrès, et vous voyez ceux de tous.",
-    "classroom.wizard.s4.visibility": "Qui peut voir les progrès d’un élève",
-    "classroom.wizard.s4.ferpa": "Conforme à la loi FERPA",
     "market.meta.description": "Achetez et échangez des cartes à collectionner Shakespeare avec d’autres joueurs.",
     "market.intro": "Achetez et échangez des cartes avec d’autres joueurs. Mettez vos doubles en vente ou trouvez les cartes qui vous manquent.",
     "market.tab.browse": "Parcourir",
@@ -1305,9 +1293,9 @@
     "viewer.card.glb.body": "Un maillage classique affiché avec model-viewer. Sur un téléphone, il peut placer le modèle dans votre pièce en réalité augmentée.",
     "viewer.card.ar.title": "AR sur téléphone",
     "viewer.card.ar.body": "Dans la vue GLB, sur un téléphone, touchez « Voir en AR » pour voir la carte dans votre pièce.",
-    "vr.meta.description": "Parcourez votre collection de cartes Shakespeare en réalité virtuelle.",
+    "vr.meta.description": "Parcourez toutes les cartes Shakespeare du jeu en réalité virtuelle.",
     "vr.badge": "Réalité virtuelle",
-    "vr.intro": "Parcourez votre collection en 3D. Elle fonctionne sur Quest 3 et Vision Pro grâce à WebXR, et à la souris sur un ordinateur.",
+    "vr.intro": "Parcourez toutes les cartes du jeu en 3D. La galerie fonctionne sur Quest 3 et Vision Pro grâce à WebXR, et à la souris sur un ordinateur.",
     "vr.enter": "Entrer en VR",
     "vr.status.loading": "Chargement du moteur 3D…",
     "vr.status.gallery": "La galerie 3D est chargée. Faites glisser pour regarder autour de vous, utilisez la molette pour zoomer.",
@@ -1409,21 +1397,8 @@
   "de": {
    "checked": true,
    "code": "de-DE",
-   "strings": 291,
+   "strings": 287,
    "hits": [
-    {
-     "key": "classroom.wizard.s4.ferpa",
-     "rule": "GERMAN_SPELLER_RULE",
-     "category": "TYPOS",
-     "message": "Möglicher Tippfehler gefunden.",
-     "text": "FERPA-konform",
-     "at": "FERPA-konform",
-     "suggestions": [
-      "ERP-konform",
-      "HEPA-konform",
-      "SEPA-konform"
-     ]
-    },
     {
      "key": "market.by",
      "rule": "UPPERCASE_SENTENCE_START",
@@ -1610,10 +1585,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Klassenmodus",
-    "classroom.meta.description": "Lehrkräfte legen Klassen an, stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.",
+    "classroom.meta.description": "Lehrkräfte legen Klassen an und stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.",
     "classroom.badge": "Bildung",
     "classroom.title": "Klassenmodus",
-    "classroom.intro": "Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.",
+    "classroom.intro": "Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.",
     "classroom.gate.title": "Bevor es losgeht",
     "classroom.gate.body": "Der Klassenmodus ist für Schulen gedacht. Wähle deine Rolle, um fortzufahren.",
     "classroom.role.teacher": "Ich bin Lehrkraft",
@@ -1628,7 +1603,7 @@
     "classroom.student.intro": "Bevor du einer Klasse beitrittst, bestätige bitte Folgendes:",
     "classroom.student.check1": "Ein Elternteil oder mein gesetzlicher Vormund weiß, dass ich Inspired Mile für die Schule nutze, und hat es erlaubt.",
     "classroom.student.check2": "Meine Lehrkraft hat mir einen Beitrittscode für eine Klasse gegeben.",
-    "classroom.student.check3": "Mir ist klar, dass meine Lehrkraft meinen Lernstand und meine Aktivitäten in der Klasse sehen kann.",
+    "classroom.student.check3": "Mir ist klar, dass meine Lehrkraft sehen kann, dass und wann ich der Klasse beigetreten bin.",
     "classroom.student.continue": "Als Schülerin oder Schüler fortfahren",
     "classroom.join.tab": "Klasse beitreten",
     "classroom.create.tab": "Klasse anlegen",
@@ -1678,10 +1653,6 @@
     "classroom.wizard.s3.trivia": "5 Multiple-Choice-Fragen zu Shakespeare",
     "classroom.wizard.s3.challenge": "Fehlende Wörter in berühmten Zitaten ergänzen",
     "classroom.wizard.s3.battle": "Ein Strophenduell über drei Runden, auf dem Gerät bewertet",
-    "classroom.wizard.s4.title": "Lernstand verfolgen",
-    "classroom.wizard.s4.body": "Sieh, was jede Schülerin und jeder Schüler erledigt hat, welche Wertungen erreicht und welche Karten verdient wurden. Die Daten bleiben in der Klasse: Schülerinnen und Schüler sehen ihren eigenen Lernstand, du siehst den aller.",
-    "classroom.wizard.s4.visibility": "Wer den Lernstand einer Schülerin oder eines Schülers sehen kann",
-    "classroom.wizard.s4.ferpa": "FERPA-konform",
     "market.meta.description": "Kaufe und tausche Shakespeare-Sammelkarten mit anderen Spielern.",
     "market.intro": "Kaufe und tausche Karten mit anderen Spielern. Biete deine doppelten Karten an oder finde die, die dir fehlen.",
     "market.tab.browse": "Stöbern",
@@ -1802,9 +1773,9 @@
     "viewer.card.glb.body": "Ein gewöhnliches Mesh, angezeigt mit model-viewer. Auf dem Handy kann es das Modell in erweiterter Realität in dein Zimmer stellen.",
     "viewer.card.ar.title": "AR auf dem Handy",
     "viewer.card.ar.body": "Tipp in der GLB-Ansicht auf dem Handy auf „In AR ansehen“, um die Karte in deinem Zimmer zu sehen.",
-    "vr.meta.description": "Geh in der virtuellen Realität durch deine Shakespeare-Kartensammlung.",
+    "vr.meta.description": "Geh in der virtuellen Realität durch alle Shakespeare-Karten des Spiels.",
     "vr.badge": "Virtuelle Realität",
-    "vr.intro": "Geh in 3D durch deine Sammlung. Sie läuft über WebXR auf Quest 3 und Vision Pro und mit der Maus am Computer.",
+    "vr.intro": "Geh in 3D durch alle Karten des Spiels. Die Galerie läuft über WebXR auf Quest 3 und Vision Pro und mit der Maus am Computer.",
     "vr.enter": "VR starten",
     "vr.status.loading": "3D-Engine wird geladen …",
     "vr.status.gallery": "Die 3D-Galerie ist geladen. Zieh, um dich umzusehen, und scrolle zum Zoomen.",
@@ -1905,7 +1876,7 @@
   "it": {
    "checked": true,
    "code": "it",
-   "strings": 293,
+   "strings": 289,
    "hits": [
     {
      "key": "classroom.wizard.s3.trivia",
@@ -2157,10 +2128,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Modalità Classe",
-    "classroom.meta.description": "Gli insegnanti creano classi, assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.",
+    "classroom.meta.description": "Gli insegnanti creano classi e assegnano quiz e sfide su Shakespeare ai loro studenti.",
     "classroom.badge": "Istruzione",
     "classroom.title": "Modalità Classe",
-    "classroom.intro": "Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.",
+    "classroom.intro": "Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare ai loro studenti.",
     "classroom.gate.title": "Prima di cominciare",
     "classroom.gate.body": "La Modalità Classe è pensata per le scuole. Scegli il tuo ruolo per continuare.",
     "classroom.role.teacher": "Sono insegnante",
@@ -2175,7 +2146,7 @@
     "classroom.student.intro": "Prima di entrare in una classe, conferma quanto segue:",
     "classroom.student.check1": "Un mio genitore o il mio tutore legale sa che uso Inspired Mile per i compiti di scuola e mi ha dato il permesso.",
     "classroom.student.check2": "Il mio insegnante mi ha dato un codice di accesso a una classe.",
-    "classroom.student.check3": "So che il mio insegnante può vedere i miei progressi e quello che faccio nella classe.",
+    "classroom.student.check3": "So che il mio insegnante può vedere che faccio parte della classe e da quando.",
     "classroom.student.continue": "Continua come studente",
     "classroom.join.tab": "Entra in una classe",
     "classroom.create.tab": "Crea una classe",
@@ -2226,10 +2197,6 @@
     "classroom.wizard.s3.trivia": "5 domande a scelta multipla su Shakespeare",
     "classroom.wizard.s3.challenge": "Completare le parole mancanti di citazioni famose",
     "classroom.wizard.s3.battle": "Un duello di strofe in tre round, giudicato sul dispositivo",
-    "classroom.wizard.s4.title": "Segui i progressi",
-    "classroom.wizard.s4.body": "Guarda che cosa ha completato ogni studente, i suoi punteggi e le carte che ha guadagnato. I dati restano dentro la classe: ogni studente vede i propri progressi, tu vedi quelli di tutti.",
-    "classroom.wizard.s4.visibility": "Chi può vedere i progressi di uno studente",
-    "classroom.wizard.s4.ferpa": "Conforme alla legge FERPA",
     "market.meta.description": "Compra e scambia carte collezionabili di Shakespeare con altri giocatori.",
     "market.intro": "Compra e scambia carte con altri giocatori. Metti in vendita i tuoi doppioni o trova le carte che ti mancano.",
     "market.tab.browse": "Sfoglia",
@@ -2350,9 +2317,9 @@
     "viewer.card.glb.body": "Una normale mesh mostrata con model-viewer. Su un telefono può collocare il modello nella tua stanza in realtà aumentata.",
     "viewer.card.ar.title": "AR sul telefono",
     "viewer.card.ar.body": "Nella vista GLB, su un telefono, tocca «Guarda in AR» per vedere la carta nella tua stanza.",
-    "vr.meta.description": "Cammina nella tua collezione di carte di Shakespeare in realtà virtuale.",
+    "vr.meta.description": "Cammina tra tutte le carte di Shakespeare del gioco in realtà virtuale.",
     "vr.badge": "Realtà virtuale",
-    "vr.intro": "Cammina nella tua collezione in 3D. Funziona su Quest 3 e Vision Pro tramite WebXR, e con il mouse su un computer.",
+    "vr.intro": "Cammina tra tutte le carte del gioco in 3D. Funziona su Quest 3 e Vision Pro tramite WebXR, e con il mouse su un computer.",
     "vr.enter": "Entra in VR",
     "vr.status.loading": "Caricamento del motore 3D…",
     "vr.status.gallery": "La galleria 3D è caricata. Trascina per guardarti intorno, usa la rotellina per lo zoom.",
@@ -2454,14 +2421,14 @@
   "pt": {
    "checked": true,
    "code": "pt-BR",
-   "strings": 293,
+   "strings": 289,
    "hits": [
     {
      "key": "classroom.meta.description",
      "rule": "MORFOLOGIK_RULE_PT_BR",
      "category": "TYPOS",
      "message": "Encontrado possível erro de ortografia.",
-     "text": "Professores criam turmas, passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+     "text": "Professores criam turmas e passam quizzes e desafios sobre Shakespeare para os estudantes.",
      "at": "quizzes",
      "suggestions": [
       "Ulisses",
@@ -2474,7 +2441,7 @@
      "rule": "MORFOLOGIK_RULE_PT_BR",
      "category": "TYPOS",
      "message": "Encontrado possível erro de ortografia.",
-     "text": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+     "text": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare para os estudantes.",
      "at": "quizzes",
      "suggestions": [
       "Ulisses",
@@ -2497,13 +2464,13 @@
     },
     {
      "key": "classroom.student.check3",
-     "rule": "EU_NÓS_REMOVAL",
-     "category": "REMOVE_PRONOUN",
-     "message": "Para melhorar o estilo de escrita, pode omitir o pronome pessoal: “faço”.",
-     "text": "Entendo que meu professor pode ver meu progresso e o que eu faço na turma.",
-     "at": "eu faço",
+     "rule": "WORDINESS",
+     "category": "CLARITY",
+     "message": "Para conferir mais clareza ao seu texto, busque usar uma linguagem mais concisa.",
+     "text": "Entendo que meu professor pode ver que entrei na turma e quando.",
+     "at": "pode ver que",
      "suggestions": [
-      "faço"
+      "EVITAR"
      ]
     },
     {
@@ -2543,43 +2510,6 @@
       "dispositivo.",
       "dispositivo?",
       "dispositivo!"
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.body",
-     "rule": "DENTRO_DE_DA_DAS_DO_DOS_EM_NA_NAS_NO_NOS",
-     "category": "CLARITY",
-     "message": "Substitua por “na”.",
-     "text": "Veja o que cada estudante concluiu, suas pontuações e as cartas que ganhou. Os dados ficam dentro da turma: cada estudante vê o próprio progresso, e você vê o de todos.",
-     "at": "dentro da",
-     "suggestions": [
-      "na"
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.visibility",
-     "rule": "FINAL_STOPS",
-     "category": "PUNCTUATION",
-     "message": "Se não é um título, falta um ponto no final da frase.",
-     "text": "Quem pode ver o progresso de um estudante",
-     "at": "estudante",
-     "suggestions": [
-      "estudante.",
-      "estudante?",
-      "estudante!"
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.ferpa",
-     "rule": "PT_WORDINESS_REPLACE_EM_CONFORMIDADE_COM",
-     "category": "REDUNDANCY",
-     "message": "“Em conformidade com” é uma expressão prolixa. É preferível dizer “conforme”, “segundo” ou “consoante”.",
-     "text": "Em conformidade com a FERPA",
-     "at": "Em conformidade com",
-     "suggestions": [
-      "Conforme",
-      "Segundo",
-      "Consoante"
      ]
     },
     {
@@ -2732,10 +2662,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Modo Turma",
-    "classroom.meta.description": "Professores criam turmas, passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+    "classroom.meta.description": "Professores criam turmas e passam quizzes e desafios sobre Shakespeare para os estudantes.",
     "classroom.badge": "Educação",
     "classroom.title": "Modo Turma",
-    "classroom.intro": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+    "classroom.intro": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare para os estudantes.",
     "classroom.gate.title": "Antes de começar",
     "classroom.gate.body": "O Modo Turma foi feito para escolas. Escolha o seu papel para continuar.",
     "classroom.role.teacher": "Sou professor ou professora",
@@ -2750,7 +2680,7 @@
     "classroom.student.intro": "Antes de entrar em uma turma, confirme o seguinte:",
     "classroom.student.check1": "Um dos meus pais ou meu responsável legal sabe que uso o Inspired Mile para trabalhos da escola e deu permissão.",
     "classroom.student.check2": "Meu professor me deu um código de acesso a uma turma.",
-    "classroom.student.check3": "Entendo que meu professor pode ver meu progresso e o que eu faço na turma.",
+    "classroom.student.check3": "Entendo que meu professor pode ver que entrei na turma e quando.",
     "classroom.student.continue": "Continuar como estudante",
     "classroom.join.tab": "Entrar em uma turma",
     "classroom.create.tab": "Criar uma turma",
@@ -2801,10 +2731,6 @@
     "classroom.wizard.s3.trivia": "5 perguntas de múltipla escolha sobre Shakespeare",
     "classroom.wizard.s3.challenge": "Completar as palavras que faltam em citações famosas",
     "classroom.wizard.s3.battle": "Um duelo de estrofes em três rodadas, julgado no dispositivo",
-    "classroom.wizard.s4.title": "Acompanhe o progresso",
-    "classroom.wizard.s4.body": "Veja o que cada estudante concluiu, suas pontuações e as cartas que ganhou. Os dados ficam dentro da turma: cada estudante vê o próprio progresso, e você vê o de todos.",
-    "classroom.wizard.s4.visibility": "Quem pode ver o progresso de um estudante",
-    "classroom.wizard.s4.ferpa": "Em conformidade com a FERPA",
     "market.meta.description": "Compre e troque cartas colecionáveis de Shakespeare com outros jogadores.",
     "market.intro": "Compre e troque cartas com outros jogadores. Ponha suas repetidas à venda ou encontre as cartas que faltam para você.",
     "market.tab.browse": "Explorar",
@@ -2925,9 +2851,9 @@
     "viewer.card.glb.body": "Uma malha comum exibida com model-viewer. No celular, ela pode colocar o modelo no seu cômodo em realidade aumentada.",
     "viewer.card.ar.title": "AR no celular",
     "viewer.card.ar.body": "Na visão GLB, no celular, toque em “Ver em AR” para ver a carta no seu cômodo.",
-    "vr.meta.description": "Caminhe pela sua coleção de cartas de Shakespeare em realidade virtual.",
+    "vr.meta.description": "Caminhe por todas as cartas de Shakespeare do jogo em realidade virtual.",
     "vr.badge": "Realidade virtual",
-    "vr.intro": "Caminhe pela sua coleção em 3D. Funciona no Quest 3 e no Vision Pro por meio do WebXR, e com o mouse no computador.",
+    "vr.intro": "Caminhe por todas as cartas do jogo em 3D. Funciona no Quest 3 e no Vision Pro por meio do WebXR, e com o mouse no computador.",
     "vr.enter": "Entrar em VR",
     "vr.status.loading": "Carregando o motor 3D…",
     "vr.status.gallery": "A galeria 3D foi carregada. Arraste para olhar ao redor e role para dar zoom.",
@@ -3029,7 +2955,7 @@
   "pl": {
    "checked": true,
    "code": "pl-PL",
-   "strings": 295,
+   "strings": 291,
    "hits": [
     {
      "key": "classroom.gate.title",
@@ -3273,28 +3199,6 @@
      "at": "aktywności",
      "suggestions": [
       "aktywności."
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.title",
-     "rule": "BRAK_KROPKI",
-     "category": "PUNCTUATION",
-     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"postępy.\"",
-     "text": "Śledź postępy",
-     "at": "postępy",
-     "suggestions": [
-      "postępy."
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.visibility",
-     "rule": "BRAK_KROPKI",
-     "category": "PUNCTUATION",
-     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ucznia.\"",
-     "text": "Kto widzi postępy ucznia",
-     "at": "ucznia",
-     "suggestions": [
-      "ucznia."
      ]
     },
     {
@@ -3630,10 +3534,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Tryb klasowy",
-    "classroom.meta.description": "Nauczyciele tworzą klasy, zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.",
+    "classroom.meta.description": "Nauczyciele tworzą klasy i zadają quizy i wyzwania o Szekspirze dla swoich uczniów.",
     "classroom.badge": "Edukacja",
     "classroom.title": "Tryb klasowy",
-    "classroom.intro": "Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.",
+    "classroom.intro": "Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze dla swoich uczniów.",
     "classroom.gate.title": "Zanim zaczniesz",
     "classroom.gate.body": "Tryb klasowy jest przeznaczony dla szkół. Wybierz swoją rolę, aby przejść dalej.",
     "classroom.role.teacher": "Jestem nauczycielem lub nauczycielką",
@@ -3648,7 +3552,7 @@
     "classroom.student.intro": "Zanim dołączysz do klasy, potwierdź, że:",
     "classroom.student.check1": "Mój rodzic lub opiekun prawny wie, że korzystam z Inspired Mile do nauki szkolnej, i wyraził na to zgodę.",
     "classroom.student.check2": "Mam od nauczyciela kod dołączenia do klasy.",
-    "classroom.student.check3": "Rozumiem, że nauczyciel widzi moje postępy i to, co robię w klasie.",
+    "classroom.student.check3": "Rozumiem, że nauczyciel widzi, że należę do klasy i od kiedy.",
     "classroom.student.continue": "Dalej jako uczeń",
     "classroom.join.tab": "Dołącz do klasy",
     "classroom.create.tab": "Utwórz klasę",
@@ -3700,10 +3604,6 @@
     "classroom.wizard.s3.trivia": "5 pytań wielokrotnego wyboru o Szekspirze",
     "classroom.wizard.s3.challenge": "Uzupełnianie brakujących słów w słynnych cytatach",
     "classroom.wizard.s3.battle": "Pojedynek na strofy w trzech rundach, oceniany na urządzeniu",
-    "classroom.wizard.s4.title": "Śledź postępy",
-    "classroom.wizard.s4.body": "Sprawdzaj, co ukończył każdy uczeń, jakie ma wyniki i jakie karty zdobył. Dane zostają w klasie: uczeń widzi własne postępy, a ty widzisz postępy wszystkich.",
-    "classroom.wizard.s4.visibility": "Kto widzi postępy ucznia",
-    "classroom.wizard.s4.ferpa": "Zgodne z ustawą FERPA",
     "market.meta.description": "Kupuj karty kolekcjonerskie z Szekspirem i wymieniaj się nimi z innymi graczami.",
     "market.intro": "Kupuj karty i wymieniaj się nimi z innymi graczami. Wystaw swoje duplikaty na sprzedaż albo znajdź karty, których ci brakuje.",
     "market.tab.browse": "Przeglądaj",
@@ -3824,9 +3724,9 @@
     "viewer.card.glb.body": "Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rzeczywistości rozszerzonej.",
     "viewer.card.ar.title": "AR na telefonie",
     "viewer.card.ar.body": "W widoku GLB na telefonie dotknij „Zobacz w AR”, aby zobaczyć kartę w swoim pokoju.",
-    "vr.meta.description": "Przejdź się po swojej kolekcji kart z Szekspirem w rzeczywistości wirtualnej.",
+    "vr.meta.description": "Przejdź się w rzeczywistości wirtualnej wśród wszystkich kart z Szekspirem, jakie ma gra.",
     "vr.badge": "Rzeczywistość wirtualna",
-    "vr.intro": "Przejdź się po swojej kolekcji w 3D. Działa na Quest 3 i Vision Pro dzięki WebXR oraz z myszą na komputerze.",
+    "vr.intro": "Przejdź się w 3D wśród wszystkich kart, jakie ma gra. Działa na Quest 3 i Vision Pro dzięki WebXR oraz z myszą na komputerze.",
     "vr.enter": "Wejdź do VR",
     "vr.status.loading": "Wczytywanie silnika 3D…",
     "vr.status.gallery": "Galeria 3D jest wczytana. Przeciągnij, aby się rozejrzeć, i przewiń, aby przybliżyć.",
@@ -3929,7 +3829,7 @@
   "ru": {
    "checked": true,
    "code": "ru-RU",
-   "strings": 295,
+   "strings": 291,
    "hits": [
     {
      "key": "market.by",
@@ -4017,10 +3917,10 @@
    ],
    "texts": {
     "classroom.meta.title": "Режим класса",
-    "classroom.meta.description": "Учителя создают классы, дают викторины и испытания по Шекспиру и следят за успехами учеников.",
+    "classroom.meta.description": "Учителя создают классы и дают ученикам викторины и испытания по Шекспиру.",
     "classroom.badge": "Образование",
     "classroom.title": "Режим класса",
-    "classroom.intro": "Создай класс или присоединись к готовому. Учителя дают викторины и испытания по Шекспиру и следят за успехами учеников.",
+    "classroom.intro": "Создай класс или присоединись к готовому. Учителя дают ученикам викторины и испытания по Шекспиру.",
     "classroom.gate.title": "Прежде чем начать",
     "classroom.gate.body": "Режим класса создан для школ. Выбери свою роль, чтобы продолжить.",
     "classroom.role.teacher": "Я учитель",
@@ -4035,7 +3935,7 @@
     "classroom.student.intro": "Прежде чем присоединиться к классу, подтверди следующее:",
     "classroom.student.check1": "Мой родитель или законный опекун знает, что я пользуюсь Inspired Mile для учёбы, и разрешил это.",
     "classroom.student.check2": "Учитель дал мне код класса.",
-    "classroom.student.check3": "Я понимаю, что учитель видит мои успехи и то, что я делаю в классе.",
+    "classroom.student.check3": "Я понимаю, что учитель видит, что я состою в классе и с какого времени.",
     "classroom.student.continue": "Продолжить как ученик",
     "classroom.join.tab": "Присоединиться к классу",
     "classroom.create.tab": "Создать класс",
@@ -4087,10 +3987,6 @@
     "classroom.wizard.s3.trivia": "5 вопросов по Шекспиру с выбором ответа",
     "classroom.wizard.s3.challenge": "Вставить пропущенные слова в знаменитые цитаты",
     "classroom.wizard.s3.battle": "Дуэль строф из трёх раундов, которую судит само устройство",
-    "classroom.wizard.s4.title": "Следи за успехами",
-    "classroom.wizard.s4.body": "Смотри, что выполнил каждый ученик, какой у него счёт и какие карты он заработал. Данные остаются внутри класса: ученик видит свои успехи, а ты видишь успехи всех.",
-    "classroom.wizard.s4.visibility": "Кто видит успехи ученика",
-    "classroom.wizard.s4.ferpa": "Соответствует закону FERPA",
     "market.meta.description": "Покупай коллекционные карты по Шекспиру и обменивайся ими с другими игроками.",
     "market.intro": "Покупай карты и обменивайся ими с другими игроками. Выставь на продажу свои дубликаты или найди карты, которых тебе не хватает.",
     "market.tab.browse": "Обзор",
@@ -4211,9 +4107,9 @@
     "viewer.card.glb.body": "Обычная сетка, показанная через model-viewer. На телефоне она может поставить модель в твоей комнате в дополненной реальности.",
     "viewer.card.ar.title": "AR на телефоне",
     "viewer.card.ar.body": "В режиме GLB на телефоне нажми «Смотреть в AR», чтобы увидеть карту в своей комнате.",
-    "vr.meta.description": "Пройдись по своей коллекции карт по Шекспиру в виртуальной реальности.",
+    "vr.meta.description": "Пройдись в виртуальной реальности среди всех шекспировских карт игры.",
     "vr.badge": "Виртуальная реальность",
-    "vr.intro": "Пройдись по своей коллекции в 3D. Она работает на Quest 3 и Vision Pro через WebXR, а на компьютере управляется мышью.",
+    "vr.intro": "Пройдись в 3D среди всех карт игры. Галерея работает на Quest 3 и Vision Pro через WebXR, а на компьютере управляется мышью.",
     "vr.enter": "Войти в VR",
     "vr.status.loading": "Загрузка 3D-движка…",
     "vr.status.gallery": "3D-галерея загружена. Тяни, чтобы осмотреться, и прокручивай, чтобы приблизить.",
@@ -4316,7 +4212,7 @@
   "ar": {
    "checked": true,
    "code": "ar",
-   "strings": 299,
+   "strings": 295,
    "hits": [
     {
      "key": "classroom.mine.empty",
@@ -4349,17 +4245,6 @@
      "at": "مبارزة بالأبيات",
      "suggestions": [
       "بالأبيات مبارزة"
-     ]
-    },
-    {
-     "key": "classroom.wizard.s4.ferpa",
-     "rule": "grammar_0000_jar_plural",
-     "category": "TEST_NEW_FEATURES",
-     "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"مع قانين\"\n      ",
-     "text": "متوافق مع قانون FERPA",
-     "at": "مع قانون",
-     "suggestions": [
-      "مع قانين"
      ]
     },
     {
@@ -4493,33 +4378,11 @@
      ]
     },
     {
-     "key": "vr.meta.description",
-     "rule": "syntax_125_mobtadaa_nakira_1",
-     "category": "TEST_NEW_FEATURES",
-     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في تجوّل\"\n\n      ",
-     "text": "تجوّل في مجموعة بطاقات شكسبير الخاصة بك في الواقع الافتراضي.",
-     "at": "تجوّل في",
-     "suggestions": [
-      "في تجوّل"
-     ]
-    },
-    {
-     "key": "vr.intro",
-     "rule": "syntax_125_mobtadaa_nakira_2",
-     "category": "TEST_NEW_FEATURES",
-     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"في مجموعتك تجوّل\"\n\n      ",
-     "text": "تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
-     "at": "تجوّل في مجموعتك",
-     "suggestions": [
-      "في مجموعتك تجوّل"
-     ]
-    },
-    {
      "key": "vr.intro",
      "rule": "HUNSPELL_RULE_AR",
      "category": "TYPOS",
      "message": "وُجد خطأ إملائي محتمل",
-     "text": "تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
+     "text": "تجوّل بين جميع بطاقات اللعبة بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
      "at": "وVision",
      "suggestions": []
     },
@@ -4856,10 +4719,10 @@
    ],
    "texts": {
     "classroom.meta.title": "وضع الصف",
-    "classroom.meta.description": "ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير، ويتابعون تقدّمهم.",
+    "classroom.meta.description": "ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير.",
     "classroom.badge": "التعليم",
     "classroom.title": "وضع الصف",
-    "classroom.intro": "أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير ويتابعون تقدّمهم.",
+    "classroom.intro": "أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير.",
     "classroom.gate.title": "قبل أن تبدأ",
     "classroom.gate.body": "وضع الصف مخصّص للمدارس. اختر دورك للمتابعة.",
     "classroom.role.teacher": "أنا معلّم أو معلّمة",
@@ -4874,7 +4737,7 @@
     "classroom.student.intro": "قبل الانضمام إلى صف، يُرجى تأكيد ما يلي:",
     "classroom.student.check1": "أحد والديّ أو وليّ أمري القانوني يعلم أنني أستخدم Inspired Mile للواجبات المدرسية وقد أذن لي بذلك.",
     "classroom.student.check2": "أعطاني معلّمي رمز الانضمام إلى صف.",
-    "classroom.student.check3": "أفهم أن معلّمي يستطيع أن يرى تقدّمي وما أفعله في الصف.",
+    "classroom.student.check3": "أفهم أن معلّمي يستطيع أن يرى أنني انضممت إلى الصف ومتى انضممت.",
     "classroom.student.continue": "المتابعة كطالب",
     "classroom.join.tab": "الانضمام إلى صف",
     "classroom.create.tab": "إنشاء صف",
@@ -4928,10 +4791,6 @@
     "classroom.wizard.s3.trivia": "5 أسئلة اختيار من متعدد عن شكسبير",
     "classroom.wizard.s3.challenge": "إكمال الكلمات الناقصة في اقتباسات مشهورة",
     "classroom.wizard.s3.battle": "مبارزة بالأبيات من ثلاث جولات، يُحكَم فيها على الجهاز",
-    "classroom.wizard.s4.title": "تابع التقدّم",
-    "classroom.wizard.s4.body": "اطّلع على ما أنجزه كل طالب، وعلى نتائجه والبطاقات التي كسبها. تبقى البيانات داخل الصف: يرى الطالب تقدّمه هو، وترى أنت تقدّم الجميع.",
-    "classroom.wizard.s4.visibility": "من يستطيع رؤية تقدّم الطالب",
-    "classroom.wizard.s4.ferpa": "متوافق مع قانون FERPA",
     "market.meta.description": "اشترِ بطاقات شكسبير للاقتناء وتبادلها مع لاعبين آخرين.",
     "market.intro": "اشترِ البطاقات وتبادلها مع لاعبين آخرين. اعرض بطاقاتك المكرّرة للبيع، أو اعثر على البطاقات التي تنقصك.",
     "market.tab.browse": "تصفّح",
@@ -5052,9 +4911,9 @@
     "viewer.card.glb.body": "شبكة عادية تُعرض بواسطة model-viewer. على الهاتف يمكنها وضع النموذج في غرفتك بالواقع المعزَّز.",
     "viewer.card.ar.title": "الواقع المعزَّز على الهاتف",
     "viewer.card.ar.body": "في عرض GLB على الهاتف، اضغط «عرض بالواقع المعزَّز» لترى البطاقة في غرفتك.",
-    "vr.meta.description": "تجوّل في مجموعة بطاقات شكسبير الخاصة بك في الواقع الافتراضي.",
+    "vr.meta.description": "تجوّل بين جميع بطاقات شكسبير في اللعبة في الواقع الافتراضي.",
     "vr.badge": "الواقع الافتراضي",
-    "vr.intro": "تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
+    "vr.intro": "تجوّل بين جميع بطاقات اللعبة بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
     "vr.enter": "دخول الواقع الافتراضي",
     "vr.status.loading": "جارٍ تحميل المحرّك ثلاثي الأبعاد…",
     "vr.status.gallery": "تم تحميل المعرض ثلاثي الأبعاد. اسحب لتنظر حولك، ومرّر للتكبير.",
@@ -5163,7 +5022,7 @@
   "zh": {
    "checked": true,
    "code": "zh-CN",
-   "strings": 289,
+   "strings": 285,
    "hits": [
     {
      "key": "classroom.wizard.s3.body",
@@ -5201,10 +5060,10 @@
    ],
    "texts": {
     "classroom.meta.title": "课堂模式",
-    "classroom.meta.description": "教师创建班级，布置莎士比亚问答和挑战，并查看学生的学习进度。",
+    "classroom.meta.description": "教师创建班级，为学生布置莎士比亚问答和挑战。",
     "classroom.badge": "教育",
     "classroom.title": "课堂模式",
-    "classroom.intro": "创建班级或加入班级。教师布置莎士比亚问答和挑战，并查看学生的学习进度。",
+    "classroom.intro": "创建班级或加入班级。教师为学生布置莎士比亚问答和挑战。",
     "classroom.gate.title": "开始之前",
     "classroom.gate.body": "课堂模式专为学校使用而设计。请选择你的身份以继续。",
     "classroom.role.teacher": "我是教师",
@@ -5219,7 +5078,7 @@
     "classroom.student.intro": "加入班级之前，请确认以下内容：",
     "classroom.student.check1": "我的父母或法定监护人知道我在用 Inspired Mile 完成学校功课，并已同意。",
     "classroom.student.check2": "老师已经给了我班级的加入码。",
-    "classroom.student.check3": "我明白老师可以看到我在班级里的进度和活动。",
+    "classroom.student.check3": "我明白老师可以看到我已加入班级，以及加入的时间。",
     "classroom.student.continue": "以学生身份继续",
     "classroom.join.tab": "加入班级",
     "classroom.create.tab": "创建班级",
@@ -5268,10 +5127,6 @@
     "classroom.wizard.s3.trivia": "5 道关于莎士比亚的选择题",
     "classroom.wizard.s3.challenge": "补全名句中缺失的词语",
     "classroom.wizard.s3.battle": "三个回合的诗歌对决，在设备上评判",
-    "classroom.wizard.s4.title": "查看进度",
-    "classroom.wizard.s4.body": "查看每位学生完成了什么、得了多少分、赢得了哪些卡牌。数据只留在班级内：学生只能看到自己的进度，你可以看到所有人的进度。",
-    "classroom.wizard.s4.visibility": "谁可以看到学生的进度",
-    "classroom.wizard.s4.ferpa": "符合 FERPA 要求",
     "market.meta.description": "与其他玩家买卖和交换莎士比亚收藏卡牌。",
     "market.intro": "与其他玩家买卖和交换卡牌。把重复的卡牌挂出来出售，或者找到你缺少的卡牌。",
     "market.tab.browse": "浏览",
@@ -5392,9 +5247,9 @@
     "viewer.card.glb.body": "用 model-viewer 显示的普通网格。在手机上，它可以通过增强现实把模型放进你的房间。",
     "viewer.card.ar.title": "手机 AR",
     "viewer.card.ar.body": "在手机的 GLB 视图中点按“用 AR 查看”，就能在你的房间里看到卡牌。",
-    "vr.meta.description": "在虚拟现实中漫步于你的莎士比亚卡牌收藏。",
+    "vr.meta.description": "在虚拟现实中漫步于游戏的全部莎士比亚卡牌之间。",
     "vr.badge": "虚拟现实",
-    "vr.intro": "以 3D 方式漫步于你的收藏。可通过 WebXR 在 Quest 3 和 Vision Pro 上使用，也可以在电脑上用鼠标浏览。",
+    "vr.intro": "以 3D 方式漫步于游戏的全部卡牌之间。可通过 WebXR 在 Quest 3 和 Vision Pro 上使用，也可以在电脑上用鼠标浏览。",
     "vr.enter": "进入 VR",
     "vr.status.loading": "正在加载 3D 引擎…",
     "vr.status.gallery": "3D 展厅已加载。拖动可环顾四周，滚动可缩放。",
@@ -5494,14 +5349,14 @@
   "ja": {
    "checked": true,
    "code": "ja-JP",
-   "strings": 289,
+   "strings": 285,
    "hits": [],
    "texts": {
     "classroom.meta.title": "クラスモード",
-    "classroom.meta.description": "教員がクラスを作り、シェイクスピアのクイズやチャレンジを出題して、生徒の進み具合を確認します。",
+    "classroom.meta.description": "教員がクラスを作り、生徒にシェイクスピアのクイズやチャレンジを出題します。",
     "classroom.badge": "教育",
     "classroom.title": "クラスモード",
-    "classroom.intro": "クラスを作るか、クラスに参加してください。教員はシェイクスピアのクイズやチャレンジを出題し、生徒の進み具合を確認できます。",
+    "classroom.intro": "クラスを作るか、クラスに参加してください。教員は生徒にシェイクスピアのクイズやチャレンジを出題できます。",
     "classroom.gate.title": "はじめる前に",
     "classroom.gate.body": "クラスモードは学校での利用を想定しています。続けるには、あなたの立場を選んでください。",
     "classroom.role.teacher": "教員です",
@@ -5516,7 +5371,7 @@
     "classroom.student.intro": "クラスに参加する前に、次のことを確認してください。",
     "classroom.student.check1": "親または法定保護者は、私が学校の学習のためにInspired Mileを使うことを知っており、許可しています。",
     "classroom.student.check2": "先生からクラスの参加コードをもらっています。",
-    "classroom.student.check3": "クラスでの私の進み具合や活動を先生が見られることを理解しています。",
+    "classroom.student.check3": "クラスに参加したことと、その日時を先生が見られることを理解しています。",
     "classroom.student.continue": "生徒として続ける",
     "classroom.join.tab": "クラスに参加",
     "classroom.create.tab": "クラスを作成",
@@ -5565,10 +5420,6 @@
     "classroom.wizard.s3.trivia": "シェイクスピアについての選択式の問題5問",
     "classroom.wizard.s3.challenge": "有名な名言の抜けている言葉を埋める",
     "classroom.wizard.s3.battle": "3ラウンドの詩の決闘。審判は端末の中で行われます",
-    "classroom.wizard.s4.title": "進み具合を確認する",
-    "classroom.wizard.s4.body": "生徒一人ひとりが何を終えたか、得点、手に入れたカードを確認できます。データはクラスの外に出ません。生徒には自分の進み具合が、あなたには全員の進み具合が見えます。",
-    "classroom.wizard.s4.visibility": "生徒の進み具合を見られる人",
-    "classroom.wizard.s4.ferpa": "FERPAに準拠",
     "market.meta.description": "ほかのプレイヤーとシェイクスピアのコレクションカードを売買・交換できます。",
     "market.intro": "ほかのプレイヤーとカードを売買・交換できます。重複したカードを出品したり、足りないカードを探したりしましょう。",
     "market.tab.browse": "探す",
@@ -5689,9 +5540,9 @@
     "viewer.card.glb.body": "model-viewerで表示する通常のメッシュです。スマートフォンでは、拡張現実でモデルを部屋に置けます。",
     "viewer.card.ar.title": "スマートフォンでAR",
     "viewer.card.ar.body": "スマートフォンのGLB表示で「ARで見る」をタップすると、カードを自分の部屋で見られます。",
-    "vr.meta.description": "シェイクスピアのカードコレクションの中を、バーチャルリアリティで歩けます。",
+    "vr.meta.description": "ゲームにあるシェイクスピアのカードすべての中を、バーチャルリアリティで歩けます。",
     "vr.badge": "バーチャルリアリティ",
-    "vr.intro": "コレクションの中を3Dで歩いてみましょう。WebXRによりQuest 3とVision Proで動作し、パソコンではマウスで操作できます。",
+    "vr.intro": "ゲームにあるすべてのカードの中を3Dで歩いてみましょう。WebXRによりQuest 3とVision Proで動作し、パソコンではマウスで操作できます。",
     "vr.enter": "VRに入る",
     "vr.status.loading": "3Dエンジンを読み込んでいます…",
     "vr.status.gallery": "3Dギャラリーを読み込みました。ドラッグで見回し、スクロールで拡大・縮小します。",

@@ -532,3 +532,48 @@ capitals and hidden, a key, a placeholder, a mark and an over-wide element, and 
     card in Japanese (東京のRomeo, 東京 (言葉遊び +2)) and Arabic (طوكيو). In Chromium 159, WebKit 27.2
     and Firefox 159 the Arabic pages put the count left of its total (11/71, 2/20), the sign left of
     its digits (+50, +2), write Latin digits, and slant no Arabic play title.
+
+## Fourth pass: the copy the pages no longer stand behind (2026-11-19, fix/predeploy)
+
+Owner decision D-03 took off the site what the code does not do. In these areas:
+
+| key | was (English) | now |
+|---|---|---|
+| `about.vision.p1` | a card "springs to life with a 15-second AI-generated scene", AR, "a rap battle" | "a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset." |
+| `world-map.intro` | variants unlock "through battles, trivia, and exploration" | "with a perfect trivia round" (the one place that awards one: `playground.astro`, `awardRandomVariant`) |
+| `about.free.earn.*` (7 keys) | "Win a battle: +50", trivia +30, quote +20, daily +10 … | removed: nothing paid them (the economy's server rates arrive with the second deploy) |
+| `about.tech.market.*` (2 keys) | "card value is influenced by combat rankings" | removed: a listing's price is the seller's |
+
+Every language was written again for the two changed strings. The first version of `about.vision.p1`
+said "challenges you in verse"; the glossary check below found nine languages using the word for a
+poetic line where the game's word for a verse is fixed (es *en verso*, de *in Versen*), and another
+word for a line (de *Vers für Vers*, ar *بيتًا بعد بيت*, ko *한 줄씩*). The English now uses the game's
+name for itself, "a duel of verses", which every language says as its app name does (`app.name`:
+el duelo de estrofas, das Duell der Strophen, дуэль строф, مبارزة الأبيات, 詩の決闘…), with the
+glossary's word for a line.
+
+**The tools could not run on this branch at first.** Every script here read every area under
+`src/i18n/pages`, and once the play areas were merged beside these, `challenges/en.ts` (which
+computes a value) stopped them all (`ReferenceError: CHALLENGE_BANK is not defined`).
+`scripts/pages-lang/strings.mjs` now names the nine areas these tools check (`CORE_AREAS`) and fails
+if one is missing; the other areas have pipelines of their own.
+
+- **Mechanical** (`mechanical.mjs`, with this branch's `scripts/lang` as `QA_SRC`): self-test, all 18
+  known-bad strings flagged; 10 open glossary findings on the first wording, **0 open** after it.
+  The ALLOW entry for `about.free.earn.l2` ("a trivia round") moved to `world-map.intro`, which now
+  says the same.
+- **Spelling** (Hunspell, the pipeline's dictionaries, on the iMac Pro: the Studio was over `rb`'s
+  load limit): on the two strings, only names (Shakespeare, Шекспира, 셰익스피어의, the pieces of
+  เชกสเปียร์), loanwords the old strings had too (VR-Brille, हेडसेट, 헤드셋을, headset), the digit split
+  of "3D" (D-сцене, D), and one new word, Korean 행씩 (행 with the counter suffix 씩, as in 한 사람씩),
+  which the dictionary does not list. None is a misspelling.
+- **Grammar** (LanguageTool 6.6, picky): no hit on either string in any language it covers.
+- **Meaning**: **Meaning** (`meaning-run.sh` on the Studio, with this branch's `scripts/lang/backtranslate.py`:
+  MADLAD-400 back to English, MiniLM and LaBSE; the 30 pairs `pairs.mjs --changed` found, then the
+  rows merged into `bt.json`, the 135 rows of the nine removed keys dropped): the two strings score
+  cosine 0.80 or more (median 0.92 and 0.88) and LaBSE 0.78 or more in every language; none is
+  flagged by both. The word rule flagged `world-map.intro` in fr, pl, ru and hi as negated: each says
+  a perfect round as "without a (single) mistake" (*sans faute*, *bez jednego błędu*, *без единой
+  ошибки*, *बिना किसी गलती के*). Read and accepted in `allow-meaning.json`; the entry for the removed
+  `about.free.earn.title` went with it. `meaning.mjs --bt bt.json`: every string scored, **0 open**,
+  exit 0.

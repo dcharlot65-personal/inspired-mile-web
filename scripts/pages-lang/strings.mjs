@@ -8,8 +8,20 @@ export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 export const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
 const PAGES = join(ROOT, 'src/i18n/pages');
 
+/**
+ * The areas these tools check: the pages of lang/pages-core and the data they show. The other areas
+ * have pipelines of their own (classroom, marketplace, tournaments, season, viewer, shared, pwa:
+ * scripts/pages-rest; playground, story, trivia, challenges: scripts/lang-content), and some of them
+ * are not plain data (challenges/en.ts computes a value), which stopped every script here once they
+ * were merged beside these.
+ */
+export const CORE_AREAS = ['about', 'achievements', 'card-terms', 'collection', 'home', 'profile', 'rules', 'variants', 'world-map'];
+
 export function areas() {
-  return readdirSync(PAGES).filter((d) => statSync(join(PAGES, d)).isDirectory()).sort();
+  const present = new Set(readdirSync(PAGES).filter((d) => statSync(join(PAGES, d)).isDirectory()));
+  const missing = CORE_AREAS.filter((a) => !present.has(a));
+  if (missing.length) throw new Error(`page areas missing: ${missing.join(', ')}`);
+  return [...CORE_AREAS];
 }
 
 export function readArea(area, locale) {

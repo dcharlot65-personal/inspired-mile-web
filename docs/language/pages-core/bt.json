@@ -360,30 +360,6 @@
   "xcontrol": 0.0808
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "hi",
-  "text": "बाज़ार",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.822,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2064
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "hi",
-  "text": "डिजिटल संपत्तियों का बाज़ार, जहाँ कार्ड का मूल्य युद्ध की रैंकिंग और समुदाय की भागीदारी से प्रभावित होता है।",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "The market for digital assets, where the value of a card is influenced by war rankings and community engagement.",
-  "cos": 0.8648,
-  "chrf": 68.5,
-  "xcos": 0.8015,
-  "controlCos": 0.0865,
-  "xcontrol": 0.1633
- },
- {
   "id": "about.free.title",
   "lang": "hi",
   "text": "हमेशा मुफ़्त",
@@ -466,90 +442,6 @@
   "xcos": 0.8693,
   "controlCos": 0.0913,
   "xcontrol": 0.1452
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "hi",
-  "text": "क्रेडिट कमाएँ",
-  "english": "Earn Credits",
-  "back": "Earn Credits",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.827,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3495
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "hi",
-  "text": "युद्ध जीतने पर: +3",
-  "english": "Win a battle: +3",
-  "back": "On winning a war: +3",
-  "cos": 0.7444,
-  "chrf": 14.0,
-  "xcos": 0.9031,
-  "controlCos": 0.372,
-  "xcontrol": 0.628
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "hi",
-  "text": "प्रश्नोत्तरी पूरी करने पर: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "On completion of quiz: +3",
-  "cos": 0.4428,
-  "chrf": 25.1,
-  "xcos": 0.7456,
-  "controlCos": 0.5585,
-  "xcontrol": 0.7065
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "hi",
-  "text": "उद्धरण चुनौती: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote Challenge: +3",
-  "cos": 1.0,
-  "chrf": 74.1,
-  "xcos": 0.946,
-  "controlCos": 0.3081,
-  "xcontrol": 0.6049
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "hi",
-  "text": "रोज़ साइन इन करने का बोनस: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily sign-in bonus: +3",
-  "cos": 0.8702,
-  "chrf": 62.2,
-  "xcos": 0.9292,
-  "controlCos": 0.3037,
-  "xcontrol": 0.3459
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "hi",
-  "text": "सीज़न के इनाम और टूर्नामेंट",
-  "english": "Season rewards & tournaments",
-  "back": "Season's rewards and tournaments",
-  "cos": 0.974,
-  "chrf": 69.6,
-  "xcos": 0.9102,
-  "controlCos": 0.2042,
-  "xcontrol": 0.1862
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "hi",
-  "text": "असली पैसे से कोई ख़रीदारी नहीं",
-  "english": "No real-money purchases",
-  "back": "No trade with real money",
-  "cos": 0.6294,
-  "chrf": 27.0,
-  "xcos": 0.8514,
-  "controlCos": -0.0147,
-  "xcontrol": 0.1989
  },
  {
   "id": "about.free.safe.title",
@@ -4178,14 +4070,14 @@
  {
   "id": "about.vision.p1",
   "lang": "hi",
-  "text": "सोचिए, आप एक डिजिटल कार्ड चुनते हैं और वह एआई से बने 15 सेकंड के दृश्य में जी उठता है। शेक्सपीयर का एक पात्र ऑगमेंटेड रियलिटी में सामने आता है। आप उसे रैप बैटल की चुनौती देते हैं। आपके दोस्त देखते हैं और हौसला बढ़ाते हैं।",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine, you pick a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Your friends watch and encourage.",
-  "cos": 0.9846,
-  "chrf": 73.4,
-  "xcos": 0.842,
-  "controlCos": 0.2933,
-  "xcontrol": 0.2831
+  "text": "सोचिए, आप एक डिजिटल कार्ड चुनते हैं और शेक्सपीयर का एक पात्र आपको कविता के द्वंद्व की चुनौती देता है। आप एक काव्य-रूप में, पंक्ति दर पंक्ति, जवाब देते हैं: स्क्रीन पर, या हेडसेट पहनकर 3डी मंच पर।",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine, you pick a digital card and a Shakespearean character challenges you to a duel of poetry. You answer in a poetic form, line by line: on the screen, or wearing headsets on a 3D stage.",
+  "cos": 0.9623,
+  "chrf": 75.7,
+  "xcos": 0.8465,
+  "controlCos": 0.4725,
+  "xcontrol": 0.3903
  },
  {
   "id": "about.why.title",
@@ -4346,14 +4238,14 @@
  {
   "id": "world-map.intro",
   "lang": "hi",
-  "text": "शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से संस्करण खोलें।",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world. Each city gives a unique ability to war. Open versions with war, quiz and quest.",
-  "cos": 0.8506,
-  "chrf": 47.3,
-  "xcos": 0.8419,
-  "controlCos": 0.1443,
-  "xcontrol": 0.2546
+  "text": "शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। बिना किसी गलती के प्रश्नोत्तरी का एक दौर पूरा करके संस्करण खोलें।",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world. Each city gives a unique ability to war. Open the version by completing a round of quizzes without making any mistakes.",
+  "cos": 0.7997,
+  "chrf": 53.5,
+  "xcos": 0.8183,
+  "controlCos": 0.4439,
+  "xcontrol": 0.4162
  },
  {
   "id": "about.tech.ai.body",
@@ -4598,14 +4490,14 @@
  {
   "id": "about.vision.p1",
   "lang": "th",
-  "text": "ลองนึกภาพว่าคุณเลือกการ์ดดิจิทัลใบหนึ่ง แล้วการ์ดนั้นมีชีวิตขึ้นมาในฉากยาว 15 วินาทีที่ AI สร้างขึ้น ตัวละครของเชกสเปียร์ปรากฏในความจริงเสริม คุณท้าตัวละครนั้นแร็ปแบตเทิล เพื่อน ๆ ของคุณเฝ้าดูและส่งเสียงเชียร์",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine you pick a digital card, and that card comes to life in a 15-second AI-generated scene where Shakespeare's character appears in augmented reality, you challenge the character to a rap battle, your friends watch and cheer.",
-  "cos": 0.9806,
-  "chrf": 73.8,
-  "xcos": 0.7927,
-  "controlCos": 0.6736,
-  "xcontrol": 0.3966
+  "text": "ลองนึกภาพว่าคุณเลือกการ์ดดิจิทัลใบหนึ่ง แล้วตัวละครของเชกสเปียร์ท้าคุณประชันบทกลอน คุณตอบตามรูปแบบฉันทลักษณ์ทีละบรรทัด บนหน้าจอ หรือบนเวที 3 มิติเมื่อสวมแว่น",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine that you pick a digital card, and Shakespeare's character challenges you to write a poem, and you respond with a line-by-line syntactic pattern on the screen or on a 3D stage when wearing glasses.",
+  "cos": 0.797,
+  "chrf": 52.3,
+  "xcos": 0.7842,
+  "controlCos": 0.4284,
+  "xcontrol": 0.2945
  },
  {
   "id": "about.vision.p2",
@@ -4992,30 +4884,6 @@
   "xcontrol": 0.0243
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "th",
-  "text": "ตลาด",
-  "english": "Marketplace",
-  "back": "Market.",
-  "cos": 0.653,
-  "chrf": 42.7,
-  "xcos": 0.8782,
-  "controlCos": 0.4313,
-  "xcontrol": 0.2473
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "th",
-  "text": "ตลาดสินทรัพย์ดิจิทัลที่มูลค่าของการ์ดขึ้นอยู่กับอันดับการประชันและการมีส่วนร่วมของชุมชน",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset market where the value of a card depends on competition ratings and community engagement.",
-  "cos": 0.8585,
-  "chrf": 58.2,
-  "xcos": 0.8216,
-  "controlCos": 0.1282,
-  "xcontrol": 0.1099
- },
- {
   "id": "about.free.title",
   "lang": "th",
   "text": "เล่นฟรีเสมอ",
@@ -5122,90 +4990,6 @@
   "xcos": 0.8802,
   "controlCos": 0.1157,
   "xcontrol": 0.0834
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "th",
-  "text": "รับเครดิต",
-  "english": "Earn Credits",
-  "back": "Take credit.",
-  "cos": 0.3462,
-  "chrf": 27.9,
-  "xcos": 0.7937,
-  "controlCos": 0.1108,
-  "xcontrol": 0.2571
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "th",
-  "text": "ชนะการประชัน: +3",
-  "english": "Win a battle: +3",
-  "back": "Winning match: +3",
-  "cos": 0.7132,
-  "chrf": 19.6,
-  "xcos": 0.9313,
-  "controlCos": 0.4178,
-  "xcontrol": 0.7417
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "th",
-  "text": "ทำควิซจนจบ: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Quiz completed: +3",
-  "cos": 0.523,
-  "chrf": 32.6,
-  "xcos": 0.7887,
-  "controlCos": 0.5547,
-  "xcontrol": 0.6768
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "th",
-  "text": "ภารกิจท้าทายวาทะเด็ด: +3",
-  "english": "Quote challenge: +3",
-  "back": "Mission Challenge: +3",
-  "cos": 0.5731,
-  "chrf": 57.4,
-  "xcos": 0.8433,
-  "controlCos": 0.332,
-  "xcontrol": 0.6332
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "th",
-  "text": "โบนัสเข้าสู่ระบบรายวัน: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily login bonus: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9451,
-  "controlCos": 0.2718,
-  "xcontrol": 0.347
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "th",
-  "text": "รางวัลประจำฤดูกาลและทัวร์นาเมนต์",
-  "english": "Season rewards & tournaments",
-  "back": "Season and tournament prizes.",
-  "cos": 0.7888,
-  "chrf": 50.9,
-  "xcos": 0.8876,
-  "controlCos": 0.2531,
-  "xcontrol": 0.2036
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "th",
-  "text": "ไม่มีการซื้อด้วยเงินจริง",
-  "english": "No real-money purchases",
-  "back": "No real money purchases.",
-  "cos": 0.9044,
-  "chrf": 80.1,
-  "xcos": 0.8791,
-  "controlCos": 0.1235,
-  "xcontrol": 0.2197
  },
  {
   "id": "about.free.safe.title",
@@ -8942,14 +8726,14 @@
  {
   "id": "world-map.intro",
   "lang": "th",
-  "text": "ตัวละครของเชกสเปียร์เดินทางรอบโลก แต่ละเมืองมอบความสามารถในการประชันที่ไม่ซ้ำกัน ปลดล็อกการ์ดแบบเมืองด้วยการประชัน ควิซ และการสำรวจ",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel around the world. Each city offers unique competition capabilities. Unlock city cards with quizzes and surveys.",
-  "cos": 0.8563,
-  "chrf": 45.1,
-  "xcos": 0.8389,
-  "controlCos": 0.1773,
-  "xcontrol": 0.1191
+  "text": "ตัวละครของเชกสเปียร์เดินทางรอบโลก แต่ละเมืองมอบความสามารถในการประชันที่ไม่ซ้ำกัน ปลดล็อกการ์ดแบบเมืองด้วยการตอบควิซถูกทุกข้อในหนึ่งรอบ",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel around the world, each city giving them unique competition abilities. Unlock City Cards by answering all quizzes correctly in one round.",
+  "cos": 0.8295,
+  "chrf": 49.9,
+  "xcos": 0.831,
+  "controlCos": 0.4778,
+  "xcontrol": 0.4268
  },
  {
   "id": "world-map.combinations",
@@ -9134,14 +8918,14 @@
  {
   "id": "about.vision.p1",
   "lang": "ar",
-  "text": "تخيّل أن تختار بطاقة رقمية فتدبّ فيها الحياة في مشهد مدته 15 ثانية يولّده الذكاء الاصطناعي. تظهر شخصية من شكسبير في الواقع المعزَّز. تتحداها في نزال راب. أصدقاؤك يشاهدون ويهتفون.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine choosing a digital card and bringing it to life in a 15-second scene generated by artificial intelligence. A Shakespearean character appears in augmented reality.",
-  "cos": 0.9073,
-  "chrf": 53.8,
-  "xcos": 0.8537,
-  "controlCos": 0.6316,
-  "xcontrol": 0.3429
+  "text": "تخيّل أن تختار بطاقة رقمية فتتحداك شخصية من شكسبير في مبارزة الأبيات. تجيب بقالب شعري، سطرًا بعد سطر: على الشاشة، أو على مسرح ثلاثي الأبعاد بنظارة.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine picking a digital card and being challenged by a Shakespearean character to a verse duel. Answer with poetry, line by line: on the screen, or on a 3D stage with glasses.",
+  "cos": 0.9191,
+  "chrf": 57.7,
+  "xcos": 0.8242,
+  "controlCos": 0.4025,
+  "xcontrol": 0.3598
  },
  {
   "id": "about.vision.p2",
@@ -9528,30 +9312,6 @@
   "xcontrol": -0.041
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "ar",
-  "text": "السوق",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.9045,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2423
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "ar",
-  "text": "سوق للأصول الرقمية تتأثر فيه قيمة البطاقات بتصنيفات النزال وتفاعل المجتمع.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A market for digital assets where the value of cards is affected by wrestler ratings and community interaction.",
-  "cos": 0.7743,
-  "chrf": 44.4,
-  "xcos": 0.8613,
-  "controlCos": 0.1421,
-  "xcontrol": 0.0436
- },
- {
   "id": "about.free.title",
   "lang": "ar",
   "text": "اللعب مجاني دائمًا",
@@ -9658,90 +9418,6 @@
   "xcos": 0.7923,
   "controlCos": 0.0146,
   "xcontrol": 0.1856
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "ar",
-  "text": "اكسب الأرصدة",
-  "english": "Earn Credits",
-  "back": "Earn credits.",
-  "cos": 0.8848,
-  "chrf": 54.3,
-  "xcos": 0.7392,
-  "controlCos": 0.243,
-  "xcontrol": 0.2569
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "ar",
-  "text": "الفوز في نزال: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a match: +3",
-  "cos": 0.7738,
-  "chrf": 26.5,
-  "xcos": 0.8317,
-  "controlCos": 0.3803,
-  "xcontrol": 0.6583
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "ar",
-  "text": "إكمال مسابقة: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completion of competition: +3",
-  "cos": 0.2827,
-  "chrf": 29.4,
-  "xcos": 0.7918,
-  "controlCos": 0.3959,
-  "xcontrol": 0.7798
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "ar",
-  "text": "تحدي الاقتباسات: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quotes Challenge: +3",
-  "cos": 0.9698,
-  "chrf": 73.1,
-  "xcos": 0.9264,
-  "controlCos": 0.2744,
-  "xcontrol": 0.6271
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "ar",
-  "text": "مكافأة الدخول اليومي: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily entry bonus: +3",
-  "cos": 0.7898,
-  "chrf": 50.7,
-  "xcos": 0.9572,
-  "controlCos": 0.3608,
-  "xcontrol": 0.3528
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "ar",
-  "text": "مكافآت الموسم والبطولات",
-  "english": "Season rewards & tournaments",
-  "back": "Season and championship rewards",
-  "cos": 0.8403,
-  "chrf": 39.0,
-  "xcos": 0.9336,
-  "controlCos": 0.2327,
-  "xcontrol": 0.1775
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "ar",
-  "text": "لا مشتريات بمال حقيقي",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9237,
-  "controlCos": 0.102,
-  "xcontrol": 0.1561
  },
  {
   "id": "about.free.safe.title",
@@ -13454,14 +13130,14 @@
  {
   "id": "world-map.intro",
   "lang": "ar",
-  "text": "شخصيات شكسبير تجوب العالم. كل مدينة تمنح قدرة فريدة في النزال. افتح النسخ بالنزالات والمسابقات والاستكشاف.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world. Each city grants a unique ability in battle. Open versions with upgrades, competitions and exploration.",
-  "cos": 0.9212,
-  "chrf": 61.8,
-  "xcos": 0.8251,
-  "controlCos": 0.1765,
-  "xcontrol": 0.0827
+  "text": "شخصيات شكسبير تجوب العالم. كل مدينة تمنح قدرة فريدة في النزال. افتح النسخ بجولة مسابقة بلا أي خطأ.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world. Each city grants a unique ability in battle. Open the edition with an error-free contest round.",
+  "cos": 0.8924,
+  "chrf": 62.3,
+  "xcos": 0.8231,
+  "controlCos": 0.4747,
+  "xcontrol": 0.298
  },
  {
   "id": "world-map.combinations",
@@ -13670,14 +13346,14 @@
  {
   "id": "about.vision.p1",
   "lang": "vi",
-  "text": "Hãy hình dung bạn chọn một lá bài kỹ thuật số và nó sống dậy trong một cảnh dài 15 giây do AI tạo ra. Một nhân vật của Shakespeare hiện ra trong thực tế tăng cường. Bạn thách nhân vật ấy đấu rap. Bạn bè đứng xem và cổ vũ.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine that you pick a digital card and it comes to life in an AI-generated 15-second scene . A Shakespearean character appears in augmented reality . You challenge the character to a rap match . Your friends stand by and cheer .",
-  "cos": 0.979,
-  "chrf": 70.9,
-  "xcos": 0.8335,
-  "controlCos": 0.6378,
-  "xcontrol": 0.3658
+  "text": "Hãy hình dung bạn chọn một lá bài kỹ thuật số và một nhân vật của Shakespeare thách bạn đấu thơ. Bạn đáp lại theo một thể thơ, từng dòng một: trên màn hình, hoặc trên sân khấu 3D khi đeo kính.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine you pick a digital card and a Shakespearean character challenges you to a poetry contest. You respond in a poem, line by line: on the screen, or on a 3D stage when wearing glasses.",
+  "cos": 0.8501,
+  "chrf": 63.3,
+  "xcos": 0.8364,
+  "controlCos": 0.4089,
+  "xcontrol": 0.3958
  },
  {
   "id": "about.vision.p2",
@@ -14052,30 +13728,6 @@
   "xcontrol": 0.0252
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "vi",
-  "text": "Chợ",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.8378,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2393
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "vi",
-  "text": "Chợ tài sản số, nơi giá trị lá bài chịu ảnh hưởng của bảng xếp hạng thi đấu và mức độ tham gia của cộng đồng.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "The digital asset marketplace, where the value of cards is influenced by matchmaking rankings and the level of community participation.",
-  "cos": 0.8918,
-  "chrf": 60.6,
-  "xcos": 0.7742,
-  "controlCos": 0.205,
-  "xcontrol": 0.1173
- },
- {
   "id": "about.free.title",
   "lang": "vi",
   "text": "Luôn miễn phí",
@@ -14182,90 +13834,6 @@
   "xcos": 0.8907,
   "controlCos": 0.0913,
   "xcontrol": 0.1493
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "vi",
-  "text": "Kiếm điểm thưởng",
-  "english": "Earn Credits",
-  "back": "Earn bonus points.",
-  "cos": 0.4392,
-  "chrf": 21.0,
-  "xcos": 0.75,
-  "controlCos": 0.3477,
-  "xcontrol": 0.4235
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "vi",
-  "text": "Thắng một trận đấu: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a match: +3",
-  "cos": 0.7738,
-  "chrf": 26.5,
-  "xcos": 0.9355,
-  "controlCos": 0.3803,
-  "xcontrol": 0.6977
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "vi",
-  "text": "Hoàn thành một lượt đố vui: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a fun puzzle: +3",
-  "cos": 0.4981,
-  "chrf": 30.3,
-  "xcos": 0.877,
-  "controlCos": 0.4842,
-  "xcontrol": 0.707
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "vi",
-  "text": "Thử thách trích dẫn: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote challenge: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9288,
-  "controlCos": 0.3081,
-  "xcontrol": 0.6427
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "vi",
-  "text": "Thưởng đăng nhập hằng ngày: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily login bonus: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9313,
-  "controlCos": 0.2718,
-  "xcontrol": 0.322
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "vi",
-  "text": "Phần thưởng mùa giải và giải đấu",
-  "english": "Season rewards & tournaments",
-  "back": "Season and tournament rewards",
-  "cos": 0.9463,
-  "chrf": 67.0,
-  "xcos": 0.8962,
-  "controlCos": 0.2475,
-  "xcontrol": 0.2049
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "vi",
-  "text": "Không mua bằng tiền thật",
-  "english": "No real-money purchases",
-  "back": "Don't buy with real money.",
-  "cos": 0.6748,
-  "chrf": 23.3,
-  "xcos": 0.8413,
-  "controlCos": 0.1631,
-  "xcontrol": 0.2113
  },
  {
   "id": "about.free.safe.title",
@@ -18098,14 +17666,14 @@
  {
   "id": "world-map.intro",
   "lang": "vi",
-  "text": "Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khoá biến thể qua trận đấu, đố vui và khám phá.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the globe, each city gives you a unique combat ability, unlock transformation through battles, puzzles and exploration.",
-  "cos": 0.9254,
-  "chrf": 66.2,
-  "xcos": 0.8685,
-  "controlCos": 0.176,
-  "xcontrol": 0.2415
+  "text": "Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khoá biến thể bằng một lượt đố vui đúng hết mọi câu.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel around the globe, each city gives you a unique ability to compete with, unlock variations by answering every question in a funny puzzle.",
+  "cos": 0.8352,
+  "chrf": 56.8,
+  "xcos": 0.8407,
+  "controlCos": 0.4704,
+  "xcontrol": 0.4707
  },
  {
   "id": "world-map.none",
@@ -18206,14 +17774,14 @@
  {
   "id": "about.vision.p1",
   "lang": "zh",
-  "text": "想象一下：你选中一张数字卡牌，它在一段 15 秒的人工智能生成场景中活了过来。莎士比亚笔下的角色出现在增强现实里。你向他发起说唱对战。朋友们在一旁观看、喝彩。",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine: you pick a digital card, and it comes to life in a 15-second AI-generated scene. Shakespeare’s character appears in augmented reality.",
-  "cos": 0.9428,
-  "chrf": 54.2,
-  "xcos": 0.8381,
-  "controlCos": 0.6728,
-  "xcontrol": 0.3306
+  "text": "想象一下：你选中一张数字卡牌，莎士比亚笔下的角色便向你发起诗的对决。你按一种诗体逐行作答：在屏幕上，或戴上头显，在 3D 舞台上。",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine: you pick a digital card, and Shakespeare’s character initiates a poetic duel with you. You answer line by line in one form of poetry: on the screen, or head-on, on a 3D stage.",
+  "cos": 0.92,
+  "chrf": 54.9,
+  "xcos": 0.8713,
+  "controlCos": 0.4254,
+  "xcontrol": 0.3018
  },
  {
   "id": "about.vision.p2",
@@ -18600,30 +18168,6 @@
   "xcontrol": -0.0643
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "zh",
-  "text": "市场",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.9077,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2094
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "zh",
-  "text": "数字资产市场，卡牌的价值受对战排名和社区参与度的影响。",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "In the digital asset market, the value of cards is influenced by matchmaking rankings and community engagement.",
-  "cos": 0.8542,
-  "chrf": 69.4,
-  "xcos": 0.8907,
-  "controlCos": 0.1477,
-  "xcontrol": 0.0613
- },
- {
   "id": "about.free.title",
   "lang": "zh",
   "text": "永远免费游玩",
@@ -18730,90 +18274,6 @@
   "xcos": 0.8711,
   "controlCos": 0.0958,
   "xcontrol": 0.1263
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "zh",
-  "text": "赢取点数",
-  "english": "Earn Credits",
-  "back": "Number of points won",
-  "cos": 0.1899,
-  "chrf": 9.7,
-  "xcos": 0.5309,
-  "controlCos": 0.3508,
-  "xcontrol": 0.3675
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "zh",
-  "text": "赢得一场对战：+3",
-  "english": "Win a battle: +3",
-  "back": "Win a match: +3",
-  "cos": 0.7738,
-  "chrf": 26.5,
-  "xcos": 0.962,
-  "controlCos": 0.3803,
-  "xcontrol": 0.7232
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "zh",
-  "text": "完成一轮问答：+3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completed Q &amp; A: +3",
-  "cos": 0.4073,
-  "chrf": 33.5,
-  "xcos": 0.8805,
-  "controlCos": 0.3827,
-  "xcontrol": 0.7634
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "zh",
-  "text": "名句挑战：+3",
-  "english": "Quote challenge: +3",
-  "back": "Phrase Challenge: +3",
-  "cos": 0.7991,
-  "chrf": 58.2,
-  "xcos": 0.9317,
-  "controlCos": 0.3198,
-  "xcontrol": 0.6419
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "zh",
-  "text": "每日登录奖励：+3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily login bonus: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9561,
-  "controlCos": 0.2718,
-  "xcontrol": 0.3851
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "zh",
-  "text": "赛季奖励与锦标赛",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal Rewards and Tournaments",
-  "cos": 0.9003,
-  "chrf": 60.9,
-  "xcos": 0.9169,
-  "controlCos": 0.2065,
-  "xcontrol": 0.0913
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "zh",
-  "text": "没有真钱消费",
-  "english": "No real-money purchases",
-  "back": "No real money consumption",
-  "cos": 0.7005,
-  "chrf": 33.8,
-  "xcos": 0.8266,
-  "controlCos": 0.0959,
-  "xcontrol": 0.1979
  },
  {
   "id": "about.free.safe.title",
@@ -22574,14 +22034,14 @@
  {
   "id": "world-map.intro",
   "lang": "zh",
-  "text": "莎士比亚的角色周游世界。每座城市都会赋予一种独特的对战能力。通过对战、问答和探索解锁变体。",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel around the world. Each city is given a unique ability to battle. Unlock variants by fighting, asking questions and exploring.",
-  "cos": 0.9385,
-  "chrf": 59.7,
-  "xcos": 0.8173,
-  "controlCos": 0.196,
-  "xcontrol": 0.1243
+  "text": "莎士比亚的角色周游世界。每座城市都会赋予一种独特的对战能力。答对一整轮问答的全部题目，即可解锁变体。",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare’s characters travel around the world. Each city is given a unique ability to fight.",
+  "cos": 0.8074,
+  "chrf": 45.9,
+  "xcos": 0.7786,
+  "controlCos": 0.3991,
+  "xcontrol": 0.3806
  },
  {
   "id": "world-map.combinations",
@@ -22742,14 +22202,14 @@
  {
   "id": "about.vision.p1",
   "lang": "ja",
-  "text": "デジタルカードを一枚選ぶと、AIが生成した15秒の場面の中でカードが動き出す。シェイクスピアの登場人物が拡張現実に現れる。あなたはその人物にラップバトルを挑む。友だちがそれを見て声援を送る。そんな光景を思い描いてみてください。",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "When you choose a digital card, the card moves in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You rap battle with that character. Your friends watch and cheer on it. Imagine that scene.",
-  "cos": 0.9038,
-  "chrf": 69.6,
-  "xcos": 0.86,
-  "controlCos": 0.6621,
-  "xcontrol": 0.4298
+  "text": "デジタルカードを一枚選ぶと、シェイクスピアの登場人物があなたに詩の決闘を挑んでくる。あなたは詩の形式に沿って、一行ずつ答える。画面でも、ヘッドセットを着けた3Dの舞台でも。そんな光景を思い描いてみてください。",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Choose one of the digital cards, and a character from Shakespeare will challenge you in a poetry duel. You must answer one line at a time according to the poem's format. Imagine that on screen or on a 3D stage with a headset.",
+  "cos": 0.8171,
+  "chrf": 52.2,
+  "xcos": 0.8737,
+  "controlCos": 0.5053,
+  "xcontrol": 0.4007
  },
  {
   "id": "about.vision.p2",
@@ -23136,30 +22596,6 @@
   "xcontrol": 0.0371
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "ja",
-  "text": "マーケット",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.8489,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2211
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "ja",
-  "text": "デジタル資産のマーケットです。カードの価値は、バトルのランキングとコミュニティの盛り上がりに左右されます。",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A marketplace for digital assets. The value of cards is determined by battle ranking and community excitement.",
-  "cos": 0.8957,
-  "chrf": 52.7,
-  "xcos": 0.8279,
-  "controlCos": 0.1961,
-  "xcontrol": 0.1054
- },
- {
   "id": "about.free.title",
   "lang": "ja",
   "text": "ずっと無料で遊べます",
@@ -23266,90 +22702,6 @@
   "xcos": 0.8686,
   "controlCos": 0.0913,
   "xcontrol": 0.0909
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "ja",
-  "text": "クレジットを手に入れる",
-  "english": "Earn Credits",
-  "back": "Get credit.",
-  "cos": 0.6368,
-  "chrf": 26.9,
-  "xcos": 0.7511,
-  "controlCos": 0.1752,
-  "xcontrol": 0.2797
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "ja",
-  "text": "バトルに勝つ：+3",
-  "english": "Win a battle: +3",
-  "back": "Winning a battle: +3",
-  "cos": 0.9657,
-  "chrf": 73.2,
-  "xcos": 0.9658,
-  "controlCos": 0.4573,
-  "xcontrol": 0.6944
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "ja",
-  "text": "クイズを最後まで解く：+3",
-  "english": "Complete a trivia round: +3",
-  "back": "Solve the quiz to the end: +3",
-  "cos": 0.3915,
-  "chrf": 19.6,
-  "xcos": 0.793,
-  "controlCos": 0.5463,
-  "xcontrol": 0.7159
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "ja",
-  "text": "名言チャレンジ：+3",
-  "english": "Quote challenge: +3",
-  "back": "Quote Challenge: +3",
-  "cos": 1.0,
-  "chrf": 74.1,
-  "xcos": 0.8849,
-  "controlCos": 0.3081,
-  "xcontrol": 0.6647
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "ja",
-  "text": "毎日のログインボーナス：+3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily Login Bonus: +3",
-  "cos": 1.0,
-  "chrf": 53.1,
-  "xcos": 0.958,
-  "controlCos": 0.2718,
-  "xcontrol": 0.328
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "ja",
-  "text": "シーズン報酬とトーナメント",
-  "english": "Season rewards & tournaments",
-  "back": "Season rewards and tournaments",
-  "cos": 0.9921,
-  "chrf": 82.3,
-  "xcos": 0.883,
-  "controlCos": 0.2298,
-  "xcontrol": 0.2292
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "ja",
-  "text": "現実のお金での購入はありません",
-  "english": "No real-money purchases",
-  "back": "There &apos;s no real money to buy it .",
-  "cos": 0.6181,
-  "chrf": 29.0,
-  "xcos": 0.8805,
-  "controlCos": 0.1485,
-  "xcontrol": 0.1659
  },
  {
   "id": "about.free.safe.title",
@@ -27110,14 +26462,14 @@
  {
   "id": "world-map.intro",
   "lang": "ja",
-  "text": "シェイクスピアの登場人物たちが世界を旅します。都市ごとに固有のバトル能力が与えられます。バトル、クイズ、探索でバリエーションを解除しましょう。",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world. Each city is given unique battle abilities. Unlock variations with battles, quizzes and quests.",
-  "cos": 0.947,
-  "chrf": 61.6,
-  "xcos": 0.8515,
-  "controlCos": 0.2166,
-  "xcontrol": 0.2054
+  "text": "シェイクスピアの登場人物たちが世界を旅します。都市ごとに固有のバトル能力が与えられます。クイズのラウンドで全問正解すると、バリエーションを解除できます。",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world. Each city is given unique battle abilities. Solve all questions correctly in the quiz round to unlock variations.",
+  "cos": 0.8836,
+  "chrf": 59.5,
+  "xcos": 0.8251,
+  "controlCos": 0.4471,
+  "xcontrol": 0.4298
  },
  {
   "id": "world-map.combinations",
@@ -27278,14 +26630,14 @@
  {
   "id": "about.vision.p1",
   "lang": "ko",
-  "text": "디지털 카드 한 장을 고르면, AI가 만든 15초짜리 장면 속에서 카드가 살아난다고 상상해 보세요. 셰익스피어의 등장인물이 증강 현실에 나타나요. 그 인물에게 랩 배틀을 신청해요. 친구들이 지켜보며 응원해요.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine picking up a digital card and seeing it come to life in an AI-generated 15-second video. A Shakespearean character appears in augmented reality, you request a rap battle with him or her, and your friends cheer you on while you watch.",
-  "cos": 0.9411,
-  "chrf": 59.5,
-  "xcos": 0.8894,
-  "controlCos": 0.5906,
-  "xcontrol": 0.3812
+  "text": "디지털 카드 한 장을 고르면 셰익스피어의 등장인물이 시의 결투를 신청해 온다고 상상해 보세요. 여러분은 시의 형식에 맞춰 한 행씩 답해요. 화면에서도, 헤드셋을 쓰고 3D 무대에서도요.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine that you pick a digital card and a character from Shakespeare asks for a duel in poetry. You answer one line at a time, according to the format of the poem — on the screen, with headsets or on a 3D stage.",
+  "cos": 0.9242,
+  "chrf": 49.2,
+  "xcos": 0.8838,
+  "controlCos": 0.4329,
+  "xcontrol": 0.402
  },
  {
   "id": "about.vision.p2",
@@ -27672,30 +27024,6 @@
   "xcontrol": 0.0215
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "ko",
-  "text": "마켓",
-  "english": "Marketplace",
-  "back": "Market.",
-  "cos": 0.653,
-  "chrf": 42.7,
-  "xcos": 0.8769,
-  "controlCos": 0.4313,
-  "xcontrol": 0.2272
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "ko",
-  "text": "디지털 자산 마켓이에요. 카드의 가치는 배틀 순위와 커뮤니티 참여도의 영향을 받아요.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "It's a digital asset market, and the value of cards is influenced by battle ranks and community engagement.",
-  "cos": 0.8582,
-  "chrf": 64.7,
-  "xcos": 0.8537,
-  "controlCos": 0.1274,
-  "xcontrol": 0.1331
- },
- {
   "id": "about.free.title",
   "lang": "ko",
   "text": "언제나 무료",
@@ -27802,90 +27130,6 @@
   "xcos": 0.9014,
   "controlCos": 0.0913,
   "xcontrol": 0.0964
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "ko",
-  "text": "크레딧 얻기",
-  "english": "Earn Credits",
-  "back": "Get credit",
-  "cos": 0.7377,
-  "chrf": 27.5,
-  "xcos": 0.8094,
-  "controlCos": 0.1715,
-  "xcontrol": 0.2566
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "ko",
-  "text": "배틀 승리: +3",
-  "english": "Win a battle: +3",
-  "back": "Battle wins: +3",
-  "cos": 0.902,
-  "chrf": 33.8,
-  "xcos": 0.9494,
-  "controlCos": 0.4375,
-  "xcontrol": 0.7026
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "ko",
-  "text": "퀴즈 완료: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Quiz Completion: +3",
-  "cos": 0.4546,
-  "chrf": 31.3,
-  "xcos": 0.8002,
-  "controlCos": 0.5636,
-  "xcontrol": 0.7817
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "ko",
-  "text": "명대사 도전: +3",
-  "english": "Quote challenge: +3",
-  "back": "Phrase Challenge: +3",
-  "cos": 0.7991,
-  "chrf": 58.2,
-  "xcos": 0.8932,
-  "controlCos": 0.3198,
-  "xcontrol": 0.664
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "ko",
-  "text": "매일 로그인 보너스: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily Login Bonus: +3",
-  "cos": 1.0,
-  "chrf": 53.1,
-  "xcos": 0.9546,
-  "controlCos": 0.2718,
-  "xcontrol": 0.3434
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "ko",
-  "text": "시즌 보상과 토너먼트",
-  "english": "Season rewards & tournaments",
-  "back": "Season Rewards and Tournaments",
-  "cos": 0.9921,
-  "chrf": 62.0,
-  "xcos": 0.9265,
-  "controlCos": 0.2298,
-  "xcontrol": 0.197
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "ko",
-  "text": "실제 돈 결제 없음",
-  "english": "No real-money purchases",
-  "back": "No real money payments",
-  "cos": 0.8112,
-  "chrf": 39.6,
-  "xcos": 0.8214,
-  "controlCos": 0.0184,
-  "xcontrol": 0.2133
  },
  {
   "id": "about.free.safe.title",
@@ -31646,14 +30890,14 @@
  {
   "id": "world-map.intro",
   "lang": "ko",
-  "text": "셰익스피어의 등장인물들이 세계를 여행해요. 도시마다 고유한 배틀 능력을 줘요. 배틀, 퀴즈, 탐험으로 변형을 열어 보세요.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world and each city has its own unique battle abilities. Open up variations with battles, quizzes and explorations.",
-  "cos": 0.912,
-  "chrf": 60.4,
-  "xcos": 0.9081,
-  "controlCos": 0.1801,
-  "xcontrol": 0.0996
+  "text": "셰익스피어의 등장인물들이 세계를 여행해요. 도시마다 고유한 배틀 능력을 줘요. 퀴즈 한 판을 모두 맞히면 변형을 열 수 있어요.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world, and each city gives you unique battle abilities. Match all of the quizzes to unlock variations.",
+  "cos": 0.8848,
+  "chrf": 58.6,
+  "xcos": 0.8881,
+  "controlCos": 0.501,
+  "xcontrol": 0.4414
  },
  {
   "id": "world-map.combinations",
@@ -31814,14 +31058,14 @@
  {
   "id": "about.vision.p1",
   "lang": "pl",
-  "text": "Wyobraź sobie, że wybierasz cyfrową kartę, a ona ożywa w 15-sekundowej scenie wygenerowanej przez SI. Postać z Szekspira pojawia się w rozszerzonej rzeczywistości. Wyzywasz ją na bitwę rapową. Twoi znajomi patrzą i kibicują.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine picking a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality, you challenge him or her to a rap battle, your friends watch and cheer.",
-  "cos": 0.9814,
-  "chrf": 72.6,
-  "xcos": 0.8255,
-  "controlCos": 0.6383,
-  "xcontrol": 0.3663
+  "text": "Wyobraź sobie, że wybierasz cyfrową kartę, a postać z Szekspira wyzywa cię na pojedynek na strofy. Odpowiadasz w formie poetyckiej, wers po wersie: na ekranie albo na scenie 3D w goglach.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine that you pick a digital card and a Shakespearean character challenges you to a stanza duel.You answer in poetic form, verse by verse: on the screen or on a 3D stage with goggles.",
+  "cos": 0.8827,
+  "chrf": 62.9,
+  "xcos": 0.8746,
+  "controlCos": 0.4526,
+  "xcontrol": 0.3731
  },
  {
   "id": "about.vision.p2",
@@ -32208,30 +31452,6 @@
   "xcontrol": -0.0266
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "pl",
-  "text": "Rynek",
-  "english": "Marketplace",
-  "back": "Rynek",
-  "cos": 0.1936,
-  "chrf": 4.1,
-  "xcos": 0.8903,
-  "controlCos": 0.0184,
-  "xcontrol": 0.2594
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "pl",
-  "text": "Rynek dóbr cyfrowych, na którym na wartość kart wpływają rankingi walk i zaangażowanie społeczności.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital goods marketplace where battle rankings and community engagement affect the value of cards.",
-  "cos": 0.8871,
-  "chrf": 60.7,
-  "xcos": 0.8437,
-  "controlCos": 0.1868,
-  "xcontrol": 0.1113
- },
- {
   "id": "about.free.title",
   "lang": "pl",
   "text": "Zawsze za darmo",
@@ -32338,90 +31558,6 @@
   "xcos": 0.8856,
   "controlCos": 0.0913,
   "xcontrol": 0.1534
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "pl",
-  "text": "Zdobywaj kredyty",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.8059,
-  "controlCos": 0.1642,
-  "xcontrol": 0.349
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "pl",
-  "text": "Wygrana bitwa: +3",
-  "english": "Win a battle: +3",
-  "back": "Battle won: +3",
-  "cos": 0.8645,
-  "chrf": 31.7,
-  "xcos": 0.9672,
-  "controlCos": 0.45,
-  "xcontrol": 0.7127
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "pl",
-  "text": "Ukończony quiz: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completed quiz: +3",
-  "cos": 0.5658,
-  "chrf": 35.3,
-  "xcos": 0.7727,
-  "controlCos": 0.5816,
-  "xcontrol": 0.7395
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "pl",
-  "text": "Wyzwanie z cytatem: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote Challenge: +3",
-  "cos": 1.0,
-  "chrf": 74.1,
-  "xcos": 0.8952,
-  "controlCos": 0.3081,
-  "xcontrol": 0.5918
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "pl",
-  "text": "Premia za codzienne logowanie: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Bonus for daily login: +3",
-  "cos": 0.9776,
-  "chrf": 54.8,
-  "xcos": 0.9181,
-  "controlCos": 0.2895,
-  "xcontrol": 0.3796
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "pl",
-  "text": "Nagrody sezonowe i turnieje",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal rewards and tournaments",
-  "cos": 0.9003,
-  "chrf": 69.6,
-  "xcos": 0.8905,
-  "controlCos": 0.2065,
-  "xcontrol": 0.2398
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "pl",
-  "text": "Żadnych zakupów za prawdziwe pieniądze",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.8723,
-  "controlCos": 0.102,
-  "xcontrol": 0.2539
  },
  {
   "id": "about.free.safe.title",
@@ -36170,14 +35306,14 @@
  {
   "id": "world-map.intro",
   "lang": "pl",
-  "text": "Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty w bitwach, quizach i podczas eksploracji.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world, and each city gives you a unique battle ability. Unlock variations in battles, quizzes, and exploration.",
-  "cos": 0.9465,
-  "chrf": 70.7,
-  "xcos": 0.8345,
-  "controlCos": 0.1821,
-  "xcontrol": 0.1956
+  "text": "Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty, przechodząc quiz bez jednego błędu.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world and each city gives you a unique battle ability. Unlock variants by completing the quiz without a single mistake.",
+  "cos": 0.9152,
+  "chrf": 65.9,
+  "xcos": 0.8347,
+  "controlCos": 0.4662,
+  "xcontrol": 0.3337
  },
  {
   "id": "world-map.combinations",
@@ -36350,14 +35486,14 @@
  {
   "id": "about.vision.p1",
   "lang": "ru",
-  "text": "Представь: ты выбираешь цифровую карту, и она оживает в 15-секундной сцене, созданной ИИ. Персонаж Шекспира появляется в дополненной реальности. Ты вызываешь его на рэп-баттл. Друзья смотрят и болеют за тебя.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine: you pick a digital map, and it comes to life in a 15-second scene created by AI. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Friends watch and cheer for you.",
-  "cos": 0.9148,
-  "chrf": 65.6,
-  "xcos": 0.8306,
-  "controlCos": 0.554,
-  "xcontrol": 0.4039
+  "text": "Представь: ты выбираешь цифровую карту, и персонаж Шекспира вызывает тебя на дуэль строф. Ты отвечаешь в поэтической форме, строка за строкой: на экране или на 3D-сцене в гарнитуре.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine: you pick a digital card, and a Shakespearean character challenges you to a verse duel. You answer in poetic form, line by line: on the screen or on a 3D scene in your headset.",
+  "cos": 0.9663,
+  "chrf": 71.6,
+  "xcos": 0.8909,
+  "controlCos": 0.4379,
+  "xcontrol": 0.4003
  },
  {
   "id": "about.vision.p2",
@@ -36744,30 +35880,6 @@
   "xcontrol": -0.0036
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "ru",
-  "text": "Рынок",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.8609,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2419
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "ru",
-  "text": "Рынок цифровых активов, где на ценность карт влияют боевые рейтинги и активность сообщества.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset marketplace where battle ratings and community activity influence the value of cards.",
-  "cos": 0.9123,
-  "chrf": 60.7,
-  "xcos": 0.8318,
-  "controlCos": 0.1892,
-  "xcontrol": 0.1426
- },
- {
   "id": "about.free.title",
   "lang": "ru",
   "text": "Всегда бесплатно",
@@ -36874,90 +35986,6 @@
   "xcos": 0.8897,
   "controlCos": 0.0913,
   "xcontrol": 0.1693
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "ru",
-  "text": "Зарабатывай кредиты",
-  "english": "Earn Credits",
-  "back": "Earn Credits",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.8361,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3443
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "ru",
-  "text": "Победа в битве: +3",
-  "english": "Win a battle: +3",
-  "back": "Battle victory: +3",
-  "cos": 0.9045,
-  "chrf": 29.6,
-  "xcos": 0.95,
-  "controlCos": 0.4548,
-  "xcontrol": 0.6552
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "ru",
-  "text": "Пройденная викторина: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Quiz completed: +3",
-  "cos": 0.523,
-  "chrf": 32.6,
-  "xcos": 0.7767,
-  "controlCos": 0.5547,
-  "xcontrol": 0.8114
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "ru",
-  "text": "Испытание с цитатой: +3",
-  "english": "Quote challenge: +3",
-  "back": "Test with quotation: +3",
-  "cos": 0.6979,
-  "chrf": 15.6,
-  "xcos": 0.8515,
-  "controlCos": 0.1769,
-  "xcontrol": 0.5832
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "ru",
-  "text": "Бонус за ежедневный вход: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily Login Bonus: +3",
-  "cos": 1.0,
-  "chrf": 53.1,
-  "xcos": 0.9306,
-  "controlCos": 0.2718,
-  "xcontrol": 0.3522
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "ru",
-  "text": "Сезонные награды и турниры",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal rewards and tournaments",
-  "cos": 0.9003,
-  "chrf": 69.6,
-  "xcos": 0.8841,
-  "controlCos": 0.2065,
-  "xcontrol": 0.2265
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "ru",
-  "text": "Никаких покупок за настоящие деньги",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9135,
-  "controlCos": 0.102,
-  "xcontrol": 0.2467
  },
  {
   "id": "about.free.safe.title",
@@ -40706,14 +39734,14 @@
  {
   "id": "world-map.intro",
   "lang": "ru",
-  "text": "Персонажи Шекспира путешествуют по планете. Каждый город даёт особую боевую способность. Открывай варианты в битвах, викторинах и путешествиях.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the planet. Each city gives a special combat ability. Discover options in battles, quizzes and journeys.",
-  "cos": 0.8874,
-  "chrf": 48.4,
-  "xcos": 0.8736,
-  "controlCos": 0.1639,
-  "xcontrol": 0.2351
+  "text": "Персонажи Шекспира путешествуют по планете. Каждый город даёт особую боевую способность. Открывай варианты, пройдя викторину без единой ошибки.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the planet. Each city gives a special combat ability. Unlock options by completing the quiz without a single mistake.",
+  "cos": 0.8557,
+  "chrf": 52.8,
+  "xcos": 0.8633,
+  "controlCos": 0.4401,
+  "xcontrol": 0.4367
  },
  {
   "id": "world-map.combinations",
@@ -40886,14 +39914,14 @@
  {
   "id": "about.vision.p1",
   "lang": "id",
-  "text": "Bayangkan kamu memilih sebuah kartu digital, lalu kartu itu hidup dalam adegan 15 detik buatan AI. Seorang tokoh Shakespeare muncul dalam realitas tertambah. Kamu menantangnya adu rap. Teman-temanmu menonton dan bersorak.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine you pick a digital card, and it comes alive in an AI-generated 15-second scene where a Shakespearean character appears in augmented reality, you challenge him to a rap contest, your friends watch and cheer.",
-  "cos": 0.9794,
-  "chrf": 64.4,
-  "xcos": 0.8873,
-  "controlCos": 0.6798,
-  "xcontrol": 0.4192
+  "text": "Bayangkan kamu memilih sebuah kartu digital, lalu seorang tokoh Shakespeare menantangmu dalam duel syair. Kamu menjawab dalam sebuah bentuk puisi, baris demi baris: di layar, atau di panggung 3D dengan headset.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine you pick a digital card, then a Shakespearean character challenges you to a poetry duel, and you answer in the form of a poem, line by line: on screen or on a 3D stage with headsets.",
+  "cos": 0.9334,
+  "chrf": 64.7,
+  "xcos": 0.9202,
+  "controlCos": 0.4408,
+  "xcontrol": 0.3825
  },
  {
   "id": "about.vision.p2",
@@ -41280,30 +40308,6 @@
   "xcontrol": -0.0197
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "id",
-  "text": "Pasar",
-  "english": "Marketplace",
-  "back": "Pasar",
-  "cos": 0.2426,
-  "chrf": 8.4,
-  "xcos": 0.909,
-  "controlCos": 0.0563,
-  "xcontrol": 0.2335
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "id",
-  "text": "Pasar aset digital tempat nilai kartu dipengaruhi oleh peringkat pertarungan dan keterlibatan komunitas.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset market where card values are influenced by battle ratings and community engagement.",
-  "cos": 0.9036,
-  "chrf": 73.2,
-  "xcos": 0.8359,
-  "controlCos": 0.141,
-  "xcontrol": 0.1591
- },
- {
   "id": "about.free.title",
   "lang": "id",
   "text": "Selalu gratis dimainkan",
@@ -41410,90 +40414,6 @@
   "xcos": 0.8724,
   "controlCos": 0.0913,
   "xcontrol": 0.1442
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "id",
-  "text": "Raih kredit",
-  "english": "Earn Credits",
-  "back": "Raih credit",
-  "cos": 0.4269,
-  "chrf": 28.5,
-  "xcos": 0.7738,
-  "controlCos": 0.1235,
-  "xcontrol": 0.2308
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "id",
-  "text": "Menang pertarungan: +3",
-  "english": "Win a battle: +3",
-  "back": "Winning battles: +3",
-  "cos": 0.9172,
-  "chrf": 44.6,
-  "xcos": 0.968,
-  "controlCos": 0.4627,
-  "xcontrol": 0.7027
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "id",
-  "text": "Menyelesaikan kuis: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Quiz Completion: +3",
-  "cos": 0.4546,
-  "chrf": 31.3,
-  "xcos": 0.8053,
-  "controlCos": 0.5636,
-  "xcontrol": 0.8208
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "id",
-  "text": "Tantangan kutipan: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote challenge: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9469,
-  "controlCos": 0.3081,
-  "xcontrol": 0.62
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "id",
-  "text": "Bonus masuk harian: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily entry bonus: +3",
-  "cos": 0.7898,
-  "chrf": 50.7,
-  "xcos": 0.932,
-  "controlCos": 0.3608,
-  "xcontrol": 0.3601
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "id",
-  "text": "Hadiah musim dan turnamen",
-  "english": "Season rewards & tournaments",
-  "back": "Season and tournament prizes",
-  "cos": 0.8343,
-  "chrf": 51.3,
-  "xcos": 0.8834,
-  "controlCos": 0.2441,
-  "xcontrol": 0.2296
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "id",
-  "text": "Tanpa pembelian dengan uang sungguhan",
-  "english": "No real-money purchases",
-  "back": "No purchases with real money",
-  "cos": 0.9396,
-  "chrf": 56.3,
-  "xcos": 0.8816,
-  "controlCos": 0.0739,
-  "xcontrol": 0.2112
  },
  {
   "id": "about.free.safe.title",
@@ -45254,14 +44174,14 @@
  {
   "id": "world-map.intro",
   "lang": "id",
-  "text": "Tokoh-tokoh Shakespeare menjelajahi dunia. Setiap kota memberi kemampuan bertarung yang unik. Buka varian lewat pertarungan, kuis, dan penjelajahan.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world, each city gives you unique combat abilities, unlock variations through battles, quizzes and exploration.",
-  "cos": 0.9205,
-  "chrf": 64.4,
-  "xcos": 0.9306,
-  "controlCos": 0.1631,
-  "xcontrol": 0.1809
+  "text": "Tokoh-tokoh Shakespeare menjelajahi dunia. Setiap kota memberi kemampuan bertarung yang unik. Buka varian dengan menjawab benar semua soal dalam satu ronde kuis.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the world. Each city gives you unique combat abilities. Unlock variations by answering all questions correctly in one round of quizzes.",
+  "cos": 0.8798,
+  "chrf": 55.1,
+  "xcos": 0.873,
+  "controlCos": 0.5095,
+  "xcontrol": 0.4643
  },
  {
   "id": "world-map.combinations",
@@ -45422,14 +44342,14 @@
  {
   "id": "about.vision.p1",
   "lang": "es",
-  "text": "Imagina que eliges una carta digital y cobra vida en una escena de 15 segundos generada por IA. Un personaje de Shakespeare aparece en realidad aumentada. Lo retas a una batalla de rap. Tus amigos miran y animan.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine that you pick a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Your friends watch and cheer.",
-  "cos": 0.9838,
-  "chrf": 77.4,
-  "xcos": 0.9231,
-  "controlCos": 0.643,
-  "xcontrol": 0.4101
+  "text": "Imagina que eliges una carta digital y un personaje de Shakespeare te reta a un duelo de estrofas. Tú respondes con una forma poética, verso a verso: en una pantalla o en un escenario 3D con un visor.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine that you pick a digital card and a Shakespearean character challenges you to a stanza duel; you respond in a poetic way, verse by verse: on a screen or on a 3D stage with a viewfinder.",
+  "cos": 0.8912,
+  "chrf": 58.3,
+  "xcos": 0.922,
+  "controlCos": 0.3991,
+  "xcontrol": 0.4325
  },
  {
   "id": "about.vision.p2",
@@ -45816,30 +44736,6 @@
   "xcontrol": -0.0244
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "es",
-  "text": "Mercado",
-  "english": "Marketplace",
-  "back": "Mercado",
-  "cos": 0.1727,
-  "chrf": 8.2,
-  "xcos": 0.8515,
-  "controlCos": 0.0334,
-  "xcontrol": 0.2229
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "es",
-  "text": "Un mercado de activos digitales en el que el valor de las cartas depende de las clasificaciones de combate y de la participación de la comunidad.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset marketplace in which the value of cards depends on combat rankings and community engagement.",
-  "cos": 0.95,
-  "chrf": 70.9,
-  "xcos": 0.8621,
-  "controlCos": 0.1549,
-  "xcontrol": 0.131
- },
- {
   "id": "about.free.title",
   "lang": "es",
   "text": "Siempre gratis",
@@ -45946,90 +44842,6 @@
   "xcos": 0.9182,
   "controlCos": 0.0913,
   "xcontrol": 0.0993
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "es",
-  "text": "Gana créditos",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.9366,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3413
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "es",
-  "text": "Ganar una batalla: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a battle: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9802,
-  "controlCos": 0.4172,
-  "xcontrol": 0.7102
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "es",
-  "text": "Completar una partida de Trivial: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a Trivial game: +3",
-  "cos": 0.3569,
-  "chrf": 38.9,
-  "xcos": 0.9025,
-  "controlCos": 0.4156,
-  "xcontrol": 0.6658
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "es",
-  "text": "Desafío de citas: +3",
-  "english": "Quote challenge: +3",
-  "back": "Dating Challenge: +3",
-  "cos": 0.4588,
-  "chrf": 58.2,
-  "xcos": 0.9036,
-  "controlCos": 0.2392,
-  "xcontrol": 0.6709
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "es",
-  "text": "Bonificación por entrar cada día: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Bonus for entering every day: +3",
-  "cos": 0.7753,
-  "chrf": 20.1,
-  "xcos": 0.9256,
-  "controlCos": 0.3563,
-  "xcontrol": 0.2916
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "es",
-  "text": "Recompensas de temporada y torneos",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal rewards and tournaments",
-  "cos": 0.9003,
-  "chrf": 69.6,
-  "xcos": 0.9187,
-  "controlCos": 0.2065,
-  "xcontrol": 0.1892
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "es",
-  "text": "Sin compras con dinero real",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9006,
-  "controlCos": 0.102,
-  "xcontrol": 0.1894
  },
  {
   "id": "about.free.safe.title",
@@ -49766,14 +48578,14 @@
  {
   "id": "world-map.intro",
   "lang": "es",
-  "text": "Los personajes de Shakespeare recorren el planeta. Cada ciudad concede una habilidad de batalla única. Desbloquea variantes con batallas, el Trivial y la exploración.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the planet, and each city grants a unique battle skill. Unlock variations with Battles, Trivial, and Exploration.",
-  "cos": 0.9118,
-  "chrf": 68.5,
-  "xcos": 0.9366,
-  "controlCos": 0.2011,
-  "xcontrol": 0.208
+  "text": "Los personajes de Shakespeare recorren el planeta. Cada ciudad concede una habilidad de batalla única. Desbloquea variantes con una ronda perfecta de Trivial.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the planet, and each city grants a unique battle skill. Unlock variants with a perfect round of Trivial.",
+  "cos": 0.8947,
+  "chrf": 76.9,
+  "xcos": 0.9393,
+  "controlCos": 0.4581,
+  "xcontrol": 0.4365
  },
  {
   "id": "world-map.combinations",
@@ -49958,14 +48770,14 @@
  {
   "id": "about.vision.p1",
   "lang": "fr",
-  "text": "Imaginez : vous choisissez une carte numérique et elle prend vie dans une scène de 15 secondes générée par IA. Un personnage de Shakespeare apparaît en réalité augmentée. Vous le défiez dans une battle de rap. Vos amis regardent et vous encouragent.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine: you pick a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality, you challenge him into a rap battle, your friends watch and cheer you on.",
-  "cos": 0.9809,
-  "chrf": 70.1,
-  "xcos": 0.9092,
-  "controlCos": 0.6512,
-  "xcontrol": 0.4268
+  "text": "Imaginez : vous choisissez une carte numérique, et un personnage de Shakespeare vous défie dans un duel de strophes. Vous répondez selon une forme poétique, vers après vers, sur un écran ou sur une scène en 3D dans un casque.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine: you pick a digital card, and a Shakespearean character challenges you to a stanza duel; you respond in a poetic form, verse by verse, on a screen or on a 3D scene in a headset.",
+  "cos": 0.9314,
+  "chrf": 66.2,
+  "xcos": 0.923,
+  "controlCos": 0.4335,
+  "xcontrol": 0.4216
  },
  {
   "id": "about.vision.p2",
@@ -50352,30 +49164,6 @@
   "xcontrol": -0.0238
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "fr",
-  "text": "Marché",
-  "english": "Marketplace",
-  "back": "Market",
-  "cos": 0.7032,
-  "chrf": 44.0,
-  "xcos": 0.9191,
-  "controlCos": 0.4387,
-  "xcontrol": 0.2485
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "fr",
-  "text": "Un marché d’actifs numériques où la valeur des cartes dépend des classements de combat et de l’engagement de la communauté.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset marketplace where the value of cards depends on battle rankings and community engagement.",
-  "cos": 0.9185,
-  "chrf": 69.5,
-  "xcos": 0.844,
-  "controlCos": 0.186,
-  "xcontrol": 0.1279
- },
- {
   "id": "about.free.title",
   "lang": "fr",
   "text": "Toujours gratuit",
@@ -50482,90 +49270,6 @@
   "xcos": 0.9167,
   "controlCos": 0.0913,
   "xcontrol": 0.1444
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "fr",
-  "text": "Gagnez des crédits",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.9137,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3664
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "fr",
-  "text": "Gagner un combat : +3",
-  "english": "Win a battle: +3",
-  "back": "Win a fight: +3",
-  "cos": 0.8635,
-  "chrf": 23.8,
-  "xcos": 0.9756,
-  "controlCos": 0.3566,
-  "xcontrol": 0.7139
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "fr",
-  "text": "Terminer un quiz : +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a quiz: +3",
-  "cos": 0.4232,
-  "chrf": 31.0,
-  "xcos": 0.8328,
-  "controlCos": 0.5505,
-  "xcontrol": 0.7319
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "fr",
-  "text": "Défi de citations : +3",
-  "english": "Quote challenge: +3",
-  "back": "Citation challenge: +3",
-  "cos": 0.6559,
-  "chrf": 64.3,
-  "xcos": 0.8309,
-  "controlCos": 0.2029,
-  "xcontrol": 0.6309
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "fr",
-  "text": "Bonus de connexion quotidien : +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily connection bonus: +3",
-  "cos": 0.7602,
-  "chrf": 54.7,
-  "xcos": 0.9331,
-  "controlCos": 0.3243,
-  "xcontrol": 0.3175
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "fr",
-  "text": "Récompenses de saison et tournois",
-  "english": "Season rewards & tournaments",
-  "back": "Season rewards and tournaments",
-  "cos": 0.9921,
-  "chrf": 82.3,
-  "xcos": 0.9356,
-  "controlCos": 0.2298,
-  "xcontrol": 0.2111
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "fr",
-  "text": "Aucun achat en argent réel",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9378,
-  "controlCos": 0.102,
-  "xcontrol": 0.2181
  },
  {
   "id": "about.free.safe.title",
@@ -54302,14 +53006,14 @@
  {
   "id": "world-map.intro",
   "lang": "fr",
-  "text": "Les personnages de Shakespeare parcourent le globe. Chaque ville accorde une capacité de combat unique. Débloquez des variantes par les combats, les quiz et l’exploration.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare’s characters travel the globe, and each city grants a unique combat ability. Unlock variations through battles, quizzes, and exploration.",
-  "cos": 0.9472,
-  "chrf": 76.7,
-  "xcos": 0.9352,
-  "controlCos": 0.2016,
-  "xcontrol": 0.1705
+  "text": "Les personnages de Shakespeare parcourent le globe. Chaque ville accorde une capacité de combat unique. Débloquez des variantes en réussissant un quiz sans faute.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare’s characters travel the globe, and each city grants a unique combat ability. Unlock variations by completing a quiz without failing.",
+  "cos": 0.9114,
+  "chrf": 64.6,
+  "xcos": 0.9312,
+  "controlCos": 0.4653,
+  "xcontrol": 0.4621
  },
  {
   "id": "world-map.combinations",
@@ -54494,14 +53198,14 @@
  {
   "id": "about.vision.p1",
   "lang": "de",
-  "text": "Stell dir vor, du wählst eine digitale Karte, und sie erwacht in einer 15 Sekunden langen, von KI erzeugten Szene zum Leben. Eine Figur von Shakespeare erscheint in erweiterter Realität. Du forderst sie zu einem Rap-Battle heraus. Deine Freunde schauen zu und feuern dich an.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine choosing a digital card, and it comes to life in a 15-second AI-generated scene. A character from Shakespeare appears in augmented reality, you challenge them to a rap battle, and your friends watch and cheer you on.",
-  "cos": 0.9866,
-  "chrf": 75.0,
-  "xcos": 0.8665,
-  "controlCos": 0.6823,
-  "xcontrol": 0.3749
+  "text": "Stell dir vor, du wählst eine digitale Karte, und eine Figur von Shakespeare fordert dich zu einem Duell der Strophen heraus. Du antwortest in einer Gedichtform, Zeile für Zeile: am Bildschirm oder mit einer VR-Brille auf einer 3D-Bühne.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine choosing a digital card, and a character from Shakespeare challenging you to a duel of verses, answering in a poem form, line by line: on screen or with VR glasses on a 3D stage.",
+  "cos": 0.8906,
+  "chrf": 72.2,
+  "xcos": 0.8871,
+  "controlCos": 0.3985,
+  "xcontrol": 0.433
  },
  {
   "id": "about.vision.p2",
@@ -54888,30 +53592,6 @@
   "xcontrol": -0.0285
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "de",
-  "text": "Marktplatz",
-  "english": "Marketplace",
-  "back": "Marketplace",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.8825,
-  "controlCos": 0.4774,
-  "xcontrol": 0.2555
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "de",
-  "text": "Ein Marktplatz für digitale Güter, auf dem Kampfranglisten und die Beteiligung der Community den Wert der Karten beeinflussen.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A marketplace for digital goods where battle rankings and community engagement affect the value of cards.",
-  "cos": 0.8787,
-  "chrf": 57.3,
-  "xcos": 0.8238,
-  "controlCos": 0.2,
-  "xcontrol": 0.1312
- },
- {
   "id": "about.free.title",
   "lang": "de",
   "text": "Immer kostenlos spielbar",
@@ -55018,90 +53698,6 @@
   "xcos": 0.9252,
   "controlCos": 0.0913,
   "xcontrol": 0.098
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "de",
-  "text": "Credits verdienen",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.9383,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3131
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "de",
-  "text": "Einen Kampf gewinnen: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a battle: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9742,
-  "controlCos": 0.4172,
-  "xcontrol": 0.7064
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "de",
-  "text": "Eine Quizrunde abschließen: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a quiz: +3",
-  "cos": 0.4232,
-  "chrf": 31.0,
-  "xcos": 0.8862,
-  "controlCos": 0.5505,
-  "xcontrol": 0.6923
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "de",
-  "text": "Zitat-Herausforderung: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote challenge: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9476,
-  "controlCos": 0.3081,
-  "xcontrol": 0.6257
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "de",
-  "text": "Täglicher Anmeldebonus: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily sign-up bonus: +3",
-  "cos": 0.9019,
-  "chrf": 51.3,
-  "xcos": 0.9117,
-  "controlCos": 0.3062,
-  "xcontrol": 0.3003
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "de",
-  "text": "Saisonbelohnungen und Turniere",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal rewards and tournaments",
-  "cos": 0.9003,
-  "chrf": 69.6,
-  "xcos": 0.9011,
-  "controlCos": 0.2065,
-  "xcontrol": 0.2132
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "de",
-  "text": "Keine Käufe mit echtem Geld",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9156,
-  "controlCos": 0.102,
-  "xcontrol": 0.2184
  },
  {
   "id": "about.free.safe.title",
@@ -58838,14 +57434,14 @@
  {
   "id": "world-map.intro",
   "lang": "de",
-  "text": "Shakespeares Figuren reisen um den Globus. Jede Stadt verleiht eine eigene Kampffähigkeit. Schalte Varianten durch Kämpfe, Quiz und Erkundung frei.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare’s characters travel around the globe, each city granting a unique combat ability. Unlock variations through battles, quizzes and exploration.",
-  "cos": 0.9436,
-  "chrf": 70.9,
-  "xcos": 0.8982,
-  "controlCos": 0.1958,
-  "xcontrol": 0.2177
+  "text": "Shakespeares Figuren reisen um den Globus. Jede Stadt verleiht eine eigene Kampffähigkeit. Schalte Varianten mit einer fehlerfreien Quizrunde frei.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel around the globe, each city granting a unique combat ability. Unlock variations with a flawless round of quizzes.",
+  "cos": 0.9054,
+  "chrf": 65.5,
+  "xcos": 0.8848,
+  "controlCos": 0.4833,
+  "xcontrol": 0.445
  },
  {
   "id": "world-map.combinations",
@@ -59030,14 +57626,14 @@
  {
   "id": "about.vision.p1",
   "lang": "it",
-  "text": "Immagina di scegliere una carta digitale che prende vita in una scena di 15 secondi generata dall’IA. Un personaggio di Shakespeare appare in realtà aumentata. Lo sfidi a una battaglia rap. I tuoi amici guardano e fanno il tifo.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine choosing a digital card that comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Your friends watch and cheer.",
-  "cos": 0.987,
-  "chrf": 80.5,
-  "xcos": 0.9237,
-  "controlCos": 0.6708,
-  "xcontrol": 0.3862
+  "text": "Immagina di scegliere una carta digitale e che un personaggio di Shakespeare ti sfidi a un duello di strofe. Rispondi con una forma poetica, verso dopo verso: su uno schermo o su un palco in 3D con un visore.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine picking a digital card and having a Shakespearean character challenge you to a verse duel, responding in a poetic form, line by line: on a screen or on a 3D stage with a headset.",
+  "cos": 0.946,
+  "chrf": 68.8,
+  "xcos": 0.9283,
+  "controlCos": 0.4156,
+  "xcontrol": 0.4353
  },
  {
   "id": "about.vision.p2",
@@ -59424,30 +58020,6 @@
   "xcontrol": -0.0327
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "it",
-  "text": "Mercato",
-  "english": "Marketplace",
-  "back": "Mercato",
-  "cos": 0.239,
-  "chrf": 9.8,
-  "xcos": 0.8814,
-  "controlCos": 0.0626,
-  "xcontrol": 0.2047
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "it",
-  "text": "Un mercato di beni digitali in cui il valore delle carte dipende dalle classifiche di combattimento e dalla partecipazione della comunità.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital goods marketplace where the value of cards depends on combat rankings and community participation.",
-  "cos": 0.875,
-  "chrf": 55.8,
-  "xcos": 0.8728,
-  "controlCos": 0.1865,
-  "xcontrol": 0.0987
- },
- {
   "id": "about.free.title",
   "lang": "it",
   "text": "Sempre gratuito",
@@ -59554,90 +58126,6 @@
   "xcos": 0.932,
   "controlCos": 0.0913,
   "xcontrol": 0.1414
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "it",
-  "text": "Guadagna crediti",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.8723,
-  "controlCos": 0.1642,
-  "xcontrol": 0.3263
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "it",
-  "text": "Vincere una battaglia: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a battle: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9807,
-  "controlCos": 0.4172,
-  "xcontrol": 0.7144
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "it",
-  "text": "Completare un quiz: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a quiz: +3",
-  "cos": 0.4232,
-  "chrf": 31.0,
-  "xcos": 0.8356,
-  "controlCos": 0.5505,
-  "xcontrol": 0.7627
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "it",
-  "text": "Sfida delle citazioni: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quote Challenge: +3",
-  "cos": 1.0,
-  "chrf": 74.1,
-  "xcos": 0.9402,
-  "controlCos": 0.3081,
-  "xcontrol": 0.6167
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "it",
-  "text": "Bonus di accesso giornaliero: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily access bonus: +3",
-  "cos": 0.8168,
-  "chrf": 49.2,
-  "xcos": 0.9338,
-  "controlCos": 0.3425,
-  "xcontrol": 0.3182
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "it",
-  "text": "Ricompense di stagione e tornei",
-  "english": "Season rewards & tournaments",
-  "back": "Season rewards and tournaments",
-  "cos": 0.9921,
-  "chrf": 82.3,
-  "xcos": 0.9205,
-  "controlCos": 0.2298,
-  "xcontrol": 0.1877
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "it",
-  "text": "Nessun acquisto con denaro reale",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.9066,
-  "controlCos": 0.102,
-  "xcontrol": 0.2015
  },
  {
   "id": "about.free.safe.title",
@@ -63374,14 +61862,14 @@
  {
   "id": "world-map.intro",
   "lang": "it",
-  "text": "I personaggi di Shakespeare girano il mondo. Ogni città concede un’abilità di battaglia unica. Sblocca le varianti con battaglie, quiz ed esplorazione.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare’s characters travel the world, and each city grants a unique battle skill. Unlock variations with battles, quizzes, and exploration.",
-  "cos": 0.9412,
-  "chrf": 67.6,
-  "xcos": 0.9354,
-  "controlCos": 0.2022,
-  "xcontrol": 0.1823
+  "text": "I personaggi di Shakespeare girano il mondo. Ogni città concede un’abilità di battaglia unica. Sblocca le varianti con un round di quiz perfetto.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare’s characters travel the world, and each city grants a unique battle skill. Unlock variations with a perfect quiz round.",
+  "cos": 0.9164,
+  "chrf": 69.1,
+  "xcos": 0.9291,
+  "controlCos": 0.5052,
+  "xcontrol": 0.45
  },
  {
   "id": "world-map.combinations",
@@ -63566,14 +62054,14 @@
  {
   "id": "about.vision.p1",
   "lang": "pt",
-  "text": "Imagine escolher uma carta digital que ganha vida em uma cena de 15 segundos gerada por IA. Um personagem de Shakespeare aparece em realidade aumentada. Você o desafia para uma batalha de rap. Seus amigos assistem e torcem.",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine picking a digital card that comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality, you challenge him to a rap battle, your friends watch and cheer.",
-  "cos": 0.9859,
-  "chrf": 75.2,
-  "xcos": 0.901,
-  "controlCos": 0.6653,
-  "xcontrol": 0.4197
+  "text": "Imagine escolher uma carta digital e um personagem de Shakespeare desafiar você para um duelo de estrofes. Você responde em uma forma poética, verso a verso: na tela ou em um palco 3D, com óculos de realidade virtual.",
+  "english": "Imagine choosing a digital card, and a Shakespeare character challenges you to a duel of verses. You answer in a poetic form, line by line: on a screen, or on a 3D stage in a headset.",
+  "back": "Imagine choosing a digital card and a Shakespearean character challenging you to a stanza duel.You answer in a poetic way, verse by verse: on screen or on a 3D stage, with virtual reality glasses.",
+  "cos": 0.871,
+  "chrf": 65.4,
+  "xcos": 0.8782,
+  "controlCos": 0.3561,
+  "xcontrol": 0.4365
  },
  {
   "id": "about.vision.p2",
@@ -63960,30 +62448,6 @@
   "xcontrol": -0.0021
  },
  {
-  "id": "about.tech.market.title",
-  "lang": "pt",
-  "text": "Mercado",
-  "english": "Marketplace",
-  "back": "Mercado",
-  "cos": 0.1727,
-  "chrf": 8.2,
-  "xcos": 0.8515,
-  "controlCos": 0.0334,
-  "xcontrol": 0.2229
- },
- {
-  "id": "about.tech.market.body",
-  "lang": "pt",
-  "text": "Um mercado de ativos digitais em que o valor das cartas é influenciado pelos rankings de combate e pelo engajamento da comunidade.",
-  "english": "Digital asset marketplace where card value is influenced by combat rankings and community engagement.",
-  "back": "A digital asset marketplace where the value of cards is influenced by combat rankings and community engagement.",
-  "cos": 0.9774,
-  "chrf": 88.7,
-  "xcos": 0.8849,
-  "controlCos": 0.1438,
-  "xcontrol": 0.1224
- },
- {
   "id": "about.free.title",
   "lang": "pt",
   "text": "Sempre gratuito",
@@ -64090,90 +62554,6 @@
   "xcos": 0.8918,
   "controlCos": 0.0913,
   "xcontrol": 0.0777
- },
- {
-  "id": "about.free.earn.title",
-  "lang": "pt",
-  "text": "Ganhe créditos",
-  "english": "Earn Credits",
-  "back": "Earn credits",
-  "cos": 1.0,
-  "chrf": 55.5,
-  "xcos": 0.9097,
-  "controlCos": 0.1642,
-  "xcontrol": 0.2962
- },
- {
-  "id": "about.free.earn.l1",
-  "lang": "pt",
-  "text": "Vencer uma batalha: +3",
-  "english": "Win a battle: +3",
-  "back": "Win a battle: +3",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9661,
-  "controlCos": 0.4172,
-  "xcontrol": 0.7057
- },
- {
-  "id": "about.free.earn.l2",
-  "lang": "pt",
-  "text": "Concluir um quiz: +3",
-  "english": "Complete a trivia round: +3",
-  "back": "Completing a quiz: +3",
-  "cos": 0.4232,
-  "chrf": 31.0,
-  "xcos": 0.8275,
-  "controlCos": 0.5505,
-  "xcontrol": 0.7257
- },
- {
-  "id": "about.free.earn.l3",
-  "lang": "pt",
-  "text": "Desafio de citações: +3",
-  "english": "Quote challenge: +3",
-  "back": "Quotes Challenge: +3",
-  "cos": 0.9698,
-  "chrf": 73.1,
-  "xcos": 0.937,
-  "controlCos": 0.2744,
-  "xcontrol": 0.6078
- },
- {
-  "id": "about.free.earn.l4",
-  "lang": "pt",
-  "text": "Bônus de acesso diário: +3",
-  "english": "Daily login bonus: +3",
-  "back": "Daily access bonus: +3",
-  "cos": 0.8168,
-  "chrf": 49.2,
-  "xcos": 0.8714,
-  "controlCos": 0.3425,
-  "xcontrol": 0.2344
- },
- {
-  "id": "about.free.earn.l5",
-  "lang": "pt",
-  "text": "Recompensas de temporada e torneios",
-  "english": "Season rewards & tournaments",
-  "back": "Seasonal rewards and tournaments",
-  "cos": 0.9003,
-  "chrf": 69.6,
-  "xcos": 0.9069,
-  "controlCos": 0.2065,
-  "xcontrol": 0.1973
- },
- {
-  "id": "about.free.earn.l6",
-  "lang": "pt",
-  "text": "Sem compras com dinheiro de verdade",
-  "english": "No real-money purchases",
-  "back": "No real money purchases",
-  "cos": 0.9709,
-  "chrf": 80.9,
-  "xcos": 0.8841,
-  "controlCos": 0.102,
-  "xcontrol": 0.1925
  },
  {
   "id": "about.free.safe.title",
@@ -67910,14 +66290,14 @@
  {
   "id": "world-map.intro",
   "lang": "pt",
-  "text": "Os personagens de Shakespeare viajam pelo planeta. Cada cidade concede uma habilidade de batalha única. Desbloqueie variantes com batalhas, quizzes e exploração.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the planet, and each city grants a unique battle skill. Unlock variations with battles, quizzes, and exploration.",
-  "cos": 0.9139,
-  "chrf": 70.4,
-  "xcos": 0.9017,
-  "controlCos": 0.1918,
-  "xcontrol": 0.2468
+  "text": "Os personagens de Shakespeare viajam pelo planeta. Cada cidade concede uma habilidade de batalha única. Desbloqueie variantes com uma rodada de quiz perfeita.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.",
+  "back": "Shakespeare's characters travel the planet, and each city grants a unique battle skill. Unlock variants with a perfect quiz round.",
+  "cos": 0.905,
+  "chrf": 76.1,
+  "xcos": 0.9109,
+  "controlCos": 0.4828,
+  "xcontrol": 0.446
  },
  {
   "id": "world-map.combinations",
