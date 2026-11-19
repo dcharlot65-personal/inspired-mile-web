@@ -267,23 +267,23 @@ like Inspired Mile), and the rest uses the core locale's words for duel and vers
 *estrofas*; de *Duell*, *Strophen*; ja *決闘*, *詩*; …). In the description:
 
 <!-- terms:manifest -->
-| | rap battle (Q12302979) | card game (Q142714) |
-|---|---|---|
-| es | batalla de rap = | **juego de cartas**. Wikidata: label *juego de naipes*, article *Juego de naipes*. Naipes are playing cards; the core locale's word for the game's cards is cartas. |
-| fr | battle de rap (with *battle*) | jeu de cartes = |
-| de | Battle-Rap = | Kartenspiel = |
-| it | battaglie rap: **none**. | gioco di carte = |
-| pt | batalha de rap = | jogo de cartas = |
-| pl | battle rap = | gra karciana = |
-| ru | рэп-баттл = | карточная игра = |
-| ar | باتل راب = | **لعبة بطاقات**. Wikidata: label *لعبة ورق*, article *لعبة ورق*. ورق is playing cards; the core locale's word for the game's cards is بطاقة. |
-| hi | रैप-बैटल: **none**. | **कार्ड गेम**. Wikidata: label *ताश का खेल*, article *ताश का खेल*. ताश is playing cards; the core locale's word for the game's cards is कार्ड. |
-| zh | **说唱对战**. Wikidata: label *饒舌戰*, article *對戰饒舌*. Wikidata has only Traditional Chinese, and 饒舌 is the Taiwanese word for rap; 说唱 is the mainland's. The model's choice; no recorded source. | 卡牌游戏 = |
-| ja | MCバトル = | カードゲーム = |
-| ko | 배틀 랩 = | 카드 게임 = |
-| vi | rap chiến = | trò chơi bài = |
-| th | แร็ปแบตเทิล: **none**. | **เกมการ์ด**. Wikidata: label *เกมไพ่*, article *เกมไพ่*. ไพ่ is playing cards; the core locale's word for the game's cards is การ์ด. |
-| id | adu rap = | permainan kartu = |
+| | card game (Q142714) |
+|---|---|
+| es | **juego de cartas**. Wikidata: label *juego de naipes*, article *Juego de naipes*. Naipes are playing cards; the core locale's word for the game's cards is cartas. |
+| fr | jeu de cartes = |
+| de | Kartenspiel = |
+| it | gioco di carte = |
+| pt | jogo de cartas = |
+| pl | gra karciana = |
+| ru | карточная игра = |
+| ar | **لعبة بطاقات**. Wikidata: label *لعبة ورق*, article *لعبة ورق*. ورق is playing cards; the core locale's word for the game's cards is بطاقة. |
+| hi | **कार्ड गेम**. Wikidata: label *ताश का खेल*, article *ताश का खेल*. ताश is playing cards; the core locale's word for the game's cards is कार्ड. |
+| zh | 卡牌游戏 = |
+| ja | カードゲーム = |
+| ko | 카드 게임 = |
+| vi | trò chơi bài = |
+| th | **เกมการ์ด**. Wikidata: label *เกมไพ่*, article *เกมไพ่*. ไพ่ is playing cards; the core locale's word for the game's cards is การ์ด. |
+| id | permainan kartu = |
 <!-- /terms:manifest -->
 
 Each Arabic value is written as `{ "value": …, "dir": "rtl" }`, the text-localization form of the

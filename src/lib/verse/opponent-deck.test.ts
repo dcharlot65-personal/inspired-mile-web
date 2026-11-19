@@ -80,5 +80,5 @@ describe('nor Story Mode\'s opponent, nor a voice it gives words to (D-04; doc 0
       for (const [k, v] of Object.entries(m)) if (k.startsWith('story.enc.') && /Sonnet Man/.test(v)) found.push(`${l} ${k}`);
     }
     expect(found).toEqual([]);
-  });
+  }, 60_000); // sixteen modules compiled on first import: past vitest's 5 s on a loaded host (seen on the Studio)
 });
