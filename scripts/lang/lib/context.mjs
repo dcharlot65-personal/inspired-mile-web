@@ -45,7 +45,7 @@ const CONTEXT = [
  * back-translation and the reviewer judged sentences no player sees (es "Maldice a tu rival:
  * Ninguna de tus palabras…"). A unit test holds this list to the calls in src/.
  */
-export const RULE_TOLD_TO_CASTER = ['hand.curses', 'hand.potionNote'];
+export const RULE_TOLD_TO_CASTER = ['hand.curses', 'hand.potionNote', 'rules.potion'];
 
 export function contextOf(key) {
   for (const [re, text] of CONTEXT) if (re.test(key)) return text;

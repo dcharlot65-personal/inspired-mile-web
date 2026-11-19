@@ -202,7 +202,8 @@ describe('the tools read what the player reads', () => {
     const src = new URL('../', import.meta.url);
     for (const f of readdirSync(src, { recursive: true }) as string[]) {
       if (!/\.(astro|ts|tsx)$/.test(f) || f.endsWith('.test.ts')) continue;
-      for (const m of readFileSync(new URL(f, src), 'utf8').matchAll(/\bt\('([\w.-]+)',\s*\{[^}]*?\brule:\s*(curseRuleTheirs|curseRule)\(/g)) (m[2] === 'curseRuleTheirs' ? theirs : brief).add(m[1]);
+      // t('key', { … rule: … }) and the battle page's aboutCard('key', card, { … rule: … }) (a sentence about a card).
+      for (const m of readFileSync(new URL(f, src), 'utf8').matchAll(/\b(?:t|aboutCard)\('([\w.-]+)',\s*(?:[^,{()]+(?:\([^()]*\))?!?,\s*)?\{[^}]*?\brule:\s*(curseRuleTheirs|curseRule)\(/g)) (m[2] === 'curseRuleTheirs' ? theirs : brief).add(m[1]);
     }
     expect([...theirs].sort()).toEqual([...RULE_TOLD_TO_CASTER].sort());
     expect([...brief].sort()).toEqual(['round.cursesYou', 'theatre.cursesYou']);
