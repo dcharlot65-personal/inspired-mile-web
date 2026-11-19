@@ -4643,6 +4643,96 @@
     "xcos": 0.744,
     "xcontrol": 0.2807
    },
+   "battle.lang.written": {
+    "text": "tailandés: te enfrentas al rival de versos escritos, porque Gemma 4 E2B no ha demostrado que escriba buenas estrofas en este idioma.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the rival of written verses, because Gemma 4 E2B has not proven that she writes good stanzas in this language.",
+    "cos": 0.9018,
+    "chrf": 65.2,
+    "controlCos": 0.7825,
+    "xcos": 0.8976,
+    "xcontrol": 0.7788
+   },
+   "battle.lang.rules": {
+    "text": "tailandés: se juzga por reglas, porque Gemma 4 E2B no ha demostrado ser buen juez de estrofas en este idioma.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: it is judged by rules, because Gemma 4 E2B has not proven to be a good judge of verses in this language.",
+    "cos": 0.9599,
+    "chrf": 76.9,
+    "controlCos": 0.3778,
+    "xcos": 0.8914,
+    "xcontrol": 0.3203
+   },
+   "brain.noneShown": {
+    "text": "Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has been shown to write or judge stanzas well, so you face the rival of written verses and are judged by rules.",
+    "cos": 0.7162,
+    "chrf": 60.9,
+    "controlCos": 0.0745,
+    "xcos": 0.8854,
+    "xcontrol": 0.1866
+   },
+   "footer.credits": {
+    "text": "Créditos y licencias",
+    "english": "Credits and Licenses",
+    "back": "Credits and licenses",
+    "cos": 1.0,
+    "chrf": 75.9,
+    "controlCos": 0.0688,
+    "xcos": 0.9291,
+    "xcontrol": 0.0543
+   },
+   "notice.aiBoth": {
+    "text": "Tu rival y el juez funcionan con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the judge are powered by artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.9736,
+    "chrf": 83.3,
+    "controlCos": 0.7803,
+    "xcos": 0.9019,
+    "xcontrol": 0.818
+   },
+   "notice.aiWrites": {
+    "text": "Tu rival funciona con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo. El duelo se juzga por reglas, no con inteligencia artificial.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is powered by artificial intelligence: Gemma 4 E2B, a model that runs on this device.The duel is judged by rules, not artificial intelligence.",
+    "cos": 0.9784,
+    "chrf": 82.9,
+    "controlCos": 0.6572,
+    "xcos": 0.9518,
+    "xcontrol": 0.7986
+   },
+   "notice.aiJudges": {
+    "text": "El juez funciona con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge works with artificial intelligence: Gemma 4 E2B, a model that runs on this device.You face the rival of written verses, a program that uses pre-prepared stanzas.",
+    "cos": 0.8621,
+    "chrf": 66.5,
+    "controlCos": 0.5725,
+    "xcos": 0.9351,
+    "xcontrol": 0.637
+   },
+   "notice.none": {
+    "text": "Ninguna inteligencia artificial juega ni juzga este duelo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano, y el duelo se juzga por reglas.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "No artificial intelligence plays or judges this duel; you face the written verse rival, a program that uses pre-prepared stanzas, and the duel is judged by rules.",
+    "cos": 0.9124,
+    "chrf": 75.1,
+    "controlCos": 0.6715,
+    "xcos": 0.9202,
+    "xcontrol": 0.6847
+   },
+   "notice.online": {
+    "text": "En línea, tu rival es otro jugador y nuestro servidor juzga ambas estrofas con reglas fijas. Ninguna inteligencia artificial juega ni juzga un duelo en línea.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "Online, your opponent is another player and our server judges both stanzas with fixed rules.No artificial intelligence plays or judges an online duel.",
+    "cos": 0.9709,
+    "chrf": 88.6,
+    "controlCos": 0.0852,
+    "xcos": 0.9466,
+    "xcontrol": 0.0463
+   },
    "pack:relics.RL-001.0": {
     "text": "calavera",
     "english": "skull",
@@ -9734,6 +9824,96 @@
     "controlCos": 0.0866,
     "xcos": 0.8659,
     "xcontrol": 0.3015
+   },
+   "battle.lang.written": {
+    "text": "thaï : vous affrontez l’adversaire aux strophes écrites, car Gemma 4 E2B n’a pas montré qu’il écrit de bonnes strophes dans cette langue.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the opponent with written verses, because Gemma 4 E2B has not shown that he writes good verses in this language.",
+    "cos": 0.9516,
+    "chrf": 74.0,
+    "controlCos": 0.7803,
+    "xcos": 0.867,
+    "xcontrol": 0.7432
+   },
+   "battle.lang.rules": {
+    "text": "thaï : jugé par règles, car Gemma 4 E2B n’a pas montré qu’il est bon juge des strophes dans cette langue.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by rules, as Gemma 4 E2B has not shown that it is a good judge of verses in this language.",
+    "cos": 0.9746,
+    "chrf": 80.5,
+    "controlCos": 0.4219,
+    "xcos": 0.882,
+    "xcontrol": 0.3548
+   },
+   "brain.noneShown": {
+    "text": "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has shown that it writes good stanzas or is a good judge of them, so you face the opponent with written stanzas, and judgment is made by rules.",
+    "cos": 0.8304,
+    "chrf": 63.7,
+    "controlCos": 0.0948,
+    "xcos": 0.8925,
+    "xcontrol": 0.1524
+   },
+   "footer.credits": {
+    "text": "Crédits et licences",
+    "english": "Credits and Licenses",
+    "back": "Credits and licenses",
+    "cos": 1.0,
+    "chrf": 75.9,
+    "controlCos": 0.0688,
+    "xcos": 0.9238,
+    "xcontrol": 0.0586
+   },
+   "notice.aiBoth": {
+    "text": "Votre adversaire et le juge reposent sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the judge rely on an artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.9722,
+    "chrf": 79.5,
+    "controlCos": 0.7797,
+    "xcos": 0.8693,
+    "xcontrol": 0.7969
+   },
+   "notice.aiWrites": {
+    "text": "Votre adversaire repose sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil. Le duel est jugé par règles, pas par une intelligence artificielle.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent relies on an artificial intelligence: Gemma 4 E2B, a model that runs on this device.The duel is judged by rules, not by an artificial intelligence.",
+    "cos": 0.9783,
+    "chrf": 82.1,
+    "controlCos": 0.6433,
+    "xcos": 0.9472,
+    "xcontrol": 0.7763
+   },
+   "notice.aiJudges": {
+    "text": "Le juge repose sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge relies on an artificial intelligence: Gemma 4 E2B, a model that runs on this device.You face the opponent with written verses, a program that plays prepared verses in advance.",
+    "cos": 0.9227,
+    "chrf": 75.8,
+    "controlCos": 0.6628,
+    "xcos": 0.9096,
+    "xcontrol": 0.6235
+   },
+   "notice.none": {
+    "text": "Aucune intelligence artificielle ne joue ni ne juge ce duel. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance, et le duel est jugé par règles.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "No artificial intelligence plays or judges this duel, you face the opponent with written verses, a program that plays prepared verses in advance, and the duel is judged by rules.",
+    "cos": 0.9691,
+    "chrf": 84.1,
+    "controlCos": 0.7236,
+    "xcos": 0.9152,
+    "xcontrol": 0.6923
+   },
+   "notice.online": {
+    "text": "En ligne, votre adversaire est un autre joueur, et notre serveur juge les deux strophes selon des règles fixes. Aucune intelligence artificielle ne joue ni ne juge un duel en ligne.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "Online, your opponent is another player, and our server judges the two verses according to fixed rules; no artificial intelligence plays or judges an online duel.",
+    "cos": 0.9802,
+    "chrf": 86.4,
+    "controlCos": 0.0635,
+    "xcos": 0.943,
+    "xcontrol": 0.0384
    },
    "pack:relics.RL-001.0": {
     "text": "crâne",
@@ -14827,6 +15007,96 @@
     "xcos": 0.7671,
     "xcontrol": 0.175
    },
+   "battle.lang.written": {
+    "text": "Thailändisch: Du spielst gegen den Gegner mit geschriebenen Strophen, weil Gemma 4 E2B nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You play against the opponent with written verses because Gemma 4 E2B has not shown that it writes good verses in this language.",
+    "cos": 0.93,
+    "chrf": 61.7,
+    "controlCos": 0.7789,
+    "xcos": 0.8764,
+    "xcontrol": 0.7578
+   },
+   "battle.lang.rules": {
+    "text": "Thailändisch: Nach Regeln bewertet, weil Gemma 4 E2B nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judged according to rules because Gemma 4 E2B has not shown that it is a good judge for verses in this language.",
+    "cos": 0.9772,
+    "chrf": 70.9,
+    "controlCos": 0.4448,
+    "xcos": 0.8483,
+    "xcontrol": 0.347
+   },
+   "brain.noneShown": {
+    "text": "Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "None of the models that can run on this device have shown to write good stanzas or score stanzas well, so you play against your opponent with written stanzas and are scored according to rules.",
+    "cos": 0.6032,
+    "chrf": 43.8,
+    "controlCos": 0.136,
+    "xcos": 0.8254,
+    "xcontrol": 0.1741
+   },
+   "footer.credits": {
+    "text": "Quellen und Lizenzen",
+    "english": "Credits and Licenses",
+    "back": "Sources and licenses",
+    "cos": 0.6679,
+    "chrf": 39.8,
+    "controlCos": 0.0808,
+    "xcos": 0.7861,
+    "xcontrol": 0.0568
+   },
+   "notice.aiBoth": {
+    "text": "Dein Gegner und der Richter werden von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the judge are controlled by artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.966,
+    "chrf": 82.8,
+    "controlCos": 0.7739,
+    "xcos": 0.8478,
+    "xcontrol": 0.7837
+   },
+   "notice.aiWrites": {
+    "text": "Dein Gegner wird von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft. Das Duell wird nach Regeln bewertet, nicht von künstlicher Intelligenz.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is controlled by artificial intelligence: Gemma 4 E2B, a model that runs on this device.The duel is judged by rules, not by artificial intelligence.",
+    "cos": 0.9744,
+    "chrf": 85.8,
+    "controlCos": 0.6596,
+    "xcos": 0.9352,
+    "xcontrol": 0.7567
+   },
+   "notice.aiJudges": {
+    "text": "Der Richter wird von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge is controlled by artificial intelligence: Gemma 4 E2B, a model that runs on this device.You play against the opponent with written verses, a program that plays pre-prepared verses.",
+    "cos": 0.9229,
+    "chrf": 69.6,
+    "controlCos": 0.6378,
+    "xcos": 0.9064,
+    "xcontrol": 0.6425
+   },
+   "notice.none": {
+    "text": "Keine künstliche Intelligenz spielt oder bewertet dieses Duell. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt, und bewertet wird nach Regeln.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "No artificial intelligence plays or evaluates this duel, you play against the opponent with written verses, a program that plays pre-prepared verses and is evaluated according to rules.",
+    "cos": 0.9361,
+    "chrf": 58.1,
+    "controlCos": 0.6955,
+    "xcos": 0.8848,
+    "xcontrol": 0.6711
+   },
+   "notice.online": {
+    "text": "Online ist dein Gegner ein anderer Spieler, und unser Server bewertet beide Strophen nach festen Regeln. Keine künstliche Intelligenz spielt oder bewertet ein Online-Duell.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "Online, your opponent is another player, and our server scores both verses according to fixed rules; no artificial intelligence plays or scores an online duel.",
+    "cos": 0.9421,
+    "chrf": 81.2,
+    "controlCos": 0.0652,
+    "xcos": 0.9174,
+    "xcontrol": 0.0708
+   },
    "pack:relics.RL-001.0": {
     "text": "Schädel",
     "english": "skull",
@@ -19919,6 +20189,96 @@
     "xcos": 0.7506,
     "xcontrol": 0.1088
    },
+   "battle.lang.written": {
+    "text": "thailandese: affronti l’avversario dalle strofe scritte, perché Gemma 4 E2B non ha dimostrato di scrivere buone strofe in questa lingua.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: face the opponent from the written verses, because Gemma 4 E2B has not proven to write good verses in this language.",
+    "cos": 0.9569,
+    "chrf": 63.6,
+    "controlCos": 0.7871,
+    "xcos": 0.887,
+    "xcontrol": 0.7803
+   },
+   "battle.lang.rules": {
+    "text": "thailandese: giudicato secondo regole, perché Gemma 4 E2B non ha dimostrato di essere un buon giudice di strofe in questa lingua.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged according to rules, because Gemma 4 E2B did not prove to be a good judge of verses in this language.",
+    "cos": 0.9651,
+    "chrf": 66.8,
+    "controlCos": 0.4106,
+    "xcos": 0.8879,
+    "xcontrol": 0.3427
+   },
+   "brain.noneShown": {
+    "text": "Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can perform has been shown to write or judge verses well, so face the opponent from the written verses and judge according to rules.",
+    "cos": 0.8873,
+    "chrf": 54.7,
+    "controlCos": 0.0571,
+    "xcos": 0.8718,
+    "xcontrol": 0.1702
+   },
+   "footer.credits": {
+    "text": "Crediti e licenze",
+    "english": "Credits and Licenses",
+    "back": "Credits and licenses",
+    "cos": 1.0,
+    "chrf": 75.9,
+    "controlCos": 0.0688,
+    "xcos": 0.9493,
+    "xcontrol": 0.0367
+   },
+   "notice.aiBoth": {
+    "text": "Il tuo avversario e il giudice funzionano con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the judge work with artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.9794,
+    "chrf": 78.6,
+    "controlCos": 0.786,
+    "xcos": 0.8816,
+    "xcontrol": 0.7938
+   },
+   "notice.aiWrites": {
+    "text": "Il tuo avversario funziona con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo. Il duello si giudica secondo regole, non con l’intelligenza artificiale.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent works with artificial intelligence: Gemma 4 E2B, a model that runs on this device.The duel is judged according to rules, not by artificial intelligence.",
+    "cos": 0.9824,
+    "chrf": 79.7,
+    "controlCos": 0.6804,
+    "xcos": 0.9386,
+    "xcontrol": 0.7835
+   },
+   "notice.aiJudges": {
+    "text": "Il giudice funziona con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge works with artificial intelligence: Gemma 4 E2B, a model that runs on this device.You face the opponent from written verses, a program that uses pre-prepared verses.",
+    "cos": 0.9124,
+    "chrf": 68.8,
+    "controlCos": 0.6512,
+    "xcos": 0.904,
+    "xcontrol": 0.5877
+   },
+   "notice.none": {
+    "text": "Nessuna intelligenza artificiale gioca o giudica questo duello. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo, e il duello si giudica secondo regole.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "No artificial intelligence plays or judges this duel, you face the opponent from written verses, a program that uses prepared verses in advance, and the duel is judged according to rules.",
+    "cos": 0.9675,
+    "chrf": 77.9,
+    "controlCos": 0.7236,
+    "xcos": 0.8917,
+    "xcontrol": 0.6861
+   },
+   "notice.online": {
+    "text": "Online il tuo avversario è un altro giocatore e il nostro server giudica entrambe le strofe secondo regole fisse. Nessuna intelligenza artificiale gioca o giudica un duello online.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "Online your opponent is another player and our server judges both verses according to fixed rules.No artificial intelligence plays or judges an online duel.",
+    "cos": 0.9876,
+    "chrf": 89.6,
+    "controlCos": 0.0375,
+    "xcos": 0.9265,
+    "xcontrol": 0.0347
+   },
    "pack:relics.RL-001.0": {
     "text": "teschio",
     "english": "skull",
@@ -25010,6 +25370,96 @@
     "controlCos": 0.0527,
     "xcos": 0.915,
     "xcontrol": 0.2679
+   },
+   "battle.lang.written": {
+    "text": "tailandês: você enfrenta o adversário de estrofes escritas, porque Gemma 4 E2B não mostrou que escreve boas estrofes neste idioma.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you face the opponent of written stanzas, because Gemma 4 E2B has not shown that she writes good stanzas in this language.",
+    "cos": 0.9292,
+    "chrf": 70.6,
+    "controlCos": 0.7622,
+    "xcos": 0.8857,
+    "xcontrol": 0.7635
+   },
+   "battle.lang.rules": {
+    "text": "tailandês: julgado por regras, porque Gemma 4 E2B não mostrou ser um bom juiz de estrofes neste idioma.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by rules, because Gemma 4 E2B has not shown to be a good stanza judge in this language.",
+    "cos": 0.954,
+    "chrf": 75.1,
+    "controlCos": 0.4168,
+    "xcos": 0.868,
+    "xcontrol": 0.3178
+   },
+   "brain.noneShown": {
+    "text": "Nenhum modelo que este dispositivo consiga executar mostrou que escreve ou julga bem as estrofes, por isso você enfrenta o adversário de estrofes escritas e o julgamento é feito por regras.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can perform has shown to write or judge stanzas well, so you face the opponent of written stanzas and judgment is made by rules.",
+    "cos": 0.8249,
+    "chrf": 59.8,
+    "controlCos": 0.0894,
+    "xcos": 0.8759,
+    "xcontrol": 0.1998
+   },
+   "footer.credits": {
+    "text": "Créditos e licenças",
+    "english": "Credits and Licenses",
+    "back": "Credits and licenses",
+    "cos": 1.0,
+    "chrf": 75.9,
+    "controlCos": 0.0688,
+    "xcos": 0.9275,
+    "xcontrol": 0.0389
+   },
+   "notice.aiBoth": {
+    "text": "Seu adversário e o juiz funcionam com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the judge work with artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.9794,
+    "chrf": 78.6,
+    "controlCos": 0.786,
+    "xcos": 0.8744,
+    "xcontrol": 0.7787
+   },
+   "notice.aiWrites": {
+    "text": "Seu adversário funciona com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo. O duelo é julgado por regras, não por inteligência artificial.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent works with artificial intelligence: Gemma 4 E2B, a model that runs on this device.The duel is judged by rules, not by artificial intelligence.",
+    "cos": 0.9797,
+    "chrf": 83.5,
+    "controlCos": 0.6802,
+    "xcos": 0.9308,
+    "xcontrol": 0.7711
+   },
+   "notice.aiJudges": {
+    "text": "O juiz funciona com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge works with artificial intelligence: Gemma 4 E2B, a model that runs on this device.You face the opponent of written verses, a program that uses already prepared verses.",
+    "cos": 0.8945,
+    "chrf": 68.4,
+    "controlCos": 0.6447,
+    "xcos": 0.9054,
+    "xcontrol": 0.6029
+   },
+   "notice.none": {
+    "text": "Nenhuma inteligência artificial joga ou julga este duelo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas, e o duelo é julgado por regras.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "No artificial intelligence plays or judges this duel; you face the opponent of written verses, a program that uses already prepared verses, and the duel is judged by rules.",
+    "cos": 0.9617,
+    "chrf": 75.1,
+    "controlCos": 0.7105,
+    "xcos": 0.8855,
+    "xcontrol": 0.667
+   },
+   "notice.online": {
+    "text": "No modo online, seu adversário é outro jogador e nosso servidor julga ambas as estrofes por regras fixas. Nenhuma inteligência artificial joga ou julga um duelo online.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In online mode, your opponent is another player and our server judges both stanzas by fixed rules.No artificial intelligence plays or judges an online duel.",
+    "cos": 0.9428,
+    "chrf": 88.3,
+    "controlCos": 0.0676,
+    "xcos": 0.8946,
+    "xcontrol": 0.0685
    },
    "pack:relics.RL-001.0": {
     "text": "caveira",
@@ -30463,6 +30913,96 @@
     "xcos": 0.8559,
     "xcontrol": 0.1995
    },
+   "battle.lang.written": {
+    "text": "tajski: grasz z rywalem z gotowymi strofami, bo model Gemma 4 E2B nie wykazał, że dobrze pisze strofy w tym języku.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: you play against a rival with ready stanzas, because the Gemma 4 E2B model has not shown that it writes stanzas well in this language.",
+    "cos": 0.8475,
+    "chrf": 54.4,
+    "controlCos": 0.7207,
+    "xcos": 0.8534,
+    "xcontrol": 0.7326
+   },
+   "battle.lang.rules": {
+    "text": "tajski: ocena według reguł, bo model Gemma 4 E2B nie wykazał, że jest dobrym sędzią strof w tym języku.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: evaluation according to the rules, because Gemma 4 E2B did not show that it is a good judge of verses in this language.",
+    "cos": 0.9175,
+    "chrf": 67.2,
+    "controlCos": 0.3402,
+    "xcos": 0.8542,
+    "xcontrol": 0.3767
+   },
+   "brain.noneShown": {
+    "text": "Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that this device can run has shown to write or evaluate stanzas well, so you play with a rival with ready-made stanzas and the evaluation takes place according to the rules.",
+    "cos": 0.5739,
+    "chrf": 48.9,
+    "controlCos": 0.1139,
+    "xcos": 0.7781,
+    "xcontrol": 0.189
+   },
+   "footer.credits": {
+    "text": "Uznanie autorstwa i licencje",
+    "english": "Credits and Licenses",
+    "back": "Attribution and licenses",
+    "cos": 0.6313,
+    "chrf": 35.0,
+    "controlCos": 0.0418,
+    "xcos": 0.8144,
+    "xcontrol": 0.0833
+   },
+   "notice.aiBoth": {
+    "text": "Rolę twojego rywala i sędziego pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "The role of your opponent and judge is played by artificial intelligence: Gemma 4 E2B, the model running on this device.",
+    "cos": 0.934,
+    "chrf": 78.8,
+    "controlCos": 0.7702,
+    "xcos": 0.8432,
+    "xcontrol": 0.7374
+   },
+   "notice.aiWrites": {
+    "text": "Rolę twojego rywala pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu. Pojedynek jest oceniany według reguł, a nie przez sztuczną inteligencję.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "The role of your opponent is played by an artificial intelligence: Gemma 4 E2B, a model running on this device.The match is judged according to the rules, not by artificial intelligence.",
+    "cos": 0.8408,
+    "chrf": 81.0,
+    "controlCos": 0.7126,
+    "xcos": 0.9054,
+    "xcontrol": 0.7718
+   },
+   "notice.aiJudges": {
+    "text": "Rolę sędziego pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The role of the judge is played by an artificial intelligence: Gemma 4 E2B, a model running on this device.You play against a rival who has ready verses, i.e. with a program using previously prepared verses.",
+    "cos": 0.9094,
+    "chrf": 63.3,
+    "controlCos": 0.6154,
+    "xcos": 0.8697,
+    "xcontrol": 0.5066
+   },
+   "notice.none": {
+    "text": "W tym pojedynku sztuczna inteligencja nie gra ani nie ocenia. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej, a pojedynek jest oceniany według reguł.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "In this duel, the artificial intelligence does not play or judge; you play against a rival who has ready-made verses, i.e. a program that uses previously prepared verses, and the duel is judged according to the rules.",
+    "cos": 0.9373,
+    "chrf": 55.9,
+    "controlCos": 0.7207,
+    "xcos": 0.7529,
+    "xcontrol": 0.6232
+   },
+   "notice.online": {
+    "text": "W grze online twoim rywalem jest inny gracz, a nasz serwer ocenia obie strofy według stałych reguł. W pojedynku online sztuczna inteligencja nie gra ani nie ocenia.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In the online game, your opponent is another player, and our server evaluates both stanzas according to fixed rules.In the online duel, the artificial intelligence does not play or evaluate.",
+    "cos": 0.8792,
+    "chrf": 66.3,
+    "controlCos": 0.0374,
+    "xcos": 0.8671,
+    "xcontrol": 0.0729
+   },
    "pack:relics.RL-001.0": {
     "text": "czaszka",
     "english": "skull",
@@ -35914,6 +36454,96 @@
     "controlCos": 0.0283,
     "xcos": 0.7543,
     "xcontrol": 0.1309
+   },
+   "battle.lang.written": {
+    "text": "тайский: играет соперник с готовыми строфами, потому что модель Gemma 4 E2B не показала, что хорошо пишет строфы на этом языке.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: plays a rival with ready verses, because the Gemma 4 E2B model has not shown that it writes verses well in this language.",
+    "cos": 0.8312,
+    "chrf": 54.3,
+    "controlCos": 0.7049,
+    "xcos": 0.8733,
+    "xcontrol": 0.7836
+   },
+   "battle.lang.rules": {
+    "text": "тайский: судят по правилам, потому что модель Gemma 4 E2B не показала, что может быть хорошим судьёй строф на этом языке.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by the rules, because the Gemma 4 E2B model has not shown that it can be a good judge of verses in this language.",
+    "cos": 0.9452,
+    "chrf": 74.1,
+    "controlCos": 0.4189,
+    "xcos": 0.8698,
+    "xcontrol": 0.3874
+   },
+   "brain.noneShown": {
+    "text": "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can run this device, has not shown that well writes or judges stanzas, so plays rival with ready stanzas, and judge by the rules.",
+    "cos": 0.7335,
+    "chrf": 45.9,
+    "controlCos": 0.1198,
+    "xcos": 0.8293,
+    "xcontrol": 0.1857
+   },
+   "footer.credits": {
+    "text": "Авторы и лицензии",
+    "english": "Credits and Licenses",
+    "back": "Authors and licenses",
+    "cos": 0.6069,
+    "chrf": 39.8,
+    "controlCos": 0.1149,
+    "xcos": 0.7661,
+    "xcontrol": 0.0941
+   },
+   "notice.aiBoth": {
+    "text": "Роль твоего соперника и судьи играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "The role of your opponent and judge is played by artificial intelligence: Gemma 4 E2B, the model that runs on this device.",
+    "cos": 0.9338,
+    "chrf": 69.4,
+    "controlCos": 0.7701,
+    "xcos": 0.8428,
+    "xcontrol": 0.7594
+   },
+   "notice.aiWrites": {
+    "text": "Роль твоего соперника играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве. Дуэль судят по правилам, а не с помощью искусственного интеллекта.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "The role of your opponent is played by artificial intelligence: Gemma 4 E2B, the model that runs on this device. The duel is judged by the rules and not by artificial intelligence.",
+    "cos": 0.9651,
+    "chrf": 78.3,
+    "controlCos": 0.6668,
+    "xcos": 0.9041,
+    "xcontrol": 0.7692
+   },
+   "notice.aiJudges": {
+    "text": "Роль судьи играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The role of the judge is played by artificial intelligence: Gemma 4 E2B, a model that works on this device. You play against an opponent who has ready verses: it is a program with pre-prepared verses.",
+    "cos": 0.9001,
+    "chrf": 62.0,
+    "controlCos": 0.6212,
+    "xcos": 0.8788,
+    "xcontrol": 0.5764
+   },
+   "notice.none": {
+    "text": "В этой дуэли искусственный интеллект не играет и не судит. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами, а судят по правилам.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "In this duel, the artificial intelligence does not play and does not judge. You are playing with an opponent who has ready verses: it is a program with pre-prepared verses, but judged by rules.",
+    "cos": 0.8863,
+    "chrf": 53.1,
+    "controlCos": 0.6584,
+    "xcos": 0.82,
+    "xcontrol": 0.6545
+   },
+   "notice.online": {
+    "text": "В сетевой игре твой соперник — другой игрок, а наш сервер судит обе строфы по неизменным правилам. В сетевой дуэли искусственный интеллект не играет и не судит.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In the online game your opponent is another player, and our server judges both stanzas according to invariable rules. In the online duel, artificial intelligence does not play or judge.",
+    "cos": 0.9069,
+    "chrf": 69.6,
+    "controlCos": 0.0477,
+    "xcos": 0.8841,
+    "xcontrol": 0.0392
    },
    "pack:relics.RL-001.0": {
     "text": "череп",
@@ -41557,6 +42187,96 @@
     "xcos": 0.8296,
     "xcontrol": 0.1636
    },
+   "battle.lang.written": {
+    "text": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Facing the challenge of written verses, as Gemma 4 E2B has not proven to be proficient in writing verses in this language.",
+    "cos": 0.8577,
+    "chrf": 48.0,
+    "controlCos": 0.7476,
+    "xcos": 0.8816,
+    "xcontrol": 0.811
+   },
+   "battle.lang.rules": {
+    "text": "التايلاندية: الحكم بالقواعد، لأن Gemma 4 E2B لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Rule judgment, as Gemma 4 E2B has not been proven to judge verses in this language.",
+    "cos": 0.9119,
+    "chrf": 48.4,
+    "controlCos": 0.4014,
+    "xcos": 0.87,
+    "xcontrol": 0.3366
+   },
+   "brain.noneShown": {
+    "text": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can be operated by this device has been proven to write or judge verses, so written verses are faced and rules are judged.",
+    "cos": 0.7162,
+    "chrf": 40.3,
+    "controlCos": 0.0365,
+    "xcos": 0.8722,
+    "xcontrol": 0.14
+   },
+   "footer.credits": {
+    "text": "المصادر والتراخيص",
+    "english": "Credits and Licenses",
+    "back": "Sources and licenses",
+    "cos": 0.6679,
+    "chrf": 39.8,
+    "controlCos": 0.0808,
+    "xcos": 0.7326,
+    "xcontrol": -0.0407
+   },
+   "notice.aiBoth": {
+    "text": "خصمك والحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and judge is an artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "cos": 0.9643,
+    "chrf": 83.3,
+    "controlCos": 0.79,
+    "xcos": 0.8876,
+    "xcontrol": 0.7991
+   },
+   "notice.aiWrites": {
+    "text": "خصمك ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. أما المبارزة فيُحكم فيها بالقواعد، لا بالذكاء الاصطناعي.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is an artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.8085,
+    "chrf": 52.6,
+    "controlCos": 0.7003,
+    "xcos": 0.9216,
+    "xcontrol": 0.7488
+   },
+   "notice.aiJudges": {
+    "text": "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "Judge AI: Gemma 4 E2B, a model running on this device. You face the Written Verses opponent, a program that plays pre-prepared verses.",
+    "cos": 0.8451,
+    "chrf": 63.2,
+    "controlCos": 0.6012,
+    "xcos": 0.8951,
+    "xcontrol": 0.5417
+   },
+   "notice.none": {
+    "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "There is no artificial intelligence playing or judging in this match. You face a written verse opponent, a program that plays pre-prepared verses, and the rules rule.",
+    "cos": 0.7566,
+    "chrf": 61.9,
+    "controlCos": 0.5563,
+    "xcos": 0.8794,
+    "xcontrol": 0.6529
+   },
+   "notice.online": {
+    "text": "في المبارزة عبر الإنترنت يكون خصمك لاعبًا آخر، ويحكم خادمنا على أبيات الطرفين بقواعد ثابتة. ولا يلعب ذكاء اصطناعي فيها ولا يحكم.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In online wrestling, your opponent is another player, and our server judges the battles of both sides according to fixed rules. There’s no artificial intelligence playing or judging.",
+    "cos": 0.7769,
+    "chrf": 70.9,
+    "controlCos": 0.0689,
+    "xcos": 0.8727,
+    "xcontrol": -0.0062
+   },
    "pack:relics.RL-001.0": {
     "text": "جمجمة",
     "english": "skull",
@@ -46649,6 +47369,96 @@
     "xcos": 0.6782,
     "xcontrol": 0.2121
    },
+   "battle.lang.written": {
+    "text": "थाई: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You will face an opponent with written poems, because Gemma 4 E2B has not shown that she can write good poetry in this language.",
+    "cos": 0.8928,
+    "chrf": 66.3,
+    "controlCos": 0.7026,
+    "xcos": 0.8076,
+    "xcontrol": 0.664
+   },
+   "battle.lang.rules": {
+    "text": "थाई: निर्णय नियमों से होगा, क्योंकि Gemma 4 E2B ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: The decision will be by the rules, because Gemma 4 E2B has not shown that she is a good judge of this language's poetry.",
+    "cos": 0.8891,
+    "chrf": 64.8,
+    "controlCos": 0.3768,
+    "xcos": 0.8122,
+    "xcontrol": 0.3604
+   },
+   "brain.noneShown": {
+    "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model that can run on this device has shown to write good poetry or be a good judge of poetry, so you will face an opponent with written poems and the decision will be made by rules.",
+    "cos": 0.7029,
+    "chrf": 50.6,
+    "controlCos": 0.09,
+    "xcos": 0.7553,
+    "xcontrol": 0.2298
+   },
+   "footer.credits": {
+    "text": "श्रेय और लाइसेंस",
+    "english": "Credits and Licenses",
+    "back": "Credit and License",
+    "cos": 0.9029,
+    "chrf": 71.2,
+    "controlCos": 0.0891,
+    "xcos": 0.8684,
+    "xcontrol": 0.0427
+   },
+   "notice.aiBoth": {
+    "text": "आपके प्रतिद्वंद्वी और निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल।",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and judge is an artificial intelligence: Gemma 4 E2B, a model running on the same device.",
+    "cos": 0.9576,
+    "chrf": 78.8,
+    "controlCos": 0.7921,
+    "xcos": 0.8202,
+    "xcontrol": 0.7347
+   },
+   "notice.aiWrites": {
+    "text": "आपके प्रतिद्वंद्वी की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। द्वंद्व का निर्णय नियमों से होता है, कृत्रिम बुद्धि से नहीं।",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "The role of your opponent is played by an artificial intelligence: Gemma 4 E2B, a model running on the same device. Duels are decided by rules, not by artificial intelligence.",
+    "cos": 0.9447,
+    "chrf": 76.3,
+    "controlCos": 0.6183,
+    "xcos": 0.8636,
+    "xcontrol": 0.7248
+   },
+   "notice.aiJudges": {
+    "text": "निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है।",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge is an artificial intelligence: Gemma 4 E2B, a model running on the same device. You are facing a poem-written opponent, i.e. a program that reads pre-written poems.",
+    "cos": 0.9087,
+    "chrf": 67.5,
+    "controlCos": 0.582,
+    "xcos": 0.8465,
+    "xcontrol": 0.5908
+   },
+   "notice.none": {
+    "text": "इस द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है, और निर्णय नियमों से होता है।",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "In this duel, no artificial intelligence plays or decides. You are facing an opponent with pre-written poems, i.e. a program that reads pre-written poems, and the decision is made by rules.",
+    "cos": 0.8766,
+    "chrf": 53.0,
+    "controlCos": 0.6535,
+    "xcos": 0.7725,
+    "xcontrol": 0.5916
+   },
+   "notice.online": {
+    "text": "ऑनलाइन आपका प्रतिद्वंद्वी कोई दूसरा खिलाड़ी होता है, और हमारा सर्वर दोनों कविताओं का निर्णय तय नियमों से करता है। ऑनलाइन द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है।",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "Online, your opponent is another player, and our server decides both poems according to fixed rules. In online duels, no artificial intelligence plays or decides.",
+    "cos": 0.808,
+    "chrf": 75.2,
+    "controlCos": 0.0364,
+    "xcos": 0.8585,
+    "xcontrol": 0.0815
+   },
    "pack:relics.RL-001.0": {
     "text": "खोपड़ी",
     "english": "skull",
@@ -51380,6 +52190,96 @@
     "controlCos": 0.157,
     "xcos": 0.8876,
     "xcontrol": 0.1708
+   },
+   "battle.lang.written": {
+    "text": "泰语：你将面对预先写好诗句的对手，因为 Gemma 4 E2B 尚未证明它能用这种语言写好诗。",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You will face a pre-written poem opponent, because Gemma 4 E2B has not yet proven that it can write poetry in this language.",
+    "cos": 0.8858,
+    "chrf": 65.3,
+    "controlCos": 0.6817,
+    "xcos": 0.869,
+    "xcontrol": 0.7422
+   },
+   "battle.lang.rules": {
+    "text": "泰语：按规则评判，因为 Gemma 4 E2B 尚未证明它能胜任这种语言的诗歌裁判。",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judged according to the rules, as Gemma 4 E2B has not yet proven its competence in the poetry judgement of this language.",
+    "cos": 0.8979,
+    "chrf": 47.0,
+    "controlCos": 0.3839,
+    "xcos": 0.8769,
+    "xcontrol": 0.3432
+   },
+   "brain.noneShown": {
+    "text": "这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No working model of the machine has yet proven itself to write or judge poetry, so you’ll face a pre-written opponent and be judged according to rules.",
+    "cos": 0.6867,
+    "chrf": 40.4,
+    "controlCos": 0.0421,
+    "xcos": 0.8004,
+    "xcontrol": 0.0995
+   },
+   "footer.credits": {
+    "text": "致谢与许可证",
+    "english": "Credits and Licenses",
+    "back": "Acknowledgments and licenses",
+    "cos": 0.5511,
+    "chrf": 41.9,
+    "controlCos": 0.033,
+    "xcos": 0.7261,
+    "xcontrol": -0.0661
+   },
+   "notice.aiBoth": {
+    "text": "你的对手和裁判由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and referee is an artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "cos": 0.8278,
+    "chrf": 81.4,
+    "controlCos": 0.7964,
+    "xcos": 0.8944,
+    "xcontrol": 0.8295
+   },
+   "notice.aiWrites": {
+    "text": "你的对手由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。这场对决按规则评判，而不是由人工智能评判。",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is an artificial intelligence: Gemma 4 E2B, a model that runs on this device. The match is judged by rules, not by artificial intelligence.",
+    "cos": 0.8677,
+    "chrf": 80.1,
+    "controlCos": 0.7314,
+    "xcos": 0.9342,
+    "xcontrol": 0.7885
+   },
+   "notice.aiJudges": {
+    "text": "裁判由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序。",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge is an artificial intelligence: Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.9008,
+    "chrf": 46.4,
+    "controlCos": 0.4471,
+    "xcos": 0.9058,
+    "xcontrol": 0.6096
+   },
+   "notice.none": {
+    "text": "这场对决没有人工智能出诗或评判。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序，并按规则评判。",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "There is no artificial intelligence poetry or judging. You will face a pre-written opponent, a program that uses pre-prepared poems and judges according to rules.",
+    "cos": 0.6379,
+    "chrf": 54.3,
+    "controlCos": 0.4223,
+    "xcos": 0.8473,
+    "xcontrol": 0.6046
+   },
+   "notice.online": {
+    "text": "在线对决中，你的对手是另一位玩家，我们的服务器按固定规则评判双方的诗。在线对决没有人工智能出诗或评判。",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In an online duel, your opponent is another player, and our server judges both sides’ poems according to fixed rules. There is no artificial intelligence in the poetry or judging of an online duel.",
+    "cos": 0.8623,
+    "chrf": 73.6,
+    "controlCos": 0.0173,
+    "xcos": 0.9113,
+    "xcontrol": -0.0055
    },
    "pack:relics.RL-001.0": {
     "text": "骷髅",
@@ -56113,6 +57013,96 @@
     "xcos": 0.7674,
     "xcontrol": 0.1607
    },
+   "battle.lang.written": {
+    "text": "タイ語：あらかじめ書かれた詩を出す相手と対戦します。Gemma 4 E2Bがこの言語でうまく詩を書けることは確かめられていないためです。",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Play against a pre-written poem. Gemma 4 E2B has not been proven to write poetry well in this language.",
+    "cos": 0.84,
+    "chrf": 49.4,
+    "controlCos": 0.7191,
+    "xcos": 0.8333,
+    "xcontrol": 0.7165
+   },
+   "battle.lang.rules": {
+    "text": "タイ語：規則で審査します。Gemma 4 E2Bがこの言語の詩の審判をうまく務められることは確かめられていないためです。",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judge by rules. Gemma 4 E2B has not been proven to judge poetry in this language properly.",
+    "cos": 0.9106,
+    "chrf": 47.2,
+    "controlCos": 0.4354,
+    "xcos": 0.8254,
+    "xcontrol": 0.3862
+   },
+   "brain.noneShown": {
+    "text": "この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "None of the models that run on this terminal have been tested to write or review poems properly. Therefore, they compete against a pre-written poet and are judged according to rules.",
+    "cos": 0.4591,
+    "chrf": 31.5,
+    "controlCos": 0.0992,
+    "xcos": 0.7901,
+    "xcontrol": 0.1347
+   },
+   "footer.credits": {
+    "text": "クレジットとライセンス",
+    "english": "Credits and Licenses",
+    "back": "Credits and licenses",
+    "cos": 1.0,
+    "chrf": 75.9,
+    "controlCos": 0.0688,
+    "xcos": 0.8715,
+    "xcontrol": 0.0635
+   },
+   "notice.aiBoth": {
+    "text": "相手と審判は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "The opponent and the referee are artificial intelligence (AI). The model running on this terminal is Gemma 4 E2B.",
+    "cos": 0.7432,
+    "chrf": 63.3,
+    "controlCos": 0.7113,
+    "xcos": 0.8394,
+    "xcontrol": 0.7646
+   },
+   "notice.aiWrites": {
+    "text": "相手は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。決闘の審査は人工知能ではなく、規則で行います。",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "The opponent is an artificial intelligence (AI). The model that runs on this terminal is Gemma 4 E2B. The duel will be judged by rules, not by AI.",
+    "cos": 0.9207,
+    "chrf": 51.4,
+    "controlCos": 0.665,
+    "xcos": 0.8792,
+    "xcontrol": 0.7557
+   },
+   "notice.aiJudges": {
+    "text": "審判は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。相手は、あらかじめ書かれた詩を出すプログラムです。",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge is an artificial intelligence (AI). The model that runs on this terminal is Gemma 4 E2B. The opponent is a program that produces pre-written poems.",
+    "cos": 0.8978,
+    "chrf": 50.5,
+    "controlCos": 0.5916,
+    "xcos": 0.8712,
+    "xcontrol": 0.5519
+   },
+   "notice.none": {
+    "text": "この決闘では、人工知能が詩を出すことも審査することもありません。相手は、あらかじめ書かれた詩を出すプログラムで、審査は規則で行います。",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "In this duel, the AI does not produce poems or judge them. The opponent is a program that produces pre-written poems and judge them according to rules.",
+    "cos": 0.8363,
+    "chrf": 37.7,
+    "controlCos": 0.6335,
+    "xcos": 0.8095,
+    "xcontrol": 0.6288
+   },
+   "notice.online": {
+    "text": "オンラインの決闘では、相手は別のプレイヤーで、両者の詩は当サーバーが決まった規則で審査します。人工知能が詩を出すことも審査することもありません。",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In an online duel, the opponent is another player, and the poems of both players are judged according to rules set by this server. The AI does not produce or judge the poems.",
+    "cos": 0.8233,
+    "chrf": 46.7,
+    "controlCos": 0.022,
+    "xcos": 0.8176,
+    "xcontrol": 0.0615
+   },
    "pack:relics.RL-001.0": {
     "text": "骸骨",
     "english": "skull",
@@ -60844,6 +61834,96 @@
     "controlCos": 0.1456,
     "xcos": 0.7582,
     "xcontrol": 0.1316
+   },
+   "battle.lang.written": {
+    "text": "태국어: 미리 쓰인 시를 내는 상대와 겨뤄요. Gemma 4 E2B가 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: Compete with a pre-written poem, because Gemma 4 E2B has not been confirmed to write well in this language.",
+    "cos": 0.824,
+    "chrf": 58.1,
+    "controlCos": 0.7105,
+    "xcos": 0.8784,
+    "xcontrol": 0.7966
+   },
+   "battle.lang.rules": {
+    "text": "태국어: 규칙으로 심사해요. Gemma 4 E2B가 이 언어로 쓴 시의 심판을 잘 맡는다는 것이 확인되지 않았기 때문이에요.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: Judge according to the rules, because Gemma 4 E2B hasn't been proven to judge poems in this language.",
+    "cos": 0.9056,
+    "chrf": 53.5,
+    "controlCos": 0.4089,
+    "xcos": 0.8791,
+    "xcontrol": 0.3944
+   },
+   "brain.noneShown": {
+    "text": "이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No one of the models that I can run on this device has proven to write or review poems well, so I compete with someone who puts in a pre-written poem and I judge it according to rules.",
+    "cos": 0.5414,
+    "chrf": 39.3,
+    "controlCos": 0.1153,
+    "xcos": 0.8114,
+    "xcontrol": 0.1108
+   },
+   "footer.credits": {
+    "text": "저작자 표시 및 라이선스",
+    "english": "Credits and Licenses",
+    "back": "Attribution and License",
+    "cos": 0.6062,
+    "chrf": 48.7,
+    "controlCos": 0.0577,
+    "xcos": 0.7202,
+    "xcontrol": 0.0765
+   },
+   "notice.aiBoth": {
+    "text": "상대와 심판은 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "The Gemma 4 E2B model is running on this device.",
+    "cos": 0.5189,
+    "chrf": 35.2,
+    "controlCos": 0.4347,
+    "xcos": 0.8401,
+    "xcontrol": 0.769
+   },
+   "notice.aiWrites": {
+    "text": "상대는 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요. 결투는 인공지능이 아니라 규칙으로 심사해요.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "The opponent is an artificial intelligence, a Gemma 4 E2B model running on this device. Duels are judged by rules, not by artificial intelligence.",
+    "cos": 0.9734,
+    "chrf": 76.3,
+    "controlCos": 0.6772,
+    "xcos": 0.8797,
+    "xcontrol": 0.7619
+   },
+   "notice.aiJudges": {
+    "text": "심판은 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요. 상대는 미리 쓰인 시를 내는 프로그램이에요.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The judge is an artificial intelligence, a Gemma 4 E2B model running on this device, and the opponent is a program that produces pre-written poems.",
+    "cos": 0.8974,
+    "chrf": 61.3,
+    "controlCos": 0.5883,
+    "xcos": 0.8586,
+    "xcontrol": 0.4724
+   },
+   "notice.none": {
+    "text": "이 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요. 상대는 미리 쓰인 시를 내는 프로그램이고, 규칙으로 심사해요.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "In this duel, the AI doesn't produce poems or judge them. The opponent is a program that produces pre-written poems and judges them according to rules.",
+    "cos": 0.8431,
+    "chrf": 39.2,
+    "controlCos": 0.6393,
+    "xcos": 0.7764,
+    "xcontrol": 0.6599
+   },
+   "notice.online": {
+    "text": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In an online duel, you're playing against another player and our server judges your poems according to set rules.",
+    "cos": 0.7467,
+    "chrf": 42.4,
+    "controlCos": 0.03,
+    "xcos": 0.8957,
+    "xcontrol": 0.0003
    },
    "pack:relics.RL-001.0": {
     "text": "해골",
@@ -65937,6 +67017,96 @@
     "xcos": 0.7896,
     "xcontrol": 0.2903
    },
+   "battle.lang.written": {
+    "text": "Tiếng Thái: bạn đấu với đối thủ dùng thơ viết sẵn, vì Gemma 4 E2B chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: You compete with an opponent using pre-written poetry, because Gemma 4 E2B has not proven that it writes well in this language.",
+    "cos": 0.8824,
+    "chrf": 61.7,
+    "controlCos": 0.7247,
+    "xcos": 0.8346,
+    "xcontrol": 0.7145
+   },
+   "battle.lang.rules": {
+    "text": "Tiếng Thái: chấm điểm theo quy tắc, vì Gemma 4 E2B chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: scoring according to the rules, because Gemma 4 E2B has not proven itself as a good judge for poetry in this language.",
+    "cos": 0.8802,
+    "chrf": 59.9,
+    "controlCos": 0.3708,
+    "xcos": 0.8179,
+    "xcontrol": 0.3668
+   },
+   "brain.noneShown": {
+    "text": "Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "No model on which this device runs has proven to be a good poetry writer or judge, so you compete with opponents using pre-written poems, and the scoring follows the rules.",
+    "cos": 0.6642,
+    "chrf": 43.2,
+    "controlCos": 0.1398,
+    "xcos": 0.7875,
+    "xcontrol": 0.1762
+   },
+   "footer.credits": {
+    "text": "Ghi công và giấy phép",
+    "english": "Credits and Licenses",
+    "back": "Recording and license",
+    "cos": 0.5909,
+    "chrf": 31.7,
+    "controlCos": 0.1627,
+    "xcos": 0.7957,
+    "xcontrol": 0.0984
+   },
+   "notice.aiBoth": {
+    "text": "Đối thủ và giám khảo của bạn do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and judge is an artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "cos": 0.9643,
+    "chrf": 83.3,
+    "controlCos": 0.79,
+    "xcos": 0.8418,
+    "xcontrol": 0.7199
+   },
+   "notice.aiWrites": {
+    "text": "Đối thủ của bạn do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này. Trận đấu được chấm theo quy tắc, không phải bằng trí tuệ nhân tạo.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is an AI: Gemma 4 E2B, a model running on this device. The match is scored by rules, not by the AI.",
+    "cos": 0.8101,
+    "chrf": 50.9,
+    "controlCos": 0.6824,
+    "xcos": 0.9052,
+    "xcontrol": 0.7994
+   },
+   "notice.aiJudges": {
+    "text": "Giám khảo do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "Judged by the artificial intelligence: Gemma 4 E2B, a model running on this device. You compete against an opponent using pre-written poems, i.e. a program that gives you pre-prepared poems.",
+    "cos": 0.6757,
+    "chrf": 65.8,
+    "controlCos": 0.4559,
+    "xcos": 0.8861,
+    "xcontrol": 0.5532
+   },
+   "notice.none": {
+    "text": "Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước, còn việc chấm điểm thì theo quy tắc.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "There is no artificial intelligence playing or scoring this game. You play against an opponent using pre-written poems, i. e. a program that gives you pre-prepared poems, and the scoring follows rules.",
+    "cos": 0.6202,
+    "chrf": 49.2,
+    "controlCos": 0.4523,
+    "xcos": 0.8227,
+    "xcontrol": 0.6009
+   },
+   "notice.online": {
+    "text": "Khi chơi trực tuyến, đối thủ của bạn là một người chơi khác, và máy chủ của chúng tôi chấm cả hai bài thơ theo quy tắc cố định. Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu trực tuyến.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "When playing online, your opponent is another player, and our server scores both poems according to fixed rules. No artificial intelligence plays or scores the online match.",
+    "cos": 0.684,
+    "chrf": 73.1,
+    "controlCos": -0.019,
+    "xcos": 0.8336,
+    "xcontrol": 0.0767
+   },
    "pack:relics.RL-001.0": {
     "text": "đầu lâu",
     "english": "skull",
@@ -69100,14 +70270,14 @@
     "xcontrol": 0.3353
    },
    "brain.failed": {
-    "text": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้วได้",
+    "text": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้",
     "english": "The model could not start on this device. You can still play against the written opponent.",
-    "back": "The model can't be started on this device. You can still play against an opponent who has already written a poem.",
-    "cos": 0.8254,
-    "chrf": 70.5,
-    "controlCos": 0.4853,
-    "xcos": 0.8106,
-    "xcontrol": 0.4336
+    "back": "The model can't start on this device. You can still play with an opponent who has already written a poem.",
+    "cos": 0.8433,
+    "chrf": 68.4,
+    "controlCos": 0.495,
+    "xcos": 0.8077,
+    "xcontrol": 0.4253
    },
    "brain.noModel": {
     "text": "กำลังเล่นโดยไม่มีโมเดล",
@@ -69120,14 +70290,14 @@
     "xcontrol": 0.3048
    },
    "brain.written": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
     "english": "Playing against the written opponent.",
     "back": "Playing with an opponent who's already written a poem.",
     "cos": 0.7823,
     "chrf": 50.4,
     "controlCos": 0.4653,
-    "xcos": 0.6264,
-    "xcontrol": 0.3279
+    "xcos": 0.6184,
+    "xcontrol": 0.3244
    },
    "brain.noWebgpu": {
     "text": "เบราว์เซอร์นี้ไม่มี WebGPU คู่ต่อสู้จึงใช้บทกลอนที่เขียนไว้ล่วงหน้า และการตัดสินใช้กฎ ส่วนอื่นทำงานได้ทั้งหมด",
@@ -69170,14 +70340,14 @@
     "xcontrol": 0.0399
    },
    "brain.writtenReload": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
     "english": "Playing against the written opponent. You can summon the model any time by reloading.",
-    "back": "You're playing with a rival who has already written a poem. You can invite the model at any time by reloading this page.",
-    "cos": 0.4982,
-    "chrf": 51.1,
-    "controlCos": 0.0182,
-    "xcos": 0.688,
-    "xcontrol": 0.0817
+    "back": "You're playing with an opponent who has already written a poem. You can invite the model at any time by reloading this page.",
+    "cos": 0.5808,
+    "chrf": 57.7,
+    "controlCos": 0.0402,
+    "xcos": 0.6845,
+    "xcontrol": 0.0878
    },
    "round.label": {
     "text": "ยกที่ 3 จาก 3",
@@ -70290,24 +71460,24 @@
     "xcontrol": 0.3929
    },
    "badge.writtenJudged": {
-    "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B",
+    "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว · ตัดสินโดย Gemma 4 E2B",
     "english": "Written opponent · judged by Gemma 4 E2B",
-    "back": "Fighter with pre-written poem · Judged by Gemma 4 E2B",
-    "cos": 0.7234,
-    "chrf": 54.9,
-    "controlCos": 0.451,
-    "xcos": 0.7823,
-    "xcontrol": 0.4509
+    "back": "Fighter using a pre-written poem · Judged by Gemma 4 E2B",
+    "cos": 0.7228,
+    "chrf": 54.7,
+    "controlCos": 0.4931,
+    "xcos": 0.7766,
+    "xcontrol": 0.4353
    },
    "badge.written": {
-    "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+    "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
     "english": "Written opponent",
-    "back": "A fighter with a poem written.",
-    "cos": 0.5664,
-    "chrf": 28.0,
-    "controlCos": 0.1807,
-    "xcos": 0.5541,
-    "xcontrol": 0.2655
+    "back": "The opponent who uses a pre-written poem",
+    "cos": 0.781,
+    "chrf": 53.7,
+    "controlCos": 0.2653,
+    "xcos": 0.5339,
+    "xcontrol": 0.2604
    },
    "stats.rounds": {
     "text": "ยกที่เล่น",
@@ -70470,14 +71640,14 @@
     "xcontrol": 0.1293
    },
    "theatre.writtenHint": {
-    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
+    "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
     "english": "Playing the written opponent. Summon a model on the battle page to face one here.",
-    "back": "Playing with an opponent who's already written a poem, inviting the model to face it here.",
-    "cos": 0.7257,
-    "chrf": 44.6,
-    "controlCos": 0.2556,
-    "xcos": 0.743,
-    "xcontrol": 0.1685
+    "back": "Playing with an opponent who uses a pre-written poem, inviting the model to face it here.",
+    "cos": 0.7247,
+    "chrf": 44.5,
+    "controlCos": 0.2688,
+    "xcos": 0.7371,
+    "xcontrol": 0.176
    },
    "theatre.enterAr": {
     "text": "เข้า: เวทีในห้องของคุณ",
@@ -70668,6 +71838,96 @@
     "controlCos": 0.1121,
     "xcos": 0.8734,
     "xcontrol": 0.2153
+   },
+   "battle.lang.written": {
+    "text": "ญี่ปุ่น: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Japan: You're going to meet an opponent who uses already written poems, because Gemma 4 E2B hasn't yet shown that she can write poems in this language.",
+    "cos": 0.6922,
+    "chrf": 57.3,
+    "controlCos": 0.5018,
+    "xcos": 0.8336,
+    "xcontrol": 0.6915
+   },
+   "battle.lang.rules": {
+    "text": "ญี่ปุ่น: ตัดสินด้วยกฎ เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Japan: Judging by the rules, because Gemma 4 E2B hasn't shown herself to be a good judge of this language poetry.",
+    "cos": 0.775,
+    "chrf": 58.6,
+    "controlCos": 0.349,
+    "xcos": 0.8379,
+    "xcontrol": 0.3205
+   },
+   "brain.noneShown": {
+    "text": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว และตัดสินด้วยกฎ",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "There's no working model of this device that has shown to be good at writing or judging poems, so you're going to have a competitor who uses an already-written poem and judges by rules.",
+    "cos": 0.6643,
+    "chrf": 45.4,
+    "controlCos": 0.0976,
+    "xcos": 0.8247,
+    "xcontrol": 0.1797
+   },
+   "footer.credits": {
+    "text": "เครดิตและสัญญาอนุญาต",
+    "english": "Credits and Licenses",
+    "back": "Credits and license.",
+    "cos": 0.9121,
+    "chrf": 69.4,
+    "controlCos": 0.14,
+    "xcos": 0.8723,
+    "xcontrol": 0.0364
+   },
+   "notice.aiBoth": {
+    "text": "คู่ต่อสู้และกรรมการของคุณทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your AI-powered opponent and judge is Gemma 4 E2B, a model that works on this device.",
+    "cos": 0.8843,
+    "chrf": 46.1,
+    "controlCos": 0.7222,
+    "xcos": 0.8296,
+    "xcontrol": 0.7226
+   },
+   "notice.aiWrites": {
+    "text": "คู่ต่อสู้ของคุณทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ ส่วนการประชันตัดสินด้วยกฎ ไม่ใช่ด้วยปัญญาประดิษฐ์",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your AI opponent is the Gemma 4 E2B, a model that runs on this device.",
+    "cos": 0.7308,
+    "chrf": 31.8,
+    "controlCos": 0.6217,
+    "xcos": 0.8446,
+    "xcontrol": 0.7475
+   },
+   "notice.aiJudges": {
+    "text": "กรรมการทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The AI judge is Gemma 4 E2B, a model that works on this device. You'll face a pre-written poem opponent, which is a program that uses pre-written poems.",
+    "cos": 0.8084,
+    "chrf": 46.6,
+    "controlCos": 0.5371,
+    "xcos": 0.8207,
+    "xcontrol": 0.4658
+   },
+   "notice.none": {
+    "text": "ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันครั้งนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า และตัดสินด้วยกฎ",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "There's no artificial intelligence playing or judging this contest. You'll face an opponent who uses a pre-written poem, which is a program that uses pre-prepared poems and judges by rules.",
+    "cos": 0.6423,
+    "chrf": 53.6,
+    "controlCos": 0.4266,
+    "xcos": 0.8178,
+    "xcontrol": 0.5712
+   },
+   "notice.online": {
+    "text": "ในการประชันออนไลน์ คู่ต่อสู้ของคุณคือผู้เล่นอีกคน และเซิร์ฟเวอร์ของเราตัดสินบทกลอนของทั้งสองฝ่ายด้วยกฎที่ตายตัว ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันออนไลน์",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In an online contest, your opponent is another player, and our server judges the poems of both sides by dead rules. No artificial intelligence plays or judges the online contest.",
+    "cos": 0.7398,
+    "chrf": 76.9,
+    "controlCos": 0.0802,
+    "xcos": 0.8032,
+    "xcontrol": 0.0697
    },
    "pack:relics.RL-001.0": {
     "text": "กะโหลก",
@@ -73832,14 +75092,14 @@
     "xcontrol": 0.4072
    },
    "brain.failed": {
-    "text": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis.",
+    "text": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis.",
     "english": "The model could not start on this device. You can still play against the written opponent.",
-    "back": "Models can't run on this device, but you can still play against opponents with written poetry.",
-    "cos": 0.6977,
-    "chrf": 57.9,
-    "controlCos": 0.4989,
-    "xcos": 0.8707,
-    "xcontrol": 0.4929
+    "back": "Models can't run on this device, but you can still play against opponents with written poems.",
+    "cos": 0.7035,
+    "chrf": 58.2,
+    "controlCos": 0.4881,
+    "xcos": 0.8584,
+    "xcontrol": 0.5075
    },
    "brain.noModel": {
     "text": "Bermain tanpa model.",
@@ -73852,14 +75112,14 @@
     "xcontrol": 0.3815
    },
    "brain.written": {
-    "text": "Bermain melawan lawan bersyair tertulis.",
+    "text": "Bermain melawan lawan dengan syair tertulis.",
     "english": "Playing against the written opponent.",
-    "back": "Play against written poetry opponents.",
-    "cos": 0.7509,
-    "chrf": 53.1,
-    "controlCos": 0.4215,
-    "xcos": 0.9277,
-    "xcontrol": 0.2735
+    "back": "Play against an opponent with a written poem.",
+    "cos": 0.7993,
+    "chrf": 56.5,
+    "controlCos": 0.4778,
+    "xcos": 0.8238,
+    "xcontrol": 0.2712
    },
    "brain.noWebgpu": {
     "text": "Peramban ini tidak punya WebGPU, jadi lawan memainkan syair yang sudah ditulis dan penilaian memakai aturan. Selebihnya berjalan seperti biasa.",
@@ -73902,14 +75162,14 @@
     "xcontrol": 0.0605
    },
    "brain.writtenReload": {
-    "text": "Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
+    "text": "Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
     "english": "Playing against the written opponent. You can summon the model any time by reloading.",
-    "back": "You can call the model at any time by reloading the page.",
-    "cos": 0.604,
-    "chrf": 43.2,
-    "controlCos": -0.0043,
-    "xcos": 0.8987,
-    "xcontrol": 0.0636
+    "back": "Play against an opponent with a written poem. You can call the model at any time by reloading the page.",
+    "cos": 0.7471,
+    "chrf": 62.6,
+    "controlCos": 0.0432,
+    "xcos": 0.8728,
+    "xcontrol": 0.0718
    },
    "round.label": {
     "text": "Ronde 3 dari 3",
@@ -75022,24 +76282,24 @@
     "xcontrol": 0.4039
    },
    "badge.writtenJudged": {
-    "text": "Lawan bersyair tertulis · dinilai Gemma 4 E2B",
+    "text": "Lawan dengan syair tertulis · dinilai Gemma 4 E2B",
     "english": "Written opponent · judged by Gemma 4 E2B",
-    "back": "A rival poet wrote · rated Gemma 4 E2B",
-    "cos": 0.7392,
-    "chrf": 30.3,
-    "controlCos": 0.3978,
-    "xcos": 0.9104,
-    "xcontrol": 0.5102
+    "back": "Opponent with written poem · rated Gemma 4 E2B",
+    "cos": 0.8615,
+    "chrf": 47.7,
+    "controlCos": 0.6685,
+    "xcos": 0.8653,
+    "xcontrol": 0.5059
    },
    "badge.written": {
-    "text": "Lawan bersyair tertulis",
+    "text": "Lawan dengan syair tertulis",
     "english": "Written opponent",
-    "back": "Poetic opponents are written",
-    "cos": 0.7179,
-    "chrf": 60.2,
-    "controlCos": 0.1827,
-    "xcos": 0.8934,
-    "xcontrol": 0.227
+    "back": "Opponent with a written poem",
+    "cos": 0.8041,
+    "chrf": 54.9,
+    "controlCos": 0.305,
+    "xcos": 0.7337,
+    "xcontrol": 0.2098
    },
    "stats.rounds": {
     "text": "Ronde dimainkan",
@@ -75400,6 +76660,96 @@
     "controlCos": 0.1511,
     "xcos": 0.7133,
     "xcontrol": 0.2253
+   },
+   "battle.lang.written": {
+    "text": "Thai: lawanmu memakai syair tertulis, karena Gemma 4 E2B belum terbukti mampu menulis syair dengan baik dalam bahasa ini.",
+    "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
+    "back": "Thai: your opponent uses written poetry, because Gemma 4 E2B has not proven to be able to write poetry well in this language.",
+    "cos": 0.8713,
+    "chrf": 62.8,
+    "controlCos": 0.7154,
+    "xcos": 0.8695,
+    "xcontrol": 0.7847
+   },
+   "battle.lang.rules": {
+    "text": "Thai: dinilai dengan aturan, karena Gemma 4 E2B belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini.",
+    "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
+    "back": "Thai: judged by the rules, as Gemma 4 E2B has not proven capable of being a good poem jury in this language.",
+    "cos": 0.8562,
+    "chrf": 56.3,
+    "controlCos": 0.3883,
+    "xcos": 0.8508,
+    "xcontrol": 0.3428
+   },
+   "brain.noneShown": {
+    "text": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan.",
+    "english": "No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.",
+    "back": "There is no model that this device can run that has proven to write or evaluate poems well, so your opponent uses written poems and the evaluation is done by rules.",
+    "cos": 0.6538,
+    "chrf": 49.4,
+    "controlCos": 0.0763,
+    "xcos": 0.812,
+    "xcontrol": 0.2076
+   },
+   "footer.credits": {
+    "text": "Atribusi dan lisensi",
+    "english": "Credits and Licenses",
+    "back": "Attribution and license",
+    "cos": 0.6062,
+    "chrf": 29.1,
+    "controlCos": 0.0577,
+    "xcos": 0.8273,
+    "xcontrol": 0.0691
+   },
+   "notice.aiBoth": {
+    "text": "Lawanmu dan juri dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini.",
+    "english": "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "back": "Your opponent and the jury are run by an artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "cos": 0.892,
+    "chrf": 91.7,
+    "controlCos": 0.8067,
+    "xcos": 0.9081,
+    "xcontrol": 0.7928
+   },
+   "notice.aiWrites": {
+    "text": "Lawanmu dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini. Duel dinilai dengan aturan, bukan oleh kecerdasan buatan.",
+    "english": "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence.",
+    "back": "Your opponent is run by an artificial intelligence: a Gemma 4 E2B, the model running on this device.",
+    "cos": 0.8188,
+    "chrf": 59.1,
+    "controlCos": 0.7027,
+    "xcos": 0.9483,
+    "xcontrol": 0.805
+   },
+   "notice.aiJudges": {
+    "text": "Juri dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya.",
+    "english": "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.",
+    "back": "The jury is run by an artificial intelligence: Gemma 4 E2B, a model running on this device.",
+    "cos": 0.751,
+    "chrf": 52.1,
+    "controlCos": 0.477,
+    "xcos": 0.9274,
+    "xcontrol": 0.6207
+   },
+   "notice.none": {
+    "text": "Tidak ada kecerdasan buatan yang bermain atau menilai duel ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya, dan duel dinilai dengan aturan.",
+    "english": "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.",
+    "back": "There is no artificial intelligence playing or judging this duel. You play against a written poem, which is a program that uses pre-prepared poems, and the duels are judged by rules.",
+    "cos": 0.896,
+    "chrf": 61.5,
+    "controlCos": 0.695,
+    "xcos": 0.9133,
+    "xcontrol": 0.6592
+   },
+   "notice.online": {
+    "text": "Dalam duel daring, lawanmu adalah pemain lain, dan server kami menilai kedua syair dengan aturan yang tetap. Tidak ada kecerdasan buatan yang bermain atau menilai duel daring.",
+    "english": "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.",
+    "back": "In an online duel, your opponent is another player, and our server evaluates both poems according to fixed rules.",
+    "cos": 0.7159,
+    "chrf": 54.8,
+    "controlCos": 0.0126,
+    "xcos": 0.8983,
+    "xcontrol": 0.049
    },
    "pack:relics.RL-001.0": {
     "text": "tengkorak",

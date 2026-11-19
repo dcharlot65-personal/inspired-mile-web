@@ -2169,12 +2169,6 @@
   },
   {
    "lang": "th",
-   "key": "badge.written",
-   "text": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
-   "reason": "'คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว' (the opponent who uses verses already written) is the glossary's written opponent."
-  },
-  {
-   "lang": "th",
    "key": "battle.buildDeck",
    "text": "จัดสำรับ",
    "reason": "จัดสำรับ (arrange a deck) is 'Build a deck'."
