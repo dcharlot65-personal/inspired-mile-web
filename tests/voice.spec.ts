@@ -39,23 +39,27 @@ test('the voice speaks without eSpeak NG, and the ear hears what it said', async
         return await page.evaluate(async () => {
           const voice = await import(/* @vite-ignore */ '/src/lib/thespian-voice.ts');
           if (!(await voice.loadVoice())) return { error: 'loadVoice failed' };
-          const line = 'To be, or not to be, that is the question.';
-          const speech = await voice.synthesise(line);
-          // To 16 kHz mono, as the ear takes it.
-          const frames = Math.ceil((speech.samples.length / speech.sampleRate) * 16000);
-          const ctx = new OfflineAudioContext(1, frames, 16000);
-          const buffer = ctx.createBuffer(1, speech.samples.length, speech.sampleRate);
-          buffer.copyToChannel(speech.samples, 0);
-          const src = ctx.createBufferSource();
-          src.buffer = buffer;
-          src.connect(ctx.destination);
-          src.start();
-          const audio = (await ctx.startRendering()).getChannelData(0);
           const ear = await import(/* @vite-ignore */ '/src/lib/ear.ts');
-          const heard = await ear.transcribe(audio, 'en');
+          // To 16 kHz mono, as the ear takes it.
+          const hear = async (speech: { samples: Float32Array; sampleRate: number }) => {
+            const frames = Math.ceil((speech.samples.length / speech.sampleRate) * 16000);
+            const ctx = new OfflineAudioContext(1, frames, 16000);
+            const buffer = ctx.createBuffer(1, speech.samples.length, speech.sampleRate);
+            buffer.copyToChannel(speech.samples, 0);
+            const src = ctx.createBufferSource();
+            src.buffer = buffer;
+            src.connect(ctx.destination);
+            src.start();
+            return ear.transcribe((await ctx.startRendering()).getChannelData(0), 'en');
+          };
+          const speech = await voice.synthesise('To be, or not to be, that is the question.');
+          const heard = await hear(speech);
+          // Digits written into words were once dropped ("the 90s" was said "the S").
+          const numbers = await voice.synthesise('Back in the 90s, at 10pm, I played my mp3.');
+          const heardNumbers = await hear(numbers);
           let sum = 0;
           for (const s of speech.samples) sum += s * s;
-          return { phonemes: speech.phonemes, seconds: speech.samples.length / speech.sampleRate, rms: Math.sqrt(sum / speech.samples.length), heard };
+          return { phonemes: speech.phonemes, seconds: speech.samples.length / speech.sampleRate, rms: Math.sqrt(sum / speech.samples.length), heard, numbers: numbers.phonemes, heardNumbers };
         });
       } catch (err) {
         if (attempt >= 2 || !/context was destroyed|navigation|Failed to fetch dynamically imported module/i.test(String(err))) throw err;
@@ -71,6 +75,9 @@ test('the voice speaks without eSpeak NG, and the ear hears what it said', async
   expect(said.rms).toBeGreaterThan(0.01);
   const heard = String(said.heard).toLowerCase();
   for (const w of ['be', 'not', 'question']) expect(heard, `Whisper heard "${heard}"`).toContain(w);
+  const heardNumbers = String(said.heardNumbers).toLowerCase();
+  expect(said.numbers.join(' ')).toContain('nˈIntiz');
+  for (const n of [/\b(90'?s|nineties)\b/, /\b(10|ten)(?=\b|pm)/, /\bm\.? ?p\.? ?(3|three)\b/]) expect(heardNumbers, `Whisper heard "${heardNumbers}"`).toMatch(n);
 
   const served = await Promise.all(scripts);
   expect(served.length, 'scripts were read').toBeGreaterThan(10);
