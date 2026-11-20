@@ -4,7 +4,8 @@
  * hold its parts: how a module is traced to its package, how a package built into another one's file is found,
  * how /credits is compared with what ships, and that the committed notices carry what the licenses ask.
  */
-import { mkdirSync, mkdtempSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -161,6 +162,23 @@ describe('the notices themselves', () => {
     expect(licenseFiles(dir)).toEqual(['COPYING', 'LICENCE.txt', 'LICENSE', 'LICENSE.md', 'LICENSES.txt', 'NOTICE', 'THIRD-PARTY-LICENSE', 'ThirdPartyNotices.txt', 'third_party_licenses.txt']);
   });
 
+  it('keeps each license text that no package carries byte for byte as its source gave it: a row in SOURCES.md with its sha256', () => {
+    const dir = 'scripts/third-party/texts';
+    const rows = new Map<string, string>();
+    for (const line of read(`${dir}/SOURCES.md`).split('\n')) {
+      const m = line.match(/^\| `([^`]+)` \|.*\| `([0-9a-f]{64})` \|\s*$/);
+      if (m) rows.set(m[1], m[2]);
+    }
+    const files = readdirSync(join(root, dir)).filter((f) => f !== 'SOURCES.md').sort();
+    expect(files.length).toBeGreaterThanOrEqual(15);
+    for (const f of files) {
+      const sha = createHash('sha256').update(readFileSync(join(root, dir, f))).digest('hex');
+      expect([f, rows.get(f)], `${f}: its row in SOURCES.md, with this sha256`).toEqual([f, sha]);
+    }
+    // And no row for a file that is not there.
+    expect([...rows.keys()].filter((f) => !files.includes(f))).toEqual([]);
+  });
+
   it('fails a shipped package that has no license file and no stated text', () => {
     const dir = realpathSync(mkdtempSync(join(tmpdir(), 'notices-pkg-')));
     const pkg = join(dir, 'node_modules', 'no-license');
@@ -226,6 +244,12 @@ describe('the notices themselves', () => {
     ]) expect([w, notices.includes(w)]).toEqual([w, true]);
     // SCOWL's file whole, as served alone; and no escape of the table's source left in the text.
     expect(notices).toContain(read('public/licenses/SCOWL-Copyright.txt').replace(/\s+$/, ''));
+    // The Unicode License v3 twice: as unicode.org publishes it (confusables, Unihan, "1991-2026") and as CLDR's own
+    // package carries it (the CLDR words in judge-words.ts, "2001–2026"), each whole.
+    for (const f of ['unicode-license-v3.txt', 'cldr-rbnf-49.0.0-LICENSE.txt']) {
+      expect([f, notices.includes(read(`scripts/third-party/texts/${f}`).replace(/\s+$/, ''))]).toEqual([f, true]);
+    }
+    expect(notices).toContain('Copyright © 2001–2026 Unicode, Inc.');
     expect(notices).not.toMatch(/\\`/);
     expect(notices).not.toContain('themselves licensed under');
     // ONNX Runtime's notices of what is compiled into it are served beside the file.

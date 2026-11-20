@@ -190,8 +190,8 @@ export const DATA = [
   {
     title: 'Unicode data: confusables (UTS #39), the Unihan database and Unicode CLDR, by Unicode, Inc.',
     covers: ['src/lib/verse/confusables.ts', 'src/lib/verse/judge-words.ts', 'src/lib/verse/sound/data/zh.ts'],
-    note: 'Letters drawn like a Latin letter (confusables 18.0.0), Chinese characters\' readings (Unihan 18.0.0), numbers spelled out and other words of each language (CLDR 49), each reduced to what the game reads. The Unicode License v3:',
-    texts: [`${TEXTS}/unicode-license-v3.txt`],
+    note: 'Letters drawn like a Latin letter (confusables 18.0.0), Chinese characters\' readings (Unihan 18.0.0), numbers spelled out and other words of each language (CLDR 49), each reduced to what the game reads. The Unicode License v3, first as unicode.org publishes it (the notice for the confusables and Unihan), then as CLDR\'s own package carries it (cldr-rbnf 49.0.0\'s LICENSE, the notice for the CLDR words: "Copyright © 2001–2026 Unicode, Inc."):',
+    texts: [`${TEXTS}/unicode-license-v3.txt`, `${TEXTS}/cldr-rbnf-49.0.0-LICENSE.txt`],
   },
   {
     title: 'stopwords-iso 1.1.0, by Gene Diaz and contributors',
