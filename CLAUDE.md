@@ -662,7 +662,7 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   a `DATA` entry's text, or the notice of a file it covers, does not hold a file it must carry whole (`holds`: SCOWL's
   Copyright file, in `pron-en.ts` and in any other table added to that entry's `covers`). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
   on the build host with `rb --pull`, read the diff of the notices file, and commit it. Texts no package carries are in
-  `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`); ONNX Runtime's are from its PyPI wheels,
+  `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`; `third-party-notices.test.ts` fails on a file without its row or with another sha256; CLDR's words carry CLDR's own copy of the Unicode License, from the cldr-rbnf package); ONNX Runtime's are from its PyPI wheels,
   because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
 - **The Terms leave third-party material to its own licence** (`terms.astro` section 10, `#third-party`, and the
   reverse-engineering line in section 7): CC BY-SA's and the GPL's "no further restrictions". Keep that sentence if

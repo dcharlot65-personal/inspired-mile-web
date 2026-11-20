@@ -231,3 +231,15 @@ overriding those defaults first, as for the other libraries; `CLAUDE.md` ("Reque
   that the JMdict and JMnedict material stays the copyright of James William Breen and EDRDG. `/credits`
   (share-alike duty, the JMdict entry, the language-data introduction) and the Terms' `#third-party` paragraph
   say the same.
+- **CLDR's own copy of the Unicode License.** The notices file carried the Unicode License v3 once, as
+  `https://www.unicode.org/license.txt` gives it ("Copyright © 1991-2026 Unicode, Inc."). The CLDR words in
+  `judge-words.ts` are read from the npm package cldr-rbnf 49.0.0 (the tarball `scripts/build-judge-words.mjs`
+  pins, sha256 `6dc75363…313d`), whose `LICENSE` is CLDR's copy of the notice ("Copyright © 2001–2026 Unicode,
+  Inc.", with a paragraph keeping the LDML specification, which the game does not use, under Unicode's terms of
+  use). That file is now in `scripts/third-party/texts/` and in the notices file after unicode.org's, which stays the
+  notice for the confusables and Unihan data (2026-11-20).
+- **Every license text kept in `scripts/third-party/texts/` has its row in that folder's `SOURCES.md`, with its
+  sha256**, and `third-party-notices.test.ts` holds each file to it. ONNX Runtime's LICENSE had no row; on 2026-11-20
+  it was checked again against both PyPI wheels the record above names (`onnxruntime/LICENSE` is the same file in
+  each, sha256 `c250d627…b674`, and each wheel's `onnxruntime/ThirdPartyNotices.txt` is byte for byte the file served
+  beside the notices for its version), and the row was added.
