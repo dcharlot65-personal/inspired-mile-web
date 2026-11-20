@@ -7,7 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'Stagione {n}',
   'season.title': 'Pass stagionale',
   'season.intro': 'Gioca battaglie, quiz e sfide per guadagnare XP. Ogni nuovo livello sblocca carte, crediti e titoli.',
-  'season.introNow': 'Ogni livello del pass stagionale sblocca carte, crediti o titoli. In questa versione del gioco, giocare non fa guadagnare XP.',
+  'season.introNow': 'Ogni livello del Pass stagionale sblocca carte, crediti o titoli. In questa versione del gioco, giocare non fa guadagnare XP.',
   'season.loading': 'Caricamento…',
   'season.level': 'Livello',
   'season.xp': '{n} XP',
