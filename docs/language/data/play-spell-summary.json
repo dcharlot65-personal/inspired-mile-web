@@ -38,7 +38,7 @@
   },
   "ar": {
    "dictionary": "ar",
-   "unknown": 61,
+   "unknown": 63,
    "errors": 0
   },
   "hi": {
@@ -69,7 +69,7 @@
   },
   "id": {
    "dictionary": "id",
-   "unknown": 32,
+   "unknown": 33,
    "errors": 0
   }
  }

@@ -1132,36 +1132,36 @@ What the tools that did not write the text found, and what was done about it. Th
 
 | Language | Engine | Strings | Threshold | Flagged (trivia) | Controls caught | Median similarity |
 |---|---|---|---|---|---|---|
-| es | opus | 659 (all strings) | 0.43 | 36 (21) | 12/12 | 0.903 |
-| fr | opus | 657 (all strings) | 0.41 | 26 (16) | 12/12 | 0.8919 |
-| de | opus | 645 (all strings) | 0.33 | 8 (4) | 12/12 | 0.9204 |
+| es | opus | 659 (all strings) | 0.43 | 36 (21) | 12/12 | 0.8992 |
+| fr | opus | 657 (all strings) | 0.41 | 26 (16) | 12/12 | 0.8916 |
+| de | opus | 645 (all strings) | 0.33 | 8 (4) | 12/12 | 0.9201 |
 | it | opus | 668 (all strings) | 0.4 | 24 (15) | 12/12 | 0.8943 |
-| pt | opus | 660 (all strings) | 0.46 | 35 (24) | 12/12 | 0.8657 |
+| pt | opus | 660 (all strings) | 0.46 | 35 (24) | 12/12 | 0.8641 |
 | pl | opus | 661 (all strings) | 0.43 | 42 (26) | 12/12 | 0.8313 |
 | ru | opus | 681 (all strings) | 0.42 | 63 (29) | 12/12 | 0.8252 |
 | ar | opus | 651 (all strings) | 0.44 | 54 (33) | 12/12 | 0.8086 |
-| hi | opus | 627 (all strings) | 0.3 | 62 (54) | 12/12 | 0.6118 |
-| zh | opus | 661 (all strings) | 0.45 | 74 (41) | 12/12 | 0.7944 |
-| ja | opus | 677 (all strings) | 0.46 | 173 (121) | 12/12 | 0.6661 |
-| ko | opus | 643 (all strings) | 0.45 | 88 (63) | 12/12 | 0.7739 |
-| vi | opus | 636 (all strings) | 0.4 | 44 (28) | 12/12 | 0.7959 |
-| th | opus | 627 (all strings) | 0.6 | 159 (90) | 12/12 | 0.7788 |
-| id | opus | 632 (all strings) | 0.5 | 39 (18) | 12/12 | 0.8929 |
+| hi | opus | 627 (all strings) | 0.3 | 62 (54) | 12/12 | 0.6082 |
+| zh | opus | 661 (all strings) | 0.45 | 74 (41) | 12/12 | 0.7942 |
+| ja | opus | 677 (all strings) | 0.46 | 172 (121) | 12/12 | 0.664 |
+| ko | opus | 643 (all strings) | 0.45 | 89 (63) | 12/12 | 0.771 |
+| vi | opus | 636 (all strings) | 0.4 | 44 (28) | 12/12 | 0.7957 |
+| th | opus | 627 (all strings) | 0.6 | 158 (90) | 12/12 | 0.7788 |
+| id | opus | 632 (all strings) | 0.5 | 39 (18) | 12/12 | 0.8922 |
 | es | labse | 659 (all strings) | 0.46 | 17 (11) | 12/12 | 0.8843 |
-| fr | labse | 657 (all strings) | 0.48 | 5 (5) | 12/12 | 0.8976 |
-| de | labse | 645 (all strings) | 0.44 | 8 (7) | 12/12 | 0.8821 |
-| it | labse | 668 (all strings) | 0.46 | 8 (6) | 12/12 | 0.8816 |
-| pt | labse | 660 (all strings) | 0.46 | 7 (6) | 12/12 | 0.8801 |
-| pl | labse | 661 (all strings) | 0.47 | 26 (22) | 12/12 | 0.8421 |
+| fr | labse | 657 (all strings) | 0.48 | 5 (5) | 12/12 | 0.8979 |
+| de | labse | 645 (all strings) | 0.44 | 8 (7) | 12/12 | 0.8824 |
+| it | labse | 668 (all strings) | 0.46 | 8 (6) | 12/12 | 0.8806 |
+| pt | labse | 660 (all strings) | 0.46 | 7 (6) | 12/12 | 0.8798 |
+| pl | labse | 661 (all strings) | 0.47 | 26 (22) | 12/12 | 0.8434 |
 | ru | labse | 681 (all strings) | 0.45 | 15 (14) | 12/12 | 0.8404 |
 | ar | labse | 651 (all strings) | 0.45 | 21 (20) | 12/12 | 0.8357 |
-| hi | labse | 627 (all strings) | 0.53 | 25 (19) | 12/12 | 0.8395 |
-| zh | labse | 661 (all strings) | 0.47 | 16 (13) | 12/12 | 0.8086 |
+| hi | labse | 627 (all strings) | 0.53 | 25 (19) | 12/12 | 0.8394 |
+| zh | labse | 661 (all strings) | 0.47 | 16 (13) | 12/12 | 0.8091 |
 | ja | labse | 677 (all strings) | 0.46 | 17 (12) | 12/12 | 0.7985 |
 | ko | labse | 643 (all strings) | 0.38 | 14 (13) | 12/12 | 0.7997 |
 | vi | labse | 636 (all strings) | 0.43 | 11 (9) | 12/12 | 0.847 |
-| th | labse | 627 (all strings) | 0.46 | 28 (24) | 12/12 | 0.791 |
-| id | labse | 632 (all strings) | 0.51 | 25 (19) | 12/12 | 0.871 |
+| th | labse | 627 (all strings) | 0.46 | 28 (24) | 12/12 | 0.7903 |
+| id | labse | 632 (all strings) | 0.51 | 25 (19) | 12/12 | 0.8707 |
 
 Not run over every string: es (madlad), fr (madlad), de (madlad), it (madlad), pt (madlad), pl (madlad), ru (madlad), ar (madlad), hi (madlad), zh (madlad), ja (madlad), ko (madlad), vi (madlad), th (madlad), id (madlad). MADLAD-400 was run over the strings each pass changed instead (below).
 
@@ -1208,16 +1208,16 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | pt | pt-BR | 6 | 0 |
 | pl | pl | 6 | 0 |
 | ru | ru | 12 | 0 |
-| ar | ar | 61 | 0 |
+| ar | ar | 63 | 0 |
 | hi | hi (not usable: Devanagari split at combining marks) |  | 0 |
 | zh | none |  |  |
 | ja | none |  |  |
 | ko | ko (not usable: particles attached to every word) |  | 0 |
 | vi | vi | 15 | 0 |
 | th | th (not usable: no spaces between words) |  | 0 |
-| id | id | 32 | 0 |
+| id | id | 33 | 0 |
 
-**Read by hand**: 1142 flagged strings. 1105 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+**Read by hand**: 1147 flagged strings. 1110 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 
 Fixed:
 
