@@ -41,10 +41,18 @@ test('the list of pages is read from the source tree', () => {
   expect(PAGES).toEqual(expect.arrayContaining(['/', '/battle', '/credits', '/privacy', '/terms', '/about']));
 });
 
-for (const path of PAGES) {
-  test(`${path}: no tamper warning once the guard has looked, and the guard is watching`, async ({ page }) => {
+/**
+ * English, and Arabic: in another language a page redraws its translated text on the client (src/components/T.astro),
+ * and with it any link inside that text, which the guard then sees as a link the page did not arrive with.
+ */
+const LOCALES = ['en', 'ar'] as const;
+
+for (const l of LOCALES) for (const path of PAGES) {
+  test(`${l} ${path}: no tamper warning once the guard has looked, and the guard is watching`, async ({ page }) => {
+    await page.addInitScript((code) => localStorage.setItem('inspired-mile-locale', code), l);
     // The grace period starts when the guard's script runs, before DOMContentLoaded.
     await open(page, path);
+    await expect(page.locator('html'), `${path} is shown in ${l}`).toHaveAttribute('lang', l);
     await page.waitForTimeout(PAST_GRACE);
     const warning = await page.locator(BANNER).allTextContents();
     expect(warning, `${path} shows the tamper warning to a visitor`).toEqual([]);
