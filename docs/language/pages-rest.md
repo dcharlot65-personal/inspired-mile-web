@@ -776,6 +776,33 @@ the Vietnamese spellings with the accent moved).
   product name, as the old string did). Read: none is an error.
 - `summarise.mjs docs/language/results/pages-rest --strict`: exit 0.
 
+## Fifth pass: play earns no XP, and the app is a duel of verses (2026-11-19 and 20, fix/predeploy)
+
+The check after the fourth pass found D-03's promise still there in other words. In these areas,
+in sixteen languages:
+
+| key | was (English) | now |
+|---|---|---|
+| `season.introNow` (new; `season.intro` stays for when play pays) | "Play battles, trivia and challenges to earn XP" | "Each level of the Season Pass unlocks cards, credits or titles. In this version of the game, play earns no XP." Shown while `ECONOMY_LIVE` (`src/lib/economy-live.ts`) is false: nothing in this build pays XP |
+| `app.description` (and the manifest, `build-static.mjs`) | "A Shakespeare rap-battle card game" | "A Shakespeare card game of verse duels"; the `rap_battle` term left the record with it |
+
+Checked with this area's own tools, on the Studio: `bt-merge.mjs stale` found the 30 strings,
+`lang-host.sh bt-pairs` scored them (MADLAD-400 and LaBSE), `bt-merge.mjs merge`, the whole file was
+ranked again (`rank`), and Hunspell and LanguageTool ran over every string. Then es, fr, it, pt and
+vi wrote the pass in lower case in the new sentence where the area writes it as a name (*tu Pase de
+temporada*); those five were capitalised and scored again. (`bt-pairs` resumes by language: given
+an output file that already holds a language, it scores nothing for it. Score again into a new
+file; `summarise.mjs --strict` named the five as stale until that was done.)
+
+- The 30 strings: none flagged; MiniLM cosine 0.80 or more, LaBSE 0.71 or more, and each one's own
+  English ranked nearest (rank 1) in all fifteen. The lowest, zh `season.introNow` (cosine 0.80),
+  is MADLAD leaving out the second sentence; the Chinese has it (在本版本的游戏中，游玩不会获得 XP).
+- Hunspell, new words: es *shakespeariano* (the old string had *shakespearianas*), ko *플레이해도*
+  (a verb with its ending attached, as Korean writes it). LanguageTool: it *Pass* (the rule that
+  already fires on *Pass stagionale* in `season.signIn`), and in Arabic the diacritics hints on
+  *لعبة* and *خصم* and *شكسبيرية*, which the old description had too. Read: none is an error.
+- `summarise.mjs docs/language/results/pages-rest --strict`: exit 0.
+
 ## Proof that the checks can fail
 
 `node scripts/pages-rest/mutate.mjs --browser` breaks one thing at a time on the build host,

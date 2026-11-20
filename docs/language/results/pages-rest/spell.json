@@ -4,7 +4,7 @@
   "en": {
    "checked": true,
    "dictionary": "en",
-   "words": 508,
+   "words": 509,
    "rejected": {
     "Cancelled": [
      "market.status.cancelled"
@@ -166,6 +166,7 @@
     "season.badge": "Season 3",
     "season.title": "Season Pass",
     "season.intro": "Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.",
+    "season.introNow": "Each level of the Season Pass unlocks cards, credits or titles. In this version of the game, play earns no XP.",
     "season.loading": "Loading…",
     "season.level": "Level",
     "season.xp": "150 XP",
@@ -285,7 +286,7 @@
     "offline.link.home": "Home",
     "offline.link.collection": "Collection",
     "offline.link.battle": "Battle Arena",
-    "app.description": "A Shakespeare rap-battle card game from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.",
+    "app.description": "A Shakespeare card game of verse duels, from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.",
     "app.shortcut.battle": "Battle Arena",
     "app.shortcut.theatre": "The Theatre",
     "pwa.install.regionLabel": "Install Sonnet Man",
@@ -313,7 +314,7 @@
   "es": {
    "checked": true,
    "dictionary": "es",
-   "words": 578,
+   "words": 579,
    "rejected": {
     "B": [
      "classroom.wizard.s1.body"
@@ -334,7 +335,7 @@
     "model-viewer": [
      "viewer.card.glb.body"
     ],
-    "shakespearianas": [
+    "shakespeariano": [
      "app.description"
     ],
     "º": [
@@ -488,6 +489,7 @@
     "season.badge": "Temporada 3",
     "season.title": "Pase de temporada",
     "season.intro": "Juega batallas, trivial y desafíos para ganar XP. Cada nuevo nivel desbloquea cartas, créditos y títulos.",
+    "season.introNow": "Cada nivel del Pase de temporada desbloquea cartas, créditos o títulos. En esta versión del juego, jugar no da XP.",
     "season.loading": "Cargando…",
     "season.level": "Nivel",
     "season.xp": "150 XP",
@@ -608,7 +610,7 @@
     "offline.link.home": "Inicio",
     "offline.link.collection": "Colección",
     "offline.link.battle": "Arena de batalla",
-    "app.description": "Un juego de cartas de batallas de rap shakespearianas, de Inspired Mile. Juega tus cartas, respeta la forma y escribe mejor que un rival que funciona por completo en tu dispositivo.",
+    "app.description": "Un juego de cartas shakespeariano de duelos de estrofas, de Inspired Mile. Juega tus cartas, respeta la forma y escribe mejor que un rival que funciona por completo en tu dispositivo.",
     "app.shortcut.battle": "Arena de batalla",
     "app.shortcut.theatre": "El Teatro",
     "pwa.install.regionLabel": "Instalar Sonnet Man",
@@ -638,9 +640,6 @@
    "dictionary": "fr",
    "words": 627,
    "rejected": {
-    "battle": [
-     "app.description"
-    ],
     "l’app": [
      "pwa.install.iosBody",
      "pwa.storage.installHint"
@@ -796,6 +795,7 @@
     "season.badge": "Saison 3",
     "season.title": "Passe de saison",
     "season.intro": "Jouez des combats, des quiz et des défis pour gagner des points d’expérience (XP). Chaque nouveau niveau débloque des cartes, des crédits et des titres.",
+    "season.introNow": "Chaque niveau du Passe de saison débloque des cartes, des crédits ou des titres. Dans cette version du jeu, jouer ne rapporte aucun point d’expérience (XP).",
     "season.loading": "Chargement…",
     "season.level": "Niveau",
     "season.xp": "150 XP",
@@ -916,7 +916,7 @@
     "offline.link.home": "Accueil",
     "offline.link.collection": "Collection",
     "offline.link.battle": "Arène de combat",
-    "app.description": "Un jeu de cartes shakespearien façon battle de rap, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.",
+    "app.description": "Un jeu de cartes shakespearien de duels de strophes, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.",
     "app.shortcut.battle": "Arène de combat",
     "app.shortcut.theatre": "Le Théâtre",
     "pwa.install.regionLabel": "Installer Sonnet Man",
@@ -944,11 +944,8 @@
   "de": {
    "checked": true,
    "dictionary": "de",
-   "words": 603,
+   "words": 604,
    "rejected": {
-    "Battle-Raps": [
-     "app.description"
-    ],
     "Belohnungspfad": [
      "season.track"
     ],
@@ -959,8 +956,8 @@
     "Credits": [
      "market.sell.price",
      "season.intro",
-     "error.price_invalid",
-     "error.insufficient_credits"
+     "season.introNow",
+     "error.price_invalid"
     ],
     "D-Engine": [
      "vr.status.loading"
@@ -1162,6 +1159,7 @@
     "season.badge": "Saison 3",
     "season.title": "Saisonpass",
     "season.intro": "Spiel Kämpfe, Quiz und Herausforderungen, um XP zu sammeln. Jede neue Stufe schaltet Karten, Credits und Titel frei.",
+    "season.introNow": "Jede Stufe des Saisonpasses schaltet Karten, Credits oder Titel frei. In dieser Version des Spiels bringt das Spielen keine XP.",
     "season.loading": "Wird geladen …",
     "season.level": "Stufe",
     "season.xp": "150 XP",
@@ -1281,7 +1279,7 @@
     "offline.link.home": "Start",
     "offline.link.collection": "Sammlung",
     "offline.link.battle": "Kampfarena",
-    "app.description": "Ein Shakespeare-Kartenspiel im Stil des Battle-Raps, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.",
+    "app.description": "Ein Shakespeare-Kartenspiel mit Duellen der Strophen, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.",
     "app.shortcut.battle": "Kampfarena",
     "app.shortcut.theatre": "Das Theater",
     "pwa.install.regionLabel": "Sonnet Man installieren",
@@ -1309,7 +1307,7 @@
   "it": {
    "checked": true,
    "dictionary": "it",
-   "words": 609,
+   "words": 610,
    "rejected": {
     "Bye": [
      "tour.bye"
@@ -1326,7 +1324,7 @@
      "season.meta.title",
      "season.meta.description",
      "season.title",
-     "season.signIn"
+     "season.introNow"
     ],
     "Quell’annuncio": [
      "error.listing_not_found",
@@ -1558,6 +1556,7 @@
     "season.badge": "Stagione 3",
     "season.title": "Pass stagionale",
     "season.intro": "Gioca battaglie, quiz e sfide per guadagnare XP. Ogni nuovo livello sblocca carte, crediti e titoli.",
+    "season.introNow": "Ogni livello del Pass stagionale sblocca carte, crediti o titoli. In questa versione del gioco, giocare non fa guadagnare XP.",
     "season.loading": "Caricamento…",
     "season.level": "Livello",
     "season.xp": "150 XP",
@@ -1678,7 +1677,7 @@
     "offline.link.home": "Home",
     "offline.link.collection": "Collezione",
     "offline.link.battle": "Arena di battaglia",
-    "app.description": "Un gioco di carte di battaglie rap shakespeariane, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.",
+    "app.description": "Un gioco di carte shakespeariano di duelli di strofe, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.",
     "app.shortcut.battle": "Arena di battaglia",
     "app.shortcut.theatre": "Il Teatro",
     "pwa.install.regionLabel": "Installa Sonnet Man",
@@ -1706,7 +1705,7 @@
   "pt": {
    "checked": true,
    "dictionary": "pt-BR",
-   "words": 585,
+   "words": 587,
    "rejected": {
     "Premium": [
      "season.reward.premium"
@@ -1728,9 +1727,6 @@
      "classroom.meta.description",
      "classroom.intro",
      "season.intro"
-    ],
-    "rap": [
-     "app.description"
     ]
    },
    "texts": {
@@ -1880,6 +1876,7 @@
     "season.badge": "Temporada 3",
     "season.title": "Passe de temporada",
     "season.intro": "Jogue batalhas, quizzes e desafios para ganhar XP. Cada novo nível desbloqueia cartas, créditos e títulos.",
+    "season.introNow": "Cada nível do Passe de temporada desbloqueia cartas, créditos ou títulos. Nesta versão do jogo, jogar não rende XP.",
     "season.loading": "Carregando…",
     "season.level": "Nível",
     "season.xp": "150 XP",
@@ -2000,7 +1997,7 @@
     "offline.link.home": "Início",
     "offline.link.collection": "Coleção",
     "offline.link.battle": "Arena de batalha",
-    "app.description": "Um jogo de cartas de batalha de rap shakespeariana, da Inspired Mile. Jogue suas cartas, respeite a forma e escreva melhor que um adversário que roda inteiramente no seu dispositivo.",
+    "app.description": "Um jogo de cartas shakespeariano de duelos de estrofes, da Inspired Mile. Jogue suas cartas, respeite a forma e escreva melhor que um adversário que roda inteiramente no seu dispositivo.",
     "app.shortcut.battle": "Arena de batalha",
     "app.shortcut.theatre": "O Teatro",
     "pwa.install.regionLabel": "Instalar o Sonnet Man",
@@ -2028,7 +2025,7 @@
   "pl": {
    "checked": true,
    "dictionary": "pl",
-   "words": 669,
+   "words": 670,
    "rejected": {
     "Splaty": [
      "viewer.card.splat.body"
@@ -2198,6 +2195,7 @@
     "season.badge": "Sezon 3",
     "season.title": "Karnet sezonowy",
     "season.intro": "Graj w bitwy, quizy i wyzwania, aby zdobywać XP. Każdy nowy poziom odblokowuje karty, kredyty i tytuły.",
+    "season.introNow": "Każdy poziom karnetu sezonowego odblokowuje karty, kredyty lub tytuły. W tej wersji gry za grę nie zdobywa się XP.",
     "season.loading": "Wczytywanie…",
     "season.level": "Poziom",
     "season.xp": "150 XP",
@@ -2319,7 +2317,7 @@
     "offline.link.home": "Start",
     "offline.link.collection": "Kolekcja",
     "offline.link.battle": "Arena bitwy",
-    "app.description": "Szekspirowska gra karciana w stylu battle rapu od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.",
+    "app.description": "Szekspirowska gra karciana w pojedynki na strofy od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.",
     "app.shortcut.battle": "Arena bitwy",
     "app.shortcut.theatre": "Nasz Teatr",
     "pwa.install.regionLabel": "Zainstaluj Sonnet Man",
@@ -2347,7 +2345,7 @@
   "ru": {
    "checked": true,
    "dictionary": "ru",
-   "words": 684,
+   "words": 686,
    "rejected": {
     "D": [
      "vr.intro",
@@ -2398,9 +2396,6 @@
      "classroom.intro",
      "classroom.wizard.s3.body",
      "classroom.wizard.s3.trivia"
-    ],
-    "рэп-баттла": [
-     "app.description"
     ],
     "сплатов": [
      "viewer.meta.description",
@@ -2561,6 +2556,7 @@
     "season.badge": "Сезон 3",
     "season.title": "Сезонный пропуск",
     "season.intro": "Играй в битвы, викторины и испытания, чтобы получать XP. Каждый новый уровень открывает карты, кредиты и титулы.",
+    "season.introNow": "Каждый уровень сезонного пропуска открывает карты, кредиты или титулы. В этой версии игры XP за игру не начисляются.",
     "season.loading": "Загрузка…",
     "season.level": "Уровень",
     "season.xp": "150 XP",
@@ -2682,7 +2678,7 @@
     "offline.link.home": "Главная",
     "offline.link.collection": "Коллекция",
     "offline.link.battle": "Арена битв",
-    "app.description": "Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
+    "app.description": "Карточная игра по Шекспиру с дуэлями строф от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
     "app.shortcut.battle": "Арена битв",
     "app.shortcut.theatre": "Наш Театр",
     "pwa.install.regionLabel": "Установить Sonnet Man",
@@ -2710,13 +2706,10 @@
   "ar": {
    "checked": true,
    "dictionary": "ar",
-   "words": 626,
+   "words": 629,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
-    ],
-    "الباتل": [
-     "app.description"
     ],
     "شكسبيرية": [
      "app.description"
@@ -2878,6 +2871,7 @@
     "season.badge": "الموسم 3",
     "season.title": "بطاقة الموسم",
     "season.intro": "العب النزالات والمسابقات والتحديات لتكسب XP. كل مستوى جديد يفتح بطاقات ونقاطًا وألقابًا.",
+    "season.introNow": "كل مستوى في بطاقة الموسم يفتح بطاقات أو نقاطًا أو ألقابًا. في هذا الإصدار من اللعبة لا تكسب XP باللعب.",
     "season.loading": "جارٍ التحميل…",
     "season.level": "المستوى",
     "season.xp": "150 XP",
@@ -3001,7 +2995,7 @@
     "offline.link.home": "الرئيسية",
     "offline.link.collection": "المجموعة",
     "offline.link.battle": "حلبة النزال",
-    "app.description": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+    "app.description": "لعبة بطاقات شكسبيرية تقوم على مبارزة الأبيات، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
     "app.shortcut.battle": "حلبة النزال",
     "app.shortcut.theatre": "قاعة المسرح",
     "pwa.install.regionLabel": "تثبيت Sonnet Man",
@@ -3029,7 +3023,7 @@
   "hi": {
    "checked": true,
    "dictionary": "hi",
-   "words": 493,
+   "words": 494,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
@@ -3264,6 +3258,7 @@
     "season.badge": "सीज़न 3",
     "season.title": "सीज़न पास",
     "season.intro": "XP कमाने के लिए युद्ध, प्रश्नोत्तरी और चुनौतियाँ खेलें। हर नया स्तर कार्ड, क्रेडिट और उपाधियाँ खोलता है।",
+    "season.introNow": "सीज़न पास का हर स्तर कार्ड, क्रेडिट या उपाधियाँ खोलता है। खेल के इस संस्करण में खेलने से XP नहीं मिलता।",
     "season.loading": "लोड हो रहा है…",
     "season.level": "स्तर",
     "season.xp": "150 XP",
@@ -3383,7 +3378,7 @@
     "offline.link.home": "मुखपृष्ठ",
     "offline.link.collection": "संग्रह",
     "offline.link.battle": "युद्ध अखाड़ा",
-    "app.description": "Inspired Mile का शेक्सपीयर रैप-बैटल कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।",
+    "app.description": "पदों के द्वंद्व वाला Inspired Mile का शेक्सपीयर कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।",
     "app.shortcut.battle": "युद्ध अखाड़ा",
     "app.shortcut.theatre": "हमारी रंगशाला",
     "pwa.install.regionLabel": "Sonnet Man इंस्टॉल करें",
@@ -3419,7 +3414,7 @@
   "ko": {
    "checked": true,
    "dictionary": "ko",
-   "words": 639,
+   "words": 647,
    "rejected": {
     "가우시안": [
      "viewer.meta.description",
@@ -3507,7 +3502,7 @@
      "market.sell.price",
      "market.sell.needPrice",
      "season.intro",
-     "error.price_invalid"
+     "season.introNow"
     ],
     "크레딧이": [
      "error.insufficient_credits"
@@ -3530,6 +3525,9 @@
     ],
     "플레이해": [
      "season.intro"
+    ],
+    "플레이해도": [
+     "season.introNow"
     ],
     "헤드셋": [
      "vr.play"
@@ -3683,6 +3681,7 @@
     "season.badge": "시즌 3",
     "season.title": "시즌 패스",
     "season.intro": "배틀, 퀴즈, 도전 과제를 플레이해 XP를 얻으세요. 레벨이 오를 때마다 카드, 크레딧, 칭호가 잠금 해제돼요.",
+    "season.introNow": "시즌 패스의 각 레벨은 카드, 크레딧 또는 칭호를 잠금 해제해요. 이 버전의 게임에서는 플레이해도 XP를 얻을 수 없어요.",
     "season.loading": "불러오는 중…",
     "season.level": "레벨",
     "season.xp": "150 XP",
@@ -3801,7 +3800,7 @@
     "offline.link.home": "홈",
     "offline.link.collection": "컬렉션",
     "offline.link.battle": "배틀 아레나",
-    "app.description": "Inspired Mile의 셰익스피어 배틀 랩 카드 게임. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.",
+    "app.description": "Inspired Mile의 셰익스피어 카드 게임, 시의 결투. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.",
     "app.shortcut.battle": "배틀 아레나",
     "app.shortcut.theatre": "입체 극장",
     "pwa.install.regionLabel": "Sonnet Man 설치",
@@ -3829,7 +3828,7 @@
   "vi": {
    "checked": true,
    "dictionary": "vi",
-   "words": 531,
+   "words": 532,
    "rejected": {
     "D": [
      "viewer.meta.description",
@@ -3839,9 +3838,6 @@
     ],
     "model-viewer": [
      "viewer.card.glb.body"
-    ],
-    "rap": [
-     "app.description"
     ]
    },
    "texts": {
@@ -3990,6 +3986,7 @@
     "season.badge": "Mùa 3",
     "season.title": "Thẻ mùa giải",
     "season.intro": "Chơi các trận đấu, đố vui và thử thách để nhận XP. Mỗi cấp độ mới mở khoá lá bài, xu và danh hiệu.",
+    "season.introNow": "Mỗi cấp độ của Thẻ mùa giải mở khoá lá bài, xu hoặc danh hiệu. Trong phiên bản này của trò chơi, bạn không nhận được XP khi chơi.",
     "season.loading": "Đang tải…",
     "season.level": "Cấp độ",
     "season.xp": "150 XP",
@@ -4109,7 +4106,7 @@
     "offline.link.home": "Trang chủ",
     "offline.link.collection": "Bộ sưu tập",
     "offline.link.battle": "Đấu trường",
-    "app.description": "Trò chơi bài rap chiến theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.",
+    "app.description": "Trò chơi bài trận đấu thơ theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.",
     "app.shortcut.battle": "Đấu trường",
     "app.shortcut.theatre": "Nhà hát",
     "pwa.install.regionLabel": "Cài đặt Sonnet Man",
@@ -4137,7 +4134,7 @@
   "th": {
    "checked": true,
    "dictionary": "th",
-   "words": 408,
+   "words": 407,
    "rejected": {
     "Babylon.js": [
      "viewer.card.splat.body"
@@ -4179,7 +4176,7 @@
      "season.meta.title",
      "season.meta.description",
      "season.title",
-     "season.signIn"
+     "season.introNow"
     ],
     "ม": [
      "classroom.wizard.s1.body"
@@ -4202,18 +4199,12 @@
      "classroom.wizard.s1.body",
      "classroom.wizard.s3.trivia"
     ],
-    "เทิล": [
-     "app.description"
-    ],
     "เมช": [
      "viewer.meta.description",
      "viewer.intro"
     ],
     "แท็": [
      "pwa.install.iosBody"
-    ],
-    "แร็ป": [
-     "app.description"
     ],
     "แล้วก": [
      "classroom.wizard.s2.body"
@@ -4364,6 +4355,7 @@
     "season.badge": "ซีซัน 3",
     "season.title": "ซีซันพาส",
     "season.intro": "เล่นการประชัน ควิซ และภารกิจท้าทายเพื่อรับ XP ทุกระดับใหม่จะปลดล็อกการ์ด เครดิต และฉายา",
+    "season.introNow": "ทุกระดับของซีซันพาสจะปลดล็อกการ์ด เครดิต หรือฉายา ในเกมเวอร์ชันนี้ เล่นแล้วจะไม่ได้รับ XP",
     "season.loading": "กำลังโหลด…",
     "season.level": "ระดับ",
     "season.xp": "150 XP",
@@ -4482,7 +4474,7 @@
     "offline.link.home": "หน้าแรก",
     "offline.link.collection": "คอลเลกชัน",
     "offline.link.battle": "สังเวียนประชัน",
-    "app.description": "เกมการ์ดแร็ปแบตเทิลแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด",
+    "app.description": "เกมการ์ดการประชันบทกลอนแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด",
     "app.shortcut.battle": "สังเวียนประชัน",
     "app.shortcut.theatre": "เวทีโรงละคร",
     "pwa.install.regionLabel": "ติดตั้ง Sonnet Man",
@@ -4510,7 +4502,7 @@
   "id": {
    "checked": true,
    "dictionary": "id",
-   "words": 523,
+   "words": 522,
    "rejected": {
     "Aplikasinya": [
      "pwa.install.promptBody"
@@ -4778,6 +4770,7 @@
     "season.badge": "Musim 3",
     "season.title": "Tiket Musim",
     "season.intro": "Mainkan pertarungan, kuis, dan tantangan untuk mendapat XP. Setiap level baru membuka kartu, kredit, dan gelar.",
+    "season.introNow": "Setiap level Tiket Musim membuka kartu, kredit, atau gelar. Di versi permainan ini, bermain tidak memberikan XP.",
     "season.loading": "Memuat…",
     "season.level": "Level",
     "season.xp": "150 XP",
@@ -4896,7 +4889,7 @@
     "offline.link.home": "Beranda",
     "offline.link.collection": "Koleksi",
     "offline.link.battle": "Arena pertarungan",
-    "app.description": "Permainan kartu adu rap ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.",
+    "app.description": "Permainan kartu duel syair ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.",
     "app.shortcut.battle": "Arena pertarungan",
     "app.shortcut.theatre": "Sang Teater",
     "pwa.install.regionLabel": "Instal Sonnet Man",
