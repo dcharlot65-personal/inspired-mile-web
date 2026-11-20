@@ -192,7 +192,7 @@ describe('service worker: nothing of a signed-in player is kept', () => {
     const urls = [
       '/', '/battle', '/battle/', '/cards/DC-001', '/offline.html', '/battle?seed=1', '/api', '/api/v1/auth/me', '/api/v1/cards',
       '/_astro/a.abc123.js', '/_astro/a.abc123.css?x=1', '/images/cards/DC-001.webp', '/fonts/inter-latin.woff2', '/audio/sfx/hit.mp3',
-      '/favicon.svg', '/icon-192.png', '/icon-512.png', '/models/sm-001.glb', '/manifest.json', '/sw.js', '/src/lib/brain.ts',
+      '/icons/20261120100034/favicon.svg', '/icons/20261120100034/icon-192.png', '/icons/20261120100034/icon-512.png', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/models/sm-001.glb', '/manifest.json', '/sw.js', '/src/lib/brain.ts',
       'https://elsewhere.example/battle', MODEL_URL,
     ];
     const sw = boot();
@@ -251,7 +251,7 @@ describe('service worker: caches it does not own', () => {
     const sw = boot((call) => (call.url.endsWith('/favicon.svg') ? new Response('gone', { status: 404 }) : new Response('ok')));
     await sw.lifecycle('install');
     expect(sw.cached('/offline.html')).toBe(true);
-    expect(sw.cached('/favicon.svg')).toBe(false);
+    expect(sw.cached('/icons/20261120100034/favicon.svg')).toBe(false);
   });
 });
 

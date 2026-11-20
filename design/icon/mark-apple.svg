@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Sonnet Man</title>
+  <defs>
+    <linearGradient id="vane" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fdf8e8"/>
+      <stop offset="1" stop-color="#f0d690"/>
+    </linearGradient>
+    <radialGradient id="grille" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#faefc5"/>
+      <stop offset="0.45" stop-color="#e8b420"/>
+      <stop offset="1" stop-color="#92550c"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="0.5" stop-color="#b91c1c"/>
+      <stop offset="1" stop-color="#5f1414"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7f1d1d" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7f1d1d" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="head"><circle cx="32" cy="14" r="7.6"/></clipPath>
+  </defs>
+  <rect width="64" height="64" fill="#0d0b09"/>
+  <circle cx="32" cy="32" r="28" fill="url(#glow)"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="10.5" fill="none" stroke="#b7740a" stroke-opacity="0.85" stroke-width="1"/>
+  <g transform="translate(32 32.8) scale(1.0) translate(-32 -32)">
+    <g transform="rotate(45 32 32)">
+      <path d="M32.6 4 C28.2 9.5 26 18 26.2 27 C26.4 35 28.6 42 31.1 48 L33.1 48 C35.4 41 37.6 33 37.5 25 C37.4 16.5 35.6 9 32.6 4 Z" fill="url(#vane)"/>
+      <path d="M26.3 20.6 L30 22.4 L26.35 22.9 Z M26.55 30.6 L30.1 32.2 L26.85 32.8 Z M37.45 17.6 L34.1 19.8 L37.5 20.1 Z" fill="#0d0b09"/>
+      <path d="M32.1 55 Q31.6 30 32.6 8" stroke="#b7740a" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M30.9 48 L32.1 60 L33.3 48 Z" fill="#794412"/>
+    </g>
+    <g transform="rotate(-45 32 32)">
+      <path d="M27.3 24.2 L36.7 24.2 L34.3 53 Q32 56 29.7 53 Z" fill="url(#body)"/>
+      <path d="M29.2 26 L30.4 51.5" stroke="#fca5a5" stroke-opacity="0.55" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <rect x="26.4" y="21" width="11.2" height="3.6" rx="1.2" fill="#d4960f"/>
+      <circle cx="32" cy="14" r="7.6" fill="url(#grille)"/>
+      <g clip-path="url(#head)" stroke="#673815" stroke-opacity="0.55" stroke-width="0.8">
+        <path d="M22 10.5 H42 M22 13.5 H42 M22 16.5 H42 M22 19.5 H42"/>
+      </g>
+    </g>
+  </g>
+</svg>

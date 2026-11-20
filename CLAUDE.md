@@ -588,6 +588,11 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 
 ## Gotchas
 
+- **Icons** come from the master drawings in `design/icon/` (a crossed quill and microphone; see its README).
+  Never edit the PNGs or the `<link>`s by hand: change the masters and run `bash scripts/build-icons.sh`, which
+  renders a new `public/icons/<UTC index>/` folder and moves the page, manifest, service worker and tests to it;
+  `src/lib/icons.test.ts` fails if they disagree.
+
 - Playwright specs import `src/lib/brain.ts` (its model lists) in Node, where `import.meta.glob` does not
   exist. Keep brain.ts's static imports free of anything that reaches `src/i18n/index.ts` (its page areas
   use the glob): pwa.ts is imported where a model has loaded. Otherwise every Playwright run stops before

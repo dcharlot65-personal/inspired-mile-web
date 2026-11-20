@@ -219,8 +219,9 @@ export function createWakeLockKeeper(env: WakeLockEnv) {
 /** Every cache the service worker owns starts with this (public/sw.js CACHE_PREFIX). */
 export const SW_CACHE_PREFIX = 'inspired-mile-';
 
-const STATIC_PREFIXES = ['/_astro/', '/images/', '/fonts/', '/audio/'];
-const STATIC_FILES = ['/favicon.svg', '/icon-192.png', '/icon-512.png'];
+const STATIC_PREFIXES = ['/_astro/', '/images/', '/fonts/', '/audio/', '/icons/'];
+/** The icons at fixed names (public/sw.js ROOT_ICONS); the rest live under /icons/<index>/. */
+const STATIC_FILES = ['/favicon.ico', '/apple-touch-icon.png'];
 
 /**
  * May an entry under this URL stay in the service worker's cache after sign-out?
