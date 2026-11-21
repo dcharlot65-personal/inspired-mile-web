@@ -5,7 +5,10 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 
 ## Stack
 
-- Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
+- Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`). React 19 is still in
+  `package.json`, but its Astro integration is not in `astro.config.mjs`: no page renders a React component
+  (`src/components/ErrorBoundary.tsx` is used by none), and the integration only shipped React's client renderer.
+  Adding a React island means adding the integration back, and crediting React (the build says so).
 - **Licence (LFM models):** LFM3 1.7B and LFM2.5 350M are used under the LFM Open License v1.0, which
   covers commercial use only while the licensee and every entity under common control earn under
   US$10M a year. The owner confirmed on 2026-11-17 that Voyage Tracable LLC is under that threshold.
@@ -670,7 +673,7 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   use the glob): pwa.ts is imported where a model has loaded. Otherwise every Playwright run stops before
   its first test ("(intermediate value).glob is not a function"). `src/i18n/index.ts` itself now loads in Node
   with no page areas (its glob is inside a try) for the language tools (`scripts/lang`), which import it.
-- A page whose own text is English in every language (multiplayer, privacy, terms) marks its body
+- A page whose own text is English in every language (multiplayer, privacy, terms, credits) marks its body
   `lang="en" dir="ltr"`, or an Arabic page lays it out right to left (`tests/english-pages-rtl.spec.ts`).
 - `@tailwindcss/upgrade` rewrites plain words in data files as classes ("a ring" became
   "a ring-3"). Diff `src/lib/*.ts` after running it.
@@ -686,6 +689,69 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   line-break rules of Japanese and Chinese (no closing punctuation opens a line, no opening
   bracket ends one) and Thai's ๆ and ฯ: `src/lib/xr/line-break.ts`, checked on what Babylon drew
   in `tests/theatre.spec.ts`.
+
+## The AI notice and the credits (2026-11-19)
+
+- **Before every duel the player is told who plays and who judges** (EU AI Act, Regulation (EU) 2024/1689,
+  Article 50(1), applying from 2 August 2026; 50(5): "at the latest at the time of the first interaction"). The
+  Digital Omnibus on AI (Regulation (EU) 2026/1744, OJ L 24.7.2026) left 50(1), 50(5) and that date as they were
+  (consolidated text 02024R1689-20260727, read from the Publications Office's Cellar; EUR-Lex itself answers
+  scripts with a bot challenge). `src/lib/ai-notice.ts` picks one of `notice.aiBoth`, `notice.aiWrites`,
+  `notice.aiJudges`, `notice.none` from the model in use and the duel's language, by the same
+  `modelWrites`/`modelJudges` the session is gated on; the battle page (`#ai-notice` in the set-up) and the theatre
+  show it, and multiplayer shows `notice.online` in the player's language inside its English page (`#mp-ai-notice`,
+  its `lang`/`dir` set by script). On both pages the notice stays hidden until the page knows who will play, and
+  names the model being loaded while it loads (`loadingModel`): it never says "no model" and then changes its mind.
+  When that model fails and `loadBrain` falls back to a smaller one (`loadOrder`), its third argument, `onTry`, hears
+  each model before it is tried, and the page names that one: the notice never names a model that already failed
+  (`ai-notice.test.ts` fails a `loadBrain` call without it).
+  On the battle page, while a player is offered a model and has not chosen, nothing is said; no duel can start then,
+  and the notice appears the moment they choose.
+  "Artificial intelligence" is each language's Wikipedia title (`docs/language/sources/wikidata-ai.json`).
+  `src/lib/ai-notice.test.ts` and `tests/ai-notice.spec.ts` (all sixteen languages) hold it, including the notice read
+  while a model's library is held back mid-load. A change to who plays or judges changes the notice too. A new page
+  or module that calls `loadBrain` fails `ai-notice.test.ts` until it shows `#ai-notice` (content-gen.ts uses a model
+  only where one is loaded already; /playground loads none).
+- **`/credits` names everything the game ships or downloads**, with its licence and duties (CC BY-SA share-alike
+  for the sound tables, the NAIST notice, CMU and SCOWL notices read from `pron-en.ts` itself, the LFM US$10M and
+  FLUX US$5M thresholds; the voice's own CMU table and the public-domain NRL rules, never eSpeak NG, which no longer
+  ships). SCOWL's notice is its release's whole
+  `Copyright` file (VarCon, Ispell, WordNet, UKACD inside it), which `scripts/build-pronunciation.mjs` copies into
+  the table and into `public/licenses/SCOWL-Copyright.txt`; never shorten it. `docs/ASSETS.md` is the record of where each
+  shipped file came from and what is still not traced. `src/lib/credits.test.ts` fails when a font, model, browser
+  library, data source, or a music, sound or 3D file is added without its credit or its line in ASSETS.md.
+  `public/fonts/OFL.txt` and `public/licenses/mecab-ipadic-NOTICE.txt` must stay beside what they license.
+- **The licence notices travel in `public/licenses/THIRD-PARTY-NOTICES.txt`, which the build writes and checks**
+  (`scripts/third-party-notices.mjs`, an integration in `astro.config.mjs`). A build strips comments, so a notice in
+  a file's header never reaches the visitor; this file holds them all, from the bundle itself: every npm package in
+  the client chunks or copied by `self-hosted-runtime.mjs` with its own licence files, packages built into another
+  package's file (found from its bundler's comments and source map), files under another licence (`FILE_LICENSES`:
+  Draco, Basis Universal, fflate, ktx-parse, zstddec with Zstandard and the meshoptimizer decoder from three.js's
+  `examples/jsm/libs`; eSpeak NG's entry went with phonemizer when the voice got its own reader), and this repository's data made from others' works (`DATA`). `npm run build`
+  FAILS when: the committed file is not what this build would write; a shipped package is not on `/credits` at its
+  exact version (each library entry's `packages`, rendered as its "Packages" line and `data-packages`), or `/credits`
+  names one that does not ship; a shipped package has no licence file and no `PACKAGE_LICENSES` text; a
+  `FILE_LICENSES`/`PACKAGE_LICENSES`/`DATA` entry covers nothing that ships; a shipped `src/` module says GENERATED
+  and no `DATA` entry covers it; a package ships a file from a `libs/`, `vendor/` or `third_party/` folder that no
+  `FILE_LICENSES` entry covers (a package's licence file speaks only for its own code; a package's licence files are
+  found by name, `LICENSE_FILE`, which includes THIRD-PARTY-LICENSE: Rolldown's, with Rollup's and esbuild's licenses;
+  Rolldown's module helpers in the bundle are derived from esbuild's runtime); a `FILE_LICENSES` entry that
+  ships is not named on `/credits` by its id (an entry's `files`, `data-files`), or one named there does not ship;
+  a `DATA` entry's text, or the notice of a file it covers, does not hold a file it must carry whole (`holds`: SCOWL's
+  Copyright file, in `pron-en.ts` and in any other table added to that entry's `covers`). After adding or upgrading a library: credit it, run `NOTICES_WRITE=1 npm run build`
+  on the build host with `rb --pull`, read the diff of the notices file, and commit it. Texts no package carries are in
+  `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`; `third-party-notices.test.ts` fails on a file without its row or with another sha256; CLDR's words carry CLDR's own copy of the Unicode License, from the cldr-rbnf package); ONNX Runtime's are from its PyPI wheels,
+  because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
+- **The Terms leave third-party material to its own licence** (`terms.astro` section 10, `#third-party`, and the
+  reverse-engineering line in section 7): CC BY-SA's and the GPL's "no further restrictions". Keep that sentence if
+  the Terms are rewritten. No copyright is claimed over what was taken from others' works (EDRDG's licence statement:
+  "Users of material from the files must NOT claim copyright over that material"): the Terms, `/credits` and the
+  notices file's CC BY-SA statement say so, and `terms.test.ts`, `credits.test.ts` and `third-party-notices.test.ts`
+  hold them to it.
+- **The tamper guard audits only links the page did not arrive with** (`src/scripts/tamper-guard.ts`, on every page):
+  a link added after load, or one whose address changed, to a host not in `ALLOWED_DOMAINS`. Links in the served page
+  are the site's own; before 2026-11-19 /credits and /privacy showed its red warning to every visitor three seconds
+  after load, and no test waited that long. `tests/tamper-guard.spec.ts` waits past `GRACE_PERIOD` on every page. The public contact address on privacy, terms and credits is contact@voyagetracable.com.
 
 ## Requests to other origins (the privacy policy depends on this)
 
@@ -708,6 +774,10 @@ list. Add a third-party request only by adding it to that file **and** to the po
     `loadModelViewer()` (`src/lib/ar-viewer.ts`), never with a script tag.
   - Babylon WebXR: both `theatre.ts` and `vr-engine.ts` turn off hand tracking, near
     interaction and online controller models (they come from Babylon's servers).
+  - Babylon also fetches from unpkg.com for files no page loads today: fflate for a ZIP-compressed EXR texture
+    (`ExrLoaderGlobalConfiguration.FFLATEUrl`) or a `.sog` splat (`deflateURL`), and Adobe's SPZ library for a
+    `.spz` splat (`spzLibraryUrl`). The viewer only loads `/models/splats/<card>.ply`. Before adding any such
+    file, override those (pass `fflate`, a local `deflateURL`, `spzLibraryUrl: undefined`).
 - An upgrade of any of these libraries can move the files: the integration then stops the
   build, and the tests show what the browser asks for.
 - `tests/warm-up.ts` (Playwright `globalSetup`) opens every page once before the tests

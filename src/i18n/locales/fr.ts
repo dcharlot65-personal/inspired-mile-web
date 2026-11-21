@@ -468,6 +468,12 @@ const fr: Record<string, string> = {
   'battle.lang.written': '{language}\u00a0: vous affrontez l’adversaire aux strophes écrites, car {model} n’a pas montré qu’il écrit de bonnes strophes dans cette langue.',
   'battle.lang.rules': '{language}\u00a0: jugé par règles, car {model} n’a pas montré qu’il est bon juge des strophes dans cette langue.',
   'brain.noneShown': 'Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles.',
+  'footer.credits': 'Crédits et licences',
+  'notice.aiBoth': 'Votre adversaire et le juge reposent sur une intelligence artificielle\u00a0: {model}, un modèle qui tourne sur cet appareil.',
+  'notice.aiWrites': 'Votre adversaire repose sur une intelligence artificielle\u00a0: {model}, un modèle qui tourne sur cet appareil. Le duel est jugé par règles, pas par une intelligence artificielle.',
+  'notice.aiJudges': 'Le juge repose sur une intelligence artificielle\u00a0: {model}, un modèle qui tourne sur cet appareil. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance.',
+  'notice.none': 'Aucune intelligence artificielle ne joue ni ne juge ce duel. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance, et le duel est jugé par règles.',
+  'notice.online': 'En ligne, votre adversaire est un autre joueur, et notre serveur juge les deux strophes selon des règles fixes. Aucune intelligence artificielle ne joue ni ne juge un duel en ligne.',
 };
 
 export default fr;

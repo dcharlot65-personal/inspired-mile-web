@@ -33,7 +33,11 @@ export async function getReferralCode(): Promise<ReferralInfo> {
   return apiFetch('/referral');
 }
 
-/** Redeem a referral code — grants 5 free packs to the redeemer. */
+/**
+ * Redeem a referral code: the server gives the code's owner 100 credits and the redeemer nothing
+ * (backend/src/referral/handlers.rs). Its reply still carries packs_granted: 5, a number nothing
+ * grants; no page calls this.
+ */
 export async function redeemCode(code: string): Promise<RedeemResult> {
   return apiFetch('/referral/redeem', {
     method: 'POST',

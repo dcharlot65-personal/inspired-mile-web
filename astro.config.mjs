@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
+import thirdPartyNotices from './scripts/third-party-notices.mjs';
 import selfHostedRuntime from './scripts/self-hosted-runtime.mjs';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +22,10 @@ export default defineConfig({
   // and controls to every page, which production never has.
   devToolbar: { enabled: false },
   // selfHostedRuntime: the model runtime and 3D decoders come from this site, not a CDN.
-  integrations: [react(), selfHostedRuntime()],
+  // thirdPartyNotices: the license notices of everything the build ships that others made, checked
+  // against /credits (public/licenses/THIRD-PARTY-NOTICES.txt). No React integration: no page renders a
+  // React component, and it only added React's client renderer to the build, which nothing loaded.
+  integrations: [selfHostedRuntime(), thirdPartyNotices()],
   vite: {
     plugins: [tailwindcss()],
     resolve: { alias: [{ find: /^phonemizer$/, replacement: noEspeak }] },

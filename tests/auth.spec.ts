@@ -2107,9 +2107,12 @@ test.describe('Hardening: sign-up accounting', () => {
     // Four more get as far as a verified passkey, then finish at the same moment. Two
     // places are left; a count-then-insert without a lock would let all four in.
     const pending: { challenge_id: string; credential: unknown; name: string }[] = [];
+    // The account each of the four would create: its id is the passkey's user handle (16 raw bytes).
+    const accounts: string[] = [];
     for (let i = 39; i <= 42; i++) {
       const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
       expect(begun.status, `begin ${i}`).toBe(200);
+      accounts.push(Buffer.from((begun.body.options.publicKey ?? begun.body.options).user.id, 'base64url').toString('hex'));
       pending.push({
         challenge_id: begun.body.challenge_id,
         credential: await createCredential(page, begun.body.options, authenticator),
@@ -2123,7 +2126,6 @@ test.describe('Hardening: sign-up accounting', () => {
     const racer = await startApi({ TEST_ONLY_LIMIT_RACE_DELAY_MS: '500', RUST_LOG: 'warn' });
     let statuses: number[];
     let elapsed: number;
-    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
     try {
       const started = Date.now();
       statuses = await Promise.all(pending.map((body) =>
@@ -2135,7 +2137,9 @@ test.describe('Hardening: sign-up accounting', () => {
       await racer.stop();
     }
     expect([...statuses].sort()).toEqual([200, 200, 429, 429]);
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 2);
+    // Two of these four accounts exist, and no more. Counted by their own ids: other tests sign up at the same
+    // time, and a count of every row in users went up by three when one of them did (2026-11-19).
+    expect(sql(`SELECT COUNT(*) FROM users WHERE replace(id::text, '-', '') IN (${accounts.map((a) => `'${a}'`).join(', ')})`)).toBe('2');
     expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('40');
     // Harness check: the two that were let in waited for each other, 500 ms each.
     expect(elapsed).toBeGreaterThanOrEqual(1000);

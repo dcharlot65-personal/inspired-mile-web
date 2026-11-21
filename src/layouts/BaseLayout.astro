@@ -37,6 +37,7 @@ const NAV_TITLE_KEYS: Record<string, string> = {
   '/profile': 'nav.profile',
   '/privacy': 'footer.privacy',
   '/terms': 'footer.terms',
+  '/credits': 'footer.credits',
 };
 const pageTitleKey = titleKey ?? NAV_TITLE_KEYS[currentPath.replace(/(.)\/$/, '$1')] ?? '';
 const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
@@ -500,6 +501,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               <li><a href="https://southernshakespearefestival.org/sonnet-man/" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" data-i18n="footer.sonnetMan">The Sonnet Man</a></li>
               <li><a href="/privacy" class="hover:text-gold-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a></li>
               <li><a href="/terms" class="hover:text-gold-400 transition-colors" data-i18n="footer.terms">Terms of Service</a></li>
+              <li><a href="/credits" class="hover:text-gold-400 transition-colors" data-i18n="footer.credits">Credits and Licenses</a></li>
             </ul>
             <div class="flex items-center gap-3 mt-4">
               <a href="https://www.youtube.com/TheSonnetManTV" target="_blank" rel="noopener noreferrer" class="text-obsidian-500 hover:text-gold-400 transition-colors" aria-label="YouTube">
@@ -523,6 +525,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
             <a href="/privacy" class="hover:text-gold-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
             <span class="mx-1">&middot;</span>
             <a href="/terms" class="hover:text-gold-400 transition-colors" data-i18n="footer.terms">Terms of Service</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/credits" class="hover:text-gold-400 transition-colors" data-i18n="footer.credits">Credits and Licenses</a>
           </p>
         </div>
       </div>
@@ -1668,7 +1672,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         var stored = localStorage.getItem(AGE_KEY);
 
         // Skip age gate on legal pages so users can read them
-        var legalPages = ['/privacy', '/terms', '/about'];
+        var legalPages = ['/privacy', '/terms', '/about', '/credits'];
         if (legalPages.indexOf(window.location.pathname) >= 0) return;
 
         if (stored === 'adult' || stored === 'teen-consented') return;

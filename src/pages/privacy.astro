@@ -7,7 +7,7 @@ import Layout from '../layouts/BaseLayout.astro';
   <section class="pt-32 pb-20 px-6" lang="en" dir="ltr">
     <div class="max-w-3xl mx-auto">
       <h1 class="text-4xl font-display font-bold text-white mb-4">Privacy Policy</h1>
-      <p class="text-brand-gray text-sm mb-12">Last updated: November 16, 2026</p>
+      <p class="text-brand-gray text-sm mb-12">Last updated: November 19, 2026</p>
 
       <div class="space-y-8 text-brand-slate text-[15px] leading-relaxed">
         <div>
@@ -78,7 +78,8 @@ import Layout from '../layouts/BaseLayout.astro';
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Cookies &amp; Local Storage</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
-            <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
+            <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">__Host-im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session, sent only to this site and only on requests this site's own pages make. It lasts up to 7 days, and signing out ends it. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
+            <li><strong class="text-white">Sign-in code cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">__Host-im_code</code>):</strong> When you ask for a sign-in code by email, a secure, HTTP-only cookie ties the code to the browser that asked for it, so the code works only there. It lasts 15 minutes.</li>
             <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device; game state is synced to our server only when you create an account.</li>
             <li><strong class="text-white">Service Worker:</strong> We use a service worker to keep copies of pages, images and scripts in your browser so the site loads faster and works offline. It does not keep our server's answers about your account, and when you sign out it removes anything it was holding for you.</li>
             <li><strong class="text-white">AI models:</strong> A model you download is kept in your browser's storage so it is not downloaded again. Clearing the browser's data for this site removes it.</li>
@@ -94,7 +95,7 @@ import Layout from '../layouts/BaseLayout.astro';
             When it runs, your browser sends Plausible the address of the page you are on (including anything after a "?" in the address), the address of the page that linked you here, and, as with any web request, your IP address and browser type. It may also send the width of your browser window. It never receives anything you write or say.
           </p>
           <p class="mt-3">
-            Plausible says that it sets no cookies, does not store your IP address, and does not follow you from site to site. Those are Plausible's statements; its <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">data policy</a> has the details. What we see is totals: page views, where visitors came from, and kinds of device.
+            Plausible says that it sets no cookies, does not store your IP address, and does not follow you from site to site. Those are Plausible's statements; its <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">data policy</a> has the details. What we see is totals: page views, where visitors came from, and kinds of device. Plausible records the page views of this game (sonnetman.inspiredmile.com) under the name of our company's domain, inspiredmile.com.
           </p>
         </div>
 
@@ -210,7 +211,7 @@ import Layout from '../layouts/BaseLayout.astro';
           <h2 class="text-xl font-display font-semibold text-white mb-3">Contact</h2>
           <p>
             If you have questions about this privacy policy or wish to exercise your data rights, contact us at
-            <a href="mailto:david@davidjcharlot.com" class="text-accent hover:text-accent-light transition-colors">david@davidjcharlot.com</a>.
+            <a href="mailto:contact@voyagetracable.com" class="text-accent hover:text-accent-light transition-colors">contact@voyagetracable.com</a>.
           </p>
           <p class="mt-2 text-obsidian-500 text-sm">
             Voyage Tracable, LLC &middot; Sarasota, FL, United States

@@ -29,7 +29,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync, brotliCompressSync } from 'node:zlib';
-import { COMMIT, SHA256, SOURCE, SOUND, LICENCE, SCOWL_LICENCE, SCOWL_VERSION, SCOWL_SHA256, SCOWL_SIZE, scowlWords } from './build-pronunciation.mjs';
+import { COMMIT, SHA256, SOURCE, SOUND, LICENCE, SCOWL_VERSION, SCOWL_SHA256, SCOWL_SIZE, scowlLicence, scowlWords } from './build-pronunciation.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'src/lib/voice/lexicon-en.ts');
@@ -107,6 +107,8 @@ async function main() {
     }
   }
   const scowl = await scowlWords();
+  // SCOWL's notice is its release's whole Copyright file (build-pronunciation.mjs scowlLicence); never shorten it.
+  const SCOWL_LICENCE = scowlLicence(scowl.copyright);
   const listed = (w) => own.has(w) || own.has(`'${w}`) || scowl.words.has(w) || scowl.words.has(`'${w}`);
   let unlisted = 0;
   let variants = 0;

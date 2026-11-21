@@ -468,6 +468,12 @@ const zh: Record<string, string> = {
   'battle.lang.written': '{language}：你将面对预先写好诗句的对手，因为 {model} 尚未证明它能用这种语言写好诗。',
   'battle.lang.rules': '{language}：按规则评判，因为 {model} 尚未证明它能胜任这种语言的诗歌裁判。',
   'brain.noneShown': '这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。',
+  'footer.credits': '致谢与许可证',
+  'notice.aiBoth': '你的对手和裁判由人工智能担任：{model}，一个在这台设备上运行的模型。',
+  'notice.aiWrites': '你的对手由人工智能担任：{model}，一个在这台设备上运行的模型。这场对决按规则评判，而不是由人工智能评判。',
+  'notice.aiJudges': '裁判由人工智能担任：{model}，一个在这台设备上运行的模型。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序。',
+  'notice.none': '这场对决没有人工智能出诗或评判。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序，并按规则评判。',
+  'notice.online': '在线对决中，你的对手是另一位玩家，我们的服务器按固定规则评判双方的诗。在线对决没有人工智能出诗或评判。',
 };
 
 export default zh;

@@ -21,6 +21,7 @@ const CONTEXT = [
   [/^battle\.difficulty\./, 'Option in the difficulty menu: how many drafts the computer opponent writes before choosing.'],
   [/^battle\./, 'Set-up screen of the duel (a three-round battle of verses played with cards).'],
   [/^brain\./, 'Status text about the AI model that plays the opponent; it is downloaded once and runs in the browser.'],
+  [/^notice\./, 'Notice shown before the first duel, as the law asks (EU AI Act, Article 50): it says plainly whether artificial intelligence (a model running in the browser) plays the opponent and judges, or a program with prepared verses plays and fixed rules judge. Plain, factual words; "artificial intelligence" written as the language\'s Wikipedia names it.'],
   [/^round\./, 'Screen of one round of the duel: the opponent plays a verse, the player answers with a card and a verse.'],
   [/^chip\./, 'Small label (a chip) on a card.'],
   [/^hand\./, 'Tooltip or note about a card in the player\'s hand (relics lend "power words"; potions curse the opponent).'],

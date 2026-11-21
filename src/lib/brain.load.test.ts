@@ -65,6 +65,16 @@ describe('when the model asked for fails to load', () => {
     expect(stand.asked).toEqual(ids('grand', 'standard', 'lite'));
   });
 
+  it('tells the caller each model before it tries it, so a page names the one loading, not the one that failed', async () => {
+    used('grand', 'standard', 'lite');
+    fail('grand', 'standard');
+    const told: Array<[string, number]> = [];
+    expect(await loadBrain('grand', undefined, (spec) => told.push([spec.tier, stand.asked.length]))).toBe(true);
+    // Each is named before its load is asked for: grand first, then each fallback in turn.
+    expect(told).toEqual([['grand', 0], ['standard', 1], ['lite', 2]]);
+    expect(brainInfo()?.tier).toBe('lite');
+  });
+
   it('the model asked for outright is loaded even when it is used nowhere (?brain=<tier>, the model tests)', async () => {
     used();
     expect(await loadBrain('lite')).toBe(true);

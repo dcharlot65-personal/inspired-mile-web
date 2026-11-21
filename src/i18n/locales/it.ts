@@ -468,6 +468,12 @@ const it: Record<string, string> = {
   'battle.lang.written': '{language}: affronti l’avversario dalle strofe scritte, perché {model} non ha dimostrato di scrivere buone strofe in questa lingua.',
   'battle.lang.rules': '{language}: giudicato secondo regole, perché {model} non ha dimostrato di essere un buon giudice di strofe in questa lingua.',
   'brain.noneShown': 'Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.',
+  'footer.credits': 'Crediti e licenze',
+  'notice.aiBoth': 'Il tuo avversario e il giudice funzionano con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo.',
+  'notice.aiWrites': 'Il tuo avversario funziona con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo. Il duello si giudica secondo regole, non con l’intelligenza artificiale.',
+  'notice.aiJudges': 'Il giudice funziona con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo.',
+  'notice.none': 'Nessuna intelligenza artificiale gioca o giudica questo duello. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo, e il duello si giudica secondo regole.',
+  'notice.online': 'Online il tuo avversario è un altro giocatore e il nostro server giudica entrambe le strofe secondo regole fisse. Nessuna intelligenza artificiale gioca o giudica un duello online.',
 };
 
 export default it;

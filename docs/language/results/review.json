@@ -1666,7 +1666,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้วได้"
+     "translation": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้"
     },
     "brain.noModel": {
      "verdict": "ok",
@@ -1678,7 +1678,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว"
+     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว"
     },
     "brain.noWebgpu": {
      "verdict": "ok",
@@ -1708,7 +1708,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่"
+     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่"
     },
     "round.label": {
      "verdict": "ok",
@@ -2314,13 +2314,13 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว · ตัดสินโดย {model}"
+     "translation": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว · ตัดสินโดย {model}"
     },
     "badge.written": {
-     "verdict": "fix",
-     "corrected": "คู่ต่อสู้แบบเขียนไว้",
-     "reason": "The original translation 'คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว' is too wordy for a 'small badge'. Using 'แบบเขียนไว้' is more concise and natural for a UI label.",
-     "translation": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว"
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว"
     },
     "stats.rounds": {
      "verdict": "ok",
@@ -2422,7 +2422,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่"
+     "translation": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่"
     },
     "theatre.enterAr": {
      "verdict": "ok",
@@ -3191,6 +3191,60 @@
      "corrected": "",
      "reason": "",
      "translation": "ข้าใจดี จึงส่งมันไปเสียให้ขาด"
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี"
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: ตัดสินด้วยกฎ เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี"
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว และตัดสินด้วยกฎ"
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "เครดิตและสัญญาอนุญาต"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "คู่ต่อสู้และกรรมการของคุณทำงานด้วยปัญญาประดิษฐ์ คือ {model} ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้"
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "คู่ต่อสู้ของคุณทำงานด้วยปัญญาประดิษฐ์ คือ {model} ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ ส่วนการประชันตัดสินด้วยกฎ ไม่ใช่ด้วยปัญญาประดิษฐ์"
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "กรรมการทำงานด้วยปัญญาประดิษฐ์ คือ {model} ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า"
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันครั้งนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า และตัดสินด้วยกฎ"
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ในการประชันออนไลน์ คู่ต่อสู้ของคุณคือผู้เล่นอีกคน และเซิร์ฟเวอร์ของเราตัดสินบทกลอนของทั้งสองฝ่ายด้วยกฎที่ตายตัว ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันออนไลน์"
     }
    },
    "failedBatches": 0
@@ -6444,6 +6498,60 @@
      "corrected": "",
      "reason": "",
      "translation": "तेरी हर पंक्ति अधूरा नाटक"
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।"
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।"
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।"
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "श्रेय और लाइसेंस"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "आपके प्रतिद्वंद्वी और निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: {model}, इसी डिवाइस पर चलने वाला एक मॉडल।"
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "आपके प्रतिद्वंद्वी की भूमिका कृत्रिम बुद्धि निभाती है: {model}, इसी डिवाइस पर चलने वाला एक मॉडल। द्वंद्व का निर्णय नियमों से होता है, कृत्रिम बुद्धि से नहीं।"
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: {model}, इसी डिवाइस पर चलने वाला एक मॉडल। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है।"
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "इस द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है, और निर्णय नियमों से होता है।"
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "ऑनलाइन आपका प्रतिद्वंद्वी कोई दूसरा खिलाड़ी होता है, और हमारा सर्वर दोनों कविताओं का निर्णय तय नियमों से करता है। ऑनलाइन द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है।"
     }
    },
    "failedBatches": 0
@@ -9637,6 +9745,60 @@
      "corrected": "",
      "reason": "",
      "translation": "الأبيات المنسوخة تخسر نقاط الحَكَم."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: تواجه خصم الأبيات المكتوبة، لأن {model} لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: الحكم بالقواعد، لأن {model} لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "المصادر والتراخيص"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "خصمك والحكم ذكاء اصطناعي: {model}، وهو نموذج يعمل على هذا الجهاز."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "خصمك ذكاء اصطناعي: {model}، وهو نموذج يعمل على هذا الجهاز. أما المبارزة فيُحكم فيها بالقواعد، لا بالذكاء الاصطناعي."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "الحكم ذكاء اصطناعي: {model}، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "في المبارزة عبر الإنترنت يكون خصمك لاعبًا آخر، ويحكم خادمنا على أبيات الطرفين بقواعد ثابتة. ولا يلعب ذكاء اصطناعي فيها ولا يحكم."
     }
    },
    "failedBatches": 0
@@ -12914,6 +13076,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Bài thơ chép lại sẽ mất điểm của giám khảo."
+    },
+    "battle.lang.written": {
+     "verdict": "fix",
+     "corrected": "{language}: bạn đấu với đối thủ dùng thơ viết sẵn, vì {model} chưa chứng tỏ được khả năng viết thơ tốt bằng ngôn ngữ này.",
+     "reason": "The original translation 'chưa chứng tỏ được là nó viết thơ tốt' is a bit wordy and colloquial; 'chưa chứng tỏ được khả năng viết thơ tốt' is more natural and professional for a game interface.",
+     "translation": "{language}: bạn đấu với đối thủ dùng thơ viết sẵn, vì {model} chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này."
+    },
+    "battle.lang.rules": {
+     "verdict": "fix",
+     "corrected": "{language}: chấm điểm theo quy tắc, vì {model} chưa chứng tỏ được khả năng làm giám khảo thơ tốt bằng ngôn ngữ này.",
+     "reason": "The original 'làm giám khảo tốt cho thơ' is slightly awkward; 'khả năng làm giám khảo thơ tốt' is more natural in Vietnamese.",
+     "translation": "{language}: chấm điểm theo quy tắc, vì {model} chưa chứng tỏ được là nó làm giám khảo tốt cho thơ bằng ngôn ngữ này."
+    },
+    "brain.noneShown": {
+     "verdict": "fix",
+     "corrected": "Chưa có mô hình nào mà thiết bị này có thể chạy chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc.",
+     "reason": "Added 'có thể' to 'chạy' to make the phrase 'can run' sound more natural in Vietnamese.",
+     "translation": "Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ tốt hoặc làm giám khảo thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn, còn việc chấm điểm thì theo quy tắc."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Ghi công và giấy phép"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Đối thủ và giám khảo của bạn do trí tuệ nhân tạo đảm nhận: {model}, một mô hình chạy trên thiết bị này."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Đối thủ của bạn do trí tuệ nhân tạo đảm nhận: {model}, một mô hình chạy trên thiết bị này. Trận đấu được chấm theo quy tắc, không phải bằng trí tuệ nhân tạo."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Giám khảo do trí tuệ nhân tạo đảm nhận: {model}, một mô hình chạy trên thiết bị này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước, còn việc chấm điểm thì theo quy tắc."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Khi chơi trực tuyến, đối thủ của bạn là một người chơi khác, và máy chủ của chúng tôi chấm cả hai bài thơ theo quy tắc cố định. Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu trực tuyến."
     }
    },
    "failedBatches": 0
@@ -16215,6 +16431,60 @@
      "corrected": "",
      "reason": "",
      "translation": "你的诗是没人理会的风"
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}：你将面对预先写好诗句的对手，因为 {model} 尚未证明它能用这种语言写好诗。"
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}：按规则评判，因为 {model} 尚未证明它能胜任这种语言的诗歌裁判。"
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这台设备能运行的模型都尚未证明自己能写好诗或评好诗，所以你将面对预先写好诗句的对手，并按规则评判。"
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "致谢与许可证"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的对手和裁判由人工智能担任：{model}，一个在这台设备上运行的模型。"
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "你的对手由人工智能担任：{model}，一个在这台设备上运行的模型。这场对决按规则评判，而不是由人工智能评判。"
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "裁判由人工智能担任：{model}，一个在这台设备上运行的模型。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序。"
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "这场对决没有人工智能出诗或评判。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序，并按规则评判。"
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "在线对决中，你的对手是另一位玩家，我们的服务器按固定规则评判双方的诗。在线对决没有人工智能出诗或评判。"
     }
    },
    "failedBatches": 0
@@ -19468,6 +19738,60 @@
      "corrected": "",
      "reason": "",
      "translation": "お前はただの人"
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}：あらかじめ書かれた詩を出す相手と対戦します。{model}がこの言語でうまく詩を書けることは確かめられていないためです。"
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}：規則で審査します。{model}がこの言語の詩の審判をうまく務められることは確かめられていないためです。"
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。"
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "クレジットとライセンス"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "相手と審判は人工知能（AI）が務めます。この端末で動くモデル、{model}です。"
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "相手は人工知能（AI）が務めます。この端末で動くモデル、{model}です。決闘の審査は人工知能ではなく、規則で行います。"
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "審判は人工知能（AI）が務めます。この端末で動くモデル、{model}です。相手は、あらかじめ書かれた詩を出すプログラムです。"
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "この決闘では、人工知能が詩を出すことも審査することもありません。相手は、あらかじめ書かれた詩を出すプログラムで、審査は規則で行います。"
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "オンラインの決闘では、相手は別のプレイヤーで、両者の詩は当サーバーが決まった規則で審査します。人工知能が詩を出すことも審査することもありません。"
     }
    },
    "failedBatches": 0
@@ -22721,6 +23045,60 @@
      "corrected": "",
      "reason": "",
      "translation": "베낀 시는 심판 점수를 잃어요."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: 미리 쓰인 시를 내는 상대와 겨뤄요. {model}이(가) 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: 규칙으로 심사해요. {model}이(가) 이 언어로 쓴 시의 심판을 잘 맡는다는 것이 확인되지 않았기 때문이에요."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "저작자 표시 및 라이선스"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "상대와 심판은 인공지능이 맡아요. 이 기기에서 실행되는 {model} 모델이에요."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "상대는 인공지능이 맡아요. 이 기기에서 실행되는 {model} 모델이에요. 결투는 인공지능이 아니라 규칙으로 심사해요."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "심판은 인공지능이 맡아요. 이 기기에서 실행되는 {model} 모델이에요. 상대는 미리 쓰인 시를 내는 프로그램이에요."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "이 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요. 상대는 미리 쓰인 시를 내는 프로그램이고, 규칙으로 심사해요."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요."
     }
    },
    "failedBatches": 0
@@ -25974,6 +26352,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Skopiowana strofa traci punkty sędziego."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: grasz z rywalem z gotowymi strofami, bo model {model} nie wykazał, że dobrze pisze strofy w tym języku."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: ocena według reguł, bo model {model} nie wykazał, że jest dobrym sędzią strof w tym języku."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Uznanie autorstwa i licencje"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Rolę twojego rywala i sędziego pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Rolę twojego rywala pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu. Pojedynek jest oceniany według reguł, a nie przez sztuczną inteligencję."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Rolę sędziego pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "W tym pojedynku sztuczna inteligencja nie gra ani nie ocenia. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej, a pojedynek jest oceniany według reguł."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "W grze online twoim rywalem jest inny gracz, a nasz serwer ocenia obie strofy według stałych reguł. W pojedynku online sztuczna inteligencja nie gra ani nie ocenia."
     }
    },
    "failedBatches": 0
@@ -29227,6 +29659,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Скопированная строфа теряет очки судьи."
+    },
+    "battle.lang.written": {
+     "verdict": "fix",
+     "corrected": "{language}: играет соперник с готовыми строфами, потому что модель {model} не показала, что хорошо пишет строфы на этом языке.",
+     "reason": "The original translation was actually correct, but I am confirming it as it matches the source meaning and terminology perfectly.",
+     "translation": "{language}: играет соперник с готовыми строфами, потому что модель {model} не показала, что хорошо пишет строфы на этом языке."
+    },
+    "battle.lang.rules": {
+     "verdict": "fix",
+     "corrected": "{language}: судят по правилам, потому что модель {model} не показала, что может быть хорошим судьёй строф на этом языке.",
+     "reason": "The original translation was correct; it uses the correct terminology and natural Russian phrasing.",
+     "translation": "{language}: судят по правилам, потому что модель {model} не показала, что может быть хорошим судьёй строф на этом языке."
+    },
+    "brain.noneShown": {
+     "verdict": "fix",
+     "corrected": "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам.",
+     "reason": "The original translation was correct; it is grammatically sound and flows naturally.",
+     "translation": "Ни одна модель, которую может запустить это устройство, не показала, что хорошо пишет или судит строфы, поэтому играет соперник с готовыми строфами, а судят по правилам."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Авторы и лицензии"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Роль твоего соперника и судьи играет искусственный интеллект: {model}, модель, которая работает на этом устройстве."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Роль твоего соперника играет искусственный интеллект: {model}, модель, которая работает на этом устройстве. Дуэль судят по правилам, а не с помощью искусственного интеллекта."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Роль судьи играет искусственный интеллект: {model}, модель, которая работает на этом устройстве. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "В этой дуэли искусственный интеллект не играет и не судит. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами, а судят по правилам."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "В сетевой игре твой соперник — другой игрок, а наш сервер судит обе строфы по неизменным правилам. В сетевой дуэли искусственный интеллект не играет и не судит."
     }
    },
    "failedBatches": 0
@@ -30892,10 +31378,10 @@
      "translation": "{model} sudah dimuat di perangkat ini. Modelnya kecil: ia menilai syair, sedangkan lawan memainkan syair yang sudah ditulis."
     },
     "brain.failed": {
-     "verdict": "fix",
-     "corrected": "Model tidak dapat berjalan di perangkat ini. Anda tetap bisa bermain melawan lawan tertulis.",
-     "reason": "The original translation 'lawan bersyair tertulis' is redundant and awkward; 'lawan tertulis' is the correct term for 'written opponent' as established in the glossary.",
-     "translation": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis."
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis."
     },
     "brain.noModel": {
      "verdict": "ok",
@@ -30907,7 +31393,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "Bermain melawan lawan bersyair tertulis."
+     "translation": "Bermain melawan lawan dengan syair tertulis."
     },
     "brain.noWebgpu": {
      "verdict": "ok",
@@ -30937,7 +31423,7 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman."
+     "translation": "Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman."
     },
     "round.label": {
      "verdict": "ok",
@@ -31543,13 +32029,13 @@
      "verdict": "ok",
      "corrected": "",
      "reason": "",
-     "translation": "Lawan bersyair tertulis · dinilai {model}"
+     "translation": "Lawan dengan syair tertulis · dinilai {model}"
     },
     "badge.written": {
-     "verdict": "fix",
-     "corrected": "Lawan tertulis",
-     "reason": "The English source is 'Written opponent'. Adding 'bersyair' (rhyming/verse) makes it redundant and unnatural for a badge/label.",
-     "translation": "Lawan bersyair tertulis"
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Lawan dengan syair tertulis"
     },
     "stats.rounds": {
      "verdict": "ok",
@@ -32480,6 +32966,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Syair salinan kehilangan nilai dari juri."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: lawanmu memakai syair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: dinilai dengan aturan, karena {model} belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Atribusi dan lisensi"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Lawanmu dan juri dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Lawanmu dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini. Duel dinilai dengan aturan, bukan oleh kecerdasan buatan."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Juri dijalankan oleh kecerdasan buatan: {model}, model yang berjalan di perangkat ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Tidak ada kecerdasan buatan yang bermain atau menilai duel ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya, dan duel dinilai dengan aturan."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dalam duel daring, lawanmu adalah pemain lain, dan server kami menilai kedua syair dengan aturan yang tetap. Tidak ada kecerdasan buatan yang bermain atau menilai duel daring."
     }
    },
    "failedBatches": 0
@@ -35733,6 +36273,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Una estrofa copiada pierde los puntos del juez."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: te enfrentas al rival de versos escritos, porque {model} no ha demostrado que escriba buenas estrofas en este idioma."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: se juzga por reglas, porque {model} no ha demostrado ser buen juez de estrofas en este idioma."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Créditos y licencias"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Tu rival y el juez funcionan con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Tu rival funciona con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo. El duelo se juzga por reglas, no con inteligencia artificial."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "El juez funciona con inteligencia artificial: {model}, un modelo que se ejecuta en este dispositivo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Ninguna inteligencia artificial juega ni juzga este duelo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano, y el duelo se juzga por reglas."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "En línea, tu rival es otro jugador y nuestro servidor juzga ambas estrofas con reglas fijas. Ninguna inteligencia artificial juega ni juzga un duelo en línea."
     }
    },
    "failedBatches": 0
@@ -38986,6 +39580,60 @@
      "corrected": "Une strophe copiée fait forfait au juge.",
      "reason": "The English 'forfeits the judge' implies the verse loses the judge's points/vote. 'Perd les points du juge' is a bit wordy; 'fait forfait' or simply 'perd le juge' is more idiomatic for a game mechanic.",
      "translation": "Une strophe copiée perd les points du juge."
+    },
+    "battle.lang.written": {
+     "verdict": "fix",
+     "corrected": "{language} : vous affrontez l’adversaire aux strophes écrites, car {model} n’a pas montré qu’il sait écrire de bonnes strophes dans cette langue.",
+     "reason": "The original translation 'qu'il écrit' is grammatically correct but 'qu'il sait écrire' (knows how to write) is more natural when discussing a model's capability/skill.",
+     "translation": "{language} : vous affrontez l’adversaire aux strophes écrites, car {model} n’a pas montré qu’il écrit de bonnes strophes dans cette langue."
+    },
+    "battle.lang.rules": {
+     "verdict": "fix",
+     "corrected": "{language} : jugé par règles, car {model} n’a pas montré qu’il est un bon juge des strophes dans cette langue.",
+     "reason": "Added the article 'un' before 'bon juge' to make the sentence grammatically natural in French.",
+     "translation": "{language} : jugé par règles, car {model} n’a pas montré qu’il est bon juge des strophes dans cette langue."
+    },
+    "brain.noneShown": {
+     "verdict": "fix",
+     "corrected": "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est un bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles.",
+     "reason": "Added the article 'un' before 'bon juge' for grammatical correctness.",
+     "translation": "Aucun modèle que cet appareil puisse faire tourner n’a montré qu’il écrit de bonnes strophes ou qu’il en est bon juge. Vous affrontez donc l’adversaire aux strophes écrites, et le jugement se fait par règles."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Crédits et licences"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Votre adversaire et le juge reposent sur une intelligence artificielle : {model}, un modèle qui tourne sur cet appareil."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Votre adversaire repose sur une intelligence artificielle : {model}, un modèle qui tourne sur cet appareil. Le duel est jugé par règles, pas par une intelligence artificielle."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Le juge repose sur une intelligence artificielle : {model}, un modèle qui tourne sur cet appareil. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Aucune intelligence artificielle ne joue ni ne juge ce duel. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance, et le duel est jugé par règles."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "En ligne, votre adversaire est un autre joueur, et notre serveur juge les deux strophes selon des règles fixes. Aucune intelligence artificielle ne joue ni ne juge un duel en ligne."
     }
    },
    "failedBatches": 0
@@ -42239,6 +42887,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Eine kopierte Strophe verliert die Punkte des Richters."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: Du spielst gegen den Gegner mit geschriebenen Strophen, weil {model} nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: Nach Regeln bewertet, weil {model} nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Quellen und Lizenzen"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dein Gegner und der Richter werden von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Dein Gegner wird von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft. Das Duell wird nach Regeln bewertet, nicht von künstlicher Intelligenz."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Der Richter wird von künstlicher Intelligenz gesteuert: {model}, ein Modell, das auf diesem Gerät läuft. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Keine künstliche Intelligenz spielt oder bewertet dieses Duell. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt, und bewertet wird nach Regeln."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Online ist dein Gegner ein anderer Spieler, und unser Server bewertet beide Strophen nach festen Regeln. Keine künstliche Intelligenz spielt oder bewertet ein Online-Duell."
     }
    },
    "failedBatches": 0
@@ -45492,6 +46194,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Una strofa copiata perde i punti del giudice."
+    },
+    "battle.lang.written": {
+     "verdict": "fix",
+     "corrected": "{language}: affronti l’avversario scritto, perché {model} non ha dimostrato di saper scrivere strofe in questa lingua.",
+     "reason": "The term 'avversario dalle strofe scritte' is a bit clunky; 'avversario scritto' is more natural for a game interface. Also, 'saper scrivere' is more idiomatic than 'scrivere buone strofe' in this context.",
+     "translation": "{language}: affronti l’avversario dalle strofe scritte, perché {model} non ha dimostrato di scrivere buone strofe in questa lingua."
+    },
+    "battle.lang.rules": {
+     "verdict": "fix",
+     "corrected": "{language}: giudicato secondo regole, perché {model} non ha dimostrato di essere un buon giudice di strofe in questa lingua.",
+     "reason": "The original translation is actually correct and natural, but I've verified it against the others. No change needed if the user considers 'giudice di strofe' acceptable, but 'giudice di versi' might be more common; however, per instructions, I will keep it if it's correct. Actually, looking at the source, 'judge of verse' is better translated as 'giudice di versi' to match the poetic context, but 'strofe' is acceptable. I will mark it as ok if it's not an error.",
+     "translation": "{language}: giudicato secondo regole, perché {model} non ha dimostrato di essere un buon giudice di strofe in questa lingua."
+    },
+    "brain.noneShown": {
+     "verdict": "fix",
+     "corrected": "Nessun modello che questo dispositivo possa eseguire ha dimostrato di saper scrivere o giudicare bene le strofe, quindi affronti l’avversario scritto e il giudizio è secondo regole.",
+     "reason": "Improved flow and corrected 'si giudica' to a more formal/direct structure to match the English 'the judging is by rule'.",
+     "translation": "Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Crediti e licenze"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Il tuo avversario e il giudice funzionano con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Il tuo avversario funziona con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo. Il duello si giudica secondo regole, non con l’intelligenza artificiale."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Il giudice funziona con l’intelligenza artificiale: {model}, un modello che gira su questo dispositivo. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Nessuna intelligenza artificiale gioca o giudica questo duello. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo, e il duello si giudica secondo regole."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Online il tuo avversario è un altro giocatore e il nostro server giudica entrambe le strofe secondo regole fisse. Nessuna intelligenza artificiale gioca o giudica un duello online."
     }
    },
    "failedBatches": 0
@@ -48745,6 +49501,60 @@
      "corrected": "",
      "reason": "",
      "translation": "Uma estrofe copiada perde os pontos do juiz."
+    },
+    "battle.lang.written": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: você enfrenta o adversário de estrofes escritas, porque {model} não mostrou que escreve boas estrofes neste idioma."
+    },
+    "battle.lang.rules": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "{language}: julgado por regras, porque {model} não mostrou ser um bom juiz de estrofes neste idioma."
+    },
+    "brain.noneShown": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Nenhum modelo que este dispositivo consiga executar mostrou que escreve ou julga bem as estrofes, por isso você enfrenta o adversário de estrofes escritas e o julgamento é feito por regras."
+    },
+    "footer.credits": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Créditos e licenças"
+    },
+    "notice.aiBoth": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Seu adversário e o juiz funcionam com inteligência artificial: {model}, um modelo que roda neste dispositivo."
+    },
+    "notice.aiWrites": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Seu adversário funciona com inteligência artificial: {model}, um modelo que roda neste dispositivo. O duelo é julgado por regras, não por inteligência artificial."
+    },
+    "notice.aiJudges": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "O juiz funciona com inteligência artificial: {model}, um modelo que roda neste dispositivo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas."
+    },
+    "notice.none": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "Nenhuma inteligência artificial joga ou julga este duelo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas, e o duelo é julgado por regras."
+    },
+    "notice.online": {
+     "verdict": "ok",
+     "corrected": "",
+     "reason": "",
+     "translation": "No modo online, seu adversário é outro jogador e nosso servidor julga ambas as estrofes por regras fixas. Nenhuma inteligência artificial joga ou julga um duelo online."
     }
    },
    "failedBatches": 0
@@ -48754,5 +49564,5 @@
   "model": "/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline/models/gemma-4-26B-A4B-it-qat-q4_0-gguf/gemma-4-26B_q4_0-it.gguf",
   "build": "b12359-b1b770d90"
  },
- "finished": "2026-11-18T01:04:52.320Z"
+ "finished": "2026-11-19T12:53:35.170Z"
 }

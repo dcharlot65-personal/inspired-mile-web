@@ -1,0 +1,921 @@
+{
+ "ran": "2026-11-19T07:21:26.925Z",
+ "languagetool": {
+  "version": "6.6",
+  "buildDate": "2025-03-27 20:50:25 +0100",
+  "languages": [
+   "ar",
+   "ast-ES",
+   "be-BY",
+   "br-FR",
+   "ca-ES",
+   "ca-ES-balear",
+   "ca-ES-valencia",
+   "crh-UA",
+   "da-DK",
+   "de",
+   "de-AT",
+   "de-CH",
+   "de-DE",
+   "de-DE-x-simple-language",
+   "de-DE-x-simple-language-DE",
+   "de-LU",
+   "el-GR",
+   "en",
+   "en-AU",
+   "en-CA",
+   "en-GB",
+   "en-NZ",
+   "en-US",
+   "en-ZA",
+   "eo",
+   "es",
+   "es-AR",
+   "es-ES",
+   "fa",
+   "fa-IR",
+   "fr",
+   "fr-BE",
+   "fr-CA",
+   "fr-CH",
+   "fr-FR",
+   "ga-IE",
+   "gl-ES",
+   "it",
+   "it-IT",
+   "ja-JP",
+   "km-KH",
+   "nl",
+   "nl-BE",
+   "nl-NL",
+   "pl-PL",
+   "pt",
+   "pt-AO",
+   "pt-BR",
+   "pt-MZ",
+   "pt-PT",
+   "ro-RO",
+   "ru-RU",
+   "sk-SK",
+   "sl-SI",
+   "sv",
+   "sv-SE",
+   "ta-IN",
+   "tl-PH",
+   "uk-UA",
+   "zh-CN"
+  ]
+ },
+ "hunspell": {
+  "version": "@(#) International Ispell Version 3.2.06 (but really Hunspell 1.7.2)"
+ },
+ "selftest": [
+  {
+   "lang": "en",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "es",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "fr",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "de",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "it",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "pt",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "pl",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "ru",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "ar",
+   "languagetool": "flags 2 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 2,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "hi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "zh",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  {
+   "lang": "ja",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  {
+   "lang": "ko",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "vi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "th",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "id",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  }
+ ],
+ "languages": {
+  "en": {
+   "strings": {
+    "ui": 437,
+    "pack": 189,
+    "sentences": 6
+   },
+   "languagetool": "en-US",
+   "hunspell": [
+    "en"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Credits and Licenses"
+    ],
+    "ui:notice.aiBoth": [
+     "Your opponent and the judge are run by artificial intelligence: Gemma 4 E2B, a model running on this device."
+    ],
+    "ui:notice.aiWrites": [
+     "Your opponent is run by artificial intelligence: Gemma 4 E2B, a model running on this device. The duel is judged by rule, not by artificial intelligence."
+    ],
+    "ui:notice.aiJudges": [
+     "The judge is run by artificial intelligence: Gemma 4 E2B, a model running on this device. You face the written opponent, a program that plays verses prepared in advance."
+    ],
+    "ui:notice.none": [
+     "No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule."
+    ],
+    "ui:notice.online": [
+     "Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel."
+    ]
+   }
+  },
+  "es": {
+   "strings": {
+    "ui": 437,
+    "pack": 128,
+    "sentences": 6
+   },
+   "languagetool": "es",
+   "hunspell": [
+    "es"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Créditos y licencias"
+    ],
+    "ui:notice.aiBoth": [
+     "Tu rival y el juez funcionan con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo."
+    ],
+    "ui:notice.aiWrites": [
+     "Tu rival funciona con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo. El duelo se juzga por reglas, no con inteligencia artificial."
+    ],
+    "ui:notice.aiJudges": [
+     "El juez funciona con inteligencia artificial: Gemma 4 E2B, un modelo que se ejecuta en este dispositivo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano."
+    ],
+    "ui:notice.none": [
+     "Ninguna inteligencia artificial juega ni juzga este duelo. Te enfrentas al rival de versos escritos, un programa que usa estrofas preparadas de antemano, y el duelo se juzga por reglas."
+    ],
+    "ui:notice.online": [
+     "En línea, tu rival es otro jugador y nuestro servidor juzga ambas estrofas con reglas fijas. Ninguna inteligencia artificial juega ni juzga un duelo en línea."
+    ]
+   }
+  },
+  "fr": {
+   "strings": {
+    "ui": 437,
+    "pack": 128,
+    "sentences": 6
+   },
+   "languagetool": "fr",
+   "hunspell": [
+    "fr"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Crédits et licences"
+    ],
+    "ui:notice.aiBoth": [
+     "Votre adversaire et le juge reposent sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil."
+    ],
+    "ui:notice.aiWrites": [
+     "Votre adversaire repose sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil. Le duel est jugé par règles, pas par une intelligence artificielle."
+    ],
+    "ui:notice.aiJudges": [
+     "Le juge repose sur une intelligence artificielle : Gemma 4 E2B, un modèle qui tourne sur cet appareil. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance."
+    ],
+    "ui:notice.none": [
+     "Aucune intelligence artificielle ne joue ni ne juge ce duel. Vous affrontez l’adversaire aux strophes écrites, un programme qui joue des strophes préparées à l’avance, et le duel est jugé par règles."
+    ],
+    "ui:notice.online": [
+     "En ligne, votre adversaire est un autre joueur, et notre serveur juge les deux strophes selon des règles fixes. Aucune intelligence artificielle ne joue ni ne juge un duel en ligne."
+    ]
+   }
+  },
+  "de": {
+   "strings": {
+    "ui": 437,
+    "pack": 132,
+    "sentences": 6
+   },
+   "languagetool": "de-DE",
+   "hunspell": [
+    "de"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Quellen und Lizenzen"
+    ],
+    "ui:notice.aiBoth": [
+     "Dein Gegner und der Richter werden von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft."
+    ],
+    "ui:notice.aiWrites": [
+     "Dein Gegner wird von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft. Das Duell wird nach Regeln bewertet, nicht von künstlicher Intelligenz."
+    ],
+    "ui:notice.aiJudges": [
+     "Der Richter wird von künstlicher Intelligenz gesteuert: Gemma 4 E2B, ein Modell, das auf diesem Gerät läuft. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt."
+    ],
+    "ui:notice.none": [
+     "Keine künstliche Intelligenz spielt oder bewertet dieses Duell. Du spielst gegen den Gegner mit geschriebenen Strophen, ein Programm, das im Voraus vorbereitete Strophen spielt, und bewertet wird nach Regeln."
+    ],
+    "ui:notice.online": [
+     "Online ist dein Gegner ein anderer Spieler, und unser Server bewertet beide Strophen nach festen Regeln. Keine künstliche Intelligenz spielt oder bewertet ein Online-Duell."
+    ]
+   }
+  },
+  "it": {
+   "strings": {
+    "ui": 437,
+    "pack": 128,
+    "sentences": 6
+   },
+   "languagetool": "it",
+   "hunspell": [
+    "it"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Crediti e licenze"
+    ],
+    "ui:notice.aiBoth": [
+     "Il tuo avversario e il giudice funzionano con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo."
+    ],
+    "ui:notice.aiWrites": [
+     "Il tuo avversario funziona con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo. Il duello si giudica secondo regole, non con l’intelligenza artificiale."
+    ],
+    "ui:notice.aiJudges": [
+     "Il giudice funziona con l’intelligenza artificiale: Gemma 4 E2B, un modello che gira su questo dispositivo. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo."
+    ],
+    "ui:notice.none": [
+     "Nessuna intelligenza artificiale gioca o giudica questo duello. Affronti l’avversario dalle strofe scritte, un programma che usa strofe preparate in anticipo, e il duello si giudica secondo regole."
+    ],
+    "ui:notice.online": [
+     "Online il tuo avversario è un altro giocatore e il nostro server giudica entrambe le strofe secondo regole fisse. Nessuna intelligenza artificiale gioca o giudica un duello online."
+    ]
+   }
+  },
+  "pt": {
+   "strings": {
+    "ui": 437,
+    "pack": 130,
+    "sentences": 6
+   },
+   "languagetool": "pt-BR",
+   "hunspell": [
+    "pt-BR"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Créditos e licenças"
+    ],
+    "ui:notice.aiBoth": [
+     "Seu adversário e o juiz funcionam com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo."
+    ],
+    "ui:notice.aiWrites": [
+     "Seu adversário funciona com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo. O duelo é julgado por regras, não por inteligência artificial."
+    ],
+    "ui:notice.aiJudges": [
+     "O juiz funciona com inteligência artificial: Gemma 4 E2B, um modelo que roda neste dispositivo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas."
+    ],
+    "ui:notice.none": [
+     "Nenhuma inteligência artificial joga ou julga este duelo. Você enfrenta o adversário de estrofes escritas, um programa que usa estrofes já preparadas, e o duelo é julgado por regras."
+    ],
+    "ui:notice.online": [
+     "No modo online, seu adversário é outro jogador e nosso servidor julga ambas as estrofes por regras fixas. Nenhuma inteligência artificial joga ou julga um duelo online."
+    ]
+   }
+  },
+  "pl": {
+   "strings": {
+    "ui": 437,
+    "pack": 126,
+    "sentences": 6
+   },
+   "languagetool": "pl-PL",
+   "hunspell": [
+    "pl"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Uznanie autorstwa i licencje"
+    ],
+    "ui:notice.aiBoth": [
+     "Rolę twojego rywala i sędziego pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu."
+    ],
+    "ui:notice.aiWrites": [
+     "Rolę twojego rywala pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu. Pojedynek jest oceniany według reguł, a nie przez sztuczną inteligencję."
+    ],
+    "ui:notice.aiJudges": [
+     "Rolę sędziego pełni sztuczna inteligencja: Gemma 4 E2B, model działający na tym urządzeniu. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej."
+    ],
+    "ui:notice.none": [
+     "W tym pojedynku sztuczna inteligencja nie gra ani nie ocenia. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej, a pojedynek jest oceniany według reguł."
+    ],
+    "ui:notice.online": [
+     "W grze online twoim rywalem jest inny gracz, a nasz serwer ocenia obie strofy według stałych reguł. W pojedynku online sztuczna inteligencja nie gra ani nie ocenia."
+    ]
+   }
+  },
+  "ru": {
+   "strings": {
+    "ui": 437,
+    "pack": 130,
+    "sentences": 6
+   },
+   "languagetool": "ru-RU",
+   "hunspell": [
+    "ru"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Авторы и лицензии"
+    ],
+    "ui:notice.aiBoth": [
+     "Роль твоего соперника и судьи играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве."
+    ],
+    "ui:notice.aiWrites": [
+     "Роль твоего соперника играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве. Дуэль судят по правилам, а не с помощью искусственного интеллекта."
+    ],
+    "ui:notice.aiJudges": [
+     "Роль судьи играет искусственный интеллект: Gemma 4 E2B, модель, которая работает на этом устройстве. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами."
+    ],
+    "ui:notice.none": [
+     "В этой дуэли искусственный интеллект не играет и не судит. Ты играешь с соперником, у которого готовые строфы: это программа с заранее подготовленными строфами, а судят по правилам."
+    ],
+    "ui:notice.online": [
+     "В сетевой игре твой соперник — другой игрок, а наш сервер судит обе строфы по неизменным правилам. В сетевой дуэли искусственный интеллект не играет и не судит."
+    ]
+   }
+  },
+  "ar": {
+   "strings": {
+    "ui": 437,
+    "pack": 115,
+    "sentences": 6
+   },
+   "languagetool": "ar",
+   "hunspell": [
+    "ar"
+   ],
+   "counts": {
+    "languagetool": 5,
+    "hunspell": 0,
+    "allowed": 5,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.aiJudges",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.aiJudges",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا.",
+     "at": "برنامج",
+     "message": "فارسية \"برنامة\" عُرِّبت إلى برنامَج بفتح الميم",
+     "replacements": [
+      "برنامَج"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "لا يلعب",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يلعب\"\n\n      ",
+     "replacements": [
+      "لا يلعب"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "برنامج",
+     "message": "فارسية \"برنامة\" عُرِّبت إلى برنامَج بفتح الميم",
+     "replacements": [
+      "برنامَج"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    }
+   ],
+   "checked": {
+    "ui:footer.credits": [
+     "المصادر والتراخيص"
+    ],
+    "ui:notice.aiBoth": [
+     "خصمك والحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز."
+    ],
+    "ui:notice.aiWrites": [
+     "خصمك ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. أما المبارزة فيُحكم فيها بالقواعد، لا بالذكاء الاصطناعي."
+    ],
+    "ui:notice.aiJudges": [
+     "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا."
+    ],
+    "ui:notice.none": [
+     "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد."
+    ],
+    "ui:notice.online": [
+     "في المبارزة عبر الإنترنت يكون خصمك لاعبًا آخر، ويحكم خادمنا على أبيات الطرفين بقواعد ثابتة. ولا يلعب ذكاء اصطناعي فيها ولا يحكم."
+    ]
+   }
+  },
+  "hi": {
+   "strings": {
+    "ui": 437,
+    "pack": 130,
+    "sentences": 6
+   },
+   "languagetool": null,
+   "hunspell": [
+    "hi"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 3,
+    "allowed": 3,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiBoth",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "आपके प्रतिद्वंद्वी और निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiWrites",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "आपके प्रतिद्वंद्वी की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। द्वंद्व का निर्णय नियमों से होता है, कृत्रिम बुद्धि से नहीं।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiJudges",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    }
+   ],
+   "checked": {
+    "ui:footer.credits": [
+     "श्रेय और लाइसेंस"
+    ],
+    "ui:notice.aiBoth": [
+     "आपके प्रतिद्वंद्वी और निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल।"
+    ],
+    "ui:notice.aiWrites": [
+     "आपके प्रतिद्वंद्वी की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। द्वंद्व का निर्णय नियमों से होता है, कृत्रिम बुद्धि से नहीं।"
+    ],
+    "ui:notice.aiJudges": [
+     "निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है।"
+    ],
+    "ui:notice.none": [
+     "इस द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है, और निर्णय नियमों से होता है।"
+    ],
+    "ui:notice.online": [
+     "ऑनलाइन आपका प्रतिद्वंद्वी कोई दूसरा खिलाड़ी होता है, और हमारा सर्वर दोनों कविताओं का निर्णय तय नियमों से करता है। ऑनलाइन द्वंद्व में कृत्रिम बुद्धि न खेलती है, न निर्णय करती है।"
+    ]
+   }
+  },
+  "zh": {
+   "strings": {
+    "ui": 437,
+    "pack": 137,
+    "sentences": 6
+   },
+   "languagetool": "zh-CN",
+   "hunspell": null,
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "致谢与许可证"
+    ],
+    "ui:notice.aiBoth": [
+     "你的对手和裁判由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。"
+    ],
+    "ui:notice.aiWrites": [
+     "你的对手由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。这场对决按规则评判，而不是由人工智能评判。"
+    ],
+    "ui:notice.aiJudges": [
+     "裁判由人工智能担任：Gemma 4 E2B，一个在这台设备上运行的模型。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序。"
+    ],
+    "ui:notice.none": [
+     "这场对决没有人工智能出诗或评判。你将面对预先写好诗句的对手，也就是一个使用预先准备好的诗的程序，并按规则评判。"
+    ],
+    "ui:notice.online": [
+     "在线对决中，你的对手是另一位玩家，我们的服务器按固定规则评判双方的诗。在线对决没有人工智能出诗或评判。"
+    ]
+   }
+  },
+  "ja": {
+   "strings": {
+    "ui": 437,
+    "pack": 133,
+    "sentences": 6
+   },
+   "languagetool": "ja-JP",
+   "hunspell": null,
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "クレジットとライセンス"
+    ],
+    "ui:notice.aiBoth": [
+     "相手と審判は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。"
+    ],
+    "ui:notice.aiWrites": [
+     "相手は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。決闘の審査は人工知能ではなく、規則で行います。"
+    ],
+    "ui:notice.aiJudges": [
+     "審判は人工知能（AI）が務めます。この端末で動くモデル、Gemma 4 E2Bです。相手は、あらかじめ書かれた詩を出すプログラムです。"
+    ],
+    "ui:notice.none": [
+     "この決闘では、人工知能が詩を出すことも審査することもありません。相手は、あらかじめ書かれた詩を出すプログラムで、審査は規則で行います。"
+    ],
+    "ui:notice.online": [
+     "オンラインの決闘では、相手は別のプレイヤーで、両者の詩は当サーバーが決まった規則で審査します。人工知能が詩を出すことも審査することもありません。"
+    ]
+   }
+  },
+  "ko": {
+   "strings": {
+    "ui": 437,
+    "pack": 127,
+    "sentences": 6
+   },
+   "languagetool": null,
+   "hunspell": [
+    "ko"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 2,
+    "allowed": 2,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.online",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요.",
+     "at": "플레이어가",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.online",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요.",
+     "at": "정해진",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    }
+   ],
+   "checked": {
+    "ui:footer.credits": [
+     "저작자 표시 및 라이선스"
+    ],
+    "ui:notice.aiBoth": [
+     "상대와 심판은 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요."
+    ],
+    "ui:notice.aiWrites": [
+     "상대는 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요. 결투는 인공지능이 아니라 규칙으로 심사해요."
+    ],
+    "ui:notice.aiJudges": [
+     "심판은 인공지능이 맡아요. 이 기기에서 실행되는 Gemma 4 E2B 모델이에요. 상대는 미리 쓰인 시를 내는 프로그램이에요."
+    ],
+    "ui:notice.none": [
+     "이 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요. 상대는 미리 쓰인 시를 내는 프로그램이고, 규칙으로 심사해요."
+    ],
+    "ui:notice.online": [
+     "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요."
+    ]
+   }
+  },
+  "vi": {
+   "strings": {
+    "ui": 437,
+    "pack": 131,
+    "sentences": 6
+   },
+   "languagetool": null,
+   "hunspell": [
+    "vi"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Ghi công và giấy phép"
+    ],
+    "ui:notice.aiBoth": [
+     "Đối thủ và giám khảo của bạn do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này."
+    ],
+    "ui:notice.aiWrites": [
+     "Đối thủ của bạn do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này. Trận đấu được chấm theo quy tắc, không phải bằng trí tuệ nhân tạo."
+    ],
+    "ui:notice.aiJudges": [
+     "Giám khảo do trí tuệ nhân tạo đảm nhận: Gemma 4 E2B, một mô hình chạy trên thiết bị này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước."
+    ],
+    "ui:notice.none": [
+     "Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu này. Bạn đấu với đối thủ dùng thơ viết sẵn, tức là một chương trình đưa ra những bài thơ đã chuẩn bị trước, còn việc chấm điểm thì theo quy tắc."
+    ],
+    "ui:notice.online": [
+     "Khi chơi trực tuyến, đối thủ của bạn là một người chơi khác, và máy chủ của chúng tôi chấm cả hai bài thơ theo quy tắc cố định. Không có trí tuệ nhân tạo nào chơi hay chấm trận đấu trực tuyến."
+    ]
+   }
+  },
+  "th": {
+   "strings": {
+    "ui": 437,
+    "pack": 117,
+    "sentences": 6
+   },
+   "languagetool": null,
+   "hunspell": [
+    "th"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "เครดิตและสัญญาอนุญาต"
+    ],
+    "ui:notice.aiBoth": [
+     "คู่ต่อสู้และกรรมการของคุณทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้"
+    ],
+    "ui:notice.aiWrites": [
+     "คู่ต่อสู้ของคุณทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ ส่วนการประชันตัดสินด้วยกฎ ไม่ใช่ด้วยปัญญาประดิษฐ์"
+    ],
+    "ui:notice.aiJudges": [
+     "กรรมการทำงานด้วยปัญญาประดิษฐ์ คือ Gemma 4 E2B ซึ่งเป็นโมเดลที่ทำงานบนอุปกรณ์เครื่องนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า"
+    ],
+    "ui:notice.none": [
+     "ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันครั้งนี้ คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว ซึ่งเป็นโปรแกรมที่ใช้บทกลอนที่เตรียมไว้ล่วงหน้า และตัดสินด้วยกฎ"
+    ],
+    "ui:notice.online": [
+     "ในการประชันออนไลน์ คู่ต่อสู้ของคุณคือผู้เล่นอีกคน และเซิร์ฟเวอร์ของเราตัดสินบทกลอนของทั้งสองฝ่ายด้วยกฎที่ตายตัว ไม่มีปัญญาประดิษฐ์เล่นหรือตัดสินการประชันออนไลน์"
+    ]
+   }
+  },
+  "id": {
+   "strings": {
+    "ui": 437,
+    "pack": 129,
+    "sentences": 6
+   },
+   "languagetool": null,
+   "hunspell": [
+    "id"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": [],
+   "checked": {
+    "ui:footer.credits": [
+     "Atribusi dan lisensi"
+    ],
+    "ui:notice.aiBoth": [
+     "Lawanmu dan juri dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini."
+    ],
+    "ui:notice.aiWrites": [
+     "Lawanmu dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini. Duel dinilai dengan aturan, bukan oleh kecerdasan buatan."
+    ],
+    "ui:notice.aiJudges": [
+     "Juri dijalankan oleh kecerdasan buatan: Gemma 4 E2B, model yang berjalan di perangkat ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya."
+    ],
+    "ui:notice.none": [
+     "Tidak ada kecerdasan buatan yang bermain atau menilai duel ini. Kamu melawan lawan dengan syair tertulis, yaitu program yang memakai syair yang sudah disiapkan sebelumnya, dan duel dinilai dengan aturan."
+    ],
+    "ui:notice.online": [
+     "Dalam duel daring, lawanmu adalah pemain lain, dan server kami menilai kedua syair dengan aturan yang tetap. Tidak ada kecerdasan buatan yang bermain atau menilai duel daring."
+    ]
+   }
+  }
+ },
+ "stale": [],
+ "open": 0
+}

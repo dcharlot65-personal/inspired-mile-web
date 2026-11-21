@@ -1,0 +1,48 @@
+---
+// One entry of the credits page (src/pages/credits.astro): what it is, who made it, what the game uses it
+// for, where it comes from, its license, what was changed, and what the license asks of us. A library's entry
+// also names the npm packages it covers, each at its version ("name@version"; the name alone for a package
+// another package's file carries inside it with no version recorded): the build checks that list against what
+// the bundle really holds, both ways (scripts/third-party-notices.mjs, data-packages below). An entry for files a
+// package carries under another license (three.js's examples/jsm/libs) names them by their FILE_LICENSES ids in
+// `files` (data-files), which the build holds to what ships the same way.
+export interface CreditLink { text: string; href: string }
+export interface CreditEntry {
+  name: string;
+  by: string;
+  use: string;
+  source: CreditLink[];
+  license: CreditLink[];
+  changed: string;
+  duties: string;
+  packages?: string[];
+  files?: string[];
+}
+interface Props { e: CreditEntry }
+const { e } = Astro.props;
+const linkCls = 'text-accent hover:text-accent-light transition-colors underline';
+const outside = (href: string) => /^https?:/.test(href);
+---
+
+<div class="rounded-lg border border-obsidian-800 bg-obsidian-900/30 p-4" data-packages={e.packages?.join(' ')} data-files={e.files?.join(' ')}>
+  <h3 class="font-semibold text-white">{e.name}</h3>
+  <p class="text-sm text-obsidian-400 mb-3">{e.by}</p>
+  <dl class="grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-x-4 gap-y-2 text-sm">
+    <dt class="text-obsidian-500">Used for</dt>
+    <dd>{e.use}</dd>
+    <dt class="text-obsidian-500">Source</dt>
+    <dd>{e.source.map((l, i) => <>{i > 0 && ', '}<a href={l.href} class={linkCls} {...(outside(l.href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{l.text}</a></>)}</dd>
+    <dt class="text-obsidian-500">License</dt>
+    <dd>{e.license.map((l, i) => <>{i > 0 && '; '}<a href={l.href} class={linkCls} {...(outside(l.href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{l.text}</a></>)}</dd>
+    <dt class="text-obsidian-500">What we changed</dt>
+    <dd>{e.changed}</dd>
+    <dt class="text-obsidian-500">What it asks of us</dt>
+    <dd>{e.duties}</dd>
+    {e.packages && e.packages.length > 0 && (
+      <>
+        <dt class="text-obsidian-500">Packages</dt>
+        <dd class="font-mono text-xs break-words">{e.packages.join(', ')}</dd>
+      </>
+    )}
+  </dl>
+</div>

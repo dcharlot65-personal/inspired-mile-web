@@ -239,14 +239,21 @@ export function rememberedModel(cap: Capability, chosen: string | null): Exclude
 
 /**
  * Load the model for a tier. If it fails (out of memory, a driver fault), the smaller models
- * that are used in some language are tried before giving up (loadOrder).
+ * that are used in some language are tried before giving up (loadOrder). `onTry` hears each model
+ * before it is tried, so a page that tells the player which model is loading (the AI notice) names
+ * the one now loading, not the one that just failed.
  */
-export function loadBrain(tier: Exclude<Tier, 'none'>, onProgress?: (p: LoadProgress) => void): Promise<boolean> {
+export function loadBrain(
+  tier: Exclude<Tier, 'none'>,
+  onProgress?: (p: LoadProgress) => void,
+  onTry?: (spec: ModelSpec) => void,
+): Promise<boolean> {
   if (loaded) return Promise.resolve(true);
   if (loading) return loading;
   loading = (async () => {
     for (const spec of loadOrder(tier)) {
       try {
+        onTry?.(spec);
         await loadSpec(spec, onProgress);
         onProgress?.({ percent: 100, text: `${spec.label} ready` });
         // The weights are in browser storage now: ask the browser not to evict them.

@@ -468,6 +468,12 @@ const pl: Record<string, string> = {
   'battle.lang.written': '{language}: grasz z rywalem z gotowymi strofami, bo model {model} nie wykazał, że dobrze pisze strofy w tym języku.',
   'battle.lang.rules': '{language}: ocena według reguł, bo model {model} nie wykazał, że jest dobrym sędzią strof w tym języku.',
   'brain.noneShown': 'Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia strofy, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł.',
+  'footer.credits': 'Uznanie autorstwa i licencje',
+  'notice.aiBoth': 'Rolę twojego rywala i sędziego pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu.',
+  'notice.aiWrites': 'Rolę twojego rywala pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu. Pojedynek jest oceniany według reguł, a nie przez sztuczną inteligencję.',
+  'notice.aiJudges': 'Rolę sędziego pełni sztuczna inteligencja: {model}, model działający na tym urządzeniu. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej.',
+  'notice.none': 'W tym pojedynku sztuczna inteligencja nie gra ani nie ocenia. Grasz z rywalem, który ma gotowe strofy, czyli z programem używającym strof przygotowanych wcześniej, a pojedynek jest oceniany według reguł.',
+  'notice.online': 'W grze online twoim rywalem jest inny gracz, a nasz serwer ocenia obie strofy według stałych reguł. W pojedynku online sztuczna inteligencja nie gra ani nie ocenia.',
 };
 
 export default pl;

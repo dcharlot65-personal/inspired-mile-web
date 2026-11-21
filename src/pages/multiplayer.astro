@@ -24,6 +24,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Online duels are fought in English: the server scores English verse only, by the same English rules this page
           previews with. Solo duels are offered in all sixteen languages.
         </p>
+        <!-- Who plays and who judges, in the player's own language although the page is English (EU AI Act
+             Article 50; src/lib/ai-notice.ts has the solo duel's): the script marks its lang and direction. -->
+        <p id="mp-ai-notice" role="note" lang="en" data-i18n="notice.online" class="max-w-2xl mx-auto mt-3 text-sm text-obsidian-200 border border-gold-500/30 bg-gold-500/10 rounded-sm px-3 py-2">
+          Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.
+        </p>
       </div>
 
       <!-- Lobby -->
@@ -169,7 +174,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // The rules' own messages (a form's name, a check's label, a device's brief) are rendered
     // in the interface language, as on the battle page. The rest of this page is English only
     // for now, and so is online scoring: the server scores English verse.
-    import { initI18n, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, isRtl, locale, onLocaleChange, t, tm } from '../i18n';
     import { deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import { getCardById, type Card } from '../lib/cards';
     import { getActiveDeck } from '../lib/deck-manager';
@@ -887,9 +892,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       renderPlan();
     }
 
+    // The notice of who plays and who judges is the one line of this English page in the player's language
+    // (the layout fills its data-i18n): its lang and direction are the interface's.
+    function markNotice() {
+      const notice = $('mp-ai-notice');
+      notice.lang = locale();
+      notice.dir = isRtl(locale()) ? 'rtl' : 'ltr';
+    }
+
     // The rules' messages follow the interface language.
-    void initI18n();
+    void initI18n().then(markNotice);
     onLocaleChange(() => {
+      markNotice();
       loadDeck();
       if (!start) return;
       const plan = start.rounds[round];

@@ -536,8 +536,12 @@ th.wikisource นิราศภูเขาทอง; id.wikisource Gurindam Du
 **Licence consequence for shipping.** The tables are derived from CC BY-SA 4.0 data
 (Wiktionary, CC-CEDICT, and since 2026-11-18 JMdict and JMnedict). Shipping them requires attribution to those sources on the site
 and that the tables themselves stay under CC BY-SA 4.0; each generated module names its
-source and licence in its header. The site has no such credit yet. The mecab-ipadic notice
-must travel with its dictionary files. This is the owner's call before deployment.
+source and licence in its header, but that header is a comment, which the build strips. Since
+2026-11-19 the site's credits page (`/credits`, `src/pages/credits.astro`, linked from every
+page's footer) gives the attribution and says the tables are under CC BY-SA 4.0. The mecab-ipadic
+notice must travel with its dictionary files: the cut files carry none, so the site serves it beside
+them (`public/licenses/mecab-ipadic-NOTICE.txt`, kuromoji 0.1.2's own text). `docs/ASSETS.md` has the
+record.
 
 ## Rebuilding
 

@@ -371,6 +371,16 @@ const UI: Record<string, string> = {
   'battle.lang.rules': '{language}: judged by rule, because {model} has not shown it is a good judge of verse in this language.',
   // The model panel, when every model this device can run is used in no language.
   'brain.noneShown': 'No model this device can run has shown that it writes or judges verse well, so you face the written opponent and the judging is by rule.',
+  // The credits page (src/pages/credits.astro), named in the footer of every page and on /about.
+  'footer.credits': 'Credits and Licenses',
+  // Who plays and who judges, told before the first duel (EU AI Act, Regulation (EU) 2024/1689,
+  // Article 50(1) and (5)); chosen by src/lib/ai-notice.ts. "Artificial intelligence" is each
+  // language's Wikipedia title for it (docs/language/sources/wikidata-ai.json).
+  'notice.aiBoth': 'Your opponent and the judge are run by artificial intelligence: {model}, a model running on this device.',
+  'notice.aiWrites': 'Your opponent is run by artificial intelligence: {model}, a model running on this device. The duel is judged by rule, not by artificial intelligence.',
+  'notice.aiJudges': 'The judge is run by artificial intelligence: {model}, a model running on this device. You face the written opponent, a program that plays verses prepared in advance.',
+  'notice.none': 'No artificial intelligence plays or judges this duel. You face the written opponent, a program that plays verses prepared in advance, and the duel is judged by rule.',
+  'notice.online': 'Online, your opponent is another player, and our server judges both verses by fixed rules. No artificial intelligence plays or judges an online duel.',
 };
 
 const en: Record<string, string> = { ...ENGINE_EN, ...UI };
