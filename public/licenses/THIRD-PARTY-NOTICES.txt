@@ -3042,8 +3042,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----- Unicode data: confusables (UTS #39), the Unihan database and Unicode CLDR, by Unicode, Inc. -----
-In the build: src/lib/verse/confusables.ts, src/lib/verse/judge-words.ts, src/lib/verse/sound/data/zh.ts.
-Letters drawn like a Latin letter (confusables 18.0.0), Chinese characters' readings (Unihan 18.0.0), numbers spelled out and other words of each language (CLDR 49), each reduced to what the game reads. The Unicode License v3, first as unicode.org publishes it (the notice for the confusables and Unihan), then as CLDR's own package carries it (cldr-rbnf 49.0.0's LICENSE, the notice for the CLDR words: "Copyright © 2001–2026 Unicode, Inc."):
+In the build: src/lib/verse/confusables.ts, src/lib/verse/judge-words.ts, src/lib/verse/sound/data/zh.ts, src/lib/voice/emoji-en.ts.
+Letters drawn like a Latin letter (confusables 18.0.0), Chinese characters' readings (Unihan 18.0.0), numbers spelled out and other words of each language (CLDR 49), the English names of emoji the voice says (CLDR 49 annotations), each reduced to what the game reads. The Unicode License v3, first as unicode.org publishes it (the notice for the confusables and Unihan), then as CLDR's own package carries it (cldr-rbnf 49.0.0's LICENSE, the notice for the CLDR words: "Copyright © 2001–2026 Unicode, Inc."):
 
 [unicode-license-v3.txt]
 UNICODE LICENSE V3
