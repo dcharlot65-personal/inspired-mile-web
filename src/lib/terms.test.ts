@@ -13,7 +13,14 @@ describe('the Terms of Service and third-party material', () => {
     const para = terms.slice(terms.indexOf('id="third-party"'), terms.indexOf('</p>', terms.indexOf('id="third-party"')));
     expect(para).toContain('href="/credits"');
     expect(para).toContain('nothing in these Terms restricts what that license allows you to do with that material');
-    expect(para).toMatch(/CC BY-SA 4\.0 and the GNU General Public License/);
+    // The licenses it names as examples are ones the site ships material under: the notices file carries each.
+    // (It named the GNU GPL while eSpeak NG shipped inside the voice; since the voice reads English itself, nothing does.)
+    const examples = para.match(/\(such as ([^)]*)\)/)?.[1] ?? '';
+    expect(examples).toContain('CC BY-SA 4.0');
+    const notices = read('public/licenses/THIRD-PARTY-NOTICES.txt');
+    for (const [name, text] of [['CC BY-SA 4.0', 'CC BY-SA 4.0'], ['GNU General Public License', 'GNU General Public License'], ['GPL', 'GNU General Public License']]) {
+      if (examples.includes(name)) expect([name, notices.includes(text)]).toEqual([name, true]);
+    }
     // EDRDG's licence statement: "Users of material from the files must NOT claim copyright over that material."
     expect(para).toContain('we claim no copyright over them or over what our own works take from them');
     expect(para).toMatch(/JMdict and JMnedict, for one, stay the copyright of James William Breen and the Electronic Dictionary Research and Development Group/);

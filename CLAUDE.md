@@ -782,8 +782,9 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `scripts/third-party/texts/` (sources and sha256 in its `SOURCES.md`; `third-party-notices.test.ts` fails on a file without its row or with another sha256; CLDR's words carry CLDR's own copy of the Unicode License, from the cldr-rbnf package); ONNX Runtime's are from its PyPI wheels,
   because its npm packages carry none (its notices of compiled-in code: `public/licenses/onnxruntime-*-ThirdPartyNotices.txt`).
 - **The Terms leave third-party material to its own licence** (`terms.astro` section 10, `#third-party`, and the
-  reverse-engineering line in section 7): CC BY-SA's and the GPL's "no further restrictions". Keep that sentence if
-  the Terms are rewritten. No copyright is claimed over what was taken from others' works (EDRDG's licence statement:
+  reverse-engineering line in section 7): CC BY-SA's "no further restrictions". Keep that sentence if
+  the Terms are rewritten. A license it names as an example must be one the notices file carries (`terms.test.ts`): it
+  named the GPL while eSpeak NG shipped, and nothing under the GPL ships since the voice reads English itself. No copyright is claimed over what was taken from others' works (EDRDG's licence statement:
   "Users of material from the files must NOT claim copyright over that material"): the Terms, `/credits` and the
   notices file's CC BY-SA statement say so, and `terms.test.ts`, `credits.test.ts` and `third-party-notices.test.ts`
   hold them to it.
