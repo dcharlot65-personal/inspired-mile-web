@@ -163,6 +163,8 @@ describe('text', () => {
     ['Henry I of England', 'Henry the first of England'], ['Mary I and Philip II', 'Mary the first and Philip the second'],
     ['Act I Scene ii', 'Act one Scene two'], ['World War I', 'World War one'], ['the crown of Mary I\nwas gold', 'the crown of Mary the first\nwas gold'],
     ['ELIZABETH I.', 'ELIZABETH the first.'],
+    // X's alone are kisses after a king's name too (the edge measurement's "Mary the twentieth").
+    ['Love you Mary XX, signed with a kiss.', 'Love you Mary XX, signed with a kiss.'], ['Henry XXX', 'Henry XXX'], ['Pope John XXIII', 'Pope John the twenty-third'],
     // One letter of C, D, L or M after a part's name is a letter, and a long numeral there is a number only below 400.
     ['Part C of the plan', 'Part C of the plan'], ['Section D is mine', 'Section D is mine'], ['Level M', 'Level M'], ['Book L', 'Book L'],
     ['Sonnet CLIV', 'Sonnet one hundred and fifty-four'], ['Psalm CXIX', 'Psalm one hundred and nineteen'], ['Part MIX', 'Part MIX'], ['Stage CD', 'Stage CD'],

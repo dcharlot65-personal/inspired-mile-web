@@ -65,6 +65,7 @@ const FAULTS = [
   ['a minus sign dropped', G2P, "t = t.replace(/(^|[\\s(\\[{\"“'])-(?=\\d)/g, '$1minus ')", 't = t'],
   ['no Roman numerals', G2P, 't = romanNumerals(t);', ''],
   ['a lone I after a king\'s name always his number', G2P, '      if (loneI && !endsPhrase()) return all;\n', ''],
+  ['kisses after a king\'s name read as his number (Mary XX)', G2P, " || /^X+$/.test(num)) return all;", ') return all;'],
   ['the pronoun\'s contractions read as a numeral (Mary I\'m)', G2P, "if (/^'\\p{L}/u.test(rest) && (loneI || !/^'s(?![\\p{L}\\p{M}\\d])/u.test(rest))) return all;", ''],
   ['any word after a lone I ends its phrase (MARY I LOVE YOU)', G2P, '      if (/^[ \\t]*(?:$|\\n|[.,;:!?…)\\]"”])/.test(rest)) return true;', '      return true;'],
   ['a lone I before "of" not a number (Henry I of England)', G2P, "return next === 'of' || next === 'and' ||", 'return'],

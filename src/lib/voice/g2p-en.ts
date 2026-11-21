@@ -839,7 +839,9 @@ function romanNumerals(t: string): string {
     };
     if (capital && REGNAL.has(lower) && !small && n < 40) {
       if (loneI && !endsPhrase()) return all;
-      if (num.length === 1 && !loneI && num !== 'V') return all;
+      // One letter but I or V is a letter (Charles X is rare; Malcolm X is not a king), and X's
+      // alone are kisses ("Love you Mary XX"), after a king's name too.
+      if ((num.length === 1 && !loneI && num !== 'V') || /^X+$/.test(num)) return all;
       return `${pre}${word}${sp}the ${ordinalWords(n)}`;
     }
     if (SECTION.has(lower)) {
