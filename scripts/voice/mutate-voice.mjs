@@ -86,6 +86,7 @@ const FAULTS = [
   ['the measurement host check passes any host', 'scripts/voice/host.mjs', 'return readdirSync(bin).some(', 'return true || readdirSync(bin).some('],
   ['check reads no base64', CHECK, 'for (const m of text.matchAll(BASE64_RUN)) {', 'for (const m of []) {'],
   ['check does not gunzip', CHECK, 'if (bytes[0] === 0x1f && bytes[1] === 0x8b) {', 'if (false) {'],
+  ['check runs only when called by its real path (silent through a symlink)', CHECK, 'return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));', 'return process.argv[1] === fileURLToPath(import.meta.url);'],
   ['check finds the name inside other words', CHECK, '(?<![A-Za-z])(?:eSpeak|ESPEAK|espeak[-_]ng)', '(?:eSpeak|ESPEAK|espeak[-_]ng|espeak)'],
   ['voice reads text through kokoro-js', 'src/lib/thespian-voice.ts', 'const audio = await model.generate_from_ids(input_ids, { voice, speed });', 'const audio = await model.generate(ps, { voice, speed });'],
   ['phonemizer not swapped out', 'astro.config.mjs', "resolve: { alias: [{ find: /^phonemizer$/, replacement: noEspeak }] },", ''],

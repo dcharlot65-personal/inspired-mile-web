@@ -18,7 +18,7 @@
  *   - the same inside every long base64 run of a text file, decoded, and gunzipped when it is
  *     gzip: phonemizer carries eSpeak's program and data that way, where no text search sees them.
  */
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, realpathSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
@@ -100,7 +100,22 @@ export function scanDir(dir) {
   return { findings, files: count };
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+/**
+ * Run as a program, by whatever path: Node gives a script its real path in import.meta.url, and
+ * process.argv[1] as typed, so the two differ when the path runs through a symlink (/tmp is one on
+ * macOS, and so is a linked checkout). Compared as written, the check once did nothing there and
+ * exited 0.
+ */
+function runAsProgram() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+if (runAsProgram()) {
   const dir = process.argv[2] ?? 'dist';
   const { findings, files: count } = scanDir(dir);
   if (findings.length) {

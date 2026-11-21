@@ -1,6 +1,7 @@
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 // @ts-ignore a plain ES module of the build scripts
@@ -61,6 +62,32 @@ describe('the build check finds eSpeak NG however it is carried', () => {
     const { findings, files } = scanDir(dir);
     expect(files).toBe(3);
     expect([...new Set(findings.map((f: { file: string }) => f.file))]).toEqual([join('_astro', 'kokoro.js')]);
+  });
+});
+
+describe('the build check as a program', () => {
+  const run = (script: string, dir: string) => spawnSync(process.execPath, [script, dir], { encoding: 'utf8' });
+
+  it('fails on a build that holds eSpeak NG by whatever path it is called, a symlink too, and passes a clean one', () => {
+    const base = mkdtempSync(join(tmpdir(), 'no-espeak-run-'));
+    const dirty = join(base, 'dirty');
+    const clean = join(base, 'clean');
+    mkdirSync(join(dirty, '_astro'), { recursive: true });
+    mkdirSync(clean);
+    writeFileSync(join(dirty, '_astro', 'kokoro.js'), 'new A.eSpeakNGWorker');
+    writeFileSync(join(clean, 'index.html'), '<html>Sonnet Man</html>');
+    const real = resolve('scripts/check-no-espeak.mjs');
+    // A link to the script, and a linked folder holding it (as /tmp is on macOS, or a linked checkout).
+    symlinkSync(real, join(base, 'check.mjs'));
+    symlinkSync(resolve('scripts'), join(base, 'scripts-link'));
+    for (const script of [real, join(base, 'check.mjs'), join(base, 'scripts-link', 'check-no-espeak.mjs')]) {
+      const bad = run(script, dirty);
+      expect(bad.status, `${script}: ${bad.stdout}${bad.stderr}`).toBe(1);
+      expect(bad.stderr).toContain('eSpeakNGWorker');
+      const good = run(script, clean);
+      expect(good.status, `${script}: ${good.stdout}${good.stderr}`).toBe(0);
+      expect(good.stdout).toContain('no eSpeak NG and no phonemizer');
+    }
   });
 });
 
