@@ -846,12 +846,15 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
           else Object.assign(arrow.style, { top: 'auto', bottom: '-6px', borderBottom: edge, borderRight: edge, borderTop: 'none', borderLeft: 'none' });
         };
         place();
-        // Placed again when the text arrives in another language, the page scrolls or the window changes size.
+        // Placed again when the text arrives in another language, the page scrolls or the window changes size. The page
+        // is watched as well as the tooltip: the tour opens before the page's own strings may have arrived, and when
+        // they come the text above the target changes length and moves it, while the tooltip keeps its size.
         reposition?.();
         window.addEventListener('scroll', place, { passive: true });
         window.addEventListener('resize', place);
         const watch = new ResizeObserver(place);
         watch.observe(tooltip);
+        watch.observe(document.body);
         reposition = () => { window.removeEventListener('scroll', place); window.removeEventListener('resize', place); watch.disconnect(); reposition = null; };
       }
 
