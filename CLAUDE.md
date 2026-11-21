@@ -138,7 +138,9 @@ every screen (`src/lib/ai-marking.test.ts` reads the markup), and the "AI Genera
 (`pg.trivia.aiBadge`); the voice setting reads "AI voice". A new place that shows, shares or exports a
 model's text must carry the same mark (`docs/AI-MARKING.md`, which also compares the method with the
 Commission's Code of Practice and lists the commit each model's `main` held on 2026-11-19: check it
-before a deploy; `tests/ai-marking.spec.ts`).
+before a deploy; `tests/ai-marking.spec.ts`). The label and the notice before the duel (`src/lib/ai-notice.ts`,
+below) read the same lists: the notice says who may write and judge, the label who wrote this verse, and a
+verse the written opponent plays (also where a model writes and loses the round to it) has no label.
 
 **What play pays** is one switch, `ECONOMY_LIVE` in `src/lib/economy-live.ts`: false while nothing calls
 `earnCredits`, `addXP` or `buyPack` (as in the first deploy of R15; fix/server-authority's economy calls them), and then the Season Pass shows no XP rates and says

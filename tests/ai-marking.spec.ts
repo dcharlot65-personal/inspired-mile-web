@@ -160,6 +160,36 @@ test.describe('A verse a model wrote is marked', () => {
     await expect(page.locator('#opponent-ai-label')).toBeHidden();
   });
 
+  // The notice before the duel (fix/compliance, Article 50(1)) and the label on each verse (fix/predeploy, 50(2)) are
+  // gated by the same lists: a verse is labelled only in a duel whose notice says a model writes, and a duel whose
+  // notice says the written opponent plays shows no label. (Where a model writes, a round it loses to the written
+  // verse, opponent.ts, shows that verse unlabelled: the notice names who may write, the label who wrote this one.)
+  for (const [writesIn, judgesIn, opponent, judge] of [[['en'], [], 'model', 'rules'], [[], ['en'], 'written', 'model']] as const) {
+    test(`the notice and the label agree: a model that ${writesIn.length ? 'writes' : 'does not write'} the duel's language`, async ({ page }) => {
+      const seed = await seedTheModelWins();
+      await standInModel(page, { verse: VERSE });
+      await page.goto(`/battle?brain=grand&seed=${seed}`);
+      await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B');
+      await setLists(page, 'grand', [...writesIn], [...judgesIn]);
+      await page.selectOption('#language', 'en');
+      const notice = page.locator('#ai-notice');
+      await expect(notice).toBeVisible();
+      await expect(notice).toHaveAttribute('data-opponent', opponent);
+      await expect(notice).toHaveAttribute('data-judge', judge);
+      await page.click('#start-duel');
+      const verse = page.locator('#opponent-verse');
+      await expect(verse).toHaveAttribute('data-source', opponent, { timeout: 60_000 });
+      if (opponent === 'model') {
+        await expect(verse).toHaveAttribute('data-ai-generated', aiGenerated(MODELS.grand));
+        await expect(page.locator('#opponent-ai-label')).toBeVisible();
+      } else {
+        await expect(verse).not.toHaveAttribute('data-ai-generated', /.*/);
+        await expect(page.locator('#opponent-ai-label')).toBeHidden();
+      }
+      await expect(notice).toHaveAttribute('data-opponent', opponent);
+    });
+  }
+
   test('in the Theatre: the label on the stage, the mark on the verse as text beside it', async ({ page }) => {
     const seed = await seedTheModelWins();
     await standInModel(page, { verse: VERSE });

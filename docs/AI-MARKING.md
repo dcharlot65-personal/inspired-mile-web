@@ -27,8 +27,18 @@ techniques". Read on 2026-11-19 from the Publications Office's copy of the act
 (`publications.europa.eu/resource/celex/32024R1689`, served as cellar
 `dc8116a1-3fe6-11ef-865a-01aa75ed71a1.0006.03`, sha256 of the XHTML
 `8f0b656302f9864cc87e040c371f209a9d65ae1a6cecc25ca5eb737e872d721a`); EUR-Lex's own page answered a
-script check that a command-line client cannot pass. Not checked here: whether a later amendment changed
-paragraph 2's words. The Commission's code of practice is compared below.
+script check that a command-line client cannot pass. Whether a later amendment changed paragraph 2's words was
+not checked when this was written; the compliance branch's last check (2026-11-20) read Regulation (EU)
+2026/1744 (OJ L, 24.7.2026) on EUR-Lex: in Article 50 it replaces only paragraph 7, and it adds Article 111(4),
+which gives a system placed on the market before 2 August 2026 until **2 December 2026** to comply with
+paragraph 2. The Commission's code of practice is compared below.
+
+**With the notice before the duel.** Article 50(1) is met separately, by the notice the battle page and the
+Theatre show before a duel (`src/lib/ai-notice.ts`, from `fix/compliance`): it says whether a model writes or
+judges that duel. Both read the same lists (`MODELS[tier].writesIn` and `judgesIn`), so a verse is labelled
+only in a duel whose notice says a model writes (`tests/ai-marking.spec.ts`, "the notice and the label agree").
+Where a model writes, a round in which its verse loses to the written opponent's (`opponent.ts`) shows the
+written verse, unlabelled: the notice names who may write, the label who wrote the verse in front of the player.
 
 ## The method: a metadata identification on the element
 
