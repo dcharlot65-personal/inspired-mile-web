@@ -25,7 +25,11 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
   wasm: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm',
 } } } } };`;
 
-export async function standInModel(page: Page, verse = 'The moon is up and I am here') {
+/**
+ * `verse`: what the stand-in writes when asked for a verse. An options object, the shape fix/compliance gives this
+ * helper too (`failing`, `holding`), so the two merge as one set of options.
+ */
+export async function standInModel(page: Page, { verse = 'The moon is up and I am here' }: { verse?: string } = {}) {
   await page.addInitScript(() => {
     Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
   });

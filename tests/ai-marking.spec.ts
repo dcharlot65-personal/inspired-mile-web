@@ -47,7 +47,7 @@ test.describe('A verse a model wrote is marked', () => {
   for (const ui of Object.keys(LABEL)) {
     test(`on the battle page, labelled in the interface's language (${ui}) and marked with the model and its version`, async ({ page }) => {
       const seed = await seedTheModelWins();
-      await standInModel(page, VERSE);
+      await standInModel(page, { verse: VERSE });
       await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
       await page.goto(`/battle?brain=grand&seed=${seed}`);
       await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B');
@@ -73,7 +73,7 @@ test.describe('A verse a model wrote is marked', () => {
   /** A duel whose first verse the stand-in model wrote, in English, with the interface in `ui`. */
   async function modelDuel(page: Page, ui: string) {
     const seed = await seedTheModelWins();
-    await standInModel(page, VERSE);
+    await standInModel(page, { verse: VERSE });
     await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
     await page.goto(`/battle?brain=grand&seed=${seed}`);
     await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B');
@@ -147,7 +147,7 @@ test.describe('A verse a model wrote is marked', () => {
   });
 
   test('nor with a model loaded that does not write the duel\'s language', async ({ page }) => {
-    await standInModel(page, VERSE);
+    await standInModel(page, { verse: VERSE });
     await page.goto('/battle?brain=grand&seed=11');
     await expect(page.locator('#brain-status')).toContainText('Gemma 4 E2B');
     await setLists(page, 'grand', [], ['en']);
@@ -162,7 +162,7 @@ test.describe('A verse a model wrote is marked', () => {
 
   test('in the Theatre: the label on the stage, the mark on the verse as text beside it', async ({ page }) => {
     const seed = await seedTheModelWins();
-    await standInModel(page, VERSE);
+    await standInModel(page, { verse: VERSE });
     await page.addInitScript(() => {
       localStorage.setItem('inspired-mile-brain', 'grand');
       localStorage.setItem('inspired-mile-duel-lang', 'en');
