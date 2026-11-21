@@ -237,11 +237,11 @@ Better in 28, the same in 142.
 ## Edge texts: numbers, numerals, times
 
 The 401 texts hold no digit, so they could not show the defect the independent check found after
-run 3 (digits glued to letters were dropped). `scripts/voice/edge-texts.txt` is 40 texts of that
-kind: the check's four sentences first, word for word, then decades, times, text-speak, Roman
+run 3 (digits glued to letters were dropped). `scripts/voice/edge-texts.txt` began as 40 texts of
+that kind: the check's four sentences first, word for word, then decades, times, text-speak, Roman
 numerals and a minus sign, including some the new reading is expected to get wrong (911 as a
-number; "Elizabeth I ruled", where the I stays a pronoun). It was committed (8f84b8e2) before
-either reading of any of them was heard. Both readings are made and transcribed exactly as above
+number; "Elizabeth I ruled", where the I stays a pronoun). They were committed (8f84b8e2) before
+either reading of any of them was heard; 27 more followed on 2026-11-20 (below), the same way. Both readings are made and transcribed exactly as above
 (`measure.mjs --texts`), and scored two ways: as written, and in spoken form, the text and both
 transcripts first put through `g2p-en.ts` `normalise()`, so that Whisper writing "10pm" for
 "ten p.m." is not an error. The same function for the text and both readings.
@@ -267,13 +267,13 @@ eSpeak NG says beyond it (a tone) counts against the old reading: those three ar
 results.
 
 <!-- edge -->
-Run of 2026-11-21 on v26.13.1, 67 texts (`scripts/voice/edge-texts.txt`), 10 minutes; the same models and settings as above.
+Run of 2026-11-21 on v26.13.1, 67 texts (`scripts/voice/edge-texts.txt`), 8 minutes; the same models and settings as above.
 
 | Scored | Words | WER old (eSpeak) | WER new | New − old (points) | 95% interval (paired bootstrap) |
 |---|---:|---:|---:|---:|---|
-| as written (Whisper's "10pm" against "ten p.m." counts as an error) | 512 | 18.75% | 15.82% | −2.93 | −6.10 to +0.39 |
-| **in spoken form** (text and both transcripts through the same normaliser) | 597 | 11.06% | 4.19% | −6.87 | −10.21 to −3.86 |
-| **in spoken form, the 27 added on 2026-11-20** (27 texts) | 241 | 12.86% | 4.56% | −8.30 | −13.88 to −3.43 |
+| as written (Whisper's "10pm" against "ten p.m." counts as an error) | 512 | 18.75% | 15.43% | −3.32 | −6.56 to +0.00 |
+| **in spoken form** (text and both transcripts through the same normaliser) | 596 | 11.07% | 4.19% | −6.88 | −10.23 to −3.87 |
+| **in spoken form, the 27 added on 2026-11-20** (27 texts) | 240 | 12.92% | 4.58% | −8.33 | −13.98 to −3.43 |
 
 In spoken form the new reading is heard better in 18 texts, worse in 1, the same in 48. Every text, with what Whisper heard (errors in spoken form, old → new):
 
@@ -324,7 +324,7 @@ In spoken form the new reading is heard better in 18 texts, worse in 1, the same
 | Listen Peter I've got the crown tonight. | Listen Peter, I've got the crown tonight. | Listen Peter Ive got the crown tonight. | 0 → 0 |
 | Innocent I'm not, but guilty I will never be. | Innocent I'm not, but guilty I will never be. | Innocent I'm not, but guilty I will never be. | 0 → 0 |
 | Part C of the plan is where you fall. | Part C of the plan is where you fall. | Part C of the plan is where you fall. | 0 → 0 |
-| Love you Mary XX, signed with a kiss. | Love you Mary Roman 20 signed with a kiss. | Love you Mary the 20th signed with a kiss. | 2 → 0 |
+| Love you Mary XX, signed with a kiss. | Love you Mary Roman 20 signed with a kiss. | Love You Mary XX, signed with a kiss. | 2 → 0 |
 | MARY I LOVE YOU, HEAR ME SHOUT. | Mary, I love you. Hear me shout. | Mary, I love you. Hear me shout. | 0 → 0 |
 | Back in the 90s, at 10pm, I played my mp3. | Back in the 90s, at 10 pm, I played my MP3. | Back in the 90s, at 10pm, I played my MP3. | 0 → 0 |
 | I rhyme like 2pac, gr8 and 4ever. | I rhyme like 2 pack, GR8 and 4 ever. | I rhyme like two pack, great and forever. | 5 → 2 |
@@ -348,15 +348,35 @@ In spoken form the new reading is heard better in 18 texts, worse in 1, the same
 | The 🇺🇸 flag and the 👩🏾‍🚀 in the sky. | The United States flag and the woman medium dark rocket in the sky. | the flag-united states flag and the woman astronaut in the sky. | 4 → 0 |
 <!-- /edge -->
 
-**Against the margin:** in spoken form −5.90 points (95% interval −10.43 to −2.30) against +1.0:
-within, and the interval is wholly below zero. The check's four sentences are now heard exactly as
-the old reading's are. Most of the gain is the Roman numerals, which eSpeak NG read with the word
-"Roman" ("Henry Roman 8", "Act Room 2") and text-speak (gr8, l8r, 2day). The one text heard worse
-is "Louis XIV": the CMU table's first reading of Louis (L UW1 IY0) is heard as "Lewis". What the
-scoring cannot tell: when Whisper writes digits ("911", "3am") both readings are scored through the
-same normaliser, so "Some1 call 911" counts as right whether the voice said "nine one one" or
-"nine hundred and eleven" (it says the latter; a person would say the former), and the small
-as-written difference (−1.32, interval −5.07 to +2.84) shows the same 40 texts without that help.
+**Against the margins (2026-11-21, 67 texts):** in spoken form −6.88 points (95% interval −10.23
+to −3.87) for all 67, and −8.33 (−13.98 to −3.43) for the 27 added for the second pass, each against
++1.0: within, and both intervals wholly below zero. The one text heard worse is still "Louis XIV"
+(the CMU table's first reading of Louis, L UW1 IY0, heard as "Lewis"). The check's contraction lines
+("Mary I'm yours, and John I'll never be.", "War I'm waging…", "MARY I LOVE YOU…") are heard as the
+old reading's are, where the first pass's code made Whisper hear "Mary the First Mewers" and
+"Mary the first love you"; "Part C of the plan" is heard as written, not "Part 100". Most of the
+gain is the Roman numerals, which eSpeak NG reads with the word "Roman" ("Henry Roman 8", "Act Room
+2", "and Roman IV bag"), text-speak (gr8, l8r, 2day) and the emoji: eSpeak NG says the skin tone
+("thumbs medium", "woman medium dark rocket"), which CLDR's names without the tone count against.
+Those three emoji texts are 5 of eSpeak NG's 66 errors in spoken form (and none of the new
+reading's 25); without them, 10.72% against 4.39%. Phoneme agreement with eSpeak NG on the edge texts' words:
+of the 227 distinct words read from the table, 91.63% identical, a phoneme error rate of 2.40%, the
+same main stress in 99.12%; the few spelt and rule-read ones (5 words) are not a fair comparison.
+
+Two runs. Run 1 (commit 0a61b775) showed "Love you Mary XX, signed with a kiss." read as "Mary the
+twentieth" (Whisper heard "Mary the 20th"): the numeral rule left X's alone as kisses after other
+words but not after a king's name. Spoken form scored that text right, because the reference goes
+through the same normaliser, which then had the same fault; only the as-written score and the
+transcript showed it. The rule was fixed (4384495f) and all 67 texts measured again (run 2, the
+tables above). Run 2 differs from run 1 in that text only: the other 66 gave the same phonemes and
+the same transcripts, old and new. Run 1's numbers: in spoken form −6.87 (−10.21 to −3.86) for all
+67 and −8.30 (−13.88 to −3.43) for the 27.
+
+What the scoring cannot tell: when Whisper writes digits ("911", "3am") both readings are scored
+through the same normaliser, so "Some1 call 911" counts as right whether the voice said "nine one
+one" or "nine hundred and eleven" (it says the latter; a person would say the former); and where the
+normaliser itself misreads the text, as with "Mary XX" in run 1, spoken form cannot see it. The
+as-written difference (−3.32, interval −6.56 to +0.00) shows the same 67 texts without that help.
 "Elizabeth I ruled" keeps I as the pronoun, as designed, and Whisper still wrote "Elizabeth I".
 
 ## What this does not show

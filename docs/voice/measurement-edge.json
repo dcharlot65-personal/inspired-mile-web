@@ -1,5 +1,5 @@
 {
- "date": "2026-11-21T03:14:36.642Z",
+ "date": "2026-11-21T03:26:45.137Z",
  "host": "",
  "node": "v26.13.1",
  "kokoro": {
@@ -19,27 +19,27 @@
    "chunk_length_s": 30
   }
  },
- "seconds": 605.452,
+ "seconds": 485.783,
  "texts": "scripts/voice/edge-texts.txt",
  "summary": {
   "edge": {
    "items": 67,
    "words": 512,
    "old": 0.1875,
-   "new": 0.158203125,
-   "difference": -0.029296875,
+   "new": 0.154296875,
+   "difference": -0.033203125,
    "interval95": {
-    "low": -0.06099815157116451,
-    "high": 0.0038910505836575876
+    "low": -0.06560636182902585,
+    "high": 0
    },
    "spoken": {
-    "words": 597,
-    "old": 0.11055276381909548,
-    "new": 0.04187604690117253,
-    "difference": -0.06867671691792296,
+    "words": 596,
+    "old": 0.11073825503355705,
+    "new": 0.04194630872483222,
+    "difference": -0.06879194630872484,
     "interval95": {
-     "low": -0.10214168039538715,
-     "high": -0.03864734299516908
+     "low": -0.10233393177737882,
+     "high": -0.03870967741935484
     }
    }
   },
@@ -47,20 +47,20 @@
    "items": 67,
    "words": 512,
    "old": 0.1875,
-   "new": 0.158203125,
-   "difference": -0.029296875,
+   "new": 0.154296875,
+   "difference": -0.033203125,
    "interval95": {
-    "low": -0.06099815157116451,
-    "high": 0.0038910505836575876
+    "low": -0.06560636182902585,
+    "high": 0
    },
    "spoken": {
-    "words": 597,
-    "old": 0.11055276381909548,
-    "new": 0.04187604690117253,
-    "difference": -0.06867671691792296,
+    "words": 596,
+    "old": 0.11073825503355705,
+    "new": 0.04194630872483222,
+    "difference": -0.06879194630872484,
     "interval95": {
-     "low": -0.10214168039538715,
-     "high": -0.03864734299516908
+     "low": -0.10233393177737882,
+     "high": -0.03870967741935484
     }
    }
   },
@@ -68,34 +68,34 @@
    "items": 67,
    "words": 512,
    "old": 0.1875,
-   "new": 0.158203125,
-   "difference": -0.029296875,
+   "new": 0.154296875,
+   "difference": -0.033203125,
    "interval95": {
-    "low": -0.06099815157116451,
-    "high": 0.0038910505836575876
+    "low": -0.06560636182902585,
+    "high": 0
    },
    "spoken": {
-    "words": 597,
-    "old": 0.11055276381909548,
-    "new": 0.04187604690117253,
-    "difference": -0.06867671691792296,
+    "words": 596,
+    "old": 0.11073825503355705,
+    "new": 0.04194630872483222,
+    "difference": -0.06879194630872484,
     "interval95": {
-     "low": -0.10214168039538715,
-     "high": -0.03864734299516908
+     "low": -0.10233393177737882,
+     "high": -0.03870967741935484
     }
    }
   }
  },
  "phonemesAgainstEspeak": {
   "table": {
-   "words": 228,
+   "words": 227,
    "same": 208,
-   "distance": 24,
-   "length": 966,
-   "stressSame": 226,
-   "phonemeErrorRate": 0.024844720496894408,
-   "identical": 0.9122807017543859,
-   "stressAgreement": 0.9912280701754386
+   "distance": 23,
+   "length": 958,
+   "stressSame": 225,
+   "phonemeErrorRate": 0.024008350730688934,
+   "identical": 0.9162995594713657,
+   "stressAgreement": 0.9911894273127754
   },
   "little": {
    "words": 35,
@@ -108,13 +108,13 @@
    "stressAgreement": 1
   },
   "letters": {
-   "words": 3,
+   "words": 4,
    "same": 2,
-   "distance": 7,
-   "length": 19,
+   "distance": 17,
+   "length": 30,
    "stressSame": 0,
-   "phonemeErrorRate": 0.3684210526315789,
-   "identical": 0.6666666666666666,
+   "phonemeErrorRate": 0.5666666666666667,
+   "identical": 0.5,
    "stressAgreement": 0
   },
   "rules": {
@@ -2556,15 +2556,15 @@
    "stressSame": true
   },
   {
-   "word": "twentieth",
-   "source": "table",
-   "ours": "twˈɛntiəθ",
-   "espeak": "twˈɛntiəθ",
-   "espeakMisaki": "twˈɛntɪəθ",
-   "distance": 1,
-   "length": 8,
+   "word": "xx",
+   "source": "letters",
+   "ours": "ˈɛks ˈɛks",
+   "espeak": "ɹˌəʊmən twˈɛnti",
+   "espeakMisaki": "ɹˌQmən twˈɛnti",
+   "distance": 10,
+   "length": 11,
    "same": false,
-   "stressSame": true
+   "stressSame": false
   },
   {
    "word": "signed",
@@ -4801,24 +4801,14 @@
     ]
    },
    "new": {
-    "phonemes": "lˈʌv juː mˈɛːɹi ðə twˈɛntiəθ, sˈInd wɪð ɐ kˈɪs.",
-    "heard": "Love you Mary the 20th signed with a kiss.",
-    "edits": 2,
-    "seconds": 4.025,
-    "ops": [
-     {
-      "op": "I",
-      "hyp": "the"
-     },
-     {
-      "op": "S",
-      "ref": "xx",
-      "hyp": "20th"
-     }
-    ]
+    "phonemes": "lˈʌv juː mˈɛːɹi ˈɛks ˈɛks, sˈInd wɪð ɐ kˈɪs.",
+    "heard": "Love You Mary XX, signed with a kiss.",
+    "edits": 0,
+    "seconds": 3.85,
+    "ops": []
    },
    "spoken": {
-    "words": 9,
+    "words": 8,
     "old": 2,
     "new": 0
    }
