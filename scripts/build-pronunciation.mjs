@@ -49,16 +49,16 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 /** The commit of github.com/cmusphinx/cmudict the table is built from (master on 2026-11-16), and the sha256 of its cmudict.dict. */
-const COMMIT = '74790861f652b15e4ac49015a90074ad62a27690';
-const SHA256 = '81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22';
-const SOURCE = `https://raw.githubusercontent.com/cmusphinx/cmudict/${COMMIT}/cmudict.dict`;
+export const COMMIT = '74790861f652b15e4ac49015a90074ad62a27690';
+export const SHA256 = '81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22';
+export const SOURCE = `https://raw.githubusercontent.com/cmusphinx/cmudict/${COMMIT}/cmudict.dict`;
 const OUT = join(ROOT, 'src/lib/verse/pron-en.ts');
 /** SCOWL, the word lists a word must be in to count as a word (see "^" above). */
-const SCOWL_VERSION = '2020.12.07';
-const SCOWL_SHA256 = '5587667caa20c4891390c2d42dbb4d5c4c3f41bee77af1457ece3ba23fb859cc';
+export const SCOWL_VERSION = '2020.12.07';
+export const SCOWL_SHA256 = '5587667caa20c4891390c2d42dbb4d5c4c3f41bee77af1457ece3ba23fb859cc';
 const SCOWL_SOURCE = `https://downloads.sourceforge.net/project/wordlist/SCOWL/${SCOWL_VERSION}/scowl-${SCOWL_VERSION}.tar.gz`;
 /** SCOWL's sizes run 10 (commonest) to 95; 60 is the size its README recommends for spell checking. */
-const SCOWL_SIZE = 60;
+export const SCOWL_SIZE = 60;
 /** The capitalised words ("English", "April") of the sizes up to this one only: from size 50 on they are mostly names. */
 const SCOWL_UPPER_SIZE = 35;
 const SCOWL_WORDS = ['english-words', 'american-words', 'british-words', 'canadian-words', 'english-contractions'];
@@ -156,7 +156,7 @@ as any of the copyrights mentioned in its Copyright file.
   "as is" without express or implied warranty.`;
 
 /** The words of SCOWL's lists (see SCOWL_SIZE), lower case, from the release tarball (downloaded, then checked by sha256). */
-async function scowlWords() {
+export async function scowlWords() {
   const dir = join(tmpdir(), `scowl-${SCOWL_VERSION}`);
   const tgz = `${dir}.tar.gz`;
   if (!existsSync(tgz)) {
