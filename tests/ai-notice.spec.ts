@@ -154,8 +154,11 @@ for (const l of LOCALES) {
       await expect(notice).toBeVisible();
       await expect(notice).toHaveText(say(s['notice.aiBoth'], m.label));
       await expect(notice).toHaveAttribute('data-opponent', 'model');
-      // While it loads, the notice follows the duel's language too: Gemma writes German verse and does not judge it.
-      await page.selectOption('#language', 'de');
+      // While it loads, the notice follows the duel's language too: a language Gemma writes and does not judge, read
+      // from its lists (German until fix/judge-wording's cells made Gemma a judge of it; Spanish since).
+      const writesOnly = m.writesIn.find((x) => !m.judgesIn.includes(x));
+      expect(writesOnly, 'a language Gemma writes and does not judge').toBeDefined();
+      await page.selectOption('#language', writesOnly!);
       await expect(notice).toHaveText(say(s['notice.aiWrites'], m.label));
       await expect(notice).toHaveAttribute('data-judge', 'rules');
       await page.selectOption('#language', 'en');
