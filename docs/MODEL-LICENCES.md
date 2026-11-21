@@ -19,8 +19,8 @@ The note above covers the LFM models only; it says nothing about the terms of an
 
 ## The voice (Kokoro) and what reads English for it
 
-Checked 2026-11-19 (Hugging Face API `cardData.license`, the npm packages' own licence files and
-`package-lock.json`). What the visitor's browser runs or downloads when the voice is turned on:
+Checked 2026-11-19, the emoji names 2026-11-20 (Hugging Face API `cardData.license`, the npm
+packages' own licence files and `package-lock.json`). What the visitor's browser runs or downloads when the voice is turned on:
 
 | Part | What it is | Licence | Where it comes from |
 |---|---|---|---|
@@ -29,6 +29,7 @@ Checked 2026-11-19 (Hugging Face API `cardData.license`, the npm packages' own l
 | Transformers.js 3.8.1 and onnxruntime-web 1.22.0-dev (kokoro-js's own copies) | the runtime | Apache-2.0; MIT | this site (`/ort/…`, scripts/self-hosted-runtime.mjs) |
 | `src/lib/voice/lexicon-en.ts` | whole pronunciations from the CMU Pronouncing Dictionary (commit `74790861f652`), marks from SCOWL 2020.12.07 | CMUdict: BSD 2-clause style; SCOWL: permissive; both notices travel inside the data | this site, its own chunk, only with the voice |
 | `src/lib/voice/nrl-rules.ts` | the letter-to-sound rules of NRL Report 7948 (1976) | a work of the US government (17 U.S.C. 105); read from John A. Wasser's 1985 transcription, which he placed in the public domain | this site |
+| `src/lib/voice/emoji-en.ts` (added 2026-11-20) | what the voice says for an emoji: Unicode CLDR 49's English short names for text to speech (npm `cldr-annotations-full` and `cldr-annotations-derived-full` 49.0.0, pinned by sha256 in `scripts/build-voice-emoji.mjs`) | Unicode License v3 (the packages' LICENSE: only the text of the standard UTS #35 is under Unicode's terms of use, and these packages hold none of it); the notice travels inside the data | this site, in the voice's code chunk, only with the voice |
 | `src/lib/voice/g2p-en.ts`, `lts-en.ts` | the game's own code | the game's | this site |
 
 Its symbols follow the conventions of misaki (Kokoro's own G2P, Apache-2.0, `EN_PHONES.md`); no
