@@ -51,9 +51,9 @@ export const HELD_OUT_SEEN = {
 export function voiceSources() {
   const dir = (d, keep) => readdirSync(join(ROOT, d)).filter(keep).map((f) => `${d}/${f}`);
   return [
-    ...dir('src/lib/voice', (f) => f.endsWith('.ts') && !['lexicon-en.ts', 'nrl-rules.ts', 'kokoro-vocab.ts'].includes(f)),
+    ...dir('src/lib/voice', (f) => f.endsWith('.ts') && !['lexicon-en.ts', 'nrl-rules.ts', 'kokoro-vocab.ts', 'emoji-en.ts'].includes(f)),
     ...dir('scripts/voice', (f) => !['slang-and-names.txt', 'corpus.mjs'].includes(f)),
-    'src/lib/thespian-voice.ts', 'src/lib/thespian-voice.test.ts', 'tests/voice.spec.ts', 'scripts/build-voice-lexicon.mjs', 'scripts/build-nrl-rules.mjs',
+    'src/lib/thespian-voice.ts', 'src/lib/thespian-voice.test.ts', 'tests/voice.spec.ts', 'scripts/build-voice-lexicon.mjs', 'scripts/build-nrl-rules.mjs', 'scripts/build-voice-emoji.mjs',
     'scripts/check-no-espeak.mjs', 'scripts/pronunciation-extra.txt', 'astro.config.mjs', 'CLAUDE.md',
   ].filter((f) => existsSync(join(ROOT, f)));
 }

@@ -30,6 +30,7 @@
  * The output uses only symbols of Kokoro's vocabulary (kokoro-vocab.ts; any other character
  * would be deleted by its tokenizer, silently).
  */
+import EMOJI_EN from './emoji-en';
 import { letterToSound } from './lts-en';
 
 // ---------------------------------------------------------------------------
@@ -878,9 +879,40 @@ function verbAm(letters: string, before: string, after: string): boolean {
   return !!word && !TIME_BEFORE.has(word.toLowerCase());
 }
 
+/** Emoji -> CLDR's English name (emoji-en.ts), read once, when first needed. */
+let emojiNames: Map<string, string> | null = null;
+
+/** One emoji as said: CLDR's name for it, without its skin tone; joined ones part by part when CLDR has no name for the whole. */
+function emojiSaid(emoji: string): string {
+  if (!emojiNames) {
+    emojiNames = new Map();
+    // The notice's lines start "# " (or are "#"); the keycap "#" + U+20E3 starts a row.
+    for (const line of EMOJI_EN.split('\n')) {
+      const tab = line.indexOf('\t');
+      if (tab > 0 && !line.startsWith('# ')) emojiNames.set(line.slice(0, tab), line.slice(tab + 1));
+    }
+  }
+  const plain = emoji.replace(/\uFE0F/g, '');
+  const name = emojiNames.get(plain) ?? emojiNames.get(plain.replace(/[\u{1F3FB}-\u{1F3FF}]/gu, ''));
+  if (name !== undefined) return name.replace(/[^\p{L}\p{M}\d'’&. -]/gu, ' ');
+  if (plain.includes('\u200D')) return plain.split('\u200D').map(emojiSaid).filter(Boolean).join(' ');
+  // A flag of a region CLDR does not name, or an emoji newer than the table: its first part, if named.
+  const first = String.fromCodePoint(plain.codePointAt(0) ?? 32);
+  return first !== plain && emojiNames.has(first) ? emojiSaid(first) : '';
+}
+
+/** An emoji: a flag (two regional indicators), a keycap, or a picture with its tone, tags and joined parts. */
+const EMOJI = /\p{Regional_Indicator}{2}|[#*0-9]\uFE0F?\u20E3|\p{Extended_Pictographic}[\uFE0F\u{1F3FB}-\u{1F3FF}]?(?:[\u{E0020}-\u{E007E}]+\u{E007F})?(?:\u200D\p{Extended_Pictographic}[\uFE0F\u{1F3FB}-\u{1F3FF}]?)*/gu;
+
 /** Text as the voice should read it: words, and only the punctuation Kokoro knows. */
 export function normalise(text: string): string {
-  let t = text.normalize('NFKC');
+  // Emoji by name, before NFKC, which turns some of them into letters ("ℹ" into "i").
+  // One CLDR does not name stays as it was (silent, or what NFKC makes of it: "‼" is "!!").
+  let t = text.replace(EMOJI, (e: string) => {
+    const said = emojiSaid(e);
+    return said ? ` ${said} ` : e;
+  });
+  t = t.normalize('NFKC');
   t = t.replace(/[‘’ʼʻ`]/g, "'").replace(/[«„]/g, '“').replace(/»/g, '”');
   t = t.replace(/\.{3,}/g, '…').replace(/\s*(?:--+|[–—―]|\s-\s)\s*/g, ' — ');
   for (const [re, to] of ABBREVIATIONS) t = t.replace(re, to);

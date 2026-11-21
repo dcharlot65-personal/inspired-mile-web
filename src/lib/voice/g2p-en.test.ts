@@ -5,6 +5,7 @@ import { installVoiceLexicon, normalise, phonemizeEnglish, sayWord, splitForKoko
 import { codesOf, leftMatch, rightMatch, ruleCodes } from './lts-en';
 import { NRL_RULES } from './nrl-rules';
 import { KOKORO_VOCAB } from './kokoro-vocab';
+import EMOJI_EN from './emoji-en';
 // @ts-ignore a plain ES module of the build scripts
 import { corpus, slangAndNames } from '../../../scripts/voice/corpus.mjs';
 
@@ -182,6 +183,33 @@ describe('text', () => {
     expect(normalise(text)).toBe(said);
   });
 
+  it.each([
+    // Emoji by Unicode CLDR's English name, as eSpeak NG said them, without a skin tone (spaces
+    // run together here).
+    ['I 💀 you with every line', 'I skull you with every line'], ['🔥🔥', 'fire fire'], ['👍🏽', 'thumbs up'], ['❤️ you', 'red heart you'],
+    ['🇺🇸', 'flag United States'], ['👩🏾‍🚀', 'woman astronaut'], ['1️⃣', 'keycap one'], ['#️⃣', 'keycap'], ['I♥you', 'I heart suit you'],
+    // Joined emoji CLDR names only in parts: the parts.
+    ['🫨‍🔥', 'shaking face fire'],
+    // What NFKC makes letters or marks of stays as before; text with no emoji is untouched.
+    ['Wow‼', 'Wow!!'], ['the 10 commandments', 'the ten commandments'],
+  ])('%j is read as %j (emoji)', (text, said) => {
+    expect(normalise(text).replace(/\s+/g, ' ').trim()).toBe(said);
+  });
+
+  it('says an emoji\'s name, in Kokoro\'s symbols, for every emoji of the table', () => {
+    const rows = EMOJI_EN.split('\n').filter((l) => l.includes('\t') && !l.startsWith('# '));
+    expect(rows.length).toBeGreaterThan(2000);
+    expect(rows).toContain('#⃣\tkeycap: #');
+    const bad: string[] = [];
+    for (const row of rows) {
+      const emoji = row.slice(0, row.indexOf('\t'));
+      const out = ps(`a ${emoji} b`);
+      if (!/^ɐ \S.* bˈiː\.$/.test(out) || outside(out).length) bad.push(`${row}: ${out}`);
+    }
+    expect(bad.slice(0, 20)).toEqual([]);
+    expect(ps('I 💀 you')).toBe('ˌI skˈʌl jˈuː.');
+  });
+
   it('says the letters of a time as letters ("A M", not the article)', () => {
     expect(ps('3am')).toBe('θɹˈiː ˈA ˈɛm.');
     expect(ps('A dog')).toBe('ɐ dˈɒɡ.');
@@ -277,5 +305,18 @@ describe('the table', () => {
     const head = readFileSync('src/lib/voice/lexicon-en.ts', 'utf8').slice(0, 2000);
     expect(head).toContain(`commit ${commit}`);
     expect(lexicon).toContain('# The CMU Pronouncing Dictionary is Copyright (C) 1993-2015 Carnegie Mellon');
+  });
+});
+
+describe('the emoji names', () => {
+  it('are CLDR 49\'s, pinned, with the Unicode License v3 notice inside the data', () => {
+    const head = readFileSync('src/lib/voice/emoji-en.ts', 'utf8').slice(0, 2000);
+    const script = readFileSync('scripts/build-voice-emoji.mjs', 'utf8');
+    for (const sha of script.match(/sha256: '([0-9a-f]{64})'/g) ?? []) expect(head).toContain(sha.slice(9, -1));
+    expect(script.match(/sha256: '([0-9a-f]{64})'/g)?.length).toBe(2);
+    expect(EMOJI_EN).toMatch(/^# Emoji names for the voice: Unicode CLDR 49/);
+    expect(EMOJI_EN).toContain('# UNICODE LICENSE V3');
+    expect(EMOJI_EN).toContain('# Copyright © 2001–2026 Unicode, Inc.');
+    expect(EMOJI_EN).toContain('# Permission is hereby granted, free of charge, to any person obtaining a');
   });
 });

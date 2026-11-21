@@ -59,7 +59,32 @@ test('the voice speaks without eSpeak NG, and the ear hears what it said', async
           const heardNumbers = await hear(numbers);
           let sum = 0;
           for (const s of speech.samples) sum += s * s;
-          return { phonemes: speech.phonemes, seconds: speech.samples.length / speech.sampleRate, rms: Math.sqrt(sum / speech.samples.length), heard, numbers: numbers.phonemes, heardNumbers };
+          // speak() with the real Kokoro loaded: text the English reading cannot say goes to the
+          // device's own voice, not an empty sound; an emoji in a line is said by its CLDR name.
+          // Only the device voice and the audio element are stand-ins (headless Chromium has no
+          // local voice, and nothing may play aloud here).
+          const spoken: string[] = [];
+          let played = 0;
+          Object.defineProperty(window.speechSynthesis, 'getVoices', { value: () => [{ localService: true, lang: 'en-GB', name: 'stand-in' }] });
+          Object.defineProperty(window.speechSynthesis, 'speak', { value: (u: { text: string }) => spoken.push(u.text) });
+          (window as any).SpeechSynthesisUtterance = class {
+            text: string;
+            constructor(text: string) {
+              this.text = text;
+            }
+          };
+          HTMLMediaElement.prototype.play = function () {
+            played++;
+            return Promise.resolve();
+          };
+          await voice.speak('привет');
+          const playedBefore = played;
+          await voice.speak('I 💀 you with every line.');
+          const emoji = (await voice.synthesise('I 💀 you with every line.')).phonemes;
+          return {
+            phonemes: speech.phonemes, seconds: speech.samples.length / speech.sampleRate, rms: Math.sqrt(sum / speech.samples.length), heard, numbers: numbers.phonemes, heardNumbers,
+            fallback: { spoken, playedBefore, played }, emoji,
+          };
         });
       } catch (err) {
         if (attempt >= 2 || !/context was destroyed|navigation|Failed to fetch dynamically imported module/i.test(String(err))) throw err;
@@ -78,6 +103,10 @@ test('the voice speaks without eSpeak NG, and the ear hears what it said', async
   const heardNumbers = String(said.heardNumbers).toLowerCase();
   expect(said.numbers.join(' ')).toContain('nˈIntiz');
   for (const n of [/\b(90'?s|nineties)\b/, /\b(10|ten)(?=\b|pm)/, /\bm\.? ?p\.? ?(3|three)\b/]) expect(heardNumbers, `Whisper heard "${heardNumbers}"`).toMatch(n);
+
+  // No Latin letter: the device voice, and nothing played; an emoji: its name, played by Kokoro.
+  expect(said.fallback).toEqual({ spoken: ['привет'], playedBefore: 0, played: 1 });
+  expect(said.emoji.join(' ')).toContain('skˈʌl');
 
   const served = await Promise.all(scripts);
   expect(served.length, 'scripts were read').toBeGreaterThan(10);

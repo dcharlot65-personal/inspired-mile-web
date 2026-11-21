@@ -71,12 +71,21 @@ describe('speak()', () => {
     expect(state.spoken).toEqual([]);
   });
 
-  it.each([['привет'], ['🙂'], ['٣']])('gives %s, which has no Latin letter, to the device voice instead of playing silence', async (text) => {
+  it.each([['привет'], ['★'], ['٣']])('gives %s, which has nothing the English reading can say, to the device voice instead of playing silence', async (text) => {
     expect(await voice.loadVoice()).toBe(true);
     await voice.speak(text);
     expect(state.generated).toEqual([]);
     expect(state.played).toBe(0);
     expect(state.spoken).toEqual([text]);
+  });
+
+  it('reads an emoji alone with Kokoro, by its CLDR name, and one inside a line too', async () => {
+    expect(await voice.loadVoice()).toBe(true);
+    await voice.speak('🙂');
+    await voice.speak('I 💀 you');
+    expect(state.generated).toEqual(['slˈItli smˈIlɪŋ fˈAs.', 'ˌI skˈʌl jˈuː.']);
+    expect(state.played).toBe(2);
+    expect(state.spoken).toEqual([]);
   });
 
   it('never drops a number: digits glued to letters are read', async () => {
