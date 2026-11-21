@@ -190,9 +190,9 @@
  "languages": {
   "en": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 189,
-    "sentences": 639
+    "sentences": 645
    },
    "languagetool": "en-US",
    "hunspell": [
@@ -2623,9 +2623,9 @@
   },
   "es": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 128,
-    "sentences": 578
+    "sentences": 584
    },
    "languagetool": "es",
    "hunspell": [
@@ -5162,9 +5162,9 @@
   },
   "fr": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 128,
-    "sentences": 578
+    "sentences": 584
    },
    "languagetool": "fr",
    "hunspell": [
@@ -7584,9 +7584,9 @@
   },
   "de": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 132,
-    "sentences": 582
+    "sentences": 588
    },
    "languagetool": "de-DE",
    "hunspell": [
@@ -8866,39 +8866,6 @@
     },
     {
      "tool": "hunspell",
-     "id": "ui:voice.off",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "KI-Stimme: aus",
-     "at": "KI-Stimme",
-     "message": "not in the de dictionary",
-     "replacements": [],
-     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
-    },
-    {
-     "tool": "hunspell",
-     "id": "ui:voice.on",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "KI-Stimme: an",
-     "at": "KI-Stimme",
-     "message": "not in the de dictionary",
-     "replacements": [],
-     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
-    },
-    {
-     "tool": "hunspell",
-     "id": "ui:voice.loading",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "KI-Stimme: lädt …",
-     "at": "KI-Stimme",
-     "message": "not in the de dictionary",
-     "replacements": [],
-     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
-    },
-    {
-     "tool": "hunspell",
      "id": "ui:verdict.roundScore",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -9116,6 +9083,39 @@
      "message": "not in the de dictionary",
      "replacements": [],
      "allowed": "An imperative without its -e (tipp, prüf, renn, verbeug dich), standard in du-address."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.off",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: aus",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.on",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: an",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.loading",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "KI-Stimme: lädt …",
+     "at": "KI-Stimme",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "KI (Wikidata's German alias for Q11660, artificial intelligence) joined to Stimme with a hyphen, as German writes a compound with an abbreviation; the dictionary has both parts, not the compound (the voice setting, owner decision D-01)."
     }
    ],
    "checked": {
@@ -10851,9 +10851,9 @@
   },
   "it": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 128,
-    "sentences": 578
+    "sentences": 584
    },
    "languagetool": "it",
    "hunspell": [
@@ -14540,9 +14540,9 @@
   },
   "pt": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 130,
-    "sentences": 580
+    "sentences": 586
    },
    "languagetool": "pt-BR",
    "hunspell": [
@@ -18521,9 +18521,9 @@
   },
   "pl": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 126,
-    "sentences": 612
+    "sentences": 618
    },
    "languagetool": "pl-PL",
    "hunspell": [
@@ -22919,9 +22919,9 @@
   },
   "ru": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 130,
-    "sentences": 616
+    "sentences": 622
    },
    "languagetool": "ru-RU",
    "hunspell": [
@@ -25589,18 +25589,18 @@
   },
   "ar": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 115,
-    "sentences": 637
+    "sentences": 643
    },
    "languagetool": "ar",
    "hunspell": [
     "ar"
    ],
    "counts": {
-    "languagetool": 181,
+    "languagetool": 186,
     "hunspell": 39,
-    "allowed": 220,
+    "allowed": 225,
     "open": 0
    },
    "hits": [
@@ -27666,32 +27666,6 @@
     },
     {
      "tool": "languagetool",
-     "id": "ui:battle.lang.written",
-     "rule": "AR_DIACRITICS_REPLACE",
-     "category": "STYLE",
-     "text": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
-     "at": "خصم",
-     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
-     "replacements": [
-      "خَصْم"
-     ],
-     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
-    },
-    {
-     "tool": "languagetool",
-     "id": "ui:brain.noneShown",
-     "rule": "AR_DIACRITICS_REPLACE",
-     "category": "STYLE",
-     "text": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
-     "at": "خصم",
-     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
-     "replacements": [
-      "خَصْم"
-     ],
-     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
-    },
-    {
-     "tool": "languagetool",
      "id": "pack:relics.RL-001.1",
      "rule": "HUNSPELL_RULE_AR",
      "category": "TYPOS",
@@ -28458,6 +28432,97 @@
      "message": "not in the ar dictionary",
      "replacements": [],
      "allowed": "مزحة (a joke): a standard Arabic word, missing from the Arabic Hunspell list."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.aiJudges",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.aiJudges",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "الحكم ذكاء اصطناعي: Gemma 4 E2B، وهو نموذج يعمل على هذا الجهاز. وتواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا.",
+     "at": "برنامج",
+     "message": "فارسية \"برنامة\" عُرِّبت إلى برنامَج بفتح الميم",
+     "replacements": [
+      "برنامَج"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "لا يلعب",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يلعب\"\n\n      ",
+     "replacements": [
+      "لا يلعب"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:notice.none",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لا يلعب ذكاء اصطناعي في هذه المبارزة ولا يحكم فيها. تواجه خصم الأبيات المكتوبة، وهو برنامج يلعب أبياتًا أُعدّت مسبقًا، ويكون الحكم بالقواعد.",
+     "at": "برنامج",
+     "message": "فارسية \"برنامة\" عُرِّبت إلى برنامَج بفتح الميم",
+     "replacements": [
+      "برنامَج"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:battle.lang.written",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "التايلاندية: تواجه خصم الأبيات المكتوبة، لأن Gemma 4 E2B لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:brain.noneShown",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
     }
    ],
    "checked": {
@@ -30214,9 +30279,9 @@
   },
   "hi": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 130,
-    "sentences": 580
+    "sentences": 586
    },
    "languagetool": null,
    "hunspell": [
@@ -30224,8 +30289,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 116,
-    "allowed": 116,
+    "hunspell": 119,
+    "allowed": 119,
     "open": 0
    },
    "hits": [
@@ -31221,50 +31286,6 @@
     },
     {
      "tool": "hunspell",
-     "id": "ui:voice.off",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "एआई आवाज़: बंद",
-     "at": "एआई",
-     "message": "not in the hi dictionary",
-     "replacements": [],
-     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
-    },
-    {
-     "tool": "hunspell",
-     "id": "ui:voice.on",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "एआई आवाज़: चालू",
-     "at": "एआई",
-     "message": "not in the hi dictionary",
-     "replacements": [],
-     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
-    },
-    {
-     "tool": "hunspell",
-     "id": "ui:voice.loading",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "एआई आवाज़: लोड हो रही है…",
-     "at": "एआई",
-     "message": "not in the hi dictionary",
-     "replacements": [],
-     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
-    },
-    {
-     "tool": "hunspell",
-     "id": "ui:ai.label",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "एआई",
-     "at": "एआई",
-     "message": "not in the hi dictionary",
-     "replacements": [],
-     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
-    },
-    {
-     "tool": "hunspell",
      "id": "ui:theatre.badge",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -31441,17 +31462,6 @@
     },
     {
      "tool": "hunspell",
-     "id": "ui:brain.noneShown",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
-     "at": "सकने",
-     "message": "not in the hi dictionary",
-     "replacements": [],
-     "allowed": "The oblique infinitive of सकना (चल सकने वाले, 'able to run'), a form the dictionary does not generate (brain.noneShown, from an earlier merge; read on fix/predeploy, 2026-11-19)."
-    },
-    {
-     "tool": "hunspell",
      "id": "pack:written.heroic-couplet.1.0",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -31504,6 +31514,94 @@
      "message": "not in the hi dictionary",
      "replacements": [],
      "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiBoth",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "आपके प्रतिद्वंद्वी और निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiWrites",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "आपके प्रतिद्वंद्वी की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। द्वंद्व का निर्णय नियमों से होता है, कृत्रिम बुद्धि से नहीं।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.aiJudges",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "निर्णायक की भूमिका कृत्रिम बुद्धि निभाती है: Gemma 4 E2B, इसी डिवाइस पर चलने वाला एक मॉडल। आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से है, यानी एक ऐसे प्रोग्राम से जो पहले से तैयार कविताएँ सुनाता है।",
+     "at": "चलने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An ordinary inflected form of a common Hindi verb or noun. The hi_IN list has wide gaps: checked, it also rejects दरबार, बेचारा, the infinitive जीतना and the future forms रहेगा and चलेगा, while it accepts करेगा and होगा."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.off",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: बंद",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.on",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: चालू",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.loading",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई आवाज़: लोड हो रही है…",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:ai.label",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "एआई",
+     "at": "एआई",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:brain.noneShown",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का अच्छा निर्णायक है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+     "at": "सकने",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "The oblique infinitive of सकना (चल सकने वाले, 'able to run'), a form the dictionary does not generate (brain.noneShown, from an earlier merge; read on fix/predeploy, 2026-11-19)."
     }
    ],
    "checked": {
@@ -33233,9 +33331,9 @@
   },
   "zh": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 137,
-    "sentences": 569
+    "sentences": 575
    },
    "languagetool": "zh-CN",
    "hunspell": null,
@@ -35056,9 +35154,9 @@
   },
   "ja": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 133,
-    "sentences": 565
+    "sentences": 571
    },
    "languagetool": "ja-JP",
    "hunspell": null,
@@ -36787,9 +36885,9 @@
   },
   "ko": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 127,
-    "sentences": 559
+    "sentences": 565
    },
    "languagetool": null,
    "hunspell": [
@@ -37497,17 +37595,6 @@
     },
     {
      "tool": "hunspell",
-     "id": "ui:voice.on",
-     "rule": "SPELLING",
-     "category": "SPELLING",
-     "text": "인공지능 음성: 켜짐",
-     "at": "켜짐",
-     "message": "not in the ko dictionary",
-     "replacements": [],
-     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
-    },
-    {
-     "tool": "hunspell",
      "id": "ui:verdict.signature",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -37733,6 +37820,39 @@
      "category": "SPELLING",
      "text": "무대는 오늘 밤 나만을 기억한다",
      "at": "나만을",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.online",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요.",
+     "at": "플레이어가",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:notice.online",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "온라인 결투에서는 다른 플레이어가 상대이고, 저희 서버가 정해진 규칙으로 두 사람의 시를 심사해요. 온라인 결투에서는 인공지능이 시를 내지도, 심사하지도 않아요.",
+     "at": "정해진",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:voice.on",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "인공지능 음성: 켜짐",
+     "at": "켜짐",
      "message": "not in the ko dictionary",
      "replacements": [],
      "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
@@ -39438,9 +39558,9 @@
   },
   "vi": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 131,
-    "sentences": 581
+    "sentences": 587
    },
    "languagetool": null,
    "hunspell": [
@@ -41591,9 +41711,9 @@
   },
   "th": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 117,
-    "sentences": 549
+    "sentences": 555
    },
    "languagetool": null,
    "hunspell": [
@@ -43816,9 +43936,9 @@
   },
   "id": {
    "strings": {
-    "ui": 432,
+    "ui": 438,
     "pack": 129,
-    "sentences": 561
+    "sentences": 567
    },
    "languagetool": null,
    "hunspell": [
