@@ -530,7 +530,7 @@ describe('finding: a potion always hit the written opponent', () => {
         expect([curse.curseId, curse.param, seed, craft(played)]).toEqual([curse.curseId, curse.param, seed, best]);
       }
     }
-  });
+  }, 30_000); // about 5 s alone on the iMac Pro at load 78, the same with c22b035a's duel.ts (fix/predeploy, 2026-11-20); past the 5 s default in whole-suite runs
   it('with no curse it plays the verse its seed picks, as before', async () => {
     for (let seed = 1; seed <= 30; seed++) {
       const d = createDuel(seed, 'en', deck);
