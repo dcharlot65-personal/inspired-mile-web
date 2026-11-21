@@ -1,5 +1,5 @@
 {
- "date": "2026-11-19T16:32:26.664Z",
+ "date": "2026-11-21T03:14:36.642Z",
  "host": "",
  "node": "v26.13.1",
  "kokoro": {
@@ -19,102 +19,102 @@
    "chunk_length_s": 30
   }
  },
- "seconds": 953.911,
+ "seconds": 605.452,
  "texts": "scripts/voice/edge-texts.txt",
  "summary": {
   "edge": {
-   "items": 40,
-   "words": 302,
-   "old": 0.17880794701986755,
-   "new": 0.16556291390728478,
-   "difference": -0.013245033112582766,
+   "items": 67,
+   "words": 512,
+   "old": 0.1875,
+   "new": 0.158203125,
+   "difference": -0.029296875,
    "interval95": {
-    "low": -0.050724637681159424,
-    "high": 0.028391167192429023
+    "low": -0.06099815157116451,
+    "high": 0.0038910505836575876
    },
    "spoken": {
-    "words": 356,
-    "old": 0.09831460674157304,
-    "new": 0.03932584269662921,
-    "difference": -0.058988764044943826,
+    "words": 597,
+    "old": 0.11055276381909548,
+    "new": 0.04187604690117253,
+    "difference": -0.06867671691792296,
     "interval95": {
-     "low": -0.10434782608695652,
-     "high": -0.02295918367346939
+     "low": -0.10214168039538715,
+     "high": -0.03864734299516908
     }
    }
   },
   "running text": {
-   "items": 40,
-   "words": 302,
-   "old": 0.17880794701986755,
-   "new": 0.16556291390728478,
-   "difference": -0.013245033112582766,
+   "items": 67,
+   "words": 512,
+   "old": 0.1875,
+   "new": 0.158203125,
+   "difference": -0.029296875,
    "interval95": {
-    "low": -0.050724637681159424,
-    "high": 0.028391167192429023
+    "low": -0.06099815157116451,
+    "high": 0.0038910505836575876
    },
    "spoken": {
-    "words": 356,
-    "old": 0.09831460674157304,
-    "new": 0.03932584269662921,
-    "difference": -0.058988764044943826,
+    "words": 597,
+    "old": 0.11055276381909548,
+    "new": 0.04187604690117253,
+    "difference": -0.06867671691792296,
     "interval95": {
-     "low": -0.10434782608695652,
-     "high": -0.02295918367346939
+     "low": -0.10214168039538715,
+     "high": -0.03864734299516908
     }
    }
   },
   "all": {
-   "items": 40,
-   "words": 302,
-   "old": 0.17880794701986755,
-   "new": 0.16556291390728478,
-   "difference": -0.013245033112582766,
+   "items": 67,
+   "words": 512,
+   "old": 0.1875,
+   "new": 0.158203125,
+   "difference": -0.029296875,
    "interval95": {
-    "low": -0.050724637681159424,
-    "high": 0.028391167192429023
+    "low": -0.06099815157116451,
+    "high": 0.0038910505836575876
    },
    "spoken": {
-    "words": 356,
-    "old": 0.09831460674157304,
-    "new": 0.03932584269662921,
-    "difference": -0.058988764044943826,
+    "words": 597,
+    "old": 0.11055276381909548,
+    "new": 0.04187604690117253,
+    "difference": -0.06867671691792296,
     "interval95": {
-     "low": -0.10434782608695652,
-     "high": -0.02295918367346939
+     "low": -0.10214168039538715,
+     "high": -0.03864734299516908
     }
    }
   }
  },
  "phonemesAgainstEspeak": {
   "table": {
-   "words": 165,
-   "same": 150,
-   "distance": 18,
-   "length": 694,
-   "stressSame": 163,
-   "phonemeErrorRate": 0.025936599423631124,
-   "identical": 0.9090909090909091,
-   "stressAgreement": 0.9878787878787879
+   "words": 228,
+   "same": 208,
+   "distance": 24,
+   "length": 966,
+   "stressSame": 226,
+   "phonemeErrorRate": 0.024844720496894408,
+   "identical": 0.9122807017543859,
+   "stressAgreement": 0.9912280701754386
   },
   "little": {
-   "words": 25,
-   "same": 24,
-   "distance": 2,
-   "length": 58,
-   "stressSame": 25,
-   "phonemeErrorRate": 0.034482758620689655,
-   "identical": 0.96,
+   "words": 35,
+   "same": 33,
+   "distance": 3,
+   "length": 86,
+   "stressSame": 35,
+   "phonemeErrorRate": 0.03488372093023256,
+   "identical": 0.9428571428571428,
    "stressAgreement": 1
   },
   "letters": {
-   "words": 2,
+   "words": 3,
    "same": 2,
-   "distance": 0,
-   "length": 11,
+   "distance": 7,
+   "length": 19,
    "stressSame": 0,
-   "phonemeErrorRate": 0,
-   "identical": 1,
+   "phonemeErrorRate": 0.3684210526315789,
+   "identical": 0.6666666666666666,
    "stressAgreement": 0
   },
   "rules": {
@@ -164,6 +164,18 @@
    "text": "He won 3-0 in round 2.",
    "oldHeard": "He won 3-0 in round 2.",
    "newHeard": "He won three to zero in round two."
+  },
+  {
+   "id": "edge-51",
+   "old": 0,
+   "new": 2,
+   "lost": [
+    "3 (heard \"330\")",
+    "30am (heard \"am\")"
+   ],
+   "text": "Call 911 at 3:30am.",
+   "oldHeard": "Call 911 at 3.30am.",
+   "newHeard": "Call 911 at 330 AM."
   }
  ],
  "words": [
@@ -2289,6 +2301,820 @@
    "length": 3,
    "same": true,
    "stressSame": true
+  },
+  {
+   "word": "mary",
+   "source": "table",
+   "ours": "mˈɛːɹi",
+   "espeak": "mˈeəɹi",
+   "espeakMisaki": "mˈɛːɹi",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "i'm",
+   "source": "table",
+   "ours": "ˈIm",
+   "espeak": "ˈaɪm",
+   "espeakMisaki": "ˈIm",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "i'll",
+   "source": "table",
+   "ours": "ˈIl",
+   "espeak": "ˈaɪl",
+   "espeakMisaki": "ˈIl",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "never",
+   "source": "table",
+   "ours": "nˈɛvə",
+   "espeak": "nˈɛvə",
+   "espeakMisaki": "nˈɛvə",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "be",
+   "source": "little",
+   "ours": "bˈiː",
+   "espeak": "bˈiː",
+   "espeakMisaki": "bˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "waging",
+   "source": "table",
+   "ours": "wˈAʤɪŋ",
+   "espeak": "wˈeɪdʒɪŋ",
+   "espeakMisaki": "wˈAʤɪŋ",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "your",
+   "source": "little",
+   "ours": "jˈɔː",
+   "espeak": "jˈɔː",
+   "espeakMisaki": "jˈɔː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "feeble",
+   "source": "table",
+   "ours": "fˈiːbᵊl",
+   "espeak": "fˈiːbəl",
+   "espeakMisaki": "fˈiːbəl",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "listen",
+   "source": "table",
+   "ours": "lˈɪsən",
+   "espeak": "lˈɪsən",
+   "espeakMisaki": "lˈɪsən",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "peter",
+   "source": "table",
+   "ours": "pˈiːtə",
+   "espeak": "pˈiːtə",
+   "espeakMisaki": "pˈiːtə",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "i've",
+   "source": "table",
+   "ours": "ˈIv",
+   "espeak": "ˈaɪv",
+   "espeakMisaki": "ˈIv",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "crown",
+   "source": "table",
+   "ours": "kɹˈWn",
+   "espeak": "kɹˈaʊn",
+   "espeakMisaki": "kɹˈWn",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "tonight",
+   "source": "table",
+   "ours": "tənˈIt",
+   "espeak": "tənˈaɪt",
+   "espeakMisaki": "tənˈIt",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "innocent",
+   "source": "table",
+   "ours": "ˈɪnəsənt",
+   "espeak": "ˈɪnəsənt",
+   "espeakMisaki": "ˈɪnəsənt",
+   "distance": 0,
+   "length": 7,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "but",
+   "source": "little",
+   "ours": "bˈʌt",
+   "espeak": "bˈʌt",
+   "espeakMisaki": "bˈʌt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "guilty",
+   "source": "table",
+   "ours": "ɡˈɪlti",
+   "espeak": "ɡˈɪlti",
+   "espeakMisaki": "ɡˈɪlti",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "will",
+   "source": "little",
+   "ours": "wˈɪl",
+   "espeak": "wˈɪl",
+   "espeakMisaki": "wˈɪl",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "c",
+   "source": "table",
+   "ours": "sˈiː",
+   "espeak": "sˈiː",
+   "espeakMisaki": "sˈiː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "plan",
+   "source": "table",
+   "ours": "plˈan",
+   "espeak": "plˈan",
+   "espeakMisaki": "plˈan",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "where",
+   "source": "table",
+   "ours": "wˈɛː",
+   "espeak": "wˈeə",
+   "espeakMisaki": "wˈɛː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "you",
+   "source": "little",
+   "ours": "jˈuː",
+   "espeak": "jˈuː",
+   "espeakMisaki": "jˈuː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fall",
+   "source": "table",
+   "ours": "fˈɔːl",
+   "espeak": "fˈɔːl",
+   "espeakMisaki": "fˈɔːl",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "love",
+   "source": "table",
+   "ours": "lˈʌv",
+   "espeak": "lˈʌv",
+   "espeakMisaki": "lˈʌv",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "twentieth",
+   "source": "table",
+   "ours": "twˈɛntiəθ",
+   "espeak": "twˈɛntiəθ",
+   "espeakMisaki": "twˈɛntɪəθ",
+   "distance": 1,
+   "length": 8,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "signed",
+   "source": "table",
+   "ours": "sˈInd",
+   "espeak": "sˈaɪnd",
+   "espeakMisaki": "sˈInd",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "kiss",
+   "source": "table",
+   "ours": "kˈɪs",
+   "espeak": "kˈɪs",
+   "espeakMisaki": "kˈɪs",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "hear",
+   "source": "table",
+   "ours": "hˈɪə",
+   "espeak": "hˈiə",
+   "espeakMisaki": "hˈɪə",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "shout",
+   "source": "table",
+   "ours": "ʃˈWt",
+   "espeak": "ʃˈaʊt",
+   "espeakMisaki": "ʃˈWt",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "skull",
+   "source": "table",
+   "ours": "skˈʌl",
+   "espeak": "skˈʌl",
+   "espeakMisaki": "skˈʌl",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "every",
+   "source": "table",
+   "ours": "ˈɛvəɹi",
+   "espeak": "ˈɛvɹɪ",
+   "espeakMisaki": "ˈɛvɹɪ",
+   "distance": 2,
+   "length": 4,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "line",
+   "source": "table",
+   "ours": "lˈIn",
+   "espeak": "lˈaɪn",
+   "espeakMisaki": "lˈIn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "duel",
+   "source": "table",
+   "ours": "dˈuːəl",
+   "espeak": "djˈuːəl",
+   "espeakMisaki": "djˈuːəl",
+   "distance": 1,
+   "length": 6,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "begins",
+   "source": "table",
+   "ours": "bɪɡˈɪnz",
+   "espeak": "bɪɡˈɪnz",
+   "espeakMisaki": "bɪɡˈɪnz",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "who",
+   "source": "table",
+   "ours": "hˈuː",
+   "espeak": "hˈuː",
+   "espeakMisaki": "hˈuː",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rules",
+   "source": "table",
+   "ours": "ɹˈuːlz",
+   "espeak": "ɹˈuːlz",
+   "espeakMisaki": "ɹˈuːlz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "winning",
+   "source": "table",
+   "ours": "wˈɪnɪŋ",
+   "espeak": "wˈɪnɪŋ",
+   "espeakMisaki": "wˈɪnɪŋ",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sure",
+   "source": "table",
+   "ours": "ʃˈʊə",
+   "espeak": "ʃˈʊə",
+   "espeakMisaki": "ʃˈʊə",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "victor",
+   "source": "table",
+   "ours": "vˈɪktə",
+   "espeak": "vˈɪktə",
+   "espeakMisaki": "vˈɪktə",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "i'd",
+   "source": "table",
+   "ours": "ˈId",
+   "espeak": "ˈaɪd",
+   "espeakMisaki": "ˈId",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "rather",
+   "source": "table",
+   "ours": "ɹˈɑːðə",
+   "espeak": "ɹˈɑːðə",
+   "espeakMisaki": "ɹˈɑːðə",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "die",
+   "source": "table",
+   "ours": "dˈI",
+   "espeak": "dˈaɪ",
+   "espeakMisaki": "dˈI",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "than",
+   "source": "little",
+   "ours": "ðˈan",
+   "espeak": "ðˈɐn",
+   "espeakMisaki": "ðˈən",
+   "distance": 1,
+   "length": 3,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "lose",
+   "source": "table",
+   "ours": "lˈuːz",
+   "espeak": "lˈuːz",
+   "espeakMisaki": "lˈuːz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "keep",
+   "source": "table",
+   "ours": "kˈiːp",
+   "espeak": "kˈiːp",
+   "espeakMisaki": "kˈiːp",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "charles",
+   "source": "table",
+   "ours": "ʧˈɑːlz",
+   "espeak": "tʃˈɑːlz",
+   "espeakMisaki": "ʧˈɑːlz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "lost",
+   "source": "table",
+   "ours": "lˈɒst",
+   "espeak": "lˈɒst",
+   "espeakMisaki": "lˈɒst",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "section",
+   "source": "table",
+   "ours": "sˈɛkʃən",
+   "espeak": "sˈɛkʃən",
+   "espeakMisaki": "sˈɛkʃən",
+   "distance": 0,
+   "length": 6,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "mine",
+   "source": "table",
+   "ours": "mˈIn",
+   "espeak": "mˈaɪn",
+   "espeakMisaki": "mˈIn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "level",
+   "source": "table",
+   "ours": "lˈɛvᵊl",
+   "espeak": "lˈɛvəl",
+   "espeakMisaki": "lˈɛvəl",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "first",
+   "source": "table",
+   "ours": "fˈɜːst",
+   "espeak": "fˈɜːst",
+   "espeakMisaki": "fˈɜːst",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "england",
+   "source": "table",
+   "ours": "ˈɪŋɡlənd",
+   "espeak": "ˈɪŋɡlənd",
+   "espeakMisaki": "ˈɪŋɡlənd",
+   "distance": 0,
+   "length": 7,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "then",
+   "source": "table",
+   "ours": "ðˈɛn",
+   "espeak": "ðˈɛn",
+   "espeakMisaki": "ðˈɛn",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "philip",
+   "source": "table",
+   "ours": "fˈɪləp",
+   "espeak": "fˈɪlɪp",
+   "espeakMisaki": "fˈɪlɪp",
+   "distance": 1,
+   "length": 5,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "an",
+   "source": "little",
+   "ours": "ˈan",
+   "espeak": "ˈan",
+   "espeakMisaki": "ˈan",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "iv",
+   "source": "letters",
+   "ours": "ˈI vˈiː",
+   "espeak": "ɹˌəʊmən fˈɔː",
+   "espeakMisaki": "ɹˌQmən fˈɔː",
+   "distance": 7,
+   "length": 8,
+   "same": false,
+   "stressSame": false
+  },
+  {
+   "word": "bag",
+   "source": "table",
+   "ours": "bˈaɡ",
+   "espeak": "bˈaɡ",
+   "espeakMisaki": "bˈaɡ",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "hangs",
+   "source": "table",
+   "ours": "hˈaŋz",
+   "espeak": "hˈaŋz",
+   "espeakMisaki": "hˈaŋz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "above",
+   "source": "table",
+   "ours": "əbˈʌv",
+   "espeak": "əbˈʌv",
+   "espeakMisaki": "əbˈʌv",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "bed",
+   "source": "table",
+   "ours": "bˈɛd",
+   "espeak": "bˈɛd",
+   "espeakMisaki": "bˈɛd",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "am",
+   "source": "little",
+   "ours": "ˈam",
+   "espeak": "ˈam",
+   "espeakMisaki": "ˈam",
+   "distance": 0,
+   "length": 2,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "woke",
+   "source": "table",
+   "ours": "wˈQk",
+   "espeak": "wˈəʊk",
+   "espeakMisaki": "wˈQk",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "it's",
+   "source": "little",
+   "ours": "ˈɪts",
+   "espeak": "ˈɪts",
+   "espeakMisaki": "ˈɪts",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "can't",
+   "source": "table",
+   "ours": "kˈɑːnt",
+   "espeak": "kˈɑːnt",
+   "espeakMisaki": "kˈɑːnt",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sleep",
+   "source": "table",
+   "ours": "slˈiːp",
+   "espeak": "slˈiːp",
+   "espeakMisaki": "slˈiːp",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "fire",
+   "source": "table",
+   "ours": "fˈIə",
+   "espeak": "fˈaɪə",
+   "espeakMisaki": "fˈIə",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "burns",
+   "source": "table",
+   "ours": "bˈɜːnz",
+   "espeak": "bˈɜːnz",
+   "espeakMisaki": "bˈɜːnz",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "thumbs",
+   "source": "table",
+   "ours": "θˈʌmz",
+   "espeak": "θˈʌmz",
+   "espeakMisaki": "θˈʌmz",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "that",
+   "source": "little",
+   "ours": "ðˈat",
+   "espeak": "ðˈat",
+   "espeakMisaki": "ðˈat",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "flag",
+   "source": "table",
+   "ours": "flˈaɡ",
+   "espeak": "flˈaɡ",
+   "espeakMisaki": "flˈaɡ",
+   "distance": 0,
+   "length": 4,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "united",
+   "source": "table",
+   "ours": "junˈItɪd",
+   "espeak": "juːnˈaɪtɪd",
+   "espeakMisaki": "juːnˈItɪd",
+   "distance": 1,
+   "length": 8,
+   "same": false,
+   "stressSame": true
+  },
+  {
+   "word": "states",
+   "source": "table",
+   "ours": "stˈAts",
+   "espeak": "stˈeɪts",
+   "espeakMisaki": "stˈAts",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "woman",
+   "source": "table",
+   "ours": "wˈʊmən",
+   "espeak": "wˈʊmən",
+   "espeakMisaki": "wˈʊmən",
+   "distance": 0,
+   "length": 5,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "astronaut",
+   "source": "table",
+   "ours": "ˈastɹənˌɔːt",
+   "espeak": "ˈastɹənˌɔːt",
+   "espeakMisaki": "ˈastɹənˌɔːt",
+   "distance": 0,
+   "length": 9,
+   "same": true,
+   "stressSame": true
+  },
+  {
+   "word": "sky",
+   "source": "table",
+   "ours": "skˈI",
+   "espeak": "skˈaɪ",
+   "espeakMisaki": "skˈI",
+   "distance": 0,
+   "length": 3,
+   "same": true,
+   "stressSame": true
   }
  ],
  "results": [
@@ -3824,6 +4650,1030 @@
    "spoken": {
     "words": 11,
     "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-41",
+   "category": "edge",
+   "text": "Mary I'm yours, and John I'll never be.",
+   "words": 8,
+   "old": {
+    "phonemes": "mˈeəɹi aɪm jˈɔːz, and dʒˈɒn aɪl nˈɛvə bˈiː.",
+    "heard": "Mary, I'm yours and John, I'll never be.",
+    "edits": 0,
+    "seconds": 4.025,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mˈɛːɹi ˈIm jˈʊəz, and ʤˈɒn ˈIl nˈɛvə bˈiː.",
+    "heard": "Mary, I'm yours and John, I'll never be.",
+    "edits": 0,
+    "seconds": 3.875,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-42",
+   "category": "edge",
+   "text": "War I'm waging on your feeble rhymes.",
+   "words": 7,
+   "old": {
+    "phonemes": "wˈɔːɹ aɪm wˈeɪdʒɪŋ ˌɒn jɔː fˈiːbəl ɹˈaɪmz.",
+    "heard": "War I'm waging on your feeble rhymes.",
+    "edits": 0,
+    "seconds": 3.95,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "wˈɔːɹ ˈIm wˈAʤɪŋ ɒn jɔː fˈiːbᵊl ɹˈImz.",
+    "heard": "War I'm waging on your feeble rhymes.",
+    "edits": 0,
+    "seconds": 3.675,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-43",
+   "category": "edge",
+   "text": "Listen Peter I've got the crown tonight.",
+   "words": 7,
+   "old": {
+    "phonemes": "lˈɪsən pˈiːtəɹ aɪv ɡɒt ðə kɹˈaʊn tənˈaɪt.",
+    "heard": "Listen Peter, I've got the crown tonight.",
+    "edits": 0,
+    "seconds": 3.675,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "lˈɪsən pˈiːtəɹ ˈIv ɡˈɒt ðə kɹˈWn tənˈIt.",
+    "heard": "Listen Peter Ive got the crown tonight.",
+    "edits": 0,
+    "seconds": 3.65,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-44",
+   "category": "edge",
+   "text": "Innocent I'm not, but guilty I will never be.",
+   "words": 9,
+   "old": {
+    "phonemes": "ˈɪnəsənt aɪm nˈɒt, bˌʌt ɡˈɪlti aɪ wɪl nˈɛvə bˈiː.",
+    "heard": "Innocent I'm not, but guilty I will never be.",
+    "edits": 0,
+    "seconds": 4.125,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ˈɪnəsənt ˈIm nˈɒt, bʌt ɡˈɪlti ˌI wɪl nˈɛvə bˈiː.",
+    "heard": "Innocent I'm not, but guilty I will never be.",
+    "edits": 0,
+    "seconds": 4.2,
+    "ops": []
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-45",
+   "category": "edge",
+   "text": "Part C of the plan is where you fall.",
+   "words": 9,
+   "old": {
+    "phonemes": "pˈɑːt sˈiː ɒvðə plˈan ɪz wˌeə juː fˈɔːl.",
+    "heard": "Part C of the plan is where you fall.",
+    "edits": 0,
+    "seconds": 3.35,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "pˈɑːt sˈiː əv ðə plˈan ɪz wˈɛː juː fˈɔːl.",
+    "heard": "Part C of the plan is where you fall.",
+    "edits": 0,
+    "seconds": 3.325,
+    "ops": []
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-46",
+   "category": "edge",
+   "text": "Love you Mary XX, signed with a kiss.",
+   "words": 8,
+   "old": {
+    "phonemes": "lˈʌv juː mˈeəɹi ɹˌəʊmən twˈɛnti, sˈaɪnd wɪð ɐ kˈɪs.",
+    "heard": "Love you Mary Roman 20 signed with a kiss.",
+    "edits": 2,
+    "seconds": 4,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "xx",
+      "hyp": "20"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "lˈʌv juː mˈɛːɹi ðə twˈɛntiəθ, sˈInd wɪð ɐ kˈɪs.",
+    "heard": "Love you Mary the 20th signed with a kiss.",
+    "edits": 2,
+    "seconds": 4.025,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "the"
+     },
+     {
+      "op": "S",
+      "ref": "xx",
+      "hyp": "20th"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-47",
+   "category": "edge",
+   "text": "MARY I LOVE YOU, HEAR ME SHOUT.",
+   "words": 7,
+   "old": {
+    "phonemes": "mˈeəɹi aɪ lˈʌv juː, hˈiə mˌiː ʃˈaʊt.",
+    "heard": "Mary, I love you. Hear me shout.",
+    "edits": 0,
+    "seconds": 3.05,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mˈɛːɹi ˌI lˈʌv jˈuː, hˈɪə miː ʃˈWt.",
+    "heard": "Mary, I love you. Hear me shout.",
+    "edits": 0,
+    "seconds": 3.05,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-48",
+   "category": "edge",
+   "text": "Back in the 90s, at 10pm, I played my mp3.",
+   "words": 10,
+   "old": {
+    "phonemes": "bˈak ɪnðə nˈaɪntiz, at tˈɛn pˌiːˈɛm, aɪ plˈeɪd maɪ ˌɛmpˈiː θɹˈiː.",
+    "heard": "Back in the 90s, at 10 pm, I played my MP3.",
+    "edits": 2,
+    "seconds": 5.15,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "10"
+     },
+     {
+      "op": "S",
+      "ref": "10pm",
+      "hyp": "pm"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "bˈak ɪn ðə nˈIntiz, ɐt tˈɛn pˈiː ˈɛm, ˌI plˈAd mI ˈɛm pˈiː θɹˈiː.",
+    "heard": "Back in the 90s, at 10pm, I played my MP3.",
+    "edits": 0,
+    "seconds": 5.125,
+    "ops": []
+   },
+   "spoken": {
+    "words": 13,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-49",
+   "category": "edge",
+   "text": "I rhyme like 2pac, gr8 and 4ever.",
+   "words": 7,
+   "old": {
+    "phonemes": "aɪ ɹˈaɪm lˈaɪk tˈuː pˈak, dʒˌiːˈɑːɹ ˈeɪt and fˈɔːɹ ˈɛvə.",
+    "heard": "I rhyme like 2 pack, GR8 and 4 ever.",
+    "edits": 4,
+    "seconds": 4.45,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "2"
+     },
+     {
+      "op": "S",
+      "ref": "2pac",
+      "hyp": "pack"
+     },
+     {
+      "op": "I",
+      "hyp": "4"
+     },
+     {
+      "op": "S",
+      "ref": "4ever",
+      "hyp": "ever"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˌI ɹˈIm lˈIk tˈuː pˈak, ɡɹˈAt and fəɹˈɛvə.",
+    "heard": "I rhyme like two pack, great and forever.",
+    "edits": 4,
+    "seconds": 3.575,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "two"
+     },
+     {
+      "op": "S",
+      "ref": "2pac",
+      "hyp": "pack"
+     },
+     {
+      "op": "S",
+      "ref": "gr8",
+      "hyp": "great"
+     },
+     {
+      "op": "S",
+      "ref": "4ever",
+      "hyp": "forever"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 5,
+    "new": 2
+   }
+  },
+  {
+   "id": "edge-50",
+   "category": "edge",
+   "text": "Henry VIII had six wives, Richard III one crown.",
+   "words": 9,
+   "old": {
+    "phonemes": "hˈɛnɹi ɹˌəʊmən ˈeɪt had sˈɪks wˈaɪvz, ɹˈɪtʃəd ɹˌəʊmən θɹˈiː wˈɒn kɹˈaʊn.",
+    "heard": "Henry Roman 8 had six wives, Richard Roman 3-1 Crown.",
+    "edits": 5,
+    "seconds": 5.15,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "viii",
+      "hyp": "8"
+     },
+     {
+      "op": "I",
+      "hyp": "roman"
+     },
+     {
+      "op": "S",
+      "ref": "iii",
+      "hyp": "3"
+     },
+     {
+      "op": "S",
+      "ref": "one",
+      "hyp": "1"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "hˈɛnɹi ði ˈAtθ had sˈɪks wˈIvz, ɹˈɪʧəd ðə θˈɜːd wˈʌn kɹˈWn.",
+    "heard": "Henry VIII had six wives, Richard III I crown.",
+    "edits": 1,
+    "seconds": 4.875,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "one",
+      "hyp": "i"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 11,
+    "old": 5,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-51",
+   "category": "edge",
+   "text": "Call 911 at 3:30am.",
+   "words": 5,
+   "old": {
+    "phonemes": "kˈɔːl nˈaɪn hˈʌndɹɪdən ɪlˈɛvən at θɹˈiː:θˈɜːti ˌeɪˈɛm.",
+    "heard": "Call 911 at 3.30am.",
+    "edits": 0,
+    "seconds": 4.7,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "kˈɔːl nˈIn hˈʌndɹəd and ɪlˈɛvən ɐt θɹˈiː θˈɜːtˌiː ˈA ˈɛm.",
+    "heard": "Call 911 at 330 AM.",
+    "edits": 2,
+    "seconds": 4.675,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "3",
+      "hyp": "330"
+     },
+     {
+      "op": "S",
+      "ref": "30am",
+      "hyp": "am"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 10,
+    "old": 4,
+    "new": 4
+   }
+  },
+  {
+   "id": "edge-52",
+   "category": "edge",
+   "text": "In the 1990s the B2K crew ruled.",
+   "words": 7,
+   "old": {
+    "phonemes": "ɪnðə nˈaɪntiːn nˈaɪntiz ðə bˈiː tˈuː kˈeɪ kɹˈuː ɹˈuːld.",
+    "heard": "In the 1990s, the B2K crew ruled.",
+    "edits": 0,
+    "seconds": 4.275,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɪn ðə nˈIntˈiːn nˈIntiz ðə bˈiː tˈuː kˈA kɹˈuː ɹˈuːld.",
+    "heard": "In the 1990s, the B2K crew ruled.",
+    "edits": 0,
+    "seconds": 4.3,
+    "ops": []
+   },
+   "spoken": {
+    "words": 10,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-53",
+   "category": "edge",
+   "text": "I 💀 you with every line.",
+   "words": 5,
+   "old": {
+    "phonemes": "aɪ skˈʌl juː wɪð ˈɛvɹɪ lˈaɪn.",
+    "heard": "I skull you with every line.",
+    "edits": 1,
+    "seconds": 2.725,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "skull"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˌI skˈʌl juː wɪð ˈɛvəɹi lˈIn.",
+    "heard": "I skull you with every line.",
+    "edits": 1,
+    "seconds": 2.725,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "skull"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 6,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-54",
+   "category": "edge",
+   "text": "Act III, Scene ii: the duel begins.",
+   "words": 7,
+   "old": {
+    "phonemes": "ˈakt ɹˌəʊmən θɹˈiː, sˈiːn ɹˌəʊmən tˈuː: ðə djˈuːəl bɪɡˈɪnz.",
+    "heard": "Act Room 3 Scene Room 2, the duel begins.",
+    "edits": 4,
+    "seconds": 4.225,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "room"
+     },
+     {
+      "op": "S",
+      "ref": "iii",
+      "hyp": "3"
+     },
+     {
+      "op": "I",
+      "hyp": "room"
+     },
+     {
+      "op": "S",
+      "ref": "ii",
+      "hyp": "2"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ˈakt θɹˈiː, sˈiːn tˈuː: ðə dˈuːəl bɪɡˈɪnz.",
+    "heard": "Act 3 seemed to, the duel begins.",
+    "edits": 3,
+    "seconds": 3.55,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "iii",
+      "hyp": "3"
+     },
+     {
+      "op": "S",
+      "ref": "scene",
+      "hyp": "seemed"
+     },
+     {
+      "op": "S",
+      "ref": "ii",
+      "hyp": "to"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 7,
+    "old": 2,
+    "new": 2
+   }
+  },
+  {
+   "id": "edge-55",
+   "category": "edge",
+   "text": "John I'm the one who rules this stage.",
+   "words": 8,
+   "old": {
+    "phonemes": "dʒˈɒn aɪm ðə wˈɒn hˌuː ɹˈuːlz ðɪs stˈeɪdʒ.",
+    "heard": "John I'm the one who rules the stage.",
+    "edits": 1,
+    "seconds": 3.625,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "this",
+      "hyp": "the"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ʤˈɒn ˈIm ðə wˈʌn hˈuː ɹˈuːlz ðˈɪs stˈAʤ.",
+    "heard": "John Eime, the one who rules this stage.",
+    "edits": 1,
+    "seconds": 3.425,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "im",
+      "hyp": "eime"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 8,
+    "old": 1,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-56",
+   "category": "edge",
+   "text": "Round I'm winning, round I'm sure.",
+   "words": 6,
+   "old": {
+    "phonemes": "ɹˈaʊnd aɪm wˈɪnɪŋ, ɹˈaʊnd aɪm ʃˈʊə.",
+    "heard": "Round I'm winning, round I'm sure.",
+    "edits": 0,
+    "seconds": 3.275,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ɹˈWnd ˈIm wˈɪnɪŋ, ɹˈWnd ˈIm ʃˈʊə.",
+    "heard": "Round I'm winning, round I'm sure.",
+    "edits": 0,
+    "seconds": 3.175,
+    "ops": []
+   },
+   "spoken": {
+    "words": 6,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-57",
+   "category": "edge",
+   "text": "Victor I'd rather die than lose to you.",
+   "words": 8,
+   "old": {
+    "phonemes": "vˈɪktəɹ aɪd ɹˈɑːðə dˈaɪ ðɐn lˈuːz tə juː.",
+    "heard": "Victor, I'd rather die than lose to you.",
+    "edits": 0,
+    "seconds": 3.6,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "vˈɪktəɹ ˈId ɹˈɑːðə dˈI ðan lˈuːz tə jˈuː.",
+    "heard": "Victor I'd rather die than lose to you.",
+    "edits": 0,
+    "seconds": 3.85,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-58",
+   "category": "edge",
+   "text": "Peter I'll take your crown and keep it.",
+   "words": 8,
+   "old": {
+    "phonemes": "pˈiːtəɹ aɪl tˈeɪk jɔː kɹˈaʊn and kˈiːp ɪt.",
+    "heard": "Peter, I'll take your crown and keep it.",
+    "edits": 0,
+    "seconds": 3.5,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "pˈiːtəɹ ˈIl tˈAk jɔː kɹˈWn and kˈiːp ˈɪt.",
+    "heard": "Peter, I'll take your crown and keep it.",
+    "edits": 0,
+    "seconds": 3.6,
+    "ops": []
+   },
+   "spoken": {
+    "words": 8,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-59",
+   "category": "edge",
+   "text": "Mary I'm yours, forever and a day.",
+   "words": 7,
+   "old": {
+    "phonemes": "mˈeəɹi aɪm jˈɔːz, fəɹˈɛvəɹ and ɐ dˈeɪ.",
+    "heard": "Mary I'm Yours forever and a day.",
+    "edits": 0,
+    "seconds": 3.575,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "mˈɛːɹi ˈIm jˈʊəz, fəɹˈɛvəɹ and ɐ dˈA.",
+    "heard": "Mary I'm Yours forever and a day.",
+    "edits": 0,
+    "seconds": 3.55,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-60",
+   "category": "edge",
+   "text": "Charles I'm sure the War I'm waging is lost.",
+   "words": 9,
+   "old": {
+    "phonemes": "tʃˈɑːlz aɪm ʃˈʊə ðə wˈɔːɹ aɪm wˈeɪdʒɪŋ ɪz lˈɒst.",
+    "heard": "Charles, I'm sure the war I'm waging is lost.",
+    "edits": 0,
+    "seconds": 4.225,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "ʧˈɑːlz ˈIm ʃˈʊə ðə wˈɔːɹ ˈIm wˈAʤɪŋ ɪz lˈɒst.",
+    "heard": "Charles I'm sure the war I'm waging is lost.",
+    "edits": 0,
+    "seconds": 4,
+    "ops": []
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-61",
+   "category": "edge",
+   "text": "Section D is mine, and Level M is yours.",
+   "words": 9,
+   "old": {
+    "phonemes": "sˈɛkʃən dˈiː ɪz mˈaɪn, and lˈɛvəl ˈɛm ɪz jˈɔːz.",
+    "heard": "Section D is mine and level M is yours.",
+    "edits": 0,
+    "seconds": 4.275,
+    "ops": []
+   },
+   "new": {
+    "phonemes": "sˈɛkʃən dˈiː ɪz mˈIn, and lˈɛvᵊl ˈɛm ɪz jˈʊəz.",
+    "heard": "Section D is mine and Level M is yours.",
+    "edits": 0,
+    "seconds": 4.25,
+    "ops": []
+   },
+   "spoken": {
+    "words": 9,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-62",
+   "category": "edge",
+   "text": "Henry I of England, then Mary I and Philip II.",
+   "words": 10,
+   "old": {
+    "phonemes": "hˈɛnɹi aɪ ɒv ˈɪŋɡlənd, ðˈɛn mˈeəɹi aɪ and fˈɪlɪp ɹˌəʊmən tˈuː.",
+    "heard": "Henry I of England, then Mary I and Philip Roman II.",
+    "edits": 1,
+    "seconds": 4.9,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "roman"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "hˈɛnɹi ðə fˈɜːst əv ˈɪŋɡlənd, ðˈɛn mˈɛːɹi ðə fˈɜːst and fˈɪləp ðə sˈɛkənd.",
+    "heard": "Henry I of England, then Mary I and Philip II.",
+    "edits": 0,
+    "seconds": 5.55,
+    "ops": []
+   },
+   "spoken": {
+    "words": 13,
+    "old": 2,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-63",
+   "category": "edge",
+   "text": "An IV bag hangs above the bed.",
+   "words": 7,
+   "old": {
+    "phonemes": "an ɹˌəʊmən fˈɔː bˈaɡ hˈaŋz əbˌʌv ðə bˈɛd.",
+    "heard": "and Roman IV bag hangs above the bed.",
+    "edits": 2,
+    "seconds": 3.65,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "and"
+     },
+     {
+      "op": "S",
+      "ref": "an",
+      "hyp": "roman"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɐn ˈI vˈiː bˈaɡ hˈaŋz əbˈʌv ðə bˈɛd.",
+    "heard": "an IV bag hangs above the bed.",
+    "edits": 0,
+    "seconds": 3.525,
+    "ops": []
+   },
+   "spoken": {
+    "words": 7,
+    "old": 3,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-64",
+   "category": "edge",
+   "text": "Round 2 am I winning? At 7 am I woke.",
+   "words": 10,
+   "old": {
+    "phonemes": "ɹˈaʊnd tˈuː ˌeɪˈɛm aɪ wˈɪnɪŋ? at sˈɛvən ˌeɪˈɛm aɪ wˈəʊk.",
+    "heard": "Round two, A-M-I winning at seven A-M-I woke.",
+    "edits": 6,
+    "seconds": 4.775,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "two"
+     },
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "a"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "m"
+     },
+     {
+      "op": "I",
+      "hyp": "seven"
+     },
+     {
+      "op": "S",
+      "ref": "7",
+      "hyp": "a"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "m"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɹˈWnd tˈuː am ˌI wˈɪnɪŋ? ɐt sˈɛvən ˈA ˈɛm ˌI wˈQk.",
+    "heard": "Round two, am I winning at 7am my woke?",
+    "edits": 4,
+    "seconds": 4.25,
+    "ops": [
+     {
+      "op": "S",
+      "ref": "2",
+      "hyp": "two"
+     },
+     {
+      "op": "D",
+      "ref": "7"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "7am"
+     },
+     {
+      "op": "S",
+      "ref": "i",
+      "hyp": "my"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 11,
+    "old": 2,
+    "new": 1
+   }
+  },
+  {
+   "id": "edge-65",
+   "category": "edge",
+   "text": "It's 3 am I can't sleep, by 6 pm I fight.",
+   "words": 11,
+   "old": {
+    "phonemes": "ɪts θɹˈiː ˌeɪˈɛm aɪ kˈɑːnt slˈiːp, baɪ sˈɪks pˌiːˈɛm aɪ fˈaɪt.",
+    "heard": "It's 3am I can't sleep by 6pm I fight.",
+    "edits": 4,
+    "seconds": 4.675,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "3"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "3am"
+     },
+     {
+      "op": "D",
+      "ref": "6"
+     },
+     {
+      "op": "S",
+      "ref": "pm",
+      "hyp": "6pm"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ɪts θɹˈiː ˈA ˈɛm ˌI kˈɑːnt slˈiːp, bI sˈɪks pˈiː ˈɛm ˌI fˈIt.",
+    "heard": "It's 3am I can't sleep by 6pm I fight.",
+    "edits": 4,
+    "seconds": 4.7,
+    "ops": [
+     {
+      "op": "D",
+      "ref": "3"
+     },
+     {
+      "op": "S",
+      "ref": "am",
+      "hyp": "3am"
+     },
+     {
+      "op": "D",
+      "ref": "6"
+     },
+     {
+      "op": "S",
+      "ref": "pm",
+      "hyp": "6pm"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 13,
+    "old": 0,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-66",
+   "category": "edge",
+   "text": "🔥🔥 my verse burns, 👍🏽 to that.",
+   "words": 5,
+   "old": {
+    "phonemes": "fˈaɪəfˈaɪə maɪ vˈɜːs bˈɜːnz, θˈʌmzmˈiːdiəm tə ðˈat.",
+    "heard": "Fire fire my verse burns, thumbs medium to that.",
+    "edits": 4,
+    "seconds": 4.475,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "fire"
+     },
+     {
+      "op": "I",
+      "hyp": "fire"
+     },
+     {
+      "op": "I",
+      "hyp": "thumbs"
+     },
+     {
+      "op": "I",
+      "hyp": "medium"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "fˈIə fˈIə mI vˈɜːs bˈɜːnz, θˈʌmz ˈʌp tə ðˈat.",
+    "heard": "Fire fire my verse burns, thumbs up to that.",
+    "edits": 4,
+    "seconds": 3.975,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "fire"
+     },
+     {
+      "op": "I",
+      "hyp": "fire"
+     },
+     {
+      "op": "I",
+      "hyp": "thumbs"
+     },
+     {
+      "op": "I",
+      "hyp": "up"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 9,
+    "old": 1,
+    "new": 0
+   }
+  },
+  {
+   "id": "edge-67",
+   "category": "edge",
+   "text": "The 🇺🇸 flag and the 👩🏾‍🚀 in the sky.",
+   "words": 7,
+   "old": {
+    "phonemes": "ðə juːnˈaɪtɪd stˈeɪts flˈaɡ and ðə wˈʊmənmˈiːdiəmdˌɑːkɹˈɒkɪt ɪnðə skˈaɪ.",
+    "heard": "The United States flag and the woman medium dark rocket in the sky.",
+    "edits": 6,
+    "seconds": 5.45,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "united"
+     },
+     {
+      "op": "I",
+      "hyp": "states"
+     },
+     {
+      "op": "I",
+      "hyp": "woman"
+     },
+     {
+      "op": "I",
+      "hyp": "medium"
+     },
+     {
+      "op": "I",
+      "hyp": "dark"
+     },
+     {
+      "op": "I",
+      "hyp": "rocket"
+     }
+    ]
+   },
+   "new": {
+    "phonemes": "ðə flˈaɡ junˈItɪd stˈAts flˈaɡ and ðə wˈʊmən ˈastɹənˌɔːt ɪn ðə skˈI.",
+    "heard": "the flag-united states flag and the woman astronaut in the sky.",
+    "edits": 5,
+    "seconds": 5.3,
+    "ops": [
+     {
+      "op": "I",
+      "hyp": "flag"
+     },
+     {
+      "op": "I",
+      "hyp": "united"
+     },
+     {
+      "op": "I",
+      "hyp": "states"
+     },
+     {
+      "op": "I",
+      "hyp": "woman"
+     },
+     {
+      "op": "I",
+      "hyp": "astronaut"
+     }
+    ]
+   },
+   "spoken": {
+    "words": 12,
+    "old": 4,
     "new": 0
    }
   }

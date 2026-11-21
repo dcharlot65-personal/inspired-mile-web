@@ -267,14 +267,15 @@ eSpeak NG says beyond it (a tone) counts against the old reading: those three ar
 results.
 
 <!-- edge -->
-Run of 2026-11-19 on v26.13.1, 40 texts (`scripts/voice/edge-texts.txt`), 16 minutes; the same models and settings as above.
+Run of 2026-11-21 on v26.13.1, 67 texts (`scripts/voice/edge-texts.txt`), 10 minutes; the same models and settings as above.
 
 | Scored | Words | WER old (eSpeak) | WER new | New − old (points) | 95% interval (paired bootstrap) |
 |---|---:|---:|---:|---:|---|
-| as written (Whisper's "10pm" against "ten p.m." counts as an error) | 302 | 17.88% | 16.56% | −1.32 | −5.07 to +2.84 |
-| **in spoken form** (text and both transcripts through the same normaliser) | 356 | 9.83% | 3.93% | −5.90 | −10.43 to −2.30 |
+| as written (Whisper's "10pm" against "ten p.m." counts as an error) | 512 | 18.75% | 15.82% | −2.93 | −6.10 to +0.39 |
+| **in spoken form** (text and both transcripts through the same normaliser) | 597 | 11.06% | 4.19% | −6.87 | −10.21 to −3.86 |
+| **in spoken form, the 27 added on 2026-11-20** (27 texts) | 241 | 12.86% | 4.56% | −8.30 | −13.88 to −3.43 |
 
-In spoken form the new reading is heard better in 10 texts, worse in 1, the same in 29. Every text, with what Whisper heard (errors in spoken form, old → new):
+In spoken form the new reading is heard better in 18 texts, worse in 1, the same in 48. Every text, with what Whisper heard (errors in spoken form, old → new):
 
 | Text | Old (eSpeak) heard | New heard | Errors |
 |---|---|---|---:|
@@ -318,6 +319,33 @@ In spoken form the new reading is heard better in 10 texts, worse in 1, the same
 | Ten past 10 on the 10th of May. | 10 past 10 on the 10th of May. | 10 past 10 on the 10th of May. | 0 → 0 |
 | Henry VI, Part 2, is rarely played. | Henry VI Part II is rarely played. | Henry VI Part II is rarely played. | 0 → 0 |
 | My score went up 100% in 24 hours. | My score went up 100% in 24 hours. | My score went up 100% in 24 hours. | 0 → 0 |
+| Mary I'm yours, and John I'll never be. | Mary, I'm yours and John, I'll never be. | Mary, I'm yours and John, I'll never be. | 0 → 0 |
+| War I'm waging on your feeble rhymes. | War I'm waging on your feeble rhymes. | War I'm waging on your feeble rhymes. | 0 → 0 |
+| Listen Peter I've got the crown tonight. | Listen Peter, I've got the crown tonight. | Listen Peter Ive got the crown tonight. | 0 → 0 |
+| Innocent I'm not, but guilty I will never be. | Innocent I'm not, but guilty I will never be. | Innocent I'm not, but guilty I will never be. | 0 → 0 |
+| Part C of the plan is where you fall. | Part C of the plan is where you fall. | Part C of the plan is where you fall. | 0 → 0 |
+| Love you Mary XX, signed with a kiss. | Love you Mary Roman 20 signed with a kiss. | Love you Mary the 20th signed with a kiss. | 2 → 0 |
+| MARY I LOVE YOU, HEAR ME SHOUT. | Mary, I love you. Hear me shout. | Mary, I love you. Hear me shout. | 0 → 0 |
+| Back in the 90s, at 10pm, I played my mp3. | Back in the 90s, at 10 pm, I played my MP3. | Back in the 90s, at 10pm, I played my MP3. | 0 → 0 |
+| I rhyme like 2pac, gr8 and 4ever. | I rhyme like 2 pack, GR8 and 4 ever. | I rhyme like two pack, great and forever. | 5 → 2 |
+| Henry VIII had six wives, Richard III one crown. | Henry Roman 8 had six wives, Richard Roman 3-1 Crown. | Henry VIII had six wives, Richard III I crown. | 5 → 1 |
+| Call 911 at 3:30am. | Call 911 at 3.30am. | Call 911 at 330 AM. | 4 → 4 |
+| In the 1990s the B2K crew ruled. | In the 1990s, the B2K crew ruled. | In the 1990s, the B2K crew ruled. | 0 → 0 |
+| I 💀 you with every line. | I skull you with every line. | I skull you with every line. | 0 → 0 |
+| Act III, Scene ii: the duel begins. | Act Room 3 Scene Room 2, the duel begins. | Act 3 seemed to, the duel begins. | 2 → 2 |
+| John I'm the one who rules this stage. | John I'm the one who rules the stage. | John Eime, the one who rules this stage. | 1 → 1 |
+| Round I'm winning, round I'm sure. | Round I'm winning, round I'm sure. | Round I'm winning, round I'm sure. | 0 → 0 |
+| Victor I'd rather die than lose to you. | Victor, I'd rather die than lose to you. | Victor I'd rather die than lose to you. | 0 → 0 |
+| Peter I'll take your crown and keep it. | Peter, I'll take your crown and keep it. | Peter, I'll take your crown and keep it. | 0 → 0 |
+| Mary I'm yours, forever and a day. | Mary I'm Yours forever and a day. | Mary I'm Yours forever and a day. | 0 → 0 |
+| Charles I'm sure the War I'm waging is lost. | Charles, I'm sure the war I'm waging is lost. | Charles I'm sure the war I'm waging is lost. | 0 → 0 |
+| Section D is mine, and Level M is yours. | Section D is mine and level M is yours. | Section D is mine and Level M is yours. | 0 → 0 |
+| Henry I of England, then Mary I and Philip II. | Henry I of England, then Mary I and Philip Roman II. | Henry I of England, then Mary I and Philip II. | 2 → 0 |
+| An IV bag hangs above the bed. | and Roman IV bag hangs above the bed. | an IV bag hangs above the bed. | 3 → 0 |
+| Round 2 am I winning? At 7 am I woke. | Round two, A-M-I winning at seven A-M-I woke. | Round two, am I winning at 7am my woke? | 2 → 1 |
+| It's 3 am I can't sleep, by 6 pm I fight. | It's 3am I can't sleep by 6pm I fight. | It's 3am I can't sleep by 6pm I fight. | 0 → 0 |
+| 🔥🔥 my verse burns, 👍🏽 to that. | Fire fire my verse burns, thumbs medium to that. | Fire fire my verse burns, thumbs up to that. | 1 → 0 |
+| The 🇺🇸 flag and the 👩🏾‍🚀 in the sky. | The United States flag and the woman medium dark rocket in the sky. | the flag-united states flag and the woman astronaut in the sky. | 4 → 0 |
 <!-- /edge -->
 
 **Against the margin:** in spoken form −5.90 points (95% interval −10.43 to −2.30) against +1.0:
