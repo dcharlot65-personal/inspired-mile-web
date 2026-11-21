@@ -173,7 +173,7 @@ describe('what the credits page says is not yet traced', () => {
   it('counts the sound effects that ship, and claims no untraced music', () => {
     expect(section.length).toBeGreaterThan(0);
     const sfx = served('public/audio/sfx').length;
-    expect(section.replace(/\s+/g, ' ')).toContain(`the game's ${WORDS[sfx]} sound effects`);
+    expect(section.replace(/\s+/g, ' ').toLowerCase()).toContain(`the game's ${WORDS[sfx]} sound effects`);
     expect(section).not.toMatch(/background tracks?|music/i);
     for (const f of served('public/audio/music')) expect([f, assets.includes(`\`${f}\``)]).toEqual([f, true]);
   });
