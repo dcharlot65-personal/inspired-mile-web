@@ -9,7 +9,7 @@ import { test, expect } from '@playwright/test';
 const PAGES = [
   '/', '/battle', '/collection', '/playground', '/classroom', '/multiplayer',
   '/marketplace', '/tournaments', '/story', '/season', '/profile', '/world-map',
-  '/viewer', '/vr', '/theatre', '/about', '/privacy', '/terms',
+  '/viewer', '/vr', '/theatre', '/about', '/privacy', '/terms', '/credits',
 ];
 
 test.beforeEach(async ({ page }) => {
@@ -99,4 +99,25 @@ test('a Japanese duel loads its analyser and dictionary from the built site', as
   expect(failures).toEqual([]);
   expect(files.length).toBeGreaterThan(0);
   for (const f of files) expect([f.url, f.status]).toEqual([f.url, 200]);
+});
+
+// What /credits promises travels with the site (fix/compliance): the notices file and the license texts it
+// points to are served whole, the page shows no tamper warning once the guard has looked (before 2026-11-19 it
+// warned every visitor three seconds after load), and the notices name no eSpeak NG, which no longer ships.
+test('the license files /credits points to are served, and /credits and /privacy show no tamper warning', async ({ page, request }) => {
+  const files = ['/licenses/THIRD-PARTY-NOTICES.txt', '/licenses/SCOWL-Copyright.txt', '/licenses/mecab-ipadic-NOTICE.txt',
+    '/licenses/onnxruntime-1.22-ThirdPartyNotices.txt', '/licenses/onnxruntime-1.31-ThirdPartyNotices.txt', '/fonts/OFL.txt'];
+  for (const f of files) {
+    const res = await request.get(f);
+    expect([f, res.status()]).toEqual([f, 200]);
+    expect([f, (await res.text()).length > 500]).toEqual([f, true]);
+  }
+  const notices = await (await request.get('/licenses/THIRD-PARTY-NOTICES.txt')).text();
+  expect(notices).toContain('CC BY-SA 4.0');
+  expect(notices).not.toMatch(/eSpeak NG, compiled|GNU General Public License/);
+  for (const path of ['/credits', '/privacy']) {
+    await page.goto(path, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(5000);
+    await expect(page.locator('#tamper-guard-warning'), path).toHaveCount(0);
+  }
 });
