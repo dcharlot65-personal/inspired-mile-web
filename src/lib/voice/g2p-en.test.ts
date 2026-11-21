@@ -154,6 +154,8 @@ describe('text', () => {
     ["Paul I've loved thee long.", "Paul I've loved thee long."], ["Elizabeth I'm queen.", "Elizabeth I'm queen."],
     ["Victor I'll be, Urban I'm not", "Victor I'll be, Urban I'm not"], ["Innocent I'm not", "Innocent I'm not"],
     ['Mary I’m yours', "Mary I'm yours"],
+    // A possessive 's is the numeral's (the pronoun takes none); any other contraction is not.
+    ["Elizabeth I's reign", "Elizabeth the first's reign"], ["Act I's ending", "Act one's ending"], ["Henry VI'd fight", "Henry VI'd fight"],
     // ... and after a part's name at the start of a line.
     ["Round I'm winning", "Round I'm winning"], ["Stage I'm owning", "Stage I'm owning"], ["Phase I'm in", "Phase I'm in"],
     ["Level I've passed", "Level I've passed"], ["Charles I'm sure the War I'm waging is lost.", "Charles I'm sure the War I'm waging is lost."],

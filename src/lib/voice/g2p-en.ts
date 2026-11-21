@@ -817,7 +817,8 @@ function romanValue(s: string): number {
  * "of" or "and", or the next part's name ("Act I Scene ii"). So "Elizabeth I.", "Act I, Scene i",
  * "Henry I of England" are numbers, and "Henry I saw", "Mary I'm yours", "Round I'm winning",
  * "MARY I LOVE YOU" are the pronoun. No numeral takes an apostrophe and a letter after it but the
- * possessive 's ("Henry VIII's wives"): "I'm", "I'll", "I'd", "I've" are the pronoun's. After a
+ * possessive 's ("Henry VIII's wives", "Elizabeth I's reign"): "I'm", "I'll", "I'd", "I've" are
+ * the pronoun's. After a
  * part's name a single C, D, L or M is a letter (Part C, Section D), and a longer numeral is a
  * number only below 400 (Sonnet CLIV, not "Part MIX").
  */
@@ -827,13 +828,15 @@ function romanNumerals(t: string): string {
     if (!n) return all;
     const rest = whole.slice(offset + all.length);
     const loneI = num.toUpperCase() === 'I';
-    // An apostrophe and a letter: a contraction (the pronoun's), or a possessive 's.
-    if (/^'\p{L}/u.test(rest) && (loneI || !/^'s(?![\p{L}\p{M}\d])/u.test(rest))) return all;
+    // An apostrophe and a letter: a possessive 's, which ends the phrase ("Henry VIII's wives",
+    // "Elizabeth I's reign": the pronoun takes no 's), or a contraction, the pronoun's ("I'm").
+    const possessive = /^'s(?![\p{L}\p{M}\d])/u.test(rest);
+    if (/^'\p{L}/u.test(rest) && !possessive) return all;
     const lower = word.toLowerCase();
     const capital = /^\p{Lu}/u.test(word);
     const small = num === num.toLowerCase();
     const endsPhrase = (): boolean => {
-      if (/^[ \t]*(?:$|\n|[.,;:!?…)\]"”])/.test(rest)) return true;
+      if (possessive || /^[ \t]*(?:$|\n|[.,;:!?…)\]"”])/.test(rest)) return true;
       const next = /^[ \t]+(\p{L}+)/u.exec(rest)?.[1] ?? '';
       return next === 'of' || next === 'and' || (/^\p{Lu}\p{Ll}+$/u.test(next) && SECTION.has(next.toLowerCase()));
     };

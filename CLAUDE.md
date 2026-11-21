@@ -155,7 +155,7 @@ Kokoro's tokenizer and `generate_from_ids`, in pieces of at most 400 symbols (Ko
 - Tests: `src/lib/voice/g2p-en.test.ts`, `no-espeak.test.ts`, `held-out.test.ts`,
   `measure-host.test.ts` and `src/lib/thespian-voice.test.ts` (speak(): text with nothing the
   English reading can say, no Latin letter and no emoji CLDR names, goes to the device voice, not
-  an empty sound) (`node scripts/voice/mutate-voice.mjs` on the build host plants 64 faults; each
+  an empty sound) (`node scripts/voice/mutate-voice.mjs` on the build host plants 65 faults; each
   must turn them red), `tests/voice.spec.ts` (the real Kokoro speaks, Whisper must hear it, text
   with no Latin letter goes to the device voice, no served script holds eSpeak; and a duel with
   the voice off fetches none of the voice). `src/lib/voice/measurement.test.ts`
