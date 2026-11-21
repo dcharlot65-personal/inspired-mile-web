@@ -146,6 +146,31 @@ describe('text', () => {
     expect(normalise(text)).toBe(said);
   });
 
+  it.each([
+    // The pronoun I after a king's name, in a contraction or before a capitalised word (the
+    // independent check's probes, which read "the first'm", "one'm", "the first LOVE YOU").
+    ["Mary I'm yours, and John I'll never be.", "Mary I'm yours, and John I'll never be."], ["Henry I'd follow thee.", "Henry I'd follow thee."],
+    ["Paul I've loved thee long.", "Paul I've loved thee long."], ["Elizabeth I'm queen.", "Elizabeth I'm queen."],
+    ["Victor I'll be, Urban I'm not", "Victor I'll be, Urban I'm not"], ["Innocent I'm not", "Innocent I'm not"],
+    ['Mary I’m yours', "Mary I'm yours"],
+    // ... and after a part's name at the start of a line.
+    ["Round I'm winning", "Round I'm winning"], ["Stage I'm owning", "Stage I'm owning"], ["Phase I'm in", "Phase I'm in"],
+    ["Level I've passed", "Level I've passed"], ["Charles I'm sure the War I'm waging is lost.", "Charles I'm sure the War I'm waging is lost."],
+    // ... and in a shouted line.
+    ['MARY I LOVE YOU', 'MARY I LOVE YOU'], ['JOHN I WILL END YOU', 'JOHN I WILL END YOU'], ['Henry I Love', 'Henry I Love'],
+    // A lone I that ends the phrase is the number: a mark, the line's end, "of", "and", the next part.
+    ['Henry I of England', 'Henry the first of England'], ['Mary I and Philip II', 'Mary the first and Philip the second'],
+    ['Act I Scene ii', 'Act one Scene two'], ['World War I', 'World War one'], ['the crown of Mary I\nwas gold', 'the crown of Mary the first\nwas gold'],
+    ['ELIZABETH I.', 'ELIZABETH the first.'],
+    // One letter of C, D, L or M after a part's name is a letter, and a long numeral there is a number only below 400.
+    ['Part C of the plan', 'Part C of the plan'], ['Section D is mine', 'Section D is mine'], ['Level M', 'Level M'], ['Book L', 'Book L'],
+    ['Sonnet CLIV', 'Sonnet one hundred and fifty-four'], ['Psalm CXIX', 'Psalm one hundred and nineteen'], ['Part MIX', 'Part MIX'], ['Stage CD', 'Stage CD'],
+    // After any other capitalised word, a number, but not after a little word.
+    ['An IV bag', 'An IV bag'], ['HOOKED TO AN IV', 'HOOKED TO AN IV'], ['My XI', 'My XI'], ['Final Fantasy VII', 'Final Fantasy seven'], ['ROCKY II', 'ROCKY two'],
+  ])('%j is read as %j (Roman numerals, second pass)', (text, said) => {
+    expect(normalise(text)).toBe(said);
+  });
+
   it('says the letters of a time as letters ("A M", not the article)', () => {
     expect(ps('3am')).toBe('θɹˈiː ˈA ˈɛm.');
     expect(ps('A dog')).toBe('ɐ dˈɒɡ.');

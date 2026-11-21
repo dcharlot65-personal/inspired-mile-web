@@ -806,35 +806,56 @@ function romanValue(s: string): number {
 
 /**
  * Roman numerals where they are numbers: after a king's or a pope's name an ordinal ("Henry VIII"
- * Henry the Eighth), after a part's name a cardinal ("Act III" act three, "Scene ii"), and after
- * another capitalised word a cardinal when it is two letters or more of I, V and X ("Rocky II";
- * not X's alone, which are kisses). A lone I is the pronoun unless the word before is a name of
- * that kind or a capitalised part's name and no small word follows ("Elizabeth I.", "Act I," but
- * "Henry I saw", "the war I fought"). Only on one line: a line's last word and the next line's
- * "I" are not a king and his number.
+ * Henry the Eighth), after a part's name a cardinal ("Act III" act three, "Scene ii", "Psalm CXIX"),
+ * and after another capitalised word a cardinal when it is two letters or more of I, V and X
+ * ("Rocky II"; not X's alone, which are kisses; not after a little word, "an IV bag"). Only on
+ * one line: a line's last word and the next line's "I" are not a king and his number.
+ *
+ * A lone I is the pronoun unless the word before is a name of that kind or a capitalised part's
+ * name AND what follows ends the phrase: the end of a line, a closing mark (. , ; : ! ? … ) ] "),
+ * "of" or "and", or the next part's name ("Act I Scene ii"). So "Elizabeth I.", "Act I, Scene i",
+ * "Henry I of England" are numbers, and "Henry I saw", "Mary I'm yours", "Round I'm winning",
+ * "MARY I LOVE YOU" are the pronoun. No numeral takes an apostrophe and a letter after it but the
+ * possessive 's ("Henry VIII's wives"): "I'm", "I'll", "I'd", "I've" are the pronoun's. After a
+ * part's name a single C, D, L or M is a letter (Part C, Section D), and a longer numeral is a
+ * number only below 400 (Sonnet CLIV, not "Part MIX").
  */
 function romanNumerals(t: string): string {
-  return t.replace(/(^|[^\p{L}\p{M}'’])(\p{L}+)([ \t]+)([IVXLCDM]+|[ivx]+)(?![\p{L}\p{M}\d])(?=([ \t]+[a-z]+)?)/gmu, (all, pre: string, word: string, sp: string, num: string, after?: string) => {
+  return t.replace(/(^|[^\p{L}\p{M}'])(\p{L}+)([ \t]+)([IVXLCDM]+|[ivx]+)(?![\p{L}\p{M}\d])/gmu, (all, pre: string, word: string, sp: string, num: string, offset: number, whole: string) => {
     const n = romanValue(num);
     if (!n) return all;
+    const rest = whole.slice(offset + all.length);
+    const loneI = num.toUpperCase() === 'I';
+    // An apostrophe and a letter: a contraction (the pronoun's), or a possessive 's.
+    if (/^'\p{L}/u.test(rest) && (loneI || !/^'s(?![\p{L}\p{M}\d])/u.test(rest))) return all;
     const lower = word.toLowerCase();
     const capital = /^\p{Lu}/u.test(word);
     const small = num === num.toLowerCase();
-    const loneI = num.toUpperCase() === 'I';
-    const smallWordNext = !!after && !/^[ \t]+(of|and)$/.test(after);
+    const endsPhrase = (): boolean => {
+      if (/^[ \t]*(?:$|\n|[.,;:!?…)\]"”])/.test(rest)) return true;
+      const next = /^[ \t]+(\p{L}+)/u.exec(rest)?.[1] ?? '';
+      return next === 'of' || next === 'and' || (/^\p{Lu}\p{Ll}+$/u.test(next) && SECTION.has(next.toLowerCase()));
+    };
     if (capital && REGNAL.has(lower) && !small && n < 40) {
-      if (loneI && smallWordNext) return all;
+      if (loneI && !endsPhrase()) return all;
       if (num.length === 1 && !loneI && num !== 'V') return all;
       return `${pre}${word}${sp}the ${ordinalWords(n)}`;
     }
-    if (SECTION.has(lower) && (n < 40 || !small)) {
-      if (loneI && (!capital || smallWordNext)) return all;
+    if (SECTION.has(lower)) {
+      if (loneI && (!capital || !endsPhrase())) return all;
+      if (/^[LCDM]$/.test(num) || n >= 400) return all;
       return `${pre}${word}${sp}${numberWords(n)}`;
     }
-    if (capital && !small && num.length >= 2 && /^[IVX]+$/.test(num) && !/^X+$/.test(num) && n < 40) return `${pre}${word}${sp}${numberWords(n)}`;
+    // Any other capitalised word, but not a little word ("an IV bag", "AN IV": the bag, not four).
+    if (capital && !NOT_A_TITLE.has(lower) && !small && num.length >= 2 && /^[IVX]+$/.test(num) && !/^X+$/.test(num) && n < 40) {
+      return `${pre}${word}${sp}${numberWords(n)}`;
+    }
     return all;
   });
 }
+
+/** Little words a numeral never numbers ("an IV", "my XI", "the VI"): what follows them is a thing. */
+const NOT_A_TITLE = new Set(['a', 'an', 'the', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'thy', 'thine', 'this', 'that', 'no', 'to', 'of', 'in', 'on', 'at', 'by', 'for', 'with', 'from', 'and', 'or']);
 
 const ABBREVIATIONS: Array<[RegExp, string]> = [
   [/\bMrs\.?(?=\s+[A-Z])/g, 'Missus'], [/\bMr\.?(?=\s+[A-Z])/g, 'Mister'], [/\bMs\.?(?=\s+[A-Z])/g, 'Miz'], [/\bDr\.(?=\s+[A-Z])/g, 'Doctor'],
