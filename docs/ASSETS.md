@@ -101,9 +101,12 @@ eighteen GLBs `src/lib/ar-viewer.ts` names, and 52 of the 53 splats `/viewer` as
   **Apache-2.0** by its card's metadata (read 2026-11-19); the Space also lists
   `CompVis/stable-diffusion-safety-checker`. No page shows these images (as-built design 7.2); 27 of them
   use city codes the catalogue no longer has.
-- **Icons** (`favicon.svg`, `favicon.ico`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`,
-  `apple-touch-icon.png`): the "IM" monogram, made in this repository (`8adecfe0`, `49302d5d`, `fc8d6cb3`). No
-  outside source is recorded or suspected.
+- **Icons** (`public/icons/20261120100034/`: `favicon.svg`, `favicon.ico`, `icon-192.png`, `icon-512.png`,
+  `icon-maskable-512.png`, `apple-touch-icon.png`, with copies of the .ico and the iOS icon at `public/favicon.ico`
+  and `public/apple-touch-icon.png`): a quill and a microphone crossed like duelling blades, drawn by hand as SVG
+  in this repository on 2026-11-20 (`design/icon/`, its README; `fix/favicon` 29b2f311) and rendered by
+  `scripts/build-icons.sh`. No outside image, font or source. It replaced the "IM" monogram, also made in this
+  repository (`8adecfe0`, `49302d5d`, `fc8d6cb3`).
 
 ## 5. Fonts (`public/fonts/`, 12 woff2)
 

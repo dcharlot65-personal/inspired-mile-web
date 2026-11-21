@@ -185,6 +185,20 @@ describe('what the credits page says is not yet traced', () => {
   });
 });
 
+describe('the icon', () => {
+  // design/icon/ holds the masters; scripts/build-icons.sh renders them into the newest public/icons/<index>/.
+  const newest = readdirSync(new URL('../../public/icons', import.meta.url)).filter((d) => /^\d{14}$/.test(d)).sort().at(-1);
+
+  it('is described as the site serves it, on the credits page and in docs/ASSETS.md', () => {
+    expect(newest).toBeDefined();
+    expect(read('design/icon/README.md')).toMatch(/quill and a microphone/);
+    expect(page).toMatch(/quill and a microphone/);
+    expect(page).not.toMatch(/monogram/i);
+    expect(assets).toContain(`public/icons/${newest}/`);
+    expect(assets).toMatch(/quill and a microphone/);
+  });
+});
+
 describe('docs/ASSETS.md', () => {
   it('records every music, sound and 3D file the site serves, by name', () => {
     for (const dir of ['public/audio/music', 'public/audio/sfx', 'public/models', 'public/models/splats']) {
