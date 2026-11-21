@@ -7,32 +7,36 @@ the dev Mac, the model library on the M4, and the original publications. The cre
 `src/lib/credits.test.ts` fails when a file of music, sound or 3D is added without a line here, or an image
 folder's count changes.
 
-**Open, for the owner**: the source and license of two music tracks, all fourteen sound effects, and the model
-that made the 3D figure (sections 2, 3 and 4). Until they are known, the credits page says plainly that they
-are not yet traced.
+**Open, for the owner**: the source and license of all twelve sound effects, and the model that made the 3D
+figure (sections 2, 3 and 4). Until they are known, the credits page says plainly that they are not yet traced.
+The two untraced music tracks and the two effects nothing played were removed (owner decision R12, D-08,
+2026-11-19; `fix/predeploy` 73b1d0d7); the twelve effects left are to be replaced with traced or self-made ones by
+about 2026-12-19.
 
-## 1. Music (`public/audio/music/`, 4 files)
+## 1. Music (`public/audio/music/`, 2 files)
 
-All four came in the initial commit (`8adecfe0`, 2026-02-13), whose message names none of them. No script
+The two that ship, and the two removed below, all came in the initial commit (`8adecfe0`, 2026-02-13), whose message names none of them. No script
 in the repository made or fetched them. What was found, track by track:
 
 | File | Plays | Source | License | How it was established |
 |---|---|---|---|---|
 | `battle-beat.mp3` (3,289,143 bytes, sha256 `6042399782e581d7…`) | solo duel | "Battle Theme A" by **cynicmusic** (The Cynic Project), [opengameart.org/content/battle-theme-a](https://opengameart.org/content/battle-theme-a), uploaded 2013-12-15 | **CC0 1.0**, as the page states on 2026-11-19. Attribution instructions on the page: "cynicmusic.com, pixelsphere.org". A 2013 comment there says the track was once CC-BY-SA 3.0 and the author changed it | The file's tags (title "Battle Theme A redone", artist "The Cynic Project", composer "cynicmusic.com") led to the page; the page's `battleThemeA.mp3`, downloaded 2026-11-19, is **byte-identical** (same sha256, `6042399782e581d753d616bc703e66483d5eccb5fb687a20c9a552d68c49e620`) |
 | `landing-ambient.mp3` (4,755,625 bytes, sha256 `f8e31242051774cb…`) | home page | "Oldschool Horror Theme" by **EmoPreben**, [opengameart.org/content/oldschool-horror-theme](https://opengameart.org/content/oldschool-horror-theme), uploaded 2020-04-01 ("made using VST instruments in Mixcraft 7", "feel free to use it for whatever you feel like") | **CC0 1.0**, as the page states on 2026-11-19 | The tags (artist "Lasse Bührmann", title "Horror Theme 1", encoder "Mixcraft 7.7 32-Bit Bygget 316") and its length (3 min 18 s) matched that page; its `Horror.mp3` (served as `Horror_2.mp3`), downloaded 2026-11-19, is **byte-identical** (sha256 `f8e31242051774cbeecefcba44122c09c111ca485787b4245c23ac5dce25c86e`). That EmoPreben and Lasse Bührmann are one person is not established; the credit names both as found |
-| `playground-ambient.mp3` (2,047,625 bytes, 127.9 s, 22.05 kHz mono) | playground | **not found** | **not known** | Its only metadata is FFmpeg's (`Lavf62.3.100`, `Lavc62.11`, LAME 3.100): it was re-encoded with FFmpeg 8.x before the initial commit, which wiped any earlier tags. (The design fact base gives it a "Logic Pro X, 2019-02-04" tag; that tag is in `battle-victory.wav`, below, not in this file.) |
-| `collection-browse.mp3` (2,152,114 bytes, 134.4 s, 44.1 kHz stereo) | collection, world map | **not found** | **not known** | Same as above: FFmpeg 8.x tags only |
+| `playground-ambient.mp3` (2,047,625 bytes, 127.9 s, 22.05 kHz mono) | playground; **removed** 2026-11-19 (R12) | **not found** | **not known** | Its only metadata is FFmpeg's (`Lavf62.3.100`, `Lavc62.11`, LAME 3.100): it was re-encoded with FFmpeg 8.x before the initial commit, which wiped any earlier tags. (The design fact base gives it a "Logic Pro X, 2019-02-04" tag; that tag is in `battle-victory.wav`, below, not in this file.) |
+| `collection-browse.mp3` (2,152,114 bytes, 134.4 s, 44.1 kHz stereo) | collection, world map; **removed** 2026-11-19 (R12) | **not found** | **not known** | Same as above: FFmpeg 8.x tags only |
 
 Nothing was changed in the two traced files. Search for the other two was by tags and text only; no audio
-fingerprint search was made.
+fingerprint search was made. Both were removed from the site on 2026-11-19 (owner decision R12, D-08): the playground,
+the collection and the world map now play no music, and `src/lib/audio-assets.test.ts` lets a track ship only with
+its traced file's sha256.
 
-## 2. Sound effects (`public/audio/sfx/`, 14 files, all from the initial commit)
+## 2. Sound effects (`public/audio/sfx/`, 12 files, all from the initial commit)
 
 | File | Bytes | Seconds | sha256 (first 16) | Metadata |
 |---|---|---|---|---|
 | `battle-defeat.wav` | 44,182 | 0.50 | `3c8bd483d52b5b36` | FFmpeg (`ISFT Lavf62.3.100`) |
 | `battle-victory.wav` | 785,082 | 4.45 | `e4bb5377bf9490ca` | Broadcast Wave `bext`: originator "Logic Pro X", date 2019-02-04 15:01:46; a cue labelled "Tempo: 115.0" |
-| `card-flip.wav` | 88,278 | 0.50 | `81f1277ef9d5f4dc` | FFmpeg |
+| `card-flip.wav` (**removed** 2026-11-19, R12) | 88,278 | 0.50 | `81f1277ef9d5f4dc` | FFmpeg |
 | `card-shimmer.wav` | 10,730 | 0.12 | `d820b0585dd7bc9c` | FFmpeg |
 | `challenge-lose.wav` | 29,262 | 0.17 | `2ff5adefeb039c1c` | FFmpeg |
 | `challenge-win.wav` | 43,332 | 0.49 | `dd3e57a72c24b502` | FFmpeg |
@@ -43,11 +47,14 @@ fingerprint search was made.
 | `trivia-correct.wav` | 47,618 | 0.54 | `7f3a008fdf20b4eb` | FFmpeg |
 | `trivia-wrong.wav` | 18,510 | 0.10 | `8dcd7b001ea49edd` | FFmpeg |
 | `ui-click.wav` | 706 | 0.01 | `4815ad3c87b84056` | FFmpeg |
-| `ui-whoosh.wav` | 33,590 | 0.38 | `d7e66a789d465039` | FFmpeg |
+| `ui-whoosh.wav` (**removed** 2026-11-19, R12) | 33,590 | 0.38 | `d7e66a789d465039` | FFmpeg |
 
 **Source and license: not known for any of them.** No generator script, no commit message and no document
-in this repository or `inspiredmile-web` names one. `card-flip` and `ui-whoosh` are preloaded but never
-played (as-built design 7.3).
+in this repository or `inspiredmile-web` names one. `card-flip` and `ui-whoosh` were preloaded but never
+played (as-built design 7.3), and were removed on 2026-11-19 (R12). The twelve left (`ui-click`, `card-shimmer`,
+`pack-open`, `fanfare-common`, `fanfare-rare`, `fanfare-legendary`, `trivia-correct`, `trivia-wrong`,
+`challenge-win`, `challenge-lose`, `battle-victory`, the largest at 785 KB, and `battle-defeat`) are to be replaced
+with CC0 or self-made effects by about 2026-12-19 (R12: within a month of the decision).
 
 ## 3. 3D (`public/models/`)
 

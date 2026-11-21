@@ -163,6 +163,28 @@ describe('what the credits page says the licenses ask', () => {
   });
 });
 
+describe('what the credits page says is not yet traced', () => {
+  // Every sound effect the site serves is untraced (docs/ASSETS.md section 2); every music track it serves is a
+  // traced one (src/lib/audio-assets.test.ts holds each to its CC0 file's sha256). The page must count what ships.
+  const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen'];
+  const section = page.slice(page.indexOf('>Not yet traced</h2>'), page.indexOf('<h2', page.indexOf('>Not yet traced</h2>') + 1));
+  const served = (dir: string) => readdirSync(new URL(`../../${dir}`, import.meta.url)).filter((f) => /\.(wav|mp3|ogg)$/.test(f));
+
+  it('counts the sound effects that ship, and claims no untraced music', () => {
+    expect(section.length).toBeGreaterThan(0);
+    const sfx = served('public/audio/sfx').length;
+    expect(section.replace(/\s+/g, ' ')).toContain(`the game's ${WORDS[sfx]} sound effects`);
+    expect(section).not.toMatch(/background tracks?|music/i);
+    for (const f of served('public/audio/music')) expect([f, assets.includes(`\`${f}\``)]).toEqual([f, true]);
+  });
+
+  it('and docs/ASSETS.md says the same', () => {
+    const sfx = served('public/audio/sfx').length;
+    expect(assets).toContain(`## 2. Sound effects (\`public/audio/sfx/\`, ${sfx} files`);
+    expect(assets).toContain(`## 1. Music (\`public/audio/music/\`, ${served('public/audio/music').length} files`);
+  });
+});
+
 describe('docs/ASSETS.md', () => {
   it('records every music, sound and 3D file the site serves, by name', () => {
     for (const dir of ['public/audio/music', 'public/audio/sfx', 'public/models', 'public/models/splats']) {
