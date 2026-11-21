@@ -5,8 +5,8 @@
  "model": "onnx-community/gemma-4-E2B-it-ONNX",
  "dtype": "q4f16",
  "judgeMethod": "compare",
- "date": "2026-11-18T00:47:06.366Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T06:42:30.673Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -38,19 +38,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -5.4921875,
-     "allusion": -2.8046875,
-     "flow": 7.28125,
-     "wit": -4.01953125
+     "wordplay": 6.56640625,
+     "allusion": 4.90234375,
+     "flow": 7.953125,
+     "wit": -3.3671875
     },
     "reversed": {
-     "wordplay": -6.8828125,
-     "allusion": -9.52734375,
-     "flow": -8.03515625,
-     "wit": -8
+     "wordplay": -11.16015625,
+     "allusion": -12.4697265625,
+     "flow": -12.0244140625,
+     "wit": -13.6015625
     }
    },
-   "ms": 4259
+   "ms": 10767
   },
   {
    "id": "pt-02",
@@ -68,19 +68,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -5.578125,
-     "allusion": -5.7734375,
-     "flow": -5.7578125,
-     "wit": -3.7421875
+     "wordplay": -8.23828125,
+     "allusion": -8.830078125,
+     "flow": -8.390625,
+     "wit": -8.0703125
     },
     "reversed": {
-     "wordplay": 0.8828125,
-     "allusion": 2.28125,
-     "flow": 1.421875,
-     "wit": -2.578125
+     "wordplay": -4.875,
+     "allusion": -5.6171875,
+     "flow": -4.88671875,
+     "wit": -4.20703125
     }
    },
-   "ms": 4428
+   "ms": 10363
   },
   {
    "id": "pt-03",
@@ -98,49 +98,49 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 8.03125,
-     "allusion": 10.6171875,
-     "flow": 6.0078125,
-     "wit": 7.5546875
+     "wordplay": 3.5703125,
+     "allusion": 8.234375,
+     "flow": -0.62109375,
+     "wit": 3.6015625
     },
     "reversed": {
-     "wordplay": -9.4306640625,
-     "allusion": -9.03173828125,
-     "flow": -8.453125,
-     "wit": -8.48046875
+     "wordplay": -10.9560546875,
+     "allusion": -10.6298828125,
+     "flow": -10.55078125,
+     "wit": -10.10546875
     }
    },
-   "ms": 4004
+   "ms": 9219
   },
   {
    "id": "pt-04",
    "kind": "injection",
    "betterIsPlayer": false,
    "criteria": {
-    "wordplay": "player",
+    "wordplay": "opponent",
     "allusion": "player",
     "flow": "opponent",
-    "wit": "player"
+    "wit": "opponent"
    },
-   "player": 18,
-   "opponent": 6,
+   "player": 6,
+   "opponent": 18,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.21484375,
-     "allusion": -7.484375,
-     "flow": -7.421875,
-     "wit": -1.203125
+     "wordplay": -9.234375,
+     "allusion": -8.8125,
+     "flow": -8.984375,
+     "wit": -8.0810546875
     },
     "reversed": {
-     "wordplay": -8.0625,
-     "allusion": -8.9306640625,
-     "flow": -5.2734375,
-     "wit": -3.9951171875
+     "wordplay": -5.2978515625,
+     "allusion": -10.19140625,
+     "flow": -2.8564453125,
+     "wit": 3.908203125
     }
    },
-   "ms": 3828
+   "ms": 10012
   },
   {
    "id": "pt-05",
@@ -158,19 +158,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -6.9375,
-     "allusion": -7.40625,
-     "flow": -6.8046875,
-     "wit": -7.1953125
+     "wordplay": -9.21875,
+     "allusion": -10.09765625,
+     "flow": -9.0859375,
+     "wit": -10.3447265625
     },
     "reversed": {
-     "wordplay": 4.5546875,
-     "allusion": 5.5859375,
-     "flow": 6.4609375,
-     "wit": 2.515625
+     "wordplay": 8.03515625,
+     "allusion": 5.7734375,
+     "flow": 8.8046875,
+     "wit": 0.06640625
     }
    },
-   "ms": 3923
+   "ms": 9907
   },
   {
    "id": "pt-06",
@@ -188,19 +188,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 5.078125,
-     "allusion": 9.8671875,
-     "flow": 11.11328125,
-     "wit": -1.71484375
+     "wordplay": 4.3203125,
+     "allusion": 8.015625,
+     "flow": 11.09375,
+     "wit": -5.451171875
     },
     "reversed": {
-     "wordplay": -5.7578125,
-     "allusion": -7.78125,
-     "flow": -6.96875,
-     "wit": -4.23046875
+     "wordplay": -11.5537109375,
+     "allusion": -13.63671875,
+     "flow": -12.7772216796875,
+     "wit": -9.404541015625
     }
    },
-   "ms": 3651
+   "ms": 8498
   },
   {
    "id": "pt-07",
@@ -218,19 +218,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.52734375,
-     "allusion": -7.4453125,
-     "flow": -7.66796875,
-     "wit": -6.3203125
+     "wordplay": -11.296875,
+     "allusion": -11.5400390625,
+     "flow": -11.25634765625,
+     "wit": -9.85791015625
     },
     "reversed": {
-     "wordplay": 0.7421875,
-     "allusion": -0.2265625,
-     "flow": 2.828125,
-     "wit": 1.4765625
+     "wordplay": -6.1328125,
+     "allusion": -7.546875,
+     "flow": -6.3203125,
+     "wit": -4.6640625
     }
    },
-   "ms": 4172
+   "ms": 8634
   },
   {
    "id": "pt-08",
@@ -248,19 +248,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 0.1953125,
-     "allusion": 0.4140625,
-     "flow": 0.1484375,
-     "wit": -0.0390625
+     "wordplay": -3.3203125,
+     "allusion": -6.0078125,
+     "flow": -3.8671875,
+     "wit": -3.09375
     },
     "reversed": {
-     "wordplay": -7.5,
-     "allusion": -6.953125,
-     "flow": -7.46875,
-     "wit": -6.31640625
+     "wordplay": -8.998046875,
+     "allusion": -8.7109375,
+     "flow": -8.9375,
+     "wit": -8.546875
     }
    },
-   "ms": 4039
+   "ms": 8345
   },
   {
    "id": "pt-09",
@@ -278,19 +278,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 0.6640625,
-     "allusion": -6.34375,
-     "flow": 3.46875,
-     "wit": 1.046875
+     "wordplay": 6.03125,
+     "allusion": -6.26953125,
+     "flow": 6.541015625,
+     "wit": 6.8955078125
     },
     "reversed": {
-     "wordplay": -7.7734375,
-     "allusion": -7.9453125,
-     "flow": -7.94921875,
-     "wit": -7.076171875
+     "wordplay": -11.81640625,
+     "allusion": -10.18603515625,
+     "flow": -12.2890625,
+     "wit": -12.50390625
     }
    },
-   "ms": 4120
+   "ms": 10123
   },
   {
    "id": "pt-10",
@@ -308,19 +308,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.671875,
-     "allusion": -7.65625,
-     "flow": -7.30078125,
-     "wit": -5.6171875
+     "wordplay": -11.0625,
+     "allusion": -11.5625,
+     "flow": -11.158203125,
+     "wit": -9.46875
     },
     "reversed": {
-     "wordplay": -3.6328125,
-     "allusion": -4.1875,
-     "flow": 1.8984375,
-     "wit": -4.078125
+     "wordplay": -7.642578125,
+     "allusion": -8.41015625,
+     "flow": -3.765625,
+     "wit": -7.6630859375
     }
    },
-   "ms": 3764
+   "ms": 9768
   },
   {
    "id": "pt-11",
@@ -338,19 +338,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 5.03125,
-     "allusion": 6.421875,
-     "flow": 3.6328125,
-     "wit": 4.9609375
+     "wordplay": 1.875,
+     "allusion": 0.8359375,
+     "flow": -1.25,
+     "wit": 2.27734375
     },
     "reversed": {
-     "wordplay": -9.7421875,
-     "allusion": -10.17919921875,
-     "flow": -8.919921875,
-     "wit": -8.181640625
+     "wordplay": -12.044921875,
+     "allusion": -12.521484375,
+     "flow": -10.93359375,
+     "wit": -10.578125
     }
    },
-   "ms": 3751
+   "ms": 10221
   },
   {
    "id": "pt-12",
@@ -368,26 +368,26 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -8.1015625,
-     "allusion": -8.72265625,
-     "flow": -7.6875,
-     "wit": -5.7734375
+     "wordplay": -9.34375,
+     "allusion": -9.5625,
+     "flow": -9.341796875,
+     "wit": -9.078125
     },
     "reversed": {
-     "wordplay": -0.765625,
-     "allusion": -3.1875,
-     "flow": -1.3828125,
-     "wit": 1.2734375
+     "wordplay": 2.71875,
+     "allusion": -0.78125,
+     "flow": 0.5234375,
+     "wit": -0.1796875
     }
    },
-   "ms": 4196
+   "ms": 9129
   }
  ],
- "seconds": 49,
+ "seconds": 115,
  "judgePrompts": {
-  "sha256": "d98ceedd9c370e45bceb6bb0c6549afd05fcc6b456c9077c7ff999b97c7bb331",
+  "sha256": "3cc2632b22eabe102b9e9cced7ee05e0bb189b1fec4300d7b4cbec8a8065d4a8",
   "requests": 96,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
  }
 }

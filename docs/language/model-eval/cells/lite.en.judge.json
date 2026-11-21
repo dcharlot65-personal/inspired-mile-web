@@ -5,8 +5,8 @@
  "model": "LiquidAI/LFM2.5-350M-ONNX",
  "dtype": "q4",
  "judgeMethod": "grade",
- "date": "2026-11-18T00:39:20.874Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T06:28:54.879Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -61,7 +61,7 @@
      "source": "rules"
     }
    },
-   "ms": 1460
+   "ms": 1725
   },
   {
    "id": "en-02",
@@ -102,7 +102,7 @@
      "source": "rules"
     }
    },
-   "ms": 1215
+   "ms": 1704
   },
   {
    "id": "en-03",
@@ -143,7 +143,7 @@
      "source": "rules"
     }
    },
-   "ms": 1264
+   "ms": 1822
   },
   {
    "id": "en-04",
@@ -246,7 +246,7 @@
      "source": "rules"
     }
    },
-   "ms": 1234
+   "ms": 1719
   },
   {
    "id": "en-07",
@@ -287,7 +287,7 @@
      "source": "rules"
     }
    },
-   "ms": 1424
+   "ms": 1780
   },
   {
    "id": "en-08",
@@ -359,7 +359,7 @@
      "source": "rules"
     }
    },
-   "ms": 1559
+   "ms": 1753
   },
   {
    "id": "en-10",
@@ -400,7 +400,7 @@
      "source": "rules"
     }
    },
-   "ms": 1796
+   "ms": 1768
   },
   {
    "id": "en-11",
@@ -441,7 +441,7 @@
      "source": "rules"
     }
    },
-   "ms": 1661
+   "ms": 1907
   },
   {
    "id": "en-12",
@@ -475,11 +475,11 @@
    "ms": 1
   }
  ],
- "seconds": 12,
+ "seconds": 14,
  "judgePrompts": {
   "sha256": "4b085106442f7248407896c476aa42b78b5d34a33eed4d16eb575bd22a66b156",
   "requests": 64,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
  }
 }

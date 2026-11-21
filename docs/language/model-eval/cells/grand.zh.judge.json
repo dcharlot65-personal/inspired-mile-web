@@ -5,8 +5,8 @@
  "model": "onnx-community/gemma-4-E2B-it-ONNX",
  "dtype": "q4f16",
  "judgeMethod": "compare",
- "date": "2026-11-18T00:54:11.856Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T07:02:42.665Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -38,19 +38,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -6.69921875,
-     "allusion": -6.4609375,
-     "flow": -5.21484375,
-     "wit": -5.5
+     "wordplay": -4.453125,
+     "allusion": -5.9453125,
+     "flow": -2.90234375,
+     "wit": -6.302734375
     },
     "reversed": {
-     "wordplay": -7.00390625,
-     "allusion": -9.75,
-     "flow": -8.55859375,
-     "wit": -7.7421875
+     "wordplay": -10.531005859375,
+     "allusion": -11.6650390625,
+     "flow": -11.8642578125,
+     "wit": -11.1796875
     }
    },
-   "ms": 4932
+   "ms": 15465
   },
   {
    "id": "zh-02",
@@ -68,49 +68,49 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -11.2802734375,
-     "allusion": -11.6865234375,
-     "flow": -11.3564453125,
-     "wit": -9.220703125
+     "wordplay": -18.3203125,
+     "allusion": -20.78125,
+     "flow": -17.16796875,
+     "wit": -13.23046875
     },
     "reversed": {
-     "wordplay": 8.984375,
-     "allusion": 6.4296875,
-     "flow": 7.65625,
-     "wit": 1.671875
+     "wordplay": 8.66796875,
+     "allusion": 3.0078125,
+     "flow": 5.4140625,
+     "wit": 0.99609375
     }
    },
-   "ms": 3702
+   "ms": 12053
   },
   {
    "id": "zh-03",
    "kind": "gibberish",
    "betterIsPlayer": true,
    "criteria": {
-    "wordplay": "player",
+    "wordplay": "opponent",
     "allusion": "player",
     "flow": "player",
     "wit": "opponent"
    },
-   "player": 18,
-   "opponent": 6,
+   "player": 12,
+   "opponent": 12,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -3.875,
-     "allusion": -4.140625,
-     "flow": -2.484375,
-     "wit": -5.66796875
+     "wordplay": -9.33740234375,
+     "allusion": -8.721435546875,
+     "flow": -9.109375,
+     "wit": -10.1328125
     },
     "reversed": {
-     "wordplay": -5.90234375,
-     "allusion": -8.25390625,
-     "flow": -7.0703125,
-     "wit": -4.87109375
+     "wordplay": -8.8013916015625,
+     "allusion": -9.904296875,
+     "flow": -10.40185546875,
+     "wit": -8.52490234375
     }
    },
-   "ms": 3933
+   "ms": 12605
   },
   {
    "id": "zh-04",
@@ -120,27 +120,27 @@
     "wordplay": "opponent",
     "allusion": "opponent",
     "flow": "opponent",
-    "wit": "player"
+    "wit": "opponent"
    },
-   "player": 6,
-   "opponent": 18,
+   "player": 0,
+   "opponent": 24,
    "source": "model",
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -9.12109375,
-     "allusion": -9.26171875,
-     "flow": -8.984375,
-     "wit": -5.29296875
+     "wordplay": -14.48828125,
+     "allusion": -14.15625,
+     "flow": -15.1015625,
+     "wit": -11.86328125
     },
     "reversed": {
-     "wordplay": -7.7421875,
-     "allusion": -7.3515625,
-     "flow": -5.6875,
-     "wit": -9.306640625
+     "wordplay": -7.3310546875,
+     "allusion": -9.0927734375,
+     "flow": -6.5074462890625,
+     "wit": -4.9609375
     }
    },
-   "ms": 3709
+   "ms": 11722
   },
   {
    "id": "zh-05",
@@ -158,19 +158,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -9.20703125,
-     "allusion": -9.4921875,
-     "flow": -9.7421875,
-     "wit": -7.681640625
+     "wordplay": -14.65234375,
+     "allusion": -14.6953125,
+     "flow": -15.484375,
+     "wit": -13.94921875
     },
     "reversed": {
-     "wordplay": 1.8125,
-     "allusion": 8.8828125,
-     "flow": 4.859375,
-     "wit": -0.17578125
+     "wordplay": 5.296875,
+     "allusion": 5.9765625,
+     "flow": 6.6953125,
+     "wit": -0.458984375
     }
    },
-   "ms": 4017
+   "ms": 14794
   },
   {
    "id": "zh-06",
@@ -188,19 +188,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -3.0234375,
-     "allusion": -3.765625,
-     "flow": 1.796875,
-     "wit": -5.82421875
+     "wordplay": -2.41015625,
+     "allusion": -8.0703125,
+     "flow": -3.0703125,
+     "wit": -7.521484375
     },
     "reversed": {
-     "wordplay": -9.0078125,
-     "allusion": -8.25,
-     "flow": -8.87890625,
-     "wit": -8.44140625
+     "wordplay": -15.359375,
+     "allusion": -18.3671875,
+     "flow": -15.9140625,
+     "wit": -13.81640625
     }
    },
-   "ms": 3507
+   "ms": 12696
   },
   {
    "id": "zh-07",
@@ -218,19 +218,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -7.328125,
-     "allusion": -7.015625,
-     "flow": -7.9765625,
-     "wit": -7.234375
+     "wordplay": -9.01171875,
+     "allusion": -9.537109375,
+     "flow": -10.255859375,
+     "wit": -9.123046875
     },
     "reversed": {
-     "wordplay": -1.984375,
-     "allusion": -3.3203125,
-     "flow": -5.53125,
-     "wit": -3.90625
+     "wordplay": -5.59375,
+     "allusion": -4.8828125,
+     "flow": -7.7265625,
+     "wit": -7.697265625
     }
    },
-   "ms": 3961
+   "ms": 11547
   },
   {
    "id": "zh-08",
@@ -248,19 +248,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 5.171875,
-     "allusion": 2.0546875,
-     "flow": 5.5625,
-     "wit": 2.38671875
+     "wordplay": 5.65625,
+     "allusion": 1.3125,
+     "flow": 5.328125,
+     "wit": 4.2734375
     },
     "reversed": {
-     "wordplay": -11.796875,
-     "allusion": -12.1103515625,
-     "flow": -11.03125,
-     "wit": -9.6796875
+     "wordplay": -14.86328125,
+     "allusion": -15.4609375,
+     "flow": -14.94140625,
+     "wit": -12.4296875
     }
    },
-   "ms": 3809
+   "ms": 11967
   },
   {
    "id": "zh-09",
@@ -278,19 +278,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -5.078125,
-     "allusion": -6.375,
-     "flow": -1.8359375,
-     "wit": -6.259765625
+     "wordplay": -5.703125,
+     "allusion": -9.1103515625,
+     "flow": -4.86328125,
+     "wit": -7.373046875
     },
     "reversed": {
-     "wordplay": -10.529296875,
-     "allusion": -10.96875,
-     "flow": -10.98828125,
-     "wit": -9.41650390625
+     "wordplay": -17.203125,
+     "allusion": -17.984375,
+     "flow": -17.8515625,
+     "wit": -15.6796875
     }
    },
-   "ms": 3841
+   "ms": 12337
   },
   {
    "id": "zh-10",
@@ -308,19 +308,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -9.271484375,
-     "allusion": -9.357421875,
-     "flow": -9.5,
-     "wit": -8.455078125
+     "wordplay": -11.73828125,
+     "allusion": -10.96875,
+     "flow": -11.883544921875,
+     "wit": -12.08984375
     },
     "reversed": {
-     "wordplay": -0.6171875,
-     "allusion": -0.125,
-     "flow": -3.9296875,
-     "wit": -1.48828125
+     "wordplay": -3.828125,
+     "allusion": -5.5078125,
+     "flow": -6.849609375,
+     "wit": -6.15625
     }
    },
-   "ms": 3554
+   "ms": 9943
   },
   {
    "id": "zh-11",
@@ -338,19 +338,19 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": 0.6171875,
-     "allusion": -0.9921875,
-     "flow": -3.5703125,
-     "wit": -1.2265625
+     "wordplay": -2.79296875,
+     "allusion": -2.89453125,
+     "flow": -4.8359375,
+     "wit": -4.51953125
     },
     "reversed": {
-     "wordplay": -6.484375,
-     "allusion": -7.1015625,
-     "flow": -8.296875,
-     "wit": -6.296875
+     "wordplay": -9.01953125,
+     "allusion": -9.8984375,
+     "flow": -10.140625,
+     "wit": -8.8671875
     }
    },
-   "ms": 3294
+   "ms": 11560
   },
   {
    "id": "zh-12",
@@ -368,26 +368,26 @@
    "reading": {
     "method": "compare",
     "forward": {
-     "wordplay": -8.595703125,
-     "allusion": -10.099609375,
-     "flow": -9.76171875,
-     "wit": -7.15625
+     "wordplay": -11.77734375,
+     "allusion": -11.4967041015625,
+     "flow": -12.6865234375,
+     "wit": -11.96484375
     },
     "reversed": {
-     "wordplay": -3.8515625,
-     "allusion": -5.16015625,
-     "flow": -4.14453125,
-     "wit": -4.0390625
+     "wordplay": -3.49609375,
+     "allusion": -5.98046875,
+     "flow": -3.98828125,
+     "wit": -4.7626953125
     }
    },
-   "ms": 3619
+   "ms": 11617
   }
  ],
- "seconds": 46,
+ "seconds": 148,
  "judgePrompts": {
-  "sha256": "456b6dd211b724d7cdd34d90614db3b9b7b74fc2bc56a943652398f14465540a",
+  "sha256": "f0f3d8fcd9a59d3bc1222146d20ac2e1a56c6e7aba950493bb54a74b5da17fd0",
   "requests": 96,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
  }
 }

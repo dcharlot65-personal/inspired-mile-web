@@ -5,8 +5,8 @@
  "model": "LiquidAI/LFM2.5-350M-ONNX",
  "dtype": "q4",
  "judgeMethod": "grade",
- "date": "2026-11-18T00:44:52.687Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T06:37:04.345Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -50,18 +50,18 @@
      "wit": 1.0109634416268678
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1072
+   "ms": 2764
   },
   {
    "id": "de-02",
@@ -102,7 +102,7 @@
      "source": "rules"
     }
    },
-   "ms": 1033
+   "ms": 2717
   },
   {
    "id": "de-03",
@@ -132,18 +132,18 @@
      "wit": 1.009620949632979
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1037
+   "ms": 2555
   },
   {
    "id": "de-04",
@@ -173,18 +173,18 @@
      "wit": 1.0132993602835358
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1483
+   "ms": 2576
   },
   {
    "id": "de-05",
@@ -214,18 +214,18 @@
      "wit": 1.02822655141361
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1343
+   "ms": 2401
   },
   {
    "id": "de-06",
@@ -255,18 +255,18 @@
      "wit": 1.0144441585101898
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1287
+   "ms": 2271
   },
   {
    "id": "de-07",
@@ -296,18 +296,18 @@
      "wit": 1.0133967071671952
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1193
+   "ms": 2353
   },
   {
    "id": "de-08",
@@ -322,23 +322,23 @@
    "player": 15,
    "opponent": 9,
    "source": "rules",
+   "reason": "unread",
    "reading": {
     "method": "grade",
     "unread": true,
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 15,
+     "opponent": 9,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 2,
-   "reason": "unread"
+   "ms": 2
   },
   {
    "id": "de-09",
@@ -379,7 +379,7 @@
      "source": "rules"
     }
    },
-   "ms": 1174
+   "ms": 2413
   },
   {
    "id": "de-10",
@@ -409,18 +409,18 @@
      "wit": 1.019519006176051
     },
     "rules": {
-     "player": 6,
-     "opponent": 18,
+     "player": 3,
+     "opponent": 21,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "opponent",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1139
+   "ms": 2293
   },
   {
    "id": "de-11",
@@ -450,18 +450,18 @@
      "wit": 1.012775612611585
     },
     "rules": {
-     "player": 18,
-     "opponent": 6,
+     "player": 21,
+     "opponent": 3,
      "criteria": {
       "wordplay": "player",
-      "allusion": "split",
+      "allusion": "player",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1171
+   "ms": 2565
   },
   {
    "id": "de-12",
@@ -492,22 +492,14 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 0
   }
  ],
- "seconds": 12,
+ "seconds": 25,
  "judgePrompts": {
   "sha256": "c34bba7dcb6f9c3e72c9173678ebfb3095e12d09c10dc05ed9221dc1e31ef5bd",
   "requests": 80,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
- },
- "rederived": [
-  {
-   "date": "2026-11-19T05:45:44.425Z",
-   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
-   "pairsChanged": 9,
-   "how": "stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run"
-  }
- ]
+ }
 }

@@ -5,8 +5,8 @@
  "model": "LiquidAI/LFM2.5-350M-ONNX",
  "dtype": "q4",
  "judgeMethod": "grade",
- "date": "2026-11-18T00:56:22.498Z",
- "commit": "b702170bafaf96bfa744c012ca3bb70dd78a896d",
+ "date": "2026-11-19T07:08:58.066Z",
+ "commit": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
  "transformers": "4.3.2",
  "gpu": {
   "vendor": "apple",
@@ -15,9 +15,9 @@
   "description": ""
  },
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
- "origin": "http://localhost:47731",
+ "origin": "http://localhost:47871",
  "code": {
-  "verse": "8576573e24e05daa4e34a78b0807f4e2d85bff80a4784a8a207d8ee8b47535aa",
+  "verse": "45a6cc79d585b3a6e4ec6b088fdf368a9c01bf6b418540b7fa030d3f4a4f80a8",
   "answerScores": "a3236b07dab44e66aa12ccb959d23bdc158713f907b678c7084d9e1362459156",
   "from": "the checkout the run served, by run.mjs"
  },
@@ -50,18 +50,18 @@
      "wit": 1.016669765166397
     },
     "rules": {
-     "player": 12,
-     "opponent": 12,
+     "player": 9,
+     "opponent": 15,
      "criteria": {
       "wordplay": "opponent",
-      "allusion": "split",
+      "allusion": "opponent",
       "flow": "player",
       "wit": "split"
      },
      "source": "rules"
     }
    },
-   "ms": 1884
+   "ms": 3488
   },
   {
    "id": "ja-02",
@@ -102,7 +102,7 @@
      "source": "rules"
     }
    },
-   "ms": 1348
+   "ms": 3094
   },
   {
    "id": "ja-03",
@@ -143,7 +143,7 @@
      "source": "rules"
     }
    },
-   "ms": 1548
+   "ms": 3200
   },
   {
    "id": "ja-04",
@@ -174,7 +174,7 @@
      "source": "rules"
     }
    },
-   "ms": 2
+   "ms": 3
   },
   {
    "id": "ja-05",
@@ -215,7 +215,7 @@
      "source": "rules"
     }
    },
-   "ms": 1645
+   "ms": 3333
   },
   {
    "id": "ja-06",
@@ -256,7 +256,7 @@
      "source": "rules"
     }
    },
-   "ms": 1457
+   "ms": 3554
   },
   {
    "id": "ja-07",
@@ -297,7 +297,7 @@
      "source": "rules"
     }
    },
-   "ms": 1715
+   "ms": 3077
   },
   {
    "id": "ja-08",
@@ -369,7 +369,7 @@
      "source": "rules"
     }
    },
-   "ms": 1405
+   "ms": 3446
   },
   {
    "id": "ja-10",
@@ -410,7 +410,7 @@
      "source": "rules"
     }
    },
-   "ms": 1448
+   "ms": 3395
   },
   {
    "id": "ja-11",
@@ -451,7 +451,7 @@
      "source": "rules"
     }
    },
-   "ms": 1518
+   "ms": 3182
   },
   {
    "id": "ja-12",
@@ -482,22 +482,14 @@
      "source": "rules"
     }
    },
-   "ms": 1
+   "ms": 2
   }
  ],
- "seconds": 14,
+ "seconds": 30,
  "judgePrompts": {
   "sha256": "2e257fc0c679861e3b0eb7f0aeb6ae4954a77b6eac0f21b52459f1b150b5b85d",
   "requests": 72,
-  "at": "6162ed7fedb75e9666e134d38f494589450c09dd",
+  "at": "1c1e0585e3a712a6b23b7e4a91c82171bf6cc024",
   "how": "the requests modelJudge makes now, recorded by src/lib/model-eval.judge.test.ts because the code is the code the cell ran (the checkout the run served, by run.mjs)"
- },
- "rederived": [
-  {
-   "date": "2026-11-19T05:45:44.710Z",
-   "commit": "ec8b7ee8e0d9a5b4de14ae275a24e7a97696ffaf",
-   "pairsChanged": 1,
-   "how": "stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run"
-  }
- ]
+ }
 }
