@@ -864,6 +864,20 @@ const ABBREVIATIONS: Array<[RegExp, string]> = [
   [/\bi\.e\.(?=\s|$)/gi, 'that is'], [/\bNo\.(?=\s*\d)/g, 'number'],
 ];
 
+/** Words a time of day follows ("at 7 am I woke", "it's 3 am I can't sleep"). */
+const TIME_BEFORE = new Set(['at', 'by', 'till', 'until', 'til', "'til", 'from', 'since', 'before', 'after', 'around', "'round", 'about', "'bout", 'past', 'to', 'near', 'gone', 'like', 'is', 'was', "it's", 'its', "'tis"]);
+
+/**
+ * "am" after a number is the verb, not the time, when it is written as a word ("2 am", not "2am"
+ * or "2 a.m."), the pronoun I comes next ("am I", not "am I'm"), and the word before the number
+ * is one a count follows rather than a time: "Round 2 am I winning?", but "at 7 am I woke".
+ */
+function verbAm(letters: string, before: string, after: string): boolean {
+  if (letters.toLowerCase() !== 'am' || !/^[ \t]+I(?![\p{L}\p{M}\d'])/u.test(after)) return false;
+  const word = /([\p{L}\p{M}']+)[ \t]+$/u.exec(before)?.[1];
+  return !!word && !TIME_BEFORE.has(word.toLowerCase());
+}
+
 /** Text as the voice should read it: words, and only the punctuation Kokoro knows. */
 export function normalise(text: string): string {
   let t = text.normalize('NFKC');
@@ -886,8 +900,14 @@ export function normalise(text: string): string {
     if (!m) return numberWords(Number(h));
     return mm === 0 ? `${numberWords(Number(h))} o'clock` : `${numberWords(Number(h))} ${mm < 10 ? `oh ${ONES[mm]}` : numberWords(mm)}`;
   };
-  // "10pm", "3am", "3:30 p.m.", "7 AM": the time, then the two letters.
-  t = t.replace(/\b(\d{1,2})(?::(\d{2}))?\s?([AaPp])\.?\s?[Mm](\.?)(?![\p{L}\p{M}\d])/gu, (_, h: string, m: string | undefined, ap: string, dot: string) => `${m ? clock(h, m).replace(" o'clock", '') : clock(h)} ${ap.toUpperCase()} M${dot}`);
+  // "10pm", "3am", "3:30 p.m.", "7 AM": the time, then the two letters. On one line ("up to 10\nAm
+  // I the fool?" is a number, then the verb), an hour of 0 to 12, and not the verb after a count:
+  // "Round 2 am I winning?" (see verbAm).
+  t = t.replace(/\b(\d{1,2})(?::(\d{2}))?([ \t]?)([AaPp])(\.?)[ \t]?([Mm])(\.?)(?![\p{L}\p{M}\d])/gu, (all: string, h: string, m: string | undefined, sp: string, ap: string, dot1: string, mm: string, dot: string, offset: number, whole: string) => {
+    if (Number(h) > 12) return all;
+    if (!m && sp && !dot1 && !dot && verbAm(`${ap}${mm}`, whole.slice(0, offset), whole.slice(offset + all.length))) return all;
+    return `${m ? clock(h, m).replace(" o'clock", '') : clock(h)} ${ap.toUpperCase()} M${dot}`;
+  });
   t = t.replace(/\b(\d{1,2}):(\d{2})\b/g, (_, h: string, m: string) => clock(h, m));
   t = t.replace(/\b(\d+)(st|nd|rd|th)\b/gi, (_, n: string) => ordinalWords(Number(n)));
   t = t.replace(/(\d)-(?=\d)/g, '$1 to ');

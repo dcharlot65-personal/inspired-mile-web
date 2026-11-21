@@ -171,6 +171,17 @@ describe('text', () => {
     expect(normalise(text)).toBe(said);
   });
 
+  it.each([
+    // A time of day only on one line, an hour of 0 to 12, and not the verb after a count.
+    ['I counted up to 10\nAm I the fool?', 'I counted up to ten\nAm I the fool?'], ['Round 2 am I winning?', 'Round two am I winning?'],
+    ['Level 9 am I?', 'Level nine am I?'], ['ROUND 2 AM I WINNING', 'ROUND two AM I WINNING'], ['Level 20 am I ready', 'Level twenty am I ready'],
+    ['at 7 am I woke', 'at seven A M I woke'], ["It's 3 am I can't sleep", "It's three A M I can't sleep"], ['3 am I rise', 'three A M I rise'],
+    ["Round 2 am I'm up", "Round two A M I'm up"], ['Round 2am I win', 'Round two A M I win'], ['Round 2 a.m. I win', 'Round two A M. I win'],
+    ['by 6 pm I fight', 'by six P M I fight'], ['13pm', 'thirteen PM'], ['10\npm', 'ten\npm'],
+  ])('%j is read as %j (am and pm)', (text, said) => {
+    expect(normalise(text)).toBe(said);
+  });
+
   it('says the letters of a time as letters ("A M", not the article)', () => {
     expect(ps('3am')).toBe('θɹˈiː ˈA ˈɛm.');
     expect(ps('A dog')).toBe('ɐ dˈɒɡ.');
