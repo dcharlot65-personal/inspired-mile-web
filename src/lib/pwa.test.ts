@@ -232,7 +232,7 @@ describe('wake lock keeper', () => {
 describe('what may stay in the service worker cache after sign-out', () => {
   const O = 'https://sonnetman.inspiredmile.com';
   it('keeps build files, images, fonts, sounds and pages', () => {
-    for (const p of ['/', '/battle', '/cards/DC-001/', '/offline.html', '/_astro/a.abc123.js', '/images/cards/DC-001.webp', '/fonts/inter-latin.woff2', '/audio/sfx/hit.mp3', '/icon-192.png']) {
+    for (const p of ['/', '/battle', '/cards/DC-001/', '/offline.html', '/_astro/a.abc123.js', '/images/cards/DC-001.webp', '/fonts/inter-latin.woff2', '/audio/sfx/hit.mp3', '/icons/20261120100034/icon-192.png', '/favicon.ico', '/apple-touch-icon.png']) {
       expect(mayStayCached(O + p, O), p).toBe(true);
     }
   });

@@ -35,12 +35,14 @@
 const CACHE_PREFIX = 'inspired-mile-';
 const CACHE_NAME = CACHE_PREFIX + 'v3';
 const OFFLINE_PAGE = '/offline.html';
-const PRECACHE = [OFFLINE_PAGE, '/fonts/inter-latin.woff2', '/favicon.svg', '/icon-192.png', '/icon-512.png'];
+const PRECACHE = [OFFLINE_PAGE, '/fonts/inter-latin.woff2', '/icons/20261120100034/favicon.svg', '/icons/20261120100034/icon-192.png', '/icons/20261120100034/icon-512.png'];
+/** The icons browsers and iOS ask for by default, at fixed names (scripts/build-icons.sh). */
+const ROOT_ICONS = ['/favicon.ico', '/apple-touch-icon.png'];
 /** Nothing larger than this is kept, whatever its path. */
 const MAX_CACHED_BYTES = 12 * 1024 * 1024;
 
 function isAsset(path) {
-  return path.startsWith('/images/') || path.startsWith('/fonts/') || path.startsWith('/audio/') || PRECACHE.includes(path);
+  return path.startsWith('/images/') || path.startsWith('/fonts/') || path.startsWith('/audio/') || path.startsWith('/icons/') || ROOT_ICONS.includes(path) || PRECACHE.includes(path);
 }
 
 /** A page of the site: /, /battle, /cards/DC-001/, /offline.html. Never anything under /api. */
