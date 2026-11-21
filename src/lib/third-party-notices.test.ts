@@ -170,7 +170,8 @@ describe('the notices themselves', () => {
       if (m) rows.set(m[1], m[2]);
     }
     const files = readdirSync(join(root, dir)).filter((f) => f !== 'SOURCES.md').sort();
-    expect(files.length).toBeGreaterThanOrEqual(15);
+    // 14 since GPL-3.0.txt left with eSpeak NG (fix/voice-g2p): a floor, so a wrong folder cannot pass empty.
+    expect(files.length).toBeGreaterThanOrEqual(14);
     for (const f of files) {
       const sha = createHash('sha256').update(readFileSync(join(root, dir, f))).digest('hex');
       expect([f, rows.get(f)], `${f}: its row in SOURCES.md, with this sha256`).toEqual([f, sha]);

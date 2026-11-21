@@ -32,7 +32,9 @@ function sources(dir: string): string[] {
     return /\.(astro|ts)$/.test(name) && !name.endsWith('.test.ts') ? [full] : [];
   });
 }
-const ASSET = /^\/(?:favicon|manifest|fonts|apple-touch-icon|images|audio|models|icon|ort|vendor|api)\b/;
+// Files the site serves, not pages: public/'s folders (the icons since fix/favicon, the license texts /credits links)
+// and what the build adds (ort, vendor) or the API answers.
+const ASSET = /^\/(?:favicon|manifest|fonts|apple-touch-icon|images|audio|models|icons?|licenses|ort|vendor|api)\b/;
 function linkedPages(source: string): string[] {
   return [...source.matchAll(/(?:href|aHref)=["'`](\/[a-z0-9-]*)/g)].map((m) => m[1]).filter((p) => !ASSET.test(p));
 }
@@ -48,6 +50,7 @@ describe('the sitemap and the links name the pages there are', () => {
     expect(sitemap).toContain('/');
     expect(sitemapPaths(`<loc>${ORIGIN}/trivia/</loc>`)).toEqual(['/trivia/']);
     expect(linkedPages('<a href="/theatre" class="x"><a href="/favicon.svg"><T aHref="/playground" />')).toEqual(['/theatre', '/playground']);
+    expect(linkedPages('<link href="/icons/20261120100034/favicon.svg"><a href="/licenses/SCOWL-Copyright.txt"><a href="/credits">')).toEqual(['/credits']);
   });
 
   it('the sitemap lists every page, and no page that does not exist', () => {
