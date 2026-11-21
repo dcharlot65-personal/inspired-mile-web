@@ -49,7 +49,9 @@ const KEEPS: Record<string, string> = {
   // A rhyme English spelling hides (go / flow): kept only where rhyme is decided by sound.
   couplet: 'I do not know which way to go\nThe river runs, the waters flow',
   'quatrain-aabb': 'The silver moon is bright\nIt fills the empty night\nUpon the restless sea\nIt calls again to me',
-  'quatrain-abab': 'The silver moon is bright\nUpon the restless sea\nIt fills the empty night\nAnd calls again to me',
+  // Its first line is its own: the whole-match test looks for the first line of the verse being written in what
+  // the other player is shown, which holds the verses of the rounds before (see 'The test verses' below).
+  'quatrain-abab': 'The stars are burning white\nUpon the restless sea\nIt fills the empty night\nAnd calls again to me',
   tercet: 'I take the midnight stage\nThe crowd is loud tonight\nI feed my rising rage',
   anaphora: 'Never fear the gathering dark\nNever yield the golden crown\nNever kneel to passing fools',
   crescendo: 'I rise\nI rise again\nI rise again and louder still tonight',
@@ -249,6 +251,28 @@ async function askFor(cookie: string, ip: string, ms: number): Promise<string> {
 
 const roomsOf = async (cookie: string, ip: string) =>
   (await fetch(`http://127.0.0.1:${E2E.apiPort}/api/v1/multiplayer/rooms`, { headers: { Cookie: cookie, 'CF-Connecting-IP': ip } })).json();
+
+test.describe('The test verses', () => {
+  // The whole-match test checks that Bob, shown the rounds before, sees nothing of the verse Ann has just sent, by
+  // looking for its first line. So no verse a round could have shown before may hold another's first line. Until
+  // 2026-11-21 both quatrains opened 'The silver moon is bright', and a match that drew both (8% of seeds) failed
+  // that check with nothing of the current verse shown.
+  test('no verse holds the first line of a verse of another form', () => {
+    const verses: Array<[string, string]> = [
+      ...Object.entries(KEEPS),
+      ...Object.entries(LINE_FOR).map(([c, line]) => [`acrostic line ${c}`, line] as [string, string]),
+    ];
+    const clashes: string[] = [];
+    for (const [form, verse] of Object.entries(KEEPS)) {
+      const first = verse.split('\n')[0].toLowerCase();
+      for (const [other, text] of verses) if (other !== form && text.toLowerCase().includes(first)) clashes.push(`${form} in ${other}`);
+    }
+    for (const [c, line] of Object.entries(LINE_FOR)) {
+      for (const [form, verse] of Object.entries(KEEPS)) if (verse.toLowerCase().includes(line.toLowerCase())) clashes.push(`acrostic line ${c} in ${form}`);
+    }
+    expect(clashes).toEqual([]);
+  });
+});
 
 test.describe('Online duel', () => {
   test('while quick match is switched off, the lobby offers private rooms only and says why, and the server refuses a quick-match request', async ({ browser }) => {
