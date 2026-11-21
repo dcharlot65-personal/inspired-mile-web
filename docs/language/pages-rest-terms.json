@@ -70,7 +70,6 @@
    "id": "manifest",
    "title": "The manifest's description",
    "terms": [
-    "rap_battle",
     "card_game"
    ]
   }
@@ -1604,80 +1603,6 @@
     },
     "id": {
      "word": "Lain kali",
-     "rel": "same"
-    }
-   }
-  },
-  "rap_battle": {
-   "en": "rap battle",
-   "find": "rap-battle",
-   "source": {
-    "kind": "wikidata",
-    "item": "Q12302979"
-   },
-   "langs": {
-    "es": {
-     "word": "batalla de rap",
-     "spellings": [
-      "batallas de rap"
-     ],
-     "rel": "same"
-    },
-    "fr": {
-     "word": "battle de rap",
-     "rel": "contains"
-    },
-    "de": {
-     "word": "Battle-Rap",
-     "rel": "same"
-    },
-    "it": {
-     "word": "battaglie rap",
-     "rel": "none"
-    },
-    "pt": {
-     "word": "batalha de rap",
-     "rel": "same"
-    },
-    "pl": {
-     "word": "battle rap",
-     "rel": "same"
-    },
-    "ru": {
-     "word": "рэп-баттл",
-     "rel": "same"
-    },
-    "ar": {
-     "word": "باتل راب",
-     "rel": "same"
-    },
-    "hi": {
-     "word": "रैप-बैटल",
-     "rel": "none"
-    },
-    "zh": {
-     "word": "说唱对战",
-     "rel": "other",
-     "note": "Wikidata has only Traditional Chinese, and 饒舌 is the Taiwanese word for rap; 说唱 is the mainland's. The model's choice; no recorded source."
-    },
-    "ja": {
-     "word": "MCバトル",
-     "rel": "same"
-    },
-    "ko": {
-     "word": "배틀 랩",
-     "rel": "same"
-    },
-    "vi": {
-     "word": "rap chiến",
-     "rel": "same"
-    },
-    "th": {
-     "word": "แร็ปแบตเทิล",
-     "rel": "none"
-    },
-    "id": {
-     "word": "adu rap",
      "rel": "same"
     }
    }

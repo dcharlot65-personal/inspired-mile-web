@@ -1,0 +1,145 @@
+{
+ "about": "Wikidata's labels and aliases for Q11660 (artificial intelligence) in the game's languages: the source of the label beside a verse a model wrote ('ai.label') and of the word in the AI voice setting ('voice.*'). Wikidata is CC0.",
+ "fetched": "2026-11-19",
+ "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q11660&props=labels|aliases&languages=en|es|fr|de|it|pt|pt-br|pl|ru|ar|hi|zh|zh-hans|zh-cn|ja|ko|vi|th|id&format=json",
+ "responseSha256": "e6170c5f051f9d8603e5cfaf5e59b9f9f945e90c2fc333d566bbe4822e8d9149",
+ "note": "The response held Q11660, Q170519 and Q7432 together; only Q11660 is kept here, as Wikidata gave it.",
+ "labels": {
+  "ar": "ذكاء اصطناعي",
+  "de": "künstliche Intelligenz",
+  "en": "artificial intelligence",
+  "es": "inteligencia artificial",
+  "fr": "intelligence artificielle",
+  "hi": "कृत्रिम बुद्धिमत्ता",
+  "id": "akal imitasi",
+  "it": "intelligenza artificiale",
+  "ja": "人工知能",
+  "ko": "인공지능",
+  "pl": "sztuczna inteligencja",
+  "pt": "inteligência artificial",
+  "pt-br": "inteligência artificial",
+  "ru": "искусственный интеллект",
+  "th": "ปัญญาประดิษฐ์",
+  "vi": "trí tuệ nhân tạo",
+  "zh": "人工智能",
+  "zh-cn": "人工智能",
+  "zh-hans": "人工智能"
+ },
+ "aliases": {
+  "ar": [
+   "ذكاء الاصناعي",
+   "الذكاء الاصناعي",
+   "الذكاء الاصطناعي",
+   "الذكاء الصناعي",
+   "ذكاء صنعي",
+   "الذكاء الصنعي",
+   "ذكاء صناعي"
+  ],
+  "de": [
+   "artifizielle Intelligenz",
+   "KI",
+   "KI-Wissenschaft"
+  ],
+  "en": [
+   "AI software",
+   "machine intelligence",
+   "artificially intelligent",
+   "artificial Intelligence",
+   "machine understanding",
+   "simulated intelligence",
+   "computational rationality",
+   "intelligent machine",
+   "machine thought",
+   "artificially intelligent beings",
+   "machines that can think",
+   "artificial smartness",
+   "artificial stupidity",
+   "AI science"
+  ],
+  "es": [
+   "inteligencia de la máquina",
+   "IA",
+   "I.A.",
+   "inteligencias artificiales",
+   "inteligencia computacional",
+   "pensamiento artificial"
+  ],
+  "fr": [
+   "IA"
+  ],
+  "hi": [
+   "एआई",
+   "कृत्रिम होशियारी",
+   "कृत्रिम बुद्धि",
+   "आर्टिफिशियल इंटेलिजेंस",
+   "कृ॰बु॰",
+   "ए॰आई॰",
+   "आर्टिफ़िशियल इंटेलिजेंस",
+   "कृत्रिमबुद्धिमत्ता"
+  ],
+  "id": [
+   "A.I.",
+   "akal imitasi"
+  ],
+  "it": [
+   "IA"
+  ],
+  "ja": [
+   "人工頭脳",
+   "人工知能（AI）"
+  ],
+  "pl": [
+   "SI"
+  ],
+  "pt": [
+   "IA",
+   "A.I",
+   "I.A"
+  ],
+  "pt-br": [
+   "IA"
+  ],
+  "ru": [
+   "ИИ",
+   "АИ",
+   "интеллект",
+   "искусственный разум",
+   "искусственный ум",
+   "машинный интеллект",
+   "машинный разум",
+   "интеллектуальная машина",
+   "программное обеспечение ИИ",
+   "машинное понимание",
+   "имитация интеллекта",
+   "вычислительная рациональность",
+   "машинная мысль"
+  ],
+  "vi": [
+   "A.I.",
+   "A I",
+   "trí thông minh nhân tạo",
+   "trí thông minh mô phỏng",
+   "trí tuệ máy móc",
+   "phần mềm AI",
+   "tư duy của máy móc",
+   "sinh vật thông minh nhân tạo",
+   "máy thông minh",
+   "tính hợp lý tính toán",
+   "máy hiểu",
+   "trí tuệ nhân tạo AI",
+   "trí tuệ nhân tạo A.I.",
+   "TTNT"
+  ],
+  "zh": [
+   "人工智慧",
+   "機器智能",
+   "機械智能",
+   "智械"
+  ],
+  "zh-cn": [
+   "机器智能",
+   "机械智能",
+   "智械"
+  ]
+ }
+}

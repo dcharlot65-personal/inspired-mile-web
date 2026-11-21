@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Classroom Mode',
-  'classroom.meta.description': 'Teachers create classrooms, set Shakespeare trivia and challenges, and follow their students\' progress.',
+  'classroom.meta.description': 'Teachers create classrooms and set Shakespeare trivia and challenges for their students.',
   'classroom.badge': 'Education',
   'classroom.title': 'Classroom Mode',
-  'classroom.intro': 'Create or join a classroom. Teachers set Shakespeare trivia and challenges, and follow their students\' progress.',
+  'classroom.intro': 'Create or join a classroom. Teachers set Shakespeare trivia and challenges for their students.',
   'classroom.gate.title': 'Before you begin',
   'classroom.gate.body': 'Classroom Mode is made for schools. Choose your role to continue.',
   'classroom.role.teacher': 'I am a teacher',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Before you join a classroom, please confirm the following:',
   'classroom.student.check1': 'My parent or legal guardian knows I am using Inspired Mile for schoolwork and has given permission.',
   'classroom.student.check2': 'My teacher has given me a join code for a classroom.',
-  'classroom.student.check3': 'I understand that my teacher can see my progress and what I do in the classroom.',
+  'classroom.student.check3': 'I understand that my teacher can see that I joined the classroom, and when.',
   'classroom.student.continue': 'Continue as a student',
   'classroom.join.tab': 'Join a classroom',
   'classroom.create.tab': 'Create a classroom',
@@ -74,10 +74,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 multiple-choice questions on Shakespeare',
   'classroom.wizard.s3.challenge': 'Fill in the missing words of famous quotations',
   'classroom.wizard.s3.battle': 'A three-round duel of verses, judged on the device',
-  'classroom.wizard.s4.title': 'Follow progress',
-  'classroom.wizard.s4.body': 'See what each student has completed, their scores and the cards they have earned. The data stays inside the classroom: students see their own progress, and you see everyone\'s.',
-  'classroom.wizard.s4.visibility': 'Who can see a student\'s progress',
-  'classroom.wizard.s4.ferpa': 'FERPA compliant',
 };
 
 export default messages;

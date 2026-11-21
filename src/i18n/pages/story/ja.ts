@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "シングルプレイのキャンペーンで、シェイクスピアの世界を旅しましょう。",
   'story.badge': "キャンペーン",
   'story.title': "ストーリーモード",
-  'story.intro': "シェイクスピアの名作をめぐる全5幕の旅。名だたる登場人物と詩のバトルで対決し、グローブ座の秘密を解き明かしましょう。",
+  'story.intro': 'シェイクスピアの名作をめぐる全5幕の旅。グローブ座の秘密を解き明かしましょう。このバージョンのゲームでは、対決を開くとその場面が表示されますが、決闘は始まりません。',
   'story.journey': "あなたの旅",
   'story.progress': "{done} / {total}の対決をクリア",
   'story.stars': "スター",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "ブルータスその人と論じ合いましょう。",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" ブルータスが元老院の階段からあなたのほうを向く。「よそ者よ、短剣が壊したものを言葉が繕えると、わたしを納得させてみよ」",
   'story.enc.5-3.name': "最後のカーテンコール",
-  'story.enc.5-3.desc': "究極のバトルで The Sonnet Man と対決しましょう。",
-  'story.enc.5-3.narrative': "グローブ座が静まり返る。ひとすじのスポットライトが The Sonnet Man その人を照らす。\"All the world's a stage.\" 「おまえは自分の役をよく演じた。さあ、最後の詩を。そして幕が下りる」",
+  'story.enc.5-3.desc': "究極のバトルでマルクス・アントニウスと対決しましょう。",
+  'story.enc.5-3.narrative': "グローブ座が静まり返る。ひとすじのスポットライトがマルクス・アントニウスその人を照らす。\"Friends, Romans, countrymen, lend me your ears!\" 「おまえは自分の役をよく演じた。さあ、最後の詩を。そして幕が下りる」",
 };
 
 export default messages;

@@ -9,7 +9,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': 'Explore cities around the world and discover World Card variants for your Shakespeare characters.',
   'world-map.badge': 'World Cards',
   'world-map.title': 'World <b>Map</b>',
-  'world-map.intro': "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
+  'world-map.intro': 'Shakespeare\'s characters travel the globe. Each city grants a unique battle ability. Unlock variants with a perfect trivia round.',
   'world-map.combinations': 'Possible combinations: {n}',
   'world-map.view': 'View',
   'world-map.attire': 'Attire Styles',

@@ -35,6 +35,16 @@
 //                  the same machine must give the same verdicts as the cell: run it after a
 //                  change below the game's code (the runtime, the browser) to show the cells
 //                  still describe what the game does.
+//   MEVAL_STALE    "1": in the repository's writing cells (of TIERS and LANGS), find each play whose
+//                  prompt the code no longer gives (the replay test's "the prompt is not the one the
+//                  model was given"), have the model write that play again, the same slot (seed,
+//                  round, form, difficulty, the verse it answers), and write the cell back into the
+//                  repository with those plays replaced and listed under `remeasured`. For a change
+//                  to the duel that reaches a few plays, such as a card taken out of the opponent's
+//                  draw (D-04, 2026-11-19). A play whose seed now draws another form cannot be
+//                  written again in its slot: the run stops and the cell needs a full run. Reads
+//                  and writes the repository's cells only, never this host's store, so another
+//                  checkout's runs do not take up plays its own code would not deal.
 import { spawn } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -55,6 +65,7 @@ const TASKS = (process.env.TASKS ?? 'judge,write').split(',').filter(Boolean);
 const MINUTES = Number(process.env.MEVAL_MINUTES ?? 0);
 const PER_FORM = Number(process.env.MEVAL_PER_FORM ?? 10);
 const CONTROL = process.env.MEVAL_CONTROL ?? '';
+const STALE = process.env.MEVAL_STALE === '1';
 const started = Date.now();
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
@@ -173,6 +184,29 @@ async function pagePlan({ lang, perForm }) {
   return { forms, slots };
 }
 
+/** The stored plays (MEVAL_STALE) whose prompt the code no longer gives, as slots to write again. */
+async function pageStale({ lang, plays }) {
+  const { loadPack } = await import('/src/lib/verse/packs/index.ts');
+  const { createDuel, starterDeck } = await import('/src/lib/verse/duel.ts');
+  const { getForm } = await import('/src/lib/verse/forms.ts');
+  const { getCardById } = await import('/src/lib/cards.ts');
+  const { opponentMessages } = await import('/src/lib/verse/opponent.ts');
+  await loadPack(lang);
+  const sound = await import('/src/lib/verse/sound/index.ts').catch(() => null);
+  if (sound && !(await sound.loadSound(lang))) throw new Error(`the sound data for ${lang} did not load`);
+  const stale = [];
+  plays.forEach((p, index) => {
+    const plan = createDuel(p.seed, lang, starterDeck()).rounds[p.roundIndex];
+    if (plan.formId !== p.formId) throw new Error(`seed ${p.seed} round ${p.roundIndex} now draws ${plan.formId}, not ${p.formId}: the cell needs a full run`);
+    const card = getCardById(plan.opponent.charId);
+    const prompt = opponentMessages(plan, card, getForm(plan.formId), lang, p.answering ?? undefined).map((m) => m.content);
+    if (JSON.stringify(prompt) !== JSON.stringify(p.prompt)) {
+      stale.push({ index, slot: { seed: p.seed, roundIndex: p.roundIndex, formId: p.formId, difficulty: p.difficulty }, was: p.card, now: card.name });
+    }
+  });
+  return stale;
+}
+
 async function pageWrite({ lang, slots, replies }) {
   const brain = await import('/src/lib/brain.ts');
   const { loadPack } = await import('/src/lib/verse/packs/index.ts');
@@ -225,7 +259,8 @@ try {
   // A cell the repository set aside (a change to the game its drafts cannot be re-scored under,
   // src/lib/model-eval.rescore.test.ts) is measured again: this host's copy of it goes aside too.
   const REPO_ASIDE = join(ROOT, 'docs', 'language', 'model-eval', 'set-aside');
-  if (existsSync(REPO_ASIDE)) for (const f of readdirSync(REPO_ASIDE).filter((x) => x.endsWith('.json'))) {
+  // MEVAL_STALE touches the repository's cells only (see its note at the top).
+  if (!STALE && existsSync(REPO_ASIDE)) for (const f of readdirSync(REPO_ASIDE).filter((x) => x.endsWith('.json'))) {
     const here = join(OUT, f);
     if (!existsSync(here)) continue;
     if (JSON.parse(readFileSync(here, 'utf8')).date !== JSON.parse(readFileSync(join(REPO_ASIDE, f), 'utf8')).date) continue;
@@ -235,7 +270,7 @@ try {
     log(`${f}: set aside in the repository, so measured again`);
   }
   // Results from an earlier run that reached the repository but not this host's store.
-  if (existsSync(REPO_CELLS)) for (const f of readdirSync(REPO_CELLS)) if (f.endsWith('.json') && !existsSync(join(OUT, f))) cpSync(join(REPO_CELLS, f), join(OUT, f));
+  if (!STALE && existsSync(REPO_CELLS)) for (const f of readdirSync(REPO_CELLS)) if (f.endsWith('.json') && !existsSync(join(OUT, f))) cpSync(join(REPO_CELLS, f), join(OUT, f));
 
   log(`dev server on ${ORIGIN}`);
   server = spawn('npx', ['astro', 'dev', '--port', String(PORT), '--host', '127.0.0.1'], { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' } });
@@ -292,7 +327,37 @@ try {
   const readJson = (...p) => JSON.parse(readFileSync(join(ROOT, 'docs', 'language', 'model-eval', ...p), 'utf8'));
   const overBudget = () => MINUTES > 0 && (Date.now() - started) / 60000 > MINUTES;
 
-  if (CONTROL === 'same' || CONTROL === 'repeat') {
+  if (STALE) {
+    for (const lang of LANGS) for (const tier of TIERS) {
+      const file = join(REPO_CELLS, `${tier}.${lang}.write.json`);
+      if (!existsSync(file)) continue;
+      const cell = JSON.parse(readFileSync(file, 'utf8'));
+      const page = await pageFor(tier);
+      const stale = await page.evaluate(pageStale, { lang, plays: cell.plays });
+      if (!stale.length) { log(`${tier} ${lang} write: every play's prompt is the code's`); continue; }
+      const t0 = Date.now();
+      const replies = readJson('corpus', `${lang}.json`).excerpts.map((e) => e.text);
+      const fresh = await page.evaluate(pageWrite, { lang, slots: stale.map((s) => s.slot), replies });
+      const plays = cell.plays.slice();
+      stale.forEach((s, i) => {
+        const was = cell.plays[s.index];
+        // The slot is the same play: the same verse answered, so only the prompt's card differs.
+        if ((fresh[i].answering ?? null) !== (was.answering ?? null)) throw new Error(`${tier} ${lang} seed ${s.slot.seed} round ${s.slot.roundIndex}: the play answers another verse than the stored one`);
+        plays[s.index] = fresh[i];
+      });
+      const m = meta(tier, lang, 'write');
+      const remeasured = [...(cell.remeasured ?? []), {
+        date: m.date, commit: m.commit, model: m.model, dtype: m.dtype, transformers: m.transformers, gpu: m.gpu, userAgent: m.userAgent,
+        seconds: Math.round((Date.now() - t0) / 1000),
+        plays: stale.map((s) => ({ ...s.slot, was: s.was, now: s.now })),
+        how: 'the plays whose prompt the code no longer gave were written again by the model in the same slots (scripts/model-eval/run.mjs, MEVAL_STALE=1); the cell\'s other plays are as first measured',
+      }];
+      writeFileSync(`${file}.part`, JSON.stringify({ ...cell, plays, remeasured }, null, 1) + '\n');
+      cpSync(`${file}.part`, file);
+      rmSync(`${file}.part`);
+      log(`${tier} ${lang} write: ${stale.length} play(s) written again (${stale.map((s) => `seed ${s.slot.seed} round ${s.slot.roundIndex}: ${s.was} -> ${s.now}`).join('; ')}), ${Math.round((Date.now() - t0) / 1000)}s`);
+    }
+  } else if (CONTROL === 'same' || CONTROL === 'repeat') {
     mkdirSync(join(OUT, 'control'), { recursive: true });
     for (const tier of TIERS) for (const lang of LANGS) {
       const page = await pageFor(tier);
@@ -340,7 +405,7 @@ try {
     }
     log(stopped ? `stopped at the ${MINUTES}-minute budget; run again to continue` : 'every requested cell is done');
   }
-  syncToRepo();
+  if (!STALE) syncToRepo();
 } catch (err) {
   console.error('model-eval failed:', err);
   process.exitCode = 1;

@@ -2169,6 +2169,12 @@
   },
   {
    "lang": "th",
+   "key": "badge.written",
+   "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
+   "reason": "'คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว' (the opponent who uses verses that were already written; commit f47cd47c added ที่ to the wording this entry was first written for) is the glossary's written opponent, and MADLAD's 'A contestant who uses a pre-written poem' says the same. Read again 2026-11-19 on fix/predeploy."
+  },
+  {
+   "lang": "th",
    "key": "battle.buildDeck",
    "text": "จัดสำรับ",
    "reason": "จัดสำรับ (arrange a deck) is 'Build a deck'."

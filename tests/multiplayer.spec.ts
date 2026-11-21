@@ -1,4 +1,5 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import http from 'node:http';
 import { E2E } from './e2e-env';
 import { auditRound, type MatchStart, type RoundView, type ServerEvent } from '../src/lib/multiplayer-client';
@@ -28,6 +29,15 @@ installPronunciation(PRON);
  */
 
 const AGE_KEY = 'inspired-mile-age-verified';
+
+/**
+ * Quick match is switched off at launch (owner decision D-02): online duels are by private room
+ * only. One switch, which the server and the page read: backend/data/online-play.json. The tests
+ * of quick match itself wait for it to come back; the one below holds the page and the server to
+ * the switch while it is off.
+ */
+const QUICK_MATCH = JSON.parse(readFileSync('backend/data/online-play.json', 'utf8')).quickMatch === true;
+const QUICK_MATCH_OFF = 'quick match is switched off (backend/data/online-play.json, owner decision D-02)';
 
 function uniqueIp(): string {
   const n = () => 1 + Math.floor(Math.random() * 253);
@@ -241,6 +251,31 @@ const roomsOf = async (cookie: string, ip: string) =>
   (await fetch(`http://127.0.0.1:${E2E.apiPort}/api/v1/multiplayer/rooms`, { headers: { Cookie: cookie, 'CF-Connecting-IP': ip } })).json();
 
 test.describe('Online duel', () => {
+  test('while quick match is switched off, the lobby offers private rooms only and says why, and the server refuses a quick-match request', async ({ browser }) => {
+    test.skip(QUICK_MATCH, 'quick match is open');
+    const ann = await newPlayer(browser);
+    try {
+      const lobby = ann.page.locator('#mp-lobby');
+      await expect(lobby.locator('#create-private-btn')).toBeVisible();
+      await expect(lobby.locator('#find-match-btn')).toHaveCount(0);
+      await expect(lobby.locator('#queue-status')).toHaveCount(0);
+      await expect(lobby.getByRole('heading', { name: 'Quick match' })).toHaveCount(0);
+      const why = ann.page.locator('#mp-quick-closed');
+      await expect(why).toBeVisible();
+      await expect(why).toContainText('switched off');
+      await expect(why).toContainText('people you invite');
+      // The server's half of the switch: asked anyway (a page cached from before, a client of its own), it refuses at once.
+      const asked = await ann.context.request.post('/api/v1/multiplayer/queue', { timeout: 10000 });
+      expect(asked.status()).toBe(403);
+      expect(await asked.text()).toContain('switched off');
+      // A private room still opens.
+      await lobby.locator('#create-private-btn').click();
+      await expect(ann.page.locator('#mp-invite-link')).toHaveValue(/\/multiplayer\?room=[0-9a-f-]{36}$/);
+    } finally {
+      await ann.context.close();
+    }
+  });
+
   test('two signed-in players play a whole match; both see the same server scores, equal to the preview', async ({ browser }) => {
     test.setTimeout(180000);
     // Bob brings a deck of his own, with two of the Verona Court (the Riposte) in it.
@@ -420,6 +455,7 @@ test.describe('Online duel', () => {
   });
 
   test('quick match pairs two players into one room, and a forfeit ends it for both', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(120000);
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);
@@ -557,6 +593,7 @@ test.describe('Online duel', () => {
   });
 
   test('a player in the queue who has reached the room limit is told so, and the next player is not refused for it', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(150000);
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);
@@ -593,6 +630,7 @@ test.describe('Online duel', () => {
   });
 
   test('quick match gives up after its time limit and says so', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(150000);
     const ann = await newPlayer(browser);
     try {
@@ -769,6 +807,7 @@ test.describe('Online duel', () => {
   // (backend/src/request_task.rs), so a quick-match request whose client had gone kept its place
   // in the queue for the whole wait, and the next player was paired with nobody.
   test('a player whose quick-match request was dropped is not paired with the next player, straight or through the proxy', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(150000);
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);
@@ -799,6 +838,7 @@ test.describe('Online duel', () => {
   });
 
   test('leaving the page while waiting for a quick match leaves the queue', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(150000);
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);
@@ -830,6 +870,7 @@ test.describe('Online duel', () => {
   // The checker's concern: the session is checked when a quick-match request starts, and a
   // player who then signs out (here or on every device) stayed matchable for the whole wait.
   test('a player who signs out while waiting for a quick match is not paired with the next player', async ({ browser }) => {
+    test.skip(!QUICK_MATCH, QUICK_MATCH_OFF);
     test.setTimeout(150000);
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);

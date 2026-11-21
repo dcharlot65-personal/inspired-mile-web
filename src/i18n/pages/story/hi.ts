@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "इस एकल-खिलाड़ी अभियान में शेक्सपीयर की दुनियाओं की यात्रा करें।",
   'story.badge': "अभियान",
   'story.title': "कहानी मोड",
-  'story.intro': "शेक्सपीयर की महानतम रचनाओं से गुज़रते 5 अंकों की यात्रा करें। पद्य-युद्धों में प्रसिद्ध पात्रों का सामना करें और Globe Theatre के रहस्य खोलें।",
+  'story.intro': 'शेक्सपीयर की महानतम रचनाओं से गुज़रते 5 अंकों की यात्रा करें और Globe Theatre के रहस्य खोलें। खेल के इस संस्करण में हर मुक़ाबला अपना दृश्य खोलता है, पर कोई द्वंद्व शुरू नहीं करता।',
   'story.journey': "आपकी यात्रा",
   'story.progress': "{done} / {total} मुक़ाबले पूरे",
   'story.stars': "तारे",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "स्वयं ब्रूटस से बहस करें।",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" ब्रूटस सीनेट की सीढ़ियों से आपकी ओर मुड़ता है। \"अजनबी, मुझे यक़ीन दिलाओ कि जो खंजरों ने तोड़ा, उसे शब्द जोड़ सकते हैं।\"",
   'story.enc.5-3.name': "अंतिम अभिवादन",
-  'story.enc.5-3.desc': "निर्णायक युद्ध में The Sonnet Man का सामना करें।",
-  'story.enc.5-3.narrative': "Globe Theatre में सन्नाटा छा जाता है। एक अकेली रोशनी स्वयं The Sonnet Man पर पड़ती है। \"All the world's a stage.\" \"तुमने अपनी भूमिका अच्छी निभाई। अब एक आख़िरी पद्य, और परदा गिरता है।\"",
+  'story.enc.5-3.desc': "निर्णायक युद्ध में मार्कस आंतोनियस का सामना करें।",
+  'story.enc.5-3.narrative': "Globe Theatre में सन्नाटा छा जाता है। एक अकेली रोशनी स्वयं मार्कस आंतोनियस पर पड़ती है। \"Friends, Romans, countrymen, lend me your ears!\" \"तुमने अपनी भूमिका अच्छी निभाई। अब एक आख़िरी पद्य, और परदा गिरता है।\"",
 };
 
 export default messages;

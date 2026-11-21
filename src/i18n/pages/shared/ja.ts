@@ -59,7 +59,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'ホーム',
   'offline.link.collection': 'コレクション',
   'offline.link.battle': 'バトルアリーナ',
-  'app.description': 'Inspired Mileのシェイクスピア風MCバトル・カードゲーム。カードを出し、詩形を守り、あなたの端末だけで動く対戦相手よりも良い詩を書きましょう。',
+  'app.description': 'Inspired Mileのシェイクスピア風カードゲーム、詩の決闘。カードを出し、詩形を守り、あなたの端末だけで動く対戦相手よりも良い詩を書きましょう。',
   'app.shortcut.battle': 'バトルアリーナ',
   'app.shortcut.theatre': '立体シアター',
 };

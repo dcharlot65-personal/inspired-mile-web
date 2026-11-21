@@ -60,7 +60,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'मुखपृष्ठ',
   'offline.link.collection': 'संग्रह',
   'offline.link.battle': 'युद्ध अखाड़ा',
-  'app.description': 'Inspired Mile का शेक्सपीयर रैप-बैटल कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।',
+  'app.description': 'पदों के द्वंद्व वाला Inspired Mile का शेक्सपीयर कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।',
   'app.shortcut.battle': 'युद्ध अखाड़ा',
   'app.shortcut.theatre': 'हमारी रंगशाला',
 };

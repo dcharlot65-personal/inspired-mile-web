@@ -373,9 +373,10 @@ const hi: Record<string, string> = {
   'mic.earFailed': 'कान लोड नहीं हो सका',
   'mic.listening': 'सुन रहा है… रोकने के लिए टैप करें',
   'mic.denied': 'माइक्रोफ़ोन की अनुमति नहीं है',
-  'voice.off': 'आवाज़: बंद',
-  'voice.on': 'आवाज़: चालू',
-  'voice.loading': 'आवाज़: लोड हो रही है…',
+  'voice.off': 'एआई आवाज़: बंद',
+  'voice.on': 'एआई आवाज़: चालू',
+  'voice.loading': 'एआई आवाज़: लोड हो रही है…',
+  'ai.label': 'एआई',
 
   // --- द्वंद्व: फ़ैसला और नतीजा ---
   'verdict.yourAnswer': 'आपका जवाब',

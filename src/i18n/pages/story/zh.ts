@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "在这场单人战役中游历莎士比亚的世界。",
   'story.badge': "战役",
   'story.title': "故事模式",
-  'story.intro': "穿越 5 幕，走遍莎士比亚最伟大的作品。在诗句对战中迎战经典角色，揭开环球剧场的秘密。",
+  'story.intro': '穿越 5 幕，走遍莎士比亚最伟大的作品，揭开环球剧场的秘密。在本版本的游戏中，每场遭遇只会打开它的场景，不会开始对决。',
   'story.journey': "你的旅程",
   'story.progress': "已完成 {done} / {total} 场遭遇",
   'story.stars': "星星",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "与布鲁图本人辩论。",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" 布鲁图在元老院的台阶上转向你。“陌生人，说服我吧：言辞能修补匕首所毁掉的东西。”",
   'story.enc.5-3.name': "最后的谢幕",
-  'story.enc.5-3.desc': "在终极之战中迎战 The Sonnet Man。",
-  'story.enc.5-3.narrative': "环球剧场安静下来。一束聚光灯照亮了 The Sonnet Man 本人。\"All the world's a stage.\" “你的角色演得很好。现在，最后一句诗，然后落幕。”",
+  'story.enc.5-3.desc': "在终极之战中迎战马克·安东尼。",
+  'story.enc.5-3.narrative': "环球剧场安静下来。一束聚光灯照亮了马克·安东尼本人。\"Friends, Romans, countrymen, lend me your ears!\" “你的角色演得很好。现在，最后一句诗，然后落幕。”",
 };
 
 export default messages;

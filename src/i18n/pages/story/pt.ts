@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Viaje pelos mundos de Shakespeare nesta campanha para um jogador.",
   'story.badge': "Campanha",
   'story.title': "Modo história",
-  'story.intro': "Percorra 5 atos pelas maiores obras de Shakespeare. Enfrente personagens lendários em batalhas de versos e descubra os segredos do Globe.",
+  'story.intro': 'Percorra 5 atos pelas maiores obras de Shakespeare e descubra os segredos do Globe. Nesta versão do jogo, um encontro abre a sua cena, mas não inicia nenhum duelo.',
   'story.journey': "A sua jornada",
   'story.progress': "{done} / {total} encontros concluídos",
   'story.stars': "Estrelas",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Debata com o próprio Bruto.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Bruto se volta para você dos degraus do Senado. “Convença-me, visitante, de que as palavras podem consertar o que os punhais quebraram.”",
   'story.enc.5-3.name': "A última reverência",
-  'story.enc.5-3.desc': "Enfrente The Sonnet Man na batalha definitiva.",
-  'story.enc.5-3.narrative': "O Globe Theatre fica em silêncio. Um único holofote ilumina o próprio Sonnet Man. \"All the world's a stage.\" “Você representou bem o seu papel. Agora, uma última estrofe, e a cortina cai.”",
+  'story.enc.5-3.desc': "Enfrente Marco Antônio na batalha definitiva.",
+  'story.enc.5-3.narrative': "O Globe Theatre fica em silêncio. Um único holofote ilumina o próprio Marco Antônio. \"Friends, Romans, countrymen, lend me your ears!\" “Você representou bem o seu papel. Agora, uma última estrofe, e a cortina cai.”",
 };
 
 export default messages;

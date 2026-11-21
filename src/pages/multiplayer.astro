@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+// Who may meet whom online: one switch, which the server reads too (backend/src/multiplayer/matchmaking.rs).
+import onlinePlay from '../../backend/data/online-play.json';
+const quickMatch = onlinePlay.quickMatch === true;
 ---
 
 <BaseLayout title="Multiplayer" description="Duel another player in three rounds of verse. Every score is worked out by fixed rules on the server.">
@@ -57,7 +60,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <button id="mp-accept-btn" class="btn-primary px-6">Accept the challenge</button>
         </div>
 
-        <div id="mp-choices" class="grid sm:grid-cols-2 gap-4">
+        <div id="mp-choices" class:list={['grid gap-4', quickMatch && 'sm:grid-cols-2']}>
+          {quickMatch && (
           <div class="rounded-lg border border-obsidian-700/60 bg-obsidian-900/40 p-4 text-center">
             <h2 class="font-display text-lg font-bold text-obsidian-100 mb-1">Quick match</h2>
             <p class="text-xs text-obsidian-400 mb-4">Meet the next player who is looking for a duel.</p>
@@ -70,12 +74,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <button id="cancel-queue-btn" class="text-xs text-obsidian-500 hover:text-crimson-400 transition-colors">Cancel</button>
             </div>
           </div>
+          )}
           <div class="rounded-lg border border-obsidian-700/60 bg-obsidian-900/40 p-4 text-center">
             <h2 class="font-display text-lg font-bold text-obsidian-100 mb-1">Challenge a friend</h2>
             <p class="text-xs text-obsidian-400 mb-4">Open a room and send them the link.</p>
             <button id="create-private-btn" class="btn-secondary px-6">Open a room</button>
           </div>
         </div>
+        {!quickMatch && (
+          <p id="mp-quick-closed" class="mt-4 text-xs text-obsidian-400 text-center max-w-xl mx-auto">
+            Quick match, which pairs you with a stranger, is switched off until we review reports every day and you can
+            block or mute a player. Until then you duel only people you invite.
+          </p>
+        )}
         <p id="match-error" class="hidden text-sm text-crimson-400 mt-4 text-center" role="alert"></p>
       </div>
 
@@ -191,6 +202,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getForm } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
     import { loadPronunciation } from '../lib/verse/pronounce';
+    import onlinePlay from '../../backend/data/online-play.json';
+
+    /** Quick match is switched off while this is false (owner decision D-02): the page then has no quick-match controls. */
+    const QUICK_MATCH = onlinePlay.quickMatch === true;
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
     const el = (tag: string, cls = '', text = '') => {
@@ -365,7 +380,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       show('find-match-btn');
     }
 
-    $('find-match-btn').addEventListener('click', async () => {
+    if (QUICK_MATCH) $('find-match-btn').addEventListener('click', async () => {
       lobbyError('');
       show('queue-status');
       show('find-match-btn', false);
@@ -398,7 +413,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (queueAbort === mine) resetQueue();
     });
 
-    $('cancel-queue-btn').addEventListener('click', () => {
+    if (QUICK_MATCH) $('cancel-queue-btn').addEventListener('click', () => {
       queueAbort?.abort();
       resetQueue();
       void leaveQueue();

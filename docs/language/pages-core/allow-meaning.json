@@ -83,14 +83,6 @@
   },
   {
    "lang": "es",
-   "key": "collection.world.empty",
-   "text": "Aún no hay variantes. ¡Gana tres batallas seguidas o consigue una puntuación perfecta en el Trivial para desbloquear tu primera carta del mundo!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or get a perfect score on the Trivial to unlock your first card of the world!",
-   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
-  },
-  {
-   "lang": "es",
    "key": "collection.deck.clear",
    "text": "Vaciar",
    "flag": "cos 0.4261, LaBSE 0.3364, chrF 0",
@@ -248,14 +240,6 @@
    "flag": "cos 0.4137, LaBSE 0.4277, chrF 7.8",
    "back": "Farceur",
    "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
-  },
-  {
-   "lang": "fr",
-   "key": "collection.world.empty",
-   "text": "Aucune variante pour l’instant. Gagnez trois combats d’affilée ou obtenez un score parfait au quiz pour débloquer votre première carte du monde !",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or get a perfect score in the quiz to unlock your first map of the world!",
-   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
   },
   {
    "lang": "fr",
@@ -747,14 +731,6 @@
   },
   {
    "lang": "it",
-   "key": "collection.world.empty",
-   "text": "Ancora nessuna variante. Vinci tre battaglie di fila o ottieni un punteggio perfetto al quiz per sbloccare la tua prima carta del mondo!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or get a perfect score on the quiz to unlock your first card in the world!",
-   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
-  },
-  {
-   "lang": "it",
    "key": "collection.deck.clear",
    "text": "Svuota",
    "flag": "cos 0.4261, LaBSE 0.5836, chrF 0",
@@ -912,14 +888,6 @@
    "flag": "cos 0.2755, LaBSE 0.4432, chrF 3.8",
    "back": "Minhas",
    "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
-  },
-  {
-   "lang": "pt",
-   "key": "collection.world.empty",
-   "text": "Ainda não há variantes. Vença três batalhas seguidas ou faça uma pontuação perfeita no quiz para desbloquear a sua primeira carta do mundo!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or make a perfect score on the quiz to unlock your first card of the world!",
-   "reason": "MADLAD dropped the first sentence ('no variants yet', which carries the negation); the rest matches."
   },
   {
    "lang": "pt",
@@ -1088,14 +1056,6 @@
    "flag": "cos 0.2737, LaBSE 0.4496, chrF 7.8",
    "back": "Psotnik",
    "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
-  },
-  {
-   "lang": "pl",
-   "key": "collection.world.empty",
-   "text": "Nie masz jeszcze wariantów. Wygraj trzy bitwy z rzędu albo zdobądź komplet punktów w quizie, aby odblokować pierwszą kartę świata!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or earn a set of points in the quiz to unlock the first map of the world!",
-   "reason": "MADLAD dropped the first sentence (Nie masz jeszcze wariantów, 'you have no variants yet', which carries the negation) and read karta świata, the core files' 'world card', as 'world map'."
   },
   {
    "lang": "pl",
@@ -1336,14 +1296,6 @@
    "flag": "cos 0.3844, LaBSE 0.4741, chrF 0",
    "back": "My",
    "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
-  },
-  {
-   "lang": "ru",
-   "key": "collection.world.intro",
-   "text": "Твои персонажи путешествуют по планете. Побеждай в битвах и проходи викторины без ошибок, чтобы открывать варианты городов.",
-   "flag": "the back-translation is negated, the English is not",
-   "back": "Your characters travel around the planet. Win battles and complete quizzes without mistakes to unlock city variants.",
-   "reason": "'Pass quizzes without mistakes' is 'ace trivia' said with a negation."
   },
   {
    "lang": "ru",
@@ -2131,14 +2083,6 @@
   },
   {
    "lang": "zh",
-   "key": "about.free.earn.title",
-   "text": "赢取点数",
-   "flag": "cos 0.1899, LaBSE 0.5309, chrF 9.7",
-   "back": "Number of points won",
-   "reason": "赢取点数, 'earn points': 点数 is this area's word for credits throughout (about.free.body, about.free.safe.l2)."
-  },
-  {
-   "lang": "zh",
    "key": "achievements.first-blood.name",
    "text": "首战告捷",
    "flag": "cos 0.5159, LaBSE 0.5692, chrF 41.1",
@@ -2856,14 +2800,6 @@
    "flag": "cos 0.35, LaBSE 0.5106, chrF 18.5",
    "back": "Hallucinations.",
    "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
-  },
-  {
-   "lang": "ko",
-   "key": "collection.world.empty",
-   "text": "아직 변형이 없어요. 배틀에서 세 번 연속 이기거나 퀴즈를 모두 맞히면 첫 월드 카드가 열려요!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row, or answer all the quizzes to unlock your first World Card!",
-   "reason": "MADLAD dropped the first sentence (아직 변형이 없어요, 'no variants yet', which carries the negation); the rest matches."
   },
   {
    "lang": "ko",
@@ -4059,14 +3995,6 @@
   },
   {
    "lang": "id",
-   "key": "collection.world.empty",
-   "text": "Belum ada varian. Menangkan tiga pertarungan berturut-turut atau raih nilai sempurna di kuis untuk membuka kartu dunia pertamamu!",
-   "flag": "the English is negated, the back-translation is not",
-   "back": "Win three battles in a row or score perfect on the quiz to unlock your first world card!",
-   "reason": "MADLAD dropped the first sentence (Belum ada varian, 'no variants yet', which carries the negation); the rest matches."
-  },
-  {
-   "lang": "id",
    "key": "home.stat.houses",
    "text": "Wangsa",
    "flag": "cos 0.2116, LaBSE 0.3592, chrF 2.8",
@@ -4128,6 +4056,110 @@
    "flag": "cos 0.5409, LaBSE 0.431, chrF 18.2",
    "back": "Korean Wave Rhythm",
    "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
+  },
+  {
+   "lang": "fr",
+   "key": "world-map.intro",
+   "text": "Les personnages de Shakespeare parcourent le globe. Chaque ville accorde une capacité de combat unique. Débloquez des variantes en réussissant un quiz sans faute.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare’s characters travel the globe, and each city grants a unique combat ability. Unlock variations by completing a quiz without failing.",
+   "reason": "\"Sans faute\" (without a mistake) is how French says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "pl",
+   "key": "world-map.intro",
+   "text": "Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty, przechodząc quiz bez jednego błędu.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the world and each city gives you a unique battle ability. Unlock variants by completing the quiz without a single mistake.",
+   "reason": "\"Bez jednego błędu\" (without a single mistake) is how Polish says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "ru",
+   "key": "world-map.intro",
+   "text": "Персонажи Шекспира путешествуют по планете. Каждый город даёт особую боевую способность. Открывай варианты, пройдя викторину без единой ошибки.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the planet. Each city gives a special combat ability. Unlock options by completing the quiz without a single mistake.",
+   "reason": "«Без единой ошибки» (without a single mistake) is how Russian says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "hi",
+   "key": "world-map.intro",
+   "text": "शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। बिना किसी गलती के प्रश्नोत्तरी का एक दौर पूरा करके संस्करण खोलें।",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Shakespeare's characters travel the world. Each city gives a unique ability to war. Open the version by completing a round of quizzes without making any mistakes.",
+   "reason": "\"बिना किसी गलती के\" (without any mistake) is how Hindi says a perfect round; the word rule reads \"without\" as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "es",
+   "key": "collection.world.empty",
+   "text": "Aún no hay variantes. ¡Consigue una puntuación perfecta en el Trivial para desbloquear tu primera carta del mundo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Get a perfect score in the Trivial to unlock your first card of the world!",
+   "reason": "MADLAD dropped the first sentence (Aún no hay variantes, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "fr",
+   "key": "collection.world.empty",
+   "text": "Aucune variante pour l’instant. Obtenez un score parfait au quiz pour débloquer votre première carte du monde !",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Get a perfect score in the quiz to unlock your first map of the world!",
+   "reason": "MADLAD dropped the first sentence (Aucune variante pour l’instant, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "it",
+   "key": "collection.world.empty",
+   "text": "Ancora nessuna variante. Ottieni un punteggio perfetto al quiz per sbloccare la tua prima carta del mondo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Get a perfect score in the quiz to unlock your first card of the world!",
+   "reason": "MADLAD dropped the first sentence (Ancora nessuna variante, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "pt",
+   "key": "collection.world.empty",
+   "text": "Ainda não há variantes. Faça uma pontuação perfeita no quiz para desbloquear a sua primeira carta do mundo!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Make a perfect score in the quiz to unlock your first card of the world!",
+   "reason": "MADLAD dropped the first sentence (Ainda não há variantes, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "pl",
+   "key": "collection.world.empty",
+   "text": "Nie masz jeszcze wariantów. Zdobądź komplet punktów w quizie, aby odblokować pierwszą kartę świata!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Earn a set of points in the quiz to unlock the first card of the world!",
+   "reason": "MADLAD dropped the first sentence (Nie masz jeszcze wariantów, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "vi",
+   "key": "collection.world.empty",
+   "text": "Chưa có biến thể nào. Đạt điểm tuyệt đối ở đố vui để mở khoá lá bài thế giới đầu tiên!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Reach the absolute score in the fun puzzle to unlock the first world card!",
+   "reason": "MADLAD dropped the first sentence (Chưa có biến thể nào, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "th",
+   "key": "collection.world.empty",
+   "text": "ยังไม่มีการ์ดแบบเมือง ทำควิซได้คะแนนเต็มเพื่อปลดล็อกการ์ดโลกใบแรกของคุณ!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Complete the quiz with a full score to unlock your first world card!",
+   "reason": "MADLAD dropped the first sentence (ยังไม่มีการ์ดแบบเมือง, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "id",
+   "key": "collection.world.empty",
+   "text": "Belum ada varian. Raih nilai sempurna di kuis untuk membuka kartu dunia pertamamu!",
+   "flag": "the English is negated, the back-translation is not",
+   "back": "Get a perfect score in the quiz to unlock your first world card!",
+   "reason": "MADLAD dropped the first sentence (Belum ada varian, 'no variants yet', which carries the negation); the rest matches: a perfect trivia score unlocks the first world card. Read again for the new wording, which no longer names battles (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "ru",
+   "key": "collection.world.intro",
+   "text": "Твои персонажи путешествуют по планете. Пройди викторину без единой ошибки, чтобы открывать варианты городов.",
+   "flag": "the back-translation is negated, the English is not",
+   "back": "Your characters travel around the planet. Pass the quiz without a single mistake to unlock variants of cities.",
+   "reason": "«Пройди викторину без единой ошибки» (pass the quiz without a single mistake) is how Russian says a perfect score, as world-map.intro does; the word rule reads 'without' as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
   }
  ]
 }

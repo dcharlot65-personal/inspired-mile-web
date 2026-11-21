@@ -16,7 +16,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Journey through Shakespeare's worlds in this single-player campaign.",
   'story.badge': 'Campaign',
   'story.title': 'Story Mode',
-  'story.intro': "Journey through 5 acts across Shakespeare's greatest works. Face iconic characters in verse battles and uncover the secrets of the Globe.",
+  'story.intro': 'Journey through 5 acts across Shakespeare\'s greatest works and uncover the secrets of the Globe. In this version of the game, an encounter opens its scene but starts no duel.',
   'story.journey': 'Your Journey',
   'story.progress': '{done} / {total} encounters completed',
   'story.stars': 'Stars',

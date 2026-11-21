@@ -70,15 +70,11 @@ const heading = 'text-sm font-semibold text-obsidian-300 mb-2';
       type WorldCity,
     } from '../lib/variants';
     import { CARD_CATALOG } from '../lib/cards';
-    import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
     import { isRtl, locale, t } from '../i18n';
     import { escapeHtml as esc, initPage, setVars, tn } from '../i18n/pages/runtime';
     import { abilityBonus, abilityName, abilityWhy, cityName, cityRegion } from '../i18n/pages/terms';
 
-    document.addEventListener('click', () => {
-      if (!isInitialized()) initAudio();
-      playMusic('collection-browse', 1000);
-    }, { once: true });
+    // No music: the map's track had no traced source and was removed (D-08), and the page plays no effects.
 
     const cities = getAllCities();
     const unlockedCities = getUnlockedCities();

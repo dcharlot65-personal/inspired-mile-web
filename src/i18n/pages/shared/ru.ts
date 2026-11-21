@@ -62,7 +62,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Главная',
   'offline.link.collection': 'Коллекция',
   'offline.link.battle': 'Арена битв',
-  'app.description': 'Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.',
+  'app.description': 'Карточная игра по Шекспиру с дуэлями строф от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.',
   'app.shortcut.battle': 'Арена битв',
   'app.shortcut.theatre': 'Наш Театр',
 };

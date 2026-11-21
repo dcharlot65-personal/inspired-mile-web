@@ -5,9 +5,9 @@ import type { Page } from '@playwright/test';
  * made to report an adapter: loadBrain's own success path runs and brainInfo() is the real MODELS
  * entry. It answers the judge's next-token reading (the same lean to "A" in both orders, so every
  * criterion is a split, decided by the model) and counts each load, each verse it is asked to
- * write and each reading.
+ * write and each reading. Asked to write, it answers `verse` (one line, unless a test gives another).
  */
-const JUDGING_STUB = `
+const JUDGING_STUB = (verse: string) => `
 const V = 256;
 const stub = (globalThis.__stub ??= { loads: [], generations: 0, readings: 0 });
 const FAILING = __FAILING__;
@@ -17,7 +17,7 @@ export async function pipeline(task, id) {
   // A model that fails to load (out of memory, a driver fault), and one whose load waits for releaseHeld().
   if (FAILING.includes(id)) throw new Error('stand-in: ' + id + ' failed to load');
   if (HOLDING.includes(id)) await (globalThis.__stubHeld ??= new Promise((r) => (globalThis.__stubRelease = r)));
-  const g = async () => { stub.generations++; return [{ generated_text: [{ role: 'assistant', content: 'The moon is up and I am here' }] }]; };
+  const g = async () => { stub.generations++; return [{ generated_text: [{ role: 'assistant', content: ${JSON.stringify(verse)} }] }]; };
   g.tokenizer = { apply_chat_template: () => ({}), encode: (a) => [a.charCodeAt(0) % V] };
   // The same lean to "A" in both orders: no preference, so every criterion is a split, by the model.
   g.model = async () => { stub.readings++; const data = new Float32Array(V); data[65] = 2; return { logits: { dims: [1, 1, V], data } }; };
@@ -32,12 +32,16 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
 
 /**
  * `failing`: model ids whose load throws. `holding`: model ids whose load waits until releaseHeld(page).
+ * `verse`: what the stand-in writes when asked for a verse.
  */
-export async function standInModel(page: Page, opts: { failing?: string[]; holding?: string[] } = {}) {
+export async function standInModel(
+  page: Page,
+  { failing = [], holding = [], verse = 'The moon is up and I am here' }: { failing?: string[]; holding?: string[]; verse?: string } = {},
+) {
   await page.addInitScript(() => {
     Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
   });
-  const body = JUDGING_STUB.replace('__FAILING__', JSON.stringify(opts.failing ?? [])).replace('__HOLDING__', JSON.stringify(opts.holding ?? []));
+  const body = JUDGING_STUB(verse).replace('__FAILING__', JSON.stringify(failing)).replace('__HOLDING__', JSON.stringify(holding));
   await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body }));
 }
 

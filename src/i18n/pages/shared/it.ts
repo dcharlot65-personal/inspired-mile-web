@@ -61,7 +61,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Home',
   'offline.link.collection': 'Collezione',
   'offline.link.battle': 'Arena di battaglia',
-  'app.description': 'Un gioco di carte di battaglie rap shakespeariane, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.',
+  'app.description': 'Un gioco di carte shakespeariano di duelli di strofe, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.',
   'app.shortcut.battle': 'Arena di battaglia',
   'app.shortcut.theatre': 'Il Teatro',
 };

@@ -267,23 +267,23 @@ like Inspired Mile), and the rest uses the core locale's words for duel and vers
 *estrofas*; de *Duell*, *Strophen*; ja *決闘*, *詩*; …). In the description:
 
 <!-- terms:manifest -->
-| | rap battle (Q12302979) | card game (Q142714) |
-|---|---|---|
-| es | batalla de rap = | **juego de cartas**. Wikidata: label *juego de naipes*, article *Juego de naipes*. Naipes are playing cards; the core locale's word for the game's cards is cartas. |
-| fr | battle de rap (with *battle*) | jeu de cartes = |
-| de | Battle-Rap = | Kartenspiel = |
-| it | battaglie rap: **none**. | gioco di carte = |
-| pt | batalha de rap = | jogo de cartas = |
-| pl | battle rap = | gra karciana = |
-| ru | рэп-баттл = | карточная игра = |
-| ar | باتل راب = | **لعبة بطاقات**. Wikidata: label *لعبة ورق*, article *لعبة ورق*. ورق is playing cards; the core locale's word for the game's cards is بطاقة. |
-| hi | रैप-बैटल: **none**. | **कार्ड गेम**. Wikidata: label *ताश का खेल*, article *ताश का खेल*. ताश is playing cards; the core locale's word for the game's cards is कार्ड. |
-| zh | **说唱对战**. Wikidata: label *饒舌戰*, article *對戰饒舌*. Wikidata has only Traditional Chinese, and 饒舌 is the Taiwanese word for rap; 说唱 is the mainland's. The model's choice; no recorded source. | 卡牌游戏 = |
-| ja | MCバトル = | カードゲーム = |
-| ko | 배틀 랩 = | 카드 게임 = |
-| vi | rap chiến = | trò chơi bài = |
-| th | แร็ปแบตเทิล: **none**. | **เกมการ์ด**. Wikidata: label *เกมไพ่*, article *เกมไพ่*. ไพ่ is playing cards; the core locale's word for the game's cards is การ์ด. |
-| id | adu rap = | permainan kartu = |
+| | card game (Q142714) |
+|---|---|
+| es | **juego de cartas**. Wikidata: label *juego de naipes*, article *Juego de naipes*. Naipes are playing cards; the core locale's word for the game's cards is cartas. |
+| fr | jeu de cartes = |
+| de | Kartenspiel = |
+| it | gioco di carte = |
+| pt | jogo de cartas = |
+| pl | gra karciana = |
+| ru | карточная игра = |
+| ar | **لعبة بطاقات**. Wikidata: label *لعبة ورق*, article *لعبة ورق*. ورق is playing cards; the core locale's word for the game's cards is بطاقة. |
+| hi | **कार्ड गेम**. Wikidata: label *ताश का खेल*, article *ताश का खेल*. ताश is playing cards; the core locale's word for the game's cards is कार्ड. |
+| zh | 卡牌游戏 = |
+| ja | カードゲーム = |
+| ko | 카드 게임 = |
+| vi | trò chơi bài = |
+| th | **เกมการ์ด**. Wikidata: label *เกมไพ่*, article *เกมไพ่*. ไพ่ is playing cards; the core locale's word for the game's cards is การ์ด. |
+| id | permainan kartu = |
 <!-- /terms:manifest -->
 
 Each Arabic value is written as `{ "value": …, "dir": "rtl" }`, the text-localization form of the
@@ -746,6 +746,62 @@ sentences. With them laid over the strings (`LANGQA_OVERLAY`), that branch's too
 23 → 13 (the 13 left are the ones above that are not errors against main's core), grammar no new
 hit (the same false alarms), and back-translation of each proposal at cos 0.66 to 0.98 and LaBSE
 0.84 to 0.93, none flagged.
+
+## Fourth pass: what the classroom and the VR gallery no longer promise (2026-11-19, fix/predeploy)
+
+Owner decision D-03 took off the site what the code does not do. In these areas, in sixteen
+languages:
+
+| key | was (English) | now |
+|---|---|---|
+| `classroom.meta.description`, `classroom.intro` | teachers "follow their students' progress" | teachers set trivia and challenges for their students (Classroom Mode keeps class names, members and assignments, nothing else: `privacy.astro`) |
+| `classroom.student.check3` | "my teacher can see my progress and what I do in the classroom" | "my teacher can see that I joined the classroom, and when" (the class list shows each member's joining date) |
+| `classroom.wizard.s4.*` (4 keys) | a tour step "Follow progress", with "FERPA compliant" | removed; the tour has three steps |
+| `vr.meta.description`, `vr.intro` | "walk through your collection" | "every card in the game" (`vr-engine.ts` shows the catalogue) |
+
+Checked with this area's own tools (`lang-host.sh`, each step with its own output folder):
+`bt-merge.mjs stale` found 105 strings: these 75, and 30 that earlier merges had changed
+(`pwa.*`, `market.*`, Thai sign-in wording, Vietnamese *xoá*). MADLAD-400 on the Studio and LaBSE
+scored them (`bt-pairs`), `bt-merge.mjs merge` put them in (and dropped the 60 rows of the removed
+tour step), the whole file was ranked again (`rank`, the iMac Pro), and Hunspell and LanguageTool ran
+over every string (`spell`, `grammar`, the iMac Pro, with the pipeline's own installation; the
+Studio was over `rb`'s load limit). The spelling result agrees with the committed one word for word
+but for words that left with the changed strings (FERPA-konform, koleksimu, Shakespeare-mu, and
+the Vietnamese spellings with the accent moved).
+
+- The five strings: none flagged in any language; MiniLM cosine 0.64 or more (medians 0.81 to
+  0.95), LaBSE 0.66 or more, and each one's own English ranked nearest (rank 1) in all fifteen.
+- LanguageTool on them: pt *quizzes* (the word the strings used before, and the terms record's),
+  pt WORDINESS on *pode ver que* (a style hint), ar *وVision* (the conjunction written onto the
+  product name, as the old string did). Read: none is an error.
+- `summarise.mjs docs/language/results/pages-rest --strict`: exit 0.
+
+## Fifth pass: play earns no XP, and the app is a duel of verses (2026-11-19 and 20, fix/predeploy)
+
+The check after the fourth pass found D-03's promise still there in other words. In these areas,
+in sixteen languages:
+
+| key | was (English) | now |
+|---|---|---|
+| `season.introNow` (new; `season.intro` stays for when play pays) | "Play battles, trivia and challenges to earn XP" | "Each level of the Season Pass unlocks cards, credits or titles. In this version of the game, play earns no XP." Shown while `ECONOMY_LIVE` (`src/lib/economy-live.ts`) is false: nothing in this build pays XP |
+| `app.description` (and the manifest, `build-static.mjs`) | "A Shakespeare rap-battle card game" | "A Shakespeare card game of verse duels"; the `rap_battle` term left the record with it |
+
+Checked with this area's own tools, on the Studio: `bt-merge.mjs stale` found the 30 strings,
+`lang-host.sh bt-pairs` scored them (MADLAD-400 and LaBSE), `bt-merge.mjs merge`, the whole file was
+ranked again (`rank`), and Hunspell and LanguageTool ran over every string. Then es, fr, it, pt and
+vi wrote the pass in lower case in the new sentence where the area writes it as a name (*tu Pase de
+temporada*); those five were capitalised and scored again. (`bt-pairs` resumes by language: given
+an output file that already holds a language, it scores nothing for it. Score again into a new
+file; `summarise.mjs --strict` named the five as stale until that was done.)
+
+- The 30 strings: none flagged; MiniLM cosine 0.80 or more, LaBSE 0.71 or more, and each one's own
+  English ranked nearest (rank 1) in all fifteen. The lowest, zh `season.introNow` (cosine 0.80),
+  is MADLAD leaving out the second sentence; the Chinese has it (在本版本的游戏中，游玩不会获得 XP).
+- Hunspell, new words: es *shakespeariano* (the old string had *shakespearianas*), ko *플레이해도*
+  (a verb with its ending attached, as Korean writes it). LanguageTool: it *Pass* (the rule that
+  already fires on *Pass stagionale* in `season.signIn`), and in Arabic the diacritics hints on
+  *لعبة* and *خصم* and *شكسبيرية*, which the old description had too. Read: none is an error.
+- `summarise.mjs docs/language/results/pages-rest --strict`: exit 0.
 
 ## Proof that the checks can fail
 

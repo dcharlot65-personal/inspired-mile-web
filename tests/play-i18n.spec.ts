@@ -182,6 +182,35 @@ for (const locale of ['en', 'ar']) {
   });
 }
 
+/**
+ * The tour opens half a second after the page, whether or not the page's own strings have arrived. On a slow phone (or a
+ * busy build host, where the test above failed in whole-suite runs with the tooltip 40 px from its target) the Arabic
+ * arrives after the tooltip has been placed: the text above the target changes length and the target moves, while the
+ * tooltip keeps its size, so nothing placed it again. Here the area is held back until the tour is open. Without the
+ * fix (playground.astro watches the page as well as the tooltip) this failed 2 of 3 times, "40 px from its target".
+ */
+test('onboarding at phone width in ar, when the page\'s Arabic arrives after the tour opened: the tooltip stays beside its target', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  let release!: () => void;
+  const held = new Promise<void>((r) => (release = r));
+  await page.route(/\/src\/i18n\/pages\/playground\/ar\.ts/, async (route) => { await held; await route.continue(); });
+  await page.addInitScript(() => localStorage.setItem('inspired-mile-locale', 'ar'));
+  await page.goto('/playground');
+  const tip = page.locator('#onboarding-tooltip');
+  await expect(page.locator('#onboarding-step')).toHaveText('1 / 3');
+  const target = page.locator('#starter-pack-btn');
+  release();
+  await expect(page.locator('html')).toHaveAttribute('data-page-area', 'ar');
+  await expect(page.locator('#onboarding-title')).toHaveText(arPlayground['pg.onb.1.title']);
+  await expect.poll(async () => {
+    const [b, t] = [await tip.boundingBox(), await target.boundingBox()];
+    if (!b || !t) return 'not laid out';
+    if (b.y < 0 || b.y + b.height > 844 || b.x < 0 || b.x + b.width > 390) return 'outside the viewport';
+    const gap = Math.max(t.y - (b.y + b.height), b.y - (t.y + t.height));
+    return gap < 0 ? `over its target by ${-gap} px` : gap >= 40 ? `${gap} px from its target` : 'beside its target';
+  }, { message: 'the tooltip follows its target once the Arabic has arrived', timeout: 15_000 }).toBe('beside its target');
+});
+
 test('a change of language relabels the open playground', async ({ page }) => {
   await open(page, '/playground', 'en');
   await expect(page.locator('#onboarding-overlay')).toBeVisible();

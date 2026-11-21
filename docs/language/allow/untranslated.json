@@ -185,6 +185,21 @@
    "lang": "de",
    "key": "device.alliteration.name",
    "reason": "The device's name in German is Alliteration (Wikipedia article title, via Wikidata Q484495)."
+  },
+  {
+   "lang": "ja",
+   "key": "ai.label",
+   "reason": "Japanese writes the abbreviation in Latin letters: Wikidata's alias for Q11660 (artificial intelligence) in Japanese is 人工知能（AI）, which is also how the AI notice of branch fix/compliance writes it. Saved: docs/language/sources/wikidata-Q11660.json."
+  },
+  {
+   "lang": "vi",
+   "key": "ai.label",
+   "reason": "Wikidata's Vietnamese aliases for Q11660 (artificial intelligence) write the abbreviation A.I. and use AI in 'phần mềm AI' and 'trí tuệ nhân tạo AI'; the label writes it as English does. Saved: docs/language/sources/wikidata-Q11660.json."
+  },
+  {
+   "lang": "id",
+   "key": "ai.label",
+   "reason": "Wikidata's Indonesian alias for Q11660 (artificial intelligence) is the abbreviation A.I.; the label writes it as English does, without the stops. Saved: docs/language/sources/wikidata-Q11660.json."
   }
  ]
 }

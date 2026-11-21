@@ -373,9 +373,10 @@ const pl: Record<string, string> = {
   'mic.earFailed': 'Nie udało się wczytać ucha',
   'mic.listening': 'Słucham… dotknij, aby zakończyć',
   'mic.denied': 'Brak zgody na mikrofon',
-  'voice.off': 'Głos: wyłączony',
-  'voice.on': 'Głos: włączony',
-  'voice.loading': 'Głos: wczytywanie…',
+  'voice.off': 'Głos SI: wyłączony',
+  'voice.on': 'Głos SI: włączony',
+  'voice.loading': 'Głos SI: wczytywanie…',
+  'ai.label': 'SI',
 
   // --- Pojedynek: werdykt i wynik ---
   'verdict.yourAnswer': 'Twoja odpowiedź',

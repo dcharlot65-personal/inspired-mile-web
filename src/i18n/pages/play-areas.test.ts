@@ -545,7 +545,7 @@ const SHAKESPEARE = [
   'Do you bite your thumb at me, sir', 'A plague on both your houses', "There's rosemary, that's for remembrance", "The play's the thing wherein I'll catch the conscience of the king",
   'To be, or not to be', 'Lord, what fools these mortals be', 'I have had a most rare vision', "This island's mine", "You taught me language, and my profit on't is, I know how to curse",
   'Full fathom five', "O brave new world, that has such people in't", 'Every third thought shall be my grave', 'Tomorrow, and tomorrow, and tomorrow',
-  'Not that I loved Caesar less, but that I loved Rome more', "All the world's a stage",
+  'Not that I loved Caesar less, but that I loved Rome more', 'Friends, Romans, countrymen, lend me your ears',
 ];
 
 describe('trivia in every language', () => {

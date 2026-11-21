@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': '시즌 {n}',
   'season.title': '시즌 패스',
   'season.intro': '배틀, 퀴즈, 도전 과제를 플레이해 XP를 얻으세요. 레벨이 오를 때마다 카드, 크레딧, 칭호가 잠금 해제돼요.',
+  'season.introNow': '시즌 패스의 각 레벨은 카드, 크레딧 또는 칭호를 잠금 해제해요. 이 버전의 게임에서는 플레이해도 XP를 얻을 수 없어요.',
   'season.loading': '불러오는 중…',
   'season.level': '레벨',
   'season.xp': '{n} XP',

@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': 'Esplora città di tutto il mondo e scopri le varianti delle carte del mondo per i tuoi personaggi di Shakespeare.',
   'world-map.badge': 'Carte del mondo',
   'world-map.title': 'Mappa del <b>mondo</b>',
-  'world-map.intro': 'I personaggi di Shakespeare girano il mondo. Ogni città concede un’abilità di battaglia unica. Sblocca le varianti con battaglie, quiz ed esplorazione.',
+  'world-map.intro': 'I personaggi di Shakespeare girano il mondo. Ogni città concede un’abilità di battaglia unica. Sblocca le varianti con un round di quiz perfetto.',
   'world-map.combinations': 'Combinazioni possibili: {n}',
   'world-map.view': 'Vedi',
   'world-map.attire': 'Stili di abbigliamento',

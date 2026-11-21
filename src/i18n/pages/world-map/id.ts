@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': 'Jelajahi kota-kota di seluruh dunia dan temukan varian kartu dunia untuk tokoh-tokoh Shakespeare milikmu.',
   'world-map.badge': 'Kartu dunia',
   'world-map.title': 'Peta <b>dunia</b>',
-  'world-map.intro': 'Tokoh-tokoh Shakespeare menjelajahi dunia. Setiap kota memberi kemampuan bertarung yang unik. Buka varian lewat pertarungan, kuis, dan penjelajahan.',
+  'world-map.intro': 'Tokoh-tokoh Shakespeare menjelajahi dunia. Setiap kota memberi kemampuan bertarung yang unik. Buka varian dengan menjawab benar semua soal dalam satu ronde kuis.',
   'world-map.combinations': 'Kombinasi yang mungkin: {n}',
   'world-map.view': 'Lihat',
   'world-map.attire': 'Gaya busana',

@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Du hành qua các thế giới của Shakespeare trong chiến dịch một người chơi này.",
   'story.badge': "Chiến dịch",
   'story.title': "Chế độ cốt truyện",
-  'story.intro': "Đi qua 5 hồi xuyên suốt những kiệt tác của Shakespeare. Đối đầu các nhân vật kinh điển trong những trận đấu thơ và khám phá bí mật của Globe Theatre.",
+  'story.intro': 'Đi qua 5 hồi xuyên suốt những kiệt tác của Shakespeare và khám phá bí mật của Globe Theatre. Trong phiên bản này của trò chơi, mỗi cuộc chạm trán mở ra cảnh của nó nhưng không bắt đầu trận đấu nào.',
   'story.journey': "Hành trình của bạn",
   'story.progress': "Đã hoàn thành {done} / {total} cuộc chạm trán",
   'story.stars': "Sao",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Tranh biện với chính Brutus.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Brutus quay sang bạn từ bậc thềm Viện Nguyên lão. \"Hỡi người lạ, hãy thuyết phục ta rằng lời nói có thể hàn gắn điều dao găm đã phá vỡ.\"",
   'story.enc.5-3.name': "Lần cúi chào cuối cùng",
-  'story.enc.5-3.desc': "Đối đầu The Sonnet Man trong trận đấu tối hậu.",
-  'story.enc.5-3.narrative': "Globe Theatre lặng đi. Một luồng đèn duy nhất rọi sáng chính The Sonnet Man. \"All the world's a stage.\" \"Ngươi đã diễn tròn vai của mình. Giờ thì, một câu thơ cuối cùng, rồi màn hạ.\"",
+  'story.enc.5-3.desc': "Đối đầu Marcus Antonius trong trận đấu tối hậu.",
+  'story.enc.5-3.narrative': "Globe Theatre lặng đi. Một luồng đèn duy nhất rọi sáng chính Marcus Antonius. \"Friends, Romans, countrymen, lend me your ears!\" \"Ngươi đã diễn tròn vai của mình. Giờ thì, một câu thơ cuối cùng, rồi màn hạ.\"",
 };
 
 export default messages;

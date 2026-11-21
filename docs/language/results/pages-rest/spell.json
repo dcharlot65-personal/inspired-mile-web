@@ -4,7 +4,7 @@
   "en": {
    "checked": true,
    "dictionary": "en",
-   "words": 520,
+   "words": 509,
    "rejected": {
     "Cancelled": [
      "market.status.cancelled"
@@ -22,10 +22,10 @@
    },
    "texts": {
     "classroom.meta.title": "Classroom Mode",
-    "classroom.meta.description": "Teachers create classrooms, set Shakespeare trivia and challenges, and follow their students' progress.",
+    "classroom.meta.description": "Teachers create classrooms and set Shakespeare trivia and challenges for their students.",
     "classroom.badge": "Education",
     "classroom.title": "Classroom Mode",
-    "classroom.intro": "Create or join a classroom. Teachers set Shakespeare trivia and challenges, and follow their students' progress.",
+    "classroom.intro": "Create or join a classroom. Teachers set Shakespeare trivia and challenges for their students.",
     "classroom.gate.title": "Before you begin",
     "classroom.gate.body": "Classroom Mode is made for schools. Choose your role to continue.",
     "classroom.role.teacher": "I am a teacher",
@@ -40,7 +40,7 @@
     "classroom.student.intro": "Before you join a classroom, please confirm the following:",
     "classroom.student.check1": "My parent or legal guardian knows I am using Inspired Mile for schoolwork and has given permission.",
     "classroom.student.check2": "My teacher has given me a join code for a classroom.",
-    "classroom.student.check3": "I understand that my teacher can see my progress and what I do in the classroom.",
+    "classroom.student.check3": "I understand that my teacher can see that I joined the classroom, and when.",
     "classroom.student.continue": "Continue as a student",
     "classroom.join.tab": "Join a classroom",
     "classroom.create.tab": "Create a classroom",
@@ -90,10 +90,6 @@
     "classroom.wizard.s3.trivia": "5 multiple-choice questions on Shakespeare",
     "classroom.wizard.s3.challenge": "Fill in the missing words of famous quotations",
     "classroom.wizard.s3.battle": "A three-round duel of verses, judged on the device",
-    "classroom.wizard.s4.title": "Follow progress",
-    "classroom.wizard.s4.body": "See what each student has completed, their scores and the cards they have earned. The data stays inside the classroom: students see their own progress, and you see everyone's.",
-    "classroom.wizard.s4.visibility": "Who can see a student's progress",
-    "classroom.wizard.s4.ferpa": "FERPA compliant",
     "market.meta.description": "Buy and trade Shakespeare collectible cards with other players.",
     "market.intro": "Buy and trade cards with other players. Offer your duplicates for sale, or find the cards you are missing.",
     "market.tab.browse": "Browse",
@@ -170,6 +166,7 @@
     "season.badge": "Season 3",
     "season.title": "Season Pass",
     "season.intro": "Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.",
+    "season.introNow": "Each level of the Season Pass unlocks cards, credits or titles. In this version of the game, play earns no XP.",
     "season.loading": "Loading…",
     "season.level": "Level",
     "season.xp": "150 XP",
@@ -214,9 +211,9 @@
     "viewer.card.glb.body": "An ordinary mesh shown with model-viewer. On a phone it can place the model in your room in augmented reality.",
     "viewer.card.ar.title": "AR on a phone",
     "viewer.card.ar.body": "In the GLB view on a phone, tap “View in AR” to see the card in your room.",
-    "vr.meta.description": "Walk through your Shakespeare card collection in virtual reality.",
+    "vr.meta.description": "Walk through every Shakespeare card in the game in virtual reality.",
     "vr.badge": "Virtual reality",
-    "vr.intro": "Walk through your collection in 3D. It works on Quest 3 and Vision Pro through WebXR, and with a mouse on a computer.",
+    "vr.intro": "Walk through every card in the game in 3D. It works on Quest 3 and Vision Pro through WebXR, and with a mouse on a computer.",
     "vr.enter": "Enter VR",
     "vr.status.loading": "Loading the 3D engine…",
     "vr.status.gallery": "The 3D gallery is loaded. Drag to look around, scroll to zoom.",
@@ -289,7 +286,7 @@
     "offline.link.home": "Home",
     "offline.link.collection": "Collection",
     "offline.link.battle": "Battle Arena",
-    "app.description": "A Shakespeare rap-battle card game from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.",
+    "app.description": "A Shakespeare card game of verse duels, from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.",
     "app.shortcut.battle": "Battle Arena",
     "app.shortcut.theatre": "The Theatre",
     "pwa.install.regionLabel": "Install Sonnet Man",
@@ -317,7 +314,7 @@
   "es": {
    "checked": true,
    "dictionary": "es",
-   "words": 590,
+   "words": 579,
    "rejected": {
     "B": [
      "classroom.wizard.s1.body"
@@ -338,7 +335,7 @@
     "model-viewer": [
      "viewer.card.glb.body"
     ],
-    "shakespearianas": [
+    "shakespeariano": [
      "app.description"
     ],
     "º": [
@@ -347,10 +344,10 @@
    },
    "texts": {
     "classroom.meta.title": "Modo Clase",
-    "classroom.meta.description": "Los docentes crean clases, ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.",
+    "classroom.meta.description": "Los docentes crean clases y ponen trivial y desafíos sobre Shakespeare a sus estudiantes.",
     "classroom.badge": "Educación",
     "classroom.title": "Modo Clase",
-    "classroom.intro": "Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes.",
+    "classroom.intro": "Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare a sus estudiantes.",
     "classroom.gate.title": "Antes de empezar",
     "classroom.gate.body": "El Modo Clase está pensado para centros educativos. Elige tu papel para continuar.",
     "classroom.role.teacher": "Soy docente",
@@ -365,7 +362,7 @@
     "classroom.student.intro": "Antes de unirte a una clase, confirma lo siguiente:",
     "classroom.student.check1": "Mi padre, mi madre o mi tutor legal sabe que uso Inspired Mile para las tareas de clase y me ha dado permiso.",
     "classroom.student.check2": "Mi docente me ha dado un código de acceso a una clase.",
-    "classroom.student.check3": "Entiendo que mi docente puede ver mi progreso y lo que hago en la clase.",
+    "classroom.student.check3": "Entiendo que mi docente puede ver que me uní a la clase, y cuándo.",
     "classroom.student.continue": "Continuar como estudiante",
     "classroom.join.tab": "Unirse a una clase",
     "classroom.create.tab": "Crear una clase",
@@ -416,10 +413,6 @@
     "classroom.wizard.s3.trivia": "5 preguntas de opción múltiple sobre Shakespeare",
     "classroom.wizard.s3.challenge": "Completar las palabras que faltan en citas famosas",
     "classroom.wizard.s3.battle": "Un duelo de estrofas a tres rondas, juzgado en el dispositivo",
-    "classroom.wizard.s4.title": "Sigue el progreso",
-    "classroom.wizard.s4.body": "Consulta lo que ha completado cada estudiante, sus puntuaciones y las cartas que ha ganado. Los datos no salen de la clase: cada estudiante ve su propio progreso y tú ves el de todos.",
-    "classroom.wizard.s4.visibility": "Quién puede ver el progreso de un estudiante",
-    "classroom.wizard.s4.ferpa": "Conforme con la FERPA",
     "market.meta.description": "Compra e intercambia cartas coleccionables de Shakespeare con otros jugadores.",
     "market.intro": "Compra e intercambia cartas con otros jugadores. Pon a la venta tus repetidas o encuentra las que te faltan.",
     "market.tab.browse": "Explorar",
@@ -496,6 +489,7 @@
     "season.badge": "Temporada 3",
     "season.title": "Pase de temporada",
     "season.intro": "Juega batallas, trivial y desafíos para ganar XP. Cada nuevo nivel desbloquea cartas, créditos y títulos.",
+    "season.introNow": "Cada nivel del Pase de temporada desbloquea cartas, créditos o títulos. En esta versión del juego, jugar no da XP.",
     "season.loading": "Cargando…",
     "season.level": "Nivel",
     "season.xp": "150 XP",
@@ -540,9 +534,9 @@
     "viewer.card.glb.body": "Una malla corriente mostrada con model-viewer. En un móvil puede colocar el modelo en tu habitación con realidad aumentada.",
     "viewer.card.ar.title": "AR en el móvil",
     "viewer.card.ar.body": "En la vista GLB de un móvil, toca «Ver en AR» para ver la carta en tu habitación.",
-    "vr.meta.description": "Recorre tu colección de cartas de Shakespeare en realidad virtual.",
+    "vr.meta.description": "Recorre todas las cartas de Shakespeare del juego en realidad virtual.",
     "vr.badge": "Realidad virtual",
-    "vr.intro": "Recorre tu colección en 3D. Funciona en Quest 3 y Vision Pro mediante WebXR, y con ratón en un ordenador.",
+    "vr.intro": "Recorre todas las cartas del juego en 3D. Funciona en Quest 3 y Vision Pro mediante WebXR, y con ratón en un ordenador.",
     "vr.enter": "Entrar en VR",
     "vr.status.loading": "Cargando el motor 3D…",
     "vr.status.gallery": "La galería 3D está cargada. Arrastra para mirar alrededor y usa la rueda para acercarte.",
@@ -616,7 +610,7 @@
     "offline.link.home": "Inicio",
     "offline.link.collection": "Colección",
     "offline.link.battle": "Arena de batalla",
-    "app.description": "Un juego de cartas de batallas de rap shakespearianas, de Inspired Mile. Juega tus cartas, respeta la forma y escribe mejor que un rival que funciona por completo en tu dispositivo.",
+    "app.description": "Un juego de cartas shakespeariano de duelos de estrofas, de Inspired Mile. Juega tus cartas, respeta la forma y escribe mejor que un rival que funciona por completo en tu dispositivo.",
     "app.shortcut.battle": "Arena de batalla",
     "app.shortcut.theatre": "El Teatro",
     "pwa.install.regionLabel": "Instalar Sonnet Man",
@@ -644,11 +638,8 @@
   "fr": {
    "checked": true,
    "dictionary": "fr",
-   "words": 645,
+   "words": 627,
    "rejected": {
-    "battle": [
-     "app.description"
-    ],
     "l’app": [
      "pwa.install.iosBody",
      "pwa.storage.installHint"
@@ -659,10 +650,10 @@
    },
    "texts": {
     "classroom.meta.title": "Mode Classe",
-    "classroom.meta.description": "Les enseignants créent des classes, donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.",
+    "classroom.meta.description": "Les enseignants créent des classes et donnent des quiz et des défis sur Shakespeare à leurs élèves.",
     "classroom.badge": "Éducation",
     "classroom.title": "Mode Classe",
-    "classroom.intro": "Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare et suivent les progrès de leurs élèves.",
+    "classroom.intro": "Créez une classe ou rejoignez-en une. Les enseignants donnent des quiz et des défis sur Shakespeare à leurs élèves.",
     "classroom.gate.title": "Avant de commencer",
     "classroom.gate.body": "Le Mode Classe est conçu pour les établissements scolaires. Choisissez votre rôle pour continuer.",
     "classroom.role.teacher": "Je suis enseignant ou enseignante",
@@ -677,7 +668,7 @@
     "classroom.student.intro": "Avant de rejoindre une classe, veuillez confirmer ce qui suit :",
     "classroom.student.check1": "Mon parent ou mon tuteur légal sait que j’utilise Inspired Mile pour mon travail scolaire et m’en a donné la permission.",
     "classroom.student.check2": "Mon enseignant m’a donné un code d’accès à une classe.",
-    "classroom.student.check3": "Je comprends que mon enseignant peut voir mes progrès et ce que je fais dans la classe.",
+    "classroom.student.check3": "Je comprends que mon enseignant peut voir que j’ai rejoint la classe, et quand.",
     "classroom.student.continue": "Continuer en tant qu’élève",
     "classroom.join.tab": "Rejoindre une classe",
     "classroom.create.tab": "Créer une classe",
@@ -728,10 +719,6 @@
     "classroom.wizard.s3.trivia": "5 questions à choix multiples sur Shakespeare",
     "classroom.wizard.s3.challenge": "Retrouver les mots manquants de citations célèbres",
     "classroom.wizard.s3.battle": "Un duel de strophes en trois manches, jugé sur l’appareil",
-    "classroom.wizard.s4.title": "Suivez les progrès",
-    "classroom.wizard.s4.body": "Consultez ce que chaque élève a terminé, ses scores et les cartes qu’il a gagnées. Les données restent dans la classe : chaque élève voit ses propres progrès, et vous voyez ceux de tous.",
-    "classroom.wizard.s4.visibility": "Qui peut voir les progrès d’un élève",
-    "classroom.wizard.s4.ferpa": "Conforme à la loi FERPA",
     "market.meta.description": "Achetez et échangez des cartes à collectionner Shakespeare avec d’autres joueurs.",
     "market.intro": "Achetez et échangez des cartes avec d’autres joueurs. Mettez vos doubles en vente ou trouvez les cartes qui vous manquent.",
     "market.tab.browse": "Parcourir",
@@ -808,6 +795,7 @@
     "season.badge": "Saison 3",
     "season.title": "Passe de saison",
     "season.intro": "Jouez des combats, des quiz et des défis pour gagner des points d’expérience (XP). Chaque nouveau niveau débloque des cartes, des crédits et des titres.",
+    "season.introNow": "Chaque niveau du Passe de saison débloque des cartes, des crédits ou des titres. Dans cette version du jeu, jouer ne rapporte aucun point d’expérience (XP).",
     "season.loading": "Chargement…",
     "season.level": "Niveau",
     "season.xp": "150 XP",
@@ -852,9 +840,9 @@
     "viewer.card.glb.body": "Un maillage classique affiché avec model-viewer. Sur un téléphone, il peut placer le modèle dans votre pièce en réalité augmentée.",
     "viewer.card.ar.title": "AR sur téléphone",
     "viewer.card.ar.body": "Dans la vue GLB, sur un téléphone, touchez « Voir en AR » pour voir la carte dans votre pièce.",
-    "vr.meta.description": "Parcourez votre collection de cartes Shakespeare en réalité virtuelle.",
+    "vr.meta.description": "Parcourez toutes les cartes Shakespeare du jeu en réalité virtuelle.",
     "vr.badge": "Réalité virtuelle",
-    "vr.intro": "Parcourez votre collection en 3D. Elle fonctionne sur Quest 3 et Vision Pro grâce à WebXR, et à la souris sur un ordinateur.",
+    "vr.intro": "Parcourez toutes les cartes du jeu en 3D. La galerie fonctionne sur Quest 3 et Vision Pro grâce à WebXR, et à la souris sur un ordinateur.",
     "vr.enter": "Entrer en VR",
     "vr.status.loading": "Chargement du moteur 3D…",
     "vr.status.gallery": "La galerie 3D est chargée. Faites glisser pour regarder autour de vous, utilisez la molette pour zoomer.",
@@ -928,7 +916,7 @@
     "offline.link.home": "Accueil",
     "offline.link.collection": "Collection",
     "offline.link.battle": "Arène de combat",
-    "app.description": "Un jeu de cartes shakespearien façon battle de rap, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.",
+    "app.description": "Un jeu de cartes shakespearien de duels de strophes, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.",
     "app.shortcut.battle": "Arène de combat",
     "app.shortcut.theatre": "Le Théâtre",
     "pwa.install.regionLabel": "Installer Sonnet Man",
@@ -956,11 +944,8 @@
   "de": {
    "checked": true,
    "dictionary": "de",
-   "words": 617,
+   "words": 604,
    "rejected": {
-    "Battle-Raps": [
-     "app.description"
-    ],
     "Belohnungspfad": [
      "season.track"
     ],
@@ -971,14 +956,11 @@
     "Credits": [
      "market.sell.price",
      "season.intro",
-     "error.price_invalid",
-     "error.insufficient_credits"
+     "season.introNow",
+     "error.price_invalid"
     ],
     "D-Engine": [
      "vr.status.loading"
-    ],
-    "FERPA-konform": [
-     "classroom.wizard.s4.ferpa"
     ],
     "GLB-Ansicht": [
      "viewer.error.glbViewer",
@@ -1033,10 +1015,10 @@
    },
    "texts": {
     "classroom.meta.title": "Klassenmodus",
-    "classroom.meta.description": "Lehrkräfte legen Klassen an, stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.",
+    "classroom.meta.description": "Lehrkräfte legen Klassen an und stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.",
     "classroom.badge": "Bildung",
     "classroom.title": "Klassenmodus",
-    "classroom.intro": "Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare und verfolgen den Lernstand ihrer Schülerinnen und Schüler.",
+    "classroom.intro": "Lege eine Klasse an oder tritt einer bei. Lehrkräfte stellen Quiz und Herausforderungen zu Shakespeare für ihre Schülerinnen und Schüler.",
     "classroom.gate.title": "Bevor es losgeht",
     "classroom.gate.body": "Der Klassenmodus ist für Schulen gedacht. Wähle deine Rolle, um fortzufahren.",
     "classroom.role.teacher": "Ich bin Lehrkraft",
@@ -1051,7 +1033,7 @@
     "classroom.student.intro": "Bevor du einer Klasse beitrittst, bestätige bitte Folgendes:",
     "classroom.student.check1": "Ein Elternteil oder mein gesetzlicher Vormund weiß, dass ich Inspired Mile für die Schule nutze, und hat es erlaubt.",
     "classroom.student.check2": "Meine Lehrkraft hat mir einen Beitrittscode für eine Klasse gegeben.",
-    "classroom.student.check3": "Mir ist klar, dass meine Lehrkraft meinen Lernstand und meine Aktivitäten in der Klasse sehen kann.",
+    "classroom.student.check3": "Mir ist klar, dass meine Lehrkraft sehen kann, dass und wann ich der Klasse beigetreten bin.",
     "classroom.student.continue": "Als Schülerin oder Schüler fortfahren",
     "classroom.join.tab": "Klasse beitreten",
     "classroom.create.tab": "Klasse anlegen",
@@ -1101,10 +1083,6 @@
     "classroom.wizard.s3.trivia": "5 Multiple-Choice-Fragen zu Shakespeare",
     "classroom.wizard.s3.challenge": "Fehlende Wörter in berühmten Zitaten ergänzen",
     "classroom.wizard.s3.battle": "Ein Strophenduell über drei Runden, auf dem Gerät bewertet",
-    "classroom.wizard.s4.title": "Lernstand verfolgen",
-    "classroom.wizard.s4.body": "Sieh, was jede Schülerin und jeder Schüler erledigt hat, welche Wertungen erreicht und welche Karten verdient wurden. Die Daten bleiben in der Klasse: Schülerinnen und Schüler sehen ihren eigenen Lernstand, du siehst den aller.",
-    "classroom.wizard.s4.visibility": "Wer den Lernstand einer Schülerin oder eines Schülers sehen kann",
-    "classroom.wizard.s4.ferpa": "FERPA-konform",
     "market.meta.description": "Kaufe und tausche Shakespeare-Sammelkarten mit anderen Spielern.",
     "market.intro": "Kaufe und tausche Karten mit anderen Spielern. Biete deine doppelten Karten an oder finde die, die dir fehlen.",
     "market.tab.browse": "Stöbern",
@@ -1181,6 +1159,7 @@
     "season.badge": "Saison 3",
     "season.title": "Saisonpass",
     "season.intro": "Spiel Kämpfe, Quiz und Herausforderungen, um XP zu sammeln. Jede neue Stufe schaltet Karten, Credits und Titel frei.",
+    "season.introNow": "Jede Stufe des Saisonpasses schaltet Karten, Credits oder Titel frei. In dieser Version des Spiels bringt das Spielen keine XP.",
     "season.loading": "Wird geladen …",
     "season.level": "Stufe",
     "season.xp": "150 XP",
@@ -1225,9 +1204,9 @@
     "viewer.card.glb.body": "Ein gewöhnliches Mesh, angezeigt mit model-viewer. Auf dem Handy kann es das Modell in erweiterter Realität in dein Zimmer stellen.",
     "viewer.card.ar.title": "AR auf dem Handy",
     "viewer.card.ar.body": "Tipp in der GLB-Ansicht auf dem Handy auf „In AR ansehen“, um die Karte in deinem Zimmer zu sehen.",
-    "vr.meta.description": "Geh in der virtuellen Realität durch deine Shakespeare-Kartensammlung.",
+    "vr.meta.description": "Geh in der virtuellen Realität durch alle Shakespeare-Karten des Spiels.",
     "vr.badge": "Virtuelle Realität",
-    "vr.intro": "Geh in 3D durch deine Sammlung. Sie läuft über WebXR auf Quest 3 und Vision Pro und mit der Maus am Computer.",
+    "vr.intro": "Geh in 3D durch alle Karten des Spiels. Die Galerie läuft über WebXR auf Quest 3 und Vision Pro und mit der Maus am Computer.",
     "vr.enter": "VR starten",
     "vr.status.loading": "3D-Engine wird geladen …",
     "vr.status.gallery": "Die 3D-Galerie ist geladen. Zieh, um dich umzusehen, und scrolle zum Zoomen.",
@@ -1300,7 +1279,7 @@
     "offline.link.home": "Start",
     "offline.link.collection": "Sammlung",
     "offline.link.battle": "Kampfarena",
-    "app.description": "Ein Shakespeare-Kartenspiel im Stil des Battle-Raps, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.",
+    "app.description": "Ein Shakespeare-Kartenspiel mit Duellen der Strophen, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.",
     "app.shortcut.battle": "Kampfarena",
     "app.shortcut.theatre": "Das Theater",
     "pwa.install.regionLabel": "Sonnet Man installieren",
@@ -1328,7 +1307,7 @@
   "it": {
    "checked": true,
    "dictionary": "it",
-   "words": 625,
+   "words": 610,
    "rejected": {
     "Bye": [
      "tour.bye"
@@ -1345,7 +1324,7 @@
      "season.meta.title",
      "season.meta.description",
      "season.title",
-     "season.signIn"
+     "season.introNow"
     ],
     "Quell’annuncio": [
      "error.listing_not_found",
@@ -1432,10 +1411,10 @@
    },
    "texts": {
     "classroom.meta.title": "Modalità Classe",
-    "classroom.meta.description": "Gli insegnanti creano classi, assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.",
+    "classroom.meta.description": "Gli insegnanti creano classi e assegnano quiz e sfide su Shakespeare ai loro studenti.",
     "classroom.badge": "Istruzione",
     "classroom.title": "Modalità Classe",
-    "classroom.intro": "Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.",
+    "classroom.intro": "Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare ai loro studenti.",
     "classroom.gate.title": "Prima di cominciare",
     "classroom.gate.body": "La Modalità Classe è pensata per le scuole. Scegli il tuo ruolo per continuare.",
     "classroom.role.teacher": "Sono insegnante",
@@ -1450,7 +1429,7 @@
     "classroom.student.intro": "Prima di entrare in una classe, conferma quanto segue:",
     "classroom.student.check1": "Un mio genitore o il mio tutore legale sa che uso Inspired Mile per i compiti di scuola e mi ha dato il permesso.",
     "classroom.student.check2": "Il mio insegnante mi ha dato un codice di accesso a una classe.",
-    "classroom.student.check3": "So che il mio insegnante può vedere i miei progressi e quello che faccio nella classe.",
+    "classroom.student.check3": "So che il mio insegnante può vedere che faccio parte della classe e da quando.",
     "classroom.student.continue": "Continua come studente",
     "classroom.join.tab": "Entra in una classe",
     "classroom.create.tab": "Crea una classe",
@@ -1501,10 +1480,6 @@
     "classroom.wizard.s3.trivia": "5 domande a scelta multipla su Shakespeare",
     "classroom.wizard.s3.challenge": "Completare le parole mancanti di citazioni famose",
     "classroom.wizard.s3.battle": "Un duello di strofe in tre round, giudicato sul dispositivo",
-    "classroom.wizard.s4.title": "Segui i progressi",
-    "classroom.wizard.s4.body": "Guarda che cosa ha completato ogni studente, i suoi punteggi e le carte che ha guadagnato. I dati restano dentro la classe: ogni studente vede i propri progressi, tu vedi quelli di tutti.",
-    "classroom.wizard.s4.visibility": "Chi può vedere i progressi di uno studente",
-    "classroom.wizard.s4.ferpa": "Conforme alla legge FERPA",
     "market.meta.description": "Compra e scambia carte collezionabili di Shakespeare con altri giocatori.",
     "market.intro": "Compra e scambia carte con altri giocatori. Metti in vendita i tuoi doppioni o trova le carte che ti mancano.",
     "market.tab.browse": "Sfoglia",
@@ -1581,6 +1556,7 @@
     "season.badge": "Stagione 3",
     "season.title": "Pass stagionale",
     "season.intro": "Gioca battaglie, quiz e sfide per guadagnare XP. Ogni nuovo livello sblocca carte, crediti e titoli.",
+    "season.introNow": "Ogni livello del Pass stagionale sblocca carte, crediti o titoli. In questa versione del gioco, giocare non fa guadagnare XP.",
     "season.loading": "Caricamento…",
     "season.level": "Livello",
     "season.xp": "150 XP",
@@ -1625,9 +1601,9 @@
     "viewer.card.glb.body": "Una normale mesh mostrata con model-viewer. Su un telefono può collocare il modello nella tua stanza in realtà aumentata.",
     "viewer.card.ar.title": "AR sul telefono",
     "viewer.card.ar.body": "Nella vista GLB, su un telefono, tocca «Guarda in AR» per vedere la carta nella tua stanza.",
-    "vr.meta.description": "Cammina nella tua collezione di carte di Shakespeare in realtà virtuale.",
+    "vr.meta.description": "Cammina tra tutte le carte di Shakespeare del gioco in realtà virtuale.",
     "vr.badge": "Realtà virtuale",
-    "vr.intro": "Cammina nella tua collezione in 3D. Funziona su Quest 3 e Vision Pro tramite WebXR, e con il mouse su un computer.",
+    "vr.intro": "Cammina tra tutte le carte del gioco in 3D. Funziona su Quest 3 e Vision Pro tramite WebXR, e con il mouse su un computer.",
     "vr.enter": "Entra in VR",
     "vr.status.loading": "Caricamento del motore 3D…",
     "vr.status.gallery": "La galleria 3D è caricata. Trascina per guardarti intorno, usa la rotellina per lo zoom.",
@@ -1701,7 +1677,7 @@
     "offline.link.home": "Home",
     "offline.link.collection": "Collezione",
     "offline.link.battle": "Arena di battaglia",
-    "app.description": "Un gioco di carte di battaglie rap shakespeariane, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.",
+    "app.description": "Un gioco di carte shakespeariano di duelli di strofe, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.",
     "app.shortcut.battle": "Arena di battaglia",
     "app.shortcut.theatre": "Il Teatro",
     "pwa.install.regionLabel": "Installa Sonnet Man",
@@ -1729,7 +1705,7 @@
   "pt": {
    "checked": true,
    "dictionary": "pt-BR",
-   "words": 597,
+   "words": 587,
    "rejected": {
     "Premium": [
      "season.reward.premium"
@@ -1751,17 +1727,14 @@
      "classroom.meta.description",
      "classroom.intro",
      "season.intro"
-    ],
-    "rap": [
-     "app.description"
     ]
    },
    "texts": {
     "classroom.meta.title": "Modo Turma",
-    "classroom.meta.description": "Professores criam turmas, passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+    "classroom.meta.description": "Professores criam turmas e passam quizzes e desafios sobre Shakespeare para os estudantes.",
     "classroom.badge": "Educação",
     "classroom.title": "Modo Turma",
-    "classroom.intro": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+    "classroom.intro": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare para os estudantes.",
     "classroom.gate.title": "Antes de começar",
     "classroom.gate.body": "O Modo Turma foi feito para escolas. Escolha o seu papel para continuar.",
     "classroom.role.teacher": "Sou professor ou professora",
@@ -1776,7 +1749,7 @@
     "classroom.student.intro": "Antes de entrar em uma turma, confirme o seguinte:",
     "classroom.student.check1": "Um dos meus pais ou meu responsável legal sabe que uso o Inspired Mile para trabalhos da escola e deu permissão.",
     "classroom.student.check2": "Meu professor me deu um código de acesso a uma turma.",
-    "classroom.student.check3": "Entendo que meu professor pode ver meu progresso e o que eu faço na turma.",
+    "classroom.student.check3": "Entendo que meu professor pode ver que entrei na turma e quando.",
     "classroom.student.continue": "Continuar como estudante",
     "classroom.join.tab": "Entrar em uma turma",
     "classroom.create.tab": "Criar uma turma",
@@ -1827,10 +1800,6 @@
     "classroom.wizard.s3.trivia": "5 perguntas de múltipla escolha sobre Shakespeare",
     "classroom.wizard.s3.challenge": "Completar as palavras que faltam em citações famosas",
     "classroom.wizard.s3.battle": "Um duelo de estrofes em três rodadas, julgado no dispositivo",
-    "classroom.wizard.s4.title": "Acompanhe o progresso",
-    "classroom.wizard.s4.body": "Veja o que cada estudante concluiu, suas pontuações e as cartas que ganhou. Os dados ficam dentro da turma: cada estudante vê o próprio progresso, e você vê o de todos.",
-    "classroom.wizard.s4.visibility": "Quem pode ver o progresso de um estudante",
-    "classroom.wizard.s4.ferpa": "Em conformidade com a FERPA",
     "market.meta.description": "Compre e troque cartas colecionáveis de Shakespeare com outros jogadores.",
     "market.intro": "Compre e troque cartas com outros jogadores. Ponha suas repetidas à venda ou encontre as cartas que faltam para você.",
     "market.tab.browse": "Explorar",
@@ -1907,6 +1876,7 @@
     "season.badge": "Temporada 3",
     "season.title": "Passe de temporada",
     "season.intro": "Jogue batalhas, quizzes e desafios para ganhar XP. Cada novo nível desbloqueia cartas, créditos e títulos.",
+    "season.introNow": "Cada nível do Passe de temporada desbloqueia cartas, créditos ou títulos. Nesta versão do jogo, jogar não rende XP.",
     "season.loading": "Carregando…",
     "season.level": "Nível",
     "season.xp": "150 XP",
@@ -1951,9 +1921,9 @@
     "viewer.card.glb.body": "Uma malha comum exibida com model-viewer. No celular, ela pode colocar o modelo no seu cômodo em realidade aumentada.",
     "viewer.card.ar.title": "AR no celular",
     "viewer.card.ar.body": "Na visão GLB, no celular, toque em “Ver em AR” para ver a carta no seu cômodo.",
-    "vr.meta.description": "Caminhe pela sua coleção de cartas de Shakespeare em realidade virtual.",
+    "vr.meta.description": "Caminhe por todas as cartas de Shakespeare do jogo em realidade virtual.",
     "vr.badge": "Realidade virtual",
-    "vr.intro": "Caminhe pela sua coleção em 3D. Funciona no Quest 3 e no Vision Pro por meio do WebXR, e com o mouse no computador.",
+    "vr.intro": "Caminhe por todas as cartas do jogo em 3D. Funciona no Quest 3 e no Vision Pro por meio do WebXR, e com o mouse no computador.",
     "vr.enter": "Entrar em VR",
     "vr.status.loading": "Carregando o motor 3D…",
     "vr.status.gallery": "A galeria 3D foi carregada. Arraste para olhar ao redor e role para dar zoom.",
@@ -2027,7 +1997,7 @@
     "offline.link.home": "Início",
     "offline.link.collection": "Coleção",
     "offline.link.battle": "Arena de batalha",
-    "app.description": "Um jogo de cartas de batalha de rap shakespeariana, da Inspired Mile. Jogue suas cartas, respeite a forma e escreva melhor que um adversário que roda inteiramente no seu dispositivo.",
+    "app.description": "Um jogo de cartas shakespeariano de duelos de estrofes, da Inspired Mile. Jogue suas cartas, respeite a forma e escreva melhor que um adversário que roda inteiramente no seu dispositivo.",
     "app.shortcut.battle": "Arena de batalha",
     "app.shortcut.theatre": "O Teatro",
     "pwa.install.regionLabel": "Instalar o Sonnet Man",
@@ -2055,7 +2025,7 @@
   "pl": {
    "checked": true,
    "dictionary": "pl",
-   "words": 683,
+   "words": 670,
    "rejected": {
     "Splaty": [
      "viewer.card.splat.body"
@@ -2079,10 +2049,10 @@
    },
    "texts": {
     "classroom.meta.title": "Tryb klasowy",
-    "classroom.meta.description": "Nauczyciele tworzą klasy, zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.",
+    "classroom.meta.description": "Nauczyciele tworzą klasy i zadają quizy i wyzwania o Szekspirze dla swoich uczniów.",
     "classroom.badge": "Edukacja",
     "classroom.title": "Tryb klasowy",
-    "classroom.intro": "Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze i śledzą postępy uczniów.",
+    "classroom.intro": "Utwórz klasę albo dołącz do istniejącej. Nauczyciele zadają quizy i wyzwania o Szekspirze dla swoich uczniów.",
     "classroom.gate.title": "Zanim zaczniesz",
     "classroom.gate.body": "Tryb klasowy jest przeznaczony dla szkół. Wybierz swoją rolę, aby przejść dalej.",
     "classroom.role.teacher": "Jestem nauczycielem lub nauczycielką",
@@ -2097,7 +2067,7 @@
     "classroom.student.intro": "Zanim dołączysz do klasy, potwierdź, że:",
     "classroom.student.check1": "Mój rodzic lub opiekun prawny wie, że korzystam z Inspired Mile do nauki szkolnej, i wyraził na to zgodę.",
     "classroom.student.check2": "Mam od nauczyciela kod dołączenia do klasy.",
-    "classroom.student.check3": "Rozumiem, że nauczyciel widzi moje postępy i to, co robię w klasie.",
+    "classroom.student.check3": "Rozumiem, że nauczyciel widzi, że należę do klasy i od kiedy.",
     "classroom.student.continue": "Dalej jako uczeń",
     "classroom.join.tab": "Dołącz do klasy",
     "classroom.create.tab": "Utwórz klasę",
@@ -2149,10 +2119,6 @@
     "classroom.wizard.s3.trivia": "5 pytań wielokrotnego wyboru o Szekspirze",
     "classroom.wizard.s3.challenge": "Uzupełnianie brakujących słów w słynnych cytatach",
     "classroom.wizard.s3.battle": "Pojedynek na strofy w trzech rundach, oceniany na urządzeniu",
-    "classroom.wizard.s4.title": "Śledź postępy",
-    "classroom.wizard.s4.body": "Sprawdzaj, co ukończył każdy uczeń, jakie ma wyniki i jakie karty zdobył. Dane zostają w klasie: uczeń widzi własne postępy, a ty widzisz postępy wszystkich.",
-    "classroom.wizard.s4.visibility": "Kto widzi postępy ucznia",
-    "classroom.wizard.s4.ferpa": "Zgodne z ustawą FERPA",
     "market.meta.description": "Kupuj karty kolekcjonerskie z Szekspirem i wymieniaj się nimi z innymi graczami.",
     "market.intro": "Kupuj karty i wymieniaj się nimi z innymi graczami. Wystaw swoje duplikaty na sprzedaż albo znajdź karty, których ci brakuje.",
     "market.tab.browse": "Przeglądaj",
@@ -2229,6 +2195,7 @@
     "season.badge": "Sezon 3",
     "season.title": "Karnet sezonowy",
     "season.intro": "Graj w bitwy, quizy i wyzwania, aby zdobywać XP. Każdy nowy poziom odblokowuje karty, kredyty i tytuły.",
+    "season.introNow": "Każdy poziom karnetu sezonowego odblokowuje karty, kredyty lub tytuły. W tej wersji gry za grę nie zdobywa się XP.",
     "season.loading": "Wczytywanie…",
     "season.level": "Poziom",
     "season.xp": "150 XP",
@@ -2273,9 +2240,9 @@
     "viewer.card.glb.body": "Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rzeczywistości rozszerzonej.",
     "viewer.card.ar.title": "AR na telefonie",
     "viewer.card.ar.body": "W widoku GLB na telefonie dotknij „Zobacz w AR”, aby zobaczyć kartę w swoim pokoju.",
-    "vr.meta.description": "Przejdź się po swojej kolekcji kart z Szekspirem w rzeczywistości wirtualnej.",
+    "vr.meta.description": "Przejdź się w rzeczywistości wirtualnej wśród wszystkich kart z Szekspirem, jakie ma gra.",
     "vr.badge": "Rzeczywistość wirtualna",
-    "vr.intro": "Przejdź się po swojej kolekcji w 3D. Działa na Quest 3 i Vision Pro dzięki WebXR oraz z myszą na komputerze.",
+    "vr.intro": "Przejdź się w 3D wśród wszystkich kart, jakie ma gra. Działa na Quest 3 i Vision Pro dzięki WebXR oraz z myszą na komputerze.",
     "vr.enter": "Wejdź do VR",
     "vr.status.loading": "Wczytywanie silnika 3D…",
     "vr.status.gallery": "Galeria 3D jest wczytana. Przeciągnij, aby się rozejrzeć, i przewiń, aby przybliżyć.",
@@ -2350,7 +2317,7 @@
     "offline.link.home": "Start",
     "offline.link.collection": "Kolekcja",
     "offline.link.battle": "Arena bitwy",
-    "app.description": "Szekspirowska gra karciana w stylu battle rapu od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.",
+    "app.description": "Szekspirowska gra karciana w pojedynki na strofy od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.",
     "app.shortcut.battle": "Arena bitwy",
     "app.shortcut.theatre": "Nasz Teatr",
     "pwa.install.regionLabel": "Zainstaluj Sonnet Man",
@@ -2378,7 +2345,7 @@
   "ru": {
    "checked": true,
    "dictionary": "ru",
-   "words": 702,
+   "words": 686,
    "rejected": {
     "D": [
      "vr.intro",
@@ -2430,9 +2397,6 @@
      "classroom.wizard.s3.body",
      "classroom.wizard.s3.trivia"
     ],
-    "рэп-баттла": [
-     "app.description"
-    ],
     "сплатов": [
      "viewer.meta.description",
      "viewer.card.splat.title"
@@ -2446,10 +2410,10 @@
    },
    "texts": {
     "classroom.meta.title": "Режим класса",
-    "classroom.meta.description": "Учителя создают классы, дают викторины и испытания по Шекспиру и следят за успехами учеников.",
+    "classroom.meta.description": "Учителя создают классы и дают ученикам викторины и испытания по Шекспиру.",
     "classroom.badge": "Образование",
     "classroom.title": "Режим класса",
-    "classroom.intro": "Создай класс или присоединись к готовому. Учителя дают викторины и испытания по Шекспиру и следят за успехами учеников.",
+    "classroom.intro": "Создай класс или присоединись к готовому. Учителя дают ученикам викторины и испытания по Шекспиру.",
     "classroom.gate.title": "Прежде чем начать",
     "classroom.gate.body": "Режим класса создан для школ. Выбери свою роль, чтобы продолжить.",
     "classroom.role.teacher": "Я учитель",
@@ -2464,7 +2428,7 @@
     "classroom.student.intro": "Прежде чем присоединиться к классу, подтверди следующее:",
     "classroom.student.check1": "Мой родитель или законный опекун знает, что я пользуюсь Inspired Mile для учёбы, и разрешил это.",
     "classroom.student.check2": "Учитель дал мне код класса.",
-    "classroom.student.check3": "Я понимаю, что учитель видит мои успехи и то, что я делаю в классе.",
+    "classroom.student.check3": "Я понимаю, что учитель видит, что я состою в классе и с какого времени.",
     "classroom.student.continue": "Продолжить как ученик",
     "classroom.join.tab": "Присоединиться к классу",
     "classroom.create.tab": "Создать класс",
@@ -2516,10 +2480,6 @@
     "classroom.wizard.s3.trivia": "5 вопросов по Шекспиру с выбором ответа",
     "classroom.wizard.s3.challenge": "Вставить пропущенные слова в знаменитые цитаты",
     "classroom.wizard.s3.battle": "Дуэль строф из трёх раундов, которую судит само устройство",
-    "classroom.wizard.s4.title": "Следи за успехами",
-    "classroom.wizard.s4.body": "Смотри, что выполнил каждый ученик, какой у него счёт и какие карты он заработал. Данные остаются внутри класса: ученик видит свои успехи, а ты видишь успехи всех.",
-    "classroom.wizard.s4.visibility": "Кто видит успехи ученика",
-    "classroom.wizard.s4.ferpa": "Соответствует закону FERPA",
     "market.meta.description": "Покупай коллекционные карты по Шекспиру и обменивайся ими с другими игроками.",
     "market.intro": "Покупай карты и обменивайся ими с другими игроками. Выставь на продажу свои дубликаты или найди карты, которых тебе не хватает.",
     "market.tab.browse": "Обзор",
@@ -2596,6 +2556,7 @@
     "season.badge": "Сезон 3",
     "season.title": "Сезонный пропуск",
     "season.intro": "Играй в битвы, викторины и испытания, чтобы получать XP. Каждый новый уровень открывает карты, кредиты и титулы.",
+    "season.introNow": "Каждый уровень сезонного пропуска открывает карты, кредиты или титулы. В этой версии игры XP за игру не начисляются.",
     "season.loading": "Загрузка…",
     "season.level": "Уровень",
     "season.xp": "150 XP",
@@ -2640,9 +2601,9 @@
     "viewer.card.glb.body": "Обычная сетка, показанная через model-viewer. На телефоне она может поставить модель в твоей комнате в дополненной реальности.",
     "viewer.card.ar.title": "AR на телефоне",
     "viewer.card.ar.body": "В режиме GLB на телефоне нажми «Смотреть в AR», чтобы увидеть карту в своей комнате.",
-    "vr.meta.description": "Пройдись по своей коллекции карт по Шекспиру в виртуальной реальности.",
+    "vr.meta.description": "Пройдись в виртуальной реальности среди всех шекспировских карт игры.",
     "vr.badge": "Виртуальная реальность",
-    "vr.intro": "Пройдись по своей коллекции в 3D. Она работает на Quest 3 и Vision Pro через WebXR, а на компьютере управляется мышью.",
+    "vr.intro": "Пройдись в 3D среди всех карт игры. Галерея работает на Quest 3 и Vision Pro через WebXR, а на компьютере управляется мышью.",
     "vr.enter": "Войти в VR",
     "vr.status.loading": "Загрузка 3D-движка…",
     "vr.status.gallery": "3D-галерея загружена. Тяни, чтобы осмотреться, и прокручивай, чтобы приблизить.",
@@ -2717,7 +2678,7 @@
     "offline.link.home": "Главная",
     "offline.link.collection": "Коллекция",
     "offline.link.battle": "Арена битв",
-    "app.description": "Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
+    "app.description": "Карточная игра по Шекспиру с дуэлями строф от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
     "app.shortcut.battle": "Арена битв",
     "app.shortcut.theatre": "Наш Театр",
     "pwa.install.regionLabel": "Установить Sonnet Man",
@@ -2745,13 +2706,10 @@
   "ar": {
    "checked": true,
    "dictionary": "ar",
-   "words": 650,
+   "words": 629,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
-    ],
-    "الباتل": [
-     "app.description"
     ],
     "شكسبيرية": [
      "app.description"
@@ -2765,10 +2723,10 @@
    },
    "texts": {
     "classroom.meta.title": "وضع الصف",
-    "classroom.meta.description": "ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير، ويتابعون تقدّمهم.",
+    "classroom.meta.description": "ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير.",
     "classroom.badge": "التعليم",
     "classroom.title": "وضع الصف",
-    "classroom.intro": "أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير ويتابعون تقدّمهم.",
+    "classroom.intro": "أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير.",
     "classroom.gate.title": "قبل أن تبدأ",
     "classroom.gate.body": "وضع الصف مخصّص للمدارس. اختر دورك للمتابعة.",
     "classroom.role.teacher": "أنا معلّم أو معلّمة",
@@ -2783,7 +2741,7 @@
     "classroom.student.intro": "قبل الانضمام إلى صف، يُرجى تأكيد ما يلي:",
     "classroom.student.check1": "أحد والديّ أو وليّ أمري القانوني يعلم أنني أستخدم Inspired Mile للواجبات المدرسية وقد أذن لي بذلك.",
     "classroom.student.check2": "أعطاني معلّمي رمز الانضمام إلى صف.",
-    "classroom.student.check3": "أفهم أن معلّمي يستطيع أن يرى تقدّمي وما أفعله في الصف.",
+    "classroom.student.check3": "أفهم أن معلّمي يستطيع أن يرى أنني انضممت إلى الصف ومتى انضممت.",
     "classroom.student.continue": "المتابعة كطالب",
     "classroom.join.tab": "الانضمام إلى صف",
     "classroom.create.tab": "إنشاء صف",
@@ -2837,10 +2795,6 @@
     "classroom.wizard.s3.trivia": "5 أسئلة اختيار من متعدد عن شكسبير",
     "classroom.wizard.s3.challenge": "إكمال الكلمات الناقصة في اقتباسات مشهورة",
     "classroom.wizard.s3.battle": "مبارزة بالأبيات من ثلاث جولات، يُحكَم فيها على الجهاز",
-    "classroom.wizard.s4.title": "تابع التقدّم",
-    "classroom.wizard.s4.body": "اطّلع على ما أنجزه كل طالب، وعلى نتائجه والبطاقات التي كسبها. تبقى البيانات داخل الصف: يرى الطالب تقدّمه هو، وترى أنت تقدّم الجميع.",
-    "classroom.wizard.s4.visibility": "من يستطيع رؤية تقدّم الطالب",
-    "classroom.wizard.s4.ferpa": "متوافق مع قانون FERPA",
     "market.meta.description": "اشترِ بطاقات شكسبير للاقتناء وتبادلها مع لاعبين آخرين.",
     "market.intro": "اشترِ البطاقات وتبادلها مع لاعبين آخرين. اعرض بطاقاتك المكرّرة للبيع، أو اعثر على البطاقات التي تنقصك.",
     "market.tab.browse": "تصفّح",
@@ -2917,6 +2871,7 @@
     "season.badge": "الموسم 3",
     "season.title": "بطاقة الموسم",
     "season.intro": "العب النزالات والمسابقات والتحديات لتكسب XP. كل مستوى جديد يفتح بطاقات ونقاطًا وألقابًا.",
+    "season.introNow": "كل مستوى في بطاقة الموسم يفتح بطاقات أو نقاطًا أو ألقابًا. في هذا الإصدار من اللعبة لا تكسب XP باللعب.",
     "season.loading": "جارٍ التحميل…",
     "season.level": "المستوى",
     "season.xp": "150 XP",
@@ -2961,9 +2916,9 @@
     "viewer.card.glb.body": "شبكة عادية تُعرض بواسطة model-viewer. على الهاتف يمكنها وضع النموذج في غرفتك بالواقع المعزَّز.",
     "viewer.card.ar.title": "الواقع المعزَّز على الهاتف",
     "viewer.card.ar.body": "في عرض GLB على الهاتف، اضغط «عرض بالواقع المعزَّز» لترى البطاقة في غرفتك.",
-    "vr.meta.description": "تجوّل في مجموعة بطاقات شكسبير الخاصة بك في الواقع الافتراضي.",
+    "vr.meta.description": "تجوّل بين جميع بطاقات شكسبير في اللعبة في الواقع الافتراضي.",
     "vr.badge": "الواقع الافتراضي",
-    "vr.intro": "تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
+    "vr.intro": "تجوّل بين جميع بطاقات اللعبة بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.",
     "vr.enter": "دخول الواقع الافتراضي",
     "vr.status.loading": "جارٍ تحميل المحرّك ثلاثي الأبعاد…",
     "vr.status.gallery": "تم تحميل المعرض ثلاثي الأبعاد. اسحب لتنظر حولك، ومرّر للتكبير.",
@@ -3040,7 +2995,7 @@
     "offline.link.home": "الرئيسية",
     "offline.link.collection": "المجموعة",
     "offline.link.battle": "حلبة النزال",
-    "app.description": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+    "app.description": "لعبة بطاقات شكسبيرية تقوم على مبارزة الأبيات، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
     "app.shortcut.battle": "حلبة النزال",
     "app.shortcut.theatre": "قاعة المسرح",
     "pwa.install.regionLabel": "تثبيت Sonnet Man",
@@ -3068,7 +3023,7 @@
   "hi": {
    "checked": true,
    "dictionary": "hi",
-   "words": 502,
+   "words": 494,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
@@ -3159,10 +3114,10 @@
    },
    "texts": {
     "classroom.meta.title": "कक्षा मोड",
-    "classroom.meta.description": "शिक्षक कक्षाएँ बनाते हैं, शेक्सपियर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं और अपने विद्यार्थियों की प्रगति देखते हैं।",
+    "classroom.meta.description": "शिक्षक कक्षाएँ बनाते हैं और अपने विद्यार्थियों को शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं।",
     "classroom.badge": "शिक्षा",
     "classroom.title": "कक्षा मोड",
-    "classroom.intro": "कोई कक्षा बनाएँ या किसी कक्षा में शामिल हों। शिक्षक शेक्सपियर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं और अपने विद्यार्थियों की प्रगति देखते हैं।",
+    "classroom.intro": "कोई कक्षा बनाएँ या किसी कक्षा में शामिल हों। शिक्षक अपने विद्यार्थियों को शेक्सपीयर पर प्रश्नोत्तरी और चुनौतियाँ देते हैं।",
     "classroom.gate.title": "शुरू करने से पहले",
     "classroom.gate.body": "कक्षा मोड विद्यालयों के लिए बना है। आगे बढ़ने के लिए अपनी भूमिका चुनें।",
     "classroom.role.teacher": "मैं शिक्षक हूँ",
@@ -3177,7 +3132,7 @@
     "classroom.student.intro": "किसी कक्षा में शामिल होने से पहले कृपया इन बातों की पुष्टि करें:",
     "classroom.student.check1": "मेरे माता-पिता या क़ानूनी अभिभावक को इसकी जानकारी है, और उन्होंने मुझे पढ़ाई के काम के लिए Inspired Mile इस्तेमाल करने की अनुमति दी है।",
     "classroom.student.check2": "मेरे शिक्षक ने मुझे कक्षा में शामिल होने का कोड दिया है।",
-    "classroom.student.check3": "मुझे पता है कि मेरे शिक्षक कक्षा में मेरी प्रगति और गतिविधि देख सकते हैं।",
+    "classroom.student.check3": "मुझे पता है कि मेरे शिक्षक कक्षा में मेरे जुड़ने की तारीख़ देख सकते हैं।",
     "classroom.student.continue": "विद्यार्थी के रूप में आगे बढ़ें",
     "classroom.join.tab": "कक्षा में शामिल हों",
     "classroom.create.tab": "कक्षा बनाएँ",
@@ -3215,7 +3170,7 @@
     "classroom.wizard.next": "आगे",
     "classroom.wizard.start": "शुरू करें",
     "classroom.wizard.s1.title": "अपनी कक्षा बनाएँ",
-    "classroom.wizard.s1.body": "“कक्षा बनाएँ” चुनें और उसे कोई नाम दें, जैसे “कक्षा 9 (ब) – अंग्रेज़ी” या “शेक्सपियर से परिचय”। हर कक्षा को 6 वर्णों का अपना कक्षा कोड मिलता है।",
+    "classroom.wizard.s1.body": "“कक्षा बनाएँ” चुनें और उसे कोई नाम दें, जैसे “कक्षा 9 (ब) – अंग्रेज़ी” या “शेक्सपीयर से परिचय”। हर कक्षा को 6 वर्णों का अपना कक्षा कोड मिलता है।",
     "classroom.wizard.s1.example": "कक्षा कोड का उदाहरण",
     "classroom.wizard.s2.title": "विद्यार्थियों के साथ साझा करें",
     "classroom.wizard.s2.body": "विद्यार्थियों को 6 वर्णों का कोड दें। वे “मैं विद्यार्थी हूँ” चुनते हैं, सहमति की पुष्टि करते हैं और कोड लिखते हैं। ईमेल पते की ज़रूरत नहीं है।",
@@ -3223,15 +3178,11 @@
     "classroom.wizard.s2.lms": "अपने लर्निंग प्लेटफ़ॉर्म पर डालें",
     "classroom.wizard.s2.print": "पर्चा छापें",
     "classroom.wizard.s3.title": "गतिविधियाँ दें",
-    "classroom.wizard.s3.body": "अपनी कक्षा के लिए कार्य बनाएँ: जानकारी परखने के लिए शेक्सपियर प्रश्नोत्तरी, छूटे हुए शब्द भरने वाली उद्धरण चुनौतियाँ, या रचनात्मक लेखन के लिए पदों का द्वंद्व।",
-    "classroom.wizard.s3.trivia": "शेक्सपियर पर 5 बहुविकल्पीय प्रश्न",
+    "classroom.wizard.s3.body": "अपनी कक्षा के लिए कार्य बनाएँ: जानकारी परखने के लिए शेक्सपीयर प्रश्नोत्तरी, छूटे हुए शब्द भरने वाली उद्धरण चुनौतियाँ, या रचनात्मक लेखन के लिए पदों का द्वंद्व।",
+    "classroom.wizard.s3.trivia": "शेक्सपीयर पर 5 बहुविकल्पीय प्रश्न",
     "classroom.wizard.s3.challenge": "प्रसिद्ध उद्धरणों में छूटे हुए शब्द भरना",
     "classroom.wizard.s3.battle": "तीन दौर का पदों का द्वंद्व, जिसका निर्णय डिवाइस पर ही होता है",
-    "classroom.wizard.s4.title": "प्रगति देखें",
-    "classroom.wizard.s4.body": "देखें कि हर विद्यार्थी ने क्या पूरा किया है, उसके अंक कितने हैं और उसने कौन-से कार्ड जीते हैं। डेटा कक्षा के भीतर ही रहता है: विद्यार्थी केवल अपनी प्रगति देखते हैं, और आप सबकी।",
-    "classroom.wizard.s4.visibility": "विद्यार्थी की प्रगति कौन देख सकता है",
-    "classroom.wizard.s4.ferpa": "FERPA के अनुरूप",
-    "market.meta.description": "दूसरे खिलाड़ियों के साथ शेक्सपियर के संग्रहणीय कार्ड ख़रीदें और अदला-बदली करें।",
+    "market.meta.description": "दूसरे खिलाड़ियों के साथ शेक्सपीयर के संग्रहणीय कार्ड ख़रीदें और अदला-बदली करें।",
     "market.intro": "दूसरे खिलाड़ियों के साथ कार्ड ख़रीदें और अदला-बदली करें। अपने दोहरे कार्ड बिक्री के लिए रखें या वे कार्ड खोजें जो आपके पास नहीं हैं।",
     "market.tab.browse": "देखें",
     "market.tab.mine": "मेरी लिस्टिंग",
@@ -3307,6 +3258,7 @@
     "season.badge": "सीज़न 3",
     "season.title": "सीज़न पास",
     "season.intro": "XP कमाने के लिए युद्ध, प्रश्नोत्तरी और चुनौतियाँ खेलें। हर नया स्तर कार्ड, क्रेडिट और उपाधियाँ खोलता है।",
+    "season.introNow": "सीज़न पास का हर स्तर कार्ड, क्रेडिट या उपाधियाँ खोलता है। खेल के इस संस्करण में खेलने से XP नहीं मिलता।",
     "season.loading": "लोड हो रहा है…",
     "season.level": "स्तर",
     "season.xp": "150 XP",
@@ -3351,9 +3303,9 @@
     "viewer.card.glb.body": "model-viewer से दिखाया गया साधारण मेश। फ़ोन पर यह ऑगमेंटेड रियलिटी में मॉडल को आपके कमरे में रख सकता है।",
     "viewer.card.ar.title": "फ़ोन पर एआर",
     "viewer.card.ar.body": "फ़ोन पर GLB दृश्य में “एआर में देखें” पर टैप करें और कार्ड को अपने कमरे में देखें।",
-    "vr.meta.description": "वर्चुअल रियलिटी में अपने शेक्सपियर कार्ड संग्रह के बीच घूमें।",
+    "vr.meta.description": "वर्चुअल रियलिटी में खेल के सभी शेक्सपीयर कार्डों के बीच घूमें।",
     "vr.badge": "वर्चुअल रियलिटी",
-    "vr.intro": "अपने संग्रह के बीच 3डी में घूमें। यह WebXR के ज़रिए Quest 3 और Vision Pro पर चलता है, और कंप्यूटर पर माउस से।",
+    "vr.intro": "खेल के सभी कार्डों के बीच 3डी में घूमें। यह WebXR के ज़रिए Quest 3 और Vision Pro पर चलता है, और कंप्यूटर पर माउस से।",
     "vr.enter": "वीआर में जाएँ",
     "vr.status.loading": "3डी इंजन लोड हो रहा है…",
     "vr.status.gallery": "3डी गैलरी लोड हो गई है। चारों ओर देखने के लिए खींचें, ज़ूम के लिए स्क्रॉल करें।",
@@ -3426,7 +3378,7 @@
     "offline.link.home": "मुखपृष्ठ",
     "offline.link.collection": "संग्रह",
     "offline.link.battle": "युद्ध अखाड़ा",
-    "app.description": "Inspired Mile का शेक्सपियर रैप-बैटल कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।",
+    "app.description": "पदों के द्वंद्व वाला Inspired Mile का शेक्सपीयर कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।",
     "app.shortcut.battle": "युद्ध अखाड़ा",
     "app.shortcut.theatre": "हमारी रंगशाला",
     "pwa.install.regionLabel": "Sonnet Man इंस्टॉल करें",
@@ -3462,7 +3414,7 @@
   "ko": {
    "checked": true,
    "dictionary": "ko",
-   "words": 660,
+   "words": 647,
    "rejected": {
     "가우시안": [
      "viewer.meta.description",
@@ -3550,7 +3502,7 @@
      "market.sell.price",
      "market.sell.needPrice",
      "season.intro",
-     "error.price_invalid"
+     "season.introNow"
     ],
     "크레딧이": [
      "error.insufficient_credits"
@@ -3574,6 +3526,9 @@
     "플레이해": [
      "season.intro"
     ],
+    "플레이해도": [
+     "season.introNow"
+    ],
     "헤드셋": [
      "vr.play"
     ],
@@ -3583,10 +3538,10 @@
    },
    "texts": {
     "classroom.meta.title": "학급 모드",
-    "classroom.meta.description": "교사가 학급을 만들고, 셰익스피어 퀴즈와 도전 과제를 내고, 학생들의 진행 상황을 확인해요.",
+    "classroom.meta.description": "교사가 학급을 만들고, 학생들에게 셰익스피어 퀴즈와 도전 과제를 내요.",
     "classroom.badge": "교육",
     "classroom.title": "학급 모드",
-    "classroom.intro": "학급을 만들거나 학급에 참여하세요. 교사는 셰익스피어 퀴즈와 도전 과제를 내고 학생들의 진행 상황을 확인할 수 있어요.",
+    "classroom.intro": "학급을 만들거나 학급에 참여하세요. 교사는 학생들에게 셰익스피어 퀴즈와 도전 과제를 낼 수 있어요.",
     "classroom.gate.title": "시작하기 전에",
     "classroom.gate.body": "학급 모드는 학교에서 쓰도록 만들었어요. 계속하려면 역할을 선택하세요.",
     "classroom.role.teacher": "교사예요",
@@ -3601,7 +3556,7 @@
     "classroom.student.intro": "학급에 참여하기 전에 다음 내용을 확인해 주세요.",
     "classroom.student.check1": "부모님 또는 법정 보호자가 제가 학교 공부에 Inspired Mile을 사용하는 것을 알고 있으며, 허락했습니다.",
     "classroom.student.check2": "선생님께 학급 참여 코드를 받았습니다.",
-    "classroom.student.check3": "선생님이 학급에서 저의 진행 상황과 활동을 볼 수 있다는 것을 이해합니다.",
+    "classroom.student.check3": "선생님이 제가 학급에 참여했다는 것과 그 시점을 볼 수 있다는 것을 이해합니다.",
     "classroom.student.continue": "학생으로 계속하기",
     "classroom.join.tab": "학급 참여",
     "classroom.create.tab": "학급 만들기",
@@ -3650,10 +3605,6 @@
     "classroom.wizard.s3.trivia": "셰익스피어에 관한 객관식 문제 5개",
     "classroom.wizard.s3.challenge": "유명한 명언에서 빠진 낱말 채우기",
     "classroom.wizard.s3.battle": "세 라운드의 시 결투, 심판은 기기에서 이루어져요",
-    "classroom.wizard.s4.title": "진행 상황 확인하기",
-    "classroom.wizard.s4.body": "학생마다 무엇을 마쳤는지, 점수는 몇 점인지, 어떤 카드를 얻었는지 확인하세요. 데이터는 학급 안에만 있어요. 학생은 자기 진행 상황을, 선생님은 모두의 진행 상황을 볼 수 있어요.",
-    "classroom.wizard.s4.visibility": "학생의 진행 상황을 볼 수 있는 사람",
-    "classroom.wizard.s4.ferpa": "FERPA 준수",
     "market.meta.description": "다른 플레이어와 셰익스피어 수집 카드를 사고 교환하세요.",
     "market.intro": "다른 플레이어와 카드를 사고 교환하세요. 중복 카드를 판매 매물로 올리거나, 없는 카드를 찾아보세요.",
     "market.tab.browse": "둘러보기",
@@ -3730,6 +3681,7 @@
     "season.badge": "시즌 3",
     "season.title": "시즌 패스",
     "season.intro": "배틀, 퀴즈, 도전 과제를 플레이해 XP를 얻으세요. 레벨이 오를 때마다 카드, 크레딧, 칭호가 잠금 해제돼요.",
+    "season.introNow": "시즌 패스의 각 레벨은 카드, 크레딧 또는 칭호를 잠금 해제해요. 이 버전의 게임에서는 플레이해도 XP를 얻을 수 없어요.",
     "season.loading": "불러오는 중…",
     "season.level": "레벨",
     "season.xp": "150 XP",
@@ -3774,9 +3726,9 @@
     "viewer.card.glb.body": "model-viewer로 보여 주는 일반 메시예요. 휴대폰에서는 증강 현실로 모델을 내 방에 놓을 수 있어요.",
     "viewer.card.ar.title": "휴대폰 AR",
     "viewer.card.ar.body": "휴대폰의 GLB 보기에서 “AR로 보기”를 누르면 내 방에서 카드를 볼 수 있어요.",
-    "vr.meta.description": "가상 현실에서 나의 셰익스피어 카드 컬렉션 사이를 걸어 보세요.",
+    "vr.meta.description": "가상 현실에서 게임의 모든 셰익스피어 카드 사이를 걸어 보세요.",
     "vr.badge": "가상 현실",
-    "vr.intro": "컬렉션 사이를 3D로 걸어 보세요. WebXR로 Quest 3와 Vision Pro에서 작동하고, 컴퓨터에서는 마우스로 둘러볼 수 있어요.",
+    "vr.intro": "게임의 모든 카드 사이를 3D로 걸어 보세요. WebXR로 Quest 3와 Vision Pro에서 작동하고, 컴퓨터에서는 마우스로 둘러볼 수 있어요.",
     "vr.enter": "VR 들어가기",
     "vr.status.loading": "3D 엔진을 불러오는 중…",
     "vr.status.gallery": "3D 갤러리를 불러왔어요. 드래그해서 둘러보고, 스크롤해서 확대·축소하세요.",
@@ -3848,25 +3800,25 @@
     "offline.link.home": "홈",
     "offline.link.collection": "컬렉션",
     "offline.link.battle": "배틀 아레나",
-    "app.description": "Inspired Mile의 셰익스피어 배틀 랩 카드 게임. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.",
+    "app.description": "Inspired Mile의 셰익스피어 카드 게임, 시의 결투. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.",
     "app.shortcut.battle": "배틀 아레나",
-    "app.shortcut.theatre": "더 극장",
+    "app.shortcut.theatre": "입체 극장",
     "pwa.install.regionLabel": "Sonnet Man 설치",
     "pwa.install.title": "먼저 Sonnet Man을 설치하세요",
-    "pwa.install.promptBody": "전체 화면으로 열리고, 설치한 앱에서는 내려받은 모델을 브라우저가 지울 가능성이 훨씬 낮아요.",
-    "pwa.install.iosBody": "iPhone과 iPad에서는 홈 화면의 앱이 이 탭과 아무것도 공유하지 않아요. 로그인하거나 모델을 내려받기 전에 추가하세요. 그러지 않으면 두 가지를 모두 두 번 해야 해요.",
+    "pwa.install.promptBody": "전체 화면으로 열리고, 설치한 앱에서는 다운로드한 모델을 브라우저가 지울 가능성이 훨씬 낮아요.",
+    "pwa.install.iosBody": "iPhone과 iPad에서는 홈 화면의 앱이 이 탭과 아무것도 공유하지 않아요. 로그인하거나 모델을 다운로드하기 전에 추가하세요. 그러지 않으면 두 가지를 모두 두 번 해야 해요.",
     "pwa.install.iosStep1": "공유 버튼을 탭하세요.",
     "pwa.install.iosStep2": "‘홈 화면에 추가’를 선택하세요.",
     "pwa.install.accept": "설치",
     "pwa.install.dismiss": "나중에",
     "pwa.storage.kept": "이 기기에 보관된 데이터: 1.1GB. 브라우저가 알아서 지우지 않아요.",
-    "pwa.storage.keptNoSize": "내려받은 데이터가 이 기기에 보관되어 있어요. 브라우저가 알아서 지우지 않아요.",
+    "pwa.storage.keptNoSize": "다운로드한 데이터가 이 기기에 보관되어 있어요. 브라우저가 알아서 지우지 않아요.",
     "pwa.storage.atRisk": "이 기기에 저장된 데이터: 1.1GB. 하지만 기기 공간이 부족하거나 한동안 들어오지 않으면 브라우저가 지울 수 있어요.",
-    "pwa.storage.atRiskNoSize": "내려받은 데이터가 저장되어 있지만, 기기 공간이 부족하거나 한동안 들어오지 않으면 브라우저가 지울 수 있어요.",
+    "pwa.storage.atRiskNoSize": "다운로드한 데이터가 저장되어 있지만, 기기 공간이 부족하거나 한동안 들어오지 않으면 브라우저가 지울 수 있어요.",
     "pwa.storage.installHint": "앱을 설치하면 보관하는 데 도움이 돼요.",
     "pwa.storage.lessThan": "1.1GB 미만",
     "classroom.teacher.check3": "저는 서비스 약관 및 개인정보 처리방침을 읽었으며, 수업 및 교육 목적의 이용과 FERPA에 관한 항목을 포함하여 이에 동의합니다.",
-    "vr.play": "플레이하고 싶나요? 더 극장에서는 결투 전체가 헤드셋 안에서 펼쳐져요.",
+    "vr.play": "플레이하고 싶나요? 입체 극장에서는 결투 전체가 헤드셋 안에서 펼쳐져요.",
     "market.title": "카드 마켓",
     "tour.title": "토너먼트 아레나",
     "viewer.title": "카드 뷰어",
@@ -3876,7 +3828,7 @@
   "vi": {
    "checked": true,
    "dictionary": "vi",
-   "words": 537,
+   "words": 532,
    "rejected": {
     "D": [
      "viewer.meta.description",
@@ -3884,39 +3836,16 @@
      "viewer.intro",
      "viewer.status.init"
     ],
-    "Hủy": [
-     "market.cancel"
-    ],
-    "Khóa": [
-     "error.passkey_not_found"
-    ],
-    "hủy": [
-     "market.status.cancelled"
-    ],
-    "khóa": [
-     "season.meta.description",
-     "season.intro",
-     "error.variant_already_unlocked"
-    ],
     "model-viewer": [
      "viewer.card.glb.body"
-    ],
-    "rap": [
-     "app.description"
-    ],
-    "xóa": [
-     "pwa.install.promptBody",
-     "pwa.storage.kept",
-     "pwa.storage.keptNoSize",
-     "pwa.storage.atRisk"
     ]
    },
    "texts": {
     "classroom.meta.title": "Chế độ Lớp học",
-    "classroom.meta.description": "Giáo viên tạo lớp học, giao đố vui và thử thách về Shakespeare, rồi theo dõi tiến độ của học sinh.",
+    "classroom.meta.description": "Giáo viên tạo lớp học và giao đố vui, thử thách về Shakespeare cho học sinh.",
     "classroom.badge": "Giáo dục",
     "classroom.title": "Chế độ Lớp học",
-    "classroom.intro": "Tạo một lớp học hoặc tham gia một lớp. Giáo viên giao đố vui và thử thách về Shakespeare, rồi theo dõi tiến độ của học sinh.",
+    "classroom.intro": "Tạo một lớp học hoặc tham gia một lớp. Giáo viên giao đố vui và thử thách về Shakespeare cho học sinh.",
     "classroom.gate.title": "Trước khi bắt đầu",
     "classroom.gate.body": "Chế độ Lớp học được làm cho nhà trường. Hãy chọn vai trò của bạn để tiếp tục.",
     "classroom.role.teacher": "Tôi là giáo viên",
@@ -3931,7 +3860,7 @@
     "classroom.student.intro": "Trước khi tham gia một lớp học, hãy xác nhận những điều sau:",
     "classroom.student.check1": "Cha mẹ hoặc người giám hộ hợp pháp của tôi biết tôi dùng Inspired Mile cho việc học ở trường và đã cho phép.",
     "classroom.student.check2": "Giáo viên đã cho tôi mã tham gia lớp học.",
-    "classroom.student.check3": "Tôi hiểu rằng giáo viên có thể xem tiến độ và hoạt động của tôi trong lớp học.",
+    "classroom.student.check3": "Tôi hiểu rằng giáo viên có thể thấy tôi đã tham gia lớp học và tham gia khi nào.",
     "classroom.student.continue": "Tiếp tục với vai trò học sinh",
     "classroom.join.tab": "Tham gia lớp học",
     "classroom.create.tab": "Tạo lớp học",
@@ -3981,10 +3910,6 @@
     "classroom.wizard.s3.trivia": "5 câu hỏi trắc nghiệm về Shakespeare",
     "classroom.wizard.s3.challenge": "Điền từ còn thiếu vào những câu trích dẫn nổi tiếng",
     "classroom.wizard.s3.battle": "Một trận đấu thơ ba hiệp, được chấm ngay trên thiết bị",
-    "classroom.wizard.s4.title": "Theo dõi tiến độ",
-    "classroom.wizard.s4.body": "Xem mỗi học sinh đã hoàn thành những gì, điểm số và các lá bài các em giành được. Dữ liệu chỉ nằm trong lớp học: học sinh thấy tiến độ của riêng mình, còn bạn thấy tiến độ của cả lớp.",
-    "classroom.wizard.s4.visibility": "Ai xem được tiến độ của học sinh",
-    "classroom.wizard.s4.ferpa": "Tuân thủ đạo luật FERPA",
     "market.meta.description": "Mua và trao đổi thẻ bài sưu tầm Shakespeare với những người chơi khác.",
     "market.intro": "Mua và trao đổi lá bài với những người chơi khác. Rao bán những lá bài trùng của bạn, hoặc tìm những lá bài bạn còn thiếu.",
     "market.tab.browse": "Xem tin đăng",
@@ -4006,8 +3931,8 @@
     "market.mine.empty": "Bạn chưa có tin đăng nào.",
     "market.status.active": "Đang mở",
     "market.status.sold": "Đã bán",
-    "market.status.cancelled": "Đã hủy",
-    "market.cancel": "Hủy tin đăng",
+    "market.status.cancelled": "Đã huỷ",
+    "market.cancel": "Huỷ tin đăng",
     "market.sell.title": "Tạo tin đăng",
     "market.sell.card": "Lá bài",
     "market.sell.choose": "Chọn một lá bài để đăng…",
@@ -4057,10 +3982,11 @@
     "tour.entry.active": "Còn thi đấu",
     "tour.option": "Verona (Đang mở đăng ký)",
     "season.meta.title": "Thẻ mùa giải",
-    "season.meta.description": "Nâng cấp độ Thẻ mùa giải để mở khóa phần thưởng trong Inspired Mile.",
+    "season.meta.description": "Nâng cấp độ Thẻ mùa giải để mở khoá phần thưởng trong Inspired Mile.",
     "season.badge": "Mùa 3",
     "season.title": "Thẻ mùa giải",
-    "season.intro": "Chơi các trận đấu, đố vui và thử thách để nhận XP. Mỗi cấp độ mới mở khóa lá bài, xu và danh hiệu.",
+    "season.intro": "Chơi các trận đấu, đố vui và thử thách để nhận XP. Mỗi cấp độ mới mở khoá lá bài, xu và danh hiệu.",
+    "season.introNow": "Mỗi cấp độ của Thẻ mùa giải mở khoá lá bài, xu hoặc danh hiệu. Trong phiên bản này của trò chơi, bạn không nhận được XP khi chơi.",
     "season.loading": "Đang tải…",
     "season.level": "Cấp độ",
     "season.xp": "150 XP",
@@ -4105,9 +4031,9 @@
     "viewer.card.glb.body": "Một lưới thông thường hiển thị bằng model-viewer. Trên điện thoại, nó có thể đặt mô hình vào phòng bạn bằng thực tế tăng cường.",
     "viewer.card.ar.title": "AR trên điện thoại",
     "viewer.card.ar.body": "Ở chế độ GLB trên điện thoại, hãy chạm “Xem bằng AR” để thấy lá bài ngay trong phòng bạn.",
-    "vr.meta.description": "Dạo qua bộ sưu tập lá bài Shakespeare của bạn trong thực tế ảo.",
+    "vr.meta.description": "Dạo qua tất cả lá bài Shakespeare của trò chơi trong thực tế ảo.",
     "vr.badge": "Thực tế ảo",
-    "vr.intro": "Dạo qua bộ sưu tập của bạn trong không gian 3D. Chạy trên Quest 3 và Vision Pro qua WebXR, và dùng chuột trên máy tính.",
+    "vr.intro": "Dạo qua tất cả lá bài của trò chơi trong không gian 3D. Chạy trên Quest 3 và Vision Pro qua WebXR, và dùng chuột trên máy tính.",
     "vr.enter": "Vào VR",
     "vr.status.loading": "Đang tải bộ máy 3D…",
     "vr.status.gallery": "Phòng trưng bày 3D đã tải xong. Kéo để nhìn quanh, cuộn để phóng to hoặc thu nhỏ.",
@@ -4132,7 +4058,7 @@
     "error.server_error": "Đã có lỗi ở phía chúng tôi. Vui lòng thử lại.",
     "error.unavailable": "Dịch vụ hiện không dùng được. Vui lòng thử lại sau ít phút.",
     "error.generic": "Đã có lỗi xảy ra. Vui lòng thử lại.",
-    "error.passkey_not_found": "Khóa truy cập đó không có trong tài khoản này.",
+    "error.passkey_not_found": "Khoá truy cập đó không có trong tài khoản này.",
     "error.age_tier_locked": "Tài khoản này được tạo cho người dưới 18 tuổi và sẽ giữ nguyên như vậy.",
     "error.age_tier_changed": "Câu trả lời về tuổi của bạn đã thay đổi trong lúc lưu. Hãy thử lại.",
     "error.invalid_age_tier": "Không hiểu được câu trả lời về tuổi này. Hãy trả lời lại câu hỏi về tuổi.",
@@ -4159,7 +4085,7 @@
     "error.reward_unavailable": "Phần thưởng đó đã được nhận rồi.",
     "error.insufficient_credits": "Bạn không đủ xu.",
     "error.daily_limit_reached": "Bạn đã chạm giới hạn chi tiêu hôm nay dành cho người chơi dưới 18 tuổi.",
-    "error.variant_already_unlocked": "Bạn đã mở khóa biến thể đó rồi.",
+    "error.variant_already_unlocked": "Bạn đã mở khoá biến thể đó rồi.",
     "error.referral_invalid": "Mã mời đó không hợp lệ.",
     "error.referral_not_found": "Không có lời mời nào dùng mã đó.",
     "error.referral_own": "Bạn không thể dùng mã mời của chính mình.",
@@ -4180,21 +4106,21 @@
     "offline.link.home": "Trang chủ",
     "offline.link.collection": "Bộ sưu tập",
     "offline.link.battle": "Đấu trường",
-    "app.description": "Trò chơi bài rap chiến theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.",
+    "app.description": "Trò chơi bài trận đấu thơ theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.",
     "app.shortcut.battle": "Đấu trường",
     "app.shortcut.theatre": "Nhà hát",
     "pwa.install.regionLabel": "Cài đặt Sonnet Man",
     "pwa.install.title": "Hãy cài đặt Sonnet Man trước",
-    "pwa.install.promptBody": "Ứng dụng mở toàn màn hình, và với ứng dụng đã cài đặt, khả năng trình duyệt xóa mô hình đã tải thấp hơn nhiều.",
+    "pwa.install.promptBody": "Ứng dụng mở toàn màn hình, và với ứng dụng đã cài đặt, khả năng trình duyệt xoá mô hình đã tải thấp hơn nhiều.",
     "pwa.install.iosBody": "Trên iPhone và iPad, ứng dụng ở Màn hình chính không dùng chung gì với thẻ này. Hãy thêm nó trước khi đăng nhập hoặc tải mô hình, nếu không bạn sẽ phải làm cả hai việc hai lần.",
     "pwa.install.iosStep1": "Chạm vào nút Chia sẻ.",
     "pwa.install.iosStep2": "Chọn “Thêm vào Màn hình chính”.",
     "pwa.install.accept": "Cài đặt",
     "pwa.install.dismiss": "Để sau",
-    "pwa.storage.kept": "Đã giữ 1,1 GB trên thiết bị này. Trình duyệt sẽ không tự xóa.",
-    "pwa.storage.keptNoSize": "Dữ liệu bạn tải được giữ trên thiết bị này. Trình duyệt sẽ không tự xóa.",
-    "pwa.storage.atRisk": "Đã lưu 1,1 GB, nhưng trình duyệt có thể xóa nếu thiết bị hết dung lượng hoặc bạn không quay lại trong một thời gian.",
-    "pwa.storage.atRiskNoSize": "Dữ liệu bạn tải đã được lưu, nhưng trình duyệt có thể xóa nếu thiết bị hết dung lượng hoặc bạn không quay lại trong một thời gian.",
+    "pwa.storage.kept": "Đã giữ 1,1 GB trên thiết bị này. Trình duyệt sẽ không tự xoá.",
+    "pwa.storage.keptNoSize": "Dữ liệu bạn tải được giữ trên thiết bị này. Trình duyệt sẽ không tự xoá.",
+    "pwa.storage.atRisk": "Đã lưu 1,1 GB, nhưng trình duyệt có thể xoá nếu thiết bị hết dung lượng hoặc bạn không quay lại trong một thời gian.",
+    "pwa.storage.atRiskNoSize": "Dữ liệu bạn tải đã được lưu, nhưng trình duyệt có thể xoá nếu thiết bị hết dung lượng hoặc bạn không quay lại trong một thời gian.",
     "pwa.storage.installHint": "Cài đặt ứng dụng giúp giữ lại dữ liệu.",
     "pwa.storage.lessThan": "chưa đến 1,1 GB",
     "classroom.teacher.check3": "Tôi đã đọc và đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư, kể cả các phần về việc sử dụng trong lớp học và cho mục đích giáo dục và về đạo luật FERPA.",
@@ -4208,7 +4134,7 @@
   "th": {
    "checked": true,
    "dictionary": "th",
-   "words": 415,
+   "words": 407,
    "rejected": {
     "Babylon.js": [
      "viewer.card.splat.body"
@@ -4223,8 +4149,6 @@
      "activity.trivia"
     ],
     "คอล": [
-     "vr.meta.description",
-     "vr.intro",
      "offline.link.collection"
     ],
     "จิน": [
@@ -4252,7 +4176,7 @@
      "season.meta.title",
      "season.meta.description",
      "season.title",
-     "season.signIn"
+     "season.introNow"
     ],
     "ม": [
      "classroom.wizard.s1.body"
@@ -4275,9 +4199,6 @@
      "classroom.wizard.s1.body",
      "classroom.wizard.s3.trivia"
     ],
-    "เทิล": [
-     "app.description"
-    ],
     "เมช": [
      "viewer.meta.description",
      "viewer.intro"
@@ -4285,19 +4206,16 @@
     "แท็": [
      "pwa.install.iosBody"
     ],
-    "แร็ป": [
-     "app.description"
-    ],
     "แล้วก": [
      "classroom.wizard.s2.body"
     ]
    },
    "texts": {
     "classroom.meta.title": "โหมดชั้นเรียน",
-    "classroom.meta.description": "ครูสร้างชั้นเรียน มอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ และติดตามความก้าวหน้าของนักเรียน",
+    "classroom.meta.description": "ครูสร้างชั้นเรียน และมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ให้นักเรียน",
     "classroom.badge": "การศึกษา",
     "classroom.title": "โหมดชั้นเรียน",
-    "classroom.intro": "สร้างชั้นเรียนหรือเข้าร่วมชั้นเรียน ครูมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ และติดตามความก้าวหน้าของนักเรียน",
+    "classroom.intro": "สร้างชั้นเรียนหรือเข้าร่วมชั้นเรียน ครูมอบหมายควิซและภารกิจท้าทายเกี่ยวกับเชกสเปียร์ให้นักเรียน",
     "classroom.gate.title": "ก่อนเริ่มต้น",
     "classroom.gate.body": "โหมดชั้นเรียนออกแบบมาสำหรับโรงเรียน เลือกบทบาทของคุณเพื่อไปต่อ",
     "classroom.role.teacher": "ฉันเป็นครู",
@@ -4312,7 +4230,7 @@
     "classroom.student.intro": "ก่อนเข้าร่วมชั้นเรียน โปรดยืนยันข้อต่อไปนี้",
     "classroom.student.check1": "พ่อแม่หรือผู้ปกครองตามกฎหมายของข้าพเจ้าทราบว่าข้าพเจ้าใช้ Inspired Mile เพื่อการเรียน และอนุญาตแล้ว",
     "classroom.student.check2": "ครูให้รหัสเข้าร่วมชั้นเรียนแก่ข้าพเจ้าแล้ว",
-    "classroom.student.check3": "ข้าพเจ้าเข้าใจว่าครูมองเห็นความก้าวหน้าและกิจกรรมของข้าพเจ้าในชั้นเรียนได้",
+    "classroom.student.check3": "ข้าพเจ้าเข้าใจว่าครูมองเห็นได้ว่าข้าพเจ้าเข้าร่วมชั้นเรียนแล้วและเข้าร่วมเมื่อใด",
     "classroom.student.continue": "ไปต่อในฐานะนักเรียน",
     "classroom.join.tab": "เข้าร่วมชั้นเรียน",
     "classroom.create.tab": "สร้างชั้นเรียน",
@@ -4328,7 +4246,7 @@
     "classroom.create.done": "สร้างชั้นเรียนแล้ว",
     "classroom.mine.title": "ชั้นเรียนของฉัน",
     "classroom.mine.empty": "คุณยังไม่ได้เข้าร่วมชั้นเรียนใด",
-    "classroom.mine.signIn": "เข้าสู่ระบบเพื่อดูชั้นเรียนของคุณ",
+    "classroom.mine.signIn": "ลงชื่อเข้าใช้เพื่อดูชั้นเรียนของคุณ",
     "classroom.members.other": "สมาชิก 0 คน",
     "classroom.list.code": "รหัส:",
     "classroom.detail.back": "กลับไปที่ชั้นเรียนของฉัน",
@@ -4361,10 +4279,6 @@
     "classroom.wizard.s3.trivia": "คำถามปรนัยเกี่ยวกับเชกสเปียร์ 5 ข้อ",
     "classroom.wizard.s3.challenge": "เติมคำที่หายไปในวาทะที่มีชื่อเสียง",
     "classroom.wizard.s3.battle": "การประชันบทกลอนสามยก ตัดสินบนอุปกรณ์",
-    "classroom.wizard.s4.title": "ติดตามความก้าวหน้า",
-    "classroom.wizard.s4.body": "ดูว่านักเรียนแต่ละคนทำอะไรเสร็จแล้ว ได้คะแนนเท่าไร และได้การ์ดใดบ้าง ข้อมูลอยู่ภายในชั้นเรียนเท่านั้น: นักเรียนเห็นความก้าวหน้าของตัวเอง ส่วนคุณเห็นของทุกคน",
-    "classroom.wizard.s4.visibility": "ใครเห็นความก้าวหน้าของนักเรียนได้บ้าง",
-    "classroom.wizard.s4.ferpa": "เป็นไปตามกฎหมาย FERPA",
     "market.meta.description": "ซื้อและแลกเปลี่ยนการ์ดสะสมเชกสเปียร์กับผู้เล่นคนอื่น",
     "market.intro": "ซื้อและแลกเปลี่ยนการ์ดกับผู้เล่นคนอื่น ลงประกาศขายการ์ดที่ซ้ำ หรือหาการ์ดที่คุณยังขาด",
     "market.tab.browse": "เลือกดู",
@@ -4380,9 +4294,9 @@
     "market.wants": "ต้องการ: MO-001และCA-001",
     "market.buy": "ซื้อ",
     "market.offer": "เสนอแลกเปลี่ยน",
-    "market.toast.signInBuy": "เข้าสู่ระบบเพื่อซื้อการ์ด",
+    "market.toast.signInBuy": "ลงชื่อเข้าใช้เพื่อซื้อการ์ด",
     "market.toast.bought": "ซื้อแล้ว การ์ดเป็นของคุณแล้ว",
-    "market.mine.signIn": "เข้าสู่ระบบเพื่อดูประกาศของคุณ",
+    "market.mine.signIn": "ลงชื่อเข้าใช้เพื่อดูประกาศของคุณ",
     "market.mine.empty": "คุณไม่มีประกาศ",
     "market.status.active": "เปิดอยู่",
     "market.status.sold": "ขายแล้ว",
@@ -4400,7 +4314,7 @@
     "market.sell.needCard": "เลือกการ์ด",
     "market.sell.needPrice": "กรอกราคาอย่างน้อย 1 เครดิต",
     "market.sell.done": "สร้างประกาศแล้ว",
-    "market.toast.signInSell": "เข้าสู่ระบบเพื่อสร้างประกาศ",
+    "market.toast.signInSell": "ลงชื่อเข้าใช้เพื่อสร้างประกาศ",
     "tour.meta.description": "เข้าร่วมทัวร์นาเมนต์ประชันบทกลอนและชิงตำแหน่งแชมป์",
     "tour.intro": "เข้าร่วมการแข่งขันที่จัดขึ้นและแสดงฝีมือด้านกลอนของคุณ แบบแพ้คัดออก แบบพบกันหมด และอื่น ๆ",
     "tour.tab.bracket": "สายการแข่งขัน",
@@ -4419,7 +4333,7 @@
     "tour.playersOf": "3 จาก 100,000",
     "tour.register": "สมัคร",
     "tour.viewBracket": "ดูสายการแข่งขัน",
-    "tour.toast.signIn": "เข้าสู่ระบบเพื่อสมัคร",
+    "tour.toast.signIn": "ลงชื่อเข้าใช้เพื่อสมัคร",
     "tour.toast.registered": "คุณสมัครเรียบร้อยแล้ว",
     "tour.bracket.loading": "กำลังโหลดสายการแข่งขัน…",
     "tour.bracket.none": "ยังไม่ได้จับสลากสายการแข่งขัน",
@@ -4441,6 +4355,7 @@
     "season.badge": "ซีซัน 3",
     "season.title": "ซีซันพาส",
     "season.intro": "เล่นการประชัน ควิซ และภารกิจท้าทายเพื่อรับ XP ทุกระดับใหม่จะปลดล็อกการ์ด เครดิต และฉายา",
+    "season.introNow": "ทุกระดับของซีซันพาสจะปลดล็อกการ์ด เครดิต หรือฉายา ในเกมเวอร์ชันนี้ เล่นแล้วจะไม่ได้รับ XP",
     "season.loading": "กำลังโหลด…",
     "season.level": "ระดับ",
     "season.xp": "150 XP",
@@ -4458,7 +4373,7 @@
     "season.claim": "รับรางวัล",
     "season.claimed": "รับแล้ว",
     "season.locked": "ไปให้ถึงระดับ 3",
-    "season.signIn": "เข้าสู่ระบบเพื่อเก็บความคืบหน้าซีซันพาสของคุณไว้ในทุกอุปกรณ์",
+    "season.signIn": "ลงชื่อเข้าใช้เพื่อเก็บความคืบหน้าซีซันพาสของคุณไว้ในทุกอุปกรณ์",
     "viewer.meta.description": "ดูโมเดล 3 มิติของการ์ด ทั้งแบบ Gaussian splat และแบบเมช GLB",
     "viewer.badge": "โมเดล 3 มิติ",
     "viewer.intro": "สำรวจการ์ดของคุณในรูปโมเดล 3 มิติ สลับระหว่าง Gaussian splat กับเมช GLB ได้ ลากเพื่อหมุนโมเดล เลื่อนเพื่อซูม",
@@ -4485,9 +4400,9 @@
     "viewer.card.glb.body": "เมชทั่วไปที่แสดงด้วย model-viewer บนโทรศัพท์จะวางโมเดลไว้ในห้องของคุณด้วยความเป็นจริงเสริมได้",
     "viewer.card.ar.title": "AR บนโทรศัพท์",
     "viewer.card.ar.body": "ในมุมมอง GLB บนโทรศัพท์ แตะ “ดูแบบ AR” เพื่อดูการ์ดในห้องของคุณ",
-    "vr.meta.description": "เดินชมคอลเลกชันการ์ดเชกสเปียร์ของคุณในความเป็นจริงเสมือน",
+    "vr.meta.description": "เดินชมการ์ดเชกสเปียร์ทุกใบในเกมในความเป็นจริงเสมือน",
     "vr.badge": "ความเป็นจริงเสมือน",
-    "vr.intro": "เดินชมคอลเลกชันของคุณแบบ 3 มิติ ใช้ได้บน Quest 3 และ Vision Pro ผ่าน WebXR และใช้เมาส์บนคอมพิวเตอร์",
+    "vr.intro": "เดินชมการ์ดทุกใบในเกมแบบ 3 มิติ ใช้ได้บน Quest 3 และ Vision Pro ผ่าน WebXR และใช้เมาส์บนคอมพิวเตอร์",
     "vr.enter": "เข้าสู่ VR",
     "vr.status.loading": "กำลังโหลดเอนจิน 3 มิติ…",
     "vr.status.gallery": "โหลดแกลเลอรี 3 มิติแล้ว ลากเพื่อมองรอบ ๆ เลื่อนเพื่อซูม",
@@ -4503,7 +4418,7 @@
     "vr.card.quest.body": "กด “เข้าสู่ VR” เพื่อเข้าไปข้างใน ใช้คอนโทรลเลอร์เพื่อเคลื่อนที่และเลือกการ์ด",
     "vr.card.vision.body": "เปิดด้วย WebXR มองที่การ์ดแล้วบีบนิ้วเพื่อเลือก",
     "error.network": "เราติดต่อเซิร์ฟเวอร์ไม่ได้ โปรดตรวจการเชื่อมต่อแล้วลองอีกครั้ง",
-    "error.not_signed_in": "โปรดเข้าสู่ระบบก่อน",
+    "error.not_signed_in": "โปรดลงชื่อเข้าใช้ก่อน",
     "error.forbidden": "คุณไม่ได้รับอนุญาตให้ทำสิ่งนี้",
     "error.not_found": "เราหาสิ่งนั้นไม่พบ",
     "error.conflict": "ข้อมูลเพิ่งเปลี่ยนไป โปรดรีเฟรชหน้าแล้วลองอีกครั้ง",
@@ -4559,13 +4474,13 @@
     "offline.link.home": "หน้าแรก",
     "offline.link.collection": "คอลเลกชัน",
     "offline.link.battle": "สังเวียนประชัน",
-    "app.description": "เกมการ์ดแร็ปแบตเทิลแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด",
+    "app.description": "เกมการ์ดการประชันบทกลอนแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด",
     "app.shortcut.battle": "สังเวียนประชัน",
     "app.shortcut.theatre": "เวทีโรงละคร",
     "pwa.install.regionLabel": "ติดตั้ง Sonnet Man",
     "pwa.install.title": "ติดตั้ง Sonnet Man ก่อน",
     "pwa.install.promptBody": "แอปจะเปิดเต็มหน้าจอ และในแอปที่ติดตั้งแล้ว เบราว์เซอร์มีโอกาสลบโมเดลที่ดาวน์โหลดไว้น้อยกว่ามาก",
-    "pwa.install.iosBody": "บน iPhone และ iPad แอปบนหน้าจอโฮมไม่ได้ใช้อะไรร่วมกับแท็บนี้เลย ให้เพิ่มก่อนเข้าสู่ระบบหรือดาวน์โหลดโมเดล ไม่เช่นนั้นคุณจะต้องทำทั้งสองอย่างสองครั้ง",
+    "pwa.install.iosBody": "บน iPhone และ iPad แอปบนหน้าจอโฮมไม่ได้ใช้อะไรร่วมกับแท็บนี้เลย ให้เพิ่มก่อนลงชื่อเข้าใช้หรือดาวน์โหลดโมเดล ไม่เช่นนั้นคุณจะต้องทำทั้งสองอย่างสองครั้ง",
     "pwa.install.iosStep1": "แตะปุ่มแชร์",
     "pwa.install.iosStep2": "เลือก “เพิ่มไปยังหน้าจอโฮม”",
     "pwa.install.accept": "ติดตั้ง",
@@ -4587,7 +4502,7 @@
   "id": {
    "checked": true,
    "dictionary": "id",
-   "words": 535,
+   "words": 522,
    "rejected": {
     "Aplikasinya": [
      "pwa.install.promptBody"
@@ -4636,9 +4551,6 @@
      "pwa.storage.kept",
      "pwa.storage.keptNoSize"
     ],
-    "Shakespeare-mu": [
-     "vr.meta.description"
-    ],
     "Tawarkan": [
      "market.intro"
     ],
@@ -4672,9 +4584,6 @@
     ],
     "kodenya": [
      "classroom.wizard.s2.body"
-    ],
-    "koleksimu": [
-     "vr.intro"
     ],
     "koneksimu": [
      "error.network",
@@ -4718,10 +4627,10 @@
    },
    "texts": {
     "classroom.meta.title": "Mode Kelas",
-    "classroom.meta.description": "Guru membuat kelas, memberikan kuis dan tantangan tentang Shakespeare, serta memantau kemajuan siswa.",
+    "classroom.meta.description": "Guru membuat kelas serta memberikan kuis dan tantangan tentang Shakespeare kepada siswa.",
     "classroom.badge": "Pendidikan",
     "classroom.title": "Mode Kelas",
-    "classroom.intro": "Buat kelas atau bergabung ke sebuah kelas. Guru memberikan kuis dan tantangan tentang Shakespeare, serta memantau kemajuan siswa.",
+    "classroom.intro": "Buat kelas atau bergabung ke sebuah kelas. Guru memberikan kuis dan tantangan tentang Shakespeare kepada siswa.",
     "classroom.gate.title": "Sebelum mulai",
     "classroom.gate.body": "Mode Kelas dibuat untuk sekolah. Pilih peranmu untuk melanjutkan.",
     "classroom.role.teacher": "Saya guru",
@@ -4736,7 +4645,7 @@
     "classroom.student.intro": "Sebelum bergabung ke kelas, mohon pastikan hal-hal berikut:",
     "classroom.student.check1": "Orang tua atau wali sah saya tahu bahwa saya memakai Inspired Mile untuk tugas sekolah dan sudah mengizinkannya.",
     "classroom.student.check2": "Guru saya sudah memberi saya kode gabung untuk sebuah kelas.",
-    "classroom.student.check3": "Saya mengerti bahwa guru saya dapat melihat kemajuan dan kegiatan saya di kelas.",
+    "classroom.student.check3": "Saya mengerti bahwa guru saya dapat melihat bahwa saya bergabung ke kelas, dan kapan.",
     "classroom.student.continue": "Lanjutkan sebagai siswa",
     "classroom.join.tab": "Gabung ke kelas",
     "classroom.create.tab": "Buat kelas",
@@ -4785,10 +4694,6 @@
     "classroom.wizard.s3.trivia": "5 soal pilihan ganda tentang Shakespeare",
     "classroom.wizard.s3.challenge": "Melengkapi kata yang hilang dalam kutipan terkenal",
     "classroom.wizard.s3.battle": "Duel syair tiga ronde, dinilai di perangkat",
-    "classroom.wizard.s4.title": "Pantau kemajuan",
-    "classroom.wizard.s4.body": "Lihat apa yang sudah diselesaikan setiap siswa, nilainya, dan kartu yang diperolehnya. Data tetap berada di dalam kelas: siswa melihat kemajuannya sendiri, dan kamu melihat kemajuan semua siswa.",
-    "classroom.wizard.s4.visibility": "Siapa yang dapat melihat kemajuan siswa",
-    "classroom.wizard.s4.ferpa": "Sesuai dengan FERPA",
     "market.meta.description": "Beli dan tukar kartu koleksi Shakespeare dengan pemain lain.",
     "market.intro": "Beli dan tukar kartu dengan pemain lain. Tawarkan kartu gandamu untuk dijual, atau temukan kartu yang belum kamu punya.",
     "market.tab.browse": "Jelajahi",
@@ -4865,6 +4770,7 @@
     "season.badge": "Musim 3",
     "season.title": "Tiket Musim",
     "season.intro": "Mainkan pertarungan, kuis, dan tantangan untuk mendapat XP. Setiap level baru membuka kartu, kredit, dan gelar.",
+    "season.introNow": "Setiap level Tiket Musim membuka kartu, kredit, atau gelar. Di versi permainan ini, bermain tidak memberikan XP.",
     "season.loading": "Memuat…",
     "season.level": "Level",
     "season.xp": "150 XP",
@@ -4909,9 +4815,9 @@
     "viewer.card.glb.body": "Mesh biasa yang ditampilkan dengan model-viewer. Di ponsel, model dapat diletakkan di ruanganmu dengan realitas tertambah.",
     "viewer.card.ar.title": "AR di ponsel",
     "viewer.card.ar.body": "Pada tampilan GLB di ponsel, ketuk “Lihat dalam AR” untuk melihat kartu di ruanganmu.",
-    "vr.meta.description": "Jelajahi koleksi kartu Shakespeare-mu dalam realitas virtual.",
+    "vr.meta.description": "Jelajahi semua kartu Shakespeare dalam permainan ini dalam realitas virtual.",
     "vr.badge": "Realitas virtual",
-    "vr.intro": "Jelajahi koleksimu dalam 3D. Berjalan di Quest 3 dan Vision Pro melalui WebXR, dan dengan tetikus di komputer.",
+    "vr.intro": "Jelajahi semua kartu dalam permainan ini dalam 3D. Berjalan di Quest 3 dan Vision Pro melalui WebXR, dan dengan tetikus di komputer.",
     "vr.enter": "Masuk VR",
     "vr.status.loading": "Memuat mesin 3D…",
     "vr.status.gallery": "Galeri 3D sudah dimuat. Seret untuk melihat sekeliling, gulir untuk memperbesar.",
@@ -4983,7 +4889,7 @@
     "offline.link.home": "Beranda",
     "offline.link.collection": "Koleksi",
     "offline.link.battle": "Arena pertarungan",
-    "app.description": "Permainan kartu adu rap ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.",
+    "app.description": "Permainan kartu duel syair ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.",
     "app.shortcut.battle": "Arena pertarungan",
     "app.shortcut.theatre": "Sang Teater",
     "pwa.install.regionLabel": "Instal Sonnet Man",

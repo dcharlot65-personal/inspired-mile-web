@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'クラスモード',
-  'classroom.meta.description': '教員がクラスを作り、シェイクスピアのクイズやチャレンジを出題して、生徒の進み具合を確認します。',
+  'classroom.meta.description': '教員がクラスを作り、生徒にシェイクスピアのクイズやチャレンジを出題します。',
   'classroom.badge': '教育',
   'classroom.title': 'クラスモード',
-  'classroom.intro': 'クラスを作るか、クラスに参加してください。教員はシェイクスピアのクイズやチャレンジを出題し、生徒の進み具合を確認できます。',
+  'classroom.intro': 'クラスを作るか、クラスに参加してください。教員は生徒にシェイクスピアのクイズやチャレンジを出題できます。',
   'classroom.gate.title': 'はじめる前に',
   'classroom.gate.body': 'クラスモードは学校での利用を想定しています。続けるには、あなたの立場を選んでください。',
   'classroom.role.teacher': '教員です',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'クラスに参加する前に、次のことを確認してください。',
   'classroom.student.check1': '親または法定保護者は、私が学校の学習のためにInspired Mileを使うことを知っており、許可しています。',
   'classroom.student.check2': '先生からクラスの参加コードをもらっています。',
-  'classroom.student.check3': 'クラスでの私の進み具合や活動を先生が見られることを理解しています。',
+  'classroom.student.check3': 'クラスに参加したことと、その日時を先生が見られることを理解しています。',
   'classroom.student.continue': '生徒として続ける',
   'classroom.join.tab': 'クラスに参加',
   'classroom.create.tab': 'クラスを作成',
@@ -73,10 +73,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': 'シェイクスピアについての選択式の問題5問',
   'classroom.wizard.s3.challenge': '有名な名言の抜けている言葉を埋める',
   'classroom.wizard.s3.battle': '3ラウンドの詩の決闘。審判は端末の中で行われます',
-  'classroom.wizard.s4.title': '進み具合を確認する',
-  'classroom.wizard.s4.body': '生徒一人ひとりが何を終えたか、得点、手に入れたカードを確認できます。データはクラスの外に出ません。生徒には自分の進み具合が、あなたには全員の進み具合が見えます。',
-  'classroom.wizard.s4.visibility': '生徒の進み具合を見られる人',
-  'classroom.wizard.s4.ferpa': 'FERPAに準拠',
 };
 
 export default messages;

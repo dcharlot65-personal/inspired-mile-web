@@ -123,8 +123,14 @@ import { t } from '../i18n';
                 </div>
               </div>
               <p id="opponent-curse" class="hidden mt-3 text-sm text-crimson-300 border border-crimson-500/30 bg-crimson-500/10 rounded-sm px-3 py-2"></p>
-              <!-- The verse is in the duel's language, which may read the other way from the interface. -->
-              <blockquote id="opponent-verse" dir="auto" class="mt-3 whitespace-pre-line font-display text-lg text-obsidian-100 border-s-2 border-gold-500/40 ps-4 min-h-[3rem]"></blockquote>
+              <!-- What the opponent says, read out by a screen reader when it arrives (one live region: the label and the verse
+                   together), and laid out in the direction of the duel's language (dir set by the script), so the label sits at
+                   the start of the verse it labels even when the interface reads the other way (owner decision D-12). -->
+              <div id="opponent-said" class="mt-3" aria-live="polite" aria-atomic="true">
+                <!-- Beside a verse a model wrote, in the interface's language; the verse itself carries the machine-readable mark (src/lib/ai-marking.ts). -->
+                <p id="opponent-ai-label" class="hidden mb-2 w-fit text-[11px] leading-none font-semibold px-1.5 py-1 rounded-sm border border-purple-500/40 bg-purple-500/10 text-purple-300" data-i18n="ai.label">AI</p>
+                <blockquote id="opponent-verse" dir="auto" class="whitespace-pre-line font-display text-lg text-obsidian-100 border-s-2 border-gold-500/40 ps-4 min-h-[3rem]"></blockquote>
+              </div>
             </div>
 
             <!-- Your move -->
@@ -156,14 +162,15 @@ import { t } from '../i18n';
                 </div>
               </div>
 
-              <div class="flex items-center justify-between gap-3">
-                <div class="flex items-center gap-4">
-                  <button id="mic-btn" class="flex items-center gap-2 text-xs px-3 py-2 rounded-lg border border-obsidian-700 text-obsidian-300 hover:text-gold-400 hover:border-gold-500/40 transition-colors" aria-pressed="false">
+              <!-- Each control on one line: on a narrow screen the row wraps between them rather than inside one. -->
+              <div id="move-controls" class="flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <button id="mic-btn" class="flex items-center gap-2 whitespace-nowrap text-xs px-3 py-2 rounded-lg border border-obsidian-700 text-obsidian-300 hover:text-gold-400 hover:border-gold-500/40 transition-colors" aria-pressed="false">
                     <span aria-hidden="true">🎙</span><span id="mic-label">Speak it</span>
                   </button>
-                  <button id="voice-toggle" class="text-xs text-obsidian-500 hover:text-gold-400 transition-colors"><span id="voice-label">Voice: Off</span></button>
+                  <button id="voice-toggle" class="whitespace-nowrap text-xs text-obsidian-500 hover:text-gold-400 transition-colors"><span id="voice-label">AI voice: Off</span></button>
                 </div>
-                <button id="submit-verse" class="btn-primary px-8" disabled>Speak your verse</button>
+                <button id="submit-verse" class="btn-primary whitespace-nowrap px-8" disabled>Speak your verse</button>
               </div>
             </div>
 
@@ -211,8 +218,9 @@ import { t } from '../i18n';
     import type { Difficulty } from '../lib/verse/opponent';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
+    import { markAiText } from '../lib/ai-marking';
     import { loadSound } from '../lib/verse/sound';
-    import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, isRtl, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import { loadArea, type Locale } from '../i18n';
     import type { Msg } from '../lib/verse/msg';
@@ -830,18 +838,32 @@ import { t } from '../i18n';
         } else portrait.textContent = card.icon;
       }
 
-      // The opponent's verse, or that it is still being written.
+      // The opponent's verse, or that it is still being written. The region is live, so its text is written only when it
+      // changes: this runs on every change the session reports, a keystroke in the player's verse included.
+      const said = $('opponent-said');
       const verseEl = $('opponent-verse');
+      const aiLabel = $('opponent-ai-label');
+      const setText = (el: HTMLElement, text: string) => { if (el.textContent !== text) el.textContent = text; };
+      said.dir = isRtl(s.duel.lang) ? 'rtl' : 'ltr';
+      aiLabel.lang = locale();
+      aiLabel.dir = isRtl(locale()) ? 'rtl' : 'ltr';
       if (s.phase === 'opponent-writing') {
-        verseEl.textContent = !s.drafting
+        setText(verseEl, !s.drafting
           ? '…'
           : s.drafting.of > 1
             ? aboutCard('round.composingDraft', card, { n: s.drafting.draft, total: s.drafting.of })
-            : aboutCard('round.composing', card);
+            : aboutCard('round.composing', card));
+        markAiText(verseEl, null);
+        aiLabel.classList.add('hidden');
       } else {
-        verseEl.textContent = s.opponentVerse;
+        // The label first, so the region reads "AI" and then the verse.
+        aiLabel.classList.toggle('hidden', !s.opponentModel);
+        if (aiLabel.title !== (s.opponentModel?.label ?? '')) aiLabel.title = s.opponentModel?.label ?? '';
         verseEl.lang = s.duel.lang;
         verseEl.dataset.source = s.opponentSource;
+        // A verse a model wrote says so, to people (the label) and to machines (the mark); a written one does neither.
+        markAiText(verseEl, s.opponentModel);
+        setText(verseEl, s.opponentVerse);
       }
     }
 
@@ -1091,7 +1113,7 @@ import { t } from '../i18n';
       showStats();
       if (!isInitialized()) initAudio();
       playMusic('battle-beat', 800);
-      preloadSfx(['ui-whoosh', 'battle-victory', 'battle-defeat', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'ui-click']);
+      preloadSfx(['battle-victory', 'battle-defeat', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'ui-click']);
       beginRound(() => s.beginRound());
     }
 

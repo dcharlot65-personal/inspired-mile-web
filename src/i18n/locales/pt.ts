@@ -373,9 +373,10 @@ const pt: Record<string, string> = {
   'mic.earFailed': 'Não foi possível carregar o ouvido',
   'mic.listening': 'Ouvindo… toque para parar',
   'mic.denied': 'Microfone não permitido',
-  'voice.off': 'Voz: desligada',
-  'voice.on': 'Voz: ligada',
-  'voice.loading': 'Voz: carregando…',
+  'voice.off': 'Voz de IA: desligada',
+  'voice.on': 'Voz de IA: ligada',
+  'voice.loading': 'Voz de IA: carregando…',
+  'ai.label': 'IA',
 
   // --- O duelo: veredito e resultado ---
   'verdict.yourAnswer': 'Sua resposta',

@@ -373,9 +373,10 @@ const ko: Record<string, string> = {
   'mic.earFailed': '귀를 불러오지 못했어요',
   'mic.listening': '듣는 중… 멈추려면 누르세요',
   'mic.denied': '마이크가 허용되지 않았어요',
-  'voice.off': '음성: 꺼짐',
-  'voice.on': '음성: 켜짐',
-  'voice.loading': '음성: 불러오는 중…',
+  'voice.off': '인공지능 음성: 꺼짐',
+  'voice.on': '인공지능 음성: 켜짐',
+  'voice.loading': '인공지능 음성: 불러오는 중…',
+  'ai.label': '인공지능',
 
   // --- 결투: 판정과 결과 ---
   'verdict.yourAnswer': '내 답',

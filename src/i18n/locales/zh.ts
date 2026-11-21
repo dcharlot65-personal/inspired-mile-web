@@ -373,9 +373,10 @@ const zh: Record<string, string> = {
   'mic.earFailed': '听觉加载失败',
   'mic.listening': '正在聆听… 轻点停止',
   'mic.denied': '未获准使用麦克风',
-  'voice.off': '语音：关',
-  'voice.on': '语音：开',
-  'voice.loading': '语音：加载中…',
+  'voice.off': '人工智能语音：关',
+  'voice.on': '人工智能语音：开',
+  'voice.loading': '人工智能语音：加载中…',
+  'ai.label': '人工智能',
 
   // --- 对决：裁决与结果 ---
   'verdict.yourAnswer': '你的应对',

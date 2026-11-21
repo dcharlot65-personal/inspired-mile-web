@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'world-map.meta.description': 'Odkrywaj miasta z całego świata i warianty kart świata dla swoich postaci z Szekspira.',
   'world-map.badge': 'Karty świata',
   'world-map.title': 'Mapa <b>świata</b>',
-  'world-map.intro': 'Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty w bitwach, quizach i podczas eksploracji.',
+  'world-map.intro': 'Postacie Szekspira podróżują po świecie. Każde miasto daje wyjątkową zdolność bitewną. Odblokowuj warianty, przechodząc quiz bez jednego błędu.',
   'world-map.combinations': 'Możliwe kombinacje: {n}',
   'world-map.view': 'Zobacz',
   'world-map.attire': 'Style ubioru',

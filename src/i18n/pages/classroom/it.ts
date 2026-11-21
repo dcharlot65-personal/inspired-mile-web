@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'Modalità Classe',
-  'classroom.meta.description': 'Gli insegnanti creano classi, assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.',
+  'classroom.meta.description': 'Gli insegnanti creano classi e assegnano quiz e sfide su Shakespeare ai loro studenti.',
   'classroom.badge': 'Istruzione',
   'classroom.title': 'Modalità Classe',
-  'classroom.intro': 'Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare e seguono i progressi dei loro studenti.',
+  'classroom.intro': 'Crea una classe o entra in una già esistente. Gli insegnanti assegnano quiz e sfide su Shakespeare ai loro studenti.',
   'classroom.gate.title': 'Prima di cominciare',
   'classroom.gate.body': 'La Modalità Classe è pensata per le scuole. Scegli il tuo ruolo per continuare.',
   'classroom.role.teacher': 'Sono insegnante',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'Prima di entrare in una classe, conferma quanto segue:',
   'classroom.student.check1': 'Un mio genitore o il mio tutore legale sa che uso Inspired Mile per i compiti di scuola e mi ha dato il permesso.',
   'classroom.student.check2': 'Il mio insegnante mi ha dato un codice di accesso a una classe.',
-  'classroom.student.check3': 'So che il mio insegnante può vedere i miei progressi e quello che faccio nella classe.',
+  'classroom.student.check3': 'So che il mio insegnante può vedere che faccio parte della classe e da quando.',
   'classroom.student.continue': 'Continua come studente',
   'classroom.join.tab': 'Entra in una classe',
   'classroom.create.tab': 'Crea una classe',
@@ -75,10 +75,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 domande a scelta multipla su Shakespeare',
   'classroom.wizard.s3.challenge': 'Completare le parole mancanti di citazioni famose',
   'classroom.wizard.s3.battle': 'Un duello di strofe in tre round, giudicato sul dispositivo',
-  'classroom.wizard.s4.title': 'Segui i progressi',
-  'classroom.wizard.s4.body': 'Guarda che cosa ha completato ogni studente, i suoi punteggi e le carte che ha guadagnato. I dati restano dentro la classe: ogni studente vede i propri progressi, tu vedi quelli di tutti.',
-  'classroom.wizard.s4.visibility': 'Chi può vedere i progressi di uno studente',
-  'classroom.wizard.s4.ferpa': 'Conforme alla legge FERPA',
 };
 
 export default messages;

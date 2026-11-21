@@ -373,9 +373,10 @@ const de: Record<string, string> = {
   'mic.earFailed': 'Das Ohr konnte nicht geladen werden',
   'mic.listening': 'Ich höre zu\u00a0… zum Beenden tippen',
   'mic.denied': 'Mikrofon nicht erlaubt',
-  'voice.off': 'Stimme: aus',
-  'voice.on': 'Stimme: an',
-  'voice.loading': 'Stimme: lädt\u00a0…',
+  'voice.off': 'KI-Stimme: aus',
+  'voice.on': 'KI-Stimme: an',
+  'voice.loading': 'KI-Stimme: lädt\u00a0…',
+  'ai.label': 'KI',
 
   // --- Das Duell: Urteil und Ergebnis ---
   'verdict.yourAnswer': 'Deine Antwort',

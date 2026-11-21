@@ -40,12 +40,12 @@ const messages: Record<string, string> = {
   'pg.odds.epic': 'Epic Pack',
   'pg.odds.epicLine': '5 cards · 400 Credits',
   'pg.odds.epicNote': '1 Epic guaranteed',
-  'pg.odds.note': 'All packs use Credits earned through gameplay. No real money purchases. Each card draw is independent.',
+  'pg.odds.note': 'No real money purchases. Each card draw is independent.',
   'pg.odds.moreBefore': 'For more details, see our',
   'pg.odds.moreAfter': '.',
 
-  'pg.battle.sub': 'Win rap battles to earn cards',
-  'pg.battle.body': 'Challenge the Master Thespian in a Shakespeare rap battle. Win a round and earn a random card from the collection.',
+  'pg.battle.sub': 'Win verse duels to earn cards',
+  'pg.battle.body': 'Challenge a Shakespeare character to a duel of verses. Win the match and earn a random card from the collection.',
   'pg.battle.cta': 'Enter the Arena',
 
   'pg.trivia.title': 'Shakespeare Trivia',
@@ -98,7 +98,7 @@ const messages: Record<string, string> = {
   'pg.onb.2.title': 'Test Your Knowledge',
   'pg.onb.2.desc': 'Play trivia and quote challenges to earn more cards for your collection.',
   'pg.onb.3.title': 'Enter the Battle Arena',
-  'pg.onb.3.desc': 'Challenge the AI Master Thespian to a Shakespeare rap battle. Win rounds, win cards!',
+  'pg.onb.3.desc': 'Challenge a Shakespeare character to a duel of verses. Win the match, win a card!',
 
   // --- Daily streak (src/lib/streaks.ts) ---
   'streak.pack.common': 'Common Pack',

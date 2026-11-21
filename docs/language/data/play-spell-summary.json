@@ -3,12 +3,12 @@
  "languages": {
   "es": {
    "dictionary": "es",
-   "unknown": 18,
+   "unknown": 17,
    "errors": 0
   },
   "fr": {
    "dictionary": "fr",
-   "unknown": 9,
+   "unknown": 7,
    "errors": 0
   },
   "de": {
@@ -23,7 +23,7 @@
   },
   "pt": {
    "dictionary": "pt-BR",
-   "unknown": 7,
+   "unknown": 6,
    "errors": 0
   },
   "pl": {
@@ -33,7 +33,7 @@
   },
   "ru": {
    "dictionary": "ru",
-   "unknown": 13,
+   "unknown": 12,
    "errors": 0
   },
   "ar": {
@@ -59,7 +59,7 @@
   },
   "vi": {
    "dictionary": "vi",
-   "unknown": 16,
+   "unknown": 15,
    "errors": 0
   },
   "th": {
@@ -69,7 +69,7 @@
   },
   "id": {
    "dictionary": "id",
-   "unknown": 32,
+   "unknown": 33,
    "errors": 0
   }
  }

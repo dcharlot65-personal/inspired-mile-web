@@ -1,0 +1,4 @@
+{
+  "about": "Who may meet whom online: the one switch for quick match, read by the server (backend/src/multiplayer/matchmaking.rs, compiled in, so the API must be rebuilt after a change) and by the page (src/pages/multiplayer.astro) and its tests. false: online duels are played by private room only, for everyone; the server refuses a quick-match request and the page hides quick match and says why. Owner decision D-02 (2026-11-19): private rooms only at launch, then quick match for adults only once reports are read every day and players can block and mute. Before setting it to true, the matchmaker must pair only adult accounts: it does not read the age tier yet.",
+  "quickMatch": false
+}

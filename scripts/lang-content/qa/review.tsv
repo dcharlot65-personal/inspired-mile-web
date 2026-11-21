@@ -1136,3 +1136,13 @@ es	pg.trivia.correct	ok	second pass, MADLAD: "Aciertos: {n}" back as "Number of 
 it	pg.trivia.correct	ok	second pass, MADLAD: "Risposte esatte: {n}" back as "Exact answers: 3"; esatte is correct, as in a quiz
 vi	countdown.hm	ok	second pass, MADLAD: "{h} tiếng {m} phút" back as "Two hours and fifteen minutes"; the English is "2h 15m"
 de	trivia.70.o2	ok	second pass, MADLAD: Bruder John back as "Brother John"; Friar John with the title translated and the name in English (no German source names him)
+ja	pg.battle.sub	ok	詩の決闘に勝ってカードを獲得 says "win verse duels and earn cards"; OPUS-MT dropped the cards ("I won the battle of poetry"); LaBSE 0.72 or more in every language (fix/predeploy, 2026-11-19)
+ko	pg.battle.sub	ok	시 결투에서 이겨 카드를 얻으세요 says "win the poetry duel and get cards"; OPUS-MT read 결투 (duel) as "trial" (fix/predeploy, 2026-11-19)
+th	pg.battle.sub	ok	ชนะการประชันบทกลอนเพื่อรับการ์ด says "win the verse contest to get cards" (การประชันบทกลอน, the app name's word for the duel); OPUS-MT says the same (fix/predeploy, 2026-11-19)
+hi	pg.challenge.wrong	ok	बस थोड़ी-सी कसर रह गई! ("just a little short!") is the idiom for "Not quite!"; LaBSE 0.53, by a few hundredths under its line on this run (fix/predeploy, 2026-11-19)
+ja	pg.trivia.progress	ok	第3問（全5問） is "question 3 (of 5 in all)", as Japanese quiz apps number questions; OPUS-MT answered "(Laughter)", a hallucination on a short string (fix/predeploy, 2026-11-19)
+ko	pg.odds.note	ok	실제 돈으로는 구매할 수 없어요. 카드는 한 장씩 독립적으로 뽑혀요. says "you cannot buy with real money; cards are drawn one at a time, each on its own"; OPUS-MT read 한 장씩 (one card at a time) as "single-handed"; LaBSE 0.79 (fix/predeploy fix pass, 2026-11-20)
+ar	spell:مرقس أنطونيوس	ok	Mark Antony, the name the card text gives RM-003 (src/lib/cards-i18n/ar.ts), in Story Mode's last encounter (fix/predeploy fix pass, 2026-11-20)
+ru	spell:Антония Антонием	ok	declined forms of Антоний (Mark Antony, the card text's name for RM-003), in Story Mode's last encounter (fix/predeploy fix pass, 2026-11-20)
+vi	spell:Marcus Antonius	ok	Mark Antony, the card text's name for RM-003 (fix/predeploy fix pass, 2026-11-20)
+id	spell:Marcus adegannya	ok	Marcus (Marcus Antonius, the card text's name for RM-003); adegannya, "its scene" (adegan with -nya), an affixed form the dictionary does not derive, as with the others above (fix/predeploy fix pass, 2026-11-20)

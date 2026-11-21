@@ -275,9 +275,11 @@ const UI: Record<string, string> = {
   'mic.earFailed': 'The ear could not load',
   'mic.listening': 'Listening… tap to stop',
   'mic.denied': 'Microphone not allowed',
-  'voice.off': 'Voice: Off',
-  'voice.on': 'Voice: On',
-  'voice.loading': 'Voice: loading…',
+  'voice.off': 'AI voice: Off',
+  'voice.on': 'AI voice: On',
+  'voice.loading': 'AI voice: loading…',
+  // A verse a model wrote, labelled beside it (owner decision D-12). The word for AI is Wikidata's (Q11660): docs/AI-MARKING.md.
+  'ai.label': 'AI',
 
   // --- The duel: verdict and result ---
   'verdict.yourAnswer': 'Your answer',

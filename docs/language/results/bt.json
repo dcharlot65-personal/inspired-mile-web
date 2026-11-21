@@ -3784,34 +3784,34 @@
     "xcontrol": 0.4109
    },
    "voice.off": {
-    "text": "Voz: desactivada",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9433,
-    "xcontrol": 0.8421
+    "text": "Voz de IA: desactivada",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Disabled",
+    "cos": 0.808,
+    "chrf": 28.1,
+    "controlCos": 0.7465,
+    "xcos": 0.8762,
+    "xcontrol": 0.7985
    },
    "voice.on": {
-    "text": "Voz: activada",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9194,
-    "xcontrol": 0.6194
+    "text": "Voz de IA: activada",
+    "english": "AI voice: On",
+    "back": "AI Voice: Enabled",
+    "cos": 0.8385,
+    "chrf": 32.6,
+    "controlCos": 0.8097,
+    "xcos": 0.8745,
+    "xcontrol": 0.6257
    },
    "voice.loading": {
-    "text": "Voz: cargando…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9592,
-    "xcontrol": 0.2644
+    "text": "Voz de IA: cargando…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.8997,
+    "xcontrol": 0.3769
    },
    "verdict.yourAnswer": {
     "text": "Tu respuesta",
@@ -4669,9 +4669,9 @@
     "back": "No model that this device can run has been shown to write or judge stanzas well, so you face the rival of written verses and are judged by rules.",
     "cos": 0.7162,
     "chrf": 60.9,
-    "controlCos": 0.0745,
+    "controlCos": 0.0161,
     "xcos": 0.8854,
-    "xcontrol": 0.1866
+    "xcontrol": 0.0895
    },
    "footer.credits": {
     "text": "Créditos y licencias",
@@ -5182,6 +5182,16 @@
     "controlCos": 0.184,
     "xcos": 0.9492,
     "xcontrol": 0.3254
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    }
   },
   "fr": {
@@ -8966,34 +8976,34 @@
     "xcontrol": 0.2854
    },
    "voice.off": {
-    "text": "Voix : désactivée",
-    "english": "Voice: Off",
-    "back": "Voice: disabled",
-    "cos": 0.7053,
-    "chrf": 43.7,
-    "controlCos": 0.6251,
-    "xcos": 0.928,
-    "xcontrol": 0.8227
+    "text": "Voix d’IA : désactivée",
+    "english": "AI voice: Off",
+    "back": "AI voice: disabled",
+    "cos": 0.808,
+    "chrf": 56.5,
+    "controlCos": 0.7465,
+    "xcos": 0.8724,
+    "xcontrol": 0.7877
    },
    "voice.on": {
-    "text": "Voix : activée",
-    "english": "Voice: On",
-    "back": "Voice: Enabled",
-    "cos": 0.6829,
-    "chrf": 52.3,
-    "controlCos": 0.7566,
-    "xcos": 0.902,
-    "xcontrol": 0.6013
+    "text": "Voix d’IA : activée",
+    "english": "AI voice: On",
+    "back": "AI Voice: Enabled",
+    "cos": 0.8385,
+    "chrf": 32.6,
+    "controlCos": 0.8097,
+    "xcos": 0.8761,
+    "xcontrol": 0.612
    },
    "voice.loading": {
-    "text": "Voix : chargement…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9516,
-    "xcontrol": 0.2211
+    "text": "Voix d’IA : chargement…",
+    "english": "AI voice: loading…",
+    "back": "AI voice: loading...",
+    "cos": 0.9859,
+    "chrf": 89.8,
+    "controlCos": 0.5081,
+    "xcos": 0.8853,
+    "xcontrol": 0.3246
    },
    "verdict.yourAnswer": {
     "text": "Votre réponse",
@@ -9851,9 +9861,9 @@
     "back": "No model that this device can run has shown that it writes good stanzas or is a good judge of them, so you face the opponent with written stanzas, and judgment is made by rules.",
     "cos": 0.8304,
     "chrf": 63.7,
-    "controlCos": 0.0948,
+    "controlCos": 0.0757,
     "xcos": 0.8925,
-    "xcontrol": 0.1524
+    "xcontrol": 0.0476
    },
    "footer.credits": {
     "text": "Crédits et licences",
@@ -10364,6 +10374,16 @@
     "controlCos": 0.184,
     "xcos": 0.9368,
     "xcontrol": 0.3327
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    }
   },
   "de": {
@@ -14148,34 +14168,34 @@
     "xcontrol": 0.4294
    },
    "voice.off": {
-    "text": "Stimme: aus",
-    "english": "Voice: Off",
-    "back": "Voice: off",
+    "text": "KI-Stimme: aus",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
     "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8954,
-    "xcontrol": 0.8758
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.7942,
+    "xcontrol": 0.7689
    },
    "voice.on": {
-    "text": "Stimme: an",
-    "english": "Voice: On",
-    "back": "Voice: on",
+    "text": "KI-Stimme: an",
+    "english": "AI voice: On",
+    "back": "AI voice: on",
     "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.8799,
-    "xcontrol": 0.6153
+    "chrf": 73.5,
+    "controlCos": 0.8223,
+    "xcos": 0.7708,
+    "xcontrol": 0.5557
    },
    "voice.loading": {
-    "text": "Stimme: lädt …",
-    "english": "Voice: loading…",
-    "back": "Voice: lädt …",
-    "cos": 0.5411,
-    "chrf": 42.3,
-    "controlCos": 0.0951,
-    "xcos": 0.9297,
-    "xcontrol": 0.2877
+    "text": "KI-Stimme: lädt …",
+    "english": "AI voice: loading…",
+    "back": "KI-Stimme: lädt ...",
+    "cos": 0.1276,
+    "chrf": 9.5,
+    "controlCos": 0.1392,
+    "xcos": 0.8296,
+    "xcontrol": 0.2918
    },
    "verdict.yourAnswer": {
     "text": "Deine Antwort",
@@ -15033,9 +15053,9 @@
     "back": "None of the models that can run on this device have shown to write good stanzas or score stanzas well, so you play against your opponent with written stanzas and are scored according to rules.",
     "cos": 0.6032,
     "chrf": 43.8,
-    "controlCos": 0.136,
+    "controlCos": 0.0495,
     "xcos": 0.8254,
-    "xcontrol": 0.1741
+    "xcontrol": 0.0691
    },
    "footer.credits": {
     "text": "Quellen und Lizenzen",
@@ -15546,6 +15566,16 @@
     "controlCos": 0.2097,
     "xcos": 0.81,
     "xcontrol": 0.3368
+   },
+   "ai.label": {
+    "text": "KI",
+    "english": "AI",
+    "back": "KI",
+    "cos": 0.2687,
+    "chrf": 25.0,
+    "controlCos": 0.1923,
+    "xcos": 0.6314,
+    "xcontrol": 0.2808
    }
   },
   "it": {
@@ -19330,34 +19360,34 @@
     "xcontrol": 0.3992
    },
    "voice.off": {
-    "text": "Voce: spenta",
-    "english": "Voice: Off",
-    "back": "Voice: off",
-    "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8967,
-    "xcontrol": 0.838
+    "text": "Voce IA: spenta",
+    "english": "AI voice: Off",
+    "back": "Voice IA: off",
+    "cos": 0.8172,
+    "chrf": 26.1,
+    "controlCos": 0.7081,
+    "xcos": 0.8027,
+    "xcontrol": 0.7611
    },
    "voice.on": {
-    "text": "Voce: accesa",
-    "english": "Voice: On",
-    "back": "Voice: on",
-    "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.9144,
-    "xcontrol": 0.6739
+    "text": "Voce IA: accesa",
+    "english": "AI voice: On",
+    "back": "Voice IA: on",
+    "cos": 0.8001,
+    "chrf": 25.4,
+    "controlCos": 0.6648,
+    "xcos": 0.8186,
+    "xcontrol": 0.6547
    },
    "voice.loading": {
-    "text": "Voce: caricamento…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9365,
-    "xcontrol": 0.2651
+    "text": "Voce IA: caricamento…",
+    "english": "AI voice: loading…",
+    "back": "Item IA: loading...",
+    "cos": 0.452,
+    "chrf": 42.3,
+    "controlCos": 0.2552,
+    "xcos": 0.8534,
+    "xcontrol": 0.3505
    },
    "verdict.yourAnswer": {
     "text": "La tua risposta",
@@ -20215,9 +20245,9 @@
     "back": "No model that this device can perform has been shown to write or judge verses well, so face the opponent from the written verses and judge according to rules.",
     "cos": 0.8873,
     "chrf": 54.7,
-    "controlCos": 0.0571,
+    "controlCos": 0.0434,
     "xcos": 0.8718,
-    "xcontrol": 0.1702
+    "xcontrol": 0.052
    },
    "footer.credits": {
     "text": "Crediti e licenze",
@@ -20728,6 +20758,16 @@
     "controlCos": 0.184,
     "xcos": 0.9492,
     "xcontrol": 0.3254
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    }
   },
   "pt": {
@@ -24512,34 +24552,34 @@
     "xcontrol": 0.4253
    },
    "voice.off": {
-    "text": "Voz: desligada",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "Voz de IA: desligada",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.8898,
-    "xcontrol": 0.7887
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8744,
+    "xcontrol": 0.7829
    },
    "voice.on": {
-    "text": "Voz: ligada",
-    "english": "Voice: On",
-    "back": "Voice: on",
+    "text": "Voz de IA: ligada",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 61.5,
-    "controlCos": 0.6776,
-    "xcos": 0.91,
-    "xcontrol": 0.6689
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8613,
+    "xcontrol": 0.6469
    },
    "voice.loading": {
-    "text": "Voz: carregando…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.9572,
-    "xcontrol": 0.2691
+    "text": "Voz de IA: carregando…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.9054,
+    "xcontrol": 0.3806
    },
    "verdict.yourAnswer": {
     "text": "Sua resposta",
@@ -25397,9 +25437,9 @@
     "back": "No model that this device can perform has shown to write or judge stanzas well, so you face the opponent of written stanzas and judgment is made by rules.",
     "cos": 0.8249,
     "chrf": 59.8,
-    "controlCos": 0.0894,
+    "controlCos": 0.0761,
     "xcos": 0.8759,
-    "xcontrol": 0.1998
+    "xcontrol": 0.1022
    },
    "footer.credits": {
     "text": "Créditos e licenças",
@@ -25910,6 +25950,16 @@
     "controlCos": 0.3385,
     "xcos": 0.708,
     "xcontrol": 0.3454
+   },
+   "ai.label": {
+    "text": "IA",
+    "english": "AI",
+    "back": "IA",
+    "cos": 0.5109,
+    "chrf": 50.0,
+    "controlCos": 0.2383,
+    "xcos": 0.7778,
+    "xcontrol": 0.2621
    }
   },
   "pl": {
@@ -30054,34 +30104,34 @@
     "xcontrol": 0.3816
    },
    "voice.off": {
-    "text": "Głos: wyłączony",
-    "english": "Voice: Off",
-    "back": "Voice: off",
-    "cos": 1.0,
-    "chrf": 56.0,
-    "controlCos": 0.8162,
-    "xcos": 0.946,
-    "xcontrol": 0.8527
+    "text": "Głos SI: wyłączony",
+    "english": "AI voice: Off",
+    "back": "SI voice: off",
+    "cos": 0.708,
+    "chrf": 55.6,
+    "controlCos": 0.6089,
+    "xcos": 0.8493,
+    "xcontrol": 0.7706
    },
    "voice.on": {
-    "text": "Głos: włączony",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9281,
-    "xcontrol": 0.615
+    "text": "Głos SI: włączony",
+    "english": "AI voice: On",
+    "back": "SI voice: enabled",
+    "cos": 0.5719,
+    "chrf": 52.5,
+    "controlCos": 0.5867,
+    "xcos": 0.838,
+    "xcontrol": 0.5595
    },
    "voice.loading": {
-    "text": "Głos: wczytywanie…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.8607,
-    "xcontrol": 0.287
+    "text": "Głos SI: wczytywanie…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: loading...",
+    "cos": 0.9859,
+    "chrf": 71.0,
+    "controlCos": 0.5081,
+    "xcos": 0.7598,
+    "xcontrol": 0.3411
    },
    "verdict.yourAnswer": {
     "text": "Twoja odpowiedź",
@@ -30939,9 +30989,9 @@
     "back": "No model that this device can run has shown to write or evaluate stanzas well, so you play with a rival with ready-made stanzas and the evaluation takes place according to the rules.",
     "cos": 0.5739,
     "chrf": 48.9,
-    "controlCos": 0.1139,
+    "controlCos": 0.0371,
     "xcos": 0.7781,
-    "xcontrol": 0.189
+    "xcontrol": 0.1208
    },
    "footer.credits": {
     "text": "Uznanie autorstwa i licencje",
@@ -31452,6 +31502,16 @@
     "controlCos": 0.184,
     "xcos": 0.9108,
     "xcontrol": 0.2886
+   },
+   "ai.label": {
+    "text": "SI",
+    "english": "AI",
+    "back": "SI",
+    "cos": 0.3417,
+    "chrf": 25.0,
+    "controlCos": 0.1575,
+    "xcos": 0.7144,
+    "xcontrol": 0.3144
    }
   },
   "ru": {
@@ -35596,34 +35656,34 @@
     "xcontrol": 0.3934
    },
    "voice.off": {
-    "text": "Голос: выключен",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "Голос ИИ: выключен",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9396,
-    "xcontrol": 0.8514
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8653,
+    "xcontrol": 0.7912
    },
    "voice.on": {
-    "text": "Голос: включён",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "Голос ИИ: включён",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9388,
-    "xcontrol": 0.6226
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8661,
+    "xcontrol": 0.5748
    },
    "voice.loading": {
-    "text": "Голос: загрузка…",
-    "english": "Voice: loading…",
-    "back": "Voice: loading...",
-    "cos": 0.9723,
-    "chrf": 88.0,
-    "controlCos": 0.0505,
-    "xcos": 0.9431,
-    "xcontrol": 0.2826
+    "text": "Голос ИИ: загрузка…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.8715,
+    "xcontrol": 0.3239
    },
    "verdict.yourAnswer": {
     "text": "Твой ответ",
@@ -36481,9 +36541,9 @@
     "back": "No model that can run this device, has not shown that well writes or judges stanzas, so plays rival with ready stanzas, and judge by the rules.",
     "cos": 0.7335,
     "chrf": 45.9,
-    "controlCos": 0.1198,
+    "controlCos": 0.0641,
     "xcos": 0.8293,
-    "xcontrol": 0.1857
+    "xcontrol": 0.1084
    },
    "footer.credits": {
     "text": "Авторы и лицензии",
@@ -36994,6 +37054,16 @@
     "controlCos": 0.184,
     "xcos": 0.9319,
     "xcontrol": 0.3224
+   },
+   "ai.label": {
+    "text": "ИИ",
+    "english": "AI",
+    "back": "II",
+    "cos": 0.3753,
+    "chrf": 25.0,
+    "controlCos": 0.1983,
+    "xcos": 0.6853,
+    "xcontrol": 0.3028
    }
   },
   "ar": {
@@ -41328,34 +41398,34 @@
     "xcontrol": 0.3659
    },
    "voice.off": {
-    "text": "الصوت: متوقف",
-    "english": "Voice: Off",
-    "back": "Sound: Mute",
-    "cos": 0.5386,
-    "chrf": 5.4,
-    "controlCos": 0.5062,
-    "xcos": 0.8877,
-    "xcontrol": 0.8242
+    "text": "صوت الذكاء الاصطناعي: متوقف",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.7195,
+    "xcontrol": 0.6508
    },
    "voice.on": {
-    "text": "الصوت: يعمل",
-    "english": "Voice: On",
-    "back": "Sound: On",
-    "cos": 0.7126,
-    "chrf": 15.9,
-    "controlCos": 0.4502,
-    "xcos": 0.8602,
-    "xcontrol": 0.643
+    "text": "صوت الذكاء الاصطناعي: يعمل",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
+    "cos": 1.0,
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.7087,
+    "xcontrol": 0.5961
    },
    "voice.loading": {
-    "text": "الصوت: جارٍ التحميل…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9027,
-    "xcontrol": 0.2019
+    "text": "صوت الذكاء الاصطناعي: جارٍ التحميل…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.8097,
+    "xcontrol": 0.3198
    },
    "verdict.yourAnswer": {
     "text": "جوابك",
@@ -42213,9 +42283,9 @@
     "back": "No model that can be operated by this device has been proven to write or judge verses, so written verses are faced and rules are judged.",
     "cos": 0.7162,
     "chrf": 40.3,
-    "controlCos": 0.0365,
+    "controlCos": 0.0015,
     "xcos": 0.8722,
-    "xcontrol": 0.14
+    "xcontrol": 0.0572
    },
    "footer.credits": {
     "text": "المصادر والتراخيص",
@@ -42726,6 +42796,16 @@
     "controlCos": 0.1568,
     "xcos": 0.7738,
     "xcontrol": 0.3258
+   },
+   "ai.label": {
+    "text": "ذكاء اصطناعي",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.405,
+    "xcontrol": 0.2444
    }
   },
   "hi": {
@@ -46510,34 +46590,34 @@
     "xcontrol": 0.2917
    },
    "voice.off": {
-    "text": "आवाज़: बंद",
-    "english": "Voice: Off",
-    "back": "Volume: Off",
-    "cos": 0.5911,
-    "chrf": 38.4,
-    "controlCos": 0.4534,
-    "xcos": 0.9291,
-    "xcontrol": 0.8482
+    "text": "एआई आवाज़: बंद",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8853,
+    "xcontrol": 0.8134
    },
    "voice.on": {
-    "text": "आवाज़: चालू",
-    "english": "Voice: On",
-    "back": "Volume: On",
-    "cos": 0.5765,
-    "chrf": 30.0,
-    "controlCos": 0.3473,
-    "xcos": 0.9248,
-    "xcontrol": 0.6648
+    "text": "एआई आवाज़: चालू",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
+    "cos": 1.0,
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8923,
+    "xcontrol": 0.664
    },
    "voice.loading": {
-    "text": "आवाज़: लोड हो रही है…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9037,
-    "xcontrol": 0.2409
+    "text": "एआई आवाज़: लोड हो रही है…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.8507,
+    "xcontrol": 0.356
    },
    "verdict.yourAnswer": {
     "text": "आपका जवाब",
@@ -47395,9 +47475,9 @@
     "back": "No model that can run on this device has shown to write good poetry or be a good judge of poetry, so you will face an opponent with written poems and the decision will be made by rules.",
     "cos": 0.7029,
     "chrf": 50.6,
-    "controlCos": 0.09,
+    "controlCos": 0.004,
     "xcos": 0.7553,
-    "xcontrol": 0.2298
+    "xcontrol": 0.1308
    },
    "footer.credits": {
     "text": "श्रेय और लाइसेंस",
@@ -47908,6 +47988,16 @@
     "controlCos": 0.184,
     "xcos": 0.8166,
     "xcontrol": 0.3414
+   },
+   "ai.label": {
+    "text": "एआई",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 0.8423,
+    "xcontrol": 0.3187
    }
   },
   "zh": {
@@ -51332,34 +51422,34 @@
     "xcontrol": 0.3218
    },
    "voice.off": {
-    "text": "语音：关",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9294,
-    "xcontrol": 0.8695
+    "text": "人工智能语音：关",
+    "english": "AI voice: Off",
+    "back": "Artificial Intelligence Voice: Off",
+    "cos": 0.8803,
+    "chrf": 45.4,
+    "controlCos": 0.8261,
+    "xcos": 0.7951,
+    "xcontrol": 0.7366
    },
    "voice.on": {
-    "text": "语音：开",
-    "english": "Voice: On",
-    "back": "Voice: On",
-    "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9255,
-    "xcontrol": 0.6698
+    "text": "人工智能语音：开",
+    "english": "AI voice: On",
+    "back": "Artificial Intelligence Voice: On",
+    "cos": 0.8894,
+    "chrf": 40.4,
+    "controlCos": 0.7103,
+    "xcos": 0.7946,
+    "xcontrol": 0.6126
    },
    "voice.loading": {
-    "text": "语音：加载中…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.9308,
-    "xcontrol": 0.2365
+    "text": "人工智能语音：加载中…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.8335,
+    "xcontrol": 0.3439
    },
    "verdict.yourAnswer": {
     "text": "你的应对",
@@ -52217,9 +52307,9 @@
     "back": "No working model of the machine has yet proven itself to write or judge poetry, so you’ll face a pre-written opponent and be judged according to rules.",
     "cos": 0.6867,
     "chrf": 40.4,
-    "controlCos": 0.0421,
+    "controlCos": 0.0177,
     "xcos": 0.8004,
-    "xcontrol": 0.0995
+    "xcontrol": 0.024
    },
    "footer.credits": {
     "text": "致谢与许可证",
@@ -52730,6 +52820,16 @@
     "controlCos": 0.184,
     "xcos": 0.9398,
     "xcontrol": 0.343
+   },
+   "ai.label": {
+    "text": "人工智能",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.5579,
+    "xcontrol": 0.3052
    }
   },
   "ja": {
@@ -56154,34 +56254,34 @@
     "xcontrol": 0.3824
    },
    "voice.off": {
-    "text": "音声：オフ",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "AI音声：オフ",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9543,
-    "xcontrol": 0.8656
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.9648,
+    "xcontrol": 0.8808
    },
    "voice.on": {
-    "text": "音声：オン",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "AI音声：オン",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9516,
-    "xcontrol": 0.6359
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.9666,
+    "xcontrol": 0.7111
    },
    "voice.loading": {
-    "text": "音声：読み込み中…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.9202,
-    "xcontrol": 0.2252
+    "text": "AI音声：読み込み中…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.9331,
+    "xcontrol": 0.5017
    },
    "verdict.yourAnswer": {
     "text": "あなたの返し",
@@ -57039,9 +57139,9 @@
     "back": "None of the models that run on this terminal have been tested to write or review poems properly. Therefore, they compete against a pre-written poet and are judged according to rules.",
     "cos": 0.4591,
     "chrf": 31.5,
-    "controlCos": 0.0992,
+    "controlCos": -0.0357,
     "xcos": 0.7901,
-    "xcontrol": 0.1347
+    "xcontrol": 0.0851
    },
    "footer.credits": {
     "text": "クレジットとライセンス",
@@ -57552,6 +57652,16 @@
     "controlCos": 0.184,
     "xcos": 0.9187,
     "xcontrol": 0.3406
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    }
   },
   "ko": {
@@ -60976,34 +61086,34 @@
     "xcontrol": 0.3899
    },
    "voice.off": {
-    "text": "음성: 꺼짐",
-    "english": "Voice: Off",
-    "back": "Voice: Off",
+    "text": "인공지능 음성: 꺼짐",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.8162,
-    "xcos": 0.9291,
-    "xcontrol": 0.8372
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8544,
+    "xcontrol": 0.7685
    },
    "voice.on": {
-    "text": "음성: 켜짐",
-    "english": "Voice: On",
-    "back": "Voice: On",
+    "text": "인공지능 음성: 켜짐",
+    "english": "AI voice: On",
+    "back": "AI Voice: On",
     "cos": 1.0,
-    "chrf": 100.0,
-    "controlCos": 0.6776,
-    "xcos": 0.9223,
-    "xcontrol": 0.6638
+    "chrf": 62.9,
+    "controlCos": 0.8223,
+    "xcos": 0.8313,
+    "xcontrol": 0.6622
    },
    "voice.loading": {
-    "text": "음성: 불러오는 중…",
-    "english": "Voice: loading…",
-    "back": "Voice: Loading...",
-    "cos": 0.9723,
-    "chrf": 55.8,
-    "controlCos": 0.0505,
-    "xcos": 0.8344,
-    "xcontrol": 0.2666
+    "text": "인공지능 음성: 불러오는 중…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.7777,
+    "xcontrol": 0.3491
    },
    "verdict.yourAnswer": {
     "text": "내 답",
@@ -61861,9 +61971,9 @@
     "back": "No one of the models that I can run on this device has proven to write or review poems well, so I compete with someone who puts in a pre-written poem and I judge it according to rules.",
     "cos": 0.5414,
     "chrf": 39.3,
-    "controlCos": 0.1153,
+    "controlCos": -0.0331,
     "xcos": 0.8114,
-    "xcontrol": 0.1108
+    "xcontrol": 0.0698
    },
    "footer.credits": {
     "text": "저작자 표시 및 라이선스",
@@ -62374,6 +62484,16 @@
     "controlCos": 0.184,
     "xcos": 0.9579,
     "xcontrol": 0.3458
+   },
+   "ai.label": {
+    "text": "인공지능",
+    "english": "AI",
+    "back": "Artificial Intelligence",
+    "cos": 0.7912,
+    "chrf": 16.7,
+    "controlCos": 0.3054,
+    "xcos": 0.6514,
+    "xcontrol": 0.2669
    }
   },
   "vi": {
@@ -66158,34 +66278,34 @@
     "xcontrol": 0.2935
    },
    "voice.off": {
-    "text": "Giọng đọc: tắt",
-    "english": "Voice: Off",
-    "back": "Speak: Off",
-    "cos": 0.7395,
-    "chrf": 23.0,
-    "controlCos": 0.5246,
-    "xcos": 0.8418,
-    "xcontrol": 0.7676
+    "text": "Giọng đọc AI: tắt",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8695,
+    "xcontrol": 0.8026
    },
    "voice.on": {
-    "text": "Giọng đọc: bật",
-    "english": "Voice: On",
-    "back": "Speak: On",
-    "cos": 0.6904,
-    "chrf": 15.9,
-    "controlCos": 0.3745,
-    "xcos": 0.8296,
-    "xcontrol": 0.6496
+    "text": "Giọng đọc AI: bật",
+    "english": "AI voice: On",
+    "back": "AI voice: enabled",
+    "cos": 0.8385,
+    "chrf": 64.8,
+    "controlCos": 0.8097,
+    "xcos": 0.8492,
+    "xcontrol": 0.7457
    },
    "voice.loading": {
-    "text": "Giọng đọc: đang tải…",
-    "english": "Voice: loading…",
-    "back": "Speak: Loading...",
-    "cos": 0.7192,
-    "chrf": 30.2,
-    "controlCos": 0.1502,
-    "xcos": 0.8592,
-    "xcontrol": 0.2267
+    "text": "Giọng đọc AI: đang tải…",
+    "english": "AI voice: loading…",
+    "back": "AI Voice: Loading...",
+    "cos": 0.9859,
+    "chrf": 43.9,
+    "controlCos": 0.5081,
+    "xcos": 0.886,
+    "xcontrol": 0.4538
    },
    "verdict.yourAnswer": {
     "text": "Lời đáp của bạn",
@@ -67020,10 +67140,10 @@
    "battle.lang.written": {
     "text": "Tiếng Thái: bạn đấu với đối thủ dùng thơ viết sẵn, vì Gemma 4 E2B chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.",
     "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
-    "back": "Thai: You compete with an opponent using pre-written poetry, because Gemma 4 E2B has not proven that it writes well in this language.",
-    "cos": 0.8824,
-    "chrf": 61.7,
-    "controlCos": 0.7247,
+    "back": "Thai: you compete with opponents using pre-written poetry, since Gemma 4 E2B has not proven to be good at writing poetry in this language.",
+    "cos": 0.8294,
+    "chrf": 52.1,
+    "controlCos": 0.6982,
     "xcos": 0.8346,
     "xcontrol": 0.7145
    },
@@ -67043,9 +67163,9 @@
     "back": "No model on which this device runs has proven to be a good poetry writer or judge, so you compete with opponents using pre-written poems, and the scoring follows the rules.",
     "cos": 0.6642,
     "chrf": 43.2,
-    "controlCos": 0.1398,
+    "controlCos": 0.0162,
     "xcos": 0.7875,
-    "xcontrol": 0.1762
+    "xcontrol": 0.1137
    },
    "footer.credits": {
     "text": "Ghi công và giấy phép",
@@ -67556,6 +67676,16 @@
     "controlCos": 0.1654,
     "xcos": 0.8841,
     "xcontrol": 0.253
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    }
   },
   "th": {
@@ -70272,10 +70402,10 @@
    "brain.failed": {
     "text": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้",
     "english": "The model could not start on this device. You can still play against the written opponent.",
-    "back": "The model can't start on this device. You can still play with an opponent who has already written a poem.",
-    "cos": 0.8433,
-    "chrf": 68.4,
-    "controlCos": 0.495,
+    "back": "The model can't start on this device. You can still play against an opponent who has already written a poem.",
+    "cos": 0.8461,
+    "chrf": 75.7,
+    "controlCos": 0.4723,
     "xcos": 0.8077,
     "xcontrol": 0.4253
    },
@@ -70980,34 +71110,34 @@
     "xcontrol": 0.267
    },
    "voice.off": {
-    "text": "เสียงอ่าน: ปิด",
-    "english": "Voice: Off",
-    "back": "Speak: Off",
-    "cos": 0.7395,
-    "chrf": 23.0,
-    "controlCos": 0.5246,
-    "xcos": 0.7822,
-    "xcontrol": 0.7292
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: ปิด",
+    "english": "AI voice: Off",
+    "back": "AI Voice: Off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.573,
+    "xcontrol": 0.5107
    },
    "voice.on": {
-    "text": "เสียงอ่าน: เปิด",
-    "english": "Voice: On",
-    "back": "Speak: On",
-    "cos": 0.6904,
-    "chrf": 15.9,
-    "controlCos": 0.3745,
-    "xcos": 0.7709,
-    "xcontrol": 0.6287
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: เปิด",
+    "english": "AI voice: On",
+    "back": "AI reads: On",
+    "cos": 0.6829,
+    "chrf": 17.6,
+    "controlCos": 0.5377,
+    "xcos": 0.5338,
+    "xcontrol": 0.4845
    },
    "voice.loading": {
-    "text": "เสียงอ่าน: กำลังโหลด…",
-    "english": "Voice: loading…",
-    "back": "Loading...",
-    "cos": 0.4356,
-    "chrf": 30.9,
-    "controlCos": 0.1378,
-    "xcos": 0.8327,
-    "xcontrol": 0.2165
+    "text": "เสียงอ่านจากปัญญาประดิษฐ์: กำลังโหลด…",
+    "english": "AI voice: loading…",
+    "back": "Artificial Intelligence Voice: Loading...",
+    "cos": 0.8941,
+    "chrf": 34.5,
+    "controlCos": 0.5003,
+    "xcos": 0.6548,
+    "xcontrol": 0.1639
    },
    "verdict.yourAnswer": {
     "text": "คำตอบโต้ของคุณ",
@@ -71472,10 +71602,10 @@
    "badge.written": {
     "text": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
     "english": "Written opponent",
-    "back": "The opponent who uses a pre-written poem",
-    "cos": 0.781,
-    "chrf": 53.7,
-    "controlCos": 0.2653,
+    "back": "A contestant who uses a pre-written poem.",
+    "cos": 0.5234,
+    "chrf": 30.2,
+    "controlCos": 0.1529,
     "xcos": 0.5339,
     "xcontrol": 0.2604
    },
@@ -71642,10 +71772,10 @@
    "theatre.writtenHint": {
     "text": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
     "english": "Playing the written opponent. Summon a model on the battle page to face one here.",
-    "back": "Playing with an opponent who uses a pre-written poem, inviting the model to face it here.",
-    "cos": 0.7247,
-    "chrf": 44.5,
-    "controlCos": 0.2688,
+    "back": "Playing with an opponent who uses a pre-written poem, inviting the opposite model to face it here.",
+    "cos": 0.6856,
+    "chrf": 44.1,
+    "controlCos": 0.2246,
     "xcos": 0.7371,
     "xcontrol": 0.176
    },
@@ -71842,20 +71972,20 @@
    "battle.lang.written": {
     "text": "ญี่ปุ่น: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
     "english": "Thai: you face the written opponent, because Gemma 4 E2B has not shown it can write verse well in this language.",
-    "back": "Japan: You're going to meet an opponent who uses already written poems, because Gemma 4 E2B hasn't yet shown that she can write poems in this language.",
-    "cos": 0.6922,
-    "chrf": 57.3,
-    "controlCos": 0.5018,
+    "back": "Japan: You're going to encounter an opponent who uses already written poems, because Gemma 4 E2B hasn't yet shown that she can write poems in this language.",
+    "cos": 0.7027,
+    "chrf": 57.1,
+    "controlCos": 0.5223,
     "xcos": 0.8336,
     "xcontrol": 0.6915
    },
    "battle.lang.rules": {
     "text": "ญี่ปุ่น: ตัดสินด้วยกฎ เพราะ Gemma 4 E2B ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี",
     "english": "Thai: judged by rule, because Gemma 4 E2B has not shown it is a good judge of verse in this language.",
-    "back": "Japan: Judging by the rules, because Gemma 4 E2B hasn't shown herself to be a good judge of this language poetry.",
-    "cos": 0.775,
-    "chrf": 58.6,
-    "controlCos": 0.349,
+    "back": "Japan: Judging by the rules, because Gemma 4 E2B hasn't yet shown herself as a good judge of this language poem.",
+    "cos": 0.7681,
+    "chrf": 59.8,
+    "controlCos": 0.3518,
     "xcos": 0.8379,
     "xcontrol": 0.3205
    },
@@ -71865,9 +71995,9 @@
     "back": "There's no working model of this device that has shown to be good at writing or judging poems, so you're going to have a competitor who uses an already-written poem and judges by rules.",
     "cos": 0.6643,
     "chrf": 45.4,
-    "controlCos": 0.0976,
+    "controlCos": -0.0405,
     "xcos": 0.8247,
-    "xcontrol": 0.1797
+    "xcontrol": 0.1211
    },
    "footer.credits": {
     "text": "เครดิตและสัญญาอนุญาต",
@@ -72378,6 +72508,16 @@
     "controlCos": 0.1568,
     "xcos": 0.6896,
     "xcontrol": 0.3343
+   },
+   "ai.label": {
+    "text": "ปัญญาประดิษฐ์",
+    "english": "AI",
+    "back": "Artificial Intelligence.",
+    "cos": 0.7459,
+    "chrf": 16.1,
+    "controlCos": 0.3589,
+    "xcos": 0.3706,
+    "xcontrol": 0.2709
    }
   },
   "id": {
@@ -75802,34 +75942,34 @@
     "xcontrol": 0.4313
    },
    "voice.off": {
-    "text": "Suara: mati",
-    "english": "Voice: Off",
-    "back": "Sound: off",
-    "cos": 0.7209,
-    "chrf": 9.5,
-    "controlCos": 0.5678,
-    "xcos": 0.8584,
-    "xcontrol": 0.7964
+    "text": "Suara AI: mati",
+    "english": "AI voice: Off",
+    "back": "AI voice: off",
+    "cos": 1.0,
+    "chrf": 67.9,
+    "controlCos": 0.9083,
+    "xcos": 0.8747,
+    "xcontrol": 0.8128
    },
    "voice.on": {
-    "text": "Suara: nyala",
-    "english": "Voice: On",
-    "back": "Sound: flare",
-    "cos": 0.3268,
-    "chrf": 7.8,
-    "controlCos": 0.2801,
-    "xcos": 0.8797,
-    "xcontrol": 0.6467
+    "text": "Suara AI: nyala",
+    "english": "AI voice: On",
+    "back": "AI voice: on",
+    "cos": 1.0,
+    "chrf": 73.5,
+    "controlCos": 0.8223,
+    "xcos": 0.9123,
+    "xcontrol": 0.7539
    },
    "voice.loading": {
-    "text": "Suara: memuat…",
-    "english": "Voice: loading…",
-    "back": "Sound: loading...",
-    "cos": 0.6955,
-    "chrf": 46.2,
-    "controlCos": 0.0866,
-    "xcos": 0.931,
-    "xcontrol": 0.2798
+    "text": "Suara AI: memuat…",
+    "english": "AI voice: loading…",
+    "back": "AI voice: loading...",
+    "cos": 0.9859,
+    "chrf": 89.8,
+    "controlCos": 0.5081,
+    "xcos": 0.9493,
+    "xcontrol": 0.5006
    },
    "verdict.yourAnswer": {
     "text": "Jawabanmu",
@@ -76687,9 +76827,9 @@
     "back": "There is no model that this device can run that has proven to write or evaluate poems well, so your opponent uses written poems and the evaluation is done by rules.",
     "cos": 0.6538,
     "chrf": 49.4,
-    "controlCos": 0.0763,
+    "controlCos": -0.0251,
     "xcos": 0.812,
-    "xcontrol": 0.2076
+    "xcontrol": 0.1186
    },
    "footer.credits": {
     "text": "Atribusi dan lisensi",
@@ -77200,6 +77340,16 @@
     "controlCos": 0.2842,
     "xcos": 0.9329,
     "xcontrol": 0.3383
+   },
+   "ai.label": {
+    "text": "AI",
+    "english": "AI",
+    "back": "AI",
+    "cos": 1.0,
+    "chrf": 100.0,
+    "controlCos": 0.2956,
+    "xcos": 1.0,
+    "xcontrol": 0.2627
    }
   }
  },

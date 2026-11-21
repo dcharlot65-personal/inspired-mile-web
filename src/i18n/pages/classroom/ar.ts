@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': 'وضع الصف',
-  'classroom.meta.description': 'ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير، ويتابعون تقدّمهم.',
+  'classroom.meta.description': 'ينشئ المعلّمون صفوفًا، ويُسندون إلى طلابهم مسابقات وتحديات عن شكسبير.',
   'classroom.badge': 'التعليم',
   'classroom.title': 'وضع الصف',
-  'classroom.intro': 'أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير ويتابعون تقدّمهم.',
+  'classroom.intro': 'أنشئ صفًّا أو انضم إلى صف. يُسند المعلّمون إلى طلابهم مسابقات وتحديات عن شكسبير.',
   'classroom.gate.title': 'قبل أن تبدأ',
   'classroom.gate.body': 'وضع الصف مخصّص للمدارس. اختر دورك للمتابعة.',
   'classroom.role.teacher': 'أنا معلّم أو معلّمة',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': 'قبل الانضمام إلى صف، يُرجى تأكيد ما يلي:',
   'classroom.student.check1': 'أحد والديّ أو وليّ أمري القانوني يعلم أنني أستخدم Inspired Mile للواجبات المدرسية وقد أذن لي بذلك.',
   'classroom.student.check2': 'أعطاني معلّمي رمز الانضمام إلى صف.',
-  'classroom.student.check3': 'أفهم أن معلّمي يستطيع أن يرى تقدّمي وما أفعله في الصف.',
+  'classroom.student.check3': 'أفهم أن معلّمي يستطيع أن يرى أنني انضممت إلى الصف ومتى انضممت.',
   'classroom.student.continue': 'المتابعة كطالب',
   'classroom.join.tab': 'الانضمام إلى صف',
   'classroom.create.tab': 'إنشاء صف',
@@ -78,10 +78,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 أسئلة اختيار من متعدد عن شكسبير',
   'classroom.wizard.s3.challenge': 'إكمال الكلمات الناقصة في اقتباسات مشهورة',
   'classroom.wizard.s3.battle': 'مبارزة بالأبيات من ثلاث جولات، يُحكَم فيها على الجهاز',
-  'classroom.wizard.s4.title': 'تابع التقدّم',
-  'classroom.wizard.s4.body': 'اطّلع على ما أنجزه كل طالب، وعلى نتائجه والبطاقات التي كسبها. تبقى البيانات داخل الصف: يرى الطالب تقدّمه هو، وترى أنت تقدّم الجميع.',
-  'classroom.wizard.s4.visibility': 'من يستطيع رؤية تقدّم الطالب',
-  'classroom.wizard.s4.ferpa': 'متوافق مع قانون FERPA',
 };
 
 export default messages;

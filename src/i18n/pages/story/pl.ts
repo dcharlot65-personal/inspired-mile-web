@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Wyrusz w podróż przez światy Szekspira w tej kampanii dla jednego gracza.",
   'story.badge': "Kampania",
   'story.title': "Tryb fabularny",
-  'story.intro': "Przejdź 5 aktów przez największe dzieła Szekspira. Zmierz się z legendarnymi postaciami w bitwach na wiersze i odkryj tajemnice teatru Globe.",
+  'story.intro': 'Przejdź 5 aktów przez największe dzieła Szekspira i odkryj tajemnice teatru Globe. W tej wersji gry spotkanie otwiera swoją scenę, ale nie zaczyna pojedynku.',
   'story.journey': "Twoja podróż",
   'story.progress': "Ukończone spotkania: {done} / {total}",
   'story.stars': "Gwiazdki",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "Podejmij spór z samym Brutusem.",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Brutus odwraca się do ciebie ze schodów Senatu. „Przekonaj mnie, że słowa mogą naprawić to, co złamały sztylety”.",
   'story.enc.5-3.name': "Ostatni ukłon",
-  'story.enc.5-3.desc': "Zmierz się z The Sonnet Manem w ostatecznej bitwie.",
-  'story.enc.5-3.narrative': "W teatrze Globe zapada cisza. Pojedynczy reflektor oświetla samego Sonnet Mana. \"All the world's a stage.\" „Twoja rola została dobrze zagrana. A teraz ostatnia strofa, i kurtyna opada”.",
+  'story.enc.5-3.desc': "Zmierz się z Markiem Antoniuszem w ostatecznej bitwie.",
+  'story.enc.5-3.narrative': "W teatrze Globe zapada cisza. Pojedynczy reflektor oświetla samego Marka Antoniusza. \"Friends, Romans, countrymen, lend me your ears!\" „Twoja rola została dobrze zagrana. A teraz ostatnia strofa, i kurtyna opada”.",
 };
 
 export default messages;

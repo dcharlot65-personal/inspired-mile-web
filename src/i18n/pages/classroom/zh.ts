@@ -3,10 +3,10 @@
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
   'classroom.meta.title': '课堂模式',
-  'classroom.meta.description': '教师创建班级，布置莎士比亚问答和挑战，并查看学生的学习进度。',
+  'classroom.meta.description': '教师创建班级，为学生布置莎士比亚问答和挑战。',
   'classroom.badge': '教育',
   'classroom.title': '课堂模式',
-  'classroom.intro': '创建班级或加入班级。教师布置莎士比亚问答和挑战，并查看学生的学习进度。',
+  'classroom.intro': '创建班级或加入班级。教师为学生布置莎士比亚问答和挑战。',
   'classroom.gate.title': '开始之前',
   'classroom.gate.body': '课堂模式专为学校使用而设计。请选择你的身份以继续。',
   'classroom.role.teacher': '我是教师',
@@ -24,7 +24,7 @@ const messages: Record<string, string> = {
   'classroom.student.intro': '加入班级之前，请确认以下内容：',
   'classroom.student.check1': '我的父母或法定监护人知道我在用 Inspired Mile 完成学校功课，并已同意。',
   'classroom.student.check2': '老师已经给了我班级的加入码。',
-  'classroom.student.check3': '我明白老师可以看到我在班级里的进度和活动。',
+  'classroom.student.check3': '我明白老师可以看到我已加入班级，以及加入的时间。',
   'classroom.student.continue': '以学生身份继续',
   'classroom.join.tab': '加入班级',
   'classroom.create.tab': '创建班级',
@@ -73,10 +73,6 @@ const messages: Record<string, string> = {
   'classroom.wizard.s3.trivia': '5 道关于莎士比亚的选择题',
   'classroom.wizard.s3.challenge': '补全名句中缺失的词语',
   'classroom.wizard.s3.battle': '三个回合的诗歌对决，在设备上评判',
-  'classroom.wizard.s4.title': '查看进度',
-  'classroom.wizard.s4.body': '查看每位学生完成了什么、得了多少分、赢得了哪些卡牌。数据只留在班级内：学生只能看到自己的进度，你可以看到所有人的进度。',
-  'classroom.wizard.s4.visibility': '谁可以看到学生的进度',
-  'classroom.wizard.s4.ferpa': '符合 FERPA 要求',
 };
 
 export default messages;

@@ -126,6 +126,26 @@ visit or named by `?lang=` once the page is idle; `tests/battle-bytes.spec.ts`);
 `await loadPronunciation()` first. Both duel
 screens draw a `DuelSession`; do not score a round anywhere else.
 
+Text a model wrote is marked where it appears (EU AI Act Art. 50(2), D-01; D-12): its element
+carries `data-ai-generated` (model, repository, revision, dtype) and `data-ai-source`
+(`src/lib/ai-marking.ts`), set from `DuelSession.opponentModel`, never guessed from the text, with
+a visible `ai.label` beside the verse (battle page, Theatre stage and its text copy
+`#theatre-opponent-verse`). On the battle page the label and the verse are one polite live region
+(`#opponent-said`, laid out in the duel language's direction so the label starts where the verse does);
+write its text only when it changes, since the round redraws on every keystroke. The playground's
+model-written trivia and quote challenges carry the mark on every element that shows their text, on
+every screen (`src/lib/ai-marking.test.ts` reads the markup), and the "AI Generated" badge
+(`pg.trivia.aiBadge`); the voice setting reads "AI voice". A new place that shows, shares or exports a
+model's text must carry the same mark (`docs/AI-MARKING.md`, which also compares the method with the
+Commission's Code of Practice and lists the commit each model's `main` held on 2026-11-19: check it
+before a deploy; `tests/ai-marking.spec.ts`).
+
+**What play pays** is one switch, `ECONOMY_LIVE` in `src/lib/economy-live.ts`: false while nothing calls
+`earnCredits`, `addXP` or `buyPack` (as in the first deploy of R15; fix/server-authority's economy calls them), and then the Season Pass shows no XP rates and says
+play earns none, and the playground's odds list no packs for sale. `src/lib/economy-live.test.ts` fails when
+the switch and the callers disagree, so a merge that makes play pay must turn it on. Copy that holds either
+way says only that credits are never bought with real money (about, terms, privacy).
+
 ## The voice (Kokoro) and its English pronunciation
 
 The battle page reads the opponent's verse aloud when the visitor turns the voice on (nothing else
@@ -210,6 +230,15 @@ The two engines are held together by golden vectors. After ANY change to `src/li
 
 `npx vitest run` fails while those files are stale. If the parity test fails, fix the Rust;
 never loosen the comparison. Online play has no relics, potions or ink yet.
+
+**Quick match is switched off at launch, by decision** (D-02, 2026-11-19): online duels are by
+private room only, for everyone, until reports are read every day and players can block and
+mute; then quick match for adults only. The one switch is `quickMatch` in
+`backend/data/online-play.json`, read by the server (`matchmaking.rs quick_match_open`, compiled
+in: rebuild the API after changing it; `join_queue` answers 403) and by the page, which then
+renders no quick-match controls and says why (`#mp-quick-closed`). Before turning it on, the
+matchmaker must pair adult accounts only: it does not read the age tier yet. The quick-match
+tests in `tests/multiplayer.spec.ts` skip while it is off; one test holds page and server to it.
 
 **Online duels are English only, by decision** (2026-11-17). The server's engine is the English
 path; the other fifteen languages are read by sound tables, kuromoji (Japanese) and the
@@ -601,7 +630,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   or meanwhile add `MEVAL_SET_ASIDE=1` to move it to `docs/language/model-eval/set-aside/`, where
   it counts as not measured (a cell of that name set aside before is kept, moved to
   `set-aside/before-<day>/`: `src/lib/model-eval-aside.ts`). The same variable with `model-eval.judge.test.ts` sets aside judging
-  cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
+  cells whose prompts changed. A change that reaches only some plays' prompts (a card out of the
+  opponent's draw) can instead have just those plays written again by the model,
+  `MEVAL_STALE=1 TASKS=write run.mjs`, which records them under `remeasured` and touches the
+  repository's cells only. `run.mjs` measures set-aside cells again. New cells: copy them into
   `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
   `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.
   Each judged pair also keeps the model's raw reading (`referee.ts JudgeReading`), and

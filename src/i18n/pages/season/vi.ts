@@ -7,6 +7,7 @@ const messages: Record<string, string> = {
   'season.badge': 'Mùa {n}',
   'season.title': 'Thẻ mùa giải',
   'season.intro': 'Chơi các trận đấu, đố vui và thử thách để nhận XP. Mỗi cấp độ mới mở khoá lá bài, xu và danh hiệu.',
+  'season.introNow': 'Mỗi cấp độ của Thẻ mùa giải mở khoá lá bài, xu hoặc danh hiệu. Trong phiên bản này của trò chơi, bạn không nhận được XP khi chơi.',
   'season.loading': 'Đang tải…',
   'season.level': 'Cấp độ',
   'season.xp': '{n} XP',

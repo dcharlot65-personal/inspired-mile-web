@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "ارتحل في عوالم شكسبير في هذه الحملة للاعب واحد.",
   'story.badge': "حملة",
   'story.title': "وضع القصة",
-  'story.intro': "ارتحل عبر 5 فصول بين أعظم أعمال شكسبير. واجه شخصيات خالدة في نزالات شعرية واكشف أسرار مسرح جلوب.",
+  'story.intro': 'ارتحل عبر 5 فصول بين أعظم أعمال شكسبير واكشف أسرار مسرح جلوب. في هذا الإصدار من اللعبة تفتح كل مواجهة مشهدها، لكنها لا تبدأ أي مبارزة.',
   'story.journey': "رحلتك",
   'story.progress': "أُنجز {done}/{total} من المواجهات",
   'story.stars': "النجوم",
@@ -81,8 +81,8 @@ const messages: Record<string, string> = {
   'story.enc.5-2.desc': "جادل بروتس نفسه.",
   'story.enc.5-2.narrative': "\u2068\"Not that I loved Caesar less, but that I loved Rome more.\"\u2069 يلتفت إليك بروتس من درج مجلس الشيوخ. «أقنعني أيها الغريب بأن الكلمات تصلح ما كسرته الخناجر».",
   'story.enc.5-3.name': "الانحناءة الأخيرة",
-  'story.enc.5-3.desc': "واجه \u2068The Sonnet Man\u2069 في المعركة الحاسمة.",
-  'story.enc.5-3.narrative': "يسود الصمت مسرح جلوب. بقعة ضوء واحدة تنير \u2068The Sonnet Man\u2069 نفسه. \u2068\"All the world's a stage.\"\u2069 «لقد أدّيت دورك جيدًا. والآن بيت أخير، ثم يُسدل الستار».",
+  'story.enc.5-3.desc': "واجه مرقس أنطونيوس في المعركة الحاسمة.",
+  'story.enc.5-3.narrative': "يسود الصمت مسرح جلوب. بقعة ضوء واحدة تنير مرقس أنطونيوس نفسه. \u2068\"Friends, Romans, countrymen, lend me your ears!\"\u2069 «لقد أدّيت دورك جيدًا. والآن بيت أخير، ثم يُسدل الستار».",
 };
 
 export default messages;

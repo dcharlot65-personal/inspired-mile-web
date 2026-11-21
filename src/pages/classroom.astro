@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // English written in the markup is what a reader sees before the script has run.
 ---
 
-<BaseLayout title="Classroom Mode" description="Teachers create classrooms, set Shakespeare trivia and challenges, and follow their students' progress.">
+<BaseLayout title="Classroom Mode" description="Teachers create classrooms and set Shakespeare trivia and challenges for their students.">
 
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="text-gradient" data-i18n="classroom.title">Classroom Mode</span>
         </h1>
         <p class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="classroom.intro">
-          Create or join a classroom. Teachers set Shakespeare trivia and challenges, and follow their students' progress.
+          Create or join a classroom. Teachers set Shakespeare trivia and challenges for their students.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </label>
           <label class="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" class="student-check mt-1 w-4 h-4 shrink-0 rounded-sm border-obsidian-600 bg-obsidian-800 text-emerald-500 focus:ring-emerald-500/50" />
-            <span class="text-xs text-obsidian-300 leading-relaxed" data-i18n="classroom.student.check3">I understand that my teacher can see my progress and what I do in the classroom.</span>
+            <span class="text-xs text-obsidian-300 leading-relaxed" data-i18n="classroom.student.check3">I understand that my teacher can see that I joined the classroom, and when.</span>
           </label>
         </div>
         <button id="student-continue" class="btn-gold px-6 py-3 rounded-xl font-display font-bold text-sm w-full bg-emerald-500 hover:bg-emerald-400 border-emerald-500 opacity-50 pointer-events-none" data-i18n="classroom.student.continue">Continue as a student</button>
@@ -254,20 +254,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <!-- Step 4 -->
-        <div class="wizard-page hidden" data-step="4">
-          <h3 class="font-display text-lg font-bold text-gold-300 mb-2" data-i18n="classroom.wizard.s4.title">Follow progress</h3>
-          <p class="text-sm text-obsidian-300 mb-3" data-i18n="classroom.wizard.s4.body">See what each student has completed, their scores and the cards they have earned. The data stays inside the classroom: students see their own progress, and you see everyone's.</p>
-          <div class="card-glass p-3 bg-obsidian-800/50 rounded-lg">
-            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs mb-2">
-              <span class="text-obsidian-300" data-i18n="classroom.wizard.s4.visibility">Who can see a student's progress</span>
-              <span class="text-emerald-400" data-i18n="classroom.wizard.s4.ferpa">FERPA compliant</span>
-            </div>
-            <div class="h-2 rounded-full bg-obsidian-700 overflow-hidden">
-              <div class="h-full bg-emerald-400 rounded-full" style="width: 75%"></div>
-            </div>
-          </div>
-        </div>
+        {/* No step on following progress: Classroom Mode records none (it keeps class names, members and
+             assignments), and the tour said it did, with a compliance claim beside it (owner decision D-03).
+             An Astro comment, not an HTML one, so the page's source does not carry it. */}
       </div>
 
       <div class="flex items-center justify-between gap-3 mt-5 pt-4 border-t border-obsidian-800">
@@ -275,7 +264,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="wizard-dot w-2 h-2 rounded-full bg-gold-400" data-dot="1"></div>
           <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="2"></div>
           <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="3"></div>
-          <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="4"></div>
         </div>
         <div class="flex gap-2">
           <button id="wizard-prev" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors hidden" data-i18n="auth.back">Back</button>
@@ -294,7 +282,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { date, plural } from '../i18n/fmt';
     import { errorText, esc, initPage, onPageLocaleChange } from '../i18n/page';
 
-    const WIZARD_STEPS = 4;
+    const WIZARD_STEPS = 3;
 
     // --- Consent Gate ---
     const CONSENT_KEY = 'inspired-mile-classroom-consent';

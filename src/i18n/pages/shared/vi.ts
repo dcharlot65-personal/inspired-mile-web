@@ -60,7 +60,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Trang chủ',
   'offline.link.collection': 'Bộ sưu tập',
   'offline.link.battle': 'Đấu trường',
-  'app.description': 'Trò chơi bài rap chiến theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.',
+  'app.description': 'Trò chơi bài trận đấu thơ theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.',
   'app.shortcut.battle': 'Đấu trường',
   'app.shortcut.theatre': 'Nhà hát',
 };

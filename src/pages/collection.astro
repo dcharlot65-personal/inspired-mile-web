@@ -247,7 +247,7 @@ const count = 'text-gold-400 font-mono';
       getCityByCode,
     } from '../lib/variants';
     import { CARD_CATALOG, getCardById } from '../lib/cards';
-    import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
+    import { initAudio, isInitialized, playSfx } from '../lib/audio-manager';
     import { getARModel, isARLikelySupported, loadModelViewer } from '../lib/ar-viewer';
     import { DECK_RULES, type Deck } from '../lib/battle-rules';
     import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
@@ -261,10 +261,10 @@ const count = 'text-gold-400 font-mono';
       elementName, houseName, rarityName, sourceName, statLabel, tierName,
     } from '../i18n/pages/terms';
 
-    // Start browse music on first interaction
+    // Sound starts on the first interaction (a browser allows no audio before one). The page has
+    // effects and no music: its track had no traced source and was removed (D-08).
     document.addEventListener('click', () => {
       if (!isInitialized()) initAudio();
-      playMusic('collection-browse', 1000);
     }, { once: true });
 
     const byId = (id: string) => document.getElementById(id);

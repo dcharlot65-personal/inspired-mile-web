@@ -26,6 +26,12 @@
    "key": "auth.emailPlaceholder",
    "rule": "no-native-script",
    "reason": "An example e-mail address; addresses are Latin-script."
+  },
+  {
+   "lang": "ja",
+   "key": "ai.label",
+   "rule": "no-native-script",
+   "reason": "Japanese writes the abbreviation in Latin letters: Wikidata's Japanese alias for Q11660 (artificial intelligence) is 人工知能（AI）, and the voice setting beside it reads AI音声. Saved: docs/language/sources/wikidata-Q11660.json (src/i18n/ai-label.test.ts)."
   }
  ]
 }
