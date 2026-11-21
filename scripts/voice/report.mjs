@@ -125,6 +125,20 @@ const same = m.results.filter((r) => r.category !== 'word' && r.new.edits === r.
 out.push('');
 out.push(`Better in ${better}, the same in ${same}.`);
 
+/** Edge texts added later, each group after its comment line in edge-texts.txt, measured with the rest and also reported on their own. */
+const ADDED = [['# Added on 2026-11-20', 'the 27 added on 2026-11-20']];
+
+/** The results of the texts after a comment line of scripts/voice/edge-texts.txt (they come last, in the file's order). */
+function addedSince(results, marker) {
+  const lines = readFileSync(join(ROOT, 'scripts/voice/edge-texts.txt'), 'utf8').split('\n').map((l) => l.trim());
+  const at = lines.findIndex((l) => l.startsWith(marker));
+  if (at < 0) return [];
+  const texts = lines.slice(at + 1).filter((l) => l && !l.startsWith('#'));
+  const rows = results.slice(-texts.length);
+  if (rows.length !== texts.length || rows.some((r, i) => r.text !== texts[i])) return [];
+  return rows;
+}
+
 /** The edge texts (measure.mjs --texts scripts/voice/edge-texts.txt), when they have been measured. */
 function edgeTables(file) {
   const e = JSON.parse(readFileSync(file, 'utf8'));
@@ -136,6 +150,16 @@ function edgeTables(file) {
   lines.push('|---|---:|---:|---:|---:|---|');
   lines.push(`| as written (Whisper's "10pm" against "ten p.m." counts as an error) | ${s.words} | ${pct(s.old)} | ${pct(s.new)} | ${pp(s.difference)} | ${pp(s.interval95.low)} to ${pp(s.interval95.high)} |`);
   lines.push(`| **in spoken form** (text and both transcripts through the same normaliser) | ${s.spoken.words} | ${pct(s.spoken.old)} | ${pct(s.spoken.new)} | ${pp(s.spoken.difference)} | ${pp(s.spoken.interval95.low)} to ${pp(s.spoken.interval95.high)} |`);
+  for (const [marker, name] of ADDED) {
+    const rows = addedSince(e.results, marker);
+    if (!rows.length) continue;
+    const sp = rows.map((r) => ({ words: r.spoken.words, old: { edits: r.spoken.old }, new: { edits: r.spoken.new } }));
+    const words = sp.reduce((n, r) => n + r.words, 0);
+    const old = sp.reduce((n, r) => n + r.old.edits, 0) / words;
+    const neu = sp.reduce((n, r) => n + r.new.edits, 0) / words;
+    const ci = bootstrap(sp);
+    lines.push(`| **in spoken form, ${name}** (${rows.length} texts) | ${words} | ${pct(old)} | ${pct(neu)} | ${pp(neu - old)} | ${pp(ci.low)} to ${pp(ci.high)} |`);
+  }
   lines.push('');
   const worse = e.results.filter((r) => r.spoken.new > r.spoken.old);
   const better = e.results.filter((r) => r.spoken.new < r.spoken.old);

@@ -249,6 +249,23 @@ transcripts first put through `g2p-en.ts` `normalise()`, so that Whisper writing
 **Margin**, written before the run: in spoken form the new WER may exceed the old by at most
 1.0 point, as for running text; every text where it is worse is listed.
 
+**Second pass (2026-11-20).** The second independent check found that the first pass's numeral
+rule read the pronoun I as a number before a contraction or a capitalised word ("Mary I'm yours"
+was "Mary the first'm yours", "Round I'm winning" "Round one'm", "MARY I LOVE YOU" "MARY the first
+LOVE YOU"), and a single C or D after a part's name as a number ("Part C" "Part one hundred"); that
+the time rule took "am" across a line break and the verb "am" after a count as a time ("Round 2 am
+I winning?" "two A M I"); and that an emoji inside English was silent where eSpeak NG named it.
+27 texts were added to the end of `scripts/voice/edge-texts.txt`: the check's fourteen edge texts
+and its five lines of contractions, word for word, then eight for this pass's rules (a lone I that
+is a number, C/D/L/M after a part's name, "an IV", "am" the verb and the time, three with emoji).
+They were committed before either reading of any of them was heard, and all 67 texts are measured
+again with the same models and settings. **Margin**, written before that run: in spoken form the
+new WER may exceed the old by at most 1.0 point, for all 67 texts and for the 27 new ones on their
+own; every text where it is worse is listed. The spoken form names emoji now (`normalise()` does),
+so for the three emoji texts the reference holds CLDR's name without a skin tone, and any word
+eSpeak NG says beyond it (a tone) counts against the old reading: those three are named with the
+results.
+
 <!-- edge -->
 Run of 2026-11-19 on v26.13.1, 40 texts (`scripts/voice/edge-texts.txt`), 16 minutes; the same models and settings as above.
 

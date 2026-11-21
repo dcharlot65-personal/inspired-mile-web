@@ -44,3 +44,35 @@ In 1600 the Globe was new.
 Ten past 10 on the 10th of May.
 Henry VI, Part 2, is rarely played.
 My score went up 100% in 24 hours.
+# Added on 2026-11-20, after the second independent check found the pronoun I read as a numeral
+# ("Mary the first'm yours"), single letters after a part's name read as numbers, "am" the verb
+# read as a time, and emoji left silent. First the check's fourteen edge texts and its five lines
+# of contractions, word for word; then texts for the rules of this pass. Written before either
+# reading of any of them was heard; the margin is in docs/voice/G2P-MEASUREMENT.md.
+Mary I'm yours, and John I'll never be.
+War I'm waging on your feeble rhymes.
+Listen Peter I've got the crown tonight.
+Innocent I'm not, but guilty I will never be.
+Part C of the plan is where you fall.
+Love you Mary XX, signed with a kiss.
+MARY I LOVE YOU, HEAR ME SHOUT.
+Back in the 90s, at 10pm, I played my mp3.
+I rhyme like 2pac, gr8 and 4ever.
+Henry VIII had six wives, Richard III one crown.
+Call 911 at 3:30am.
+In the 1990s the B2K crew ruled.
+I 💀 you with every line.
+Act III, Scene ii: the duel begins.
+John I'm the one who rules this stage.
+Round I'm winning, round I'm sure.
+Victor I'd rather die than lose to you.
+Peter I'll take your crown and keep it.
+Mary I'm yours, forever and a day.
+Charles I'm sure the War I'm waging is lost.
+Section D is mine, and Level M is yours.
+Henry I of England, then Mary I and Philip II.
+An IV bag hangs above the bed.
+Round 2 am I winning? At 7 am I woke.
+It's 3 am I can't sleep, by 6 pm I fight.
+🔥🔥 my verse burns, 👍🏽 to that.
+The 🇺🇸 flag and the 👩🏾‍🚀 in the sky.
