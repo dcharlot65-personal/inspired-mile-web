@@ -943,7 +943,6 @@ test.describe('Passkey-only accounts, with email off', () => {
     await page.goto(`${NO_EMAIL_WEB}/`);
     const first = await addVirtualAuthenticator(page);
     const { cdp } = first;
-    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
 
     // 1. Create the account. The warning comes before the account does.
     await openSignIn(page);
@@ -970,7 +969,9 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect(created.user.username).toMatch(/^bard-[0-9a-f]{12}$/);
     expect(created.passkey_count).toBe(1);
     const id = created.user.id;
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 1);
+    // This account, and no other for this authenticator (below: it holds one passkey). The whole
+    // table is not counted: tests in other workers create accounts at the same time.
+    expect(sql(`SELECT COUNT(*) FROM users WHERE id = '${id}'`)).toBe('1');
     expect(sql(`SELECT email IS NULL, age_tier, display_name IS NULL, avatar_url IS NULL FROM users WHERE id = '${id}'`)).toBe('t|adult|t|t');
     // The authenticator's user handle is the new account's id.
     const held = await cdp.send('WebAuthn.getCredentials', { authenticatorId: first.authenticatorId });
@@ -1037,26 +1038,37 @@ test.describe('Passkey-only accounts, with email off', () => {
   });
 
   test('an account cannot be started without an age tier of adult or teen', async ({ request }) => {
-    const attemptsBefore = sql('SELECT COUNT(*) FROM signup_attempts');
-    const challengesBefore = sql("SELECT COUNT(*) FROM auth_challenges WHERE kind = 'signup'");
+    // Every refused begin comes from one address, and only that network's rows are counted (its /24 in
+    // signup_attempts, the address in auth_challenges, and any challenge with no network written meanwhile):
+    // tests in other workers begin sign-ups at the same time, and a count of whole tables went up with theirs.
+    const ip = uniqueIp();
+    const net24 = `${ip.split('.').slice(0, 3).join('.')}.0/24`;
+    const since = sql('SELECT NOW()');
+    const attempts = () => sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${net24}'`);
+    const challenges = () => sql(`SELECT COUNT(*) FROM auth_challenges WHERE kind = 'signup' AND (net_key = '${ip}' OR (net_key IS NULL AND created_at >= '${since}'))`);
+    expect([attempts(), challenges()]).toEqual(['0', '0']);
     for (const ageTier of [null, 'unknown', 'blocked', 'child', '']) {
-      const res = await signupBegin(request, { ageTier });
+      const res = await signupBegin(request, { ageTier, ip });
       expect(res.status(), `age_tier=${JSON.stringify(ageTier)}`).toBe(403);
       expect((await res.json()).error).toBe('age_required');
     }
-    expect(sql('SELECT COUNT(*) FROM signup_attempts')).toBe(attemptsBefore);
-    expect(sql("SELECT COUNT(*) FROM auth_challenges WHERE kind = 'signup'")).toBe(challengesBefore);
+    expect([attempts(), challenges()]).toEqual(['0', '0']);
+    // Control: the same network, with an age tier, is served and leaves its challenge.
+    expect((await signupBegin(request, { ageTier: 'adult', ip })).status()).toBe(200);
+    expect(challenges()).toBe('1');
   });
 
   test('nothing is written to users unless the passkey verifies', async ({ request }) => {
-    const usersBefore = sql('SELECT COUNT(*) FROM users');
     const begun = await signupBegin(request, { ageTier: 'teen' });
     expect(begun.status()).toBe(200);
     const { challenge_id, options } = await begun.json();
     // Usernameless and discoverable, with a random handle and a generated name.
     expect(options.authenticatorSelection.residentKey).toBe('required');
     expect(options.user.name).toMatch(/^bard-[0-9a-f]{12}$/);
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    // The account this ceremony would make, by its name (not the whole table: other workers
+    // create accounts at the same time).
+    const made = () => sql(`SELECT COUNT(*) FROM users WHERE username = '${options.user.name}'`);
+    expect(made()).toBe('0');
     expect(sql(`SELECT kind, user_id IS NULL FROM auth_challenges WHERE id = '${challenge_id}'`)).toBe('signup|t');
 
     const bogus = {
@@ -1067,8 +1079,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect(refused.status()).toBe(400);
     expect((await refused.json()).error).toBe('passkey_not_registered');
     expect(refused.headers()['set-cookie']).toBeUndefined();
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
-    expect(sql(`SELECT COUNT(*) FROM users WHERE username = '${options.user.name}'`)).toBe('0');
+    expect(made()).toBe('0');
 
     // The challenge was used up by that attempt.
     const again = await request.post(`${API_NO_EMAIL}/auth/passkey/signup/finish`, { data: bogus });
@@ -1079,11 +1090,12 @@ test.describe('Passkey-only accounts, with email off', () => {
   test('a sign-up challenge that has expired creates nothing', async ({ page }) => {
     await page.goto(`${NO_EMAIL_WEB}/`);
     await addVirtualAuthenticator(page);
-    const usersBefore = sql('SELECT COUNT(*) FROM users');
 
-    // The ceremony by hand, so the challenge can be aged between its two halves.
+    // The ceremony by hand, so the challenge can be aged between its two halves. Accounts are
+    // counted by the name each ceremony would give (other workers create accounts meanwhile).
     const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
     expect(begun.status).toBe(200);
+    const madeAs = (name: string) => sql(`SELECT COUNT(*) FROM users WHERE username = '${name}'`);
     sql(`UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE id = '${begun.body.challenge_id}'`);
     const credential = await page.evaluate(async (options) => {
       const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(options);
@@ -1096,7 +1108,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     });
     expect(finished.status).toBe(400);
     expect(finished.body.error).toBe('challenge_expired');
-    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    expect(madeAs(begun.body.options.user.name)).toBe('0');
     expect((await me(page)).status()).toBe(401);
 
     // Control: the same steps without the ageing do create the account.
@@ -1110,7 +1122,7 @@ test.describe('Passkey-only accounts, with email off', () => {
       challenge_id: fresh.body.challenge_id, credential: freshCredential, name: 'in time',
     });
     expect(ok.status).toBe(200);
-    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(Number(usersBefore) + 1);
+    expect(madeAs(fresh.body.options.user.name)).toBe('1');
   });
 
   test('begun sign-ups do not use up the account budget: the forty-first begin is still served', async ({ request }) => {
