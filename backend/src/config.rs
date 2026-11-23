@@ -200,7 +200,6 @@ pub struct Config {
     pub port: u16,
     pub cors_origin: String,
     pub db_max_connections: u32,
-    pub launch_date: String,
     /// WebAuthn relying-party ID. Passkeys are bound to it for good: changing it orphans
     /// every registered passkey.
     pub webauthn_rp_id: String,
@@ -234,6 +233,13 @@ pub struct Config {
     /// Seconds between sweeps of expired challenges, old codes, ended sessions and unused
     /// accounts (`MAINTENANCE_INTERVAL_SECONDS`, default 600). The tests shorten it.
     pub maintenance_interval_seconds: u64,
+    /// Seconds between the tournament scheduler's looks for tournaments to start
+    /// (`TOURNAMENT_CHECK_SECONDS`, default 30). The tests shorten it.
+    pub tournament_check_seconds: u64,
+    /// `TOURNAMENT_ARRIVAL_SECONDS`: how long the first player into a tournament match's room
+    /// waits for the other, when shorter than `multiplayer::game_room::TOURNAMENT_ARRIVAL` (240 s).
+    /// For the tests: a longer value, or none, leaves the 240 s.
+    pub tournament_arrival_seconds: Option<u64>,
 }
 
 impl Config {
@@ -303,7 +309,6 @@ impl Config {
             db_max_connections: get("DB_MAX_CONNECTIONS")
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(25),
-            launch_date: get("LAUNCH_DATE").unwrap_or_else(|| "2026-04-01".into()),
             webauthn_rp_id,
             webauthn_origins,
             email_mode,
@@ -335,6 +340,13 @@ impl Config {
                 .and_then(|v| v.trim().parse().ok())
                 .filter(|n| *n > 0)
                 .unwrap_or(600),
+            tournament_check_seconds: get("TOURNAMENT_CHECK_SECONDS")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0)
+                .unwrap_or(30),
+            tournament_arrival_seconds: get("TOURNAMENT_ARRIVAL_SECONDS")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0),
         };
         Ok((config, warnings))
     }

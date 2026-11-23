@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': '与其他玩家买卖和交换莎士比亚收藏卡牌。',
+  'market.meta.description': '与其他玩家买卖莎士比亚收藏卡牌。',
   'market.titleA': '卡牌',
   'market.titleB': '市场',
-  'market.intro': '与其他玩家买卖和交换卡牌。把重复的卡牌挂出来出售，或者找到你缺少的卡牌。',
+  'market.intro': '向其他玩家购买卡牌，把用不上的卡牌卖出去。卖出时，点数归卖家，卡牌归买家。',
+  'market.adultsOnly': '市场仅限成年人的账户使用。',
   'market.tab.browse': '浏览',
   'market.tab.mine': '我的挂单',
-  'market.tab.sell': '出售或交换',
+  'market.tab.sell': '出售',
   'market.filter.all': '全部挂单',
   'market.filter.sale': '出售',
   'market.filter.trade': '交换',

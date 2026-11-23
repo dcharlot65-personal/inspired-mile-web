@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // English written in the markup is what a reader sees before the script has run.
 ---
 
-<BaseLayout title="Marketplace" description="Buy and trade Shakespeare collectible cards with other players.">
+<BaseLayout title="Marketplace" description="Buy and sell Shakespeare collectible cards with other players.">
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
@@ -16,26 +16,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Two pieces so that one can carry the gradient; the first brings its own space where the language wants one. -->
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4"><span data-i18n="market.titleA">Card </span><span class="text-gradient" data-i18n="market.titleB">Marketplace</span></h1>
         <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="market.intro">
-          Buy and trade cards with other players. Offer your duplicates for sale, or find the cards you are missing.
+          Buy cards from other players and sell the ones you can spare. A sale moves the credits and the card.
         </p>
       </div>
 
+      <!-- The market is for adult accounts only (owner, 2026-11-19): the server refuses every other
+           account, and this page shows them this instead (src/lib/adults-only.ts). -->
+      <div id="market-adults-only" hidden class="card-glass p-8 max-w-lg mx-auto text-center">
+        <p class="text-sm text-obsidian-300" data-i18n="market.adultsOnly">The market is for adult accounts only.</p>
+      </div>
+
+      <div id="market-body" hidden>
       <!-- Tabs -->
       <div class="flex flex-wrap gap-2 mb-8 justify-center">
         <button id="tab-browse" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors" data-i18n="market.tab.browse">Browse</button>
         <button id="tab-my" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.mine">My listings</button>
-        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.sell">Sell or trade</button>
+        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.sell">Sell</button>
       </div>
 
       <!-- Browse Panel -->
       <div id="panel-browse">
         <!-- Filters -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <select id="filter-type" aria-label="Kind of listing" data-i18n-aria-label="market.sell.type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
-            <option value="" data-i18n="market.filter.all">All listings</option>
-            <option value="sale" data-i18n="market.filter.sale">For sale</option>
-            <option value="trade" data-i18n="market.filter.trade">For trade</option>
-          </select>
+          <!-- Only sales are offered (a trade would need the buyer's card moved too: docs/ECONOMY.md). -->
           <input id="filter-search" type="text" placeholder="Search cards…" data-i18n-placeholder="market.search" data-i18n-aria-label="market.search" aria-label="Search cards…" dir="auto" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50 w-48 max-w-full" />
           <button id="refresh-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-2 hover:border-gold-500/30" data-i18n="market.refresh">Refresh</button>
         </div>
@@ -69,7 +72,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- Sell / Trade Panel -->
+      <!-- Sell Panel -->
       <div id="panel-sell" class="hidden">
         <div class="card-glass p-8 max-w-lg mx-auto">
           <h2 class="font-display text-xl font-bold text-obsidian-200 mb-6" data-i18n="market.sell.title">Create a listing</h2>
@@ -82,29 +85,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </select>
             </div>
 
-            <fieldset>
-              <legend class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.type">Kind of listing</legend>
-              <div class="flex flex-wrap gap-3">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="listing-type" value="sale" checked class="accent-gold-500" />
-                  <span class="text-sm text-obsidian-200" data-i18n="market.sell.sale">Sale</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="listing-type" value="trade" class="accent-gold-500" />
-                  <span class="text-sm text-obsidian-200" data-i18n="market.sell.trade">Trade</span>
-                </label>
-              </div>
-            </fieldset>
-
             <div id="price-field">
               <label for="sell-price" class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.price">Price (credits)</label>
               <input id="sell-price" type="number" min="1" max="100000" inputmode="numeric" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
-            </div>
-
-            <div id="wanted-field" class="hidden">
-              <label for="sell-wanted" class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.wanted">Cards wanted (card numbers, separated by commas)</label>
-              <!-- Card numbers are Latin letters and digits in every language. -->
-              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" lang="en" dir="ltr" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
             </div>
 
             <button id="create-listing-btn" class="w-full btn-primary py-3" data-i18n="market.sell.submit">Create the listing</button>
@@ -113,12 +96,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <script>
     import { browseListings, createListing, cancelListing, buyListing, myListings, type Listing } from '../lib/marketplace-client';
-    import { isLoggedIn } from '../lib/storage-backend';
+    import { ACCOUNT_CHANGED_EVENT, isLoggedIn } from '../lib/storage-backend';
+    import { adultsOnlyShown } from '../lib/adults-only';
+    import { ACCOUNT_CARDS_EVENT, refreshAccountCards, sellableCardIds } from '../lib/account-cards';
     import { has, t } from '../i18n';
     import { date, list, plural } from '../i18n/fmt';
     import { errorText, esc, initPage, onPageLocaleChange, isolate } from '../i18n/page';
@@ -142,14 +128,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    // Listing type toggle
-    document.querySelectorAll<HTMLInputElement>('input[name="listing-type"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        document.getElementById('price-field')!.classList.toggle('hidden', radio.value === 'trade');
-        document.getElementById('wanted-field')!.classList.toggle('hidden', radio.value === 'sale');
-      });
-    });
-
     const panel = (cls: string, text: string, alert = false) =>
       `<div class="col-span-full text-center py-12"><p class="text-sm ${cls}"${alert ? ' role="alert"' : ''}>${esc(text)}</p></div>`;
 
@@ -159,7 +137,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // Browse
     const listingsGrid = document.getElementById('listings-grid')!;
-    const filterType = document.getElementById('filter-type') as HTMLSelectElement;
     const filterSearch = document.getElementById('filter-search') as HTMLInputElement;
 
     type Load<T> = { state: 'loading' } | { state: 'ready'; items: T } | { state: 'failed'; error: unknown } | { state: 'signed-out' };
@@ -186,11 +163,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         return;
       }
 
+      // The server lists sales only now; an older trade listing is drawn as it was, and buying it is refused.
       let filtered = browse.items;
-      const typeFilter = filterType.value;
       const searchFilter = filterSearch.value.toLowerCase();
 
-      if (typeFilter) filtered = filtered.filter(l => l.listing_type === typeFilter);
       if (searchFilter) filtered = filtered.filter(l => l.card_id.toLowerCase().includes(searchFilter) || l.seller_username.toLowerCase().includes(searchFilter));
 
       if (filtered.length === 0) {
@@ -229,9 +205,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           if (!isLoggedIn()) { toast(t('market.toast.signInBuy'), 'warning'); return; }
           const id = (btn as HTMLElement).dataset.id!;
           try {
+            // The price moves from this account to the seller's, and the card to this account.
             await buyListing(id);
             toast(t('market.toast.bought'), 'success');
             loadListings();
+            await refreshAccountCards();
+            populateSellCards();
           } catch (e) {
             toast(errorText(e), 'error');
           }
@@ -239,7 +218,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     }
 
-    filterType.addEventListener('change', renderListings);
     filterSearch.addEventListener('input', renderListings);
     document.getElementById('refresh-btn')!.addEventListener('click', loadListings);
 
@@ -295,6 +273,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           try {
             await cancelListing(id);
             loadMyListings();
+            // The card is unlocked: it can be listed, sold or fielded again.
+            await refreshAccountCards();
+            populateSellCards();
           } catch (e) {
             toast(errorText(e), 'error');
           }
@@ -325,34 +306,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (!isLoggedIn()) { toast(t('market.toast.signInSell'), 'warning'); return; }
 
       const cardId = (document.getElementById('sell-card') as HTMLSelectElement).value;
-      const type = (document.querySelector<HTMLInputElement>('input[name="listing-type"]:checked'))!.value as 'sale' | 'trade';
-      const price = type === 'sale' ? Number((document.getElementById('sell-price') as HTMLInputElement).value) : undefined;
-      const wantedRaw = (document.getElementById('sell-wanted') as HTMLInputElement).value;
-      // A comma is written "," in most languages, "،" in Arabic, "、" or "，" in Chinese and Japanese.
-      const wanted = type === 'trade' && wantedRaw ? wantedRaw.split(/[,،、，]/).map(s => s.trim()).filter(Boolean) : undefined;
+      const price = Number((document.getElementById('sell-price') as HTMLInputElement).value);
 
       sellNotice = null;
       drawSellNotice();
 
       if (!cardId) { sellSays(() => t('market.sell.needCard')); return; }
-      if (type === 'sale' && (!price || price < 1)) { sellSays(() => t('market.sell.needPrice')); return; }
+      if (!price || price < 1) { sellSays(() => t('market.sell.needPrice')); return; }
 
       try {
-        await createListing(cardId, type, price, wanted);
+        await createListing(cardId, price);
         sellSays(() => t('market.sell.done'), true);
-        (document.getElementById('sell-card') as HTMLSelectElement).value = '';
+        // The card is locked to the listing now.
+        await refreshAccountCards();
+        populateSellCards();
       } catch (e) {
         sellSays(() => errorText(e));
       }
     });
 
-    // Populate sell card dropdown with owned cards
+    // The sell list: the account's cards on the server that are not listed already. The starter
+    // characters, which every account holds, cannot be sold, and a device's own cards are not the
+    // account's (src/lib/account-cards.ts).
     async function populateSellCards() {
       const select = document.getElementById('sell-card') as HTMLSelectElement;
+      while (select.options.length > 1) select.remove(1);
       try {
-        const { getOwnedCardIds } = await import('../lib/inventory');
         const { CARD_CATALOG } = await import('../lib/cards');
-        const ownedIds = getOwnedCardIds();
+        const ownedIds = sellableCardIds();
         const cardMap = new Map(CARD_CATALOG.map(c => [c.id, c.name]));
         for (const id of ownedIds) {
           const opt = document.createElement('option');
@@ -375,13 +356,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     // Nothing is drawn with t() before the language and this page's strings are in.
+    // Only an adult account (or, signed out, a visitor the age gate took for an adult) is shown the
+    // market; nothing is asked of the server for anyone else.
+    let opened = false;
+    function openIfAllowed() {
+      const allowed = adultsOnlyShown();
+      document.getElementById('market-adults-only')!.hidden = allowed;
+      document.getElementById('market-body')!.hidden = !allowed;
+      if (allowed && !opened) {
+        opened = true;
+        loadListings();
+        populateSellCards();
+      }
+    }
+
     initPage(['marketplace', 'shared'], { title: 'nav.marketplace', description: 'market.meta.description' })
       .catch((e) => console.error('[marketplace] the language could not be loaded', e))
       .then(() => {
         redraw();
         onPageLocaleChange(redraw);
-        loadListings();
-        populateSellCards();
+        openIfAllowed();
+        window.addEventListener(ACCOUNT_CHANGED_EVENT, openIfAllowed);
+        window.addEventListener('im-age-answered', openIfAllowed);
+        window.addEventListener(ACCOUNT_CARDS_EVENT, () => populateSellCards());
       });
   </script>
 </BaseLayout>

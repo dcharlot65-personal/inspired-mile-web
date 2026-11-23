@@ -10,8 +10,8 @@
  * Where the code comes from:
  *   1. a JSON body `{"error": "<code>"}` (the sign-in routes answer this way);
  *   2. otherwise the plain-text body, looked up in SERVER_TEXT_CODES. The
- *      classroom, marketplace, tournament, season, credit, inventory, variant,
- *      stats and referral routes answer `(status, "English sentence")`;
+ *      classroom, marketplace, tournament, season, credit, inventory, import
+ *      and referral routes answer `(status, "English sentence")`;
  *   3. otherwise the HTTP status;
  *   4. a request that never got an answer is `network`.
  *
@@ -20,6 +20,7 @@
  * the sixteen languages.
  */
 import { ApiError } from './api-client';
+import { ECONOMY } from './economy-rules';
 
 /** The codes this module can return besides the server's own. */
 export const GENERIC_CODES = [
@@ -54,43 +55,48 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   ['Title must be 1-128 characters', 'assignment_title_invalid'],
   // Marketplace
   ['Invalid card ID', 'card_invalid'],
-  ['Invalid card_id format', 'card_invalid'],
   ['Price must be between 1 and 100000', 'price_invalid'],
   ["You don't own this card", 'card_not_owned'],
-  ["You don't own the base card", 'card_not_owned'],
   ['Listing not found', 'listing_not_found'],
   ['Listing not found or not yours', 'listing_not_found'],
   ['Listing is no longer active', 'listing_inactive'],
   ['Cannot buy your own listing', 'listing_own'],
+  ['Only sales are offered', 'bad_request'],
+  ['Cards brought over from a device cannot be sold', 'card_bound'],
+  ['This card is in a match', 'card_in_play'],
+  // The market and referrals: adult accounts only (owner, 2026-11-19)
+  ['For adult accounts only', 'adults_only'],
   // Tournaments
   ['Tournament not found', 'tournament_not_found'],
   ['Tournament is not accepting registrations', 'tournament_closed'],
   ['Tournament is full', 'tournament_full'],
   ['Tournament name must be between 1 and 128 characters', 'bad_request'],
   ["Format must be 'single_elimination' or 'round_robin'", 'bad_request'],
+  ['A tournament takes 2 to 64 players', 'bad_request'],
+  ['Description too long', 'bad_request'],
   ['Invalid starts_at datetime', 'bad_request'],
   ['Match not found', 'match_not_found'],
   [/^Match is already /, 'match_finished'],
-  ['Only match participants can complete a match', 'forbidden'],
-  ['winner_id must be player1 or player2', 'bad_request'],
+  ['The opponent is not known yet', 'bad_request'],
+  ['Only match participants can play a match', 'forbidden'],
+  ['This match is past its deadline', 'match_overdue'],
   // Seasons
   ['No active season', 'no_active_season'],
-  ['Invalid XP amount', 'bad_request'],
   ['No season progress found', 'level_not_reached'],
   ['Level not yet reached', 'level_not_reached'],
   ['Reward already claimed or not found', 'reward_unavailable'],
-  // Credits
-  ['Invalid credit amount', 'bad_request'],
-  ['Invalid spend amount', 'bad_request'],
+  // Credits, packs and the import: every amount is the server's (docs/ECONOMY.md)
+  ['Amounts are set by the server', 'bad_request'],
+  ['Unknown source', 'bad_request'],
+  ['Unknown pack', 'bad_request'],
+  ['Already claimed', 'reward_unavailable'],
   ['Insufficient credits', 'insufficient_credits'],
   ['Invalid age tier', 'bad_request'],
   [/^Daily spending limit reached /, 'daily_limit_reached'],
-  // Variants, stats, referrals
-  ['Variant already unlocked', 'variant_already_unlocked'],
-  ['No stats found', 'not_found'],
-  [/^Stat values must be between /, 'bad_request'],
-  ['Maximum 50 achievements per request', 'bad_request'],
-  [/^Invalid achievement ID: /, 'bad_request'],
+  ['Too many cards', 'bad_request'],
+  ['Already imported', 'conflict'],
+  [/^A device's cards come over only in an account's first /, 'import_closed'],
+  // Referrals
   ['Invalid referral code', 'referral_invalid'],
   ['Referral code not found', 'referral_not_found'],
   ['Cannot redeem your own referral code', 'referral_own'],
@@ -132,7 +138,7 @@ export function apiErrorCode(e: unknown): string {
 
 /** Numbers some sentences mention ("between {min} and {max} credits"): the limits the server enforces. */
 export const ERROR_VARS: Readonly<Record<string, Readonly<Record<string, number>>>> = {
-  price_invalid: { min: 1, max: 100000 },
+  price_invalid: { min: ECONOMY.market.price_min, max: ECONOMY.market.price_max },
 };
 
 type Translate = (key: string, vars?: Record<string, string | number>) => string;

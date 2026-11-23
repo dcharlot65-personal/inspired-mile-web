@@ -57,6 +57,9 @@ pub struct UserResponse {
     pub display_name: Option<String>,
     pub auth_provider: String,
     pub avatar_url: Option<String>,
+    /// `adult`, `teen` or `unknown` (auth/age.rs). The pages show the market and referrals only
+    /// to an adult account; the server refuses the others whatever a page shows.
+    pub age_tier: String,
 }
 
 #[derive(Serialize)]
@@ -163,7 +166,7 @@ async fn me(
 ) -> Result<Json<AuthResponse>, ApiError> {
     let claims = session(&jar, &pool, &config).await?.claims;
     let row = sqlx::query(
-        "SELECT id, username, email, display_name, auth_provider, avatar_url, created_at
+        "SELECT id, username, email, display_name, auth_provider, avatar_url, age_tier, created_at
          FROM users WHERE id = $1",
     )
     .bind(claims.sub)
@@ -171,24 +174,19 @@ async fn me(
     .await?
     .ok_or_else(ApiError::unauthorized)?;
 
-    // Check founding player status
-    let founding = if let Ok(launch) = chrono::NaiveDate::parse_from_str(&config.launch_date, "%Y-%m-%d") {
-        let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
-        if created.date_naive() < launch {
-            // Grant founding player rewards (idempotent)
-            sqlx::query(
-                "UPDATE player_stats SET credits = GREATEST(credits, 500) WHERE user_id = $1 AND credits < 500",
-            )
-            .bind(claims.sub)
-            .execute(&pool)
-            .await
-            .ok();
-            Some(true)
-        } else {
-            Some(false)
+    // A founding player (an account made before `founding.created_before`, a date in
+    // backend/data/economy.json) is brought up to the founding balance once, logged as a credit
+    // transaction. Until 2026-11-19 every /auth/me refilled it, unlogged; until the third check of
+    // that day the date was the server's LAUNCH_DATE setting, so a later date in a server's
+    // environment handed every new account the credits.
+    let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
+    let founding = if inspired_mile_api::economy::RULES.founding.applies_to(created) {
+        if let Err(e) = grant_founding(&pool, claims.sub).await {
+            tracing::warn!(user_id = %claims.sub, "could not grant the founding credits: {e}");
         }
+        Some(true)
     } else {
-        None
+        Some(false)
     };
 
     Ok(Json(AuthResponse {
@@ -197,6 +195,24 @@ async fn me(
         passkey_count: passkey_count(&pool, claims.sub).await?,
         is_new_user: None,
     }))
+}
+
+/// Raise a founding player's balance to the founding amount, once per account.
+async fn grant_founding(pool: &PgPool, user_id: uuid::Uuid) -> Result<(), sqlx::Error> {
+    let mut tx = pool.begin().await?;
+    let balance = crate::ledger::lock_account(&mut tx, user_id).await?;
+    let granted: bool = sqlx::query_scalar(
+        "SELECT EXISTS (SELECT 1 FROM credit_transactions WHERE user_id = $1 AND source = 'founding')",
+    )
+    .bind(user_id)
+    .fetch_one(&mut *tx)
+    .await?;
+    // Logged even when nothing is due (a balance already over the amount), so it happens once.
+    if !granted {
+        let top_up = (inspired_mile_api::economy::RULES.founding.credits - balance).max(0);
+        crate::ledger::credit(&mut tx, user_id, top_up, "founding").await?;
+    }
+    tx.commit().await
 }
 
 // ---------------------------------------------------------------------------
@@ -211,7 +227,7 @@ pub async fn session(jar: &CookieJar, pool: &PgPool, config: &Config) -> Result<
 }
 
 /// Reads the columns every user query in this module selects:
-/// `id, username, email, display_name, auth_provider, avatar_url`.
+/// `id, username, email, display_name, auth_provider, avatar_url, age_tier`.
 pub fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
     UserResponse {
         id: row.get("id"),
@@ -220,6 +236,7 @@ pub fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
         display_name: row.get("display_name"),
         auth_provider: row.get("auth_provider"),
         avatar_url: row.get("avatar_url"),
+        age_tier: row.get("age_tier"),
     }
 }
 

@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'اشترِ بطاقات شكسبير للاقتناء وتبادلها مع لاعبين آخرين.',
+  'market.meta.description': 'اشترِ بطاقات شكسبير للاقتناء من لاعبين آخرين وبِعها لهم.',
   'market.titleA': 'سوق ',
   'market.titleB': 'البطاقات',
-  'market.intro': 'اشترِ البطاقات وتبادلها مع لاعبين آخرين. اعرض بطاقاتك المكرّرة للبيع، أو اعثر على البطاقات التي تنقصك.',
+  'market.intro': 'اشترِ البطاقات من لاعبين آخرين وبِع ما لا تحتاج إليه منها. عند البيع تذهب النقاط إلى البائع والبطاقة إلى المشتري.',
+  'market.adultsOnly': 'السوق لحسابات البالغين فقط.',
   'market.tab.browse': 'تصفّح',
   'market.tab.mine': 'عروضي',
-  'market.tab.sell': 'بيع أو مبادلة',
+  'market.tab.sell': 'بيع',
   'market.filter.all': 'كل العروض',
   'market.filter.sale': 'للبيع',
   'market.filter.trade': 'للمبادلة',

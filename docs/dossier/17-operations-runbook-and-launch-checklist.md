@@ -6,7 +6,7 @@ INTERNAL: do not share outside the company
 
 **Audience:** David Charlot (operator); any engineer or contractor given operator access. Not for investors, players or the public: this document names real hosts, addresses and secret names.
 
-**As of:** commit 0d6df6ef (`integrate/wave3`, 2026-11-18), plus the release branches `fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p` and `fix/compliance` (2026-11-19).
+**As of:** commit `5121f941` (Deploy 1, 2026-11-23) plus Deploy 2 (`docs/dossier` `e09c3a5c` and `fix/server-authority` `1d8472ad`, 2026-11-23). On 2026-11-23 the live origin for `sonnetman.inspiredmile.com` migrated to GCP **`openie-core-1` (`34.26.11.244`, Debian 12 `x86_64`, GLIBC 2.36: Caddy `/etc/caddy/conf.d/openie-dynamic.caddy` -> `/Users/dcharlot/sites/inspired-mile-web` and `localhost:3849`; systemd `openie-inspiredmile.service` -> `/Users/dcharlot/sites/inspired-mile-api/inspired-mile-api` on Postgres 15 `inspired_mile`)**, with the Mac mirrors (`100.98.101.113` and `100.64.224.0`) kept in sync alongside it.
 
 **Status:** Draft for the team, 2026-11-19.
 
@@ -281,7 +281,7 @@ The service worker fetches pages network-first, so returning visitors get the ro
 **Gaps (proposed fixes):**
 
 - **Freshness alarm:** nothing says if the 04:10 job stops or the push starts failing. Check daily that the newest dump and the newest Studio copy are less than 26 hours old, and alert on a `FAILED to copy` line (section 6.4).
-- **Privacy:** a deleted account survives in backups for up to 14 days; say so in the privacy policy's retention section.
+- **Privacy:** a deleted account survives in backups for up to 14 days; added to `src/pages/privacy.astro` ("Data Retention") in Deploy 2 (2026-11-23).
 
 ### 6.2 Restore drill (proposed: monthly, and after any change to `backup.sh`)
 
@@ -464,7 +464,8 @@ Tick each item and write who did it and when in section 9.
 | Date | Who | What (deploy, rollback, drill, incident) | Commit | Gates file or result | Notes |
 |---|---|---|---|---|---|
 | 2026-11-19 | | database backup set up; restore tested | n/a | | 14 days kept, 04:10 daily |
-| | | | | | |
+| 2026-11-23 | David Charlot | Deploy 1 (R1, R4, R5, R6–R8, R11–R14) + origin migrated to GCP `openie-core-1` (`34.26.11.244`) | `5121f941` | vitest, cargo, Playwright, prod-smoke green | Migrations 1..19 on Postgres 15 (`34.26.11.244`) and Postgres 18 (`100.64.224.0`); 0 users |
+| 2026-11-23 | David Charlot | Deploy 2 (`docs/dossier` + `fix/server-authority`: R2, R9, R10; `ECONOMY_LIVE = true`) | `main` (post-`1d8472ad`) | vitest, cargo, check-api-build, Playwright, prod-smoke green | Migrations 20 (`020_server_authority.sql`) and 21 (`021_tournament_deadlines.sql`) applied on `34.26.11.244` and `100.64.224.0`; static synced to `34.26.11.244`, `100.98.101.113`, `100.64.224.0` |
 
 ---
 

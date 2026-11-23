@@ -172,15 +172,18 @@ await loadArea('about');
         case 'submit': {
           const result = await session.submit();
           if (result) incrementStat('totalRounds');
-          if (result?.winner === 'player') incrementStat('battleWins');
           break;
         }
         case 'next':
           if (session.phase === 'finished') start(Math.floor(Math.random() * 2 ** 31));
           else {
             await session.next();
-            // A battle counts when it ends ("Opening Act: complete your first battle"), not when the page opens one.
-            if (session.phase === 'finished') incrementStat('totalBattles');
+            // A battle counts when it ends ("Opening Act: complete your first battle"), not when the page opens one,
+            // and a battle won is a match won, not a round (until 2026-11-19 each round won counted).
+            if (session.phase === 'finished') {
+              incrementStat('totalBattles');
+              if (session.winner === 'player') incrementStat('battleWins');
+            }
           }
           break;
         case 'mic':

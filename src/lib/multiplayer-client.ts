@@ -381,16 +381,17 @@ export async function checkInvitation(token: string): Promise<{ room_id: string 
 }
 
 /**
- * The cards the server records for this account (bought in the market, or moved from a browser's
- * collection): with the starter characters, what the account may field online. Empty if they
- * cannot be read; the server checks a deck itself either way.
+ * The cards the account holds on the server (packs the server opened, the market, the one-time
+ * import of a device's collection): with the starter characters, what the account may field
+ * online. A card on sale in the market is locked and left out. Empty if they cannot be read;
+ * the server checks a deck itself either way.
  */
 export async function accountCards(): Promise<Set<string>> {
   try {
     const response = await fetch('/api/v1/inventory', { credentials: 'include' });
     if (!response.ok) return new Set();
-    const rows = (await response.json()) as Array<{ card_id: string }>;
-    return new Set(rows.map((r) => r.card_id));
+    const rows = (await response.json()) as Array<{ card_id: string; listed?: boolean }>;
+    return new Set(rows.filter((r) => !r.listed).map((r) => r.card_id));
   } catch {
     return new Set();
   }

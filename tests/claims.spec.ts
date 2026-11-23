@@ -1,4 +1,8 @@
 import { test, expect, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { ECONOMY_LIVE } from '../src/lib/economy-live';
+
+const ECONOMY = JSON.parse(readFileSync('backend/data/economy.json', 'utf8'));
 
 /**
  * What the site says it does, held to what this build does (owner decision D-03, 2026-11-19: no claim
@@ -34,35 +38,60 @@ async function read(page: Page, path: string) {
 }
 
 test.describe('What the site claims', () => {
-  test('no page says credits are earned by playing', async ({ page }) => {
-    for (const path of ['/about', '/terms', '/privacy', '/playground']) {
+  test('every economy page says credits are never bought with real money, and promises play rewards only when ECONOMY_LIVE is on', async ({ page }) => {
+    for (const [path, noMoney] of [
+      ['/about', /never bought with real money/i],
+      ['/terms', /cannot be purchased with real money/i],
+      ['/privacy', /cannot be bought with real money/i],
+      ['/playground', /No real money purchases/i],
+    ] as const) {
       const { text } = await read(page, path);
-      expect(text, path).not.toMatch(/credits? (?:are |is )?earned|earned through gameplay|earn(?:s|ed)? credits/i);
+      expect(text, path).toMatch(noMoney);
+      if (!ECONOMY_LIVE) {
+        expect(text, path).not.toMatch(/credits? (?:are |is )?earned|earned through gameplay|earn(?:s|ed)? credits/i);
+      }
+    }
+    if (ECONOMY_LIVE) {
+      const { text } = await read(page, '/playground');
+      expect(text).toContain('Signed in, play earns credits for your account, and credits buy packs.');
     }
   });
 
-  test('the About page says credits are never bought with real money, and lists no amounts', async ({ page }) => {
+  test('the About page says credits are never bought with real money, and matches ECONOMY_LIVE on solo credit amounts', async ({ page }) => {
     await page.goto('/about');
     const body = page.locator('[data-i18n-html="about.free.body"]');
     await expect(body).toHaveText('Every feature is available without spending a dime. Credits are never bought with real money.');
-    expect(await page.locator('main').textContent()).not.toMatch(/\+\s?(?:50|30|20|10)\b/);
+    const mainText = (await page.locator('main').textContent()) ?? '';
+    if (ECONOMY_LIVE) {
+      for (const s of ['solo_win', 'trivia', 'challenge', 'daily'] as const) {
+        expect(mainText).toContain(`+${ECONOMY.solo.credits[s].amount}`);
+      }
+    } else {
+      expect(mainText).not.toMatch(/\+\s?(?:50|30|20|10)\b/);
+    }
   });
 
-  test('the playground lists no packs for sale, and says no real money buys anything', async ({ page }) => {
+  test('the playground matches ECONOMY_LIVE on packs for sale, and says no real money buys anything', async ({ page }) => {
     // The first-visit tour would cover the page (and can come up after a skip): mark it seen before the page loads.
     await page.addInitScript(() => localStorage.setItem('inspired-mile-onboarding-done', '1'));
     await page.goto('/playground');
     await page.click('#odds-toggle');
     await expect(page.locator('#odds-content')).toBeVisible();
-    await expect(page.locator('[data-i18n="pg.odds.tiers"]')).toHaveCount(0);
+    await expect(page.locator('#odds-content [data-i18n="pg.odds.tiers"]')).toHaveCount(ECONOMY_LIVE ? 1 : 0);
     await expect(page.locator('[data-i18n="pg.odds.note"]')).toHaveText('No real money purchases. Each card draw is independent.');
   });
 
-  test('the Season Pass lists no XP for play and says play earns none', async ({ page }) => {
+  test('the Season Pass matches ECONOMY_LIVE on XP for play', async ({ page }) => {
     await page.goto('/season');
-    await expect(page.locator('[data-xp-rate]')).toHaveCount(0);
-    await expect(page.locator('#season-no-xp')).toHaveText(/In this version of the game, play earns no XP\./);
-    expect(await page.locator('main').textContent()).not.toMatch(/to earn XP/i);
+    if (ECONOMY_LIVE) {
+      await expect(page.locator('#season-no-xp')).toHaveCount(0);
+      await expect(page.locator('[data-xp-rate]')).toHaveCount(4);
+      await expect(page.locator('[data-i18n="season.intro"]')).toContainText('earn XP');
+    } else {
+      await expect(page.locator('[data-xp-rate]')).toHaveCount(0);
+      await expect(page.locator('#season-no-xp')).toHaveText(/In this version of the game, play earns no XP\./);
+      expect(await page.locator('main').textContent()).not.toMatch(/to earn XP/i);
+    }
   });
 
   test('the collection promises a world card for a perfect trivia round only, not for battles', async ({ page }) => {

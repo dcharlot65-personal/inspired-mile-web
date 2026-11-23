@@ -33,10 +33,12 @@ export async function browseListings(): Promise<Listing[]> {
   return request('');
 }
 
-export async function createListing(cardId: string, type: 'sale' | 'trade', priceCredits?: number, wantedCardIds?: string[]): Promise<Listing> {
+/** List one card for sale. The card is locked to the listing until it sells or is cancelled.
+ *  Only sales are offered (a trade would need the buyer's card moved too, which is not built). */
+export async function createListing(cardId: string, priceCredits: number): Promise<Listing> {
   return request('/list', {
     method: 'POST',
-    body: JSON.stringify({ card_id: cardId, listing_type: type, price_credits: priceCredits, wanted_card_ids: wantedCardIds }),
+    body: JSON.stringify({ card_id: cardId, listing_type: 'sale', price_credits: priceCredits }),
   });
 }
 
@@ -48,7 +50,8 @@ export async function cancelListing(id: string): Promise<void> {
   await request(`/${id}/cancel`, { method: 'POST' });
 }
 
-export async function buyListing(id: string): Promise<{ status: string; card_id: string }> {
+/** Buy a listing: the price moves from you to the seller, and the card to you, in one step. */
+export async function buyListing(id: string): Promise<{ status: string; card_id: string; price: number; credits: number }> {
   return request(`/${id}/buy`, { method: 'POST' });
 }
 

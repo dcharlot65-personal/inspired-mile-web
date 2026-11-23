@@ -123,8 +123,9 @@ function plain(template, vars, lang) {
   return out;
 }
 
-const NUMERIC = new Set(['n', 'total', 'points', 'bonus', 'penalty', 'a', 'b', 'line', 'done', 'mb', 'percent', 'cards', 'achievements']);
-const TYPICAL = { n: 3, total: 3, points: 2, bonus: 2, penalty: 1, a: 1, b: 2, line: 2, done: 512, mb: 75, percent: 40, cards: 12, achievements: 4 };
+const NUMERIC = new Set(['n', 'total', 'points', 'bonus', 'penalty', 'a', 'b', 'line', 'done', 'mb', 'percent', 'cards', 'achievements', 'max']);
+// {max} is the most cards a device's one-time import takes (migrate.limit; backend/data/economy.json).
+const TYPICAL = { n: 3, total: 3, points: 2, bonus: 2, penalty: 1, a: 1, b: 2, line: 2, done: 512, mb: 75, percent: 40, cards: 12, achievements: 4, max: 20 };
 
 // A name that means something else in one string: in the tally, {you} and {them} are rounds won.
 const BY_KEY = { 'end.tally': { you: 2, them: 1 } };

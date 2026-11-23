@@ -2,13 +2,14 @@
 // Page area "marketplace": the marketplace (/marketplace).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'market.meta.description': 'Покупай коллекционные карты по Шекспиру и обменивайся ими с другими игроками.',
+  'market.meta.description': 'Покупай у других игроков коллекционные карты по Шекспиру и продавай им свои.',
   'market.titleA': 'Рынок ',
   'market.titleB': 'карт',
-  'market.intro': 'Покупай карты и обменивайся ими с другими игроками. Выставь на продажу свои дубликаты или найди карты, которых тебе не хватает.',
+  'market.intro': 'Покупай карты у других игроков и продавай те, что тебе не нужны. При продаже кредиты уходят продавцу, а карта — покупателю.',
+  'market.adultsOnly': 'Рынок открыт только для учётных записей взрослых.',
   'market.tab.browse': 'Обзор',
   'market.tab.mine': 'Мои объявления',
-  'market.tab.sell': 'Продать или обменять',
+  'market.tab.sell': 'Продать',
   'market.filter.all': 'Все объявления',
   'market.filter.sale': 'На продажу',
   'market.filter.trade': 'На обмен',

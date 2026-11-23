@@ -1,6 +1,7 @@
 /**
  * Achievement System — Track player milestones.
- * Persists unlocked achievements to localStorage.
+ * Persists unlocked achievements to localStorage: they are this device's, never posted to an
+ * account (the account's are those the server can verify; docs/ECONOMY.md).
  * Fires custom events for toast notifications.
  */
 
@@ -449,16 +450,10 @@ export function checkNewAchievements(stats?: PlayerStats): Achievement[] {
         window.dispatchEvent(new CustomEvent('achievement-unlocked', { detail: a }));
       }
     }
-    // Sync to server if logged in
-    if (typeof window !== 'undefined') {
-      import('./storage-backend').then(({ getStorageMode }) => {
-        if (getStorageMode() === 'server') {
-          import('./api-client').then(({ checkAchievements }) => {
-            checkAchievements(newlyUnlocked.map(a => a.id)).catch(() => {});
-          }).catch(() => {});
-        }
-      }).catch(() => {});
-    }
+    // These stay on the device: they are worked out from what this browser saw, which the server
+    // cannot verify. The account's achievements are the server's own (GET /stats/achievements,
+    // from the online matches it judged and the cards it gave); until 2026-11-19 each unlock here
+    // was posted to the account, and the server took any id it was sent.
   }
 
   return newlyUnlocked;

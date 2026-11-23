@@ -142,11 +142,11 @@ before a deploy; `tests/ai-marking.spec.ts`). The label and the notice before th
 below) read the same lists: the notice says who may write and judge, the label who wrote this verse, and a
 verse the written opponent plays (also where a model writes and loses the round to it) has no label.
 
-**What play pays** is one switch, `ECONOMY_LIVE` in `src/lib/economy-live.ts`: false while nothing calls
-`earnCredits`, `addXP` or `buyPack` (as in the first deploy of R15; fix/server-authority's economy calls them), and then the Season Pass shows no XP rates and says
-play earns none, and the playground's odds list no packs for sale. `src/lib/economy-live.test.ts` fails when
-the switch and the callers disagree, so a merge that makes play pay must turn it on. Copy that holds either
-way says only that credits are never bought with real money (about, terms, privacy).
+**What play pays** is one switch, `ECONOMY_LIVE` in `src/lib/economy-live.ts`: now `true` with `fix/server-authority`
+merged (`earnSolo` calls `earnCredits` and `addXP`, and the playground calls `buyPack`), so the Season Pass shows
+`season.intro` and its XP rates, the About page shows the solo credit amounts, and the playground shows pack tiers.
+`src/lib/economy-live.test.ts` fails when the switch and the callers disagree. Copy that holds either way says only
+that credits are never bought with real money (about, terms, privacy).
 
 ## The voice (Kokoro) and its English pronunciation
 
@@ -268,9 +268,9 @@ raw text. The single-player page previews `DuelSession.preview()` of the same te
 scores (`src/lib/battle-preview.test.ts`).
 
 What the room enforces besides the rules: three to five characters, each a starter character
-(`ONLINE_STARTER`: the first three of the catalogue) or one the account's `owned_cards` holds
-(`handlers.rs not_held`; the collection is otherwise the browser's, so this binds a deck to
-what the account records, not to what a player paid for); at most `MAX_ROOMS_PER_USER` live
+(`ONLINE_STARTER`: the first three of the catalogue) or one the account holds on the server
+(`handlers.rs not_held`: `owned_cards` with `state = 'owned'`; a card on sale is locked, and cards
+come only from the server: docs/ECONOMY.md); at most `MAX_ROOMS_PER_USER` live
 rooms per account and `MAX_ROOMS_PER_ADDRESS` (40) per network (an IPv4 address or an IPv6 /48:
 `handlers.rs origin_of`, the client address as every other limit finds it, `auth::client_addr`,
 so a forwarding header counts only from `TRUSTED_PROXIES` and with `PROXY_SECRET` when it is
@@ -302,6 +302,44 @@ holds the room) and removes it. The build itself (a const assertion in game_room
 `FINISHED_LINGER + SWEEP_EVERY <= POLICY_AFTER_THE_END` (120 s), and
 src/lib/privacy-retention.test.ts holds the policy's words to `POLICY_AFTER_THE_END`. Change any
 of these and the policy together.
+
+## The economy and the rankings (docs/ECONOMY.md)
+
+The server is the authority (owner, 2026-11-19). Every amount, rate and cap is in ONE file,
+`backend/data/economy.json`: the API compiles it in (`backend/src/economy.rs`, pure rules;
+`backend/src/ledger.rs`, every credit, XP and card movement, under a per-account row lock, logged in
+`credit_transactions` / `xp_transactions`) and the pages import it (`src/lib/economy-rules.ts`;
+`economy-rules.test.ts` holds the pages' own numbers to it). A request that names an amount is a
+400. Solo sources (`solo_win`, `trivia`, `challenge`, `daily`) pay fixed amounts with daily caps
+(UTC days). Cards come only from the server: starter characters (no row, never sold), free and
+bought packs drawn with the server's randomness (`POST /inventory/claim`, `/inventory/packs`),
+season rewards, the market, and a one-time capped import of a device's collection on an account's
+first sign-in (`POST /migrate/import`: one of each different card, in the account's first 24 hours,
+`import.window_hours`). Signed in, every page's collection is the account's
+(`src/lib/account-cards.ts`, a copy in localStorage removed at sign-out; `inventory.ts getOwnedCards`
+reads it); signed out it is the device's own, for solo play. A finished online match is handed to
+the recorder (`multiplayer/results.rs`) and stored in `battle_rooms` (never the verses): the
+leaderboard, `GET /stats`, account achievements and tournament results read only those rows, and a
+win is a match. The leaderboard and the win achievements count ranked wins: at most three a UTC
+day over one opponent (`stats/handlers.rs ranked_wins!`); online XP pays three matches a day between
+the same two accounts. A tournament match is decided by its room
+(`POST .../room`; `tournaments/progress.rs`), or past its deadline (`play_by`, 48 h) by the
+scheduler: a player who waited out the room's time to arrive goes through, else nobody wins it
+(single elimination: both out; the next round's opponent goes through as a bye). There is no lot,
+no new room past the deadline, and a room's result still being written holds the deadline off
+(`game_room.rs Unstored`). A tournament's standings count only matches a room decided. The final of
+a single-elimination bracket is round log2(first-round matches) + 1
+(`final_round`), never "a round with one match so far". The founding-credits date is
+`founding.created_before` in the file; the API does not read `LAUNCH_DATE`. Device achievements stay on the device.
+**The market and referrals are for adult accounts only** (owner, 2026-11-19): the server refuses the
+others (`auth/age.rs is_adult`, 403 "For adult accounts only") and the pages hide them
+(`src/lib/adults-only.ts`, `data-adults-only`; `/auth/me` sends `user.age_tier`). **Credits are never
+sold for money.** Cards brought over in the import cannot be sold (`import.sellable`) and earn no
+achievement; the last copy of a card seated in a room that has not ended cannot be listed (the seat
+and the listing take the same account lock). `tests/economy.spec.ts` holds each rule (API-level,
+real Postgres); no route lets a client add a card, so tests seed cards with `psql` against the
+harness's database. `src/lib/api-routes.test.ts` fails when a page calls a route (method and path)
+that no router defines.
 
 ## Building the API
 
@@ -335,6 +373,15 @@ Postgres and two copies of the real API (`tests/start-backend.sh`; needs `initdb
 `createdb` and `cargo` on `PATH`, hence `/opt/homebrew/bin` and `~/.cargo/bin` above), and
 the Astro dev server, which proxies `/api` to the API (`astro.config.mjs`). State and logs
 go to `.e2e/` (git-ignored); the sign-in codes the tests read are in `.e2e/api.log`.
+
+The harness starts the API with `TOURNAMENT_CHECK_SECONDS=1` (the scheduler's look for tournaments
+to start and for matches past their deadline; `E2E_TOURNAMENT_SECONDS` moves it), and its email-off
+copy with `TOURNAMENT_ARRIVAL_SECONDS=5` (a tournament room waits 5 s, not 240, for its second
+player; `E2E_TOURNAMENT_ARRIVAL_SECONDS` moves it), so a test can open a room there and see a no-show
+recorded. The email-off copy also runs with `LAUNCH_DATE=2099-01-01`, which the API must ignore (the
+founding date is economy.json's). `tests/noemail-proxy.mjs` passes that origin's game socket to the email-off API. Tests count
+only the accounts they made (by id or name), never the whole `users` table: other workers create
+accounts at the same time.
 
 **The build host is shared, and no server is reused.** Default ports: 4399 (dev server),
 38490 (API, `DEV_EMAIL_LOG=1`), 38491 (API with email off), 54329 (Postgres). If another
@@ -675,21 +722,26 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   with its reason in `docs/language/allow/`. Everything taken from an outside source is listed
   in `docs/language/PROVENANCE.md`.
 
-## Where it runs (verified 2026-11-16)
+## Where it runs (verified 2026-11-23)
 
-- **Live origin for the domain is `10.10.10.1`**: Cloudflare's "publishing" tunnel terminates
-  there, not on prod. Its Caddy serves `~/sites/inspired-mile-web` and forwards `/api/*`
-  (including the multiplayer WebSocket) to prod at `100.64.224.0:3849`.
-- **Static build is mirrored to both** `10.10.10.1` and prod (`100.64.224.0`), same path.
-  Sync with `rsync --delete --exclude=.git/`.
-- **API on prod**: `~/sites/inspired-mile-api/` (binary, `migrations/`, `.env`), launchd
+- **Live origin for the domain is GCP `openie-core-1` (`34.26.11.244`, Debian 12 `x86_64`, GLIBC 2.36; migrated 2026-11-23)**:
+  Caddy (`/etc/caddy/conf.d/openie-dynamic.caddy`) serves `/Users/dcharlot/sites/inspired-mile-web` and proxies `/api/*`
+  (including the multiplayer WebSocket) to `localhost:3849`. Systemd `openie-inspiredmile.service` runs
+  `/Users/dcharlot/sites/inspired-mile-api/inspired-mile-api` (`WorkingDirectory=/Users/dcharlot/sites/inspired-mile-api`,
+  `EnvironmentFile=-/etc/openie/env/com.inspiredmile.api.env`) against local Postgres 15 database `inspired_mile`.
+  Cross-compile the Linux binary on the build Studio (`100.100.141.123`) with
+  `cargo zigbuild --release --locked --target x86_64-unknown-linux-gnu.2.36` and verify `ldd` on `34.26.11.244` before swapping.
+- **Mac mirrors are kept in sync alongside `openie-core-1`**: static build synced with `rsync --delete --exclude=.git/`
+  to both the M4 (`100.98.101.113` / `10.10.10.1`, `~/sites/inspired-mile-web`) and the Mac Studio M4 Max (`100.64.224.0`,
+  `~/sites/inspired-mile-web`).
+- **API mirror on `100.64.224.0`**: `~/sites/inspired-mile-api/` (arm64 macOS binary, `migrations/`, `.env`), launchd
   `com.inspiredmile.api`, logs `~/sites/logs/inspiredmile-api*.log`, Postgres 18 database
   `inspired_mile`. It lives outside the web root on purpose: `.env` must never be servable.
   `DATABASE_URL` needs an explicit user (sqlx 0.9 no longer infers it). Migrations are read
-  from `./migrations` at start-up, so sync that folder with the binary.
-- Replace the binary by writing a new file and renaming it, then
-  `launchctl bootout` + `bootstrap` (not an in-place copy). Prod is arm64 macOS: build the
-  release binary on an Apple Silicon build host (the Studio, or the M4), never the Intel iMac.
+  from `./migrations` at start-up, so sync that folder with the binary on both `34.26.11.244` and `100.64.224.0`.
+- Replace the binary by writing a new file (`inspired-mile-api.new`) and renaming it (`mv`), then
+  `sudo systemctl restart openie-inspiredmile.service` on `34.26.11.244` and `launchctl bootout` + `bootstrap` on `100.64.224.0`
+  (never an in-place copy). Build the arm64 macOS binary on an Apple Silicon build host (the Studio, or the M4), never the Intel iMac.
 - **Before swapping the binary**, run `scripts/check-migrations.sh <the new migrations folder>
   -d inspired_mile` on prod (any psql connection arguments after the folder). It compares
   `_sqlx_migrations` with the files the way sqlx does (SHA-384 of each file) and exits 1 when the

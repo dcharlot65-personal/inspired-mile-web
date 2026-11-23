@@ -800,7 +800,8 @@ function englishJson(): string {
 }
 
 function cardsJson(): string {
-  return lines(CARD_CATALOG.map((c) => ({ id: c.id, name: c.name, type: c.type, house: c.house, quote: c.quote })));
+  // Rarity is for the server's packs (backend/src/economy.rs), not for scoring.
+  return lines(CARD_CATALOG.map((c) => ({ id: c.id, name: c.name, type: c.type, house: c.house, quote: c.quote, rarity: c.rarity })));
 }
 
 function tablesJson(): string {

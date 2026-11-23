@@ -25,7 +25,8 @@ export interface Tournament {
   status: string;
   starts_at: string;
   created_at: string;
-  entry_count?: number;
+  /** Players registered. */
+  player_count?: number;
 }
 
 export interface BracketMatch {
@@ -39,6 +40,11 @@ export interface BracketMatch {
   winner_id: string | null;
   status: string;
   room_id: string | null;
+  /** When the match is to have been played (once both players are known); then the server
+   *  decides it (docs/ECONOMY.md, "Tournaments"). */
+  play_by?: string | null;
+  /** room, bye, no_show, lot or unplayed. */
+  decided_by?: string | null;
 }
 
 export interface LeaderboardEntry {
@@ -69,24 +75,10 @@ export async function getLeaderboard(id: string): Promise<LeaderboardEntry[]> {
   return request(`/${id}/leaderboard`);
 }
 
-export interface MatchCompletionResponse {
-  match_id: string;
-  winner_id: string;
-  tournament_completed: boolean;
-  next_match_id: string | null;
-}
-
-export async function completeMatch(
-  tournamentId: string,
-  matchId: string,
-  winnerId: string,
-  battleRoomId?: string,
-): Promise<MatchCompletionResponse> {
-  return request(`/${tournamentId}/matches/${matchId}/complete`, {
-    method: 'POST',
-    body: JSON.stringify({
-      winner_id: winnerId,
-      battle_room_id: battleRoomId ?? null,
-    }),
-  });
+/**
+ * The room a tournament match is played in (the same one for both players). Its result, as the
+ * server judges it, decides the match: no player names a winner.
+ */
+export async function openMatchRoom(tournamentId: string, matchId: string): Promise<{ room_id: string }> {
+  return request(`/${tournamentId}/matches/${matchId}/room`, { method: 'POST' });
 }

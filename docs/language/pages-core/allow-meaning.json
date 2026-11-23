@@ -4160,6 +4160,14 @@
    "flag": "the back-translation is negated, the English is not",
    "back": "Your characters travel around the planet. Pass the quiz without a single mistake to unlock variants of cities.",
    "reason": "«Пройди викторину без единой ошибки» (pass the quiz without a single mistake) is how Russian says a perfect score, as world-map.intro does; the word rule reads 'without' as a negation. Read: it says the English (fix/predeploy, 2026-11-19)."
+  },
+  {
+   "lang": "zh",
+   "key": "about.free.earn.title",
+   "text": "赢取点数",
+   "flag": "cos 0.1899, LaBSE 0.5309, chrF 9.7",
+   "back": "Number of points won",
+   "reason": "赢取点数, 'earn points': 点数 is this area's word for credits throughout (about.free.body, about.free.safe.l2)."
   }
  ]
 }

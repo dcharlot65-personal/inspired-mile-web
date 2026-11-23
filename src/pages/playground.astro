@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
 import { ECONOMY_LIVE } from '../lib/economy-live';
+import { ECONOMY } from '../lib/economy-rules';
+// The packs the server sells, at its price (backend/data/economy.json).
+const tiers = ECONOMY.packs.tiers;
 ---
 
 <BaseLayout title="Playground" description="Earn digital cards through mini-games, trivia, challenges, and more. Build your Shakespeare collection.">
@@ -36,6 +39,14 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
           <div>
             <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.trivia">Trivia Score</span>
             <span id="stat-trivia" class="text-lg font-display font-bold text-emerald-400">0</span>
+          </div>
+          <!-- Signed in only: the account's balance, as the server last said. -->
+          <div id="stat-credits-wrap" class="hidden items-center gap-6">
+            <div class="w-px h-8 bg-obsidian-700"></div>
+            <div>
+              <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.credits">Credits</span>
+              <span id="stat-credits" class="text-lg font-display font-bold text-gold-400">0</span>
+            </div>
           </div>
         </div>
         <a href="/collection" class="btn-secondary text-xs" data-i18n="pg.viewCollection">View Collection</a>
@@ -82,6 +93,21 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
               <span id="daily-badge" class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30" data-i18n="pg.free">FREE</span>
             </button>
           </div>
+          {/* Signed in only: packs the server opens, paid in credits at its price. */}
+          {ECONOMY_LIVE && (
+          <div id="buy-packs" class="hidden mt-4">
+            <p class="text-xs font-semibold text-obsidian-400 mb-2" data-i18n="pg.odds.tiers">Pack Tiers (purchased with Credits)</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {tiers.map((tier) => (
+                <button class="buy-pack-btn card-glass p-3 text-start hover:border-gold-500/30 transition-all" data-tier={tier.tier} data-price={tier.price}>
+                  <span class="block text-xs font-semibold text-obsidian-200" data-i18n={`pg.odds.${tier.tier}`}>{tier.tier}</span>
+                  <span class="block text-[10px] text-obsidian-500 mt-1" data-i18n={`pg.odds.${tier.tier}Line`}>{tier.cards} · {tier.price}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          )}
+          <p class="text-[11px] text-obsidian-500 mt-4" data-i18n="pg.rewardNote">Signed in, play earns credits for your account, and credits buy packs. Signed out, it earns cards for this device.</p>
         </div>
 
         <!-- Pack Odds Disclosure -->
@@ -163,7 +189,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
               <p class="text-xs text-obsidian-500" data-i18n="pg.battle.sub">Win verse duels to earn cards</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.battle.body">Challenge a Shakespeare character to a duel of verses. Win the match and earn a random card from the collection.</p>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.battle.body">Challenge a Shakespeare character to a duel of verses. Win the duel and earn a reward.</p>
           <a href="/battle" class="btn-danger text-sm w-full justify-center">
             <span data-i18n="pg.battle.cta">Enter the Arena</span>
             <svg class="w-4 h-4 ms-2 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,7 +209,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
               <p class="text-xs text-obsidian-500" data-i18n="pg.trivia.sub">Test your knowledge, earn cards</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.trivia.body">Answer 5 questions about Shakespeare. Score 3 or more to earn a card.</p>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.trivia.body">Answer 5 questions about Shakespeare. Score 3 or more to earn a reward.</p>
           <button id="trivia-start-btn" class="btn-primary text-sm w-full justify-center" data-i18n="pg.trivia.start">Start Trivia</button>
         </div>
 
@@ -198,7 +224,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
               <p class="text-xs text-obsidian-500" data-i18n="pg.challenge.sub">Complete the famous quote</p>
             </div>
           </div>
-          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.challenge.body">Fill in the missing words from a Shakespeare quote. Get it right, earn a card.</p>
+          <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.challenge.body">Fill in the missing words from a Shakespeare quote. Get it right, earn a reward.</p>
           <button id="challenge-start-btn" class="btn-secondary text-sm w-full justify-center border-purple-500/30 text-purple-300 hover:bg-purple-500/10" data-i18n="pg.challenge.start">Start Challenge</button>
         </div>
       </div>
@@ -276,14 +302,18 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
   </div>
 
   <script>
-    import { CARD_CATALOG, RARITY_COLORS, drawRandomCard, drawPack, type Card, type Rarity } from '../lib/cards';
+    import { CARD_CATALOG, RARITY_COLORS, drawRandomCard, drawPack, getCardById, type Card, type Rarity } from '../lib/cards';
     import {
       addCard, getStats, isStarterClaimed, claimStarter,
-      isDailyAvailable, claimDaily, recordTriviaCorrect, recordChallengeComplete,
+      isDailyAvailable, claimDaily, recordTriviaCorrect, recordChallengeComplete, takeDeviceCard,
     } from '../lib/inventory';
+    import { buyPack, claimPack } from '../lib/api-client';
+    import { ACCOUNT_CARDS_EVENT, accountCopy, refreshAccountCards, usingAccountCards } from '../lib/account-cards';
+    import { earnSolo } from '../lib/credits';
+    import { errorText } from '../i18n/page';
     import { type TriviaQuestion } from '../lib/trivia';
     import { answersMatch, localRandomChallenge, localRandomQuestions, type LocalChallenge } from '../lib/play-content';
-    import { has, initI18n, isRtl, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
+    import { has, initI18n, isRtl, loadArea, locale, num, onLocaleChange, applyTranslations, t } from '../i18n';
     import { initAudio, isInitialized, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
     import { brainInfo } from '../lib/brain';
@@ -299,7 +329,8 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
     const rarityName = (r: string) => (has(`rarity.${r.toLowerCase()}`) ? t(`rarity.${r.toLowerCase()}`) : r);
     const redraw: Array<() => void> = [];
     async function useLanguage() {
-      await loadArea('playground');
+      // "shared" holds the sentences for a refused request (errorText).
+      await Promise.all([loadArea('playground'), loadArea('shared')]);
       applyTranslations();
       document.title = `${t('pg.meta.title')} | Inspired Mile`;
       document.querySelector('meta[name="description"]')?.setAttribute('content', t('pg.meta.description'));
@@ -355,12 +386,23 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
       chevron.classList.toggle('rotate-180');
     });
 
+    const toast = (message: string, type: 'success' | 'error' | 'warning' | 'info' = 'info') => (window as any).showToast?.(message, type);
+
     // --- Stats ---
+    // Signed in, the collection and the balance are the account's, as the server holds them
+    // (src/lib/account-cards.ts); signed out, the collection is this device's own.
     function updateStats() {
       const stats = getStats();
       document.getElementById('stat-cards')!.textContent = String(stats.uniqueCards);
       document.getElementById('stat-wins')!.textContent = String(stats.battleWins);
       document.getElementById('stat-trivia')!.textContent = String(stats.triviaCorrect);
+      const account = usingAccountCards();
+      const copy = accountCopy();
+      const wrap = document.getElementById('stat-credits-wrap')!;
+      wrap.classList.toggle('hidden', !(account && copy));
+      wrap.classList.toggle('flex', !!(account && copy));
+      if (copy) document.getElementById('stat-credits')!.textContent = num(copy.credits);
+      document.getElementById('buy-packs')?.classList.toggle('hidden', !account);
     }
     updateStats();
 
@@ -370,47 +412,139 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
     const dailyBtn = document.getElementById('daily-pack-btn')!;
     const dailyBadge = document.getElementById('daily-badge')!;
 
-    function markClaimed(badge: HTMLElement, btn: HTMLElement) {
-      badge.dataset.i18n = 'pg.claimed';
-      badge.textContent = has('pg.claimed') ? t('pg.claimed') : 'CLAIMED'; // before the area has loaded
-      badge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
-      btn.classList.add('opacity-50', 'pointer-events-none');
+    function setClaimed(badge: HTMLElement, btn: HTMLElement, claimed: boolean) {
+      const key = claimed ? 'pg.claimed' : 'pg.free';
+      badge.dataset.i18n = key;
+      badge.textContent = has(key) ? t(key) : claimed ? 'CLAIMED' : 'FREE'; // before the area has loaded
+      badge.className = claimed
+        ? 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700'
+        : badge === starterBadge
+          ? 'text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+          : 'text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30';
+      btn.classList.toggle('opacity-50', claimed);
+      btn.classList.toggle('pointer-events-none', claimed);
     }
 
-    if (isStarterClaimed()) markClaimed(starterBadge, starterBtn);
-    if (!isDailyAvailable()) markClaimed(dailyBadge, dailyBtn);
+    /** Whether the free packs can be claimed: from the server signed in (until it has answered,
+     *  neither), from this device signed out. */
+    function drawClaims() {
+      if (usingAccountCards()) {
+        const copy = accountCopy();
+        setClaimed(starterBadge, starterBtn, !copy || copy.starterClaimed);
+        setClaimed(dailyBadge, dailyBtn, !copy || copy.nextDailyAt > Date.now());
+      } else {
+        setClaimed(starterBadge, starterBtn, isStarterClaimed());
+        setClaimed(dailyBadge, dailyBtn, !isDailyAvailable());
+      }
+    }
+    drawClaims();
+    redraw.push(drawClaims);
+    window.addEventListener(ACCOUNT_CARDS_EVENT, () => { drawClaims(); updateStats(); });
 
-    starterBtn.addEventListener('click', () => {
-      if (isStarterClaimed()) return;
-      const cards = drawPack(3);
-      cards.forEach(c => addCard(c.id, 'starter'));
-      claimStarter();
+    const RARITY_ORDER = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
+    function revealPack(title: string, cards: Card[]) {
+      if (cards.length === 0) return;
       incrementStat('packsOpened');
       syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-      markClaimed(starterBadge, starterBtn);
       playSfx('pack-open');
-      showReveal(t('pg.reveal.starter'), cards);
-      const bestRarity = cards.reduce((best, c) => {
-        const order = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
-        return order.indexOf(c.rarity) > order.indexOf(best) ? c.rarity : best;
-      }, cards[0].rarity);
-      setTimeout(() => playRarityFanfare(bestRarity as AudioRarity), 600);
+      showReveal(title, cards);
+      const best = cards.reduce((b, c) => (RARITY_ORDER.indexOf(c.rarity) > RARITY_ORDER.indexOf(b) ? c.rarity : b), cards[0].rarity);
+      setTimeout(() => playRarityFanfare(best as AudioRarity), 600);
       updateStats();
+    }
+
+    /** The cards a pack the server opened holds. */
+    const drawn = (answer: { cards: { card_id: string }[] }) =>
+      answer.cards.map((c) => getCardById(c.card_id)).filter((c): c is Card => !!c);
+
+    /** A free pack: opened by the server signed in, by this device signed out. */
+    async function claimFree(kind: 'starter' | 'daily', title: string) {
+      if (usingAccountCards()) {
+        try {
+          const answer = await claimPack(kind);
+          await refreshAccountCards();
+          revealPack(title, drawn(answer));
+        } catch (e) {
+          toast(errorText(e), 'error');
+          await refreshAccountCards();
+        }
+        drawClaims();
+        return;
+      }
+      if (kind === 'starter' ? isStarterClaimed() : !isDailyAvailable()) return;
+      const cards = kind === 'starter' ? drawPack(3) : [drawRandomCard()];
+      cards.forEach((c) => addCard(c.id, kind));
+      if (kind === 'starter') claimStarter();
+      else claimDaily();
+      drawClaims();
+      revealPack(title, cards);
+    }
+
+    starterBtn.addEventListener('click', () => void claimFree('starter', t('pg.reveal.starter')));
+    dailyBtn.addEventListener('click', () => void claimFree('daily', t('pg.reveal.daily')));
+
+    // --- Packs bought with credits (signed in): the server sets the price and opens the pack ---
+    document.querySelectorAll<HTMLButtonElement>('.buy-pack-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (!usingAccountCards()) return;
+        const tier = btn.dataset.tier as 'standard' | 'rare' | 'epic';
+        btn.disabled = true;
+        try {
+          const answer = await buyPack(tier);
+          await refreshAccountCards();
+          revealPack(t(`pg.odds.${tier}`), drawn(answer));
+        } catch (e) {
+          toast(errorText(e), 'error');
+        } finally {
+          btn.disabled = false;
+          updateStats();
+          checkSpendingLimits();
+        }
+      });
     });
 
-    dailyBtn.addEventListener('click', () => {
-      if (!isDailyAvailable()) return;
+    /**
+     * What a solo win in the playground pays. Signed in: the source's credits, which the server
+     * fixes and caps per day (null when it could not be reached). Signed out: a card for this
+     * device, a few a day (`takeDeviceCard`).
+     */
+    type Reward = { card: Card } | { credits: number } | { capped: true } | { failed: unknown };
+    async function rewardFor(source: 'trivia' | 'challenge'): Promise<Reward> {
+      if (usingAccountCards()) {
+        try {
+          const earned = await earnSolo(source);
+          if (!earned) return { capped: true };
+          updateStats();
+          return earned.granted > 0 ? { credits: earned.granted } : { capped: true };
+        } catch (e) {
+          return { failed: e };
+        }
+      }
+      if (!takeDeviceCard(source)) return { capped: true };
       const card = drawRandomCard();
-      addCard(card.id, 'daily');
-      claimDaily();
-      incrementStat('packsOpened');
+      addCard(card.id, source);
       syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-      markClaimed(dailyBadge, dailyBtn);
-      playSfx('pack-open');
-      showReveal(t('pg.reveal.daily'), [card]);
-      setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 600);
       updateStats();
-    });
+      setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
+      return { card };
+    }
+
+    /** The reward drawn into a result panel: a card, the credits earned, or why there is none. */
+    function rewardHtml(reward: Reward): string {
+      if ('card' in reward) {
+        const card = reward.card;
+        const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+        return `
+            <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
+              ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
+              <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
+              <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
+            </div>`;
+      }
+      if ('credits' in reward) return `<p id="reward-credits" class="text-sm font-semibold text-gold-400">${esc(t('pg.earnedCredits', { n: num(reward.credits) }))}</p>`;
+      if ('capped' in reward) return `<p id="reward-capped" class="text-sm text-obsidian-400">${esc(t('pg.capReached'))}</p>`;
+      return `<p class="text-sm text-crimson-400" role="alert">${esc(errorText(reward.failed))}</p>`;
+    }
 
     // --- Card Reveal ---
     const revealModal = document.getElementById('reveal-modal')!;
@@ -585,7 +719,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
       });
     }
 
-    function showTriviaResult() {
+    async function showTriviaResult() {
       triviaBar.style.width = '100%';
       triviaHeader();
 
@@ -603,24 +737,14 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
       }
 
       if (won) {
-        const card = drawRandomCard();
-        addCard(card.id, 'trivia');
-        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-        updateStats();
         playSfx('challenge-win');
-        setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
-
-        const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+        const reward = await rewardFor('trivia');
         triviaContent.innerHTML = `
           <div class="text-center">
             <div class="text-4xl mb-3">&#127881;</div>
             <p class="text-lg font-display font-bold text-emerald-400 mb-2">${esc(t('pg.trivia.won', { n: triviaScore, total: triviaQuestions.length }))}</p>
-            <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.earned">${esc(t('pg.earned'))}</p>
-            <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
-              ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
-              <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
-              <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
-            </div>
+            ${'card' in reward ? `<p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.earned">${esc(t('pg.earned'))}</p>` : ''}
+            ${rewardHtml(reward)}
             <button class="btn-primary mt-4 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')" data-i18n="pg.collect">${esc(t('pg.collect'))}</button>
           </div>
         `;
@@ -723,7 +847,7 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
         <p class="text-xs text-obsidian-500 mt-2 text-center" data-i18n="pg.challenge.hint">${esc(t('pg.challenge.hint'))}</p>
       `;
 
-      document.getElementById('challenge-submit')!.addEventListener('click', () => {
+      document.getElementById('challenge-submit')!.addEventListener('click', async () => {
         const inputs = challengeContent.querySelectorAll('.challenge-input') as NodeListOf<HTMLInputElement>;
         const answers = Array.from(inputs).map(i => i.value);
         const correct = answersMatch(challenge.missingWords, answers, challenge.lang);
@@ -731,25 +855,17 @@ import { ECONOMY_LIVE } from '../lib/economy-live';
         if (correct) {
           recordChallengeComplete();
           incrementStat('challengesCompleted');
-          const card = drawRandomCard();
-          addCard(card.id, 'challenge');
-          syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-          updateStats();
           playSfx('challenge-win');
-          setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
+          const reward = await rewardFor('challenge');
+          updateStats();
 
-          const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
           challengeContent.innerHTML = `
             <div class="text-center">
               <div class="text-4xl mb-3">&#127881;</div>
               <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.full">${esc(t('pg.challenge.full'))}</p>
               <p class="text-sm text-obsidian-200 italic mb-4" data-challenge-full ${lineAttrs}${mark}>"${esc(challenge.fullQuote)}"</p>${aiBadge}
-              <p class="text-lg font-display font-bold text-emerald-400 mb-4" data-i18n="pg.challenge.correct">${esc(t('pg.challenge.correct'))}</p>
-              <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
-                ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
-                <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
-                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
-              </div>
+              ${'card' in reward ? `<p class="text-lg font-display font-bold text-emerald-400 mb-4" data-i18n="pg.challenge.correct">${esc(t('pg.challenge.correct'))}</p>` : ''}
+              ${rewardHtml(reward)}
               <button class="btn-primary mt-4 w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')" data-i18n="pg.collect">${esc(t('pg.collect'))}</button>
             </div>
           `;

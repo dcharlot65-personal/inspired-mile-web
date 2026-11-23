@@ -17,6 +17,10 @@ pub struct Card {
     pub kind: String,
     pub house: String,
     pub quote: String,
+    /// "Common" to "Legendary": what the server's packs draw by (`crate::economy`). Scoring
+    /// never reads it.
+    #[serde(default)]
+    pub rarity: String,
 }
 
 impl Card {

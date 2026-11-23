@@ -1,6 +1,13 @@
+//! Tournaments: create, register, the bracket and the standings, and the room each match is
+//! played in. A match's result comes only from a room the server judged (`progress.rs`): no
+//! participant names a winner.
+
+use std::net::SocketAddr;
+use std::sync::Arc;
+
 use axum::{
-    extract::{Extension, Path, State},
-    http::StatusCode,
+    extract::{ConnectInfo, Extension, Path, State},
+    http::{HeaderMap, StatusCode},
     routing::{get, post},
     Json, Router,
 };
@@ -10,6 +17,12 @@ use uuid::Uuid;
 
 use crate::auth::Claims;
 use crate::config::Config;
+use crate::multiplayer::RoomManager;
+
+/// Players one tournament may take.
+const MAX_PLAYERS: i32 = 64;
+/// Characters a tournament's description may have.
+const MAX_DESCRIPTION: usize = 1000;
 
 #[derive(Serialize)]
 pub struct TournamentResponse {
@@ -35,14 +48,25 @@ pub struct BracketMatch {
     player2_name: Option<String>,
     winner_id: Option<Uuid>,
     status: String,
+    /// The stored result (`battle_rooms`) of the room that decided the match.
+    room_id: Option<Uuid>,
+    /// When the match is to have been played (both players known); then the server decides it
+    /// (`progress::decide_overdue`).
+    play_by: Option<String>,
+    /// How it was decided: room, bye, no_show or unplayed (None while undecided, and for a match
+    /// decided before this was kept). Only `room` is a win in the standings.
+    decided_by: Option<String>,
 }
 
+/// A player's standing: wins and losses are matches a room decided (the server judged them); a
+/// bye or an opponent's no-show takes a player on and is neither.
 #[derive(Serialize)]
 pub struct LeaderboardEntry {
     user_id: Uuid,
     username: String,
     wins: i64,
     losses: i64,
+    eliminated: bool,
 }
 
 #[derive(Deserialize)]
@@ -54,18 +78,9 @@ pub struct CreateTournamentRequest {
     starts_at: String,
 }
 
-#[derive(Deserialize)]
-pub struct CompleteMatchRequest {
-    winner_id: Uuid,
-    battle_room_id: Option<Uuid>,
-}
-
 #[derive(Serialize)]
-pub struct MatchCompletionResponse {
-    match_id: Uuid,
-    winner_id: Uuid,
-    tournament_completed: bool,
-    next_match_id: Option<Uuid>,
+pub struct MatchRoomResponse {
+    room_id: Uuid,
 }
 
 pub fn router() -> Router<(PgPool, Config)> {
@@ -76,7 +91,7 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/{id}/register", post(register_tournament))
         .route("/{id}/bracket", get(get_bracket))
         .route("/{id}/leaderboard", get(get_leaderboard))
-        .route("/{id}/matches/{match_id}/complete", post(complete_match))
+        .route("/{id}/matches/{match_id}/room", post(open_match_room))
 }
 
 async fn list_tournaments(
@@ -143,7 +158,7 @@ async fn create_tournament(
     Json(body): Json<CreateTournamentRequest>,
 ) -> Result<Json<TournamentResponse>, (StatusCode, String)> {
     // Input validation
-    if body.name.is_empty() || body.name.len() > 128 {
+    if body.name.trim().is_empty() || body.name.chars().count() > 128 {
         return Err((StatusCode::BAD_REQUEST, "Tournament name must be between 1 and 128 characters".into()));
     }
 
@@ -152,6 +167,12 @@ async fn create_tournament(
         return Err((StatusCode::BAD_REQUEST, "Format must be 'single_elimination' or 'round_robin'".into()));
     }
     let max_players = body.max_players.unwrap_or(16);
+    if !(2..=MAX_PLAYERS).contains(&max_players) {
+        return Err((StatusCode::BAD_REQUEST, "A tournament takes 2 to 64 players".into()));
+    }
+    if body.description.as_ref().is_some_and(|d| d.chars().count() > MAX_DESCRIPTION) {
+        return Err((StatusCode::BAD_REQUEST, "Description too long".into()));
+    }
 
     let starts_at: chrono::DateTime<chrono::Utc> = body.starts_at.parse()
         .map_err(|_| (StatusCode::BAD_REQUEST, "Invalid starts_at datetime".into()))?;
@@ -189,10 +210,11 @@ async fn register_tournament(
     Path(id): Path<Uuid>,
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
-    // Check tournament exists and is in registration
-    let tournament = sqlx::query("SELECT status, max_players FROM tournaments WHERE id = $1")
+    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
+    // Locked, so two registrations at once cannot both take the last place or the same seed.
+    let tournament = sqlx::query("SELECT status, max_players FROM tournaments WHERE id = $1 FOR UPDATE")
         .bind(id)
-        .fetch_optional(&pool)
+        .fetch_optional(&mut *tx)
         .await
         .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "Tournament not found".into()))?;
@@ -205,7 +227,7 @@ async fn register_tournament(
     let max: i32 = tournament.get("max_players");
     let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM tournament_entries WHERE tournament_id = $1")
         .bind(id)
-        .fetch_one(&pool)
+        .fetch_one(&mut *tx)
         .await
         .map_err(crate::error::internal)?;
 
@@ -221,9 +243,10 @@ async fn register_tournament(
     .bind(id)
     .bind(claims.sub)
     .bind((count + 1) as i32)
-    .execute(&pool)
+    .execute(&mut *tx)
     .await
     .map_err(crate::error::internal)?;
+    tx.commit().await.map_err(crate::error::internal)?;
 
     Ok(Json(serde_json::json!({ "registered": true })))
 }
@@ -233,8 +256,8 @@ async fn get_bracket(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<Vec<BracketMatch>>, (StatusCode, String)> {
     let rows = sqlx::query(
-        "SELECT m.id, m.round, m.match_order, m.player1_id, m.player2_id, m.winner_id, m.status,
-                u1.username as p1_name, u2.username as p2_name
+        "SELECT m.id, m.round, m.match_order, m.player1_id, m.player2_id, m.winner_id, m.status, m.room_id,
+                m.play_by, m.decided_by, u1.username as p1_name, u2.username as p2_name
          FROM tournament_matches m
          LEFT JOIN users u1 ON u1.id = m.player1_id
          LEFT JOIN users u2 ON u2.id = m.player2_id
@@ -256,6 +279,9 @@ async fn get_bracket(
         player2_name: r.get("p2_name"),
         winner_id: r.get("winner_id"),
         status: r.get("status"),
+        room_id: r.get("room_id"),
+        play_by: r.get::<Option<chrono::DateTime<chrono::Utc>>, _>("play_by").map(|t| t.to_rfc3339()),
+        decided_by: r.get("decided_by"),
     }).collect();
 
     Ok(Json(matches))
@@ -266,16 +292,16 @@ async fn get_leaderboard(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<Vec<LeaderboardEntry>>, (StatusCode, String)> {
     let rows = sqlx::query(
-        "SELECT u.id as user_id, u.username,
+        "SELECT u.id as user_id, u.username, e.eliminated,
                 COUNT(CASE WHEN m.winner_id = u.id THEN 1 END) as wins,
                 COUNT(CASE WHEN m.winner_id IS NOT NULL AND m.winner_id != u.id THEN 1 END) as losses
          FROM tournament_entries e
          JOIN users u ON u.id = e.user_id
          LEFT JOIN tournament_matches m ON m.tournament_id = e.tournament_id
            AND (m.player1_id = u.id OR m.player2_id = u.id)
-           AND m.status = 'completed'
+           AND m.status = 'completed' AND m.decided_by = 'room'
          WHERE e.tournament_id = $1
-         GROUP BY u.id, u.username
+         GROUP BY u.id, u.username, e.eliminated
          ORDER BY wins DESC, losses ASC",
     )
     .bind(id)
@@ -288,25 +314,50 @@ async fn get_leaderboard(
         username: r.get("username"),
         wins: r.get("wins"),
         losses: r.get("losses"),
+        eliminated: r.get("eliminated"),
     }).collect();
 
     Ok(Json(entries))
 }
 
-async fn complete_match(
+/// The room a tournament match is played in: the live one already open for it, or a new one
+/// with both players' seats held. Either player may ask; the room is judged like any other, and
+/// its result, stored by the server, is the match's result (`progress::from_room`).
+///
+/// The room is opened while the tournament and the match are locked, in the order every result
+/// and the scheduler lock them: a match past its time that the scheduler is deciding at that
+/// moment is either decided first (and no room is opened) or sees this room and waits for it.
+///
+/// Past the match's deadline no new room is opened (400), only the one still going is given
+/// again: until the third check of 2026-11-19 a player could open a room every four minutes and
+/// keep the deadline from ever deciding the match.
+async fn open_match_room(
     Extension(claims): Extension<Claims>,
+    Extension(rooms): Extension<Arc<RoomManager>>,
     Path((tournament_id, match_id)): Path<(Uuid, Uuid)>,
-    State((pool, _)): State<(PgPool, Config)>,
-    Json(body): Json<CompleteMatchRequest>,
-) -> Result<Json<MatchCompletionResponse>, (StatusCode, String)> {
-    // Fetch the match
+    State((pool, config)): State<(PgPool, Config)>,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+) -> Result<Json<MatchRoomResponse>, (StatusCode, String)> {
+    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
+    sqlx::query("SELECT 1 FROM tournaments WHERE id = $1 FOR UPDATE")
+        .bind(tournament_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(crate::error::internal)?
+        .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
     let m = sqlx::query(
-        "SELECT id, round, match_order, player1_id, player2_id, winner_id, status
-         FROM tournament_matches WHERE id = $1 AND tournament_id = $2",
+        "SELECT m.player1_id, m.player2_id, m.status, u1.username AS p1_name, u2.username AS p2_name,
+                COALESCE(m.play_by <= NOW(), FALSE) AS overdue
+         FROM tournament_matches m
+         LEFT JOIN users u1 ON u1.id = m.player1_id
+         LEFT JOIN users u2 ON u2.id = m.player2_id
+         WHERE m.id = $1 AND m.tournament_id = $2
+         FOR UPDATE OF m",
     )
     .bind(match_id)
     .bind(tournament_id)
-    .fetch_optional(&pool)
+    .fetch_optional(&mut *tx)
     .await
     .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
@@ -315,147 +366,31 @@ async fn complete_match(
     if status != "pending" && status != "in_progress" {
         return Err((StatusCode::BAD_REQUEST, format!("Match is already {status}")));
     }
-
-    let p1: Option<Uuid> = m.get("player1_id");
-    let p2: Option<Uuid> = m.get("player2_id");
-
-    // Authorization: only a match participant can complete the match
-    if Some(claims.sub) != p1 && Some(claims.sub) != p2 {
-        return Err((StatusCode::FORBIDDEN, "Only match participants can complete a match".into()));
-    }
-
-    if Some(body.winner_id) != p1 && Some(body.winner_id) != p2 {
-        return Err((StatusCode::BAD_REQUEST, "winner_id must be player1 or player2".into()));
-    }
-
-    let round: i32 = m.get("round");
-    let match_order: i32 = m.get("match_order");
-
-    // Determine loser
-    let loser_id = if Some(body.winner_id) == p1 { p2 } else { p1 };
-
-    // Update the match as completed
-    sqlx::query(
-        "UPDATE tournament_matches
-         SET winner_id = $1, status = 'completed', room_id = $2, completed_at = NOW()
-         WHERE id = $3",
-    )
-    .bind(body.winner_id)
-    .bind(body.battle_room_id)
-    .bind(match_id)
-    .execute(&pool)
-    .await
-    .map_err(crate::error::internal)?;
-
-    // Mark loser as eliminated
-    if let Some(loser) = loser_id {
-        sqlx::query(
-            "UPDATE tournament_entries SET eliminated = true
-             WHERE tournament_id = $1 AND user_id = $2",
-        )
-        .bind(tournament_id)
-        .bind(loser)
-        .execute(&pool)
-        .await
-        .map_err(crate::error::internal)?;
-    }
-
-    // Bracket advancement: slot winner into next round
-    let next_round = round + 1;
-    let next_match_order = (match_order + 1) / 2; // pairs fold: 1,2→1  3,4→2  etc.
-    let is_first_slot = match_order % 2 == 1; // odd match_order → player1, even → player2
-
-    // Check if a next-round match already exists
-    let next_match = sqlx::query(
-        "SELECT id, player1_id, player2_id FROM tournament_matches
-         WHERE tournament_id = $1 AND round = $2 AND match_order = $3",
-    )
-    .bind(tournament_id)
-    .bind(next_round)
-    .bind(next_match_order)
-    .fetch_optional(&pool)
-    .await
-    .map_err(crate::error::internal)?;
-
-    let next_match_id: Option<Uuid> = if let Some(nm) = next_match {
-        let nm_id: Uuid = nm.get("id");
-        // Update existing next-round match with the winner
-        // Two literal statements, not a formatted column name: sqlx 0.9 refuses dynamic SQL.
-        sqlx::query(if is_first_slot {
-            "UPDATE tournament_matches SET player1_id = $1 WHERE id = $2"
-        } else {
-            "UPDATE tournament_matches SET player2_id = $1 WHERE id = $2"
-        })
-        .bind(body.winner_id)
-        .bind(nm_id)
-        .execute(&pool)
-        .await
-        .map_err(crate::error::internal)?;
-        Some(nm_id)
-    } else {
-        // Check if this was the final match (no more matches expected in next round)
-        // Count total matches in the current round
-        let matches_in_round: i64 = sqlx::query_scalar(
-            "SELECT COUNT(*) FROM tournament_matches WHERE tournament_id = $1 AND round = $2",
-        )
-        .bind(tournament_id)
-        .bind(round)
-        .fetch_one(&pool)
-        .await
-        .map_err(crate::error::internal)?;
-
-        if matches_in_round > 1 {
-            // More matches in this round → create next-round match
-            let (p1_val, p2_val): (Option<Uuid>, Option<Uuid>) = if is_first_slot {
-                (Some(body.winner_id), None)
-            } else {
-                (None, Some(body.winner_id))
-            };
-
-            let row = sqlx::query(
-                "INSERT INTO tournament_matches (tournament_id, round, match_order, player1_id, player2_id, status)
-                 VALUES ($1, $2, $3, $4, $5, 'pending')
-                 RETURNING id",
-            )
-            .bind(tournament_id)
-            .bind(next_round)
-            .bind(next_match_order)
-            .bind(p1_val)
-            .bind(p2_val)
-            .fetch_one(&pool)
-            .await
-            .map_err(crate::error::internal)?;
-            Some(row.get("id"))
-        } else {
-            None // This was the final — no next match
-        }
+    let (p1, p2): (Option<Uuid>, Option<Uuid>) = (m.get("player1_id"), m.get("player2_id"));
+    let (Some(p1), Some(p2)) = (p1, p2) else {
+        return Err((StatusCode::BAD_REQUEST, "The opponent is not known yet".into()));
     };
-
-    // Check if tournament is complete (no pending/in_progress matches remain)
-    let remaining: i64 = sqlx::query_scalar(
-        "SELECT COUNT(*) FROM tournament_matches
-         WHERE tournament_id = $1 AND status IN ('pending', 'in_progress')",
-    )
-    .bind(tournament_id)
-    .fetch_one(&pool)
-    .await
-    .map_err(crate::error::internal)?;
-
-    let tournament_completed = remaining == 0;
-    if tournament_completed {
-        sqlx::query(
-            "UPDATE tournaments SET status = 'completed', completed_at = NOW() WHERE id = $1",
-        )
-        .bind(tournament_id)
-        .execute(&pool)
+    if claims.sub != p1 && claims.sub != p2 {
+        return Err((StatusCode::FORBIDDEN, "Only match participants can play a match".into()));
+    }
+    if m.get::<bool, _>("overdue") {
+        // Past its time: the room still going may be joined again, and nothing else.
+        return match rooms.open_tournament_room_for(match_id).await {
+            Some(room_id) => Ok(Json(MatchRoomResponse { room_id })),
+            None => Err((StatusCode::BAD_REQUEST, "This match is past its deadline".into())),
+        };
+    }
+    let seats = [(p1, m.get::<String, _>("p1_name")), (p2, m.get::<String, _>("p2_name"))];
+    let origin = crate::multiplayer::handlers::origin_of(&headers, peer, &config);
+    let room_id = rooms
+        .open_tournament_room(&seats, &origin, match_id)
+        .await
+        .map_err(crate::multiplayer::handlers::refused)?;
+    sqlx::query("UPDATE tournament_matches SET status = 'in_progress' WHERE id = $1 AND status = 'pending'")
+        .bind(match_id)
+        .execute(&mut *tx)
         .await
         .map_err(crate::error::internal)?;
-    }
-
-    Ok(Json(MatchCompletionResponse {
-        match_id,
-        winner_id: body.winner_id,
-        tournament_completed,
-        next_match_id,
-    }))
+    tx.commit().await.map_err(crate::error::internal)?;
+    Ok(Json(MatchRoomResponse { room_id }))
 }

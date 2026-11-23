@@ -204,6 +204,8 @@ import { t } from '../i18n';
     import { aiNotice } from '../lib/ai-notice';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
+    import { usingAccountCards } from '../lib/account-cards';
+    import { earnSolo } from '../lib/credits';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
     import { initAudio, isInitialized, playMusic, playRarityFanfare, playSfx, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { getActiveDeck } from '../lib/deck-manager';
@@ -285,6 +287,8 @@ import { t } from '../i18n';
     let view: 'setup' | 'round' | 'verdict' | 'finished' = 'setup';
     let matchResult: 'player' | 'opponent' | null = null;
     let reward: Card | null = null;
+    /** Signed in: what the solo win paid the account (asked of the server when the match ends). */
+    let creditReward: { pending: true } | { granted: number } | { capped: true } | null = null;
 
     /** The language verses are measured in: the duel's, or the one chosen for the next duel. */
     const duelLang = () => session?.duel.lang ?? langSelect.value ?? 'en';
@@ -945,11 +949,10 @@ import { t } from '../i18n';
       if (!scored || session !== s) return;
 
       incrementStat('totalRounds');
-      if (scored.winner === 'player') {
-        incrementStat('battleWins');
-        recordBattleWin();
-        playSfx('battle-victory');
-      } else playSfx('battle-defeat');
+      // A round won is not a battle won: battleWins counts matches (finish()). Until 2026-11-19 it
+      // counted rounds, so "Win 25 battles" took 25 rounds.
+      if (scored.winner === 'player') playSfx('battle-victory');
+      else playSfx('battle-defeat');
       setHighScore(scored.playerTotal);
       $('player-score').textContent = num(s.playerRounds);
       $('ai-score').textContent = num(s.opponentRounds);
@@ -1027,12 +1030,27 @@ import { t } from '../i18n';
       view = 'finished';
       matchResult = winner;
       reward = null;
+      creditReward = null;
       if (winner === 'player') {
-        reward = drawRandomCard();
-        addCard(reward.id, 'battle');
-        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-        const rarity = reward.rarity as AudioRarity;
-        setTimeout(() => playRarityFanfare(rarity), 300);
+        incrementStat('battleWins');
+        recordBattleWin();
+        if (usingAccountCards()) {
+          // Signed in: the account is paid the solo win's credits, which the server fixes and
+          // caps per day. Cards come only from the server (docs/ECONOMY.md).
+          const s = session;
+          creditReward = { pending: true };
+          earnSolo('solo_win')
+            .then((earned) => { creditReward = earned && earned.granted > 0 ? { granted: earned.granted } : { capped: true }; })
+            .catch(() => { creditReward = null; })
+            .finally(() => { if (session === s && matchResult) renderFinish(); });
+        } else {
+          // Signed out: a card for this device's own collection.
+          reward = drawRandomCard();
+          addCard(reward.id, 'battle');
+          syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
+          const rarity = reward.rarity as AudioRarity;
+          setTimeout(() => playRarityFanfare(rarity), 300);
+        }
       }
       renderFinish();
     }
@@ -1054,6 +1072,13 @@ import { t } from '../i18n';
         total: results.reduce((sum, r) => sum + r.playerTotal, 0),
       })));
 
+      if (creditReward && !('pending' in creditReward)) {
+        const line = 'granted' in creditReward
+          ? el('p', 'text-sm text-gold-400 font-semibold mb-4', t('end.creditsEarned', { n: num(creditReward.granted) }))
+          : el('p', 'text-xs text-obsidian-400 mb-4', t('end.capReached'));
+        line.id = 'battle-credits';
+        v.appendChild(line);
+      }
       if (reward) {
         const box = el('div', 'inline-flex items-center gap-3 card-glass p-3 border-gold-500/30 mb-4');
         box.id = 'battle-reward';

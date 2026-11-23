@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
+import { ECONOMY_LIVE } from '../lib/economy-live';
+import { ECONOMY } from '../lib/economy-rules';
 import { loadArea, t } from '../i18n';
 import { monthOfYear, quoted, yearOnly } from '../i18n/pages/runtime';
 
@@ -60,13 +62,16 @@ const timeline: { when: When; event: string; done: boolean }[] = [
 ];
 const whenText = (w: When) => ('month' in w ? monthOfYear(w.month[0], w.month[1]) : t(w.key, { year: yearOnly(w.year) }));
 
-// No marketplace tile ("card value is influenced by combat rankings": a listing's price is the seller's) and no
-// list of credits earned (+50 a battle won and so on: nothing paid them). Both said what the code does not do
-// (owner decision D-03, 2026-11-19).
+// No marketplace tile ("card value is influenced by combat rankings": a listing's price is the seller's,
+// owner decision D-03, 2026-11-19).
 const tech = ['collectibles', 'ai', 'theatre', 'speech'];
+// What each solo activity pays, as the server pays it (backend/data/economy.json): a battle won,
+// a trivia round, a quote challenge, the daily bonus.
+const credits = (['solo_win', 'trivia', 'challenge', 'daily'] as const).map((s) => ECONOMY.solo.credits[s].amount);
 const FOUNDED = 2025;
 const lists = [
   { id: 'forever', icon: '&#9989;', tone: 'emerald' },
+  ...(ECONOMY_LIVE ? [{ id: 'earn', icon: '&#127942;', tone: 'gold' }] : []),
   { id: 'safe', icon: '&#128101;', tone: 'purple' },
 ];
 const TONE: Record<string, { card: string; chip: string; title: string }> = {
@@ -199,7 +204,7 @@ const TONE: Record<string, { card: string; chip: string; title: string }> = {
     <div class="max-w-4xl mx-auto">
       <T k="about.free.title" as="h2" class="text-3xl font-display font-bold text-center mb-4" />
       <T k="about.free.body" as="p" class="text-center text-obsidian-400 text-sm mb-10 max-w-xl mx-auto" />
-      <div class="grid sm:grid-cols-2 gap-6">
+      <div class={`grid ${ECONOMY_LIVE ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-6`}>
         {lists.map((list) => (
           <div class={`card-glass p-6 ${TONE[list.tone].card}`}>
             <div class="flex items-center gap-2 mb-3">
@@ -210,7 +215,7 @@ const TONE: Record<string, { card: string; chip: string; title: string }> = {
             </div>
             <ul class="space-y-2 text-sm text-obsidian-300">
               {[1, 2, 3, 4, 5, 6].map((n) => (
-                <T k={`about.free.${list.id}.l${n}`} as="li" />
+                <T k={`about.free.${list.id}.l${n}`} as="li" vars={list.id === 'earn' && n <= credits.length ? { n: credits[n - 1] } : undefined} />
               ))}
             </ul>
           </div>

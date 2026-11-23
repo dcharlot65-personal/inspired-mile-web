@@ -8,6 +8,7 @@ pub mod content_filter;
 pub mod game_room;
 pub mod handlers;
 pub mod matchmaking;
+pub mod results;
 
 pub use game_room::RoomManager;
 pub use handlers::router;
