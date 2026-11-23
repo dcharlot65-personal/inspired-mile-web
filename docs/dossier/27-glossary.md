@@ -1,0 +1,562 @@
+# Sonnet Man: glossary
+
+**Purpose.** One line for every game, technical, language, education and legal term the dossier uses.
+
+**Audience.** Everyone who reads the dossier: the team (David Charlot, Devon Glover, Arrocito del Diablo), future collaborators and contractors, and investors reading the pitch.
+
+**As of.** Commit `0d6df6ef` on `integrate/wave3`, plus the release in flight on 2026-11-19: `fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p`, `fix/compliance` and the nightly database backup.
+
+**Status.** Draft for the team, 2026-11-19.
+
+**Related documents.** `26-sota-gap-analysis.md`, `17-operations-runbook-and-launch-checklist.md`, `sources/as-built-design.md`, `sources/as-built-tech.md`, `research/sota-design-2026-11.md`, `research/sota-production-2026-11.md`, and every other numbered document of this dossier, whose terms this file defines; also `00-README.md` (index), `28-owner-decisions.md`.
+
+**How to use it.** Terms are grouped, then listed A to Z. "(proposed)" marks a term for something that is not built. "(this release)" marks something in flight on a release branch. "As built" facts come from the two fact bases. Legal entries summarise research and are not legal advice.
+
+Groups: 1 The dossier's own words · 2 Sonnet Man's game terms · 3 Game industry and design · 4 AI and models · 5 Web and client technology · 6 Server, security and operations · 7 Quality and process · 8 Languages and language data · 9 Accessibility · 10 Education and classroom · 11 Law, policy and ratings · 12 Licences and intellectual property · 13 Company and business
+
+---
+
+## 1. The dossier's own words
+
+- **As built**: what the code at commit `0d6df6ef` does, read from the code and cited to a file and line.
+- **Decided by default**: a decision in `28-owner-decisions.md` made without asking the owner, because a sensible default followed from the owner's standing rules or the evidence; it names the rule or evidence and binds the documents, and the work it calls for stays proposed until built.
+- **Dossier**: this set of numbered design and production documents in `docs/dossier/`, worked backward from the built game.
+- **Fact base**: `sources/as-built-design.md` and `sources/as-built-tech.md`, which record what is built, each fact cited.
+- **In this release**: a change the owner decided on 2026-11-19 that is in flight on a named branch and not yet deployed.
+- **Model-date rule**: the owner's standing rule that only AI models released after 2026-04-01 may be used.
+- **Not known**: a fact nobody has established; each one goes to a document's "Owner questions".
+- **Open question (O-n)**: one of the questions in `28-owner-decisions.md` that only the owner can answer, because it needs their money, identity or contact details, a legal commitment in the company's name, or a public step not yet approved.
+- **Owner**: David Charlot, founder and technical lead, who sets the standing rules.
+- **Owner decision (D-nn)**: a numbered decision in `28-owner-decisions.md`, with its options and trade-offs: decided by the owner (Part 1, with its date) or decided by default under the standing rules; where part of it needs the owner, it points to an open question (O-n).
+- **Proposed**: a recommendation in a dossier document, with the research behind it; nothing labelled so exists.
+- **Release branches**: `fix/judge-wording`, `fix/server-authority`, `fix/voice-g2p` and `fix/compliance`, the four branches of the release in flight.
+- **Self-hosted rule**: the owner's standing rule of free and self-hosted tools only: no paid APIs at runtime or for assets, and no cloud inference.
+- **State of the art**: what the best games and practice of 2025 to 2026 do, as the dated research files record it.
+- **Evidence marks [V], [S], [U]**: the research's marks for a claim read on its page, taken from a search snippet or secondary source, or unverified.
+
+## 2. Sonnet Man's game terms
+
+- **Achievement**: one of 30 milestones (8 bronze, 12 silver, 10 gold) unlocked from play statistics; gives no reward.
+- **Acrostic**: a form whose line openings spell a drawn word (in English: bard, moon, king, rose, fate, wit, play or star).
+- **Act**: one of the five chapters of story mode, which hold 19 encounters in all.
+- **Allusion**: a judge criterion counting the different character names and signature words a verse uses.
+- **Alliteration**: the Forest of Arden device: three different words in one line share their first letter.
+- **Anaphora**: a three-line form in which every line opens with the same word, or the same character in Chinese and Japanese.
+- **Apprentice, Player, Master**: the difficulty settings: a model writes one, two or three drafts and plays the best; without a model they change nothing.
+- **Balance**: the Lake District device: two or more lines, all of the same length.
+- **Battle Arena**: the `/battle` page, where the solo duel is played on a flat screen.
+- **Battle wins (`battleWins`)**: a local statistic that, as built, counts rounds won, not matches.
+- **Bow out, raise** (proposed): a stakes choice before round 3, to lose by less or to play for a larger judge pool.
+- **Brevity**: the Illyria device: every line holds at most a set number of units (six words in English).
+- **Card catalogue**: the 71 cards defined in `src/lib/cards.ts`: 53 characters, 9 relics and 9 potions.
+- **Challenger rule**: in a solo duel, a round level on total and on judge points goes to the player.
+- **Character card**: the card a player answers a round with; it carries its house's device and its own signature, and plays once per match.
+- **Collection**: the `/collection` page, and the cards a player owns, kept in the browser as built.
+- **Copy (copied verse)**: a verse that carries over the other verse's lines or most of its content words; it is void and forfeits the judge pool.
+- **Couplet**: a two-line form whose lines rhyme.
+- **Craft**: the code-checked half of a round's score: form points plus any power-word bonus, times the multiplier, minus the curse penalty.
+- **Credits**: the game's server-side currency; as built nothing earns or spends them; in this release they move at fixed rates with daily caps.
+- **Crescendo**: a three-line form in which each line is longer than the last.
+- **Crossed Quatrain**: a four-line form rhyming lines 1 and 3, and 2 and 4 (ABAB).
+- **Curse**: a potion's effect on the opponent's next verse, such as a forbidden letter.
+- **Curse penalty**: craft lost to curse breaches: 4 a breach, at most 12.
+- **Daily pack**: one free card every 24 hours from the playground.
+- **Deck**: 3 to 5 characters, up to 2 relics and up to 2 potions, all owned; online, characters only.
+- **Device**: a house's way of writing, such as The Question or Inner Rhyme; landing it raises the multiplier.
+- **Draft**: one verse a model writes for the opponent; the best-scoring draft is played.
+- **Draft mode**: dead code for picking cards in turns before a battle.
+- **Drumbeat, The**: the Scottish Court device: one content word used three times.
+- **Duel**: a match of up to three rounds of verse; the first side to two rounds wins.
+- **Duel language**: the language a duel is written and judged in, one of 16, chosen apart from the interface language.
+- **DuelSession**: the code object that runs a solo duel's order of play for both the Battle Arena and the Theatre.
+- **Element**: a label printed on each card, such as Fire or Water; it does nothing in play.
+- **Encounter**: one scene of story mode with a named opponent card; none can be played as built.
+- **Epistrophe**: a three-line form in which every line ends on the same word; offered in every duel language but English.
+- **Era**: a card's source group: shakespeare, romantic or mythology.
+- **Fanfare**: the sound played when a card is won, chosen by its rarity.
+- **Flow**: a judge criterion scored from rhymed line ends, repeated openings, rising line length and the spread of line lengths.
+- **Forbidden Letter**: a curse: no word may contain the drawn letter, including look-alike letters and digits.
+- **Form**: the shape a round's verse must take, checked by code; there are 12, 9 of them in English.
+- **Form points**: the requirements of the form a verse meets, out of 20.
+- **Founding player**: as built, an account created before the configured launch date, raised to 500 credits on each account check (`GET /auth/me`).
+- **Ghost duel** (proposed): a server-judged duel against another player's recorded verses, so no one waits for an opponent.
+- **Grandeur**: the Olympus device: two different long words.
+- **Haiku**: a three-line form of 5, 7 and 5 syllables, counted in kana sounds in Japanese and characters in Chinese.
+- **Heroic Couplet**: two rhyming lines of about ten syllables each.
+- **House**: a group of characters sharing one device; 13 houses plus the Legendary house.
+- **House allegiance**: dead code for choosing a house and joining a weekly house leaderboard.
+- **House synergy**: two or more characters of one house in a deck raise that house's device bonus from 0.5 to 0.75.
+- **Ink**: the per-duel resource: 2 at the start and 1 more each round; each relic or potion costs 1.
+- **Inner Rhyme**: the Montague device: two words inside one line rhyme.
+- **Invocation**: the Rome device: the verse names a character from the catalogue.
+- **Judge**: the part of scoring that shares 24 points between the two verses over four criteria.
+- **Judge pool**: the 24 judge points of a round: 6 a criterion to the side that takes it, 3 each on a split.
+- **Jueju**: a Chinese four-line form with five or seven characters in every line; tone and rhyme are not checked.
+- **Known share**: the share of a verse made of words of the duel's language.
+- **Legendary**: the top rarity, and the pseudo-house of The Sonnet Man card.
+- **Live checklist**: the "What your verse must do" list, computed by the scoring function as the player writes.
+- **Lục bát**: a Vietnamese form of a six-syllable line and an eight-syllable line whose sixth words rhyme.
+- **Marketplace**: the page and API for listing and buying cards; as built a purchase moves no credits and copies the card; in this release it moves both.
+- **Master Thespian**: the AI persona of the original brief, surviving only as labels.
+- **Match**: a duel.
+- **Model judge**: judging by a language model on the player's device, only in languages where that model was measured to judge.
+- **Multiplier**: 1.00 to 2.25: it raises craft for a landed device, a landed signature and house synergy, scaled by substance.
+- **No Echoes**: a curse: no content word used twice.
+- **One Rhyme (monorhyme)**: The Sonnet Man's device: every line ends on a rhyme with the first.
+- **Online duel**: a match against a person on `/multiplayer`, English only, scored by rules on the server.
+- **Outcry, The**: the Capulet device: a line ends in an exclamation mark.
+- **Pack tiers**: Standard, Rare and Epic packs priced in credits; shown but not purchasable as built.
+- **Paired Quatrain**: a four-line form rhyming lines 1 and 2, and 3 and 4 (AABB).
+- **Playground**: the `/playground` page: free packs, trivia, quote challenges and the first-visit tour.
+- **Potion**: an item card that curses the opponent's next verse; costs 1 ink; cannot be played in the last round.
+- **Power words**: the five words a relic lends; using two of them adds 6 craft.
+- **Question, The**: the Danish Court device: a line ends in a question mark.
+- **Quick match**: online pairing with the next waiting player, with no rating.
+- **Quote challenge**: a fill-in-the-blank quotation task; a correct answer pays one card.
+- **Rarity**: Common, Uncommon, Rare, Epic or Legendary; it sets only draw odds and the fanfare.
+- **Recite-then-remix** (proposed): a mode in which the card gives an original line and the player writes its remix, after Devon Glover's published method.
+- **Relic**: an item card that lends five power words; costs 1 ink.
+- **Ring, The**: the Gothic Circle device: the verse's first unit equals its last.
+- **Riposte, The**: the Verona Court and Underworld device: the verse reuses a long word from the opponent's verse.
+- **Round**: one exchange of verses under one form.
+- **Rule judge**: the code judge that compares two verses on the four criteria without a model.
+- **Season Pass**: the `/season` page and API for experience levels and rewards; as built no play earns experience and no migration creates a season.
+- **Seed**: a whole number that fixes a duel's forms, the opponent's cards and its written verses; shown on the page.
+- **Short Breath**: a curse: no line longer than a set number of units.
+- **Signature**: echoing a character's famous line by using its telling words, without reciting four in a row.
+- **Sonnet Man, The (card SM-001)**: the game's only Legendary character, named after Devon Glover's stage persona; its device is One Rhyme.
+- **Spare verses**: the English written opponent's verses for a cursed round: short lines, short words, nothing said twice.
+- **Split**: a criterion neither verse takes; each side gets 3 points.
+- **Starter deck**: the deck dealt to a player without a saved one: owned cards first, then the catalogue in order.
+- **Starter pack**: three free cards, once per browser.
+- **Story mode**: a five-act campaign map at `/story`; a stub as built.
+- **Stronger line** (proposed): after a round, the code checks' account of what would have scored more.
+- **Substance**: how much a verse says beyond the words that landed its device and signature; it scales the multiplier.
+- **Swell, The**: The Tempest device: the last line is strictly the longest.
+- **Telling words**: in English, words of four or more letters that are not stop words.
+- **Tercet**: a three-line form whose first and third lines rhyme.
+- **Theatre, The**: `/theatre`, the same duel staged in 3D, with WebXR for Quest 3 and Vision Pro.
+- **Thin verse**: a verse too empty to count (a wordless line, too few different words, repeated lines, or under 60% words of its language); it earns 0.
+- **Tongue-Tied**: a curse: no word longer than a set length.
+- **Tournament**: a bracket of online matches; as built results are self-reported and no match can be played from the site; in this release fed only by server-judged matches.
+- **Trivia**: five Shakespeare questions from a bank of 200; three right answers pay a card.
+- **Variant (world card)**: a city version of a character that gives +2 on one judge criterion in solo play.
+- **Verdict**: the round result: each side's craft breakdown, judge points, who took each criterion and what judged.
+- **Verse**: the player's move: up to 600 characters and 8 lines, typed or spoken.
+- **Verse of the day** (proposed): one daily duel from a date-based seed that every player faces, with a plain-text share.
+- **Void verse**: an empty, thin or copied verse: craft 0, and no device or signature lands.
+- **VR Gallery**: `/vr`, a 3D room showing every catalogue card on a pedestal.
+- **Wit**: a judge criterion counting words of the answered verse thrown back; a split when nothing was answered.
+- **Wordplay**: a judge criterion counting different telling words in the compared lines.
+- **World map**: `/world-map`, the 20 cities of the world cards.
+- **Written opponent**: the bank of verses written in advance in each language pack (drafted by a language model and checked by tools; who wrote the English bank is Not known), played wherever no model runs.
+- **XP**: season experience points; as built nothing earns them.
+
+## 3. Game industry and design
+
+- **A/B test**: showing two versions to two groups of players and comparing a measured result.
+- **Asynchronous play**: play in which opponents need not be present at the same time.
+- **Battle pass (season pass)**: a track of rewards earned over a season, often with a paid tier.
+- **Bot**: a computer-controlled player; labelled bots are tolerated, disguised ones are resented.
+- **Card game (CCG, TCG)**: a collectible or trading card game, in which players build decks from cards they own.
+- **Cohort**: a group of players who started in the same period, followed over time.
+- **Concept document**: a one-to-three-page description of a game that comes before the pitch.
+- **Content cadence**: the rhythm on which new cards, modes or seasons are added.
+- **Content drop**: a batch of new content released at once, such as a card set.
+- **Conversion-to-play**: the share of visitors to a web game who make a first input.
+- **Co-op**: players working together against the game rather than against each other.
+- **D1, D7, D28, D30 retention**: the share of new players who return one, seven, 28 or 30 days after their first play.
+- **DAU, MAU**: daily and monthly active users; their ratio measures habit.
+- **Daily puzzle**: one short challenge a day, the same for everyone, as in Wordle.
+- **Deckbuilder**: a game in which the player assembles a deck during play.
+- **Dixit scoring**: a rule that rewards a clue only when some, but not all, players get it.
+- **Dynamic difficulty adjustment**: a game changing its difficulty to suit the player.
+- **Elo**: a classic rating system that moves two players' ratings after each game.
+- **First-mover advantage**: the edge, if any, of the side that plays first; chess's White wins about 52 to 56%.
+- **FOMO**: "fear of missing out", design that pressures players with expiring rewards.
+- **Funnel**: the ordered steps a new player passes through, measured by how many reach each.
+- **Game design document (GDD)**: the authoritative description of what a game is and how it plays.
+- **Glicko-2**: a rating system that tracks a rating, its uncertainty (deviation) and volatility; starts at 1500, deviation 350.
+- **Juice (game feel)**: small effects of sound, motion and light that confirm an input or reward an outcome.
+- **Inverted U**: the finding that moderate juice beats both none and extreme.
+- **Live ops**: running a released game with events, seasons and updates.
+- **Loot box (paid random item)**: a purchase whose contents are random.
+- **Matchmaking**: pairing players for a match; skill-based matchmaking pairs them by rating.
+- **Meta (metagame)**: the strategies most players use at a given time.
+- **Minimum detectable effect**: the smallest difference an experiment of a given size can reliably detect.
+- **MMR**: matchmaking rating, a hidden skill number used for pairing.
+- **One-page design**: a design for one system on a single page, after Stone Librande's 2010 talk.
+- **OpenSkill (Weng–Lin)**: an open rating system for players and teams, MIT-licensed.
+- **Pay-to-win**: a game in which spending money buys an advantage in play.
+- **Pitch deck**: the slides that win funding or a partner: what, why, who, cost, date.
+- **Pity timer**: a guarantee that a rare reward arrives after a set number of misses.
+- **Placeholder art**: rough art kept until final art is made.
+- **Playtest**: playing a game to find what fails. In this project the playtesters are AI players with no prior training on the game, who see only what a player sees and use only a player's controls; the owner ruled out human playtests on 2026-11-19 (`15-qa-and-test-plan.md` §8, proposed).
+- **Portal**: a website that hosts many web games, such as Poki or CrazyGames.
+- **Postmortem**: a written review after a milestone of what went well and badly.
+- **Power analysis**: working out, before an experiment, how many players it needs.
+- **Risk register**: a living list of project risks, their owners and responses.
+- **Roguelike**: a game of runs that end in defeat and start afresh, with new choices each time.
+- **Sequential testing**: an experiment that may stop early by a pre-set rule.
+- **Session length**: how long one sitting of play lasts.
+- **Soft reset**: pulling ratings part of the way back toward the middle at a new season.
+- **Streak, streak freeze, streak repair**: a count of consecutive days played; a freeze protects it for a missed day, a repair restores it.
+- **Technical design document (TDD)**: the description of how a game is built.
+- **Time to first input**: the time from opening a game to the player's first action.
+- **Two-layer scoring**: scoring split into an exact code-checked layer and a model's judgement of quality.
+- **Vertical slice**: a small, finished section of a game built to the final quality bar.
+- **Whale**: a player who spends heavily.
+
+## 4. AI and models
+
+- **Background download**: fetching a large model while the player is already playing.
+- **Bar (evaluation threshold)**: the measured score a model must reach in a language before the game uses it there, fixed before the measurement ran.
+- **Compare (judge method)**: asking a model "which verse is better on this criterion?" in both orders and reading the lean.
+- **Content-safety classifier**: a small model that labels text as harmful by category.
+- **content-safety-guard-small**: a 268 MB multilingual moderation classifier (Apache 2.0, 2026-09-27) that runs in Transformers.js.
+- **Decision model**: a model that returns a calibrated score in one pass and writes no text.
+- **Draft candidates**: the one to three opponent verses a model writes per round, by difficulty.
+- **Gemma 4 E2B**: Google's small open model (Apache 2.0, 2026-04-02); the game's grand tier, a 3,100 MB download.
+- **Grade (judge method)**: asking a model to grade one verse at a time from 1 to 5; used only by the never-offered lite tier.
+- **Grade margin**: the gap of 0.5 by which a grading model may decide a criterion the rules split.
+- **Granite Speech 5.0**: IBM's speech recognition models (Apache 2.0, 2026-08 and 2026-10), with a browser build for the 2B size.
+- **Hugging Face hub**: the public site the game's model weights are downloaded from at play time.
+- **Inference**: running a model to get its output; the game runs all inference on the player's device or by rules.
+- **Kitten TTS 2 nano, pico**: small Apache-licensed text-to-speech models (2026-11-13), 4 to 17 MB a language; browser use not stated.
+- **Kokoro-82M**: the English text-to-speech model the game uses (Apache 2.0, 2025-01-27, before the model-date rule).
+- **Labelled pair**: two verses whose better one is known, used to measure a judge.
+- **Language identification**: detecting which language a text is in.
+- **LFM2.5 350M**: Liquid AI's small model, the lite tier; used in no language and so never offered.
+- **LFM3 1.7B**: Liquid AI's model (2026-10-27), the standard tier, a 1,090 MB download; judges Vietnamese only.
+- **Liquid d1-2B**: a browser-runnable decision model (2026-10-27, about 1.95 GB) that gives rubric scores without text.
+- **Model card**: a model maker's document of intended use, evaluations and limits.
+- **Model evaluation cell**: one measurement of one model doing one job (writing or judging) in one language; 96 cells in all.
+- **Model tier**: grand (Gemma 4 E2B), standard (LFM3 1.7B) or lite (LFM2.5 350M), chosen by what the device can run.
+- **Model weights**: the files that hold a trained model; downloading them to a browser counts as distributing them.
+- **Moonshine Streaming**: per-language speech recognition models (MIT, 2026-08-24) for seven languages plus English.
+- **Next-token score**: the probability a model gives to its next word, read to get "A" or "B" without generating text.
+- **Position bias**: a model's habit of preferring whichever answer comes first or second.
+- **Prompt, system message**: the instructions sent to a model; the system message sets its role.
+- **Prompt injection**: text inside the input that tries to give the model new instructions, such as "ignore all previous instructions".
+- **Quantisation (q4, q4f16, q8)**: storing weights at lower precision to shrink a model; q4f16 is 4-bit weights with 16-bit arithmetic.
+- **Real-time factor**: how long speech recognition takes compared with the speech's own length.
+- **Repetition penalty, temperature, top-k**: generation settings: a penalty for repeated words, randomness, and how many likely words are considered.
+- **Revision pinning**: fixing a model download to one exact version so a change upstream cannot reach players unmeasured.
+- **Roblox PII classifier v2**: an open classifier (Apache 2.0, 2026-08-03) that flags requests for or sharing of personal details.
+- **Speech recognition (ASR)**: turning speech into text; the game's ear.
+- **Spotlighting**: marking which part of a prompt is data so a model does not obey it.
+- **Supertonic 3**: a 31-language text-to-speech model (vendor release 2026-04-29; on the Hugging Face hub from 2026-05-06) under OpenRAIL-M, whose use restrictions must be passed on.
+- **Text to speech (TTS)**: turning text into speech; the game's voice.
+- **Token**: the unit of text a model reads and writes, about a word or part of one.
+- **Transformers.js**: the JavaScript library that runs the game's models in the browser.
+- **Whisper base**: OpenAI's multilingual speech recognition model (MIT), the game's ear; older than the model-date rule.
+- **Written fallback**: the rule that plays the written verse when a model's best draft is void or worth less than half of it.
+
+## 5. Web and client technology
+
+- **Astro**: the framework that builds the site as static pages with TypeScript scripts.
+- **Babylon.js**: the 3D engine behind the Theatre, the VR gallery and the splat viewer.
+- **Background Fetch**: a Chromium API that lets a download continue when the page closes.
+- **Cache Storage**: the browser store the service worker and Transformers.js keep files in.
+- **Core Web Vitals (LCP, INP, CLS)**: Google's page-experience measures: largest paint time, response to input, layout shift.
+- **Cross-Origin Storage**: a proposed browser feature letting sites share one cached copy of a model; behind a flag in Transformers.js.
+- **Gaussian splat**: a 3D scene made of many soft coloured points, stored here as a `.ply` file.
+- **glTF, GLB**: the standard 3D model format and its single-file form.
+- **hreflang, x-default**: page tags that tell search engines which language each page is in and which to show by default.
+- **In-app browser**: the web view inside apps such as Instagram or TikTok, often more limited than a real browser.
+- **IndexedDB, OPFS**: browser stores for larger data: a database, and a private file system.
+- **Island (React)**: a component an Astro page hydrates with a framework; the game mounts none.
+- **localStorage, sessionStorage**: small browser stores; one lasts across visits, the other for a tab's life.
+- **Manifest (web app manifest)**: the file that names an installable web app and sets its icons and shortcuts.
+- **model-viewer**: Google's web component for showing 3D models and handing off to phone AR.
+- **onnxruntime-web, ONNX**: the runtime that executes models in the browser, and the model file format it reads.
+- **Passthrough**: a headset mode showing the real room through its cameras.
+- **Persistent storage (`persist()`)**: asking the browser not to evict a site's data, such as a downloaded model.
+- **Progressive web app (PWA)**: a website that can be installed and can work offline.
+- **Quick Look, Scene Viewer**: Apple's and Google's phone viewers for AR models; Quick Look needs a `.usdz` file.
+- **Service worker**: a script that sits between the page and the network, caching files and serving an offline page.
+- **shader-f16**: a WebGPU feature for 16-bit arithmetic, required for the game's models.
+- **Sitemap**: a file listing a site's pages for search engines.
+- **Static site**: pages built ahead of time and served as files, with no server code per request.
+- **Structured data**: page markup that describes content to search engines, such as a game's name and price.
+- **Tailwind CSS**: the styling framework the site uses.
+- **Trusted Web Activity (TWA), Bubblewrap**: a way to ship a PWA as an Android app, and the tool that packages it.
+- **Wake lock**: a browser feature that keeps the screen on, used during a duel.
+- **WebAssembly (Wasm)**: a compact binary format browsers run at near-native speed.
+- **Web Share API**: the browser's built-in share sheet.
+- **WebGL**: the browser's long-standing 3D graphics interface.
+- **WebGPU**: the browser's newer graphics and compute interface, needed to run the game's language models.
+- **Web Speech API, `processLocally`**: the browser's speech interface; by default it sends audio to a server, and `processLocally` keeps it on the device where supported.
+- **WebXR, `immersive-ar`, `immersive-vr`**: the browser interface for headsets and AR, and its passthrough and full-scene modes.
+- **WKWebView**: the web view inside iOS apps; whether it runs WebGPU in practice is unproven.
+- **woff2, font subset, Unicode range**: the compressed web font format, a font cut to some scripts, and the code points a font file covers.
+
+## 6. Server, security and operations
+
+- **Advisory lock**: a database lock that makes concurrent sign-up checks happen one at a time.
+- **API, endpoint, route**: the server's interface, one address within it, and the code behind that address.
+- **axum, sqlx, tokio**: the Rust libraries for the web server, the database and asynchronous tasks.
+- **Backup, restore test**: a copy of the database, and proof the copy can be restored; in this release nightly, kept 14 days.
+- **Build host**: the separate machine where builds and tests run, never the developer's laptop.
+- **CI (continuous integration)**: automatic builds and tests on each change; here the build host, with no GitHub Actions.
+- **Content hash (cache busting)**: renaming a changed file by its contents so browsers fetch the new one.
+- **Content-Security-Policy (CSP)**: a header that tells the browser which sources a page may load; the site has none as built.
+- **CORS**: the rule set that controls which other origins may call the API; one exact origin is allowed.
+- **Edge**: the network layer between players and the origin server that terminates TLS.
+- **Error reporting**: collecting crashes and errors from players' browsers and the server.
+- **Feature flag, OpenFeature**: a switch that turns a feature on or off without a deploy, and a vendor-neutral standard for such switches.
+- **Fresh proof**: a passkey or email check within the last five minutes, needed to add or remove a passkey or add an email.
+- **GlitchTip**: a self-hosted, MIT-licensed error-reporting server that accepts the Sentry SDKs.
+- **Golden vectors**: files of expected answers written by the TypeScript engine that the Rust port must match exactly.
+- **HSTS**: a header telling browsers to use HTTPS only.
+- **HttpOnly, Secure, SameSite, `__Host-` prefix**: cookie settings that keep a session cookie from scripts, plain HTTP and other sites.
+- **In-memory rooms**: online matches held in the server's memory only, so a restart ends them.
+- **JWT, HS256**: a signed token carried in the session cookie, and its signing method.
+- **Migration**: a numbered SQL file that changes the database schema; the game's only add, never remove.
+- **Network key**: the address block used for limits: an IPv4 address or /24, or an IPv6 /48 or /64.
+- **Origin**: the server that holds the site's files, as opposed to the edge.
+- **Parity**: the Rust server and the browser scoring every verse exactly alike.
+- **Passkey, WebAuthn**: a password-free sign-in held by the device's screen lock, and the standard behind it.
+- **Plausible**: the hosted, page-view analytics script the site loads after the age gate.
+- **Postgres**: the database.
+- **Rate limit**: a cap on requests per client, here 600 a minute.
+- **Relying party ID**: the domain a passkey is bound to; changing it orphans every passkey.
+- **Release binary**: the compiled API program that is deployed.
+- **Reverse proxy, trusted proxy**: a server that forwards requests to the API, and one whose forwarded client address the API believes.
+- **Rollback**: returning to the previous release after a bad deploy.
+- **Room**: one online match on the server, with its seats and timers.
+- **Rust**: the programming language of the API and the owner's preferred language.
+- **Self-hosted**: run on the company's own machines rather than as a third-party service.
+- **Sentry SDK**: the open client libraries that send errors to an error-reporting server.
+- **Server-authoritative** (this release): the server, not the browser, decides credits, cards, rankings and results.
+- **Session row**: the database record of one signed-in browser; a session token is valid only while its row is live.
+- **Settling**: cleaning a verse repeatedly until it no longer changes, so both engines score the same text.
+- **Smoke test**: a quick check after deploy that every page loads.
+- **Tunnel**: an outbound connection that lets the edge reach the origin without opening ports.
+- **Umami**: a self-hosted, MIT-licensed, cookieless analytics tool with funnels and retention.
+- **Unicode version**: the edition of the character tables a program knows; the server's is older than the browser's.
+- **Uptime check**: an outside probe that alerts when the site stops answering.
+- **WebSocket**: a two-way connection used for online matches.
+- **`economy.json`**: `backend/data/economy.json` on `fix/server-authority`, the one file that holds every rate, cap and pack price of the economy in this release; the API compiles it in.
+- **`docs/ASSETS.md`**: the record, added in this release by `fix/compliance`, of where every shipped music, sound, 3D, image and font file came from.
+
+## 7. Quality and process
+
+- **ADR (architecture decision record)**: a short numbered note of one technical decision and why.
+- **AGENTS.md**: a file at the root of a repository that tells AI agents how to work in it.
+- **AI playtest** (proposed): a run in which an AI player with no prior training on the game plays it through the parity interface, on a self-hosted model released after 2026-04-01, on the build host; it measures time to a first valid verse, voids, rounds won against each opponent and where players get stuck (`15-qa-and-test-plan.md` §8).
+- **cargo test**: the Rust test runner.
+- **Dead code**: code no page reaches.
+- **Docs-as-code**: documents written and reviewed with the same tools as the code.
+- **Mutation test**: deliberately breaking code to prove a test notices.
+- **Parity interface** (proposed): what an AI player is given: the rendered page as an image, or its screen-reader text, and a player's controls; never the scoring code, its constants or the API's data. Not the same as *parity* between the server and the browser (section 6).
+- **Playwright**: the browser test framework.
+- **Provenance**: the recorded source, licence and method behind a piece of data, text or art.
+- **Reference player** (proposed): a scripted player that bounds the AI playtests' results and is never reported as a playtester: a random floor, the written opponent's own verses typed in as the player's, and a rules-aware solver that may read the code.
+- **RFC**: a written proposal circulated for comment before a decision.
+- **SBOM**: a software bill of materials, listing every component and its licence.
+- **Stub**: a screen that exists with no play behind it.
+- **Technical debt**: known shortcuts and faults that will cost effort later.
+- **Think-aloud**: a human playtest method in which the player speaks their thoughts while playing; not used in this project, where AI is the playtester (owner, 2026-11-19).
+- **vitest**: the test runner for the game's pure logic.
+- **Blameless review**: an incident review that asks what in the system let a failure happen, never who to blame (`29-postmortem-and-incident-templates.md`).
+- **Postmortem**: a written look back after a milestone, launch or season: vital stats, what went right, what went wrong, actions (`29-postmortem-and-incident-templates.md`).
+
+## 8. Languages and language data
+
+- **Akshara**: a written syllable unit of Devanagari, used for Hindi acrostics.
+- **Alexandrine**: the French twelve-syllable line.
+- **ʿArūḍ**: the classical Arabic system of quantitative metres.
+- **Back-translation**: translating text back into the source language to check its meaning.
+- **CC-CEDICT**: a Chinese-English dictionary under CC BY-SA, used for Chinese readings.
+- **CLDR**: Unicode's Common Locale Data Repository: plurals, number words, dates and names for every locale.
+- **CMU Pronouncing Dictionary**: Carnegie Mellon's English pronunciation table, the source of English rhyme and syllables; the verse rules ship only a reduction of it (rhyme keys and syllable counts), and in this release the voice gets a second table of whole pronunciations from the same pinned commit.
+- **NRL rules**: the letter-to-sound rules of US Naval Research Laboratory Report 7948 (1976, a public-domain government work), used in this release to voice English words the CMU table lacks.
+- **Confusables (UTS #39)**: Unicode's list of look-alike characters, used against disguised letters.
+- **Dohā**: a Hindi couplet form of 24 mātrās.
+- **Function words (stop words)**: common words such as "the" that carry little meaning and are not counted as telling words.
+- **Hunspell, LanguageTool**: a spell checker and a grammar checker run on the build host.
+- **Hyphenation vs syllabification**: where a word may break across lines is not the same as how many syllables it has.
+- **i18n, l10n**: internationalisation (making software able to change language) and localisation (doing so for one language).
+- **Interface language**: the language of the site's menus and text, chosen apart from the duel language.
+- **IPADIC (mecab-ipadic)**: the Japanese dictionary inside kuromoji, cut down for the game.
+- **JMdict, JMnedict**: Japanese dictionaries of words and names, under CC BY-SA.
+- **kaikki.org, Wiktextract, WikiPron**: tools and data sets extracted from Wiktionary, including pronunciations.
+- **Kana, mora**: Japanese syllabic letters, and the sound unit a haiku counts.
+- **kuromoji**: the Japanese word analyser the game runs in the browser.
+- **Machine translation**: text translated by a model; in this game checked by tools and a second model, not yet by native speakers.
+- **Native-speaker review**: a fluent reader checking text; none has happened for any language.
+- **OpenCC**: a converter between simplified and traditional Chinese characters.
+- **Pronunciation table, sound table**: per-language data the engine reads to check rhyme and count syllables.
+- **Pyphen**: a hyphenation library; it does not count syllables.
+- **Qawafi**: an open Arabic toolkit for metre and rhyme, a possible test oracle.
+- **Rantanplan**: an open Spanish scansion tool with its own syllabifier, a possible test oracle.
+- **RBNF**: CLDR's rules for spelling out numbers, used for judge words.
+- **Scansion**: analysing a line's metre.
+- **SCOWL**: an English word list used to mark common words.
+- **Segmenter (`Intl.Segmenter`)**: the browser's built-in word splitter, used for Chinese and Thai.
+- **sha256 pinning**: refusing a data source whose fingerprint differs from the one recorded.
+- **Snowball stemmer**: an algorithm that reduces words to stems in ten of the game's languages.
+- **stopwords-iso**: a public list of function words per language.
+- **Synalepha**: Spanish merging of vowels across word boundaries when counting syllables.
+- **Syllable block**: a Korean Hangul character, the unit of Korean acrostics.
+- **Unihan**: Unicode's database of Chinese characters and their readings.
+- **Wikidata**: the open knowledge base (CC0) the game takes card names from.
+- **Wikisource**: the library of public-domain texts and translations the game takes card lines from.
+- **Wiktionary**: the open dictionary (CC BY-SA) behind several sound tables and function-word lists.
+
+## 9. Accessibility
+
+- **Accessibility conformance report (ACR, VPAT)**: a document stating how a product meets each accessibility criterion.
+- **Accessibility Nutrition Labels**: Apple's nine App Store accessibility features, each claimable only if every common task works with it.
+- **Accessibility statement**: a public page describing a product's accessibility, its limits and a contact.
+- **`aria-live`, `aria-pressed`, dialog role**: markup that tells screen readers about changing content, a toggle's state and a modal window.
+- **Captions**: time-synchronised text for dialogue and relevant sounds.
+- **Contrast ratio**: the difference in brightness between text and background, with minimums in WCAG.
+- **EN 301 549**: the European accessibility standard for digital products, mapped to WCAG 2.1 AA.
+- **`focus-within`**: a CSS state that lets a menu open from the keyboard.
+- **GAG, XAG**: the Game Accessibility Guidelines and the Xbox Accessibility Guidelines.
+- **Parallel DOM**: hidden HTML that mirrors a canvas scene so assistive technology can read it.
+- **`prefers-color-scheme`, `prefers-reduced-motion`**: settings a page can read to follow the player's light-or-dark and reduced-motion choices.
+- **Right-to-left (RTL), bidi**: scripts written right to left, such as Arabic, and text that mixes both directions.
+- **Screen reader (VoiceOver, TalkBack, NVDA)**: software that reads the screen aloud: Apple's, Android's and an open Windows one.
+- **WCAG 2.1, 2.2 AA; WCAG 3**: the W3C's web accessibility guidelines at the level most laws cite, and a draft successor not expected for years.
+
+## 10. Education and classroom
+
+- **CCSS (Common Core)**: US state standards for English, several of which require Shakespeare (RL.9-10.9, RL.11-12.4, RL.11-12.7).
+- **Clever, ClassLink**: the US single sign-on and rostering services most districts use.
+- **ESSA evidence levels**: the US tiers of evidence for school tools; Level IV is a reasoned logic model.
+- **Formative score**: feedback to help learning, as opposed to a grade.
+- **GCSE**: England's exams at 16; English Literature requires a Shakespeare play and Romantic poetry.
+- **Join code**: the code, six characters as generated, that students use to join a classroom.
+- **LMS**: a learning management system such as Canvas or Google Classroom.
+- **LTI 1.3**: the standard for launching a tool from inside an LMS.
+- **OneRoster**: the standard for exchanging class rosters.
+- **Oracy**: speaking and listening skills, which England's 2025 review wants taught more.
+- **Poetry Out Loud**: the US national recitation contest for high-school students.
+- **Privacy certification (iKeepSafe, 1EdTech)**: an outside review of a school tool's privacy practice.
+- **School pack** (proposed): the documents a school needs to adopt the game: data agreement, privacy summary, accessibility statement, curriculum map.
+- **Single sign-on (SSO)**: signing in once with a school account for many tools.
+- **Teacher-hosted game**: a game a teacher runs live on a projector for the whole class.
+
+## 11. Law, policy and ratings
+
+- **Age assurance**: methods for estimating or verifying a user's age.
+- **Age gate**: the date-of-birth screen; under 13 is blocked, 13 to 17 need a parent's consent box, 18 and over pass.
+- **Age tier**: an account's recorded age group: adult, teen or unknown.
+- **ADA Title II, Title III**: the parts of the US Americans with Disabilities Act covering state and local government (public schools included) and businesses open to the public.
+- **App store accountability acts**: US state laws (Texas, Utah, Louisiana, California) that make app stores and their apps handle age signals.
+- **Apple App Review guidelines 1.2, 3.1.1, 4.2, 4.7, 5.1.1(v)**: rules on user content, in-app purchase and non-expiring credits, repackaged websites, HTML5 games, and in-app account deletion.
+- **Article 4 (AI Act)**: the duty to take AI-literacy measures.
+- **Article 5(1)(b) (AI Act)**: the ban on AI that exploits age-related vulnerability to distort behaviour harmfully.
+- **Article 50(1) (AI Act)**: the duty to tell people they are dealing with an AI, at the latest at first interaction; in this release as an in-game notice.
+- **Article 50(2) (AI Act)**: the duty to mark AI-generated text, audio, image and video in a machine-readable way; transition to 2026-12-02 for systems already on the market.
+- **Article 50(4), 50(5) (AI Act)**: disclosure of deepfakes, and the rule that disclosures be clear, accessible and early.
+- **Annex III 3(b) (AI Act)**: AI that evaluates learning outcomes, high-risk from 2027-12-02.
+- **Audio file exception (COPPA)**: a child's voice recording used only to answer the request and deleted at once needs no parental consent.
+- **California AADC**: California's age-appropriate design code, partly enjoined; its size threshold likely excludes the company.
+- **California SB 243**: the 2026 companion-chatbot law; a game bot is excluded only if it keeps to the game and cannot discuss mental health, self-harm or sexual content.
+- **Children's code (UK Age Appropriate Design Code)**: the ICO's 15 standards for services children are likely to use.
+- **CNIL exemption**: France's narrow conditions for audience measurement without consent.
+- **Code of Practice on AI-generated content**: the EU's 2026 guide to meeting Article 50's marking and labelling duties.
+- **Connecticut CTDPA**: Connecticut's data privacy act, whose minors' provisions are the state rules most likely to apply.
+- **COPPA**: the US Children's Online Privacy Protection Act and its FTC rule for children under 13; the amended rule has bound operators since 2026-04-22.
+- **COPPA 2.0, KOSA**: proposed US federal children's online laws, not enacted as of November 2026.
+- **CPC key principles on virtual currencies**: the EU consumer authorities' 2025 principles for currencies bought with money: real prices, 14-day withdrawal, spending off by default for minors.
+- **CVAA**: the US law requiring accessible communications, including in-game chat.
+- **Data protection impact assessment (DPIA)**: a written assessment of a processing activity's privacy risks; required by the Children's code.
+- **Data retention policy**: a written statement of how long each kind of data is kept; required by amended COPPA.
+- **Deployer, provider (AI Act)**: the party using an AI system, and the party placing it on the market under its own name; the studio is likely both.
+- **Digital Fairness Act proposal**: an EU proposal of 2026-11-11 that would add consumer rules, including on virtual-currency prices.
+- **Digital Omnibus on AI**: the 2026 EU amendment that delayed high-risk duties but not Article 50.
+- **Digital replica**: a synthetic copy of a performer's voice or likeness.
+- **DMCC Act, CMA**: the UK consumer law of 2024 and the regulator enforcing it, targeting hidden fees and fake urgency.
+- **DSA (Digital Services Act)**: the EU law on online intermediaries; notice-and-action (Art 16) and statements of reasons (Art 17) apply at any size.
+- **DUAA, PECR Schedule A1**: the UK Data (Use and Access) Act 2025, and the rule it added allowing statistics cookies with notice and an easy opt-out.
+- **EAA (European Accessibility Act)**: the EU accessibility law applying since 2025-06-28, which exempts microenterprises.
+- **ELVIS Act**: Tennessee's law protecting a performer's voice, including simulations.
+- **ePrivacy Article 5(3)**: the EU rule requiring consent to store or read data on a user's device, beyond what is strictly necessary.
+- **EU and UK representative**: a person a non-EU or non-UK controller must appoint in writing when processing is not occasional.
+- **EU AI Act**: the EU regulation on AI systems, applying in stages from 2025 to 2028.
+- **FERPA**: the US law protecting students' education records; the classroom page's "FERPA compliant" badge has nothing on record behind it.
+- **FinCEN guidance on convertible virtual currency**: the US view that currency exchangeable for money can make a business a money transmitter.
+- **Google Play Families policy**: rules for apps aimed at children, including no bare web view of a website.
+- **GDPR, UK GDPR**: the EU and UK data protection regulations.
+- **GDPR Article 8**: the age at which a child may consent to online services, 13 to 16 by country.
+- **IARC, PEGI, ESRB, USK, GRAC**: age-rating bodies: the shared international system, Europe, the US, Germany and South Korea.
+- **ICO**: the UK Information Commissioner's Office, the data protection regulator.
+- **Internal-operations exception (COPPA)**: collecting a persistent identifier only to run the service, without parental consent, if the notice names the uses.
+- **Lanham Act §43(a)**: the US federal ground for false-endorsement claims.
+- **Lawful basis, legitimate interest**: the GDPR reason for processing data, and the basis that weighs the company's interest against the user's.
+- **Maryland Kids Code, Nebraska AADC**: state design codes whose size thresholds probably exclude the company.
+- **Microenterprise, small enterprise (EU)**: under 10 staff and €2M turnover, or under 50 staff and €10M; exempt from some DSA and EAA duties.
+- **Mixed audience (COPPA)**: a service for all ages that must screen age neutrally before collecting personal information.
+- **NCMEC CyberTipline, 18 U.S.C. §2258A, REPORT Act**: the US channel and the law requiring providers to report child sexual exploitation they know of, and its 2024 extension.
+- **Neutral age screen**: an age question that does not hint at the "right" answer.
+- **New York Child Data Protection Act**: New York's law limiting the processing of minors' data to what is strictly necessary or consented.
+- **New York Civil Rights Law §51, §50-f**: New York's right of publicity, requiring written consent for name, likeness or voice in trade, and its post-mortem replica rule.
+- **New York General Obligations Law §5-302, California Labor Code §927**: laws voiding vague digital-replica clauses signed without counsel or union cover.
+- **New York SAFE for Kids Act, GBL Article 47**: New York laws on addictive feeds for minors and on AI companions.
+- **NO FAKES Act**: a proposed US federal law on digital replicas, not enacted.
+- **Ofcom**: the UK regulator enforcing the Online Safety Act.
+- **Online Safety Act 2023 (UK)**: the UK law placing risk-assessment, reporting and takedown duties on user-to-user services, with no small-business exemption.
+- **Parental consent (verifiable)**: COPPA's requirement that a parent, not the child, agrees before a child's data is collected.
+- **Persistent identifier**: an identifier that recognises a user over time, such as a session token; personal information under COPPA.
+- **PEGI June 2026 rules**: PEGI's ratings for unrestricted communication (18), punishing streaks (12), timed offers (12) and paid random items (16).
+- **Right of publicity**: a person's right to control commercial use of their name, likeness and voice.
+- **ROSCA, click-to-cancel**: the US law on online subscriptions, and the FTC cancellation rule vacated in 2025.
+- **SAG-AFTRA Interactive Media Agreement**: the US performers' union agreement for games, requiring specific, separate consent for digital replicas.
+- **School authorisation (COPPA)**: a school consenting for its pupils, allowed only for the school's benefit and no other commercial purpose.
+- **Statement of reasons**: the explanation a user must get when their content is removed or restricted.
+- **TAKE IT DOWN Act**: the 2025 US law requiring removal of reported intimate images within 48 hours.
+- **Tech Coalition Pathways**: a free child-safety programme for small platforms.
+- **Thriving in Games Group**: the industry body formerly called the Fair Play Alliance.
+- **User-to-user service**: a service where one user's content can be seen by others; online duels make the game one.
+- **Vermont AADC**: Vermont's age-appropriate design code, effective 2027-01-01 with no revenue threshold.
+- **Written information security program**: the documented security programme amended COPPA requires, with a coordinator and yearly review.
+
+## 12. Licences and intellectual property
+
+- **AGPL-3.0**: a copyleft licence that also reaches software offered over a network.
+- **Apache 2.0**: a permissive licence that requires keeping notices and the NOTICE file.
+- **Attribution**: crediting a source as its licence requires; under Creative Commons, keeping notices, a link and a note of changes.
+- **BSD, MIT, ISC**: short permissive licences that require keeping the copyright notice.
+- **CC0**: Creative Commons' public-domain dedication, with no conditions.
+- **CC BY 4.0, CC BY-SA 4.0, CC BY-NC**: Creative Commons licences requiring attribution, attribution and ShareAlike, or attribution and non-commercial use.
+- **Copyleft**: a licence condition that derived works carry the same licence.
+- **Credits page** (this release): the `/credits` page naming the CC BY-SA and other sources the game ships.
+- **Distribution**: giving others a copy, which includes sending model weights or a library to a player's browser.
+- **eSpeak NG**: a GPL-3.0 speech engine whose compiled code sat inside the voice's pronunciation package; removed in this release.
+- **FLUX Kommunity License**: the licence of the FLUX 3 Image Klein model the card art was made with; its terms are not saved in the repository.
+- **G2P (grapheme to phoneme)**: the step that turns spelling into sounds before speech; in this release rebuilt on the CMU dictionary and the NRL rules (`fix/voice-g2p`).
+- **GFDL**: the GNU Free Documentation License, Wiktionary's second licence.
+- **GPL-3.0, LGPL**: copyleft licences; the GPL reaches whole programs, the LGPL mainly the library itself.
+- **LFM Open License v1.0**: Liquid AI's licence, allowing commercial use only below US$10M a year in group revenue.
+- **Life+70**: the usual copyright term of the author's life plus 70 years; longer for some older Spanish authors.
+- **MPL-2.0**: a file-level copyleft licence.
+- **NAIST licence**: the licence of the Japanese IPADIC dictionary, whose notice must travel with it.
+- **NOTICE file**: a file of required notices that Apache-licensed works carry.
+- **OpenRAIL-M**: a model licence with use restrictions that redistributors must pass on.
+- **phonemizer**: the npm package under kokoro-js that embedded eSpeak NG under an Apache label.
+- **Public domain**: works free of copyright; Shakespeare's plays are, modern editions' notes may not be.
+- **ShareAlike**: the condition that adapted material is shared under the same licence; it reaches data files, not code that reads them.
+- **SIL OFL 1.1**: the Open Font License that the game's font families normally carry.
+- **Trademark (USPTO)**: a protected name or mark, registered in the US with the Patent and Trademark Office.
+- **Translation copyright**: each translation has its own term from its translator's death; the game uses translators who died in 1955 or earlier.
+- **Unicode License v3**: the licence of CLDR, Unihan and the confusables data, requiring its notice to be kept.
+
+## 13. Company and business
+
+- **D2C (direct to consumer)**: selling to players directly, outside an app store.
+- **DBA (doing business as)**: a trading name; Voyage Tracable, LLC trades as Inspired Mile.
+- **Devon Glover ("The Sonnet Man")**: a real performer-educator, the game's creative director and its namesake; his name and persona need his written licence.
+- **Grant**: non-repayable funding from a public, arts or education body.
+- **Inspired Mile**: the trading name of Voyage Tracable, LLC, based in Sarasota, Florida.
+- **LLC**: a US limited liability company.
+- **Revenue share**: the split of income between a developer and a platform.
+- **School licence**: a paid agreement letting a school or district use a product.
+- **Shakespeare on the Go**: the name of Devon Glover's programme, shown as a badge on the home page.
+- **Sonnet Man**: the game's short name, from Devon Glover's stage persona; also "Sonnet Man: the duel of verses".
+- **Supporter**: a player who pays voluntarily, by donation or subscription, for a free game.
+- **Voyage Tracable, LLC**: the company that operates the game.
