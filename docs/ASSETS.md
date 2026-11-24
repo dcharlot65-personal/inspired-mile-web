@@ -7,11 +7,12 @@ the dev Mac, the model library on the M4, and the original publications. The cre
 `src/lib/credits.test.ts` fails when a file of music, sound or 3D is added without a line here, or an image
 folder's count changes.
 
-**Open, for the owner**: the source and license of all twelve sound effects, and the model that made the 3D
-figure (sections 2, 3 and 4). Until they are known, the credits page says plainly that they are not yet traced.
-The two untraced music tracks and the two effects nothing played were removed (owner decision R12, D-08,
-2026-11-19; `fix/predeploy` 73b1d0d7); the twelve effects left are to be replaced with traced or self-made ones by
-about 2026-12-19.
+**Open, for the owner**: the source and license of all twelve sound effects (section 2). Until they are known, the
+credits page says plainly that they are not yet traced. The two untraced music tracks and the two effects nothing
+played were removed (owner decision R12, D-08, 2026-11-19; `fix/predeploy` 73b1d0d7); the twelve effects left are to
+be replaced with traced or self-made ones by about 2026-12-19. The earlier untraced 3D point-cloud and splat of
+`SM-001` were replaced on 2026-11-24 with eighteen first-party procedural Blender 5.3.0 sculptures and a matching
+surface-sampled splat (section 3).
 
 ## 1. Music (`public/audio/music/`, 2 files)
 
@@ -56,24 +57,42 @@ played (as-built design 7.3), and were removed on 2026-11-19 (R12). The twelve l
 `challenge-win`, `challenge-lose`, `battle-victory`, the largest at 785 KB, and `battle-defeat`) are to be replaced
 with CC0 or self-made effects by about 2026-12-19 (R12: within a month of the decision).
 
-## 3. 3D (`public/models/`)
+## 3. 3D (`public/models/`, 18 `.glb` sculptures, `provenance.json`, and `splats/sm-001.ply`)
 
-| File | What it is | Source |
-|---|---|---|
-| `sm-001.glb` (459,324 bytes, sha256 `4d1450ee466a0ec0…`) | glTF 2.0, one primitive in mode 0 (points): 16,384 coloured points, no mesh; generator "efficient-genai-optimizer" | **Made by the owner's own pipeline**, `efficient-genai` (`~/data-share/vibe-coding/efficient-genai` on the dev Mac). Its untracked script `scripts/optimize-for-web.py` writes exactly that generator string; it keeps the 16,384 most opaque splats of a frame (`--target`, default 16384) and writes a PLY and a points GLB. Its output `output/web-ready/SM-001_frame_0010.{glb,ply}`, written 2026-02-15 14:38, is **byte-identical** to the two shipped files (same sha256) |
-| `splats/sm-001.ply` (917,865 bytes, sha256 `31e242d2aff437b0…`) | Gaussian splat, 16,384 splats (position, scale, rotation, DC colour, opacity) | as above |
+All eighteen character trophies named in `src/lib/ar-viewer.ts` (`AR_MODELS`), their machine-readable manifest
+`provenance.json`, and the surface-sampled Gaussian splat `splats/sm-001.ply` (`917,865` bytes, 16,384 splats, sha256
+`76b49eb9d08cb98fdd77db137a3acb13c74df37a4cefbbffd7f93f7f7feb5933`) were generated first-party on **2026-11-24** on
+`fw2` (`framework-128gb-0001`) with **Blender 5.3.0** (build date `2026-11-10`) by
+`scripts/art/forge_ar_trophies_blender.py` (sha256 `38615e0d922e9f9b842539965aeeb826b0fa5c1f09cadc480889434af87c30eb`).
+Every `.glb` is a closed, watertight 2-manifold glTF 2.0 triangle mesh (`mode 4`, zero non-manifold or boundary edges)
+with five Principled BSDF PBR materials and a procedural 128×128 tangent-space micro-relief normal map generated inside
+the script. No external AI model, cloud service, or third-party mesh or texture is used. Under owner decisions D-13,
+D-14 and R8, `sm-001.glb` and `splats/sm-001.ply` depict **The Ring Stage Emblem** (golden spotlight stage ring,
+vintage brass microphone on stand, and open quarto folio on a collector plinth) with zero human likeness of Devon Glover,
+replacing the earlier untraced February 2026 point cloud (`4d1450ee466a0ec0…`) and splat (`31e242d2aff437b0…`).
 
-They came into this repository in `49302d5d` (2026-02-16, "Fix all compiler warnings and audit issues"),
-not in `99694234` as the design fact base says (`git log --diff-filter=A -- public/models`).
-
-**Not known: the model that made the frames.** The source frames (`efficient-genai/output/sonnet-man/
-SM-001_frame_0000…0039.ply`, 2026-02-15 08:10 to 08:21) hold 262,144 splats each, one per pixel of a 512×512
-image, beside a 512×512 `_styled.ppm` image per frame. No code in efficient-genai's current tree writes those
-file names. It has example image-to-3D generators for Apple SHARP (`examples/sharp_generate.rs`) and
-TRELLIS (`examples/trellis_generate.rs`), and an SDXL img2img video style transfer
-(`examples/video_style_transfer.rs`); which of them, if any, made these frames, and from which picture or
-video, is not recorded. Each of those models has its own license, not checked here. Seventeen of the
-eighteen GLBs `src/lib/ar-viewer.ts` names, and 52 of the 53 splats `/viewer` asks for, do not exist.
+| File | Card | Bytes | Triangles | sha256 | Sculpted Collector Motif |
+|---|---|---:|---:|---|---|
+| `sm-001.glb` | SM-001 · The Sonnet Man | 356,576 | 6,756 | `d4e0d9eb017a9e588e1895f9ec999f5c27048aa75a5ca73c5a3152e483671613` | Golden spotlight stage ring, vintage ribbed brass microphone & open quarto folio (zero human likeness) |
+| `mo-001.glb` | MO-001 · Romeo | 282,212 | 5,388 | `0db1b816eb999c2b989c6a881c2e6d41f870590275b395a2a65a980d2888b2a9` | Verona moonlit balcony balustrade, climbing crimson rose & inscribed golden vow ring |
+| `ca-001.glb` | CA-001 · Juliet | 263,400 | 4,932 | `76551101d1ac248f88671637eab1d1a4ec7c2520623f58f602d69c47e820c8cd` | Capulet crescent-moon trellis, blooming garden rose & perched silver nightingale |
+| `dc-001.glb` | DC-001 · Hamlet | 280,196 | 5,204 | `a759849dc3492f079c3bdce6204f270b4bf2c16e12ab5930a4de16eb3e6fbbdd` | Elsinore battlement crowned Yorick skull & crossed swept-hilt rapier |
+| `dc-002.glb` | DC-002 · Ophelia | 292,696 | 5,560 | `41e78829ac890ccc9300f45bad25199c6573bb1bbbd15838bb43a9af141919a6` | Willow-stream ripple basin, floating rosemary wreath & remembrance chalice |
+| `mo-002.glb` | MO-002 · Mercutio | 232,800 | 4,072 | `d4cbaed98787fca635214841ae967dc1f5f994639ceb9de4d9278593bfb5db27` | Queen Mab Venetian masquerade crest, twin crossed duelling rapiers & steel sparks |
+| `fa-001.glb` | FA-001 · Puck | 233,044 | 4,196 | `40a468a30ec07945f5bc43737c119ef7d962bf5887f12abdda776b117f620660` | Enchanted oak horned trickster crest, Love-in-Idleness blossom & pixie orbitals |
+| `fa-002.glb` | FA-002 · Titania | 258,140 | 4,816 | `5afe07abba1e5ab2c4b085b3fb2253951fd081ab3f5605d9de82a9ccc9a5b392` | Living-vine arched fairy throne, blossom diadem & golden firefly canopy |
+| `vc-001.glb` | VC-001 · Prince Escalus | 197,188 | 3,328 | `c2d9a4f9e3cf57495a10430fa2300c1e7d42c5ac7bd1269ec85cc7e1692c69d9` | Verona palace imperial scepter & balanced scales of civic peace |
+| `vc-002.glb` | VC-002 · Friar Lawrence | 185,788 | 2,972 | `6b771326116e2b8396ea98146c40ceafc2df6a1b693279e26a4f57b5d210082b` | Monastery cloister mortar & pestle, stoppered herb elixir flask & beeswax taper |
+| `vc-003.glb` | VC-003 · The Nurse | 218,472 | 3,692 | `4ffa8edcda0bd631a71902be71bfc0394d67ebe68789e845b69605208abf37ad` | Wax-sealed secret scroll, coiled rope-ladder cordage & brass household key |
+| `tp-001.glb` | TP-001 · Prospero | 198,376 | 3,332 | `aa8d54645ce0af2e179994ef5286bdac6a4f82679c38fc9acd689b99407b8a44` | Tempest gnarled arcane staff, storm armillary rings & open sea-codex |
+| `tp-002.glb` | TP-002 · Ariel | 240,900 | 4,224 | `f9b30f65b0d5dc488c3390cb5c18be0ca78f1fc3e7523582358a846b4c6d87d4` | Spirit-of-Air ascending wind vortex, sculpted zephyr wings & celestial lyre |
+| `tp-003.glb` | TP-003 · Caliban | 215,008 | 3,556 | `3cb07264a775975f193ceaf90c4b7bdbf521bc53ecf70dc1e0e315ab9fdf89cc` | Sycorax island basalt fang crags, twisted sea-coral spires & sunken iron ring |
+| `mo-003.glb` | MO-003 · Benvolio | 211,020 | 3,580 | `ba5d90125e8d99ba2efa91df52bb97651152b032b121989cc07ede28f6a3ba6f` | Verona dawn buckler shield, sheathed peacekeeper blade & ascending silver dove |
+| `ca-002.glb` | CA-002 · Tybalt | 214,360 | 3,696 | `5620158f0305d0e417b4b6023ce3135bef79bdc615422ceaf3505c44230f6a95` | Prince of Cats crested rapier hilt, blazing torch brazier & spiral flame tongues |
+| `dc-003.glb` | DC-003 · King Claudius | 249,412 | 4,512 | `3272d8dd7d06edad43885e1cdc510fcf066868b41335c9fb78c43a9cd3605101` | Usurper's jagged crown constricted by coiled bronze serpent & Hebona poison vial |
+| `fa-003.glb` | FA-003 · Oberon | 217,872 | 3,708 | `34322800c8d4e9ddfeb374a759ad6f8fa48f2a8532654042a8bce1257d71dbe0` | Moonlit ten-point silver stag-antler crown, crescent moon & dewdrop crystal |
+| `provenance.json` | Manifest | 9,854 | — | — | Machine-readable Blender 5.3.0 provenance and SHA-256 manifest |
+| `splats/sm-001.ply` | SM-001 Splat | 917,865 | 16,384 splats | `76b49eb9d08cb98fdd77db137a3acb13c74df37a4cefbbffd7f93f7f7feb5933` | Surface-sampled 3D Gaussian splat of `sm-001.glb` (The Ring Stage Emblem) |
 
 ## 4. Images (`public/images/`)
 

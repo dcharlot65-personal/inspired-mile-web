@@ -7,7 +7,13 @@ use url::Url;
 use crate::auth::{parse_proxy_secret, parse_trusted_proxies, ProxyTrust, DEFAULT_TRUSTED_PROXIES};
 
 pub const DEFAULT_RP_ID: &str = "inspiredmile.com";
-pub const DEFAULT_WEBAUTHN_ORIGIN: &str = "https://sonnetman.inspiredmile.com";
+pub const DEFAULT_WEBAUTHN_ORIGIN: &str =
+    "https://sonnetman.inspiredmile.com,https://chessfighter.inspiredmile.com,https://inspiredmile.com";
+pub const DEFAULT_ECOSYSTEM_CORS_ORIGINS: [&str; 3] = [
+    "https://sonnetman.inspiredmile.com",
+    "https://chessfighter.inspiredmile.com",
+    "https://inspiredmile.com",
+];
 pub const DEFAULT_EMAIL_FROM: &str = "Sonnet Man <signin@inspiredmile.com>";
 
 /// How sign-in emails leave the server.
@@ -199,6 +205,10 @@ pub struct Config {
     pub email_code_key: String,
     pub port: u16,
     pub cors_origin: String,
+    /// Allowed CORS origins: every configured `CORS_ORIGIN` entry, every `WEBAUTHN_ORIGIN`
+    /// origin, and on the production `inspiredmile.com` relying party the ecosystem origins
+    /// (`sonnetman.inspiredmile.com`, `chessfighter.inspiredmile.com`, `inspiredmile.com`).
+    pub cors_origins: Vec<String>,
     pub db_max_connections: u32,
     /// WebAuthn relying-party ID. Passkeys are bound to it for good: changing it orphans
     /// every registered passkey.
@@ -299,13 +309,17 @@ impl Config {
             parse_proxy_secret(get("PROXY_SECRET").as_deref())?,
         );
 
+        let cors_origin = get("CORS_ORIGIN").unwrap_or_else(|| "http://localhost:4321".into());
+        let cors_origins = build_cors_origins(&cors_origin, &webauthn_origins, &webauthn_rp_id);
+
         let config = Self {
             database_url: get("DATABASE_URL")
                 .unwrap_or_else(|| "postgres://localhost/inspired_mile".into()),
             jwt_secret,
             email_code_key,
             port: get("PORT").and_then(|p| p.parse().ok()).unwrap_or(3849),
-            cors_origin: get("CORS_ORIGIN").unwrap_or_else(|| "http://localhost:4321".into()),
+            cors_origin,
+            cors_origins,
             db_max_connections: get("DB_MAX_CONNECTIONS")
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(25),
@@ -394,6 +408,30 @@ pub fn parse_webauthn_origins(raw: &str, rp_id: &str) -> Result<Vec<Url>, String
         return Err("WEBAUTHN_ORIGIN lists no origin".into());
     }
     Ok(origins)
+}
+
+/// Build the deduplicated list of allowed CORS origins from `CORS_ORIGIN`, `WEBAUTHN_ORIGIN`,
+/// and (when running on the `inspiredmile.com` relying party) the Inspired Mile ecosystem hosts.
+pub fn build_cors_origins(raw_cors: &str, webauthn_origins: &[Url], rp_id: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    let mut push_unique = |origin: String| {
+        let trimmed = origin.trim().trim_end_matches('/').to_string();
+        if !trimmed.is_empty() && !out.contains(&trimmed) {
+            out.push(trimmed);
+        }
+    };
+    for part in raw_cors.split(',') {
+        push_unique(part.to_string());
+    }
+    for url in webauthn_origins {
+        push_unique(url.origin().ascii_serialization());
+    }
+    if rp_id.eq_ignore_ascii_case(DEFAULT_RP_ID) {
+        for eco in DEFAULT_ECOSYSTEM_CORS_ORIGINS {
+            push_unique(eco.to_string());
+        }
+    }
+    out
 }
 
 #[cfg(test)]
@@ -602,8 +640,15 @@ mod tests {
         assert_eq!(config.webauthn_rp_id, "inspiredmile.com");
         assert_eq!(
             config.webauthn_origins,
-            vec![Url::parse("https://sonnetman.inspiredmile.com").unwrap()]
+            vec![
+                Url::parse("https://sonnetman.inspiredmile.com").unwrap(),
+                Url::parse("https://chessfighter.inspiredmile.com").unwrap(),
+                Url::parse("https://inspiredmile.com").unwrap(),
+            ]
         );
+        for eco in DEFAULT_ECOSYSTEM_CORS_ORIGINS {
+            assert!(config.cors_origins.contains(&eco.to_string()), "missing {eco} in {:?}", config.cors_origins);
+        }
         assert_eq!(config.email_from, "Sonnet Man <signin@inspiredmile.com>");
         assert_eq!(config.email_mode, EmailMode::Disabled);
         assert!(!config.email_mode.is_available());

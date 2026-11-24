@@ -19,4 +19,4 @@ pub use handlers::{router, AuthContext};
 pub use jwt::Claims;
 pub use middleware::auth_middleware;
 pub use passkeys::{purge_expired, purge_unused_accounts};
-pub use sessions::is_live as session_is_live;
+pub use sessions::{authenticate as authenticate_session, is_live as session_is_live};

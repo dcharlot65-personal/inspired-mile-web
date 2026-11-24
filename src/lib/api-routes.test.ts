@@ -38,8 +38,11 @@ export function serverRoutes(): Route[] {
   for (const m of main.matchAll(/\.nest\(\s*"(\/[a-z-]+)"\s*,\s*([a-z_]+)::(?:public_)?router\(/g)) {
     const [, prefix, module] = m;
     const dir = path.join('backend/src', module);
-    for (const file of readdirSync(dir).filter((f) => f.endsWith('.rs'))) {
-      const source = readFileSync(path.join(dir, file), 'utf8').split(/^#\[cfg\(test\)\]/m)[0];
+    const rsFiles = statSync(dir, { throwIfNoEntry: false })?.isDirectory()
+      ? readdirSync(dir).filter((f) => f.endsWith('.rs')).map((f) => path.join(dir, f))
+      : [path.join('backend/src', `${module}.rs`)];
+    for (const file of rsFiles) {
+      const source = readFileSync(file, 'utf8').split(/^#\[cfg\(test\)\]/m)[0];
       add(prefix, source);
     }
   }
@@ -156,7 +159,7 @@ describe('the requests the pages make', () => {
   it('are read from both sides (the scans themselves work)', () => {
     // The routers: well over fifty routes, the new ones of the server-held economy among them.
     expect(ROUTES.length).toBeGreaterThan(50);
-    for (const r of [['POST', '/api/v1/inventory/packs'], ['POST', '/api/v1/migrate/import'], ['GET', '/api/v1/stats/leaderboard'], ['POST', '/api/v1/tournaments/{id}/matches/{match_id}/room'], ['DELETE', '/api/v1/multiplayer/queue'], ['GET', '/api/v1/marketplace'], ['GET', '/api/v1/health']]) {
+    for (const r of [['POST', '/api/v1/inventory/packs'], ['POST', '/api/v1/migrate/import'], ['GET', '/api/v1/stats/leaderboard'], ['POST', '/api/v1/tournaments/{id}/matches/{match_id}/room'], ['DELETE', '/api/v1/multiplayer/queue'], ['GET', '/api/v1/marketplace'], ['POST', '/api/v1/digicards/verify'], ['GET', '/api/v1/digicards/{card_uid}'], ['POST', '/api/v1/digicards/{card_uid}/transition'], ['GET', '/api/v1/health']]) {
       expect(ROUTES, r.join(' ')).toContainEqual({ method: r[0], path: r[1] });
     }
     // The pages: dozens of calls, from every client module and the pages that fetch directly.

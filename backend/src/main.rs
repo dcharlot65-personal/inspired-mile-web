@@ -3,6 +3,7 @@ mod classroom;
 mod config;
 mod credits;
 mod db;
+mod digicard;
 mod error;
 mod inventory;
 mod ledger;
@@ -131,11 +132,12 @@ async fn main() {
 
     // (The rate limiter, one allowance per client address, is created above.)
 
-    // Public routes (no auth required)
+    // Public routes (no auth required; digicards inspects session cookie optionally for ownership)
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
         .nest("/auth", auth::router(auth_context))
-        .nest("/stats", stats::public_router());
+        .nest("/stats", stats::public_router())
+        .nest("/digicards", digicard::public_router());
 
     // Protected routes (auth required)
     let protected_routes = Router::new()
@@ -155,10 +157,17 @@ async fn main() {
         // Every protected request is checked against its server-side session row.
         .layer(middleware::from_fn_with_state(state.clone(), auth::auth_middleware));
 
+    let allowed_origins: Vec<axum::http::HeaderValue> = config
+        .cors_origins
+        .iter()
+        .filter_map(|o| o.parse().ok())
+        .collect();
     let cors = CorsLayer::new()
-        .allow_origin(AllowOrigin::exact(
-            config.cors_origin.parse().unwrap_or_else(|_| "http://localhost:4321".parse().unwrap()),
-        ))
+        .allow_origin(if allowed_origins.is_empty() {
+            AllowOrigin::exact("http://localhost:4321".parse().unwrap())
+        } else {
+            AllowOrigin::list(allowed_origins)
+        })
         .allow_credentials(true)
         .allow_headers([
             axum::http::header::CONTENT_TYPE,

@@ -44,6 +44,7 @@ const ALLOWED_DOMAINS = new Set([
   'arena.playdimension.ai',
   'inspiredmile.com', 'www.inspiredmile.com',
   'sonnetman.inspiredmile.com',
+  'chessfighter.inspiredmile.com',
   'create.inspiredmile.com',
   // Social & professional
   'linkedin.com', 'www.linkedin.com',

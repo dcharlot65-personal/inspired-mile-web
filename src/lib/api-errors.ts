@@ -100,6 +100,14 @@ export const SERVER_TEXT_CODES: ReadonlyArray<readonly [string | RegExp, string]
   ['Invalid referral code', 'referral_invalid'],
   ['Referral code not found', 'referral_not_found'],
   ['Cannot redeem your own referral code', 'referral_own'],
+  // Digi-Physical cards & Joule State-Machine
+  ['Digi-Physical card not found', 'not_found'],
+  ['JSON content-type required', 'forbidden'],
+  ['Joule amounts are computed deterministically by the server', 'bad_request'],
+  ['sun_tap_counter must be at least 1', 'bad_request'],
+  ['Invalid origin_game', 'bad_request'],
+  ['This Digi-Physical card is bound to another account', 'card_not_owned'],
+  [/^Replay rejected: sun_tap_counter /, 'conflict'],
 ];
 
 /** The code for a plain-text body, or null when the table does not know it. */
