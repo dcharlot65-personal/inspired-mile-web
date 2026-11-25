@@ -28,6 +28,49 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         <p class="text-obsidian-400 text-lg max-w-2xl mx-auto" data-i18n="story.intro">Journey through 5 acts across Shakespeare's greatest works and uncover the secrets of the Globe. In this version of the game, an encounter opens its scene but starts no duel.</p>
       </div>
 
+      <!-- Bi-Directional Return Portal: Iron Resonance (revealed when Sovereign Card carries Chess Fighter martial feats) -->
+      <div
+        id="iron-resonance-card"
+        class="card-glass p-5 sm:p-6 rounded-2xl mb-6 border border-emerald-500/40 bg-linear-to-r from-emerald-950/50 via-obsidian-900/80 to-gold-500/10 hidden"
+        aria-live="polite"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/35">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-[11px] font-mono rtl:font-sans uppercase tracking-wider rtl:tracking-normal text-emerald-300" data-i18n="story.iron.kicker">Return Portal — Citadelle Martial Iron</span>
+            </div>
+            <h2 class="text-base sm:text-lg font-display font-bold text-obsidian-100" data-i18n="story.iron.title">The Citadelle Chronicler Recognizes Your Martial Feats</h2>
+            <p class="text-xs sm:text-sm text-obsidian-300 leading-relaxed" data-i18n="story.iron.desc">Your Sovereign Card returned from Chess Fighter tempered in battle. Every opened scene now awakens a martial couplet from the Citadelle Chorus.</p>
+          </div>
+          <code id="iron-card-uid" lang="en" dir="ltr" class="self-start shrink-0 px-2.5 py-1 rounded-lg bg-obsidian-950/80 border border-gold-500/30 text-[11px] font-mono text-gold-300">IM2</code>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gold-500/15 border border-gold-500/35 mb-4">
+          <span aria-hidden="true" class="text-gold-300">&#x2728;</span>
+          <span class="text-xs font-semibold text-gold-200" data-i18n="story.iron.badge">Iron Resonance Active (+1 Bonus Laureate Star Credit &amp; Citadelle Chorus Stanzas)</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <div class="rounded-xl bg-obsidian-950/60 border border-obsidian-700/60 p-3">
+            <span class="block text-[11px] text-obsidian-400" data-i18n="story.iron.stat.elo">ELO Rating</span>
+            <span id="iron-stat-elo" lang="en" dir="ltr" class="text-base sm:text-lg font-display font-bold text-emerald-300">1200</span>
+          </div>
+          <div class="rounded-xl bg-obsidian-950/60 border border-obsidian-700/60 p-3">
+            <span class="block text-[11px] text-obsidian-400" data-i18n="story.iron.stat.captures">Captures</span>
+            <span id="iron-stat-captures" lang="en" dir="ltr" class="text-base sm:text-lg font-display font-bold text-gold-300">0</span>
+          </div>
+          <div class="rounded-xl bg-obsidian-950/60 border border-obsidian-700/60 p-3">
+            <span class="block text-[11px] text-obsidian-400" data-i18n="story.iron.stat.promotions">Promotions</span>
+            <span id="iron-stat-promotions" lang="en" dir="ltr" class="text-base sm:text-lg font-display font-bold text-amber-300">0</span>
+          </div>
+          <div class="rounded-xl bg-obsidian-950/60 border border-obsidian-700/60 p-3">
+            <span class="block text-[11px] text-obsidian-400" data-i18n="story.iron.stat.rarity">Rarity</span>
+            <span id="iron-stat-rarity" lang="en" dir="ltr" class="text-base sm:text-lg font-display font-bold text-cyan-300">Tempered</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Progress Overview -->
       <div class="card-glass p-6 rounded-2xl mb-8">
         <div class="flex items-center justify-between">
@@ -75,6 +118,16 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         <p id="scene-desc" class="text-xs text-obsidian-500 mb-3"></p>
         <p id="scene-narrative" class="text-sm text-obsidian-300 leading-relaxed"></p>
 
+        <!-- Citadelle Chorus Martial Couplet (revealed when Iron Resonance is active) -->
+        <div id="scene-iron-stanza" class="mt-4 rounded-xl border border-gold-500/35 bg-linear-to-r from-gold-500/10 via-obsidian-900/70 to-emerald-950/40 p-4 hidden">
+          <div class="flex items-center gap-1.5 text-[11px] font-mono rtl:font-sans uppercase tracking-wider rtl:tracking-normal text-gold-300 mb-1">
+            <span aria-hidden="true">&#x1F6E1;&#xFE0F;</span>
+            <span data-i18n="story.iron.chorusLabel">The Citadelle Chorus — Iron Resonance Couplet</span>
+          </div>
+          <p id="scene-iron-title" class="text-xs font-semibold text-emerald-300 mb-2"></p>
+          <blockquote id="scene-iron-couplet" lang="en" dir="ltr" class="text-sm italic text-obsidian-100 whitespace-pre-line border-s-2 border-gold-400/60 ps-3 leading-relaxed"></blockquote>
+        </div>
+
         <!-- Cross-Mile Arena Bridge: Verse & Iron -->
         <div class="mt-5 pt-4 border-t border-obsidian-700/60 bg-obsidian-950/40 backdrop-blur-sm rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div class="space-y-1">
@@ -100,7 +153,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
 
       <!-- Compact Cross-Mile Campaign Banner: Sonnet Man × Chess Fighter (“Verse & Iron”) -->
       <div id="crossmile-banner" class="card-glass p-5 sm:p-6 rounded-2xl mt-8 border border-gold-500/30 bg-linear-to-r from-obsidian-900/80 via-obsidian-900/60 to-emerald-950/30">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div class="space-y-1.5">
             <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-gold-500/10 border border-gold-500/25">
               <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
@@ -109,17 +162,35 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
             <h2 class="text-base sm:text-lg font-display font-bold text-obsidian-100" data-i18n="story.crossmile.title">Sonnet Man × Chess Fighter — “Verse &amp; Iron”</h2>
             <p class="text-xs sm:text-sm text-obsidian-400 leading-relaxed" data-i18n="story.crossmile.desc">Step from Act I's Shakespearean stages into Act II's 3D tactical arena. Bring a Sovereign Card across the mile to awaken Verse Resonance (+&#x26A1; Opening Super Meter).</p>
           </div>
-          <a
-            id="crossmile-chessfighter-link"
-            href="https://chessfighter.inspiredmile.com/#mode=story&chapter=7"
-            target="_blank"
-            rel="noopener"
-            class="btn-secondary text-xs sm:text-sm px-4 py-2.5 shrink-0 gap-2 border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/10"
-          >
-            <span aria-hidden="true">&#x2694;</span>
-            <span data-i18n="story.crossmile.cta">Enter Act II in Chess Fighter 3D</span>
-            <span aria-hidden="true">&#x2197;</span>
-          </a>
+          <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-2.5 shrink-0">
+            <a
+              id="crossmile-chessfighter-link"
+              href="https://chessfighter.inspiredmile.com/#mode=story&chapter=7"
+              target="_blank"
+              rel="noopener"
+              class="btn-secondary text-xs sm:text-sm px-4 py-2.5 shrink-0 gap-2 border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/10"
+            >
+              <span aria-hidden="true">&#x2694;</span>
+              <span data-i18n="story.crossmile.cta">Enter Act II in Chess Fighter 3D</span>
+              <span aria-hidden="true">&#x2197;</span>
+            </a>
+            <a
+              id="crossmile-worldtour-link"
+              href="https://chessfighter.inspiredmile.com/#mode=world"
+              target="_blank"
+              rel="noopener"
+              class="btn-secondary text-xs sm:text-sm px-4 py-2.5 shrink-0 gap-2 border-gold-500/40 text-gold-300 hover:bg-gold-500/10"
+            >
+              <span aria-hidden="true">&#x1F30D;</span>
+              <span data-i18n="story.crossmile.worldtourCta">Explore World Tour Parlor &amp; Arena</span>
+              <span aria-hidden="true">&#x2197;</span>
+            </a>
+          </div>
+        </div>
+        <div id="crossmile-card-status" class="mt-4 pt-3 border-t border-obsidian-700/50 flex flex-wrap items-center gap-2 text-xs text-obsidian-400">
+          <span id="crossmile-card-dot" class="w-2 h-2 rounded-full bg-obsidian-500 shrink-0"></span>
+          <span id="crossmile-card-status-label" data-i18n="story.crossmile.cardNone">Return portal ready — bring back a Sovereign Card from Chess Fighter to awaken Iron Resonance.</span>
+          <code id="crossmile-card-chip" lang="en" dir="ltr" class="hidden px-2 py-0.5 rounded bg-obsidian-950/80 border border-emerald-500/30 text-[11px] font-mono text-emerald-300"></code>
         </div>
       </div>
 
@@ -127,7 +198,16 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
   </section>
 
   <script>
-    import { getChessFighterStoryUrl, getStoryProgress, getTotalEncounters, isEncounterUnlocked } from '../lib/story-mode';
+    import {
+      IRON_RESONANCE_STANZAS,
+      decodeDigiCardSummary,
+      getActiveDigiCardToken,
+      getChessFighterStoryUrl,
+      getChessFighterWorldTourUrl,
+      getStoryProgress,
+      getTotalEncounters,
+      isEncounterUnlocked,
+    } from '../lib/story-mode';
     import { applyTranslations, initI18n, loadArea, locale, onLocaleChange, t } from '../i18n';
 
     const progress = getStoryProgress();
@@ -139,21 +219,87 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
     const scene = document.getElementById('encounter-scene')!;
     const sceneLink = document.getElementById('scene-chessfighter-link') as HTMLAnchorElement | null;
     const bannerLink = document.getElementById('crossmile-chessfighter-link') as HTMLAnchorElement | null;
+    const worldTourLink = document.getElementById('crossmile-worldtour-link') as HTMLAnchorElement | null;
+    const ironCardBanner = document.getElementById('iron-resonance-card');
+    const ironUid = document.getElementById('iron-card-uid');
+    const ironStatElo = document.getElementById('iron-stat-elo');
+    const ironStatCaptures = document.getElementById('iron-stat-captures');
+    const ironStatPromotions = document.getElementById('iron-stat-promotions');
+    const ironStatRarity = document.getElementById('iron-stat-rarity');
+    const sceneIronStanza = document.getElementById('scene-iron-stanza');
+    const sceneIronTitle = document.getElementById('scene-iron-title');
+    const sceneIronCouplet = document.getElementById('scene-iron-couplet');
+    const cardDot = document.getElementById('crossmile-card-dot');
+    const cardStatusLabel = document.getElementById('crossmile-card-status-label');
+    const cardChip = document.getElementById('crossmile-card-chip');
     let openEncounter: string | null = null;
 
-    if (totalStars) totalStars.textContent = String(progress.totalStars);
     if (progressBar) progressBar.style.width = `${(progress.completedEncounters.length / total) * 100}%`;
 
-    function refreshCrossMileLinks() {
-      if (bannerLink) bannerLink.href = getChessFighterStoryUrl(1);
-      if (sceneLink) sceneLink.href = getChessFighterStoryUrl(openEncounter ?? 1);
+    function refreshCrossMileState() {
+      const activeToken = getActiveDigiCardToken();
+      const summary = decodeDigiCardSummary(activeToken);
+      const hasIron = Boolean(summary?.hasChessFeats);
+
+      if (bannerLink) bannerLink.href = getChessFighterStoryUrl(1, activeToken);
+      if (sceneLink) sceneLink.href = getChessFighterStoryUrl(openEncounter ?? 1, activeToken);
+      if (worldTourLink) worldTourLink.href = getChessFighterWorldTourUrl(activeToken);
+
+      if (totalStars) totalStars.textContent = String(progress.totalStars + (hasIron ? 1 : 0));
+
+      if (hasIron && summary) {
+        ironCardBanner?.classList.remove('hidden');
+        if (ironUid) ironUid.textContent = `${summary.format} · #${summary.uid}`;
+        if (ironStatElo) ironStatElo.textContent = String(summary.elo);
+        if (ironStatCaptures) ironStatCaptures.textContent = String(summary.captures);
+        if (ironStatPromotions) ironStatPromotions.textContent = String(summary.promotions);
+        if (ironStatRarity) ironStatRarity.textContent = summary.rarity;
+      } else {
+        ironCardBanner?.classList.add('hidden');
+      }
+
+      if (cardDot && cardStatusLabel && cardChip) {
+        if (summary && hasIron) {
+          cardDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0';
+          cardStatusLabel.setAttribute('data-i18n', 'story.crossmile.cardResonant');
+          cardStatusLabel.textContent = t('story.crossmile.cardResonant');
+          cardChip.textContent = `${summary.format} · #${summary.uid} · ${summary.elo} ELO`;
+          cardChip.classList.remove('hidden');
+        } else if (summary || activeToken) {
+          cardDot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+          cardStatusLabel.setAttribute('data-i18n', 'story.crossmile.cardSynced');
+          cardStatusLabel.textContent = t('story.crossmile.cardSynced');
+          cardChip.textContent = summary ? `${summary.format} · #${summary.uid}` : activeToken!.slice(0, 16);
+          cardChip.classList.remove('hidden');
+        } else {
+          cardDot.className = 'w-2 h-2 rounded-full bg-obsidian-500 shrink-0';
+          cardStatusLabel.setAttribute('data-i18n', 'story.crossmile.cardNone');
+          cardStatusLabel.textContent = t('story.crossmile.cardNone');
+          cardChip.classList.add('hidden');
+        }
+      }
+
+      if (openEncounter && hasIron) {
+        const rawAct = Number.parseInt(openEncounter.split('-')[0], 10);
+        const actId = Number.isFinite(rawAct) ? Math.min(5, Math.max(1, rawAct)) : 1;
+        const stanza = IRON_RESONANCE_STANZAS[actId];
+        if (stanza) {
+          if (sceneIronTitle) sceneIronTitle.textContent = t(`story.iron.stanza.${actId}.title`);
+          if (sceneIronCouplet) sceneIronCouplet.textContent = stanza.couplet;
+          sceneIronStanza?.classList.remove('hidden');
+        }
+      } else {
+        sceneIronStanza?.classList.add('hidden');
+      }
     }
 
-    refreshCrossMileLinks();
-    sceneLink?.addEventListener('pointerenter', refreshCrossMileLinks);
-    sceneLink?.addEventListener('focus', refreshCrossMileLinks);
-    bannerLink?.addEventListener('pointerenter', refreshCrossMileLinks);
-    bannerLink?.addEventListener('focus', refreshCrossMileLinks);
+    refreshCrossMileState();
+    sceneLink?.addEventListener('pointerenter', refreshCrossMileState);
+    sceneLink?.addEventListener('focus', refreshCrossMileState);
+    bannerLink?.addEventListener('pointerenter', refreshCrossMileState);
+    bannerLink?.addEventListener('focus', refreshCrossMileState);
+    worldTourLink?.addEventListener('pointerenter', refreshCrossMileState);
+    worldTourLink?.addEventListener('focus', refreshCrossMileState);
 
     /** What is written with t(): drawn once the language is known, and again when it changes. */
     function draw() {
@@ -165,7 +311,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         document.getElementById('scene-desc')!.textContent = t(`story.enc.${openEncounter}.desc`);
         document.getElementById('scene-narrative')!.textContent = t(`story.enc.${openEncounter}.narrative`);
       }
-      refreshCrossMileLinks();
+      refreshCrossMileState();
     }
     async function useLanguage() {
       await loadArea('story');

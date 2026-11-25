@@ -7,7 +7,7 @@
  * keys out. Shakespeare's own lines inside a narrative stay in English in every
  * language, like the quotations on the cards.
  */
-import { ACTS } from '../../../lib/story-mode';
+import { ACTS, IRON_RESONANCE_STANZAS } from '../../../lib/story-mode';
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V'];
 
@@ -30,12 +30,26 @@ const messages: Record<string, string> = {
   'story.crossmile.title': 'Sonnet Man × Chess Fighter — “Verse & Iron”',
   'story.crossmile.desc': "Step from Act I's Shakespearean stages into Act II's 3D tactical arena. Bring a Sovereign Card across the mile to awaken Verse Resonance (+⚡ Opening Super Meter).",
   'story.crossmile.cta': 'Enter Act II in Chess Fighter 3D',
+  'story.crossmile.worldtourCta': 'Explore World Tour Parlor & Arena',
+  'story.crossmile.cardNone': 'Return portal ready — bring back a Sovereign Card from Chess Fighter to awaken Iron Resonance.',
+  'story.crossmile.cardSynced': 'Sovereign Card synced — earn a win, capture, or promotion in Chess Fighter to awaken Iron Resonance:',
+  'story.crossmile.cardResonant': 'Sovereign Card synced with martial feats — Iron Resonance unlocked:',
+  'story.iron.kicker': 'Return Portal — Citadelle Martial Iron',
+  'story.iron.badge': 'Iron Resonance Active (+1 Bonus Laureate Star Credit & Citadelle Chorus Stanzas)',
+  'story.iron.title': 'The Citadelle Chronicler Recognizes Your Martial Feats',
+  'story.iron.desc': 'Your Sovereign Card returned from Chess Fighter tempered in battle. Every opened scene now awakens a martial couplet from the Citadelle Chorus.',
+  'story.iron.stat.elo': 'ELO Rating',
+  'story.iron.stat.captures': 'Captures',
+  'story.iron.stat.promotions': 'Promotions',
+  'story.iron.stat.rarity': 'Rarity',
+  'story.iron.chorusLabel': 'The Citadelle Chorus — Iron Resonance Couplet',
 };
 
 for (const act of ACTS) {
   messages[`story.act.${act.id}.label`] = `Act ${ROMAN[act.id - 1]}`;
   messages[`story.act.${act.id}.name`] = act.name;
   messages[`story.act.${act.id}.desc`] = act.description;
+  messages[`story.iron.stanza.${act.id}.title`] = IRON_RESONANCE_STANZAS[act.id].title;
   for (const e of act.encounters) {
     messages[`story.enc.${e.id}.name`] = e.name;
     messages[`story.enc.${e.id}.desc`] = e.description;
