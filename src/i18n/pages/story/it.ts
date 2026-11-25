@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "L'ultimo inchino",
   'story.enc.5-3.desc': "Affronta Marco Antonio nella battaglia decisiva.",
   'story.enc.5-3.narrative': "Il Globe Theatre ammutolisce. Un solo riflettore illumina Marco Antonio in persona. \"Friends, Romans, countrymen, lend me your ears!\" «Hai recitato bene la tua parte. Ora un'ultima strofa, e cala il sipario.»",
+  'story.bridge.kicker': "Verso e Ferro — Ponte dell'Arena Oltre il Miglio",
+  'story.bridge.cta': "Combatti questo atto in Chess Fighter 3D (Odissea dell'Atto II Oltre il Miglio)",
+  'story.bridge.resonance': "Portare la tua Carta Sovrana conferisce Risonanza del Verso (+⚡ barra super iniziale) nel capitolo corrispondente dell'Atto II di Chess Fighter.",
+  'story.crossmile.badge': "Campagna in 2 atti oltre il miglio",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — «Verso e Ferro»",
+  'story.crossmile.desc': "Passa dai palcoscenici shakespeariani dell'Atto I all'arena tattica 3D dell'Atto II. Porta una Carta Sovrana oltre il miglio per risvegliare la Risonanza del Verso (+⚡ barra super iniziale).",
+  'story.crossmile.cta': "Entra nell'Atto II in Chess Fighter 3D",
 };
 
 export default messages;

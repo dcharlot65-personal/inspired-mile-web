@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "最後のカーテンコール",
   'story.enc.5-3.desc': "究極のバトルでマルクス・アントニウスと対決しましょう。",
   'story.enc.5-3.narrative': "グローブ座が静まり返る。ひとすじのスポットライトがマルクス・アントニウスその人を照らす。\"Friends, Romans, countrymen, lend me your ears!\" 「おまえは自分の役をよく演じた。さあ、最後の詩を。そして幕が下りる」",
+  'story.bridge.kicker': "詩と鉄：クロスマイル・アリーナブリッジ",
+  'story.bridge.cta': "Chess Fighter 3Dでこの幕を戦う（第2部クロスマイル・オデッセイ）",
+  'story.bridge.resonance': "ソブリンカードを携えて挑むと、Chess Fighterの対応する第2部チャプターで詩の共鳴（+⚡ 開幕スーパーゲージ）を得られます。",
+  'story.crossmile.badge': "全2部クロスマイル・キャンペーン",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter「詩と鉄」",
+  'story.crossmile.desc': "第1部のシェイクスピアの舞台から、第2部の3D戦術アリーナへ。マイルを越えてソブリンカードを持ち込み、詩の共鳴（+⚡ 開幕スーパーゲージ）を呼び覚ましましょう。",
+  'story.crossmile.cta': "Chess Fighter 3Dで第2部へ進む",
 };
 
 export default messages;

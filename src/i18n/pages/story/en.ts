@@ -23,6 +23,13 @@ const messages: Record<string, string> = {
   'story.difficulty.easy': 'Easy',
   'story.difficulty.medium': 'Medium',
   'story.difficulty.hard': 'Hard',
+  'story.bridge.kicker': 'Verse & Iron — Cross-Mile Arena Bridge',
+  'story.bridge.cta': 'Fight This Act in Chess Fighter 3D (Act II Cross-Mile Odyssey)',
+  'story.bridge.resonance': "Carrying your Sovereign Card grants Verse Resonance (+⚡ Opening Super Meter) in Chess Fighter's corresponding Act II chapter.",
+  'story.crossmile.badge': '2-Act Cross-Mile Campaign',
+  'story.crossmile.title': 'Sonnet Man × Chess Fighter — “Verse & Iron”',
+  'story.crossmile.desc': "Step from Act I's Shakespearean stages into Act II's 3D tactical arena. Bring a Sovereign Card across the mile to awaken Verse Resonance (+⚡ Opening Super Meter).",
+  'story.crossmile.cta': 'Enter Act II in Chess Fighter 3D',
 };
 
 for (const act of ACTS) {

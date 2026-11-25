@@ -74,13 +74,60 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         <h3 id="scene-name" class="text-lg font-display font-bold text-gold-300 mb-1"></h3>
         <p id="scene-desc" class="text-xs text-obsidian-500 mb-3"></p>
         <p id="scene-narrative" class="text-sm text-obsidian-300 leading-relaxed"></p>
+
+        <!-- Cross-Mile Arena Bridge: Verse & Iron -->
+        <div class="mt-5 pt-4 border-t border-obsidian-700/60 bg-obsidian-950/40 backdrop-blur-sm rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 text-[11px] font-mono rtl:font-sans uppercase tracking-wider rtl:tracking-normal text-emerald-400">
+              <span aria-hidden="true">&#x2694;</span>
+              <span data-i18n="story.bridge.kicker">Verse &amp; Iron — Cross-Mile Arena Bridge</span>
+            </div>
+            <p class="text-xs text-obsidian-400 leading-relaxed" data-i18n="story.bridge.resonance">Carrying your Sovereign Card grants Verse Resonance (+&#x26A1; Opening Super Meter) in Chess Fighter's corresponding Act II chapter.</p>
+          </div>
+          <a
+            id="scene-chessfighter-link"
+            href="https://chessfighter.inspiredmile.com/#mode=story&chapter=7"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 shrink-0 px-4 py-2.5 rounded-lg font-semibold text-xs sm:text-sm bg-linear-to-r from-gold-500 via-gold-400 to-emerald-400 text-obsidian-950 hover:from-gold-400 hover:to-emerald-300 transition-all duration-300 shadow-md shadow-gold-500/20 hover:shadow-lg hover:shadow-emerald-500/25"
+          >
+            <span aria-hidden="true">&#x2694;</span>
+            <span data-i18n="story.bridge.cta">Fight This Act in Chess Fighter 3D (Act II Cross-Mile Odyssey)</span>
+            <span aria-hidden="true">&#x2197;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Compact Cross-Mile Campaign Banner: Sonnet Man × Chess Fighter (“Verse & Iron”) -->
+      <div id="crossmile-banner" class="card-glass p-5 sm:p-6 rounded-2xl mt-8 border border-gold-500/30 bg-linear-to-r from-obsidian-900/80 via-obsidian-900/60 to-emerald-950/30">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-gold-500/10 border border-gold-500/25">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+              <span class="text-[11px] font-mono rtl:font-sans uppercase tracking-wider rtl:tracking-normal text-gold-300" data-i18n="story.crossmile.badge">2-Act Cross-Mile Campaign</span>
+            </div>
+            <h2 class="text-base sm:text-lg font-display font-bold text-obsidian-100" data-i18n="story.crossmile.title">Sonnet Man × Chess Fighter — “Verse &amp; Iron”</h2>
+            <p class="text-xs sm:text-sm text-obsidian-400 leading-relaxed" data-i18n="story.crossmile.desc">Step from Act I's Shakespearean stages into Act II's 3D tactical arena. Bring a Sovereign Card across the mile to awaken Verse Resonance (+&#x26A1; Opening Super Meter).</p>
+          </div>
+          <a
+            id="crossmile-chessfighter-link"
+            href="https://chessfighter.inspiredmile.com/#mode=story&chapter=7"
+            target="_blank"
+            rel="noopener"
+            class="btn-secondary text-xs sm:text-sm px-4 py-2.5 shrink-0 gap-2 border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/10"
+          >
+            <span aria-hidden="true">&#x2694;</span>
+            <span data-i18n="story.crossmile.cta">Enter Act II in Chess Fighter 3D</span>
+            <span aria-hidden="true">&#x2197;</span>
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
   <script>
-    import { getStoryProgress, getTotalEncounters, isEncounterUnlocked } from '../lib/story-mode';
+    import { getChessFighterStoryUrl, getStoryProgress, getTotalEncounters, isEncounterUnlocked } from '../lib/story-mode';
     import { applyTranslations, initI18n, loadArea, locale, onLocaleChange, t } from '../i18n';
 
     const progress = getStoryProgress();
@@ -90,10 +137,23 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
     const totalStars = document.getElementById('total-stars');
     const progressBar = document.getElementById('story-progress-bar');
     const scene = document.getElementById('encounter-scene')!;
+    const sceneLink = document.getElementById('scene-chessfighter-link') as HTMLAnchorElement | null;
+    const bannerLink = document.getElementById('crossmile-chessfighter-link') as HTMLAnchorElement | null;
     let openEncounter: string | null = null;
 
     if (totalStars) totalStars.textContent = String(progress.totalStars);
     if (progressBar) progressBar.style.width = `${(progress.completedEncounters.length / total) * 100}%`;
+
+    function refreshCrossMileLinks() {
+      if (bannerLink) bannerLink.href = getChessFighterStoryUrl(1);
+      if (sceneLink) sceneLink.href = getChessFighterStoryUrl(openEncounter ?? 1);
+    }
+
+    refreshCrossMileLinks();
+    sceneLink?.addEventListener('pointerenter', refreshCrossMileLinks);
+    sceneLink?.addEventListener('focus', refreshCrossMileLinks);
+    bannerLink?.addEventListener('pointerenter', refreshCrossMileLinks);
+    bannerLink?.addEventListener('focus', refreshCrossMileLinks);
 
     /** What is written with t(): drawn once the language is known, and again when it changes. */
     function draw() {
@@ -105,6 +165,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         document.getElementById('scene-desc')!.textContent = t(`story.enc.${openEncounter}.desc`);
         document.getElementById('scene-narrative')!.textContent = t(`story.enc.${openEncounter}.narrative`);
       }
+      refreshCrossMileLinks();
     }
     async function useLanguage() {
       await loadArea('story');
@@ -116,7 +177,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
     void initI18n().then(useLanguage);
     onLocaleChange(() => void useLanguage());
 
-    // Mark completed/locked encounters; an open one shows its scene
+    // Mark completed/locked encounters; every encounter opens its scene and updates the Cross-Mile Act II link
     document.querySelectorAll('.encounter-card').forEach(card => {
       const id = card.getAttribute('data-encounter');
       if (!id) return;
@@ -128,9 +189,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
         check.textContent = '\u2713';
         card.querySelector('span:first-child')?.after(check);
       } else if (!isEncounterUnlocked(id)) {
-        card.classList.add('opacity-40', 'pointer-events-none');
-        card.classList.remove('cursor-pointer', 'hover:bg-obsidian-700/50');
-        return;
+        card.classList.add('opacity-75');
       }
       card.addEventListener('click', () => {
         openEncounter = id;

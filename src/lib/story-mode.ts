@@ -158,3 +158,87 @@ export function isEncounterUnlocked(encounterId: string): boolean {
 export function getTotalEncounters(): number {
   return ACTS.reduce((sum, act) => sum + act.encounters.length, 0);
 }
+
+const DIGICARD_TOKEN_RE = /^IM[12]-[A-Za-z0-9_.-]{4,}$/;
+
+const DIGICARD_STORAGE_KEYS = [
+  'im-digicard',
+  'cf-digicard',
+  'digicard',
+  'inspired-mile-digicard',
+  'sovereign-card',
+  'im2_token',
+  'im1_token',
+] as const;
+
+/** Extract a valid IM1- or IM2- Sovereign DigiCard token from a raw string or JSON wrapper. */
+export function extractDigiCardToken(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const trimmed = raw.trim();
+  if (DIGICARD_TOKEN_RE.test(trimmed)) return trimmed;
+  if (trimmed.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(trimmed) as Record<string, unknown>;
+      for (const field of ['im2_token', 'im1_token', 'token', 'card', 'cardToken']) {
+        const candidate = parsed[field];
+        if (typeof candidate === 'string' && DIGICARD_TOKEN_RE.test(candidate.trim())) {
+          return candidate.trim();
+        }
+      }
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
+/** Read any active IM1- or IM2- Sovereign DigiCard token from URL params or localStorage. */
+export function getActiveDigiCardToken(
+  storage: Pick<Storage, 'getItem' | 'length' | 'key'> | null = typeof window !== 'undefined' ? window.localStorage : null,
+): string | null {
+  if (typeof window !== 'undefined') {
+    try {
+      const fromSearch = extractDigiCardToken(new URLSearchParams(window.location.search).get('card'));
+      if (fromSearch) return fromSearch;
+      const fromHash = extractDigiCardToken(new URLSearchParams(window.location.hash.replace(/^#/, '')).get('card'));
+      if (fromHash) return fromHash;
+    } catch {
+      /* ignore URL parse errors */
+    }
+  }
+  if (!storage) return null;
+  try {
+    for (const key of DIGICARD_STORAGE_KEYS) {
+      const token = extractDigiCardToken(storage.getItem(key));
+      if (token) return token;
+    }
+    for (let i = 0; i < storage.length; i++) {
+      const key = storage.key(i);
+      if (key && /digicard|sovereign|im[12][_-]?token/i.test(key)) {
+        const token = extractDigiCardToken(storage.getItem(key));
+        if (token) return token;
+      }
+    }
+  } catch {
+    /* storage unavailable */
+  }
+  return null;
+}
+
+/**
+ * Build the Cross-Mile Chess Fighter 3D Act II Odyssey URL for a Sonnet Man Act (1..5 -> chapter 7..11)
+ * or encounter ID ('1-1'..'5-3'), appending `&card=<token>` when an active Sovereign DigiCard is present.
+ */
+export function getChessFighterStoryUrl(
+  encounterOrAct: string | number,
+  tokenOverride?: string | null,
+): string {
+  const rawAct = typeof encounterOrAct === 'number'
+    ? encounterOrAct
+    : Number.parseInt(String(encounterOrAct).split('-')[0], 10);
+  const actNum = Number.isFinite(rawAct) ? Math.min(5, Math.max(1, rawAct)) : 1;
+  const chapter = 6 + actNum;
+  const base = `https://chessfighter.inspiredmile.com/#mode=story&chapter=${chapter}`;
+  const token = tokenOverride !== undefined ? extractDigiCardToken(tokenOverride) : getActiveDigiCardToken();
+  return token ? `${base}&card=${encodeURIComponent(token)}` : base;
+}

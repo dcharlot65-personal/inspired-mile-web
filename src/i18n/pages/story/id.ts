@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Salam Penutup",
   'story.enc.5-3.desc': "Hadapi Marcus Antonius dalam pertarungan pamungkas.",
   'story.enc.5-3.narrative': "Globe Theatre hening. Satu lampu sorot menerangi Marcus Antonius sendiri. \"Friends, Romans, countrymen, lend me your ears!\" \"Kau telah memainkan peranmu dengan baik. Sekarang, satu syair terakhir, lalu tirai turun.\"",
+  'story.bridge.kicker': "Bait & Besi — Jembatan Arena Lintas-Mil",
+  'story.bridge.cta': "Bertarung di Babak Ini dalam Chess Fighter 3D (Odisei Lintas-Mil Babak II)",
+  'story.bridge.resonance': "Membawa Kartu Berdaulatmu memberikan Resonansi Bait (+⚡ Meter Super Pembuka) di bab Babak II yang sesuai dalam Chess Fighter.",
+  'story.crossmile.badge': "Kampanye Lintas-Mil 2 Babak",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — “Bait & Besi”",
+  'story.crossmile.desc': "Melangkahlah dari panggung Shakespeare Babak I ke arena taktis 3D Babak II. Bawa Kartu Berdaulat melintasi mil untuk membangkitkan Resonansi Bait (+⚡ Meter Super Pembuka).",
+  'story.crossmile.cta': "Masuk ke Babak II di Chess Fighter 3D",
 };
 
 export default messages;

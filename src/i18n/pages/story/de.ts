@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Die letzte Verbeugung",
   'story.enc.5-3.desc': "Tritt im entscheidenden Kampf gegen Marcus Antonius an.",
   'story.enc.5-3.narrative': "Im Globe Theatre wird es still. Ein einzelner Scheinwerfer beleuchtet Marcus Antonius selbst. \"Friends, Romans, countrymen, lend me your ears!\" „Du hast deine Rolle gut gespielt. Nun: eine letzte Strophe, und der Vorhang fällt.“",
+  'story.bridge.kicker': "Vers & Eisen — Meilenübergreifende Arena-Brücke",
+  'story.bridge.cta': "Kämpfe diesen Akt in Chess Fighter 3D (Akt-II-Odyssee über die Meile)",
+  'story.bridge.resonance': "Wenn du deine Souveräne Karte mitführst, erhältst du im entsprechenden Kapitel von Akt II in Chess Fighter Vers-Resonanz (+⚡ Start-Superleiste).",
+  'story.crossmile.badge': "Meilenübergreifende 2-Akt-Kampagne",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — „Vers & Eisen“",
+  'story.crossmile.desc': "Tritt von Shakespeares Bühnen aus Akt I in die taktische 3D-Arena von Akt II. Nimm eine Souveräne Karte über die Meile mit, um Vers-Resonanz (+⚡ Start-Superleiste) zu erwecken.",
+  'story.crossmile.cta': "Akt II in Chess Fighter 3D betreten",
 };
 
 export default messages;

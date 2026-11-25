@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "การโค้งคำนับครั้งสุดท้าย",
   'story.enc.5-3.desc': "เผชิญหน้ากับมาร์ก แอนโทนีในศึกตัดสิน",
   'story.enc.5-3.narrative': "โรงละครโกลบเงียบลง แสงไฟดวงเดียวสาดส่องมาร์ก แอนโทนี \"Friends, Romans, countrymen, lend me your ears!\" \"เจ้าเล่นบทของตนได้ดี บัดนี้ ขอบทกลอนสุดท้ายอีกหนึ่งบท แล้วม่านจะปิดลง\"",
+  'story.bridge.kicker': "บทกวีและเหล็กกล้า — สะพานสังเวียนข้ามไมล์",
+  'story.bridge.cta': "สู้องก์นี้ใน Chess Fighter 3D (มหากาพย์ข้ามไมล์ ภาค II)",
+  'story.bridge.resonance': "การพกการ์ดอธิปไตยของคุณจะมอบพลังสั่นพ้องแห่งบทกวี (+⚡ เกรจซูเปอร์เริ่มต้น) ในบทภาค II ที่ตรงกันของ Chess Fighter",
+  'story.crossmile.badge': "แคมเปญข้ามไมล์ 2 ภาค",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — “บทกวีและเหล็กกล้า”",
+  'story.crossmile.desc': "ก้าวจากเวทีเชกสเปียร์ในภาค I สู่สังเวียนกลยุทธ์ 3D ในภาค II นำการ์ดอธิปไตยข้ามไมล์เพื่อปลุกพลังสั่นพ้องแห่งบทกวี (+⚡ เกรจซูเปอร์เริ่มต้น)",
+  'story.crossmile.cta': "เข้าสู่ภาค II ใน Chess Fighter 3D",
 };
 
 export default messages;

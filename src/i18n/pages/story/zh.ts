@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "最后的谢幕",
   'story.enc.5-3.desc': "在终极之战中迎战马克·安东尼。",
   'story.enc.5-3.narrative': "环球剧场安静下来。一束聚光灯照亮了马克·安东尼本人。\"Friends, Romans, countrymen, lend me your ears!\" “你的角色演得很好。现在，最后一句诗，然后落幕。”",
+  'story.bridge.kicker': "诗与铁——跨里竞技场之桥",
+  'story.bridge.cta': "在 Chess Fighter 3D 中迎战本幕（第二幕跨里征途）",
+  'story.bridge.resonance': "携带你的主权卡，即可在 Chess Fighter 对应的第二幕章节中获得诗律共鸣（+⚡ 开场超必杀槽）。",
+  'story.crossmile.badge': "双幕跨里战役",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter ——《诗与铁》",
+  'story.crossmile.desc': "从第一幕的莎士比亚舞台迈入第二幕的 3D 战术竞技场。携主权卡跨越里界，唤醒诗律共鸣（+⚡ 开场超必杀槽）。",
+  'story.crossmile.cta': "进入 Chess Fighter 3D 第二幕",
 };
 
 export default messages;

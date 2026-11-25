@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Le dernier salut",
   'story.enc.5-3.desc': "Affrontez Marc Antoine dans l'ultime combat.",
   'story.enc.5-3.narrative': "Le théâtre du Globe fait silence. Un seul projecteur éclaire Marc Antoine en personne. \"Friends, Romans, countrymen, lend me your ears!\" « Tu as bien joué ton rôle. À présent, une dernière strophe, et le rideau tombe. »",
+  'story.bridge.kicker': "Vers & Fer — Pont d'Arène Inter-Milles",
+  'story.bridge.cta': "Combattez cet acte dans Chess Fighter 3D (Odyssée Inter-Milles de l'Acte II)",
+  'story.bridge.resonance': "Porter votre Carte Souveraine accorde la Résonance du Vers (+⚡ de jauge super d'ouverture) dans le chapitre correspondant de l'Acte II de Chess Fighter.",
+  'story.crossmile.badge': "Campagne inter-milles en 2 actes",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — « Vers & Fer »",
+  'story.crossmile.desc': "Passez des scènes shakespeariennes de l'Acte I à l'arène tactique 3D de l'Acte II. Emportez une Carte Souveraine d'un mille à l'autre pour éveiller la Résonance du Vers (+⚡ de jauge super d'ouverture).",
+  'story.crossmile.cta': "Entrer dans l'Acte II sur Chess Fighter 3D",
 };
 
 export default messages;

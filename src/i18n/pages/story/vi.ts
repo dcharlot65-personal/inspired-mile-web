@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Lần cúi chào cuối cùng",
   'story.enc.5-3.desc': "Đối đầu Marcus Antonius trong trận đấu tối hậu.",
   'story.enc.5-3.narrative': "Globe Theatre lặng đi. Một luồng đèn duy nhất rọi sáng chính Marcus Antonius. \"Friends, Romans, countrymen, lend me your ears!\" \"Ngươi đã diễn tròn vai của mình. Giờ thì, một câu thơ cuối cùng, rồi màn hạ.\"",
+  'story.bridge.kicker': "Thơ & Thép — Cầu Đấu Trường Xuyên Dặm",
+  'story.bridge.cta': "Chiến đấu hồi này trong Chess Fighter 3D (Hành trình Xuyên Dặm Hồi II)",
+  'story.bridge.resonance': "Mang theo Thẻ Chủ Quyền của bạn sẽ nhận Cộng Hưởng Thi Ca (+⚡ Thanh Siêu Cấp mở màn) ở chương Hồi II tương ứng trong Chess Fighter.",
+  'story.crossmile.badge': "Chiến dịch Xuyên Dặm 2 Hồi",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — “Thơ & Thép”",
+  'story.crossmile.desc': "Bước từ sân khấu Shakespeare của Hồi I sang đấu trường chiến thuật 3D của Hồi II. Mang theo Thẻ Chủ Quyền vượt dặm để đánh thức Cộng Hưởng Thi Ca (+⚡ Thanh Siêu Cấp mở màn).",
+  'story.crossmile.cta': "Vào Hồi II trong Chess Fighter 3D",
 };
 
 export default messages;

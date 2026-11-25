@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Последний поклон",
   'story.enc.5-3.desc': "Сразись с Марком Антонием в решающей битве.",
   'story.enc.5-3.narrative': "«Глобус» затихает. Единственный луч прожектора освещает самого Марка Антония. \"Friends, Romans, countrymen, lend me your ears!\" «Твоя роль сыграна хорошо. Теперь — последняя строфа, и занавес опустится».",
+  'story.bridge.kicker': "Стих и Сталь — Межмильный мост арены",
+  'story.bridge.cta': "Сразись в этом акте в Chess Fighter 3D (Акт II: межмильная одиссея)",
+  'story.bridge.resonance': "Твоя Суверенная карта даёт Резонанс стиха (+⚡ к стартовой шкале супера) в соответствующей главе Акта II в Chess Fighter.",
+  'story.crossmile.badge': "Двухактная межмильная кампания",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — «Стих и Сталь»",
+  'story.crossmile.desc': "Шагни с шекспировских сцен Акта I на тактическую 3D-арену Акта II. Возьми Суверенную карту через милю, чтобы пробудить Резонанс стиха (+⚡ к стартовой шкале супера).",
+  'story.crossmile.cta': "Войти в Акт II в Chess Fighter 3D",
 };
 
 export default messages;

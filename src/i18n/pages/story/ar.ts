@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "الانحناءة الأخيرة",
   'story.enc.5-3.desc': "واجه مرقس أنطونيوس في المعركة الحاسمة.",
   'story.enc.5-3.narrative': "يسود الصمت مسرح جلوب. بقعة ضوء واحدة تنير مرقس أنطونيوس نفسه. \u2068\"Friends, Romans, countrymen, lend me your ears!\"\u2069 «لقد أدّيت دورك جيدًا. والآن بيت أخير، ثم يُسدل الستار».",
+  'story.bridge.kicker': "شعر وحديد — جسر الساحة العابر للأميال",
+  'story.bridge.cta': "خض هذا الفصل في \u2068Chess Fighter 3D\u2069 ضمن ملحمة الفصل الثاني العابرة للأميال",
+  'story.bridge.resonance': "يمنحك حمل بطاقتك السيادية رنين الأبيات (+⚡ في عداد القوة الافتتاحي) في الفصل المقابل من القسم الثاني داخل \u2068Chess Fighter\u2069.",
+  'story.crossmile.badge': "حملة عابرة للأميال من فصلين",
+  'story.crossmile.title': "\u2068Sonnet Man × Chess Fighter\u2069: «شعر وحديد»",
+  'story.crossmile.desc': "انتقل من مسارح شكسبير في الفصل الأول إلى الساحة التكتيكية ثلاثية الأبعاد في الفصل الثاني، واحمل بطاقة سيادية عبر الميل لإيقاظ رنين الأبيات (+⚡ في عداد القوة الافتتاحي).",
+  'story.crossmile.cta': "ادخل الفصل الثاني في \u2068Chess Fighter 3D\u2069",
 };
 
 export default messages;

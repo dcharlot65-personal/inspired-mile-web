@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "Ostatni ukłon",
   'story.enc.5-3.desc': "Zmierz się z Markiem Antoniuszem w ostatecznej bitwie.",
   'story.enc.5-3.narrative': "W teatrze Globe zapada cisza. Pojedynczy reflektor oświetla samego Marka Antoniusza. \"Friends, Romans, countrymen, lend me your ears!\" „Twoja rola została dobrze zagrana. A teraz ostatnia strofa, i kurtyna opada”.",
+  'story.bridge.kicker': "Wers i Żelazo — Międzymilowy Most Areny",
+  'story.bridge.cta': "Stocz ten akt w Chess Fighter 3D (Międzymilowa Odyseja Aktu II)",
+  'story.bridge.resonance': "Zabranie swojej Karty Suwerennej daje Rezonans Wersu (+⚡ początkowego paska supermocy) w odpowiadającym rozdziale Aktu II gry Chess Fighter.",
+  'story.crossmile.badge': "Dwuczęściowa kampania międzymilowa",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — „Wers i Żelazo”",
+  'story.crossmile.desc': "Przejdź ze scen szekspirowskich Aktu I na taktyczną arenę 3D Aktu II. Przenieś Kartę Suwerenną przez milę, aby obudzić Rezonans Wersu (+⚡ początkowego paska supermocy).",
+  'story.crossmile.cta': "Wejdź do Aktu II w Chess Fighter 3D",
 };
 
 export default messages;

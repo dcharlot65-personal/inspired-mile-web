@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "마지막 인사",
   'story.enc.5-3.desc': "궁극의 배틀에서 마르쿠스 안토니우스와 맞서세요.",
   'story.enc.5-3.narrative': "글로브 극장이 조용해진다. 한 줄기 조명이 마르쿠스 안토니우스 본인을 비춘다. \"Friends, Romans, countrymen, lend me your ears!\" \"그대는 맡은 역을 잘 해냈다. 이제 마지막 시 한 편, 그리고 막이 내린다.\"",
+  'story.bridge.kicker': "시와 강철 — 크로스마일 아레나 브리지",
+  'story.bridge.cta': "Chess Fighter 3D에서 이 막 싸우기 (제2부 크로스마일 오디세이)",
+  'story.bridge.resonance': "소버린 카드를 지니고 가면 Chess Fighter의 해당 제2부 챕터에서 시의 공명(+⚡ 시작 슈퍼 게이지)을 얻어요.",
+  'story.crossmile.badge': "2부작 크로스마일 캠페인",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — ‘시와 강철’",
+  'story.crossmile.desc': "제1막의 셰익스피어 무대에서 제2부의 3D 전술 아레나로 나아가세요. 마일을 넘어 소버린 카드를 가져가 시의 공명(+⚡ 시작 슈퍼 게이지)을 깨워 보세요.",
+  'story.crossmile.cta': "Chess Fighter 3D 제2부 입장하기",
 };
 
 export default messages;

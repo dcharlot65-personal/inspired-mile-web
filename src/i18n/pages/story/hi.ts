@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "अंतिम अभिवादन",
   'story.enc.5-3.desc': "निर्णायक युद्ध में मार्कस आंतोनियस का सामना करें।",
   'story.enc.5-3.narrative': "Globe Theatre में सन्नाटा छा जाता है। एक अकेली रोशनी स्वयं मार्कस आंतोनियस पर पड़ती है। \"Friends, Romans, countrymen, lend me your ears!\" \"तुमने अपनी भूमिका अच्छी निभाई। अब एक आख़िरी पद्य, और परदा गिरता है।\"",
+  'story.bridge.kicker': "छंद और लौह — क्रॉस-माइल एरीना सेतु",
+  'story.bridge.cta': "Chess Fighter 3D में यह अंक लड़ें (अंक II क्रॉस-माइल अभियान)",
+  'story.bridge.resonance': "अपना Sovereign Card साथ ले जाने पर Chess Fighter के संबंधित अंक II अध्याय में छंद अनुनाद (+⚡ प्रारंभिक सुपर मीटर) मिलता है।",
+  'story.crossmile.badge': "2-अंकों का क्रॉस-माइल अभियान",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — “छंद और लौह”",
+  'story.crossmile.desc': "अंक I के शेक्सपीयर मंचों से अंक II के 3D सामरिक अखाड़े में कदम रखें। छंद अनुनाद (+⚡ प्रारंभिक सुपर मीटर) जगाने के लिए मील के पार अपना Sovereign Card साथ लाएँ।",
+  'story.crossmile.cta': "Chess Fighter 3D में अंक II में प्रवेश करें",
 };
 
 export default messages;

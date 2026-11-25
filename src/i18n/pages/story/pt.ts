@@ -83,6 +83,13 @@ const messages: Record<string, string> = {
   'story.enc.5-3.name': "A última reverência",
   'story.enc.5-3.desc': "Enfrente Marco Antônio na batalha definitiva.",
   'story.enc.5-3.narrative': "O Globe Theatre fica em silêncio. Um único holofote ilumina o próprio Marco Antônio. \"Friends, Romans, countrymen, lend me your ears!\" “Você representou bem o seu papel. Agora, uma última estrofe, e a cortina cai.”",
+  'story.bridge.kicker': "Verso e Ferro — Ponte da Arena Entre Milhas",
+  'story.bridge.cta': "Lute este ato em Chess Fighter 3D (Odisseia Entre Milhas do Ato II)",
+  'story.bridge.resonance': "Levar o seu Card Soberano concede Ressonância de Verso (+⚡ na barra de super inicial) no capítulo correspondente do Ato II de Chess Fighter.",
+  'story.crossmile.badge': "Campanha de 2 atos entre milhas",
+  'story.crossmile.title': "Sonnet Man × Chess Fighter — “Verso e Ferro”",
+  'story.crossmile.desc': "Passe dos palcos shakespearianos do Ato I para a arena tática 3D do Ato II. Leve um Card Soberano através da milha para despertar a Ressonância de Verso (+⚡ na barra de super inicial).",
+  'story.crossmile.cta': "Entrar no Ato II em Chess Fighter 3D",
 };
 
 export default messages;
