@@ -33,6 +33,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Play your cards, speak your verse, and take the stage. On a screen, or in a Quest 3 or Vision Pro in the Theatre.',
   'home.ready.arena': 'Enter the Arena',
   'home.ready.earn': 'Earn Cards',
+  'home.spoken.eyebrow': 'Spoken Sanctuary · Live CFW1 World Shaper',
+  'home.spoken.title': 'Speak a <b>3D Arena</b> Into Being',
+  'home.spoken.body': 'Cross the mile into Chess Fighter: shape a live WebGPU stage by voice or text, or step straight into a community-morphed CFW1 arena.',
+  'home.spoken.vaultCurated': 'Curated CFW1 Vault',
+  'home.spoken.vaultLive': 'Live CFW1 Vault',
+  'home.spoken.modelLabel': 'Embedded open model',
+  'home.spoken.wishPlaceholder': 'Speak or type a world wish: rainy night low-gravity jade towers…',
+  'home.spoken.morphBtn': 'Morph in WebGPU →',
+  'home.spoken.speakBtn': 'Speak',
+  'home.spoken.stageSimple': 'SIMPLE',
+  'home.spoken.stagePainted': 'PAINTED',
+  'home.spoken.enterArena': 'Enter Morphed Arena →',
+  'home.spoken.agentSummary': 'Connect Your AI Agent (0x28 Live Morf)',
+  'home.spoken.copy': 'Copy',
+  'home.spoken.copied': 'Copied',
 };
 
 export default messages;

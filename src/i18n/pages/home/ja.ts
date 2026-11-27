@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'カードを出し、詩を声に出して、舞台に立ちましょう。画面でも、シアターでQuest 3やVision Proを着けても遊べます。',
   'home.ready.arena': 'アリーナに入る',
   'home.ready.earn': 'カードを手に入れる',
+  'home.spoken.eyebrow': '言霊の聖域・ライブ CFW1 ワールド造形',
+  'home.spoken.title': '声で<b>立体舞台</b>を生み出す',
+  'home.spoken.body': 'マイルを越えて Chess Fighter へ。声や言葉で WebGPU の舞台をその場で形づくるか、コミュニティが紡いだ CFW1 アリーナへそのまま踏み込みましょう。',
+  'home.spoken.vaultCurated': '厳選 CFW1 保管庫',
+  'home.spoken.vaultLive': 'ライブ CFW1 保管庫',
+  'home.spoken.modelLabel': '組み込みオープンモデル',
+  'home.spoken.wishPlaceholder': '世界の願いを話すか入力：雨の夜、低重力、翡翠の塔…',
+  'home.spoken.morphBtn': 'WebGPU で造形 →',
+  'home.spoken.speakBtn': '話す',
+  'home.spoken.stageSimple': '素組み',
+  'home.spoken.stagePainted': '彩色済',
+  'home.spoken.enterArena': '造形アリーナへ入る →',
+  'home.spoken.agentSummary': '自分の AI エージェントを接続（0x28 ライブ造形）',
+  'home.spoken.copy': 'コピー',
+  'home.spoken.copied': 'コピー済み',
 };
 
 export default messages;

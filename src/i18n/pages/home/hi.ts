@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'अपने कार्ड खेलें, अपनी कविता बोलें और मंच पर आएँ। स्क्रीन पर, या रंगशाला में Quest 3 या Vision Pro पहनकर।',
   'home.ready.arena': 'अखाड़े में उतरें',
   'home.ready.earn': 'कार्ड कमाएँ',
+  'home.spoken.eyebrow': 'वाक् अभयारण्य · सजीव CFW1 विश्व निर्माता',
+  'home.spoken.title': 'आवाज़ से <b>त्रिआयामी मंच</b> गढ़ें',
+  'home.spoken.body': 'मील पार कर Chess Fighter में कदम रखें: आवाज़ या पाठ से सजीव WebGPU मंच ढालें, या समुदाय द्वारा रचे गए CFW1 अखाड़े में सीधे उतरें।',
+  'home.spoken.vaultCurated': 'चयनित CFW1 कोष',
+  'home.spoken.vaultLive': 'सजीव CFW1 कोष',
+  'home.spoken.modelLabel': 'अंतर्निहित खुला मॉडल',
+  'home.spoken.wishPlaceholder': 'विश्व की इच्छा बोलें या लिखें: बरसती रात, कम गुरुत्व, हरिताश्म मीनारें…',
+  'home.spoken.morphBtn': 'WebGPU में ढालें →',
+  'home.spoken.speakBtn': 'बोलें',
+  'home.spoken.stageSimple': 'प्रारूप',
+  'home.spoken.stagePainted': 'चित्रित',
+  'home.spoken.enterArena': 'ढले हुए अखाड़े में उतरें →',
+  'home.spoken.agentSummary': 'अपना एआई एजेंट जोड़ें (0x28 सजीव मॉर्फ़)',
+  'home.spoken.copy': 'प्रतिलिपि',
+  'home.spoken.copied': 'प्रतिलिपि बनी',
 };
 
 export default messages;

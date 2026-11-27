@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Jouez vos cartes, dites votre strophe et montez sur scène. Sur un écran, ou avec un Quest 3 ou un Vision Pro dans le Théâtre.',
   'home.ready.arena': 'Entrer dans l’arène',
   'home.ready.earn': 'Gagner des cartes',
+  'home.spoken.eyebrow': 'Sanctuaire parlé · Façonneur de mondes CFW1 en direct',
+  'home.spoken.title': 'Façonnez une <b>scène 3D</b> par la voix',
+  'home.spoken.body': 'Franchissez le mile vers Chess Fighter\u00a0: façonnez en direct une scène WebGPU à la voix ou par écrit, ou entrez dans une arène CFW1 créée par la communauté.',
+  'home.spoken.vaultCurated': 'Coffre CFW1 choisi',
+  'home.spoken.vaultLive': 'Coffre CFW1 en direct',
+  'home.spoken.modelLabel': 'Modèle ouvert intégré',
+  'home.spoken.wishPlaceholder': 'Dites ou écrivez un vœu de monde\u00a0: nuit pluvieuse, faible gravité, tours de jade…',
+  'home.spoken.morphBtn': 'Façonner en WebGPU →',
+  'home.spoken.speakBtn': 'Parler',
+  'home.spoken.stageSimple': 'ÉBAUCHE',
+  'home.spoken.stagePainted': 'PEINT',
+  'home.spoken.enterArena': 'Entrer dans le monde façonné →',
+  'home.spoken.agentSummary': 'Connecter votre agent IA (0x28 Morf en direct)',
+  'home.spoken.copy': 'Copier',
+  'home.spoken.copied': 'Copié',
 };
 
 export default messages;

@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'العب بطاقاتك، وألقِ أبياتك، واصعد المسرح. على الشاشة، أو بنظارة Quest 3 أو Vision Pro في المسرح.',
   'home.ready.arena': 'ادخل الحلبة',
   'home.ready.earn': 'اكسب البطاقات',
+  'home.spoken.eyebrow': 'الملاذ المنطوق · مشكّل عوالم CFW1 الحي',
+  'home.spoken.title': 'شكّل <b>ساحة ثلاثية الأبعاد</b> بصوتك',
+  'home.spoken.body': 'اعبر الميل إلى Chess Fighter: شكّل مسرح WebGPU حيًا بالصوت أو الكتابة، أو ادخل مباشرة إلى عالم CFW1 صاغه المجتمع.',
+  'home.spoken.vaultCurated': 'خزنة CFW1 المختارة',
+  'home.spoken.vaultLive': 'خزنة CFW1 الحية',
+  'home.spoken.modelLabel': 'النموذج المفتوح المدمج',
+  'home.spoken.wishPlaceholder': 'انطق أو اكتب أمنية عالم: ليلة ماطرة وجاذبية منخفضة وأبراج من اليشب…',
+  'home.spoken.morphBtn': 'شكّل عبر WebGPU ←',
+  'home.spoken.speakBtn': 'تحدث',
+  'home.spoken.stageSimple': 'مبدئي',
+  'home.spoken.stagePainted': 'مرسوم',
+  'home.spoken.enterArena': 'ادخل الساحة المشكّلة ←',
+  'home.spoken.agentSummary': 'اربط وكيل الذكاء الاصطناعي الخاص بك (0x28 تشكيل حي)',
+  'home.spoken.copy': 'نسخ',
+  'home.spoken.copied': 'تم النسخ',
 };
 
 export default messages;

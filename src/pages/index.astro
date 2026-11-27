@@ -182,6 +182,169 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
     </div>
   </section>
 
+  <!-- Cross-Mile Spoken Sanctuary · Live CFW1 World Shaper -->
+  <section id="spoken-sanctuary" class="section-padding" aria-labelledby="spoken-sanctuary-title">
+    <div class="max-w-5xl mx-auto">
+      <div class="card-glass p-6 sm:p-8 border border-gold-500/25">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div class="min-w-0">
+            <T k="home.spoken.eyebrow" as="p" class="text-xs font-mono text-gold-400 uppercase tracking-wider mb-1.5" />
+            <T k="home.spoken.title" as="h2" id="spoken-sanctuary-title" class="text-2xl sm:text-3xl font-display font-bold text-obsidian-100" bClass="text-gradient" />
+            <T k="home.spoken.body" as="p" class="text-sm text-obsidian-400 mt-2 max-w-2xl leading-relaxed" />
+          </div>
+          <div class="flex flex-wrap items-center gap-2 max-w-full">
+            <span data-spoken-status class="text-xs font-mono px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+              {t('home.spoken.vaultCurated')}
+            </span>
+            <label for="sonnet-spoken-model" class="sr-only" data-i18n-html="home.spoken.modelLabel">{t('home.spoken.modelLabel')}</label>
+            <select
+              id="sonnet-spoken-model"
+              data-spoken-model
+              data-proper-name
+              lang="en"
+              dir="ltr"
+              aria-label={t('home.spoken.modelLabel')}
+              data-i18n-attr="aria-label:home.spoken.modelLabel"
+              class="max-w-full text-xs font-mono bg-obsidian-950 border border-gold-500/40 rounded-lg px-3 py-2 text-obsidian-100 focus:border-gold-400 focus:outline-hidden"
+            >
+              <option value="tier0-rust">Tier-0 Rust 0ms</option>
+              <option value="inkling-2-mini" selected>Inkling 2 Mini · 3.4B Looped</option>
+              <option value="liquid-lfm-3.5">Liquid AI LFM 3.5 · 2B Tri-Hybrid</option>
+              <option value="gemma-4-e2b-web">Gemma 4 E2B Web · LiteRT-LM</option>
+              <option value="qwen-3.6-webllm">Qwen 3.6 WebLLM</option>
+              <option value="nemotron-3.5-asr">Nemotron 3.5 ASR</option>
+              <option value="mistral-large-4">Mistral Large 4 · Frontier</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
+          <label for="sonnet-spoken-wish" class="sr-only" data-i18n-html="home.spoken.wishPlaceholder">{t('home.spoken.wishPlaceholder')}</label>
+          <input
+            id="sonnet-spoken-wish"
+            type="text"
+            data-spoken-wish
+            data-user-text
+            spellcheck="false"
+            autocomplete="off"
+            placeholder={t('home.spoken.wishPlaceholder')}
+            data-i18n-attr="placeholder:home.spoken.wishPlaceholder"
+            class="flex-1 min-w-0 bg-obsidian-950 border border-obsidian-700 rounded-lg px-4 py-3 text-sm text-obsidian-100 placeholder:text-obsidian-500 focus:border-gold-500/60 focus:outline-hidden"
+          />
+          <button
+            type="button"
+            data-spoken-mic
+            class="hidden btn-secondary px-4 py-2.5 text-xs whitespace-nowrap"
+          >
+            {t('home.spoken.speakBtn')}
+          </button>
+          <a
+            data-spoken-launch
+            href="https://chessfighter.inspiredmile.com/#mode=spoken&model=inkling-2-mini&wish=rainy%20night%20obsidian%20forge%20low%20gravity%20four%20towers%20painted"
+            class="btn-primary px-5 py-3 text-sm whitespace-nowrap"
+          >
+            <T k="home.spoken.morphBtn" />
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3 mb-5">
+          <div data-spoken-card class="rounded-xl border border-obsidian-700/70 bg-obsidian-950/75 p-4 flex flex-col justify-between gap-2.5 hover:border-gold-500/40 transition-colors min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <span data-spoken-badge class="text-[11px] font-mono px-2.5 py-0.5 rounded-full border border-gold-500/40 bg-gold-500/10 text-gold-300">2 · PAINTED</span>
+              <span data-spoken-votes dir="ltr" class="text-xs font-mono text-emerald-400">▲ 31</span>
+            </div>
+            <div class="min-w-0">
+              <h3 data-spoken-title data-proper-name lang="en" dir="ltr" class="font-display text-sm font-semibold text-obsidian-100 truncate">GOLDEN SANCTUM CINEMA</h3>
+              <p data-spoken-meta data-proper-name lang="en" dir="ltr" class="text-xs font-mono text-obsidian-400 mt-1 line-clamp-2 break-words">CFW1-AgICAAH1 · "golden sanctum pyramid platforms jade staffs painted orbit camera"</p>
+            </div>
+            <a
+              data-spoken-world-link
+              href="https://chessfighter.inspiredmile.com/#mode=spoken&cfw1=CFW1-AgICAAH1&model=inkling-2-mini&wish=golden%20sanctum%20pyramid%20platforms%20jade%20staffs%20painted%20orbit%20camera"
+              class="inline-flex items-center gap-1 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors mt-1"
+            >
+              <span data-spoken-enter-label>{t('home.spoken.enterArena')}</span>
+            </a>
+          </div>
+
+          <div data-spoken-card class="rounded-xl border border-obsidian-700/70 bg-obsidian-950/75 p-4 flex flex-col justify-between gap-2.5 hover:border-gold-500/40 transition-colors min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <span data-spoken-badge class="text-[11px] font-mono px-2.5 py-0.5 rounded-full border border-gold-500/40 bg-gold-500/10 text-gold-300">2 · PAINTED</span>
+              <span data-spoken-votes dir="ltr" class="text-xs font-mono text-emerald-400">▲ 26</span>
+            </div>
+            <div class="min-w-0">
+              <h3 data-spoken-title data-proper-name lang="en" dir="ltr" class="font-display text-sm font-semibold text-obsidian-100 truncate">MOONLIT LOW-G TOWERS</h3>
+              <p data-spoken-meta data-proper-name lang="en" dir="ltr" class="text-xs font-mono text-obsidian-400 mt-1 line-clamp-2 break-words">CFW1-AgMCAAH8 · "obsidian forge wire-fu low gravity four towers painted"</p>
+            </div>
+            <a
+              data-spoken-world-link
+              href="https://chessfighter.inspiredmile.com/#mode=spoken&cfw1=CFW1-AgMCAAH8&model=inkling-2-mini&wish=obsidian%20forge%20wire-fu%20low%20gravity%20four%20towers%20painted"
+              class="inline-flex items-center gap-1 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors mt-1"
+            >
+              <span data-spoken-enter-label>{t('home.spoken.enterArena')}</span>
+            </a>
+          </div>
+
+          <div data-spoken-card class="rounded-xl border border-obsidian-700/70 bg-obsidian-950/75 p-4 flex flex-col justify-between gap-2.5 hover:border-gold-500/40 transition-colors min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <span data-spoken-badge class="text-[11px] font-mono px-2.5 py-0.5 rounded-full border border-obsidian-600 text-obsidian-300">1 · SIMPLE</span>
+              <span data-spoken-votes dir="ltr" class="text-xs font-mono text-emerald-400">▲ 19</span>
+            </div>
+            <div class="min-w-0">
+              <h3 data-spoken-title data-proper-name lang="en" dir="ltr" class="font-display text-sm font-semibold text-obsidian-100 truncate">GREYBOX WIRE-FU DOJO</h3>
+              <p data-spoken-meta data-proper-name lang="en" dir="ltr" class="text-xs font-mono text-obsidian-400 mt-1 line-clamp-2 break-words">CFW1-AQEBAgF5 · "simple greybox twin platforms low gravity pure kung-fu"</p>
+            </div>
+            <a
+              data-spoken-world-link
+              href="https://chessfighter.inspiredmile.com/#mode=spoken&cfw1=CFW1-AQEBAgF5&model=inkling-2-mini&wish=simple%20greybox%20twin%20platforms%20low%20gravity%20pure%20kung-fu"
+              class="inline-flex items-center gap-1 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors mt-1"
+            >
+              <span data-spoken-enter-label>{t('home.spoken.enterArena')}</span>
+            </a>
+          </div>
+
+          <div data-spoken-card class="rounded-xl border border-obsidian-700/70 bg-obsidian-950/75 p-4 flex flex-col justify-between gap-2.5 hover:border-gold-500/40 transition-colors min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <span data-spoken-badge class="text-[11px] font-mono px-2.5 py-0.5 rounded-full border border-gold-500/40 bg-gold-500/10 text-gold-300">2 · PAINTED</span>
+              <span data-spoken-votes dir="ltr" class="text-xs font-mono text-emerald-400">▲ 16</span>
+            </div>
+            <div class="min-w-0">
+              <h3 data-spoken-title data-proper-name lang="en" dir="ltr" class="font-display text-sm font-semibold text-obsidian-100 truncate">VOLCANIC SPEAR BRIDGE</h3>
+              <p data-spoken-meta data-proper-name lang="en" dir="ltr" class="text-xs font-mono text-obsidian-400 mt-1 line-clamp-2 break-words">CFW1-AAMDBAFy · "citadelle rampart sky bridge viper launchers heavy iron painted"</p>
+            </div>
+            <a
+              data-spoken-world-link
+              href="https://chessfighter.inspiredmile.com/#mode=spoken&cfw1=CFW1-AAMDBAFy&model=inkling-2-mini&wish=citadelle%20rampart%20sky%20bridge%20viper%20launchers%20heavy%20iron%20painted"
+              class="inline-flex items-center gap-1 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors mt-1"
+            >
+              <span data-spoken-enter-label>{t('home.spoken.enterArena')}</span>
+            </a>
+          </div>
+        </div>
+
+        <details class="border-t border-obsidian-800 pt-4 text-xs text-obsidian-400">
+          <summary class="cursor-pointer font-mono font-medium text-obsidian-200 hover:text-gold-400 transition-colors">
+            <T k="home.spoken.agentSummary" />
+          </summary>
+          <div class="mt-3 flex flex-wrap items-center gap-2" dir="ltr">
+            <code
+              data-spoken-curl
+              data-proper-name
+              lang="en"
+              class="flex-1 min-w-0 px-3 py-2 rounded-lg border border-obsidian-700 bg-obsidian-950 text-emerald-400 font-mono text-[11px] overflow-x-auto whitespace-nowrap"
+            >{`curl -X POST https://chessfighter.inspiredmile.com/ws/agent/morf -H "Content-Type: application/json" -d '{"room":"SANCTUM","model":"inkling-2-mini","wish":"rainy night obsidian forge low gravity four towers painted"}'`}</code>
+            <button
+              type="button"
+              data-spoken-copy
+              class="px-3 py-2 rounded-lg border border-obsidian-700 bg-obsidian-900 text-obsidian-200 font-mono text-xs hover:border-gold-500/40 transition-colors"
+            >
+              {t('home.spoken.copy')}
+            </button>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="section-padding">
     <div class="max-w-4xl mx-auto text-center">
@@ -205,9 +368,12 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
 
   <script>
     import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
+    import { initSonnetSpokenPortal } from '../lib/spoken-portal';
     import { initPage } from '../i18n/pages/runtime';
     import { locale } from '../i18n';
     import { houseInitial, houseName } from '../i18n/pages/terms';
+
+    let spokenPortal: ReturnType<typeof initSonnetSpokenPortal> | null = null;
 
     void initPage(['home', 'card-terms'], () => {
       document.querySelectorAll<HTMLElement>('[data-house]').forEach((el) => {
@@ -216,6 +382,11 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
       document.querySelectorAll<HTMLElement>('[data-house-initial]').forEach((el) => {
         el.textContent = houseInitial(el.dataset.houseInitial!, locale());
       });
+      if (!spokenPortal) {
+        spokenPortal = initSonnetSpokenPortal();
+      } else {
+        spokenPortal.refreshLocale();
+      }
     });
 
     document.addEventListener('click', () => {

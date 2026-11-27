@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'ลงการ์ด กล่าวบทกลอน แล้วขึ้นเวที จะเล่นบนหน้าจอ หรือสวม Quest 3 หรือ Vision Pro ในโรงละครก็ได้',
   'home.ready.arena': 'เข้าสังเวียน',
   'home.ready.earn': 'รับการ์ด',
+  'home.spoken.eyebrow': 'วิหารแห่งเสียง · เครื่องปั้นโลก CFW1 สด',
+  'home.spoken.title': 'เสก<b>เวทีสามมิติ</b>ขึ้นด้วยเสียงพูด',
+  'home.spoken.body': 'ก้าวข้ามไมล์สู่ Chess Fighter ปั้นฉาก WebGPU สดด้วยเสียงหรือข้อความ หรือก้าวเข้าสู่สังเวียน CFW1 ที่ชุมชนร่วมกันเนรมิตได้ทันที',
+  'home.spoken.vaultCurated': 'คลัง CFW1 คัดสรร',
+  'home.spoken.vaultLive': 'คลัง CFW1 สด',
+  'home.spoken.modelLabel': 'โมเดลเปิดในตัว',
+  'home.spoken.wishPlaceholder': 'พูดหรือพิมพ์คำอธิษฐานสร้างโลก: คืนฝนพรำ แรงโน้มถ่วงต่ำ หอคอยหยก…',
+  'home.spoken.morphBtn': 'เนรมิตใน WebGPU →',
+  'home.spoken.speakBtn': 'พูด',
+  'home.spoken.stageSimple': 'โครงร่าง',
+  'home.spoken.stagePainted': 'ลงสีแล้ว',
+  'home.spoken.enterArena': 'เข้าสู่สังเวียนที่เนรมิต →',
+  'home.spoken.agentSummary': 'เชื่อมต่อเอเจนต์ AI ของคุณ (0x28 เนรมิตสด)',
+  'home.spoken.copy': 'คัดลอก',
+  'home.spoken.copied': 'คัดลอกแล้ว',
 };
 
 export default messages;

@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': '카드를 내고, 시를 말하고, 무대에 오르세요. 화면에서도, 극장에서 Quest 3나 Vision Pro를 쓰고도 할 수 있어요.',
   'home.ready.arena': '아레나 입장',
   'home.ready.earn': '카드 얻기',
+  'home.spoken.eyebrow': '말로 빚는 성소 · 실시간 CFW1 세계 조형기',
+  'home.spoken.title': '목소리로 <b>입체 무대</b>를 빚으세요',
+  'home.spoken.body': '한 마일을 건너 Chess Fighter로 이어집니다. 음성이나 글로 실시간 WebGPU 무대를 빚거나, 커뮤니티가 만든 CFW1 결투장으로 바로 들어가 보세요.',
+  'home.spoken.vaultCurated': '엄선된 CFW1 보관소',
+  'home.spoken.vaultLive': '실시간 CFW1 보관소',
+  'home.spoken.modelLabel': '내장 오픈 모델',
+  'home.spoken.wishPlaceholder': '세계 소원을 말하거나 입력하세요: 비 내리는 밤, 저중력, 비취 탑…',
+  'home.spoken.morphBtn': 'WebGPU로 조형하기 →',
+  'home.spoken.speakBtn': '말하기',
+  'home.spoken.stageSimple': '기본형',
+  'home.spoken.stagePainted': '채색형',
+  'home.spoken.enterArena': '조형된 결투장 입장 →',
+  'home.spoken.agentSummary': '내 AI 에이전트 연결하기 (0x28 실시간 조형)',
+  'home.spoken.copy': '복사',
+  'home.spoken.copied': '복사됨',
 };
 
 export default messages;

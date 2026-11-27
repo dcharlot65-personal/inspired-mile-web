@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Spiel deine Karten aus, sprich deine Strophe und betritt die Bühne. Am Bildschirm oder mit einer Quest 3 oder Vision Pro im Theater.',
   'home.ready.arena': 'Arena betreten',
   'home.ready.earn': 'Karten verdienen',
+  'home.spoken.eyebrow': 'Gesprochenes Refugium · Live-CFW1-Weltenformer',
+  'home.spoken.title': 'Rufe eine <b>3D-Bühne</b> mit deiner Stimme herbei',
+  'home.spoken.body': 'Geh eine Meile weiter zu Chess Fighter: forme live per Stimme oder Text eine WebGPU-Bühne oder betritt direkt einen verwandelten CFW1-Schauplatz der Gemeinschaft.',
+  'home.spoken.vaultCurated': 'Ausgewähltes CFW1-Archiv',
+  'home.spoken.vaultLive': 'Live-CFW1-Archiv',
+  'home.spoken.modelLabel': 'Eingebettetes offenes Modell',
+  'home.spoken.wishPlaceholder': 'Weltwunsch sprechen oder tippen: Regennacht, niedrige Schwerkraft, Jadetürme…',
+  'home.spoken.morphBtn': 'In WebGPU formen →',
+  'home.spoken.speakBtn': 'Sprechen',
+  'home.spoken.stageSimple': 'ENTWURF',
+  'home.spoken.stagePainted': 'BEMALT',
+  'home.spoken.enterArena': 'Geformte Bühne betreten →',
+  'home.spoken.agentSummary': 'Eigenen KI-Agenten verbinden (0x28 Live-Morf)',
+  'home.spoken.copy': 'Kopieren',
+  'home.spoken.copied': 'Kopiert',
 };
 
 export default messages;

@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Разыграй карты, произнеси строфу и выйди на сцену. На экране или в гарнитуре Quest 3 либо Vision Pro в Театре.',
   'home.ready.arena': 'Выйти на арену',
   'home.ready.earn': 'Заработать карты',
+  'home.spoken.eyebrow': 'Голосовое святилище · Живой творец миров CFW1',
+  'home.spoken.title': 'Создай <b>3D-сцену</b> голосом',
+  'home.spoken.body': 'Шагните через милю в Chess Fighter: меняйте живую сцену WebGPU голосом или текстом либо сразу входите в мир CFW1, созданный сообществом.',
+  'home.spoken.vaultCurated': 'Избранный свод CFW1',
+  'home.spoken.vaultLive': 'Живой свод CFW1',
+  'home.spoken.modelLabel': 'Встроенная открытая модель',
+  'home.spoken.wishPlaceholder': 'Произнесите или введите замысел мира: дождливая ночь, низкая гравитация, нефритовые башни…',
+  'home.spoken.morphBtn': 'Преобразить в WebGPU →',
+  'home.spoken.speakBtn': 'Сказать',
+  'home.spoken.stageSimple': 'МАКЕТ',
+  'home.spoken.stagePainted': 'РОСПИСЬ',
+  'home.spoken.enterArena': 'Войти в преображённый мир →',
+  'home.spoken.agentSummary': 'Подключить своего ИИ-агента (0x28 живой Morf)',
+  'home.spoken.copy': 'Копировать',
+  'home.spoken.copied': 'Скопировано',
 };
 
 export default messages;

@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': '打出卡牌，念出你的诗，登上舞台。可以在屏幕上，也可以戴上 Quest 3 或 Vision Pro 走进剧场。',
   'home.ready.arena': '进入竞技场',
   'home.ready.earn': '赢取卡牌',
+  'home.spoken.eyebrow': '言灵圣殿 · 实时 CFW1 世界塑形器',
+  'home.spoken.title': '开口唤出<b>三维舞台</b>',
+  'home.spoken.body': '跨越这一英里进入 Chess Fighter：用语音或文字实时塑形 WebGPU 舞台，或直接踏入社区共创的 CFW1 竞技世界。',
+  'home.spoken.vaultCurated': '精选 CFW1 世界库',
+  'home.spoken.vaultLive': '实时 CFW1 世界库',
+  'home.spoken.modelLabel': '内嵌开源模型',
+  'home.spoken.wishPlaceholder': '说出或输入世界心愿：雨夜、低重力、翡翠高塔……',
+  'home.spoken.morphBtn': '在 WebGPU 中塑形 →',
+  'home.spoken.speakBtn': '语音',
+  'home.spoken.stageSimple': '素模',
+  'home.spoken.stagePainted': '彩绘',
+  'home.spoken.enterArena': '进入塑形竞技场 →',
+  'home.spoken.agentSummary': '接入你的智能体（0x28 实时塑形）',
+  'home.spoken.copy': '复制',
+  'home.spoken.copied': '已复制',
 };
 
 export default messages;

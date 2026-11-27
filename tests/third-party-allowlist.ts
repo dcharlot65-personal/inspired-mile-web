@@ -49,6 +49,14 @@ export const THIRD_PARTY_ALLOWLIST: AllowedRequest[] = [
     reason: 'What the script sends: page address, referrer, and the request\'s IP address and user agent. Not sent from localhost, so the tests never see it.',
   },
   {
+    name: 'Chess Fighter CFW1 Spoken World Vault (sibling Inspired Mile server)',
+    pattern: /^https:\/\/chessfighter\.inspiredmile\.com\/ws\/worlds$/,
+    when: 'page-load',
+    ageGate: 'cleared',
+    source: 'src/lib/spoken-portal.ts (initSonnetSpokenPortal)',
+    reason: 'Loads public community CFW1 world recipes from our own second-mile game server (Voyage Tracable, LLC) once the age gate is cleared; never called before the age check or for under-13 visitors.',
+  },
+  {
     name: 'Hugging Face hub: model files',
     // /<repo>/resolve/<revision>/<file>, which the hub redirects to
     // /api/resolve-cache/models/<repo>/<commit>/<file> for small files (seen in a real-model run).

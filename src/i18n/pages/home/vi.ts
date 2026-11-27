@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Đánh lá bài, đọc bài thơ của bạn và bước lên sân khấu. Trên màn hình, hoặc đeo Quest 3 hay Vision Pro trong Nhà hát.',
   'home.ready.arena': 'Vào đấu trường',
   'home.ready.earn': 'Kiếm lá bài',
+  'home.spoken.eyebrow': 'Thánh đường lời nói · Bộ kiến tạo thế giới CFW1 trực tiếp',
+  'home.spoken.title': 'Gọi <b>sân khấu 3D</b> thành hình bằng giọng nói',
+  'home.spoken.body': 'Bước qua dặm đường sang Chess Fighter: tạo hình sân khấu WebGPU trực tiếp bằng giọng nói hay văn bản, hoặc bước ngay vào đấu trường CFW1 do cộng đồng biến hoá.',
+  'home.spoken.vaultCurated': 'Kho CFW1 tuyển chọn',
+  'home.spoken.vaultLive': 'Kho CFW1 trực tiếp',
+  'home.spoken.modelLabel': 'Mô hình mở tích hợp',
+  'home.spoken.wishPlaceholder': 'Nói hoặc nhập điều ước thế giới: đêm mưa, trọng lực thấp, tháp ngọc bích…',
+  'home.spoken.morphBtn': 'Biến hoá trong WebGPU →',
+  'home.spoken.speakBtn': 'Nói',
+  'home.spoken.stageSimple': 'PHÁC THẢO',
+  'home.spoken.stagePainted': 'HOÀN HOẠ',
+  'home.spoken.enterArena': 'Vào đấu trường biến hoá →',
+  'home.spoken.agentSummary': 'Kết nối tác tử AI của bạn (0x28 biến hoá trực tiếp)',
+  'home.spoken.copy': 'Sao chép',
+  'home.spoken.copied': 'Đã chép',
 };
 
 export default messages;

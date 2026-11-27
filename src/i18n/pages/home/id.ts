@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Mainkan kartumu, ucapkan syairmu, dan naiklah ke panggung. Di layar, atau dengan Quest 3 atau Vision Pro di Teater.',
   'home.ready.arena': 'Masuk ke arena',
   'home.ready.earn': 'Raih kartu',
+  'home.spoken.eyebrow': 'Suaka Suara · Pembentuk Dunia CFW1 Langsung',
+  'home.spoken.title': 'Wujudkan <b>Panggung 3D</b> lewat Suara',
+  'home.spoken.body': 'Seberangi mil menuju Chess Fighter: bentuk panggung WebGPU langsung dengan suara atau teks, atau melangkah langsung ke arena CFW1 karya komunitas.',
+  'home.spoken.vaultCurated': 'Khazanah CFW1 Pilihan',
+  'home.spoken.vaultLive': 'Khazanah CFW1 Langsung',
+  'home.spoken.modelLabel': 'Model terbuka tertanam',
+  'home.spoken.wishPlaceholder': 'Ucapkan atau ketik harapan dunia: malam hujan, gravitasi rendah, menara giok…',
+  'home.spoken.morphBtn': 'Bentuk di WebGPU →',
+  'home.spoken.speakBtn': 'Ucapkan',
+  'home.spoken.stageSimple': 'RANGKA',
+  'home.spoken.stagePainted': 'BERLUKIS',
+  'home.spoken.enterArena': 'Masuki Arena Terbentuk →',
+  'home.spoken.agentSummary': 'Hubungkan Agen AI Anda (0x28 Morf Langsung)',
+  'home.spoken.copy': 'Salin',
+  'home.spoken.copied': 'Tersalin',
 };
 
 export default messages;

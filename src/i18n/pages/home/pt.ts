@@ -32,6 +32,21 @@ const messages: Record<string, string> = {
   'home.ready.body': 'Jogue as suas cartas, diga a sua estrofe e suba ao palco. Em uma tela, ou com um Quest 3 ou Vision Pro no Teatro.',
   'home.ready.arena': 'Entrar na arena',
   'home.ready.earn': 'Ganhar cartas',
+  'home.spoken.eyebrow': 'Santuário falado · Modelador de mundos CFW1 ao vivo',
+  'home.spoken.title': 'Dê vida a um <b>palco 3D</b> com a voz',
+  'home.spoken.body': 'Atravesse a milha até Chess Fighter: molde ao vivo um palco WebGPU por voz ou texto, ou entre direto em um mundo CFW1 criado pela comunidade.',
+  'home.spoken.vaultCurated': 'Acervo CFW1 selecionado',
+  'home.spoken.vaultLive': 'Acervo CFW1 ao vivo',
+  'home.spoken.modelLabel': 'Modelo aberto integrado',
+  'home.spoken.wishPlaceholder': 'Fale ou digite um desejo de mundo: noite chuvosa, baixa gravidade, torres de jade…',
+  'home.spoken.morphBtn': 'Moldar em WebGPU →',
+  'home.spoken.speakBtn': 'Falar',
+  'home.spoken.stageSimple': 'ESBOÇO',
+  'home.spoken.stagePainted': 'PINTADO',
+  'home.spoken.enterArena': 'Entrar no mundo moldado →',
+  'home.spoken.agentSummary': 'Conecte seu agente de IA (0x28 Morf ao vivo)',
+  'home.spoken.copy': 'Copiar',
+  'home.spoken.copied': 'Copiado',
 };
 
 export default messages;
